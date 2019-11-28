@@ -1,0 +1,15 @@
+.root {
+  background: pink
+}
+Button {
+  background: yellow
+}
+
+Button.test {
+  background: pink
+}
+
+:import {
+  -st-from: "@bc-digital/bronte/dist/components/Button/button.st.css";
+  -st-default: Button;
+}

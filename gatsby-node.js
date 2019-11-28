@@ -1,4 +1,3 @@
-// const { StylableWebpackPlugin } = require(`@stylable/webpack-plugin`);
 const StylableWebpackPlugin = require("@stylable/webpack-plugin");
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
@@ -27,9 +26,8 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   // add stylable plugin
   const options = {
     outputCSS: true,
-
-    useWeakDeps: true,
-    experimentalHMR: true,
+    // useWeakDeps: true,
+    experimentalHMR: true, // FYI: Hot Module Reloading
     optimize: {
       classNameOptimizations: false,
       shortNamespaces: false

@@ -1,3 +1,5 @@
-.root {
-  background: pink
+.override {
+  background: green;
+  display: flex;
+  margin-bottom: 16px
 }
