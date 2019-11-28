@@ -3,7 +3,7 @@ const StylableWebpackPlugin = require("@stylable/webpack-plugin");
 exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
 
-  // exclude .st.css files from CSS loaders
+  // Exclude .st.css files from CSS loaders.
   for (let i = 0; i < config.module.rules.length; i++) {
     const rule = config.module.rules[i];
 
@@ -23,12 +23,13 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
     }
   }
 
-  // add stylable plugin
+  // Add the stylable plugin - https://www.npmjs.com/package/@stylable/webpack-plugin
   const options = {
     outputCSS: true,
     // useWeakDeps: true,
-    experimentalHMR: true, // FYI: Hot Module Reloading
+    experimentalHMR: true, // FYI: Hot Module Reloading.
     optimize: {
+      // The following two options need testing in prod.
       classNameOptimizations: false,
       shortNamespaces: false
     },

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import { graphql } from "gatsby";
 import style from "./index.st.css";
-// Global styles seem to work with TS like this.
+// Global styles work with TS like this:
 require("./example.css");
 
 import Button from "../components/Button/Button";
@@ -10,7 +10,7 @@ import Button from "../components/Button/Button";
 import DefaultLayout from "../layouts";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema
+// to generate all types from graphQL schema.
 interface IndexPageProps {
   data: {
     site: {
@@ -30,7 +30,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
           Welcome to your new <strong>{data.site.siteMetadata.title}</strong>{" "}
           website with Typescript and Stylable support.
         </p>
-        <p>Now go build something awesome... Like a button perhaps?</p>
+        <p>Lets build something awesome... like a button perhaps?</p>
         <div>
           <Button
             className={style.override}
