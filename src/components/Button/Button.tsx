@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import classNames from "classnames";
+import classnames from "classnames";
 import style from "./button.st.css";
 
 /**
@@ -10,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 
   /** Type of the button default, primary..*/
-  colour: string;
+  color: string;
 
   /** Button sizes: xs, sm, md, lg */
   size: string;
@@ -20,22 +20,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const defaultProps = {
-  colour: "default",
+  color: "default",
   size: "md",
   variant: "default"
 };
 
 const Button = ({
   children,
-  colour,
+  color,
   size,
   className: classNameProp,
   variant,
   ...rest
 }: ButtonProps) => {
-  const rootClassNames = classNames(
+  const rootClassNames = classnames(
     style.root,
-    style[colour],
+    style[color],
     style[size],
     style[variant],
     classNameProp
