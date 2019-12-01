@@ -1,11 +1,28 @@
-.root {
-  background: pink;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 1rem
-}
+/* button.st.css */
+.button {}
 
-.inner {
-  font-weight: 600;
-}
+.inner {}
+
+.xs {}
+
+.sm {}
+
+.md {}
+
+.lg {}
+
+.xl {}
+
+/* How to theme, better to use CSS vars? */
+.default {}
+
+.primary {}
+
+.secondary {}
+
+.fill {}
+
+.hollow {}
+
+/*State selecytor*/
+.disabled {}

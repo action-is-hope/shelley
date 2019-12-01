@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
+import { Theme as defaultTheme } from "../themes/default";
 
 const Header = () => (
   <div
@@ -32,7 +33,7 @@ const Header = () => (
 );
 
 const DefaultLayout = ({ children }) => (
-  <div>
+  <div className={defaultTheme}>
     <Helmet
       title="Gatsby Default Starter"
       meta={[

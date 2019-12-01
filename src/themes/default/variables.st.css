@@ -1,0 +1,75 @@
+/* Default theme variables */
+
+:vars {
+  /* @Breakpoints */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 568px;
+  --breakpoint-md: 950px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1180px;
+
+    /* Fonts */
+    --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --theme-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+
+  /* Font sizes */
+  --base-font-size: 16px;
+  --base-font-size-sm: 14px;
+  --base-font-size-md: 16px;
+  --base-font-size-lg: 18px;
+  --base-font-size-xl: 18px;
+
+  /* Line heights */
+  --base-line-height: 24px;
+  
+  /* Gutter */
+  --gutter-width-sm: 16px;
+  --gutter-width-md: 24px;
+  --gutter-width-lg: 32px;
+
+  /* Spacing */
+  --spacing-unit: 8;
+
+  /* Grid */
+  --grid-gap-xs: 12px;
+  --grid-gap-md: 24px;
+  /* This is a calc that will give you mobile column width. */
+  --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
+  /* This is the column width that aligns with the design when viewport is 1400px (as the design is). */
+  --grid-base-column-width-md: 4.011vw;
+  /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
+  --grid-base-columns-sm: [full-bleed-start] 12px [outset-start content-start]
+    repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
+  --grid-base-columns-md: [full-bleed-start] auto [outset-start]
+    repeat(2, minmax(0, 4.011vw)) [content-start] repeat(8, minmax(0, 4.011vw))
+    [content-end] repeat(2, minmax(0, 4.011vw)) [outset-end] auto
+    [full-bleed-end];
+  /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
+  --grid-inner-base-columns: repeat(12, minmax(0, 4.011vw));
+
+  /**
+   * We can name the grid lines what we like:
+   *
+   * grid-column-start: full-bleed-start;
+   * grid-column-end: full-bleed-end;
+   *
+   * grid-column-start: content-start;
+   * grid-column-end: content-end;
+   *
+   * grid-column-start: outset-start;
+   * grid-column-end: outset-end;
+   *
+   * Good as it is easy to maintain as the grid lines can be remapped at a theme level.
+   *
+   * The grid-template-column values on mobile and desktop differ slightly in that they map the grid
+   * lines differently. On mobile outset and content use the same grid lines but on desktop
+   * content sits 2 columns inside.
+   *
+   */
+
+
+}

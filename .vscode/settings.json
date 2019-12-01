@@ -15,6 +15,10 @@
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
     {
+      "language": "stylable",
+      "autoFix": false
+    },
+    {
       "language": "javascript",
       "autoFix": true
     },
@@ -33,5 +37,18 @@
   ],
   "tslint.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "debug.node.autoAttach": "on"
+  "debug.node.autoAttach": "on",
+  /* Associate stylable files as CSS files so we get some auto formatting. */
+  "files.associations": {
+    "*.st.css": "css"
+  },
+  "[css]": {
+    /**
+     * Turns out prettier CSS formatter does not like the uppercase component
+     * selectors and converts them all lowercase. This will ensure that it does
+     * not run. Hopefully we can remove this at some point. We will mention it to
+     * the Wix team who are usually super helpful and take pride in their work.
+     */
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

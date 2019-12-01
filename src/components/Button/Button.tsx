@@ -5,7 +5,8 @@ import style from "./button.st.css";
 /**
  * Button props extending those of a regualr button.
  */
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
 
@@ -50,4 +51,5 @@ const Button = ({
 
 Button.defaultProps = defaultProps;
 
-export default Button;
+const button = Button;
+export default button;
