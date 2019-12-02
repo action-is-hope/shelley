@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import classnames from "classnames";
 import style from "./button.st.css";
+
 /**
  * Button props extending those of a regualr button.
  */
@@ -43,7 +44,6 @@ const Button = ({
 
   return (
     <button {...style(rootClassNames, {}, rest)} {...rest}>
-      {/* <button className={rootClassNames} {...rest}> */}
       <span className={style.inner}>{children}</span>
     </button>
   );

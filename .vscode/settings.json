@@ -48,6 +48,8 @@
      * selectors and converts them all lowercase. This will ensure that it does
      * not run. Hopefully we can remove this at some point. We will mention it to
      * the Wix team who are usually super helpful and take pride in their work.
+     * I needed to install this as well to get it working:
+     * https://marketplace.visualstudio.com/items?itemName=michelemelluso.code-beautifier
      */
     // "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

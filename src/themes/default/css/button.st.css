@@ -14,11 +14,10 @@
   -st-named: --base-font-family, --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --base-line-height;
 }
 
-Button {}
-
 /* This is how we can scope the styles but we loose CSS syntax sugar. */
 
 @st-scope Default {
+
   /*  Default styles */
   Button {
     box-sizing: border-box;
@@ -41,38 +40,47 @@ Button {}
     /* Effects */
     transition: opacity 0.3s ease, color 0.3s ease;
   }
+
   /* Button size variations sm - lg */
   Button.sm {
     font-size: value(--base-font-size-sm);
   }
+
   Button.md {
     font-size: value(--base-font-size-md);
   }
+
   Button.lg {
     font-size: value(--base-font-size-lg);
   }
+
   /* Button COLOURS */
   /* DEFAULT */
   Button.default {
     background-color: rgb(var(--color-accent-1, value(--color-accent-1-default)));
     color: var(--color-ui, value(--color-ui-default))
   }
+
   Button:hover {
     opacity: 0.7;
   }
+
   /* Button CSS STATES PSEUDO */
   /* Disabled */
-  Button:disabled, Button:disabled:hover, Button:disabled:focus, Button:disabled:active, Button:disabled:active:hover {
-    cursor: default;
-    color: value(--default-contrast);
-    background-color: setAlpha(value(--default), 0.5);
-    border-color: transparent;
-    outline: 0;
+  Button:disabled,
+  Button:disabled:hover,
+  Button:disabled:focus,
+  Button:disabled:active,
+  Button:disabled:active:hover {
+    opacity: 0.5
   }
+
   /* ACTIVE */
-  Button:active, Button:active:hover {
+  Button:active,
+  Button:active:hover {
     background-color: value(--dark-01);
   }
+
   Button:active.link {
     background-color: transparent;
   }

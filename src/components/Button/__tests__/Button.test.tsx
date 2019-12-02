@@ -6,7 +6,7 @@ import { render } from "@testing-library/react";
 const ButtonTest = () => (
   <Button data-testid="button-text">Gatsby is awesome!</Button>
 );
-test("Displays the correct title", () => {
+test("Displays the correct button text.", () => {
   const { getByTestId } = render(<ButtonTest />);
   // Assertion
   expect(getByTestId("button-text")).toHaveTextContent("Gatsby is awesome!");
