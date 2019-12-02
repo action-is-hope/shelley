@@ -45,6 +45,7 @@
     "@types/react-dom": "16.9.4",
     "@types/react-helmet": "^5.0.14",
     "@types/react-test-renderer": "^16.9.1",
+    "@types/testing-library__jest-dom": "git://github.com/vagonpidarasov/jest-dom.git",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "babel-jest": "^24.9.0",

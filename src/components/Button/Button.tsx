@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import classnames from "classnames";
 import style from "./button.st.css";
-
 /**
  * Button props extending those of a regualr button.
  */
