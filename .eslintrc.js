@@ -15,7 +15,8 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
+    jest: true
   },
   plugins: ["@typescript-eslint", "react"],
   parserOptions: {

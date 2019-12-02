@@ -58,13 +58,22 @@
 	natural SEO if you care about such things.
 
 	So, when you are building your next 'More Info' stylee link or whatever then provide 
-	more context via some hidden text. That is what the .srOnly class is for. If 
-	you are integrating into a CMS they you must ensure this is actually used by your 
-	content authors. So many sites degrade overtime, in CMS education seems more sensible
-	that continual auditing. Working in it...
+	more context via some hidden text. That is what the .srOnly class is for. 
 
 	<Button>More Information <span className="srOnly">on writing great link text</span></Button>
+
+	If you are integrating into a CMS they you must ensure this is actually used by your 
+	content authors or you do it progrmatically where possible which might not be as 
+	good but in the real world sites degrade overtime. For internal pages you could 
+	determine the page title programatically perhaps:
+
+	<Button>More Information<span className="srOnly">: How to write great link text.</span></Button>
 	
+	This doesn't help us for external links so we really need a new breed of clever CMS, 
+	with in CMS education and decent framing of the why. Continual auditing doesn't work,
+	it's admirable but unless you are educating you are just gonna have the same issues 
+	over and over.
+
 	Make your shizzle accessible - it's your duty as a master builder ;-)
 
 	@actionishope
@@ -105,20 +114,20 @@
 */
 
 :global(.srOnly) {
-	border: 0 !important;
-	clip: rect(1px, 1px, 1px, 1px) !important;
-	/* 1 */
-	-webkit-clip-path: inset(50%) !important;
-	clip-path: inset(50%) !important;
-	/* 2 */
-	height: 1px !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important;
-	/* 3 */
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+  /* 3 */
 }
 
 /*
@@ -131,13 +140,14 @@
 		@see https://github.com/twbs/bootstrap/issues/20732
 */
 
-:global(.srOnlyFocusable:focus), :global(.srOnlyFocusable:active) {
-	clip: auto !important;
-	-webkit-clip-path: none !important;
-	clip-path: none !important;
-	height: auto !important;
-	margin: auto !important;
-	overflow: visible !important;
-	width: auto !important;
-	white-space: normal !important;
+:global(.srOnlyFocusable:focus),
+:global(.srOnlyFocusable:active) {
+  clip: auto !important;
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
+  height: auto !important;
+  margin: auto !important;
+  overflow: visible !important;
+  width: auto !important;
+  white-space: normal !important;
 }

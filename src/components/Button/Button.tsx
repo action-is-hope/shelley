@@ -23,7 +23,7 @@ export interface ButtonProps
 const defaultProps = {
   color: "default",
   size: "md",
-  variant: "default"
+  variant: "fill"
 };
 
 const Button = ({
@@ -44,6 +44,7 @@ const Button = ({
 
   return (
     <button {...style(rootClassNames, {}, rest)} {...rest}>
+      {/* <button className={rootClassNames} {...rest}> */}
       <span className={style.inner}>{children}</span>
     </button>
   );
@@ -51,5 +52,4 @@ const Button = ({
 
 Button.defaultProps = defaultProps;
 
-const button = Button;
-export default button;
+export default Button;

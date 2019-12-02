@@ -34,6 +34,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
         <div>
           <Button
             className={style.override}
+            data-testid="hero-title"
             onClick={() => alert("I like big buttons and I cannot lie!")}
           >
             Boom

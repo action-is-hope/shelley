@@ -26,8 +26,9 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   // Add the stylable plugin - https://www.npmjs.com/package/@stylable/webpack-plugin
   const options = {
     outputCSS: true,
-    // useWeakDeps: true, // Find out what this does...
     experimentalHMR: true, // FYI: Hot Module Reloading.
+    // useWeakDeps: true, // Find out what this does...
+    // useEntryModuleInjection: true, // Find out what this does...
     optimize: {
       // The following two options need testing in prod.
       classNameOptimizations: false,

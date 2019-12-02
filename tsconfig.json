@@ -1,23 +1,47 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
     "rootDir": "src",
     "outDir": "dist",
     "target": "es5",
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    "lib": ["dom", "es2016"],
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "lib": ["dom", "es2016"],
-    "pretty": true,
-    "jsx": "preserve",
-    "strict": true,
-    "esModuleInterop": true,
+    "noEmit": true,
     "noImplicitAny": false,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "pretty": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
   },
   "include": ["src"]
 }
+
+// {
+//   "compilerOptions": {
+// "allowSyntheticDefaultImports": true,
+// "esModuleInterop": true,
+// "allowJs": true,
+//     "declaration": false,
+//     "importHelpers": true,
+//     "jsx": "react",
+//     "lib": ["dom", "es2015", "es2017"],
+//     "module": "commonjs",
+//     "noEmitHelpers": false,
+//     "noImplicitAny": true,
+//     "noResolve": false,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": false,
+//     "preserveConstEnums": true,
+//     "removeComments": true,
+//     "sourceMap": true,
+//     "strictNullChecks": true,
+//     "target": "esnext"
+//   },
+//   "include": ["./src/**/*", "./__tests__/**/*"]
+// }
