@@ -1,4 +1,7 @@
-/* Default theme variables */
+/**
+ * Default theme variables. This is just an example to get started, we tend to 
+ * use this for our non color build time variables.
+ */
 
 :vars {
   /* @Breakpoints */
@@ -8,8 +11,8 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1180px;
 
-    /* Fonts */
-    --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  /* Fonts */
+  --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
   --theme-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -24,8 +27,8 @@
   --base-font-size-xl: 18px;
 
   /* Line heights */
-  --base-line-height: 24px;
-  
+  --base-line-height: 1.45;
+
   /* Gutter */
   --gutter-width-sm: 16px;
   --gutter-width-md: 24px;
@@ -42,12 +45,8 @@
   /* This is the column width that aligns with the design when viewport is 1400px (as the design is). */
   --grid-base-column-width-md: 4.011vw;
   /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
-  --grid-base-columns-sm: [full-bleed-start] 12px [outset-start content-start]
-    repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
-  --grid-base-columns-md: [full-bleed-start] auto [outset-start]
-    repeat(2, minmax(0, 4.011vw)) [content-start] repeat(8, minmax(0, 4.011vw))
-    [content-end] repeat(2, minmax(0, 4.011vw)) [outset-end] auto
-    [full-bleed-end];
+  --grid-base-columns-sm: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
+  --grid-base-columns-md: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 4.011vw)) [content-start] repeat(8, minmax(0, 4.011vw)) [content-end] repeat(2, minmax(0, 4.011vw)) [outset-end] auto [full-bleed-end];
   /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
   --grid-inner-base-columns: repeat(12, minmax(0, 4.011vw));
 
@@ -70,6 +69,4 @@
    * content sits 2 columns inside.
    *
    */
-
-
 }

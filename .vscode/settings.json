@@ -12,12 +12,9 @@
   "editor.rulers": [80],
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
+
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
-    {
-      "language": "stylable",
-      "autoFix": false
-    },
     {
       "language": "javascript",
       "autoFix": true
@@ -50,7 +47,9 @@
      * the Wix team who are usually super helpful and take pride in their work.
      * I needed to install this as well to get it working:
      * https://marketplace.visualstudio.com/items?itemName=michelemelluso.code-beautifier
+     * Update: This seems very unreliable... I have to fiddle with it when it starts saving
+     * incorrectly and we loose our styles.
      */
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "michelemelluso.code-beautifier"
   }
 }

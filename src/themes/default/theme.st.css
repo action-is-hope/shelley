@@ -1,10 +1,17 @@
-/* Default theme */
+/**
+ * Default theme inclusing colors. This is just an example to get started, we tend to 
+ * use this for our color build time variables and our run time CSS3 color variables.
+ * We can easily map them to each other so that we can provide a fallback value that
+ * is a build variable.
+ */
+
 @namespace "Default";
 
 :import {
   -st-from: "./variables.st.css";
   -st-named: --base-font-family;
 }
+
 .root {
   font-family: value(--base-font-family);
 }
@@ -33,7 +40,7 @@
   --light-04: #eeeeee;
 
   /* Default site values which will be used for the fallbacks. */
-  --color-accent-1-default: 14, 97, 148; /* rgb(14, 97, 148) */
+  --color-accent-1-default: rgb(14, 97, 148);
   --color-accent-2-default: rgb(35, 196, 141);
   --color-background-1-default: rgb(23, 26, 35);
   --color-error-default: red;

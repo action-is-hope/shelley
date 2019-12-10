@@ -1,54 +1,42 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import classnames from "classnames";
 import style from "./button.st.css";
+import PropTypes from "prop-types";
+import { ButtonProps } from "./";
+const Button = React.forwardRef(
+  (
+    {
+      children,
+      className: classNameProp,
+      color = "c1",
+      size = "md",
+      variant = "v1",
+      tip,
+      ...rest
+    }: ButtonProps,
+    ref?: React.Ref<HTMLButtonElement>
+  ) => {
+    const rootClassNames = classnames(
+      style.root,
+      style[color],
+      style[size],
+      style[variant],
+      classNameProp
+    );
 
-/**
- * Button props extending those of a regualr button.
- */
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  className?: string;
+    return (
+      <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
+        <span className={style.inner}>{children}</span>
+        {tip && <span className={style.tip}>{tip}</span>}
+      </button>
+    );
+  }
+);
 
-  /** Type of the button default, primary..*/
-  color: string;
-
-  /** Button sizes: xs, sm, md, lg */
-  size: string;
-
-  /** Button variant: heavy, default, light */
-  variant: string;
-}
-
-const defaultProps = {
-  color: "default",
-  size: "md",
-  variant: "fill"
+Button.displayName = "Button";
+Button.propTypes = {
+  style: PropTypes.object
 };
-
-const Button = ({
-  children,
-  color,
-  size,
-  className: classNameProp,
-  variant,
-  ...rest
-}: ButtonProps) => {
-  const rootClassNames = classnames(
-    style.root,
-    style[color],
-    style[size],
-    style[variant],
-    classNameProp
-  );
-
-  return (
-    <button {...style(rootClassNames, {}, rest)} {...rest}>
-      <span className={style.inner}>{children}</span>
-    </button>
-  );
-};
-
-Button.defaultProps = defaultProps;
 
 export default Button;
+export const proptype = Button.propTypes;

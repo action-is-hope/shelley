@@ -1,3 +1,8 @@
+/**
+ * Example theming file for the button. If you are not needing themes you can 
+ * just style your components in the files adjacent to the component. But this
+ * way you might be able more useful in the long run...
+ */
 :import {
   -st-from: "../../../components/Button/button.st.css";
   -st-default: Button;
@@ -15,6 +20,7 @@
 }
 
 /* This is how we can scope the styles but we loose CSS syntax sugar. */
+Button {}
 
 @st-scope Default {
 
@@ -54,10 +60,11 @@
     font-size: value(--base-font-size-lg);
   }
 
+
   /* Button COLOURS */
   /* DEFAULT */
-  Button.default {
-    background-color: rgb(var(--color-accent-1, value(--color-accent-1-default)));
+  Button.c1 {
+    background-color: var(--color-accent-1, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default))
   }
 

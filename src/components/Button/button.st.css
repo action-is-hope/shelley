@@ -1,8 +1,7 @@
 /* button.st.css */
-.button {}
+.root {}
 
-.inner {}
-
+/* Sizes */
 .xs {}
 
 .sm {}
@@ -13,16 +12,30 @@
 
 .xl {}
 
-/* How to theme, better to use CSS vars? */
-.default {}
+/* Colors */
+.c1 {}
 
-.primary {}
+.c2 {}
 
-.secondary {}
+.c3 {}
 
-.fill {}
+.c4 {}
 
-.hollow {}
+.c5 {}
 
-/*State selecytor*/
-.disabled {}
+.c6 {}
+
+/* Variants */
+.v1 {}
+
+.v2 {}
+
+.v3 {}
+
+.v4 {}
+
+.v5 {}
+
+.v6 {}
+
+.inner {}
