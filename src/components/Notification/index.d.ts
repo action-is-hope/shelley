@@ -13,7 +13,7 @@ import { ReactFocusOnProps } from "react-focus-on/dist/es5/types";
 /**
  * @see Docs https://github.com/action-is-hope/shelley
  */
-export type DialogProps = {
+export type NotificationProps = {
   /**
    * Controls whether the dialog is open or not.
    *
@@ -33,7 +33,7 @@ export type DialogProps = {
    *
    * @see Docs https://github.com/action-is-hope/shelley
    */
-  onDismiss?: (arg) => void;
+  onDismiss: () => void;
   /**
    * Accepts any renderable content.
    *
@@ -56,6 +56,7 @@ export type DialogProps = {
   transitionProps: ShelleyTransitionProps;
   focusOnProps?: ReactFocusOnProps;
   theme?: string;
+  autoHideDuration?: number;
   // } & React.HTMLProps<HTMLDivElement>;
 } & React.ComponentPropsWithoutRef<"div">;
 

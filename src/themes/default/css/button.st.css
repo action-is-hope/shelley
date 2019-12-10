@@ -18,71 +18,72 @@
 /* This is how we can scope the styles but we loose CSS syntax sugar. */
 
 @st-scope Default {
-}
+  /*  Default styles */
+  button {
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0.96em 35px;
+    /* Border */
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    /* Font */
+    font-family: value(--base-font-family);
+    font-size: value(--base-font-size);
+    line-height: 1.15;
+    /* Effects */
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
 
-/*  Default styles */
-button {
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 0.96em 35px;
-  /* Border */
-  border-color: transparent;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 4px;
-  /* Font */
-  font-family: value(--base-font-family);
-  font-size: value(--base-font-size);
-  line-height: 1.15;
-  /* Effects */
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
+  /* Button size variations sm - lg */
+  button.sm {
+    font-size: value(--base-font-size-sm);
+  }
 
-/* Button size variations sm - lg */
-button.sm {
-  font-size: value(--base-font-size-sm);
-}
+  button.md {
+    font-size: value(--base-font-size-md);
+  }
 
-button.md {
-  font-size: value(--base-font-size-md);
-}
+  button.lg {
+    font-size: value(--base-font-size-lg);
+  }
 
-button.lg {
-  font-size: value(--base-font-size-lg);
-}
+  /* Button COLOURS */
+  /* DEFAULT */
+  button.default {
+    background-color: rgb(
+      var(--color-accent-1, value(--color-accent-1-default))
+    );
+    color: var(--color-ui, value(--color-ui-default));
+  }
 
-/* Button COLOURS */
-/* DEFAULT */
-button.default {
-  background-color: rgb(var(--color-accent-1, value(--color-accent-1-default)));
-  color: var(--color-ui, value(--color-ui-default));
-}
+  button:hover {
+    opacity: 0.7;
+  }
 
-button:hover {
-  opacity: 0.7;
-}
+  /* Button CSS STATES PSEUDO */
+  /* Disabled */
+  button:disabled,
+  button:disabled:hover,
+  button:disabled:focus,
+  button:disabled:active,
+  button:disabled:active:hover {
+    opacity: 0.5;
+  }
 
-/* Button CSS STATES PSEUDO */
-/* Disabled */
-button:disabled,
-button:disabled:hover,
-button:disabled:focus,
-button:disabled:active,
-button:disabled:active:hover {
-  opacity: 0.5;
-}
+  /* ACTIVE */
+  button:active,
+  button:active:hover {
+    background-color: value(--dark-01);
+  }
 
-/* ACTIVE */
-button:active,
-button:active:hover {
-  background-color: value(--dark-01);
-}
-
-button:active.link {
-  background-color: transparent;
+  button:active.link {
+    background-color: transparent;
+  }
 }

@@ -1,0 +1,75 @@
+/* dialog.st.css */
+
+.root {
+  position: fixed;
+  /* transform: translateZ(0); */
+  bottom: 24px;
+  left: 24px;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    position: fixed;
+  }
+}
+
+.focusOn {
+}
+
+.notification {
+  position: relative;
+  /* margin: 5vh 8px 16px 8px; */
+  /* width: calc(100vw - 16px); */
+  max-width: 450px;
+  padding-bottom: 1px; /* Kicks in the inclusion of margin-bottom of the last item in the container. */
+  /* max-height: 85vh; */
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  padding: 6px 16px;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(15, 15, 15);
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    /* margin: 32px 115px; */
+  }
+}
+.content {
+  align-self: flex-start;
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    /* margin-top: 3vh; */
+  }
+}
+
+/* Content transition. */
+:global(.enter) .root {
+  transform: translate(0px, calc(100% + 24px));
+}
+
+:global(.enter-active) .root {
+  transform: translate(0, 0);
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+:global(.enter-done) .root {
+  transform: translate(0, 0);
+}
+
+:global(.exit) .root {
+  transform: translate(0, 0);
+}
+
+:global(.exit-active) .root {
+  transform: translate(0px, calc(100% + 24px));
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}

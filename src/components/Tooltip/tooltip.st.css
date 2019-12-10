@@ -1,0 +1,27 @@
+/* Contain the positioning of the tooltip */
+.root {
+  display: inline-block;
+  position: relative;
+}
+
+/* Hide tooltip by default */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  padding: 1em;
+  transform: translateY(0.25em);
+  background: #000;
+  color: #fff;
+}
+
+.button {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+/* Display if button is hovered/focused */
+.button:hover + .tooltip,
+.button:focus + .tooltip {
+  display: block;
+}

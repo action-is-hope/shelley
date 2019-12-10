@@ -19,17 +19,19 @@ export function wrapEvent(theirHandler, ourHandler) {
 const Dialog = React.forwardRef(
   (
     {
-      allowPinchZoom = false,
       className,
       children,
       contentClassName,
       entryNode = document.body,
+      focusOnProps: FocusOnPropsInput,
       initialFocusRef,
       isOpen,
       onClick,
       onDismiss,
       onKeyDown,
       onMouseDown,
+      theme,
+      transitionProps: transitionPropsInput,
       ...rest
     }: DialogProps,
     forwardedRef?: React.Ref<HTMLDivElement>
@@ -40,44 +42,59 @@ const Dialog = React.forwardRef(
       }
     }, [initialFocusRef]);
     const mouseDownTarget = React.useRef(null);
+    /* TransitionProps props */
+    const transitionProps = {
+      unmountOnExit: true,
+      ...transitionPropsInput
+    };
+    /* FocusOn props */
+    const focusOnProps = {
+      autoFocus: true,
+      onActivation: activateFocusLock,
+      returnFocus: true,
+      onEscapeKey: (event: Event) => onDismiss && onDismiss(event),
+      ...FocusOnPropsInput,
+      /**
+       * If the dialog is persistant in the DOM via `unmountOnExit: false` then
+       * disable the isolation lock else everything else will have aria-hidden="true".
+       *
+       * @todo: Bug: noIsolation doesn't seem to work as described...
+       * https://codesandbox.io/s/focus-on-lvw6p?fontsize=14&hidenavigation=1&theme=dark
+       * Possible work around to use shards?
+       */
+      noIsolation: !transitionProps.unmountOnExit
+    };
+
     return ReactDOM.createPortal(
-      <CSSTransition in={isOpen} timeout={300} unmountOnExit>
-        <div {...style(classnames(style.root, className), {}, rest)}>
-          <FocusOn
-            allowPinchZoom={allowPinchZoom}
-            autoFocus
-            onActivation={activateFocusLock}
-            returnFocus
-          >
-            <div
-              aria-hidden="true"
-              className={style.background}
-              onClick={wrapEvent(onClick, event => {
-                onDismiss && onDismiss(event);
-                if (mouseDownTarget.current === event.target) {
-                  event.stopPropagation();
+      <CSSTransition in={isOpen} {...transitionProps}>
+        <div className={theme}>
+          <div {...style(classnames(style.root, className), {}, rest)}>
+            <FocusOn {...focusOnProps}>
+              <div
+                aria-hidden="true"
+                className={style.background}
+                onClick={wrapEvent(onClick, event => {
                   onDismiss && onDismiss(event);
-                }
-              })}
-            ></div>
-            <div
-              aria-modal="true"
-              className={classnames(style.content, contentClassName)}
-              ref={forwardedRef}
-              role="dialog"
-              onKeyDown={wrapEvent(onKeyDown, event => {
-                if (event.key === "Escape") {
-                  event.stopPropagation();
-                  onDismiss && onDismiss(event);
-                }
-              })}
-              onMouseDown={wrapEvent(onMouseDown, event => {
-                mouseDownTarget.current = event.target;
-              })}
-            >
-              {children}
-            </div>
-          </FocusOn>
+                  if (mouseDownTarget.current === event.target) {
+                    event.stopPropagation();
+                    onDismiss && onDismiss(event);
+                  }
+                })}
+              ></div>
+              <div
+                aria-modal="true"
+                className={classnames(style.content, contentClassName)}
+                ref={forwardedRef}
+                role="dialog"
+                onKeyDown={onKeyDown}
+                onMouseDown={wrapEvent(onMouseDown, event => {
+                  mouseDownTarget.current = event.target;
+                })}
+              >
+                {children}
+              </div>
+            </FocusOn>
+          </div>
         </div>
       </CSSTransition>,
       entryNode

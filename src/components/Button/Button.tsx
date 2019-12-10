@@ -15,6 +15,7 @@ export interface ButtonProps
   size?: string;
   /** Button variant. */
   variant?: string;
+  tip?: string;
 }
 
 const Button = React.forwardRef(
@@ -25,6 +26,7 @@ const Button = React.forwardRef(
       color = "default",
       size = "md",
       variant = "fill",
+      tip,
       ...rest
     }: ButtonProps,
     ref?: React.Ref<HTMLButtonElement>
@@ -40,6 +42,7 @@ const Button = React.forwardRef(
     return (
       <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
         <span className={style.inner}>{children}</span>
+        {tip && <span className={style.tip}>{tip}</span>}
       </button>
     );
   }
@@ -49,6 +52,9 @@ Button.displayName = "Button";
 Button.propTypes = {
   style: PropTypes.object
 };
+
+// const name = Component.displayName || Component.name;
+// forwardRef.displayName = `logProps(${name})`;
 
 export default Button;
 export const proptype = Button.propTypes;
