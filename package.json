@@ -1,17 +1,23 @@
 {
-  "name": "shelley",
+  "name": "@actionishope/shelley",
   "version": "0.1.1-alpha.1",
   "license": "TBC",
-  "description": "UI Component lib... Yes; another one.",
-  "homepage": "https://github.com/action-is-hope/shelley",
+  "description": "A collection of recycled misfit components from the open web bundled up and wrapped with stylable our favorite CSS tool.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/action-is-hope/shelley.git"
   },
   "keywords": [
-    "gatsby, typescript"
+    "a11y",
+    "stylable",
+    "react",
+    "typescript"
   ],
   "author": "Action is Hope<info@action-is-hope.earth>",
+  "bugs": {
+    "url": "https://github.com/action-is-hope/shelley/issues"
+  },
+  "homepage": "https://github.com/action-is-hope/shelley#readme",
   "dependencies": {
     "@stylable/core": "1.0.2",
     "classnames": "^2.2.6",
