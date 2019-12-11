@@ -1,5 +1,6 @@
 /**
- * Global helpers for a SMALL number of globals.
+ * Global helpers for a SMALL number of globals but you could wrap them in components
+ * like <VisuallyHidden> or something similar.
  * Perhaps the #a11y helpers are the only reasonable reason to use
  * such things.
 

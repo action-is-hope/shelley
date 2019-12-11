@@ -38,4 +38,8 @@
 
 .v6 {}
 
+/* The 'inner' button. */
 .inner {}
+
+/* The tip element got for inline tool-tips on focus/hover. */
+.tip {}
