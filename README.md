@@ -8,7 +8,7 @@ We are very thankful for Stylable. Developed by Wix (who know a few things about
 
 We put everything down and went in hunt of something simplier. Something familar for the more traditional front end developers out there. Something for the CSS specialists that made the transition to JS but crave simplier times. We found Stylable. We played around with it over Christmas and we loved it! It was like getting one of your old toys back that you thought was lost forever.
 
-A quick conferance call with the peeps over at Wix a few tweaks and we were ready to go. Plus, we felt vindicated that the global powerhouse Wix had had exactly the same experiance with CSS in JS.
+A quick conferance call with the peeps over at Wix a few tweaks and we were ready to go. Plus, we felt vindicated that the global powerhouse Wix had had exactly the same experience with CSS in JS.
 
 Stylable have a plug-in for VS Code, just search for 'stylable intelligence'.
 https://marketplace.visualstudio.com/items?itemName=wix.stylable-intelligence
