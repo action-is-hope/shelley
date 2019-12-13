@@ -2,7 +2,7 @@
   "name": "@actionishope/shelley",
   "version": "0.1.1-alpha.1",
   "license": "ISC",
-  "description": "A collection of recycled misfit components from the open web bundled up and wrapped with stylable our favorite CSS tool.",
+  "description": "Gatsby, stylable boilerplate.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/action-is-hope/shelley.git"
