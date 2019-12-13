@@ -1,13 +1,7 @@
 {
   "name": "@actionishope/shelley",
   "version": "0.1.1-alpha.1",
-  "license": "BSD-3-Clause",
-  "licenses": [
-    {
-      "type": "Modified MIT / BSD",
-      "url": "https://github.com/action-is-hope/shelley/blob/master/LICENSE"
-    }
-  ],
+  "license": "ISC",
   "description": "A collection of recycled misfit components from the open web bundled up and wrapped with stylable our favorite CSS tool.",
   "repository": {
     "type": "git",
