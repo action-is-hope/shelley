@@ -40,7 +40,7 @@ Button {}
     border-width: 1px;
     border-radius: 4px;
     /* Font */
-    font-family: value(--base-font-family);
+    /* font-family: value(--base-font-family); */
     font-size: value(--base-font-size);
     line-height: 1.15;
     /* Effects */
@@ -64,7 +64,7 @@ Button {}
   /* Button COLOURS */
   /* DEFAULT */
   Button.c1 {
-    background-color: var(--color-accent-1, value(--color-accent-1-default));
+    background-color: var(--color-accent-2, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default))
   }
 

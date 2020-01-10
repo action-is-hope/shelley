@@ -1,0 +1,64 @@
+:import {
+  -st-from: "../themes/default/theme.st.css";
+  -st-default: Default;
+  -st-named: --color-text-1-default, --color-ui-default, --color-background-1-default;
+}
+
+.navbar {
+  background: var(--color-background-1, value(--color-background-1-default));
+  /* color: rgb(var(--color-ui-raw)); */
+  color: var(--color-text-faint-2, value(--color-text-1-default));
+  margin-bottom: 1.45rem;
+}
+
+.navbarInner {
+  margin: 0 auto;
+  max-width: 95vw;
+  padding: 1.45rem 1.0875rem;
+
+}
+
+.logo {
+  display: inline-flex;
+  transform: scale(.6);
+  transform-origin: 100% 120%;
+  margin-top: -100%;
+  margin-left: -96px;
+}
+
+.logo:before,
+.logo:after {
+  content: "";
+  display: flex;
+  height: 94px;
+  width: 94px;
+  border: 3px solid var(--color-ui, value(--color-ui-default));
+  border-radius: 500px
+}
+
+.logo:before {
+  box-shadow: 2px 0px 3px #1acaff;
+}
+
+.logoInner {
+  height: 94px;
+  margin-left: -50px;
+  margin-right: -50px;
+  position: relative;
+  display: flex;
+  width: 47px;
+  background: var(--color-background-1, value(--color-background-1-default))
+}
+
+.logo:after {
+  box-shadow: -2px 0px 3px #1acaff;
+}
+
+.title {
+  text-decoration: none;
+  display: inline-flex;
+  margin-left: 27px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 10px;
+}

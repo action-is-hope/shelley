@@ -8,6 +8,7 @@ require("./example.css");
 import Button from "../components/Button/Button";
 
 import DefaultLayout from "../layouts";
+import { H1, H2, P, SPAN } from "../components/Text/Text";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema.
@@ -24,23 +25,22 @@ interface IndexPageProps {
 const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <DefaultLayout>
-      <div className="example">
-        <h1>Hello Gatsby</h1>
-        <p>
-          Welcome to your new <strong>{data.site.siteMetadata.title}</strong>{" "}
-          website with Typescript and Stylable support.
-        </p>
-        <p>Lets build something awesome... like a button perhaps?</p>
-        <div>
-          <Button
-            className={style.override}
-            data-testid="hero-title"
-            onClick={() => alert("I like big buttons and I cannot lie!")}
-          >
-            Boom
-          </Button>
-        </div>
-        <Link to="/page-2/">Go to page 2</Link>
+      <div className="bodyCopy">
+        <h1>
+          <SPAN uppercase vol={4}>
+            Stylable
+          </SPAN>{" "}
+          <br />
+          <SPAN vol={8}>React components</SPAN>
+        </h1>
+        <ul>
+          <li>
+            <Link to="/button/">Button</Link>
+          </li>
+          <li>
+            <Link to="/text/">Text</Link>
+          </li>
+        </ul>
       </div>
     </DefaultLayout>
   );
