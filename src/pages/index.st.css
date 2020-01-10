@@ -1,0 +1,22 @@
+/**
+ * Example override file used to change the button based on the context
+ * in which it is used.
+ */
+
+:import {
+  -st-from: "../themes/default/theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+:import {
+  -st-from: "../components/Button/button.st.css";
+  -st-default: Button;
+}
+
+@st-scope Default {
+  Button.override {
+    background: rebeccapurple;
+    margin-bottom: 16px;
+  }
+}

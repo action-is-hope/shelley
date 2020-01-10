@@ -1,0 +1,55 @@
+{
+  "files.exclude": {
+    ".git/": true,
+    "node_modules/": false,
+    "public/": false
+  },
+  "search.exclude": {
+    "**/.cache": true,
+    "**/node_modules": true,
+    "**/public": true
+  },
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "tslint.enable": false,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "debug.node.autoAttach": "on",
+  /* Associate stylable files as CSS files so we get some auto formatting. */
+  "files.associations": {
+    "*.st.css": "css"
+  },
+  "[css]": {
+    /**
+     * Turns out prettier CSS formatter does not like the uppercase component
+     * selectors and converts them all lowercase. This will ensure that it does
+     * not run. Hopefully we can remove this at some point. We will mention it to
+     * the Wix team who are usually super helpful and take pride in their work.
+     * I needed to install this as well to get it working:
+     * https://marketplace.visualstudio.com/items?itemName=michelemelluso.code-beautifier
+     * Update: This seems very unreliable... I have to fiddle with it when it starts saving
+     * incorrectly and we loose our styles.
+     */
+    "editor.defaultFormatter": "michelemelluso.code-beautifier"
+  }
+}
