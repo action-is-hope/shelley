@@ -2,18 +2,18 @@ import React from "react";
 import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
 import Button from "../components/Button/Button";
-import { P, SPAN, H2 } from "../components/Text/Text";
+import { P, SPAN, H1 } from "../components/Text/Text";
 
 const ButtonDocs = () => (
   <DefaultLayout>
     <div className="bodyCopy">
-      <h1>
-        <SPAN uppercase vol={3}>
+      <H1 vol={3}>
+        <SPAN uppercase>
           <Link to="/">Back to Components</Link>
         </SPAN>{" "}
         <br />
-        <SPAN vol={8}>React components</SPAN>
-      </h1>
+        <SPAN vol={8}>Button</SPAN>
+      </H1>
       <P>This is a basic button.</P>
     </div>
 

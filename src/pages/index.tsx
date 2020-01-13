@@ -26,13 +26,10 @@ const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <DefaultLayout>
       <div className="bodyCopy">
-        <h1>
-          <SPAN uppercase vol={4}>
-            Stylable
-          </SPAN>{" "}
-          <br />
+        <H1 vol={4}>
+          <SPAN uppercase>Stylable</SPAN> <br />
           <SPAN vol={8}>React components</SPAN>
-        </h1>
+        </H1>
         <ul>
           <li>
             <Link to="/button/">Button</Link>

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
-import { P, H1, H2, SPAN, Text } from "../components/Text/Text";
+import { P, H1, H2, SPAN } from "../components/Text/Text";
 
 const TextDocs = () => (
   <DefaultLayout>
