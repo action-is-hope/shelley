@@ -31,9 +31,14 @@
     "lint:fix": "npm run lint --fix",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "prepare": "npm run clean && npm run copy && tsc --build tsconfig-npm.json",
+    "prepare": "npm run clean && npm run copy && tsc --build tsconfig-npm.json && rimraf dist/layouts && rimraf dist/pages",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "jest"
+  },
+  "np": {
+    "yarn": false,
+    "anyBranch": true,
+    "contents": "dist"
   },
   "devDependencies": {
     "@stylable/jest": "1.0.2",
@@ -59,7 +64,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
-    "gatsby": "^2.18.4",
+    "gatsby": "^2.18.21",
     "gatsby-link": "^2.2.25",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-typescript": "^2.1.20",
