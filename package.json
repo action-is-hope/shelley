@@ -20,21 +20,18 @@
   "homepage": "https://github.com/action-is-hope/shelley#readme",
   "dependencies": {
     "@stylable/core": "1.0.2",
-    "classnames": "^2.2.6",
-    "gatsby": "^2.18.4",
-    "gatsby-link": "^2.2.25",
-    "gatsby-plugin-react-helmet": "^3.1.16",
-    "gatsby-plugin-typescript": "^2.1.20",
-    "react-dom": "^16.10.1",
-    "react-helmet": "^5.2.0"
+    "classnames": "^2.2.6"
   },
   "main": "n/a",
   "scripts": {
     "type-check": "tsc",
+    "clean": "rimraf dist",
+    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.js\" dist",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "npm run lint --fix",
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "prepare": "npm run clean && npm run copy && tsc --build tsconfig-npm.json",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "jest"
   },
@@ -57,16 +54,24 @@
     "@typescript-eslint/parser": "^2.9.0",
     "babel-jest": "^24.9.0",
     "babel-preset-gatsby": "^0.2.23",
+    "copyfiles": "^2.1.0",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
+    "gatsby": "^2.18.4",
+    "gatsby-link": "^2.2.25",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-typescript": "^2.1.20",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-preset-gatsby": "^1.0.19",
     "prettier": "^1.19.1",
+    "react-dom": "^16.10.1",
+    "react-helmet": "^5.2.0",
     "react-test-renderer": "^16.12.0",
+    "rimraf": "3.0.0",
     "ts-jest": "^24.2.0",
-    "typescript": "3.7.2"
+    "typescript": "^3.7.2"
   }
 }

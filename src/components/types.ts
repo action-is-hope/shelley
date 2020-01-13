@@ -1,5 +1,6 @@
 /** Text 'volume' levels. */
-export type TextVolume =
+
+export declare type TextVolume =
   | "1"
   | "2"
   | "3"

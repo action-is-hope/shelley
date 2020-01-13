@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import style from "./text.st.css";
 import classNames from "classnames";
 
-import { TextVolume } from "./";
+import { TextVolume } from "../types";
 
 interface TextProps {
   as: string;
@@ -14,6 +14,7 @@ interface TextProps {
   truncate?: boolean;
   uppercase?: boolean;
   underline?: boolean;
+  /** Why not these? */
   vol?: TextVolume;
   id?: string | undefined;
 }

@@ -2,7 +2,24 @@ import React from "react";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
-import { ButtonProps } from "./";
+// import { ButtonProps } from "./";
+
+/**
+ * Button props extending those of a regular button.
+ */
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Type of the button default, primary..*/
+  color?: string;
+  /** Optional ref. */
+  ref?: React.Ref<HTMLButtonElement>;
+  /** Button sizes: xs, sm, md, lg */
+  size?: string;
+  /** Button variant. */
+  variant?: string;
+  /** Extra text that can be used to render a tooltip on hover/focus. */
+  tip?: string;
+}
+
 const Button = React.forwardRef(
   (
     {
