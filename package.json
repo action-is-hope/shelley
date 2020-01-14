@@ -40,9 +40,6 @@
     "anyBranch": true,
     "contents": "dist"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@stylable/jest": "1.0.2",
     "@stylable/node": "1.0.2",
