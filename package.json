@@ -27,7 +27,7 @@
   "scripts": {
     "type-check": "tsc",
     "clean": "rimraf dist",
-    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.js\" dist && copyfiles package.json \"./package.json\" dist",
+    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.js\" dist && copyfiles package.json \"./package.json\" dist && copyfiles README.md \"./README.md\" dist",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "npm run lint --fix",
     "build": "gatsby build",
