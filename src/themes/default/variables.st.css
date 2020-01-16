@@ -12,12 +12,12 @@
   --breakpoint-xl: 1180px;
 
   /* Fonts */
-  --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --theme-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  --font-plain: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-special: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
+
+  --ratio: 1.4;
 
   /* Font sizes */
   --base-font-size: 16px;
@@ -27,7 +27,7 @@
   --base-font-size-xl: 18px;
 
   /* Line heights */
-  --base-line-height: 1.45;
+  /* --line-height: 1.45; */
 
   /* Gutter */
   --gutter-width-sm: 16px;
@@ -35,7 +35,7 @@
   --gutter-width-lg: 32px;
 
   /* Spacing */
-  --spacing-unit: 8;
+  --spacing-unit: 8px;
 
   /* Grid */
   --grid-gap-xs: 12px;
@@ -69,4 +69,16 @@
    * content sits 2 columns inside.
    *
    */
+
+  --v1: calc(0.08vw + 1rem * (value(--ratio) / 1.8));
+  --v2: calc(0.08vw + 1rem * (value(--ratio) / 1.6));
+  --v3: calc(0.333vw + 0.92rem);
+  --v4: calc(0.333vw + 0.92rem * value(--ratio));
+  --v5: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio));
+  --v6: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio));
+  --v7: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+  --v8: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+  --v9: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+  --v10: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+  --v11: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
 }

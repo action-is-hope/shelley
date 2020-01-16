@@ -19,9 +19,7 @@
   -st-named: --base-font-family, --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --base-line-height;
 }
 
-/* This is how we can scope the styles but we loose CSS syntax sugar. */
-Button {}
-
+/* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
 @st-scope Default {
 
   /*  Default styles */
@@ -40,7 +38,7 @@ Button {}
     border-width: 1px;
     border-radius: 4px;
     /* Font */
-    font-family: value(--base-font-family);
+    /* font-family: value(--base-font-family); */
     font-size: value(--base-font-size);
     line-height: 1.15;
     /* Effects */
@@ -64,7 +62,7 @@ Button {}
   /* Button COLOURS */
   /* DEFAULT */
   Button.c1 {
-    background-color: var(--color-accent-1, value(--color-accent-1-default));
+    background-color: var(--color-accent-2, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default))
   }
 
