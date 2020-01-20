@@ -1,0 +1,117 @@
+:import {
+  -st-from: "../../../components/TextInput/textInput.st.css";
+  -st-default: TextInput;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+:import {
+  -st-from: "../variables.st.css";
+  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
+    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
+    --v1, --v2, --v3, --v4, --v5,
+}
+
+@st-scope Default {
+  TextInput {
+    display: inline-flex;
+    /* background: transparent; */
+    outline: none;
+    border-left: 1px solid transparent;
+    color: #f1f1f1;
+    resize: none;
+    transition: border 0.3s;
+    border-radius: 0;
+    /* -webkit-font-smoothing: antialiased; */
+    line-height: 1.5;
+
+    background: #00000024;
+
+    border-left-color: #33d25f45;
+    /* font-size: calc(0.333vw + 0.92rem); */
+  }
+
+  TextInput.vol1 {
+    font-size: value(--v1);
+  }
+
+  TextInput.vol2 {
+    font-size: value(--v2);
+  }
+
+  TextInput.vol3 {
+    font-size: calc(value(--v3));
+  }
+
+  TextInput.vol4 {
+    font-size: value(--v4);
+  }
+
+  TextInput.vol5 {
+    font-size: value(--v5);
+  }
+
+  TextInput:error {
+    border-left-color: #b66b6e;
+  }
+
+  TextInput:focus-within {
+    border-left-color: #26c552;
+    border-left-color: #09b1f1;
+    /* border-left-color: #ff5e00; */
+  }
+
+  TextInput::input {
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    display: block;
+    min-width: 0;
+    background: none;
+    resize: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    padding: 7px 12px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  TextInput::input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #b1b1b1;
+    opacity: .7;
+    /* Firefox */
+    line-height: 1.4;
+  }
+
+  TextInput:disabled>* {
+    opacity: .15
+  }
+
+  TextInput::adornment {
+    height: 0.01em;
+    display: flex;
+    max-height: 2em;
+    align-items: center;
+    white-space: nowrap;
+    align-self: center;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  TextInput::adornment+input {
+    margin-left: -16px;
+  }
+
+  TextInput::input+div {
+    margin-left: -16px;
+
+  }
+
+}

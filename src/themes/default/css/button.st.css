@@ -16,7 +16,7 @@
 
 :import {
   -st-from: "../variables.st.css";
-  -st-named: --base-font-family, --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --base-line-height;
+  -st-named: --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg;
 }
 
 /* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
@@ -58,6 +58,7 @@
     font-size: value(--base-font-size-lg);
   }
 
+  Button::inner {}
 
   /* Button COLOURS */
   /* DEFAULT */
@@ -83,7 +84,7 @@
   /* ACTIVE */
   Button:active,
   Button:active:hover {
-    background-color: value(--dark-01);
+    /* background-color: value(--dark-01); */
   }
 
   Button:active.link {

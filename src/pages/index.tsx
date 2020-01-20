@@ -9,6 +9,7 @@ import Button from "../components/Button/Button";
 
 import DefaultLayout from "../layouts";
 import { H1, H2, P, SPAN } from "../components/Text/Text";
+import Input from "../components/TextInput/TextInput";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema.
@@ -30,12 +31,27 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <SPAN uppercase>Stylable</SPAN> <br />
           <SPAN vol={8}>React components</SPAN>
         </H1>
+        <P>
+          This is our UI library. We aim to be informative yet fun. We aim to
+          build something that allows you to implement any design possible.
+        </P>
+        <P>
+          Choosing a UI library to drive the front end is a big deal. You want
+          confidence that you can do what you want with it.
+        </P>
+        <P>
+          Build it with us, join our community of fuck all and lets make shit
+          happen. Newsletter.
+        </P>
         <ul>
           <li>
             <Link to="/button/">Button</Link>
           </li>
           <li>
             <Link to="/text/">Text</Link>
+          </li>
+          <li>
+            <Link to="/input/">Input</Link>
           </li>
         </ul>
       </div>

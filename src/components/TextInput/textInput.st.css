@@ -1,0 +1,28 @@
+.root {
+  -st-states: disabled, error;
+}
+
+/* Variants */
+
+.v1 {}
+
+.v2 {}
+
+.v3 {}
+
+/* Volume */
+.vol1 {}
+
+.vol2 {}
+
+.vol3 {}
+
+.vol4 {}
+
+.vol5 {}
+
+.vol6 {}
+
+.input {}
+
+.adornment {}

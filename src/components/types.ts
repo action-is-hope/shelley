@@ -1,5 +1,9 @@
 /** Text 'volume' levels. */
 
+export declare type Volume = "1" | "2" | "3" | "4" | "5" | 1 | 2 | 3 | 4 | 5;
+
+/** Text 'volume' levels. */
+
 export declare type TextVolume =
   | "1"
   | "2"

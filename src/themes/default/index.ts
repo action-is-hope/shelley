@@ -7,7 +7,10 @@ import "../globalHelpers.st.css";
 
 // Foundation Components
 import Button from "./css/button.st.css";
+import TextInput from "./css/textInput.st.css";
 import Text from "./css/text.st.css";
+import InputRow from "./css/inputRow.st.css";
+import Label from "./css/label.st.css";
 
 // Application Components
 
@@ -28,5 +31,10 @@ const getClassNames = (
 export const button = (...values: []) =>
   getClassNames(values, Button, "button");
 export const text = (...values: []) => getClassNames(values, Text, "text");
+export const textInput = (...values: []) =>
+  getClassNames(values, TextInput, "textInput");
+export const inputRow = (...values: []) =>
+  getClassNames(values, InputRow, "inputRow");
+export const label = (...values: []) => getClassNames(values, Label, "label");
 
 export const Theme = Default.root;

@@ -32,7 +32,7 @@ const Text = ({
   className,
   ...rest
 }: TextProps) => {
-  const rootClassNames = classNames(style.root, style["v" + vol], className, {
+  const rootClassNames = classNames(style.root, style["vol" + vol], className, {
     bold,
     uppercase,
     underline

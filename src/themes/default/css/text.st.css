@@ -22,60 +22,62 @@
     letter-spacing: .05em;
   }
 
-  Text.s0 {
+  Text.vol0 {
     font-size: 0;
   }
 
-  Text.v1 {
+  Text.vol1 {
     font-size: value(--v1);
   }
 
-  Text.v2 {
+  Text.vol2 {
     font-size: value(--v2);
   }
 
-  Text.v3 {
+  Text.vol3 {
     font-size: value(--v3);
+    font-size: calc(0.33vw + 1.06rem);
+    line-height: 1.45
   }
 
-  Text.v4 {
+  Text.vol4 {
     font-size: value(--v4);
     line-height: 1.25;
     font-weight: 100;
   }
 
-  Text.v5 {
+  Text.vol5 {
     font-size: value(--v5);
     font-weight: 100;
     line-height: 1.25;
   }
 
-  Text.v6 {
+  Text.vol6 {
     font-size: value(--v6);
     font-weight: 100;
     line-height: 1.15;
   }
 
-  Text.v7 {
+  Text.vol7 {
     font-size: value(--v7);
     letter-spacing: .06em;
     font-weight: 100;
     line-height: 1.15;
   }
 
-  Text.v8 {
+  Text.vol8 {
     font-size: value(--v8);
     font-weight: 100;
     line-height: 1.1;
   }
 
-  Text.v9 {
+  Text.vol9 {
     font-size: value(--v9);
     font-weight: 100;
     line-height: 1.05;
   }
 
-  Text.v10 {
+  Text.vol10 {
     font-size: value(--v10);
     font-weight: 100;
     line-height: 1;
@@ -89,9 +91,39 @@
     margin-top: calc((value(--spacing-unit) * 3))
   }
 
-  :global(.bodyCopy) Text.v7 {
+  :global(.bodyCopy) Text.vol7 {
     margin-bottom: calc((value(--spacing-unit) * 2))
   }
+
+  :global(.bodyCopy) a {
+    text-decoration: none;
+    position: relative;
+    padding: 0.1rem 0;
+    outline: none;
+  }
+
+  :global(.bodyCopy) a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+  }
+
+  :global(.bodyCopy) a:hover:before,
+  :global(.bodyCopy) a:focus:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
 
   /* 
   :global(.bodyCopy p)Text+ :global(p)Text {

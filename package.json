@@ -21,7 +21,8 @@
   "dependencies": {
     "@stylable/core": "1.0.2",
     "classnames": "^2.2.6",
-    "np": "^5.2.1"
+    "np": "^5.2.1",
+    "react-expanding-textarea": "^2.0.4"
   },
   "main": "n/a",
   "scripts": {

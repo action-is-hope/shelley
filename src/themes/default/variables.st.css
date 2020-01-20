@@ -72,7 +72,7 @@
 
   --v1: calc(0.08vw + 1rem * (value(--ratio) / 1.8));
   --v2: calc(0.08vw + 1rem * (value(--ratio) / 1.6));
-  --v3: calc(0.333vw + 0.92rem);
+  --v3: calc(0.2vw + 0.92rem);
   --v4: calc(0.333vw + 0.92rem * value(--ratio));
   --v5: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio));
   --v6: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio));

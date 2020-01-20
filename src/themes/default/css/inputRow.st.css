@@ -1,0 +1,73 @@
+:import {
+  -st-from: "../../../components/InputRow/inputRow.st.css";
+  -st-default: InputRow;
+}
+
+:import {
+  -st-from: "../../../components/TextInput/textInput.st.css";
+  -st-default: TextInput;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+:import {
+  -st-from: "../variables.st.css";
+  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
+    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
+    --v1, --v2, --v3, --v4, --v5,
+}
+
+@st-scope Default {
+
+  InputRow TextInput::input {
+    padding: 16px;
+  }
+
+  InputRow {
+    display: grid;
+    margin-bottom: 32px
+  }
+
+  InputRow::label {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1;
+    margin-bottom: 8px;
+  }
+
+  InputRow::labelText {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  InputRow::hintText {
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    opacity: .7;
+    letter-spacing: .02em;
+  }
+
+  InputRow::errorMessage {
+    grid-row: 4;
+    font-size: 16px;
+    font-weight: 300;
+    opacity: .7;
+    letter-spacing: .02em;
+    color: #ff9292;
+    border-left: 1px solid #fb999d;
+    padding-left: 16px;
+    padding: 4px 16px 4px 16px;
+  }
+
+
+  InputRow:focus-within {}
+
+}

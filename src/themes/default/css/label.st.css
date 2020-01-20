@@ -1,0 +1,15 @@
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: Label;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+}
+
+@st-scope Default {
+  Label {
+    /* font-weight: 100 */
+  }
+}
