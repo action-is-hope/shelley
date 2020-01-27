@@ -35,33 +35,14 @@
     /* font-size: calc(0.333vw + 0.92rem); */
   }
 
-  TextInput.vol1 {
-    font-size: value(--v1);
-  }
-
-  TextInput.vol2 {
-    font-size: value(--v2);
-  }
-
-  TextInput.vol3 {
-    font-size: calc(value(--v3));
-  }
-
-  TextInput.vol4 {
-    font-size: value(--v4);
-  }
-
-  TextInput.vol5 {
-    font-size: value(--v5);
-  }
-
   TextInput:error {
     border-left-color: #b66b6e;
   }
 
+
   TextInput:focus-within {
     border-left-color: #26c552;
-    border-left-color: #09b1f1;
+    border-color: #09b1f1;
     /* border-left-color: #ff5e00; */
   }
 
@@ -113,5 +94,4 @@
     margin-left: -16px;
 
   }
-
 }

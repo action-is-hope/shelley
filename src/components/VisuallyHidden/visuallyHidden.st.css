@@ -1,0 +1,22 @@
+:import {
+	-st-from: '../mixins/visuallyHidden.st.css';
+	-st-named: visuallyHidden
+}
+
+.root {
+	-st-mixin: visuallyHidden;
+}
+
+.focusable {}
+
+.focusable:focus,
+.focusable:active {
+	clip: auto !important;
+	-webkit-clip-path: none !important;
+	clip-path: none !important;
+	height: auto !important;
+	margin: auto !important;
+	overflow: visible !important;
+	width: auto !important;
+	white-space: normal !important;
+}

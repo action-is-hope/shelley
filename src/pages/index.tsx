@@ -31,6 +31,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <SPAN uppercase>Stylable</SPAN> <br />
           <SPAN vol={8}>React components</SPAN>
         </H1>
+
+        {/* Shelley, James Camerion was waiting for 3D to get good enough before doing Avatar... This is how we feel about frame work tools, we resisted during the Bootstrap hayday, etc but now with Stylable we feel we can build a UI framework flexible enough that will last us a decent amount of time */}
         <P>
           This is our UI library. We aim to be informative yet fun. We aim to
           build something that allows you to implement any design possible.

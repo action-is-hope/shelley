@@ -1,0 +1,127 @@
+:import {
+  -st-from: '../mixins/visuallyHidden.st.css';
+  -st-named: visuallyHidden
+}
+
+.root {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 8px 0px;
+  cursor: pointer;
+  -st-states: checked, disabled, error;
+  /* MAybe remove */
+  position: relative
+}
+
+.controlContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+
+.control {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+.input {
+  -st-mixin: visuallyHidden;
+}
+
+.input[checked] {
+  background: pink
+}
+
+/* Variants */
+
+.radio {}
+
+.checkbox {}
+
+.switch {}
+
+.radio .controlContainer {
+  transition: border 80ms;
+  border: 2px solid #bce3ff;
+  border-radius: 100px;
+  width: 1em;
+  height: 1em;
+  margin: 12px;
+  font-size: 24px;
+}
+
+.radio .control {
+  width: 1em;
+  height: 1em;
+  border-radius: 100px;
+  transform: scale(0);
+  transition: transform 80ms;
+  /* transition: */
+  background: #89ffca;
+  width: 12px;
+  height: 12px;
+  border-radius: 100px;
+}
+
+.checkbox .controlContainer {
+  transition: border 80ms;
+  border: 2px solid #bce3ff;
+  width: 1em;
+  height: 1em;
+  margin: 12px;
+  font-size: 24px;
+
+  /* border-radius: 4px; */
+}
+
+.checkbox .control {
+  /* border: 6px solid #f48fb1;
+  width: 100%;
+  height: 100%; */
+  /* transform: rotate(-45deg); */
+  transition: transform 80ms, opacity 80ms;
+  /* border: 1px solid #87ffc9; */
+  background: #89ffca;
+  /* border-width: 0 0 2px 2px; */
+  width: 12px;
+  height: 12px;
+  /* margin-top: -4px; */
+  opacity: 0
+    /* transform: rotate(-45deg) */
+}
+
+.root:disabled {
+  /* background: pink */
+  opacity: .8
+}
+
+.radio .input:checked+.controlContainer,
+.checkbox .input:checked+.controlContainer {
+  /* border-color: #70ef93; */
+}
+
+.radio .input:checked+.controlContainer .control {
+  /* background: #ffa300;   */
+  transform: scale(1);
+}
+
+.checkbox .input:checked+.controlContainer .control {
+  opacity: 1
+}
+
+/* .input:checked+.controlContainer .control {
+  background: green
+} */
+
+/* .root:checked .label { 
+  background: pink
+}
+
+.root.checked .label {
+  background: pink
+} */

@@ -8,7 +8,7 @@
 */
 
 /*
-	.srOnly - Screen Reader Only 
+	.visuallyHidden - Screen Reader Only 
 	
 	Quite often in web design we find situations where visually context can be drawn 
 	form the visual context. Example: When we visually 'see' a link saying 'More information' 
@@ -60,16 +60,16 @@
 	natural SEO if you care about such things.
 
 	So, when you are building your next 'More Info' stylee link or whatever then provide 
-	more context via some visually hidden text. That is what the .srOnly class is for. 
+	more context via some visually hidden text. That is what the .visuallyHidden class is for. 
 
-	<Button>More Information <span className="srOnly">on writing great link text</span></Button>
+	<Button>More Information <span className="visuallyHidden">on writing great link text</span></Button>
 
 	If you are integrating into a CMS they you must ensure this is actually used by your 
 	content authors or you do it progrmatically where possible which might not be as 
 	good but in the real world sites degrade overtime. For internal pages you could 
 	determine the page title programatically perhaps:
 
-	<Button>More Information<span className="srOnly">: How to write great link text.</span></Button>
+	<Button>More Information<span className="visuallyHidden">: How to write great link text.</span></Button>
 	
 	This doesn't help us for external links so we really need a new breed of clever CMS, 
 	with in CMS education and decent framing of the why. Continual auditing doesn't work;
@@ -115,25 +115,25 @@
 		@see https://csswizardry.com/2016/05/the-importance-of-important/
 */
 
-:global(.srOnly) {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  /* 1 */
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  /* 2 */
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
-  /* 3 */
+:global(.visuallyHidden) {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	/* 1 */
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	/* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+	/* 3 */
 }
 
 /*
-	Use in conjunction with .srOnly to only display content when it's focused.
+	Use in conjunction with .visuallyHidden to only display content when it's focused.
 	@note Useful for skip links 
 	@see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
 	@note Based on a HTML5 Boilerplate technique, included in Bootstrap
@@ -142,14 +142,14 @@
 		@see https://github.com/twbs/bootstrap/issues/20732
 */
 
-:global(.srOnlyFocusable:focus),
-:global(.srOnlyFocusable:active) {
-  clip: auto !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  height: auto !important;
-  margin: auto !important;
-  overflow: visible !important;
-  width: auto !important;
-  white-space: normal !important;
+:global(.visuallyHiddenFocusable:focus),
+:global(.visuallyHiddenFocusable:active) {
+	clip: auto !important;
+	-webkit-clip-path: none !important;
+	clip-path: none !important;
+	height: auto !important;
+	margin: auto !important;
+	overflow: visible !important;
+	width: auto !important;
+	white-space: normal !important;
 }

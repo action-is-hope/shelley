@@ -2,23 +2,36 @@ import React from "react";
 import classnames from "classnames";
 import style from "./textInput.st.css";
 import Textarea from "react-expanding-textarea";
+import { TextVolume, InputTypes } from "../types";
+
+interface TextInputRef extends React.HTMLProps<HTMLInputElement> {
+  cols?: number;
+  rows?: number;
+  textLength?: number;
+  wrap?: string;
+}
 
 interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
   id: string;
   /** Triggers the Inputs stylable error state. */
   error?: boolean;
   /** Provides an expanding textarea instead on an input. */
-  multiline?: boolean;
+  // multiline?: boolean;
   /** Use in conjustion with multiline to pre-set the rows rendered. */
   rows?: number;
+  cols?: number;
+  textLength?: number;
+  wrap?: string;
   /** Place a component so as to appear inside the TextInput start. */
   startAdornment?: React.ReactNode;
   /** Place a component so as to appear inside the TextInput end. */
   endAdornment?: React.ReactNode;
-  variant?: string;
-  vol?: string | number;
+  variant?: number;
+  // vol?: TextVolume;
+  type?: InputTypes | "textarea";
 }
 
+// Demo using this https://www.npmjs.com/package/react-number-format ?
 const InputAdornment = ({
   children,
   ...rest
@@ -35,50 +48,55 @@ const TextInput = React.forwardRef(
     {
       className: classNameProp,
       id = "NOID",
-      multiline,
+      // multiline,
       disabled = false,
       error = false,
       rows,
+      type = "text",
       startAdornment,
       endAdornment,
-      variant = "v1",
-      vol = 3,
+      variant = 1,
       ...rest
     }: TextInputProps,
-    // Note: Currently react-expanding-textarea does not support refs.
-    ref?: React.Ref<HTMLInputElement>
+    // @todo: Cannot figure a way around not using any here, conditional refs seem a headache.
+    ref?: React.Ref<any>
   ) => {
     id === "NOID" &&
       console.warn(
-        `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nWe have applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
+        `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
       );
-    const InputType = multiline ? (
-      <Textarea
-        aria-invalid={error ? true : false}
-        className={style.input}
-        disabled={disabled}
-        id={id}
-        rows={rows}
-        {...rest}
-      />
-    ) : (
-      <input
-        aria-invalid={error ? true : false}
-        className={style.input}
-        disabled={disabled}
-        id={id}
-        ref={ref}
-        {...rest}
-      />
-    );
+
+    const Input: React.ReactNode =
+      type === "textarea" ? (
+        <Textarea
+          aria-invalid={error ? true : false}
+          className={style.input}
+          disabled={disabled}
+          id={id}
+          rows={rows}
+          ref={ref}
+          {...rest}
+        />
+      ) : (
+        <input
+          aria-invalid={error ? true : false}
+          className={style.input}
+          disabled={disabled}
+          id={id}
+          type={type}
+          // pattern="\d*"
+          ref={ref}
+          {...rest}
+        />
+      );
 
     return (
-      <div
+      <span
         {...style(
           classnames(
             style.root,
-            style[variant],
-            style["vol" + vol],
+            style["variant" + variant],
+            style[type],
             classNameProp
           ),
           { error, disabled },
@@ -86,9 +104,9 @@ const TextInput = React.forwardRef(
         )}
       >
         {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}
-        {InputType}
+        {Input}
         {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}
-      </div>
+      </span>
     );
   }
 );

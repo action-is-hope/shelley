@@ -2,8 +2,82 @@
 
 .label {}
 
-.labelText {}
+.mainText {}
 
 .hintText {}
 
 .errorMessage {}
+
+/* Variants */
+
+.variant1 {}
+
+.variant2 {}
+
+.variant3 {}
+
+/* Volume */
+
+.vol1 {}
+
+.vol2 {}
+
+.vol3 {}
+
+.vol4 {}
+
+.vol5 {}
+
+.vol6 {}
+
+/* Types */
+
+.button {}
+
+.checkbox {}
+
+.color {}
+
+.date {}
+
+.datetimeLocal {}
+
+.disabled {}
+
+.email {}
+
+.file {}
+
+.hidden {}
+
+.image {}
+
+.input {}
+
+.month {}
+
+.number {}
+
+.password {}
+
+.radio {}
+
+.range {}
+
+.reset {}
+
+.search {}
+
+.submit {}
+
+.switch {}
+
+.tel {}
+
+.text {}
+
+.time {}
+
+.url {}
+
+.week {}

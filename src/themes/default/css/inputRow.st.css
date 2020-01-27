@@ -4,6 +4,12 @@
 }
 
 :import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named: labelTextContainer, labelText;
+}
+
+:import {
   -st-from: "../../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
 }
@@ -24,7 +30,10 @@
 @st-scope Default {
 
   InputRow TextInput::input {
-    padding: 16px;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    padding-left: 16px;
+    padding-right: 16px
   }
 
   InputRow {
@@ -32,28 +41,77 @@
     margin-bottom: 32px
   }
 
-  InputRow::label {
+  InputRow.vol1 {
+    font-size: value(--v1);
+  }
+
+  InputRow.vol2 {
+    font-size: value(--v2);
+  }
+
+  InputRow.vol3 {
+    /* font-size: calc(value(--v3)); */
+    /* font-size: calc(16px + 2 * ((100vw - 320px) / 1480)); */
+    font-size: calc(16px + 5 * ((100vw - 320px) / 1480));
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol3 {
+      /* font-size: 18px; */
+      font-size: 21px;
+    }
+  }
+
+  InputRow.vol4 {
+    /* font-size: value(--v4); */
+    font-size: calc(18px + 8.25 * ((100vw - 320px) / 1480));
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol4 {
+      font-size: 26.25px;
+      /* 21 * 1.25 */
+    }
+  }
+
+  InputRow.vol5 {
+    font-size: value(--v5);
+  }
+
+
+  InputRow Label {
     display: flex;
     flex-direction: column;
     grid-row: 1;
     margin-bottom: 8px;
   }
 
-  InputRow::labelText {
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+  InputRow.checkbox Label,
+  InputRow.radio Label,
+  InputRow.switch Label {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
   }
 
-  InputRow::hintText {
+  InputRow Label::labelText {
+    font-weight: 400;
+    /* text-transform: uppercase; */
+
+  }
+
+  InputRow Label::labelTextContainer {
     display: block;
-    font-size: 16px;
+    /* font-size: 16px; */
+
     font-weight: 300;
     opacity: .7;
     letter-spacing: .02em;
   }
+
+
+
+
 
   InputRow::errorMessage {
     grid-row: 4;
@@ -64,9 +122,13 @@
     color: #ff9292;
     border-left: 1px solid #fb999d;
     padding-left: 16px;
-    padding: 4px 16px 4px 16px;
+    padding: 8px 16px 0 16px;
   }
 
+  InputRow.vol4 Label {
+    /* background: pink; */
+    /* font-size: 12px */
+  }
 
   InputRow:focus-within {}
 

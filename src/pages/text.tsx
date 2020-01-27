@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
-import { P, H1, H2, SPAN } from "../components/Text/Text";
+import Text, { P, H1, H2, SPAN } from "../components/Text/Text";
 
 const TextDocs = () => (
   <DefaultLayout>
     <div className="bodyCopy">
-      <H1 vol={3}>
-        <SPAN uppercase>
+      <H1 vol={2}>
+        <SPAN vol={2} uppercase>
           <Link to="/">Back to Components</Link>
         </SPAN>
         <br />
@@ -27,14 +27,22 @@ const TextDocs = () => (
 
     <hr />
 
-    <P vol={1}>vol 1. Text</P>
+    <Text as="label" htmlFor="hhh" vol={1} id="hllo22" data-test="hi">
+      vol 1. Text
+    </Text>
+
+    <P vol={1} id="hllo22" data-test="hi">
+      vol 1. Text
+    </P>
     <P vol={2}>vol 2. Text</P>
     <P>vol 3. Text</P>
     <P vol={4}>vol 4. Text</P>
     <P vol={5}>vol 5. Text</P>
     <P vol={6}>vol 6. Text</P>
     <P vol={7}>vol 7. Text</P>
-    <H1>vol 8. Text</H1>
+    <P vol={8}>vol 8. Text</P>
+    <P vol={9}>vol 9. Text</P>
+    {/* <H1>vol 8. Text</H1> */}
 
     <hr />
 

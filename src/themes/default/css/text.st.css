@@ -13,8 +13,100 @@
   -st-from: "../variables.st.css";
   -st-named: --font-plain, --base-font-size, --base-font-size-sm,
     --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
-    --v1, --v2, --v3, --v4, --v5, --v6, --v7, --v8, --v9, --v10
+    --v1, --v2, --v3, --v4, --v5, --v6, --v7, --v8, --v9, --v10,
+    --newbase, --newbaseupper, --ratio2
 }
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:400|Poppins:400'); */
+
+
+/* 1.125 */
+/* .fluid-type {
+  font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+  .fluid-type {
+    font-size: calc(14px + 8 * ((100vw - 320px) / 960));
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .fluid-type {
+    font-size: 22px;
+  }
+} */
+
+/* html {font-size: 100%;}  */
+/*16px*/
+
+/* body {
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #333;
+} */
+
+/* p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 2.75rem 0 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+
+
+h1 {
+  margin-top: 0;
+  font-size: 1.802em;
+}
+
+h2 {font-size: 1.602em;}
+
+h3 {font-size: 1.424em;}
+
+h4 {font-size: 1.266em;}
+
+h5 {font-size: 1.125em;}
+
+small, .text_small {font-size: 0.889em;} */
+
+/* $mod_1: 1.067;
+$mod_2: 1.333;
+
+
+// Calculate Modular Scale
+// You don't need to calculate this with Sass 
+// You can use values from http://type-scale.com/
+// Or random values :)
+
+$h1-min: $mod_1 * $mod_1 * $mod_1 * $mod_1 * 1rem;
+$h1-max: $mod_2 * $mod_2 * $mod_2 * $mod_2 * 1rem;
+
+$h2-min: $mod_1 * $mod_1 * $mod_1 * 1rem;
+$h2-max: $mod_2 * $mod_2 * $mod_2 * 1rem;
+
+$h3-min: $mod_1 * $mod_1 * 1rem;
+$h3-max: $mod_2 * $mod_2 * 1rem;
+
+$h4-min: $mod_1 * 1rem;
+$h4-max: $mod_2 * 1rem;
+
+$h5-min: 1rem;
+$h5-max: 1rem;
+
+$h6-min: (1rem / $mod_1);
+$h6-max: (1rem / $mod_2);
+
+16 * 1.125 = 18
+22 * 1.125 = 27.5
+9.5
+ */
+
 
 @st-scope Default {
   Text {
@@ -27,68 +119,222 @@
   }
 
   Text.vol1 {
-    font-size: value(--v1);
+    /* font-size: value(--v1); */
+    font-size: 12.64px
+  }
+
+  @media screen and (min-width: 320px) {
+    Text.vol1 {
+      font-size: calc(12.64px + 1.36 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol1 {
+      font-size: 14px;
+    }
   }
 
   Text.vol2 {
-    font-size: value(--v2);
+    /* font-size: value(--v2); */
+    font-size: 14.22px;
+  }
+
+  @media screen and (min-width: 320px) {
+    Text.vol2 {
+      font-size: calc(14.22px + 2.45 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol2 {
+      font-size: 16.666px;
+    }
   }
 
   Text.vol3 {
-    font-size: value(--v3);
-    font-size: calc(0.33vw + 1.06rem);
-    line-height: 1.45
+    /* font-size: value(--v3); */
+    /* font-size: calc(0.33vw + 1.06rem); */
+    line-height: 1.45;
+    font-size: 16px;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol3 {
+      font-size: calc(16px + 4 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol3 {
+      font-size: 20px;
+    }
+  }
+
+  /* 16px * 1.125    22px * 1.125*/
   Text.vol4 {
-    font-size: value(--v4);
+    /* font-size: value(--v4); */
+    font-size: 18px;
+    /* 16 * 1.125 */
     line-height: 1.25;
-    font-weight: 100;
+    /* font-weight: 100; */
+  }
+
+  @media screen and (min-width: 320px) {
+    Text.vol4 {
+      font-size: calc(18px + 8.25 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol4 {
+      font-size: 26.25px;
+      /* 21 * 1.25 */
+    }
   }
 
   Text.vol5 {
-    font-size: value(--v5);
+    /* font-size: value(--v5); */
+    font-size: 20.25px;
+    /* 16 * 1.125 * 1.125*/
     font-weight: 100;
     line-height: 1.25;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol5 {
+      font-size: calc(20.25px + 12.56 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol5 {
+      font-size: 32.81px;
+      /* 21 * 1.25 * 1.25 */
+    }
+  }
+
   Text.vol6 {
-    font-size: value(--v6);
+    /* font-size: value(--v6); */
+    font-size: 22.78px;
+    /* 16 * 1.125 * 1.125*/
     font-weight: 100;
     line-height: 1.15;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol6 {
+      font-size: calc(22.78px + 18.22 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol6 {
+      font-size: 41px;
+      /* 21 * 1.25 * 1.25 * 1.25 */
+    }
+  }
+
   Text.vol7 {
-    font-size: value(--v7);
+    /* font-size: value(--v7); */
+    font-size: 25.62px;
+    /* 16 * 1.125 * 1.125 * 1.125 */
     letter-spacing: .06em;
     font-weight: 100;
     line-height: 1.15;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol7 {
+      font-size: calc(25.62px + 28.93 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol7 {
+      font-size: 54.55px;
+      /* 21 * 1.25 * 1.25 * 1.25 * 1.33*/
+    }
+  }
+
   Text.vol8 {
-    font-size: value(--v8);
+    /* font-size: value(--v8); */
+    font-size: 28.3px;
+    /* 16 * 1.125 * 1.125 * 1.125 * 1.125 */
     font-weight: 100;
     line-height: 1.1;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol8 {
+      font-size: calc(28.3px + 44.41 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol8 {
+      font-size: 72.72px;
+      /* 21 * 1.25 * 1.25 * 1.25 * 1.333 * 1.333 */
+    }
+  }
+
   Text.vol9 {
-    font-size: value(--v9);
+    /* font-size: value(--v9); */
+    /* font-size: 32.43px; */
+    font-size: 35.375px;
+    /* 16 * 1.125 * 1.125 * 1.125 * 1.125 */
+    /* 32.43 */
     font-weight: 100;
     line-height: 1.05;
   }
 
+  @media screen and (min-width: 320px) {
+    Text.vol9 {
+      font-size: calc(35.375px + 61.55 * ((100vw - 320px) / 1480));
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    Text.vol9 {
+      font-size: 96.93px;
+      /* 21 * 1.25 * 1.25 * 1.25 * 1.333 * 1.333 * 1.333 */
+    }
+  }
+
   Text.vol10 {
     font-size: value(--v10);
+    /* 36.49 */
     font-weight: 100;
     line-height: 1;
   }
 
+  /* font-variant: all-petite-caps; */
+  /* https://stackoverflow.com/questions/11232402/font-variantsmall-caps-works-ok-on-ie-and-firefox-looks-blurry-on-safari-oper */
+
+
+  /* Blockquote 
+https://auralinna.blog/post/2017/how-to-make-a-css-speech-bubble-with-borders-and-drop-shadow
+    border-left: 20px solid transparent;
+    border-top: 20px solid #efefef;
+    bottom: -20px;
+    content: "";
+    position: absolute;
+    right: 20px; */
+
+
+  /* 41.05 */
+  /* 46.18 */
+  :global(.bodyCopy) {
+    display: grid;
+    grid-row-gap: calc(1em + .5vw);
+  }
+
   :global(.bodyCopy) Text:not(span) {
-    margin-bottom: calc((value(--spacing-unit) * 2))
+    /* margin-bottom: calc((value(--spacing-unit) * 3)) */
   }
 
   :global(.bodyCopy) Text+Text:not(:first-child):not(p) {
-    margin-top: calc((value(--spacing-unit) * 3))
+    /* margin-top: calc((value(--spacing-unit) * 3)) */
   }
 
   :global(.bodyCopy) Text.vol7 {
@@ -136,7 +382,7 @@
     letter-spacing: .15em;
   }
 
-  code {
+  /* code {
     font-family: 'Courier New', Courier, monospace;
     border-radius: 4px;
     color: value(--color-accent-1-default);
@@ -144,5 +390,5 @@
     display: inline-block;
     padding: 0 4px;
     margin: 0;
-  }
+  } */
 }

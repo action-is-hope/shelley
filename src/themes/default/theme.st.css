@@ -95,10 +95,34 @@
   }
 }
 
+
+/* .fluid-type {
+  font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+  .fluid-type {
+    font-size: calc(14px + 8 * ((100vw - 320px) / 960));
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .fluid-type {
+    font-size: 22px;
+  }
+} */
+
 .root {
   line-height: value(--ratio);
-  font-size: calc(0.333vw + 0.92em);
+  /* font-size: calc(0.333vw + 0.92em); */
   font-family: value(--font-plain);
+
+
+  /* font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+ */
+
+  font-size: 100%;
   font-weight: 200;
   min-height: 100vh;
 }

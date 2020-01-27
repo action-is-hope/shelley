@@ -1,35 +1,34 @@
 /* Text.tsx */
-import React, { ReactNode } from "react";
+import React from "react";
 import style from "./text.st.css";
 import classNames from "classnames";
-
 import { TextVolume } from "../types";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
-interface TextProps {
+export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   as: string;
   bold?: boolean;
-  children?: ReactNode;
+  htmlFor?: string;
   dangerouslySetInnerHTML?: { __html: string };
-  className?: string;
   truncate?: boolean;
   uppercase?: boolean;
   underline?: boolean;
-  /** Why not these? */
+  visuallyHidden?: boolean;
   vol?: TextVolume;
-  id?: string | undefined;
 }
 
 const Text = ({
   as: tagName,
-  bold = false,
+  bold,
   children,
-  dangerouslySetInnerHTML,
-  id = undefined,
-  truncate = false,
-  uppercase = false,
-  underline = false,
-  vol = 3,
   className,
+  dangerouslySetInnerHTML,
+  truncate = false,
+  uppercase,
+  underline,
+  visuallyHidden,
+
+  vol = 3,
   ...rest
 }: TextProps) => {
   const rootClassNames = classNames(style.root, style["vol" + vol], className, {
@@ -38,15 +37,16 @@ const Text = ({
     underline
   });
   // eslint-disable-next-line react/no-danger-with-children
-  return React.createElement(
+  const text = React.createElement(
     tagName,
     {
-      id,
       ...style(rootClassNames, { truncate }, rest),
-      dangerouslySetInnerHTML
+      dangerouslySetInnerHTML,
+      ...rest
     },
     children
   );
+  return visuallyHidden ? <VisuallyHidden>{text}</VisuallyHidden> : text;
 };
 
 type TextExports = Pick<TextProps, Exclude<keyof TextProps, "as">>;

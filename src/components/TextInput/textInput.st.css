@@ -2,27 +2,66 @@
   -st-states: disabled, error;
 }
 
-/* Variants */
-
-.v1 {}
-
-.v2 {}
-
-.v3 {}
-
-/* Volume */
-.vol1 {}
-
-.vol2 {}
-
-.vol3 {}
-
-.vol4 {}
-
-.vol5 {}
-
-.vol6 {}
-
 .input {}
 
 .adornment {}
+
+
+/* Variants */
+
+.variant1 {}
+
+.variant2 {}
+
+.variant3 {}
+
+/* Types */
+.button {}
+
+.checkbox {}
+
+.color {}
+
+.date {}
+
+.datetimeLocal {}
+
+.disabled {}
+
+.email {}
+
+.file {}
+
+.hidden {}
+
+.image {}
+
+.input {}
+
+.month {}
+
+.number {}
+
+.password {}
+
+.radio {}
+
+.range {}
+
+.reset {}
+
+.search {}
+
+.submit {}
+
+.switch {}
+
+.tel {}
+
+.text {}
+
+.time {}
+
+.url {}
+
+.week {}

@@ -19,6 +19,12 @@
 
   --ratio: 1.4;
 
+
+  --ratio2: 1.125;
+
+  --newbase: 1rem;
+  --newbaseupper: 1.375rem;
+
   /* Font sizes */
   --base-font-size: 16px;
   --base-font-size-sm: 14px;
@@ -69,7 +75,7 @@
    * content sits 2 columns inside.
    *
    */
-
+  /* 12px, 13px, 14px, 15px, 16px */
   --v1: calc(0.08vw + 1rem * (value(--ratio) / 1.8));
   --v2: calc(0.08vw + 1rem * (value(--ratio) / 1.6));
   --v3: calc(0.2vw + 0.92rem);

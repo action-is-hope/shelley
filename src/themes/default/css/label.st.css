@@ -1,6 +1,7 @@
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
+  -st-named: labelTextContainer, labelText, labelHintText, RadioCheckInput;
 }
 
 :import {
@@ -10,6 +11,17 @@
 
 @st-scope Default {
   Label {
-    /* font-weight: 100 */
+    user-select: none
   }
+
+  Label::labelTextContainer {
+    display: block
+  }
+
+  Label::labelText {
+    display: block
+  }
+
+
+
 }

@@ -1,0 +1,57 @@
+:import {
+  -st-from: "../../components/InputRow/inputRow.st.css";
+  -st-default: InputRow;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named: labelTextContainer, labelText;
+}
+
+:import {
+  -st-from: "../../components/TextInput/textInput.st.css";
+  -st-default: TextInput;
+}
+
+.root {}
+
+.propInputs {}
+
+.root {
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  margin: 0 0 48px
+}
+
+.propInputs {
+  width: 50%;
+  display: grid;
+  grid-row-gap: 1px;
+  margin-bottom: 48px
+}
+
+.root .propInputs InputRow.checkbox Label {
+  display: grid
+}
+
+
+.root .propInputs InputRow:not(.checkbox),
+.root .propInputs InputRow.checkbox Label {
+  grid-template-columns: 25% 1fr;
+  grid-column-gap: 16px;
+  margin-bottom: 0;
+  background: #1a2e3a;
+}
+
+.root .propInputs InputRow.checkbox Label::labelTextContainer {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.root .propInputs InputRow:not(.checkbox) Label,
+.root .propInputs InputRow.checkbox Label::labelTextContainer {
+  margin-bottom: 0;
+  justify-content: center;
+  align-items: flex-end;
+}

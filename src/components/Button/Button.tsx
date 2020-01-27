@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Type of the button default, primary..*/
   color?: string;
   /** Optional ref. */
-  ref?: React.Ref<HTMLButtonElement>;
+  // ref?: React.Ref<HTMLButtonElement>;
   /** Button sizes: xs, sm, md, lg */
   size?: string;
   /** Button variant. */
