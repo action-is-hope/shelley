@@ -27,10 +27,12 @@
   --dark-01: rgb(value(--dark-01-raw));
 
   /* Default site values which will be used for the fallbacks. */
-  --color-accent-1-default: rgb(14, 97, 148);
+  /* --color-accent-1-default: rgb(14, 97, 148);  */
+  --color-accent-1-default: rgb(83, 180, 218);
+  /* rgb(83, 180, 218) */
   --color-accent-2-default: rgb(35, 196, 141);
   --color-background-1-default: rgb(23, 26, 35);
-  --color-background-2-default: rgb(23, 26, 35);
+  --color-background-2-default: rgba(0, 0, 0, 0.4);
   --color-background-3-default: rgba(255, 255, 255, 0.15);
   --color-background-4-default: rgba(255, 255, 255, 0.15);
   --color-background-modal-default: rgba(23, 26, 35, 0.98);
@@ -95,41 +97,19 @@
   }
 }
 
-
-/* .fluid-type {
-  font-size: 14px;
-}
-
-@media screen and (min-width: 320px) {
-  .fluid-type {
-    font-size: calc(14px + 8 * ((100vw - 320px) / 960));
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .fluid-type {
-    font-size: 22px;
-  }
-} */
-
 .root {
-  line-height: value(--ratio);
-  /* font-size: calc(0.333vw + 0.92em); */
   font-family: value(--font-plain);
-
-
-  /* font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
- */
-
   font-size: 100%;
   font-weight: 200;
+  line-height: value(--ratio);
   min-height: 100vh;
 }
 
 body {
-  color: var(--color-ui);
-  background-color: var(--color-background-1);
+  color: value(--color-ui-default);
+  color: var(--color-ui, value(--color-ui-default));
+  background-color: value(--color-background-1-default);
+  background-color: var(--color-background-1, value(--color-background-1-default));
 }
 
 hr {

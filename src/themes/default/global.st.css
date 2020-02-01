@@ -1,3 +1,26 @@
+:import {
+  -st-from: "./variables.st.css";
+  -st-named: --text-vol-3-scale, --text-vol-3-min, --text-vol-4-max
+}
+
+
+/** global.st.css */
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: value(--text-vol-3-scale);
+}
+
+
+@media screen and (min-width: 1800px) {
+  html {
+    font-size: 1.25em;
+  }
+}
+
+body {
+  font-size: initial;
+}
+
 *,
 :after,
 :before {
@@ -16,6 +39,15 @@
 
 [hidden]+* {
   margin-top: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5 {
+  font-size: 1em
 }
 
 footer,

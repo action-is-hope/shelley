@@ -6,6 +6,7 @@ import Label from "../Label/Label";
 import { TextVolume, InputTypes } from "../types";
 import RadioCheckInput from "../RadioCheckInput/RadioCheckInput";
 
+// https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface InputRowProps
   extends Pick<
@@ -126,7 +127,6 @@ const InputRow = React.forwardRef(
             style["vol" + vol],
             style[type],
             {
-              // [style[type]]: type,
               [style.labelVisuallyHidden]: labelVisuallyHidden
             },
             classNameProp

@@ -27,7 +27,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <DefaultLayout>
       <div className="bodyCopy">
-        <H1 vol={4}>
+        <H1 vol={false}>
           <SPAN uppercase>Stylable</SPAN> <br />
           <SPAN vol={8}>React components</SPAN>
         </H1>
@@ -54,6 +54,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
           </li>
           <li>
             <Link to="/input/">Input</Link>
+          </li>
+          <li>
+            <Link to="/visually-hidden/">VisuallyHidden</Link>
           </li>
         </ul>
       </div>

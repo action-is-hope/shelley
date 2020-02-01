@@ -3,6 +3,11 @@
  * use this for our non color build time variables.
  */
 
+:import {
+  -st-from: "./mixins/multiply";
+  -st-named: multiply, divide, respScale;
+}
+
 :vars {
   /* @Breakpoints */
   --breakpoint-xs: 0;
@@ -87,4 +92,78 @@
   --v9: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
   --v10: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
   --v11: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+
+
+  --font-base-min: 1em;
+  --font-base-max: 1.25em;
+
+  --minor-second: 1.067;
+  --major-second: 1.125;
+  --minor-third: 1.2;
+  --major-third: 1.25;
+  --perfect-forth: 1.333;
+
+  /* 
+  - Min: 1.041 / 1.15 .83@minor-second = 1.067
+  - Max: 
+  -st-mixin: fontSize(0.79, 0.9);
+  */
+  /* Volume 1 */
+  --text-vol-1-min: divide(value(--font-base-min), value(--major-second), value(--major-second));
+  --text-vol-1-max: divide(value(--font-base-max), value(--major-third), value(--minor-second));
+  --text-vol-1-scale: respScale(value(--text-vol-1-min), value(--text-vol-1-max));
+  /* 
+  - Min: 1 / 1.125
+  - Max: 1.25 / 1.125 
+  -st-mixin: fontSize(0.889, 1.041);
+  */
+  /* Volume 2 */
+  --text-vol-2-min: divide(value(--font-base-min), value(--major-second));
+  --text-vol-2-max: divide(value(--font-base-max), value(--minor-third));
+  --text-vol-2-scale: respScale(value(--text-vol-2-min), value(--text-vol-2-max));
+
+  /* Volume 3 */
+  --text-vol-3-min: value(--font-base-min);
+  --text-vol-3-max: value(--font-base-max);
+  --text-vol-3-scale: respScale(value(--font-base-min), value(--font-base-max));
+
+  /* Volume 4 */
+  --text-vol-4-min: multiply(value(--font-base-min), value(--major-second));
+  --text-vol-4-max: multiply(value(--font-base-max), value(--major-third));
+  --text-vol-4-scale: respScale(value(--text-vol-4-min), value(--text-vol-4-max));
+
+  /* Volume 5 */
+  --text-vol-5-min: multiply(value(--font-base-min), value(--major-second), value(--minor-third));
+  --text-vol-5-max: multiply(value(--font-base-max), value(--major-third), value(--perfect-forth));
+  --text-vol-5-scale: respScale(value(--text-vol-5-min), value(--text-vol-5-max));
+
+  /* Volume 6 */
+  --text-vol-6-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--minor-third));
+  --text-vol-6-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth));
+  --text-vol-6-scale: respScale(value(--text-vol-6-min), value(--text-vol-6-max));
+
+  /* Volume 7 */
+  --text-vol-7-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third));
+  --text-vol-7-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth));
+  --text-vol-7-scale: respScale(value(--text-vol-7-min), value(--text-vol-7-max));
+
+  /* Volume 8 */
+  --text-vol-8-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third));
+  --text-vol-8-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
+  --text-vol-8-scale: respScale(value(--text-vol-8-min), value(--text-vol-8-max));
+
+  /* Volume 9 */
+  --text-vol-9-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third));
+  --text-vol-9-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
+  --text-vol-9-scale: respScale(value(--text-vol-9-min), value(--text-vol-9-max));
+
+  /* Volume 10 */
+  --text-vol-10-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third));
+  --text-vol-10-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
+  --text-vol-10-scale: respScale(value(--text-vol-10-min), value(--text-vol-10-max));
+
+  /* Volume 11 */
+  --text-vol-11-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third), value(--major-third), value(--major-third));
+  --text-vol-11-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
+  --text-vol-11-scale: respScale(value(--text-vol-11-min), value(--text-vol-11-max));
 }

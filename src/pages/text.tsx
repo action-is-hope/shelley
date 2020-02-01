@@ -3,6 +3,8 @@ import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
 import Text, { P, H1, H2, SPAN } from "../components/Text/Text";
 
+import text from "../themes/default/css/text.st.css";
+
 const TextDocs = () => (
   <DefaultLayout>
     <div className="bodyCopy">
@@ -27,9 +29,9 @@ const TextDocs = () => (
 
     <hr />
 
-    <Text as="label" htmlFor="hhh" vol={1} id="hllo22" data-test="hi">
+    {/* <Text as="label" htmlFor="hhh" vol={1} id="hllo22" data-test="hi">
       vol 1. Text
-    </Text>
+    </Text> */}
 
     <P vol={1} id="hllo22" data-test="hi">
       vol 1. Text
@@ -42,11 +44,19 @@ const TextDocs = () => (
     <P vol={7}>vol 7. Text</P>
     <P vol={8}>vol 8. Text</P>
     <P vol={9}>vol 9. Text</P>
+    <P vol={10}>vol 10. Text</P>
+    {/* <P vol={11}>vol 11. Text</P> */}
     {/* <H1>vol 8. Text</H1> */}
 
     <hr />
 
     <div className="bodyCopy">
+      <P>
+        Test with custom class and turning volume off to aid with custom styles.
+      </P>
+      <P vol={false} className={text.large}>
+        Custom class no volume applied.
+      </P>
       <P>
         The next example illustrates the Text component in use as part of an old
         skool global class <code>bodyCopy</code> class. Is this bad? We could

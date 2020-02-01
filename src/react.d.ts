@@ -1,24 +1,38 @@
 // react.d.ts
-function forwardRef<T, P = {}>(
-  Component: RefForwardingComponent<T, P>
-): ComponentType<P & ClassAttributes<T>>;
+// function forwardRef<T, P = {}>(
+//   Component: RefForwardingComponent<T, P>
+// ): ComponentType<P & ClassAttributes<T>>;
 
-/**
- * This is a hack for sure. The thing is, getting a component to intelligently
- * infer props based on a component or JSX string passed into an `as` prop is
- * kind of a huge pain. Getting it to work and satisfy the constraints of
- * `forwardRef` seems dang near impossible. To avoid needing to do this awkward
- * type song-and-dance every time we want to forward a ref into a component
- * that accepts an `as` prop, we abstract all of that mess to this function for
- * the time time being.
- *
- * TODO: Eventually we should probably just try to get the type defs above
- * working across the board, but ain't nobody got time for that mess!
- *
- * @param Comp
- */
-// export function forwardRefWithAs<P, T extends As>(
-//   comp: (props: PropsFromAs<T, P>, ref: React.RefObject<any>) => JSX.Element
-// ) {
-//   return React.forwardRef(comp as any) as ComponentWithAs<T, P>;
+////////////////////////////////////////////////////////////////////////////////
+// The following types help us deal with the `as` prop.
+// I kind of hacked around until I got this to work using some other projects,
+// as a rough guide, but it does seem to work so, err, that's cool? Yay TS! 🙃
+// P = additional props
+// T = type of component to render
+
+// export type As<P = any> = React.ElementType<P>;
+
+// export type PropsWithAs<T extends As, P> = P &
+//   Omit<React.ComponentPropsWithRef<T>, "as" | keyof P> & {
+//     as?: T;
+//   };
+
+// export type PropsFromAs<T extends As, P> = (PropsWithAs<T, P> & { as: T }) &
+//   PropsWithAs<T, P>;
+
+// export type ComponentWithForwardedRef<
+//   T extends React.ElementType,
+//   P
+// > = React.ForwardRefExoticComponent<
+//   P & React.HTMLProps<React.ElementType<T>> & React.ComponentPropsWithRef<T>
+//   // React.RefAttributes<React.ElementType<T>>
+// >;
+
+// export interface ComponentWithAs<T extends As, P> {
+//   <TT extends As>(props: PropsWithAs<TT, P>): JSX.Element;
+//   (props: PropsWithAs<T, P>): JSX.Element;
+//   displayName?: string;
+//   propTypes?: {
+//     [key: string]: Validator<any>;
+//   };
 // }

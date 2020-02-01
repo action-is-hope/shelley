@@ -2,44 +2,55 @@
 import React from "react";
 import style from "./blockquote.st.css";
 import classNames from "classnames";
-import Text from "../Text/Text";
 
-interface LabelProps extends React.HTMLProps<HTMLQuoteElement> {
+interface BlockquoteProps
+  extends Pick<
+    React.HTMLProps<HTMLQuoteElement>,
+    Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">
+  > {
+  accent?: number;
   children: React.ReactNode;
-  variant?: number;
+  cite?: React.ReactNode;
+  citeAttr?: string;
   citeUrl?: string;
+  variant?: number;
 }
 
 const Blockquote = ({
+  accent = 1,
+  children,
+  cite: citeContent,
+  citeAttr,
+  citeUrl,
   className: classNameProp,
   variant = 1,
-  cite: citeText,
-  citeUrl,
-  children,
   ...rest
-}: LabelProps) => {
+}: BlockquoteProps) => {
   const cite = citeUrl ? (
     <a href={citeUrl} target="_blank" rel="noopener noreferrer">
-      {citeText}
+      {citeContent}
     </a>
   ) : (
-    citeText
+    citeContent
   );
   return (
     <blockquote
       {...style(
-        classNames(style.root, style["variant" + variant], classNameProp),
+        classNames(
+          style.root,
+          style["variant" + variant],
+          style["accent" + accent],
+          classNameProp
+        ),
         {},
         rest
       )}
-      cite={citeText}
+      cite={citeAttr}
       {...rest}
     >
       <div className={style.content}>{children}</div>
       <footer className={style.footer}>
-        <Text as="cite" vol={2} className={style.cite}>
-          {cite}
-        </Text>
+        <cite className={style.cite}>{cite}</cite>
       </footer>
     </blockquote>
   );

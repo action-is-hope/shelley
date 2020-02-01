@@ -1,3 +1,5 @@
+/** inputRow.st.css */
+
 .root {}
 
 .label {}
@@ -8,6 +10,7 @@
 
 .errorMessage {}
 
+
 /* Variants */
 
 .variant1 {}
@@ -15,6 +18,7 @@
 .variant2 {}
 
 .variant3 {}
+
 
 /* Volume */
 
@@ -29,6 +33,7 @@
 .vol5 {}
 
 .vol6 {}
+
 
 /* Types */
 

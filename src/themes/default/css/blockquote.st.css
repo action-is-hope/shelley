@@ -1,0 +1,126 @@
+/** blcokquote.st.css */
+
+:import {
+  -st-from: "../../../components/Blockquote/blockquote.st.css";
+  -st-default: Blockquote;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-accent-2-default, --color-ui-default, --color-background-2-default;
+}
+
+/* :import {
+  -st-from: "../variables.st.css";
+  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
+    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
+    --v1, --v2, --v3, --v4, --v5,
+} */
+
+@st-scope Default {
+
+  /* Base styles. */
+  Blockquote {
+    margin: 24px auto 40px;
+  }
+
+  Blockquote::content {
+    display: grid;
+    /* grid-row-gap: 16px; */
+    /* grid-row-gap: 1.4rem; */
+    grid-row-gap: 0.8rem;
+    font-style: italic;
+  }
+
+  Blockquote::cite {
+    font-style: normal;
+  }
+
+  Blockquote::cite a {
+    color: #ffb4d0
+  }
+
+  Blockquote::content>* {
+    line-height: 1.3;
+  }
+
+  /**
+   * Variant 1 - 'academic'
+   * A typical main body style for proper quotes.
+   */
+
+  Blockquote.variant1 {
+    /* background: rgba(0, 0, 0, 0.4); */
+    background: var(--color-background-2, value(--color-background-2-default)) padding: 1.4rem 42px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    position: relative;
+    width: 100%;
+  }
+
+  Blockquote.variant1::content {
+    position: relative
+  }
+
+  Blockquote.variant1::content::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: -20px;
+    height: calc(100% - 10px);
+    width: 2px;
+    /* background: #e52e71; */
+
+  }
+
+  Blockquote.variant1::footer {
+    margin: 20px 0 0;
+  }
+
+  /* Accent colors */
+  Blockquote.variant1.accent1::content::before {
+    background: var(--color-accent-1, value(--color-accent-1-default));
+  }
+
+  Blockquote.variant1.accent1::cite a {
+    color: var(--color-accent-1, value(--color-accent-1-default));
+  }
+
+  Blockquote.variant1.accent2::content::before {
+    background: var(--color-accent-2, value(--color-accent-2-default));
+  }
+
+  Blockquote.variant1.accent2::cite a {
+    color: var(--color-accent-2, value(--color-accent-2-default));
+  }
+
+  /**
+   * Variant 2 - 'chat'
+   * A useful style to get across a chat/conversation of some kind.
+   * @todo: should be able to alternate the styles for a chat? 
+   * Maybe we need a chat wrapper.
+   */
+
+  Blockquote.variant2::content {
+    background: var(--color-background-2, value(--color-background-2-default));
+    background: rgba(255, 255, 255, 0.04);
+    padding: 16px 36px;
+    margin: 0 auto 40px;
+    max-width: 400px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  Blockquote.variant2::content::before {
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--color-background-2, value(--color-background-2-default));
+    border-top: 20px solid rgba(255, 255, 255, 0.04);
+    bottom: -20px;
+    content: "";
+    position: absolute;
+    left: 20px;
+  }
+
+}

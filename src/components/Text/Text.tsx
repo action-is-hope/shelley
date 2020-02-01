@@ -14,7 +14,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   uppercase?: boolean;
   underline?: boolean;
   visuallyHidden?: boolean;
-  vol?: TextVolume;
+  vol?: TextVolume | boolean;
 }
 
 const Text = ({

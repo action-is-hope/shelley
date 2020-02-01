@@ -1,5 +1,4 @@
-.root {}
-
+/** blockquote.st.css */
 
 .root {}
 
@@ -9,107 +8,32 @@
 
 .cite {}
 
-.root {}
 
-.root {
-  margin: 24px auto 40px;
-}
+/* Accents */
 
-.content {
-  font-style: italic;
-  display: grid;
-  grid-row-gap: 16px;
-}
+.accent1 {}
 
-.cite {
-  font-style: normal;
-  /* color: rgb(35, 196, 141) */
-  color: #ffb4d0
-}
+.accent2 {}
+
+.accent3 {}
+
+.accent4 {}
+
+.accent5 {}
+
+.accent6 {}
 
 
-.content>* {
-  line-height: 1.3;
-}
+/* Variants */
 
-.variant1 {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 32px 42px;
-  border-radius: 4px;
-  position: relative;
-  width: 100%;
-}
+.variant1 {}
 
-.variant1 .content {
-  position: relative
-}
+.variant2 {}
 
-.variant1 .content::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 5px;
-  left: -20px;
-  height: calc(100% - 10px);
-  width: 2px;
-  background: #e52e71;
-  /* border-radius: 4px; */
-}
+.variant3 {}
 
+.variant4 {}
 
-.variant1 .footer {
-  margin: 20px 0 0;
-}
+.variant5 {}
 
-
-.variant2 .content {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 16px 36px;
-  margin: 0 auto 40px;
-  max-width: 400px;
-  border-radius: 4px;
-  position: relative;
-}
-
-.variant2 .content::before {
-  border-right: 20px solid transparent;
-  border-top: 20px solid rgba(0, 0, 0, 0.4);
-  bottom: -20px;
-  content: "";
-  position: absolute;
-  left: 20px;
-}
-
-.variant2 .content :first-child::before {
-  content: open-quote;
-  color: #e52e71;
-  font-family: cursive;
-  display: inline-block;
-  /* margin-right: 5px; */
-  font-size: 42px;
-  /* line-height: 0; */
-  /* margin-bottom: -23px; */
-  position: absolute;
-  top: 4px;
-  left: 12px;
-}
-
-/*  */
-
-/* .content::after {
-  border-left: 20px solid transparent;
-  border-top: 20px solid rgba(0, 0, 0, 0.4);
-  bottom: -20px;
-  content: "";
-  position: absolute;
-  right: 20px;
-} */
-
-/* Blockquote 
-https://auralinna.blog/post/2017/how-to-make-a-css-speech-bubble-with-borders-and-drop-shadow
-    border-left: 20px solid transparent;
-    border-top: 20px solid #efefef;
-    bottom: -20px;
-    content: "";
-    position: absolute;
-    right: 20px; */
+.variant6 {}

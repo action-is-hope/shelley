@@ -1,0 +1,18 @@
+/** codeSample.st.css */
+.root {
+  /* Fixes 'zoomed' layout issue on mobile. */
+  display: inherit;
+}
+
+.root pre {
+  background: rgba(0, 0, 0, 0.4) !important;
+  font-size: 12px !important;
+  padding: 16px 24px !important;
+  line-height: 1.4rem !important;
+}
+
+@media (min-width: 550px) {
+  .root code {
+    font-size: 14px !important;
+  }
+}

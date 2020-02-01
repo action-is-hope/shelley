@@ -1,8 +1,5 @@
-/**
- * Example theming file for the button. If you are not needing themes you can 
- * just style your components in the files adjacent to the component. But this
- * way you might be able more useful in the long run...
- */
+/** button.st.css */
+
 :import {
   -st-from: "../../../components/Button/button.st.css";
   -st-default: Button;

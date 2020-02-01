@@ -1,3 +1,5 @@
+/** label.st.css */
+
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;

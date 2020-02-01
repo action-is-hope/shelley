@@ -1,3 +1,5 @@
+/** textInput.st.css */
+
 .root {
   -st-states: disabled, error;
 }
@@ -15,7 +17,9 @@
 
 .variant3 {}
 
+
 /* Types */
+
 .button {}
 
 .checkbox {}

@@ -20,6 +20,7 @@
   "homepage": "https://github.com/action-is-hope/shelley#readme",
   "dependencies": {
     "@stylable/core": "1.0.2",
+    "@types/react-syntax-highlighter": "^11.0.4",
     "classnames": "^2.2.6",
     "np": "^5.2.1",
     "rc-input-number": "^4.5.3",
