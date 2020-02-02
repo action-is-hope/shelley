@@ -37,55 +37,9 @@
     letter-spacing: .05em;
   }
 
-  .codeMixedIn {
-    font-family: monospace;
-  }
-
-  Text del,
-  Text ins {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-  }
-
-  Text del::before,
-  Text ins::before {
-    content: "";
-    display: inline-block;
-    height: 2px;
-    position: absolute;
-    opacity: 0.75
-  }
-
-  Text del::before {
-    background: #ff6a6a;
-    margin: 0.85em -2px 0;
-    width: calc(100% + 4px);
-  }
-
-  Text ins::before {
-    background: #23c48d;
-    margin: 1.25em 0px 0;
-    width: 100%;
-    z-index: -1;
-  }
-
-  Text em {
-    font-weight: 400;
-  }
-
-  Text code {
-    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
-    font-size: .8em;
-  }
-
-  .large {
-    background: green
-  }
-
   /** Volumes */
 
-  /* Volume 2 */
+  /* Volume 1 */
   Text.vol1 {
     font-size: value(--text-vol-1-scale);
     line-height: 1.45
@@ -227,7 +181,57 @@
     }
   }
 
+  /* Uppercase */
+  Text.uppercase {
+    text-transform: uppercase;
+    letter-spacing: .15em;
+  }
 
+  .large {
+    background: green
+  }
+
+  /* Styles typically expected children. */
+
+  Text a {
+    text-decoration: none;
+    position: relative;
+    padding: 0.1rem 0;
+    outline: none;
+    color: #81c1ff;
+  }
+
+  Text a:hover,
+  Text a:focus {
+    background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px);
+  }
+
+  Text del,
+  Text ins {
+    text-decoration: none;
+    padding: 0.1rem 0;
+  }
+
+  Text del {
+    background-position: 0 -0.5em;
+    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
+  }
+
+  Text ins {
+    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
+  }
+
+  Text em {
+    font-weight: 400;
+  }
+
+  Text code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+    font-size: .8em;
+  }
+
+
+  /* @todo: Move to some kind of layout / grid component... when we have one. *
   /* font-variant: all-petite-caps; */
   /* https://stackoverflow.com/questions/11232402/font-variantsmall-caps-works-ok-on-ie-and-firefox-looks-blurry-on-safari-oper */
 
@@ -266,7 +270,6 @@
   :global(.bodyCopy) Text.vol6 {
     margin-bottom: -0.3rem;
     margin-top: 2.25rem;
-    /* padding-top: 1px; */
     padding-top: 3px;
   }
 
@@ -278,40 +281,5 @@
 
   :global(.bodyCopy) Text.vol7 {
     margin-bottom: calc((value(--spacing-unit) * 2))
-  }
-
-  :global(.bodyCopy) a {
-    text-decoration: none;
-    position: relative;
-    padding: 0.1rem 0;
-    outline: none;
-  }
-
-  :global(.bodyCopy) a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.1s ease-in-out 0s;
-    transition: all 0.1s ease-in-out 0s;
-  }
-
-  :global(.bodyCopy) a:hover:before,
-  :global(.bodyCopy) a:focus:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-  }
-
-
-  Text.uppercase {
-    text-transform: uppercase;
-    letter-spacing: .15em;
   }
 }

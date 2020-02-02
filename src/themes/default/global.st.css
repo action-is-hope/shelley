@@ -1,22 +1,31 @@
+/** global.st.css */
+
 :import {
   -st-from: "./variables.st.css";
-  -st-named: --text-vol-3-scale, --text-vol-3-min, --text-vol-4-max
+  -st-named: --text-vol-3-scale, --text-vol-3-min, --text-vol-3-max
 }
 
-
-/** global.st.css */
+/* Give ourselves a fluid rem value to use for padding or whatever. */
 html {
   -webkit-text-size-adjust: 100%;
   font-size: value(--text-vol-3-scale);
 }
 
-
 @media screen and (min-width: 1800px) {
   html {
-    font-size: 1.25em;
+    font-size: value(--text-vol-3-max);
   }
 }
 
+/**
+ * Sets the body back to browser defaults.
+ * Why? Using rem for everything means we can't set a container to say 
+ * font-size: 90% to tweak the size of the contained elements as they would 
+ * always size off the root html element.
+ *
+ * This way we can use a responsive rem value when we want to but also 
+ * leverage ems as described above.
+ */
 body {
   font-size: initial;
 }
@@ -41,18 +50,19 @@ body {
   margin-top: 0 !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h5 {
-  font-size: 1em
-}
-
 footer,
 header,
 main,
 nav {
   display: block;
+}
+
+/* We are resetting these so when we use the <Text vol={false}> we don't end up with the defaults. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em
 }
