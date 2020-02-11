@@ -37,6 +37,62 @@
     letter-spacing: .05em;
   }
 
+  .large {
+    background: green
+  }
+
+  /* Styles typically expected children. */
+
+  Text a {
+    text-decoration: none;
+    position: relative;
+    padding: 0.1rem 0;
+    /* outline: none; */
+    color: #81c1ff;
+
+    border-bottom: 0.0625rem solid rgba(110, 164, 218, 0.5);
+    transition: border-color .15s ease-out;
+  }
+
+  Text a:hover,
+  Text a:focus {
+    /* background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px); */
+    border-color: #81c1ff
+  }
+
+  Text del,
+  Text ins {
+    text-decoration: none;
+    padding: 0.1rem 0;
+  }
+
+  Text del {
+    background-position: 0 -0.5em;
+    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
+  }
+
+  Text ins {
+    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
+  }
+
+  Text em {
+    font-weight: 400;
+  }
+
+  Text code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+    font-size: .8em;
+    color: #52fba7
+  }
+
+  /* Uppercase */
+  Text.uppercase {
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    letter-spacing: .31em;
+    letter-spacing: .4em;
+  }
+
   /** Volumes */
 
   /* Volume 1 */
@@ -118,7 +174,7 @@
   Text.vol7 {
     font-size: value(--text-vol-7-scale);
     font-weight: 100;
-    letter-spacing: .06em;
+    /* letter-spacing: .06em; */
     line-height: 1.15;
     /* line-height: 1.25; */
   }
@@ -181,64 +237,34 @@
     }
   }
 
-  /* Uppercase */
-  Text.uppercase {
-    text-transform: uppercase;
-    letter-spacing: .15em;
-  }
-
-  .large {
-    background: green
-  }
-
-  /* Styles typically expected children. */
-
-  Text a {
-    text-decoration: none;
-    position: relative;
-    padding: 0.1rem 0;
-    outline: none;
-    color: #81c1ff;
-  }
-
-  Text a:hover,
-  Text a:focus {
-    background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px);
-  }
-
-  Text del,
-  Text ins {
-    text-decoration: none;
-    padding: 0.1rem 0;
-  }
-
-  Text del {
-    background-position: 0 -0.5em;
-    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
-  }
-
-  Text ins {
-    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
-  }
-
-  Text em {
-    font-weight: 400;
-  }
-
-  Text code {
-    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
-    font-size: .8em;
-  }
-
 
   /* @todo: Move to some kind of layout / grid component... when we have one. *
   /* font-variant: all-petite-caps; */
   /* https://stackoverflow.com/questions/11232402/font-variantsmall-caps-works-ok-on-ie-and-firefox-looks-blurry-on-safari-oper */
 
+  /* display: grid;
+    grid-column-gap: 12px;
+    grid-template-columns: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
+     */
   :global(.bodyCopy) {
     display: grid;
-    grid-row-gap: 1.4rem
+    grid-row-gap: 1.4rem;
+    grid-column-gap: 12px;
+    grid-template-columns: [full-bleed-start] 1vw [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 0.25rem [full-bleed-end];
+    grid-template-columns: [full-bleed-start] auto [outset-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset-end] auto [full-bleed-end];
   }
+
+  @media screen and (min-width: 950px) {
+    :global(.bodyCopy) {
+      grid-column-gap: 24px;
+      grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [content-start] repeat(8, minmax(0, 5.1vw)) [content-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
+    }
+  }
+
+  :global(.bodyCopy)>Text {
+    grid-column: content-start / content-end;
+  }
+
 
   :global(.bodyCopy) Text:not(span) {
     /* margin-bottom: calc((value(--spacing-unit) * 3)) */

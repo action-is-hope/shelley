@@ -17,7 +17,13 @@ const CodeSample = ({
 }: SyntaxHighlighterProps) => {
   return (
     <div {...style(classNames(style.root, classNameProp), {}, rest)}>
-      <SyntaxHighlighter language={language} style={atomDark} {...rest}>
+      <SyntaxHighlighter
+        language={language}
+        style={false}
+        useInlineStyles={false}
+        CodeTag="code"
+        {...rest}
+      >
         {children}
       </SyntaxHighlighter>
     </div>

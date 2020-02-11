@@ -41,6 +41,7 @@ export type InputTypes =
   | "switch"
   | "tel"
   | "text"
+  | "textarea"
   | "time"
   | "url"
   | "week";

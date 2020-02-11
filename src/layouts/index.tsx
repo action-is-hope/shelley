@@ -7,9 +7,9 @@ import { Theme as defaultTheme } from "../themes/default";
 const Header = () => (
   <div className={style.navbar}>
     <div className={style.navbarInner}>
-      <div className={style.logo}>
+      {/* <div className={style.logo}>
         <span className={style.logoInner}></span>
-      </div>
+      </div> */}
       <h1 className={style.title}>
         <Link
           to="/"
@@ -36,12 +36,12 @@ const DefaultLayout = ({ children }) => (
     <link rel="stylesheet" href="https://use.typekit.net/bml4mzu.css"></link>
     <Header />
     <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0
-      }}
+    // style={{
+    //   margin: "0 auto",
+    //   maxWidth: 960,
+    //   padding: "0px 1.0875rem 1.45rem",
+    //   paddingTop: 0
+    // }}
     >
       {children}
     </div>

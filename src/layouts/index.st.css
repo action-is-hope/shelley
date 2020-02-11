@@ -8,22 +8,26 @@
   background: var(--color-background-1, value(--color-background-1-default));
   /* color: rgb(var(--color-ui-raw)); */
   color: var(--color-text-faint-2, value(--color-text-1-default));
-  margin-bottom: 1.45rem;
+  /* margin-bottom: 1.45rem; */
 }
 
 .navbarInner {
-  margin: 0 auto;
+  /* margin: 0 auto;
   max-width: 95vw;
-  padding: 1.45rem 1.0875rem;
+  padding: 1.45rem 1.0875rem; */
 
+  padding: 1.1rem 1.0875rem;
+  background: rgba(76, 76, 76, 0.4392156862745098);
+  position: relative;
+  z-index: 1000;
 }
 
 .logo {
   display: inline-flex;
-  transform: scale(.6);
+  /* transform: scale(.6); */
   transform-origin: 100% 120%;
-  margin-top: -100%;
-  margin-left: -96px;
+  /* margin-top: -100%;
+  margin-left: -96px; */
 }
 
 .logo:before,
@@ -44,6 +48,8 @@
   height: 94px;
   margin-left: -50px;
   margin-right: -50px;
+  margin-left: -47px;
+  margin-right: -47px;
   position: relative;
   display: flex;
   width: 47px;
@@ -61,6 +67,6 @@
   text-transform: uppercase;
   font-weight: 100;
   letter-spacing: 10px;
-  font-size: 2em;
+  font-size: 14px;
 
 }

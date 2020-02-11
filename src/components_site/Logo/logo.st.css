@@ -1,0 +1,101 @@
+:import {
+  -st-from: "../../themes/default/theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
+}
+
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+.root {
+  /* display: inline-flex;
+  justify-content: space-between; */
+
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 24px;
+  grid-template-columns: 8fr 2fr;
+}
+
+.logo {
+  display: inline-flex;
+  /* transform: scale(.6); */
+  transform-origin: 100% 120%;
+  /* margin-top: -100%;
+  margin-left: -96px; */
+}
+
+.logo:before,
+.logo:after {
+  content: "";
+  display: flex;
+  /* height: 94px;
+  width: 94px; */
+  height: 6em;
+  width: 6em;
+  /* border: 3px solid var(--color-ui, value(--color-ui-default)); */
+  border: 0.1875em solid var(--color-ui, value(--color-ui-default));
+  border: 0.158em solid var(--color-ui, value(--color-ui-default));
+  border-radius: 500px
+}
+
+.logo:before {
+  box-shadow: 2px 0px 3px #1acaff;
+  box-shadow: 0.125em 0px 0.1875em #1acaff;
+}
+
+.logoInner {
+  /* height: 94px; */
+  height: 6em;
+  /* margin-left: -50px;
+  margin-right: -50px; */
+  /* margin-left: -47px;
+  margin-right: -47px; */
+  margin-left: -2.9375em;
+  margin-right: -2.9375em;
+  position: relative;
+  display: flex;
+  /* width: 47px; */
+  width: 2.9375em;
+  background: var(--color-background-1, value(--color-background-1-default))
+}
+
+.logo:after {
+  box-shadow: -2px 0px 3px #1acaff;
+  box-shadow: -0.125em 0px 0.1875em #1acaff;
+}
+
+.root Text.title {
+  /* margin-top: 16px; */
+  justify-self: start;
+  align-self: center;
+  letter-spacing: 0.4em;
+  grid-row: 1
+}
+
+.logoWrap {
+  grid-row: 1;
+  font-size: 1.25em;
+  position: relative;
+  top: -12px;
+  /* margin-top: -60px; */
+}
+
+
+.root Text.tld {
+  grid-column-start: 2;
+  font-size: 12px;
+  letter-spacing: 16px;
+  text-transform: uppercase;
+  transform: rotate(1deg);
+  color: #59ff59;
+}
+
+.root Text.tagline {
+  grid-row: 2;
+  grid-column-start: 1;
+  justify-self: start;
+  align-self: center;
+}

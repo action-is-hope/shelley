@@ -207,8 +207,8 @@ const VisuallyHiddenDocs = () => {
           dynamically append the destination page title:
         </P>
         <CodeSample>
-          {`<a href="/great-link-text/">
-  More Information<VisuallyHidden>: How to write great link text.</VisuallyHidden>
+          {`<a href="/more-people-switching-to-plant-based-diet/">
+  More Information<VisuallyHidden>: Why people are switching to a plant based diet.</VisuallyHidden>
 </a>`}
         </CodeSample>
         <P>

@@ -151,7 +151,6 @@ const InputRow = React.forwardRef(
 
         {inputType !== "radioCheckInput" && input}
         {/* {hint && <div className={style.hint}>{hint}</div>} */}
-        {/* {error && touched && <div className={style.error}>{error}</div>} */}
       </div>
     );
   }

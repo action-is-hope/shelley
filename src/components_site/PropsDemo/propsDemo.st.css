@@ -14,36 +14,84 @@
 :import {
   -st-from: "../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
+  -st-named: input;
+}
+
+:import {
+  -st-from: "../../components/RadioCheckInput/radioCheckInput.st.css";
+  -st-default: RadioCheckInput;
 }
 
 .root {}
 
+.propsPlayground {}
+
 .propInputs {}
 
+
 .root {
-  padding: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  margin: 0 0 48px
+  padding: 32px;
+  border: 1px dashed rgba(255, 255, 255, 0.13);
+  margin: 48px 0
+}
+
+.propsPlayground {}
+
+.propsHeading {
+  margin: -44px 0 26px;
+  text-align: right;
+  text-align: end;
+}
+
+.exampleHeading {
+  margin-bottom: 24px
+}
+
+.propsHeading span {
+  background: #181b24;
+  display: inline-block;
+  padding: 0 4px;
 }
 
 .propInputs {
-  width: 50%;
+  /* width: 50%; */
   display: grid;
   grid-row-gap: 1px;
   margin-bottom: 48px
+}
+
+
+.root .propInputs InputRow {
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.root .propInputs InputRow Label {
+  margin-bottom: 0;
+}
+
+.root .propInputs InputRow.text,
+.root .propInputs InputRow.textarea,
+.root .propInputs InputRow.number,
+.root .propInputs InputRow.checkbox Label {
+  grid-template-columns: 25% 1fr;
+  grid-column-gap: 16px;
+}
+
+.root .propInputs InputRow.text Label,
+.root .propInputs InputRow.textarea Label,
+.root .propInputs InputRow.number Label,
+.root .propInputs InputRow.checkbox Label::labelTextContainer {
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .root .propInputs InputRow.checkbox Label {
   display: grid
 }
 
-
-.root .propInputs InputRow:not(.checkbox),
-.root .propInputs InputRow.checkbox Label {
-  grid-template-columns: 25% 1fr;
-  grid-column-gap: 16px;
-  margin-bottom: 0;
-  background: #1a2e3a;
+.root .propInputs InputRow.checkbox Label RadioCheckInput {
+  padding: 0
 }
 
 .root .propInputs InputRow.checkbox Label::labelTextContainer {
@@ -51,9 +99,13 @@
   flex-direction: column;
 }
 
-.root .propInputs InputRow:not(.checkbox) Label,
-.root .propInputs InputRow.checkbox Label::labelTextContainer {
-  margin-bottom: 0;
-  justify-content: center;
-  align-items: flex-end;
+.root .propInputs InputRow TextInput input {
+  /* padding-top: 0.4em;
+  padding-bottom: 0.4em; */
+}
+
+.demo {
+  /* background-size: 16px 16px;
+  background-image: linear-gradient(45deg, #262a35 25%, transparent 25%), linear-gradient(-45deg, #262a35 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #262a35 75%), linear-gradient(-45deg, transparent 75%, #262a35 75%);
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0; */
 }
