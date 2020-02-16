@@ -13,15 +13,25 @@ const CodeSample = ({
   className: classNameProp,
   children,
   language = "jsx",
+  fixedHeight,
   ...rest
 }: SyntaxHighlighterProps) => {
   return (
-    <div {...style(classNames(style.root, classNameProp), {}, rest)}>
+    <div
+      {...style(
+        classNames(style.root, classNameProp, {
+          [style.fixedHeight]: fixedHeight
+        }),
+        {},
+        rest
+      )}
+    >
       <SyntaxHighlighter
         language={language}
         style={false}
         useInlineStyles={false}
         CodeTag="code"
+        wrapLines
         {...rest}
       >
         {children}

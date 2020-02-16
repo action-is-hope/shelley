@@ -21,11 +21,19 @@
   }
 }
 
-.logo {
+.logoGrid {
+  background: rgba(0, 0, 0, 0.3607843137254902);
   padding-top: 50px;
   padding-bottom: 50px;
-  grid-column: full-bleed-start / full-bleed-end;
-  padding-left: 9vw;
-  padding-right: 9vw;
-  background: rgba(0, 0, 0, 0.3607843137254902)
+}
+
+.logo {
+  /* padding-top: 50px;
+  padding-bottom: 50px; */
+  grid-column-start: outset-start;
+  grid-column-end: outset-end;
+  /* grid-column: full-bleed-start / full-bleed-end; */
+  /* padding-left: 9vw;
+  padding-right: 9vw; */
+  /* background: rgba(0, 0, 0, 0.3607843137254902) */
 }

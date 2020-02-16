@@ -2,7 +2,6 @@ import React from "react";
 import classnames from "classnames";
 import style from "./radioCheckInput.st.css";
 import Label from "../Label/Label";
-import { SPAN } from "../Text/Text";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 // interface RadioCheckInputProps extends React.HTMLProps<HTMLInputElement> {

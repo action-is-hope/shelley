@@ -51,7 +51,7 @@ const TextInput = React.forwardRef(
       // multiline,
       disabled = false,
       error = false,
-      rows,
+      rows = 1,
       type = "text",
       startAdornment,
       endAdornment,

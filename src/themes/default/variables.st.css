@@ -13,8 +13,8 @@
   --breakpoint-xs: 0;
   --breakpoint-sm: 568px;
   --breakpoint-md: 950px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1180px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1600px;
 
   /* Fonts */
   --font-plain: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -48,10 +48,10 @@
   /* This is the column width that aligns with the design when viewport is 1400px (as the design is). */
   --grid-base-column-width-md: 4.011vw;
   /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
-  --grid-base-columns-sm: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
-  --grid-base-columns-md: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 4.011vw)) [content-start] repeat(8, minmax(0, 4.011vw)) [content-end] repeat(2, minmax(0, 4.011vw)) [outset-end] auto [full-bleed-end];
+  --grid-template-columns-base-sm: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
+  --grid-template-columns-base-md: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 4.011vw)) [content-start] repeat(8, minmax(0, 4.011vw)) [content-end] repeat(2, minmax(0, 4.011vw)) [outset-end] auto [full-bleed-end];
   /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
-  --grid-inner-base-columns: repeat(12, minmax(0, 4.011vw));
+  --grid-template-columns-base-content-start-end: repeat(12, minmax(0, 4.011vw));
 
   /**
    * We can name the grid lines what we like:
@@ -88,6 +88,7 @@
   /** 
    * Fluid text variables
    * Over engineered much? :-)
+   * Modular scale tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
    */
 
   /* Base font min is 1em (16px) and max (20px) is 1.25em for this theme */

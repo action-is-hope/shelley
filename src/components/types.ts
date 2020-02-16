@@ -16,9 +16,7 @@ export declare type TextVolume =
   | 9
   | 10
   | 11
-  | 12
-  | 13
-  | 14;
+  | 12;
 
 /** Form input types */
 export type InputTypes =

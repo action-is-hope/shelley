@@ -8,7 +8,7 @@
 :import {
   -st-from: "../../components/Label/label.st.css";
   -st-default: Label;
-  -st-named: labelTextContainer, labelText;
+  -st-named: labelTextContainer, labelText, radioCheckInput;
 }
 
 :import {
@@ -30,18 +30,76 @@
 
 
 .root {
-  padding: 32px;
+  padding: 64px;
+  padding-top: 54px;
   border: 1px dashed rgba(255, 255, 255, 0.13);
-  margin: 48px 0
+  margin: 48px 0;
+  grid-column: outset-start / outset-end;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 5.1vw;
+  grid-row-gap: 54px
 }
 
-.propsPlayground {}
+.propsPlayground {
+  grid-row: 1 / span 2;
+  position: relative;
+}
+
+.codeExample {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.example {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.codeExample>div {
+  margin-top: 0;
+  height: 100%;
+  margin-bottom: 0;
+  border-radius: 0;
+}
 
 .propsHeading {
-  margin: -44px 0 26px;
+  /* margin: -44px 0 26px;
   text-align: right;
-  text-align: end;
+  text-align: end; */
+  position: absolute;
+  /* right: 0; */
+  top: -70px;
 }
+
+.propsHint {
+  color: #a9a9a9;
+  margin-bottom: 24px;
+}
+
+.tsExtends {
+  color: #a9a9a9;
+  margin-top: 16px
+}
+
+.tsLogo {
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1em;
+  padding-top: 1em;
+  width: 1.9em;
+  text-align: end;
+  font-family: Arial;
+  letter-spacing: .05em;
+  padding: .22em;
+  padding-top: .9em;
+  letter-spacing: -0.5px;
+  background: #037acc;
+  margin-right: 12px
+}
+
 
 .exampleHeading {
   margin-bottom: 24px
@@ -57,24 +115,39 @@
   /* width: 50%; */
   display: grid;
   grid-row-gap: 1px;
-  margin-bottom: 48px
+  /* margin-bottom: 48px */
 }
 
 
 .root .propInputs InputRow {
   margin-bottom: 0;
   background: rgba(255, 255, 255, 0.04);
+  /* background: rgba(160, 160, 160, 0.06); */
+  /* rgba(255, 255, 255, 0.04) */
 }
 
 .root .propInputs InputRow Label {
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
+
+.root .propInputs InputRow TextInput,
+.root .propInputs InputRow Label::radioCheckInput {
+  background: rgba(0, 0, 0, 0.07058823529411765);
+}
+
+.root .propInputs InputRow Label::radioCheckInput {
+  border-left: 1px solid #33d25f45;
+}
+
+
 
 .root .propInputs InputRow.text,
 .root .propInputs InputRow.textarea,
 .root .propInputs InputRow.number,
 .root .propInputs InputRow.checkbox Label {
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-column-gap: 16px;
 }
 

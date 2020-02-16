@@ -20,21 +20,36 @@ const Label = ({
   visuallyHidden,
   ...rest
 }: LabelProps) => {
-  const label = (
+  const labelText = (
+    <span className={style.labelTextContainer}>
+      <span className={style.labelText}>{children}</span>
+      {hint && <span className={style.labelHintText}>{hint}</span>}
+    </span>
+  );
+
+  return (
     <label
-      {...style(classNames(style.root, classNameProp), {}, rest)}
+      {...style(
+        classNames(
+          style.root,
+          { [style.hasInput]: radioCheckInput },
+          classNameProp
+        ),
+        {},
+        rest
+      )}
       {...rest}
     >
-      <span className={style.labelTextContainer}>
-        <span className={style.labelText}>{children}</span>
-        {hint && <span className={style.labelHintText}>{hint}</span>}
-      </span>
+      {visuallyHidden ? (
+        <VisuallyHidden>{labelText}</VisuallyHidden>
+      ) : (
+        labelText
+      )}
       {radioCheckInput && (
         <span className={style.radioCheckInput}>{radioCheckInput}</span>
       )}
     </label>
   );
-  return visuallyHidden ? <VisuallyHidden>{label}</VisuallyHidden> : label;
 };
 
 export default Label;

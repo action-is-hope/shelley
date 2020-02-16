@@ -2,13 +2,25 @@
 .root {
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;
+  overflow-x: scroll;
+  grid-column: content-start / content-end;
+  margin-top: 1rem;
+  margin-bottom: 48px;
+  background: rgba(255, 255, 255, 0.06);
+  background: rgba(160, 160, 160, 0.06);
+  font-size: 12px;
+  padding: 1.5rem 2rem;
+  line-height: 1.4rem;
+  border-radius: 4px
 }
 
 .root pre {
-  background: rgba(0, 0, 0, 0.4) !important;
-  font-size: 12px !important;
-  padding: 16px 24px !important;
-  line-height: 1.4rem !important;
+  /* background: rgba(0, 0, 0, 0.4) !important; */
+
+}
+
+.root.fixedHeight {
+  height: 400px;
 }
 
 .root code {
@@ -22,7 +34,7 @@
 
 @media (min-width: 550px) {
   .root code {
-    font-size: 14px !important;
+    font-size: 14px;
 
 
     /* color: black;
@@ -56,7 +68,7 @@
   /* border: 1px solid red; */
 }
 
-.code {
+code {
   font-family: Menlo, Consolas, 'Andale Mono', monospace;
   font-size: 11px;
   line-height: 16px;
@@ -65,17 +77,19 @@
   overflow: hidden;
 }
 
-.code:last-child {
-  border-left: 1px solid #171c25;
+code:last-child {
+  /* border-left: 1px solid #171c25; */
 }
 
-.code>span {
+code>span {
   transition: all 125ms ease-in;
   line-height: 17px;
-  text-shadow: #171c25 1px 1px 1px;
+  /* text-shadow: #171c25 1px 1px 1px; */
 }
 
-.code .caption {
+
+
+code ::global(.caption) {
   /* box-shadow: 0 0 50px #070c15; */
   /* border-left: 4px groove #272c35; */
   text-shadow: 0 0 0 transparent;
@@ -99,33 +113,33 @@
   user-select: none;
 }
 
-.code .inner {
+code .inner {
   padding: 20px;
   display: block;
 }
 
-.code .class {
+code .class {
   display: block;
   margin-bottom: 10px;
 }
 
-.code .break,
-.code .rule {
+code .break,
+code .rule {
   display: block;
 }
 
-.code .rule {
+code .rule {
   text-indent: 10px;
   /* animation: colorchange3 500ms; */
 }
 
-.code .prop {
+code .prop {
   display: inline-block;
   /* animation: colorchange3 500ms; */
 }
 
-.code .class-name {
-  font-weight: 900;
+code :global(.class-name) {
+  font-weight: 300;
   /* animation: colorchange3 175ms ease-in; */
   position: relative;
 }
@@ -145,83 +159,120 @@
   text-shadow: 0 0 0 transparent;
 }
 
-.code .prop b,
-.code .prop::after,
-.code .st-modifier::before,
-.code .class {
-  color: #84d37f;
+code :global(.prop b),
+code :global(.prop)::after,
+code :global(.st-modifier)::before,
+code :global(.class-name) {
+  color: #4eea9d;
 }
 
-.code .value {
+code .value {
   color: #73b9b1;
 }
 
-.code .prop {
+
+code :global(.punctuation) {
+  color: grey
+}
+
+code :global(.attr-name),
+code :global(.constant),
+code :global(.maybe-class-name),
+code :global(.tag) {
+  color: #72d1ff
+}
+
+code :global(.string) {
+  color: #ffdc9a
+}
+
+code :global(.attr-value) {
+  color: #ffdc9a
+}
+
+code :global(.keyword),
+code :global(.number) {
+  color: #ff54c9
+}
+
+code :global(.plain-text) {
+  white-space: pre-wrap;
+}
+
+
+code .prop {
   color: #ec8092;
 }
 
-.code .st-state::before,
-.code .prop::after,
+code .st-state::before,
+code .prop::after,
 .st-modifier::before,
-.code .class-name::before,
-.code .child::before,
-.code .st-state::before,
-.code .pseudo::before {
+code .class-name::before,
+code .child::before,
+code .st-state::before,
+code .pseudo::before {
   color: lightblue;
   font-weight: 100;
 }
 
-.code .comment {
+code .comment {
   display: block;
   color: #bababa;
   margin-bottom: 20px;
 }
 
-.code .comment b {
+code .comment b {
   color: #808080;
 }
 
-.code .comment b:first-child {
+code .comment b:first-child {
   margin-right: 10px;
 }
 
-.code .comment b:last-child {
+code .comment b:last-child {
   margin-left: 10px;
 }
 
-.code .comment i {
+code .comment i {
   font-weight: 900;
   font-style: normal;
 }
 
-.code .endrule,
+code .endrule,
 .open-bracket,
 .close-brakcet {
   text-shadow: 0 0 0 transparent;
 }
 
 [data-tippy],
-.code [title] {
+code [title] {
   border-bottom: 1px dotted rgba(243, 243, 202, 0.39);
   cursor: help;
 }
 
 [data-tippy],
-.code [title]:hover {
+code [title]:hover {
   border-bottom: 1px dotted rgba(243, 243, 202, 0.5);
 }
 
-.code [data-tippy] {
+code [data-tippy] {
   transition: 150ms all ease-in;
 }
 
-.code:hover [data-tippy] {
+code:hover [data-tippy] {
   animation: animateHelpLinks 1000ms;
 }
 
 [data-tippy]:hover,
-.code [title]:hover {
+code [title]:hover {
   text-shadow: 0 0 10px rgb(0, 255, 106);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #e6db74;
 }
 
 .tippy-tooltip {

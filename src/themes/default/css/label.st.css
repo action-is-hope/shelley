@@ -1,19 +1,35 @@
 /** label.st.css */
 
 :import {
-  -st-from: "../../../components/Label/label.st.css";
-  -st-default: Label;
-  -st-named: labelTextContainer, labelText, labelHintText, RadioCheckInput;
-}
-
-:import {
   -st-from: "../theme.st.css";
   -st-default: Default;
 }
 
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named:
+    labelTextContainer,
+    labelText,
+    labelHintText,
+    hasInput;
+}
+
 @st-scope Default {
   Label {
-    user-select: none
+    /* Stops the text from getting selecting whne clicking on labels. */
+    user-select: none;
+  }
+
+  /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
+  Label.hasInput {
+    display: flex;
+    /* Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
+    flex-direction: row-reverse;
+    /* Vertically align the items. */
+    align-items: center;
+    /* Align to the end which as we have reversed the direction is now left in ltr languages.*/
+    justify-content: flex-end;
   }
 
   Label::labelTextContainer {
@@ -23,7 +39,5 @@
   Label::labelText {
     display: block
   }
-
-
 
 }

@@ -3,16 +3,9 @@ import React from "react";
 import style from "./logo.st.css";
 import classNames from "classnames";
 
-import {
-  Prism as SyntaxHighlighter,
-  SyntaxHighlighterProps
-} from "react-syntax-highlighter";
 import Text from "../../components/Text/Text";
 
-const Logo = ({
-  className: classNameProp,
-  ...rest
-}: SyntaxHighlighterProps) => {
+const Logo = ({ className: classNameProp, ...rest }) => {
   return (
     <div {...style(classNames(style.root, classNameProp), {}, rest)}>
       {/* <h1 className={style.title}>Shelley</h1> */}

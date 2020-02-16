@@ -6,6 +6,16 @@
 }
 
 :import {
+  -st-from: "../../../components/Grid/grid.st.css";
+  -st-default: Grid;
+}
+
+/* :import {
+  -st-from: "./grid.st.css";
+  -st-default: Grid;
+} */
+
+:import {
   -st-from: "../theme.st.css";
   -st-default: Default;
   -st-named:
@@ -39,6 +49,15 @@
 
   .large {
     background: green
+  }
+
+  .outset1 {
+    grid-column: outset1-start / outset1-end
+  }
+
+  .intro {
+    margin: 12px 0;
+    line-height: 1.45;
   }
 
   /* Styles typically expected children. */
@@ -82,7 +101,8 @@
   Text code {
     font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
     font-size: .8em;
-    color: #52fba7
+    /* color: #52fba7; */
+    color: #b9b9b9;
   }
 
   /* Uppercase */
@@ -91,7 +111,24 @@
     letter-spacing: .15em;
     letter-spacing: .31em;
     letter-spacing: .4em;
+
+    color: rgba(255, 255, 255, 0.6901960784313725);
+    color: rgb(149, 239, 174);
+    color: #52fba7
   }
+
+  /* State selectors - Note: Inherits functional styles from Shelley. */
+  Text:truncate {
+    /* 
+      Probably best remove this and set widths as and when you use truncate. 
+      The styles require a known width container and this is an example we use.
+
+      Try not to use truncate but we know that sometimes it can be a compromise.
+    */
+    max-width: 32rem
+      /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
+  }
+
 
   /** Volumes */
 
@@ -122,7 +159,7 @@
   /* Volume 3 */
   Text.vol3 {
     font-size: value(--text-vol-3-scale);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   @media screen and (min-width: 1800px) {
@@ -134,7 +171,7 @@
   /* Volume 4 */
   Text.vol4 {
     font-size: value(--text-vol-4-scale);
-    line-height: 1.25;
+    line-height: 1.45;
   }
 
   @media screen and (min-width: 1800px) {
@@ -246,6 +283,10 @@
     grid-column-gap: 12px;
     grid-template-columns: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
      */
+  /* Grid>Text {
+    grid-column: content-start / content-end;
+  }
+
   :global(.bodyCopy) {
     display: grid;
     grid-row-gap: 1.4rem;
@@ -259,11 +300,11 @@
       grid-column-gap: 24px;
       grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [content-start] repeat(8, minmax(0, 5.1vw)) [content-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
     }
-  }
+  } */
 
-  :global(.bodyCopy)>Text {
+  /* :global(.bodyCopy)>Text {
     grid-column: content-start / content-end;
-  }
+  } */
 
 
   :global(.bodyCopy) Text:not(span) {
@@ -280,20 +321,24 @@
     margin-top: calc(1 * (1em + .5vw));
   } */
 
-  :global(.bodyCopy) Text.vol4 {
-    margin-top: 1.94rem;
+  :global(.bodyCopy) Text.vol4,
+  Grid>Text.vol4 {
+    /* margin-top: 1.94rem; */
   }
 
-  :global(.bodyCopy) Text.vol5 {
+  :global(.bodyCopy) Text.vol5,
+  Grid>Text.vol5 {
     /* margin-top: 2.25rem; */
     /* margin-top: .85rem; */
-    margin-top: .83rem;
+    /* margin-top: .83rem;
     margin-bottom: -1px;
-    margin-bottom: -0.1rem;
+    margin-bottom: -0.1rem; */
   }
 
+  /* 
 
-  :global(.bodyCopy) Text.vol6 {
+  :global(.bodyCopy) Text.vol6,
+  Grid>Text.vol6 {
     margin-bottom: -0.3rem;
     margin-top: 2.25rem;
     padding-top: 3px;
@@ -305,7 +350,14 @@
     margin-top: 0
   }
 
-  :global(.bodyCopy) Text.vol7 {
-    margin-bottom: calc((value(--spacing-unit) * 2))
+  Grid>Text.vol4:first-child,
+  Grid>Text.vol5:first-child,
+  Grid>Text.vol6:first-child {
+    margin-top: 0
   }
+
+  :global(.bodyCopy) Text.vol7,
+  Grid>Text.vol7 {
+    margin-bottom: calc((value(--spacing-unit) * 2))
+  } */
 }

@@ -22,6 +22,45 @@
   z-index: 1000;
 }
 
+
+
+.footer {
+  margin-top: 25vh;
+  background: rgba(76, 76, 76, 0.4392156862745098);
+  padding: 1.1rem 1.0875rem;
+  color: var(--color-text-faint-2, value(--color-text-1-default));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .logo {
   display: inline-flex;
   /* transform: scale(.6); */

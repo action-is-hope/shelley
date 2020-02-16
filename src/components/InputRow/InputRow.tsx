@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import classnames from "classnames";
 import style from "./inputRow.st.css";
 import TextInput from "../TextInput/TextInput";
@@ -40,10 +40,6 @@ interface InputRowProps
   ref?: React.Ref<HTMLInputElement>;
   type?: InputTypes;
 }
-
-// forwardRef<Ref, Props>((props, ref) => (
-
-// ))
 
 const InputRow = React.forwardRef(
   (

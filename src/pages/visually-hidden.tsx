@@ -1,57 +1,61 @@
 import React from "react";
 import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
-import { P, SPAN, H1, H2, H3 } from "../components/Text/Text";
+import { P, H1, H2, H3 } from "../components/Text/Text";
+import Grid from "../components/Grid/Grid";
 
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeSample from "../components_site/CodeSample/CodeSample";
+import PageTitle from "../components_site/PageTitle/PageTitle";
+import text from "../themes/default/css/text.st.css";
 
 const VisuallyHiddenDocs = () => {
   return (
     <DefaultLayout>
-      <div className="bodyCopy">
-        <H1 vol={3}>
-          <SPAN uppercase>
-            <Link to="/">Back to Components</Link>
-          </SPAN>{" "}
-          <br />
-          <SPAN vol={8}>
-            <span>{`<`}</span>VisuallyHidden
-          </SPAN>
-        </H1>
-        <P>
+      <PageTitle>VisuallyHidden</PageTitle>
+
+      <Grid variant={1}>
+        <P vol={4} className={text.intro}>
           Provides text for screen readers that is visually hidden so as to keep
           your design clean. Often referred to as <code>srOnly</code> elsewhere
           on the web and not to be confused with <code>visibility: hidden</code>
           .
         </P>
-        <H2 vol={4}>Quick reference:</H2>
+        <H2 vol={2} uppercase>
+          Quick reference:
+        </H2>
         <CodeSample>
-          {`<VisuallyHidden>
+          {`import VisuallyHidden from "@action-is-hope/shelley";
+<VisuallyHidden>
   Hidden text that remains accessible and indexable.
 </VisuallyHidden>`}
         </CodeSample>
-        <H2 vol={6}>What is it for?</H2>
+        <H2 vol={4} uppercase>
+          Why?
+        </H2>
         <P>
           Quite often in web design we find situations where context can be
-          derived visually from the design of a page. Consider a typical
-          &rsquo;See more&rsquo; link as an example.
+          derived visually from the layout of a page via the surrounding text
+          and / or imagary.
         </P>
+        <P>But what if you cannot see the surrounding text or imagary?</P>
         <P>
-          It&rsquo;s easy to scan the page and figure out where links go based
-          on the surrounding text or imagary. But what if you cannot see the
-          surrounding text or imagary?
+          In that case you might be using a screen reader and using a cool
+          feature that allows you read out all links on a page. Pretty fracking
+          handy if you ask me.
         </P>
+        <H2 vol={2} uppercase>
+          Example: See more
+        </H2>
         <P>
-          Well, in that case you might be using a screen reader. If that{" "}
-          <em>is</em> the case; then you will likely be using a cool feature
-          that allows you read out all links on a page. Cool huh?
+          Consider a typical <em>see more</em> link that you&apos;ve seen a
+          hundred times that gives gives no meaningful context at all. It
+          literally says &apos;see more&apos; followed by three fullstops /
+          periods if American.
+          {/* Lest take a look at a typical scenario on the web; a &rsquo;See
+          more&rsquo; link without any context. */}
         </P>
-        <H2 vol={5}>Example: Crappy link text</H2>
-        <P>
-          Lest take a look at a typical scenario on the web; a &rsquo;See
-          more&rsquo; link without any context.
-        </P>
+
         <CodeSample>
           {`<h2>What is Climate Change?</h2>
 <p>Nasa has a great resource for kids/adults all about climate change.</p>
@@ -64,8 +68,7 @@ const VisuallyHiddenDocs = () => {
 </p>`}
         </CodeSample>
         <P>
-          Assuming the page is littered with this type of crappy link, which is
-          usually the case, how does it read using a screen reader?
+          How does a page full of those bad boys sound on our screen reader?
         </P>
         <Blockquote variant={2}>
           <P>See more... See more... See more... See more... See more...</P>
@@ -75,15 +78,16 @@ const VisuallyHiddenDocs = () => {
           airports in the wake of a planetary climate emergency.
         </P>
         <P>
-          Yep, this is a reality for a lot of people trying to navigate the web.
-          It is one of many things that will likley piss them off when using
-          websites that do not adhere to the{" "}
+          This is just one of many things that would likely piss off our screen
+          reader using alter-egos when using websites that do not adhere to the{" "}
           <a href="https://www.w3.org/TR/WCAG20/">
             Web Content Accessibiliy Guidelines 2.0 (WCAG)
-          </a>
-          , which covers this type of stuff.
+          </a>{" "}
+          which covers this type of stuff.
         </P>
-        <H3 vol={4}>Fixing the problem</H3>
+        <H3 vol={2} uppercase>
+          Fixing the problem
+        </H3>
         <P>
           In the following example, screen readers will announce the entire link
           even though sighted users will simply see &rsquo;See more&rsquo; as{" "}
@@ -222,7 +226,7 @@ const VisuallyHiddenDocs = () => {
           Make your shizzle accessible - it&rsquo;s your duty as a master
           builder ;-)
         </P>
-      </div>
+      </Grid>
     </DefaultLayout>
   );
 };

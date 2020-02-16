@@ -2,7 +2,8 @@ import React from "react";
 import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
 import Button from "../components/Button/Button";
-import { P, SPAN, H1 } from "../components/Text/Text";
+import Text, { P, H1 } from "../components/Text/Text";
+import Grid from "../components/Grid/Grid";
 
 // function TextInputWithFocusButton() {
 //   const inputEl = React.useRef(null);
@@ -28,16 +29,9 @@ const ButtonDocs = () => {
   };
   return (
     <DefaultLayout>
-      <div className="bodyCopy">
-        <H1 vol={3}>
-          <SPAN uppercase>
-            <Link to="/">Back to Components</Link>
-          </SPAN>{" "}
-          <br />
-          <SPAN vol={8}>Button</SPAN>
-        </H1>
+      <Grid variant={1}>
         <P>This is a basic button.</P>
-      </div>
+      </Grid>
 
       <div>
         <Button ref={test} onClick={() => console.log("HI")}>

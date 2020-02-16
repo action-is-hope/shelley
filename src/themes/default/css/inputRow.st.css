@@ -39,8 +39,20 @@
   }
 
   InputRow {
+    /* Choosing to use grid for the moment but may switch to flex. */
     display: grid;
-    margin-bottom: 32px
+    /* 
+      Showing the error before the field in question is the most logical but in 
+      practice we want to render it below so as to avoid the field moving when
+      it is in an eror state.
+
+      The following provides some empty placeholder rows for our label and 
+      potential input +1 whilst using a named grid line [error-message] to 
+      reserve a place underneath for our error message.
+
+      #bestOfBoth
+      */
+    grid-template-rows: auto auto auto [error-message];
   }
 
   InputRow.vol1 {
@@ -82,19 +94,21 @@
 
 
   InputRow Label {
-    display: flex;
-    flex-direction: column;
-    grid-row: 1;
+    /* grid-row: 1; */
     margin-bottom: 8px;
   }
 
-  InputRow.checkbox Label,
+  InputRow TextInput {
+    /* grid-row: 2; */
+  }
+
+  /* InputRow.checkbox Label,
   InputRow.radio Label,
   InputRow.switch Label {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-end;
-  }
+  } */
 
   InputRow Label::labelText {
     font-weight: 400;
@@ -116,7 +130,8 @@
 
 
   InputRow::errorMessage {
-    grid-row: 4;
+    /* Send the error message which is first in the source order to appear under the form input. */
+    grid-row: error-message;
     font-size: 16px;
     font-weight: 300;
     opacity: .7;

@@ -86,25 +86,5 @@ export const P = ({ children, ...rest }: TextExports) => (
     {children}
   </Text>
 );
-export const PRE = ({ children, ...rest }: TextExports) => (
-  <Text as="pre" {...rest}>
-    {children}
-  </Text>
-);
-export const SPAN = ({ children, ...rest }: TextExports) => (
-  <Text as="span" {...rest}>
-    {children}
-  </Text>
-);
-export const Code = ({ children, ...rest }: TextExports) => (
-  <Text as="code" {...rest}>
-    {children}
-  </Text>
-);
-export const Quote = ({ children, ...rest }: TextExports) => (
-  <Text as="quote" {...rest}>
-    {children}
-  </Text>
-);
 
 export default Text;

@@ -1,0 +1,29 @@
+:import {
+  -st-from: "../../themes/default/theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
+}
+
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+.root {
+  background: rgba(11, 13, 18, 0.3411764705882353);
+
+  min-height: 12rem;
+  margin-bottom: 56px;
+  /* align-items: flex-start; */
+  align-items: center;
+  grid-row-gap: 8px;
+}
+
+.root .linkText {
+  align-self: flex-end
+}
+
+.root Text.title,
+.root Text {
+  grid-column: content-start / outset1-end
+}
