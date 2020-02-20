@@ -31,13 +31,6 @@
 
 @st-scope Default {
 
-  InputRow TextInput::input {
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
-    padding-left: 16px;
-    padding-right: 16px
-  }
-
   InputRow {
     /* Choosing to use grid for the moment but may switch to flex. */
     display: grid;
@@ -92,7 +85,6 @@
     font-size: value(--v5);
   }
 
-
   InputRow Label {
     /* grid-row: 1; */
     margin-bottom: 8px;
@@ -126,6 +118,12 @@
   }
 
 
+  InputRow TextInput::input {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    padding-left: 16px;
+    padding-right: 16px
+  }
 
 
 

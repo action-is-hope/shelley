@@ -66,25 +66,24 @@ const TextDocs = () => {
 
 <H1 vol="8">Shortcuts for html headings, h1-h6, set your own volume.</H1>
 <P>The mighty paragraph, defaults to a volume of 3.</P>
-<Text as="span">Text with your choice of tag via the "as" prop.</Text>
-
-`}</CodeSample>
+<Text as="span">Text with your choice of tag via the "as" prop.</Text>`}</CodeSample>
 
         <P>
-          Shelley uses a volume property, <code>vol</code> in general for the
-          sizing of components. Text accepts a <code>vol</code> range of{" "}
-          <code>1-12</code> as well as an option to turn it off,{" "}
-          <code>false</code>. Simples.
+          Shelley uses a volume property, <code>vol</code> for the general
+          sizing of components. Text accepts <code>{`vol={1-12}`}</code> as well
+          as an option to turn it off, <code>{`vol={false}`}</code>. Simples.
         </P>
 
         <P>
           Using <code>{`vol={false}`}</code> is useful when we need all of the
-          text styling apart from font-sizing which we will define via a custom
-          class or by leveraging Stylable's imports.
+          text styling apart from font-sizing, which is to be defined via custom
+          class or by styling it as an named import inside of another component.
           {/* https://24ways.org/2017/styling-components-typed-css-with-stylable/ */}
         </P>
 
         {/* <H2 vol={4}>Getting into the detail:</H2> */}
+      </Grid>
+      <Grid variant={1}>
         <PropsDemo
           id="textPropsDemo"
           demoProps={TextDemoProps}
@@ -114,18 +113,19 @@ const TextDocs = () => {
             {TextDemoProps[3].value}
           </Text>
         </PropsDemo>
-
+      </Grid>
+      <Grid variant={1}>
         <H2 vol={5} className={text.outset} uppercase>
           Styling:
         </H2>
         <P>
-          Text will form the basis of a large proportion of a website or
-          application and is integral to the overall typographic and layout
-          approach of the design you are implementing.
+          Text usually accounts for large proportion of a website / application
+          and is integral to the overall typographic and layout approach of the
+          design you are implementing.
         </P>
 
         <P>
-          Shelley allows you to do whatever you want in terms of styling the
+          Shelley allows you to do whatever you want in terms of styling via
           pre-definded style hooks. You can of course add your own style
           variants by adding additional CSS class selectors within your{" "}
           <code>text.st.css</code> file:
@@ -172,14 +172,14 @@ Text.TupacOrBiggie {}
           <a href="https://type-scale.com/">
             type-scale is a good starting place to geneate a text scale
           </a>
-          . Just map the values across into your repective text volume
-          selectors.
+          . Just map the values into respective volume selectors above.
         </P>
         <P>
           {" "}
-          <strong>Note: </strong>We set our most commonly used body text to
-          volume 3 and then scale up/down from there; 1 is small, 12 is big.
-          Don't feel like you need to use all the volumes, 12 is a lot!
+          <strong>Note: </strong>We set our typical copy text to a volume of
+          three and then scale up/down from there; <code>1</code> is small,{" "}
+          <code>12</code> is big. Just define the ones you need, it is doubtful
+          you will need all twelve.
         </P>
 
         <H2 vol={4} uppercase>
@@ -187,14 +187,14 @@ Text.TupacOrBiggie {}
         </H2>
 
         <P>
-          Shelley got a little more adventurous and decided upon a full on fluid
-          / modular scale, typical! We quite like it so far, it was a bit trippy
-          to set up but now it's working it seems solid.{" "}
+          Shelley got adventurous and decided upon a full on fluid / modular
+          scale. Typical. We quite like it so far, it was a bit trippy to set up
+          but now it's working it seems solid.{" "}
           <a href="https://www.smashingmagazine.com/2016/05/fluid-typography/">
-            Smashing mag did a smashing write up on fluid typograhy
+            Smashing mag did a worthwhile piece on fluid typograhy
           </a>{" "}
           back in 2016; probably the most memoriable thing to happen that
-          year... yep.
+          year... Yup, think so.
         </P>
 
         <P>
@@ -280,7 +280,7 @@ Text.TupacOrBiggie {}
         Get familar with the properties below which will give you an idea of
         what style hooks you have to play with.
       </P> */}
-      {/* <Grid variant={1}>
+      <Grid variant={1}>
         <P>
           Test with custom class and turning volume off to aid with custom
           styles.
@@ -344,7 +344,7 @@ Text.TupacOrBiggie {}
           Figure SPM.1
         </P>
         <H2 vol={5}>Observed Impacts on People and Ecosystem Services</H2>
-      </Grid> */}
+      </Grid>
     </DefaultLayout>
   );
 };

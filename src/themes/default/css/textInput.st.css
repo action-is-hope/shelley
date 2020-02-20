@@ -23,29 +23,48 @@
     display: inline-flex;
     /* background: transparent; */
     outline: none;
-    border-left: 1px solid transparent;
+    /* border-left: 1px solid transparent; */
     color: #f1f1f1;
     resize: none;
-    transition: border 0.3s;
+    /* transition: border 0.3s; */
     border-radius: 0;
     /* -webkit-font-smoothing: antialiased; */
     line-height: 1.5;
 
     background: #00000024;
 
-    border-left-color: #33d25f45;
+    /* border-left-color: #33d25f45; */
     /* font-size: calc(0.333vw + 0.92rem); */
+    position: relative;
   }
 
-  TextInput:error {
-    border-left-color: #b66b6e;
+  TextInput:error::before {
+    /* border-left-color: #b66b6e; */
+    background-color: #b66b6e;
+  }
+
+  TextInput::before {
+    content: "";
+    display: block;
+    width: 1px;
+    position: absolute;
+    transition: background-color 0.3s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #33d25f45;
   }
 
 
-  TextInput:focus-within {
-    border-left-color: #26c552;
-    border-color: #09b1f1;
+  TextInput:focus-within::before {
+    /* border-left-color: #26c552;
+    border-color: #09b1f1; */
     /* border-left-color: #ff5e00; */
+    background-color: #09b1f1;
+  }
+
+  TextInput::textAreaWrap {
+    width: 100%;
   }
 
   TextInput::input {

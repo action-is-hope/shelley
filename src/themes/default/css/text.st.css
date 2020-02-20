@@ -41,96 +41,16 @@
     --text-vol-11-min, --text-vol-11-max, --text-vol-11-scale
 }
 
+
+
+
 @st-scope Default {
   Text {
-    font-weight: 300;
-    letter-spacing: .05em;
-  }
-
-  .large {
-    background: green
-  }
-
-  .outset1 {
-    grid-column: outset1-start / outset1-end
-  }
-
-  .intro {
-    margin: 12px 0;
-    line-height: 1.45;
-  }
-
-  /* Styles typically expected children. */
-
-  Text a {
-    text-decoration: none;
-    position: relative;
-    padding: 0.1rem 0;
-    /* outline: none; */
-    color: #81c1ff;
-
-    border-bottom: 0.0625rem solid rgba(110, 164, 218, 0.5);
-    transition: border-color .15s ease-out;
-  }
-
-  Text a:hover,
-  Text a:focus {
-    /* background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px); */
-    border-color: #81c1ff
-  }
-
-  Text del,
-  Text ins {
-    text-decoration: none;
-    padding: 0.1rem 0;
-  }
-
-  Text del {
-    background-position: 0 -0.5em;
-    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
-  }
-
-  Text ins {
-    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
-  }
-
-  Text em {
     font-weight: 400;
+    /* switch off for light / dark bgs.... */
+    -webkit-font-smoothing: antialiased;
+
   }
-
-  Text code {
-    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
-    font-size: .8em;
-    /* color: #52fba7; */
-    color: #b9b9b9;
-  }
-
-  /* Uppercase */
-  Text.uppercase {
-    text-transform: uppercase;
-    letter-spacing: .15em;
-    letter-spacing: .31em;
-    letter-spacing: .4em;
-
-    color: rgba(255, 255, 255, 0.6901960784313725);
-    color: rgb(149, 239, 174);
-    color: #52fba7
-  }
-
-  /* State selectors - Note: Inherits functional styles from Shelley. */
-  Text:truncate {
-    /* 
-      Probably best remove this and set widths as and when you use truncate. 
-      The styles require a known width container and this is an example we use.
-
-      Try not to use truncate but we know that sometimes it can be a compromise.
-    */
-    max-width: 32rem
-      /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
-  }
-
-
-  /** Volumes */
 
   /* Volume 1 */
   Text.vol1 {
@@ -183,7 +103,6 @@
   /* Volume 5 */
   Text.vol5 {
     font-size: value(--text-vol-5-scale);
-    font-weight: 100;
     line-height: 1.25;
   }
 
@@ -196,7 +115,6 @@
   /* Volume 6 */
   Text.vol6 {
     font-size: value(--text-vol-6-scale);
-    font-weight: 100;
     line-height: 1.35;
     /* line-height: 1.25; */
   }
@@ -210,10 +128,10 @@
   /* Volume 7 */
   Text.vol7 {
     font-size: value(--text-vol-7-scale);
-    font-weight: 100;
     /* letter-spacing: .06em; */
     line-height: 1.15;
     /* line-height: 1.25; */
+    font-weight: 300;
   }
 
   @media screen and (min-width: 1800px) {
@@ -225,8 +143,8 @@
   /* Volume 8 */
   Text.vol8 {
     font-size: value(--text-vol-8-scale);
-    font-weight: 100;
     line-height: 1.1;
+    font-weight: 300;
   }
 
   @media screen and (min-width: 1800px) {
@@ -238,7 +156,7 @@
   /* Volume 9 */
   Text.vol9 {
     font-size: value(--text-vol-9-scale);
-    font-weight: 100;
+    font-weight: 300;
     line-height: 1.05;
   }
 
@@ -251,7 +169,7 @@
   /* Volume 10 */
   Text.vol10 {
     font-size: value(--text-vol-10-scale);
-    font-weight: 100;
+    font-weight: 300;
     line-height: 1.05;
   }
 
@@ -264,7 +182,7 @@
   /* Volume 11 */
   Text.vol11 {
     font-size: value(--text-vol-11-scale);
-    font-weight: 100;
+    font-weight: 300;
     line-height: 1.05;
   }
 
@@ -273,6 +191,113 @@
       font-size: value(--text-vol-11-max)
     }
   }
+
+
+  /* Uppercase */
+  Text.uppercase {
+    text-transform: uppercase;
+    letter-spacing: .25em;
+  }
+
+  Text.vol1.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol2.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol3.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol4.uppercase {
+    letter-spacing: .31em;
+  }
+
+  :global(h2)Text.uppercase {
+    color: #52fba7;
+  }
+
+  :global(h3)Text.uppercase {
+    color: #ea91ff
+  }
+
+  :global(h4)Text.uppercase {
+    color: #52fba7
+  }
+
+  /* #ea91ff */
+
+  /* State selectors - Note: Inherits functional styles from Shelley. */
+  Text:truncate {
+    /* 
+      Probably best remove this and set widths as and when you use truncate. 
+      The styles require a known width container and this is an example we use.
+
+      Try not to use truncate but we know that sometimes it can be a compromise.
+    */
+    max-width: 32rem
+      /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
+  }
+
+  /* Styles - typical child children. */
+  Text a {
+    text-decoration: none;
+    position: relative;
+    padding: 0.1rem 0;
+    /* outline: none; */
+    color: #81c1ff;
+
+    border-bottom: 0.0625rem solid rgba(110, 164, 218, 0.5);
+    transition: border-color .15s ease-out;
+  }
+
+  Text a:hover,
+  Text a:focus {
+    /* background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px); */
+    border-color: #81c1ff
+  }
+
+  Text del,
+  Text ins {
+    text-decoration: none;
+    padding: 0.1rem 0;
+  }
+
+  Text del {
+    background-position: 0 -0.5em;
+    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
+  }
+
+  Text ins {
+    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
+  }
+
+  Text em {
+    font-weight: 400;
+  }
+
+  Text code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+    font-size: .8em;
+    /* color: #52fba7; */
+    color: #b9b9b9;
+    /* color: #d6d6d6; */
+    font-weight: 600
+  }
+
+  /* Styles - typical child children. */
+  .large {
+    background: green
+  }
+
+  .intro {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+
 
 
   /* @todo: Move to some kind of layout / grid component... when we have one. *
@@ -307,33 +332,33 @@
   } */
 
 
-  :global(.bodyCopy) Text:not(span) {
-    /* margin-bottom: calc((value(--spacing-unit) * 3)) */
+  /* :global(.bodyCopy) Text:not(span) {
+    margin-bottom: calc((value(--spacing-unit) * 3))
   }
 
   :global(.bodyCopy) Text+Text:not(:first-child):not(p) {
-    /* margin-top: calc((value(--spacing-unit) * 3)) */
-  }
+    margin-top: calc((value(--spacing-unit) * 3))
+  } */
 
   /* :global(.bodyCopy)>Text.vol4,
   :global(.bodyCopy)>Text.vol5,
   :global(.bodyCopy)>Text.vol6 {
     margin-top: calc(1 * (1em + .5vw));
   } */
-
+  /* 
   :global(.bodyCopy) Text.vol4,
   Grid>Text.vol4 {
-    /* margin-top: 1.94rem; */
-  }
+    margin-top: 1.94rem;
+  } */
 
-  :global(.bodyCopy) Text.vol5,
+  /* :global(.bodyCopy) Text.vol5,
   Grid>Text.vol5 {
-    /* margin-top: 2.25rem; */
-    /* margin-top: .85rem; */
-    /* margin-top: .83rem;
+    margin-top: 2.25rem;
+    margin-top: .85rem;
+    margin-top: .83rem;
     margin-bottom: -1px;
-    margin-bottom: -0.1rem; */
-  }
+    margin-bottom: -0.1rem;
+  } */
 
   /* 
 

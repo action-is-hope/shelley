@@ -14,7 +14,7 @@
 :import {
   -st-from: "../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
-  -st-named: input;
+  -st-named: input, textAreaWrap;
 }
 
 :import {
@@ -30,31 +30,96 @@
 
 
 .root {
-  padding: 64px;
-  padding-top: 54px;
+  padding: 1.3rem;
+  padding-top: 2rem;
   border: 1px dashed rgba(255, 255, 255, 0.13);
-  margin: 48px 0;
-  grid-column: outset-start / outset-end;
+  margin: 5.8rem 1rem;
+  grid-column: full-bleed-start / full-bleed-end;
+  position: relative;
+}
+
+@media screen and (min-width: 951px) {
+  .root {
+    padding: 64px;
+    padding-top: 54px;
+    margin: 5.8rem 0;
+    grid-column: outset-start / outset-end;
+  }
+}
+
+/* 
+@media screen and (min-width: 950px) {
+  .root {
+    padding: 64px;
+    padding-top: 54px;
+    margin: 48px 0;
+    grid-column: outset-start / outset-end;
+  }
+} */
+
+@media screen and (max-width: 950px) {
+  .gridWrap {
+    width: calc(100vw - 2rem - 2.6rem);
+    overflow-x: scroll;
+    overflow-y: visible;
+  }
+}
+
+.grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 72vw 100vw;
   grid-column-gap: 5.1vw;
-  grid-row-gap: 54px
+  grid-row-gap: 54px;
+}
+
+@media screen and (min-width: 767px) {
+  .grid {
+    grid-template-columns: 1.4fr 2fr;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .grid {
+    grid-template-columns: 1fr 2fr;
+  }
 }
 
 .propsPlayground {
   grid-row: 1 / span 2;
-  position: relative;
+  float: left;
 }
 
 .codeExample {
   grid-row: 1;
   grid-column: 2;
+  float: right;
 }
 
 .example {
   grid-column: 2;
   grid-row: 2;
+  clear: both
 }
+
+@media screen and (max-width: 950px) {
+  .propsPlayground {
+    grid-row: 1;
+  }
+
+  .codeExample {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .example {
+    grid-column: 1 / span 2;
+    width: calc(100vw - 2rem - 2.6rem);
+    grid-row: 2;
+  }
+}
+
+
+
 
 .codeExample>div {
   margin-top: 0;
@@ -69,7 +134,7 @@
   text-align: end; */
   position: absolute;
   /* right: 0; */
-  top: -70px;
+  top: -.8em;
 }
 
 .propsHint {
@@ -141,6 +206,7 @@
   border-left: 1px solid #33d25f45;
 }
 
+/* #4c54842b */
 
 
 .root .propInputs InputRow.text,
@@ -150,6 +216,20 @@
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 16px;
 }
+
+.root .propInputs InputRow.textarea {
+  padding-bottom: 0.8em;
+}
+
+.root .propInputs InputRow.textarea TextInput::textAreaWrap {
+  max-height: 4rem;
+  overflow: scroll;
+}
+
+.root .propInputs InputRow.textarea TextInput::before {
+  bottom: -.8em
+}
+
 
 .root .propInputs InputRow.text Label,
 .root .propInputs InputRow.textarea Label,

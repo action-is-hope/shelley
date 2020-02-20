@@ -58,6 +58,7 @@ const PropsDemo = ({
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             type="textarea"
+            rows={1}
             placeholder={item.label}
             defaultValue={item.value}
             label={`${item.label}:`}
@@ -145,56 +146,65 @@ const PropsDemo = ({
 
   return (
     <div {...style(rootClassNames, {}, rest)} {...rest}>
-      <div className={style.propsPlayground}>
-        {demoProps && (
-          <>
-            <H2 vol={3} className={style.propsHeading} uppercase>
-              <span>Props Playground</span>
-            </H2>
-            <P vol={2} className={style.propsHint}>
-              Have a little play around with the props below:
-            </P>
-            <div className={style.propInputs}>
-              {demoProps.map((item: any, i: number) => {
-                return setInput(item, i, demoProps, setDemoProps);
-              })}
-            </div>
-          </>
-        )}
-        {tsExtends && (
-          <P vol={2} className={style.tsExtends}>
-            <abbr title="TypeScript">
-              <span className={style.tsLogo}>TS</span>
-            </abbr>
-            based on: <code>{tsExtends}</code>
-          </P>
-        )}
+      {demoProps && (
+        <H2 vol={3} className={style.propsHeading} uppercase>
+          <span>Props Playground</span>
+        </H2>
+      )}
+      <div className={style.gridWrap}>
+        <div className={style.grid}>
+          <div className={style.propsPlayground}>
+            {demoProps && (
+              <>
+                {/* <H2 vol={3} className={style.propsHeading} uppercase>
+                  <span>Props Playground</span>
+                </H2> */}
+                <P vol={2} className={style.propsHint}>
+                  Have a little play around with the props below:
+                </P>
+                <div className={style.propInputs}>
+                  {demoProps.map((item: any, i: number) => {
+                    return setInput(item, i, demoProps, setDemoProps);
+                  })}
+                </div>
+              </>
+            )}
+            {tsExtends && (
+              <P vol={2} className={style.tsExtends}>
+                <abbr title="TypeScript">
+                  <span className={style.tsLogo}>TS</span>
+                </abbr>
+                based on: <code>{tsExtends}</code>
+              </P>
+            )}
 
-        {demoNonProps && (
-          <>
-            <H2 vol={3} className={style.propsHeading} uppercase>
-              <span>Props Playground</span>
-            </H2>
-            <div className={style.propInputs}>
-              {demoNonProps.map((item: any, i: number) => {
-                return setInput(item, i, demoNonProps, setNonDemoProps);
-              })}
-            </div>
-          </>
-        )}
-      </div>
+            {demoNonProps && (
+              <>
+                <H2 vol={3} className={style.propsHeading} uppercase>
+                  <span>Props Playground</span>
+                </H2>
+                <div className={style.propInputs}>
+                  {demoNonProps.map((item: any, i: number) => {
+                    return setInput(item, i, demoNonProps, setNonDemoProps);
+                  })}
+                </div>
+              </>
+            )}
+          </div>
 
-      <div className={style.codeExample}>
-        <H3 vol={1} className={style.exampleHeading} uppercase>
-          React Code:
-        </H3>
-        {renderExample}
-      </div>
-      <div className={style.example}>
-        <H3 vol={1} className={style.exampleHeading} uppercase>
-          Preview:
-        </H3>
-        <div className={style.demo}>{children}</div>
+          <div className={style.codeExample}>
+            <H3 vol={1} className={style.exampleHeading} uppercase>
+              React Code:
+            </H3>
+            {renderExample}
+          </div>
+          <div className={style.example}>
+            <H3 vol={1} className={style.exampleHeading} uppercase>
+              Preview:
+            </H3>
+            <div className={style.demo}>{children}</div>
+          </div>
+        </div>
       </div>
     </div>
   );

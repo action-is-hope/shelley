@@ -68,15 +68,17 @@ const TextInput = React.forwardRef(
 
     const Input: React.ReactNode =
       type === "textarea" ? (
-        <Textarea
-          aria-invalid={error ? true : false}
-          className={style.input}
-          disabled={disabled}
-          id={id}
-          rows={rows}
-          ref={ref}
-          {...rest}
-        />
+        <div className={style.textAreaWrap}>
+          <Textarea
+            aria-invalid={error ? true : false}
+            className={style.input}
+            disabled={disabled}
+            id={id}
+            rows={rows}
+            ref={ref}
+            {...rest}
+          />
+        </div>
       ) : (
         <input
           aria-invalid={error ? true : false}

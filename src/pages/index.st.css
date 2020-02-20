@@ -19,21 +19,90 @@
     background: rebeccapurple;
     margin-bottom: 16px;
   }
-}
 
-.logoGrid {
-  background: rgba(0, 0, 0, 0.3607843137254902);
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
 
-.logo {
-  /* padding-top: 50px;
+  .logoGrid {
+    /* background: rgba(0, 0, 0, 0.3607843137254902); */
+    margin: 40px 0;
+    padding-top: 50px;
+    padding-bottom: 90px;
+  }
+
+  .logo {
+    /* padding-top: 50px;
   padding-bottom: 50px; */
-  grid-column-start: outset-start;
-  grid-column-end: outset-end;
-  /* grid-column: full-bleed-start / full-bleed-end; */
-  /* padding-left: 9vw;
+    grid-column-start: outset-start;
+    grid-column-end: outset-end;
+    /* grid-column: full-bleed-start / full-bleed-end; */
+    /* padding-left: 9vw;
   padding-right: 9vw; */
-  /* background: rgba(0, 0, 0, 0.3607843137254902) */
+    /* background: rgba(0, 0, 0, 0.3607843137254902) */
+  }
+
+  .card {
+    grid-column: 2 / span 7;
+    background: #ffffff21;
+    padding: 22px 1.45rem;
+
+  }
+
+  .card>h2 {
+    margin-bottom: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    /* font-weight: 400; */
+  }
+
+  /* .card > p {
+margin-bottom: 11px;
+} */
+
+
+
+  /*
+Light bg dark test
+color: #4e4e4e;
+    font-weight: 400;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+*/
+
+  .card+.card {
+    grid-column: 9 / span 5;
+    /* background: #50de98;
+    background: #acefff; */
+  }
+
+  .card+.card+.card {
+    background: #51d6de;
+    background: #50de98;
+    background: #99ffcd;
+    background: #92e6bd
+  }
+
+  .card+.card+.card {
+    color: #4e4e4e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card+.card+.card>h2 {
+    color: #504f4f;
+    font-weight: 400;
+    -webkit-font-smoothing: initial;
+  }
+
+  .card+.card+.card p,
+  .card+.card+.card li {
+    font-weight: 400;
+    /* -webkit-font-smoothing: antialiased; */
+    /* color: #4e4e4e; */
+    /* font-weight: 400;
+    letter-spacing: normal; */
+    /* -webkit-font-smoothing: antialiased; */
+  }
+
+  /* 
+.card+.card+.card {
+  grid-column: 10 / span 4
+} */
 }

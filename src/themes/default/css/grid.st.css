@@ -31,147 +31,209 @@
     --grid-template-columns-base-content-start-end
 }
 
-/* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
-@st-scope Default {
+.exampleBox {
+  padding: 64px;
+  padding-top: 54px;
+  border: 1px dashed rgba(255, 255, 255, 0.13);
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
 
-  @supports (display: grid) {
+.mbSmall {
+  margin-bottom: 2rem
+}
 
-    Grid {
-      display: grid;
-      grid-column-gap: value(--grid-gap-xs);
-      grid-template-columns: value(--grid-template-columns-base-sm);
-      grid-template-columns: [full-bleed-start] auto [outset-start outset1-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset1-end outset-end] auto [full-bleed-end];
-    }
+Grid {
+  /* max-width: default; */
+  display: grid;
+  grid-column-gap: value(--grid-gap-xs);
+  /* grid-template-columns: value(--grid-template-columns-base-sm); */
+  grid-template-columns: [full-bleed-start] auto [outset-start outset1-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset1-end outset-end] auto [full-bleed-end];
+}
 
-    /* grid-template-columns: repeat(6, minmax(0, 4.011vw)); */
-    /* grid-column: auto / span 6; */
-
-    @media only screen and (min-width: value(--breakpoint-sm)) {
-      Grid {
-        /* grid-template-columns: [full-bleed-start] auto [outset-start outset1-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset1-end outset-end] auto [full-bleed-end]; */
-        grid-template-columns: [full-bleed-start] auto [outset-start outset1-start] repeat(1, minmax(0, 4.6vw)) [content-start] repeat(10, minmax(0, 4.6vw)) [content-end] repeat(1, minmax(0, 4.6vw)) [outset1-end outset-end] auto [full-bleed-end];
-      }
-    }
-
-    /* BODY DESKTOP AND ABOVE */
-    @media only screen and (min-width: value(--breakpoint-md)) {
-      Grid {
-        /* Grid start and finish for desktop */
-        grid-column-gap: value(--grid-gap-md);
-        /* grid-template-columns: value(--grid-template-columns-base-md); */
-        /* grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 4.6vw)) [outset1-start] repeat(1, minmax(0, 4.6vw)) [content-start] repeat(6, minmax(0, 4.6vw)) [content-end] repeat(1, minmax(0, 4.6vw)) [outset1-end] repeat(2, minmax(0, 4.6vw)) [outset-end] auto [full-bleed-end]; */
-      }
-    }
-
-    @media only screen and (min-width: value(--breakpoint-md)) {
-      Grid {
-        grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 6.1vw)) [outset1-start] repeat(1, minmax(0, 6.1vw)) [content-start] repeat(6, minmax(0, 6.1vw)) [content-end] repeat(1, minmax(0, 6.1vw)) [outset1-end] repeat(2, minmax(0, 6.1vw)) [outset-end] auto [full-bleed-end];
-      }
-    }
-
-    @media only screen and (min-width: value(--breakpoint-xl)) {
-      Grid {
-        grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [outset1-start] repeat(1, minmax(0, 5.1vw)) [content-start] repeat(6, minmax(0, 5.1vw)) [content-end] repeat(1, minmax(0, 5.1vw)) [outset1-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
-      }
-    }
-
-    Grid.variant1 {
-      grid-row-gap: 1.4rem;
-    }
-
-    Grid>h1,
-    Grid>h2,
-    Grid>h3,
-    Grid>h4,
-    Grid>h5,
-    Grid>h6,
-    Grid>p,
-    Grid>ul,
-    Grid>ol,
-    Grid>dl,
-    Grid>blockquote,
-    Grid>pre,
-    Grid>img,
-    Grid>figure {
-      grid-column: content-start / content-end;
-    }
-
-    /* @media only screen and (min-width: value(--breakpoint-lg)) {
-      NewsletterSignUp::signupWrapper {
-        display: grid;
-        grid-template-columns: value(--grid-inner-base-columns);
-        grid-column-gap: value(--grid-gap-md);
-        align-items: center;
-        margin-bottom: value(--spacing-unit-x3);
-      }
-
-    } */
+@media only screen and (min-width: value(--breakpoint-sm)) {
+  Grid {
+    grid-template-columns: [full-bleed-start] auto [outset-start outset1-start] repeat(1, minmax(0, 4.6vw)) [content-start] repeat(10, minmax(0, 4.6vw)) [content-end] repeat(1, minmax(0, 4.6vw)) [outset1-end outset-end] auto [full-bleed-end];
   }
+}
 
-  Grid.variant1>p {
-    /* max-width: 37.8rem; */
-    /* 1800 / 5.1 */
+@media only screen and (min-width: value(--breakpoint-md)) {
+  Grid {
+    /* grid-column-gap: value(--grid-gap-md); */
+    grid-column-gap: 1.45rem;
+    grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 6.1vw)) [outset1-start] repeat(1, minmax(0, 6.1vw)) [content-start] repeat(6, minmax(0, 6.1vw)) [content-end] repeat(1, minmax(0, 6.1vw)) [outset1-end] repeat(2, minmax(0, 6.1vw)) [outset-end] auto [full-bleed-end];
   }
+}
 
-  Grid>Text.uppercase {
-    /* color: rgb(149, 239, 174) */
+@media only screen and (min-width: value(--breakpoint-lg)) {}
+
+@media only screen and (min-width: value(--breakpoint-xl)) {
+  Grid {
+    grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [outset1-start] repeat(1, minmax(0, 5.1vw)) [content-start] repeat(6, minmax(0, 5.1vw)) [content-end] repeat(1, minmax(0, 5.1vw)) [outset1-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
   }
+}
+
+/* Allign common grid items, including fallback styles. */
+Grid>h1,
+Grid>h2,
+Grid>h3,
+Grid>h4,
+Grid>h5,
+Grid>h6,
+Grid>p,
+Grid>ul,
+Grid>ol,
+Grid>dl,
+Grid>blockquote,
+Grid>pre,
+Grid>img,
+Grid>figure,
+.gridColumnContent {
+  /* set the grid lines */
+  grid-column: content-start / content-end;
+  /* fallback styles for content-start / content-end */
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+  /* mimics grid-row-gap */
+  margin-bottom: 2rem;
+}
+
+.gridColumnOutset1 {
+  /* set the grid lines */
+  grid-column: outset1-start / outset1-end;
+  /* fallback styles for outset1-start / outset1-end */
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
+  /* mimics grid-row-gap */
+  margin-bottom: 2rem;
+}
+
+.gridColumnOutset {
+  /* set the grid lines */
+  grid-column: outset-start / outset-end;
+  /* fallback styles for outset-start / outset-end */
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  /* mimics grid-row-gap */
+  margin-bottom: 2rem;
+}
+
+.fullBleed {
+  /* set the grid lines */
+  grid-column: full-bleed-start / full-bleed-end;
+  /* fallback styles for full-bleed-start / full-bleed-end */
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* mimics grid-row-gap */
+  margin-bottom: 2rem;
+}
 
 
+@supports (display: grid) {
 
-  Grid.variant1>Text+Text.vol2 {
-    margin-top: 1.6rem;
+  /* Resetting the values used for the fallback. */
+  Grid>h1,
+  Grid>h2,
+  Grid>h3,
+  Grid>h4,
+  Grid>h5,
+  Grid>h6,
+  Grid>p,
+  Grid>ul,
+  Grid>ol,
+  Grid>dl,
+  Grid>blockquote,
+  Grid>pre,
+  Grid>img,
+  Grid>figure,
+  .gridColumnContent,
+  .gridColumnOutset1,
+  .gridColumnOutset,
+  .fullBleed {
+    margin-bottom: initial;
+    margin-left: initial;
+    margin-right: initial;
+    max-width: initial;
   }
-
-  Grid.variant1>Text+Text.vol4 {
-    margin-top: 1.94rem;
-  }
+}
 
 
-  Grid.variant1>Text+Text.vol5 {
-    /* margin-top: 2.25rem; */
-    /* margin-top: .85rem; */
-    margin-top: .83rem;
-    margin-bottom: -1px;
-    margin-bottom: -0.1rem;
-  }
+/* Grid.variant1>p {
+    max-width: 37.8rem;
+    1800 / 5.1
+  } */
 
-  Grid.variant1>Text+Text.vol6 {
-    margin-bottom: -0.3rem;
-    margin-top: 2.25rem;
-    padding-top: 3px;
-  }
+/* Grid>Text.uppercase {
+    color: rgb(149, 239, 174)
+  } */
 
-  /* Grid.variant1>Text.vol4:first-child,
+/* maybe default with text spacing on...? the option to :disabled */
+
+Grid.variant1 {
+  grid-row-gap: 1.45rem;
+}
+
+
+Grid.variant1>Text+Text.vol2 {
+  margin-top: 1.6rem;
+}
+
+Grid.variant1>Text+:global(h2)Text.vol3 {
+  margin-top: 1.74rem;
+}
+
+Grid.variant1>Text+Text.vol4 {
+  margin-top: 1.94rem;
+}
+
+
+Grid.variant1>Text+Text.vol5 {
+  /* margin-top: 2.25rem; */
+  /* margin-top: .85rem; */
+  margin-top: .83rem;
+  margin-bottom: -1px;
+  margin-bottom: -0.1rem;
+}
+
+Grid.variant1>Text+Text.vol6 {
+  margin-bottom: -0.3rem;
+  margin-top: 2.25rem;
+  padding-top: 3px;
+}
+
+/* Grid.variant1>Text.vol4:first-child,
   Grid.variant1>Text.vol5:first-child,
   Grid.variant1>Text.vol6:first-child {
     margin-top: 0
   } */
 
 
-  Grid.variant1>Text.vol7 {
-    margin-bottom: calc((value(--spacing-unit) * 2))
-  }
-
-
-  .gridColumnContent {
-    grid-column: content-start / content-end
-  }
-
-  .gridColumnOutset1 {
-    grid-column: outset1-start / outset1-end
-  }
-
-  .exampleBox {
-    padding: 64px;
-    padding-top: 54px;
-    border: 1px dashed rgba(255, 255, 255, 0.13);
-    margin: 48px 0;
-  }
-
-  .mbSmall {
-    margin-bottom: 2rem
-  }
-
-
+Grid.variant1>Text.vol7 {
+  margin-bottom: calc((value(--spacing-unit) * 2))
 }
+
+/* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
+@st-scope Default {}
+
+/* Breaks multiline selectros.:
+
+Grid>h1,
+Grid>h2,
+Grid>h3,
+Grid>h4,
+Grid>h5,
+Grid>h6,
+Grid>p,
+Grid>ul,
+Grid>ol,
+Grid>dl,
+Grid>blockquote,
+Grid>pre,
+Grid>img,
+Grid>figure,
+.gridColumnContent {
+*/

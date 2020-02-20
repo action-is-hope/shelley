@@ -16,7 +16,10 @@
   display: grid;
   justify-items: center;
   grid-row-gap: 24px;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 8fr 4fr;
+
+  grid-row-gap: 84px;
+  grid-template-columns: 7fr 5fr;
 }
 
 .logo {
@@ -67,30 +70,43 @@
   box-shadow: -0.125em 0px 0.1875em #1acaff;
 }
 
-.root Text.title {
+.root Text.title.uppercase {
   /* margin-top: 16px; */
+  color: #f8f8f9;
   justify-self: start;
   align-self: center;
   letter-spacing: 0.4em;
-  grid-row: 1
+  grid-row: 1;
+
+  /* font-size: 69px; */
 }
 
 .logoWrap {
   grid-row: 1;
   font-size: 1.25em;
+  font-size: 1.35em;
   position: relative;
-  top: -12px;
+  /* top: -12px; */
   /* margin-top: -60px; */
 }
 
 
 .root Text.tld {
   grid-column-start: 2;
+  align-self: end;
   font-size: 12px;
   letter-spacing: 16px;
   text-transform: uppercase;
   transform: rotate(1deg);
   color: #59ff59;
+  color: #51de98;
+  font-size: 14px;
+  letter-spacing: 18px;
+
+  font-size: 0.9372071227741331em;
+  letter-spacing: 22px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 .root Text.tagline {
@@ -98,4 +114,7 @@
   grid-column-start: 1;
   justify-self: start;
   align-self: center;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: #ea91ff
 }

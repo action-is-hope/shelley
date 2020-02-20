@@ -65,10 +65,11 @@ const LabelsInputsDocs = () => {
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
           Labels are rather aptly <code>for</code> labelling things, form{" "}
-          <code>input</code> tags specifically. Internally they make use of the{" "}
-          <code>label</code> tag which is one of the most important semantic
-          tags to get right in terms of usability, accessibility and the law!
+          <code>input</code> tags specifically, <code>label</code> is one of the
+          most important semantic tags to get right in terms of usability,
+          accessibility and the law!
         </P>
+
         {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label */}
         <H2 vol={2} uppercase>
           Quick reference:
@@ -81,6 +82,13 @@ const LabelsInputsDocs = () => {
   Label text
 </Label>
 `}</CodeSample>
+
+        {/* <P vol={4} className={text.intro}>
+          Internally they make use of the <code>label</code> tag which is one of
+          the most important semantic tags to get right in terms of usability,
+          accessibility and the law!
+        </P> */}
+
         <P>
           Labels are pretty useless by themselves, they should <em>always</em>{" "}
           be associated with a form input. The most reliable way to do that is
@@ -96,8 +104,9 @@ const LabelsInputsDocs = () => {
         </P> */}
 
         <P>
-          <strong>Note:</strong> In React we have to use <code>htmlFor</code>{" "}
-          instead and you will definitely forget this at some point, #justSaying
+          <strong>Note:</strong> In React world we have to use{" "}
+          <code>htmlFor</code> instead and you will definitely forget this at
+          some point, I have no hair. #justSaying
         </P>
 
         <H2 vol={4} uppercase>
@@ -142,7 +151,8 @@ const LabelsInputsDocs = () => {
           use your own) and throw it inside the Label via the{" "}
           <code>radioCheckInput</code> prop. Let&apos;s have a poke around:
         </P>
-
+      </Grid>
+      <Grid variant={1}>
         <PropsDemo
           demoProps={labelDemoProps}
           setDemoProps={setLabelDemoProps}
@@ -186,7 +196,8 @@ const LabelsInputsDocs = () => {
             {labelDemoProps[0].value}
           </Label>
         </PropsDemo>
-
+      </Grid>
+      <Grid variant={1}>
         <P>
           <strong>Note:</strong> Rendering an input inside of a label actually
           has the side effect of implicitly associating them, however it is
