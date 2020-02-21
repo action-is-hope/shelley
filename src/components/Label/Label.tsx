@@ -5,7 +5,6 @@ import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
-  // label: string;
   children: React.ReactNode;
   hint?: React.ReactNode;
   visuallyHidden?: boolean;

@@ -1,7 +1,7 @@
 import { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
 
-// Bundle Global CSS
+// Bundle Global
 import "./global.st.css";
 import "../globalHelpers.st.css";
 
@@ -16,6 +16,9 @@ import Text from "./css/text.st.css";
 import TextInput from "./css/textInput.st.css";
 
 // Application Components
+import PropsDemo from "./css/propsDemo.st.css";
+import CodeSample from "./css/codeSample.st.css";
+import Logo from "./css/logo.st.css";
 
 // Theme
 import Default from "./theme.st.css";
@@ -30,7 +33,7 @@ const getClassNames = (
   return classnames(stylesheet[rootcls], clsArray);
 };
 
-// Components
+// Foundation Components
 export const button = (...values: []) =>
   getClassNames(values, Button, "button");
 export const blockquote = (...values: []) =>
@@ -44,5 +47,11 @@ export const radioCheckInput = (...values: []) =>
 export const text = (...values: []) => getClassNames(values, Text, "text");
 export const textInput = (...values: []) =>
   getClassNames(values, TextInput, "textInput");
+// Application Components
+export const codeSample = (...values: []) =>
+  getClassNames(values, CodeSample, "codeSample");
+export const propsDemo = (...values: []) =>
+  getClassNames(values, PropsDemo, "propsDemo");
+export const logo = (...values: []) => getClassNames(values, Logo, "logo");
 
 export const Theme = Default.root;

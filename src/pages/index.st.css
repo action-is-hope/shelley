@@ -21,33 +21,20 @@
   }
 
 
-  .logoGrid {
-    /* background: rgba(0, 0, 0, 0.3607843137254902); */
-    margin: 40px 0;
-    padding-top: 50px;
-    padding-bottom: 90px;
-  }
-
-  .logo {
-    /* padding-top: 50px;
-  padding-bottom: 50px; */
-    grid-column-start: outset-start;
-    grid-column-end: outset-end;
-    /* grid-column: full-bleed-start / full-bleed-end; */
-    /* padding-left: 9vw;
-  padding-right: 9vw; */
-    /* background: rgba(0, 0, 0, 0.3607843137254902) */
-  }
-
   .card {
     grid-column: 2 / span 7;
     background: #ffffff21;
+    background: #232631;
     padding: 22px 1.45rem;
 
   }
 
+  .card>* {
+    margin: .75rem 0;
+  }
+
   .card>h2 {
-    margin-bottom: 16px;
+    margin-bottom: 1.45rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     /* font-weight: 400; */

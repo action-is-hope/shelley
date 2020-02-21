@@ -34,6 +34,8 @@
   InputRow {
     /* Choosing to use grid for the moment but may switch to flex. */
     display: grid;
+
+
     /* 
       Showing the error before the field in question is the most logical but in 
       practice we want to render it below so as to avoid the field moving when

@@ -3,7 +3,7 @@ import React from "react";
 import style from "./pageTitle.st.css";
 import classNames from "classnames";
 import Link from "gatsby-link";
-import Text, { H1 } from "../../components/Text/Text";
+import { H1 } from "../../components/Text/Text";
 import Grid from "../../components/Grid/Grid";
 
 interface PageTitleProps extends React.HTMLProps<HTMLDivElement> {

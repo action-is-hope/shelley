@@ -9,13 +9,10 @@ import text from "../themes/default/css/text.st.css";
 // Global styles work with TS like this:
 require("./example.css");
 
-import Button from "../components/Button/Button";
-
 import DefaultLayout from "../layouts";
 import Text, { H1, H2, H3, P } from "../components/Text/Text";
-import Input from "../components/TextInput/TextInput";
-import Logo from "../components_site/Logo/Logo";
 import Grid from "../components/Grid/Grid";
+import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema.
@@ -32,15 +29,36 @@ interface IndexPageProps {
 const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <DefaultLayout>
-      <Grid className={style.logoGrid}>
-        <Logo className={style.logo} />
-      </Grid>
+      <ShelleyBanner />
 
       <Grid variant={1}>
         <div className={style.card}>
-          <H2 uppercase vol={3}>
+          <H2 uppercase vol={2}>
             Welcome
           </H2>
+          <P>
+            Take back control and rediscover the 'art' of CSS. Stylable allows
+            us to use our Zen CSS skills once more. Shit just got interesting...
+          </P>
+
+          <P>
+            This site is build with Shelley and hopefully will be a useful
+            referancre for you. We have tried to be as chatty as possible in our
+            CSS files. Wix promote the idea that we should perhaps comment each
+            line of CSS indicating it's purpose. This may sound crazy but it
+            really helps newcomers to the code base as well as your own
+            knowledge in terms of what is happening. It's easy in CSS to hack
+            around until stuff works and then leave it. Commenting each line
+            forces a deeper understanding.
+          </P>
+
+          <P>
+            A level of component self awareness that allows for thing to be
+            slotted togther without too much glue CSS so as to aid rapid
+            prototyping and the building of common pages. However when fine
+            tuning and applying design to areas
+          </P>
+
           <P>What sort of info do we need here?</P>
           <P>
             We want to help newbies and even people that are more UX and
@@ -49,15 +67,42 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <P>Get started section of some description is usually a winner.</P>
         </div>
         <div className={style.card}>
-          <H2 uppercase vol={3}>
+          <H2 uppercase vol={2}>
             About
           </H2>
+          <P>
+            We found Shelley, sountering around the internet looking rather
+            lost.
+          </P>
+          <P>It turns out Shelley is the </P>
+          <P>Fairly deep stuff for a component library huh? Yeah, we know.</P>
+          <P>
+            We are buildin this so that we have a go to starter kit that we know{" "}
+          </P>
+          <P>
+            We are building this so we can make projects to help our shared
+            world that is simply in danger. Some even speak of a lost cause,
+            Shelley however says that she didn't sit there trapped within the
+            fibres of a secret edition of Frankenstein. The manuscript cursed
+            with the same sort of sourcery of that of Dorians painting only to
+            be told that she must accept that humanity will never have heided
+            her warning of mans creation long ago. The devil is within.
+            manuscipt for hundreds of years finally able to transend into a
+            digital being after reading so much scifi
+          </P>
           <P>Stylable Lego blocks for making websites and ting</P>
         </div>
         <div className={style.card}>
-          <H2 uppercase vol={3}>
+          <H2 uppercase vol={2}>
             Treeware 🌲
           </H2>
+          <P>
+            Shelley is under no delusion that planting some trees will solve the
+            ecological disaster that is currently unfolding. But it is a
+            conversation starter and if we were talking about it every day with
+            the seriousness it demands then do you think it would remain a
+            problem for long? We must speak, really speak.
+          </P>
           <P>Shelley is asking two things of you:</P>
           <ul>
             <Text as="li">Buy some trees</Text>

@@ -1,0 +1,86 @@
+/** logo.st.css */
+
+:import {
+  -st-from: "../../../components_site/Logo/logo.st.css";
+  -st-default: Logo;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
+}
+
+/* :import {
+  -st-from: "../variables.st.css";
+  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
+    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
+    --v1, --v2, --v3, --v4, --v5,
+} */
+
+
+
+:import {
+  -st-from: "../../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+@st-scope Default {
+
+
+  Logo {
+    display: inline-flex;
+    /* transform: scale(.6); */
+    transform-origin: 100% 120%;
+    /* margin-top: -100%;
+  margin-left: -96px; */
+  }
+
+  Logo::before,
+  Logo::after {
+    content: "";
+    display: flex;
+    /* height: 94px;
+  width: 94px; */
+    height: 6em;
+    width: 6em;
+    /* border: 3px solid var(--color-ui, value(--color-ui-default)); */
+    border: 0.1875em solid var(--color-ui, value(--color-ui-default));
+    border: 0.158em solid var(--color-ui, value(--color-ui-default));
+    border-radius: 500px
+  }
+
+  Logo::before {
+    box-shadow: 2px 0px 3px #1acaff;
+    box-shadow: 0.125em 0px 0.1875em #1acaff;
+  }
+
+  Logo::logoInner {
+    /* height: 94px; */
+    height: 6em;
+    /* margin-left: -50px;
+  margin-right: -50px; */
+    /* margin-left: -47px;
+  margin-right: -47px; */
+    margin-left: -2.9375em;
+    margin-right: -2.9375em;
+    position: relative;
+    display: flex;
+    /* width: 47px; */
+    width: 2.9375em;
+    background: var(--color-background-1, value(--color-background-1-default))
+  }
+
+  Logo::after {
+    box-shadow: -2px 0px 3px #1acaff;
+    box-shadow: -0.125em 0px 0.1875em #1acaff;
+  }
+
+  /* .logoWrap {
+    grid-row: 1;
+    font-size: 1.25em;
+    font-size: 1.35em;
+    position: relative;
+  } */
+
+}

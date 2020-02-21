@@ -64,16 +64,55 @@ const TextDocs = () => {
         </H2>
         <CodeSample>{`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@action-is-hope/shelley";
 
-<H1 vol="8">Shortcuts for html headings, h1-h6, set your own volume.</H1>
+<H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
 <P>The mighty paragraph, defaults to a volume of 3.</P>
 <Text as="span">Text with your choice of tag via the "as" prop.</Text>`}</CodeSample>
-
+        <P>
+          FAQ Component to be able to pull in commonly referanced shit, like
+          common props.
+        </P>
         <P>
           Shelley uses a volume property, <code>vol</code> for the general
           sizing of components. Text accepts <code>{`vol={1-12}`}</code> as well
           as an option to turn it off, <code>{`vol={false}`}</code>. Simples.
         </P>
+        <P>
+          No gutter prop? Meh, you can add custom class for this if you want but
+          we found margins were best set in place on as part of a
+          context/surface/container like `formatAside, formatArticle` else you
+          will be overriding a lot. You will likley have helpers for spacing
+          defined elsewhere, your grid perhaps. That's where I think we will put
+          ours initially at lease.
+        </P>
 
+        <table className={grid.gridColumnContent}>
+          <thead>
+            <tr>
+              <th>Vol</th>
+              <th>Internal ref</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Caption</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Button</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Body Small</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Body Large</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Subtitle Small</td>
+            </tr>
+          </thead>
+        </table>
         <P>
           Using <code>{`vol={false}`}</code> is useful when we need all of the
           text styling apart from font-sizing, which is to be defined via custom
