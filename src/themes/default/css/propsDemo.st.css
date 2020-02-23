@@ -1,2 +1,269 @@
 /* import PropsDemo from "../../components_site/PropsDemo/PropsDemo.st.css";
 import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
+
+
+/** propsDemo.st.css */
+:import {
+  -st-from: "../../../components_site/PropsDemo/propsDemo.st.css";
+  -st-default: PropsDemo;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
+}
+
+:import {
+  -st-from: "../../../components/InputRow/inputRow.st.css";
+  -st-default: InputRow;
+}
+
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named: labelTextContainer, labelText, radioCheckInput;
+}
+
+:import {
+  -st-from: "../../../components/TextInput/textInput.st.css";
+  -st-default: TextInput;
+  -st-named: input, textAreaWrap;
+}
+
+:import {
+  -st-from: "../../../components/RadioCheckInput/radioCheckInput.st.css";
+  -st-default: RadioCheckInput;
+}
+
+@st-scope Default {
+
+  PropsDemo {
+    padding: 1.3rem;
+    padding-top: 2rem;
+    border: 1px dashed rgba(255, 255, 255, 0.13);
+    margin: 5.8rem 1rem;
+    grid-column: full-bleed-start / full-bleed-end;
+    position: relative;
+  }
+}
+
+
+
+@media screen and (min-width: 951px) {
+  @st-scope Default {
+    PropsDemo {
+      padding: 64px;
+      padding-top: 54px;
+      margin: 5.8rem 0;
+      grid-column: outset-start / outset-end;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  PropsDemo::gridOverflow {
+    width: calc(100vw - 2rem - 2.6rem);
+    overflow-x: scroll;
+    overflow-y: visible;
+  }
+}
+
+@st-scope Default {
+
+  PropsDemo::internalGrid {
+    display: grid;
+    grid-template-columns: 72vw 100vw;
+    grid-column-gap: 5.1vw;
+    grid-row-gap: 54px;
+  }
+
+  @media screen and (min-width: 767px) {
+    PropsDemo::internalGrid {
+      grid-template-columns: 1.4fr 2fr;
+    }
+  }
+
+  @media screen and (min-width: 950px) {
+    PropsDemo::internalGrid {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  PropsDemo::propsPlayground {
+    grid-row: 1 / span 2;
+    /* crude fallback for IE */
+    float: left;
+  }
+
+  PropsDemo::codeExample {
+    grid-row: 1;
+    grid-column: 2;
+    /* crude fallback for IE */
+    float: right;
+  }
+
+  PropsDemo::demoExample {
+    grid-column: 2;
+    grid-row: 2;
+    /* crude fallback for IE */
+    clear: both
+  }
+
+  @media screen and (max-width: 950px) {
+    PropsDemo::propsPlayground {
+      grid-row: 1;
+    }
+
+    PropsDemo::codeExample {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    PropsDemo::demoExample {
+      grid-column: 1 / span 2;
+      width: calc(100vw - 2rem - 2.6rem);
+      grid-row: 2;
+    }
+  }
+
+
+
+
+  PropsDemo::codeExample>div {
+    margin-top: 0;
+    height: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  PropsDemo::propsHeading {
+    /* margin: -44px 0 26px;
+  text-align: right;
+  text-align: end; */
+    position: absolute;
+    /* right: 0; */
+    top: -.8em;
+  }
+
+  PropsDemo::propsHint {
+    color: #a9a9a9;
+    margin-bottom: 24px;
+  }
+
+  PropsDemo::tsExtends {
+    color: #a9a9a9;
+    margin-top: 16px
+  }
+
+  /* .tsLogo {
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1em;
+  padding-top: 1em;
+  width: 1.9em;
+  text-align: end;
+  font-family: Arial;
+  letter-spacing: .05em;
+  padding: .22em;
+  padding-top: .9em;
+  letter-spacing: -0.5px;
+  background: #037acc;
+  margin-right: 12px
+} */
+
+
+  PropsDemo::exampleHeading {
+    margin-bottom: 24px
+  }
+
+  PropsDemo::propsHeading span {
+    background: #181b24;
+    display: inline-block;
+    padding: 0 4px;
+  }
+
+  PropsDemo::propInputs {
+    /* width: 50%; */
+    display: grid;
+    grid-row-gap: 1px;
+    /* margin-bottom: 48px */
+  }
+
+
+  PropsDemo::propInputs InputRow {
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.04);
+    /* background: rgba(160, 160, 160, 0.06); */
+    /* rgba(255, 255, 255, 0.04) */
+  }
+
+  PropsDemo::propInputs InputRow Label {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  PropsDemo::propInputs InputRow TextInput,
+  PropsDemo::propInputs InputRow Label::radioCheckInput {
+    background: rgba(0, 0, 0, 0.07058823529411765);
+  }
+
+  PropsDemo::propInputs InputRow Label::radioCheckInput {
+    border-left: 1px solid #33d25f45;
+  }
+
+  /* #4c54842b */
+
+
+  PropsDemo::propInputs InputRow.text,
+  PropsDemo::propInputs InputRow.textarea,
+  PropsDemo::propInputs InputRow.number,
+  PropsDemo::propInputs InputRow.checkbox Label {
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 16px;
+  }
+
+  PropsDemo::propInputs InputRow.textarea {
+    padding-bottom: 0.8em;
+  }
+
+  PropsDemo::propInputs InputRow.textarea TextInput::textAreaWrap {
+    max-height: 4rem;
+    overflow: scroll;
+  }
+
+  PropsDemo::propInputs InputRow.textarea TextInput::before {
+    bottom: -.8em
+  }
+
+
+  PropsDemo::propInputs InputRow.text Label,
+  PropsDemo::propInputs InputRow.textarea Label,
+  PropsDemo::propInputs InputRow.number Label,
+  PropsDemo::propInputs InputRow.checkbox Label::labelTextContainer {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  PropsDemo::propInputs InputRow.checkbox Label {
+    display: grid
+  }
+
+  PropsDemo::propInputs InputRow.checkbox Label RadioCheckInput {
+    padding: 0
+  }
+
+  PropsDemo::propInputs InputRow.checkbox Label::labelTextContainer {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  PropsDemo::propInputs InputRow TextInput input {
+    /* padding-top: 0.4em;
+  padding-bottom: 0.4em; */
+  }
+
+}

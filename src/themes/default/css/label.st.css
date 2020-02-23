@@ -33,11 +33,18 @@
   }
 
   Label::labelTextContainer {
-    display: block
+    display: block;
   }
 
   Label::labelText {
-    display: block
+    display: block;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  Label::labelHintText {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
   }
 
 }

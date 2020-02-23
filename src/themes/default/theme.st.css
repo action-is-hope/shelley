@@ -110,6 +110,9 @@ body {
   color: var(--color-ui, value(--color-ui-default));
   background-color: value(--color-background-1-default);
   background-color: var(--color-background-1, value(--color-background-1-default));
+
+  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150% */
+  /* background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
 }
 
 hr {

@@ -105,16 +105,13 @@
   } */
 
   InputRow Label::labelText {
-    font-weight: 400;
+    /* font-weight: 400; */
     /* text-transform: uppercase; */
 
   }
 
   InputRow Label::labelTextContainer {
     display: block;
-    /* font-size: 16px; */
-
-    font-weight: 300;
     opacity: .7;
     letter-spacing: .02em;
   }

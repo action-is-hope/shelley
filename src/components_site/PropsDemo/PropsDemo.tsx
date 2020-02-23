@@ -151,8 +151,8 @@ const PropsDemo = ({
           <span>Props Playground</span>
         </H2>
       )}
-      <div className={style.gridWrap}>
-        <div className={style.grid}>
+      <div className={style.gridOverflow}>
+        <div className={style.internalGrid}>
           <div className={style.propsPlayground}>
             {demoProps && (
               <>
@@ -198,7 +198,7 @@ const PropsDemo = ({
             </H3>
             {renderExample}
           </div>
-          <div className={style.example}>
+          <div className={style.demoExample}>
             <H3 vol={1} className={style.exampleHeading} uppercase>
               Preview:
             </H3>

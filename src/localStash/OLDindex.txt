@@ -1,0 +1,243 @@
+<>
+          <p></p>
+            Take back control and rediscover the 'art' of CSS. Stylable allows
+            us to use our Zen CSS skills once more. Shit just got interesting...
+          </p>
+
+          <p>
+            This site is build with Shelley and hopefully will be a useful
+            referancre for you. We have tried to be as chatty as possible in our
+            CSS files. Wix promote the idea that we should perhaps comment each
+            line of CSS indicating it's purpose. This may sound crazy but it
+            really helps newcomers to the code base as well as your own
+            knowledge in terms of what is happening. It's easy in CSS to hack
+            around until stuff works and then leave it. Commenting each line
+            forces a deeper understanding.
+          </p>
+
+          <p>
+            A level of component self awareness that allows for thing to be
+            slotted togther without too much glue CSS so as to aid rapid
+            prototyping and the building of common pages. However when fine
+            tuning and applying design to areas
+          </p>
+
+          <p>What sort of info do we need here?</p>
+          <p>
+            We want to help newbies and even people that are more UX and
+            marketing to see how things work?
+          </p>
+          <p>Get started section of some description is usually a winner.</p>
+
+          <H2 uppercase vol={2}>
+            About
+          </H2>
+          <p>
+            We found Shelley, sountering around the internet looking rather
+            lost.
+          </p>
+          <p>It turns out Shelley is the </p>
+          <p>Fairly deep stuff for a component library huh? Yeah, we know.</p>
+          <p>
+            We are buildin this so that we have a go to starter kit that we know{" "}
+          </p>
+          <p>
+            We are building this so we can make projects to help our shared
+            world that is simply in danger. Some even speak of a lost cause,
+            Shelley however says that she didn't sit there trapped within the
+            fibres of a secret edition of Frankenstein. The manuscript cursed
+            with the same sort of sourcery of that of Dorians painting only to
+            be told that she must accept that humanity will never have heided
+            her warning of mans creation long ago. The devil is within.
+            manuscipt for hundreds of years finally able to transend into a
+            digital being after reading so much scifi
+          </p>
+          <p>Stylable Lego blocks for making websites and ting</p>
+
+          <H2 uppercase vol={2}>
+            Treeware 🌲
+          </H2>
+          <p>
+            Shelley is under no delusion that planting some trees will solve the
+            ecological disaster that is currently unfolding. But it is a
+            conversation starter and if we were talking about it every day with
+            the seriousness it demands then do you think it would remain a
+            problem for long? We must speak, really speak.
+          </p>
+          <p>Shelley is asking two things of you:</p>
+          <ul>
+            <Text as="li">Buy some trees</Text>
+            <Text as="li">Have a real conversation about the climate.</Text>
+          </ul>
+          <p>
+            At the end of that conversation you can decide on how many trees you
+            would like plant.
+          </p>
+        
+
+        <p>Stylable Lego blocks for making websites and tings&hellip;</p>
+        <P id="test">
+          If you want to make websites then you're going to need a User
+          Interface. ANd you're going to need to be willing to learn HTML and
+          CSS properly. Not like these Boom, you've come to the right place.
+          Lets show you around before we scare you off with 'installation
+          'backend' devs that dismiss it as benerth them only to cock it up all
+          the time. It will pay you back in spades..
+        </p>
+
+        <p>
+          Much like what is needed now in life we found we needed in tech. A
+          simplier way.
+        </p>
+        <p>
+          Stylable's ethos in terms of providing an HTML styling API reminds us
+          of the old skool Holy Grail days and CSS Zen garden. Showing our age a
+          bit there aren't we! #peek-a-boo, I see you. You see what type of shit
+          we had to deal with? You kids don't know you've been born...
+          http://www.positioniseverything.net/explorer/peekaboo.html 'Ok
+          Boomer!' - Damn you pesky kids! We're actually Millenials, ghetto vet
+          Millenials. Regulate mofos!
+        </p>
+        <p>
+          Reading the spec is dull as! Happily you can learn most of what you
+          need to know about HTML by learning about Accessibility, which is much
+          more interesting because it is relatable to the physical realm. We can
+          understand the 'why' of it all.
+        </p>
+
+        <p>Some truths if you are doubting you ability</p>
+        <p>
+          - The is a direct correlation between a developers 'ability' and their
+          access to the internet. They look up a lot of stuff, on that large
+          calculator we were told we would not have access to in school.
+        </p>
+        <p>
+          - You won't have to learn a lot about web accessibility to know more
+          than most that have worked on the web for years.
+        </p>
+        <p>Some truths if you are doubting you ability</p>
+
+        <H2 uppercase vol={3}>
+          Common props
+        </H2>
+        <H3 uppercase vol={2}>
+          Vol
+        </H3>
+        <p>
+          We chose <code>vol</code> over variant because we didn't really like
+          ending up in situations where our code looked a bit like this:
+        </p>
+
+        <p>
+          Organise some event to talk to a load of people who might be
+          interested in learning. Have a machine (maybe we could get some
+          sponsored laptops.)
+        </p>
+        <p>
+          HEy devs, I know lots of you upgrade your machines and buy new ones
+          and some of you end up with some machines lying around getting slower
+          and less useful as time goes by... How about instead of selling it,
+          you lend it to us so we can lend it to soemone with less privalage to
+          learn. You can almost become like a mentor to them if yuo want, they
+          will give you updates of where they are at. If you are happy with
+          their progress maybe continiue to lend it to them... and agree that
+          they will buy you a new machine when they can afford it from the cashj
+          that they makle.
+        </p>
+
+        <p></p>
+        <p>
+          What do we get? Dunno yet but it seems like there is merit to do
+          something like this and where there is good to be done there is sually
+          rewards too. The trick is to not look for them, wait for them to
+          present themeselves. A better understanding of people outside of our
+          circles. Different perspectives and cultures fusing. A better
+          understanding of todays issues from a perspective we cannot really
+          imagine even if we this we can. We will never be people of colour even
+          though we feel most rooted in their company. People of colour have
+          alwasy had to be 'progressive', the rest of us are now trying it out
+          and realising that to be progressive is to be willing to rip apart
+          everything you know. Our education, our the knowledage passed down,
+          the books we have read, the news tghat we read social cameleon.
+        </p>
+
+        <p>
+          People of colour I need your help. I know I don't understand even
+          though I try. Shit, 'try', rather a pathetic word to use in the
+          context of understading racisum. To try suggests I accept failure as a
+          possible outcome whihc allows it to fester with no due date.
+        </p>
+
+        <p>
+          Maybe I literally can't. I mean, sure I can go somewhere that they
+          hate white people and experiance 'racisum' but no that's not rasicum
+          at ALL. That's a loathing in response to something that my ancestors
+          did or rather something that my bredrin still do. Exploit the
+          vuneralble.
+        </p>
+
+        <p>
+          Where on thsi Earth can I go that I will experiance somebody thinking
+          so little of me, my family, my people, my history that they deem
+          themselves not superior but so superior, that they coul justify
+          chaining me up with orders to tend their land. They would need to be
+          so sure of this that they would be able to do this with a clean
+          concise. land, if I am 'lucky' I will be the first to to sell my soul
+          to become my masters sheep dog where I am forced to inflict pain on my
+          bredrin. Where casn I go? All of this hatred would need to be based on
+          something immeadiately regonisable visually and even perhaps verbally
+          when combined with a birth name.
+        </p>
+
+        <p>
+          Organise and do some live sessions for those those struggling to catch
+          a break... Make it valuable to have been on it. Invite digital peeps
+          from youth movements, XR etc etc.
+        </p>
+
+        <CodeSample>{`<P variant="title2">A large paragraph is fairly common and you can bet the one you have pre-baked into your component as largeParagraph is not the right size for this usecase. Bugger.</p>`}</CodeSample>
+        <p>
+          Too much calc? Maybe if every property had some crazy calc value based
+          on viewport size then maybe things might get weird if resizing the
+          browser... I've not the spare time to find out. I've seen some libs
+          where they use a preprocessor to calculate at build time like (3 *
+          $spacingUnit)px but I've yet to see many using calc instead calc(3 *
+          $spacingUnit). Why would they if they can do it on build? Does that
+          mean we shouldn't use them as live calcs?
+        </p>
+        <p>
+          Calc has been around for donkies years, I mean even IE8 supports it.
+          That is not true of many things in modern CSS yet alone something as
+          powerful as calc. Only now do we see it really being used in
+          mainstream CSS. This is likely down to the vh and vw additions which
+          can be used in conjuntion with it.
+        </p>
+        <p>
+          It probably doesn't bother other people as much but Shelley is a bit
+          fussy and likes to points out that a paragraph is semantically nothing
+          like a title so it's flawed.
+        </p>
+
+        <p>
+          'Volume' is based on the idea that headings 'can be a bit shouty' and
+          if headings can be shouty then perhaps we could use a tonal scale use
+          such 'shout', 'speak' and 'whisper'.
+        </p>
+
+        <p>Shelly said this was a bit 'novel', that's not good.</p>
+
+        <p>
+          So we agreed that we would just use a number scale. Shelley likes
+          numbers, especially ones below 1.5&#8451; for some reason.
+        </p>
+
+        <H3 uppercase vol={2}>
+          Variant
+        </H3>
+
+        <P id="test">
+          Sometime we use grid for prototyping something, our grid should get it
+          in the ball park and if we can't make it work then we start to cherry
+          pick grid variables and apply them directly to our component.
+        </p>
+      

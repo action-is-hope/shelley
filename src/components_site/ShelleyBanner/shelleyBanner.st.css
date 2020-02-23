@@ -3,6 +3,13 @@
   -st-default: Text;
 }
 
+
+:import {
+  -st-from: "../../themes/default/theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
 .logoGrid {
   /* background: rgba(0, 0, 0, 0.3607843137254902); */
 
@@ -29,6 +36,7 @@
   grid-column-end: outset-end;
   display: grid;
   justify-items: center;
+
   grid-row-gap: 24px;
   grid-template-columns: 8fr 4fr;
 
@@ -51,7 +59,8 @@
   grid-column-start: 1;
   /* margin-top: 16px; */
   color: #f8f8f9;
-  justify-self: start;
+  /* justify-self: start; */
+  justify-self: center;
   align-self: center;
   letter-spacing: 0.4em;
 
@@ -62,9 +71,10 @@
 .root Text.tagline {
   grid-row: 2;
   grid-column-start: 1;
-  justify-self: start;
+  /* justify-self: start; */
+  justify-self: center;
   align-self: center;
-  color: #ea91ff
+  /* color: #ea91ff */
 }
 
 .root Text.tld {

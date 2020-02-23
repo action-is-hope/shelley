@@ -79,10 +79,12 @@
   /* Volume 3 */
   Text.vol3 {
     font-size: value(--text-vol-3-scale);
-    line-height: 1.45;
+    /* line-height: 1.45; */
+    line-height: 1.8;
   }
 
   @media screen and (min-width: 1800px) {
+
     Text.vol3 {
       font-size: value(--text-vol-3-max);
     }
@@ -248,6 +250,7 @@
     padding: 0.1rem 0;
     /* outline: none; */
     color: #81c1ff;
+    color: #7fdcf9;
 
     border-bottom: 0.0625rem solid rgba(110, 164, 218, 0.5);
     transition: border-color .15s ease-out;
@@ -297,7 +300,6 @@
     margin-bottom: 12px;
     line-height: 1.45;
   }
-
 
 
   /* @todo: Move to some kind of layout / grid component... when we have one. *

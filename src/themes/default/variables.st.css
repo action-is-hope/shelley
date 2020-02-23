@@ -95,12 +95,56 @@
   --font-base-min: 1em;
   --font-base-max: 1.25em;
 
-  /* Scales - https://type-scale.com/ */
+  /* Scales - https://type-scale.com/ - Shelley likes to mix it up so we pulled in a bunch. */
   --minor-second: 1.067;
   --major-second: 1.125;
   --minor-third: 1.2;
   --major-third: 1.25;
   --perfect-forth: 1.333;
+
+  /**
+   * Volumes
+   *
+   * Our text volumes styles use need three values to be defined:
+   *
+   * - min: The minimum font size, this is the font size we want at our smallest 
+   *   expected screen size, 320px, 16px for us. We use this number as an input to our crazy 
+   *   modular fluid text CSS formula thingy that we found. It's cool. We 
+   *   can also use this number to set a CSS lock (https://css-tricks.com/css-locks/)
+   *   if we are concerned that the font might get to small... Watch maybe?
+   * 
+   * - max: The maximum font size, this is the font size we want at whatever screen size you
+   *   like, I think we chose 1800px. So when the browser is 1800px wide then I want the
+   *   text to be... 20px in our case. We also this number as an input to our crazy 
+   *   stolen formula.
+   *
+   * - scale: This is the font size we use in between the range 320px - 1800px. This
+   *   is the dynamic font-size that is always changing when the browser is winging 
+   *   around the 320px-1800px zone. If we din't have the CSS lock then it would just 
+   *   get bigger and bigger. This is the output of the crazyness. 
+   * 
+   *   The scale magically (read the article or just go with it) gives you back a value
+   *   that looks like this: calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *
+   *   So the browser looks at that and goes, "Right! Got it! 16px at 320px wide, 20px 
+   *   at 1800px wide and everything in between I will scale make floaty and fluid, 
+   *   ahhhhhhh all is well with the world.... Zen..."
+   *
+   *   Just to confuse you more Shelley has this all set in em values, so that made no 
+   *   sense but we like to add to the mystery. Here is how that works out:
+   *   20em = 320px
+   *   92.5em = 1800px
+   *   1em = 16px
+   *   1em = 16px
+   *   
+   *
+   *   Shelley loves it. It turns out you *can* teach an old digital entity 
+   *   new tricks.
+   *
+   *   Thanks and pops for the hard work and innovators:
+   *   - https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *   - https://type-scale.com/ 
+   *   - https://css-tricks.com/css-locks/
 
   /* Volume 1 */
   --text-vol-1-min: divide(value(--font-base-min), value(--major-second), value(--major-second));

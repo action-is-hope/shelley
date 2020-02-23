@@ -20,11 +20,19 @@
     margin-bottom: 16px;
   }
 
+  .card:first-child {
+    grid-column: 2 / span 7;
+    grid-row: 1 / span 2;
+  }
 
   .card {
-    grid-column: 2 / span 7;
+
     background: #ffffff21;
     background: #232631;
+
+    /* background: linear-gradient(15deg, #678, #6f8793);
+    background: linear-gradient(15deg, #14af83, #15b89a);
+    background: linear-gradient(15deg, #745fb5, #9a6dbb); */
     padding: 22px 1.45rem;
 
   }
@@ -43,9 +51,25 @@
   /* .card > p {
 margin-bottom: 11px;
 } */
+  .menuList {
+    margin-top: 2.9rem;
+    margin-bottom: 2.9rem;
+    padding: 0;
+    list-style: none;
+  }
 
+  .menuList>li>a {
+    display: block;
+    padding: 13px 1.45rem;
+    background: #181a23;
+    margin-bottom: 1px;
+  }
 
-
+  /* hints
+background: linear-gradient(15deg,#678,#6f8793);
+background: linear-gradient(15deg,#14af83,#15b89a);
+background: linear-gradient(15deg,#745fb5,#9a6dbb);
+*/
   /*
 Light bg dark test
 color: #4e4e4e;
@@ -64,7 +88,8 @@ color: #4e4e4e;
     background: #51d6de;
     background: #50de98;
     background: #99ffcd;
-    background: #92e6bd
+    background: #92e6bd;
+    background: #d1ffe9
   }
 
   .card+.card+.card {

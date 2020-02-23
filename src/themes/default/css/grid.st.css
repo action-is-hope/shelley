@@ -57,33 +57,7 @@ Grid>figure,
   margin-bottom: 2rem;
 }
 
-@supports (display: grid) {
 
-  /* Resetting the values used for the fallback. */
-  Grid>h1,
-  Grid>h2,
-  Grid>h3,
-  Grid>h4,
-  Grid>h5,
-  Grid>h6,
-  Grid>p,
-  Grid>ul,
-  Grid>ol,
-  Grid>dl,
-  Grid>blockquote,
-  Grid>pre,
-  Grid>img,
-  Grid>figure,
-  .gridColumnContent,
-  .gridColumnOutset1,
-  .gridColumnOutset,
-  .fullBleed {
-    margin-bottom: initial;
-    margin-left: initial;
-    margin-right: initial;
-    max-width: initial;
-  }
-}
 
 
 @st-scope Default {
@@ -131,6 +105,11 @@ Grid>figure,
 
 
 
+
+}
+
+@supports (display: grid) {
+
   .gridColumnOutset1 {
     /* set the grid lines */
     grid-column: outset1-start / outset1-end;
@@ -163,8 +142,32 @@ Grid>figure,
     /* mimics grid-row-gap */
     margin-bottom: 2rem;
   }
-}
 
+  /* Resetting the values used for the fallback. */
+  Grid>h1,
+  Grid>h2,
+  Grid>h3,
+  Grid>h4,
+  Grid>h5,
+  Grid>h6,
+  Grid>p,
+  Grid>ul,
+  Grid>ol,
+  Grid>dl,
+  Grid>blockquote,
+  Grid>pre,
+  Grid>img,
+  Grid>figure,
+  .gridColumnContent,
+  .gridColumnOutset1,
+  .gridColumnOutset,
+  .fullBleed {
+    margin-bottom: initial;
+    margin-left: initial;
+    margin-right: initial;
+    max-width: initial;
+  }
+}
 
 
 /* Grid.variant1>p {

@@ -16,9 +16,8 @@ const VisuallyHiddenDocs = () => {
 
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Allows us to leave hidden messages only visible to people using
-          assistive technology such as screen readers as well as to search bots
-          such as Google.
+          Allows us to leave hidden messages, visible only to those using
+          assistive technologies such as screen readers and to search bots...
         </P>
 
         {/* <P vol={4} className={text.intro}>
