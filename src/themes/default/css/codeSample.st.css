@@ -1,2 +1,64 @@
 /* import PropsDemo from "../../components_site/PropsDemo/PropsDemo.st.css";
 import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
+:import {
+  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-default: CodeSample;
+  /* -st-named:
+    cite,
+    content,
+    footer,
+    variant1,
+    variant2
+} */
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named:
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-accent-4-default,
+    --color-ui-default,
+    --color-background-2-default;
+}
+
+
+CodeSample {
+  /* margin: 50px */
+}
+
+
+CodeSample code :global(.prop b),
+CodeSample code :global(.prop)::after,
+CodeSample code :global(.st-modifier)::before,
+CodeSample code :global(.class-name) {
+  color: #4eea9d;
+}
+
+
+
+CodeSample code :global(.attr-name),
+CodeSample code :global(.constant),
+CodeSample code :global(.maybe-class-name),
+CodeSample code :global(.tag) {
+  color: value(--color-accent-1-default);
+  color: var(--color-accent-1, value(--color-accent-1-default));
+}
+
+CodeSample code :global(.punctuation) {
+  color: grey
+}
+
+CodeSample code :global(.keyword),
+CodeSample code :global(.number) {
+  color: value(--color-accent-3-default);
+  color: var(--color-accent-3, value(--color-accent-3-default));
+}
+
+CodeSample code :global(.string),
+CodeSample code :global(.attr-value) {
+  color: value(--color-accent-4-default);
+  color: var(--color-accent-4, value(--color-accent-4-default));
+}

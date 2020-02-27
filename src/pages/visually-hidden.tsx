@@ -9,6 +9,8 @@ import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../themes/default/css/text.st.css";
 
+// https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
+
 const VisuallyHiddenDocs = () => {
   return (
     <DefaultLayout>
@@ -17,7 +19,8 @@ const VisuallyHiddenDocs = () => {
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
           Allows us to leave hidden messages, visible only to those using
-          assistive technologies such as screen readers and to search bots...
+          assistive technologies such as screen readers but not only to
+          assistive tech, to search bots as well. Very interesting!
         </P>
 
         {/* <P vol={4} className={text.intro}>
@@ -27,6 +30,7 @@ const VisuallyHiddenDocs = () => {
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
+
         <CodeSample>
           {`import VisuallyHidden from "@action-is-hope/shelley";
 <VisuallyHidden>
@@ -34,17 +38,22 @@ const VisuallyHiddenDocs = () => {
 </VisuallyHidden>`}
         </CodeSample>
         <P>
-          Say hello to those people and help them more easily use features and
-          access content. The search engines will make better sense of it too so
-          there is a really tangable thing to look at in terms of direct{" "}
+          Say hello to everyone and help them access content and features more
+          easily. The little search bots will make better sense of it too,
+          giving us a tangable thing to look at in terms of direct{" "}
           <abbr title="Return on Investment">ROI</abbr> from time spent in this
-          area.
+          area. Damn it! Go away capitalisum with your <q>ROI</q> buzzword
+          babble. Um, no, <a href="https://babeljs.io/">babel</a> is something
+          different, magic. Not now.
         </P>
         <P>
-          Often referred to as <code>srOnly</code> elsewhere on the web and not
-          to be confused with <code>visibility: hidden</code> which will hide it
-          from everybody. Visually is different from visibility but we get
-          muddled up sometimes.
+          &apos;Visually Hidden&apos; as a concept is often referred to as{" "}
+          <code>
+            <abbr title="Screen Reader Only">srOnly</abbr>
+          </code>{" "}
+          and should not to be confused with <code>visibility: hidden</code>{" "}
+          which will hide stuff from everybody. Visually <em>sounds</em> like
+          visibility but it&apos;s not. Got it? Great, lets move on.
         </P>
         <H2 vol={4} uppercase>
           Why?
@@ -59,13 +68,12 @@ const VisuallyHiddenDocs = () => {
           you have lost all peripheral vision.
         </P>
         <P>
-          If you struggle with low vision you might be using a screen reader and
-          a cool feature that allows you read out all links on a page. Pretty
-          handy on the face of it right?
+          If you struggle with low vision, you might be using a screen reader
+          and a cool feature that allows you read out all links on a page.
+          Pretty handy on the face of it right?
         </P>
 
-        {/* We have no peripheral vision whatsoever. */}
-        <H2 vol={2} uppercase>
+        <H2 vol={3} uppercase>
           Example: See more
         </H2>
         <P>
@@ -73,17 +81,11 @@ const VisuallyHiddenDocs = () => {
           typical <em>see more...</em> link, like that you&apos;ve seen a
           hundred times, one that gives gives no meaningful context at all, just
           dots, three of them. How thoughtful.
-          {/* Lest take a look at a typical scenario on the web; a &rsquo;See
-          more&rsquo; link without any context. */}
         </P>
 
         <CodeSample>
           {`<h2>What is Climate Change?</h2>
 <p>Nasa has a great resource for kids/adults all about climate change.</p>
-<img 
-  alt="Childrens playground next to a fracking site." 
-  src="https://www.flickr.com/photos/momscleanairforce/30013805087/" 
-/>
 <p>
   <a href="https://climatekids.nasa.gov/climate-change-meaning/">See more...</a>
 </p>`}
@@ -91,23 +93,45 @@ const VisuallyHiddenDocs = () => {
         <P>
           How does a page full of those bad boys sound on our screen reader?
         </P>
-        <Blockquote variant={2}>
-          <P>See more... See more... See more... See more... See more...</P>
+        <Blockquote variant={1} citeVol={2} cite="Shelley 'Reader'">
+          <P vol={2}>
+            See more... See more... See more... See more... See more...
+          </P>
         </Blockquote>
         <P>
           Ahhh, crap! That&rsquo;s about as useful as expanding the worlds
-          airports in the wake of a planetary climate emergency.
+          airports in the wake of a planetary climate emergency or a high speed
+          train designed to serve them.
         </P>
         <P>
-          This is just one of many things that would likely piss off our screen
-          reader using alter-egos when using websites that do not adhere to the{" "}
+          This is just one of many things that would likely <em>iritate</em> our
+          screen reader using alter-egos when using websites that do not adhere
+          to the{" "}
           <a href="https://www.w3.org/TR/WCAG20/">
             Web Content Accessibiliy Guidelines 2.0 (WCAG)
           </a>{" "}
           which covers this type of stuff.
         </P>
 
-        <H3 vol={2} uppercase>
+        <P>
+          We found a{" "}
+          <a href="https://www.youtube.com/watch?v=ZUGHomfxTlY&feature=youtu.be&t=43">
+            fantastic clip demonstrating &apos;click here&apos; links on a
+            screen reader
+          </a>
+          , which you should check out.
+        </P>
+
+        <P>
+          FYI: Should you need to right a wrong you can do so semantically by
+          way of the <code>del</code> tag, very useful for:{" "}
+          <code>{`<del>HS2</del>`}</code> and it's happy companion the{" "}
+          <code>ins</code> tag is happy to help{" "}
+          <code>{`<ins>Ancient Woodland</ins>`}</code>. Perhaps we really need a{" "}
+          <code>{`<litfa>`}</code> tag.
+        </P>
+
+        <H3 vol={3} uppercase>
           Fixing the problem
         </H3>
         <P>
@@ -163,7 +187,8 @@ const VisuallyHiddenDocs = () => {
         <Blockquote
           citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html"
           cite="Link Purpose (In Context): Understanding Success Criterion 2.4.4"
-          accent={2}
+          accent={3}
+          variant={2}
           // cite={
           //   <>
           //     Link Purpose (In Context):{" "}
@@ -190,6 +215,8 @@ const VisuallyHiddenDocs = () => {
         <Blockquote
           citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html"
           cite="Link Purpose (In Context): Understanding Success Criterion 2.4.4"
+          variant={2}
+          accent={2}
         >
           <H2 vol={4}>Link Purpose (In Context): Understanding SC 2.4.4</H2>
           <P>
@@ -218,24 +245,30 @@ const VisuallyHiddenDocs = () => {
           &rsquo;tick box&rsquo; exercise and more thought provoking. Lets have
           a go at rewriting it from the perspective of our glorious users!
         </P>
-        <Blockquote cite="Shelley UI - Yes we are quoting ourselves.">
+
+        <P>
+          If you use assistive tech and would be interested in helping use
+          spread awareness let us know.
+        </P>
+
+        {/* https://offset.earth/about   */}
+        <Blockquote variant={2} accent={3}>
           <H2 vol={4}>
             Accessible Links: Good for your readers, good for{" "}
             <abbr title="Search Engine Optimisation">SEO</abbr>
           </H2>
           <P>
-            When reading out links by themsleves, I can get a good idea of where
+            When reading out links by themselves, I can get a good idea of where
             the link will take me or what it will do if I select it. Unless
             it&rsquo;s something like a game of &rsquo;snap&rsquo; where it
-            would kindda of defeat the point of the game if I can see through
-            the card. Obvs. ;-)
+            would kinda of defeat the point of the game if I can see through the
+            card. Obvs. ;-)
           </P>
         </Blockquote>
         <P>
-          Put yourself in the position of that screen reader user... Do you
-          really want to piss yourself off? Nah, don&rsquo;t do it! An inclusive
-          approach will lead to a better experience and superior SEO if you care
-          about such things.
+          Put yourself in the position of that screen reader user... An
+          inclusive approach will lead to a better experience and superior SEO
+          if you care about such things.
         </P>
 
         <P>

@@ -41,5 +41,7 @@
 /* The 'inner' button. */
 .inner {}
 
+.divider {}
+
 /* The tip element got for inline tool-tips on focus/hover. */
 .tip {}

@@ -55,14 +55,49 @@
     font-size: value(--base-font-size-lg);
   }
 
-  Button::inner {}
+  Button::inner {
+    /* margin-left:0.5em;
+        margin-right:0.5em; */
+  }
 
   /* Button COLOURS */
   /* DEFAULT */
   Button.c1 {
     background-color: var(--color-accent-2, value(--color-accent-1-default));
-    color: var(--color-ui, value(--color-ui-default))
+    color: var(--color-ui, value(--color-ui-default));
+    color: #333;
+
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    letter-spacing: .034em;
+    flex-flow: row-reverse;
+    font-weight: 500;
+    font-size: 16px;
+    justify-content: space-between;
   }
+
+  Button::divider {
+    display: inline-block;
+    width: 1.5em;
+  }
+
+  Button::divider::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 1px;
+    top: -1px;
+    bottom: -1px;
+    background: #196939;
+    right: 2em;
+  }
+
+  Button svg {
+    margin-right: -.5em
+  }
+
+
+  /* #49a1e0 , #69c598*/
 
   Button:hover {
     opacity: 0.7;

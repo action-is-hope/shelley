@@ -11,15 +11,6 @@
   -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
 }
 
-/* :import {
-  -st-from: "../variables.st.css";
-  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
-    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
-    --v1, --v2, --v3, --v4, --v5,
-} */
-
-
-
 :import {
   -st-from: "../../../components/Text/text.st.css";
   -st-default: Text;
@@ -30,7 +21,6 @@
 
   Logo {
     display: inline-flex;
-    /* transform: scale(.6); */
     transform-origin: 100% 120%;
     /* margin-top: -100%;
   margin-left: -96px; */

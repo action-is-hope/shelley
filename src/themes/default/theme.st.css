@@ -28,9 +28,14 @@
 
   /* Default site values which will be used for the fallbacks. */
   /* --color-accent-1-default: rgb(14, 97, 148);  */
-  --color-accent-1-default: rgb(83, 180, 218);
+  /* --color-accent-1-default: rgb(83, 180, 218); */
+  --color-accent-1-default: #65bfff;
+
   /* rgb(83, 180, 218) */
-  --color-accent-2-default: rgb(35, 196, 141);
+  --color-accent-2-default: #52fba7;
+  --color-accent-3-default: #ea91ff;
+  --color-accent-4-default: #f7e1b9;
+
   --color-background-1-default: rgb(23, 26, 35);
   --color-background-2-default: rgba(0, 0, 0, 0.4);
   --color-background-3-default: rgba(255, 255, 255, 0.15);
@@ -45,6 +50,7 @@
   --color-status-neutral-default: blue;
   --color-status-success-default: green;
   --color-ui-default: value(--light-01);
+  /* rgb(212, 212, 212) */
   --color-ui-default-raw: value(--light-01-raw);
 }
 
@@ -53,6 +59,8 @@
   /* Map default site values to equivalent CSS runtime variables, which are actually variables.*/
   --color-accent-1: value(--color-accent-1-default);
   --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
   --color-background-1: value(--color-background-1-default);
   --color-background-2: value(--color-background-2-default);
   --color-background-3: value(--color-background-3-default);
@@ -101,18 +109,24 @@
   font-family: value(--font-plain);
   font-size: 100%;
   font-weight: 200;
-  line-height: value(--ratio);
+  /* line-height: value(--ratio); */
   min-height: 100vh;
 }
 
 body {
   color: value(--color-ui-default);
   color: var(--color-ui, value(--color-ui-default));
+
+
   background-color: value(--color-background-1-default);
   background-color: var(--color-background-1, value(--color-background-1-default));
 
   /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150% */
   /* background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
+  /* background: linear-gradient(-45deg, rgb(16, 10, 86) 0%, rgb(43, 40, 43) 100%) 0% 0% / 150% 150%; */
+
+  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%;
+  background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
 }
 
 hr {

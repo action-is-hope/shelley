@@ -38,7 +38,8 @@
   --gutter-width-lg: 32px;
 
   /* Spacing */
-  --spacing-unit: 8px;
+  --spacing-unit: 0.69231rem;
+  /* 18px when at 1800px */
 
   /* Grid */
   --grid-gap-xs: 12px;
@@ -72,18 +73,7 @@
    * content sits 2 columns inside.
    *
    */
-  /* 12px, 13px, 14px, 15px, 16px */
-  --v1: calc(0.08vw + 1rem * (value(--ratio) / 1.8));
-  --v2: calc(0.08vw + 1rem * (value(--ratio) / 1.6));
-  --v3: calc(0.2vw + 0.92rem);
-  --v4: calc(0.333vw + 0.92rem * value(--ratio));
-  --v5: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio));
-  --v6: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio));
-  --v7: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
-  --v8: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
-  --v9: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
-  --v10: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
-  --v11: calc(0.333vw + 0.92rem * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio) * value(--ratio));
+
 
   /** 
    * Fluid text variables
@@ -135,8 +125,14 @@
    *   20em = 320px
    *   92.5em = 1800px
    *   1em = 16px
-   *   1em = 16px
+   *   1.25em = 20px
+   *
+   *   But wait... there is more...
    *   
+   *   calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *45px @ 2000 
+   *   and once you have wrapped you head around all of that and understand it, you 
+   *   know CSS fundermentals quite well. Fun isn't it? I have no hair, #justSaying.
    *
    *   Shelley loves it. It turns out you *can* teach an old digital entity 
    *   new tricks.

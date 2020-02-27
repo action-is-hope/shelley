@@ -11,6 +11,17 @@
 }
 
 :import {
+  -st-from: "../../../components/Blockquote/blockquote.st.css";
+  -st-default: Blockquote;
+}
+
+:import {
+  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-default: CodeSample;
+}
+
+
+:import {
   -st-from: "../theme.st.css";
   -st-default: Default;
 }
@@ -76,7 +87,7 @@ Grid>figure,
   Grid {
     /* max-width: default; */
     display: grid;
-    grid-column-gap: value(--grid-gap-xs);
+    grid-gap: value(--grid-gap-xs);
     /* grid-template-columns: value(--grid-template-columns-base-sm); */
     grid-template-columns: [full-bleed-start] auto [outset-start outset1-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset1-end outset-end] auto [full-bleed-end];
   }
@@ -90,7 +101,7 @@ Grid>figure,
   @media only screen and (min-width: value(--breakpoint-md)) {
     Grid {
       /* grid-column-gap: value(--grid-gap-md); */
-      grid-column-gap: 1.45rem;
+      grid-gap: 1.45rem;
       grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 6.1vw)) [outset1-start] repeat(1, minmax(0, 6.1vw)) [content-start] repeat(6, minmax(0, 6.1vw)) [content-end] repeat(1, minmax(0, 6.1vw)) [outset1-end] repeat(2, minmax(0, 6.1vw)) [outset-end] auto [full-bleed-end];
     }
   }
@@ -102,7 +113,6 @@ Grid>figure,
       grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [outset1-start] repeat(1, minmax(0, 5.1vw)) [content-start] repeat(6, minmax(0, 5.1vw)) [content-end] repeat(1, minmax(0, 5.1vw)) [outset1-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
     }
   }
-
 
 
 
@@ -170,6 +180,52 @@ Grid>figure,
 }
 
 
+
+Grid.variant1>p+p,
+Grid.variant1>p+h4,
+Grid.variant1>p+h5,
+Grid.variant1>h2+p,
+Grid.variant1>h3+p,
+Grid.variant1>h4+p,
+Grid.variant1>h5+p,
+Grid.variant1>h6+p,
+Grid.variant1>h4+h5 {
+  margin-top: calc(value(--spacing-unit) * 2);
+}
+
+
+
+Grid.variant1>blockquote,
+Grid.variant1>CodeSample {
+  margin-top: calc(value(--spacing-unit) * 4);
+  margin-bottom: calc(value(--spacing-unit) * 5);
+}
+
+/* Grid.variant1>blockquote+p {
+  margin-top: calc(value(--spacing-unit) * 3);
+} */
+
+/* Grid.variant1>p+blockquote {
+  margin-top: calc(value(--spacing-unit) * 4);
+}
+
+Grid.variant1>blockquote+p {
+  margin-top: calc(value(--spacing-unit) * 3);
+} */
+
+Grid.variant1>p+h2 {
+  margin-top: calc(value(--spacing-unit) * 4);
+}
+
+Grid.variant1>p+h3,
+Grid.variant1>h2+h3 {
+  margin-top: calc(value(--spacing-unit) * 4);
+}
+
+Grid.variant1>p+h6 {
+  margin-top: calc(value(--spacing-unit) * 2);
+}
+
 /* Grid.variant1>p {
     max-width: 37.8rem;
     1800 / 5.1
@@ -183,47 +239,9 @@ Grid>figure,
 
 @st-scope Default {
   Grid.variant1 {
-    grid-row-gap: 1.45rem;
+    grid-row-gap: 0;
   }
 
-
-  Grid.variant1>Text+Text.vol2 {
-    margin-top: 1.6rem;
-  }
-
-  Grid.variant1>Text+:global(h2)Text.vol3 {
-    margin-top: 1.74rem;
-  }
-
-  Grid.variant1>Text+Text.vol4 {
-    margin-top: 1.94rem;
-  }
-
-
-  Grid.variant1>Text+Text.vol5 {
-    /* margin-top: 2.25rem; */
-    /* margin-top: .85rem; */
-    margin-top: .83rem;
-    margin-bottom: -1px;
-    margin-bottom: -0.1rem;
-  }
-
-  Grid.variant1>Text+Text.vol6 {
-    margin-bottom: -0.3rem;
-    margin-top: 2.25rem;
-    padding-top: 3px;
-  }
-
-  /* Grid.variant1>Text.vol4:first-child,
-  Grid.variant1>Text.vol5:first-child,
-  Grid.variant1>Text.vol6:first-child {
-    margin-top: 0
-  } */
-
-
-  Grid.variant1>Text.vol7 {
-    margin-bottom: calc((value(--spacing-unit) * 2))
-  }
 }
 
 /* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */

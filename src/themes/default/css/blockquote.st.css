@@ -3,124 +3,175 @@
 :import {
   -st-from: "../../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;
+  -st-named:
+    cite,
+    content,
+    footer,
+    variant1,
+    variant2
 }
 
 :import {
   -st-from: "../theme.st.css";
   -st-default: Default;
-  -st-named: --color-accent-1-default, --color-accent-2-default, --color-ui-default, --color-background-2-default;
+  -st-named:
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-ui-default,
+    --color-background-2-default;
 }
 
-/* :import {
+:import {
   -st-from: "../variables.st.css";
-  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
-    --base-font-size-md, --base-font-size-lg, --ratio, --spacing-unit,
-    --v1, --v2, --v3, --v4, --v5,
-} */
+  -st-named:
+    --spacing-unit
+}
+
+:import {
+  -st-from: "../../../components/Text/text.st.css";
+  -st-default: Text;
+  -st-named: vol1, vol2, vol4;
+}
 
 @st-scope Default {
 
   /* Base styles. */
   Blockquote {
-    margin: 24px auto 40px;
+    /* margin: 24px auto 40px; */
   }
 
   Blockquote::content {
     display: grid;
-    /* grid-row-gap: 16px; */
-    /* grid-row-gap: 1.4rem; */
     grid-row-gap: 0.8rem;
     font-style: italic;
+    /* position: relative; */
   }
 
   Blockquote::cite {
     font-style: normal;
+    color: #cccbcb;
   }
 
-  Blockquote::cite a {
-    color: #ffb4d0
+  Blockquote::footer {
+    margin-top: value(--spacing-unit)
   }
 
-  Blockquote::content>* {
-    line-height: 1.3;
+  Blockquote::content Text:first-child::before {
+    content: '"';
+    color: #cccbcb;
+    display: inline-block;
+    font-family: Tahoma;
+    font-size: 1.6em;
+    margin-left: -0.3em;
+    margin-right: 0.2em;
+    opacity: 0.8;
   }
+
+
+  /**
+   * Variant 1 - Informal - 'chat'
+   * A useful style to get across a chat/conversation of some kind.
+   * @todo: should be able to alternate the styles for a chat? 
+   * Maybe we need a chat wrapper? Maybe in that format they should not be blockquotes...
+   */
+
+  Blockquote.variant1::content Text:first-child::before {
+    display: none;
+  }
+
+  Blockquote.variant1::content {
+    background: var(--color-background-2, value(--color-background-2-default));
+    background: rgba(255, 255, 255, 0.04);
+    background: rgba(64, 121, 230, 0.87);
+    padding: 16px 36px;
+    margin: 0 0 40px;
+    max-width: 600px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  Blockquote.variant1::content::before {
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--color-background-2, value(--color-background-2-default));
+    border-top: 20px solid rgba(255, 255, 255, 0.04);
+    border-top-color: rgba(64, 121, 230, 0.87);
+    bottom: -20px;
+    content: "";
+    position: absolute;
+    left: 20px;
+  }
+
+  /* rgba(64, 121, 230, 0.87) */
+  /* rgba(20, 85, 210, 0.87) */
+
 
   /**
    * Variant 1 - 'academic'
    * A typical main body style for proper quotes.
    */
 
-  Blockquote.variant1 {
+  Blockquote.variant2 {
     /* background: rgba(0, 0, 0, 0.4); */
     background: var(--color-background-2, value(--color-background-2-default)) padding: 1.4rem 42px;
     background: rgba(255, 255, 255, 0.04);
     border-radius: 4px;
     position: relative;
     width: 100%;
+    font-size: 92.5%;
   }
-
-  Blockquote.variant1::content {
-    position: relative
-  }
-
-  Blockquote.variant1::content::before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 5px;
-    left: -20px;
-    height: calc(100% - 10px);
-    width: 2px;
-    /* background: #e52e71; */
-
-  }
-
-  Blockquote.variant1::footer {
-    margin: 20px 0 0;
-  }
-
-  /* Accent colors */
-  Blockquote.variant1.accent1::content::before {
-    background: var(--color-accent-1, value(--color-accent-1-default));
-  }
-
-  Blockquote.variant1.accent1::cite a {
-    color: var(--color-accent-1, value(--color-accent-1-default));
-  }
-
-  Blockquote.variant1.accent2::content::before {
-    background: var(--color-accent-2, value(--color-accent-2-default));
-  }
-
-  Blockquote.variant1.accent2::cite a {
-    color: var(--color-accent-2, value(--color-accent-2-default));
-  }
-
-  /**
-   * Variant 2 - 'chat'
-   * A useful style to get across a chat/conversation of some kind.
-   * @todo: should be able to alternate the styles for a chat? 
-   * Maybe we need a chat wrapper.
-   */
 
   Blockquote.variant2::content {
-    background: var(--color-background-2, value(--color-background-2-default));
-    background: rgba(255, 255, 255, 0.04);
-    padding: 16px 36px;
-    margin: 0 auto 40px;
-    max-width: 400px;
-    border-radius: 4px;
     position: relative;
   }
 
+  Blockquote.variant2::content Text:first-child::before {
+    display: none;
+  }
+
   Blockquote.variant2::content::before {
-    border-right: 20px solid transparent;
-    border-top: 20px solid var(--color-background-2, value(--color-background-2-default));
-    border-top: 20px solid rgba(255, 255, 255, 0.04);
-    bottom: -20px;
-    content: "";
+    content: '"';
+    display: inline-block;
     position: absolute;
-    left: 20px;
+    /* top: -0.01rem;
+    left: calc(-1.45rem - 38px);
+    font-size: 5.5rem; */
+    font-family: Tahoma;
+    opacity: 0.8;
+    line-height: 1rem;
+    /* text-shadow: 2px 2px #ffffff;*/
+    top: -0.2rem;
+    left: calc(-1.35rem - 38px);
+    font-size: 5rem;
+  }
+
+
+  Blockquote.accent1::cite {
+    color: #cccbcb
+  }
+
+
+  /* Accent colors */
+
+  /* accent1 */
+  Blockquote.accent1::cite a,
+  Blockquote.accent1::content::before,
+  Blockquote.accent1::content Text:first-child::before {
+    color: var(--color-accent-1, value(--color-accent-1-default));
+  }
+
+  /* accent2 */
+  Blockquote.accent2::content::before,
+  Blockquote.accent2::cite a,
+  Blockquote.accent2::content Text:first-child::before {
+    color: var(--color-accent-2, value(--color-accent-2-default));
+  }
+
+  /* accent3 */
+  Blockquote.accent3::content::before,
+  Blockquote.accent3::cite a,
+  Blockquote.accent3::content Text:first-child::before {
+    color: var(--color-accent-3, value(--color-accent-3-default));
   }
 
 }

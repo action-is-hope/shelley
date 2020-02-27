@@ -1,7 +1,7 @@
 /** Logo.tsx */
 import React from "react";
 import style from "./shelleyBanner.st.css";
-import classNames from "classnames";
+import classnames from "classnames";
 import Logo from "../Logo/Logo";
 import Text from "../../components/Text/Text";
 import Grid from "../../components/Grid/Grid";
@@ -15,7 +15,7 @@ const ShelleyBanner = ({
   ...rest
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Grid {...style(classNames(style.root, classNameProp), {}, rest)}>
+    <Grid {...style(classnames(style.root, classNameProp), {}, rest)}>
       <div className={style.internalGrid}>
         <Text as="h1" className={style.title} uppercase vol={8}>
           Shelley

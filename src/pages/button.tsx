@@ -31,12 +31,14 @@ const ButtonDocs = () => {
     <DefaultLayout>
       <Grid variant={1}>
         <P>This is a basic button.</P>
+        <Text as="p">
+          <Button ref={test} onClick={() => console.log("HI")}>
+            Boom
+          </Button>
+        </Text>
       </Grid>
 
       <div>
-        <Button ref={test} onClick={() => console.log("HI")}>
-          Boom
-        </Button>
         <Button onClick={() => onButtonClick()}>Boom</Button>
       </div>
     </DefaultLayout>

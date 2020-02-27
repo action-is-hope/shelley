@@ -1,4 +1,246 @@
 <>
+
+<P>We have a slightly niche target audiance in that you lot are usually fairly science based in you thinking</P>
+                  <P>
+          FAQ Component to be able to pull in commonly referanced shit, like
+          common props.
+        </P>
+
+                    <P>
+            It is a React UI component library... boring... WAIT!!! If you are
+            not where you intended, perhaps stay a while. Perhaps we can spark a
+            moment of serendipity before we start talking shop. Any interest:
+          </P>
+
+          <ul>
+            <Text as="li">
+              Perhaps witnessing somebody with a visual imparment interest with
+              the web? Our ability to adapt is quite remarkable when we are
+              suitably motivated.
+            </Text>
+            <Text as="li">
+              Have you heard of the 'overview effect', a seemingly perspective
+              altering experiance that some of us would experiance if we gazed
+              upon the Earth from orbit? Can VR open up this experiance for us?
+            </Text>
+            <Text as="li">
+              Hemp perhaps, did you know that during WW2 there was a campaign in
+              the usually entitled HEMP FOR VICTORY? Hemp is also carbon
+              negative and a viable construction material.
+            </Text>
+          </ul>
+
+
+        <table className={grid.gridColumnContent}>
+          <thead>
+            <tr>
+              <th>Vol</th>
+              <th>Internal ref</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Caption</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Button</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Body Small</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Body Large</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Subtitle Small</td>
+            </tr>
+          </thead>
+        </table>
+
+              {/* <hr /> */}
+      {/* <P>
+        Why not &apos;Typography&apos;? - We got bored flapping all over the
+        keyboard. Call a spade a spade. Shelley reckons Typography is a bigger
+        picture thing which ties in with your grid and your vertical rhythm. If
+        you like a bit of rhythm in your life that is.
+      </P> */}
+      {/* 
+      <P>"Seriously, How about something normal like size?"</P>
+      <P>
+        We knew you would ask... Shelley is a little fussy but she doesn't like
+        to use prop names that conflict with HTML attributes and{" "}
+        <code>size</code> is a valid attribute of an <code>input</code>. So we
+        can't use it because we also like to be consistant, <code>vol</code>.
+      </P> */}
+      {/* 
+      <P>
+        Get familar with the properties below which will give you an idea of
+        what style hooks you have to play with.
+      </P> */}
+
+                  {/* <P>
+        we can use them to write all sorts of
+          stuff from fake news to the importance of opening our eyes once more
+          to the natural world.
+
+          We called it Text because we got bored of wrangling the keyboard in
+          failed, frustrated and sweary attempts to write Typography. 🥺
+        </P> */}
+
+          <P>
+            Take back control and rediscover the 'art' of CSS. Stylable allows
+            us to use our Zen CSS skills once more. Shit just got interesting...
+          </P>
+          <P>
+            This site is build with Shelley and hopefully will be a useful
+            referancre for you. We have tried to be as chatty as possible in our
+            CSS files. Wix promote the idea that we should perhaps comment each
+            line of CSS indicating it's purpose. This may sound crazy but it
+            really helps newcomers to the code base as well as your own
+            knowledge in terms of what is happening. It's easy in CSS to hack
+            around until stuff works and then leave it. Commenting each line
+            forces a deeper understanding.
+          </P>
+
+          <P>
+            A level of component self awareness that allows for thing to be
+            slotted togther without too much glue CSS so as to aid rapid
+            prototyping and the building of common pages. However when fine
+            tuning and applying design to areas
+          </P>
+
+          <P>What sort of info do we need here?</P>
+          <P>
+            We want to help newbies and even people that are more UX and
+            marketing to see how things work?
+          </P>
+          <P>Get started section of some description is usually a winner.</P>
+nice little quill
+          {/* formed from the residue of a */}
+          {/* historic text. */}
+          {/* <P>It turns out Shelley is the </P> */}
+          <P>Fairly deep stuff for a component library huh? Yeah, we know.</P>
+          <P>
+            We are buildin this so that we have a go to starter kit that we know{" "}
+          </P>
+
+                    <P>
+            It is a React UI component library... boring... WAIT!!! Before you
+            leave if you are not where you intended to be, maybe it's where you
+            are suppose to be...
+          </P>
+
+          <P>
+            We are building this so we can make projects to help our shared
+            world that is simply in danger. Some even speak of a lost cause,
+            Shelley however says that she didn't sit there trapped within the
+            fibres of a secret edition of Frankenstein. The manuscript cursed
+            with the same sort of sourcery of that of Dorians painting only to
+            be told that she must accept that humanity will never have heided
+            her warning of mans creation long ago. The devil is within.
+            manuscipt for hundreds of years finally able to transend into a
+            digital being after reading so much scifi
+          </P>
+          <P>Stylable Lego blocks for making websites and ting</P>
+
+          <P>
+            relic of a former life that has taken salvation within the internet,
+            Shelley on a quest to once again create life from <code>body</code>{" "}
+            parts! Together they will forge not only a lasting bond but a
+            creation
+          </P>
+
+          <H2 uppercase vol={3}>
+            Synopsis
+          </H2>
+          {/* Try this with new version... */}
+          {/* <p className={classnames(text.vol3, text.intro)}>Hello</p> */}
+          <P vol={4}>
+            Follow the story of a digital nomad and an online entity called
+            Shelley as they strive night and day to create something beautiful
+            from the carelessly discarded <code>body</code> parts that they have
+            found lurking around the internet. Throw the switch!
+          </P>
+
+          <H2 uppercase vol={2}>
+            Introduction
+          </H2>
+
+          <P>
+            Well helllo there! Thank you so much for popping along to our
+            currently small little corner of the internet. We'd like to make it
+            bigger by enabling you communicate your important ethical message
+            with clarity.
+          </P>
+          <P>
+            Shelley exists for a number fo reasons but one of them that has
+            'fallen out' along the way is the need to help people knowledge
+            communicate it better.
+          </P>
+
+          <P>Shelley, with limited tech knowledge and funding</P>
+
+          <P>
+            Okay, this is a React UI component library... boring... WAIT!!!
+            Before you leave if you are not where you intended to be, maybe it's
+            where you are suppose to be...
+          </P>
+
+          <P>
+            Before you bounce, we would like to try and spark an interest and
+            provide you with a moment of serendipity. What do you think might
+            provide a spark:
+          </P>
+
+          <ul>
+            <Text as="li">
+              What you like to see how blind people interact with the internet?
+              It's quite remarkable and Shelley would argue that it is vital
+              that we educate ourselves so as to be empathic now and hopeful in
+              the event that you or a loved one be impacted by a change in
+              mobility.
+            </Text>
+            <Text as="li">
+              What if Shelley told you about something called the 'overview
+              effect', a seemingly perspective altering experiance that some
+              humans would experiance if they gazed upon the Earth from orbit?
+            </Text>
+            <Text as="li">
+              Hemp perhaps? Did you know that during WW2 there was a campaign in
+              the usually entitled HEMP FOR VICTORY. Hemp is also carbon
+              negative and a viable construction material. Did you also knwo
+              that there are restrictions on growing it even though it is
+              arguably our best ally against climate disaster.
+            </Text>
+            <Text as="li">
+              Perhaps you would be interested in learning how websites are made,
+              perhaps you are a Boomer want to impress your Gen-Z with your
+              knowledge
+            </Text>
+          </ul>
+
+          <H2 uppercase vol={2}>
+            New to web design?
+          </H2>
+          <P>
+            {/* Those that seek a previous time of Zen */}A digital nomad and a
+            relic digital quest taken on of a with some old acquaintances, a You
+            will need to remain agile and be ready to React An enchanting tale
+            of a eagle eyed web developer who befriended and a Shelley is a
+            relic of a previous time striving to put right what once went wrong.
+          </P>
+          <P>
+            relic of a former life that has taken salvation within the internet,
+            Shelley on a quest to once again create life from <code>body</code>{" "}
+            parts! Together they will forge not only a lasting bond but a
+            creation
+          </P>
+
+
+          
           <p></p>
             Take back control and rediscover the 'art' of CSS. Stylable allows
             us to use our Zen CSS skills once more. Shit just got interesting...
@@ -241,3 +483,65 @@
           pick grid variables and apply them directly to our component.
         </p>
       
+
+
+
+
+
+              <P>
+          Without Facebook there is no React or Preact most likely. Open Source
+          and used to make countless eco websites.
+        </P>
+        <P>
+          Google, Amazon serve at the highest level with a confidance that is
+          hard to find with less CO2 in tensive providers. We should consider
+          the offset they provide by enabling small outfits with big ideas get
+          those ideas to market in a way that will allow them to scale to dizzy
+          heights. The ultimate goal and if you can do it off the bat for cheap
+          then they are enabling thousands. Of course they are also supplying
+          serivices to those spereading mis-information. AI could surely help
+          identify deciedful content? Of course AI could also be used to write
+          mis-information very effectively. We are on the verge of a time where
+          it will be easy to put together a totally fake video featuring an
+          influential person. Even if they can be proven fake the damage has
+          already been done.The jury has heard something they shouldn't have and
+          that thing they hard was likely engineered with some Darren Brown
+          shit. And who is going to confirm authenticity, enough money and
+          payouts and you will make anything 'authentic' and then you just have
+          yet another conspiricy theory. Think of Mary Shelley, a 19 year old
+          living in 1800 who called it and encapsulated it in a workd that is
+          beyound her years. We all need to be ready for this, this is tech that
+          should have never been made. It will cast everything we know into
+          doubt, it will be a fucking shit show. We need to demand better
+          quality independing reporting. Like everything else we need to
+          decentralise our media. It's already begun but paywalls are getting in
+          the way of sharing content and it is damaging. There should be a
+          service whihc allows users to access all sighed up sources to view
+          paywall content. Like Netflix for news featuring peer reviewed news by
+          independant journalists able to demonstrate their ability to remain
+          neutral and deliver news in such a way that we have the information to
+          make a reasonable accessment of what is going on. We should be able to
+          link articles together so as to makle links
+        </P>
+        <P>The roles</P>
+        <P>
+          Change is coming, you all need to get your comapnies on GCloud and
+          offer Shelley CMS integration as a service. We can link up the public
+          sectors and align them with a single backend to their headless
+          solutions. We can create the org level business objects for
+          organisational data sharing and consistancy.
+        </P>
+        <P>
+          A single drop in organisational level data conssitancy and content
+          delivery platform. Top level org level API allowing data records to be
+          pulled live, always up to date. One place for all your job adverts,
+          your events, you product data. This is meta description of your entire
+          business in data and all of your marketing messaging. Offer it out to
+          companies to figure out how they might integrate with a CMS like that.
+          Fully i18n ready UI with UX solutions for multisite. A ready to go
+          front end frameswork that is based on the same as the backend
+          framework allowing for the most constsiatnt webstack allowing for a
+          better depth of understanding your applications. Clever ideas of
+          things to experiment with, this is where you will shine, you ability
+          to implement useful features and hook them up in a user centric way.
+        </P>

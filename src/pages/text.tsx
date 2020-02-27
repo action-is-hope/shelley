@@ -1,9 +1,7 @@
 import React from "react";
-import Link from "gatsby-link";
-import classnames from "classnames";
 import DefaultLayout from "../layouts";
 /* Shelley */
-import Text, { P, H1, H2 } from "../components/Text/Text";
+import Text, { P, H2, H3, H4 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../components_site/CodeSample/CodeSample";
@@ -51,14 +49,7 @@ const TextDocs = () => {
           Text is for presenting words, we love words, they&apos;re the best,
           nobody knows more about words than us. Ridiculous.
         </P>
-        {/* <P>
-        we can use them to write all sorts of
-          stuff from fake news to the importance of opening our eyes once more
-          to the natural world.
 
-          We called it Text because we got bored of wrangling the keyboard in
-          failed, frustrated and sweary attempts to write Typography. 🥺
-        </P> */}
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
@@ -67,60 +58,18 @@ const TextDocs = () => {
 <H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
 <P>The mighty paragraph, defaults to a volume of 3.</P>
 <Text as="span">Text with your choice of tag via the "as" prop.</Text>`}</CodeSample>
-        <P>
-          FAQ Component to be able to pull in commonly referanced shit, like
-          common props.
-        </P>
+
         <P>
           Shelley uses a volume property, <code>vol</code> for the general
           sizing of components. Text accepts <code>{`vol={1-12}`}</code> as well
           as an option to turn it off, <code>{`vol={false}`}</code>. Simples.
         </P>
         <P>
-          No gutter prop? Meh, you can add custom class for this if you want but
-          we found margins were best set in place on as part of a
-          context/surface/container like `formatAside, formatArticle` else you
-          will be overriding a lot. You will likley have helpers for spacing
-          defined elsewhere, your grid perhaps. That's where I think we will put
-          ours initially at lease.
-        </P>
-
-        <table className={grid.gridColumnContent}>
-          <thead>
-            <tr>
-              <th>Vol</th>
-              <th>Internal ref</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Caption</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Button</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Body Small</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Body Large</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Subtitle Small</td>
-            </tr>
-          </thead>
-        </table>
-        <P>
           Using <code>{`vol={false}`}</code> is useful when we need all of the
           text styling apart from font-sizing, which is to be defined via custom
           class or by styling it as an named import inside of another component.
           {/* https://24ways.org/2017/styling-components-typed-css-with-stylable/ */}
         </P>
-
-        {/* <H2 vol={4}>Getting into the detail:</H2> */}
       </Grid>
       <Grid variant={1}>
         <PropsDemo
@@ -141,13 +90,10 @@ const TextDocs = () => {
           <Text
             id="username"
             as="p"
-            // name="username"
-            // error={true}
             // underline={true}
             vol={TextDemoProps[0].value}
             truncate={TextDemoProps[1].value}
             uppercase={TextDemoProps[2].value}
-            // autoFocus
           >
             {TextDemoProps[3].value}
           </Text>
@@ -214,7 +160,6 @@ Text.TupacOrBiggie {}
           . Just map the values into respective volume selectors above.
         </P>
         <P>
-          {" "}
           <strong>Note: </strong>We set our typical copy text to a volume of
           three and then scale up/down from there; <code>1</code> is small,{" "}
           <code>12</code> is big. Just define the ones you need, it is doubtful
@@ -228,7 +173,7 @@ Text.TupacOrBiggie {}
         <P>
           Shelley got adventurous and decided upon a full on fluid / modular
           scale. Typical. We quite like it so far, it was a bit trippy to set up
-          but now it's working it seems solid.{" "}
+          but now it&apos;s working it seems solid.{" "}
           <a href="https://www.smashingmagazine.com/2016/05/fluid-typography/">
             Smashing mag did a worthwhile piece on fluid typograhy
           </a>{" "}
@@ -245,7 +190,7 @@ Text.TupacOrBiggie {}
         </P>
 
         <P>
-          Shelley reckons "it&apos;s a touch" and we have left some
+          Shelley reckons &quot;it&apos;s a touch&quot; and we have left some
           [LINK]comments in our code so you can get a better idea of it all as
           and when you feel up to it.
         </P>
@@ -260,32 +205,10 @@ Text.TupacOrBiggie {}
         <H2 vol={2} className={grid.mbSmall} uppercase>
           Preview:
         </H2>
-        {/* 
-        <div className={classnames(grid.exampleBox, grid.gridColumnOutset1)}>
-          <P vol={1} id="hllo22" data-test="hi">
-            vol 1. Text
-          </P>
-          <P vol={2}>vol 2. Text</P>
-          <P>vol 3. Text</P>
-          <P vol={4}>vol 4. Text</P>
-          <P vol={5}>vol 5. Text</P>
-          <P vol={6}>vol 6. Text</P>
-          <P vol={7}>vol 7. Text</P>
-          <P vol={8}>vol 8. Text</P>
-          <P vol={9}>vol 9. Text</P>
-          <P vol={10}>vol 10. Text</P>
-        </div> */}
       </Grid>
 
-      {/* <hr /> */}
-
-      {/* <Text as="label" htmlFor="hhh" vol={1} id="hllo22" data-test="hi">
-      vol 1. Text
-    </Text> */}
-
       <Grid>
-        {/* <div className={classnames(grid.exampleBox, grid.gridColumnOutset1)}> */}
-        <P vol={1} id="hllo22" data-test="hi">
+        <P vol={1} data-test="your-id">
           vol 1. Text
         </P>
         <P vol={2}>vol 2. Text</P>
@@ -297,45 +220,20 @@ Text.TupacOrBiggie {}
         <P vol={8}>vol 8. Text</P>
         <P vol={9}>vol 9. Text</P>
         <P vol={10}>vol 10. Text</P>
-        {/* </div> */}
       </Grid>
-      {/* <hr /> */}
-      {/* <P>
-        Why not &apos;Typography&apos;? - We got bored flapping all over the
-        keyboard. Call a spade a spade. Shelley reckons Typography is a bigger
-        picture thing which ties in with your grid and your vertical rhythm. If
-        you like a bit of rhythm in your life that is.
-      </P> */}
-      {/* 
-      <P>"Seriously, How about something normal like size?"</P>
-      <P>
-        We knew you would ask... Shelley is a little fussy but she doesn't like
-        to use prop names that conflict with HTML attributes and{" "}
-        <code>size</code> is a valid attribute of an <code>input</code>. So we
-        can't use it because we also like to be consistant, <code>vol</code>.
-      </P> */}
-      {/* 
-      <P>
-        Get familar with the properties below which will give you an idea of
-        what style hooks you have to play with.
-      </P> */}
+
       <Grid variant={1}>
         <P>
-          Test with custom class and turning volume off to aid with custom
-          styles.
-        </P>
-        <P vol={false} className={text.large}>
-          Custom class no volume applied.
-        </P>
-        <P>
-          The next example illustrates the Text component in use as part of an
-          old skool global class <code>bodyCopy</code> class. Is this bad? We
-          could provide another component?
+          We found margins were best set in place on as part of a
+          context/surface/container like `formatAside, formatArticle` else you
+          will be overriding a lot. You will likley have helpers for spacing
+          defined elsewhere, your grid perhaps. That&apos;s where I think we
+          will put ours initially at lease.
         </P>
 
-        <H1 vol={9}>IPCC</H1>
+        <H2 vol={9}>IPCC</H2>
 
-        <H2 vol={6}>The Importance of the Ocean and Cryosphere for People</H2>
+        <H3 vol={6}>The Importance of the Ocean and Cryosphere for People</H3>
         <P>
           All people on Earth depend directly or indirectly on the ocean and
           cryosphere. The global ocean covers 71% of the Earth surface and
@@ -357,8 +255,8 @@ Text.TupacOrBiggie {}
           irreversibility.
         </P>
         <P>&hellip;</P>
-        <H1 vol={6}>Observed changes and impacts</H1>
-        <H2 vol={5}>Observed Physical Changes</H2>
+        <H3 vol={6}>Observed changes and impacts</H3>
+        <H4 vol={5}>Observed Physical Changes</H4>
         <P>
           Permafrost temperatures have increased to record high levels
           (1980s-present) (very high confidence) including the recent increase

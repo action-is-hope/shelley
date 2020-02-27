@@ -1,4 +1,6 @@
 /** codeSample.st.css */
+.root {}
+
 .root {
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;
@@ -11,12 +13,12 @@
   font-size: 12px;
   padding: 1.45rem;
   line-height: 1.45rem;
+  line-height: 1.1rem;
   border-radius: 4px
 }
 
 .root pre {
   /* background: rgba(0, 0, 0, 0.4) !important; */
-
 }
 
 .root.fixedHeight {
@@ -35,38 +37,9 @@
 @media (min-width: 550px) {
   .root code {
     font-size: 14px;
-
-
-    /* color: black;
-    background: none;
-    text-shadow: white 0px 1px;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    overflow-wrap: normal;
-    line-height: 1.5;
-    tab-size: 4;
-    hyphens: none; */
   }
 }
 
-/* custom syntax highlighter */
-
-@-webkit-keyframes animateHelpLinks {
-  0% {
-    text-shadow: 0 0 10px rgb(0, 255, 106);
-  }
-}
-
-.hello-world {
-  margin-bottom: 60px;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: #272c35;
-  /* border: 1px solid red; */
-}
 
 code {
   font-family: Menlo, Consolas, 'Andale Mono', monospace;
@@ -89,7 +62,7 @@ code>span {
 
 
 
-code ::global(.caption) {
+code :global(.caption) {
   /* box-shadow: 0 0 50px #070c15; */
   /* border-left: 4px groove #272c35; */
   text-shadow: 0 0 0 transparent;
@@ -113,174 +86,7 @@ code ::global(.caption) {
   user-select: none;
 }
 
-code .inner {
-  padding: 20px;
-  display: block;
-}
-
-code .class {
-  display: block;
-  margin-bottom: 10px;
-}
-
-code .break,
-code .rule {
-  display: block;
-}
-
-code .rule {
-  text-indent: 10px;
-  /* animation: colorchange3 500ms; */
-}
-
-code .prop {
-  display: inline-block;
-  /* animation: colorchange3 500ms; */
-}
-
-code :global(.class-name) {
-  font-weight: 300;
-  /* animation: colorchange3 175ms ease-in; */
-  position: relative;
-}
-
-.child::before {
-  font-weight: 100;
-}
-
-.open-bracket {
-  margin: 0 4px;
-}
-
-.class b,
-.child b,
-.prop b {
-  font-weight: 100;
-  text-shadow: 0 0 0 transparent;
-}
-
-code :global(.prop b),
-code :global(.prop)::after,
-code :global(.st-modifier)::before,
-code :global(.class-name) {
-  color: #4eea9d;
-}
-
-code .value {
-  color: #73b9b1;
-}
-
-
-code :global(.punctuation) {
-  color: grey
-}
-
-code :global(.attr-name),
-code :global(.constant),
-code :global(.maybe-class-name),
-code :global(.tag) {
-  color: #72d1ff
-}
-
-code :global(.string) {
-  color: #ffdc9a
-}
-
-code :global(.attr-value) {
-  color: #ffdc9a
-}
-
-code :global(.keyword),
-code :global(.number) {
-  color: #ff54c9
-}
 
 code :global(.plain-text) {
   white-space: pre-wrap;
-}
-
-
-code .prop {
-  color: #ec8092;
-}
-
-code .st-state::before,
-code .prop::after,
-.st-modifier::before,
-code .class-name::before,
-code .child::before,
-code .st-state::before,
-code .pseudo::before {
-  color: lightblue;
-  font-weight: 100;
-}
-
-code .comment {
-  display: block;
-  color: #bababa;
-  margin-bottom: 20px;
-}
-
-code .comment b {
-  color: #808080;
-}
-
-code .comment b:first-child {
-  margin-right: 10px;
-}
-
-code .comment b:last-child {
-  margin-left: 10px;
-}
-
-code .comment i {
-  font-weight: 900;
-  font-style: normal;
-}
-
-code .endrule,
-.open-bracket,
-.close-brakcet {
-  text-shadow: 0 0 0 transparent;
-}
-
-[data-tippy],
-code [title] {
-  border-bottom: 1px dotted rgba(243, 243, 202, 0.39);
-  cursor: help;
-}
-
-[data-tippy],
-code [title]:hover {
-  border-bottom: 1px dotted rgba(243, 243, 202, 0.5);
-}
-
-code [data-tippy] {
-  transition: 150ms all ease-in;
-}
-
-code:hover [data-tippy] {
-  animation: animateHelpLinks 1000ms;
-}
-
-[data-tippy]:hover,
-code [title]:hover {
-  text-shadow: 0 0 10px rgb(0, 255, 106);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.function,
-.token.class-name {
-  color: #e6db74;
-}
-
-.tippy-tooltip {
-  font-size: 11px;
-  text-align: left;
-  line-height: 17px;
-}
-
-.tippy-tooltip.stylable .tippy-content {
-  background: #ad0;
 }

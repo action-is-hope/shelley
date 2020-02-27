@@ -2,6 +2,8 @@
 import React from "react";
 import style from "./blockquote.st.css";
 import classNames from "classnames";
+import { TextVolume } from "../types";
+import Text from "../Text/Text";
 
 interface BlockquoteProps
   extends Pick<
@@ -14,18 +16,21 @@ interface BlockquoteProps
   citeAttr?: string;
   citeUrl?: string;
   variant?: number;
+  citeVol?: TextVolume;
 }
 
 const Blockquote = ({
-  accent = 1,
+  accent,
   children,
   cite: citeContent,
   citeAttr,
   citeUrl,
+  citeVol,
   className: classNameProp,
-  variant = 1,
+  variant,
   ...rest
 }: BlockquoteProps) => {
+  // @todo: shuold be optional + need a 'opens in a new window' thingy.
   const cite = citeUrl ? (
     <a href={citeUrl} target="_blank" rel="noopener noreferrer">
       {citeContent}
@@ -49,9 +54,13 @@ const Blockquote = ({
       {...rest}
     >
       <div className={style.content}>{children}</div>
-      <footer className={style.footer}>
-        <cite className={style.cite}>{cite}</cite>
-      </footer>
+      {cite && (
+        <footer className={style.footer}>
+          <Text as="cite" vol={citeVol} className={style.cite}>
+            {cite}
+          </Text>
+        </footer>
+      )}
     </blockquote>
   );
 };

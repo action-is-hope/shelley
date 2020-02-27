@@ -37,7 +37,6 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 }
 
 @st-scope Default {
-
   PropsDemo {
     padding: 1.3rem;
     padding-top: 2rem;

@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
+import Icon from "../Icon/Icon";
 // import { ButtonProps } from "./";
 
 /**
@@ -43,6 +44,11 @@ const Button = React.forwardRef(
 
     return (
       <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
+        {/* plus */}
+        <Icon>
+          <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+        </Icon>
+        <span className={style.divider}></span>
         <span className={style.inner}>{children}</span>
         {tip && <span className={style.tip}>{tip}</span>}
       </button>
