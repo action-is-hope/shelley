@@ -13,7 +13,7 @@
 
 :import {
   -st-from: "../variables.st.css";
-  -st-named: --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg;
+  -st-named: --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --spacing-unit;
 }
 
 /* This is how we can scope the styles. */
@@ -58,6 +58,10 @@
   Button::inner {
     /* margin-left:0.5em;
         margin-right:0.5em; */
+    font-size: .75em;
+    /* Pud the padding on top so an icon can grow a little without affecting the height.*/
+    padding-top: 0.58em;
+    padding-bottom: 0.55em;
   }
 
   /* Button COLOURS */
@@ -67,7 +71,8 @@
     color: var(--color-ui, value(--color-ui-default));
     color: #333;
 
-    padding: 0.5em 1em;
+
+    padding: 0 value(--spacing-unit);
     text-transform: uppercase;
     letter-spacing: .034em;
     flex-flow: row-reverse;
@@ -79,9 +84,10 @@
   Button::divider {
     display: inline-block;
     width: 1.5em;
+    line-height: 0;
   }
 
-  Button::divider::after {
+  /* Button::divider::after {
     content: "";
     display: inline-block;
     position: absolute;
@@ -90,10 +96,12 @@
     bottom: -1px;
     background: #196939;
     right: 2em;
-  }
+  } */
 
   Button svg {
-    margin-right: -.5em
+    /* margin-right: calc(value(--spacing-unit) / 2 - value(--spacing-unit)); */
+    margin-right: calc(0em - value(--spacing-unit) / 2);
+    margin-top: -0.06em;
   }
 
 

@@ -13,8 +13,12 @@
 
 :import {
   -st-from: "../variables.st.css";
-  -st-named: --font-plain, --base-font-size, --base-font-size-sm,
-    --base-font-size-md, --base-font-size-lg, --spacing-unit,
+  -st-named:
+    --spacing-unit,
+    --text-vol-3-scale,
+    --text-vol-3-max,
+    --text-vol-4-max,
+    --text-vol-4-scale,
     --v1, --v2, --v3, --v4, --v5,
 }
 
@@ -24,19 +28,20 @@
     /* background: transparent; */
     outline: none;
     /* border-left: 1px solid transparent; */
-    color: #f1f1f1;
+    color: #e2e2e2;
     resize: none;
     /* transition: border 0.3s; */
     border-radius: 0;
     /* -webkit-font-smoothing: antialiased; */
     line-height: 1.5;
 
-    background: #00000024;
+    /* background: #00000024; */
 
     /* border-left-color: #33d25f45; */
     /* font-size: calc(0.333vw + 0.92rem); */
     position: relative;
   }
+
 
   TextInput:error::before {
     /* border-left-color: #b66b6e; */
@@ -64,6 +69,7 @@
   }
 
   TextInput::textAreaWrap {
+    display: block;
     width: 100%;
   }
 
@@ -79,7 +85,7 @@
     resize: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
-    padding: 7px 12px;
+
     line-height: 1.5;
     outline: none;
   }

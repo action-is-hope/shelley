@@ -37,9 +37,9 @@ const InputAdornment = ({
   ...rest
 }: React.HTMLProps<HTMLInputElement>) => {
   return (
-    <div className={style.adornment} {...rest}>
+    <span className={style.adornment} {...rest}>
       {children}
-    </div>
+    </span>
   );
 };
 
@@ -68,7 +68,8 @@ const TextInput = React.forwardRef(
 
     const Input: React.ReactNode =
       type === "textarea" ? (
-        <div className={style.textAreaWrap}>
+        /* Its a bit span'tastic as we want to an 'input (inline) but a textarea...? It's valid, Shelley checked. */
+        <span className={style.textAreaWrap}>
           <Textarea
             aria-invalid={error ? true : false}
             className={style.input}
@@ -78,7 +79,7 @@ const TextInput = React.forwardRef(
             ref={ref}
             {...rest}
           />
-        </div>
+        </span>
       ) : (
         <input
           aria-invalid={error ? true : false}

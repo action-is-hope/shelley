@@ -51,19 +51,9 @@ const InputRow = React.forwardRef(
       touched = false,
       hint,
       label = (
-        <span>
-          Label is a required value.
-          <br />
-          <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/H44">
-            It is a legal requirement in many countries as a Level A WCAG
-            requirement.
-          </a>
-          <br />
-          Not that you would know it looking at the state of a lot of forms on
-          the web!
-          <br />
-          Use in conjuntion with <code>labelVisuallyHidden</code>
-        </span>
+        <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/H44">
+          label is a Level A WCAG requirement.
+        </a>
       ),
       labelVisuallyHidden = false,
       variant = 1,
@@ -135,11 +125,34 @@ const InputRow = React.forwardRef(
           <div className={style.errorMessage}>{errorMessage}</div>
         )}
 
+        {/* 
+        Debating this one... It is legal to have multiple labels for the same input
+        and this feels like a nice way to present error messages, Ideally we would render
+        inside of the same label but this is too limiting. 
+
+        Reports like this are interesting...
+        https://stackoverflow.com/questions/2829936/can-an-input-field-have-two-labels
+
+        "It's not a "common" approach, and because of that at least one common screen 
+        reader (I tested with NVDA) only reads the first label when you shift focus 
+        into the field -- it ignores any additional labels for the same field."
+        - Rob Whelan
+
+        Sounds like Rob knows his stuff
+
+        Should write this into the label docs, at least a ref too:
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute
+
+         {error && touched && errorMessage && (
+          <label htmlFor={id} className={style.errorMessage}>
+            {errorMessage}
+          </label>
+        )} */}
+
         <Label
           htmlFor={id}
           hint={hint}
           // visuallyHidden={labelVisuallyHidden}
-          className={style.label}
           radioCheckInput={inputType === "radioCheckInput" && input}
         >
           {label}

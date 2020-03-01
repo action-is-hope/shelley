@@ -21,6 +21,32 @@
     user-select: none;
   }
 
+
+  /* Note we are setting the fonts here:
+- After much dicking around Shelley has come to the conclusion that labels should 
+generally always be the same size regardless of any size associated with the input
+accept maybe when a selection control is being used. Checkbox/Radio/Switch labels
+maybe different as they take more of a 'content' look in general. 
+- uppercase can give the labels an extra dimension but invariably other font properties
+will need to be overridden. Should this be a setting we expose? Maybe not, maybe it's 
+simply part of a variant style.... Or maybe you are using the headings like we are...
+for tech text we are using uppercase but for articles we are not planning too. If we 
+use a form we might want it to match our copy style so perhaps all labels need to 
+have this ability and it's valid...
+
+*/
+
+  Label {
+    font-size: .8rem;
+  }
+
+  @media screen and (min-width: 600px) {
+
+    Label {
+      font-size: .625rem;
+    }
+  }
+
   /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
   Label.hasInput {
     display: flex;
@@ -42,9 +68,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  Label::labelText {
+    /* font-size: .7rem; */
+    /* text-transform: uppercase;
+    letter-spacing: .05em; */
+  }
+
+  @media screen and (min-width: 600px) {
+
+    Label::labelText {
+      /* - uppercase */
+      /* font-size: .9em; */
+    }
+  }
+
+
   Label::labelHintText {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
+
+
+
 
 }

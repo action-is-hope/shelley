@@ -37,6 +37,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <H2 uppercase vol={3}>
             Synopsis
           </H2>
+
+          <img src="sskhshksk" />
+          <img src="sskhshksk" alt="" />
+          <h2>h2</h2>
+          <h4>h4</h4>
+          <label>Hi</label>
+          <label htmlFor="hiihs">Hi</label>
           <Icon>
             <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path>
           </Icon>

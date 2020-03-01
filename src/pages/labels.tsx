@@ -90,8 +90,8 @@ const LabelsDocs = () => {
         </P> */}
 
         <P>
-          Labels are pretty useless by themselves, they should <em>always</em>{" "}
-          be associated with a form input. The most reliable way to do that is
+          Labels are pretty useless by themselves, they should usually be
+          associated with a form input. The most reliable way to do that is
           explicitly via the <code>for</code> and <code>id</code> attributes. In
           plain HTML:
         </P>
@@ -119,7 +119,7 @@ const LabelsDocs = () => {
         </P>
         <div className={classnames(grid.gridColumnOutset1, grid.exampleBox)}>
           <InputRow
-            // className={grid.gridColumnContent}
+            // className={grid.colContent}
             id="labelExampleId1"
             label={"Label text"}
             placeholder="We need some focus, up in here, up in here!"

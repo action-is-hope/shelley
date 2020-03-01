@@ -37,6 +37,47 @@
 
   }
 
+  img {}
+
+
+  /* https://css-tricks.com/why-are-accessible-websites-so-hard-to-build/
+
+According to CNBC, the number of lawsuits over inaccessible websites jumped 58 percent last year over 2017, to more than 2,200.
+ */
+  img:not([alt]),
+  label:not([for]),
+  h2+h1,
+  h2+h4,
+  h2+h5,
+  h2+h6,
+  h3+h1,
+  h3+h2,
+  h3+h5,
+  h3+h6,
+  h4+h1,
+  h4+h2,
+  h4+h5,
+  h4+h6,
+  h5+h1,
+  h5+h2,
+  h5+h3 {
+    box-shadow: 0px 0px 2px red
+  }
+
+  img:not([alt]):after {
+    content: "No alt attribute!";
+    font-size: 12px;
+    position: absolute
+  }
+
+  h2+h4:after {
+    content: "Badly nested headings";
+    font-size: 12px;
+    position: absolute
+  }
+
+
+
   .card>* {
     margin: .75rem 0;
   }

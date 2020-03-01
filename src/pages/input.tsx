@@ -8,8 +8,11 @@ import InputRow from "../components/InputRow/InputRow";
 import RadioCheckInput from "../components/RadioCheckInput/RadioCheckInput";
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
+
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
+
+import grid from "../themes/default/css/grid.st.css";
 
 const InputDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
@@ -79,7 +82,8 @@ const InputDocs = () => {
   vol={InputDemoProps[4].value}
 />
 `}</CodeSample> */}
-
+      </Grid>
+      <Grid>
         <PropsDemo
           demoProps={InputDemoProps}
           setDemoProps={setInputDemoProps}
@@ -141,21 +145,80 @@ const InputDocs = () => {
           />
         </PropsDemo>
       </Grid>
-
-      <InputRow
-        id="blah"
-        // name="username"
-        placeholder="Enter your user name"
-        hint="Enter your full name"
-        label={"Username"}
-        type="checkbox"
-        onChange={() => console.log("MEMEM")}
-        // error={true}
-        // touched={true}
-        // errorMessage="You have an error here yo"
-        vol={4}
-        autoFocus
-      />
+      <Grid>
+        <div className={grid.colContent}>
+          {/* <InputRow
+            id="blah"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Enter your full name"
+            label={"Title"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={5}
+            autoFocus
+          /> */}
+          <InputRow
+            id="blah2"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Give a full description focusing on the major actions you will be taking on climate change"
+            label={"Description"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={4}
+            autoFocus
+          />
+          <InputRow
+            id="blah3"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Enter your full name"
+            label={"Copy"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={3}
+            autoFocus
+          />
+          <InputRow
+            id="blah4"
+            // name="username"
+            // placeholder="Enter your user name"
+            // hint="Enter your full name"
+            label={"Username"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={2}
+            autoFocus
+          />
+          <InputRow
+            id="blah4"
+            // name="username"
+            // placeholder="Enter your user name"
+            // hint="Enter your full name"
+            label={"Username"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={1}
+            autoFocus
+          />
+        </div>
+      </Grid>
 
       <InputRow
         id="name"

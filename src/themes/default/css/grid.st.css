@@ -57,7 +57,7 @@ Grid>blockquote,
 Grid>pre,
 Grid>img,
 Grid>figure,
-.gridColumnContent {
+.colContent {
   /* set the grid lines */
   grid-column: content-start / content-end;
   /* fallback styles for content-start / content-end */
@@ -168,7 +168,7 @@ Grid>figure,
   Grid>pre,
   Grid>img,
   Grid>figure,
-  .gridColumnContent,
+  .colContent,
   .gridColumnOutset1,
   .gridColumnOutset,
   .fullBleed {
@@ -263,5 +263,5 @@ Grid>blockquote,
 Grid>pre,
 Grid>img,
 Grid>figure,
-.gridColumnContent {
+.colContent {
 */
