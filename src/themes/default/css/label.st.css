@@ -68,12 +68,6 @@ have this ability and it's valid...
     -webkit-font-smoothing: antialiased;
   }
 
-  Label::labelText {
-    /* font-size: .7rem; */
-    /* text-transform: uppercase;
-    letter-spacing: .05em; */
-  }
-
   @media screen and (min-width: 600px) {
 
     Label::labelText {
@@ -87,8 +81,5 @@ have this ability and it's valid...
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
-
-
-
 
 }

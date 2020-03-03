@@ -3,6 +3,7 @@ import React from "react";
 import style from "./label.st.css";
 import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+import HintText from "../HintText/HintText";
 
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
@@ -22,7 +23,8 @@ const Label = ({
   const labelText = (
     <span className={style.labelTextContainer}>
       <span className={style.labelText}>{children}</span>
-      {hint && <span className={style.labelHintText}>{hint}</span>}
+
+      {hint && <HintText>{hint}</HintText>}
     </span>
   );
 

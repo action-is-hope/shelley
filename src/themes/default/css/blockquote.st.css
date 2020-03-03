@@ -80,6 +80,8 @@
     display: none;
   }
 
+  /* 
+  I much prefer this format: Blockquote:variant(1)::content { */
   Blockquote.variant1::content {
     background: var(--color-background-2, value(--color-background-2-default));
     background: rgba(255, 255, 255, 0.04);

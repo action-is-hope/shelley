@@ -49,10 +49,11 @@ const InputRow = React.forwardRef(
       disabled = false,
       error: errorMessage,
       touched = false,
+      children,
       hint,
       label = (
         <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/H44">
-          label is a Level A WCAG requirement.
+          <code>label</code> is a Level A WCAG requirement.
         </a>
       ),
       labelVisuallyHidden = false,
@@ -100,6 +101,7 @@ const InputRow = React.forwardRef(
           error={error}
           ref={ref}
           type={type}
+          aria-describedby="testHint"
           {...rest}
         />
       );
@@ -113,7 +115,7 @@ const InputRow = React.forwardRef(
             style["vol" + vol],
             style[type],
             {
-              [style.labelVisuallyHidden]: labelVisuallyHidden
+              // [style.labelVisuallyHidden]: labelVisuallyHidden
             },
             classNameProp
           ),
@@ -147,19 +149,23 @@ const InputRow = React.forwardRef(
           <label htmlFor={id} className={style.errorMessage}>
             {errorMessage}
           </label>
+
+          https://webaim.org/techniques/forms/advanced
+          aria-describedby
         )} */}
 
         <Label
           htmlFor={id}
+          // hint={inputType === "radioCheckInput" && hint}
           hint={hint}
-          // visuallyHidden={labelVisuallyHidden}
           radioCheckInput={inputType === "radioCheckInput" && input}
+          visuallyHidden={labelVisuallyHidden}
         >
           {label}
         </Label>
 
         {inputType !== "radioCheckInput" && input}
-        {/* {hint && <div className={style.hint}>{hint}</div>} */}
+        {children}
       </div>
     );
   }

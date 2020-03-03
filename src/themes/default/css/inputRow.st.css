@@ -7,18 +7,22 @@
 
 :import {
   -st-from: "../../../components/Label/label.st.css";
-  -st-default: Label;
-  -st-named:
-    labelTextContainer,
-    labelText,
-    labelHintText,
-    radioCheckInput;
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-default: HintText;
 }
 
 :import {
   -st-from: "../../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
-  -st-named: input;
+}
+
+:import {
+  -st-from: "../mixins/multiply";
+  -st-named: respScale;
 }
 
 :import {
@@ -39,6 +43,13 @@
     --text-vol-4-max,
     --text-vol-5-scale,
     --text-vol-5-max,
+    --text-vol-6-scale,
+    --text-vol-6-max,
+    --text-vol-7-scale,
+    --text-vol-7-max,
+    --text-vol-8-max,
+    --text-vol-8-scale,
+    --text-vol-8-max,
 
 }
 
@@ -62,110 +73,93 @@
   }
 
 
-
-  InputRow.vol1 {
-    font-size: value(--v1);
-  }
-
-  InputRow.vol2 {
-    font-size: value(--v2);
-  }
-
   /* Hmmm, class names which match css element selectors are confusing... */
 
-  /* Volume 3 */
+  /* Volume 1 */
+  InputRow.vol1 TextInput {
+    font-size: 1em;
+  }
 
-
-  /* InputRow.vol3 TextInput {
-    font-size: value(--text-vol-3-scale);
-  } */
+  /* Volume 2 */
+  InputRow.vol2 TextInput {
+    font-size: respScale(1em, 1.25em);
+  }
 
   @media screen and (min-width: 1800px) {
-    /* InputRow.vol3 Label {
-      font-size: value(--text-vol-3-max);
-    } */
-
-    InputRow.vol3 TextInput {
-      font-size: value(--text-vol-3-max);
-      font-size: 18px;
+    InputRow.vol2 TextInput {
+      font-size: 1.125em;
     }
   }
 
+  /* Volume 3 */
+  InputRow.vol3 TextInput {
+    font-size: value(--text-vol-3-scale);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol3 TextInput {
+      font-size: value(--text-vol-3-max);
+    }
+  }
+
+  /* Volume 4 */
   InputRow.vol4 TextInput {
-    font-size: value(--text-vol-3-max);
-    font-size: value(--text-vol-5-max);
+    font-size: value(--text-vol-4-scale);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol4 TextInput {
+      font-size: value(--text-vol-4-max);
+    }
+  }
+
+  /* Volume 5 */
+  InputRow.vol5 TextInput {
+    font-size: calc(value(--text-vol-5-scale) - .15rem);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol5 TextInput {
+      font-size: calc(value(--text-vol-5-max) - .15rem);
+    }
+  }
+
+  /* Volume 6 */
+  InputRow.vol6 TextInput {
+    font-size: calc(value(--text-vol-6-scale) - .15rem);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputRow.vol6 TextInput {
+      font-size: calc(value(--text-vol-6-max) - .15rem);
+    }
   }
 
 
+
+
+
+
   /* Variant 1 - Body */
-  InputRow.variant1 Label {
+  InputRow.variant1 InputLabel {
     margin-bottom: 8px;
     /* letter-spacing: .02em; */
     line-height: 1.15;
     /* font-size: .944444em */
   }
 
-  InputRow.variant1 Label::labelHintText {
+  InputRow.variant1 HintText {
     opacity: .7;
   }
 
-  InputRow.variant1 TextInput {
-    /* background: #00000024; */
+  InputRow.variant1 TextInput::inputField {
+    padding: calc(0.2rem + .2em) 16px;
   }
-
-  InputRow.variant1 TextInput::input {
-    padding: calc(0.4rem + .2em) 16px;
-  }
-
-
-  /* InputRow TextInput::input */
-
-  /* InputRow TextInput::input {
-    background: pink !important
-  }
-
-  InputRow.vol3::textInput {
-    background: yellow !important
-  }
-
-  InputRow.vol3 Label {
-    background: green !important
-  } */
-
-
-
-
 
   InputRow+InputRow {
     margin-top: calc(value(--spacing-unit) * 1)
   }
 
-
-  InputRow.vol5 {
-    font-size: value(--v5);
-  }
-
-
-
-  /* InputRow.checkbox Label,
-  InputRow.radio Label,
-  InputRow.switch Label {
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: flex-end;
-  } */
-
-  InputRow Label::labelText {
-    /* font-weight: 400; */
-    /* text-transform: uppercase; */
-
-  }
-
-  InputRow Label::labelTextContainer {
-    /* display: block;
-    opacity: .7;
-    letter-spacing: .02em; */
-  }
 
 
   InputRow::errorMessage {
@@ -181,11 +175,5 @@
     padding: 8px 16px 0 16px;
   }
 
-  InputRow.vol4 Label {
-    /* background: pink; */
-    /* font-size: 12px */
-  }
-
-  InputRow:focus-within {}
 
 }

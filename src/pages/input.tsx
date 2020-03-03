@@ -166,7 +166,51 @@ const InputDocs = () => {
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"Description"}
+            label={"name"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={7}
+            autoFocus
+            autoComplete="off"
+          />
+          <InputRow
+            id="blah2"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Give a full description focusing on the major actions you will be taking on climate change"
+            label={"vol6"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={6}
+            autoFocus
+          />
+          <InputRow
+            id="blah2"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Give a full description focusing on the major actions you will be taking on climate change"
+            label={"vol5"}
+            type="text"
+            onChange={() => console.log("MEMEM")}
+            // error={true}
+            // touched={true}
+            // errorMessage="You have an error here yo"
+            vol={5}
+            autoFocus
+            // autocomplete="off"
+          />
+          <InputRow
+            id="blah2"
+            // name="username"
+            placeholder="Enter your user name"
+            // hint="Give a full description focusing on the major actions you will be taking on climate change"
+            label={"vol4"}
             type="text"
             onChange={() => console.log("MEMEM")}
             // error={true}
@@ -180,7 +224,7 @@ const InputDocs = () => {
             // name="username"
             placeholder="Enter your user name"
             // hint="Enter your full name"
-            label={"Copy"}
+            label={"vol3"}
             type="text"
             onChange={() => console.log("MEMEM")}
             // error={true}
@@ -192,9 +236,9 @@ const InputDocs = () => {
           <InputRow
             id="blah4"
             // name="username"
-            // placeholder="Enter your user name"
+            placeholder="Enter your user name"
             // hint="Enter your full name"
-            label={"Username"}
+            label={"vol2"}
             type="text"
             onChange={() => console.log("MEMEM")}
             // error={true}
@@ -206,9 +250,9 @@ const InputDocs = () => {
           <InputRow
             id="blah4"
             // name="username"
-            // placeholder="Enter your user name"
+            placeholder="Enter your user name"
             // hint="Enter your full name"
-            label={"Username"}
+            label={"vol1"}
             type="text"
             onChange={() => console.log("MEMEM")}
             // error={true}
@@ -216,7 +260,9 @@ const InputDocs = () => {
             // errorMessage="You have an error here yo"
             vol={1}
             autoFocus
-          />
+          >
+            HELLO
+          </InputRow>
         </div>
       </Grid>
 
@@ -315,7 +361,7 @@ const InputDocs = () => {
       </div>
       <br />
       <div>
-        <Input id="blah" name="multi" placeholder="Multiline input" multiline />
+        <Input id="blah" name="multi" placeholder="Multiline input" />
       </div>
       <br />
       <div>
@@ -323,7 +369,6 @@ const InputDocs = () => {
           name="mark"
           id="markid"
           placeholder="Multiline input with rows attribute"
-          multiline
           rows={2}
         />
       </div>

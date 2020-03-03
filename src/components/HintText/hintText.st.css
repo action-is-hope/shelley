@@ -1,0 +1,10 @@
+/* hintText.st.css */
+
+.root {}
+
+
+.root {
+  font-weight: 400;
+  font-size: .625rem;
+  -webkit-font-smoothing: antialiased;
+}

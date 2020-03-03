@@ -96,7 +96,7 @@ const PropsDemo = ({
             key={`${item.name}-${i}`}
             vol={2}
             label={`${item.label}:`}
-            labelVisuallyHidden={true}
+            // labelVisuallyHidden={true}
             type="checkbox"
             onChange={(e: any) => {
               const newDemoProps = [...propsArray];

@@ -3,6 +3,7 @@
 :import {
   -st-from: "../../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
+  -st-named: inputField
 }
 
 :import {
@@ -19,26 +20,17 @@
     --text-vol-3-max,
     --text-vol-4-max,
     --text-vol-4-scale,
-    --v1, --v2, --v3, --v4, --v5,
 }
 
 @st-scope Default {
   TextInput {
     display: inline-flex;
-    /* background: transparent; */
     outline: none;
-    /* border-left: 1px solid transparent; */
-    color: #e2e2e2;
+    color: --color-ui-default;
     resize: none;
-    /* transition: border 0.3s; */
     border-radius: 0;
     /* -webkit-font-smoothing: antialiased; */
     line-height: 1.5;
-
-    /* background: #00000024; */
-
-    /* border-left-color: #33d25f45; */
-    /* font-size: calc(0.333vw + 0.92rem); */
     position: relative;
   }
 
@@ -73,7 +65,13 @@
     width: 100%;
   }
 
-  TextInput::input {
+
+
+  /* 
+  https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs
+  https://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css */
+
+  TextInput::inputField {
     font: inherit;
     color: currentColor;
     width: 100%;
@@ -85,17 +83,23 @@
     resize: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
-
     line-height: 1.5;
     outline: none;
+    padding: calc(0.2rem + 0.2em) value(--spacing-unit)
   }
 
-  TextInput::input::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
+  TextInput::inputField::placeholder {
     color: #b1b1b1;
     opacity: .7;
-    /* Firefox */
     line-height: 1.4;
+  }
+
+  /*https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs*/
+  TextInput::inputField:-webkit-autofill,
+  TextInput::inputField:-webkit-autofill:hover,
+  TextInput::inputField:-webkit-autofill:focus,
+  TextInput::inputField:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
   }
 
   TextInput:disabled>* {
@@ -113,11 +117,12 @@
     padding-right: 12px;
   }
 
-  TextInput::adornment+input {
-    margin-left: -16px;
+  /* Unable to use a stylable class with the adjacent selector? USe a namedImport as a class. */
+  TextInput::adornment+.inputField {
+    margin-left: -1em;
   }
 
-  TextInput::input+div {
+  TextInput::inputField+div {
     margin-left: -16px;
 
   }

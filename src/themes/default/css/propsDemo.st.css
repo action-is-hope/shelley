@@ -28,7 +28,6 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 :import {
   -st-from: "../../../components/TextInput/textInput.st.css";
   -st-default: TextInput;
-  -st-named: input, textAreaWrap;
 }
 
 :import {
@@ -260,7 +259,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
     flex-direction: column;
   }
 
-  PropsDemo::propInputs InputRow TextInput input {
+  PropsDemo::propInputs InputRow TextInput::inputField {
     /* padding-top: 0.4em;
   padding-bottom: 0.4em; */
   }

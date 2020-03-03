@@ -10,12 +10,12 @@ interface BlockquoteProps
     React.HTMLProps<HTMLQuoteElement>,
     Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">
   > {
-  accent?: number;
+  accent?: false | number;
   children: React.ReactNode;
   cite?: React.ReactNode;
   citeAttr?: string;
   citeUrl?: string;
-  variant?: number;
+  variant?: false | number;
   citeVol?: TextVolume;
 }
 
