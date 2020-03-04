@@ -15,6 +15,8 @@ import RadioCheckInput from "./css/radioCheckInput.st.css";
 import Text from "./css/text.st.css";
 import TextInput from "./css/textInput.st.css";
 
+import InputText from "./css/inputText.st.css";
+
 // Application Components
 import PropsDemo from "./css/propsDemo.st.css";
 import CodeSample from "./css/codeSample.st.css";
@@ -47,6 +49,9 @@ export const radioCheckInput = (...values: []) =>
 export const text = (...values: []) => getClassNames(values, Text, "text");
 export const textInput = (...values: []) =>
   getClassNames(values, TextInput, "textInput");
+
+export const inputText = (...values: []) =>
+  getClassNames(values, InputText, "inputText");
 // Application Components
 export const codeSample = (...values: []) =>
   getClassNames(values, CodeSample, "codeSample");

@@ -38,6 +38,7 @@ have this ability and it's valid...
 
   Label {
     font-size: .8rem;
+    line-height: 1.15;
   }
 
   @media screen and (min-width: 600px) {
@@ -74,12 +75,6 @@ have this ability and it's valid...
       /* - uppercase */
       /* font-size: .9em; */
     }
-  }
-
-
-  Label::labelHintText {
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
   }
 
 }

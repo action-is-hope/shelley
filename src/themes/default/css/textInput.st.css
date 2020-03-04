@@ -26,7 +26,7 @@
   TextInput {
     display: inline-flex;
     outline: none;
-    color: --color-ui-default;
+    color: value(--color-ui-default);
     resize: none;
     border-radius: 0;
     /* -webkit-font-smoothing: antialiased; */
@@ -34,9 +34,7 @@
     position: relative;
   }
 
-
   TextInput:error::before {
-    /* border-left-color: #b66b6e; */
     background-color: #b66b6e;
   }
 
@@ -54,9 +52,6 @@
 
 
   TextInput:focus-within::before {
-    /* border-left-color: #26c552;
-    border-color: #09b1f1; */
-    /* border-left-color: #ff5e00; */
     background-color: #09b1f1;
   }
 
@@ -124,6 +119,5 @@
 
   TextInput::inputField+div {
     margin-left: -16px;
-
   }
 }

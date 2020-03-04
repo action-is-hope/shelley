@@ -1,0 +1,14 @@
+/* inputAdornment.st.css */
+
+.root {}
+
+.root {
+  height: 0.01em;
+  display: flex;
+  max-height: 2em;
+  align-items: center;
+  white-space: nowrap;
+  align-self: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}

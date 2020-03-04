@@ -1,0 +1,241 @@
+/** inputText.st.css */
+
+:import {
+  -st-from: "../../../components/InputText/inputText.st.css";
+  -st-default: InputText;
+  -st-named: fieldInput
+}
+
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-default: HintText;
+}
+
+:import {
+  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-default: ErrorText;
+}
+
+:import {
+  -st-from: "../../../components/InputAdornment/inputAdornment.st.css";
+  -st-default: Adornment;
+}
+
+:import {
+  -st-from: "../mixins/multiply";
+  -st-named: respScale;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+:import {
+  -st-from: "../variables.st.css";
+  -st-named:
+    --spacing-unit,
+    --text-vol-2-scale,
+    --text-vol-2-max,
+    --text-vol-3-scale,
+    --text-vol-3-max,
+    --text-vol-4-scale,
+    --text-vol-4-max,
+    --text-vol-5-scale,
+    --text-vol-5-max,
+    --text-vol-6-scale,
+    --text-vol-6-max,
+    --text-vol-7-scale,
+    --text-vol-7-max,
+    --text-vol-8-max,
+    --text-vol-8-scale,
+    --text-vol-8-max,
+}
+
+@st-scope Default {
+
+  /*==== BASE ====*/
+
+  InputText {
+    /* 
+      Showing the error before the field in question is the most logical but in 
+      practice we want to render it below so as to avoid the field moving when
+      it is in an eror state. We are using a named grid line [error-message] to 
+      reserve a place underneath for our error message.
+    */
+    display: grid;
+    grid-template-rows: auto auto auto [error-message];
+  }
+
+  InputText::fieldContainer {
+    position: relative;
+    display: inline-flex;
+    color: value(--color-ui-default);
+    line-height: 1.5;
+  }
+
+  /* Indicator */
+  InputText::fieldContainer::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    content: "";
+    width: 1px;
+    background-color: #33d25f45;
+    transition: background-color 0.3s;
+  }
+
+  /* Native input*/
+  InputText::fieldInput {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: calc(0.2rem + 0.2em) value(--spacing-unit);
+    border: none;
+    font: inherit;
+    line-height: 1.5;
+    color: currentColor;
+    background: none;
+    resize: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+  }
+
+  /* Use a named import as a class to get the adjacent selectors working. */
+  InputText Adornment+.fieldInput,
+  InputText::fieldInput+Adornment {
+    margin-left: calc(0rem - value(--spacing-unit));
+  }
+
+  InputText ErrorText {
+    /* Send the error message which is first in the source order to appear under the form input. */
+    grid-row: error-message;
+    border-left-width: 1px;
+    padding: 8px value(--spacing-unit) 0 value(--spacing-unit);
+  }
+
+  /* Textarea wrapper which can be used for scrolling. */
+  InputText::textAreaWrap {
+    display: block;
+    width: 100%;
+  }
+
+
+  /*==== STATES ====*/
+
+  /* Error */
+  InputText:error::fieldContainer::before {
+    background-color: #b66b6e;
+  }
+
+  /* Disabled */
+  InputText:disabled {
+    filter: saturate(15%) brightness(70%);
+  }
+
+  InputText:disabled::fieldInput {
+    cursor: not-allowed;
+  }
+
+  /* Focused */
+  InputText::fieldContainer:focus-within::before {
+    background-color: #09b1f1;
+  }
+
+  /* Hack to get rid of the bloody autofill bg - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs */
+  TextInput::inputField:-webkit-autofill,
+  TextInput::inputField:-webkit-autofill:hover,
+  TextInput::inputField:-webkit-autofill:focus,
+  TextInput::inputField:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+  }
+
+
+  /*==== VOLUMES ====*/
+
+  /* Volume 1 */
+  InputText.vol1 {
+    font-size: 1em;
+  }
+
+  /* Volume 2 */
+  InputText.vol2 {
+    font-size: respScale(1em, 1.25em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputText.vol2 {
+      font-size: 1.125em;
+    }
+  }
+
+  /* Volume 3 */
+  InputText.vol3 {
+    font-size: value(--text-vol-3-scale);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputText.vol3 {
+      font-size: value(--text-vol-3-max);
+    }
+  }
+
+  /* Volume 4 */
+  InputText.vol4 {
+    font-size: value(--text-vol-4-scale);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputText.vol4 {
+      font-size: value(--text-vol-4-max);
+    }
+  }
+
+  /* Volume 5 */
+  InputText.vol5 {
+    font-size: calc(value(--text-vol-5-scale) - .15rem);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputText.vol5 {
+      font-size: calc(value(--text-vol-5-max) - .15rem);
+    }
+  }
+
+  /* Volume 6 */
+  InputText.vol6 {
+    font-size: calc(value(--text-vol-6-scale) - .15rem);
+  }
+
+  @media screen and (min-width: 1800px) {
+    InputText.vol6 {
+      font-size: calc(value(--text-vol-6-max) - .15rem);
+    }
+  }
+
+
+  /*==== VARIANTS ====*/
+
+  /* Variant 1 - Body */
+  InputText.variant1 InputLabel {
+    margin-bottom: 8px;
+  }
+
+  InputText.variant1 inputField {
+    padding: calc(0.2rem + .2em) 16px;
+  }
+
+  InputText+InputText {
+    margin-top: calc(value(--spacing-unit) * 1)
+  }
+
+}

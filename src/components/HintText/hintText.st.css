@@ -4,7 +4,15 @@
 
 
 .root {
+  font-size: .8rem;
+  display: block;
   font-weight: 400;
-  font-size: .625rem;
   -webkit-font-smoothing: antialiased;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 600px) {
+  .root {
+    font-size: .625rem;
+  }
 }
