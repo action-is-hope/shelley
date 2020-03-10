@@ -1,4 +1,4 @@
-/** radioCheck.st.css */
+/** inputSelection.st.css */
 .root {
   -st-states: checked, disabled, error;
 }

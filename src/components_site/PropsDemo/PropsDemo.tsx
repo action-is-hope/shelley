@@ -4,7 +4,7 @@ import style from "./propsDemo.st.css";
 import classNames from "classnames";
 
 import InputText from "../../components/InputText/InputText";
-import InputRadioCheck from "../../components/InputRadioCheck/InputRadioCheck";
+import InputSelection from "../../components/InputSelection/InputSelection";
 import Text, { H2, H3, P } from "../../components/Text/Text";
 
 interface PropsDemoProps extends React.HTMLProps<HTMLDivElement> {
@@ -95,7 +95,7 @@ const PropsDemo = ({
         );
       case "checkbox":
         return (
-          <InputRadioCheck
+          <InputSelection
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             vol={1}

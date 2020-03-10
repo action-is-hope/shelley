@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import style from "./inputRadioCheck.st.css";
+import style from "./inputSelection.st.css";
 import Label from "../Label/Label";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import { TextVolume, InputTypes } from "../types";
@@ -29,7 +29,7 @@ interface RadioCheckInputProps
   type?: "radio" | "checkbox" | "switch" | "toggle";
 }
 
-const InputRadioCheck = React.forwardRef(
+const InputSelection = React.forwardRef(
   (
     {
       className: classNameProp,
@@ -97,6 +97,6 @@ const InputRadioCheck = React.forwardRef(
   }
 );
 
-export default InputRadioCheck;
+export default InputSelection;
 
-InputRadioCheck.displayName = "InputRadioCheck";
+InputSelection.displayName = "InputSelection";

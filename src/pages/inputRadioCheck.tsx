@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultLayout from "../layouts";
 import { P, H1, H2 } from "../components/Text/Text";
-import InputRadioCheck from "../components/InputRadioCheck/InputRadioCheck";
+import InputSelection from "../components/InputSelection/InputSelection";
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
 
@@ -11,7 +11,7 @@ import CodeSample from "../components_site/CodeSample/CodeSample";
 import grid from "../themes/default/css/grid.st.css";
 import Icon from "../components/Icon/Icon";
 
-const InputRadioCheckDocs = () => {
+const InputSelectionDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
     {
       name: "label",
@@ -69,7 +69,7 @@ const InputRadioCheckDocs = () => {
 
   return (
     <DefaultLayout>
-      <PageTitle>InputRadioCheck</PageTitle>
+      <PageTitle>InputSelection</PageTitle>
       <Grid variant={1}>
         <P vol={4}>
           Allows our wonderful users to tell us something interesting by
@@ -81,9 +81,9 @@ const InputRadioCheckDocs = () => {
           demoProps={InputDemoProps}
           setDemoProps={setInputDemoProps}
           renderExample={
-            <CodeSample>{`import InputRadioCheck from "@action-is-hope/shelley-ui";
+            <CodeSample>{`import InputSelection from "@action-is-hope/shelley-ui";
 
-<InputRadioCheck    ${
+<InputSelection    ${
               InputDemoProps[0].value
                 ? `\n  label="${InputDemoProps[0].value}"`
                 : ``
@@ -114,7 +114,7 @@ const InputRadioCheckDocs = () => {
 `}</CodeSample>
           }
         >
-          <InputRadioCheck
+          <InputSelection
             id="username"
             // name="username"
             error={InputDemoProps[5].value}
@@ -138,7 +138,7 @@ const InputRadioCheckDocs = () => {
       </Grid>
       <Grid>
         <div className={grid.colContent}>
-          <InputRadioCheck
+          <InputSelection
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
@@ -157,7 +157,7 @@ const InputRadioCheckDocs = () => {
             vol={6}
           />
 
-          <InputRadioCheck
+          <InputSelection
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
@@ -171,7 +171,7 @@ const InputRadioCheckDocs = () => {
             vol={7}
             autoComplete="off"
           />
-          <InputRadioCheck
+          <InputSelection
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
@@ -184,7 +184,7 @@ const InputRadioCheckDocs = () => {
             // errorMessage="You have an error here yo"
             vol={6}
           />
-          <InputRadioCheck
+          <InputSelection
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
@@ -198,7 +198,7 @@ const InputRadioCheckDocs = () => {
             vol={5}
             // autocomplete="off"
           />
-          <InputRadioCheck
+          <InputSelection
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
@@ -211,7 +211,7 @@ const InputRadioCheckDocs = () => {
             // errorMessage="You have an error here yo"
             vol={4}
           />
-          <InputRadioCheck
+          <InputSelection
             id="blah3"
             // name="username"
             placeholder="Enter your user name"
@@ -224,7 +224,7 @@ const InputRadioCheckDocs = () => {
             // errorMessage="You have an error here yo"
             vol={3}
           />
-          <InputRadioCheck
+          <InputSelection
             id="blah4"
             // name="username"
             placeholder="Enter your user name"
@@ -243,4 +243,4 @@ const InputRadioCheckDocs = () => {
   );
 };
 
-export default InputRadioCheckDocs;
+export default InputSelectionDocs;

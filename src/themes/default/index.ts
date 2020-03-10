@@ -10,7 +10,7 @@ import Button from "./css/button.st.css";
 import Blockquote from "./css/blockquote.st.css";
 import Grid from "./css/grid.st.css";
 import Label from "./css/label.st.css";
-import InputRadioCheck from "./css/inputRadioCheck.st.css";
+import InputSelection from "./css/inputSelection.st.css";
 import InputText from "./css/inputText.st.css";
 import Text from "./css/text.st.css";
 
@@ -39,8 +39,8 @@ export const blockquote = (...values: []) =>
   getClassNames(values, Blockquote, "blockquote");
 export const grid = (...values: []) => getClassNames(values, Grid, "grid");
 export const label = (...values: []) => getClassNames(values, Label, "label");
-export const inputRadioCheck = (...values: []) =>
-  getClassNames(values, InputRadioCheck, "inputRadioCheck");
+export const inputSelection = (...values: []) =>
+  getClassNames(values, InputSelection, "inputSelection");
 export const text = (...values: []) => getClassNames(values, Text, "text");
 export const inputText = (...values: []) =>
   getClassNames(values, InputText, "inputText");

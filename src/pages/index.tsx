@@ -156,7 +156,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <Link to="/inputText/">Input Text</Link>
             </Text>
             <Text as="li">
-              <Link to="/inputRadioCheck/">Input Selection</Link>
+              <Link to="/inputSelection/">Input Selection</Link>
             </Text>
             <Text as="li">
               <Link to="/visually-hidden/">VisuallyHidden</Link>
