@@ -46,9 +46,11 @@ const Label = ({
       ) : (
         labelText
       )}
-      {radioCheckInput && (
+      {/* {radioCheckInput && (
         <span className={style.radioCheckInput}>{radioCheckInput}</span>
-      )}
+      )} */}
+
+      {radioCheckInput && radioCheckInput}
     </label>
   );
 };

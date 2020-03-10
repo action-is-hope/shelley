@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultLayout from "../layouts";
 import { P, H1, H2 } from "../components/Text/Text";
-import InputText from "../components/InputText/InputText";
+import InputRadioCheck from "../components/InputRadioCheck/InputRadioCheck";
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
 
@@ -9,8 +9,9 @@ import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 
 import grid from "../themes/default/css/grid.st.css";
+import Icon from "../components/Icon/Icon";
 
-const InputDocs = () => {
+const InputRadioCheckDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
     {
       name: "label",
@@ -25,18 +26,10 @@ const InputDocs = () => {
       value: "Form item hint message"
     },
     {
-      name: "placeholder",
-      label: "placeholder",
+      name: "type",
+      label: "type",
       type: "text",
-      value: "Placeholder text"
-    },
-    {
-      name: "rows",
-      label: "rows",
-      type: "number",
-      min: 0,
-      max: 100,
-      value: 0
+      value: "checkbox"
     },
     {
       name: "variant",
@@ -55,18 +48,6 @@ const InputDocs = () => {
       value: 3
     },
     {
-      name: "startAdornment",
-      label: "startAdornment",
-      type: "text",
-      value: ""
-    },
-    {
-      name: "endAdornment",
-      label: "endAdornment",
-      type: "text",
-      value: ""
-    },
-    {
       name: "error",
       label: "error",
       type: "text",
@@ -77,12 +58,18 @@ const InputDocs = () => {
       label: "touched",
       type: "checkbox",
       value: false
+    },
+    {
+      name: "disabled",
+      label: "disabled",
+      type: "checkbox",
+      value: false
     }
   ]);
 
   return (
     <DefaultLayout>
-      <PageTitle>InputText</PageTitle>
+      <PageTitle>InputRadioCheck</PageTitle>
       <Grid variant={1}>
         <P vol={4}>
           Allows our wonderful users to tell us something interesting by
@@ -94,9 +81,9 @@ const InputDocs = () => {
           demoProps={InputDemoProps}
           setDemoProps={setInputDemoProps}
           renderExample={
-            <CodeSample>{`import InputText from "@action-is-hope/shelley-ui";
+            <CodeSample>{`import InputRadioCheck from "@action-is-hope/shelley-ui";
 
-<InputText    ${
+<InputRadioCheck    ${
               InputDemoProps[0].value
                 ? `\n  label="${InputDemoProps[0].value}"`
                 : ``
@@ -105,64 +92,62 @@ const InputDocs = () => {
                 ? `\n  hint="${InputDemoProps[1].value}"`
                 : ``
             } ${
-              InputDemoProps[2].value
-                ? `\n  placeholder="${InputDemoProps[2].value}"`
-                : ``
-            } ${InputDemoProps[3].value > 0 ? `\n  type="textarea"` : ``} ${
-              InputDemoProps[3].value > 0
-                ? `\n  rows={${InputDemoProps[3].value}}`
+              InputDemoProps[5].value
+                ? `\n  error="${InputDemoProps[5].value}"`
                 : ``
             } ${
-              InputDemoProps[4].value > 0
-                ? `\n  variant={${InputDemoProps[4].value}}`
+              InputDemoProps[2].value
+                ? `\n  type="${InputDemoProps[2].value}"`
+                : ``
+            } ${
+              InputDemoProps[3].value > 0
+                ? `\n  variant={${InputDemoProps[3].value}}`
                 : `\n  variant={false}`
             } ${
-              InputDemoProps[5].value
-                ? `\n  vol={${InputDemoProps[5].value}}`
+              InputDemoProps[4].value
+                ? `\n  vol={${InputDemoProps[4].value}}`
                 : ``
-            } ${
-              InputDemoProps[6].value
-                ? `\n  startAdornment="${InputDemoProps[6].value}"`
-                : ``
-            } ${
-              InputDemoProps[7].value
-                ? `\n  endAdornment="${InputDemoProps[7].value}"`
-                : ``
-            } ${
-              InputDemoProps[8].value
-                ? `\n  error="${InputDemoProps[8].value}"`
-                : ``
-            } ${InputDemoProps[9].value ? `\n  touched` : ``} 
+            }  ${InputDemoProps[6].value ? `\n  touched` : ``} ${
+              InputDemoProps[7].value ? `\n  disabled` : ``
+            } 
 />
-/* variant defaults to 1 */
-/* vol defaults to 3 */`}</CodeSample>
+`}</CodeSample>
           }
         >
-          <InputText
+          <InputRadioCheck
             id="username"
-            label={InputDemoProps[0].value}
+            // name="username"
+            error={InputDemoProps[5].value}
+            type={InputDemoProps[2].value}
             hint={InputDemoProps[1].value}
-            placeholder={InputDemoProps[2].value}
-            rows={InputDemoProps[3].value}
-            type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
-            variant={InputDemoProps[4].value}
-            vol={InputDemoProps[5].value}
-            startAdornment={InputDemoProps[6].value}
-            endAdornment={InputDemoProps[7].value}
-            error={InputDemoProps[8].value}
-            touched={InputDemoProps[9].value}
-            onBlur={() => console.log("LOL")}
+            label={InputDemoProps[0].value}
+            variant={InputDemoProps[3].value}
+            // type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
+            // multiline
+            // type="textarea"
+            // error={true}
+            // touched={true}
+            touched={InputDemoProps[6].value}
+            disabled={InputDemoProps[7].value}
+            // errorMessage="You have an error here yo"
+            onBlur={() => console.log("LOL", InputDemoProps[3].value)}
+            vol={InputDemoProps[4].value}
+            // autoFocus
           />
         </PropsDemo>
       </Grid>
       <Grid>
         <div className={grid.colContent}>
-          <InputText
+          <InputRadioCheck
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label="NEWWWW"
+            label={
+              <Icon>
+                <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path>
+              </Icon>
+            }
             // type="textarea"
             // rows={2}
             onChange={() => console.log("MEMEM")}
@@ -170,118 +155,92 @@ const InputDocs = () => {
             error="You have an error here yo"
             // disabled
             vol={6}
-            autoFocus
-            autoComplete="off"
-            startAdornment={<span>$</span>}
-            endAdornment={<span>Kg</span>}
           />
 
-          <InputText
+          <InputRadioCheck
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
             label={"name"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={7}
-            autoFocus
             autoComplete="off"
           />
-          <InputText
+          <InputRadioCheck
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
             label={"vol6"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={6}
-            autoFocus
           />
-          <InputText
+          <InputRadioCheck
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
             label={"vol5"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={5}
-            autoFocus
             // autocomplete="off"
           />
-          <InputText
+          <InputRadioCheck
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
             label={"vol4"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={4}
-            autoFocus
           />
-          <InputText
+          <InputRadioCheck
             id="blah3"
             // name="username"
             placeholder="Enter your user name"
             // hint="Enter your full name"
             label={"vol3"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={3}
-            autoFocus
           />
-          <InputText
+          <InputRadioCheck
             id="blah4"
             // name="username"
             placeholder="Enter your user name"
             // hint="Enter your full name"
             label={"vol2"}
-            type="text"
+            type="checkbox"
             onChange={() => console.log("MEMEM")}
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
             vol={2}
-            autoFocus
           />
-          <InputText
-            id="blah4"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Enter your full name"
-            label={"vol1"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={1}
-            autoFocus
-          >
-            HELLO
-          </InputText>
         </div>
       </Grid>
     </DefaultLayout>
   );
 };
 
-export default InputDocs;
+export default InputRadioCheckDocs;

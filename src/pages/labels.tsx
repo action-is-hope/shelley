@@ -4,8 +4,7 @@ import DefaultLayout from "../layouts";
 import classnames from "classnames";
 import { P, H1, H2 } from "../components/Text/Text";
 import Label from "../components/Label/Label";
-import InputRow from "../components/InputRow/InputRow";
-import RadioCheckInput from "../components/RadioCheckInput/RadioCheckInput";
+
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -13,6 +12,7 @@ import CodeSample from "../components_site/CodeSample/CodeSample";
 import text from "../themes/default/css/text.st.css";
 import grid from "../themes/default/css/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
+import InputText from "../components/InputText/InputText";
 
 const LabelsDocs = () => {
   const [labelDemoProps, setLabelDemoProps]: any = React.useState([
@@ -118,7 +118,7 @@ const LabelsDocs = () => {
           us a larger &apos;hit&apos; area; useful on mobile devices.
         </P>
         <div className={classnames(grid.gridColumnOutset1, grid.exampleBox)}>
-          <InputRow
+          <InputText
             // className={grid.colContent}
             id="labelExampleId1"
             label={"Label text"}
@@ -136,6 +136,7 @@ const LabelsDocs = () => {
         <P>
           This should never be good enough for us, this is basic HTML after all.
         </P>
+
         <H2 vol={4} uppercase>
           Radios and checkboxes
         </H2>
@@ -183,7 +184,7 @@ const LabelsDocs = () => {
             visuallyHidden={labelDemoProps[3].value}
             radioCheckInput={
               labelDemoProps[4].value !== "none" ? (
-                <RadioCheckInput
+                <input
                   id={labelDemoProps[2].value}
                   type={labelDemoProps[4].value}
                 />

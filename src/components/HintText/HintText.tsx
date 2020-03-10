@@ -1,4 +1,4 @@
-/** HintText.tsx */
+/** hintText.tsx */
 import React from "react";
 import style from "./hintText.st.css";
 import classnames from "classnames";

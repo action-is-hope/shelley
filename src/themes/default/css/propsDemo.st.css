@@ -15,24 +15,9 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 }
 
 :import {
-  -st-from: "../../../components/InputRow/inputRow.st.css";
-  -st-default: InputRow;
-}
-
-:import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
   -st-named: labelTextContainer, labelText, radioCheckInput;
-}
-
-:import {
-  -st-from: "../../../components/TextInput/textInput.st.css";
-  -st-default: TextInput;
-}
-
-:import {
-  -st-from: "../../../components/RadioCheckInput/radioCheckInput.st.css";
-  -st-default: RadioCheckInput;
 }
 
 @st-scope Default {
@@ -189,79 +174,4 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
     grid-row-gap: 1px;
     /* margin-bottom: 48px */
   }
-
-
-  PropsDemo::propInputs InputRow {
-    margin-bottom: 0;
-    background: rgba(255, 255, 255, 0.04);
-    /* background: rgba(160, 160, 160, 0.06); */
-    /* rgba(255, 255, 255, 0.04) */
-  }
-
-  PropsDemo::propInputs InputRow Label {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  PropsDemo::propInputs InputRow TextInput,
-  PropsDemo::propInputs InputRow Label::radioCheckInput {
-    background: rgba(0, 0, 0, 0.07058823529411765);
-  }
-
-  PropsDemo::propInputs InputRow Label::radioCheckInput {
-    border-left: 1px solid #33d25f45;
-  }
-
-  /* #4c54842b */
-
-
-  PropsDemo::propInputs InputRow.text,
-  PropsDemo::propInputs InputRow.textarea,
-  PropsDemo::propInputs InputRow.number,
-  PropsDemo::propInputs InputRow.checkbox Label {
-    grid-template-columns: 1fr 2fr;
-    grid-column-gap: 16px;
-  }
-
-  PropsDemo::propInputs InputRow.textarea {
-    padding-bottom: 0.8em;
-  }
-
-  PropsDemo::propInputs InputRow.textarea TextInput::textAreaWrap {
-    max-height: 4rem;
-    overflow: scroll;
-  }
-
-  PropsDemo::propInputs InputRow.textarea TextInput::before {
-    bottom: -.8em
-  }
-
-
-  PropsDemo::propInputs InputRow.text Label,
-  PropsDemo::propInputs InputRow.textarea Label,
-  PropsDemo::propInputs InputRow.number Label,
-  PropsDemo::propInputs InputRow.checkbox Label::labelTextContainer {
-    justify-content: center;
-    align-items: flex-end;
-  }
-
-  PropsDemo::propInputs InputRow.checkbox Label {
-    display: grid
-  }
-
-  PropsDemo::propInputs InputRow.checkbox Label RadioCheckInput {
-    padding: 0
-  }
-
-  PropsDemo::propInputs InputRow.checkbox Label::labelTextContainer {
-    display: inline-flex;
-    flex-direction: column;
-  }
-
-  PropsDemo::propInputs InputRow TextInput::inputField {
-    /* padding-top: 0.4em;
-  padding-bottom: 0.4em; */
-  }
-
 }

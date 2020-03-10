@@ -4,13 +4,11 @@
 
 
 .root {
-  font-size: .8rem;
   color: #b66b6e;
   display: block;
+  font-size: .8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  border-style: solid;
-  border-color: #b66b6e
 }
 
 @media screen and (min-width: 600px) {

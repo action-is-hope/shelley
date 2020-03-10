@@ -153,10 +153,10 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <Link to="/labels/">Labels</Link>
             </Text>
             <Text as="li">
-              <Link to="/input/">Input Rows</Link>
+              <Link to="/inputText/">Input Text</Link>
             </Text>
             <Text as="li">
-              <Link to="/inputText/">Input Text</Link>
+              <Link to="/inputRadioCheck/">Input Selection</Link>
             </Text>
             <Text as="li">
               <Link to="/visually-hidden/">VisuallyHidden</Link>
@@ -206,9 +206,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
             We have a slightly niche target audiance in that you lot are usually
             fairly science based in you thinking. So you must know deep down in
             your heart of hearts how bad this is but perhaps even unaware that
-            you know. Talk about it! It's not going away, it is sobering; but
-            hope lies in action and talking about it is something everyone can
-            do. You are not a nut job for
+            you know. Talk about it! It&apos;s not going away, it is sobering;
+            but hope lies in action and talking about it is something everyone
+            can do. You are not a nut job for
           </P>
         </div>
       </Grid>

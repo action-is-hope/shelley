@@ -2,9 +2,10 @@
 import React from "react";
 import style from "./propsDemo.st.css";
 import classNames from "classnames";
-import InputRow from "../../components/InputRow/InputRow";
+
+import InputText from "../../components/InputText/InputText";
+import InputRadioCheck from "../../components/InputRadioCheck/InputRadioCheck";
 import Text, { H2, H3, P } from "../../components/Text/Text";
-import RadioCheck from "../../components/RadioCheckInput/RadioCheckInput";
 
 interface PropsDemoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -38,13 +39,14 @@ const PropsDemo = ({
     switch (item.type) {
       case "text":
         return (
-          <InputRow
+          <InputText
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             placeholder={item.label}
             defaultValue={item.value}
             label={`${item.label}:`}
-            vol={2}
+            vol={1}
+            variant={2}
             onChange={(e: any) => {
               const newDemoProps = [...propsArray];
               newDemoProps[i].value = e.target.value;
@@ -54,7 +56,7 @@ const PropsDemo = ({
         );
       case "textarea":
         return (
-          <InputRow
+          <InputText
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             type="textarea"
@@ -62,7 +64,8 @@ const PropsDemo = ({
             placeholder={item.label}
             defaultValue={item.value}
             label={`${item.label}:`}
-            vol={2}
+            vol={1}
+            variant={2}
             onChange={(e: any) => {
               const newDemoProps = [...propsArray];
               newDemoProps[i].value = e.target.value;
@@ -72,7 +75,7 @@ const PropsDemo = ({
         );
       case "number":
         return (
-          <InputRow
+          <InputText
             id={`${item.name}`}
             defaultValue={item.value}
             key={`${item.name}-${i}`}
@@ -81,7 +84,8 @@ const PropsDemo = ({
             type={item.type}
             min={item.min}
             max={item.max}
-            vol={2}
+            vol={1}
+            variant={2}
             onChange={(e: any) => {
               const newDemoProps = [...propsArray];
               newDemoProps[i].value = e.target.value;
@@ -91,13 +95,14 @@ const PropsDemo = ({
         );
       case "checkbox":
         return (
-          <InputRow
+          <InputRadioCheck
             id={`${item.name}`}
             key={`${item.name}-${i}`}
-            vol={2}
+            vol={1}
+            variant={2}
             label={`${item.label}:`}
             // labelVisuallyHidden={true}
-            type="checkbox"
+            type="toggle"
             onChange={(e: any) => {
               const newDemoProps = [...propsArray];
               newDemoProps[i].value = !newDemoProps[i].value;

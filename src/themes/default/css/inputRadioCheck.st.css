@@ -1,0 +1,218 @@
+/** radioCheck.st.css */
+/** inputText.st.css */
+
+:import {
+  -st-from: "../../../components/InputRadioCheck/inputRadioCheck.st.css";
+  -st-default: InputRadioCheck;
+  /* -st-named:  */
+}
+
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-default: HintText;
+}
+
+:import {
+  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-default: ErrorText;
+}
+
+:import {
+  -st-from: "../mixins/multiply";
+  -st-named: respScale;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+:import {
+  -st-from: "../variables.st.css";
+  -st-named:
+    --spacing-unit,
+    --text-vol-2-scale,
+    --text-vol-2-max,
+    --text-vol-3-scale,
+    --text-vol-3-max,
+    --text-vol-4-scale,
+    --text-vol-4-max,
+    --text-vol-5-scale,
+    --text-vol-5-max,
+    --text-vol-6-scale,
+    --text-vol-6-max,
+}
+
+
+InputRadioCheck.radio {}
+
+InputRadioCheck InputLabel {
+  cursor: pointer
+}
+
+InputRadioCheck:disabled InputLabel {
+  cursor: not-allowed;
+}
+
+
+InputRadioCheck::inputField {
+  font-size: inherit;
+  background: transparent;
+  height: 1em;
+  width: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid #bce3ff;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* See below for replcememnt, if we must! ;-) */
+  outline: none;
+}
+
+/* Custom focus element, experimenting..*/
+InputRadioCheck::inputField:before {
+  content: "";
+  display: block;
+  transition: opacity 120ms;
+  position: absolute;
+  box-shadow: 0 0 1px 2px #09b1f1;
+  top: -3px;
+  left: -3px;
+  bottom: -3px;
+  right: -3px;
+  opacity: 0;
+}
+
+/* For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
+
+/* Set: Both active and focus to avoid the vanishing of the focus style when active. */
+InputRadioCheck::inputField:focus:before,
+InputRadioCheck::inputField:active:before {
+  opacity: 1;
+}
+
+@-moz-document url-prefix() {
+
+  /**
+   * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
+   * rule for focus but will show our active styles that we only set to avoid the opposite
+   * in Chrome. 
+   */
+  InputRadioCheck::inputField:active:before {
+    opacity: 0;
+  }
+}
+
+/* Disabled - common */
+InputRadioCheck::inputField:disabled:before {
+  opacity: 0;
+}
+
+InputRadioCheck::inputField:disabled {
+  cursor: not-allowed;
+  filter: saturate(15%) brightness(70%);
+}
+
+
+/* Checkbox / Radio Common */
+InputRadioCheck::checkbox::after,
+InputRadioCheck::radio::after {
+  content: "";
+  transition: transform 80ms, opacity 120ms;
+  background: #89ffca;
+  width: 0.5em;
+  height: 0.5em;
+  opacity: 0;
+  display: block
+}
+
+InputRadioCheck::checkbox:checked::after,
+InputRadioCheck::radio:checked::after {
+  opacity: 1;
+}
+
+/* Radio */
+InputRadioCheck::radio,
+InputRadioCheck::radio:before,
+InputRadioCheck::radio::after {
+  border-radius: 50%;
+}
+
+/* Toggle */
+InputRadioCheck::toggle {
+  width: 2em;
+  border-radius: 9999px;
+}
+
+InputRadioCheck::toggle::before {
+  border-radius: 9999px;
+}
+
+InputRadioCheck::toggle::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 9999px;
+  transition: all 0.2s;
+  transform: translate(-50%);
+}
+
+InputRadioCheck::toggle:checked::after {
+  transform: translate(50%);
+  background: #52da98;
+}
+
+
+/* Volumes */
+
+InputRadioCheck.vol1::inputContainer {
+  font-size: 16px;
+}
+
+InputRadioCheck.vol2::inputContainer {
+  font-size: 20px;
+}
+
+InputRadioCheck.vol3::inputContainer {
+  font-size: 24px;
+}
+
+InputRadioCheck.vol4::inputContainer {
+  font-size: 28px;
+}
+
+InputRadioCheck.vol5::inputContainer {
+  font-size: 32px;
+}
+
+InputRadioCheck.vol6::inputContainer {
+  font-size: 36px;
+}
+
+/* Variants */
+
+/* Variant 2 */
+InputRadioCheck.variant2 InputLabel.hasInput {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  text-align: end;
+}
+
+InputRadioCheck.variant2::inputContainer {
+  border-left: 1px solid rgba(51, 210, 95, 0.27058823529411763);
+  padding: value(--spacing-unit);
+}

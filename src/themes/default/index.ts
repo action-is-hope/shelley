@@ -9,13 +9,10 @@ import "../globalHelpers.st.css";
 import Button from "./css/button.st.css";
 import Blockquote from "./css/blockquote.st.css";
 import Grid from "./css/grid.st.css";
-import InputRow from "./css/inputRow.st.css";
 import Label from "./css/label.st.css";
-import RadioCheckInput from "./css/radioCheckInput.st.css";
-import Text from "./css/text.st.css";
-import TextInput from "./css/textInput.st.css";
-
+import InputRadioCheck from "./css/inputRadioCheck.st.css";
 import InputText from "./css/inputText.st.css";
+import Text from "./css/text.st.css";
 
 // Application Components
 import PropsDemo from "./css/propsDemo.st.css";
@@ -41,15 +38,10 @@ export const button = (...values: []) =>
 export const blockquote = (...values: []) =>
   getClassNames(values, Blockquote, "blockquote");
 export const grid = (...values: []) => getClassNames(values, Grid, "grid");
-export const inputRow = (...values: []) =>
-  getClassNames(values, InputRow, "inputRow");
 export const label = (...values: []) => getClassNames(values, Label, "label");
-export const radioCheckInput = (...values: []) =>
-  getClassNames(values, RadioCheckInput, "radioCheckInput");
+export const inputRadioCheck = (...values: []) =>
+  getClassNames(values, InputRadioCheck, "inputRadioCheck");
 export const text = (...values: []) => getClassNames(values, Text, "text");
-export const textInput = (...values: []) =>
-  getClassNames(values, TextInput, "textInput");
-
 export const inputText = (...values: []) =>
   getClassNames(values, InputText, "inputText");
 // Application Components

@@ -51,11 +51,6 @@
     --text-vol-5-max,
     --text-vol-6-scale,
     --text-vol-6-max,
-    --text-vol-7-scale,
-    --text-vol-7-max,
-    --text-vol-8-max,
-    --text-vol-8-scale,
-    --text-vol-8-max,
 }
 
 @st-scope Default {
@@ -116,6 +111,10 @@
     margin-left: calc(0rem - value(--spacing-unit));
   }
 
+  InputText HintText {
+    margin-top: 4px
+  }
+
   InputText ErrorText {
     /* Send the error message which is first in the source order to appear under the form input. */
     grid-row: error-message;
@@ -152,13 +151,12 @@
   }
 
   /* Hack to get rid of the bloody autofill bg - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs */
-  TextInput::inputField:-webkit-autofill,
-  TextInput::inputField:-webkit-autofill:hover,
-  TextInput::inputField:-webkit-autofill:focus,
-  TextInput::inputField:-webkit-autofill:active {
+  InputText::fieldInput:-webkit-autofill,
+  InputText::fieldInput:-webkit-autofill:hover,
+  InputText::fieldInput:-webkit-autofill:focus,
+  InputText::fieldInput:-webkit-autofill:active {
     -webkit-transition-delay: 99999s;
   }
-
 
   /*==== VOLUMES ====*/
 
@@ -202,40 +200,71 @@
 
   /* Volume 5 */
   InputText.vol5 {
-    font-size: calc(value(--text-vol-5-scale) - .15rem);
+    font-size: calc(value(--text-vol-5-scale) - 0.15rem);
   }
 
   @media screen and (min-width: 1800px) {
     InputText.vol5 {
-      font-size: calc(value(--text-vol-5-max) - .15rem);
+      font-size: calc(value(--text-vol-5-max) - 0.15rem);
     }
   }
 
   /* Volume 6 */
   InputText.vol6 {
-    font-size: calc(value(--text-vol-6-scale) - .15rem);
+    font-size: calc(value(--text-vol-6-scale) - 0.15rem);
   }
 
   @media screen and (min-width: 1800px) {
     InputText.vol6 {
-      font-size: calc(value(--text-vol-6-max) - .15rem);
+      font-size: calc(value(--text-vol-6-max) - 0.15rem);
     }
   }
 
 
   /*==== VARIANTS ====*/
 
-  /* Variant 1 - Body */
+  /* Variant 1 - "Body" */
   InputText.variant1 InputLabel {
     margin-bottom: 8px;
   }
 
-  InputText.variant1 inputField {
-    padding: calc(0.2rem + .2em) 16px;
+  InputText.variant1::fieldInput {
+    /* padding: calc(0.2rem + .2em) 16px; */
   }
 
-  InputText+InputText {
+  InputText.variant1+InputText.variant1 {
     margin-top: calc(value(--spacing-unit) * 1)
+  }
+
+
+  /* Variant 2 - "Data" */
+  InputText.variant2 {
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 16px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  InputText.variant2::fieldInput {
+    padding-top: calc(0.2rem + .58em);
+    padding-bottom: calc(0.2rem + .58em);
+  }
+
+  InputText.variant2 ErrorText {
+    grid-column: 2;
+    padding-top: 4px;
+    padding-bottom: 8px;
+  }
+
+  InputText.variant2 InputLabel {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  InputText.variant2 InputLabel::labelText {
+    text-align: end;
   }
 
 }

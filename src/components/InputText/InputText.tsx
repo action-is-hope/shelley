@@ -29,8 +29,9 @@ interface InputRowProps
   startAdornment?: React.ReactNode;
   /** Place a component so as to appear inside the TextInput end. */
   endAdornment?: React.ReactNode;
-  /** Place a component so as to appear inside the TextInput end. */
+  /** The label to associated with the input. */
   label: React.ReactNode;
+  /** Variant index. */
   variant?: number;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   labelVisuallyHidden?: boolean;
@@ -38,6 +39,7 @@ interface InputRowProps
   vol?: TextVolume;
   /** Takes a ref, always handy as and when you need it. */
   ref?: React.Ref<HTMLInputElement>;
+  /** The type of input control to render. */
   type?: InputTypes;
 }
 

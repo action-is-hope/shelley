@@ -62,3 +62,7 @@ CodeSample code :global(.attr-value) {
   color: value(--color-accent-4-default);
   color: var(--color-accent-4, value(--color-accent-4-default));
 }
+
+CodeSample code :global(.comment) {
+  color: #28a265
+}

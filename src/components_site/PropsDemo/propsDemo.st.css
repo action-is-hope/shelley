@@ -1,27 +1,5 @@
 /** propsDemo.st.css */
 
-:import {
-  -st-from: "../../components/InputRow/inputRow.st.css";
-  -st-default: InputRow;
-}
-
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: Label;
-  -st-named: labelTextContainer, labelText, radioCheckInput;
-}
-
-:import {
-  -st-from: "../../components/RadioCheckInput/radioCheckInput.st.css";
-  -st-default: RadioCheckInput;
-}
-
-:import {
-  -st-from: "../../components/TextInput/textInput.st.css";
-  -st-default: TextInput;
-  -st-named: input, textAreaWrap;
-}
-
 .root {}
 
 .gridOverflow {}
