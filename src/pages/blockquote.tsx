@@ -104,21 +104,21 @@ const LabelsDocs = () => {
           </a>
         </P> */}
         <P>
-          Digression Alert:{" "}
+          Digression Alert: Did you read the quote?{" "}
           <a href="https://www.theguardian.com/technology/2020/feb/21/climate-tweets-twitter-bots-analysis">
             {" "}
             a quarter of all tweets about climate crisis produced by bots!
           </a>{" "}
-          Is this not a <em>very</em> concerning trend? AI is advancing and our
-          ability to sort fact from fiction is fast diminishing. Shelley
-          suggests reading{" "}
+          That is a lot. Is this not a <em>very</em> concerning trend? AI is
+          advancing and our ability to sort fact from fiction is fast
+          diminishing. Shelley suggests reading{" "}
           <a href="https://www.gutenberg.org/ebooks/42324">Frankeinstein</a>,
           apparently it&apos;s relatable and contains a warning about this type
           of crap from when it was released in 1818...2020...?
         </P>
 
         <P>
-          Okaaay,{" "}
+          Okaaay, I'll bite{" "}
           <a href="https://en.wikipedia.org/wiki/1919">
             what happened in 1919?
           </a>{" "}

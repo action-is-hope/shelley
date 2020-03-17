@@ -10,6 +10,9 @@ import CodeSample from "../components_site/CodeSample/CodeSample";
 
 import grid from "../themes/default/css/grid.st.css";
 import Icon from "../components/Icon/Icon";
+import Label from "../components/Label/Label";
+import InputSelectionControl from "../components/InputSelectionControl/InputSelectionControl";
+import Button from "../components/Button/Button";
 
 const InputSelectionDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
@@ -23,7 +26,7 @@ const InputSelectionDocs = () => {
       name: "hint",
       label: "hint",
       type: "text",
-      value: "Form item hint message"
+      value: ""
     },
     {
       name: "type",
@@ -48,6 +51,13 @@ const InputSelectionDocs = () => {
       value: 3
     },
     {
+      name: "inputPos",
+      label: "inputPos",
+      type: "select",
+      value: "end",
+      options: ["start", "end", "above", "below"]
+    },
+    {
       name: "error",
       label: "error",
       type: "text",
@@ -66,6 +76,14 @@ const InputSelectionDocs = () => {
       value: false
     }
   ]);
+
+  // const inputEl = React.useRef();
+  const selectionRef = React.createRef<HTMLInputElement>();
+  const onButtonClick = () => {
+    const node = selectionRef.current;
+    // `current` points to the mounted text input element
+    node && node.focus();
+  };
 
   return (
     <DefaultLayout>
@@ -92,10 +110,6 @@ const InputSelectionDocs = () => {
                 ? `\n  hint="${InputDemoProps[1].value}"`
                 : ``
             } ${
-              InputDemoProps[5].value
-                ? `\n  error="${InputDemoProps[5].value}"`
-                : ``
-            } ${
               InputDemoProps[2].value
                 ? `\n  type="${InputDemoProps[2].value}"`
                 : ``
@@ -107,8 +121,16 @@ const InputSelectionDocs = () => {
               InputDemoProps[4].value
                 ? `\n  vol={${InputDemoProps[4].value}}`
                 : ``
-            }  ${InputDemoProps[6].value ? `\n  touched` : ``} ${
-              InputDemoProps[7].value ? `\n  disabled` : ``
+            } ${
+              InputDemoProps[5].value
+                ? `\n  inputPos={${InputDemoProps[5].value}}`
+                : ``
+            } ${
+              InputDemoProps[6].value
+                ? `\n  error="${InputDemoProps[6].value}"`
+                : ``
+            } ${InputDemoProps[7].value ? `\n  touched` : ``} ${
+              InputDemoProps[8].value ? `\n  disabled` : ``
             } 
 />
 `}</CodeSample>
@@ -116,125 +138,126 @@ const InputSelectionDocs = () => {
         >
           <InputSelection
             id="username"
-            // name="username"
-            error={InputDemoProps[5].value}
-            type={InputDemoProps[2].value}
-            hint={InputDemoProps[1].value}
             label={InputDemoProps[0].value}
+            // label={
+            //   <Icon>
+            //     <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path>
+            //   </Icon>
+            // }
+            hint={InputDemoProps[1].value}
+            type={InputDemoProps[2].value}
             variant={InputDemoProps[3].value}
-            // type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
-            // multiline
-            // type="textarea"
-            // error={true}
-            // touched={true}
-            touched={InputDemoProps[6].value}
-            disabled={InputDemoProps[7].value}
-            // errorMessage="You have an error here yo"
-            onBlur={() => console.log("LOL", InputDemoProps[3].value)}
             vol={InputDemoProps[4].value}
+            inputPos={InputDemoProps[5].value}
+            error={InputDemoProps[6].value}
+            touched={InputDemoProps[7].value}
+            disabled={InputDemoProps[8].value}
+            ref={selectionRef}
             // autoFocus
           />
         </PropsDemo>
       </Grid>
       <Grid>
         <div className={grid.colContent}>
+          <P>
+            <Button onClick={() => onButtonClick()}>Boom</Button>
+          </P>
+
+          <P>
+            <Label
+              // hint={labelDemoProps[1].value}
+              htmlFor="TEST"
+              inputPos="below"
+              inputControl={<InputSelectionControl id="TEST" type="toggle" />}
+              // inputControl={<input type="checkbox" />}
+            >
+              <Icon viewBox="0 0 24 24" label="Toggle preview">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+              </Icon>
+            </Label>
+          </P>
           <InputSelection
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
+            id="preview"
+            inputPos="above"
             label={
-              <Icon>
-                <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path>
+              <Icon viewBox="0 0 24 24">
+                {/* <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path> */}
+                {/* <path d="M8 3.9c-6.7 0-8 5.1-8 5.1s2.2 4.1 7.9 4.1 8.1-4 8.1-4-1.3-5.2-8-5.2zM5.3 5.4c0.5-0.3 1.3-0.3 1.3-0.3s-0.5 0.9-0.5 1.6c0 0.7 0.2 1.1 0.2 1.1l-1.1 0.2c0 0-0.3-0.5-0.3-1.2 0-0.8 0.4-1.4 0.4-1.4zM7.9 12.1c-4.1 0-6.2-2.3-6.8-3.2 0.3-0.7 1.1-2.2 3.1-3.2-0.1 0.4-0.2 0.8-0.2 1.3 0 2.2 1.8 4 4 4s4-1.8 4-4c0-0.5-0.1-0.9-0.2-1.3 2 0.9 2.8 2.5 3.1 3.2-0.7 0.9-2.8 3.2-7 3.2z"></path> */}
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
               </Icon>
             }
             // type="textarea"
             // rows={2}
-            onChange={() => console.log("MEMEM")}
+
             // touched={true}
             error="You have an error here yo"
+            type="toggle"
             // disabled
-            vol={6}
+            vol={2}
           />
+          <br />
+          <br />
+          <br />
+          <br />
 
           <InputSelection
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"name"}
-            type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={7}
-            autoComplete="off"
+            id="laptop"
+            inputPos="above"
+            name="viewPort"
+            label={
+              <Icon label="Laptop">
+                {/* laptop */}
+                <path d="M14 11v-9h-12v9h-2v2h16v-2h-2zM10 12h-4v-1h4v1zM13 10h-10v-7h10v7z"></path>
+              </Icon>
+            }
+            error="You have an error here yo"
+            type="radio"
+            vol={1}
           />
           <InputSelection
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol6"}
-            type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={6}
+            id="tablet"
+            inputPos="above"
+            name="viewPort"
+            label={
+              <Icon label="Tablet">
+                {/* tablet.svg */}
+                <path d="M0 2v12h16v-12h-16zM13 13h-11v-10h11v10zM15 9h-1v-2h1v2z"></path>
+              </Icon>
+            }
+            error="You have an error here yo"
+            type="radio"
+            vol={1}
           />
           <InputSelection
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol5"}
-            type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={5}
-            // autocomplete="off"
+            id="mobile"
+            inputPos="above"
+            name="viewPort"
+            label={
+              <Icon label="Mobile">
+                {/* mobile */}
+                <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
+              </Icon>
+            }
+            error="You have an error here yo"
+            type="radio"
+            vol={1}
           />
-          <InputSelection
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol4"}
-            type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={4}
-          />
-          <InputSelection
-            id="blah3"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Enter your full name"
-            label={"vol3"}
-            type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={3}
-          />
+          <br />
+          <br />
+          <br />
+          <br />
+          <InputSelection id="blah2" label={"name"} type="checkbox" vol={7} />
+          <InputSelection id="blah2" label={"vol6"} type="checkbox" vol={6} />
+          <InputSelection id="blah2" label={"vol5"} type="checkbox" vol={5} />
+          <InputSelection id="blah2" label={"vol4"} type="checkbox" vol={4} />
+          <InputSelection id="blah3" label={"vol3"} type="checkbox" vol={3} />
           <InputSelection
             id="blah4"
-            // name="username"
-            placeholder="Enter your user name"
             // hint="Enter your full name"
             label={"vol2"}
             type="checkbox"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
             vol={2}
           />
         </div>

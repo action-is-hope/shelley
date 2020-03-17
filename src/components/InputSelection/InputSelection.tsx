@@ -2,25 +2,30 @@ import React from "react";
 import classnames from "classnames";
 import style from "./inputSelection.st.css";
 import Label from "../Label/Label";
-import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+import ErrorText from "../ErrorText/ErrorText";
+import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
 import { TextVolume, InputTypes } from "../types";
 
-// interface RadioCheckInputProps extends React.HTMLProps<HTMLInputElement> {
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface RadioCheckInputProps
   extends Pick<
     React.HTMLProps<HTMLInputElement>,
     Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
   > {
+  /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility*/
   id: string;
-  /** Triggers the stylable error state. */
-  error?: boolean;
-  /** Provide some hint text in addition to the label. */
+  /** Provide an error message that triggers the stylable error state. */
+  error?: React.ReactNode;
+  /** Provide some hint text to the label component. */
   hint?: React.ReactNode;
+  /** Triggers the Inputs stylable error state. */
+  touched?: boolean;
   /** Variant index. */
   variant?: number;
   /** The label to associated with the input. */
   label: React.ReactNode;
+  /** The position of the label relative to the label. */
+  inputPos?: "above" | "below" | "start" | "end" | false;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   labelVisuallyHidden?: boolean;
   /** How 'loud' should this input row be? */
@@ -35,40 +40,41 @@ const InputSelection = React.forwardRef(
       className: classNameProp,
       id = "NOID",
       disabled = false,
-      error = false,
+      error: errorMessage,
+      touched = false,
       defaultChecked = false,
       type = "checkbox",
       hint,
       variant = 1,
       label,
       labelVisuallyHidden,
+      inputPos = "end",
       vol = 3,
-      // onChange,
+      ref: refProp, // Fix: compatability issue. Investigate.
       ...rest
     }: RadioCheckInputProps,
-    // Note: Currently react-expanding-textarea does not support refs.
     ref?: React.Ref<HTMLInputElement>
   ) => {
     id === "NOID" &&
       console.warn(
         `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nWe have applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
       );
+    const error = errorMessage && touched ? true : false;
 
-    const inputField = (
-      <span
-        {...style(classnames(style.inputContainer), { error, disabled }, rest)}
-      >
-        <input
-          aria-invalid={error ? true : false}
-          className={classnames(style.inputField, style[type])}
-          disabled={disabled}
-          defaultChecked={defaultChecked}
-          id={id}
-          ref={ref}
-          type={type === "radio" ? "radio" : "checkbox"}
-          {...rest}
-        />
-      </span>
+    const inputControl = (
+      <InputSelectionControl
+        {...{
+          id,
+          disabled,
+          defaultChecked,
+          error,
+          ref,
+          type,
+          // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
+          "aria-describedBy": error ? `${id}-error` : undefined,
+          ...rest
+        }}
+      />
     );
     return (
       <div
@@ -84,11 +90,14 @@ const InputSelection = React.forwardRef(
           rest
         )}
       >
+        {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
+
         <Label
           htmlFor={id}
           hint={hint}
-          radioCheckInput={inputField}
+          inputControl={inputControl}
           visuallyHidden={labelVisuallyHidden}
+          inputPos={inputPos}
         >
           {label}
         </Label>

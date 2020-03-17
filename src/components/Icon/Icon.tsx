@@ -13,6 +13,7 @@ interface IconProps
   > {
   color?: number | false;
   label?: string;
+  viewBox?: string;
 }
 
 const Icon = React.forwardRef(
@@ -22,8 +23,9 @@ const Icon = React.forwardRef(
       className: classNameProp,
       color = false,
       label: labelProp,
-      /* Default viwBox based on vaadin icon set. 
-         - https://github.com/vaadin/vaadin-icons/tree/master/assets/svg 
+      /* Default viewBox based on vaadin icon set. 
+         - https://github.com/vaadin/vaadin-icons/tree/master/assets/svg
+        if using material-ui icons set to "0 0 24 24"
       */
       viewBox = "0 0 16 16",
       /* Pull off the aria label so we can honour an accessible solution. */
@@ -45,7 +47,7 @@ const Icon = React.forwardRef(
           {...style(rootClassNames, {}, attrs)}
           focusable="false"
           viewBox={viewBox}
-          aria-hidden={false}
+          aria-hidden={true}
           ref={ref}
           {...attrs}
         >

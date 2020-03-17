@@ -8,14 +8,17 @@ import HintText from "../HintText/HintText";
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
   hint?: React.ReactNode;
+  /** The position of the label relative to the input. */
+  inputPos?: "above" | "below" | "start" | "end" | false;
   visuallyHidden?: boolean;
-  radioCheckInput?: React.ReactNode;
+  inputControl?: React.ReactNode;
 }
 
 const Label = ({
   className: classNameProp,
-  radioCheckInput,
+  inputControl,
   children,
+  inputPos = false,
   hint,
   visuallyHidden,
   ...rest
@@ -23,7 +26,6 @@ const Label = ({
   const labelText = (
     <span className={style.labelTextContainer}>
       <span className={style.labelText}>{children}</span>
-
       {hint && <HintText>{hint}</HintText>}
     </span>
   );
@@ -33,10 +35,10 @@ const Label = ({
       {...style(
         classNames(
           style.root,
-          { [style.hasInput]: radioCheckInput },
+          { [style.hasInput]: inputControl },
           classNameProp
         ),
-        {},
+        { inputPos },
         rest
       )}
       {...rest}
@@ -46,11 +48,7 @@ const Label = ({
       ) : (
         labelText
       )}
-      {/* {radioCheckInput && (
-        <span className={style.radioCheckInput}>{radioCheckInput}</span>
-      )} */}
-
-      {radioCheckInput && radioCheckInput}
+      {inputControl && inputControl}
     </label>
   );
 };

@@ -11,8 +11,24 @@
   -st-named:
     labelTextContainer,
     labelText,
-    labelHintText,
     hasInput;
+}
+
+:import {
+  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-default: HintText;
+}
+
+:import {
+  -st-from: "../../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+
+:import {
+  -st-from: "../variables.st.css";
+  -st-named:
+    --spacing-unit,
 }
 
 @st-scope Default {
@@ -44,13 +60,17 @@ have this ability and it's valid...
   @media screen and (min-width: 600px) {
 
     Label {
-      font-size: .625rem;
+      font-size: .7rem;
     }
+  }
+
+  Label Icon {
+    font-size: 1.75em;
   }
 
   /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
   Label.hasInput {
-    display: flex;
+    display: inline-flex;
     /* Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
     flex-direction: row-reverse;
     /* Vertically align the items. */
@@ -61,10 +81,11 @@ have this ability and it's valid...
 
   Label::labelTextContainer {
     display: block;
+    color: #eaeaea
   }
 
   Label::labelText {
-    display: block;
+    display: flex;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
@@ -76,5 +97,43 @@ have this ability and it's valid...
       /* font-size: .9em; */
     }
   }
+
+
+  /*==== Input Position ====*/
+
+  /* above / top */
+  Label:inputPos(above).hasInput {
+    flex-direction: column-reverse;
+  }
+
+  Label:inputPos(above)::labelText,
+  Label:inputPos(above) HintText {
+    justify-content: center;
+  }
+
+
+  /* end / right */
+  Label:inputPos(end).hasInput {
+    flex-direction: row;
+  }
+
+  Label:inputPos(end)::labelText,
+  Label:inputPos(end) HintText {
+    justify-content: flex-end;
+  }
+
+
+  /* below / bottom */
+  Label:inputPos(below).hasInput {
+    flex-direction: column;
+  }
+
+  Label:inputPos(below)::labelText,
+  Label:inputPos(below) HintText {
+    justify-content: center;
+  }
+
+
+  /* start / left */
 
 }

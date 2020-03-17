@@ -7,6 +7,7 @@ import Textarea from "react-expanding-textarea";
 
 import InputAdornment from "../InputAdornment/InputAdornment";
 import ErrorText from "../ErrorText/ErrorText";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
@@ -51,7 +52,6 @@ const InputText = React.forwardRef(
       disabled = false,
       error: errorMessage,
       touched = false,
-      children,
       hint,
       label = (
         <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/H44">
@@ -78,32 +78,26 @@ const InputText = React.forwardRef(
       );
     const error = errorMessage && touched ? true : false;
 
+    const inputAttrs = {
+      id,
+      className: style.fieldInput,
+      disabled,
+      pattern,
+      ref,
+      // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
+      "aria-invalid": error ? true : undefined,
+      "aria-describedBy": error ? `${id}-error` : undefined,
+      ...rest
+    };
+
     const input: React.ReactNode =
       type === "textarea" ? (
-        /* Its a bit span'tastic as we want to an 'input (inline) but a textarea...? It's valid, Shelley checked. */
+        /* span > -textarea is valid markup - Shelley checked as we eant to mimic an inline input. */
         <span className={style.textAreaWrap}>
-          <Textarea
-            aria-invalid={error ? true : false}
-            className={style.fieldInput}
-            disabled={disabled}
-            id={id}
-            rows={rows}
-            ref={ref}
-            {...rest}
-          />
+          <Textarea {...inputAttrs} rows={rows} />
         </span>
       ) : (
-        <input
-          aria-invalid={error ? true : false}
-          className={style.fieldInput}
-          disabled={disabled}
-          id={id}
-          type={type}
-          // pattern="\d*"
-          pattern={pattern}
-          ref={ref}
-          {...rest}
-        />
+        <input {...inputAttrs} type={type} />
       );
 
     return (
@@ -114,22 +108,25 @@ const InputText = React.forwardRef(
             style[type],
             style["variant" + variant],
             style["vol" + vol],
-            {
-              // [style.labelVisuallyHidden]: labelVisuallyHidden
-            },
             classNameProp
           ),
           { error, disabled },
           rest
         )}
       >
-        {error && touched && errorMessage && (
-          <ErrorText>{errorMessage}</ErrorText>
-        )}
+        {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
-        <Label htmlFor={id} hint={hint} visuallyHidden={labelVisuallyHidden}>
-          {label}
-        </Label>
+        {labelVisuallyHidden ? (
+          <VisuallyHidden>
+            <Label htmlFor={id} hint={hint}>
+              {label}
+            </Label>
+          </VisuallyHidden>
+        ) : (
+          <Label htmlFor={id} hint={hint}>
+            {label}
+          </Label>
+        )}
 
         <div className={style.fieldContainer}>
           {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}

@@ -8,15 +8,22 @@ import Icon from "../Icon/Icon";
 /**
  * Button props extending those of a regular button.
  */
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+
+interface ButtonProps
+  extends Pick<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "color">
+  > {
+  // interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Type of the button default, primary..*/
-  color?: string;
+  color?: false | number;
   /** Optional ref. */
   // ref?: React.Ref<HTMLButtonElement>;
   /** Button sizes: xs, sm, md, lg */
-  size?: string;
+
   /** Button variant. */
-  variant?: string;
+  variant?: false | number;
+  vol?: false | number;
   /** Extra text that can be used to render a tooltip on hover/focus. */
   tip?: string;
 }
@@ -26,9 +33,9 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
-      color = "c1",
-      size = "md",
-      variant = "v1",
+      color = 1,
+      variant = 1,
+      vol = 3,
       tip,
       ...rest
     }: ButtonProps,
@@ -36,9 +43,9 @@ const Button = React.forwardRef(
   ) => {
     const rootClassNames = classnames(
       style.root,
-      style[color],
-      style[size],
-      style[variant],
+      style["color" + color],
+      style["variant" + variant],
+      style["vol" + vol],
       classNameProp
     );
 

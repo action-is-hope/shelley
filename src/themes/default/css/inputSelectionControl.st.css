@@ -1,0 +1,158 @@
+/** inputSelection.st.css */
+/** inputText.st.css */
+
+:import {
+  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: InputSelectionControl;
+  /* -st-named:  */
+  -st-named: inputContainer
+}
+
+:import {
+  -st-from: './formElements.st.css';
+  -st-named: hideWebkitAppearance;
+}
+
+
+:import {
+  -st-from: "../../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-accent-1-default, --color-ui-default;
+}
+
+/* This is how we can scope the styles. */
+@st-scope Default {
+
+  InputSelectionControl {
+
+    font-size: 20px;
+    /* flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
+    display: flex;
+    transform: translateZ(0);
+  }
+
+
+
+
+  InputSelectionControl::inputField {
+    -st-mixin: hideWebkitAppearance;
+    font-size: inherit;
+    background: transparent;
+    height: 1em;
+    width: 1em;
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    cursor: pointer;
+    position: relative;
+    border: 2px solid #bce3ff;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* See below for replacement, I know, if we must! ;-) */
+    outline: none;
+  }
+
+  /* Custom focus element, experimenting..*/
+  InputSelectionControl::inputField::after {
+    content: "";
+    display: block;
+    transition: opacity 120ms;
+    position: absolute;
+    box-shadow: 0 0 1px 2px #09b1f1;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    opacity: 0;
+  }
+
+  /* For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
+
+  /* Set: Both active and focus to avoid the vanishing of the focus style when active. */
+  InputSelectionControl::inputField:focus::after,
+  InputSelectionControl::inputField:active::after {
+    opacity: 1;
+  }
+
+  @-moz-document url-prefix() {
+
+    /**
+   * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
+   * rule for focus but will show our active styles that we only set to avoid the opposite
+   * in Chrome. 
+   */
+    InputSelectionControl::inputField:active::after {
+      opacity: 0;
+    }
+  }
+
+  /* Disabled - common */
+  InputSelectionControl::inputField:disabled::after {
+    opacity: 0;
+  }
+
+  InputSelectionControl::inputField:disabled {
+    cursor: not-allowed;
+    filter: saturate(15%) brightness(70%);
+  }
+
+
+  /* Checkbox / Radio Common */
+  InputSelectionControl::checkbox::before,
+  InputSelectionControl::radio::before {
+    content: "";
+    transition: opacity 120ms;
+    background: #89ffca;
+    width: 0.5em;
+    height: 0.5em;
+    opacity: 0;
+    display: block
+  }
+
+  InputSelectionControl::checkbox:checked::before,
+  InputSelectionControl::radio:checked::before {
+    opacity: 1;
+  }
+
+  /* Radio */
+  InputSelectionControl::radio,
+  InputSelectionControl::radio::after,
+  InputSelectionControl::radio::before {
+    border-radius: 50%;
+  }
+
+  /* Toggle */
+  InputSelectionControl::toggle {
+    width: 2em;
+    border-radius: 9999px;
+    /* transition: transform 120ms;? */
+  }
+
+  InputSelectionControl::toggle::before {
+    border-radius: 9999px;
+  }
+
+  InputSelectionControl::toggle::before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 9999px;
+    transition: all 0.2s;
+    transform: translate(-50%);
+  }
+
+  InputSelectionControl::toggle:checked::before {
+    transform: translate(50%);
+    background: #52da98;
+  }
+
+}

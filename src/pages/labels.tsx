@@ -13,6 +13,7 @@ import text from "../themes/default/css/text.st.css";
 import grid from "../themes/default/css/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import InputText from "../components/InputText/InputText";
+import InputSelectionControl from "../components/InputSelectionControl/InputSelectionControl";
 
 const LabelsDocs = () => {
   const [labelDemoProps, setLabelDemoProps]: any = React.useState([
@@ -41,11 +42,11 @@ const LabelsDocs = () => {
       value: false
     },
     {
-      name: "radioCheckInput",
-      label: "radioCheckInput",
+      name: "inputControl",
+      label: "inputControl",
       type: "select",
       value: "checkbox",
-      options: ["none", "radio", "checkbox", "switch"]
+      options: ["none", "radio", "checkbox", "toggle", "switch"]
     }
   ]);
 
@@ -148,9 +149,9 @@ const LabelsDocs = () => {
         </P>
 
         <P>
-          To do this we use Shelley&apos;s <code>RadioCheckInput</code>{" "}
+          To do this we use Shelley&apos;s <code>InputSelectionControl</code>{" "}
           component (or use your own) and throw it inside the Label via the{" "}
-          <code>radioCheckInput</code> prop. Let&apos;s have a poke around:
+          <code>inputControl</code> prop. Let&apos;s have a poke around:
         </P>
       </Grid>
       <Grid variant={1}>
@@ -162,7 +163,9 @@ const LabelsDocs = () => {
           tsExtends="HTMLLabelElement"
           renderExample={
             <CodeSample>{`import { Label${
-              labelDemoProps[4].value !== "none" ? `, RadioCheckInput` : ``
+              labelDemoProps[4].value !== "none"
+                ? `, InputSelectionControl`
+                : ``
             } } from "@action-is-hope/shelley";\n<Label ${
               labelDemoProps[1].value
                 ? `\n  hint="${labelDemoProps[1].value}"`
@@ -173,32 +176,54 @@ const LabelsDocs = () => {
                 : ``
             } ${
               labelDemoProps[4].value !== "none"
-                ? `\n  radioCheckInput={\n    <RadioCheckInput id="${labelDemoProps[2].value}" type="${labelDemoProps[4].value}" />\n  }`
+                ? `\n  inputControl={\n    <InputSelectionControl id="${labelDemoProps[2].value}" type="${labelDemoProps[4].value}" />\n  }`
                 : ``
             } \n>\n ${labelDemoProps[0].value}\n</Label>`}</CodeSample>
           }
         >
           <Label
             hint={labelDemoProps[1].value}
-            htmlFor={labelDemoProps[2].value}
+            // htmlFor={labelDemoProps[2].value}
             visuallyHidden={labelDemoProps[3].value}
-            radioCheckInput={
+            inputPos="below"
+            inputControl={
               labelDemoProps[4].value !== "none" ? (
-                <input
+                <InputSelectionControl
                   id={labelDemoProps[2].value}
                   type={labelDemoProps[4].value}
                 />
               ) : (
-                false
+                <input type="text" />
               )
             }
-            // radioCheckInput={<input type="checkbox" />}
+            // inputControl={<input type="checkbox" />}
           >
             {labelDemoProps[0].value}
           </Label>
         </PropsDemo>
       </Grid>
       <Grid variant={1}>
+        <P>
+          <InputSelectionControl
+            id={labelDemoProps[2].value}
+            type={labelDemoProps[4].value}
+          />
+        </P>
+        <P>
+          <InputSelectionControl id="testToggle" type="toggle" />
+        </P>
+        <P>
+          <InputSelectionControl
+            name="radioTest"
+            id="testRadio1"
+            type="radio"
+          />
+          <InputSelectionControl
+            name="radioTest"
+            id="testRadio2"
+            type="radio"
+          />
+        </P>
         <P>
           <strong>Note:</strong> Rendering an input inside of a label actually
           has the side effect of implicitly associating them, however it is

@@ -30,7 +30,7 @@ const Blockquote = ({
   variant,
   ...rest
 }: BlockquoteProps) => {
-  // @todo: shuold be optional + need a 'opens in a new window' thingy.
+  // @todo: should be optional + need a 'opens in a new window' thingy which we need to make.
   const cite = citeUrl ? (
     <a href={citeUrl} target="_blank" rel="noopener noreferrer">
       {citeContent}

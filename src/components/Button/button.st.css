@@ -1,43 +1,6 @@
 /* button.st.css */
 .root {}
 
-/* Sizes */
-.xs {}
-
-.sm {}
-
-.md {}
-
-.lg {}
-
-.xl {}
-
-/* Colors */
-.c1 {}
-
-.c2 {}
-
-.c3 {}
-
-.c4 {}
-
-.c5 {}
-
-.c6 {}
-
-/* Variants */
-.v1 {}
-
-.v2 {}
-
-.v3 {}
-
-.v4 {}
-
-.v5 {}
-
-.v6 {}
-
 /* The 'inner' button. */
 .inner {}
 
@@ -45,3 +8,48 @@
 
 /* The tip element got for inline tool-tips on focus/hover. */
 .tip {}
+
+
+/* Accents */
+
+.color1 {}
+
+.color2 {}
+
+.color3 {}
+
+.color4 {}
+
+.color5 {}
+
+.color6 {}
+
+
+/* Variants */
+
+.variant1 {}
+
+.variant2 {}
+
+.variant3 {}
+
+.variant4 {}
+
+.variant5 {}
+
+.variant6 {}
+
+
+/* Volume */
+
+.vol1 {}
+
+.vol2 {}
+
+.vol3 {}
+
+.vol4 {}
+
+.vol5 {}
+
+.vol6 {}

@@ -1,0 +1,19 @@
+/** inputSelectionControl.st.css */
+.root {
+  -st-states: disabled, error;
+  ;
+}
+
+.inputContainer {}
+
+/*Root...*/
+
+.inputField {}
+
+.radio {}
+
+.checkbox {}
+
+.toggle {}
+
+.switch {}

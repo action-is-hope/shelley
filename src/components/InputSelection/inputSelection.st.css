@@ -1,17 +1,16 @@
 /** inputSelection.st.css */
 .root {
-  -st-states: checked, disabled, error;
+  -st-states: disabled, error, labelPos(enum(above, below, start, end));
+  ;
 }
-
-.inputContainer {}
-
-.inputField {}
 
 .radio {}
 
 .checkbox {}
 
 .toggle {}
+
+.switch {}
 
 
 /* Variants */

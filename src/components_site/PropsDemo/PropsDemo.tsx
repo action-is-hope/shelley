@@ -126,23 +126,27 @@ const PropsDemo = ({
       // })}
       case "select":
         return (
-          <select
-            value={item.value}
-            key={`${item.name}-${i}`}
-            onChange={(e: any) => {
-              const newDemoProps = [...propsArray];
-              newDemoProps[i].value = e.target.value;
-              setPropsArray(newDemoProps);
-            }}
-          >
-            {item.options.map((item: string, index: number) => {
-              return (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
+          <>
+            <label htmlFor={`${item.name}`}>{item.name}</label>
+            <select
+              value={item.value}
+              id={`${item.name}`}
+              key={`${item.name}-${i}`}
+              onChange={(e: any) => {
+                const newDemoProps = [...propsArray];
+                newDemoProps[i].value = e.target.value;
+                setPropsArray(newDemoProps);
+              }}
+            >
+              {item.options.map((item: string, index: number) => {
+                return (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </>
         );
       default:
       // code block

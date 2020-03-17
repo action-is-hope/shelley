@@ -44,6 +44,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <h4>h4</h4>
           <label>Hi</label>
           <label htmlFor="hiihs">Hi</label>
+
+          <Icon>
+            {/* eye */}
+            <path d="M8 3.9c-6.7 0-8 5.1-8 5.1s2.2 4.1 7.9 4.1 8.1-4 8.1-4-1.3-5.2-8-5.2zM5.3 5.4c0.5-0.3 1.3-0.3 1.3-0.3s-0.5 0.9-0.5 1.6c0 0.7 0.2 1.1 0.2 1.1l-1.1 0.2c0 0-0.3-0.5-0.3-1.2 0-0.8 0.4-1.4 0.4-1.4zM7.9 12.1c-4.1 0-6.2-2.3-6.8-3.2 0.3-0.7 1.1-2.2 3.1-3.2-0.1 0.4-0.2 0.8-0.2 1.3 0 2.2 1.8 4 4 4s4-1.8 4-4c0-0.5-0.1-0.9-0.2-1.3 2 0.9 2.8 2.5 3.1 3.2-0.7 0.9-2.8 3.2-7 3.2z"></path>
+          </Icon>
           <Icon>
             <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path>
           </Icon>
@@ -162,6 +167,93 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <Link to="/visually-hidden/">VisuallyHidden</Link>
             </Text>
           </ul>
+
+          <H2 uppercase vol={2}>
+            Theming
+          </H2>
+
+          <P>
+            Sylyable is build based on the CSS standards where some might see
+            limitations we see as forgoing tools that will get us into trouble.
+            Conveniance will always screw us, look at the state of the planet.
+          </P>
+
+          <P>
+            You own the styles... We thin at the moment we will offer you our
+            main theme but not by way of something that we intend to
+            &apos;support&apos;. What do we mean by this?
+          </P>
+          <P>
+            Shelley provides you with <em>unstyled</em> components, this is the
+            core of Shelley. We think it makes Shelley stand out a bit and we
+            find it very powerful. It&apos;s power comes from it&apos;s ability
+            to promote and facilitae simplicity, transparancy, agility and
+            flexibility.
+          </P>
+          <P>
+            Simplicity: In that our components don&apos;t have to work so hard
+            providing ever layout or colour option under the sun. We can focus
+            instead on making sure the HTML output is solid whilst
+            overengineering our CSS. Lovely.
+          </P>
+          <P>
+            Transparancy: In that our components do not hide anything from you,
+            you literally own the CSS, copy, paste, interate. We want you to
+            take ownership of it, we need CSS experts again and we need
+            libraries that facilitate the art.
+          </P>
+          <P>
+            Agility: In that we have enough tools for us to hit a sweet spot of
+            complexity and simplicity enabling us to throw things together
+            quickly with easy maintence and can aid other inquisitive souls in a
+            spot of rapid prototyping with a real look and feel.
+          </P>
+
+          <P>
+            Flexibility: In that we have enough tools for us to hit a sweet spot
+            of complexity and simplicity enabling us to throw things together
+            quickly with easy maintence and can aid other inquisitive souls in a
+            spot of rapid prototyping with a real look and feel.
+          </P>
+
+          <P>
+            Focus: Yes that&apos;s right another F, but in actual fact we do
+            like focus in general. When it comes to accessibility we like to
+            embrace focus styles as part of the user experiance for everyone and
+            in life we need focus now more than ever if we truly wish to stop
+            enslaving the very planet that sustains us, <em>our</em> planet.
+          </P>
+
+          <P>
+            Oh, look that was an accident, we spelled out <em>staff</em>... a
+            very powerful weapon... There you have it, Shelley is actually an
+            ancient metaphorical staff weapon... from Stargate... it&apos;s the
+            best, and you use it in the fight of all fights - life.
+          </P>
+          <P>
+            We have also tried to steer clear of any given nomenclature so that
+            your code can remain free of internal naming politics. We use number
+            indexes which you can map to your current internal nomencalture, we
+            hate naming things.
+          </P>
+          <P>
+            <q>This is the way.</q> <cite>- The Mandalorian</cite>
+          </P>
+          <P>
+            You can copy over our main theme and use it as a base but then idea
+            is that you own the CSS.
+          </P>
+          <P>
+            We searched high and low for something that would enable us to build
+            a UI library like this whilst keeping the essence of simple web
+            design alive by going back to basics as much as possible. The
+            answer?
+          </P>
+          <P>Stylable</P>
+          <P>
+            If you don&apos;t want to own the CSS then maybe this isn&apos;t for
+            you.
+          </P>
         </div>
         <div className={style.card}>
           <H2 uppercase vol={3}>

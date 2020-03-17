@@ -17,7 +17,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
-  -st-named: labelTextContainer, labelText, radioCheckInput;
+  -st-named: labelTextContainer, labelText, inputField;
 }
 
 @st-scope Default {

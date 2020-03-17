@@ -9,6 +9,7 @@ import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 
 import grid from "../themes/default/css/grid.st.css";
+import InputSelection from "../components/InputSelection/InputSelection";
 
 const InputDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
@@ -153,22 +154,94 @@ const InputDocs = () => {
             touched={InputDemoProps[9].value}
             onBlur={() => console.log("LOL")}
           />
+
+          <InputSelection
+            id="laptop"
+            inputPos="start"
+            name="viewPort"
+            label="Check the terms and conditions"
+            error="You have an error here yo"
+            type="radio"
+            vol={InputDemoProps[5].value}
+            touched={InputDemoProps[9].value}
+          />
         </PropsDemo>
       </Grid>
       <Grid>
         <div className={grid.colContent}>
+          <InputText
+            id="pageTitle"
+            label="Page title"
+            placeholder="Enter a page title"
+            hint="Enter a page title"
+            labelVisuallyHidden
+            vol={6}
+            autoComplete="off"
+          />
+          <br />
+          <InputText
+            id="subTitle"
+            label="Subtitle"
+            placeholder="Enter a page subtitle"
+            hint="Enter a page subtitle"
+            labelVisuallyHidden
+            vol={4}
+            autoComplete="off"
+          />
+          <InputText
+            id="pageDescription"
+            label="Page description"
+            placeholder="Enter a page description"
+            hint="Enter a page description"
+            labelVisuallyHidden
+            vol={3}
+            autoComplete="off"
+          />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <InputText
+            id="pageTitle"
+            label="Page title"
+            placeholder="Enter a page title"
+            // hint="Enter a page title"
+            variant={1}
+            vol={3}
+            autoComplete="off"
+          />
+          <br />
+          <InputText
+            id="subTitle"
+            label="Subtitle"
+            placeholder="Enter a page subtitle"
+            // hint="Enter a page subtitle"
+            variant={1}
+            vol={3}
+            autoComplete="off"
+          />
+          <InputText
+            id="pageDescription"
+            label="Page description"
+            placeholder="Enter a page description"
+            // hint="Enter a page description"
+            variant={1}
+            vol={3}
+            autoComplete="off"
+          />
+          <br />
+          <br />
+          <br />
           <InputText
             id="blah2"
             // name="username"
             placeholder="Enter your user name"
             // hint="Give a full description focusing on the major actions you will be taking on climate change"
             label="NEWWWW"
-            // type="textarea"
-            // rows={2}
             onChange={() => console.log("MEMEM")}
-            // touched={true}
             error="You have an error here yo"
-            // disabled
             vol={6}
             autoFocus
             autoComplete="off"
@@ -262,22 +335,6 @@ const InputDocs = () => {
             vol={2}
             autoFocus
           />
-          <InputText
-            id="blah4"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Enter your full name"
-            label={"vol1"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={1}
-            autoFocus
-          >
-            HELLO
-          </InputText>
         </div>
       </Grid>
     </DefaultLayout>

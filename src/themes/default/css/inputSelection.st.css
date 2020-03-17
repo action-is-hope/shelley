@@ -1,10 +1,13 @@
 /** inputSelection.st.css */
-/** inputText.st.css */
 
 :import {
   -st-from: "../../../components/InputSelection/inputSelection.st.css";
   -st-default: InputSelection;
-  /* -st-named:  */
+}
+
+:import {
+  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: SelectionControl;
 }
 
 :import {
@@ -23,9 +26,28 @@
 }
 
 :import {
+  -st-from: "../../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+:import {
   -st-from: "../mixins/multiply";
   -st-named: respScale;
 }
+
+:import {
+  -st-from: './formElements.st.css';
+  -st-named:
+    hideWebkitAppearance,
+    textInput,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
+}
+
 
 :import {
   -st-from: "../theme.st.css";
@@ -36,183 +58,120 @@
 :import {
   -st-from: "../variables.st.css";
   -st-named:
-    --spacing-unit,
-    --text-vol-2-scale,
-    --text-vol-2-max,
-    --text-vol-3-scale,
-    --text-vol-3-max,
-    --text-vol-4-scale,
-    --text-vol-4-max,
-    --text-vol-5-scale,
-    --text-vol-5-max,
-    --text-vol-6-scale,
-    --text-vol-6-max,
+    --spacing-unit
 }
 
+@st-scope Default {
+  InputSelection.radio {}
 
-InputSelection.radio {}
-
-InputSelection InputLabel {
-  cursor: pointer
-}
-
-InputSelection:disabled InputLabel {
-  cursor: not-allowed;
-}
-
-
-InputSelection::inputField {
-  font-size: inherit;
-  background: transparent;
-  height: 1em;
-  width: 1em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  position: relative;
-  border: 2px solid #bce3ff;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* See below for replcememnt, if we must! ;-) */
-  outline: none;
-}
-
-/* Custom focus element, experimenting..*/
-InputSelection::inputField:before {
-  content: "";
-  display: block;
-  transition: opacity 120ms;
-  position: absolute;
-  box-shadow: 0 0 1px 2px #09b1f1;
-  top: -3px;
-  left: -3px;
-  bottom: -3px;
-  right: -3px;
-  opacity: 0;
-}
-
-/* For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
-
-/* Set: Both active and focus to avoid the vanishing of the focus style when active. */
-InputSelection::inputField:focus:before,
-InputSelection::inputField:active:before {
-  opacity: 1;
-}
-
-@-moz-document url-prefix() {
-
-  /**
-   * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
-   * rule for focus but will show our active styles that we only set to avoid the opposite
-   * in Chrome. 
-   */
-  InputSelection::inputField:active:before {
-    opacity: 0;
+  InputSelection {
+    /* display: grid;
+  grid-template-rows: auto auto auto [error-message]; */
+    display: inline-flex;
+    flex-direction: column-reverse;
   }
-}
 
-/* Disabled - common */
-InputSelection::inputField:disabled:before {
-  opacity: 0;
-}
+  InputSelection InputLabel {
+    cursor: pointer
+  }
 
-InputSelection::inputField:disabled {
-  cursor: not-allowed;
-  filter: saturate(15%) brightness(70%);
-}
+  InputSelection:disabled InputLabel {
+    cursor: not-allowed;
+  }
+
+  /*==== VOLUMES ====*/
+
+  /* Volume 1 */
+  InputSelection.vol1 {
+    -st-mixin: inputVol1
+  }
+
+  /* Volume 2 */
+  InputSelection.vol2 {
+    -st-mixin: inputVol2;
+  }
+
+  /* Volume 3 */
+  InputSelection.vol3 {
+    -st-mixin: inputVol3
+  }
+
+  /* Volume 4 */
+  InputSelection.vol4 {
+    -st-mixin: inputVol4
+  }
+
+  /* Volume 5 */
+  InputSelection.vol5 {
+    -st-mixin: inputVol5
+  }
+
+  /* Volume 6 */
+  InputSelection.vol6 {
+    -st-mixin: inputVol6
+  }
+
+  InputSelection ErrorText {
+    /* Send the error message which is first in the source order to appear under the form input. */
+    /* grid-row: error-message; */
+  }
+
+  /*==== VARIANTS ====*/
+
+  /* Variant 1 */
+
+  InputSelection Icon {
+    font-size: 2em;
+  }
+
+  InputSelection.variant1 InputLabel:inputPos(above)::labelTextContainer {
+    padding-top: calc(value(--spacing-unit) / 2 + 0.2em);
+  }
+
+  InputSelection.variant1 InputLabel:inputPos(end)::labelTextContainer {
+    /* rtl padding-left: value(--spacing-unit); */
+    padding-right: value(--spacing-unit);
+  }
+
+  InputSelection.variant1 InputLabel:inputPos(below)::labelTextContainer {
+    padding-bottom: calc(value(--spacing-unit) / 2 + 0.2em);
+  }
+
+  InputSelection.variant1 InputLabel:inputPos(start)::labelTextContainer {
+    padding-left: value(--spacing-unit);
+    /* rtl padding-right: value(--spacing-unit); */
+  }
 
 
-/* Checkbox / Radio Common */
-InputSelection::checkbox::after,
-InputSelection::radio::after {
-  content: "";
-  transition: transform 80ms, opacity 120ms;
-  background: #89ffca;
-  width: 0.5em;
-  height: 0.5em;
-  opacity: 0;
-  display: block
-}
 
-InputSelection::checkbox:checked::after,
-InputSelection::radio:checked::after {
-  opacity: 1;
-}
+  /* Variant 2 */
+  InputSelection.variant2 {
+    display: flex;
+  }
 
-/* Radio */
-InputSelection::radio,
-InputSelection::radio:before,
-InputSelection::radio::after {
-  border-radius: 50%;
-}
+  InputSelection.variant2 InputLabel.hasInput {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 18px;
+  }
 
-/* Toggle */
-InputSelection::toggle {
-  width: 2em;
-  border-radius: 9999px;
-}
+  InputSelection.variant2 {
+    background: rgba(255, 255, 255, 0.04);
+  }
 
-InputSelection::toggle::before {
-  border-radius: 9999px;
-}
+  InputSelection.variant2 InputLabel::labelText {
+    justify-content: flex-end;
+  }
 
-InputSelection::toggle::after {
-  content: "";
-  position: absolute;
-  background: #fff;
-  width: 1.3em;
-  height: 1.3em;
-  border-radius: 9999px;
-  transition: all 0.2s;
-  transform: translate(-50%);
-}
+  InputSelection.variant2 SelectionControl {
+    border-left: 1px solid rgb(119, 140, 157);
+    padding: value(--spacing-unit);
+  }
 
-InputSelection::toggle:checked::after {
-  transform: translate(50%);
-  background: #52da98;
-}
-
-
-/* Volumes */
-
-InputSelection.vol1::inputContainer {
-  font-size: 16px;
-}
-
-InputSelection.vol2::inputContainer {
-  font-size: 20px;
-}
-
-InputSelection.vol3::inputContainer {
-  font-size: 24px;
-}
-
-InputSelection.vol4::inputContainer {
-  font-size: 28px;
-}
-
-InputSelection.vol5::inputContainer {
-  font-size: 32px;
-}
-
-InputSelection.vol6::inputContainer {
-  font-size: 36px;
-}
-
-/* Variants */
-
-/* Variant 2 */
-InputSelection.variant2 InputLabel.hasInput {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-column-gap: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  text-align: end;
-}
-
-InputSelection.variant2::inputContainer {
-  border-left: 1px solid rgba(51, 210, 95, 0.27058823529411763);
-  padding: value(--spacing-unit);
+  InputSelection.variant2 ErrorText {
+    border-left-width: 1px;
+    padding: 4px value(--spacing-unit) 8px;
+    /* 12px is from 18px / 3 * 2 */
+    margin-left: calc(100% / 3 + 12px);
+  }
 }

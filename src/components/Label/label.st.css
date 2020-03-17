@@ -1,12 +1,11 @@
 /** label.st.css */
-.root {}
+
+.root {
+  -st-states: inputPos(enum(above, below, start, end));
+}
 
 .hasInput {}
 
 .labelTextContainer {}
 
 .labelText {}
-
-.labelHintText {}
-
-.radioCheckInput {}

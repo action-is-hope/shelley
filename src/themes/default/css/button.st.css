@@ -16,11 +16,49 @@
   -st-named: --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --spacing-unit;
 }
 
+:import {
+  -st-from: './formElements.st.css';
+  -st-named:
+    hideWebkitAppearance,
+    textInput,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
+}
+
+:import {
+  -st-from: './textVolume.st.css';
+  -st-named:
+    textVol1,
+    textVol2,
+    textVol3,
+    textVol4,
+    textVol5,
+    textVol6,
+    textVol7,
+    textVol8,
+    textVol9,
+    textVol10,
+    textVol11;
+}
+
+
+:import {
+  -st-from: "../mixins/multiply";
+  -st-named: respScale;
+}
+
+
+
 /* This is how we can scope the styles. */
 @st-scope Default {
 
   /*  Default styles */
   Button {
+    -st-mixin: hideWebkitAppearance;
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
@@ -28,7 +66,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 0.96em 35px;
+    /* padding: 0.96em 35px; */
     /* Border */
     border-color: transparent;
     border-style: solid;
@@ -40,45 +78,23 @@
     line-height: 1.15;
     /* Effects */
     transition: opacity 0.3s ease, color 0.3s ease;
-  }
 
-  /* Button size variations sm - lg */
-  Button.sm {
-    font-size: value(--base-font-size-sm);
-  }
-
-  Button.md {
-    font-size: value(--base-font-size-md);
-  }
-
-  Button.lg {
-    font-size: value(--base-font-size-lg);
+    padding: 0 value(--spacing-unit);
+    flex-flow: row-reverse;
+    font-weight: 500;
+    /* font-size: 16px; */
+    justify-content: space-between;
+    text-transform: uppercase;
+    letter-spacing: .034em;
   }
 
   Button::inner {
     /* margin-left:0.5em;
         margin-right:0.5em; */
-    font-size: .75em;
+    /* font-size: .75em; */
     /* Pud the padding on top so an icon can grow a little without affecting the height.*/
     padding-top: 0.58em;
     padding-bottom: 0.55em;
-  }
-
-  /* Button COLOURS */
-  /* DEFAULT */
-  Button.c1 {
-    background-color: var(--color-accent-2, value(--color-accent-1-default));
-    color: var(--color-ui, value(--color-ui-default));
-    color: #333;
-
-
-    padding: 0 value(--spacing-unit);
-    text-transform: uppercase;
-    letter-spacing: .034em;
-    flex-flow: row-reverse;
-    font-weight: 500;
-    font-size: 16px;
-    justify-content: space-between;
   }
 
   Button::divider {
@@ -86,17 +102,6 @@
     width: 1.5em;
     line-height: 0;
   }
-
-  /* Button::divider::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 1px;
-    top: -1px;
-    bottom: -1px;
-    background: #196939;
-    right: 2em;
-  } */
 
   Button svg {
     /* margin-right: calc(value(--spacing-unit) / 2 - value(--spacing-unit)); */
@@ -130,4 +135,126 @@
   Button:active.link {
     background-color: transparent;
   }
+
+  /* Volume 1 */
+  Button.vol1 {
+    /* -st-mixin: textVol1 */
+
+  }
+
+  /*==== VOLUMES ====*/
+
+  /* Volume 2 */
+  Button.vol1 {
+    font-size: respScale(0.625em, 0.75em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol1 {
+      font-size: 0.75em;
+    }
+  }
+
+  /* Volume 2 */
+  Button.vol2 {
+    font-size: respScale(0.75em, 0.875em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol2 {
+      font-size: 0.875em;
+    }
+  }
+
+  /* Volume 3 */
+  Button.vol3 {
+    font-size: respScale(0.875em, 1em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol3 {
+      font-size: 1em;
+    }
+  }
+
+  /* Volume 4 */
+  Button.vol4 {
+    font-size: respScale(1em, 1.125em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol4 {
+      font-size: 1.125em;
+    }
+  }
+
+  /* Volume 5 */
+  Button.vol5 {
+    font-size: respScale(1.125em, 1.25em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol5 {
+      font-size: 1.25em;
+    }
+  }
+
+  /* Volume 6 */
+  Button.vol6 {
+    font-size: respScale(1.25em, 1.375em);
+  }
+
+  @media screen and (min-width: 1800px) {
+    Button.vol6 {
+      font-size: 1.375em;
+    }
+  }
+
+
+
+  /* Button COLOURS */
+  /* DEFAULT */
+  Button.color1 {}
+
+  Button.variant1.color1 {
+    background-color: var(--color-accent-2, value(--color-accent-1-default));
+    color: var(--color-ui, value(--color-ui-default));
+    color: #333;
+  }
+
+  Button.variant2 {
+    background-color: transparent;
+    border-width: 2px;
+  }
+
+  Button.variant2.color1 {
+    border-color: var(--color-accent-2, value(--color-accent-1-default));
+    color: var(--color-ui, value(--color-ui-default));
+    /* color: #333; */
+  }
+
+  Button.variant3 {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    /* text-decoration: underline; */
+    /* border-width: 2px; */
+  }
+
+
+
+
+
+  /* Button::divider::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 1px;
+    top: -1px;
+    bottom: -1px;
+    background: #196939;
+    right: 2em;
+  } */
+
+
 }
