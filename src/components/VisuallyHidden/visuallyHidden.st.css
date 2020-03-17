@@ -9,6 +9,7 @@
 
 .focusable {}
 
+/* 
 .focusable:focus,
 .focusable:active {
 	clip: auto !important;
@@ -19,4 +20,4 @@
 	overflow: visible !important;
 	width: auto !important;
 	white-space: normal !important;
-}
+} */

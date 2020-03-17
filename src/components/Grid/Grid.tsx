@@ -8,7 +8,6 @@ interface GridProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const Grid = ({
-  // accent = 1,
   children,
   className: classNameProp,
   variant,

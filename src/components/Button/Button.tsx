@@ -1,31 +1,27 @@
 import React from "react";
+import { Color, Volume, Variant } from "../types";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
-import Icon from "../Icon/Icon";
-// import { ButtonProps } from "./";
 
 /**
- * Button props extending those of a regular button.
+ * Button props extending those of a regular button, we are overriding color.
  */
-
 interface ButtonProps
   extends Pick<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "color">
   > {
-  // interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Type of the button default, primary..*/
-  color?: false | number;
-  /** Optional ref. */
-  // ref?: React.Ref<HTMLButtonElement>;
-  /** Button sizes: xs, sm, md, lg */
-
-  /** Button variant. */
-  variant?: false | number;
-  vol?: false | number;
+  /** Color index. */
+  color?: Color;
+  /** Variant index. */
+  variant?: Variant;
+  /** How 'loud' should this Button be? */
+  vol?: Volume;
   /** Extra text that can be used to render a tooltip on hover/focus. */
   tip?: string;
+  /** Chuck in an Icon if you please, ours or yours. */
+  icon?: React.ReactNode;
 }
 
 const Button = React.forwardRef(
@@ -36,6 +32,7 @@ const Button = React.forwardRef(
       color = 1,
       variant = 1,
       vol = 3,
+      icon,
       tip,
       ...rest
     }: ButtonProps,
@@ -51,12 +48,13 @@ const Button = React.forwardRef(
 
     return (
       <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
-        {/* plus */}
-        <Icon>
-          <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-        </Icon>
-        <span className={style.divider}></span>
-        <span className={style.inner}>{children}</span>
+        {icon && (
+          <>
+            {icon}
+            <span className={style.divider}></span>
+          </>
+        )}
+        {children && <span className={style.inner}>{children}</span>}
         {tip && <span className={style.tip}>{tip}</span>}
       </button>
     );

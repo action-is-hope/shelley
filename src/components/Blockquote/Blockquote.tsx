@@ -1,8 +1,9 @@
 /** Blockquote.tsx */
 import React from "react";
+import { Accent, Volume, Variant } from "../types";
 import style from "./blockquote.st.css";
 import classNames from "classnames";
-import { TextVolume } from "../types";
+
 import Text from "../Text/Text";
 
 interface BlockquoteProps
@@ -10,13 +11,13 @@ interface BlockquoteProps
     React.HTMLProps<HTMLQuoteElement>,
     Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">
   > {
-  accent?: false | number;
+  accent?: Accent;
   children: React.ReactNode;
   cite?: React.ReactNode;
   citeAttr?: string;
   citeUrl?: string;
-  variant?: false | number;
-  citeVol?: TextVolume;
+  variant?: Variant;
+  citeVol?: Volume;
 }
 
 const Blockquote = ({

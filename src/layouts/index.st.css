@@ -1,28 +1,24 @@
 :import {
   -st-from: "../themes/default/theme.st.css";
   -st-default: Default;
-  -st-named: --color-text-1-default, --color-ui-default, --color-background-1-default;
+  -st-named:
+    --color-text-1-default,
+    --color-ui-default,
+    --color-background-1-default;
+  /* --color-text-faint-2-default; */
 }
 
 .navbar {
   background: var(--color-background-1, value(--color-background-1-default));
-  /* color: rgb(var(--color-ui-raw)); */
   color: var(--color-text-faint-2, value(--color-text-1-default));
-  /* margin-bottom: 1.45rem; */
 }
 
 .navbarInner {
-  /* margin: 0 auto;
-  max-width: 95vw;
-  padding: 1.45rem 1.0875rem; */
-
   padding: 1.1rem 1.0875rem;
   background: rgba(76, 76, 76, 0.4392156862745098);
   position: relative;
   z-index: 1000;
 }
-
-
 
 .footer {
   margin-top: 25vh;

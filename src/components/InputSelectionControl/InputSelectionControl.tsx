@@ -1,4 +1,5 @@
 import React from "react";
+import { SelectionControlType } from "../types";
 import classnames from "classnames";
 import style from "./inputSelectionControl.st.css";
 
@@ -10,7 +11,7 @@ interface RadioCheckInputProps extends React.HTMLProps<HTMLInputElement> {
   /** Provide an error message that triggers the stylable error state. */
   error?: boolean;
   /** The type of slection control to render. */
-  type?: "radio" | "checkbox" | "switch" | "toggle";
+  type?: SelectionControlType;
 }
 
 const InputSelectionControl = React.forwardRef(

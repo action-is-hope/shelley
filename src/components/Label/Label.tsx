@@ -1,5 +1,6 @@
 /** Label.tsx */
 import React from "react";
+import { AlignPos } from "../types";
 import style from "./label.st.css";
 import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -9,7 +10,7 @@ interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
   hint?: React.ReactNode;
   /** The position of the label relative to the input. */
-  inputPos?: "above" | "below" | "start" | "end" | false;
+  inputPos?: AlignPos;
   visuallyHidden?: boolean;
   inputControl?: React.ReactNode;
 }

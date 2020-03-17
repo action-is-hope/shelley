@@ -26,7 +26,7 @@ import Logo from "./css/logo.st.css";
 import Default from "./theme.st.css";
 
 // @todo Ask Wix how they do things.
-const getClassNames = (
+const getStylableClassNames = (
   values: [],
   stylesheet: RuntimeStylesheet,
   rootcls: string
@@ -37,27 +37,43 @@ const getClassNames = (
 
 // Foundation Components
 export const button = (...values: []) =>
-  getClassNames(values, Button, "button");
+  getStylableClassNames(values, Button, "button");
+
 export const blockquote = (...values: []) =>
-  getClassNames(values, Blockquote, "blockquote");
-export const grid = (...values: []) => getClassNames(values, Grid, "grid");
-export const label = (...values: []) => getClassNames(values, Label, "label");
+  getStylableClassNames(values, Blockquote, "blockquote");
+
+export const grid = (...values: []) =>
+  getStylableClassNames(values, Grid, "grid");
+
+export const label = (...values: []) =>
+  getStylableClassNames(values, Label, "label");
+
 export const inputSelection = (...values: []) =>
-  getClassNames(values, InputSelection, "inputSelection");
+  getStylableClassNames(values, InputSelection, "inputSelection");
+
 export const inputSelectionControl = (...values: []) =>
-  getClassNames(values, InputSelectionControl, "inputSelectionControl");
-export const text = (...values: []) => getClassNames(values, Text, "text");
+  getStylableClassNames(values, InputSelectionControl, "inputSelectionControl");
+
+export const text = (...values: []) =>
+  getStylableClassNames(values, Text, "text");
+
 export const errorText = (...values: []) =>
-  getClassNames(values, ErrorText, "errorText");
+  getStylableClassNames(values, ErrorText, "errorText");
+
 export const hintText = (...values: []) =>
-  getClassNames(values, HintText, "hintText");
+  getStylableClassNames(values, HintText, "hintText");
+
 export const inputText = (...values: []) =>
-  getClassNames(values, InputText, "inputText");
+  getStylableClassNames(values, InputText, "inputText");
+
 // Application Components
 export const codeSample = (...values: []) =>
-  getClassNames(values, CodeSample, "codeSample");
+  getStylableClassNames(values, CodeSample, "codeSample");
+
 export const propsDemo = (...values: []) =>
-  getClassNames(values, PropsDemo, "propsDemo");
-export const logo = (...values: []) => getClassNames(values, Logo, "logo");
+  getStylableClassNames(values, PropsDemo, "propsDemo");
+
+export const logo = (...values: []) =>
+  getStylableClassNames(values, Logo, "logo");
 
 export const Theme = Default.root;

@@ -123,7 +123,7 @@ const InputSelectionDocs = () => {
                 : ``
             } ${
               InputDemoProps[5].value
-                ? `\n  inputPos={${InputDemoProps[5].value}}`
+                ? `\n  inputPos="${InputDemoProps[5].value}"`
                 : ``
             } ${
               InputDemoProps[6].value
@@ -167,7 +167,7 @@ const InputSelectionDocs = () => {
             <Label
               // hint={labelDemoProps[1].value}
               htmlFor="TEST"
-              inputPos="below"
+              inputPos="bottom"
               inputControl={<InputSelectionControl id="TEST" type="toggle" />}
               // inputControl={<input type="checkbox" />}
             >
@@ -179,7 +179,7 @@ const InputSelectionDocs = () => {
           </P>
           <InputSelection
             id="preview"
-            inputPos="above"
+            inputPos="top"
             label={
               <Icon viewBox="0 0 24 24">
                 {/* <path d="M7.3 14.2l-7.1-5.2 1.7-2.4 4.8 3.5 6.6-8.5 2.3 1.8z"></path> */}
@@ -204,7 +204,7 @@ const InputSelectionDocs = () => {
 
           <InputSelection
             id="laptop"
-            inputPos="above"
+            inputPos="top"
             name="viewPort"
             label={
               <Icon label="Laptop">
@@ -218,7 +218,7 @@ const InputSelectionDocs = () => {
           />
           <InputSelection
             id="tablet"
-            inputPos="above"
+            inputPos="top"
             name="viewPort"
             label={
               <Icon label="Tablet">
@@ -232,7 +232,7 @@ const InputSelectionDocs = () => {
           />
           <InputSelection
             id="mobile"
-            inputPos="above"
+            inputPos="top"
             name="viewPort"
             label={
               <Icon label="Mobile">

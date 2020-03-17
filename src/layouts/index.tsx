@@ -7,9 +7,6 @@ import { Theme as defaultTheme } from "../themes/default";
 const Header = () => (
   <div className={style.navbar}>
     <div className={style.navbarInner}>
-      {/* <div className={style.logo}>
-        <span className={style.logoInner}></span>
-      </div> */}
       <h1 className={style.title}>
         <Link
           to="/"
@@ -48,7 +45,6 @@ const DefaultLayout = ({ children }) => (
         { name: "keywords", content: "sample, something" }
       ]}
     />
-    <link rel="stylesheet" href="https://use.typekit.net/bml4mzu.css"></link>
     <Header />
     {children}
     <Footer />

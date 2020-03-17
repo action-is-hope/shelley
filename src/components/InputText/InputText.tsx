@@ -1,10 +1,9 @@
 import React from "react";
+import { Volume, TextInputType, Variant } from "../types";
 import classnames from "classnames";
 import style from "./inputText.st.css";
 import Label from "../Label/Label";
-import { TextVolume, InputTypes } from "../types";
 import Textarea from "react-expanding-textarea";
-
 import InputAdornment from "../InputAdornment/InputAdornment";
 import ErrorText from "../ErrorText/ErrorText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -33,15 +32,15 @@ interface InputRowProps
   /** The label to associated with the input. */
   label: React.ReactNode;
   /** Variant index. */
-  variant?: number;
+  variant?: Variant;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   labelVisuallyHidden?: boolean;
   /** How loud should this input row be? */
-  vol?: TextVolume;
+  vol?: Volume;
   /** Takes a ref, always handy as and when you need it. */
   ref?: React.Ref<HTMLInputElement>;
   /** The type of input control to render. */
-  type?: InputTypes;
+  type?: TextInputType;
 }
 
 const InputText = React.forwardRef(

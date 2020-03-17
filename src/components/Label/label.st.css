@@ -1,7 +1,7 @@
 /** label.st.css */
 
 .root {
-  -st-states: inputPos(enum(above, below, start, end));
+  -st-states: inputPos(enum(top, end, bottom, start));
 }
 
 .hasInput {}

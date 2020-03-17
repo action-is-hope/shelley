@@ -47,37 +47,13 @@
 
 /* Types */
 
-/* .date {} */
-
-/* .datetimeLocal {} */
-
-/* .disabled {} */
-
 .email {}
-
-/* .file {} */
-
-/* .hidden {} */
-
-/* .image {} */
-
-/* .month {} */
 
 .number {}
 
 .password {}
 
-/* .radio {} */
-
-/* .range {} */
-
-/* .reset {} */
-
 .search {}
-
-/* .submit {} */
-
-/* .switch {} */
 
 .tel {}
 
@@ -88,5 +64,3 @@
 .time {}
 
 .url {}
-
-/* .week {} */

@@ -4,13 +4,13 @@
 /* The 'inner' button. */
 .inner {}
 
+/* The divider which is rendered with an icon only. */
 .divider {}
 
 /* The tip element got for inline tool-tips on focus/hover. */
 .tip {}
 
-
-/* Accents */
+/* Color */
 
 .color1 {}
 

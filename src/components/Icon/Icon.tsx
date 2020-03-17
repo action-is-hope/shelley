@@ -1,4 +1,5 @@
 import React from "react";
+import { Color } from "../types";
 import classnames from "classnames";
 import style from "./icon.st.css";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -11,8 +12,14 @@ interface IconProps
     React.SVGProps<SVGSVGElement>,
     Exclude<keyof React.SVGProps<SVGSVGElement>, "color">
   > {
-  color?: number | false;
+  /** Color index. */
+  color?: Color;
+  /** This will be VisuallyHidden. */
   label?: string;
+  /** Defaults to "0 0 16 16" based on vaadin icon set:
+   *  https://github.com/vaadin/vaadin-icons/tree/master/assets/svg
+   * For material-ui set to "0 0 24 24".]
+   */
   viewBox?: string;
 }
 
@@ -23,10 +30,6 @@ const Icon = React.forwardRef(
       className: classNameProp,
       color = false,
       label: labelProp,
-      /* Default viewBox based on vaadin icon set. 
-         - https://github.com/vaadin/vaadin-icons/tree/master/assets/svg
-        if using material-ui icons set to "0 0 24 24"
-      */
       viewBox = "0 0 16 16",
       /* Pull off the aria label so we can honour an accessible solution. */
       "aria-label": ariaLabel,

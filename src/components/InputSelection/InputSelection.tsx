@@ -1,10 +1,10 @@
 import React from "react";
+import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import classnames from "classnames";
 import style from "./inputSelection.st.css";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
-import { TextVolume, InputTypes } from "../types";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface RadioCheckInputProps
@@ -21,17 +21,17 @@ interface RadioCheckInputProps
   /** Triggers the Inputs stylable error state. */
   touched?: boolean;
   /** Variant index. */
-  variant?: number;
+  variant?: Variant;
   /** The label to associated with the input. */
   label: React.ReactNode;
   /** The position of the label relative to the label. */
-  inputPos?: "above" | "below" | "start" | "end" | false;
+  inputPos?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   labelVisuallyHidden?: boolean;
   /** How 'loud' should this input row be? */
-  vol?: TextVolume;
+  vol?: Volume;
   /** The type of slection control to render. */
-  type?: "radio" | "checkbox" | "switch" | "toggle";
+  type?: SelectionControlType;
 }
 
 const InputSelection = React.forwardRef(

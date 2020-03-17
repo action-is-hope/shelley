@@ -1,8 +1,8 @@
 /* Text.tsx */
 import React from "react";
+import { TextVolume } from "../types";
 import style from "./text.st.css";
 import classNames from "classnames";
-import { TextVolume } from "../types";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
@@ -14,7 +14,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   uppercase?: boolean;
   underline?: boolean;
   visuallyHidden?: boolean;
-  vol?: TextVolume | boolean;
+  vol?: TextVolume;
 }
 
 const Text = ({

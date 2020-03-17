@@ -1,6 +1,4 @@
 /** codeSample.st.css */
-.root {}
-
 .root {
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;
@@ -15,10 +13,6 @@
   line-height: 1.45rem;
   line-height: 1.1rem;
   border-radius: 4px
-}
-
-.root pre {
-  /* background: rgba(0, 0, 0, 0.4) !important; */
 }
 
 .root.fixedHeight {
@@ -40,7 +34,6 @@
   }
 }
 
-
 code {
   font-family: Menlo, Consolas, 'Andale Mono', monospace;
   font-size: 11px;
@@ -50,21 +43,14 @@ code {
   overflow: hidden;
 }
 
-code:last-child {
-  /* border-left: 1px solid #171c25; */
-}
-
 code>span {
   transition: all 125ms ease-in;
   line-height: 17px;
-  /* text-shadow: #171c25 1px 1px 1px; */
 }
 
 
 
 code :global(.caption) {
-  /* box-shadow: 0 0 50px #070c15; */
-  /* border-left: 4px groove #272c35; */
   text-shadow: 0 0 0 transparent;
   transition: none;
   color: #808080;

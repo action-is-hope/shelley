@@ -101,13 +101,13 @@ have this ability and it's valid...
 
   /*==== Input Position ====*/
 
-  /* above / top */
-  Label:inputPos(above).hasInput {
+  /* top */
+  Label:inputPos(top).hasInput {
     flex-direction: column-reverse;
   }
 
-  Label:inputPos(above)::labelText,
-  Label:inputPos(above) HintText {
+  Label:inputPos(top)::labelText,
+  Label:inputPos(top) HintText {
     justify-content: center;
   }
 
@@ -123,13 +123,13 @@ have this ability and it's valid...
   }
 
 
-  /* below / bottom */
-  Label:inputPos(below).hasInput {
+  /* bottom */
+  Label:inputPos(bottom).hasInput {
     flex-direction: column;
   }
 
-  Label:inputPos(below)::labelText,
-  Label:inputPos(below) HintText {
+  Label:inputPos(bottom)::labelText,
+  Label:inputPos(bottom) HintText {
     justify-content: center;
   }
 
