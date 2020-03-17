@@ -1,0 +1,29 @@
+/** errorText.st.css */
+
+:import {
+  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-default: Error;
+}
+
+:import {
+  -st-from: "../theme.st.css";
+  -st-default: Default;
+  -st-named: --color-status-error-default;
+}
+
+@st-scope Default {
+  Error {
+    color: value(--color-status-error-default);
+    color: var(--color-status-error, value(--color-status-error-default));
+    display: block;
+    font-size: .8rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media screen and (min-width: 600px) {
+    Error {
+      font-size: .625rem;
+    }
+  }
+}

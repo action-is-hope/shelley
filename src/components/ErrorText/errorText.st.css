@@ -1,18 +1,3 @@
 /* errorText.st.css */
 
 .root {}
-
-
-.root {
-  color: #b66b6e;
-  display: block;
-  font-size: .8rem;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
-
-@media screen and (min-width: 600px) {
-  .root {
-    font-size: .625rem;
-  }
-}

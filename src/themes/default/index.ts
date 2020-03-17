@@ -14,6 +14,8 @@ import InputSelection from "./css/inputSelection.st.css";
 import InputSelectionControl from "./css/inputSelectionControl.st.css";
 import InputText from "./css/inputText.st.css";
 import Text from "./css/text.st.css";
+import ErrorText from "./css/errorText.st.css";
+import HintText from "./css/hintText.st.css";
 
 // Application Components
 import PropsDemo from "./css/propsDemo.st.css";
@@ -45,6 +47,10 @@ export const inputSelection = (...values: []) =>
 export const inputSelectionControl = (...values: []) =>
   getClassNames(values, InputSelectionControl, "inputSelectionControl");
 export const text = (...values: []) => getClassNames(values, Text, "text");
+export const errorText = (...values: []) =>
+  getClassNames(values, ErrorText, "errorText");
+export const hintText = (...values: []) =>
+  getClassNames(values, HintText, "hintText");
 export const inputText = (...values: []) =>
   getClassNames(values, InputText, "inputText");
 // Application Components
