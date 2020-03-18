@@ -2,7 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import style from "./index.st.css";
-import { Theme as defaultTheme } from "../themes/default";
+import { Theme as defaultTheme } from "../projects/default";
 
 const Header = () => (
   <div className={style.navbar}>

@@ -1,7 +1,9 @@
 /** text.st.css */
 
 .root {
-  -st-states: truncate;
+  -st-states:
+    truncate,
+    weight(enum(1, 2, 3, 4, 5, 6, 7, 8));
 }
 
 /* Volume */
@@ -39,6 +41,29 @@
 .bold {}
 
 /* State selectors */
+.root:weight(1) {
+  font-weight: 100;
+}
+
+.root:weight(2) {
+  font-weight: 200;
+}
+
+.root:weight(3) {
+  font-weight: 300;
+}
+
+.root:weight(4) {
+  font-weight: 400;
+}
+
+.root:weight(5) {
+  font-weight: 500;
+}
+
+.root:weight(6) {
+  font-weight: 600;
+}
 
 .root:truncate {
   display: block;

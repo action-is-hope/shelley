@@ -8,14 +8,14 @@
  * including media queries.
  */
 
-const parseCssValue = cssValue => {
+const explodeValue = cssValue => {
   // Parses a CSS string and extracts value and unit, so math
   // functions can be run on the value only, without the unit
   // Examples:
-  //   parseCssValue("24px") => ["24", "px"]
-  //   parseCssValue("50%") => ["50", "%"]
-  //   parseCssValue("4.5em") => ["4.5", "em"]
-  //   parseCssValue("18") => ["18", ""]
+  //   explodeValue("24px") => ["24", "px"]
+  //   explodeValue("50%") => ["50", "%"]
+  //   explodeValue("4.5em") => ["4.5", "em"]
+  //   explodeValue("18") => ["18", ""]
   const [, value, unit] = cssValue.match(/^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/);
   return [value, unit];
 };
@@ -27,8 +27,8 @@ module.exports = function fontSize([
   transitionWidthDown = "20", // 320px @ 16px base font.
   unit = "em" // Sticking with em so that we can adjust text blocks by tweaking the font-size of a container.
 ]) {
-  const [minValue, minUnit] = parseCssValue(min);
-  const [maxValue, maxUnit] = parseCssValue(max);
+  const [minValue, minUnit] = explodeValue(min);
+  const [maxValue, maxUnit] = explodeValue(max);
   const fontSizeDiff = maxValue - minValue;
   const widthRemainer = transitionWidthUp - transitionWidthDown;
   if (minUnit !== maxUnit) {

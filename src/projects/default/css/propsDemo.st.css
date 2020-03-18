@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 }
 
 :import {
-  -st-from: "../theme.st.css";
+  -st-from: "../project.st.css";
   -st-default: Default;
   -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
 }

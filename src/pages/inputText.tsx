@@ -8,7 +8,7 @@ import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 
-import grid from "../themes/default/css/grid.st.css";
+import grid from "../projects/default/css/grid.st.css";
 import InputSelection from "../components/InputSelection/InputSelection";
 
 const InputDocs = () => {
@@ -260,7 +260,7 @@ const InputDocs = () => {
             // error={true}
             // touched={true}
             // errorMessage="You have an error here yo"
-            vol={7}
+            vol={6}
             autoFocus
             autoComplete="off"
           />

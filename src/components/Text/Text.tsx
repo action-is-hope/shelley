@@ -6,42 +6,36 @@ import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
-  as: string;
+  tag: string;
   bold?: boolean;
   htmlFor?: string;
-  dangerouslySetInnerHTML?: { __html: string };
   truncate?: boolean;
   uppercase?: boolean;
-  underline?: boolean;
+  weight?: 1 | 2 | 3 | 5;
   visuallyHidden?: boolean;
   vol?: TextVolume;
 }
 
 const Text = ({
-  as: tagName,
-  bold,
+  tag: tagName,
   children,
   className,
-  dangerouslySetInnerHTML,
   truncate = false,
   uppercase,
-  underline,
   visuallyHidden,
-
+  weight,
   vol = 3,
   ...rest
 }: TextProps) => {
   const rootClassNames = classNames(style.root, style["vol" + vol], className, {
-    bold,
     uppercase,
-    underline
+    weight
   });
   // eslint-disable-next-line react/no-danger-with-children
   const text = React.createElement(
     tagName,
     {
       ...style(rootClassNames, { truncate }, rest),
-      dangerouslySetInnerHTML,
       ...rest
     },
     children
@@ -49,40 +43,40 @@ const Text = ({
   return visuallyHidden ? <VisuallyHidden>{text}</VisuallyHidden> : text;
 };
 
-type TextExports = Pick<TextProps, Exclude<keyof TextProps, "as">>;
+type TextExports = Pick<TextProps, Exclude<keyof TextProps, "tag">>;
 
 export const H1 = ({ children, ...rest }: TextExports) => (
-  <Text as="h1" vol={8} {...rest}>
+  <Text tag="h1" vol={8} {...rest}>
     {children}
   </Text>
 );
 export const H2 = ({ children, ...rest }: TextExports) => (
-  <Text as="h2" vol={7} {...rest}>
+  <Text tag="h2" vol={7} {...rest}>
     {children}
   </Text>
 );
 export const H3 = ({ children, ...rest }: TextExports) => (
-  <Text as="h3" vol={6} {...rest}>
+  <Text tag="h3" vol={6} {...rest}>
     {children}
   </Text>
 );
 export const H4 = ({ children, ...rest }: TextExports) => (
-  <Text as="h4" vol={5} {...rest}>
+  <Text tag="h4" vol={5} {...rest}>
     {children}
   </Text>
 );
 export const H5 = ({ children, ...rest }: TextExports) => (
-  <Text as="h5" vol={4} {...rest}>
+  <Text tag="h5" vol={4} {...rest}>
     {children}
   </Text>
 );
 export const H6 = ({ children, ...rest }: TextExports) => (
-  <Text as="h6" vol={4} {...rest}>
+  <Text tag="h6" vol={4} {...rest}>
     {children}
   </Text>
 );
 export const P = ({ children, ...rest }: TextExports) => (
-  <Text as="p" {...rest}>
+  <Text tag="p" {...rest}>
     {children}
   </Text>
 );

@@ -1,5 +1,18 @@
 /** blcokquote.st.css */
 
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-ui-default,
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-background-2-default;
+}
+
 :import {
   -st-from: "../../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;
@@ -9,23 +22,6 @@
     footer,
     variant1,
     variant2
-}
-
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-  -st-named:
-    --color-accent-1-default,
-    --color-accent-2-default,
-    --color-accent-3-default,
-    --color-ui-default,
-    --color-background-2-default;
-}
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit
 }
 
 :import {

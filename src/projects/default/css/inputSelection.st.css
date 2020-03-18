@@ -1,5 +1,12 @@
 /** inputSelection.st.css */
 
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named: --spacing-unit;
+}
+
 :import {
   -st-from: "../../../components/InputSelection/inputSelection.st.css";
   -st-default: InputSelection;
@@ -46,19 +53,6 @@
     inputVol4,
     inputVol5,
     inputVol6;
-}
-
-
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
-}
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit
 }
 
 @st-scope Default {
@@ -124,7 +118,7 @@
     font-size: 2em;
   }
 
-  InputSelection.variant1 InputLabel:inputPos(above)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(top)::labelTextContainer {
     padding-top: calc(value(--spacing-unit) / 2 + 0.2em);
   }
 
@@ -133,7 +127,7 @@
     padding-right: value(--spacing-unit);
   }
 
-  InputSelection.variant1 InputLabel:inputPos(below)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(bottom)::labelTextContainer {
     padding-bottom: calc(value(--spacing-unit) / 2 + 0.2em);
   }
 

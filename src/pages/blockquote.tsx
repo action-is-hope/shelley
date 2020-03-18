@@ -7,8 +7,8 @@ import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
-import text from "../themes/default/css/text.st.css";
-import grid from "../themes/default/css/grid.st.css";
+import text from "../projects/default/css/text.st.css";
+import grid from "../projects/default/css/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 
 const LabelsDocs = () => {

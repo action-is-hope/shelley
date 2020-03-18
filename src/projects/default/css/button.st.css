@@ -1,19 +1,18 @@
 /** button.st.css */
 
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-ui-default,
+    --color-accent-1-default;
+}
+
 :import {
   -st-from: "../../../components/Button/button.st.css";
   -st-default: Button;
-}
-
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
-}
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named: --base-font-size, --base-font-size-sm, --base-font-size-md, --base-font-size-lg, --spacing-unit;
 }
 
 :import {
@@ -74,7 +73,7 @@
     border-radius: 4px;
     /* Font */
     /* font-family: value(--base-font-family); */
-    font-size: value(--base-font-size);
+    /* font-size: value(--base-font-size); */
     line-height: 1.15;
     /* Effects */
     transition: opacity 0.3s ease, color 0.3s ease;

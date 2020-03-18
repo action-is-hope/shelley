@@ -1,28 +1,24 @@
-/* import PropsDemo from "../../components_site/PropsDemo/PropsDemo.st.css";
-import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
-:import {
-  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
-  -st-default: CodeSample;
-  /* -st-named:
-    cite,
-    content,
-    footer,
-    variant1,
-    variant2
-} */
-}
+/** codeSample.st.css */
 
+/* project and vars */
 :import {
-  -st-from: "../theme.st.css";
+  -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
+    --color-ui-default,
     --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
     --color-accent-4-default,
-    --color-ui-default,
     --color-background-2-default;
 }
+
+
+:import {
+  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-default: CodeSample;
+}
+
 
 
 CodeSample {

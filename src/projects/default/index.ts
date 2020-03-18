@@ -23,7 +23,7 @@ import CodeSample from "./css/codeSample.st.css";
 import Logo from "./css/logo.st.css";
 
 // Theme
-import Default from "./theme.st.css";
+import Default from "./project.st.css";
 
 // @todo Ask Wix how they do things.
 const getStylableClassNames = (

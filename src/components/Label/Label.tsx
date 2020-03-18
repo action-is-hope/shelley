@@ -8,10 +8,13 @@ import HintText from "../HintText/HintText";
 
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
+  /** Hint can take a React node which is placed inside the internal HintText.*/
   hint?: React.ReactNode;
   /** The position of the label relative to the input. */
   inputPos?: AlignPos;
+  /** Visually hides the labelText container within Label. */
   visuallyHidden?: boolean;
+  /** An optional input to shove inside the label. */
   inputControl?: React.ReactNode;
 }
 

@@ -71,7 +71,7 @@ const InputSelection = React.forwardRef(
           ref,
           type,
           // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
-          "aria-describedBy": error ? `${id}-error` : undefined,
+          "aria-describedby": error ? `${id}-error` : undefined,
           ...rest
         }}
       />

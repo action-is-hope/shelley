@@ -7,7 +7,7 @@ import Grid from "../components/Grid/Grid";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import text from "../themes/default/css/text.st.css";
+import text from "../projects/default/css/text.st.css";
 
 // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
 
@@ -139,11 +139,11 @@ const VisuallyHiddenDocs = () => {
           ensure that it is clear what is on the other end of it. Steps:
         </P>
         <ol>
-          <Text as="li">
+          <Text tag="li">
             Hide the ... from assistive tech via <code>aria-hidden</code>, the
             logical opposite to <code>VisuallyHidden</code>. Handy.
           </Text>
-          <Text as="li">
+          <Text tag="li">
             Define some text for the link itself to give it context and then
             hide it with <code>VisuallyHidden</code>. Done.
           </Text>

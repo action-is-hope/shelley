@@ -17,11 +17,21 @@
  *
  */
 
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    --spacing-unit,
+    --text-vol-5-scale,
+    --text-vol-5-max,
+    --text-vol-6-scale,
+    --text-vol-6-max,
+}
+
 :import {
   -st-from: "../mixins/multiply";
   -st-named: respScale;
 }
-
 
 :import {
   -st-from: './textVolume.st.css';
@@ -30,18 +40,6 @@
     textVol4,
     textVol5,
     textVol6;
-}
-
-
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit,
-    --text-vol-5-scale,
-    --text-vol-5-max,
-    --text-vol-6-scale,
-    --text-vol-6-max,
 }
 
 :import {
@@ -193,3 +191,6 @@
 .inputVol6 SelectionControl {
   font-size: 36px;
 }
+
+
+.errorMessage {}

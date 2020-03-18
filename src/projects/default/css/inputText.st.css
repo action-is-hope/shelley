@@ -1,5 +1,13 @@
 /** inputText.st.css */
 
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
+
 :import {
   -st-from: "../../../components/InputText/inputText.st.css";
   -st-default: InputText;
@@ -27,11 +35,6 @@
 }
 
 :import {
-  -st-from: "../mixins/multiply";
-  -st-named: respScale;
-}
-
-:import {
   -st-from: './formElements.st.css';
   -st-named:
     hideWebkitAppearance,
@@ -45,17 +48,7 @@
 }
 
 
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
-}
 
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit;
-}
 
 @st-scope Default {
 

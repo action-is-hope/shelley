@@ -1,10 +1,16 @@
-/** inputSelection.st.css */
-/** inputText.st.css */
+/** inputSelectionControl.st.css */
+
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
 
 :import {
   -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: InputSelectionControl;
-  /* -st-named:  */
   -st-named: inputContainer
 }
 
@@ -13,31 +19,20 @@
   -st-named: hideWebkitAppearance;
 }
 
-
 :import {
   -st-from: "../../../components/Icon/icon.st.css";
   -st-default: Icon;
-}
-
-
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
 }
 
 /* This is how we can scope the styles. */
 @st-scope Default {
 
   InputSelectionControl {
-
     font-size: 20px;
     /* flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
     display: flex;
     transform: translateZ(0);
   }
-
-
 
 
   InputSelectionControl::inputField {

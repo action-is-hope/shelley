@@ -8,7 +8,7 @@ import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 
-import grid from "../themes/default/css/grid.st.css";
+import grid from "../projects/default/css/grid.st.css";
 import Icon from "../components/Icon/Icon";
 import Label from "../components/Label/Label";
 import InputSelectionControl from "../components/InputSelectionControl/InputSelectionControl";
@@ -248,7 +248,6 @@ const InputSelectionDocs = () => {
           <br />
           <br />
           <br />
-          <InputSelection id="blah2" label={"name"} type="checkbox" vol={7} />
           <InputSelection id="blah2" label={"vol6"} type="checkbox" vol={6} />
           <InputSelection id="blah2" label={"vol5"} type="checkbox" vol={5} />
           <InputSelection id="blah2" label={"vol4"} type="checkbox" vol={4} />

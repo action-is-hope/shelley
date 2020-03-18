@@ -1,5 +1,22 @@
 /** grid.st.css */
-/* Off Grid */
+
+/* project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --breakpoint-sm,
+    --breakpoint-md,
+    --breakpoint-lg,
+    --breakpoint-xl,
+    --grid-gap-xs,
+    --grid-gap-md,
+    --grid-template-columns-base-sm,
+    --grid-template-columns-base-md,
+    --grid-template-columns-base-content-start-end
+}
+
 :import {
   -st-from: "../../../components/Grid/grid.st.css";
   -st-default: Grid;
@@ -20,27 +37,6 @@
   -st-default: CodeSample;
 }
 
-
-:import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
-}
-
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit,
-    --breakpoint-sm,
-    --breakpoint-md,
-    --breakpoint-lg,
-    --breakpoint-xl,
-    --grid-gap-xs,
-    --grid-gap-md,
-    --grid-template-columns-base-sm,
-    --grid-template-columns-base-md,
-    --grid-template-columns-base-content-start-end
-}
 
 /* Align common grid items, including fallback styles. */
 Grid>h1,

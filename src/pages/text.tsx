@@ -7,8 +7,8 @@ import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 /* Style imports */
-import text from "../themes/default/css/text.st.css";
-import grid from "../themes/default/css/grid.st.css";
+import text from "../projects/default/css/text.st.css";
+import grid from "../projects/default/css/grid.st.css";
 
 const TextDocs = () => {
   const [TextDemoProps, setTextDemoProps]: any = React.useState([
@@ -57,7 +57,7 @@ const TextDocs = () => {
 
 <H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
 <P>The mighty paragraph, defaults to a volume of 3.</P>
-<Text as="span">Text with your choice of tag via the "as" prop.</Text>`}</CodeSample>
+<Text tag="span">Text with your choice of tag via the "tag" prop.</Text>`}</CodeSample>
 
         <P>
           Shelley uses a volume property, <code>vol</code> for the general
@@ -89,7 +89,7 @@ const TextDocs = () => {
         >
           <Text
             id="username"
-            as="p"
+            tag="p"
             // underline={true}
             vol={TextDemoProps[0].value}
             truncate={TextDemoProps[1].value}

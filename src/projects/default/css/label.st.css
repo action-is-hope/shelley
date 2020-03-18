@@ -1,8 +1,11 @@
 /** label.st.css */
 
+/* project and vars */
 :import {
-  -st-from: "../theme.st.css";
+  -st-from: "../project.st.css";
   -st-default: Default;
+  -st-named:
+    --spacing-unit,
 }
 
 :import {
@@ -22,13 +25,6 @@
 :import {
   -st-from: "../../../components/Icon/icon.st.css";
   -st-default: Icon;
-}
-
-
-:import {
-  -st-from: "../variables.st.css";
-  -st-named:
-    --spacing-unit,
 }
 
 @st-scope Default {

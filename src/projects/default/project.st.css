@@ -1,52 +1,43 @@
 /**
- * Default theme variables. This is just an example to get started, we tend to 
- * use this for our non color build time variables.
+ * Project - Default
+ * 
+ * Our main project which is essentially a theme but it itself can have themes
+ * so project seems more appropriate. 
  */
+
+@namespace "Default";
+
+:import {
+  -st-from: "./global.st.css";
+}
 
 :import {
   -st-from: "./mixins/multiply";
   -st-named: multiply, divide, respScale;
 }
 
+/* Default theme colours */
 :vars {
-  /* @Breakpoints */
+
+  /*=== LAYOUT AND GRID ===*/
+
+  /** Breakpoints */
   --breakpoint-xs: 0;
   --breakpoint-sm: 568px;
   --breakpoint-md: 950px;
   --breakpoint-lg: 1200px;
   --breakpoint-xl: 1600px;
+  --breakpoint-xxl: 1800px;
 
-  /* Fonts */
-  --font-plain: Helvetica Neue, Helvetica, Arial, sans-serif;
-  --font-special: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
-
-  /* Font sizes */
-  --base-font-size: 16px;
-  --base-font-size-sm: 14px;
-  --base-font-size-md: 16px;
-  --base-font-size-lg: 18px;
-  --base-font-size-xl: 18px;
-
-  /* Line heights */
-  /* --line-height: 1.45; */
-
-  /* Gutter */
-  --gutter-width-sm: 16px;
-  --gutter-width-md: 24px;
-  --gutter-width-lg: 32px;
-
-  /* Spacing */
+  /** Spacing */
   --spacing-unit: 0.69231rem;
   /* 18px when at 1800px */
 
-  /* Grid */
+  /** Grid */
   --grid-gap-xs: 12px;
   --grid-gap-md: 24px;
   /* This is a calc that will give you mobile column width. */
   --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
-  /* This is the column width that aligns with the design when viewport is 1400px (as the design is). */
   --grid-base-column-width-md: 4.011vw;
   /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
   --grid-template-columns-base-sm: [full-bleed-start] 12px [outset-start content-start] repeat(12, 1fr) [content-end outset-end] 12px [full-bleed-end];
@@ -54,46 +45,20 @@
   /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
   --grid-template-columns-base-content-start-end: repeat(12, minmax(0, 4.011vw));
 
-  /**
-   * We can name the grid lines what we like:
-   *
-   * grid-column-start: full-bleed-start;
-   * grid-column-end: full-bleed-end;
-   *
-   * grid-column-start: content-start;
-   * grid-column-end: content-end;
-   *
-   * grid-column-start: outset-start;
-   * grid-column-end: outset-end;
-   *
-   * Good as it is easy to maintain as the grid lines can be remapped at a theme level.
-   *
-   * The grid-template-column values on mobile and desktop differ slightly in that they map the grid
-   * lines differently. On mobile outset and content use the same grid lines but on desktop
-   * content sits 2 columns inside.
-   *
-   */
 
+  /*=== TYPE AND TEXT ===*/
 
-  /** 
-   * Fluid text variables
-   * Over engineered much? :-)
-   * Modular scale tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
-   */
+  /** Fonts */
+  --font-plain: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-special: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
 
-  /* Base font min is 1em (16px) and max (20px) is 1.25em for this theme */
-  --font-base-min: 1em;
-  --font-base-max: 1.25em;
-
-  /* Scales - https://type-scale.com/ - Shelley likes to mix it up so we pulled in a bunch. */
-  --minor-second: 1.067;
-  --major-second: 1.125;
-  --minor-third: 1.2;
-  --major-third: 1.25;
-  --perfect-forth: 1.333;
 
   /**
    * Volumes
+   *
+   * Modular scale tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
    *
    * Our text volumes styles use need three values to be defined:
    *
@@ -141,6 +106,22 @@
    *   - https://www.smashingmagazine.com/2016/05/fluid-typography/
    *   - https://type-scale.com/ 
    *   - https://css-tricks.com/css-locks/
+
+   * Over engineered much? :-)
+   */
+
+  /* Base font min is 1em (16px) and max (20px) is 1.25em for this theme */
+  --font-base-min: 1em;
+  --font-base-max: 1.25em;
+
+  /** Scales - https://type-scale.com/ - Shelley likes to mix it up so we pulled in a bunch. */
+  --minor-second: 1.067;
+  --major-second: 1.125;
+  --minor-third: 1.2;
+  --major-third: 1.25;
+  --perfect-forth: 1.333;
+
+  /** Volumnes */
 
   /* Volume 1 */
   --text-vol-1-min: divide(value(--font-base-min), value(--major-second), value(--major-second));
@@ -196,4 +177,123 @@
   --text-vol-11-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third), value(--major-third), value(--major-third));
   --text-vol-11-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
   --text-vol-11-scale: respScale(value(--text-vol-11-min), value(--text-vol-11-max));
+
+
+  /*=== COLOURS - See we are British really... ===*/
+
+  /* Core light forground. */
+  --light-01-raw: 255, 255, 255;
+  --light-01: rgb(value(--light-01-raw));
+  /* Core dark forground. */
+  --dark-01-raw: 51, 51, 51;
+  --dark-01: rgb(value(--dark-01-raw));
+
+  /* Default site values which will be used for the fallbacks. */
+  /* --color-accent-1-default: rgb(14, 97, 148);  */
+  /* --color-accent-1-default: rgb(83, 180, 218); */
+  --color-accent-1-default: #65bfff;
+
+  /* rgb(83, 180, 218) */
+  --color-accent-2-default: #52fba7;
+  --color-accent-3-default: #ea91ff;
+  --color-accent-4-default: #f7e1b9;
+
+  --color-background-1-default: rgb(23, 26, 35);
+  --color-background-2-default: rgba(0, 0, 0, 0.4);
+  --color-background-3-default: rgba(255, 255, 255, 0.15);
+  --color-background-4-default: rgba(255, 255, 255, 0.15);
+  --color-background-modal-default: rgba(23, 26, 35, 0.98);
+  --color-text-1-default: value(--light-01);
+  --color-text-2-default: rgba(value(--light-01-raw), 0.9);
+  --color-text-3-default: rgba(value(--light-01-raw), 0.8);
+  --color-text-4-default: rgba(value(--light-01-raw), 0.6);
+  --color-status-error-default: #b66b6e;
+  --color-status-warn-default: orange;
+  --color-status-neutral-default: blue;
+  --color-status-success-default: green;
+  --color-ui-default: value(--light-01);
+  /* rgb(212, 212, 212) */
+  --color-ui-default-raw: value(--light-01-raw);
+}
+
+/* rgb(48, 91, 107) */
+:root {
+  /* Map default site values to equivalent CSS runtime variables, which are actually variables.*/
+  --color-accent-1: value(--color-accent-1-default);
+  --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
+  --color-background-1: value(--color-background-1-default);
+  --color-background-2: value(--color-background-2-default);
+  --color-background-3: value(--color-background-3-default);
+  --color-background-4: value(--color-background-4-default);
+  --color-background-modal: value(--color-background-modal-default);
+  --color-text-1: value(--color-text-1-default);
+  --color-text-2: value(--color-text-2-default);
+  --color-text-3: value(--color-text-3-default);
+  --color-text-4: value(--color-text-4-default);
+  --color-status-error: value(--color-status-error-default);
+  --color-status-warn: value(--color-status-warn-default);
+  --color-status-neutral: value(--color-status-neutral-default);
+  --color-status-success: value(--color-status-success-default);
+  --color-ui: value(--color-ui-default);
+  --color-ui-raw: value(--color-ui-default-raw);
+
+
+}
+
+/* Theme colour schemes */
+@media (prefers-color-scheme: light) {
+  .root {
+    /* Override our CSS runtime variables, if our user prefers it light as a feather. */
+    --color-accent-1: rgb(22, 141, 217);
+    --color-accent-2: rgb(35, 196, 141);
+    --color-background-1: rgb(242, 243, 255);
+    /*rgb(249, 249, 249);*/
+    --color-background-2: rgb(255, 255, 255);
+    --color-background-3: rgba(0, 0, 0, 0.15);
+    --color-background-4: rgb(255, 255, 255);
+    --color-background-modal: rgba(249, 249, 249, 0.98);
+    --color-text-1: value(--dark-01);
+    --color-text-2: rgba(value(--dark-01-raw), 0.9);
+    --color-text-3: rgba(value(--dark-01-raw), 0.8);
+    --color-text-4: rgba(value(--dark-01-raw), 0.6);
+    --color-status-error: red;
+    --color-status-warn: orange;
+    --color-status-neutral: blue;
+    --color-status-success: green;
+    --color-ui: value(--dark-01);
+    --color-ui-raw: value(--dark-01-raw);
+  }
+}
+
+.root {
+  font-family: value(--font-plain);
+  font-size: 100%;
+  font-weight: 200;
+  /* line-height: value(--ratio); */
+  min-height: 100vh;
+}
+
+body {
+  color: value(--color-ui-default);
+  color: var(--color-ui, value(--color-ui-default));
+
+
+  background-color: value(--color-background-1-default);
+  background-color: var(--color-background-1, value(--color-background-1-default));
+
+  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150% */
+  /* background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
+  /* background: linear-gradient(-45deg, rgb(16, 10, 86) 0%, rgb(43, 40, 43) 100%) 0% 0% / 150% 150%; */
+
+  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%;
+  background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
+}
+
+hr {
+  width: 16vw;
+  height: 1px;
+  margin: 48px auto;
+  background: var(--color-ui)
 }

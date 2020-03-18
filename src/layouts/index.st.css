@@ -1,5 +1,5 @@
 :import {
-  -st-from: "../themes/default/theme.st.css";
+  -st-from: "../projects/default/project.st.css";
   -st-default: Default;
   -st-named:
     --color-text-1-default,

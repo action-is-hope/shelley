@@ -1,13 +1,14 @@
 /** errorText.st.css */
 
+/* project and vars */
 :import {
-  -st-from: "../../../components/HintText/hintText.st.css";
-  -st-default: Hint;
+  -st-from: "../project.st.css";
+  -st-default: Default;
 }
 
 :import {
-  -st-from: "../theme.st.css";
-  -st-default: Default;
+  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-default: Hint;
 }
 
 @st-scope Default {
