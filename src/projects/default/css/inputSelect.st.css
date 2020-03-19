@@ -1,0 +1,25 @@
+:import {
+  -st-from: "../../../components/InputSelect/inputSelect.st.css";
+  -st-default: InputSelect;
+  /* -st-named: select */
+}
+
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+
+InputSelect {
+  /* background: pink !important; */
+}
+
+InputSelect InputLabel {
+  /* background: green !important; */
+}
+
+InputSelect::fieldContainer {
+  /* background: yellow !important; */
+}
+
+/* .select InputEleme */

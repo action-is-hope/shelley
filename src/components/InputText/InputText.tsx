@@ -10,7 +10,7 @@ import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface InputRowProps
+interface InputTextProps
   extends Pick<
     React.HTMLProps<HTMLInputElement>,
     Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
@@ -66,7 +66,7 @@ const InputText = React.forwardRef(
       type = "text",
       vol = 3,
       ...rest
-    }: InputRowProps,
+    }: InputTextProps,
     // @todo: Cannot figure a way around not using any here, conditional refs seem a headache.
     ref?: React.Ref<HTMLInputElement>
     // ref?: React.Ref<any>

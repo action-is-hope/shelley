@@ -15,6 +15,7 @@ import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 import Icon from "../components/Icon/Icon";
 import { sign } from "crypto";
+import InputSelect from "../components/InputSelect/InputSelect";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema.
@@ -38,6 +39,10 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <H2 uppercase vol={3}>
             Synopsis
           </H2>
+
+          <InputSelect id="test" label="test" error="HELLLO" touched>
+            <option>test</option>
+          </InputSelect>
 
           <img src="sskhshksk" />
           <img src="sskhshksk" alt="" />

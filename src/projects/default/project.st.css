@@ -8,15 +8,12 @@
 @namespace "Default";
 
 :import {
-  -st-from: "./global.st.css";
-}
-
-:import {
   -st-from: "./mixins/multiply";
   -st-named: multiply, divide, respScale;
 }
 
-/* Default theme colours */
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+
 :vars {
 
   /*=== LAYOUT AND GRID ===*/
@@ -54,13 +51,33 @@
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
 
+  /* Base font min is 1em (16px) and max (20px) is 1.25em */
+  --font-base-min: 1em;
+  --font-base-max: 1.25em;
 
   /**
-   * Volumes
+   * Scales - https://type-scale.com/
+   *
+   * We use these as ratios to bump up our text from one lebvel to the next.
+   * Shelley likes to mix it up so we pulled in a bunch of these.
+   */
+  --minor-second: 1.067;
+  --major-second: 1.125;
+  --minor-third: 1.2;
+  --major-third: 1.25;
+  --perfect-forth: 1.333;
+
+  /**
+   * Volumes / Text sizes
+   *
+   * Are you ready for some serious over engineering? :-)
    *
    * Modular scale tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
    *
-   * Our text volumes styles use need three values to be defined:
+   * Still with us? Now have a little gander at the variables we are setting for 
+   * our text volumes below this comment block.
+   *
+   * You will notice each text size is comprised of three values:
    *
    * - min: The minimum font size, this is the font size we want at our smallest 
    *   expected screen size, 320px, 16px for us. We use this number as an input to our crazy 
@@ -99,29 +116,14 @@
    *   and once you have wrapped you head around all of that and understand it, you 
    *   know CSS fundermentals quite well. Fun isn't it? I have no hair, #justSaying.
    *
-   *   Shelley loves it. It turns out you *can* teach an old digital entity 
-   *   new tricks.
+   *   Shelley loves it.
    *
    *   Thanks and pops for the hard work and innovators:
    *   - https://www.smashingmagazine.com/2016/05/fluid-typography/
    *   - https://type-scale.com/ 
    *   - https://css-tricks.com/css-locks/
-
-   * Over engineered much? :-)
+   * 
    */
-
-  /* Base font min is 1em (16px) and max (20px) is 1.25em for this theme */
-  --font-base-min: 1em;
-  --font-base-max: 1.25em;
-
-  /** Scales - https://type-scale.com/ - Shelley likes to mix it up so we pulled in a bunch. */
-  --minor-second: 1.067;
-  --major-second: 1.125;
-  --minor-third: 1.2;
-  --major-third: 1.25;
-  --perfect-forth: 1.333;
-
-  /** Volumnes */
 
   /* Volume 1 */
   --text-vol-1-min: divide(value(--font-base-min), value(--major-second), value(--major-second));
@@ -179,7 +181,7 @@
   --text-vol-11-scale: respScale(value(--text-vol-11-min), value(--text-vol-11-max));
 
 
-  /*=== COLOURS - See we are British really... ===*/
+  /*=== COLOURS - The Queens English darling... ===*/
 
   /* Core light forground. */
   --light-01-raw: 255, 255, 255;
@@ -216,9 +218,19 @@
   --color-ui-default-raw: value(--light-01-raw);
 }
 
-/* rgb(48, 91, 107) */
+/*=== GLOBAL CSS ===*/
+
+/*=== SET CSS RUN-TIME VARIABLES ===*/
+
+/**
+ * Default color scheme variables
+ * 
+ * We make use of the Stylable build variables and map them to equivalent CSS 
+ * runtime variables. This allows us to the -default version as our fallback,
+ * it is a little confusing at first so keep checking your browser list.
+ */
+
 :root {
-  /* Map default site values to equivalent CSS runtime variables, which are actually variables.*/
   --color-accent-1: value(--color-accent-1-default);
   --color-accent-2: value(--color-accent-2-default);
   --color-accent-3: value(--color-accent-3-default);
@@ -238,11 +250,17 @@
   --color-status-success: value(--color-status-success-default);
   --color-ui: value(--color-ui-default);
   --color-ui-raw: value(--color-ui-default-raw);
-
-
 }
 
-/* Theme colour schemes */
+
+/**
+ * Alternate colour scheme variables
+ *
+ * These are our alternate color schemes, you can map them from build-time 
+ * variables if you are sharing lots but it tend to get confusing for us.
+ * Try to stay organised.
+ */
+
 @media (prefers-color-scheme: light) {
   .root {
     /* Override our CSS runtime variables, if our user prefers it light as a feather. */
@@ -267,15 +285,56 @@
   }
 }
 
+/*=== GLOBAL CSS ===*/
+
+/** 
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./css/allGlobals.st.css 
+ * which is pulled in within index.ts */
 .root {
   font-family: value(--font-plain);
   font-size: 100%;
-  font-weight: 200;
+  /* font-weight: 200; */
   /* line-height: value(--ratio); */
   min-height: 100vh;
 }
 
+/* Give ourselves a fluid rem value to use for padding or whatever. */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@supports (display: grid) {
+  html {
+    font-size: value(--text-vol-3-scale);
+    font-size: calc(1em + 0.45 * ((100vw - 20em) / (92.5)));
+    font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
+  }
+
+  @media screen and (min-width: 1800px) {
+    html {
+      /* font-size: value(--text-vol-3-max); */
+      font-size: 26px;
+    }
+  }
+}
+
+/* 1em + 0.625 */
+/* calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
+25.9392 */
+
+
 body {
+  /**
+   * Sets the body back to browser defaults.
+   * Why? Using rem for everything means we can't set a container to say 
+   * font-size: 90% to tweak the size of the contained elements as they would 
+   * always size off the root html element.
+   *
+   * This way we can use a responsive rem value when we want to but also 
+   * leverage ems as described above.
+   */
+  font-size: initial;
   color: value(--color-ui-default);
   color: var(--color-ui, value(--color-ui-default));
 

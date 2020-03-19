@@ -1,0 +1,38 @@
+/** allGlobal.st.css */
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  font-family: inherit;
+  color: inherit;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+[hidden] {
+  display: none;
+}
+
+[hidden]+* {
+  margin-top: 0 !important;
+}
+
+footer,
+header,
+main,
+nav {
+  display: block;
+}
+
+/* We are resetting these so when we use the <Text vol={false}> we don't end up with the defaults. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em
+}

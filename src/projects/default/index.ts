@@ -1,9 +1,8 @@
 import { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
 
-// Bundle Global
-import "./global.st.css";
-import "../globalHelpers.st.css";
+// Bundle 'ALL' () Global
+import "./css/allGlobal.st.css";
 
 // Foundation Components
 import Button from "./css/button.st.css";
@@ -13,6 +12,8 @@ import Label from "./css/label.st.css";
 import InputSelection from "./css/inputSelection.st.css";
 import InputSelectionControl from "./css/inputSelectionControl.st.css";
 import InputText from "./css/inputText.st.css";
+import InputSelect from "./css/inputSelect.st.css";
+import InputBase from "./css/inputBase.st.css";
 import Text from "./css/text.st.css";
 import ErrorText from "./css/errorText.st.css";
 import HintText from "./css/hintText.st.css";
@@ -48,11 +49,17 @@ export const grid = (...values: []) =>
 export const label = (...values: []) =>
   getStylableClassNames(values, Label, "label");
 
+export const inputBase = (...values: []) =>
+  getStylableClassNames(values, InputBase, "inputBase");
+
 export const inputSelection = (...values: []) =>
   getStylableClassNames(values, InputSelection, "inputSelection");
 
 export const inputSelectionControl = (...values: []) =>
   getStylableClassNames(values, InputSelectionControl, "inputSelectionControl");
+
+export const inputSelect = (...values: []) =>
+  getStylableClassNames(values, InputSelect, "inputSelect");
 
 export const text = (...values: []) =>
   getStylableClassNames(values, Text, "text");
