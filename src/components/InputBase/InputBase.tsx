@@ -5,17 +5,7 @@ import style from "./inputBase.st.css";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
-
-// import { ButtonProps } from "@material-ui/core/Button";
-
-// export type OwnProps = Omit<ButtonProps, "color" | "size"> & {
-//   color: "primary" | "danger" | "warning" | "transparent";
-//   size: "sm" | "lg";
-// }
-
-// class MyButton extends React.Component<OwnProps> {
-
-// }
+import InputAdornment from "../InputAdornment/InputAdornment";
 
 export type InputBaseProps = {
   /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility. */
@@ -26,6 +16,10 @@ export type InputBaseProps = {
   hint?: React.ReactNode;
   /** Triggers the Inputs stylable error state. */
   touched?: boolean;
+  /** Place a component so as to appear inside the TextInput start. */
+  startAdornment?: React.ReactNode;
+  /** Place a component so as to appear inside the TextInput end. */
+  endAdornment?: React.ReactNode;
   /** The label to associated with the input. */
   label: React.ReactNode;
   /** Variant index. */
@@ -50,6 +44,8 @@ const InputBase = ({
   children,
   disabled = false,
   error: errorMessage,
+  startAdornment,
+  endAdornment,
   touched = false,
   hint,
   label = (
@@ -59,9 +55,8 @@ const InputBase = ({
   ),
   labelVisuallyHidden = false,
   variant = 1,
-  type = "text",
   vol = 3,
-  ...rest
+  ...attrs
 }: InputBaseInternalProps) => {
   id === "NOID" &&
     console.warn(
@@ -76,7 +71,7 @@ const InputBase = ({
     // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
     "aria-invalid": error ? true : undefined,
     "aria-describedby": error ? `${id}-error` : undefined
-    // ...rest
+    // ...attrs We only want to re-apply what we pulled off.
   };
 
   const childrenWithProps = React.Children.map(children, child =>
@@ -88,13 +83,12 @@ const InputBase = ({
       {...style(
         classnames(
           style.root,
-          style[type],
           style["variant" + variant],
           style["vol" + vol],
           classNameProp
         ),
         { error, disabled },
-        rest //??
+        attrs // We do want stylable to get spread attrs.
       )}
     >
       {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
@@ -111,7 +105,11 @@ const InputBase = ({
         </Label>
       )}
 
-      <div className={style.fieldContainer}>{childrenWithProps}</div>
+      <div className={style.fieldContainer}>
+        {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}
+        {childrenWithProps}
+        {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}
+      </div>
     </div>
   );
 };

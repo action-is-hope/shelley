@@ -1,4 +1,4 @@
-/** utlils.js */
+/** common.js */
 
 const explodeValue = cssValue => {
   /**

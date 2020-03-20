@@ -185,7 +185,7 @@ const LabelsDocs = () => {
             hint={labelDemoProps[1].value}
             // htmlFor={labelDemoProps[2].value}
             visuallyHidden={labelDemoProps[3].value}
-            inputPos="below"
+            inputPos="bottom"
             inputControl={
               labelDemoProps[4].value !== "none" ? (
                 <InputSelectionControl

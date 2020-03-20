@@ -25,7 +25,7 @@ const Label = ({
   inputPos = false,
   hint,
   visuallyHidden,
-  ...rest
+  ...attrs
 }: LabelProps) => {
   const labelText = (
     <span className={style.labelTextContainer}>
@@ -43,9 +43,9 @@ const Label = ({
           classNameProp
         ),
         { inputPos },
-        rest
+        attrs
       )}
-      {...rest}
+      {...attrs}
     >
       {visuallyHidden ? (
         <VisuallyHidden>{labelText}</VisuallyHidden>

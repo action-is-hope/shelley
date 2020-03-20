@@ -32,6 +32,8 @@ interface RadioCheckInputProps
   vol?: Volume;
   /** The type of slection control to render. */
   type?: SelectionControlType;
+  /** Not entirely sure why this needs to ne defined... Investigate. */
+  ref?: React.Ref<HTMLInputElement>;
 }
 
 const InputSelection = React.forwardRef(
@@ -50,7 +52,6 @@ const InputSelection = React.forwardRef(
       labelVisuallyHidden,
       inputPos = "end",
       vol = 3,
-      ref: refProp, // Fix: compatability issue. Investigate.
       ...rest
     }: RadioCheckInputProps,
     ref?: React.Ref<HTMLInputElement>

@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import DefaultLayout from "../layouts";
 import { P, H1, H2 } from "../components/Text/Text";
 import InputText from "../components/InputText/InputText";
@@ -10,6 +11,8 @@ import CodeSample from "../components_site/CodeSample/CodeSample";
 
 import grid from "../projects/default/css/grid.st.css";
 import InputSelection from "../components/InputSelection/InputSelection";
+
+import formElements from "../projects/default/css/mixins/formElements.st.css";
 
 const InputDocs = () => {
   const [InputDemoProps, setInputDemoProps]: any = React.useState([
@@ -200,7 +203,53 @@ const InputDocs = () => {
           <br />
           <br />
           <br />
-
+        </div>
+        <P>
+          If you find yourself in need to style someone elses form you have
+          access to some form styles that are used to build Shelley forms.
+        </P>
+        <P>
+          You can use some of the classes directly as shown below but more
+          likely you will want to build some styles based targeted at a global
+          classname. Hopefully you will be able to get some kind of wrapper
+          around it
+        </P>
+        <br />
+        <br />
+        <br />
+        <div className={grid.colContent}>
+          <div
+            className={classnames(
+              formElements.textualFieldRoot,
+              formElements.inputVol3
+            )}
+            data-error="true"
+          >
+            {/* <span className="errorText-root" id="inputTexthtml-error">
+              Form item error message
+            </span> */}
+            {/* <label className={formElements.inputVol1} htmlFor="inputTexthtml">
+              <span className="label-labelTextContainer">
+                <span className="label-labelText">Form item label</span>
+              </span>
+            </label> */}
+            <label
+              className={formElements.inputLabelVol3}
+              htmlFor="inputTexthtml"
+            >
+              Form item label
+            </label>
+            <div className={formElements.textualFieldContainer}>
+              <input
+                placeholder="Placeholder text"
+                type="text"
+                id="inputTexthtml"
+                className={formElements.textualFieldInput}
+                aria-invalid="true"
+                aria-describedby="inputTexthtml-error"
+              />
+            </div>
+          </div>
           <br />
           <br />
           <InputText

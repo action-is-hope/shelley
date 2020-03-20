@@ -116,6 +116,7 @@ Grid>figure,
 
 @supports (display: grid) {
 
+  /** Grid utilities. */
   .gridColumnOutset1 {
     /* set the grid lines */
     grid-column: outset1-start / outset1-end;

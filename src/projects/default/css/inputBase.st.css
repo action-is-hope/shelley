@@ -1,12 +1,25 @@
-/** InputBase.st.css */
+/** inputBase.st.css */
 
-/* project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
     --spacing-unit,
     --color-ui-default;
+}
+
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    textualFieldRoot,
+    textualFieldContainer,
+    textualFieldInput,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
 }
 
 :import {
@@ -35,68 +48,21 @@
   -st-default: Adornment;
 }
 
-:import {
-  -st-from: './formElements.st.css';
-  -st-named:
-    hideWebkitAppearance,
-    textInput,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6;
-}
-
 @st-scope Default {
 
   /*==== BASE ====*/
 
   InputBase {
-    /* 
-      Showing the error before the field in question is the most logical but in 
-      practice we want to render it below so as to avoid the field moving when
-      it is in an eror state. We are using flex to move the error but you could 
-      use grid with named grid-lines but wider support exists ofr flex so less 
-      fallbacks are required.
-    */
-    display: flex;
-    flex-direction: column;
-  }
-
-  InputBase InputLabel {
-    /* order: 1; */
+    -st-mixin: textualFieldRoot;
   }
 
   InputBase::fieldContainer {
-    position: relative;
-    display: inline-flex;
-    color: value(--color-ui-default);
-    line-height: 1.5;
-  }
-
-  /* Indicator */
-  InputBase::fieldContainer::before {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    content: "";
-    width: 1px;
-    background-color: #33d25f45;
-    background-color: rgba(189, 228, 254, 0.5);
-    /* 50% of the blue tint for form elemets... */
-    transition: background-color 0.3s;
+    -st-mixin: textualFieldContainer;
   }
 
   /* Native input*/
   InputBase::fieldInput {
-    -st-mixin:
-      hideWebkitAppearance,
-      textInput;
-    padding-left: value(--spacing-unit);
-    padding-right: value(--spacing-unit);
+    -st-mixin: textualFieldInput;
   }
 
   /* Use a named import as a class to get the adjacent selectors working. */
@@ -114,7 +80,6 @@
     order: 3;
     border-left-width: 1px;
     padding: 8px value(--spacing-unit) 0 value(--spacing-unit);
-
   }
 
   /* Textarea wrapper which can be used for scrolling. */
@@ -140,18 +105,6 @@
     cursor: not-allowed;
   }
 
-  /* Focused */
-  InputBase::fieldContainer:focus-within::before {
-    background-color: #09b1f1;
-  }
-
-  /* Hack to get rid of the bloody autofill bg - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs */
-  InputBase::fieldInput:-webkit-autofill,
-  InputBase::fieldInput:-webkit-autofill:hover,
-  InputBase::fieldInput:-webkit-autofill:focus,
-  InputBase::fieldInput:-webkit-autofill:active {
-    -webkit-transition-delay: 99999s;
-  }
 
   /*==== VOLUMES ====*/
 

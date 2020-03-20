@@ -1,51 +1,20 @@
-/** inputRow.st.css */
+/** inputText.st.css */
+/* .select {
+  -st-states: disabled, error, labelPos(enum(above, below, start, end));
+} */
 
-.root {
-  -st-states: disabled, error;
+:import {
+  -st-from: '../InputBase/inputBase.st.css';
+  -st-default: InputBase
 }
 
+.root {
+  -st-extends: InputBase;
+}
 
-.root {}
+/* .inputFeild {} */
 
-.fieldContainer {}
-
-.textAreaWrap {}
-
-.fieldInput {}
-
-.errorMessage {}
-
-/* Variants */
-
-.variant1 {}
-
-.variant2 {}
-
-.variant3 {}
-
-.variant4 {}
-
-.variant5 {}
-
-.variant6 {}
-
-
-/* Volume */
-
-.vol1 {}
-
-.vol2 {}
-
-.vol3 {}
-
-.vol4 {}
-
-.vol5 {}
-
-.vol6 {}
-
-
-/* Types */
+/* Types - Top level type classes shoudl you need to target them. */
 
 .email {}
 

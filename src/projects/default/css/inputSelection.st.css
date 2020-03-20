@@ -38,15 +38,14 @@
 }
 
 :import {
-  -st-from: "../mixins/multiply";
+  -st-from: "../formatters/common";
   -st-named: respScale;
 }
 
 :import {
-  -st-from: './formElements.st.css';
+  -st-from: './mixins/formElements.st.css';
   -st-named:
     hideWebkitAppearance,
-    textInput,
     inputVol1,
     inputVol2,
     inputVol3,

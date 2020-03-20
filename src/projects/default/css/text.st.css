@@ -8,10 +8,28 @@
     /* --font-plain, */
     /* --spacing-unit, */
     /* --color-ui-default, */
+    --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
+    --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
+    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height,
+    --text-vol-4-max, --text-vol-4-scale, --text-vol-4-line-height,
+    --text-vol-5-max, --text-vol-5-scale, --text-vol-5-line-height,
+    --text-vol-6-max, --text-vol-6-scale, --text-vol-6-line-height,
+    --text-vol-7-max, --text-vol-7-scale, --text-vol-7-line-height,
+    --text-vol-8-max, --text-vol-8-scale, --text-vol-8-line-height,
+    --text-vol-9-max, --text-vol-9-scale, --text-vol-9-line-height,
+    --text-vol-10-max, --text-vol-10-scale, --text-vol-10-line-height,
+    --text-vol-11-max, --text-vol-11-scale, --text-vol-11-line-height,
+
     --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
     --color-accent-4-default;
+}
+
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
 }
 
 :import {
@@ -24,23 +42,6 @@
   -st-default: Grid;
 }
 
-:import {
-  -st-from: './textVolume.st.css';
-  -st-named:
-    textVol1,
-    textVol2,
-    textVol3,
-    textVol4,
-    textVol5,
-    textVol6,
-    textVol7,
-    textVol8,
-    textVol9,
-    textVol10,
-    textVol11;
-}
-
-
 @st-scope Default {
   Text {
     font-weight: 400;
@@ -49,58 +50,98 @@
   }
 
   /* Volume 1 */
+
   Text.vol1 {
-    -st-mixin: textVol1
+    -st-mixin:
+      textVol(scale value(--text-vol-1-scale),
+        max value(--text-vol-1-max),
+        lineHeight value(--text-vol-1-line-height));
   }
 
   /* Volume 2 */
   Text.vol2 {
-    -st-mixin: textVol2
+    -st-mixin:
+      textVol(scale value(--text-vol-2-scale),
+        max value(--text-vol-2-max),
+        lineHeight value(--text-vol-2-line-height));
   }
 
   /* Volume 3 */
   Text.vol3 {
-    -st-mixin: textVol3
+    -st-mixin:
+      textVol(scale value(--text-vol-3-scale),
+        max value(--text-vol-3-max),
+        lineHeight value(--text-vol-3-line-height));
   }
+
 
   /* Volume 4 */
   Text.vol4 {
-    -st-mixin: textVol4
+    -st-mixin:
+      textVol(scale value(--text-vol-4-scale),
+        max value(--text-vol-4-max),
+        lineHeight value(--text-vol-4-line-height));
   }
 
   /* Volume 5 */
   Text.vol5 {
-    -st-mixin: textVol5
+    -st-mixin:
+      textVol(scale value(--text-vol-5-scale),
+        max value(--text-vol-5-max),
+        lineHeight value(--text-vol-5-line-height));
   }
 
   /* Volume 6 */
   Text.vol6 {
-    -st-mixin: textVol6
+    -st-mixin:
+      textVol(scale value(--text-vol-6-scale),
+        max value(--text-vol-6-max),
+        lineHeight value(--text-vol-6-line-height));
   }
 
   /* Volume 7 */
   Text.vol7 {
-    -st-mixin: textVol7
+    -st-mixin:
+      textVol(scale value(--text-vol-7-scale),
+        max value(--text-vol-7-max),
+        lineHeight value(--text-vol-7-line-height));
+    font-weight: 300;
   }
 
   /* Volume 8 */
   Text.vol8 {
-    -st-mixin: textVol8
+    -st-mixin:
+      textVol(scale value(--text-vol-8-scale),
+        max value(--text-vol-8-max),
+        lineHeight value(--text-vol-8-line-height));
+    font-weight: 300;
   }
 
   /* Volume 9 */
   Text.vol9 {
-    -st-mixin: textVol9
+    -st-mixin:
+      textVol(scale value(--text-vol-9-scale),
+        max value(--text-vol-9-max),
+        lineHeight value(--text-vol-9-line-height));
+    font-weight: 300;
   }
 
   /* Volume 10 */
   Text.vol10 {
-    -st-mixin: textVol10
+    -st-mixin:
+      textVol(scale value(--text-vol-10-scale),
+        max value(--text-vol-10-max),
+        lineHeight value(--text-vol-10-line-height));
+    font-weight: 300;
   }
 
   /* Volume 11 */
   Text.vol11 {
-    -st-mixin: textVol11
+    -st-mixin:
+      textVol(scale value(--text-vol-11-scale),
+        max value(--text-vol-11-max),
+        lineHeight value(--text-vol-11-line-height));
+    font-weight: 300;
   }
 
 

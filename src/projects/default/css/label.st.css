@@ -29,6 +29,7 @@
 
 @st-scope Default {
   Label {
+    display: flex;
     /* Stops the text from getting selecting whne clicking on labels. */
     user-select: none;
   }
@@ -45,9 +46,6 @@ simply part of a variant style.... Or maybe you are using the headings like we a
 for tech text we are using uppercase but for articles we are not planning too. If we 
 use a form we might want it to match our copy style so perhaps all labels need to 
 have this ability and it's valid...
-
-*/
-
   Label {
     font-size: .8rem;
     line-height: 1.15;
@@ -59,6 +57,9 @@ have this ability and it's valid...
       font-size: .7rem;
     }
   }
+*/
+
+
 
   Label Icon {
     font-size: 1.75em;

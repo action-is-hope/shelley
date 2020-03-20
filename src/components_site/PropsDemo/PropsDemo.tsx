@@ -4,6 +4,7 @@ import style from "./propsDemo.st.css";
 import classNames from "classnames";
 
 import InputText from "../../components/InputText/InputText";
+import InputSelect from "../../components/InputSelect/InputSelect";
 import InputSelection from "../../components/InputSelection/InputSelection";
 import Text, { H2, H3, P } from "../../components/Text/Text";
 
@@ -126,27 +127,27 @@ const PropsDemo = ({
       // })}
       case "select":
         return (
-          <>
-            <label htmlFor={`${item.name}`}>{item.name}</label>
-            <select
-              value={item.value}
-              id={`${item.name}`}
-              key={`${item.name}-${i}`}
-              onChange={(e: any) => {
-                const newDemoProps = [...propsArray];
-                newDemoProps[i].value = e.target.value;
-                setPropsArray(newDemoProps);
-              }}
-            >
-              {item.options.map((item: string, index: number) => {
-                return (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                );
-              })}
-            </select>
-          </>
+          <InputSelect
+            value={item.value}
+            label={`${item.label}:`}
+            vol={1}
+            variant={2}
+            id={`${item.name}`}
+            key={`${item.name}-${i}`}
+            onChange={(e: any) => {
+              const newDemoProps = [...propsArray];
+              newDemoProps[i].value = e.target.value;
+              setPropsArray(newDemoProps);
+            }}
+          >
+            {item.options.map((item: string, index: number) => {
+              return (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              );
+            })}
+          </InputSelect>
         );
       default:
       // code block

@@ -1,0 +1,268 @@
+/* formElements.st.css  */
+
+/**
+ * Now we've been around the block a few times... whilst it is nice to live in 
+ * the magical labd of React sometime we have to use shit we don't much care for
+ * and that usually involves us having to use someone elses input fields. Booo!!
+ * 
+ * Most often than not it's forms... you might need to integrate a newsletter widget
+ * or perhaps a media selection widget. 
+ * 
+ * We already know we will be doing this so we are making sure that our form styles 
+ * as much as possible can be recycled and composed and used for a other things 
+ * without being locked-in our main form components.
+ *
+ * This actually makes sense anyway for us as we will want to be using our own 
+ * styles for across similar components.
+ *
+ */
+
+/* project and vars */
+:import {
+  -st-from: "../../project.st.css";
+  -st-named:
+    --spacing-unit,
+    --text-vol-3-scale, --text-vol-3-max,
+    --text-vol-4-scale, --text-vol-4-max,
+    --text-vol-5-scale, --text-vol-5-max,
+    --text-vol-6-scale, --text-vol-6-max,
+    --color-ui-default;
+}
+
+:import {
+  -st-from: "../../formatters/common";
+  -st-named: respScale;
+}
+
+:import {
+  -st-from: './text.st.css';
+  -st-named:
+    textVol;
+}
+
+
+:import {
+  -st-from: "../../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: SelectionControl;
+}
+
+
+.hideWebkitAppearance {
+  /* Hide the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hack to get rid of the bloody autofill bg - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs */
+.hideWebkitAppearance:-webkit-autofill,
+.hideWebkitAppearance:-webkit-autofill:hover,
+.hideWebkitAppearance:-webkit-autofill:focus,
+.hideWebkitAppearance:-webkit-autofill:active {
+  -webkit-transition-delay: 99999s;
+}
+
+/**
+ * Text Based Fields
+ *
+ * Text, Number, Select, Combo style fields are all examples of what we mean by
+ * 'text-based'. Naming these things is a nightmare.
+ */
+
+/* Field Root */
+.textualFieldRoot {
+  /* 
+    Showing the error before the field in question is the most logical but in 
+    practice we want to render it below so as to avoid the field moving when
+    it is in an eror state. We are using flex to move the error but you could 
+    use grid with named grid-lines but wider support exists for flex so less 
+    fallbacks are required. We might use grid in future though.
+  */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Field Container */
+.textualFieldContainer {
+  position: relative;
+  display: inline-flex;
+  color: value(--color-ui-default);
+  line-height: 1.5;
+}
+
+/* Pseudo indicator */
+.textualFieldContainer::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  content: "";
+  width: 1px;
+  background-color: #33d25f45;
+  background-color: rgba(189, 228, 254, 0.5);
+  /* 50% of the blue tint for form elemets... */
+  transition: background-color 0.3s;
+}
+
+/* Focused */
+.textualFieldContainer:focus-within::before {
+  background-color: #09b1f1;
+  box-shadow: 0 0 1px 1px #09b1f1;
+  width: 0;
+  /* Must work even if in an error state. */
+}
+
+/* The actual field <input> */
+.textualFieldInput {
+  -st-mixin: hideWebkitAppearance;
+  background: none;
+  resize: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: calc(0.2rem + 0.2em) value(--spacing-unit);
+  border: none;
+  font: inherit;
+  line-height: 1.5;
+  color: currentColor;
+}
+
+
+/*==== INPUT VOLUMES ====*/
+
+/**
+ * When it comes to our input volumes we want to make sure that they are never
+ * below 16px on device else we will get some auto 'form zoom' happening which 
+ * can catch you off guard. "Why is is zooming, FFS!" ;-)
+ *
+ * To this end our volume levels take a slight detour from those we use for Text
+ * but we are leveraging them where possible.
+ *
+ * We take advantage of the scale by applying it to the root of our input 
+ * containers and using it to apply a relative scale to our labels using ems.
+ * This is great as it means that we don't have to churn out a load more media 
+ * queries.
+ *
+ */
+
+/* Volume 1 */
+.inputVol1 {
+  /* 16px all the way from mobile to desktop. */
+  font-size: 1em;
+}
+
+.inputLabelVol1,
+.inputVol1 InputLabel {
+  font-size: .95em;
+}
+
+.selectionControlVol1,
+.inputVol1 SelectionControl {
+  font-size: 16px;
+}
+
+/* Volume 2 */
+.inputVol2 {
+  /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
+  -st-mixin:
+    textVol;
+}
+
+.inputLabelVol2,
+.inputVol2 InputLabel {
+  font-size: .9em;
+}
+
+.selectionControlVol2,
+.inputVol2 SelectionControl {
+  font-size: 20px;
+}
+
+/* Volume 3 */
+.inputVol3 {
+  -st-mixin:
+    textVol(scale value(--text-vol-3-scale),
+      max value(--text-vol-3-max));
+}
+
+.inputLabelVol3,
+.inputVol3 InputLabel {
+  font-size: .85em;
+}
+
+.selectionControlVol3,
+.inputVol3 SelectionControl {
+  font-size: 24px;
+}
+
+/* Volume 4 */
+.inputVol4 {
+  -st-mixin:
+    textVol(scale value(--text-vol-4-scale),
+      max value(--text-vol-4-max));
+}
+
+.inputLabelVol4,
+.inputVol4 InputLabel {
+  font-size: .8em;
+}
+
+.selectionControlVol4,
+.inputVol4 SelectionControl {
+  font-size: 28px;
+}
+
+/* Volume 5 */
+.inputVol5 {
+  /* We love calc!! Here we can shave off a little from our larger sizes, our 
+   * our rem value is on a scale so this has greated impact at larges 
+   * resoultions. What fun!
+   */
+  -st-mixin:
+    textVol(scale calc(value(--text-vol-5-scale) - 0.15rem),
+      max calc(value(--text-vol-5-max) - 0.15rem));
+}
+
+.inputLabelVol5,
+.inputVol5 InputLabel {
+  font-size: .75em;
+}
+
+.selectionControlVol5,
+.inputVol5 SelectionControl {
+  font-size: 32px;
+}
+
+/* Volume 6 */
+.inputVol6 {
+  /* We love calc!! Here we can shave off a little from our larger sizes, our 
+   * our rem value is on a scale so this has greated impact at larges 
+   * resoultions. What fun!
+   */
+  -st-mixin:
+    textVol(scale calc(value(--text-vol-6-scale) - 0.15rem),
+      max calc(value(--text-vol-6-max) - 0.15rem));
+}
+
+.inputLabelVol6,
+.inputVol6 InputLabel {
+  font-size: .7em;
+}
+
+.selectionControlVol6,
+.inputVol6 SelectionControl {
+  font-size: 36px;
+}
+
+
+.errorMessage {}

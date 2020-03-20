@@ -55,7 +55,7 @@ const InputSelectionDocs = () => {
       label: "inputPos",
       type: "select",
       value: "end",
-      options: ["start", "end", "above", "below"]
+      options: ["top", "end", "bottom", "start"]
     },
     {
       name: "error",

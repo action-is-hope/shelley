@@ -8,7 +8,7 @@
 @namespace "Default";
 
 :import {
-  -st-from: "./mixins/multiply";
+  -st-from: "./formatters/common";
   -st-named: multiply, divide, respScale;
 }
 
@@ -129,57 +129,67 @@
   --text-vol-1-min: divide(value(--font-base-min), value(--major-second), value(--major-second));
   --text-vol-1-max: divide(value(--font-base-max), value(--major-third), value(--minor-second));
   --text-vol-1-scale: respScale(value(--text-vol-1-min), value(--text-vol-1-max));
+  --text-vol-1-line-height: 1.45;
 
   /* Volume 2 */
   --text-vol-2-min: divide(value(--font-base-min), value(--major-second));
   --text-vol-2-max: divide(value(--font-base-max), value(--minor-third));
   --text-vol-2-scale: respScale(value(--text-vol-2-min), value(--text-vol-2-max));
+  --text-vol-2-line-height: 1.65;
 
   /* Volume 3 - The base */
   --text-vol-3-min: value(--font-base-min);
   --text-vol-3-max: value(--font-base-max);
   --text-vol-3-scale: respScale(value(--font-base-min), value(--font-base-max));
+  --text-vol-3-line-height: 1.8;
 
   /* Volume 4 */
   --text-vol-4-min: multiply(value(--font-base-min), value(--major-second));
   --text-vol-4-max: multiply(value(--font-base-max), value(--major-third));
   --text-vol-4-scale: respScale(value(--text-vol-4-min), value(--text-vol-4-max));
+  --text-vol-4-line-height: 1.45;
 
   /* Volume 5 */
   --text-vol-5-min: multiply(value(--font-base-min), value(--major-second), value(--minor-third));
   --text-vol-5-max: multiply(value(--font-base-max), value(--major-third), value(--perfect-forth));
   --text-vol-5-scale: respScale(value(--text-vol-5-min), value(--text-vol-5-max));
+  --text-vol-5-line-height: 1.4;
 
   /* Volume 6 */
   --text-vol-6-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--minor-third));
   --text-vol-6-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth));
   --text-vol-6-scale: respScale(value(--text-vol-6-min), value(--text-vol-6-max));
+  --text-vol-6-line-height: 1.3;
 
   /* Volume 7 */
   --text-vol-7-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third));
   --text-vol-7-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth));
   --text-vol-7-scale: respScale(value(--text-vol-7-min), value(--text-vol-7-max));
+  --text-vol-7-line-height: 1.15;
 
   /* Volume 8 */
   --text-vol-8-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third));
   --text-vol-8-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
   --text-vol-8-scale: respScale(value(--text-vol-8-min), value(--text-vol-8-max));
+  --text-vol-8-line-height: 1.1;
 
   /* Volume 9 */
   --text-vol-9-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third));
   --text-vol-9-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
   --text-vol-9-scale: respScale(value(--text-vol-9-min), value(--text-vol-9-max));
+  --text-vol-9-line-height: 1.05;
 
   /* Volume 10 */
   --text-vol-10-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third));
   --text-vol-10-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
   --text-vol-10-scale: respScale(value(--text-vol-10-min), value(--text-vol-10-max));
+  --text-vol-10-line-height: 1.05;
 
   /* Volume 11 */
   --text-vol-11-min: multiply(value(--font-base-min), value(--major-second), value(--major-second), value(--major-second), value(--major-third), value(--major-third), value(--major-third), value(--major-third), value(--major-third));
   --text-vol-11-max: multiply(value(--font-base-max), value(--major-third), value(--major-third), value(--major-third), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth), value(--perfect-forth));
   --text-vol-11-scale: respScale(value(--text-vol-11-min), value(--text-vol-11-max));
-
+  --text-vol-11-line-height: 1.05;
 
   /*=== COLOURS - The Queens English darling... ===*/
 

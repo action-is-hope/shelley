@@ -16,40 +16,21 @@
 }
 
 :import {
-  -st-from: './formElements.st.css';
+  -st-from: './mixins/formElements.st.css';
   -st-named:
-    hideWebkitAppearance,
-    textInput,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6;
+    hideWebkitAppearance;
 }
 
 :import {
-  -st-from: './textVolume.st.css';
+  -st-from: './mixins/text.st.css';
   -st-named:
-    textVol1,
-    textVol2,
-    textVol3,
-    textVol4,
-    textVol5,
-    textVol6,
-    textVol7,
-    textVol8,
-    textVol9,
-    textVol10,
-    textVol11;
+    textVol;
 }
 
-
 :import {
-  -st-from: "../mixins/multiply";
+  -st-from: "../formatters/common";
   -st-named: respScale;
 }
-
 
 
 /* This is how we can scope the styles. */
@@ -135,80 +116,52 @@
     background-color: transparent;
   }
 
-  /* Volume 1 */
-  Button.vol1 {
-    /* -st-mixin: textVol1 */
-
-  }
 
   /*==== VOLUMES ====*/
 
-  /* Volume 2 */
+  /* Volume 1 */
   Button.vol1 {
-    font-size: respScale(0.625em, 0.75em);
+    -st-mixin:
+      textVol(scale respScale(0.625em, 0.75em),
+        max 0.75em);
   }
 
-  @media screen and (min-width: 1800px) {
-    Button.vol1 {
-      font-size: 0.75em;
-    }
-  }
 
   /* Volume 2 */
   Button.vol2 {
-    font-size: respScale(0.75em, 0.875em);
-  }
-
-  @media screen and (min-width: 1800px) {
-    Button.vol2 {
-      font-size: 0.875em;
-    }
+    -st-mixin:
+      textVol(scale respScale(0.75em, 0.875em),
+        max 0.875em);
   }
 
   /* Volume 3 */
   Button.vol3 {
-    font-size: respScale(0.875em, 1em);
-  }
-
-  @media screen and (min-width: 1800px) {
-    Button.vol3 {
-      font-size: 1em;
-    }
+    -st-mixin:
+      textVol(scale respScale(0.875em, 1em),
+        max 1em);
   }
 
   /* Volume 4 */
   Button.vol4 {
-    font-size: respScale(1em, 1.125em);
-  }
-
-  @media screen and (min-width: 1800px) {
-    Button.vol4 {
-      font-size: 1.125em;
-    }
+    -st-mixin:
+      textVol(scale respScale(1em, 1.125em),
+        max 1.125em);
   }
 
   /* Volume 5 */
   Button.vol5 {
-    font-size: respScale(1.125em, 1.25em);
-  }
-
-  @media screen and (min-width: 1800px) {
-    Button.vol5 {
-      font-size: 1.25em;
-    }
+    -st-mixin:
+      textVol(scale respScale(1.125em, 1.25em),
+        max 1.25em);
   }
 
   /* Volume 6 */
   Button.vol6 {
     font-size: respScale(1.25em, 1.375em);
+    -st-mixin:
+      textVol(scale respScale(1.25em, 1.375),
+        max 1.375em);
   }
-
-  @media screen and (min-width: 1800px) {
-    Button.vol6 {
-      font-size: 1.375em;
-    }
-  }
-
 
 
   /* Button COLOURS */

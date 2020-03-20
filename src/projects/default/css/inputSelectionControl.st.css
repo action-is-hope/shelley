@@ -15,7 +15,7 @@
 }
 
 :import {
-  -st-from: './formElements.st.css';
+  -st-from: './mixins/formElements.st.css';
   -st-named: hideWebkitAppearance;
 }
 
@@ -130,7 +130,7 @@
     /* transition: transform 120ms;? */
   }
 
-  InputSelectionControl::toggle::before {
+  InputSelectionControl::toggle::after {
     border-radius: 9999px;
   }
 
@@ -143,6 +143,7 @@
     border-radius: 9999px;
     transition: all 0.2s;
     transform: translate(-50%);
+    z-index: 1;
   }
 
   InputSelectionControl::toggle:checked::before {

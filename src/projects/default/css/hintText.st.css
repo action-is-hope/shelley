@@ -14,15 +14,15 @@
 @st-scope Default {
   Hint {
     display: flex;
-    font-size: .75rem;
+    /* font-size: .75rem; */
     font-weight: 400;
     opacity: 0.7;
     -webkit-font-smoothing: antialiased;
   }
 
-  @media screen and (min-width: 600px) {
+  /* @media screen and (min-width: 600px) {
     Hint {
       font-size: .625rem;
     }
-  }
+  } */
 }

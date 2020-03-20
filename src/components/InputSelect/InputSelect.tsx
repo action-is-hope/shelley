@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
+import React from "react";
 import classnames from "classnames";
 import style from "./inputSelect.st.css";
 import InputBase from "../InputBase/InputBase";
@@ -9,32 +8,11 @@ import { InputBaseProps } from "../InputBase/InputBase";
 interface InputSelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement>,
     InputBaseProps {
-  // children: ReactNode;
-  // options: string;
-  /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility*/
+  /**
+   * The `id` is required to associate fields with labels programatically for better
+   * UX and a legal requirement for accessibility.
+   * */
   id: string;
-  // options: {
-  //   value: string;
-  //   name: string;
-  // }[];
-  // /** Provide an error message that triggers the stylable error state. */
-  // error?: React.ReactNode;
-  // /** Provide some hint text to the label component. */
-  // hint?: React.ReactNode;
-  // /** Triggers the Inputs stylable error state. */
-  // touched?: boolean;
-  // /** Variant index. */
-  // variant?: Variant;
-  // /** The label to associated with the input. */
-  // label: React.ReactNode;
-  // /** The position of the label relative to the label. */
-  // inputPos?: AlignPos;
-  // /** Visually hide the label so it is still accessible to assistive technologies. */
-  // labelVisuallyHidden?: boolean;
-  // /** How 'loud' should this input row be? */
-  // vol?: Volume;
-  // /** The type of slection control to render. */
-  // type?: SelectionControlType;
 }
 
 const InputSelect = React.forwardRef(
@@ -51,13 +29,10 @@ const InputSelect = React.forwardRef(
       labelVisuallyHidden,
       vol,
       children,
-      // ref: refProp, // Fix: compatability issue. Investigate.
-      ...rest
+      ...attrs
     }: InputSelectProps,
     ref?: React.Ref<HTMLSelectElement>
   ) => {
-    // const error = errorMessage && touched ? true : false;
-
     return (
       <InputBase
         {...{
@@ -72,37 +47,15 @@ const InputSelect = React.forwardRef(
           vol
         }}
         className={classnames(style.root, classNameProp)}
-        // {...style(
-        //   classnames(style.select, classNameProp),
-        //   // { error, disabled },{}
-        //   {},
-        //   rest
-        // )}
       >
         <select
           {...{
-            id,
+            // InputBase applies id, disabled and sets error related aria attrs.
             ref,
-            disabled,
-            ...rest
+            ...attrs
           }}
         >
           {children}
-          {/* {options.map(
-            (
-              item: {
-                value: string;
-                name: string;
-              },
-              index: number
-            ) => {
-              return (
-                <option key={item.id} value={item}>
-                  {item}
-                </option>
-              );
-            }
-          )} */}
         </select>
       </InputBase>
     );
