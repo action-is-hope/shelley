@@ -1,5 +1,5 @@
 import React from "react";
-import { Color } from "../types";
+import { Accent, Volume } from "../types";
 import classnames from "classnames";
 import style from "./icon.st.css";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -12,15 +12,16 @@ interface IconProps
     React.SVGProps<SVGSVGElement>,
     Exclude<keyof React.SVGProps<SVGSVGElement>, "color">
   > {
-  /** Color index. */
-  color?: Color;
-  /** This will be VisuallyHidden. */
-  label?: string;
+  /** Accent index. */
+  // color?: Accent;
+  /** Alternative text via VisuallyHidden */
+  alt?: string;
   /** Defaults to "0 0 16 16" based on vaadin icon set:
    *  https://github.com/vaadin/vaadin-icons/tree/master/assets/svg
    * For material-ui set to "0 0 24 24".]
    */
   viewBox?: string;
+  // vol?: Volume;
 }
 
 const Icon = React.forwardRef(
@@ -28,8 +29,8 @@ const Icon = React.forwardRef(
     {
       children,
       className: classNameProp,
-      color = false,
-      label: labelProp,
+      // color = false,
+      alt,
       viewBox = "0 0 16 16",
       /* Pull off the aria label so we can honour an accessible solution. */
       "aria-label": ariaLabel,
@@ -37,12 +38,8 @@ const Icon = React.forwardRef(
     }: IconProps,
     ref?: React.Ref<SVGSVGElement>
   ) => {
-    const rootClassNames = classnames(
-      style.root,
-      style["color" + color],
-      classNameProp
-    );
-    const label = labelProp ? labelProp : ariaLabel;
+    const rootClassNames = classnames(style.root, classNameProp);
+    const label = alt ? alt : ariaLabel;
 
     return (
       <>
@@ -57,7 +54,7 @@ const Icon = React.forwardRef(
           {children}
         </svg>
         {/* We use a VisuallyHidden label in pace of a svg title or aria-label 
-            on a our non-focusable element. The is a very reliable method. 
+            on a non-focusable element. The is a very reliable method. 
             - https://simplyaccessible.com/article/7-solutions-svgs/. 
         */}
         {label && <VisuallyHidden>{label}</VisuallyHidden>}

@@ -6,7 +6,7 @@
   -st-default: Default;
   -st-named:
     /* --font-plain, */
-    /* --spacing-unit, */
+    --spacing-unit,
     /* --color-ui-default, */
     --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
     --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
@@ -191,6 +191,60 @@
     max-width: 32rem
       /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
   }
+
+
+  /** Body styles */
+  .typographic>p+p,
+  .typographic>p+h4,
+  .typographic>p+h5,
+  .typographic>h2+p,
+  .typographic>h3+p,
+  .typographic>h4+p,
+  .typographic>h5+p,
+  .typographic>h6+p,
+  .typographic>h4+h5 {
+    margin-top: calc(value(--spacing-unit) * 2);
+  }
+
+  /** Body styles */
+  .typographic>p+Text.vol4 {
+    margin-top: calc(value(--spacing-unit) * 6);
+  }
+
+
+
+  .typographic>blockquote,
+  .typographic>CodeSample {
+    margin-top: calc(value(--spacing-unit) * 4);
+    margin-bottom: calc(value(--spacing-unit) * 5);
+  }
+
+  .typographic>blockquote+p {
+    margin-top: calc(value(--spacing-unit) * 3);
+  }
+
+  */ .typographic>p+blockquote {
+    margin-top: calc(value(--spacing-unit) * 4);
+  }
+
+  .typographic>blockquote+p {
+    margin-top: calc(value(--spacing-unit) * 3);
+  }
+
+  */ .typographic>p+h2 {
+    margin-top: calc(value(--spacing-unit) * 4);
+  }
+
+  .typographic>p+h3,
+  .typographic>h2+h3 {
+    margin-top: calc(value(--spacing-unit) * 4);
+  }
+
+  .typographic>p+h6 {
+    margin-top: calc(value(--spacing-unit) * 2);
+  }
+
+
 
   /* Styles - typical child children. */
 

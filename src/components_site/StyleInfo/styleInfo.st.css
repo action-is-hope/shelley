@@ -1,0 +1,18 @@
+/** styleInfo.st.css */
+
+.root {}
+
+.html {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.css {}
+
+.meta {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: flex-end;
+  position: relative;
+  top: -1.4rem;
+}

@@ -1,88 +1,53 @@
 import React from "react";
-import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
 import classnames from "classnames";
 import { P, H2 } from "../components/Text/Text";
-import PropsDemo from "../components_site/PropsDemo/PropsDemo";
+
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import CodeSample from "../components_site/CodeSample/CodeSample";
 import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
-import Button from "../components/Button/Button";
 import Blockquote from "../components/Blockquote/Blockquote";
+import {
+  meta,
+  QuickRef,
+  ComponentDemo,
+  ComponentHTML,
+  ComponentCSS
+} from "../components/Button/__buttonExamples";
+import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
 const ButtonDocs = () => {
-  const [labelDemoProps, setLabelDemoProps]: any = React.useState([
-    {
-      name: "children",
-      label: "children",
-      type: "text",
-      value: "Yes to climate action"
-    },
-    {
-      name: "color",
-      label: "color",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 1
-    },
-    {
-      name: "variant",
-      label: "variant",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 0
-    },
-    {
-      name: "volume",
-      label: "volume",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 0
-    },
-    {
-      name: "cite",
-      label: "cite",
-      type: "text",
-      value: "Donella Meadows, environmental scientist, 1941-2001 "
-    },
-    {
-      name: "citeUrl",
-      label: "citeUrl",
-      type: "text",
-      value: "https://en.wikipedia.org/wiki/Donella_Meadows"
-    }
-  ]);
-
-  // const inputEl = React.useRef();
-  const test = React.createRef<HTMLButtonElement>();
-  const onButtonClick = () => {
-    const node = test.current;
-    // `current` points to the mounted text input element
-    node && node.focus();
-  };
-
   return (
     <DefaultLayout>
       <PageTitle>Button</PageTitle>
+      <Grid variant={2}>
+        <P>Hi</P>
+        <P>Hi</P>
+        <P>Hi</P>
+        <P>Hi</P>
+      </Grid>
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Button&apos;s are used for quoting peeps and papers, they tell any
-          tech listening that this is a referance to someone elses words. A
-          screen reader could emphasise it when reading or a search bot could
-          consider it when indexing.
+          Button&apos;s are sometimes clicked but a more inclusive description
+          would be &apos;selected&apos;; not everyone is clicking so we need to
+          get that mouse out of our heads... the key resides in the keyboard.
+          Deep.
         </P>
 
-        {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label */}
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
-        <CodeSample>{`import Button from "shelley-ui";
-        \n<Button>Climate action now</Button>`}</CodeSample>
+
+        <QuickRef />
+
+        <P>
+          Get more familar with{" "}
+          <a href="https://www.w3.org/TR/wai-aria-practices/#button">
+            aria and buttons
+          </a>{" "}
+          as you need, attributes are spread so treat it as an HTML button when
+          it comes to accessibility.
+        </P>
 
         <P>
           Lets take a look at a few variations, note that we are using different
@@ -90,61 +55,12 @@ const ButtonDocs = () => {
           but you will likely end up using only a few as definded by your system
           and what works best with your variant designs:
         </P>
-
-        <P>This is a basic button.</P>
-        <div className={grid.colContent}>
-          <Button ref={test} onClick={() => console.log("HI")}>
-            Boom
-          </Button>
-        </div>
-        <P>
-          <Button onClick={() => onButtonClick()}>Boom</Button>
-        </P>
-
-        {/* <div className={classnames(grid.gridColumnOutset1, grid.exampleBox)}>
-
-        </div> */}
       </Grid>
+
       <Grid variant={1}>
-        <PropsDemo
-          demoProps={labelDemoProps}
-          setDemoProps={setLabelDemoProps}
-          tsExtends="HTMLButtonElement"
-          renderExample={
-            <CodeSample>{`import { Button } from "@action-is-hope/shelley";\n\n<Button ${
-              labelDemoProps[1].value > 0
-                ? `\n  color={${labelDemoProps[1].value}}`
-                : `\n  color={false}`
-            } ${
-              labelDemoProps[2].value > 0
-                ? `\n  variant={${labelDemoProps[2].value}}`
-                : `\n  variant={false}`
-            } ${
-              labelDemoProps[3].value > 0
-                ? `\n  volume={${labelDemoProps[3].value}}`
-                : `\n  volume={false}`
-            } ${
-              labelDemoProps[1].value
-                ? `\n  citeUrl="${labelDemoProps[3].value}"`
-                : ``
-            }  \n>\n ${labelDemoProps[3].value}\n</Button>`}</CodeSample>
-          }
-        >
-          <Button
-            color={
-              labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value
-            }
-            variant={
-              labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
-            }
-            vol={
-              labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value
-            }
-          >
-            {labelDemoProps[0].value}
-          </Button>
-        </PropsDemo>
+        <ComponentDemo />
       </Grid>
+
       <Grid variant={1}>
         <P>
           As ever, if this component isn&apos;t really working for you then you
@@ -152,22 +68,69 @@ const ButtonDocs = () => {
           legup. It&apos;s pretty simple, we like simple.
         </P>
 
+        <H2 vol={4} uppercase>
+          Styling
+        </H2>
+
+        <P>
+          We have an inner button which is pretty key if you are going to be
+          throwing other things inside a button. We put out vertical alignment
+          on the inner item so as to allow an adjacent icon the full height to
+          move around in.
+        </P>
+
+        <StyleInfo
+          componentName={meta.name}
+          componentHTML={<ComponentHTML />}
+          componentCSS={<ComponentCSS />}
+        />
+
+        <H2 vol={4} uppercase>
+          Accessibility, UX &amp; the Law
+        </H2>
+
+        <P>
+          In terms of WCAG and the law this, this is marked as Level A which
+          makes it a requirement in terms both value that it provides and the
+          law.
+        </P>
+
         <Blockquote
-          citeUrl="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#content-structure-separation-programmatic"
-          cite="Labels or Instructions: Understanding SC 3.3.2"
+          citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html"
+          cite="On Input: Understanding SC 3.2.2"
           variant={2}
         >
-          <H2 vol={4}>Spare</H2>
+          <P>
+            3.2.2 On Input: Changing the setting of any user interface component
+            does not automatically cause a change of context unless the user has
+            been advised of the behavior before using the component. (Level A)
+          </P>
         </Blockquote>
 
         <P>
-          In terms of WCAG and the law this one is required as a Level A
-          requirement and it fits under{" "}
-          <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">
-            Guideline 3.3: Input Assistance: Help users avoid and correct
-            mistakes.
+          It&apos;s a <code>button</code>, use it, don&apos;t use a{" "}
+          <code>div</code> styled to look like a button, just use a button. Make
+          sure it has good focus styles and make sure that it does what it
+          should when you test it with the keyboard.
+        </P>
+
+        <P>
+          If you are throwing an <code>Icon</code> inside with no visible text
+          label then be sure to provide one via the <code>label</code> prop.
+        </P>
+
+        <P>
+          Use them sensibly to ensure that your interface is{" "}
+          <em>predictable</em>, so no auto-forwarding <code>onChange</code> or
+          anything weird, <em>use</em> buttons.
+        </P>
+
+        <P>
+          Get more familar with{" "}
+          <a href="https://www.w3.org/TR/wai-aria-practices/#button">
+            aria and buttons
           </a>{" "}
-          More specifically:
+          as you need...{" "}
         </P>
       </Grid>
     </DefaultLayout>

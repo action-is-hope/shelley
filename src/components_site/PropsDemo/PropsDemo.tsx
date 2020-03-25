@@ -10,6 +10,7 @@ import Text, { H2, H3, P } from "../../components/Text/Text";
 
 interface PropsDemoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
+  componentName?: string; // Use for linking to Source in future.
   demoProps?: any;
   demoNonProps?: any;
   renderExample?: any;

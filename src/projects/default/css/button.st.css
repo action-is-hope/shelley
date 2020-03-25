@@ -166,9 +166,9 @@
 
   /* Button COLOURS */
   /* DEFAULT */
-  Button.color1 {}
+  Button.accent1 {}
 
-  Button.variant1.color1 {
+  Button.variant1.accent1 {
     background-color: var(--color-accent-2, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default));
     color: #333;
@@ -179,7 +179,7 @@
     border-width: 2px;
   }
 
-  Button.variant2.color1 {
+  Button.variant2.accent1 {
     border-color: var(--color-accent-2, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default));
     /* color: #333; */

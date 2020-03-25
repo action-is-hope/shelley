@@ -1,19 +1,19 @@
 import React from "react";
-import { Color, Volume, Variant } from "../types";
+import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
 
 /**
- * Button props extending those of a regular button, we are overriding color.
+ * Button props extending those of a regular button, we are overriding accent.
  */
 interface ButtonProps
   extends Pick<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
-    Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "color">
+    Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "accent">
   > {
-  /** Color index. */
-  color?: Color;
+  /** accent index. */
+  accent?: Accent;
   /** Variant index. */
   variant?: Variant;
   /** How 'loud' should this Button be? */
@@ -29,7 +29,7 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
-      color = 1,
+      accent = 1,
       variant = 1,
       vol = 3,
       icon,
@@ -40,9 +40,9 @@ const Button = React.forwardRef(
   ) => {
     const rootClassNames = classnames(
       style.root,
-      style["color" + color],
-      style["variant" + variant],
+      style["accent" + accent],
       style["vol" + vol],
+      style["variant" + variant],
       classNameProp
     );
 

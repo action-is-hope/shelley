@@ -7,6 +7,7 @@
   -st-named:
     --spacing-unit,
     --color-ui-default,
+    --color-status-warn-default,
     --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
@@ -34,19 +35,25 @@
 
   /* Base styles. */
   Blockquote {
-    /* margin: 24px auto 40px; */
+    /* local style values for variants. */
+    --accent: var(--color-accent-1);
   }
+
+
 
   Blockquote::content {
     display: grid;
     grid-row-gap: 0.8rem;
     font-style: italic;
-    /* position: relative; */
   }
 
   Blockquote::cite {
     font-style: normal;
-    color: #cccbcb;
+    color: var(--accent);
+  }
+
+  Blockquote::cite a {
+    color: var(--accent);
   }
 
   Blockquote::footer {
@@ -55,7 +62,6 @@
 
   Blockquote::content Text:first-child::before {
     content: '"';
-    color: #cccbcb;
     display: inline-block;
     font-family: Tahoma;
     font-size: 1.6em;
@@ -74,6 +80,7 @@
 
   Blockquote.variant1::content Text:first-child::before {
     display: none;
+    color: var(--accent);
   }
 
   /* 
@@ -82,6 +89,7 @@
     background: var(--color-background-2, value(--color-background-2-default));
     background: rgba(255, 255, 255, 0.04);
     background: rgba(64, 121, 230, 0.87);
+    background: var(--accent);
     padding: 16px 36px;
     margin: 0 0 40px;
     max-width: 600px;
@@ -109,6 +117,10 @@
    * A typical main body style for proper quotes.
    */
 
+  /* Blockquote.accent1::cite a,
+  Blockquote.accent1::content::before,
+  Blockquote.accent1::content Text:first-child::before
+   */
   Blockquote.variant2 {
     /* background: rgba(0, 0, 0, 0.4); */
     background: var(--color-background-2, value(--color-background-2-default)) padding: 1.4rem 42px;
@@ -131,45 +143,32 @@
     content: '"';
     display: inline-block;
     position: absolute;
-    /* top: -0.01rem;
-    left: calc(-1.45rem - 38px);
-    font-size: 5.5rem; */
-    font-family: Tahoma;
-    opacity: 0.8;
-    line-height: 1rem;
-    /* text-shadow: 2px 2px #ffffff;*/
     top: -0.2rem;
     left: calc(-1.35rem - 38px);
+    font-family: Tahoma;
     font-size: 5rem;
-  }
-
-
-  Blockquote.accent1::cite {
-    color: #cccbcb
+    opacity: 0.8;
+    line-height: 1rem;
+    color: var(--accent);
   }
 
 
   /* Accent colors */
 
   /* accent1 */
-  Blockquote.accent1::cite a,
-  Blockquote.accent1::content::before,
-  Blockquote.accent1::content Text:first-child::before {
-    color: var(--color-accent-1, value(--color-accent-1-default));
+  Blockquote.accent1 {
+    --accent: var(--color-accent-1);
   }
 
   /* accent2 */
-  Blockquote.accent2::content::before,
-  Blockquote.accent2::cite a,
-  Blockquote.accent2::content Text:first-child::before {
-    color: var(--color-accent-2, value(--color-accent-2-default));
+  Blockquote.accent2 {
+    --accent: var(--color-accent-2);
   }
 
   /* accent3 */
-  Blockquote.accent3::content::before,
-  Blockquote.accent3::cite a,
-  Blockquote.accent3::content Text:first-child::before {
-    color: var(--color-accent-3, value(--color-accent-3-default));
+  Blockquote.accent3 {
+    --accent: var(--color-accent-3);
   }
+
 
 }

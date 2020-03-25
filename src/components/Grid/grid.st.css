@@ -1,6 +1,8 @@
 /** grid.st.css */
 
-.root {}
+.root {
+  -st-states: typographic;
+}
 
 /* Variants */
 

@@ -16,7 +16,7 @@
 }
 
 .root.fixedHeight {
-  height: 400px;
+  height: 50vh;
 }
 
 .root code {

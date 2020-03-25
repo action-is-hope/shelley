@@ -211,9 +211,9 @@ const InputDocs = () => {
         <P>
           You can use some of the classes directly as shown below but more
           likely you will want to build some styles based targeted at a global
-          classname. Hopefully you will be able to get some kind of wrapper
-          around it
+          classname.
         </P>
+        <CodeSample>{``}</CodeSample>
         <br />
         <br />
         <br />
