@@ -11,7 +11,7 @@ import {
 const CodeSample = ({
   className: classNameProp,
   children,
-  language = "jsx",
+  language = "tsx",
   fixedHeight,
   ...rest
 }: SyntaxHighlighterProps) => {

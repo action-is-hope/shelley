@@ -4,7 +4,7 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named: --spacing-unit;
+  -st-named: spacing-unit;
 }
 
 :import {
@@ -118,21 +118,21 @@
   }
 
   InputSelection.variant1 InputLabel:inputPos(top)::labelTextContainer {
-    padding-top: calc(value(--spacing-unit) / 2 + 0.2em);
+    padding-top: calc(value(spacing-unit) / 2 + 0.2em);
   }
 
   InputSelection.variant1 InputLabel:inputPos(end)::labelTextContainer {
-    /* rtl padding-left: value(--spacing-unit); */
-    padding-right: value(--spacing-unit);
+    /* rtl padding-left: value(spacing-unit); */
+    padding-right: value(spacing-unit);
   }
 
   InputSelection.variant1 InputLabel:inputPos(bottom)::labelTextContainer {
-    padding-bottom: calc(value(--spacing-unit) / 2 + 0.2em);
+    padding-bottom: calc(value(spacing-unit) / 2 + 0.2em);
   }
 
   InputSelection.variant1 InputLabel:inputPos(start)::labelTextContainer {
-    padding-left: value(--spacing-unit);
-    /* rtl padding-right: value(--spacing-unit); */
+    padding-left: value(spacing-unit);
+    /* rtl padding-right: value(spacing-unit); */
   }
 
 
@@ -158,12 +158,12 @@
 
   InputSelection.variant2 SelectionControl {
     border-left: 1px solid rgb(119, 140, 157);
-    padding: value(--spacing-unit);
+    padding: value(spacing-unit);
   }
 
   InputSelection.variant2 ErrorText {
     border-left-width: 1px;
-    padding: 4px value(--spacing-unit) 8px;
+    padding: 4px value(spacing-unit) 8px;
     /* 12px is from 18px / 3 * 2 */
     margin-left: calc(100% / 3 + 12px);
   }

@@ -3,7 +3,7 @@
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;
   overflow-x: scroll;
-  grid-column: content-start / content-end;
+  grid-column: mid-start / mid-end;
   margin-top: 1rem;
   margin-bottom: 48px;
   background: rgba(255, 255, 255, 0.06);

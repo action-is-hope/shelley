@@ -11,7 +11,7 @@ interface GridProps extends React.HTMLProps<HTMLDivElement> {
 const Grid = ({
   children,
   className: classNameProp,
-  variant,
+  variant = 1,
   typographic = true,
   ...rest
 }: GridProps) => {

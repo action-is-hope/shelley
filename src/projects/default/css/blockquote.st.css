@@ -5,7 +5,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit,
+    spacing-unit,
     --color-ui-default,
     --color-status-warn-default,
     --color-accent-1-default,
@@ -57,7 +57,7 @@
   }
 
   Blockquote::footer {
-    margin-top: value(--spacing-unit)
+    margin-top: value(spacing-unit)
   }
 
   Blockquote::content Text:first-child::before {

@@ -38,7 +38,8 @@ CodeSample code :global(.class-name) {
 CodeSample code :global(.attr-name),
 CodeSample code :global(.constant),
 CodeSample code :global(.maybe-class-name),
-CodeSample code :global(.tag) {
+CodeSample code :global(.tag),
+CodeSample code :global(.selector) {
   color: value(--color-accent-1-default);
   color: var(--color-accent-1, value(--color-accent-1-default));
 }

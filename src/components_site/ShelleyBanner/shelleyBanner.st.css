@@ -19,7 +19,7 @@
   /* padding-top: 50px;
   padding-bottom: 50px; */
 
-  /* grid-column: full-bleed-start / full-bleed-end; */
+  /* grid-column: edge-start / edge-end; */
   /* padding-left: 9vw;
   padding-right: 9vw; */
   /* background: rgba(0, 0, 0, 0.3607843137254902) */
@@ -32,8 +32,8 @@
 }
 
 .internalGrid {
-  grid-column-start: outset-start;
-  grid-column-end: outset-end;
+  grid-column-start: goal-start;
+  grid-column-end: goal-end;
   display: grid;
   justify-items: center;
 

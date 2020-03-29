@@ -12,7 +12,7 @@ export const meta = {
 
 export const QuickRef = () => (
   <CodeSample>{`import Button from "@action-is-hope/shelley";
-\n<Button>Climate action now</Button>`}</CodeSample>
+\n<Button>Your planet needs you!</Button>`}</CodeSample>
 );
 
 // Props Demo - Examples below.

@@ -8,7 +8,7 @@ import InputSelect from "../../components/InputSelect/InputSelect";
 import InputSelection from "../../components/InputSelection/InputSelection";
 import Text, { H2, H3, P } from "../../components/Text/Text";
 
-interface PropsDemoProps extends React.HTMLProps<HTMLDivElement> {
+interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
   className?: string;
   componentName?: string; // Use for linking to Source in future.
   demoProps?: any;
@@ -156,7 +156,7 @@ const PropsDemo = ({
   };
 
   return (
-    <div {...style(rootClassNames, {}, rest)} {...rest}>
+    <section {...style(rootClassNames, {}, rest)} {...rest}>
       {demoProps && (
         <H2 vol={3} className={style.propsHeading} uppercase>
           <span>Props Playground</span>
@@ -217,7 +217,7 @@ const PropsDemo = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

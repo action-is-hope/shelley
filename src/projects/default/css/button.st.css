@@ -5,7 +5,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit,
+    spacing-unit,
     --color-ui-default,
     --color-accent-1-default;
 }
@@ -59,7 +59,7 @@
     /* Effects */
     transition: opacity 0.3s ease, color 0.3s ease;
 
-    padding: 0 value(--spacing-unit);
+    padding: 0 value(spacing-unit);
     flex-flow: row-reverse;
     font-weight: 500;
     /* font-size: 16px; */
@@ -84,8 +84,8 @@
   }
 
   Button svg {
-    /* margin-right: calc(value(--spacing-unit) / 2 - value(--spacing-unit)); */
-    margin-right: calc(0em - value(--spacing-unit) / 2);
+    /* margin-right: calc(value(spacing-unit) / 2 - value(spacing-unit)); */
+    margin-right: calc(0em - value(spacing-unit) / 2);
     margin-top: -0.06em;
   }
 

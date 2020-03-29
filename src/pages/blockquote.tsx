@@ -2,6 +2,7 @@ import React from "react";
 import DefaultLayout from "../layouts";
 import { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
+import grid from "../projects/default/css/grid.st.css";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../projects/default/css/text.st.css";
 
@@ -22,11 +23,23 @@ const LabelsDocs = () => {
 
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Blockquote&apos;s are used for quoting peeps and papers, they tell any
-          tech listening that this is a referance to someone elses words. A
-          screen reader could emphasise it when reading or a search bot could
-          consider it when indexing.
+          Blockquote&apos;s are used for quoting peeps and papers; they tell any
+          tech listening that this is a referance to someone elses words. Tech
+          like a screen reader might emphasise <code>blockquote</code> text
+          whilst a search bot might consider relavant when ranking.
         </P>
+
+        <figure className={grid.edge}>
+          <Grid variant={1}>
+            <img
+              src="https://i.ytimg.com/vi/LQa476gOIU4/maxresdefault.jpg"
+              alt=""
+              className={grid.edge}
+              style={{ width: "100%" }}
+            />
+            <P>I'm inside</P>
+          </Grid>
+        </figure>
 
         <H2 vol={2} uppercase>
           Quick reference:
@@ -52,26 +65,21 @@ const LabelsDocs = () => {
         </P>
 
         <P>
-          Annnyway, back to these blockquotes!{" "}
+          Anyway.... back to these blockquotes!{" "}
           <em>Keep Calm and Carry on Coding</em> would seem to be the current{" "}
           <em>action</em>, we do need to express and share ideas effectively
           after all. There isn&apos;t much to them, but they work best in
           conjunction with the <code>Text</code> components.
         </P>
-
         <P>
-          Lets take a look at a few variations, note that we are using different
-          Text sizes as best fits the use case. There are a load of permutaions
-          but you will likely end up using only a few as definded by your system
-          and what works best with your variant designs.
+          Lets take a look at a few variations, note that we are using different{" "}
+          <code>Text</code> volumes as best fits the use case. There are a load
+          of permutaions but you will likely end up using only a few as defined
+          by your design system and what works best in situ.
         </P>
-      </Grid>
 
-      <Grid variant={1}>
         <ComponentDemo />
-      </Grid>
 
-      <Grid variant={1}>
         <P>
           As ever, if this component isn&apos;t really working for you then you
           can make your own, clone ours for a starting point if you need a
@@ -110,7 +118,7 @@ const LabelsDocs = () => {
         </P>
 
         <Blockquote
-          citeUrl="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#content-structure-separation-programmatic"
+          citeUrl="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#mid-structure-separation-programmatic"
           cite="Labels or Instructions: Understanding SC 3.3.2"
           variant={2}
         >

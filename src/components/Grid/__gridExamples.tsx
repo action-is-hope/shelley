@@ -1,7 +1,7 @@
 /* buttonExamples.tsx */
 import React from "react";
 // Example Component
-import Icon from "./Icon";
+import Icon from "../Icon/Icon";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";

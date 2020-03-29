@@ -26,14 +26,14 @@ const StyleInfo = ({
 }: StyleInfoProps) => {
   const rootClassNames = classNames(
     style.root,
-    grid.gridColumnOutset,
+    grid.container,
     grid.mt1,
     grid.mb2,
     className
   );
 
   return (
-    <Grid variant={2} {...style(rootClassNames, {}, rest)}>
+    <Grid variant={1} {...style(rootClassNames, {}, rest)}>
       <div className={classnames(text.typographic, style.html)}>
         <P>
           The raw <code>HMTL</code> output from the <code>{componentName}</code>{" "}

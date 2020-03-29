@@ -171,7 +171,7 @@ const InputDocs = () => {
         </PropsDemo>
       </Grid>
       <Grid>
-        <div className={grid.colContent}>
+        <div className={grid.content}>
           <InputText
             id="pageTitle"
             label="Page title"
@@ -217,7 +217,7 @@ const InputDocs = () => {
         <br />
         <br />
         <br />
-        <div className={grid.colContent}>
+        <div className={grid.content}>
           <div
             className={classnames(
               formElements.textualFieldRoot,

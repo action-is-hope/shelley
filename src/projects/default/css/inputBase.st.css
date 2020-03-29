@@ -4,7 +4,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit,
+    spacing-unit,
     --color-ui-default;
 }
 
@@ -68,18 +68,18 @@
   /* Use a named import as a class to get the adjacent selectors working. */
   InputBase Adornment+.fieldInput,
   InputBase::fieldInput+Adornment {
-    margin-left: calc(-.2rem - value(--spacing-unit));
+    margin-left: calc(-.2rem - value(spacing-unit));
   }
 
   InputBase HintText {
-    margin-top: calc(value(--spacing-unit) / 2)
+    margin-top: calc(value(spacing-unit) / 2)
   }
 
   InputBase ErrorText {
     /* Send the error message which is first in the source order to appear under the form input. */
     order: 3;
     border-left-width: 1px;
-    padding: 8px value(--spacing-unit) 0 value(--spacing-unit);
+    padding: 8px value(spacing-unit) 0 value(spacing-unit);
   }
 
   /* Textarea wrapper which can be used for scrolling. */
@@ -144,7 +144,7 @@
 
   /* Variant 1 - "Body" */
   InputBase.variant1 InputLabel {
-    margin-bottom: value(--spacing-unit);
+    margin-bottom: value(spacing-unit);
   }
 
   InputBase.variant1::fieldInput {
@@ -152,7 +152,7 @@
   }
 
   InputBase.variant1+InputBase.variant1 {
-    margin-top: calc(value(--spacing-unit) * 1)
+    margin-top: calc(value(spacing-unit) * 1)
   }
 
 
@@ -162,7 +162,7 @@
   InputBase.variant2 {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-column-gap: value(--spacing-unit);
+    grid-column-gap: value(spacing-unit);
     background: rgba(255, 255, 255, 0.04);
   }
 

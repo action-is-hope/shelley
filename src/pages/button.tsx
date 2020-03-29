@@ -28,10 +28,9 @@ const ButtonDocs = () => {
       </Grid>
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Button&apos;s are sometimes clicked but a more inclusive description
-          would be &apos;selected&apos;; not everyone is clicking so we need to
-          get that mouse out of our heads... the key resides in the keyboard.
-          Deep.
+          Buttons are not clicked, they are &apos;selected&apos; not everyone is
+          clicking so we need to get that mouse click out of our heads... the
+          key resides in the keyboard. Deep.
         </P>
 
         <H2 vol={2} uppercase>
@@ -45,15 +44,15 @@ const ButtonDocs = () => {
           <a href="https://www.w3.org/TR/wai-aria-practices/#button">
             aria and buttons
           </a>{" "}
-          as you need, attributes are spread so treat it as an HTML button when
-          it comes to accessibility.
+          as you need, attributes are spread down to the actual{" "}
+          <code>button</code> so treat it as an HTML button when it comes to
+          supporting our assistive tech friends.
         </P>
 
         <P>
-          Lets take a look at a few variations, note that we are using different
-          Text sizes as best fits the use case. There are a load of permutaions
-          but you will likely end up using only a few as definded by your system
-          and what works best with your variant designs:
+          Lets take a look at a few variations, there are a load of permutaions
+          but you will likely end up using only a few as defined by your design
+          system.
         </P>
       </Grid>
 
@@ -121,8 +120,8 @@ const ButtonDocs = () => {
 
         <P>
           Use them sensibly to ensure that your interface is{" "}
-          <em>predictable</em>, so no auto-forwarding <code>onChange</code> or
-          anything weird, <em>use</em> buttons.
+          <em>predictable</em>, so no auto-forwarding or context shifting{" "}
+          <code>onKeydown</code> or anything weird, <em>use</em> buttons.
         </P>
 
         <P>

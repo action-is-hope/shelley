@@ -5,16 +5,16 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit,
-    --breakpoint-sm,
-    --breakpoint-md,
-    --breakpoint-lg,
-    --breakpoint-xl,
-    --grid-gap-xs,
-    --grid-gap-md,
+    spacing-unit,
+    breakpoint-sm,
+    breakpoint-md,
+    breakpoint-lg,
+    breakpoint-xl,
+    grid-gap-xs,
+    grid-gap-md,
     --grid-template-columns-base-sm,
     --grid-template-columns-base-md,
-    --grid-template-columns-base-content-start-end
+    --grid-template-columns-base-mid-start-end
 }
 
 :import {
@@ -37,35 +37,12 @@
   -st-default: CodeSample;
 }
 
-
-/* Align common grid items, including fallback styles. */
-Grid.variant1>h1,
-Grid.variant1>h2,
-Grid.variant1>h3,
-Grid.variant1>h4,
-Grid.variant1>h5,
-Grid.variant1>h6,
-Grid.variant1>p,
-Grid.variant1>ul,
-Grid.variant1>ol,
-Grid.variant1>dl,
-Grid.variant1>blockquote,
-Grid.variant1>pre,
-Grid.variant1>img,
-Grid.variant1>figure,
-.colContent {
-  /* set the grid lines */
-  grid-column: content-start / content-end;
-  /* fallback styles for content-start / content-end */
-  max-width: 34rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* mimics grid-row-gap */
-  /* margin-bottom: 2rem; */
+:vars {
+  grid-col-sm-max: 4.6vw;
+  grid-col-md-max: 6.1vw;
+  /* lg not required. */
+  grid-col-xl-max: 5.1vw;
 }
-
-
-
 
 @st-scope Default {
   .exampleBox {
@@ -83,126 +60,287 @@ Grid.variant1>figure,
   Grid {
     /* max-width: default; */
     display: grid;
-    grid-gap: value(--grid-gap-xs);
+  }
+
+  /**
+
+Wanted to be able to break out of the typical container when needed
+
+  12 col will be fine for the core layout, plan to can mix it up with custom grids inside 
+  of that 
+  *  Could you not have come up with something simplier?
+  * Maybe, I dunno, I'm not even sure what is going on right now... It's not that complicated...
+  * Lets break it down into the steps we took:
+
+  We started with this:
+
+  Grid.variant1 {
+    grid-template-columns: auto repeat(12, minmax(0, 5.1vw)) auto;
+  }
+
+  We ended up changing that a little bit based on our breakpoints:
+
+Stylable bug: Can't use variables inside of function like CSS e.g: repeat(1, value(grid-col-sm-max))
+
+Grid.variant1 {
+  grid-template-columns: auto repeat(12, 1 fr) auto;
+}
+
+@media value(breakpoint-sm) {
+  Grid.variant1 {
+    grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end] auto [touch-end];
+  }
+}
+
+You might want to make you regions a bit less tided to the layout, especially when using grid areas, 'main-content' so if plan to have lots of grids, that way you can recycle the grid-row styles
+
+  *  [touch-start] 
+        auto 
+          [goal-start pen-start mid-start] 
+            repeat(4, 1fr) 
+          [mid-end pen-end goal-end ] 
+        auto 
+      [touch-end];
+
+      edge / touch / dead-ball
+
+      touch goal pen mid
+
+      touch-start / touch-end
+
+      This also demonstrates how we can use grid-row to perform defy TimeCop and ocupy the smae space at the same time.
+
+      Whilst we realise we said we were not going to limit outselves but we are still going to use a 12 col grid system for one of our core layouts, it's useful!
+  */
+
+  /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
+  Grid.variant1 {
+    grid-gap: value(grid-gap-xs);
     /* grid-template-columns: value(--grid-template-columns-base-sm); */
-    grid-template-columns: [full-bleed-start] auto [outset-start outset1-start content-start] repeat(12, minmax(0, 4.6vw)) [content-end outset1-end outset-end] auto [full-bleed-end];
+    grid-template-columns: [touch-start] auto [goal-start pen-start mid-start] repeat(4, 1fr) [mid-end pen-end goal-end] auto [touch-end];
   }
 
-  @media only screen and (min-width: value(--breakpoint-sm)) {
-    Grid {
-      grid-template-columns: [full-bleed-start] auto [outset-start outset1-start] repeat(1, minmax(0, 4.6vw)) [content-start] repeat(10, minmax(0, 4.6vw)) [content-end] repeat(1, minmax(0, 4.6vw)) [outset1-end outset-end] auto [full-bleed-end];
+  he steps Grid.variant1>Grid.variant1 {
+    grid-template-columns: [touch-start goal-start pen-start mid-start] repeat(4, 1fr) [mid-end pen-end goal-end touch-end];
+  }
+
+  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
+  Grid.variant1>Grid {
+    grid-column: goal-start / goal-end;
+  }
+
+  @media value(breakpoint-sm) {
+    Grid.variant1 {
+      grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, 4.6vw) [mid-start] repeat(5, 4.6vw) [half] repeat(5, 4.6vw) [mid-end] repeat(1, 4.6vw) [pen-end goal-end] auto [touch-end];
+    }
+
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns: [touch-start goal-start pen-start] repeat(1, 4.6vw) [mid-start] repeat(5, 4.6vw) [half] repeat(5, 4.6vw) [mid-end] repeat(1, 4.6vw) [pen-end goal-end touch-end];
     }
   }
 
-  @media only screen and (min-width: value(--breakpoint-md)) {
-    Grid {
-      /* grid-column-gap: value(--grid-gap-md); */
-      grid-gap: 1.45rem;
-      grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 6.1vw)) [outset1-start] repeat(1, minmax(0, 6.1vw)) [content-start] repeat(6, minmax(0, 6.1vw)) [content-end] repeat(1, minmax(0, 6.1vw)) [outset1-end] repeat(2, minmax(0, 6.1vw)) [outset-end] auto [full-bleed-end];
+  /* @media value(breakpoint-sm) {
+    Grid.variant1 {
+      grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end] auto [touch-end];
+    }
+
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns: [touch-start goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end touch-end];
+    }
+  } */
+
+  @media value(breakpoint-md) {
+    Grid.variant1 {
+      grid-gap: value(grid-gap-md);
+      grid-template-columns:
+        [touch-start] auto [goal-start] repeat(2, 6.1vw) [pen-start] 6.1vw [mid-start] repeat(3, 6.1vw) [half] repeat(3, 6.1vw) [mid-end] 6.1vw [pen-end] repeat(2, 6.1vw) [goal-end] auto [touch-end];
+    }
+
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns:
+        [touch-start goal-start] repeat(2, 6.1vw) [pen-start] 6.1vw [mid-start] repeat(3, 6.1vw) [half] repeat(3, 6.1vw) [mid-end] 6.1vw [pen-end] repeat(2, 6.1vw) [goal-end touch-end];
     }
   }
 
-  @media only screen and (min-width: value(--breakpoint-lg)) {}
+  /* @media value(breakpoint-md) {
+    Grid.variant1 {
+      grid-gap: value(grid-gap-md);
+      grid-template-columns:
+        [touch-start] auto [goal-start] repeat(2, minmax(0, 6.1vw)) [pen-start] minmax(0, 6.1vw) [mid-start] repeat(3, minmax(0, 6.1vw)) [half] repeat(3, minmax(0, 6.1vw)) [mid-end] minmax(0, 6.1vw) [pen-end] repeat(2, minmax(0, 6.1vw)) [goal-end] auto [touch-end];
+    }
 
-  @media only screen and (min-width: value(--breakpoint-xl)) {
-    Grid {
-      grid-template-columns: [full-bleed-start] auto [outset-start] repeat(2, minmax(0, 5.1vw)) [outset1-start] repeat(1, minmax(0, 5.1vw)) [content-start] repeat(6, minmax(0, 5.1vw)) [content-end] repeat(1, minmax(0, 5.1vw)) [outset1-end] repeat(2, minmax(0, 5.1vw)) [outset-end] auto [full-bleed-end];
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns:
+        [touch-start goal-start] repeat(2, minmax(0, 6.1vw)) [pen-start] minmax(0, 6.1vw) [mid-start] repeat(3, minmax(0, 6.1vw)) [half] repeat(3, minmax(0, 6.1vw)) [mid-end] minmax(0, 6.1vw) [pen-end] repeat(2, minmax(0, 6.1vw)) [goal-end touch-end];
+    }
+  } */
+
+  @media value(breakpoint-xl) {
+    Grid.variant1 {
+      grid-template-columns: [touch-start] auto [goal-start] repeat(2, 5.1vw) [pen-start] repeat(1, 5.1vw) [mid-start] repeat(3, 5.1vw) [half] repeat(3, 5.1vw) [mid-end] repeat(1, 5.1vw) [pen-end] repeat(2, 5.1vw) [goal-end] auto [touch-end];
+    }
+
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns: [touch-start goal-start] repeat(2, 5.1vw) [pen-start] repeat(1, 5.1vw) [mid-start] repeat(3, 5.1vw) [half] repeat(3, 5.1vw) [mid-end] repeat(1, 5.1vw) [pen-end] repeat(2, 5.1vw) [goal-end touch-end];
     }
   }
 
+
+  /* @media value(breakpoint-xl) {
+    Grid.variant1 {
+      grid-template-columns: [touch-start] auto [goal-start] repeat(2, minmax(0, 5.1vw)) [pen-start] repeat(1, minmax(0, 5.1vw)) [mid-start] repeat(3, minmax(0, 5.1vw)) [half] repeat(3, minmax(0, 5.1vw)) [mid-end] repeat(1, minmax(0, 5.1vw)) [pen-end] repeat(2, minmax(0, 5.1vw)) [goal-end] auto [touch-end];
+    }
+
+    Grid.variant1>Grid.variant1 {
+      grid-template-columns: [touch-start goal-start] repeat(2, minmax(0, 5.1vw)) [pen-start] repeat(1, minmax(0, 5.1vw)) [mid-start] repeat(3, minmax(0, 5.1vw)) [half] repeat(3, minmax(0, 5.1vw)) [mid-end] repeat(1, minmax(0, 5.1vw)) [pen-end] repeat(2, minmax(0, 5.1vw)) [goal-end touch-end];
+    }
+  } */
+
+  Grid.variant2 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
   Grid.variant2 {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
-@supports (display: grid) {
 
-  /** Grid utilities. */
-  .gridColumnOutset1 {
-    /* set the grid lines */
-    grid-column: outset1-start / outset1-end;
-    /* fallback styles for outset1-start / outset1-end */
-    max-width: 45rem;
-    margin-left: auto;
-    margin-right: auto;
-    /* mimics grid-row-gap */
-    margin-bottom: 2rem;
+/** Mixin: Resets our non-grid CSS. */
+:vars {
+  fallbackMaxWidth: 100%;
+}
+
+.columFallback {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: value(fallbackMaxWidth);
+}
+
+
+/** Mixin: Resets our non-grid CSS. */
+.columFallbackReset {
+  margin-left: initial;
+  margin-right: initial;
+  max-width: initial;
+}
+
+/** Columms */
+
+/* Align common grid items, including fallback styles. */
+Grid.variant1>h1,
+Grid.variant1>h2,
+Grid.variant1>h3,
+Grid.variant1>h4,
+Grid.variant1>h5,
+Grid.variant1>h6,
+Grid.variant1>p,
+Grid.variant1>ul,
+Grid.variant1>ol,
+Grid.variant1>dl,
+Grid.variant1>blockquote,
+Grid.variant1>pre,
+Grid.variant1>img,
+Grid.variant1>figure {
+  /* fallback styles for mid-start / mid-end */
+  -st-mixin: columFallback(fallbackMaxWidth 34rem);
+  /* set the grid lines */
+}
+
+
+
+.touch {
+  -st-mixin: columFallback;
+}
+
+.goal {
+  -st-mixin: columFallback(fallbackMaxWidth 85%);
+}
+
+.pen {
+  -st-mixin: columFallback(fallbackMaxWidth 45rem);
+}
+
+.mid {
+  -st-mixin: columFallback(fallbackMaxWidth 34rem);
+}
+
+
+@st-scope Default {
+  @supports (display: grid) {
+
+    /**
+   * Resetting the values used for the fallback. 
+   * We could target these most with >Text but it is more specific thus more 
+   * difficult to override should the need arise.
+   */
+    Grid.variant1>h1,
+    Grid.variant1>h2,
+    Grid.variant1>h3,
+    Grid.variant1>h4,
+    Grid.variant1>h5,
+    Grid.variant1>h6,
+    Grid.variant1>p,
+    Grid.variant1>ul,
+    Grid.variant1>ol,
+    Grid.variant1>dl,
+    Grid.variant1>blockquote,
+    Grid.variant1>pre,
+    Grid.variant1>img,
+    Grid.variant1>figure {
+      -st-mixin: columFallbackReset;
+      grid-column: mid-start / mid-end;
+    }
   }
 
-  .gridColumnOutset {
-    /* set the grid lines */
-    grid-column: outset-start / outset-end;
-    /* fallback styles for outset-start / outset-end */
-    max-width: 85%;
-    margin-left: auto;
-    margin-right: auto;
-    /* mimics grid-row-gap */
-    margin-bottom: 2rem;
+
+  Grid.variant1 .touch {
+    -st-mixin: columFallbackReset;
+    grid-column: touch-start / touch-end;
   }
 
-  .fullBleed {
-    /* set the grid lines */
-    grid-column: full-bleed-start / full-bleed-end;
-    /* fallback styles for full-bleed-start / full-bleed-end */
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    /* mimics grid-row-gap */
-    margin-bottom: 2rem;
+  Grid.variant1 .goal {
+    -st-mixin: columFallbackReset;
+    grid-column: goal-start / goal-end;
   }
 
-  .mt1 {
-    margin-top: calc(value(--spacing-unit) * 4)
+  Grid.variant1 .pen {
+    -st-mixin: columFallbackReset;
+    grid-column: pen-start / pen-end;
   }
 
-  .mb1 {
-    margin-bottom: calc(value(--spacing-unit) * 4)
+  Grid.variant1 .mid {
+    -st-mixin: columFallbackReset;
+    grid-column: mid-start / mid-end;
   }
+}
 
-  .mt2 {
-    margin-top: calc(value(--spacing-unit) * 8)
-  }
 
-  .mb2 {
-    margin-bottom: calc(value(--spacing-unit) * 8)
-  }
 
-  .mtAuto {
-    margin-top: auto;
-  }
 
-  /* .mtb1 {
-    margin: calc(value(--spacing-unit) * 4)
+.mt1 {
+  margin-top: calc(value(spacing-unit) * 4)
+}
+
+.mb1 {
+  margin-bottom: calc(value(spacing-unit) * 4)
+}
+
+.mt2 {
+  margin-top: calc(value(spacing-unit) * 8)
+}
+
+.mb2 {
+  margin-bottom: calc(value(spacing-unit) * 8)
+}
+
+.mtAuto {
+  margin-top: auto;
+}
+
+/* .mtb1 {
+    margin: calc(value(spacing-unit) * 4)
   } */
-
-  /* Resetting the values used for the fallback. */
-  Grid.variant1>h1,
-  Grid.variant1>h2,
-  Grid.variant1>h3,
-  Grid.variant1>h4,
-  Grid.variant1>h5,
-  Grid.variant1>h6,
-  Grid.variant1>p,
-  Grid.variant1>ul,
-  Grid.variant1>ol,
-  Grid.variant1>dl,
-  Grid.variant1>blockquote,
-  Grid.variant1>pre,
-  Grid.variant1>img,
-  Grid.variant1>figure,
-  .colContent,
-  .gridColumnOutset1,
-  .gridColumnOutset,
-  .fullBleed {
-    /* margin-bottom: initial; */
-    margin-left: initial;
-    margin-right: initial;
-    max-width: initial;
-  }
-}
-
 
 
 Grid:typographic>p+p,
@@ -214,21 +352,21 @@ Grid:typographic>h4+p,
 Grid:typographic>h5+p,
 Grid:typographic>h6+p,
 Grid:typographic>h4+h5 {
-  margin-top: calc(value(--spacing-unit) * 2);
+  margin-top: calc(value(spacing-unit) * 2);
 }
 
 
 
 Grid:typographic>blockquote,
 Grid:typographic>CodeSample {
-  margin-top: calc(value(--spacing-unit) * 4);
-  margin-bottom: calc(value(--spacing-unit) * 5);
+  margin-top: calc(value(spacing-unit) * 4);
+  margin-bottom: calc(value(spacing-unit) * 5);
   margin-bottom: 0;
 }
 
 Grid:typographic>blockquote+Text,
 Grid:typographic>CodeSample+Text {
-  margin-top: calc(value(--spacing-unit) * 6);
+  margin-top: calc(value(spacing-unit) * 6);
 }
 
 /* Grid:typographic>CodeSample:last-child {
@@ -236,34 +374,34 @@ Grid:typographic>CodeSample+Text {
 } */
 
 /* Grid:typographic>blockquote+p {
-  margin-top: calc(value(--spacing-unit) * 3);
+  margin-top: calc(value(spacing-unit) * 3);
 } */
 
 /* Grid:typographic>p+blockquote {
-  margin-top: calc(value(--spacing-unit) * 4);
+  margin-top: calc(value(spacing-unit) * 4);
 }
 
 Grid:typographic>blockquote+p {
-  margin-top: calc(value(--spacing-unit) * 3);
+  margin-top: calc(value(spacing-unit) * 3);
 } */
 
 Grid:typographic>p+h2 {
-  margin-top: calc(value(--spacing-unit) * 4);
+  margin-top: calc(value(spacing-unit) * 4);
 }
 
 /** Body styles */
 Grid:typographic>p+Text.vol4 {
-  margin-top: calc(value(--spacing-unit) * 8);
+  margin-top: calc(value(spacing-unit) * 8);
 }
 
 
 Grid:typographic>p+h3,
 Grid:typographic>h2+h3 {
-  margin-top: calc(value(--spacing-unit) * 4);
+  margin-top: calc(value(spacing-unit) * 4);
 }
 
 Grid:typographic>p+h6 {
-  margin-top: calc(value(--spacing-unit) * 2);
+  margin-top: calc(value(spacing-unit) * 2);
 }
 
 /* Grid:typographic>p {
@@ -281,27 +419,7 @@ Grid:typographic>p+h6 {
   Grid.variant1 {
     grid-row-gap: 0;
   }
-
 }
 
 /* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
 @st-scope Default {}
-
-/* Breaks multiline selectros.:
-
-Grid>h1,
-Grid>h2,
-Grid>h3,
-Grid>h4,
-Grid>h5,
-Grid>h6,
-Grid>p,
-Grid>ul,
-Grid>ol,
-Grid>dl,
-Grid>blockquote,
-Grid>pre,
-Grid>img,
-Grid>figure,
-.colContent {
-*/

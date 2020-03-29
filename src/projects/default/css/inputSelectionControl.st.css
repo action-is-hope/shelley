@@ -5,7 +5,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit;
+    spacing-unit;
 }
 
 :import {

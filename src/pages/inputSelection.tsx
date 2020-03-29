@@ -158,7 +158,7 @@ const InputSelectionDocs = () => {
         </PropsDemo>
       </Grid>
       <Grid>
-        <div className={grid.colContent}>
+        <div className={grid.content}>
           <P>
             <Button onClick={() => onButtonClick()}>Boom</Button>
           </P>
