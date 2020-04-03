@@ -118,7 +118,7 @@ const LabelsDocs = () => {
           Click the label below, it <em>should</em> focus the text field giving
           us a larger &apos;hit&apos; area; useful on mobile devices.
         </P>
-        <div className={classnames(gridcontent - wide, grid.exampleBox)}>
+        <div className={classnames(grid.pen, grid.exampleBox)}>
           <InputText
             // className={grid.content}
             id="labelExampleId1"
