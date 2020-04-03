@@ -63,6 +63,7 @@
     grid-gap: 3vw;
   }
 
+  /* 
   Grid.variant1 {
     grid-template-columns:
       [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
@@ -80,12 +81,45 @@
       grid-template-columns:
         [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
     }
+  } */
+
+  /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+  Grid {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 3vw;
+  }
+
+  Grid.variant1 {
+    -ms-grid-columns:
+      [edge-start 3vw goal-start] 3vw auto 3vw [pen-start] 3vw 4vw 3vw [mid-start] 3vw 9rem 3vw [half] 3vw 9rem 3vw [mid-end] 3vw 4vw 3vw [pen-end] 3vw auto 3vw [goal-end 3vw edge-end];
+    grid-template-columns:
+      [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
+  }
+
+  @media value(breakpoint-sm) {
+    Grid.variant1 {
+      -ms-grid-columns:
+        [edge-start 3vw goal-start] 3vw auto 3vw [pen-start] 3vw 4vw 3vw [mid-start] 3vw 10rem 3vw [half] 3vw 10rem 3vw [mid-end] 3vw 4vw 3vw [pen-end] 3vw auto 3vw [goal-end 3vw edge-end];
+      grid-template-columns:
+        [edge-start goal-start] auto [pen-start] 4vw [mid-start] 10rem [half] 10rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
+    }
+  }
+
+  @media value(breakpoint-md) {
+    Grid.variant1 {
+      -ms-grid-columns:
+        [edge-start] 3vw auto 3vw [goal-start] 3vw 4vw 3vw 4vw 3vw [pen-start] 3vw 4vw 3vw [mid-start] 3vw 11.75rem 3vw [half] 3vw 11.75rem 3vw [mid-end] 3vw 4vw 3vw [pen-end] 3vw 4vw 3vw 4vw 3vw [goal-end] 3vw auto 3vw [edge-end];
+      grid-template-columns:
+        [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+    }
   }
 
 
   /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
 
-  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
+  /* Any directly nested Grid components to be set on the 'container' grid lines by default. */
   Grid.variant1>Grid {
     grid-column: goal;
   }
@@ -171,7 +205,7 @@ Grid.variant1>figure {
 }
 
 .mid {
-  -st-mixin: columFallback(fallbackMaxWidth 34rem);
+  -st-mixin: columFallback(fallbackMaxWidth 35rem);
 }
 
 
