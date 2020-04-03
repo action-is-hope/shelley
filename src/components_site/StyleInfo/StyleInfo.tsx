@@ -33,25 +33,23 @@ const StyleInfo = ({
   );
 
   return (
-    <Grid variant={1} {...style(rootClassNames, {}, rest)}>
+    <Grid variant={2} {...style(rootClassNames, {}, rest)}>
       <div className={classnames(text.typographic, style.html)}>
         <P>
           The raw <code>HMTL</code> output from the <code>{componentName}</code>{" "}
           component:
         </P>
         {componentHTML}
+        <P vol={2}>
+          View the Shelley {componentName} CSS on GitHub inclusive of comments
+          :-)
+        </P>
       </div>
       <div className={classnames(text.typographic, style.css)}>
         <P>
           The default unstyled <code>CSS</code> selectors:
         </P>
         {componentCSS}
-      </div>
-      <div className={classnames(text.mtAuto, style.meta)}>
-        <P vol={2}>
-          View the Shelley {componentName} CSS on GitHub inclusive of comments
-          :-)
-        </P>
       </div>
     </Grid>
   );

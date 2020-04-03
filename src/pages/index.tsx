@@ -91,6 +91,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <Link to="/text/">Text</Link>
             </Text>
             <Text tag="li">
+              <Link to="/grid/">Grid</Link>
+            </Text>
+            <Text tag="li">
               <Link to="/blockquote/">Blockquote</Link>
             </Text>
 

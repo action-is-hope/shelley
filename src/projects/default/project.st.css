@@ -28,9 +28,12 @@
 
   /** Spacing */
   spacing-unit: 0.69231rem;
+  /* text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max)); */
+  /* font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5))) */
   /* 18px when at breakpoint-xxl */
 
   /** Grid */
+
   grid-gap-xs: 0.75rem;
   grid-gap-md: 1.45rem;
 
@@ -38,8 +41,8 @@
   --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
   --grid-base-column-width-md: 4.011vw;
   /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
-  --grid-template-columns-base-sm: [edge-start] 12px [goal-start mid-start] repeat(12, 1fr) [mid-end goal-end] 12px [edge-end];
-  --grid-template-columns-base-md: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.011vw)) [mid-start] repeat(8, minmax(0, 4.011vw)) [mid-end] repeat(2, minmax(0, 4.011vw)) [goal-end] auto [edge-end];
+  --grid-template-columns-base-sm: [touch-start] 12px [goal-start mid-start] repeat(12, 1fr) [mid-end goal-end] 12px [touch-end];
+  --grid-template-columns-base-md: [touch-start] auto [goal-start] repeat(2, minmax(0, 4.011vw)) [mid-start] repeat(8, minmax(0, 4.011vw)) [mid-end] repeat(2, minmax(0, 4.011vw)) [goal-end] auto [touch-end];
   /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
   --grid-template-columns-base-mid-start-end: repeat(12, minmax(0, 4.011vw));
 

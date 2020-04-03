@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultLayout from "../layouts";
 import classnames from "classnames";
-import { P, H2 } from "../components/Text/Text";
+import { H1, P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -15,23 +15,31 @@ import {
   ComponentCSS
 } from "../components/Button/__buttonExamples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+import Button from "../components/Button/Button";
 
 const ButtonDocs = () => {
+  const inputEl = React.useRef();
+  const test = React.createRef<HTMLBaseElement>();
+  const onButtonClick = () => {
+    const node = test.current;
+    console.log(node);
+    // `current` points to the mounted text input element
+    node && node.focus();
+  };
+
   return (
     <DefaultLayout>
       <PageTitle>Button</PageTitle>
-      <Grid variant={2}>
-        <P>Hi</P>
-        <P>Hi</P>
-        <P>Hi</P>
-        <P>Hi</P>
-      </Grid>
-      <Grid variant={1}>
+      <Grid variant={1} tag="main">
         <P vol={4} className={text.intro}>
           Buttons are not clicked, they are &apos;selected&apos; not everyone is
           clicking so we need to get that mouse click out of our heads... the
           key resides in the keyboard. Deep.
         </P>
+        <H1 ref={test} tabIndex={1}>
+          Hi
+        </H1>
+        <Button onClick={() => onButtonClick()}>Click</Button>
 
         <H2 vol={2} uppercase>
           Quick reference:
@@ -54,13 +62,9 @@ const ButtonDocs = () => {
           but you will likely end up using only a few as defined by your design
           system.
         </P>
-      </Grid>
 
-      <Grid variant={1}>
         <ComponentDemo />
-      </Grid>
 
-      <Grid variant={1}>
         <P>
           As ever, if this component isn&apos;t really working for you then you
           can make your own, clone ours for a starting point if you need a

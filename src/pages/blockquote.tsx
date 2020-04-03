@@ -21,25 +21,13 @@ const LabelsDocs = () => {
     <DefaultLayout>
       <PageTitle>Blockquote</PageTitle>
 
-      <Grid variant={1}>
+      <Grid variant={1} tag="main">
         <P vol={4} className={text.intro}>
           Blockquote&apos;s are used for quoting peeps and papers; they tell any
           tech listening that this is a referance to someone elses words. Tech
           like a screen reader might emphasise <code>blockquote</code> text
           whilst a search bot might consider relavant when ranking.
         </P>
-
-        <figure className={grid.edge}>
-          <Grid variant={1}>
-            <img
-              src="https://i.ytimg.com/vi/LQa476gOIU4/maxresdefault.jpg"
-              alt=""
-              className={grid.edge}
-              style={{ width: "100%" }}
-            />
-            <P>I'm inside</P>
-          </Grid>
-        </figure>
 
         <H2 vol={2} uppercase>
           Quick reference:

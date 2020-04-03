@@ -1,15 +1,19 @@
 /** styleInfo.st.css */
 
-.root {}
+.root {
+  grid-column: edge;
+}
 
 .html,
-.meta {
-  grid-column: goal-start / half;
-  grid-row: 1
+.css {
+  /* grid-column: goal-start / half; */
+  /* grid-row: 1 */
+  overflow-x: scroll
 }
 
 .css {
-  grid-column: half / goal-end;
+  /* grid-row: 1 */
+  /* grid-column: half / goal-end; */
 }
 
 .meta {

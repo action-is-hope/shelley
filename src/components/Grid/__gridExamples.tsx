@@ -2,21 +2,24 @@
 import React from "react";
 // Example Component
 import Icon from "../Icon/Icon";
+import classnames from "classnames";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
+import styleExamples from "./__gridExample.st.css";
+import Grid from "./Grid";
+import grid from "../../projects/default/css/grid.st.css";
+import Text, { P } from "../Text/Text";
 
 export const meta = {
-  name: "Button"
+  name: "Grid"
 };
 
 export const QuickRef = () => (
-  <CodeSample>{`import Icon from "@action-is-hope/shelley";
-\n<Icon>
-  {/* crack open an svg to find the path and shove it in. */}
-  <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
-</Icon>
-{/* viewBox prop defaults to "0 0 16 16", match this the svg you have. */}`}</CodeSample>
+  <CodeSample>{`import Grid from "@action-is-hope/shelley";
+\n<Grid tag="section" variant={1} typographic>
+  {/* children */}
+</Grid>`}</CodeSample>
 );
 
 // Props Demo - Examples below.
@@ -80,54 +83,33 @@ export const ComponentDemo = () => {
 };
 
 export const ComponentHTML = () => (
-  <CodeSample>{`<svg class="icon--root" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-  <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
-</svg>
-
-/* With alt */
-<svg class="icon--root" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-  <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
-</svg>
-<span class="visuallyHidden880087003--root">A hidden label</span>`}</CodeSample>
+  /** @TODO: #stylable This will chane when we upgrage - test this is inline with the new.. */
+  <CodeSample language="html">{`<div class="grid-root grid-typographic grid-variant1">
+  <!-- children -->
+</div>`}</CodeSample>
 );
 
 export const ComponentCSS = () => (
-  <CodeSample
-    fixedHeight
-  >{`/* This you get anyway from the core which we borrowed from Material UI. */
-.root {
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  font-size: 1em;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0;
-  user-select: none;
-  flex-shrink: 0;
-}
+  <CodeSample fixedHeight>{`/** grid.st.css */
 
-
-/** button.st.css */
-
-/* Root */
-Icon {}
-
-
-
-/* Example of styling within inputSelection.st.css */
-
+/* import the Shelley component selectors */
 :import {
-  -st-from: "../node_modules/@action-is-hope/shelley/components/Icon/icon.st.css";
-  -st-default: Icon;
+  -st-from: "../../../components/Grid/grid.st.css";
+  -st-default: Grid;
 }
+  
+Grid {}
 
-... 
+/* Variants */
+Grid.variant1 {}
+Grid.variant2 {}
+Grid.variant3 {}
+Grid.variant4 {}
+Grid.variant5 {}
+Grid.variant6 {}
 
-/* Set your values, colour or whatever alignment you need. */
-InputSelection Icon {
-  font-size: 2em;
-}
-
+/* Root alignment hook */
+Grid:typographic {}
 `}</CodeSample>
 );
 
@@ -223,6 +205,57 @@ export const Collection = () => (
 );
 
 export const Example1 = () => (
+  <Grid variant={1} className={styleExamples.pitch} tag="article">
+    <Text
+      tag="div"
+      vol={2}
+      className={classnames(grid.edge, styleExamples.pitchArea)}
+    >
+      <code>edge-start</code>
+      <code>edge-end</code>
+    </Text>
+    <Text
+      tag="div"
+      vol={2}
+      className={classnames(grid.goal, styleExamples.pitchArea)}
+    >
+      <code>goal-start</code>
+      <code>goal-end</code>
+    </Text>
+    <Text
+      tag="div"
+      vol={2}
+      className={classnames(grid.pen, styleExamples.pitchArea)}
+    >
+      <code>pen-start</code>
+      <code>pen-end</code>
+    </Text>
+    <Text
+      tag="div"
+      vol={2}
+      className={classnames(grid.mid, styleExamples.pitchArea)}
+    >
+      <code>mid-start</code>
+      <code>mid-end</code>
+    </Text>
+    <Text tag="div" vol={2} className={classnames(grid.pen)}>
+      <code>pen-start</code>
+      <code>pen-end</code>
+      <Grid variant={2}>
+        <Text
+          tag="div"
+          vol={2}
+          // className={classnames(grid.goal, styleExamples.pitchArea)}
+        >
+          <code>inner-start</code>
+          <code>inner-end</code>
+        </Text>
+      </Grid>
+    </Text>
+  </Grid>
+);
+
+export const Example2 = () => (
   <Icon
     viewBox="8 -4 24 24"
     alt="infection plotted against time domonstrating exponential growth"

@@ -28,6 +28,7 @@ const PropsDemo = ({
   setDemoProps,
   setNonDemoProps,
   tsExtends,
+  componentName,
   ...rest
 }: PropsDemoProps) => {
   const rootClassNames = classNames(style.root, className);

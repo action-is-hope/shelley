@@ -10,6 +10,7 @@
     breakpoint-md,
     breakpoint-lg,
     breakpoint-xl,
+    breakpoint-xxl,
     grid-gap-xs,
     grid-gap-md,
     --grid-template-columns-base-sm,
@@ -58,152 +59,60 @@
   }
 
   Grid {
-    /* max-width: default; */
     display: grid;
+    grid-gap: 3vw;
   }
-
-  /**
-
-Wanted to be able to break out of the typical container when needed
-
-  12 col will be fine for the core layout, plan to can mix it up with custom grids inside 
-  of that 
-  *  Could you not have come up with something simplier?
-  * Maybe, I dunno, I'm not even sure what is going on right now... It's not that complicated...
-  * Lets break it down into the steps we took:
-
-  We started with this:
 
   Grid.variant1 {
-    grid-template-columns: auto repeat(12, minmax(0, 5.1vw)) auto;
-  }
-
-  We ended up changing that a little bit based on our breakpoints:
-
-Stylable bug: Can't use variables inside of function like CSS e.g: repeat(1, value(grid-col-sm-max))
-
-Grid.variant1 {
-  grid-template-columns: auto repeat(12, 1 fr) auto;
-}
-
-@media value(breakpoint-sm) {
-  Grid.variant1 {
-    grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end] auto [touch-end];
-  }
-}
-
-You might want to make you regions a bit less tided to the layout, especially when using grid areas, 'main-content' so if plan to have lots of grids, that way you can recycle the grid-row styles
-
-  *  [touch-start] 
-        auto 
-          [goal-start pen-start mid-start] 
-            repeat(4, 1fr) 
-          [mid-end pen-end goal-end ] 
-        auto 
-      [touch-end];
-
-      edge / touch / dead-ball
-
-      touch goal pen mid
-
-      touch-start / touch-end
-
-      This also demonstrates how we can use grid-row to perform defy TimeCop and ocupy the smae space at the same time.
-
-      Whilst we realise we said we were not going to limit outselves but we are still going to use a 12 col grid system for one of our core layouts, it's useful!
-  */
-
-  /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
-  Grid.variant1 {
-    grid-gap: value(grid-gap-xs);
-    /* grid-template-columns: value(--grid-template-columns-base-sm); */
-    grid-template-columns: [touch-start] auto [goal-start pen-start mid-start] repeat(4, 1fr) [mid-end pen-end goal-end] auto [touch-end];
-  }
-
-  he steps Grid.variant1>Grid.variant1 {
-    grid-template-columns: [touch-start goal-start pen-start mid-start] repeat(4, 1fr) [mid-end pen-end goal-end touch-end];
-  }
-
-  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
-  Grid.variant1>Grid {
-    grid-column: goal-start / goal-end;
+    grid-template-columns:
+      [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
   }
 
   @media value(breakpoint-sm) {
     Grid.variant1 {
-      grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, 4.6vw) [mid-start] repeat(5, 4.6vw) [half] repeat(5, 4.6vw) [mid-end] repeat(1, 4.6vw) [pen-end goal-end] auto [touch-end];
-    }
-
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns: [touch-start goal-start pen-start] repeat(1, 4.6vw) [mid-start] repeat(5, 4.6vw) [half] repeat(5, 4.6vw) [mid-end] repeat(1, 4.6vw) [pen-end goal-end touch-end];
+      grid-template-columns:
+        [edge-start goal-start] auto [pen-start] 4vw [mid-start] 10rem [half] 10rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
     }
   }
-
-  /* @media value(breakpoint-sm) {
-    Grid.variant1 {
-      grid-template-columns: [touch-start] auto [goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end] auto [touch-end];
-    }
-
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns: [touch-start goal-start pen-start] repeat(1, minmax(0, 4.6vw)) [mid-start] repeat(5, minmax(0, 4.6vw)) [half] repeat(5, minmax(0, 4.6vw)) [mid-end] repeat(1, minmax(0, 4.6vw)) [pen-end goal-end touch-end];
-    }
-  } */
 
   @media value(breakpoint-md) {
     Grid.variant1 {
-      grid-gap: value(grid-gap-md);
       grid-template-columns:
-        [touch-start] auto [goal-start] repeat(2, 6.1vw) [pen-start] 6.1vw [mid-start] repeat(3, 6.1vw) [half] repeat(3, 6.1vw) [mid-end] 6.1vw [pen-end] repeat(2, 6.1vw) [goal-end] auto [touch-end];
-    }
-
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns:
-        [touch-start goal-start] repeat(2, 6.1vw) [pen-start] 6.1vw [mid-start] repeat(3, 6.1vw) [half] repeat(3, 6.1vw) [mid-end] 6.1vw [pen-end] repeat(2, 6.1vw) [goal-end touch-end];
-    }
-  }
-
-  /* @media value(breakpoint-md) {
-    Grid.variant1 {
-      grid-gap: value(grid-gap-md);
-      grid-template-columns:
-        [touch-start] auto [goal-start] repeat(2, minmax(0, 6.1vw)) [pen-start] minmax(0, 6.1vw) [mid-start] repeat(3, minmax(0, 6.1vw)) [half] repeat(3, minmax(0, 6.1vw)) [mid-end] minmax(0, 6.1vw) [pen-end] repeat(2, minmax(0, 6.1vw)) [goal-end] auto [touch-end];
-    }
-
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns:
-        [touch-start goal-start] repeat(2, minmax(0, 6.1vw)) [pen-start] minmax(0, 6.1vw) [mid-start] repeat(3, minmax(0, 6.1vw)) [half] repeat(3, minmax(0, 6.1vw)) [mid-end] minmax(0, 6.1vw) [pen-end] repeat(2, minmax(0, 6.1vw)) [goal-end touch-end];
-    }
-  } */
-
-  @media value(breakpoint-xl) {
-    Grid.variant1 {
-      grid-template-columns: [touch-start] auto [goal-start] repeat(2, 5.1vw) [pen-start] repeat(1, 5.1vw) [mid-start] repeat(3, 5.1vw) [half] repeat(3, 5.1vw) [mid-end] repeat(1, 5.1vw) [pen-end] repeat(2, 5.1vw) [goal-end] auto [touch-end];
-    }
-
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns: [touch-start goal-start] repeat(2, 5.1vw) [pen-start] repeat(1, 5.1vw) [mid-start] repeat(3, 5.1vw) [half] repeat(3, 5.1vw) [mid-end] repeat(1, 5.1vw) [pen-end] repeat(2, 5.1vw) [goal-end touch-end];
+        [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
     }
   }
 
 
-  /* @media value(breakpoint-xl) {
-    Grid.variant1 {
-      grid-template-columns: [touch-start] auto [goal-start] repeat(2, minmax(0, 5.1vw)) [pen-start] repeat(1, minmax(0, 5.1vw)) [mid-start] repeat(3, minmax(0, 5.1vw)) [half] repeat(3, minmax(0, 5.1vw)) [mid-end] repeat(1, minmax(0, 5.1vw)) [pen-end] repeat(2, minmax(0, 5.1vw)) [goal-end] auto [touch-end];
-    }
+  /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
 
-    Grid.variant1>Grid.variant1 {
-      grid-template-columns: [touch-start goal-start] repeat(2, minmax(0, 5.1vw)) [pen-start] repeat(1, minmax(0, 5.1vw)) [mid-start] repeat(3, minmax(0, 5.1vw)) [half] repeat(3, minmax(0, 5.1vw)) [mid-end] repeat(1, minmax(0, 5.1vw)) [pen-end] repeat(2, minmax(0, 5.1vw)) [goal-end touch-end];
-    }
-  } */
+  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
+  Grid.variant1>Grid {
+    grid-column: goal;
+  }
+
+  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
+  Grid.variant1>Grid.variant1 {
+    grid-column: edge;
+  }
+
+  /* variant1-md-cols: 4.6vw [pen-start] 4.6vw [mid-start] 12.5rem [half] 12.5rem [mid-end] 4.6vw [pen-end] 4.6vw; */
+  /* variant1-xl-cols: repeat(2, 4.6vw) [pen-start] 4.6vw [mid-start] repeat(3, 4.6vw) [half] repeat(3, 4.6vw) [mid-end] 4.6vw [pen-end] repeat(2, 4.6vw); */
+  /* variant1-xxl-cols: repeat(2, 4.6vw) [pen-start] 4.6vw 4.6vw [mid-start] repeat(2, 4.6vw) [half] repeat(2, 4.6vw) [mid-end] 4.6vw 4.6vw [pen-end] repeat(2, 4.6vw); */
+
 
   Grid.variant2 {
     grid-template-columns: 1fr 1fr 1fr;
+
   }
 
   Grid.variant2 {
+    /* grid-gap: 3vw; */
     grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
   }
 }
+
+
 
 
 /** Mixin: Resets our non-grid CSS. */
@@ -294,24 +203,24 @@ Grid.variant1>figure {
   }
 
 
-  Grid.variant1 .touch {
+  Grid .edge {
     -st-mixin: columFallbackReset;
-    grid-column: touch-start / touch-end;
+    grid-column: edge;
   }
 
-  Grid.variant1 .goal {
+  Grid .goal {
     -st-mixin: columFallbackReset;
-    grid-column: goal-start / goal-end;
+    grid-column: goal;
   }
 
-  Grid.variant1 .pen {
+  Grid .pen {
     -st-mixin: columFallbackReset;
-    grid-column: pen-start / pen-end;
+    grid-column: pen;
   }
 
-  Grid.variant1 .mid {
+  Grid .mid {
     -st-mixin: columFallbackReset;
-    grid-column: mid-start / mid-end;
+    grid-column: mid;
   }
 }
 
@@ -362,6 +271,10 @@ Grid:typographic>CodeSample {
   margin-top: calc(value(spacing-unit) * 4);
   margin-bottom: calc(value(spacing-unit) * 5);
   margin-bottom: 0;
+}
+
+Grid:typographic>h2+CodeSample {
+  margin-top: calc(value(spacing-unit) * 2);
 }
 
 Grid:typographic>blockquote+Text,

@@ -26,7 +26,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
     padding-top: 2rem;
     border: 1px dashed rgba(255, 255, 255, 0.13);
     margin: 5.8rem 1rem;
-    grid-column: edge-start / edge-end;
+    grid-column: edge;
     position: relative;
   }
 }
@@ -39,7 +39,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
       padding: 64px;
       padding-top: 54px;
       margin: 5.8rem 0;
-      grid-column: goal-start / goal-end;
+      grid-column: goal;
     }
   }
 }

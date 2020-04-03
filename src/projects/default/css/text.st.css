@@ -192,6 +192,31 @@
       /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
   }
 
+  /* State selectors */
+  Text:weight(1) {
+    font-weight: 100;
+  }
+
+  Text:weight(2) {
+    font-weight: 200;
+  }
+
+  Text:weight(3) {
+    font-weight: 300;
+  }
+
+  Text:weight(4) {
+    font-weight: 400;
+  }
+
+  Text:weight(5) {
+    font-weight: 500;
+  }
+
+  Text:weight(6) {
+    font-weight: 600;
+  }
+
 
   /* Styles - typical child children. */
 
@@ -258,5 +283,19 @@
     /* margin-top: 12px;
     margin-bottom: 12px; */
     /* line-height: 1.45; */
+  }
+
+  .dl {
+    display: grid;
+    grid-column-gap: 1vw;
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .dl dt {
+    text-align: end;
+  }
+
+  .dl dd:before {
+    /* content: " - " */
   }
 }

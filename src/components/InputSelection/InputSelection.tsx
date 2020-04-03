@@ -28,7 +28,7 @@ interface RadioCheckInputProps
   inputPos?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   labelVisuallyHidden?: boolean;
-  /** How 'loud' should this input row be? */
+  /** How 'loud' should this input be? */
   vol?: Volume;
   /** The type of slection control to render. */
   type?: SelectionControlType;
