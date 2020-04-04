@@ -68,21 +68,15 @@
   Grid {
     display: grid;
     grid-gap: 3vw;
-
   }
 
-  Grid>* {
-    text-align: initial;
-  }
 
-  Grid,
   Grid>Grid {
     text-align: center;
   }
 
   @supports (display: grid) {
 
-    Grid,
     Grid>Grid {
       text-align: initial;
     }

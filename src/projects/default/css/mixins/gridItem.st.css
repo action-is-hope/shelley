@@ -7,7 +7,7 @@
 .gridItem {
   margin-left: auto;
   margin-right: auto;
-  max-width: value(fallbackMaxWidth);
+  width: value(fallbackMaxWidth);
   grid-column: value(gridCol);
 }
 
