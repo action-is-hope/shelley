@@ -75,6 +75,10 @@
     text-align: center;
   }
 
+  Grid>Grid>* {
+    text-align: initial;
+  }
+
   @supports (display: grid) {
 
     Grid>Grid {
