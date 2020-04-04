@@ -31,8 +31,6 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
   }
 }
 
-
-
 @media screen and (min-width: 951px) {
   @st-scope Default {
     PropsDemo {

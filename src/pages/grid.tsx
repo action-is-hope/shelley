@@ -385,6 +385,40 @@ Grid .mid {
         </H2>
 
         <P>
+          Fallback... don&apos;t you just love them and the way that they make
+          you feel! Hacks with a fancy name but required if you are to support
+          the annoying versions of IE that still pain us.
+        </P>
+
+        <P>
+          IE11 but also early verison of Edge on things like TV&apos;s at large
+          clients offices that they like to do demos on.
+        </P>
+
+        <P>
+          The grid implementaion they use is old, perhaps we can use that? Errr,
+          nope unless you fancy specifing the index of each row, no thanks. It's
+          also IE11+ specific so is it that useful? Maybe we can just do
+          something fairly simple?
+        </P>
+
+        <P>
+          I&apos;m pretty sure we can mimin our three main columns with som{" "}
+          <code>max-width</code> and a litle <code>margin: auto</code>
+        </P>
+
+        <CodeSample className={grid.pen} language="css">{`/* Fallbacks */
+Grid .goal {
+  grid-column: goal;
+}
+Grid .pen {
+  grid-column: pen;
+}
+Grid .mid {
+  grid-column: mid;
+}`}</CodeSample>
+
+        <P>
           We noticed that when we used a nested grid as a container then the
           internal columns would have a width of zero inflating the autos
           blowing out everything on the parent, so we switched to known widths.

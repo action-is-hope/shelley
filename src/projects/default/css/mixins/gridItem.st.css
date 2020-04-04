@@ -1,0 +1,26 @@
+/* CSS */
+:vars {
+  gridCol: mid;
+  fallbackMaxWidth: 35rem;
+}
+
+.gridItem {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: value(fallbackMaxWidth);
+  grid-column: value(gridCol);
+}
+
+.gridItemReset {
+  text-align: initial;
+  margin-left: initial;
+  margin-right: initial;
+  max-width: initial;
+}
+
+/*BUG: Styalble does not support @supports in mixin hence the above. */
+@supports (display: grid) {
+  .gridItem {
+    -st-mixin: gridItemReset;
+  }
+}

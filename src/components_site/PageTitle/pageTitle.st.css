@@ -22,5 +22,5 @@
 
 .root Text.title,
 .root Text {
-  grid-column: mid-start / mid-wide-end
+  /* grid-column: mid */
 }
