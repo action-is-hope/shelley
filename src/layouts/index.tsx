@@ -3,6 +3,7 @@ import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import style from "./index.st.css";
 import { Theme as defaultTheme } from "../projects/default";
+import PageTitle from "../components_site/PageTitle/PageTitle";
 
 const Header = () => (
   <div className={style.navbar}>
@@ -44,6 +45,9 @@ const DefaultLayout = ({ children }) => (
         { name: "description", content: "Sample" },
         { name: "keywords", content: "sample, something" }
       ]}
+      htmlAttributes={{
+        lang: "en"
+      }}
     />
     <Header />
     {children}

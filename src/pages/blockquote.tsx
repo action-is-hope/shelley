@@ -2,7 +2,6 @@ import React from "react";
 import DefaultLayout from "../layouts";
 import { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
-import grid from "../projects/default/css/grid.st.css";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../projects/default/css/text.st.css";
 
@@ -24,9 +23,7 @@ const LabelsDocs = () => {
       <Grid variant={1} tag="main">
         <P vol={4} className={text.intro}>
           Blockquote&apos;s are used for quoting peeps and papers; they tell any
-          tech listening that this is a referance to someone elses words. Tech
-          like a screen reader might emphasise <code>blockquote</code> text
-          whilst a search bot might consider relavant when ranking.
+          tech listening that this is a referance to someone elses words.
         </P>
 
         <H2 vol={2} uppercase>
@@ -36,7 +33,12 @@ const LabelsDocs = () => {
         <QuickRef />
 
         <P>
-          Digression Alert: Did you read the quote?{" "}
+          Tech like a screen reader might emphasise <code>blockquote</code> text
+          whilst a search bot might consider relavant when ranking.
+        </P>
+
+        <P>
+          Digression Alert: Did you read the example quote?{" "}
           <a href="https://www.theguardian.com/technology/2020/feb/21/climate-tweets-twitter-bots-analysis">
             {" "}
             a quarter of all tweets about climate crisis produced by bots!

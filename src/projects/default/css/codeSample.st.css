@@ -19,13 +19,6 @@
   -st-default: CodeSample;
 }
 
-
-
-CodeSample {
-  /* margin: 50px */
-}
-
-
 CodeSample code :global(.prop b),
 CodeSample code :global(.prop)::after,
 CodeSample code :global(.st-modifier)::before,

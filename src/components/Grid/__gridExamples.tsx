@@ -16,7 +16,7 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample>{`import Grid from "@action-is-hope/shelley";
+  <CodeSample className={grid.mid}>{`import Grid from "@action-is-hope/shelley";
 \n<Grid tag="section" variant={1} typographic>
   {/* children */}
 </Grid>`}</CodeSample>
@@ -237,20 +237,6 @@ export const Example1 = () => (
     >
       <code>mid-start</code>
       <code>mid-end</code>
-    </Text>
-    <Text tag="div" vol={2} className={classnames(grid.pen)}>
-      <code>pen-start</code>
-      <code>pen-end</code>
-      <Grid variant={2}>
-        <Text
-          tag="div"
-          vol={2}
-          // className={classnames(grid.goal, styleExamples.pitchArea)}
-        >
-          <code>inner-start</code>
-          <code>inner-end</code>
-        </Text>
-      </Grid>
     </Text>
   </Grid>
 );

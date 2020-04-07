@@ -189,7 +189,7 @@
     align-items: flex-end;
   }
 
-  InputBase.variant2 InputLabel::labelTextContainer {
+  InputBase.variant2 InputLabel::textContainer {
     padding-top: 16px;
     padding-bottom: 16px;
   }

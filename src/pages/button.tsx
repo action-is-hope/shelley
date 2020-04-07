@@ -1,11 +1,12 @@
 import React from "react";
 import DefaultLayout from "../layouts";
 import classnames from "classnames";
-import { H1, P, H2 } from "../components/Text/Text";
+import Text, { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../projects/default/css/text.st.css";
+import grid from "../projects/default/css/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import {
   meta,
@@ -32,14 +33,9 @@ const ButtonDocs = () => {
       <PageTitle>Button</PageTitle>
       <Grid variant={1} tag="main">
         <P vol={4} className={text.intro}>
-          Buttons are not clicked, they are &apos;selected&apos; not everyone is
-          clicking so we need to get that mouse click out of our heads... the
-          key resides in the keyboard. Deep.
+          Buttons are &apos;selected&apos; not everyone is clicking, lets forget
+          the mouse, the key resides in the keyboard. Deep.
         </P>
-        <H1 ref={test} tabIndex={1}>
-          Hi
-        </H1>
-        <Button onClick={() => onButtonClick()}>Click</Button>
 
         <H2 vol={2} uppercase>
           Quick reference:
@@ -129,12 +125,22 @@ const ButtonDocs = () => {
         </P>
 
         <P>
-          Get more familar with{" "}
+          As mentioned earlier get more familar with{" "}
           <a href="https://www.w3.org/TR/wai-aria-practices/#button">
             aria and buttons
           </a>{" "}
-          as you need...{" "}
+          as you need but it is useful to scan read them now so that light goes
+          off in your head when you need it to.
         </P>
+
+        <div className={grid.mid}>
+          <Button onClick={() => onButtonClick()} vol={1}>
+            Test Ref
+          </Button>{" "}
+          <Text tag="span" ref={test} tabIndex={1} vol={2}>
+            TODO: Remove and add tests for refs in general.
+          </Text>
+        </div>
       </Grid>
     </DefaultLayout>
   );

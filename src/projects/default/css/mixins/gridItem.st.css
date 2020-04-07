@@ -1,7 +1,7 @@
 /* CSS */
 :vars {
   gridCol: mid;
-  fallbackMaxWidth: 35rem;
+  fallbackMaxWidth: 40rem;
 }
 
 .gridItem {

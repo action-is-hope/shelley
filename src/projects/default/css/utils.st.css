@@ -1,0 +1,17 @@
+/*=== Typical utils ===*/
+
+
+/*=== Candidate component CSS ===*/
+
+
+.exampleBox {
+  padding: 64px;
+  padding-top: 54px;
+  border: 1px dashed rgba(255, 255, 255, 0.13);
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.mbSmall {
+  margin-bottom: 2rem
+}

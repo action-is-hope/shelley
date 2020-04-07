@@ -5,13 +5,14 @@ import Icon from "./Icon";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
+import grid from "../../projects/default/css/grid.st.css";
 
 export const meta = {
   name: "Button"
 };
 
 export const QuickRef = () => (
-  <CodeSample>{`import Icon from "@action-is-hope/shelley";
+  <CodeSample className={grid.mid}>{`import Icon from "@action-is-hope/shelley";
 \n<Icon>
   {/* crack open an svg to find the path and shove it in. */}
   <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>

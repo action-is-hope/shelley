@@ -39,8 +39,6 @@
     --accent: var(--color-accent-1);
   }
 
-
-
   Blockquote::content {
     display: grid;
     grid-row-gap: 0.8rem;
@@ -61,7 +59,18 @@
   }
 
   Blockquote::content Text:first-child::before {
-    content: '"';
+    /* content: '"'; */
+    content: open-quote;
+    /* 
+      \2018 – Left Single Smart Quote
+      \2019 – Right Single Smart Quote
+      \00A9 – Copyright
+      \2713 – Checkmark
+      \2192 – Right arrow
+      \2190 – Left arrow
+      https://css-tricks.com/css-content/
+     */
+    content: "\0022 ";
     display: inline-block;
     font-family: Tahoma;
     font-size: 1.6em;
@@ -79,7 +88,7 @@
    */
 
   Blockquote.variant1::content Text:first-child::before {
-    display: none;
+    /* display: none; */
     color: var(--accent);
   }
 
@@ -89,7 +98,7 @@
     background: var(--color-background-2, value(--color-background-2-default));
     background: rgba(255, 255, 255, 0.04);
     background: rgba(64, 121, 230, 0.87);
-    background: var(--accent);
+    /* background: var(--accent); */
     padding: 16px 36px;
     margin: 0 0 40px;
     max-width: 600px;
@@ -123,8 +132,10 @@
    */
   Blockquote.variant2 {
     /* background: rgba(0, 0, 0, 0.4); */
-    background: var(--color-background-2, value(--color-background-2-default)) padding: 1.4rem 42px;
-    background: rgba(255, 255, 255, 0.04);
+    /* background: var(--color-background-2, value(--color-background-2-default)); */
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    /* background: rgba(255, 255, 255, 0.04); */
     border-radius: 4px;
     position: relative;
     width: 100%;
@@ -140,17 +151,51 @@
   }
 
   Blockquote.variant2::content::before {
-    content: '"';
+    /* content: '"'; */
+    /* content: open-quote; */
+    content: "";
     display: inline-block;
     position: absolute;
-    top: -0.2rem;
-    left: calc(-1.35rem - 38px);
+
+    opacity: 0.3;
+    left: -1.5rem;
+    /* line-height: 1rem; */
+    /* color: var(--accent); */
+    border: 1px solid var(--accent);
+    border-width: 2px 0 2px 4px;
+    width: 18px;
+    /* height: 56px; */
+    top: 0;
+    bottom: 0
+  }
+
+
+  Blockquote.variant2::content::before {
+    /* top: -1.1rem;
+    left: -1.5rem; */
+  }
+
+
+  Blockquote.variant2::content::after {
+    /* bottom: -1.1rem;
+    right: -1.5rem;
+    border-width: 0 2px 2px 0; */
+  }
+
+  /* content: " ";
+    display: inline-block;
+    position: absolute;
+    top: -1.1rem;
+    left: -1.5rem;
     font-family: Tahoma;
     font-size: 5rem;
     opacity: 0.8;
     line-height: 1rem;
     color: var(--accent);
-  }
+    width: 41px;
+    height: 56px;
+    border: 1px solid #d685ea7a;
+    border-width: 2px 0 0 2px; */
 
 
   /* Accent colors */

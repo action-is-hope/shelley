@@ -21,19 +21,29 @@
   }
 
   .card:first-child {
-    grid-column: 2 / span 7;
+    grid-column: 1;
     grid-row: 1 / span 2;
   }
 
+  .card+.card,
+  .card+.card+.card {
+    grid-column: 2;
+  }
+
+  /* 7fr 5fr */
   .card {
 
     background: #ffffff21;
     background: #232631;
 
+    background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,232631+14,207cca+29,232631+29,232631+100&0+0,1+100 */
+
     /* background: linear-gradient(15deg, #678, #6f8793);
     background: linear-gradient(15deg, #14af83, #15b89a);
     background: linear-gradient(15deg, #745fb5, #9a6dbb); */
-    padding: 22px 1.45rem;
+    /* padding: 22px 1.45rem; */
+    padding: 1.5vw 3vw;
 
   }
 
@@ -44,7 +54,7 @@
 
 According to CNBC, the number of lawsuits over inaccessible websites jumped 58 percent last year over 2017, to more than 2,200.
  */
-  img:not([alt]),
+  /* img:not([alt]),
   label:not([for]),
   h2+h1,
   h2+h4,
@@ -74,12 +84,20 @@ According to CNBC, the number of lawsuits over inaccessible websites jumped 58 p
     content: "Badly nested headings";
     font-size: 12px;
     position: absolute
-  }
+  } */
 
 
 
   .card>* {
     margin: .75rem 0;
+
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card+.card>* {
+    max-width: 18rem;
   }
 
   .card>h2 {
@@ -120,7 +138,7 @@ color: #4e4e4e;
 */
 
   .card+.card {
-    grid-column: 9 / span 5;
+    /* grid-column: 9 / span 5; */
     /* background: #50de98;
     background: #acefff; */
   }
@@ -130,18 +148,20 @@ color: #4e4e4e;
     background: #50de98;
     background: #99ffcd;
     background: #92e6bd;
-    background: #d1ffe9
+    background: #d1ffe9;
+    background: #287750;
+    background: #2f5442;
   }
 
   .card+.card+.card {
-    color: #4e4e4e;
-    -webkit-font-smoothing: antialiased;
+    /* color: #4e4e4e; */
+    /* -webkit-font-smoothing: antialiased; */
   }
 
   .card+.card+.card>h2 {
-    color: #504f4f;
-    font-weight: 400;
-    -webkit-font-smoothing: initial;
+    /* color: #504f4f; */
+    /* font-weight: 400; */
+    /* -webkit-font-smoothing: initial; */
   }
 
   .card+.card+.card p,

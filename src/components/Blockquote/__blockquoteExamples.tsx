@@ -6,23 +6,20 @@ import Blockquote from "./Blockquote";
 import { P, H2 } from "../../components/Text/Text";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
+import grid from "../../projects/default/css/grid.st.css";
 
 export const meta = {
   name: "Blockquote"
 };
 
 export const QuickRef = () => (
-  <CodeSample>{`import Blockquote from "shelley-ui";\n
-  <Blockquote
-    citeUrl="https://www.theguardian.com/link-to-post"
-    cite="The Guardian"
-    >
-    <P>
-      These findings suggest a substantial impact of mechanized bots in amplifying 
-      denialist messages about climate change, including support for Trump’s 
-      withdrawal from the Paris agreement.
-    </P>
-  </Blockquote>`}</CodeSample>
+  <CodeSample className={grid.mid}>{`import Blockquote from "shelley-ui";\n
+<Blockquote
+  citeUrl="https://www.theguardian.com/link-to-post"
+  cite="The Guardian"
+  >
+  <P>These findings suggest a substantial impact of mechanized bots in amplifying denialist messages about climate change, including support for Trump’s withdrawal from the Paris agreement.</P>
+</Blockquote>`}</CodeSample>
 );
 
 // Props Demo - Used in our docs and as a 'style test harness' - a fancy way of saying 'style checker'.

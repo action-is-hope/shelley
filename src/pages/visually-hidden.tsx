@@ -8,6 +8,7 @@ import Blockquote from "../components/Blockquote/Blockquote";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../projects/default/css/text.st.css";
+import grid from "../projects/default/css/grid.st.css";
 
 // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
 
@@ -31,7 +32,7 @@ const VisuallyHiddenDocs = () => {
           Quick reference:
         </H2>
 
-        <CodeSample>
+        <CodeSample className={grid.mid}>
           {`import VisuallyHidden from "@action-is-hope/shelley";
 <VisuallyHidden>
   Hidden text that remains accessible and indexable.
@@ -42,10 +43,16 @@ const VisuallyHiddenDocs = () => {
           easily. The little search bots will make better sense of it too,
           giving us a tangable thing to look at in terms of direct{" "}
           <abbr title="Return on Investment">ROI</abbr> from time spent in this
-          area. Damn it! Go away capitalisum with your <q>ROI</q> buzzword
-          babble. Um, no, <a href="https://babeljs.io/">babel</a> is something
-          different, magic. Not now.
+          area.
         </P>
+
+        <P>
+          Go away capitalisum with your <q>ROI</q> buzzword babble! Um, no,{" "}
+          <a href="https://babeljs.io/">babel</a> is something different,
+          something magical; not now, maybe never... Sorry, we&apos;re self
+          isolating. 🤐
+        </P>
+
         <P>
           &apos;Visually Hidden&apos; as a concept is often referred to as{" "}
           <code>
@@ -83,7 +90,7 @@ const VisuallyHiddenDocs = () => {
           dots, three of them. How thoughtful.
         </P>
 
-        <CodeSample>
+        <CodeSample className={grid.mid}>
           {`<h2>What is Climate Change?</h2>
 <p>Nasa has a great resource for kids/adults all about climate change.</p>
 <p>
@@ -99,9 +106,9 @@ const VisuallyHiddenDocs = () => {
           </P>
         </Blockquote>
         <P>
-          Ahhh, crap! That&rsquo;s about as useful as expanding the worlds
-          airports in the wake of a planetary climate emergency or a high speed
-          train designed to serve them.
+          Oh dear&hellip; so basically the opposite of making sense out of
+          context, this makes <em>no</em> sense to screen readers or search
+          bots.
         </P>
         <P>
           This is just one of many things that would likely <em>iritate</em> our
@@ -114,22 +121,25 @@ const VisuallyHiddenDocs = () => {
         </P>
 
         <P>
-          We found a{" "}
+          We found a fantastic{" "}
           <a href="https://www.youtube.com/watch?v=ZUGHomfxTlY&feature=youtu.be&t=43">
-            fantastic clip demonstrating &apos;click here&apos; links on a
-            screen reader
+            demonstration of &apos;click here&apos; links on a screen reader
           </a>
-          , which you should check out.
+          , which you should check out. On the SEO front:
         </P>
 
-        <P>
-          FYI: Should you need to right a wrong you can do so semantically by
-          way of the <code>del</code> tag, very useful for:{" "}
-          <code>{`<del>HS2</del>`}</code> and it's happy companion the{" "}
-          <code>ins</code> tag is happy to help{" "}
-          <code>{`<ins>Ancient Woodland</ins>`}</code>. Perhaps we really need a{" "}
-          <code>{`<litfa>`}</code> tag.
-        </P>
+        <Blockquote
+          variant={2}
+          citeVol={3}
+          accent={3}
+          citeUrl="https://moz.com/learn/seo/anchor-text"
+          cite="Source: Anchor text keyword density - Moz, Anchor Text article"
+        >
+          <P vol={4}>
+            With the Penguin algorithm update, Google began to look more closely
+            at keywords in anchor text.
+          </P>
+        </Blockquote>
 
         <H3 vol={3} uppercase>
           Fixing the problem
@@ -149,7 +159,7 @@ const VisuallyHiddenDocs = () => {
           </Text>
         </ol>
 
-        <CodeSample>
+        <CodeSample className={grid.mid}>
           {`<a href="https://climatekids.nasa.gov/climate-change-meaning/">
     See more<span aria-hidden>&hellip;</span>
     <VisuallyHidden>
@@ -159,13 +169,13 @@ const VisuallyHiddenDocs = () => {
         </CodeSample>
 
         <P>
-          Witht the changes in place our screen reader will announce the entire
-          link shilst sighted users will simply see &rsquo;See
-          more&hellip;&rsquo; as <del>God intended</del>&hellip; I mean as your{" "}
+          With the changes in place our screen reader will announce the entire
+          link whilst sighted users will simply see &apos;See more&hellip;&apos;
+          as <del>God intended</del>&hellip; I mean as your{" "}
           <ins>designer requested</ins>. 😇
         </P>
 
-        <P>Maybe thigs aren't so easy in a CMS?</P>
+        <P>Maybe thigs aren&apos;t so easy in a CMS?</P>
 
         <P>
           When choosing link text or building webpages we need awareness and
@@ -189,18 +199,6 @@ const VisuallyHiddenDocs = () => {
           cite="Link Purpose (In Context): Understanding Success Criterion 2.4.4"
           accent={3}
           variant={2}
-          // cite={
-          //   <>
-          //     Link Purpose (In Context):{" "}
-          //     <a
-          //       href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html"
-          //       target="_blank"
-          //       rel="noopener noreferrer"
-          //     >
-          //       Understanding Success Criterion 2.4.4
-          //     </a>
-          //   </>
-          // }
         >
           <H2 vol={4}>Navigable: Understanding Guideline 2.4</H2>
           <P>
@@ -233,36 +231,27 @@ const VisuallyHiddenDocs = () => {
           development and we must...
         </P>
         <P>
-          The peeps over there do a great job; it&rsquo;s a tough task, we
+          The peeps over there do a great job; it&apos;s a tough task, we
           empathise with them. Ultimatley they are trying to make these things
           as exact as possible so as to remove ambiguity. This is essential for
           all implementers, from developers to browser vendors. Handy from a
           legal perspective too if you happen to be suing for non-compliance.
         </P>
         <P>
-          So it is exact but it somehow misses the &rsquo;why&rsquo;. We should
-          look for the &rsquo;why&rsquo;; accessibility then becomes less of a
-          &rsquo;tick box&rsquo; exercise and more thought provoking. Lets have
-          a go at rewriting it from the perspective of our glorious users!
-        </P>
-
-        <P>
-          If you use assistive tech and would be interested in helping use
-          spread awareness let us know.
+          So it is exact but it somehow misses the &apos;why&apos;. We should
+          look for the &apos;why&apos;; accessibility then becomes less of a
+          &apos;tick box&apos; exercise and more thought provoking. Lets have a
+          go at rewriting it from the perspective of our glorious users!
         </P>
 
         {/* https://offset.earth/about   */}
         <Blockquote variant={2} accent={3}>
-          <H2 vol={4}>
-            Accessible Links: Good for your readers, good for{" "}
-            <abbr title="Search Engine Optimisation">SEO</abbr>
-          </H2>
           <P>
             When reading out links by themselves, I can get a good idea of where
             the link will take me or what it will do if I select it. Unless
-            it&rsquo;s something like a game of &rsquo;snap&rsquo; where it
-            would kinda of defeat the point of the game if I can see through the
-            card. Obvs. ;-)
+            it&apos;s something like a game of &apos;snap&apos; where it would
+            kinda of defeat the point of the game if I can see through the card.
+            Obvs. ;-)
           </P>
         </Blockquote>
         <P>
@@ -276,20 +265,20 @@ const VisuallyHiddenDocs = () => {
           extra field to capture the hidden text and for internal pages you can
           dynamically append the destination page title:
         </P>
-        <CodeSample>
+        <CodeSample className={grid.mid}>
           {`<a href="/more-people-switching-to-plant-based-diet/">
   More Information<VisuallyHidden>: Why people are switching to a plant based diet.</VisuallyHidden>
 </a>`}
         </CodeSample>
         <P>
           We really need a new breed of clever CMS, including link text tips and
-          decent framing of the &rsquo;why&rsquo;. Continual auditing
-          doesn&rsquo;t work; it is admirable but unless you are educating
-          authors you are just gonna have the same issues over and over.
+          decent framing of the <q>why</q>. Continual auditing doesn&apos;t
+          work; it is admirable but unless you are educating authors you are
+          just gonna have the same issues over and over.
         </P>
 
         <P>
-          Make your creations accessible - it&rsquo;s your duty as a master
+          Make your creations accessible - it&apos;s your duty as a master
           builder ;-)
         </P>
 

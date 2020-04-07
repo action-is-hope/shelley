@@ -117,20 +117,20 @@
     font-size: 2em;
   }
 
-  InputSelection.variant1 InputLabel:inputPos(top)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(top)::textContainer {
     padding-top: calc(value(spacing-unit) / 2 + 0.2em);
   }
 
-  InputSelection.variant1 InputLabel:inputPos(end)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(end)::textContainer {
     /* rtl padding-left: value(spacing-unit); */
     padding-right: value(spacing-unit);
   }
 
-  InputSelection.variant1 InputLabel:inputPos(bottom)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(bottom)::textContainer {
     padding-bottom: calc(value(spacing-unit) / 2 + 0.2em);
   }
 
-  InputSelection.variant1 InputLabel:inputPos(start)::labelTextContainer {
+  InputSelection.variant1 InputLabel:inputPos(start)::textContainer {
     padding-left: value(spacing-unit);
     /* rtl padding-right: value(spacing-unit); */
   }

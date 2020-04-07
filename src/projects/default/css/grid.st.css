@@ -53,63 +53,40 @@
 }
 
 @st-scope Default {
-  .exampleBox {
-    padding: 64px;
-    padding-top: 54px;
-    border: 1px dashed rgba(255, 255, 255, 0.13);
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
-
-  .mbSmall {
-    margin-bottom: 2rem
-  }
 
   Grid {
     display: grid;
     grid-gap: 3vw;
   }
 
-
+  /* IE Fallback for images only on nested grids? */
   Grid>Grid {
     text-align: center;
   }
 
+  /* Reset children else they will inherit the text-align. */
   Grid>Grid>* {
     text-align: initial;
   }
 
-  @supports (display: grid) {
-
-    Grid>Grid {
-      text-align: initial;
-    }
-  }
-
-  /* Grid>Grid {
-    text-align: center;
-  }
-
-  Grid>Grid>* {
-    text-align: initial;
-  }
-
+  /* Reset for grid. */
   @supports (display: grid) {
     Grid>Grid {
       text-align: initial;
     }
-
-  } */
+  }
 
   Grid.variant1 {
     grid-template-columns:
-      [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
+      /* [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end]; */
+      [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
   }
 
   @media value(breakpoint-sm) {
     Grid.variant1 {
       grid-template-columns:
-        [edge-start goal-start] auto [pen-start] 4vw [mid-start] 10rem [half] 10rem [mid-end] 4vw [pen-end] auto [goal-end edge-end];
+        [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+      /* [edge-start goal-start] auto [pen-start] 4vw [mid-start] 10rem [half] 10rem [mid-end] 4vw [pen-end] auto [goal-end edge-end]; */
     }
   }
 
@@ -128,20 +105,11 @@
     grid-column: goal;
   }
 
-  /* Any directed nested Grid components to be set on the 'container' grid lines by default. */
+  /* Set directly nested variant1 grids to 'edge' grid lines by default. */
   Grid.variant1>Grid.variant1 {
     grid-column: edge;
   }
 
-  Grid.variant2 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  Grid.variant2 {
-    /* grid-gap: 3vw; */
-    grid-template-columns: 1fr 1fr;
-    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
-  }
 }
 
 /** Columms */
@@ -245,31 +213,31 @@ Grid.variant1>.edge {
   } */
 
 
-Grid:typographic>p+p,
-Grid:typographic>p+h4,
-Grid:typographic>p+h5,
-Grid:typographic>h2+p,
-Grid:typographic>h3+p,
-Grid:typographic>h4+p,
-Grid:typographic>h5+p,
-Grid:typographic>h6+p,
-Grid:typographic>h4+h5 {
+Grid:typographic p+p,
+Grid:typographic p+h4,
+Grid:typographic p+h5,
+Grid:typographic h2+p,
+Grid:typographic h3+p,
+Grid:typographic h4+p,
+Grid:typographic h5+p,
+Grid:typographic h6+p,
+Grid:typographic h4+h5 {
   margin-top: calc(value(spacing-unit) * 2);
 }
 
-Grid:typographic>blockquote,
-Grid:typographic>CodeSample {
+Grid:typographic blockquote,
+Grid:typographic CodeSample {
   margin-top: calc(value(spacing-unit) * 4);
   margin-bottom: calc(value(spacing-unit) * 5);
   margin-bottom: 0;
 }
 
-Grid:typographic>h2+CodeSample {
+Grid:typographic h2+CodeSample {
   margin-top: calc(value(spacing-unit) * 2);
 }
 
-Grid:typographic>blockquote+Text,
-Grid:typographic>CodeSample+Text {
+Grid:typographic blockquote+Text,
+Grid:typographic CodeSample+Text {
   margin-top: calc(value(spacing-unit) * 6);
 }
 
@@ -289,22 +257,22 @@ Grid:typographic>blockquote+p {
   margin-top: calc(value(spacing-unit) * 3);
 } */
 
-Grid:typographic>p+h2 {
+Grid:typographic p+h2 {
   margin-top: calc(value(spacing-unit) * 4);
 }
 
 /** Body styles */
-Grid:typographic>p+Text.vol4 {
+Grid:typographic p+Text.vol4 {
   margin-top: calc(value(spacing-unit) * 8);
 }
 
 
-Grid:typographic>p+h3,
-Grid:typographic>h2+h3 {
+Grid:typographic p+h3,
+Grid:typographic h2+h3 {
   margin-top: calc(value(spacing-unit) * 4);
 }
 
-Grid:typographic>p+h6 {
+Grid:typographic p+h6 {
   margin-top: calc(value(spacing-unit) * 2);
 }
 
@@ -322,6 +290,45 @@ Grid:typographic>p+h6 {
 @st-scope Default {
   Grid.variant1 {
     grid-row-gap: 0;
+  }
+
+  Grid.variant2 {
+    /* grid-gap: 3vw; */
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
+  }
+
+
+  Grid.variant2 {
+    overflow: hidden
+  }
+
+  /* Just because a browser is old soesn't mean it is stupid, calc is useful. */
+  Grid.variant2>* {
+    width: calc(50% - 1.5vw);
+  }
+
+  Grid.variant2>*:nth-child(odd) {
+    float: left;
+    /*rtl*/
+  }
+
+  Grid.variant2>*:nth-child(even) {
+    float: right;
+    /*rtl*/
+  }
+
+  @supports (display: grid) {
+    Grid.variant2>* {
+      width: initial;
+    }
+  }
+
+
+  Grid.variant3 {
+    /* grid-gap: 3vw; */
+    grid-template-columns: 7fr 5fr;
+    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
   }
 }
 

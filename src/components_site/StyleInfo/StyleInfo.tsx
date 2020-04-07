@@ -26,7 +26,7 @@ const StyleInfo = ({
 }: StyleInfoProps) => {
   const rootClassNames = classNames(
     style.root,
-    grid.container,
+    grid.goal,
     grid.mt1,
     grid.mb2,
     className
@@ -36,8 +36,7 @@ const StyleInfo = ({
     <Grid variant={2} {...style(rootClassNames, {}, rest)}>
       <div className={classnames(text.typographic, style.html)}>
         <P>
-          The raw <code>HMTL</code> output from the <code>{componentName}</code>{" "}
-          component:
+          The raw <code>HMTL</code> output from <code>{componentName}:</code>
         </P>
         {componentHTML}
         <P vol={2}>

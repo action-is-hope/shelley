@@ -4,15 +4,13 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named:
-    spacing-unit,
 }
 
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
   -st-named:
-    labelTextContainer,
+    textContainer,
     labelText,
     hasInput;
 }
@@ -29,44 +27,15 @@
 
 @st-scope Default {
   Label {
+    /* Flex enables our positional styles, grid could work too. */
     display: flex;
-    /* Stops the text from getting selecting whne clicking on labels. */
+    /* Stops the text from getting selecting when clicking on labels. */
     user-select: none;
   }
 
-
-  /* Note we are setting the fonts here:
-- After much dicking around Shelley has come to the conclusion that labels should 
-generally always be the same size regardless of any size associated with the input
-accept maybe when a selection control is being used. Checkbox/Radio/Switch labels
-maybe different as they take more of a 'content' look in general. 
-- uppercase can give the labels an extra dimension but invariably other font properties
-will need to be overridden. Should this be a setting we expose? Maybe not, maybe it's 
-simply part of a variant style.... Or maybe you are using the headings like we are...
-for tech text we are using uppercase but for articles we are not planning too. If we 
-use a form we might want it to match our copy style so perhaps all labels need to 
-have this ability and it's valid...
-  Label {
-    font-size: .8rem;
-    line-height: 1.15;
-  }
-
-  @media screen and (min-width: 600px) {
-
-    Label {
-      font-size: .7rem;
-    }
-  }
-*/
-
-
-
-  Label Icon {
-    font-size: 1.75em;
-  }
-
-  /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
+  /*==== Has Input  ====*/
   Label.hasInput {
+    /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
     display: inline-flex;
     /* Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
     flex-direction: row-reverse;
@@ -76,7 +45,7 @@ have this ability and it's valid...
     justify-content: flex-end;
   }
 
-  Label::labelTextContainer {
+  Label::textContainer {
     display: block;
     color: #eaeaea
   }
@@ -96,7 +65,7 @@ have this ability and it's valid...
   }
 
 
-  /*==== Input Position ====*/
+  /*==== Input Positions ====*/
 
   /* top */
   Label:inputPos(top).hasInput {
@@ -108,7 +77,6 @@ have this ability and it's valid...
     justify-content: center;
   }
 
-
   /* end / right */
   Label:inputPos(end).hasInput {
     flex-direction: row;
@@ -118,7 +86,6 @@ have this ability and it's valid...
   Label:inputPos(end) HintText {
     justify-content: flex-end;
   }
-
 
   /* bottom */
   Label:inputPos(bottom).hasInput {
@@ -130,7 +97,10 @@ have this ability and it's valid...
     justify-content: center;
   }
 
-
   /* start / left */
 
+  /*==== Icon ====*/
+  Label Icon {
+    font-size: 1.75em;
+  }
 }

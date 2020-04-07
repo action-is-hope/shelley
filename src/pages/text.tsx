@@ -38,7 +38,7 @@ const TextDocs = () => {
       type: "textarea",
       value:
         // "The IPCC prepares comprehensive Assessment Reports about knowledge on climate change, its causes, potential impacts and response options. The IPCC also produces Special Reports, which are an assessment on a specific issue and Methodology Reports, which provide practical guidelines for the preparation of greenhouse gas inventories."
-        "IPCC, how can I explain it, I'll take you frame by frame it. Shelley likes to rap about climate change reports in the hope that people might read them, go figure. Shelly also thanks Naughty By Nature for their contribution to music and head bopping."
+        "IPCC, how can I explain it, I'll take you frame by frame it. Shelley likes to rap about climate change reports in the hope that people might read them, go figure. Shelley also thanks Naughty By Nature for their contribution to music and head bopping."
     }
   ]);
   return (
@@ -47,13 +47,15 @@ const TextDocs = () => {
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
           Text is for presenting words, we love words, they&apos;re the best,
-          nobody knows more about words than us. Ridiculous.
+          nobody knows more about... they&apos;re just the best, that&apos;s it.
         </P>
 
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
-        <CodeSample>{`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@action-is-hope/shelley";
+        <CodeSample
+          className={grid.mid}
+        >{`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@action-is-hope/shelley";
 
 <H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
 <P>The mighty paragraph, defaults to a volume of 3.</P>
@@ -70,13 +72,13 @@ const TextDocs = () => {
           class or by styling it as an named import inside of another component.
           {/* https://24ways.org/2017/styling-components-typed-css-with-stylable/ */}
         </P>
-      </Grid>
-      <Grid variant={1}>
+
         <PropsDemo
           id="textPropsDemo"
           demoProps={TextDemoProps}
           setDemoProps={setTextDemoProps}
           tsExtends="HTMLBaseElement"
+          // className={grid.goal}
           renderExample={
             <CodeSample>{`import { P } from "@action-is-hope/shelley";\n<P ${
               TextDemoProps[0].value
@@ -98,8 +100,7 @@ const TextDocs = () => {
             {TextDemoProps[3].value}
           </Text>
         </PropsDemo>
-      </Grid>
-      <Grid variant={1}>
+
         <H2 vol={5} className={text.outset} uppercase>
           Styling:
         </H2>
@@ -116,7 +117,7 @@ const TextDocs = () => {
           <code>text.st.css</code> file:
         </P>
 
-        <CodeSample fixedHeight>{`/** text.st.css */
+        <CodeSample className={grid.mid} fixedHeight>{`/** text.st.css */
 
 :import {
   -st-from: "../../../components/Text/text.st.css";

@@ -5,13 +5,16 @@ import Button from "./Button";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
+import grid from "../../projects/default/css/grid.st.css";
 
 export const meta = {
   name: "Button"
 };
 
 export const QuickRef = () => (
-  <CodeSample>{`import Button from "@action-is-hope/shelley";
+  <CodeSample
+    className={grid.mid}
+  >{`import Button from "@action-is-hope/shelley";
 \n<Button>Your planet needs you!</Button>`}</CodeSample>
 );
 
@@ -101,8 +104,8 @@ export const ComponentDemo = () => {
 };
 
 export const ComponentHTML = () => (
-  <CodeSample>{`<button class="button--root button--accent1 button--variant1 button--vol2">
-  <span class="button--inner">Yes to climate action</span>
+  <CodeSample>{`<button class="button-root button-accent1 button-variant1 button-vol2">
+  <span class="button-inner">Yes to climate action</span>
 </button>`}</CodeSample>
 );
 

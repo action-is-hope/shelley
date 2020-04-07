@@ -229,7 +229,7 @@ const InputDocs = () => {
               Form item error message
             </span> */}
             {/* <label className={formElements.inputVol1} htmlFor="inputTexthtml">
-              <span className="label-labelTextContainer">
+              <span className="label-textContainer">
                 <span className="label-labelText">Form item label</span>
               </span>
             </label> */}

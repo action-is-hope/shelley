@@ -28,7 +28,7 @@ const Label = ({
   ...attrs
 }: LabelProps) => {
   const labelText = (
-    <span className={style.labelTextContainer}>
+    <span className={style.textContainer}>
       <span className={style.labelText}>{children}</span>
       {hint && <HintText>{hint}</HintText>}
     </span>

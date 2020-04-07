@@ -17,7 +17,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
-  -st-named: labelTextContainer, labelText, inputField;
+  -st-named: textContainer, labelText;
 }
 
 @st-scope Default {
@@ -25,7 +25,8 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
     padding: 1.3rem;
     padding-top: 2rem;
     border: 1px dashed rgba(255, 255, 255, 0.13);
-    margin: 5.8rem 1rem;
+    margin-top: 5.8rem;
+    margin-bottom: 5.8rem;
     grid-column: edge;
     position: relative;
   }

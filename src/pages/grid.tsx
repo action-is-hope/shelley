@@ -27,9 +27,8 @@ const GridDocs = () => {
 
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Grid is for layout and it is personal to your site or your way of
-          building things, it is limited only by our traditonal thinking around
-          grid systems.
+          Grid is for layout; personal to your site or style, limited only by
+          old skool thinking around grid systems.
         </P>
 
         <H2 vol={2} uppercase>
@@ -64,7 +63,9 @@ const GridDocs = () => {
           </Text>
         </ul> */}
 
-        <CodeSample>{`/** HTML tag to render as the root for your grid. */
+        <CodeSample
+          className={grid.mid}
+        >{`/** HTML tag to render as the root for your grid. */
 tag?: string;
 /** Designed to toggle typographic alignment rules. */
 typographic?: boolean;
@@ -94,8 +95,8 @@ variant?: number;`}</CodeSample>
           componentCSS={<ComponentCSS />}
         />
 
-        <H2 vol={6} uppercase weight={3}>
-          Shelley grid
+        <H2 vol={5} uppercase weight={4}>
+          Shelley&apos;s field grid
         </H2>
 
         <P className={grid.mb1}>
@@ -204,7 +205,7 @@ variant?: number;`}</CodeSample>
           <code>html</code> element... more on that later.
         </P>
 
-        <CodeSample>{`.grid {
+        <CodeSample className={grid.mid}>{`.grid {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(12, 1fr);
@@ -216,7 +217,9 @@ variant?: number;`}</CodeSample>
           for a mobile style.
         </P>
 
-        <CodeSample>{`grid-template-columns: auto repeat(12, 1fr) auto;`}</CodeSample>
+        <CodeSample
+          className={grid.mid}
+        >{`grid-template-columns: auto repeat(12, 1fr) auto;`}</CodeSample>
 
         <P>
           Now we have a 14 col grid, but you can consider the <code>auto</code>{" "}
@@ -230,7 +233,9 @@ variant?: number;`}</CodeSample>
           distrubuting it to the autos.
         </P>
 
-        <CodeSample>{`grid-template-columns: auto repeat(12, minmax(0, 4.6vw)) auto;`}</CodeSample>
+        <CodeSample
+          className={grid.mid}
+        >{`grid-template-columns: auto repeat(12, minmax(0, 4.6vw)) auto;`}</CodeSample>
 
         <P>
           Thinking ahead; we added some named grid lines so we could assign
@@ -271,21 +276,6 @@ variant?: number;`}</CodeSample>
           </Text>
         </dl>
 
-        {/* <CodeSample language="css">{`grid-template-columns: [edge-start] 
-                          auto 
-                              [goal-start pen-start] 
-                                  4.6vw
-                                      [mid-start] 
-                                          repeat(5, minmax(0, 4.6vw)) 
-                                              [half] 
-                                          repeat(5, minmax(0, 4.6vw)) 
-                                      [mid-end] 
-                                  4.6vw
-                              [pen-end goal-end] 
-                          auto 
-                      [edge-end];
-grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end];`}</CodeSample> */}
-
         <CodeSample
           className={grid.goal}
           language="css"
@@ -296,7 +286,7 @@ grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)
 
         <P>
           We used something like this for a few weeks as we built out other
-          things, we moved the <code>mid</code> grid lines based on the viewport
+          things, moving the <code>mid</code> grid lines based on the viewport
           width via media queries in an attempt to maintain a good reading
           width.
         </P>
@@ -364,25 +354,54 @@ Grid.variant1 {
 /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
 
 /* Column helper classes / mixins */
-Grid .edge {
+Grid.variant1>.edge {
   /* assign element to the content column */
   grid-column: edge-start / edge-end;
   /* or the shorthand available for -start -end by default: */
   grid-column: edge;
 }
-Grid .goal {
+Grid.variant1>.goal {
   grid-column: goal;
 }
-Grid .pen {
+Grid.variant1>.pen {
   grid-column: pen;
 }
-Grid .mid {
+Grid.variant1>.mid {
   grid-column: mid;
 }`}</CodeSample>
+
+        <P>
+          This change means we no longer are using a 12 column grid system!
+          Maybe it will be too limiting in future? Ahhhh! It&apos;s ok, this is
+          better for us, we&apos;re all about agile and what acutually works for
+          us in the here and now based on what we know.
+        </P>
+
+        <P>
+          We are not working to a design, just faffing about in the browser;
+          when we are working with a static design we tend to use it as a
+          guideline or a starting point. It serves to communicate the{" "}
+          <q>vision</q> from where we can iterate in browser with{" "}
+          <q>real feel</q>.
+        </P>
+
+        <P>
+          When building to a fixed with design, you can start by aligning
+          everything based on the visual but with fluid units. You should then
+          do whatever works best in between your target breakpoints tweaking the
+          fluid units as you see them in action.
+        </P>
+        <P>
+          Collaborate if you are not the designer, demo and discuss the options,
+          walk through them together and agree on the best outcome. Get your
+          phones and ipads out, things always look different on device.
+        </P>
 
         <H2 vol={4} uppercase>
           Fallbacks
         </H2>
+
+        <P>Falbacks... they ruin all the fun don&apos;t they!?</P>
 
         <P>
           Fallback... don&apos;t you just love them and the way that they make
@@ -396,224 +415,55 @@ Grid .mid {
         </P>
 
         <P>
-          The grid implementaion they use is old, perhaps we can use that? Errr,
-          nope unless you fancy specifing the index of each row, no thanks. It's
-          also IE11+ specific so is it that useful? Maybe we can just do
-          something fairly simple?
+          We do support none grid browsers but we don&apos;t want to spend too
+          much time on them so we tend to something that works and they hack
+          together a fallback often opting for a visual but functional
+          differace. As long as your main grid is solid then it shouldn&apos;t
+          be too hard to hack in some fallbacks as and when.
         </P>
 
         <P>
-          I&apos;m pretty sure we can mimin our three main columns with som{" "}
-          <code>max-width</code> and a litle <code>margin: auto</code>
+          The <code>-ms-grid</code> implementaion implememtes the old spec,
+          perhaps we can use that? Errr, nope, not in this instance unless you
+          fancy specifing the index of each row, no thanks. It&apos;s also IE11+
+          specific so is it that useful?
+        </P>
+
+        <P>
+          Maybe we can just do something fairly simple for the main layout that
+          isn&apos;t a proprietary Microsoft thang? I&apos;m pretty sure we can
+          mimin our three main columns with some <code>max-width</code> and a
+          litle <code>margin: auto</code>
         </P>
 
         <CodeSample className={grid.pen} language="css">{`/* Fallbacks */
 Grid .goal {
-  grid-column: goal;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: value(fallbackMaxWidth);
 }
 Grid .pen {
-  grid-column: pen;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: value(fallbackMaxWidth);
 }
 Grid .mid {
-  grid-column: mid;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: value(fallbackMaxWidth);
 }`}</CodeSample>
 
         <P>
-          We noticed that when we used a nested grid as a container then the
-          internal columns would have a width of zero inflating the autos
-          blowing out everything on the parent, so we switched to known widths.
-          This was actually when we tweaked the <code>grid-gap</code> to a fluid
-          value.
+          If you need to support older browsers and you use this bare in mind
+          you essentially need a rule not to touch the left and right margins of
+          grid items using these helper classes.
         </P>
 
         <P>
-          We started with a 12 col grid, as you do and a fixed width gap but we
-          had issues with <q>fluid overspill scroll</q>, where columns would
-          bust out of their container leaving us with horizontal scrollies.
+          To set top and bottom margins do so specifically, i.e{" "}
+          <code>margin-top: 2rem;</code> over <code>margin: 2rem 0;</code> which
+          of course would be setting them to <code>0</code>.
         </P>
-
-        <P>
-          Instead we opted for more fluidity via the <q>viewport width</q> unit{" "}
-          <code>VW</code>, ohhhh the{" "}
-          <a href="https://www.volkswagen.co.uk/electric/id/id-family/id-buzz">
-            new VW campers 🚌 look nice
-          </a>
-          . Surely individual car ownership is fundermentally flawed though,
-          it&apos;s all about <a href="https://zoox.com/">Zoox</a> for the win
-          in the city!
-        </P>
-
-        {/* <CodeSample language="css">{`grid-template-columns: [edge-start] 
-                          auto 
-                              [goal-start pen-start] 
-                                  4.6vw
-                                      [mid-start] 
-                                          repeat(5, minmax(0, 4.6vw)) 
-                                              [half] 
-                                          repeat(5, minmax(0, 4.6vw)) 
-                                      [mid-end] 
-                                  4.6vw
-                              [pen-end goal-end] 
-                          auto 
-                      [edge-end];
-grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end];`}</CodeSample> */}
-
-        <P>
-          Up to this point we have mostly been playing around and we left the
-          grid like this for a few weeks whilst we build out some more of the
-          site.
-        </P>
-
-        <P>
-          We wanted a decent reading width for our central column so we started
-          moving the named grid lines to include more or less columns based on
-          the breakpoint.
-        </P>
-        <P>
-          Used this until we came to document this bloody component and we
-          wanted to provide something useful so started messing about with it
-          again.
-        </P>
-
-        <P>
-          Didn't like our gridline names... looking at it, reminds us of a rugby
-          or NFL pitch. Made a fe changes as we wanted one word gridline names.
-          Just because ok!
-        </P>
-        <P>
-          Switched our gutters to vw or % so as to increase flexing and avoiding
-          overspill in the form or scrollbars!
-        </P>
-        <P>
-          Decided to make the mid column a known width based on rem, which as it
-          happens has a responsive scale set to it for this type of thing, just
-          in case it's useful... 60-75 chars seems to be on point. Adjusting to
-          suit.
-        </P>
-        <P>
-          This change means we no longer are using a 12 column grid system!
-          Ahhhh! It's ok, this is better for us, we're all about agile what
-          acutually works, a static design visual is only really a guideline or
-          a starting point. You can start with aligning everything based on the
-          visual at the width provided. You should then do whatever works best
-          inbetween your target breakpoints. Collaborate if you are not the
-          designer, show the designer the options, walk through them together
-          and agree on the best outcome. GEt your phones and ipads out, things
-          always look different on device.
-        </P>
-
-        <P>
-          Use ours, roll your own or just compose your layout directly by
-          leveraging your styalble variables or mixins within your application
-          components. It&apos;s up to you.
-        </P>
-
-        <P>
-          We are using <code>Grid</code> both in situ and within our application
-          components sometimes as the root component. We have implemented custom
-          tags so it can render as a{" "}
-          <code>header, main, section, article, figure, footer</code> etc to
-          facilitate semantic grids as we need them.
-        </P>
-
-        <P>
-          Don&apos;t feel constrained to your grid component, if you have a
-          repeating pattern then you can add it as a variant but don&apos;t jump
-          the gun using your variants for single use grid configs. Think
-          plastic, no single use!!!
-        </P>
-
-        <P>
-          Seeing as we are building out the Shelley site as we build the
-          components it seems sensible to tidy up what we have and try and use
-          it as a case study of sorts.
-        </P>
-
-        <P>So what do we want?</P>
-
-        <P>
-          Okay, so we've kind of been writng this as we go with our efforts on
-          our main grid, here are some quick <q>show your working</q> style
-          notes:
-        </P>
-
-        {/* https://baymard.com/blog/line-length-readability */}
-
-        <hr className={grid.mid} />
-        <ul>
-          <Text tag="li">
-            Something that allows us an optimal reading width as well as space
-            to venture out and use space for examples.
-          </Text>
-          <Text tag="li">
-            We want to see if we can not use any type of container so we want to
-            try and fold this into the grid that we use.
-          </Text>
-          <Text tag="li">
-            Obviously we want this to be responsive, you know that we like
-            things to scale nicely so we need to be able to reassign the width
-            of our main reading column else the wider we go the more illegible
-            the content will be.
-          </Text>
-          {/* https://baymard.com/blog/line-length-readability */}
-        </ul>
-        {/* <li>
-            Center based with different column widths available full screen.
-          </li>
-          <li>These column widths need to be responsive.</li>
-          <li>Needs to support our typographic spacing rules.</li>
-          <li>The children need to be able to be placed to site </li>
-          <li>
-            Responsive grid gap that is locked so it does&apos;t get too big.
-          </li> */}
-        <P>
-          CSS grid requires a different way of thinking about grids... First
-          thing to say about css grid is that you are not limited by one system.
-          Limited like a 12 col, in a 12 col in a 12 col as with a bootstrap
-          type system.
-        </P>
-
-        <P>
-          Second is that you don&apos;t really need a <code>container</code>{" "}
-          anymore, it&apos;s so easy to set this all up as part of your grid
-          styles.
-        </P>
-
-        <P>
-          You can name grid lines and grid rows as well as use their numbering
-          system.
-        </P>
-
-        <P>You can move things around with CSS with ease.</P>
-
-        <P>
-          You can have nested grids allowing you to have a main layout grid and
-          then inside of those grid items you can use another grid and that one
-          can be whatever you like... You have the most powerfull system,
-          cssdon&apos;t{" "}
-        </P>
-
-        <P>
-          12 columns are alwasy useful as they divide so nicely so we tend to
-          use these as a basis for our main layout which is basically a Medium
-          style of supporting a narrow reading width column with a multiple
-          breakout widths from the central column.
-        </P>
-
-        <P>
-          CSS grid is something we really feel that you need to feel out as you
-          are building.
-        </P>
-
-        <P>
-          What&apos; so great about CSS grid? Well you can pretty much replace
-          the bootstrap grid system with a few lines for starters:
-        </P>
-
-        <CodeSample language="css">{`.grid-12-col {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}`}</CodeSample>
 
         <P>
           Superb article on grids:{" "}

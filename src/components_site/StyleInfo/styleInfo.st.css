@@ -1,14 +1,14 @@
 /** styleInfo.st.css */
 
 .root {
-  grid-column: edge;
+  /* grid-column: edge; */
 }
 
 .html,
 .css {
   /* grid-column: goal-start / half; */
   /* grid-row: 1 */
-  overflow-x: scroll
+  overflow-x: auto
 }
 
 .css {

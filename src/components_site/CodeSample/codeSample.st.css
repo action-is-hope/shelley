@@ -2,17 +2,21 @@
 .root {
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;
-  overflow-x: scroll;
-  grid-column: mid-start / mid-end;
+  overflow-x: auto;
+  /* grid-column: mid-start / mid-end; */
   margin-top: 1rem;
   margin-bottom: 48px;
   background: rgba(255, 255, 255, 0.06);
   background: rgba(160, 160, 160, 0.06);
   font-size: 12px;
-  padding: 1.45rem;
+
   line-height: 1.45rem;
   line-height: 1.1rem;
   border-radius: 4px
+}
+
+.root>pre {
+  padding: 1.45rem;
 }
 
 .root.fixedHeight {

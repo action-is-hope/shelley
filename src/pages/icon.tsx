@@ -1,13 +1,11 @@
 import React from "react";
 import DefaultLayout from "../layouts";
-import classnames from "classnames";
 import { P, H2, H3 } from "../components/Text/Text";
-import Icon from "../components/Icon/Icon";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import text from "../projects/default/css/text.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
-import CodeSample from "../components_site/CodeSample/CodeSample";
+
 import {
   meta,
   QuickRef,
@@ -25,10 +23,8 @@ const IconDocs = () => {
       <PageTitle>Icon</PageTitle>
       <Grid variant={1}>
         <P vol={4} className={text.intro}>
-          Icon&apos;s are like... well they are like icons, some are more
-          visually descriptive than others and if you use as a replacement for a
-          text label be sure to use the <code>label</code> prop which will
-          output a <code>VisuallyHidden</code> one for you.
+          Icon&apos;s are universal translators,some are more visually
+          descriptive than others so consider labels.
         </P>
 
         <H2 vol={2} uppercase>
@@ -51,6 +47,12 @@ const IconDocs = () => {
           , an Open Source set that is fairly extensive. We do have some beef
           with the &apos;accessibility&apos; icon denoting a wheelchair... but
           this is not an issue specific to this icon set.
+        </P>
+
+        <P>
+          If you use an icon as a replacement for a text label be sure to use
+          the <code>label</code> prop which will output a{" "}
+          <code>VisuallyHidden</code> one for you, it&apos;s the law.
         </P>
       </Grid>
       <Grid variant={1}>
