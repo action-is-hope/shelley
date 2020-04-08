@@ -17,16 +17,69 @@
 }
 
 /* https://www.sacredgeometryshop.com/sacred-geometry/vesica-piscis-sacred-geometry/ */
+@keyframes headTilt {
+  /* from {
+    transform: rotate(4deg);
+  }
+
+  to {
+    transform: rotate(-4deg);
+  } */
+
+  0% {
+    transform: rotate(4deg);
+  }
+
+  1% {
+    transform: rotate(-4deg);
+  }
+
+  33% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  66% {
+    transform: rotate(-4deg);
+  }
+
+  100% {
+    transform: rotate(-4deg);
+  }
+}
 
 @st-scope Default {
 
 
   Logo {
     display: inline-flex;
-    transform-origin: 100% 120%;
+    /* transform-origin: 100% 120%; */
+    transform-origin: 50% 70%;
+    /* transform: rotate(-716deg); */
+    transform: rotate(4deg) translateZ(0);
+    align-items: center;
+    transition-property: transform;
+    transition-duration: .1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: .5s;
     /* margin-top: -100%;
   margin-left: -96px; */
   }
+
+  Logo:hover {
+    transform: rotate(-4deg);
+    /* animation-duration: 20s;
+    animation-name: headTilt; */
+    /* animation-iteration-count: infinite; */
+    /* animation-direction: alternate; */
+
+  }
+
+
+
 
   Logo::before,
   Logo::after {
@@ -35,10 +88,15 @@
     /* height: 94px;
   width: 94px; */
     height: 6em;
+
     width: 6em;
     /* border: 3px solid var(--color-ui, value(--color-ui-default)); */
     border: 0.1875em solid var(--color-ui, value(--color-ui-default));
     border: 0.158em solid var(--color-ui, value(--color-ui-default));
+    border: 0.115em solid var(--color-ui, value(--color-ui-default));
+
+    /* 0.115em */
+    /* margin-top: 2px; */
     border-radius: 500px
   }
 
@@ -50,10 +108,7 @@
   Logo::logoInner {
     /* height: 94px; */
     height: 6em;
-    /* margin-left: -50px;
-  margin-right: -50px; */
-    /* margin-left: -47px;
-  margin-right: -47px; */
+    height: 5.85em;
     margin-left: -2.9375em;
     margin-right: -2.9375em;
     position: relative;

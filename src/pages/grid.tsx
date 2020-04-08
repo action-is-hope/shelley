@@ -102,12 +102,8 @@ variant?: number;`}</CodeSample>
         <P className={grid.mb1}>
           This is our <q>one we made earlier</q> moment, our main grid variant.
           It started to resemble a games field so we just went with it.
-          Outrageous, I know!
+          Outrageous!
         </P>
-
-        {/* <P className={grid.mb1}>
-          It resembled a pitch so we just went with it. Wreckless!
-        </P> */}
 
         <Example1 />
 

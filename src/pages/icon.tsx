@@ -177,9 +177,8 @@ const IconDocs = () => {
         <P>
           They are usually inserted with via an <code>i</code> tag this does not
           stand for <em>icon</em> but for <em>italic</em>. Lastly they will all
-          be downloaded even if you only use five. They are inventive though, we
-          like that about them - it&apos;s defo worth understanding how they
-          work.
+          be downloaded even if you only use five. As we said, they are
+          inventive though from that perspective they are flawless.
         </P>
 
         <H3 uppercase vol={2}>

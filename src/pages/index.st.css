@@ -30,6 +30,7 @@
     grid-column: 2;
   }
 
+
   /* 7fr 5fr */
   .card {
 
@@ -38,7 +39,7 @@
 
     background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,232631+14,207cca+29,232631+29,232631+100&0+0,1+100 */
-
+    /* background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 80%, rgba(35, 38, 49, 0.14) 90%, rgba(30, 87, 153, 0) 100%); */
     /* background: linear-gradient(15deg, #678, #6f8793);
     background: linear-gradient(15deg, #14af83, #15b89a);
     background: linear-gradient(15deg, #745fb5, #9a6dbb); */
@@ -151,6 +152,7 @@ color: #4e4e4e;
     background: #d1ffe9;
     background: #287750;
     background: #2f5442;
+    background: #2e5b69;
   }
 
   .card+.card+.card {
@@ -159,7 +161,7 @@ color: #4e4e4e;
   }
 
   .card+.card+.card>h2 {
-    /* color: #504f4f; */
+    color: #fff;
     /* font-weight: 400; */
     /* -webkit-font-smoothing: initial; */
   }

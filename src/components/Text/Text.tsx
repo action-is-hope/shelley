@@ -13,7 +13,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** Toggles uppercase styles. */
   uppercase?: boolean;
   /** Set the weight index. */
-  weight?: 1 | 2 | 3 | 5 | 6 | 7 | 8 | false;
+  weight?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | false;
   /** Visually hides the element, visible to screen readers. */
   visuallyHidden?: boolean;
   /** How 'loud' should this Text be? */

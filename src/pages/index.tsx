@@ -67,38 +67,65 @@ const IndexPage = ({ data }: IndexPageProps) => {
             <H2 uppercase vol={2}>
               Introduction
             </H2>
-
+            {/* <P>Ways to support us, buy trees, </P> */}
             <P>
-              This is a style library for React but this website also serves as
-              a resource who want to know more about HTML, CSS and accessibility
-              in general and see some relatable examples in the flesh.
+              This is a fully stylable library for React in which you{" "}
+              <em>own</em>
+              the styles, 100%. This website aims to serve as a resource who
+              want to know more about HTML, CSS and accessibility in general and
+              see some relatable examples in the flesh.
             </P>
 
             <P>
-              Each component page first describes the React side of things, with
-              a demo; then we talk about the actual HTML that the component
-              churns out and the CSS selectors you have to style it.
+              Each component page first describes the React side of things; then
+              we talk about the actual HTML churned out by the component and the
+              selectors you have to style it.
             </P>
 
-            <P>
+            {/* <P>
               We also throw in some links to our this sites CSS which you are
               free to use, customise and learn from AND you get to feel a bit
               better about your impact on the world buy buying a tree or
               starting your own forest.
-            </P>
+            </P> */}
 
-            <P>
+            {/* <P>
               Shelley would not be possible without Stylable, a style managing
               solution built by a great team over at Wix who describe it as:{" "}
               <q>CSS for components</q>.
+            </P> */}
+
+            <P>
+              Shelley has a lot in common with the{" "}
+              <a href="https://material-ui.com/discover-more/vision/">
+                Material UI <q>Vision</q>
+              </a>{" "}
+              especially around accessibility and customisation. We are just
+              impatient and feel Stylable gives us what we need now. If
+              it&apos;s good for you too then great, if not then defo checkout{" "}
+              <a href="https://material-ui.com/">Material</a>.
+              {/* , it will be around for a while if they realise their
+              vision and can make even more intuative. Massive respect for the team over there, we just
+              felt we wanted full customisation for a web app to the point that
+              we were making a mess hacking away trying to scale it back a bit
+              and getting used to CSS we didn&apos;t write and is not ease to
+              access. We build a UI lib with JSS and started one with Emotion,
+              we found we over complicated components to provide customisation
+              and they it was still limiting. Shelley layers on only what we
+              need and is more of a starter kit for a styalble based project.
+              You can structure your project styles how you like, set all your
+              variables do whatever you want. */}
             </P>
 
             <P>
-              Stylable reunites us with our inner Zen Garden &apos;skillz&apos;
+              Stylable reunites us with our inner{" "}
+              <a href="http://www.csszengarden.com/">
+                Zen Garden &apos;skillz&apos;
+              </a>{" "}
               with a wonderful feeling of nostalgia with its simple and
               standards aware approach to managing styles.
             </P>
-            <P>What is Stylable and why did we choose it?</P>
+            {/* <P>What is Stylable and why did we choose it?</P> */}
 
             <H2 uppercase vol={2}>
               Contents
@@ -187,9 +214,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               We made a pact to take all of our anger, bitterness, fear and
-              sorrow with regards to the state of our planatary ship, channel it
-              and join the army of guardians defending her from infinite
-              consumption.
+              sorrow with regards to the state of our planatary ship; channel it
+              and join the guardians defending her from infinite consumption.
             </P>
 
             <P>
@@ -200,9 +226,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               Shelley exists mainly as a technical enabler for us to build our
-              web apps and stuff done. but we also want to help anyone with
-              vital knowledge to communicate it effectively. We wanted to open
-              our work up so as to enable others.
+              web apps and get stuff done, but we also want to help anyone with
+              vital knowledge but limited resources to communicate it
+              effectively.
             </P>
           </div>
           <div className={style.card}>
@@ -216,20 +242,20 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               What if talking about nature and our planet everyday is the
-              catalyst for real adaptive change within our society. We start to
-              see it with Covid.
+              catalyst for real adaptive change within our society. More start
+              to see the need now with Covid.
             </P>
 
             <P>
               Have a <em>real</em> conversation about the climate <em>today</em>{" "}
-              and <em>everyday</em> until it&apos;s our kids can breathe a clean
-              air sigh of relief!
+              and <em>everyday</em> until it&apos;s our kids can breath a clean
+              sigh of relief!
             </P>
 
             <P>
-              If you use Shelley then please honour our Treeware license and buy
-              some trees. If use this site as a resource or you just like our
-              style, perhaps you would consider it too?
+              If you use Shelley then please honour our{" "}
+              <a href="https://treeware.earth/">Treeware</a> conditions of use
+              and start a forest with us.
             </P>
           </div>
         </Grid>
