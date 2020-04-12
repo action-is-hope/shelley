@@ -4,6 +4,7 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
+  -st-named: --color-text-2-default;
 }
 
 :import {
@@ -47,7 +48,11 @@
 
   Label::textContainer {
     display: block;
-    color: #eaeaea
+    color: #eaeaea;
+    color: value(--color-text-2-default);
+    color: var(--color-text-2, value(--color-text-2-default));
+
+
   }
 
   Label::labelText {

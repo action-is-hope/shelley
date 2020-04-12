@@ -1,6 +1,13 @@
-/** grid.st.css */
+/**
+ * = Grid - grid.st.css 
+ *
+ * Out main grid styles live here, you maybe tempted to make add a load of
+ * utilities that configure your grid in a load of ways... Be warned that having
+ * too much layout specified with the markup via props/classnames is a real pain 
+ * when you are trying to make changes to a page full of grids, trust us.
+ * 
+ * ========================================================================= */
 
-/* project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -24,32 +31,17 @@
 }
 
 :import {
-  -st-from: "../../../components/Text/text.st.css";
-  -st-default: Text;
-}
-
-:import {
-  -st-from: "../../../components/Blockquote/blockquote.st.css";
-  -st-default: Blockquote;
-}
-
-:import {
-  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
-  -st-default: CodeSample;
-}
-
-:import {
   -st-from: './mixins/gridItem.st.css';
   -st-named:
     gridItem,
     gridItemReset;
 }
 
-:vars {
-  grid-col-sm-max: 4.6vw;
-  grid-col-md-max: 6.1vw;
-  /* lg not required. */
-  grid-col-xl-max: 5.1vw;
+:import {
+  -st-from: './utils.st.css';
+  -st-named:
+    formatted,
+    clearfix;
 }
 
 @st-scope Default {
@@ -59,37 +51,46 @@
     grid-gap: 3vw;
   }
 
-  /* IE Fallback for images only on nested grids? */
+  /*= IE Fallback for images only on nested grids? */
   Grid>Grid {
     text-align: center;
   }
 
-  /* Reset children else they will inherit the text-align. */
+  /*= Reset children else they will inherit the text-align. */
   Grid>Grid>* {
     text-align: initial;
   }
 
-  /* Reset for grid. */
+  /*= Reset for grid. */
   @supports (display: grid) {
     Grid>Grid {
       text-align: initial;
     }
   }
 
+  /*= Hook up the formatting styles to this prop. */
+  Grid:formatted {
+    -st-mixin: formatted;
+  }
+
+  /*= Variant 1: Core Grid */
+
+  /*= See grid docs on shelley.earth for initial walkthrough. */
   Grid.variant1 {
+    grid-row-gap: 0;
     grid-template-columns:
-      /* [edge-start goal-start] auto [pen-start] 4vw [mid-start] 9rem [half] 9rem [mid-end] 4vw [pen-end] auto [goal-end edge-end]; */
       [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
   }
 
+  /*= width tweaks and seperating 'pen' from 'goal' for sm and above. */
   @media value(breakpoint-sm) {
     Grid.variant1 {
       grid-template-columns:
         [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
-      /* [edge-start goal-start] auto [pen-start] 4vw [mid-start] 10rem [half] 10rem [mid-end] 4vw [pen-end] auto [goal-end edge-end]; */
     }
   }
 
+  /*= width tweaks for md and above. */
   @media value(breakpoint-md) {
     Grid.variant1 {
       grid-template-columns:
@@ -97,24 +98,21 @@
     }
   }
 
-
-  /* When to add a new variant? Not straightway, maybe after you use it on more than one component, you don't really want a variant with just one usage.*/
-
-  /* Any directly nested Grid components to be set on the 'container' grid lines by default. */
+  /*= Set any direct descendant Grid on the 'goal' grid lines. */
   Grid.variant1>Grid {
     grid-column: goal;
   }
 
-  /* Set directly nested variant1 grids to 'edge' grid lines by default. */
+  /*= Set direct descendant Grid variant1 to 'edge' grid lines. */
   Grid.variant1>Grid.variant1 {
     grid-column: edge;
   }
-
 }
 
-/** Columms */
+/*= Columms: Align common grid items, including fallback styles. */
 
-/* Align common grid items, including fallback styles. */
+/*= @todo: #stylable These are outside of @st-scope XXX {) due to a bug with 
+ *  stylable where only the first item gets the scope prefix. */
 Grid.variant1>h1,
 Grid.variant1>h2,
 Grid.variant1>h3,
@@ -129,7 +127,6 @@ Grid.variant1>blockquote,
 Grid.variant1>pre,
 Grid.variant1>img,
 Grid.variant1>figure {
-  /* fallback styles for mid-start / mid-end */
   -st-mixin: gridItem;
 }
 
@@ -149,6 +146,7 @@ Grid.variant1>.edge {
   -st-mixin: gridItem(gridCol edge, fallbackMaxWidth 100%);
 }
 
+/* @todo: This should be able to move to the gridItem mixin, if stylable bug confirmed. */
 @supports (display: grid) {
 
   Grid.variant1>h1,
@@ -183,9 +181,61 @@ Grid.variant1>.edge {
   Grid.variant1>.edge {
     -st-mixin: gridItemReset;
   }
+
+  /*= end */
+
+  /** 
+   * = Other grid variants
+   *
+   * One might call these our 'subgrids' as we usually will use them as children
+   * of the main grid, variant 1. 
+   * 
+   * When to add a new variant/subgrid? Not straightway?? maybe after you use it
+   * on more than one component, you don't really want a variant with just one 
+   * usage and in custom cases you migth use use some variables to build up a grid
+   * within a component CSS insteads. I think commony used patterns are fine, especially
+   * ones with a well defined responsive rules including fallback.
+   *
+   * You might like to use one as the basis of a custom style leveraging the fallback 
+   * but then overiding grid-template-columns with something else.
+   */
+
+
+  /*= Variant 2: 1 | 1 */
+  Grid.variant2 {
+    -st-mixin: clearfix;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /*= Fallbacks: Just because a browser is old doesn't mean it is stupid, calc is useful. */
+  Grid.variant2>* {
+    width: calc(50% - 1.5vw);
+  }
+
+  Grid.variant2>*:nth-child(odd) {
+    float: left;
+    /*rtl*/
+  }
+
+  Grid.variant2>*:nth-child(even) {
+    float: right;
+    /*rtl*/
+  }
+
+  /*= Reset fallback styles: no need for floats as they loose 'rock paper scissors' to grid in terms of layout. */
+  @supports (display: grid) {
+    Grid.variant2>* {
+      width: initial;
+    }
+  }
+
+
+  /*= Variant 3: 7 | 5 */
+  Grid.variant3 {
+    -st-mixin: clearfix;
+    grid-template-columns: 7fr 5fr;
+  }
 }
-
-
 
 
 .mt1 {
@@ -207,130 +257,3 @@ Grid.variant1>.edge {
 .mtAuto {
   margin-top: auto;
 }
-
-/* .mtb1 {
-    margin: calc(value(spacing-unit) * 4)
-  } */
-
-
-Grid:typographic p+p,
-Grid:typographic p+h4,
-Grid:typographic p+h5,
-Grid:typographic h2+p,
-Grid:typographic h3+p,
-Grid:typographic h4+p,
-Grid:typographic h5+p,
-Grid:typographic h6+p,
-Grid:typographic h4+h5 {
-  margin-top: calc(value(spacing-unit) * 2);
-}
-
-Grid:typographic blockquote,
-Grid:typographic CodeSample {
-  margin-top: calc(value(spacing-unit) * 4);
-  margin-bottom: calc(value(spacing-unit) * 5);
-  margin-bottom: 0;
-}
-
-Grid:typographic h2+CodeSample {
-  margin-top: calc(value(spacing-unit) * 2);
-}
-
-Grid:typographic blockquote+Text,
-Grid:typographic CodeSample+Text {
-  margin-top: calc(value(spacing-unit) * 6);
-}
-
-/* Grid:typographic>CodeSample:last-child {
-  margin-bottom: 0;
-} */
-
-/* Grid:typographic>blockquote+p {
-  margin-top: calc(value(spacing-unit) * 3);
-} */
-
-/* Grid:typographic>p+blockquote {
-  margin-top: calc(value(spacing-unit) * 4);
-}
-
-Grid:typographic>blockquote+p {
-  margin-top: calc(value(spacing-unit) * 3);
-} */
-
-Grid:typographic p+h2 {
-  margin-top: calc(value(spacing-unit) * 4);
-}
-
-/** Body styles */
-Grid:typographic p+Text.vol4 {
-  margin-top: calc(value(spacing-unit) * 8);
-}
-
-
-Grid:typographic p+h3,
-Grid:typographic h2+h3 {
-  margin-top: calc(value(spacing-unit) * 4);
-}
-
-Grid:typographic p+h6 {
-  margin-top: calc(value(spacing-unit) * 2);
-}
-
-/* Grid:typographic>p {
-    max-width: 37.8rem;
-    1800 / 5.1
-  } */
-
-/* Grid>Text.uppercase {
-    color: rgb(149, 239, 174)
-  } */
-
-/* maybe default with text spacing on...? the option to :disabled */
-
-@st-scope Default {
-  Grid.variant1 {
-    grid-row-gap: 0;
-  }
-
-  Grid.variant2 {
-    /* grid-gap: 3vw; */
-    grid-template-columns: 1fr 1fr;
-    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
-  }
-
-
-  Grid.variant2 {
-    overflow: hidden
-  }
-
-  /* Just because a browser is old soesn't mean it is stupid, calc is useful. */
-  Grid.variant2>* {
-    width: calc(50% - 1.5vw);
-  }
-
-  Grid.variant2>*:nth-child(odd) {
-    float: left;
-    /*rtl*/
-  }
-
-  Grid.variant2>*:nth-child(even) {
-    float: right;
-    /*rtl*/
-  }
-
-  @supports (display: grid) {
-    Grid.variant2>* {
-      width: initial;
-    }
-  }
-
-
-  Grid.variant3 {
-    /* grid-gap: 3vw; */
-    grid-template-columns: 7fr 5fr;
-    /* grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end]; */
-  }
-}
-
-/* This is how we can scope the styles but we loose CSS syntax sugar. There is a ticket for that on the stylable-intelligence. */
-@st-scope Default {}

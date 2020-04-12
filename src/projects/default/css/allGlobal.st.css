@@ -1,6 +1,5 @@
 /** allGlobal.st.css */
 
-*,
 :after,
 :before {
   box-sizing: border-box;
@@ -22,6 +21,15 @@
 
 svg:not(:root) {
   overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a:visited {
+  color: inherit
 }
 
 footer,

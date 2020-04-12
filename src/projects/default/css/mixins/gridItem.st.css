@@ -11,6 +11,7 @@
   grid-column: value(gridCol);
 }
 
+/* set with vars?*/
 .gridItemReset {
   text-align: initial;
   margin-left: initial;

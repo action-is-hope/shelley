@@ -25,7 +25,7 @@ const GridDocs = () => {
     <DefaultLayout>
       <PageTitle>Grid</PageTitle>
 
-      <Grid variant={1}>
+      <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
           Grid is for layout; personal to your site or style, limited only by
           old skool thinking around grid systems.

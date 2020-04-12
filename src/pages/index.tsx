@@ -6,17 +6,15 @@ import classnames from "classnames";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import text from "../projects/default/css/text.st.css";
 import grid from "../projects/default/css/grid.st.css";
+import utils from "../projects/default/css/utils.st.css";
 
 // Global styles work with TS like this:
 require("./example.css");
 
 import DefaultLayout from "../layouts";
-import Text, { H1, H2, H3, P } from "../components/Text/Text";
+import Text, { H2, H3, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
-import Icon from "../components/Icon/Icon";
-import { sign } from "crypto";
-import InputSelect from "../components/InputSelect/InputSelect";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema.
@@ -220,8 +218,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               What the bloody hell else are we supose to do? It&apos;s the only
-              ship we have and we are quite fond on it and <em>all</em> of her
+              ship we have and we are quite fond of her and <em>all</em> of her
               inhabitants.
+            </P>
+
+            <P>
+              Even comfort eating consumes us, with guilt; for it too it too
+              <q>consupmtion</q>, oh the horror!
             </P>
 
             <P>
@@ -230,6 +233,28 @@ const IndexPage = ({ data }: IndexPageProps) => {
               vital knowledge but limited resources to communicate it
               effectively.
             </P>
+
+            <P>
+              CSS in JS... awesome, I can dynamic values inside my CSS,
+              amazing... I&apos;d like to use grid-area please, it has funky
+              syntax... how to represent in JSON? Hacking away for a while...
+              yes it works... oh it works client side but not server side...
+              ffs, I&apos;ll change my CSS to suit.. Okay then... I&apos;ve made
+              a compromise but sticking with it... So, I&apos;d like to provide
+              a fall back to a browser that doesn&apos;t support CSS3
+              variables... Oh, it&apos;s JSON so I can&apos;t redeclare the same
+              property twice. ffs. Maybe there is a plugin we can use? Maybe it
+              will give us CSS syntax back? WHAT THE FUCK AM I DOING! RABBIT
+              HOLE ALERT. This is why CSS in JS is shit and it wasn&apos;t
+              really thought about from a CSS perspective and all those dynamic
+              values come with a hevey price in terms of the amount of CSS that
+              is generated so we couldn&apos;t really even use that.
+            </P>
+
+            <H2 uppercase vol={3}>
+              Influencers
+            </H2>
+            <P>Whilst </P>
           </div>
           <div className={style.card}>
             <H2 uppercase vol={3}>

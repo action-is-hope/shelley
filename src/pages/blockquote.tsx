@@ -20,7 +20,7 @@ const LabelsDocs = () => {
     <DefaultLayout>
       <PageTitle>Blockquote</PageTitle>
 
-      <Grid variant={1} tag="main">
+      <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
           Blockquote&apos;s are used for quoting peeps and papers; they tell any
           tech listening that this is a referance to someone elses words.

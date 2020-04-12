@@ -1,0 +1,98 @@
+/**
+ * = Default colour scheme - Light
+ *
+ * These are our alternate color schemes, only variable aware browers will see 
+ * these so no need to set that as stylable build variables unless you want to.
+ * Try to stay organised.
+ */
+
+
+:import {
+  -st-from: "./project.st.css";
+  -st-named:
+    --dark-01,
+    --dark-01-raw,
+    --light-01,
+    --light-01-raw,
+
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-accent-4-default,
+
+    --color-background-1-default,
+    --color-background-2-default,
+    --color-background-3-default,
+    --color-background-4-default,
+    --color-background-modal-default,
+
+    --color-text-1-default,
+    --color-text-2-default,
+    --color-text-3-default,
+    --color-text-4-default,
+
+    --color-status-error-default,
+    --color-status-warn-default,
+    --color-status-neutral-default,
+    --color-status-success-default,
+
+    --color-ui-default,
+    --color-ui-raw-default,
+    --color-ui-inverse-default,
+    --color-ui-raw-inverse-default,
+}
+
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+
+/*=== SET CSS RUN-TIME VARIABLES ===*/
+
+/**
+ * Default color scheme variables
+ * 
+ * We make use of the Stylable build variables and map them to equivalent CSS 
+ * runtime variables. This allows us to the -default version as our fallback,
+ * it is a little confusing at first so keep checking your browser list.
+ */
+
+.root {
+  --color-accent-1: value(--color-accent-1-default);
+  --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
+  --color-background-1: value(--color-background-1-default);
+  --color-background-2: value(--color-background-2-default);
+  --color-background-3: value(--color-background-3-default);
+  --color-background-4: value(--color-background-4-default);
+  --color-background-modal: value(--color-background-modal-default);
+  --color-text-1: value(--color-text-1-default);
+  --color-text-2: value(--color-text-2-default);
+  --color-text-3: value(--color-text-3-default);
+  --color-text-4: value(--color-text-4-default);
+  --color-status-error: value(--color-status-error-default);
+  --color-status-warn: value(--color-status-warn-default);
+  --color-status-neutral: value(--color-status-neutral-default);
+  --color-status-success: value(--color-status-success-default);
+  --color-ui: value(--color-ui-default);
+  --color-ui-raw: value(--color-ui-raw-default);
+  --color-ui-inverse: value(--color-ui-inverse-default);
+  --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
+
+  --grad-1: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+
+}
+
+
+/*= While all sounds well with "just change the colors to theri counterparts it is never that simple, ever. "*/
+/* Override our uppercase headings.
+   Handy use of :global() if you want to style based on a tag, useful where a 
+   component, link Text can output a number of tags as it's root element. */
+.root :global(h2)Text.uppercase,
+.root :global(h3)Text.uppercase,
+.root :global(h4)Text.uppercase {
+  color: value(--color-accent-2-default);
+  color: var(--color-accent-2, value(--color-accent-2-default));
+}

@@ -202,10 +202,10 @@
 
   /*=== COLOURS - The Queens English darling... ===*/
 
-  /* Core light forground. */
+  /* Core light . */
   --light-01-raw: 255, 255, 255;
   --light-01: rgb(value(--light-01-raw));
-  /* Core dark forground. */
+  /* Core dark . */
   --dark-01-raw: 51, 51, 51;
   --dark-01: rgb(value(--dark-01-raw));
 
@@ -219,90 +219,33 @@
   --color-accent-3-default: #ea91ff;
   --color-accent-4-default: #f7e1b9;
 
+  /* F87060, CDD7D6 */
+
   --color-background-1-default: rgb(23, 26, 35);
   --color-background-2-default: rgba(0, 0, 0, 0.4);
-  --color-background-3-default: rgba(255, 255, 255, 0.15);
-  --color-background-4-default: rgba(255, 255, 255, 0.15);
+  --color-background-3-default: rgba(160, 160, 160, 0.06);
+  --color-background-4-default: rgba(11, 13, 18, 0.34);
   --color-background-modal-default: rgba(23, 26, 35, 0.98);
+
   --color-text-1-default: value(--light-01);
   --color-text-2-default: rgba(value(--light-01-raw), 0.9);
   --color-text-3-default: rgba(value(--light-01-raw), 0.8);
-  --color-text-4-default: rgba(value(--light-01-raw), 0.6);
+  --color-text-4-default: #f7e1b9;
+
   --color-status-error-default: #b66b6e;
   --color-status-warn-default: orange;
   --color-status-neutral-default: blue;
   --color-status-success-default: green;
   --color-ui-default: value(--light-01);
+  --color-ui-inverse-default: value(--dark-01);
   /* rgb(212, 212, 212) */
-  --color-ui-default-raw: value(--light-01-raw);
+  --color-ui-raw-default: value(--light-01-raw);
+  --color-ui-raw-inverse-default: value(--dark-01-raw);
+  /* rgb(212, 212, 212) */
+
 }
 
-/*=== GLOBAL CSS ===*/
-
-/*=== SET CSS RUN-TIME VARIABLES ===*/
-
-/**
- * Default color scheme variables
- * 
- * We make use of the Stylable build variables and map them to equivalent CSS 
- * runtime variables. This allows us to the -default version as our fallback,
- * it is a little confusing at first so keep checking your browser list.
- */
-
-:root {
-  --color-accent-1: value(--color-accent-1-default);
-  --color-accent-2: value(--color-accent-2-default);
-  --color-accent-3: value(--color-accent-3-default);
-  --color-accent-4: value(--color-accent-4-default);
-  --color-background-1: value(--color-background-1-default);
-  --color-background-2: value(--color-background-2-default);
-  --color-background-3: value(--color-background-3-default);
-  --color-background-4: value(--color-background-4-default);
-  --color-background-modal: value(--color-background-modal-default);
-  --color-text-1: value(--color-text-1-default);
-  --color-text-2: value(--color-text-2-default);
-  --color-text-3: value(--color-text-3-default);
-  --color-text-4: value(--color-text-4-default);
-  --color-status-error: value(--color-status-error-default);
-  --color-status-warn: value(--color-status-warn-default);
-  --color-status-neutral: value(--color-status-neutral-default);
-  --color-status-success: value(--color-status-success-default);
-  --color-ui: value(--color-ui-default);
-  --color-ui-raw: value(--color-ui-default-raw);
-}
-
-
-/**
- * Alternate colour scheme variables
- *
- * These are our alternate color schemes, you can map them from build-time 
- * variables if you are sharing lots but it tend to get confusing for us.
- * Try to stay organised.
- */
-
-@media (prefers-color-scheme: light) {
-  .root {
-    /* Override our CSS runtime variables, if our user prefers it light as a feather. */
-    --color-accent-1: rgb(22, 141, 217);
-    --color-accent-2: rgb(35, 196, 141);
-    --color-background-1: rgb(242, 243, 255);
-    /*rgb(249, 249, 249);*/
-    --color-background-2: rgb(255, 255, 255);
-    --color-background-3: rgba(0, 0, 0, 0.15);
-    --color-background-4: rgb(255, 255, 255);
-    --color-background-modal: rgba(249, 249, 249, 0.98);
-    --color-text-1: value(--dark-01);
-    --color-text-2: rgba(value(--dark-01-raw), 0.9);
-    --color-text-3: rgba(value(--dark-01-raw), 0.8);
-    --color-text-4: rgba(value(--dark-01-raw), 0.6);
-    --color-status-error: red;
-    --color-status-warn: orange;
-    --color-status-neutral: blue;
-    --color-status-success: green;
-    --color-ui: value(--dark-01);
-    --color-ui-raw: value(--dark-01-raw);
-  }
-}
+/*= See theme files for project colour schemes. */
 
 /*=== GLOBAL CSS ===*/
 
@@ -312,21 +255,17 @@
  * which is pulled in within index.ts */
 .root {
   font-family: value(font-plain);
-  font-size: 100%;
-  /* font-weight: 200; */
-  /* line-height: value(--ratio); */
+  /* font-size: 100%; */
   min-height: 100vh;
 }
 
-/* Give ourselves a fluid rem value to use for padding or whatever. */
+/*= Give ourselves a fluid rem value to use for padding or whatever. */
 html {
   -webkit-text-size-adjust: 100%;
 }
 
 @supports (display: grid) {
   html {
-    /* font-size: value(text-vol-3-scale);
-    font-size: calc(1em + 0.45 * ((100vw - 20em) / (92.5))); */
     /** This is our responsive rem value, this will equal 1rem wherever we are.*/
     font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
   }
@@ -339,14 +278,11 @@ html {
   }
 }
 
-/* 1em + 0.625 */
-/* calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
-25.9392 */
-
 
 body {
   /**
-   * Sets the body back to browser defaults.
+   * = Set the body font-size to initial value.
+   *
    * Why? Using rem for everything means we can't set a container to say 
    * font-size: 90% to tweak the size of the contained elements as they would 
    * always size off the root html element.
@@ -355,24 +291,10 @@ body {
    * leverage ems as described above.
    */
   font-size: initial;
+  /*= Main foreground including fallback. */
   color: value(--color-ui-default);
   color: var(--color-ui, value(--color-ui-default));
-
-
+  /*= Main background including fallback. */
   background-color: value(--color-background-1-default);
   background-color: var(--color-background-1, value(--color-background-1-default));
-
-  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150% */
-  /* background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
-  /* background: linear-gradient(-45deg, rgb(16, 10, 86) 0%, rgb(43, 40, 43) 100%) 0% 0% / 150% 150%; */
-
-  /* background: linear-gradient(-45deg, rgb(3, 116, 156) 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%;
-  background: linear-gradient(-45deg, #09351f 0%, rgb(25, 41, 66) 100%) 0% 0% / 150% 150%; */
-}
-
-hr {
-  width: 16vw;
-  height: 1px;
-  margin: 48px auto;
-  background: var(--color-ui)
 }

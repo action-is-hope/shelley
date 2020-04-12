@@ -25,11 +25,12 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      value: "Yes to climate action"
+      // value: "Step up to Earth Guardians of Earth"
+      value: "Earth Guardians required"
     },
     {
-      name: "color",
-      label: "color",
+      name: "tone",
+      label: "tone",
       type: "number",
       min: 0,
       max: 6,
@@ -52,16 +53,16 @@ export const ComponentDemo = () => {
       value: 2
     },
     {
-      name: "cite",
-      label: "cite",
+      name: "tip",
+      label: "tip",
       type: "text",
-      value: "Donella Meadows, environmental scientist, 1941-2001 "
+      value: "@todo infotip"
     },
     {
-      name: "citeUrl",
-      label: "citeUrl",
+      name: "icon",
+      label: "icon",
       type: "text",
-      value: "https://en.wikipedia.org/wiki/Donella_Meadows"
+      value: "@todo icon"
     }
   ]);
   return (
@@ -73,8 +74,8 @@ export const ComponentDemo = () => {
       renderExample={
         <CodeSample>{`import { Button } from "@action-is-hope/shelley";\n\n<Button ${
           labelDemoProps[1].value > 0
-            ? `\n  color={${labelDemoProps[1].value}}`
-            : `\n  color={false}`
+            ? `\n  tone={${labelDemoProps[1].value}}`
+            : `\n  tone={false}`
         } ${
           labelDemoProps[2].value > 0
             ? `\n  variant={${labelDemoProps[2].value}}`
@@ -84,14 +85,12 @@ export const ComponentDemo = () => {
             ? `\n  volume={${labelDemoProps[3].value}}`
             : `\n  volume={false}`
         } ${
-          labelDemoProps[1].value
-            ? `\n  citeUrl="${labelDemoProps[3].value}"`
-            : ``
+          labelDemoProps[1].value ? `\n  icon="${labelDemoProps[3].value}"` : ``
         }  \n>\n ${labelDemoProps[0].value}\n</Button>`}</CodeSample>
       }
     >
       <Button
-        color={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
+        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
         variant={
           labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
         }
@@ -104,8 +103,8 @@ export const ComponentDemo = () => {
 };
 
 export const ComponentHTML = () => (
-  <CodeSample>{`<button class="button-root button-accent1 button-variant1 button-vol2">
-  <span class="button-inner">Yes to climate action</span>
+  <CodeSample>{`<button class="button-root button-tone1 button-variant1 button-vol2">
+  <span class="button-inner">Earth Guardians</span>
 </button>`}</CodeSample>
 );
 
@@ -128,12 +127,12 @@ Button::tip {}
 
 
 /* Accent colours */
-Button.accent1 {}
-Button.accent2 {}
-Button.accent3 {}
-Button.accent4 {}
-Button.accent5 {}
-Button.accent6 {}
+Button.tone1 {}
+Button.tone2 {}
+Button.tone3 {}
+Button.tone4 {}
+Button.tone5 {}
+Button.tone6 {}
 
 /* Volumes */
 Button.vol1 {}

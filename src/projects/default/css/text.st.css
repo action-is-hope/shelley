@@ -24,6 +24,7 @@
     --color-accent-2-default,
     --color-accent-3-default,
     --color-accent-4-default;
+
 }
 
 :import {
@@ -166,18 +167,6 @@
   Text.vol4.uppercase {
     letter-spacing: .31em;
   }
-
-  /* 
-   Handy little work around this if you want to style based on a tag, useful 
-   where a component, link Text can output a number of tags as it's root element. */
-  :global(h2)Text.uppercase,
-  :global(h3)Text.uppercase,
-  :global(h4)Text.uppercase {
-    color: value(--color-accent-2-default);
-    color: var(--color-accent-2, value(--color-accent-2-default));
-  }
-
-  /* #ea91ff */
 
 
   /* State selectors - Note: Inherits functional styles from Shelley. */

@@ -7,7 +7,11 @@
   -st-named:
     spacing-unit,
     --color-ui-default,
-    --color-accent-1-default;
+    --color-ui-inverse-default,
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-accent-4-default;
 }
 
 :import {
@@ -165,13 +169,26 @@
 
 
   /* Button COLOURS */
-  /* DEFAULT */
-  Button.accent1 {}
 
-  Button.variant1.accent1 {
-    background-color: var(--color-accent-2, value(--color-accent-1-default));
-    color: var(--color-ui, value(--color-ui-default));
-    color: #333;
+  /* DEFAULT */
+  Button.variant1 {
+    color: var(--color-ui-inverse, value(--color-ui-inverse-default));
+  }
+
+  Button.variant1.tone1 {
+    background-color: var(--color-accent-1, value(--color-accent-1-default));
+  }
+
+  Button.variant1.tone2 {
+    background-color: var(--color-accent-2, value(--color-accent-2-default));
+  }
+
+  Button.variant1.tone3 {
+    background-color: var(--color-accent-3, value(--color-accent-3-default));
+  }
+
+  Button.variant1.tone4 {
+    background-color: var(--color-accent-4, value(--color-accent-4-default));
   }
 
   Button.variant2 {
@@ -179,7 +196,7 @@
     border-width: 2px;
   }
 
-  Button.variant2.accent1 {
+  Button.variant2.tone1 {
     border-color: var(--color-accent-2, value(--color-accent-1-default));
     color: var(--color-ui, value(--color-ui-default));
     /* color: #333; */

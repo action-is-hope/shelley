@@ -6,8 +6,8 @@ import classNames from "classnames";
 interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** HTML tag to render as the root for your grid. */
   tag?: string;
-  /** Designed to toggle typographic alignment rules. */
-  typographic?: boolean;
+  /** Designed to toggle formatting rules for children. */
+  formatted?: boolean;
   /** Variant index. */
   variant?: number;
 }
@@ -19,7 +19,7 @@ const Grid = React.forwardRef(
       className: classNameProp,
       variant = 1,
       tag: tagName = "div",
-      typographic = true,
+      formatted = false,
       ...rest
     }: GridProps,
     ref?: React.Ref<HTMLBaseElement>
@@ -29,7 +29,7 @@ const Grid = React.forwardRef(
       {
         ...style(
           classNames(style.root, style["variant" + variant], classNameProp),
-          { typographic },
+          { formatted },
           rest
         ),
         ref: ref,

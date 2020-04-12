@@ -11,7 +11,10 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default, --color-background-1-default;
+  -st-named:
+    --color-accent-1-default,
+    --color-ui-raw-default,
+    --color-background-1-default;
 }
 
 :import {
@@ -24,7 +27,8 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
   PropsDemo {
     padding: 1.3rem;
     padding-top: 2rem;
-    border: 1px dashed rgba(255, 255, 255, 0.13);
+    border: 1px dashed value(color-ui-raw-default);
+    border: 1px dashed rgba(var(--color-ui-raw), 0.2);
     margin-top: 5.8rem;
     margin-bottom: 5.8rem;
     grid-column: edge;
@@ -125,7 +129,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
   text-align: end; */
     position: absolute;
     /* right: 0; */
-    top: -.8em;
+    top: -1.8em;
   }
 
   PropsDemo::propsHint {
@@ -162,7 +166,9 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
   }
 
   PropsDemo::propsHeading span {
-    background: #181b24;
+    /*= Main background including fallback. */
+    background-color: value(--color-background-1-default);
+    background-color: var(--color-background-1, value(--color-background-1-default));
     display: inline-block;
     padding: 0 4px;
   }

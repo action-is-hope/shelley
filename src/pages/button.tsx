@@ -31,10 +31,10 @@ const ButtonDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>Button</PageTitle>
-      <Grid variant={1} tag="main">
+      <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
-          Buttons are &apos;selected&apos; not everyone is clicking, lets forget
-          the mouse, the key resides in the keyboard. Deep.
+          Buttons are &apos;selected&apos;, lets forget about that mouse, the
+          key resides in the keyboard. Deep.
         </P>
 
         <H2 vol={2} uppercase>

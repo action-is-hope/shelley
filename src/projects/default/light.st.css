@@ -1,0 +1,102 @@
+/**
+ * = Alternate colour scheme - Light
+ *
+ * These are our alternate color schemes, only variable aware browers will see 
+ * these so no need to set that as stylable build variables unless you want to.
+ * Try to stay organised.
+ */
+
+
+:import {
+  -st-from: "./project.st.css";
+  -st-named:
+    --dark-01,
+    --dark-01-raw,
+    --light-01,
+    --light-01-raw,
+    --color-accent-3-default,
+    --color-accent-4-default
+}
+
+
+/* 
+    This theme overrides some of the css variables defined in the project.st.css file,
+    replacing the entire design of the application.
+ */
+.root {
+  /* Override our CSS runtime variables, if our user prefers it light as a feather. */
+  /* 4.6:1 */
+  --color-accent-1: rgb(15, 108, 189);
+  --color-accent-2: rgb(11, 123, 62);
+  /* 4.5:1 */
+  --color-accent-2: rgb(3, 123, 70);
+  /* rgb(26, 140, 101); */
+  /*rgb(21, 140, 80)*/
+  --color-accent-3: rgb(171, 45, 201);
+  /* 4.5:1 */
+  --color-accent-4: rgb(134, 102, 30);
+  /* --color-accent-4: #6B6B6B; */
+  --color-background-1: rgba(239, 239, 239, 1) !important;
+  /*rgb(174, 174, 181)*/
+  /*rgb(249, 249, 249);*/
+  /* d1d1da */
+  --color-text-4: rgb(134, 102, 30);
+
+
+  /*
+
+orange - F87060, CDD7D6
+
+
+  - code brown #ad8132
+  181b24
+
+purple - 7F5A83, E3DFFF
+
+orange - F15946, E09F7D
+
+yellow - F9C22E, FFC857
+
+red - E01A4F
+
+pinkE15A97
+
+grey 828489 C6C5B9
+
+auqa 455561
+
+62929E
+
+blue 4D7EA8
+49475B
+
+burn redss
+774C60
+B75D69
+
+pink D72483
+
+792359
+
+  005E7C
+  */
+  --color-background-2: rgb(255, 255, 255);
+  --color-background-3: rgb(255, 255, 255);
+  /*code sample*/
+  --color-background-4: rgb(255, 255, 255, 0.8);
+  --color-background-modal: rgba(249, 249, 249, 0.98);
+  --color-text-1: value(--dark-01);
+  --color-text-2: rgba(value(--dark-01-raw), 0.9);
+  --color-text-3: rgba(value(--dark-01-raw), 0.8);
+  /* --color-text-4: rgba(value(--dark-01-raw), 0.6); */
+  --color-status-error: red;
+  --color-status-warn: orange;
+  --color-status-neutral: blue;
+  --color-status-success: green;
+  --color-ui: value(--dark-01);
+  --color-ui-raw: value(--dark-01-raw);
+  --color-ui-inverse: value(--light-01);
+  --color-ui-raw-inverse: value(--light-01-raw);
+
+  --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);
+}

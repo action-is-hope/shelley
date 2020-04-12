@@ -7,7 +7,10 @@
 :import {
   -st-from: "../../projects/default/project.st.css";
   -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
+  -st-named:
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-ui-default;
 }
 
 .logoGrid {
@@ -49,16 +52,12 @@
   grid-column-start: 2;
   font-size: 1.25em;
   font-size: 1.35em;
-  /* position: relative; */
-  /* top: -12px; */
-  /* margin-top: -60px; */
 }
 
 .root Text.title.uppercase {
   grid-row: 1;
   grid-column-start: 1;
   /* margin-top: 16px; */
-  color: #f8f8f9;
   /* justify-self: start; */
   justify-self: center;
   align-self: center;
@@ -87,6 +86,7 @@
   transform: rotate(1deg);
   color: #59ff59;
   color: #51de98;
+  color: var(--color-accent-2);
   font-size: 14px;
   letter-spacing: 18px;
 

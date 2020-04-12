@@ -7,22 +7,22 @@
 /* The divider which is rendered with an icon only. */
 .divider {}
 
-/* The tip element got for inline tool-tips on focus/hover. */
+/* The infotip element for inline tooltip style on focus/hover. */
 .tip {}
 
-/* Accents */
+/* Tones */
 
-.accent1 {}
+.tone1 {}
 
-.accent2 {}
+.tone2 {}
 
-.accent3 {}
+.tone3 {}
 
-.accent4 {}
+.tone4 {}
 
-.accent5 {}
+.tone5 {}
 
-.accent6 {}
+.tone6 {}
 
 
 /* Variants */

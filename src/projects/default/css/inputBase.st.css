@@ -5,7 +5,8 @@
   -st-default: Default;
   -st-named:
     spacing-unit,
-    --color-ui-default;
+    --color-ui-default,
+    --color-background-3-default;
 }
 
 :import {
@@ -163,7 +164,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: value(spacing-unit);
-    background: rgba(255, 255, 255, 0.04);
+    background-color: value(--color-background-3-default);
+    background-color: var(--color-background-3, value(--color-background-3-default));
   }
 
   InputBase.variant2 InputLabel {
