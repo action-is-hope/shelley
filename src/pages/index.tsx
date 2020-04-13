@@ -126,7 +126,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
             {/* <P>What is Stylable and why did we choose it?</P> */}
 
             <H2 uppercase vol={2}>
-              Contents
+              Contents @TODO
             </H2>
 
             <ul className={style.menuList}>
@@ -223,38 +223,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              Even comfort eating consumes us, with guilt; for it too it too
-              <q>consupmtion</q>, oh the horror!
-            </P>
-
-            <P>
               Shelley exists mainly as a technical enabler for us to build our
               web apps and get stuff done, but we also want to help anyone with
               vital knowledge but limited resources to communicate it
               effectively.
             </P>
-
-            <P>
-              CSS in JS... awesome, I can dynamic values inside my CSS,
-              amazing... I&apos;d like to use grid-area please, it has funky
-              syntax... how to represent in JSON? Hacking away for a while...
-              yes it works... oh it works client side but not server side...
-              ffs, I&apos;ll change my CSS to suit.. Okay then... I&apos;ve made
-              a compromise but sticking with it... So, I&apos;d like to provide
-              a fall back to a browser that doesn&apos;t support CSS3
-              variables... Oh, it&apos;s JSON so I can&apos;t redeclare the same
-              property twice. ffs. Maybe there is a plugin we can use? Maybe it
-              will give us CSS syntax back? WHAT THE FUCK AM I DOING! RABBIT
-              HOLE ALERT. This is why CSS in JS is shit and it wasn&apos;t
-              really thought about from a CSS perspective and all those dynamic
-              values come with a hevey price in terms of the amount of CSS that
-              is generated so we couldn&apos;t really even use that.
-            </P>
-
-            <H2 uppercase vol={3}>
-              Influencers
-            </H2>
-            <P>Whilst </P>
           </div>
           <div className={style.card}>
             <H2 uppercase vol={3}>
