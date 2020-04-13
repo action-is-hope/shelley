@@ -28,12 +28,11 @@ export function ThemeBar({ theme }: { theme?: string }) {
   const [lightTheme, setLightTheme] = useState(false);
 
   useEffect(() => {
-    const localTheme: any = window.localStorage.getItem("currentTheme");
+    const localTheme: any =
+      window.localStorage.getItem("currentTheme") || "dark";
     localTheme && setLightTheme(localTheme === "light" ? true : false);
     localTheme && changeTheme(localTheme);
   }, []);
-
-  const iconSelect = 3;
 
   return (
     <InputSelection
