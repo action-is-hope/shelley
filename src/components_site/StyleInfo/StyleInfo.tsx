@@ -26,7 +26,7 @@ const StyleInfo = ({
 }: StyleInfoProps) => {
   const rootClassNames = classNames(
     style.root,
-    grid.goal,
+    grid.snapMidToGoal,
     grid.mt1,
     grid.mb2,
     className

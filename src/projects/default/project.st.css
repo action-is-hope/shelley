@@ -26,6 +26,20 @@
   breakpoint-xl: "only screen and (min-width: 1600px)";
   breakpoint-xxl: "only screen and (min-width: 1800px)";
 
+  /*= Using min-width vs max-width... Up to you... some people switch it in 
+  production because max-width looks cleaner with less styles applied to elmements at 
+  any given time. But for development it is handy to be able to toggle off styes with 
+  the inspector and have the overriden value apply. Personally, it we you are 
+  overriding the values that exist already then we tend to use min-widths, if we are 
+  having to turn off styles accross breakpoints we use max-width for those styles. */
+
+  breakpoint-xs-max: "only screen and (max-width: 0px)";
+  breakpoint-sm-max: "only screen and (max-width: 567px)";
+  breakpoint-md-max: "only screen and (max-width: 949px)";
+  breakpoint-lg-max: "only screen and (max-width: 1199px)";
+  breakpoint-xl-max: "only screen and (max-width: 1599px)";
+  breakpoint-xxl-max: "only screen and (max-width: 1799px)";
+
   /** Spacing */
   spacing-unit: 0.69231rem;
   /* text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max)); */

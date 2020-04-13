@@ -262,6 +262,17 @@
     bottom: -38px;
   }
 
+
+
+
+
+  /* Fabulous! https://css-tricks.com/touch-devices-not-judged-size/ */
+  @media (pointer: coarse) {
+    InputSelection.variant3 HintText {
+      -st-mixin: visuallyHidden
+    }
+  }
+
   InputSelection.variant3:hover HintText,
   InputSelection.variant3:focus-within HintText {
     transform: scale(1);
