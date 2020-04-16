@@ -26,6 +26,8 @@
     text-vol-4-scale, text-vol-4-max,
     text-vol-5-scale, text-vol-5-max,
     text-vol-6-scale, text-vol-6-max,
+    --color-form-mark-default,
+    --color-focus-default,
     --color-ui-default;
 }
 
@@ -77,7 +79,7 @@
  * 'text-based'. Naming these things is a nightmare.
  */
 
-/* Field Root */
+/*= Field Root */
 .textualFieldRoot {
   /* 
     Showing the error before the field in question is the most logical but in 
@@ -90,15 +92,14 @@
   flex-direction: column;
 }
 
-/* Field Container */
+/*= Field Container */
 .textualFieldContainer {
   position: relative;
   display: inline-flex;
-  color: value(--color-ui-default);
   line-height: 1.5;
 }
 
-/* Pseudo indicator */
+/*= Pseudo indicator */
 .textualFieldContainer::before {
   position: absolute;
   top: 0;
@@ -107,24 +108,28 @@
   display: block;
   content: "";
   width: 1px;
-  background-color: #33d25f45;
-  background-color: rgba(189, 228, 254, 0.5);
-  /* 50% of the blue tint for form elemets... */
+  background-color: value(--color-form-mark-default);
+  background-color: var(--color-form-mark, value(--color-form-mark-default));
+  /* Dull it down a bit... */
+  opacity: 0.5;
   transition: background-color 0.3s;
 }
 
-/* Focused */
+/*= Focused */
 .textualFieldContainer:focus-within::before {
-  background-color: #09b1f1;
-  box-shadow: 0 0 1px 1px #09b1f1;
+  opacity: 1;
+  /*= Give us that 'glow' effect for the focused state.*/
+  box-shadow: 0 0 1px 1px value(--color-focus-default);
+  box-shadow: 0 0 1px 1px var(--color-focus, value(--color-focus-default));
+  /*= The glow from the box-shadow means we don't want the width, too chunky. */
   width: 0;
-  /* Must work even if in an error state. */
 }
 
-/* The actual field <input> */
+/*= The actual field <input> */
 .textualFieldInput {
   -st-mixin: hideWebkitAppearance;
   background: none;
+  color: currentColor;
   resize: none;
   outline: none;
   display: block;
@@ -134,7 +139,6 @@
   border: none;
   font: inherit;
   line-height: 1.5;
-  color: currentColor;
 }
 
 
@@ -155,7 +159,7 @@
  *
  */
 
-/* Volume 1 */
+/*= Volume 1 */
 .inputVol1 {
   /* 16px all the way from mobile to desktop. */
   font-size: 1em;
@@ -171,7 +175,7 @@
   font-size: 16px;
 }
 
-/* Volume 2 */
+/*= Volume 2 */
 .inputVol2 {
   /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
   -st-mixin:
@@ -188,7 +192,7 @@
   font-size: 20px;
 }
 
-/* Volume 3 */
+/*= Volume 3 */
 .inputVol3 {
   -st-mixin:
     textVol(scale value(text-vol-3-scale),
@@ -205,7 +209,7 @@
   font-size: 24px;
 }
 
-/* Volume 4 */
+/*= Volume 4 */
 .inputVol4 {
   -st-mixin:
     textVol(scale value(text-vol-4-scale),
@@ -222,7 +226,7 @@
   font-size: 28px;
 }
 
-/* Volume 5 */
+/*= Volume 5 */
 .inputVol5 {
   /* We love calc!! Here we can shave off a little from our larger sizes, our 
    * our rem value is on a scale so this has greated impact at larges 
@@ -243,7 +247,7 @@
   font-size: 32px;
 }
 
-/* Volume 6 */
+/*= Volume 6 */
 .inputVol6 {
   /* We love calc!! Here we can shave off a little from our larger sizes, our 
    * our rem value is on a scale so this has greated impact at larges 
@@ -263,6 +267,3 @@
 .inputVol6 SelectionControl {
   font-size: 36px;
 }
-
-
-.errorMessage {}

@@ -33,8 +33,8 @@ const ButtonDocs = () => {
       <PageTitle>Button</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
-          Buttons are &apos;selected&apos;, lets forget about that mouse, the
-          key resides in the keyboard. Deep.
+          Buttons are &apos;selected&apos; not clicked lets forget about the
+          mouse, the key resides in the keyboard. Deep.
         </P>
 
         <H2 vol={2} uppercase>
@@ -49,8 +49,8 @@ const ButtonDocs = () => {
             aria and buttons
           </a>{" "}
           as you need, attributes are spread down to the actual{" "}
-          <code>button</code> so treat it as an HTML button when it comes to
-          supporting our assistive tech friends.
+          <code>button</code> so treat it as a regular HTML button when it comes
+          to supporting our friends using assistive tech.
         </P>
 
         <P>
@@ -72,10 +72,10 @@ const ButtonDocs = () => {
         </H2>
 
         <P>
-          We have an inner button which is pretty key if you are going to be
-          throwing other things inside a button. We put out vertical alignment
-          on the inner item so as to allow an adjacent icon the full height to
-          move around in.
+          We have a button and an inner button which is pretty key if we are to
+          throw in other things inside a button. We put out vertical alignment
+          on the inner item so as to allow an adjacent icon to span the full
+          height.
         </P>
 
         <StyleInfo
@@ -115,7 +115,8 @@ const ButtonDocs = () => {
 
         <P>
           If you are throwing an <code>Icon</code> inside with no visible text
-          label then be sure to provide one via the <code>label</code> prop.
+          label then be sure to provide one via the <code>alt</code> prop on the
+          icon which mirrors that of an image.
         </P>
 
         <P>
@@ -129,8 +130,8 @@ const ButtonDocs = () => {
           <a href="https://www.w3.org/TR/wai-aria-practices/#button">
             aria and buttons
           </a>{" "}
-          as you need but it is useful to scan read them now so that light goes
-          off in your head when you need it to.
+          as you need but worth a scan read when you have a mo so that light
+          goes off in your head when you need it to.
         </P>
 
         <div className={grid.mid}>

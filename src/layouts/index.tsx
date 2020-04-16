@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import style from "./index.st.css";
-import { Theme as defaultTheme } from "../projects/default";
 import { ThemeBar, changeTheme } from "../projects/themeSelector";
-
-import PageTitle from "../components_site/PageTitle/PageTitle";
-
-const theme = "light";
-// changeTheme(theme);
+import project from "../projects/default/project.st.css";
+import dark from "../projects/default/dark.st.css";
+import classnames from "classnames";
 
 const Header = () => (
   <div className={style.navbar}>
@@ -46,23 +43,26 @@ const Footer = () => (
 );
 
 const DefaultLayout = ({ children }) => (
-  <div className={defaultTheme}>
-    <>
-      <Helmet
-        title="Gatsby Default Starter"
-        meta={[
-          { name: "description", content: "Sample" },
-          { name: "keywords", content: "sample, something" }
-        ]}
-        htmlAttributes={{
-          lang: "en"
-        }}
-      />
-      <Header />
-      {children}
-      <Footer />
-    </>
-  </div>
+  <>
+    <Helmet
+      title="Shelley - A Stylable User Interface"
+      meta={[
+        {
+          name: "description",
+          content:
+            "React UI lib: Create something beautiful from recycled body parts."
+        },
+        { name: "keywords", content: "sample, something" }
+      ]}
+      htmlAttributes={{
+        lang: "en",
+        class: classnames(project.root, dark.root)
+      }}
+    />
+    <Header />
+    {children}
+    <Footer />
+  </>
 );
 
 export default DefaultLayout;

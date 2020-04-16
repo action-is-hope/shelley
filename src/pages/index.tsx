@@ -56,7 +56,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
             {/* Try this with new version... */}
             {/* <p className={classnames(text.vol3, text.intro)}>Hello</p> */}
             <P vol={4}>
-              Follow the story of a digital nomad and an online entity called
+              Follow the story of a digital nomad and a digital entity called
               Shelley as they strive night and day to create something beautiful
               from the carelessly discarded <code>body</code> parts that they
               have found lurking around the internet. Throw the switch!

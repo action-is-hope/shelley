@@ -17,7 +17,7 @@ export const meta = {
 
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>{`import Grid from "@action-is-hope/shelley";
-\n<Grid tag="section" variant={1} typographic>
+\n<Grid tag="section" variant={1} formatted>
   {/* children */}
 </Grid>`}</CodeSample>
 );
@@ -84,7 +84,7 @@ export const ComponentDemo = () => {
 
 export const ComponentHTML = () => (
   /** @TODO: #stylable This will chane when we upgrage - test this is inline with the new.. */
-  <CodeSample language="html">{`<div class="grid-root grid-typographic grid-variant1">
+  <CodeSample language="html">{`<div class="grid-root grid-variant1 grid-formatted">
   <!-- children -->
 </div>`}</CodeSample>
 );
@@ -109,7 +109,7 @@ Grid.variant5 {}
 Grid.variant6 {}
 
 /* Root alignment hook */
-Grid:typographic {}
+Grid:formatted {}
 `}</CodeSample>
 );
 

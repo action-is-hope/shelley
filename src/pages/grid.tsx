@@ -45,8 +45,21 @@ const GridDocs = () => {
         </P>
 
         <P>
-          No demo, too big so here is a quick look at the props before we move
-          on:
+          If you are new to CSS grid then chekcout this{" "}
+          <a href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">
+            5 min tutorial for beginners
+          </a>{" "}
+          and when you are messing about with it{" "}
+          <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">
+            CSS Tricks: A Complete Guide to Grid
+          </a>{" "}
+          will be a good referance until you remember most of it.
+        </P>
+
+        <P>
+          We don&apos;t have our usual props demo, so here is a quick look at
+          the props before we move on but there is nothing stopping you from
+          building your own grid component to handle your usecases.
         </P>
 
         {/* <ul className={classnames(grid.mt1, grid.mb1)}>
@@ -55,7 +68,7 @@ const GridDocs = () => {
             for your grid.
           </Text>
           <Text tag="li">
-            <code>typographic</code> - boolean designed to toggle typographic
+            <code>formatted</code> - boolean designed to toggle formatted
             alignment rules.
           </Text>
           <Text tag="li">
@@ -67,8 +80,8 @@ const GridDocs = () => {
           className={grid.mid}
         >{`/** HTML tag to render as the root for your grid. */
 tag?: string;
-/** Designed to toggle typographic alignment rules. */
-typographic?: boolean;
+/** Designed to toggle content formatting/alignment rules. */
+formatted?: boolean;
 /** Variant index. */
 variant?: number;`}</CodeSample>
 
@@ -79,7 +92,7 @@ variant?: number;`}</CodeSample>
         <P>
           It is quite hard to write something down for grid... because{" "}
           <em>you</em> control the CSS and we don&apos;t usually talk too much
-          about the CSS implementation here usually pointing you to our
+          about the CSS implementation, we usually pointing you to our
           project/theme styles as a starting point.
         </P>
 
@@ -109,19 +122,20 @@ variant?: number;`}</CodeSample>
 
         <P className={grid.mt2}>
           We like this layout as a concept, inspired by Medium; designed to
-          support an{" "}
+          support{" "}
           <a href="https://baymard.com/blog/line-length-readability">
-            optimal reading width of between 50-75 characters
+            optimal reading widths of between 50-75 characters
           </a>{" "}
-          for the main content flow across devices.
+          across devices for the main content flow with <q>breakouts</q> for
+          larger non text content.
         </P>
 
         {/* <source srcset="/sites/default/files/styles/clvi_photo_large/public/2019-10/Salam_Jashim_water%20world_2.jpg?itok=CgNsC_GS 1000w, /sites/default/files/styles/clvi_photo_xlarge/public/2019-10/Salam_Jashim_water%20world_2.jpg?itok=j-UHf2xH 1200w, /sites/default/files/styles/clvi_photo_xxlarge/public/2019-10/Salam_Jashim_water%20world_2.jpg?itok=-s2AY5V8 1600w" media="screen" type="image/jpeg" sizes="96vw"> */}
 
         <P>
           In general our approach is more <q>fluid</q> over <q>snap</q> although
-          we do combine our <code>goal</code> and <code>edge</code> gridlines as
-          we get narrower; check the example with your device inspector.
+          we do collapse some of our gridlines as we get narrower; check the
+          example with your device inspector.
         </P>
 
         <P>

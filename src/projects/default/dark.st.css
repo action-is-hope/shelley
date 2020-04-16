@@ -40,6 +40,11 @@
     --color-ui-raw-default,
     --color-ui-inverse-default,
     --color-ui-raw-inverse-default,
+
+    --color-form-mark-default,
+    --color-focus-default,
+
+    --grad-1-default
 }
 
 :import {
@@ -81,7 +86,10 @@
   --color-ui-inverse: value(--color-ui-inverse-default);
   --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
 
-  --grad-1: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+  --color-form-mark: value(--color-form-mark-default);
+  --color-focus: value(--color-focus-default);
+
+  --grad-1: value(--grad-1-default);
 
 }
 

@@ -4,7 +4,10 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named: spacing-unit;
+  -st-named:
+    spacing-unit,
+    --color-background-3-default,
+    --color-form-mark-default;
 }
 
 :import {
@@ -63,8 +66,6 @@
   InputSelection.radio {}
 
   InputSelection {
-    /* display: grid;
-  grid-template-rows: auto auto auto [error-message]; */
     display: inline-flex;
     flex-direction: column-reverse;
   }
@@ -79,44 +80,39 @@
 
   /*==== VOLUMES ====*/
 
-  /* Volume 1 */
+  /*= Volume 1 */
   InputSelection.vol1 {
     -st-mixin: inputVol1
   }
 
-  /* Volume 2 */
+  /*= Volume 2 */
   InputSelection.vol2 {
     -st-mixin: inputVol2;
   }
 
-  /* Volume 3 */
+  /*= Volume 3 */
   InputSelection.vol3 {
     -st-mixin: inputVol3
   }
 
-  /* Volume 4 */
+  /*= Volume 4 */
   InputSelection.vol4 {
     -st-mixin: inputVol4
   }
 
-  /* Volume 5 */
+  /*= Volume 5 */
   InputSelection.vol5 {
     -st-mixin: inputVol5
   }
 
-  /* Volume 6 */
+  /*= Volume 6 */
   InputSelection.vol6 {
     -st-mixin: inputVol6
   }
 
-  InputSelection ErrorText {
-    /* Send the error message which is first in the source order to appear under the form input. */
-    /* grid-row: error-message; */
-  }
-
   /*==== VARIANTS ====*/
 
-  /* Variant 1 - Basic alignment. */
+  /*= Variant 1 - Basic alignment. */
 
   InputSelection Icon {
     font-size: 2em;
@@ -150,11 +146,12 @@
   InputSelection.variant2 InputLabel.hasInput {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-column-gap: 18px;
+    grid-column-gap: value(spacing-unit);
   }
 
   InputSelection.variant2 {
-    background: rgba(255, 255, 255, 0.04);
+    background-color: value(--color-background-3-default);
+    background-color: var(--color-background-3, value(--color-background-3-default));
   }
 
   InputSelection.variant2 InputLabel::labelText {
@@ -162,7 +159,8 @@
   }
 
   InputSelection.variant2 SelectionControl {
-    border-left: 1px solid rgb(119, 140, 157);
+    border-left: 1px solid value(--color-form-mark-default);
+    border-left: 1px solid var(--color-form-mark, value(--color-form-mark-default));
     padding: value(spacing-unit);
   }
 

@@ -6,7 +6,7 @@ import classNames from "classnames";
 interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** HTML tag to render as the root for your grid. */
   tag?: string;
-  /** Designed to toggle formatting rules for children. */
+  /** Designed to toggle child formatting/alignment rules. */
   formatted?: boolean;
   /** Variant index. */
   variant?: number;
