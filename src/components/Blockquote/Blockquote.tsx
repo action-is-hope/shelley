@@ -26,7 +26,7 @@ const Blockquote = ({
   cite: citeContent,
   citeAttr,
   citeUrl,
-  citeVol,
+  citeVol = 2,
   className: classNameProp,
   variant,
   ...rest

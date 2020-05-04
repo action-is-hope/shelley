@@ -27,7 +27,7 @@ import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
   PropsDemo {
     padding: 1.3rem;
     padding-top: 2rem;
-    border: 1px dashed value(color-ui-raw-default);
+    /* border: 1px dashed value(color-ui-raw-default); */
     border: 1px dashed rgba(var(--color-ui-raw), 0.2);
     margin-top: 5.8rem;
     margin-bottom: 5.8rem;

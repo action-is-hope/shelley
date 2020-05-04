@@ -47,11 +47,11 @@
 
   Blockquote::cite {
     font-style: normal;
-    color: var(--accent);
+    /* color: var(--accent); */
   }
 
   Blockquote::cite a {
-    color: var(--accent);
+    /* color: var(--accent); */
   }
 
   Blockquote::footer {
@@ -60,7 +60,7 @@
 
   Blockquote::content Text:first-child::before {
     /* content: '"'; */
-    content: open-quote;
+    /* content: open-quote; */
     /* 
       \2018 – Left Single Smart Quote
       \2019 – Right Single Smart Quote
@@ -70,7 +70,7 @@
       \2190 – Left arrow
       https://css-tricks.com/css-content/
      */
-    content: "\0022 ";
+    /* content: "\0022 "; */
     display: inline-block;
     font-family: Tahoma;
     font-size: 1.6em;
@@ -89,7 +89,7 @@
 
   Blockquote.variant1::content Text:first-child::before {
     /* display: none; */
-    color: var(--accent);
+    /* color: var(--accent); */
   }
 
   /* 
@@ -161,7 +161,8 @@
     left: -1.5rem;
     /* line-height: 1rem; */
     /* color: var(--accent); */
-    border: 1px solid var(--accent);
+    /* border: 1px solid var(--accent); */
+    border: 1px solid var(--color-accent-1);
     border-width: 1px 0 1px 1px;
     width: 18px;
     /* height: 56px; */

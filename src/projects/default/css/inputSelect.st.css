@@ -1,7 +1,18 @@
 :import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+}
+
+:import {
   -st-from: "../../../components/InputSelect/inputSelect.st.css";
   -st-default: InputSelect;
-  /* -st-named: select */
+}
+
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    selectFieldContainer,
+    selectFieldInput;
 }
 
 :import {
@@ -9,17 +20,21 @@
   -st-default: InputLabel;
 }
 
+@st-scope Default {
 
-InputSelect {
-  /* background: pink !important; */
+  InputSelect {}
+
+  InputSelect InputLabel {}
+
+  InputSelect::fieldContainer {
+    -st-mixin: selectFieldContainer;
+  }
+
+  InputSelect::fieldContainer::after {
+    display: block;
+  }
+
+  InputSelect::fieldInput {
+    -st-mixin: selectFieldInput;
+  }
 }
-
-InputSelect InputLabel {
-  /* background: green !important; */
-}
-
-InputSelect::fieldContainer {
-  /* background: yellow !important; */
-}
-
-/* .select InputEleme */

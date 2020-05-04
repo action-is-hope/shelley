@@ -44,7 +44,9 @@
     --color-form-mark-default,
     --color-focus-default,
 
-    --grad-1-default
+    --grad-1-default,
+
+    --select-icon-default
 }
 
 :import {
@@ -91,10 +93,13 @@
 
   --grad-1: value(--grad-1-default);
 
+  /* --select-icon: value(--select-icon-default); */
+
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>")
 }
 
 
-/*= While all sounds well with "just change the colors to theri counterparts it is never that simple, ever. "*/
+/*= While all sounds well with "just change the colors to their counterparts it is never that simple, ever. "*/
 /* Override our uppercase headings.
    Handy use of :global() if you want to style based on a tag, useful where a 
    component, link Text can output a number of tags as it's root element. */

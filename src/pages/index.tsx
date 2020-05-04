@@ -75,6 +75,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
+              We&apos;re not even sure it passes as a &apos;proper&apos;
+              library, you might considering it a starter kit for using
+              Styalble. If our compoent don&apos;t fit, don&apos;t fret just
+              build your own.
+            </P>
+
+            <P>
               Each component page first describes the React side of things; then
               we talk about the actual HTML churned out by the component and the
               selectors you have to style it.
@@ -227,6 +234,17 @@ const IndexPage = ({ data }: IndexPageProps) => {
               web apps and get stuff done, but we also want to help anyone with
               vital knowledge but limited resources to communicate it
               effectively.
+            </P>
+          </div>
+          <div className={style.card}>
+            <H2 uppercase vol={3}>
+              Status
+            </H2>
+
+            <P>
+              We found Shelley, a slightly bitter and exacting digital entity,
+              moping around the internet looking rather rejected and
+              misunderstood but poised with imagination and spirit.
             </P>
           </div>
           <div className={style.card}>

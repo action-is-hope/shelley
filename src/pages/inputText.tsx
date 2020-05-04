@@ -3,6 +3,8 @@ import classnames from "classnames";
 import DefaultLayout from "../layouts";
 import { P, H1, H2 } from "../components/Text/Text";
 import InputText from "../components/InputText/InputText";
+
+import InputSelect from "../components/InputSelect/InputSelect";
 import PropsDemo from "../components_site/PropsDemo/PropsDemo";
 import Grid from "../components/Grid/Grid";
 
@@ -81,6 +83,12 @@ const InputDocs = () => {
       label: "touched",
       type: "checkbox",
       value: false
+    },
+    {
+      name: "disabled",
+      label: "disabled",
+      type: "checkbox",
+      value: false
     }
   ]);
 
@@ -136,7 +144,9 @@ const InputDocs = () => {
               InputDemoProps[8].value
                 ? `\n  error="${InputDemoProps[8].value}"`
                 : ``
-            } ${InputDemoProps[9].value ? `\n  touched` : ``} 
+            } ${InputDemoProps[9].value ? `\n  touched` : ``} ${
+              InputDemoProps[10].value ? `\n  disabled` : ``
+            } 
 />
 /* variant defaults to 1 */
 /* vol defaults to 3 */`}</CodeSample>
@@ -155,8 +165,28 @@ const InputDocs = () => {
             endAdornment={InputDemoProps[7].value}
             error={InputDemoProps[8].value}
             touched={InputDemoProps[9].value}
+            disabled={InputDemoProps[10].value}
             onBlur={() => console.log("LOL")}
           />
+
+          <InputSelect
+            id="selectYo"
+            label={InputDemoProps[0].value}
+            hint={InputDemoProps[1].value}
+            placeholder={InputDemoProps[2].value}
+            // rows={InputDemoProps[3].value}
+            // type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
+            variant={InputDemoProps[4].value}
+            vol={InputDemoProps[5].value}
+            startAdornment={InputDemoProps[6].value}
+            endAdornment={InputDemoProps[7].value}
+            error={InputDemoProps[8].value}
+            touched={InputDemoProps[9].value}
+            disabled={InputDemoProps[10].value}
+            onBlur={() => console.log("LOL")}
+          >
+            <option>Yo</option>
+          </InputSelect>
 
           <InputSelection
             id="laptop"
@@ -167,6 +197,7 @@ const InputDocs = () => {
             type="radio"
             vol={InputDemoProps[5].value}
             touched={InputDemoProps[9].value}
+            disabled={InputDemoProps[10].value}
           />
         </PropsDemo>
       </Grid>

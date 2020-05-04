@@ -107,6 +107,109 @@ const LabelsDocs = () => {
           law.
         </P>
 
+        <Blockquote variant={1}>
+          <P>
+            First thing to think about is what is soil? For brevity i’m going to
+            say soil is the culturing of weathered rock with a food web of
+            microorganisms that leads to making rock nutrients solvable and
+            stores them along with orgabic carbon (soil scientists, I know I’m
+            over-simplifying).
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            I’m talking about aerobic soils formed with oxygen rather than
+            anaerobic. Wetlands soils are amazing and do good. But there are
+            reasons to focus in aerobic for now. (I’m a huge fan of wetlands and
+            pond systems too)
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            Too much water and too much compaction removes oxygen. The system
+            switches to anaerobes that live by yanking O off of soil nutrients
+            making them smell bad and able to leave the soil. They also produce
+            alcohols that prevent plant roots from growing.
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            So this kind of soil needs: enough air, water, contact with plants
+            (that feed it with sugars and proteins made with photosynthesis and
+            CO2 exuded from their roots.)
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            Rock weathers into subsoil without a lot of big life, when plants
+            interact with it they build living subsoil through their roots and
+            the accumulation of organic matter on top.
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            Living soil is protective. So it actually protects the subsoil from
+            some of the processes that speed up formation. Which is why in
+            natural conditions it can settle into a very slow rate of
+            production.
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            We have been running civilizations in the use of this built up soil.
+            Turning it killing fungi and structure to get bacterial blooms that
+            feed out Annual crops.
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            This leads to Erosion rates more similar to mountain systems then
+            the low lands where the soil formed. .we are burning through our
+            soil to grow and crash quite a few civs
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            You have to understand. The buffering capacity of our plants souls
+            could have handled the CO2 from fossil fuels. Only what we used
+            fossil fuels for was to increase erosion, change the balance of
+            water runoff, deforest, and plow over the grasslands every April.
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            I have to be off-line for a spell but I’ll continue with a
+            discussion about how we designto accelerate that soil building
+            process. Including some references in case studies
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            So i want to introduce a few puzzle pieces. The first is the work of
+            this man PA Yeomans. He was a mining geologist who retired and
+            starting thinking about soil care from a Geomorphologist
+          </P>
+        </Blockquote>
+
+        <Blockquote variant={1}>
+          <P>
+            When he set off to tend his land, the Australian gov provided soil
+            conservation literature focused on contour plowing. Based on the
+            view that soil is precious(it is) but that it’s impossible to speed
+            its production (it’s not)
+          </P>
+        </Blockquote>
+
         <Blockquote
           citeUrl="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#mid-structure-separation-programmatic"
           cite="Labels or Instructions: Understanding SC 3.3.2"

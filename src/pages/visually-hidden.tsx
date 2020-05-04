@@ -17,7 +17,7 @@ const VisuallyHiddenDocs = () => {
     <DefaultLayout>
       <PageTitle>VisuallyHidden</PageTitle>
 
-      <Grid variant={1}>
+      <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
           Allows us to leave hidden messages, visible only to those using
           assistive technologies such as screen readers but not only to
@@ -130,7 +130,7 @@ const VisuallyHiddenDocs = () => {
 
         <Blockquote
           variant={2}
-          citeVol={3}
+          citeVol={2}
           accent={3}
           citeUrl="https://moz.com/learn/seo/anchor-text"
           cite="Source: Anchor text keyword density - Moz, Anchor Text article"

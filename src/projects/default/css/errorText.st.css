@@ -17,9 +17,24 @@
     color: value(--color-status-error-default);
     color: var(--color-status-error, value(--color-status-error-default));
     display: block;
+    position: relative;
     font-size: .8rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+  }
+
+  Error::before {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    content: "";
+    width: 1px;
+    background-color: value(--color-status-error-default);
+    background-color: var(--color-status-error, value(--color-status-error-default));
+    opacity: 0.5;
+    transition: background-color 0.3s;
   }
 
   @media screen and (min-width: 600px) {

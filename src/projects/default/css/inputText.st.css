@@ -1,4 +1,9 @@
 :import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+}
+
+:import {
   -st-from: "../../../components/InputText/inputText.st.css";
   -st-default: InputText;
 }
@@ -8,16 +13,11 @@
   -st-default: InputLabel;
 }
 
-InputText {
-  /* background: pink !important; */
-}
+@st-scope Default {
 
-InputText InputLabel {
-  /* background: green !important; */
-}
+  InputText {}
 
-InputText::fieldContainer {
-  /* background: yellow !important; */
-}
+  InputText InputLabel {}
 
-/* .select InputEleme */
+  InputText::fieldContainer {}
+}

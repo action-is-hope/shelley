@@ -28,7 +28,7 @@
 
   .card:first-child {
     grid-column: 1;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
   }
 
   .card+.card,
@@ -88,7 +88,9 @@ According to CNBC, the number of lawsuits over inaccessible websites jumped 58 p
     position: absolute
   } */
 
-
+  /* 
+#f4d0d0
+rgba(199, 245, 218, 0.78) */
 
   .card>* {
     max-width: 26rem;
@@ -105,13 +107,15 @@ According to CNBC, the number of lawsuits over inaccessible websites jumped 58 p
     margin-bottom: 2.9rem;
     padding: 0;
     list-style: none;
+    display: grid;
+    grid-gap: 1rem;
   }
 
   .menuList>li>a {
     display: block;
     padding: 13px 1.45rem;
-    background: #181a23;
     margin-bottom: 1px;
+    border-width: 0.05em;
   }
 
   /* hints
@@ -127,13 +131,14 @@ color: #4e4e4e;
     -webkit-font-smoothing: antialiased;
 */
 
-  .card+.card {
+  .card+.card+.card {
     /* grid-column: 9 / span 5; */
     /* background: #50de98;
     background: #acefff; */
+    background: #692e2e;
   }
 
-  .card+.card+.card {
+  .card+.card+.card+.card {
     background: #51d6de;
     background: #50de98;
     background: #99ffcd;

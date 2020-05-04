@@ -44,7 +44,7 @@ const TextDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>Text</PageTitle>
-      <Grid variant={1}>
+      <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
           Text is for presenting words, we love words, they&apos;re the best,
           nobody knows more about... they&apos;re just the best, that&apos;s it.
@@ -208,7 +208,7 @@ Text.TupacOrBiggie {}
         </H2>
       </Grid>
 
-      <Grid>
+      <Grid variant={4}>
         <P vol={1} data-test="your-id">
           vol 1. Text
         </P>
@@ -223,7 +223,7 @@ Text.TupacOrBiggie {}
         <P vol={10}>vol 10. Text</P>
       </Grid>
 
-      <Grid variant={1}>
+      <Grid variant={1} formatted>
         <P>
           We found margins were best set in place on as part of a
           context/surface/container like `formatAside, formatArticle` else you

@@ -23,6 +23,8 @@ const InputSelect = React.forwardRef(
       disabled,
       error,
       touched,
+      startAdornment,
+      // endAdornment,
       hint,
       variant,
       label,
@@ -44,7 +46,9 @@ const InputSelect = React.forwardRef(
           labelVisuallyHidden,
           hint,
           variant,
-          vol
+          vol,
+          startAdornment
+          // endAdornment Fiddly to do a nice job, parking support for native select.
         }}
         className={classnames(style.root, classNameProp)}
       >

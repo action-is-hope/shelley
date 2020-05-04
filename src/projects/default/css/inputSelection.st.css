@@ -25,10 +25,11 @@
   -st-default: InputLabel;
 }
 
+/* 
 :import {
   -st-from: "../../../components/HintText/hintText.st.css";
   -st-default: HintText;
-}
+} */
 
 :import {
   -st-from: "../../../components/ErrorText/errorText.st.css";
@@ -76,6 +77,11 @@
 
   InputSelection:disabled InputLabel {
     cursor: not-allowed;
+  }
+
+  InputSelection ErrorText {
+    padding-top: value(spacing-unit);
+    padding-bottom: value(spacing-unit);
   }
 
   /*==== VOLUMES ====*/
@@ -170,112 +176,3 @@
     /* 12px is from 18px / 3 * 2 */
     margin-left: calc(100% / 3 + 12px);
   }
-
-  /*= Variant 3 - Icon as Label variant */
-  InputSelection.variant3 {
-    /* position: fixed; */
-    /* top: 0; */
-    /* right: calc(value(spacing-unit) * 2) */
-  }
-
-
-
-  InputSelection.variant3 SelectionControl {
-    -st-mixin: visuallyHidden
-  }
-
-  InputSelection.variant3 InputLabel::labelText:after {
-    content: "";
-    width: 18px;
-    height: 18px;
-    top: 8px;
-    left: 2px;
-    /* background-color: var(--color-ui); */
-    background-color: var(--color-ui);
-    border-radius: 30px;
-    position: absolute;
-    border: 1px solid transparent;
-    transition: left 190ms;
-  }
-
-  InputSelection.variant3 Icon {
-    font-size: 32px;
-    border-radius: 30px;
-    border: 1px solid transparent;
-    transition: transform 190ms;
-  }
-
-  InputSelection.variant3:focus-within Icon {
-    /* transform: rotate(180deg); */
-
-  }
-
-  InputSelection.variant3 InputLabel::textContainer {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    align-items: flex-end;
-    position: relative;
-    color: inherit;
-  }
-
-  InputSelection.variant3:hover Icon {
-    /* transform: rotate(180deg); */
-    /* box-shadow: 0 0 2px 2px #00a4ff; */
-  }
-
-  InputSelection.variant3.on Icon {
-    transform: rotate(180deg);
-  }
-
-  InputSelection.variant3.on InputLabel::labelText:after {
-    left: 13px;
-  }
-
-  InputSelection.variant3:hover InputLabel::labelText:after,
-  InputSelection.variant3:focus-within InputLabel::labelText:after {
-    /* box-shadow: 0 0 2px 1px #00a4ff; */
-    /* border-color: var(--color-ui); */
-  }
-
-
-
-  InputSelection.variant3 HintText {
-    transform: scale(0);
-    transition: transform 120ms;
-    transition-delay: .2s;
-    position: absolute;
-    right: calc(0px - value(spacing-unit) * 2);
-    font-size: 12px;
-    background: #0000009e;
-    color: #fff;
-
-    /* background: rgba(var(--color-ui-raw-inverse), 0.7); */
-    /* justify-content: end; */
-    padding: 5px 8px;
-    border-radius: 4px;
-    -webkit-font-smoothing: auto;
-    /* display: flex; */
-    white-space: nowrap;
-    bottom: -38px;
-  }
-
-
-
-
-
-  /* Fabulous! https://css-tricks.com/touch-devices-not-judged-size/ */
-  @media (pointer: coarse) {
-    InputSelection.variant3 HintText {
-      -st-mixin: visuallyHidden
-    }
-  }
-
-  InputSelection.variant3:hover HintText,
-  InputSelection.variant3:focus-within HintText {
-    transform: scale(1);
-  }
-
-  /* InputSelection.variant3:focus-within:hover HintText {
-    transform: scale(0);
-  } */

@@ -15,7 +15,9 @@
   -st-named:
     textualFieldRoot,
     textualFieldContainer,
+    textualFieldContainerHasError,
     textualFieldInput,
+    disabledField,
     inputVol1,
     inputVol2,
     inputVol3,
@@ -62,7 +64,7 @@
     -st-mixin: textualFieldContainer;
   }
 
-  /* Native input*/
+  /*= Native input field. */
   InputBase::fieldInput {
     -st-mixin: textualFieldInput;
   }
@@ -80,8 +82,11 @@
   InputBase ErrorText {
     /* Send the error message which is first in the source order to appear under the form input. */
     order: 3;
-    border-left-width: 1px;
     padding: 8px value(spacing-unit) 0 value(spacing-unit);
+  }
+
+  InputBase ErrorText::before {
+    display: block;
   }
 
   /* Textarea wrapper which can be used for scrolling. */
@@ -94,20 +99,14 @@
   /*==== STATES ====*/
 
   /* Error */
-  InputBase:error::fieldContainer::before {
-    background-color: value(--color-status-error-default);
-    background-color: var(--color-status-error, value(--color-status-error-default));
+  InputBase:error::fieldContainer {
+    -st-mixin: textualFieldContainerHasError
   }
 
   /* Disabled */
   InputBase:disabled {
-    filter: saturate(15%) brightness(70%);
+    -st-mixin: disabledField
   }
-
-  InputBase:disabled::fieldInput {
-    cursor: not-allowed;
-  }
-
 
   /*==== VOLUMES ====*/
 
