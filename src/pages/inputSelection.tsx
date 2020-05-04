@@ -171,7 +171,7 @@ const InputSelectionDocs = () => {
               inputControl={<InputSelectionControl id="TEST" type="toggle" />}
               // inputControl={<input type="checkbox" />}
             >
-              <Icon viewBox="0 0 24 24" label="Toggle preview">
+              <Icon viewBox="0 0 24 24" alt="Toggle preview">
                 <path d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
               </Icon>
@@ -207,7 +207,7 @@ const InputSelectionDocs = () => {
             inputPos="top"
             name="viewPort"
             label={
-              <Icon label="Laptop">
+              <Icon alt="Laptop">
                 {/* laptop */}
                 <path d="M14 11v-9h-12v9h-2v2h16v-2h-2zM10 12h-4v-1h4v1zM13 10h-10v-7h10v7z"></path>
               </Icon>
@@ -221,7 +221,7 @@ const InputSelectionDocs = () => {
             inputPos="top"
             name="viewPort"
             label={
-              <Icon label="Tablet">
+              <Icon alt="Tablet">
                 {/* tablet.svg */}
                 <path d="M0 2v12h16v-12h-16zM13 13h-11v-10h11v10zM15 9h-1v-2h1v2z"></path>
               </Icon>
@@ -235,7 +235,7 @@ const InputSelectionDocs = () => {
             inputPos="top"
             name="viewPort"
             label={
-              <Icon label="Mobile">
+              <Icon alt="Mobile">
                 {/* mobile */}
                 <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
               </Icon>
