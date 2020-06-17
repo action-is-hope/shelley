@@ -1,6 +1,6 @@
 /** allGlobal.st.css */
 
-:after,
+/* :after,
 :before {
   box-sizing: border-box;
   font-family: inherit;
@@ -9,6 +9,18 @@
   margin: 0;
   padding: 0;
   border: 0 solid;
+} */
+
+html {
+  box-sizing: border-box;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 [hidden] {

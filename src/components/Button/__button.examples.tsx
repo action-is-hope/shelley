@@ -6,7 +6,7 @@ import Button from "./Button";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import grid from "../../projects/default/css/grid.st.css";
-
+import Icon from "../Icon/Icon";
 export const meta = {
   name: "Button"
 };
@@ -26,7 +26,7 @@ export const ComponentDemo = () => {
       label: "children",
       type: "text",
       // value: "Step up to Earth Guardians of Earth"
-      value: "Earth Guardians required"
+      value: "Earth Solutionists required"
     },
     {
       name: "tone",
@@ -53,14 +53,15 @@ export const ComponentDemo = () => {
       value: 2
     },
     {
-      name: "tip",
-      label: "tip",
-      type: "text",
-      value: "@todo infotip"
-    },
-    {
       name: "icon",
       label: "icon",
+      type: "select",
+      value: "No",
+      options: ["Yes", "No"]
+    },
+    {
+      name: "tip",
+      label: "tip",
       type: "text",
       value: "@todo icon"
     }
@@ -91,12 +92,34 @@ export const ComponentDemo = () => {
     >
       <Button
         tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
+        // icon={
+        //   <Icon>
+        //     {/* crack open an svg to find the path and shove it in. */}
+        //     <path d="M16 14h-16v-12h16v12zM1 13h14v-10h-14v10z"></path>
+        //     <path d="M2 10v2h12v-1c0 0 0.2-1.7-2-2-1.9-0.3-2.2 0.6-3.8 0.6-1.1 0-0.9-1.6-3.2-1.6-1.7 0-3 2-3 2z"></path>
+        //     <path d="M13 6c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+        //   </Icon>
+        // }
         variant={
           labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
         }
         vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
       >
         {labelDemoProps[0].value}
+      </Button>
+      <Button
+        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
+        icon={
+          <Icon>
+            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+          </Icon>
+        }
+        variant={
+          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
+        }
+        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
+      >
+        {/* {labelDemoProps[0].value} */}&nbsp;
       </Button>
     </PropsDemo>
   );

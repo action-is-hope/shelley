@@ -41,15 +41,15 @@
   -st-default: Icon;
 }
 
-:import {
+/* :import {
   -st-from: '../../../components/mixins/visuallyHidden.st.css';
   -st-named: visuallyHidden
-}
+} */
 
-:import {
+/* :import {
   -st-from: "../formatters/common";
   -st-named: respScale;
-}
+} */
 
 :import {
   -st-from: './mixins/formElements.st.css';
@@ -115,6 +115,7 @@
   InputSelection.vol6 {
     -st-mixin: inputVol6
   }
+
 
   /*==== VARIANTS ====*/
 

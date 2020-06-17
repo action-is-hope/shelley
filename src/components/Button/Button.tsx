@@ -3,17 +3,20 @@ import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
+import { AlignPos } from "../types";
 
 /**
  * Button props extending those of a regular button, we are overriding tone.
  */
-interface ButtonProps
+export interface ButtonProps
   extends Pick<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "tone">
   > {
   /** Chuck in an Icon if you please, ours or yours. */
   icon?: React.ReactNode;
+  /** The position of the label relative to the input. */
+  iconPos?: AlignPos;
   /** Extra text that can be used to render a infotip / tooltip on hover/focus. */
   tip?: string;
   /** tone index. */
@@ -31,6 +34,7 @@ const Button = React.forwardRef(
       className: classNameProp,
       tone = 1,
       variant = 1,
+      iconPos = "end",
       vol = 3,
       icon,
       tip,
@@ -47,7 +51,17 @@ const Button = React.forwardRef(
     );
 
     return (
-      <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
+      <button
+        {...style(
+          rootClassNames,
+          {
+            iconPos
+          },
+          rest
+        )}
+        {...rest}
+        ref={ref}
+      >
         {icon && (
           <>
             {icon}

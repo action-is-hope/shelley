@@ -26,14 +26,6 @@ export const QuickRef = () => (
 export const ComponentDemo = () => {
   const [labelDemoProps, setLabelDemoProps]: any = React.useState([
     {
-      name: "accent",
-      label: "accent",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 1
-    },
-    {
       name: "variant",
       label: "variant",
       type: "number",
@@ -78,46 +70,41 @@ export const ComponentDemo = () => {
       renderExample={
         <CodeSample>{`import { Blockquote } from "@action-is-hope/shelley";\n\n<Blockquote ${
           labelDemoProps[0].value > 0
-            ? `\n  accent={${labelDemoProps[0].value}}`
-            : `\n  accent={false}`
-        } ${
-          labelDemoProps[1].value > 0
-            ? `\n  variant={${labelDemoProps[1].value}}`
+            ? `\n  variant={${labelDemoProps[0].value}}`
             : `\n  variant={false }`
         } ${
-          labelDemoProps[2].value ? `\n  cite="${labelDemoProps[2].value}"` : ``
+          labelDemoProps[1].value ? `\n  cite="${labelDemoProps[1].value}"` : ``
         } ${
-          labelDemoProps[1].value
-            ? `\n  citeUrl="${labelDemoProps[3].value}"`
+          labelDemoProps[2].value
+            ? `\n  citeUrl="${labelDemoProps[2].value}"`
             : ``
-        }  \n>\n ${labelDemoProps[3].value}\n</Blockquote>`}</CodeSample>
+        }  \n>\n ${labelDemoProps[2].value}\n</Blockquote>`}</CodeSample>
       }
     >
       <Blockquote
-        accent={labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value}
         variant={
-          labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value
+          labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value
         }
-        cite={labelDemoProps[2].value}
-        citeUrl={labelDemoProps[3].value}
+        cite={labelDemoProps[1].value}
+        citeUrl={labelDemoProps[2].value}
       >
         {/* Render a few deferent examples depending on the variant. */}
-        {labelDemoProps[1].value == 0 && <P vol={4}>{quotes[0]}</P>}
-        {labelDemoProps[1].value == 1 && <P>{quotes[0]}</P>}
-        {labelDemoProps[1].value == 2 && (
+        {labelDemoProps[0].value == 0 && <P vol={4}>{quotes[0]}</P>}
+        {labelDemoProps[0].value == 1 && <P>{quotes[0]}</P>}
+        {labelDemoProps[0].value == 2 && (
           <>
             <H2 vol={4}>{quotes[1]}</H2>
             <P>{quotes[2]}</P>
           </>
         )}
-        {labelDemoProps[1].value > 2 && <P>{quotes[0]}</P>}
+        {labelDemoProps[0].value > 2 && <P>{quotes[0]}</P>}
       </Blockquote>
     </PropsDemo>
   );
 };
 
 export const ComponentHTML = () => (
-  <CodeSample language="html">{`<blockquote class="blockquote--root blockquote--accent1">
+  <CodeSample language="html">{`<blockquote class="blockquote--root">
   <div class="blockquote--content">
     <!-- children  - Text or whatever you like. -->
     <p class="text--root text--vol4">
@@ -142,14 +129,6 @@ Blockquote {}
 Blockquote::content {}
 Blockquote::cite {}
 Blockquote::footer {}
-
-/* Accent colours */
-Blockquote.accent1 {}
-Blockquote.accent2 {}
-Blockquote.accent3 {}
-Blockquote.accent4 {}
-Blockquote.accent5 {}
-Blockquote.accent6 {}
 
 /* Variants */
 Blockquote.variant1 {}

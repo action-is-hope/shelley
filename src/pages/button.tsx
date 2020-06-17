@@ -1,6 +1,5 @@
 import React from "react";
 import DefaultLayout from "../layouts";
-import classnames from "classnames";
 import Text, { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
@@ -14,7 +13,7 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS
-} from "../components/Button/__buttonExamples";
+} from "../components/Button/__button.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 import Button from "../components/Button/Button";
 
@@ -76,6 +75,12 @@ const ButtonDocs = () => {
           throw in other things inside a button. We put out vertical alignment
           on the inner item so as to allow an adjacent icon to span the full
           height.
+        </P>
+
+        <P>
+          In terms of proving state styles for things like laoding or pressed
+          then we suggest you use the aria attributes and target the attribute
+          states.
         </P>
 
         <StyleInfo

@@ -5,7 +5,9 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit;
+    spacing-unit,
+    --color-background-3-default,
+    --color-form-mark-default;
 }
 
 :import {
@@ -39,11 +41,6 @@
 }
 
 :import {
-  -st-from: '../../../components/mixins/visuallyHidden.st.css';
-  -st-named: visuallyHidden
-}
-
-:import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
     hideWebkitAppearance,
@@ -55,7 +52,21 @@
     inputVol6;
 }
 
+:import {
+  -st-from: './mixins/tooltip.st.css';
+  -st-named:
+    tooltip,
+    tooltipVisible
+}
+
+:import {
+  -st-from: '../../../components/mixins/visuallyHidden.st.css';
+  -st-named: visuallyHidden
+}
+
+
 @st-scope Default {
+
 
   /*= Dark / Light theme switcher styles 3 */
   .darkLightToggle {
@@ -63,7 +74,7 @@
   }
 
   .darkLightToggle SelectionControl {
-    -st-mixin: visuallyHidden
+    -st-mixin: visuallyHidden;
   }
 
   .darkLightToggle InputLabel::labelText::after {
@@ -109,20 +120,8 @@
   }
 
   .darkLightToggle HintText {
-    transform: scale(0);
-    transition: transform 120ms;
-    transition-delay: .2s;
-    position: absolute;
+    -st-mixin: tooltip;
     right: calc(0px - value(spacing-unit) * 2);
-    font-size: 12px;
-    background: #0000009e;
-    color: #fff;
-    /* background: rgba(var(--color-ui-raw-inverse), 0.7); */
-    /* justify-content: end; */
-    padding: 5px 8px;
-    border-radius: 4px;
-    -webkit-font-smoothing: auto;
-    white-space: nowrap;
     bottom: -38px;
   }
 
@@ -135,7 +134,7 @@
 
   .darkLightToggle:hover HintText,
   .darkLightToggle:focus-within HintText {
-    transform: scale(1);
+    -st-mixin: tooltipVisible;
   }
 
 

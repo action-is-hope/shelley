@@ -39,22 +39,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
             <H2 uppercase vol={3}>
               Synopsis
             </H2>
-            {/* 
-          <InputSelect id="test" label="test" error="HELLLO" touched>
-            <option>test</option>
-          </InputSelect>
-          <P>
-            Explain generic prop set and why we dont alwasy do the same thing...
-          </P>
-          <img src="sskhshksk" />
-          <img src="sskhshksk" alt="" />
-          <h2>h2</h2>
-          <h4>h4</h4>
-          <label>Hi</label>
-          <label htmlFor="hiihs">Hi</label> */}
 
-            {/* Try this with new version... */}
-            {/* <p className={classnames(text.vol3, text.intro)}>Hello</p> */}
             <P vol={4}>
               Follow the story of a digital nomad and a digital entity called
               Shelley as they strive night and day to create something beautiful
@@ -65,21 +50,32 @@ const IndexPage = ({ data }: IndexPageProps) => {
             <H2 uppercase vol={2}>
               Introduction
             </H2>
-            {/* <P>Ways to support us, buy trees, </P> */}
+
             <P>
-              This is a fully stylable library for React in which you{" "}
-              <em>own</em>
-              the styles, 100%. This website aims to serve as a resource who
-              want to know more about HTML, CSS and accessibility in general and
-              see some relatable examples in the flesh.
+              Shelley is a fully stylable foundatrion user interface library
+              build in TypeScript with <a href="https://reactjs.org/">React</a>{" "}
+              and <a href="https://stylable.io/">Stylable</a> in which you{" "}
+              <em>own</em> the styles, 100%. You can use our project (theme) as
+              a base but the idea is that you will evolve it or make your own.
             </P>
 
             <P>
-              We&apos;re not even sure it passes as a &apos;proper&apos;
-              library, you might considering it a starter kit for using
-              Styalble. If our compoent don&apos;t fit, don&apos;t fret just
-              build your own.
+              We strive to excite and enable the passionate, experianced or
+              otherwise. We&apos;ve postioned this site to serve as a general
+              resource for those that seek knowledge in terms of practical HTML,
+              CSS and accessibility. JavaScript or any other language churning
+              out HTML is simply a facilitator.
             </P>
+
+            <P>
+              The site, which you can find on Github, is also a living example
+              of Shelley in use with the wonderful Gatsby which is a great
+              companion when starting out with React.
+            </P>
+
+            <H2 uppercase vol={2}>
+              Contents @TODO
+            </H2>
 
             <P>
               Each component page first describes the React side of things; then
@@ -87,54 +83,10 @@ const IndexPage = ({ data }: IndexPageProps) => {
               selectors you have to style it.
             </P>
 
-            {/* <P>
-              We also throw in some links to our this sites CSS which you are
-              free to use, customise and learn from AND you get to feel a bit
-              better about your impact on the world buy buying a tree or
-              starting your own forest.
-            </P> */}
-
-            {/* <P>
-              Shelley would not be possible without Stylable, a style managing
-              solution built by a great team over at Wix who describe it as:{" "}
-              <q>CSS for components</q>.
-            </P> */}
-
             <P>
-              Shelley has a lot in common with the{" "}
-              <a href="https://material-ui.com/discover-more/vision/">
-                Material UI <q>Vision</q>
-              </a>{" "}
-              especially around accessibility and customisation. We are just
-              impatient and feel Stylable gives us what we need now. If
-              it&apos;s good for you too then great, if not then defo checkout{" "}
-              <a href="https://material-ui.com/">Material</a>.
-              {/* , it will be around for a while if they realise their
-              vision and can make even more intuative. Massive respect for the team over there, we just
-              felt we wanted full customisation for a web app to the point that
-              we were making a mess hacking away trying to scale it back a bit
-              and getting used to CSS we didn&apos;t write and is not ease to
-              access. We build a UI lib with JSS and started one with Emotion,
-              we found we over complicated components to provide customisation
-              and they it was still limiting. Shelley layers on only what we
-              need and is more of a starter kit for a styalble based project.
-              You can structure your project styles how you like, set all your
-              variables do whatever you want. */}
+              We are also quite prone to comments so do look through our code
+              base, especially our theme when we &apos;finish&apos; it.
             </P>
-
-            <P>
-              Stylable reunites us with our inner{" "}
-              <a href="http://www.csszengarden.com/">
-                Zen Garden &apos;skillz&apos;
-              </a>{" "}
-              with a wonderful feeling of nostalgia with its simple and
-              standards aware approach to managing styles.
-            </P>
-            {/* <P>What is Stylable and why did we choose it?</P> */}
-
-            <H2 uppercase vol={2}>
-              Contents @TODO
-            </H2>
 
             <ul className={style.menuList}>
               <Text tag="li">
@@ -167,44 +119,32 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 <Link to="/visually-hidden/">VisuallyHidden</Link>
               </Text>
             </ul>
-            {/* 
+
             <H2 uppercase vol={2}>
-              Getting started
-            </H2>
-            <P>We have build this site as a guide to the components but also to basic html and css and well</P>
-            <P>
-              If you are completly new to accessibility and even web development
-              in general then we are looking to put together{" "}
-              <a href="#">a few resources to help get you started</a>.
-            </P>
-            <P>
-              If you are exclusively work in design or a UX and some developer
-              has suggested that you use this as a basis then you can checkout
-              some speal we wrote for you.
-            </P>
-            <H2 uppercase vol={2}>
-              Theming
+              Vision
             </H2>
 
             <P>
-              Sylyable is build based on the CSS standards where some might see
-              limitations we see as forgoing tools that will get us into
-              trouble. Conveniance will always screw us, look at the state of
-              the planet.
+              We need to properly put down what we would like this to serve as
+              over and above the technical...
             </P>
 
             <P>
-              You own the styles... We thin at the moment we will offer you our
-              main theme but not by way of something that we intend to
-              &apos;support&apos;. What do we mean by this?
+              Shelley has a lot in common with the{" "}
+              <a href="https://material-ui.com/discover-more/vision/">
+                Material UI <q>Vision</q>
+              </a>{" "}
+              especially around accessibility and customisation. We are just
+              impatient and feel Stylable gives us what we need now. If
+              it&apos;s good for you too then great, if not then defo checkout{" "}
+              <a href="https://material-ui.com/">React Material UI</a>.
             </P>
+
             <P>
-              Shelley provides you with <em>unstyled</em> components, this is
-              the core of Shelley. We think it makes Shelley stand out a bit and
-              we find it very powerful. It&apos;s power comes from it&apos;s
-              ability to promote and facilitae simplicity, transparancy, agility
-              and flexibility.
-            </P> */}
+              A desirable goal of this project would be, in the spirit of Zen to
+              set up a repo for Shelley themes. We hope we get to it fairly soon
+              but there is not point if you don&apos;t like the idea.
+            </P>
           </div>
           <div className={style.card}>
             <H2 uppercase vol={3}>
@@ -218,9 +158,12 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              We made a pact to take all of our anger, bitterness, fear and
-              sorrow with regards to the state of our planatary ship; channel it
-              and join the guardians defending her from infinite consumption.
+              We made a pact to take all of our anger, bitterness, fear, sorrow
+              and general doom with regards to the state of our planatary ship;
+              channel it and join the gansta guardians defending her from
+              infinite consumption; imagining and implementing creative
+              solutions whilst inspiring the cynicical into seeing that we can
+              do better, we can live better.
             </P>
 
             <P>
@@ -230,10 +173,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              Shelley exists mainly as a technical enabler for us to build our
-              web apps and get stuff done, but we also want to help anyone with
-              vital knowledge but limited resources to communicate it
-              effectively.
+              It all starts with{" "}
+              <q>
+                being the change <em>you</em> want to see in the world
+              </q>{" "}
+              and it ends where <em>we</em> take it.
             </P>
           </div>
           <div className={style.card}>
@@ -242,9 +186,27 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </H2>
 
             <P>
-              We found Shelley, a slightly bitter and exacting digital entity,
-              moping around the internet looking rather rejected and
-              misunderstood but poised with imagination and spirit.
+              This Shelley has <strong>nothing</strong> to do with{" "}
+              <a href="https://cardanoroadmap.com/en/shelley/">
+                era of Shelley
+              </a>{" "}
+              as part of the{" "}
+              <a href="https://www.cardano.org/">Cardano blockchain</a> but we
+              dig their style and the naming convention of their roadmap. Make
+              sure you double check any URLS&apos;s are corrent in the general
+              cryto space.
+            </P>
+
+            <P>
+              Shelley exists mainly as a technical enabler for us to build our
+              web apps and get stuff done, but we also want to help anyone with
+              vital knowledge but limited resources to communicate it
+              effectively.
+            </P>
+
+            <P>
+              Currently Shelley is in an <em>alpha</em> phase looking at moving
+              into a public <em>beta</em> late Summer 2020.
             </P>
           </div>
           <div className={style.card}>

@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "0.1.1-alpha.8",
+  "version": "0.1.1-alpha.13",
   "license": "ISC",
   "description": "Gatsby, stylable boilerplate.",
   "repository": {
@@ -21,9 +21,10 @@
   "dependencies": {
     "@stylable/core": "1.0.2",
     "classnames": "^2.2.6",
+    "create-index": "^2.5.0",
     "react-expanding-textarea": "^2.0.4"
   },
-  "main": "n/a",
+  "main": "index.js",
   "scripts": {
     "type-check": "tsc",
     "clean": "rimraf dist",

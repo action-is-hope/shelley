@@ -1,5 +1,31 @@
 /* button.st.css */
-.root {}
+.root {
+  -st-states: iconPos(enum(top, end, bottom, start));
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+/*==== Input Positions ====*/
+
+/* top */
+.root:iconPos(top) {
+  flex-direction: column-reverse;
+}
+
+/* end / right */
+.root:iconPos(end) {
+  flex-direction: row-reverse;
+}
+
+/* bottom */
+.root:iconPos(bottom) {
+  flex-direction: column;
+}
+
+/* start / left */
+.root:iconPos(start) {
+  flex-direction: row;
+}
 
 /* The 'inner' button. */
 .inner {}
