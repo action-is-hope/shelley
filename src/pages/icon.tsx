@@ -21,7 +21,7 @@ const IconDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>Icon</PageTitle>
-      <Grid variant={1}>
+      <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
           Icon&apos;s are universal translators,some are more visually
           descriptive than others so consider labels.
@@ -54,11 +54,9 @@ const IconDocs = () => {
           the <code>label</code> prop which will output a{" "}
           <code>VisuallyHidden</code> one for you, it&apos;s the law.
         </P>
-      </Grid>
-      <Grid variant={1}>
+
         <ComponentDemo />
-      </Grid>
-      <Grid variant={1}>
+
         <H2 vol={4} uppercase>
           Styling
         </H2>
@@ -95,17 +93,23 @@ const IconDocs = () => {
           </a>{" "}
           so we continue to adopt it.
         </P>
+
         <H2 vol={4} uppercase>
           Accessibility, UX &amp; the Law
         </H2>
+
         <P>
           In terms of WCAG and the law this, this is marked as Level A which
           makes it a requirement in terms both value that it provides and the
           law.
         </P>
+
         <Blockquote
-          citeUrl="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html"
-          cite="Non-text Content: Understanding SC 1.1.1"
+          cite={
+            <a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html">
+              Non-text Content: Understanding SC 1.1.1
+            </a>
+          }
           variant={2}
         >
           <P>
@@ -114,6 +118,7 @@ const IconDocs = () => {
             except for the situations listed below. (Level A)
           </P>
         </Blockquote>
+
         <P>
           This is the same checkpoint that we would use when auditing an image
           and as such the same rules apply, this is a{" "}
@@ -124,6 +129,7 @@ const IconDocs = () => {
           decorative, if you are not using a visible label then the image is
           functional and thus you should provide equivalent.
         </P>
+
         <H2 uppercase vol={4}>
           Examples
         </H2>
@@ -149,6 +155,7 @@ const IconDocs = () => {
         <H2 vol={4} uppercase>
           What about icon fonts?
         </H2>
+
         <P>
           We don&apos;t like them and we don&apos;t recommend them as a
           professional solution, however are inventive; we like that about them

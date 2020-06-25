@@ -95,13 +95,12 @@ const InputDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>InputText</PageTitle>
-      <Grid variant={1}>
+      <Grid variant={1} tag="main" formatted>
         <P vol={4}>
           Allows our wonderful users to tell us something interesting by
           inputting some text into a little box. Tap Tap Taparoo!
         </P>
-      </Grid>
-      <Grid>
+
         <PropsDemo
           demoProps={InputDemoProps}
           setDemoProps={setInputDemoProps}
@@ -200,9 +199,8 @@ const InputDocs = () => {
             disabled={InputDemoProps[10].value}
           />
         </PropsDemo>
-      </Grid>
-      <Grid>
-        <div className={grid.content}>
+
+        <div className={grid.mid}>
           <InputText
             id="pageTitle"
             label="Page title"
@@ -235,6 +233,7 @@ const InputDocs = () => {
           <br />
           <br />
         </div>
+        <P>@todo: more docs, improve examples, bit rough...</P>
         <P>
           If you find yourself in need to style someone elses form you have
           access to some form styles that are used to build Shelley forms.
@@ -244,178 +243,6 @@ const InputDocs = () => {
           likely you will want to build some styles based targeted at a global
           classname.
         </P>
-        <CodeSample>{``}</CodeSample>
-        <br />
-        <br />
-        <br />
-        <div className={grid.content}>
-          <div
-            className={classnames(
-              formElements.textualFieldRoot,
-              formElements.inputVol3
-            )}
-            data-error="true"
-          >
-            {/* <span className="errorText-root" id="inputTexthtml-error">
-              Form item error message
-            </span> */}
-            {/* <label className={formElements.inputVol1} htmlFor="inputTexthtml">
-              <span className="label-textContainer">
-                <span className="label-labelText">Form item label</span>
-              </span>
-            </label> */}
-            <label
-              className={formElements.inputLabelVol3}
-              htmlFor="inputTexthtml"
-            >
-              Form item label
-            </label>
-            <div className={formElements.textualFieldContainer}>
-              <input
-                placeholder="Placeholder text"
-                type="text"
-                id="inputTexthtml"
-                className={formElements.textualFieldInput}
-                aria-invalid="true"
-                aria-describedby="inputTexthtml-error"
-              />
-            </div>
-          </div>
-          <br />
-          <br />
-          <InputText
-            id="pageTitle"
-            label="Page title"
-            placeholder="Enter a page title"
-            // hint="Enter a page title"
-            variant={1}
-            vol={3}
-            autoComplete="off"
-          />
-          <br />
-          <InputText
-            id="subTitle"
-            label="Subtitle"
-            placeholder="Enter a page subtitle"
-            // hint="Enter a page subtitle"
-            variant={1}
-            vol={3}
-            autoComplete="off"
-          />
-          <InputText
-            id="pageDescription"
-            label="Page description"
-            placeholder="Enter a page description"
-            // hint="Enter a page description"
-            variant={1}
-            vol={3}
-            autoComplete="off"
-          />
-          <br />
-          <br />
-          <br />
-          <InputText
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label="NEWWWW"
-            onChange={() => console.log("MEMEM")}
-            error="You have an error here yo"
-            vol={6}
-            autoFocus
-            autoComplete="off"
-            startAdornment={<span>$</span>}
-            endAdornment={<span>Kg</span>}
-          />
-
-          <InputText
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"name"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={6}
-            autoFocus
-            autoComplete="off"
-          />
-          <InputText
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol6"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={6}
-            autoFocus
-          />
-          <InputText
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol5"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={5}
-            autoFocus
-            // autocomplete="off"
-          />
-          <InputText
-            id="blah2"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Give a full description focusing on the major actions you will be taking on climate change"
-            label={"vol4"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={4}
-            autoFocus
-          />
-          <InputText
-            id="blah3"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Enter your full name"
-            label={"vol3"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={3}
-            autoFocus
-          />
-          <InputText
-            id="blah4"
-            // name="username"
-            placeholder="Enter your user name"
-            // hint="Enter your full name"
-            label={"vol2"}
-            type="text"
-            onChange={() => console.log("MEMEM")}
-            // error={true}
-            // touched={true}
-            // errorMessage="You have an error here yo"
-            vol={2}
-            autoFocus
-          />
-        </div>
       </Grid>
     </DefaultLayout>
   );

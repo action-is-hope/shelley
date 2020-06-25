@@ -107,7 +107,7 @@ export const ComponentDemo = () => {
       >
         {labelDemoProps[0].value}
       </Button>
-      <Button
+      {/* <Button
         tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
         icon={
           <Icon>
@@ -119,8 +119,8 @@ export const ComponentDemo = () => {
         }
         vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
       >
-        {/* {labelDemoProps[0].value} */}&nbsp;
-      </Button>
+        &nbsp;
+      </Button> */}
     </PropsDemo>
   );
 };

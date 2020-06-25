@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
 import classnames from "classnames";
-import { P, H1, H2 } from "../components/Text/Text";
+import { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -24,7 +23,7 @@ const LabelsDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>Label</PageTitle>
-      <Grid variant={1}>
+      <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
           Labels are rather aptly <code>for</code> labelling things, form{" "}
           <code>input</code> tags specifically, <code>label</code> is one of the
@@ -62,11 +61,14 @@ const LabelsDocs = () => {
         <H2 vol={4} uppercase>
           Why Bother?
         </H2>
+
         <P>It makes them clickable, Yay!</P>
+
         <P>
           Click the label below, it <em>should</em> focus the text field giving
           us a larger &apos;hit&apos; area; useful on mobile devices.
         </P>
+
         <div className={classnames(grid.pen, utils.exampleBox)}>
           <InputText
             id="labelExampleId1"
@@ -76,6 +78,7 @@ const LabelsDocs = () => {
             vol={3}
           />
         </div>
+
         <P>
           It may seem like a small thing but more imortantly assistive
           technologies like screen readers use this relationship to properly
@@ -163,9 +166,11 @@ const LabelsDocs = () => {
         </P>
 
         <Blockquote
-          citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html"
-          cite="Labels or Instructions: Understanding SC 3.3.2"
-          accent={3}
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html">
+              Labels or Instructions: Understanding SC 3.3.2
+            </a>
+          }
           variant={2}
         >
           <H2 vol={4}>
@@ -180,12 +185,14 @@ const LabelsDocs = () => {
             Relationships.
           </P>
         </Blockquote>
+
         <P>
           <strong>Tip:</strong> We once dismissed a payment gateway during a
           sales pitch by simply asking the sales account manager to click on a
           form label whilist we could all see it on the big screen. Nothing
           happened. We stopped them mid flow and we told them straight:
         </P>
+
         <Blockquote variant={1}>
           <P>
             Sorry to interrupt but we can tell you right now that this does not
@@ -194,11 +201,13 @@ const LabelsDocs = () => {
             trying to sell us an illegal product?
           </P>
         </Blockquote>
+
         <P>
           What was concerning is that this surprised them. Ethics aside this was
           a large scale procurement for a public body and this is a legal
           requirement. They should have been better prepared.
         </P>
+
         <P>
           Failure to implement basic accessibility will cost you more than
           users, it will cost you large juicy clients too. It&apos;s a simply

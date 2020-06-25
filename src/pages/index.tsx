@@ -256,6 +256,14 @@ const IndexPage = ({ data }: IndexPageProps) => {
               If you are a Brave user we are a registered content creator so
               we&apos;re also accepting your advert erned BAT.
             </P>
+            <P>
+              If you have no idea what we are talking about you but are
+              interested you can help us out by{" "}
+              <a href="https://brave.com/ogv266">
+                downloading and using Brave browser.
+              </a>
+              .
+            </P>
 
             {/* <P>
               Remember: Beware of fake URLS&apos;s when using your cryto
