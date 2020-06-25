@@ -7,7 +7,6 @@ Again, this is much nicer:
 .root {
   -st-states:
     variant(enum(1, 2, 3, 4, 5)),
-    accent(enum(1, 2, 3, 4, 5));
 } */
 
 .content {}

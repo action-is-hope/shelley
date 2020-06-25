@@ -108,8 +108,11 @@ const LabelsDocs = () => {
         </P>
 
         <Blockquote
-          citeUrl="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#mid-structure-separation-programmatic"
-          cite="Labels or Instructions: Understanding SC 3.3.2"
+          cite={
+            <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#mid-structure-separation-programmatic">
+              Labels or Instructions: Understanding SC 3.3.2
+            </a>
+          }
           variant={2}
         >
           <H2 vol={4}>

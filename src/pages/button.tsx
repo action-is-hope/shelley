@@ -100,8 +100,11 @@ const ButtonDocs = () => {
         </P>
 
         <Blockquote
-          citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html"
-          cite="On Input: Understanding SC 3.2.2"
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html">
+              On Input: Understanding SC 3.2.2
+            </a>
+          }
           variant={2}
         >
           <P>

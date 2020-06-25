@@ -15,8 +15,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>{`import Blockquote from "shelley-ui";\n
 <Blockquote
-  citeUrl="https://www.theguardian.com/link-to-post"
-  cite="The Guardian"
+  cite="The Guardian, accepts react node so tect or link"
   >
   <P>These findings suggest a substantial impact of mechanized bots in amplifying denialist messages about climate change, including support for Trump’s withdrawal from the Paris agreement.</P>
 </Blockquote>`}</CodeSample>
@@ -40,8 +39,8 @@ export const ComponentDemo = () => {
       value: "Donella Meadows, environmental scientist, 1941-2001 "
     },
     {
-      name: "citeUrl",
-      label: "citeUrl",
+      name: "citeAttr",
+      label: "citeAttr",
       type: "text",
       value: "https://en.wikipedia.org/wiki/Donella_Meadows"
     }
@@ -74,11 +73,7 @@ export const ComponentDemo = () => {
             : `\n  variant={false }`
         } ${
           labelDemoProps[1].value ? `\n  cite="${labelDemoProps[1].value}"` : ``
-        } ${
-          labelDemoProps[2].value
-            ? `\n  citeUrl="${labelDemoProps[2].value}"`
-            : ``
-        }  \n>\n ${labelDemoProps[2].value}\n</Blockquote>`}</CodeSample>
+        } \n>\n ${labelDemoProps[2].value}\n</Blockquote>`}</CodeSample>
       }
     >
       <Blockquote
@@ -86,7 +81,7 @@ export const ComponentDemo = () => {
           labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value
         }
         cite={labelDemoProps[1].value}
-        citeUrl={labelDemoProps[2].value}
+        citeAttr={labelDemoProps[2].value}
       >
         {/* Render a few deferent examples depending on the variant. */}
         {labelDemoProps[0].value == 0 && <P vol={4}>{quotes[0]}</P>}

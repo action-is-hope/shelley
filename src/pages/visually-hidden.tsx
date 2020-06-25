@@ -131,9 +131,11 @@ const VisuallyHiddenDocs = () => {
         <Blockquote
           variant={2}
           citeVol={2}
-          accent={3}
-          citeUrl="https://moz.com/learn/seo/anchor-text"
-          cite="Source: Anchor text keyword density - Moz, Anchor Text article"
+          cite={
+            <a href="https://moz.com/learn/seo/anchor-text">
+              Source: Anchor text keyword density - Moz, Anchor Text article
+            </a>
+          }
         >
           <P vol={4}>
             With the Penguin algorithm update, Google began to look more closely
@@ -195,9 +197,11 @@ const VisuallyHiddenDocs = () => {
           , in this case we are looking at:
         </P>
         <Blockquote
-          citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html"
-          cite="Link Purpose (In Context): Understanding Success Criterion 2.4.4"
-          accent={3}
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html">
+              Link Purpose (In Context): Understanding Success Criterion 2.4.4
+            </a>
+          }
           variant={2}
         >
           <H2 vol={4}>Navigable: Understanding Guideline 2.4</H2>
@@ -211,10 +215,12 @@ const VisuallyHiddenDocs = () => {
           criterion of 2.4.4 which states:
         </P>
         <Blockquote
-          citeUrl="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html"
-          cite="Link Purpose (In Context): Understanding Success Criterion 2.4.4"
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html">
+              Link Purpose (In Context): Understanding Success Criterion 2.4.4
+            </a>
+          }
           variant={2}
-          accent={2}
         >
           <H2 vol={4}>Link Purpose (In Context): Understanding SC 2.4.4</H2>
           <P>
@@ -245,7 +251,7 @@ const VisuallyHiddenDocs = () => {
         </P>
 
         {/* https://offset.earth/about   */}
-        <Blockquote variant={2} accent={3}>
+        <Blockquote variant={2}>
           <P>
             When reading out links by themselves, I can get a good idea of where
             the link will take me or what it will do if I select it. Unless

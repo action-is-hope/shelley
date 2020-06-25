@@ -36,7 +36,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
       <Grid tag="main">
         <Grid variant={3}>
           <div className={style.card}>
-            <H2 uppercase vol={3}>
+            <H2 uppercase vol={4}>
               Synopsis
             </H2>
 
@@ -47,16 +47,17 @@ const IndexPage = ({ data }: IndexPageProps) => {
               have found lurking around the internet. Throw the switch!
             </P>
 
-            <H2 uppercase vol={2}>
+            <H2 uppercase vol={3}>
               Introduction
             </H2>
 
             <P>
-              Shelley is a fully stylable foundatrion user interface library
-              build in TypeScript with <a href="https://reactjs.org/">React</a>{" "}
-              and <a href="https://stylable.io/">Stylable</a> in which you{" "}
-              <em>own</em> the styles, 100%. You can use our project (theme) as
-              a base but the idea is that you will evolve it or make your own.
+              Shelley is a fully stylable &apos;foundation level&apos; user
+              interface library build in TypeScript with{" "}
+              <a href="https://reactjs.org/">React</a> and{" "}
+              <a href="https://stylable.io/">Stylable</a> in which you{" "}
+              <em>own</em> the styles, 100%. You can use our styles as a base
+              and evolve it or make your own from scratch.
             </P>
 
             <P>
@@ -120,7 +121,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               </Text>
             </ul>
 
-            <H2 uppercase vol={2}>
+            <H2 uppercase vol={3}>
               Vision
             </H2>
 
@@ -147,7 +148,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
           </div>
           <div className={style.card}>
-            <H2 uppercase vol={3}>
+            <H2 uppercase vol={4}>
               About
             </H2>
 
@@ -186,27 +187,19 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </H2>
 
             <P>
-              This Shelley has <strong>nothing</strong> to do with{" "}
-              <a href="https://cardanoroadmap.com/en/shelley/">
-                era of Shelley
-              </a>{" "}
-              as part of the{" "}
-              <a href="https://www.cardano.org/">Cardano blockchain</a> but we
-              dig their style and the naming convention of their roadmap. Make
-              sure you double check any URLS&apos;s are corrent in the general
-              cryto space.
-            </P>
-
-            <P>
-              Shelley exists mainly as a technical enabler for us to build our
-              web apps and get stuff done, but we also want to help anyone with
-              vital knowledge but limited resources to communicate it
-              effectively.
-            </P>
-
-            <P>
               Currently Shelley is in an <em>alpha</em> phase looking at moving
               into a public <em>beta</em> late Summer 2020.
+            </P>
+
+            <P>
+              Current focus: Shelley exists mainly as a technical enabler for us
+              to build our web apps and get stuff done.
+            </P>
+
+            <P>
+              Future focus: This will evolve to help facilitate anyone with
+              vital knowledge but limited resources to communicate it
+              effectively.
             </P>
           </div>
           <div className={style.card}>
@@ -220,8 +213,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               What if talking about nature and our planet everyday is the
-              catalyst for real adaptive change within our society. More start
-              to see the need now with Covid.
+              catalyst for real adaptive change within our society. We even
+              start to see it now with Covid.
             </P>
 
             <P>
@@ -235,6 +228,39 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <a href="https://treeware.earth/">Treeware</a> conditions of use
               and start a forest with us.
             </P>
+          </div>
+          <div className={style.card}>
+            <H2 uppercase vol={3}>
+              Support Shelley
+            </H2>
+
+            <P>
+              Treeware gets us some trees, love that but if you want to help us
+              directly that would also be awesome.
+            </P>
+
+            <P>
+              This Shelley has <strong>nothing</strong> to do with{" "}
+              <a href="https://cardanoroadmap.com/en/shelley/">
+                era of Shelley
+              </a>{" "}
+              as part of the{" "}
+              <a href="https://www.cardano.org/">Cardano blockchain</a> but we
+              dig their style, the naming convention and the coin, ADA 🥰.
+            </P>
+            <P>
+              If you have some ADA kicking around, we&apos;d be happy to accept
+              some in support: LINK
+            </P>
+            <P>
+              If you are a Brave user we are a registered content creator so
+              we&apos;re also accepting your advert erned BAT.
+            </P>
+
+            {/* <P>
+              Remember: Beware of fake URLS&apos;s when using your cryto
+              services.
+            </P> */}
           </div>
         </Grid>
       </Grid>

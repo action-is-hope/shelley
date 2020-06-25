@@ -14,29 +14,19 @@ interface BlockquoteProps
   children: React.ReactNode;
   cite?: React.ReactNode;
   citeAttr?: string;
-  citeUrl?: string;
   variant?: Variant;
   citeVol?: Volume;
 }
 
 const Blockquote = ({
   children,
-  cite: citeContent,
+  cite,
   citeAttr,
-  citeUrl,
   citeVol = 2,
   className: classNameProp,
   variant,
   ...rest
 }: BlockquoteProps) => {
-  // @todo: should be optional + need a 'opens in a new window' thingy which we need to make.
-  const cite = citeUrl ? (
-    <a href={citeUrl} target="_blank" rel="noopener noreferrer">
-      {citeContent}
-    </a>
-  ) : (
-    citeContent
-  );
   return (
     <blockquote
       {...style(
