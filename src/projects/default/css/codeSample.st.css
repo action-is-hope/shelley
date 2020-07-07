@@ -64,8 +64,6 @@ CodeSample code :global(.attr-value) {
 }
 
 CodeSample code :global(.comment) {
-  /* d = color: #28a265 */
-  /* l = color: #19815A */
   color: #29a065
     /* 2ea96c, 29a065 */
 }

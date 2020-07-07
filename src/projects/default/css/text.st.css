@@ -1,13 +1,13 @@
 /** text.st.css */
 
-/* project and vars */
+/* = = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    /* font-plain, */
+    /* = font-plain, */
     spacing-unit,
-    /* --color-ui-default, */
+    /* = --color-ui-default, */
     text-vol-1-max, text-vol-1-scale, text-vol-1-line-height,
     text-vol-2-max, text-vol-2-scale, text-vol-2-line-height,
     text-vol-3-max, text-vol-3-scale, text-vol-3-line-height,
@@ -46,11 +46,11 @@
 @st-scope Default {
   Text {
     font-weight: 400;
-    /* switch off for light / dark bgs.... */
+    /* = switch off for light / dark bgs.... */
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Volume 1 */
+  /* = Volume 1 */
 
   Text.vol1 {
     -st-mixin:
@@ -59,7 +59,7 @@
         lineHeight value(text-vol-1-line-height));
   }
 
-  /* Volume 2 */
+  /* = Volume 2 */
   Text.vol2 {
     -st-mixin:
       textVol(scale value(text-vol-2-scale),
@@ -67,7 +67,7 @@
         lineHeight value(text-vol-2-line-height));
   }
 
-  /* Volume 3 */
+  /* = Volume 3 */
   Text.vol3 {
     -st-mixin:
       textVol(scale value(text-vol-3-scale),
@@ -76,7 +76,7 @@
   }
 
 
-  /* Volume 4 */
+  /* = Volume 4 */
   Text.vol4 {
     -st-mixin:
       textVol(scale value(text-vol-4-scale),
@@ -84,7 +84,7 @@
         lineHeight value(text-vol-4-line-height));
   }
 
-  /* Volume 5 */
+  /* = Volume 5 */
   Text.vol5 {
     -st-mixin:
       textVol(scale value(text-vol-5-scale),
@@ -92,7 +92,7 @@
         lineHeight value(text-vol-5-line-height));
   }
 
-  /* Volume 6 */
+  /* = Volume 6 */
   Text.vol6 {
     -st-mixin:
       textVol(scale value(text-vol-6-scale),
@@ -100,7 +100,7 @@
         lineHeight value(text-vol-6-line-height));
   }
 
-  /* Volume 7 */
+  /* = Volume 7 */
   Text.vol7 {
     -st-mixin:
       textVol(scale value(text-vol-7-scale),
@@ -109,7 +109,7 @@
     font-weight: 300;
   }
 
-  /* Volume 8 */
+  /* = Volume 8 */
   Text.vol8 {
     -st-mixin:
       textVol(scale value(text-vol-8-scale),
@@ -118,7 +118,7 @@
     font-weight: 300;
   }
 
-  /* Volume 9 */
+  /* = Volume 9 */
   Text.vol9 {
     -st-mixin:
       textVol(scale value(text-vol-9-scale),
@@ -127,7 +127,7 @@
     font-weight: 300;
   }
 
-  /* Volume 10 */
+  /* = Volume 10 */
   Text.vol10 {
     -st-mixin:
       textVol(scale value(text-vol-10-scale),
@@ -136,7 +136,7 @@
     font-weight: 300;
   }
 
-  /* Volume 11 */
+  /* = Volume 11 */
   Text.vol11 {
     -st-mixin:
       textVol(scale value(text-vol-11-scale),
@@ -146,7 +146,7 @@
   }
 
 
-  /* Uppercase */
+  /* = Uppercase */
   Text.uppercase {
     text-transform: uppercase;
     letter-spacing: .25em;
@@ -169,19 +169,19 @@
   }
 
 
-  /* State selectors - Note: Inherits functional styles from Shelley. */
+  /* = State selectors - Note: Inherits functional styles from Shelley. */
   Text:truncate {
-    /* 
+    /*
       Probably best remove this and set widths as and when you use truncate. 
       The styles require a known width container and this is an example we use.
 
       Try not to use truncate but we know that sometimes it can be a compromise.
     */
     max-width: 32rem
-      /* FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
+      /* = FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
   }
 
-  /* State selectors */
+  /* = State selectors */
   Text:weight(1) {
     font-weight: 100;
   }
@@ -207,7 +207,7 @@
   }
 
 
-  /* Styles - typical child children. */
+  /* = Styles - typical child children. @todo tidy... */
 
 
   abbr[title] {
@@ -234,7 +234,6 @@
 
   Text a:hover,
   Text a:focus {
-    /* background-image: linear-gradient(0deg, #81c1ff 0%, transparent 2px); */
     border-color: #81c1ff
   }
 
@@ -264,15 +263,9 @@
     color: var(--color-accent-4, value(--color-accent-4-default));
   }
 
-  /* Styles - typical child children. */
+  /* = Styles - typical child children. */
   .large {
     background: green
-  }
-
-  .intro {
-    /* margin-top: 12px;
-    margin-bottom: 12px; */
-    /* line-height: 1.45; */
   }
 
   .dl {
@@ -286,6 +279,6 @@
   }
 
   .dl dd:before {
-    /* content: " - " */
+    /* = content: " - " */
   }
 }

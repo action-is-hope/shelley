@@ -1,7 +1,3 @@
-/* import PropsDemo from "../../components_site/PropsDemo/PropsDemo.st.css";
-import CodeSample from "../../components_site/CodeSample/codeSample.st.css";*/
-
-
 /** propsDemo.st.css */
 :import {
   -st-from: "../../../components_site/PropsDemo/propsDemo.st.css";

@@ -12,10 +12,14 @@ interface BlockquoteProps
     Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">
   > {
   children: React.ReactNode;
+  /** Chuck in a citation node rendered within a Text component. */
   cite?: React.ReactNode;
+  /* = The text volume to use for the citation if provided. */
   citeAttr?: string;
-  variant?: Variant;
+  /* = The native, visually cite attr value. */
   citeVol?: Volume;
+  /** Variant index. */
+  variant?: Variant;
 }
 
 const Blockquote = ({

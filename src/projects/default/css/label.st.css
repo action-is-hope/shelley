@@ -1,6 +1,6 @@
 /** label.st.css */
 
-/* project and vars */
+/* = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -28,27 +28,27 @@
 
 @st-scope Default {
   Label {
-    /* Flex enables our positional styles, grid could work too. */
+    /* = Flex enables our positional styles, grid could work too. */
     display: flex;
-    /* Stops the text from getting selecting when clicking on labels. */
+    /* = Stops the text from getting selecting when clicking on labels. */
     user-select: none;
   }
 
   /*==== Has Input  ====*/
   Label.hasInput {
-    /* If the Label includes an inline assume we want a basic checkbox/radio layout. */
+    /* = If the Label includes an inline assume we want a basic checkbox/radio layout. */
     display: inline-flex;
-    /* Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
+    /* = Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
     flex-direction: row-reverse;
-    /* Vertically align the items. */
+    /* = Vertically align the items. */
     align-items: center;
-    /* Align to the end which as we have reversed the direction is now left in ltr languages.*/
+    /* = Align to the end which as we have reversed the direction is now left in ltr languages.*/
     justify-content: flex-end;
   }
 
   Label::textContainer {
     display: block;
-    /* color: #eaeaea; */
+    /* = color: #eaeaea; */
     color: value(--color-text-2-default);
     color: var(--color-text-2, value(--color-text-2-default));
   }
@@ -70,7 +70,7 @@
 
   /*==== Input Positions ====*/
 
-  /* top */
+  /* = top */
   Label:inputPos(top).hasInput {
     flex-direction: column-reverse;
   }
@@ -80,7 +80,7 @@
     justify-content: center;
   }
 
-  /* end / right */
+  /* = end / right */
   Label:inputPos(end).hasInput {
     flex-direction: row;
   }
@@ -90,7 +90,7 @@
     justify-content: flex-end;
   }
 
-  /* bottom */
+  /* = bottom */
   Label:inputPos(bottom).hasInput {
     flex-direction: column;
   }
@@ -100,7 +100,7 @@
     justify-content: center;
   }
 
-  /* start / left */
+  /* = start / left */
 
   /*==== Icon ====*/
   Label Icon {

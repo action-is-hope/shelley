@@ -64,12 +64,12 @@
     -st-mixin: textualFieldContainer;
   }
 
-  /*= Native input field. */
+  /* = Native input field. */
   InputBase::fieldInput {
     -st-mixin: textualFieldInput;
   }
 
-  /* Use a named import as a class to get the adjacent selectors working. */
+  /* = Use a named import as a class to get the adjacent selectors working. */
   InputBase Adornment+.fieldInput,
   InputBase::fieldInput+Adornment {
     margin-left: calc(-.2rem - value(spacing-unit));
@@ -80,7 +80,7 @@
   }
 
   InputBase ErrorText {
-    /* Send the error message which is first in the source order to appear under the form input. */
+    /* = Send the error message which is first in the source order to appear under the form input. */
     order: 3;
     padding: 8px value(spacing-unit) 0 value(spacing-unit);
   }
@@ -89,7 +89,7 @@
     display: block;
   }
 
-  /* Textarea wrapper which can be used for scrolling. */
+  /* = Textarea wrapper which can be used for scrolling. */
   InputBase::textAreaWrap {
     display: block;
     width: 100%;
@@ -98,47 +98,45 @@
 
   /*==== STATES ====*/
 
-  /* Error */
+  /* = Error */
   InputBase:error::fieldContainer {
     -st-mixin: textualFieldContainerHasError
   }
 
-  /* Disabled */
+  /* = Disabled */
   InputBase:disabled {
     -st-mixin: disabledField
   }
 
   /*==== VOLUMES ====*/
 
-  /* Volume 1 */
+  /* = Volume 1 */
   InputBase.vol1 {
     -st-mixin: inputVol1
   }
 
-  /* Volume 2 */
+  /* = Volume 2 */
   InputBase.vol2 {
     -st-mixin: inputVol2;
   }
 
-  /* Volume 3 */
+  /* = Volume 3 */
   InputBase.vol3 {
     -st-mixin: inputVol3
   }
 
 
-W3JokeW3LaughW3Play060616
-
-  /* Volume 4 */
+  /* = Volume 4 */
   InputBase.vol4 {
     -st-mixin: inputVol4
   }
 
-  /* Volume 5 */
+  /* = Volume 5 */
   InputBase.vol5 {
     -st-mixin: inputVol5
   }
 
-  /* Volume 6 */
+  /* = Volume 6 */
   InputBase.vol6 {
     -st-mixin: inputVol6
   }
@@ -147,7 +145,7 @@ W3JokeW3LaughW3Play060616
 
   /*==== VARIANTS ====*/
 
-  /* Variant 1 - "Body" */
+  /* = Variant 1 - "Body" */
   InputBase.variant1 InputLabel {
     margin-bottom: value(spacing-unit);
   }
@@ -157,7 +155,7 @@ W3JokeW3LaughW3Play060616
   }
 
 
-  /* Variant 2 - "Data" */
+  /* = Variant 2 - "Data" */
 
   InputBase.variant2 {
     display: grid;

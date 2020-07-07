@@ -1,4 +1,4 @@
-/* buttonExamples.tsx */
+/* textExamples.tsx */
 import React from "react";
 // Example Component.
 import Text from "./Text";

@@ -1,6 +1,6 @@
 /** inputSelection.st.css */
 
-/* project and vars */
+/* = Project and vars. */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -84,42 +84,42 @@
     padding-bottom: value(spacing-unit);
   }
 
-  /*==== VOLUMES ====*/
+  /* ==== VOLUMES ====*/
 
-  /*= Volume 1 */
+  /* = Volume 1 */
   InputSelection.vol1 {
     -st-mixin: inputVol1
   }
 
-  /*= Volume 2 */
+  /* = Volume 2 */
   InputSelection.vol2 {
     -st-mixin: inputVol2;
   }
 
-  /*= Volume 3 */
+  /* = Volume 3 */
   InputSelection.vol3 {
     -st-mixin: inputVol3
   }
 
-  /*= Volume 4 */
+  /* = Volume 4 */
   InputSelection.vol4 {
     -st-mixin: inputVol4
   }
 
-  /*= Volume 5 */
+  /* = Volume 5 */
   InputSelection.vol5 {
     -st-mixin: inputVol5
   }
 
-  /*= Volume 6 */
+  /* = Volume 6 */
   InputSelection.vol6 {
     -st-mixin: inputVol6
   }
 
 
-  /*==== VARIANTS ====*/
+  /* ==== VARIANTS ====*/
 
-  /*= Variant 1 - Basic alignment. */
+  /* = Variant 1 - Basic alignment. */
 
   InputSelection Icon {
     font-size: 2em;
@@ -140,12 +140,12 @@
 
   InputSelection.variant1 InputLabel:inputPos(start)::textContainer {
     padding-left: value(spacing-unit);
-    /* rtl padding-right: value(spacing-unit); */
+    /* = rtl padding-right: value(spacing-unit); */
   }
 
 
 
-  /*= Variant 2 - Form row style. */
+  /* = Variant 2 - Form row style. */
   InputSelection.variant2 {
     display: flex;
   }

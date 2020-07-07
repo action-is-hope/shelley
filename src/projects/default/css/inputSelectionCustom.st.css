@@ -1,6 +1,6 @@
 /** inputSelection.st.css */
 
-/* project and vars */
+/* = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -68,7 +68,7 @@
 @st-scope Default {
 
 
-  /*= Dark / Light theme switcher styles 3 */
+  /* = Dark / Light theme switcher styles 3 */
   .darkLightToggle {
     -st-extends: InputSelection;
   }
@@ -100,7 +100,6 @@
   .darkLightToggle InputLabel::textContainer {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     align-items: flex-end;
     position: relative;
     color: inherit;
@@ -125,7 +124,7 @@
     bottom: -38px;
   }
 
-  /* Fabulous! https://css-tricks.com/touch-devices-not-judged-size/ */
+  /* = Fabulous! https://css-tricks.com/touch-devices-not-judged-size/ */
   @media (pointer: coarse) {
     .darkLightToggle HintText {
       -st-mixin: visuallyHidden

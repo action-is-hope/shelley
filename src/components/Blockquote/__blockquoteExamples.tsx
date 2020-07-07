@@ -133,5 +133,3 @@ Blockquote.variant4 {}
 Blockquote.variant5 {}
 Blockquote.variant6 {}`}</CodeSample>
 );
-
-// export const Example1 = () => <Demo></Demo>;

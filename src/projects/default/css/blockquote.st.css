@@ -55,7 +55,8 @@
   }
 
   /**
-   * Variant 1 - Informal - 'chat'
+   * =Variant 1 - Informal - 'chat'
+   *
    * A useful style to get across a chat/conversation of some kind.
    * @todo: should be able to alternate the styles for a chat? 
    * Maybe we need a chat wrapper? Maybe in that format they should not be blockquotes...
@@ -86,7 +87,8 @@
   }
 
   /**
-   * Variant 2 - 'academic'
+   * = Variant 2 - 'academic'
+   *
    * A typical main body style for proper quotes.
    */
 

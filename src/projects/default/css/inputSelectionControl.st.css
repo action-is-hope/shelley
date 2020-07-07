@@ -24,12 +24,12 @@
   -st-default: Icon;
 }
 
-/* This is how we can scope the styles. */
+/* = This is how we can scope the styles. */
 @st-scope Default {
 
   InputSelectionControl {
     font-size: 20px;
-    /* flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
+    /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
     display: flex;
     transform: translateZ(0);
   }
@@ -68,9 +68,9 @@
     opacity: 0;
   }
 
-  /* For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
+  /* = For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
 
-  /* Set: Both active and focus to avoid the vanishing of the focus style when active. */
+  /* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
   InputSelectionControl::inputField:focus::after,
   InputSelectionControl::inputField:active::after {
     opacity: 1;
@@ -79,16 +79,18 @@
   @-moz-document url-prefix() {
 
     /**
-   * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
-   * rule for focus but will show our active styles that we only set to avoid the opposite
-   * in Chrome. 
-   */
+    * = Cross browser - Firefox 
+    
+    * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
+    * rule for focus but will show our active styles that we only set to avoid the opposite
+    * in Chrome. 
+    */
     InputSelectionControl::inputField:active::after {
       opacity: 0;
     }
   }
 
-  /* Disabled - common */
+  /* = Disabled - common */
   InputSelectionControl::inputField:disabled::after {
     opacity: 0;
   }
@@ -99,7 +101,7 @@
   }
 
 
-  /* Checkbox / Radio Common */
+  /* = Checkbox / Radio Common */
   InputSelectionControl::checkbox::before,
   InputSelectionControl::radio::before {
     content: "";
@@ -116,14 +118,14 @@
     opacity: 1;
   }
 
-  /* Radio */
+  /* = Radio */
   InputSelectionControl::radio,
   InputSelectionControl::radio::after,
   InputSelectionControl::radio::before {
     border-radius: 50%;
   }
 
-  /* Toggle */
+  /* = Toggle */
   InputSelectionControl::toggle {
     width: 2em;
     border-radius: 9999px;
