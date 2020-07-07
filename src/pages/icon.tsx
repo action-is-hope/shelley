@@ -22,7 +22,7 @@ const IconDocs = () => {
     <DefaultLayout>
       <PageTitle>Icon</PageTitle>
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Icon&apos;s are universal translators,some are more visually
           descriptive than others so consider labels.
         </P>

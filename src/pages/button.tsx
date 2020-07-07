@@ -32,7 +32,7 @@ const ButtonDocs = () => {
       <PageTitle>Button</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
-          Buttons are &apos;selected&apos; not clicked lets forget about the
+          Buttons are not clicked, they are &apos;selected&apos; so forget the
           mouse, the key resides in the keyboard. Deep.
         </P>
 

@@ -6,16 +6,16 @@ import Button from "./Button";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import grid from "../../projects/default/css/grid.st.css";
-import Icon from "../Icon/Icon";
 export const meta = {
-  name: "Button"
+  name: "HTMLInputElement"
 };
 
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
   >{`import Button from "@action-is-hope/shelley";
-\n<Button>Your planet needs you!</Button>`}</CodeSample>
+\n<Button>Climate fight club</Button>
+/* The only rule is that we talk about climate change; with intent. */`}</CodeSample>
 );
 
 // Props Demo - Examples below.

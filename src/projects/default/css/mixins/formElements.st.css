@@ -74,7 +74,7 @@
   -webkit-transition-delay: 99999s;
 }
 
-.errorText {
+/* .errorText {
   color: value(--color-status-error-default);
   color: var(--color-status-error, value(--color-status-error-default));
   display: block;
@@ -95,13 +95,13 @@
   background-color: var(--color-status-error, value(--color-status-error-default));
   opacity: 0.5;
   transition: background-color 0.3s;
-}
+} */
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
   .errorText {
     font-size: .625rem;
   }
-}
+} */
 
 
 /**

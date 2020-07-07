@@ -21,14 +21,6 @@
 
 /* https://www.sacredgeometryshop.com/sacred-geometry/vesica-piscis-sacred-geometry/ */
 @keyframes headTilt {
-  /* from {
-    transform: rotate(4deg);
-  }
-
-  to {
-    transform: rotate(-4deg);
-  } */
-
   0% {
     transform: rotate(4deg);
   }
@@ -69,8 +61,6 @@
     transition-duration: .1s;
     transition-timing-function: ease-in-out;
     transition-delay: .5s;
-    /* margin-top: -100%;
-  margin-left: -96px; */
   }
 
   Logo:hover {
@@ -79,7 +69,6 @@
     animation-name: headTilt; */
     /* animation-iteration-count: infinite; */
     /* animation-direction: alternate; */
-
   }
 
 
@@ -90,15 +79,13 @@
     content: "";
     display: flex;
     /* height: 94px;
-  width: 94px; */
+    width: 94px; */
     height: 6em;
-
     width: 6em;
     /* border: 3px solid var(--color-ui, value(--color-ui-default)); */
     border: 0.1875em solid var(--color-ui, value(--color-ui-default));
     border: 0.158em solid var(--color-ui, value(--color-ui-default));
     border: 0.115em solid var(--color-ui, value(--color-ui-default));
-
     /* 0.115em */
     /* margin-top: 2px; */
     border-radius: 500px
@@ -126,12 +113,4 @@
     box-shadow: -2px 0px 3px #1acaff;
     box-shadow: -0.125em 0px 0.1875em #1acaff;
   }
-
-  /* .logoWrap {
-    grid-row: 1;
-    font-size: 1.25em;
-    font-size: 1.35em;
-    position: relative;
-  } */
-
 }

@@ -8,7 +8,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import grid from "../../projects/default/css/grid.st.css";
 
 export const meta = {
-  name: "Button"
+  name: "SVGSVGElement"
 };
 
 export const QuickRef = () => (

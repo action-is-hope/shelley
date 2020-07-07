@@ -48,7 +48,7 @@
 
   Label::textContainer {
     display: block;
-    color: #eaeaea;
+    /* color: #eaeaea; */
     color: value(--color-text-2-default);
     color: var(--color-text-2, value(--color-text-2-default));
   }

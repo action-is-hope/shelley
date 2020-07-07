@@ -61,16 +61,16 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              We strive to excite and enable the passionate, experianced or
-              otherwise. We&apos;ve postioned this site to serve as a general
+              We strive to excite and enable the passionate, experienced or
+              otherwise. We&apos;ve positioned this site to serve as a general
               resource for those that seek knowledge in terms of practical HTML,
               CSS and accessibility. JavaScript or any other language churning
               out HTML is simply a facilitator.
             </P>
 
             <P>
-              The site, which you can find on Github, is also a living example
-              of Shelley in use with the wonderful Gatsby which is a great
+              This site (link code on Github) is also a living example of
+              Shelley in use with the wonderful Gatsby which is a great
               companion when starting out with React.
             </P>
 
@@ -137,7 +137,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               </a>{" "}
               especially around accessibility and customisation. We are just
               impatient and feel Stylable gives us what we need now. If
-              it&apos;s good for you too then great, if not then defo checkout{" "}
+              it&apos;s good for you then great, if not defo checkout{" "}
               <a href="https://material-ui.com/">React Material UI</a>.
             </P>
 
@@ -160,17 +160,16 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               We made a pact to take all of our anger, bitterness, fear, sorrow
-              and general doom with regards to the state of our planatary ship;
-              channel it and join the gansta guardians defending her from
-              infinite consumption; imagining and implementing creative
-              solutions whilst inspiring the cynicical into seeing that we can
-              do better, we can live better.
+              and general doom with regards to the state of our planetary ship;
+              channel it and join the guardians defending her from infinite
+              consumption, those imagining and implementing creative solutions
+              whilst inspiring past the cynicism to see that we can do better,
+              we can live better.
             </P>
 
             <P>
-              What the bloody hell else are we supose to do? It&apos;s the only
-              ship we have and we are quite fond of her and <em>all</em> of her
-              inhabitants.
+              What else are we suppose to do? It&apos;s the only ship we have
+              and we are quite fond of her and <em>all</em> of her inhabitants.
             </P>
 
             <P>
@@ -248,11 +247,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <a href="https://www.cardano.org/">Cardano blockchain</a> but we
               dig their style, the naming convention and the coin, ADA 🥰.
             </P>
-            <P>
+            {/* <P>
               If you have some ADA kicking around, we&apos;d be happy to accept
               some in support: LINK
-            </P>
-            <P>
+            </P> */}
+            {/* <P>
               If you are a Brave user we are a registered content creator so
               we&apos;re also accepting your advert erned BAT.
             </P>
@@ -263,7 +262,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 downloading and using Brave browser.
               </a>
               .
-            </P>
+            </P> */}
 
             {/* <P>
               Remember: Beware of fake URLS&apos;s when using your cryto
