@@ -5,7 +5,12 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit;
+    spacing-unit,
+    /* --color-status-error-default, */
+    --color-form-mark-default,
+    --color-focus-default,
+    --color-ui-inverse-default,
+    /* --select-icon-default; */
 }
 
 :import {

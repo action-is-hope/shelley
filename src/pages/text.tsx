@@ -1,10 +1,8 @@
 import React from "react";
 import DefaultLayout from "../layouts";
 /* Shelley */
-import Text, { P, H2, H3, H4 } from "../components/Text/Text";
+import { P, H2, H3, H4 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
-import PropsDemo from "../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 /* Style imports */
 import text from "../projects/default/css/text.st.css";
@@ -17,8 +15,7 @@ import {
   QuickRef,
   ComponentDemo,
   ComponentHTML,
-  ComponentCSS,
-  Example1
+  ComponentCSS
 } from "../components/Text/__textExamples";
 
 const TextDocs = () => {
@@ -27,8 +24,8 @@ const TextDocs = () => {
       <PageTitle>Text</PageTitle>
       <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
-          Text is for presenting words, we love words, they&apos;re the best,
-          nobody knows more about... they&apos;re just the best, that&apos;s it.
+          Text is for presenting words, we love words, they&apos;re the best.
+          Simple, enguaging and on point.
         </P>
 
         <H2 vol={2} uppercase>

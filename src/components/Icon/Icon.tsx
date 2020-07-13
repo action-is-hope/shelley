@@ -1,5 +1,4 @@
 import React from "react";
-import { Accent, Volume } from "../types";
 import classnames from "classnames";
 import style from "./icon.st.css";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -12,8 +11,6 @@ interface IconProps
     React.SVGProps<SVGSVGElement>,
     Exclude<keyof React.SVGProps<SVGSVGElement>, "color">
   > {
-  /** Accent index. */
-  // color?: Accent;
   /** Alternative text via VisuallyHidden */
   alt?: string;
   /** Defaults to "0 0 16 16" based on vaadin icon set:
@@ -21,7 +18,6 @@ interface IconProps
    * For material-ui set to "0 0 24 24".]
    */
   viewBox?: string;
-  // vol?: Volume;
 }
 
 const Icon = React.forwardRef(
@@ -29,7 +25,6 @@ const Icon = React.forwardRef(
     {
       children,
       className: classNameProp,
-      // color = false,
       alt,
       viewBox = "0 0 16 16",
       /* Pull off the aria label so we can honour an accessible solution. */

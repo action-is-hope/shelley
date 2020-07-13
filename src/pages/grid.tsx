@@ -34,10 +34,10 @@ const GridDocs = () => {
         <QuickRef />
 
         <P>
-          You already have the grid system in CSS, <code>display: grid;</code>{" "}
-          this is more about configuration. We find having a <code>Grid</code>{" "}
-          component is useful for housing our core grid configs and their
-          fallbacks.
+          We already have the grid system within CSS,{" "}
+          <code>display: grid;</code> this is more about configuration these
+          days. We find having a <code>Grid</code> component is useful for
+          housing our core grid configs and their fallbacks.
         </P>
 
         <P>
@@ -53,24 +53,9 @@ const GridDocs = () => {
         </P>
 
         <P>
-          We don&apos;t have our usual props demo, so here is a quick look at
-          the props before we move on but there is nothing stopping you from
-          building your own grid component to handle your usecases.
+          We don&apos;t have our usual demo, but here is a quick look at the
+          props before we move on to some styling info.
         </P>
-
-        {/* <ul className={classnames(grid.mt1, grid.mb1)}>
-          <Text tag="li">
-            <code>tag</code> - string name of the HTML tag to render as the root
-            for your grid.
-          </Text>
-          <Text tag="li">
-            <code>formatted</code> - boolean designed to toggle formatted
-            alignment rules.
-          </Text>
-          <Text tag="li">
-            <code>variant</code> - number index of the grid variant to use.
-          </Text>
-        </ul> */}
 
         <CodeSample
           className={grid.mid}
@@ -80,6 +65,12 @@ tag?: string;
 formatted?: boolean;
 /** Variant index. */
 variant?: number;`}</CodeSample>
+
+        <P>
+          As ever, there is nothing stopping you from building your own grid
+          component to handle your usecases or you can just share grid based
+          variables around instead.
+        </P>
 
         <H2 vol={4} uppercase>
           Styling

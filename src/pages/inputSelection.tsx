@@ -22,7 +22,8 @@ const InputSelectionDocs = () => {
       <PageTitle>InputSelection</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
-          This one be for selecting tings, radio, checkbox or toggle switches
+          This be for selecting things, radio, checkbox or toggle switches.
+          @todo
         </P>
 
         <H2 vol={2} uppercase>

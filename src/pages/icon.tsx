@@ -3,7 +3,6 @@ import DefaultLayout from "../layouts";
 import { P, H2, H3 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import text from "../projects/default/css/text.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 
 import {
@@ -12,7 +11,6 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Collection,
   Example1
 } from "../components/Icon/__iconExamples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
@@ -40,13 +38,14 @@ const IconDocs = () => {
         </P>
 
         <P>
-          An icon set is panned, it will likely be based on{" "}
+          An icon set is planned, it might be based on a simple roll of{" "}
           <a href="https://cdn.vaadin.com/vaadin-icons/4.3.1/demo/#icons-basic-demos">
             vaadin-icons
           </a>
-          , an Open Source set that is fairly extensive. We do have some beef
+          , an Open Source set that is fairly extensive. We do have some beef**
           with the &apos;accessibility&apos; icon denoting a wheelchair... but
-          this is not an issue specific to this icon set.
+          this is not an issue specific to this icon set. We shall see how we
+          get on with it but may well fallback to the Material set.
         </P>
 
         <P>
@@ -55,17 +54,29 @@ const IconDocs = () => {
           <code>VisuallyHidden</code> one for you, it&apos;s the law.
         </P>
 
+        <P>
+          **Digression: We love the taste of beef, not gonna lie, but we
+          don&apos;t trust the non transparency of our supply chain to be
+          sustainable or humain, can it even be sustainable? Interested in the
+          potential to run herds (mimicking nature) to help reverse
+          desertification.{" "}
+          <a href="https://www.youtube.com/watch?v=q7pI7IYaJLI">
+            Holistic grazing
+          </a>{" "}
+          is an interesting area and whilst Savoy has his critics we have
+          noticed that in the soil space he has support.
+        </P>
+
         <ComponentDemo />
 
         <H2 vol={4} uppercase>
           Styling
         </H2>
         <P>
-          Unlike some of our other components we do not use <code>vol</code> or{" "}
-          <code>accent</code>. In the example above you saw us using inline
-          styles which is a no no for accessibility. Why? It is hard for users
-          to override styles with their own so inline sizing and color is
-          especially bad.
+          Unlike some of our other components we do not use <code>vol</code>. In
+          the example above you saw us using inline styles which is a no no for
+          accessibility. Why? It is hard for users to override styles with their
+          own so inline sizing and color is especially bad.
         </P>
         <P>
           We tend to apply these &apos;glue&apos; styles within other component

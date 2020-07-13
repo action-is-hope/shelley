@@ -58,8 +58,8 @@ const LabelsDocs = () => {
           Anyway.... back to these blockquotes!{" "}
           <em>Keep Calm and Carry on Coding</em> would seem to be the current{" "}
           <em>action</em>, we do need to express and share ideas effectively
-          after all. There isn&apos;t much to them, but they work best in
-          conjunction with the <code>Text</code> components.
+          after all. Anyways, there isn&apos;t much to blockquotes, just that
+          they work best in conjunction with the <code>Text</code> components.
         </P>
         <P>
           Lets take a look at a few variations, note that we are using different{" "}

@@ -93,6 +93,17 @@
 
   --grad-1: value(--grad-1-default);
 
+  --status-background: #692e2e;
+  --support-background: #2e5b69;
+  /* background: #51d6de;
+    background: #50de98;
+    background: #99ffcd;
+    background: #92e6bd;
+    background: #d1ffe9;
+    background: #287750;
+    background: #2f5442;
+    background: #2e5b69; */
+
   /* --select-icon: value(--select-icon-default); */
 
   --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>")

@@ -13,8 +13,8 @@ const LabelsDocs = () => {
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
           Styling is the art of weilding CSS to create a wardrobe for our HTML
-          to wear. Some call it a black art, perhaps but the dark arts are less
-          required with the demise of{" "}
+          to wear. Some call it a black art, perhaps but the dark arts are not
+          called upon as much since the demise of{" "}
           <a href="https://en.wikipedia.org/wiki/Trident_(software)">Trident</a>
           .
         </P>

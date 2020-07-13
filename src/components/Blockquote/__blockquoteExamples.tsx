@@ -37,13 +37,13 @@ export const ComponentDemo = () => {
       label: "cite",
       type: "text",
       value: "Donella Meadows, environmental scientist, 1941-2001 "
-    },
-    {
-      name: "citeAttr",
-      label: "citeAttr",
-      type: "text",
-      value: "https://en.wikipedia.org/wiki/Donella_Meadows"
     }
+    // {
+    //   name: "citeAttr",
+    //   label: "citeAttr",
+    //   type: "text",
+    //   value: "https://en.wikipedia.org/wiki/Donella_Meadows"
+    // }
   ]);
 
   const quotes = [
@@ -70,10 +70,21 @@ export const ComponentDemo = () => {
         <CodeSample>{`import { Blockquote } from "@action-is-hope/shelley";\n\n<Blockquote ${
           labelDemoProps[0].value > 0
             ? `\n  variant={${labelDemoProps[0].value}}`
-            : `\n  variant={false }`
+            : `\n  variant={ false }`
         } ${
           labelDemoProps[1].value ? `\n  cite="${labelDemoProps[1].value}"` : ``
-        } \n>\n ${labelDemoProps[2].value}\n</Blockquote>`}</CodeSample>
+        } \n>
+${labelDemoProps[0].value == 0 ? `<P vol={4}>${quotes[0]}</P>` : ``} ${
+          labelDemoProps[0].value == 1 ? `<P>${quotes[0]}</P>` : ``
+        } ${
+          labelDemoProps[0].value == 2
+            ? `<>
+      <H2 vol={4}>{quotes[1]}</H2>
+      <P>${quotes[2]}</P>
+    </>`
+            : ``
+        } ${labelDemoProps[0].value > 2 ? `<P>${quotes[0]}</P>` : ``}
+</Blockquote>`}</CodeSample>
       }
     >
       <Blockquote
@@ -81,7 +92,7 @@ export const ComponentDemo = () => {
           labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value
         }
         cite={labelDemoProps[1].value}
-        citeAttr={labelDemoProps[2].value}
+        // citeAttr={labelDemoProps[2].value}
       >
         {/* Render a few deferent examples depending on the variant. */}
         {labelDemoProps[0].value == 0 && <P vol={4}>{quotes[0]}</P>}

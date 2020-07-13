@@ -76,14 +76,22 @@ export const ComponentDemo = () => {
       }
     >
       <Text
-        id="username"
+        id="textDemo"
         tag="p"
-        // underline={true}
         vol={TextDemoProps[0].value}
         truncate={TextDemoProps[1].value}
         uppercase={TextDemoProps[2].value}
       >
         {TextDemoProps[3].value}
+      </Text>
+      <br />
+      <br />
+      <Text tag="p" vol={3}>
+        For completness:{" "}
+        <a href="https://www.ipcc.ch/reports/">
+          <abbr title="Intergovernmental Panel on Climate Change">IPCC</abbr>{" "}
+          reports
+        </a>{" "}
       </Text>
     </PropsDemo>
   );

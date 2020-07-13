@@ -18,7 +18,6 @@ import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 import Button from "../components/Button/Button";
 
 const ButtonDocs = () => {
-  const inputEl = React.useRef();
   const test = React.createRef<HTMLBaseElement>();
   const onButtonClick = () => {
     const node = test.current;
@@ -71,16 +70,16 @@ const ButtonDocs = () => {
         </H2>
 
         <P>
-          We have a button and an inner button which is pretty key if we are to
-          throw in other things inside a button. We put out vertical alignment
-          on the inner item so as to allow an adjacent icon to span the full
-          height.
+          In terms of HTML structure, we have a button and an inner button. The
+          inner button is pretty key if we are to throw in other things like
+          icons inside. We put out vertical alignment on the inner item so as to
+          allow an adjacent icon to span the full height.
         </P>
 
         <P>
-          In terms of proving state styles for things like laoding or pressed
+          In terms of proving state styles for things like loading or pressed
           then we suggest you use the aria attributes and target the attribute
-          states.
+          states. @todo example
         </P>
 
         <StyleInfo

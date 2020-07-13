@@ -19,6 +19,7 @@ import {
   ComponentCSS
 } from "../components/Label/__labelExamples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+
 const LabelsDocs = () => {
   return (
     <DefaultLayout>
@@ -49,7 +50,7 @@ const LabelsDocs = () => {
         >{`<label for="myTextField">Label text</Label>\n<input id="myTextField" type="text" placeholder="Focus people!"/>`}</CodeSample>
         {/*
           The for attribute is essentially a labels way of announcing to an 
-          input that they are meant to be together. How sweet, they complete each other.
+          input that they are meant to be together. Awwww, they complete each other.
          */}
 
         <P>

@@ -31,8 +31,8 @@
     grid-row: 1 / span 4;
   }
 
-  .card + .card,
-  .card + .card + .card {
+  .card+.card,
+  .card+.card+.card {
     grid-column: 2;
   }
 
@@ -92,13 +92,13 @@ According to CNBC, the number of lawsuits over inaccessible websites jumped 58 p
 #f4d0d0
 rgba(199, 245, 218, 0.78) */
 
-  .card > * {
+  .card>* {
     max-width: 26rem;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .card + .card > * {
+  .card+.card>* {
     max-width: 18rem;
   }
 
@@ -111,7 +111,7 @@ rgba(199, 245, 218, 0.78) */
     grid-gap: 1rem;
   }
 
-  .menuList > li > a {
+  .menuList>li>a {
     display: block;
     padding: 13px 1.45rem;
     margin-bottom: 1px;
@@ -131,37 +131,27 @@ color: #4e4e4e;
     -webkit-font-smoothing: antialiased;
 */
 
-  .card + .card + .card {
-    /* grid-column: 9 / span 5; */
-    /* background: #50de98;
-    background: #acefff; */
-    background: #692e2e;
+  .card+.card+.card {
+    background: var(--status-background);
   }
 
-  .card + .card + .card + .card {
-    background: #51d6de;
-    background: #50de98;
-    background: #99ffcd;
-    background: #92e6bd;
-    background: #d1ffe9;
-    background: #287750;
-    background: #2f5442;
-    background: #2e5b69;
+  .card+.card+.card+.card {
+    background: var(--support-background);
   }
 
-  .card + .card + .card {
+  .card+.card+.card {
     /* color: #4e4e4e; */
     /* -webkit-font-smoothing: antialiased; */
   }
 
-  .card + .card + .card > h2 {
-    color: #fff;
+  .card+.card+.card>h2 {
+    color: inherit;
     /* font-weight: 400; */
     /* -webkit-font-smoothing: initial; */
   }
 
-  .card + .card + .card p,
-  .card + .card + .card li {
+  .card+.card+.card p,
+  .card+.card+.card li {
     font-weight: 400;
     /* -webkit-font-smoothing: antialiased; */
     /* color: #4e4e4e; */

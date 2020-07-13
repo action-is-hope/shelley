@@ -2,17 +2,9 @@ import React from "react";
 import Link from "gatsby-link";
 import { graphql } from "gatsby";
 import style from "./index.st.css";
-import classnames from "classnames";
-import CodeSample from "../components_site/CodeSample/CodeSample";
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
-import utils from "../projects/default/css/utils.st.css";
-
-// Global styles work with TS like this:
-require("./example.css");
 
 import DefaultLayout from "../layouts";
-import Text, { H2, H3, P } from "../components/Text/Text";
+import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
@@ -52,12 +44,16 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </H2>
 
             <P>
-              Shelley is a fully stylable &apos;foundation level&apos; user
-              interface library build in TypeScript with{" "}
+              Shelley is a fully stylable{" "}
+              <a href="https://www.thoughtworks.com/insights/blog/ui-components-design">
+                foundation level
+              </a>{" "}
+              user interface library build in TypeScript with{" "}
               <a href="https://reactjs.org/">React</a> and{" "}
               <a href="https://stylable.io/">Stylable</a> in which you{" "}
               <em>own</em> the styles, 100%. You can use our styles as a base
-              and evolve it or make your own from scratch.
+              and evolve them or make your own from scratch (starter kit to
+              come).
             </P>
 
             <P>
@@ -75,7 +71,15 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <H2 uppercase vol={2}>
-              Contents @TODO
+              Getting started
+            </H2>
+            <P>
+              @todo Something about npm install and a link to the Gatsby / RCA /
+              NextJS boilerplate and instructions for retrofit.
+            </P>
+
+            <H2 uppercase vol={2}>
+              Contents
             </H2>
 
             <P>
@@ -85,8 +89,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              We are also quite prone to comments so do look through our code
-              base, especially our theme when we &apos;finish&apos; it.
+              We are also quite prone to comments so do look through our [LINK]
+              code base, especially our theme when we &apos;finish&apos; it.
             </P>
 
             <ul className={style.menuList}>
@@ -136,15 +140,16 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 Material UI <q>Vision</q>
               </a>{" "}
               especially around accessibility and customisation. We are just
-              impatient and feel Stylable gives us what we need now. If
-              it&apos;s good for you then great, if not defo checkout{" "}
+              impatient and feel Stylable can give us all we need now. If
+              it&apos;s usful for you then great, otherwise defo checkout{" "}
               <a href="https://material-ui.com/">React Material UI</a>.
             </P>
 
             <P>
-              A desirable goal of this project would be, in the spirit of Zen to
-              set up a repo for Shelley themes. We hope we get to it fairly soon
-              but there is not point if you don&apos;t like the idea.
+              A desirable goal of this project would be, in the spirit of{" "}
+              <a href="http://www.csszengarden.com/">Zen</a> to set up a repo
+              for Shelley themes. We hope we get to it fairly soon, even if
+              it&apos;s just our own personal CSS dumping ground.
             </P>
           </div>
           <div className={style.card}>
@@ -159,17 +164,21 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <P>
-              We made a pact to take all of our anger, bitterness, fear, sorrow
-              and general doom with regards to the state of our planetary ship;
-              channel it and join the guardians defending her from infinite
-              consumption, those imagining and implementing creative solutions
-              whilst inspiring past the cynicism to see that we can do better,
-              we can live better.
+              We made a pact to take all of our bewildering emotion with regards
+              to the state of our planetary ship; channel it and join those
+              defending her from the barage of infinite consumption.
             </P>
 
             <P>
-              What else are we suppose to do? It&apos;s the only ship we have
-              and we are quite fond of her and <em>all</em> of her inhabitants.
+              We pledge to demonsrate thoughtfulness in emotional times, we seek
+              to faciliate those imagining and implementing creative solutions
+              whilst inspiring past cynicism.
+            </P>
+
+            <P>
+              We are not quite sure what else <em>to</em> do. <em>This be</em>{" "}
+              our only ship and we are quite fond of her and <em>all</em> of her
+              inhabitants. Yes, even those we don&apos;t get along this. Savvy?
             </P>
 
             <P>
@@ -177,8 +186,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <q>
                 being the change <em>you</em> want to see in the world
               </q>{" "}
-              and it ends where <em>we</em> take it.
+              and it will end where <em>we</em> take it.
             </P>
+            <P></P>
           </div>
           <div className={style.card}>
             <H2 uppercase vol={3}>
@@ -203,7 +213,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
           </div>
           <div className={style.card}>
             <H2 uppercase vol={3}>
-              Treeware 🌲
+              Treeware 🌲 TBC
             </H2>
             <P>
               Planting some trees will not solve the ecological disaster that is
@@ -212,18 +222,17 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               What if talking about nature and our planet everyday is the
-              catalyst for real adaptive change within our society. We even
-              start to see it now with Covid.
+              catalyst for real adaptive change within our society? There is
+              nothing wrong with talking about the state of our home world!
             </P>
 
             <P>
-              Have a <em>real</em> conversation about the climate <em>today</em>{" "}
-              and <em>everyday</em> until it&apos;s our kids can breath a clean
-              sigh of relief!
+              Discover something new and have a <em>real</em> conversation about
+              our planet <em>today, it&apos;s ours.</em>.
             </P>
 
             <P>
-              If you use Shelley then please honour our{" "}
+              TBC: If you use Shelley then please honour our{" "}
               <a href="https://treeware.earth/">Treeware</a> conditions of use
               and start a forest with us.
             </P>
@@ -234,8 +243,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </H2>
 
             <P>
-              Treeware gets us some trees, love that but if you want to help us
-              directly that would also be awesome.
+              Treeware gets us some trees; love that but if you want to help us
+              directly that would also be awesome. TBA.
             </P>
 
             <P>
@@ -245,8 +254,17 @@ const IndexPage = ({ data }: IndexPageProps) => {
               </a>{" "}
               as part of the{" "}
               <a href="https://www.cardano.org/">Cardano blockchain</a> but we
-              dig their style, the naming convention and the coin, ADA 🥰.
+              dig their style and the token - ADA.
             </P>
+
+            <P>
+              If you have no idea about crypto then we highly recommend watching{" "}
+              <a href="https://www.youtube.com/watch?v=VCm8sYmrr_Y">
+                <q>What is Bitcoin?</q> by Charles Hoskinson, CEO Cardano
+              </a>
+              .
+            </P>
+
             {/* <P>
               If you have some ADA kicking around, we&apos;d be happy to accept
               some in support: LINK
