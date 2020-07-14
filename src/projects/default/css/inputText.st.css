@@ -15,6 +15,7 @@
 
 @st-scope Default {
 
+  /* = Base styles taken care of by InputBase. */
   InputText {}
 
   InputText InputLabel {}

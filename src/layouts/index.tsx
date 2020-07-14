@@ -38,14 +38,14 @@ const Header = () => (
 const Footer = () => (
   <div className={style.footer}>
     <div className={style.inner}>
-      <Link
+      {/* <Link
         to="/"
         style={{
           textDecoration: "none"
         }}
       >
         Home
-      </Link>
+      </Link> */}
     </div>
   </div>
 );

@@ -39,10 +39,10 @@ const LabelsDocs = () => {
         <QuickRef />
 
         <P>
-          Pretty useless by themselves, <code>labels</code> should usually be
-          associated with a form input. The most reliable way to do that is
-          explicitly via the <code>for</code> and <code>id</code> attributes. In
-          plain HTML:
+          Pretty useless by themselves, <code>labels</code> should generally be
+          paired and associated with a form input. The most reliable way to do
+          that is explicitly via the <code>for</code> and <code>id</code>{" "}
+          attributes. In plain HTML:
         </P>
 
         <CodeSample
@@ -54,9 +54,9 @@ const LabelsDocs = () => {
          */}
 
         <P>
-          <strong>Note:</strong> In React world we have to use{" "}
+          <strong>Note:</strong> In the React world we have to use{" "}
           <code>htmlFor</code> instead and you will definitely forget this at
-          some point, I have no hair. #justSaying
+          some point; I have no hair, #justSaying
         </P>
 
         <H2 vol={4} uppercase>
@@ -81,10 +81,10 @@ const LabelsDocs = () => {
         </div>
 
         <P>
-          It may seem like a small thing but more imortantly assistive
+          It may seem like a small thing but more importantly assistive
           technologies like screen readers use this relationship to properly
-          announce form items. Without it people can be left fumberling around
-          our poorly constructed forms.
+          announce form items. Without it people can be left fumbling around our
+          poorly constructed forms.
         </P>
 
         <P>No excuses; this is basic HTML.</P>
@@ -122,8 +122,7 @@ const LabelsDocs = () => {
 
         <P>
           If you do not know the ids of fields then always render them inside of
-          labels but this should generally be avoided. It&apos;s a bit, hacky
-          but it happens.
+          labels but this should generally be avoided.
         </P>
 
         <H2 vol={4} uppercase>
@@ -145,7 +144,7 @@ const LabelsDocs = () => {
           Shelley&apos;s styles [link]are fairly light for this one, we set our
           positional stuff using <code>flex</code>, <code>weight</code> but not
           much else. We use it as a foundation so customise contextually based
-          on use case.
+          on use-case.
         </P>
 
         <P>
@@ -188,31 +187,16 @@ const LabelsDocs = () => {
         </Blockquote>
 
         <P>
-          <strong>Tip:</strong> We once dismissed a payment gateway during a
-          sales pitch by simply asking the sales account manager to click on a
-          form label whilist we could all see it on the big screen. Nothing
-          happened. We stopped them mid flow and we told them straight:
-        </P>
-
-        <Blockquote variant={1}>
-          <P>
-            Sorry to interrupt but we can tell you right now that this does not
-            conform to our legal accessibility obligations to adhere to{" "}
-            <q>Level A</q> of the WCAG 2.0 guidelines. Do you know you are
-            trying to sell us an illegal product?
-          </P>
-        </Blockquote>
-
-        <P>
-          What was concerning is that this surprised them. Ethics aside this was
-          a large scale procurement for a public body and this is a legal
-          requirement. They should have been better prepared.
+          Remember that you can easily check or &apos;audit&apos; your form
+          labels as you go by clicking them to see if they focus or check
+          uncheck your standard inputs.
         </P>
 
         <P>
-          Failure to implement basic accessibility will cost you more than
-          users, it will cost you large juicy clients too. It&apos;s a simply
-          fact.
+          We could tell you anecdotes of sales pitches gone wrong but that would
+          be impolite to those who demoed inaccessible products to us. Suffice
+          to say, failure to implement basic accessibility will cost you more
+          than users, it will cost you clients as well. Fact. 👀
         </P>
       </Grid>
     </DefaultLayout>

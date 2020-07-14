@@ -9,8 +9,14 @@
     /* --color-status-error-default, */
     --color-form-mark-default,
     --color-focus-default,
-    --color-ui-inverse-default,
-    /* --select-icon-default; */
+    --color-ui-default,
+}
+
+:import {
+  -st-from: './utils.st.css';
+  -st-named:
+    peudoFocus,
+    peudoFocusVisible;
 }
 
 :import {
@@ -33,10 +39,12 @@
 @st-scope Default {
 
   InputSelectionControl {
-    font-size: 20px;
     /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
     display: flex;
-    transform: translateZ(0);
+    /* Force hardware acceleration on... Why did I do this...? */
+    /* transform: translateZ(0); */
+    /* A default, maybe we should remove it... */
+    font-size: 20px;
   }
 
 
@@ -61,16 +69,7 @@
 
   /* Custom focus element, experimenting..*/
   InputSelectionControl::inputField::after {
-    content: "";
-    display: block;
-    transition: opacity 120ms;
-    position: absolute;
-    box-shadow: 0 0 1px 2px #09b1f1;
-    top: -3px;
-    left: -3px;
-    bottom: -3px;
-    right: -3px;
-    opacity: 0;
+    -st-mixin: peudoFocus;
   }
 
   /* = For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
@@ -78,7 +77,7 @@
   /* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
   InputSelectionControl::inputField:focus::after,
   InputSelectionControl::inputField:active::after {
-    opacity: 1;
+    -st-mixin: peudoFocusVisible
   }
 
   @-moz-document url-prefix() {
@@ -144,7 +143,9 @@
   InputSelectionControl::toggle::before {
     content: "";
     position: absolute;
-    background: #fff;
+    /* background: #fff; */
+    background-color: value(--color-ui-default);
+    box-shadow: 0 0 1px 2px var(--color-ui, value(--color-ui-default));
     width: 1.3em;
     height: 1.3em;
     border-radius: 9999px;

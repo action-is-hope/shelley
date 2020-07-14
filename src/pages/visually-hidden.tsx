@@ -1,7 +1,6 @@
 import React from "react";
-import Link from "gatsby-link";
 import DefaultLayout from "../layouts";
-import Text, { P, H1, H2, H3 } from "../components/Text/Text";
+import Text, { P, H2, H3 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 
 import Blockquote from "../components/Blockquote/Blockquote";
@@ -24,10 +23,6 @@ const VisuallyHiddenDocs = () => {
           assistive tech, to search bots as well. Very interesting!
         </P>
 
-        {/* <P vol={4} className={text.intro}>
-          Allows us to help people using assistive technology to more easily use
-          features and access content non-sighted users
-        </P> */}
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
@@ -41,16 +36,9 @@ const VisuallyHiddenDocs = () => {
         <P>
           Say hello to everyone and help them access content and features more
           easily. The little search bots will make better sense of it too,
-          giving us a tangable thing to look at in terms of direct{" "}
+          giving us a tangible thing to look at in terms of direct{" "}
           <abbr title="Return on Investment">ROI</abbr> from time spent in this
           area.
-        </P>
-
-        <P>
-          Go away capitalisum with your <q>ROI</q> buzzword babble! Um, no,{" "}
-          <a href="https://babeljs.io/">babel</a> is something different,
-          something magical; not now, maybe never... Sorry, we&apos;re self
-          isolating. 🤐
         </P>
 
         <P>
@@ -58,9 +46,9 @@ const VisuallyHiddenDocs = () => {
           <code>
             <abbr title="Screen Reader Only">srOnly</abbr>
           </code>{" "}
-          and should not to be confused with <code>visibility: hidden</code>{" "}
-          which will hide stuff from everybody. Visually <em>sounds</em> like
-          visibility but it&apos;s not. Got it? Great, lets move on.
+          and should not be confused with <code>visibility: hidden</code> which
+          will hide stuff from everybody. Visually <em>sounds</em> like
+          visibility but it&apos;s not. Got it? Great, let&apos;s move on.
         </P>
         <H2 vol={4} uppercase>
           Why?
@@ -68,10 +56,10 @@ const VisuallyHiddenDocs = () => {
         <P>
           Quite often in web design we find situations where context can be
           derived visually from the layout / design of a page via the
-          surrounding text and imagary.
+          surrounding text and imagery.
         </P>
         <P>
-          But what if you cannot see the surrounding text or imagary? Imagine
+          But what if you cannot see the surrounding text or imagery? Imagine
           you have lost all peripheral vision.
         </P>
         <P>
@@ -84,10 +72,10 @@ const VisuallyHiddenDocs = () => {
           Example: See more
         </H2>
         <P>
-          But wait. Lets take an imaginary screen reader for a spin. Consider a
-          typical <em>see more...</em> link, like that you&apos;ve seen a
-          hundred times, one that gives gives no meaningful context at all, just
-          dots, three of them. How thoughtful.
+          But wait. Let&apos;s take an imaginary screen reader for a spin.
+          Consider a typical <em>see more...</em> link, like that you&apos;ve
+          seen a hundred times, one that gives no meaningful context at all,
+          just dots, three of them. How thoughtful.
         </P>
 
         <CodeSample className={grid.mid}>
@@ -111,11 +99,11 @@ const VisuallyHiddenDocs = () => {
           bots.
         </P>
         <P>
-          This is just one of many things that would likely <em>iritate</em> our
-          screen reader using alter-egos when using websites that do not adhere
-          to the{" "}
+          This is just one of many things that would likely <em>irritate</em>{" "}
+          our screen reader using alter-egos when using websites that do not
+          adhere to the{" "}
           <a href="https://www.w3.org/TR/WCAG20/">
-            Web Content Accessibiliy Guidelines 2.0 (WCAG)
+            Web Content Accessibility Guidelines 2.0 (WCAG)
           </a>{" "}
           which covers this type of stuff.
         </P>
@@ -177,10 +165,10 @@ const VisuallyHiddenDocs = () => {
           <ins>designer requested</ins>. 😇
         </P>
 
-        <P>Maybe thigs aren&apos;t so easy in a CMS?</P>
+        <P>Maybe things aren&apos;t so easy in a CMS?</P>
 
         <P>
-          When choosing link text or building webpages we need awareness and
+          When choosing link text or building web pages we need awareness and
           empathy when it comes to how others will interact with our creations.
           This is actually a legal requirement for most of us too!
         </P>
@@ -238,16 +226,16 @@ const VisuallyHiddenDocs = () => {
         </P>
         <P>
           The peeps over there do a great job; it&apos;s a tough task, we
-          empathise with them. Ultimatley they are trying to make these things
+          empathise with them. Ultimately they are trying to make these things
           as exact as possible so as to remove ambiguity. This is essential for
           all implementers, from developers to browser vendors. Handy from a
-          legal perspective too if you happen to be suing for non-compliance.
+          legal perspective too if you happen to be holding orgs to account.
         </P>
         <P>
-          So it is exact but it somehow misses the &apos;why&apos;. We should
-          look for the &apos;why&apos;; accessibility then becomes less of a
-          &apos;tick box&apos; exercise and more thought provoking. Lets have a
-          go at rewriting it from the perspective of our glorious users!
+          It is exact, but it somehow misses the &apos;why&apos;. We should
+          always look for the &apos;why&apos;; accessibility then becomes less
+          of a &apos;tick box&apos; exercise and more thought provoking. Lets
+          have a go at rewriting it from the perspective of our glorious users!
         </P>
 
         {/* https://offset.earth/about   */}
@@ -257,7 +245,7 @@ const VisuallyHiddenDocs = () => {
             the link will take me or what it will do if I select it. Unless
             it&apos;s something like a game of &apos;snap&apos; where it would
             kinda of defeat the point of the game if I can see through the card.
-            Obvs. ;-)
+            :-)
           </P>
         </Blockquote>
         <P>
@@ -287,13 +275,6 @@ const VisuallyHiddenDocs = () => {
           Make your creations accessible - it&apos;s your duty as a master
           builder ;-)
         </P>
-
-        {/* <P>
-          And don't forget about the search engines too. Is this "clever
-          business in a competative market"? #InclusionCapitalisum - Oh do piss
-          off capitalisum, this is about improving reach to useful information
-          and services not for whatever you want to exploit it for. 😇
-        </P> */}
       </Grid>
     </DefaultLayout>
   );

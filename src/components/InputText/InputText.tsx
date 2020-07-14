@@ -47,11 +47,8 @@ const InputText = React.forwardRef(
     // Set the type to textarea if rows is above 0.
     const input: React.ReactNode =
       type === "textarea" || rows > 0 ? (
-        /* span > textarea is valid markup - Shelley checked, as we want to mimic an inline input. */
-        <span className={style.textAreaWrap}>
-          {/* InputBase applies id, disabled and sets error related aria attrs. */}
-          <Textarea {...rest} ref={ref} rows={rows} />
-        </span>
+        // span > textarea is valid markup - Shelley checked, as we want to mimic an inline input.
+        <Textarea {...rest} ref={ref} rows={rows} />
       ) : (
         // InputBase applies id, disabled and sets error related aria attrs.
         <input {...rest} ref={ref} type={type} />

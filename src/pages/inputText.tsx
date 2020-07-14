@@ -43,16 +43,16 @@ const InputDocs = () => {
           componentCSS={<ComponentCSS />}
         />
 
-        <P>@todo: more docs, improve examples, bit rough...</P>
-        <P>
-          If you find yourself in need to style someone elses form you have
-          access to some form styles that are used to build Shelley forms.
+        <P>@todo: more docs, improve examples, etc...</P>
+        {/* <P>
+          If you find yourself needing to style someone else&apos;s form you
+          have access to some form styles that are used to build Shelley forms.
         </P>
         <P>
           You can use some of the classes directly as shown below but more
           likely you will want to build some styles based targeted at a global
           classname.
-        </P>
+        </P> */}
       </Grid>
     </DefaultLayout>
   );

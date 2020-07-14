@@ -28,6 +28,8 @@ export type InputBaseProps = {
   labelVisuallyHidden?: boolean;
   /** How loud should this input row be? */
   vol?: Volume;
+  /** @todo Wrap the children in a scroll wrapper. */
+  // overflow?: boolean;
 };
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
@@ -74,9 +76,11 @@ const InputBase = ({
     // ...attrs We only want to re-apply what we pulled off.
   };
 
-  const childrenWithProps = React.Children.map(children, child =>
-    React.cloneElement(child as React.ReactElement<any>, { ...inputAttrs })
-  );
+  const childrenWithProps = React.Children.map(children, child => {
+    return React.cloneElement(child as React.ReactElement<any>, {
+      ...inputAttrs
+    });
+  });
 
   return (
     <div

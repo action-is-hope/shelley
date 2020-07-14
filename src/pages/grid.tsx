@@ -34,14 +34,15 @@ const GridDocs = () => {
         <QuickRef />
 
         <P>
-          We already have the grid system within CSS,{" "}
-          <code>display: grid;</code> this is more about configuration these
-          days. We find having a <code>Grid</code> component is useful for
-          housing our core grid configs and their fallbacks.
+          These days we are lucky to have a grid system baked into CSS via{" "}
+          <code>display: grid;</code> so layout more about configuration rather
+          selecting something in a grid framework. We find having a{" "}
+          <code>Grid</code> component is useful for housing our core grid
+          configs and their fallbacks as required.
         </P>
 
         <P>
-          If you are new to CSS grid then chekcout this{" "}
+          If you are new to CSS grid then checkout this{" "}
           <a href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">
             5 min tutorial for beginners
           </a>{" "}
@@ -49,7 +50,7 @@ const GridDocs = () => {
           <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">
             CSS Tricks: A Complete Guide to Grid
           </a>{" "}
-          will be a good referance until you remember most of it.
+          will be a good reference until you remember most of it.
         </P>
 
         <P>
@@ -68,7 +69,7 @@ variant?: number;`}</CodeSample>
 
         <P>
           As ever, there is nothing stopping you from building your own grid
-          component to handle your usecases or you can just share grid based
+          component to handle your use-cases or you can just share grid based
           variables around instead.
         </P>
 
@@ -79,7 +80,7 @@ variant?: number;`}</CodeSample>
         <P>
           It is quite hard to write something down for grid... because{" "}
           <em>you</em> control the CSS and we don&apos;t usually talk too much
-          about the CSS implementation, we usually pointing you to our
+          about the CSS implementation, we usually point you to our
           project/theme styles as a starting point.
         </P>
 
@@ -100,9 +101,8 @@ variant?: number;`}</CodeSample>
         </H2>
 
         <P className={grid.mb1}>
-          This is our <q>one we made earlier</q> moment, our main grid variant.
-          It started to resemble a games field so we just went with it.
-          Outrageous!
+          This is our <q>one we made earlier</q>, our main grid variant. It
+          started to resemble a games field so we just went with it. Outrageous!
         </P>
 
         <Example1 />
@@ -192,7 +192,7 @@ variant?: number;`}</CodeSample>
 
         <P>
           Getting back to the CSS, we thought it might be nice to do a little
-          walkthrough of how we ended up were we did. Fairly rough notes:
+          walkthrough of how we ended up where we did. Fairly rough notes:
         </P>
 
         <P>
@@ -220,14 +220,14 @@ variant?: number;`}</CodeSample>
 
         <P>
           Now we have a 14 col grid, but you can consider the <code>auto</code>{" "}
-          cols as a your lock container with 12 columns inside of that, the
-          actual playing surface.
+          cols as your lock container with 12 columns inside of that, the actual
+          playing surface.
         </P>
 
         <P>
           To make our <code>auto</code> columns chunkier we messed about with{" "}
           <code>minmax()</code> limiting the width of our internal columns thus
-          distrubuting it to the autos.
+          distributing it to the autos.
         </P>
 
         <CodeSample
@@ -279,7 +279,7 @@ variant?: number;`}</CodeSample>
         >{`/* When something so simple becomes seemingly so complicated... It is still simple though, promise! Yes, it is annoyingly long... 'end to end' you might say. Oh dear, I can't even show my self out as I am #selfIsolating. Bugger.*/
 grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)) [pen-start] repeat(2, minmax(0, 4.6vw)) [mid-start] repeat(2, minmax(0, 4.6vw)) [half] repeat(2, minmax(0, 4.6vw)) [mid-end] repeat(2, minmax(0, 4.6vw)) [pen-end] repeat(2, minmax(0, 4.6vw)) [goal-end] auto [edge-end];`}</CodeSample>
 
-        <P>Hmmm, well that looks rediculous but it does work!</P>
+        <P>Hmmm, well that looks ridiculous but it does work!</P>
 
         <P>
           We used something like this for a few weeks as we built out other
@@ -289,7 +289,7 @@ grid-template-columns: [edge-start] auto [goal-start] repeat(2, minmax(0, 4.6vw)
         </P>
 
         <P>
-          On reflection chasing an optimal reading width across breakpoints by
+          On reflection, chasing an optimal reading width across breakpoints by
           snapping the grid lines at different resolutions was crap, we needed a
           smaller amount of flex in the <code>mid</code> section. What could we
           do instead?
@@ -316,7 +316,7 @@ grid-template-columns: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [m
         <P>
           As we did this we also changed our <code>grid-gap</code> opting for
           more fluidity via the <q>viewport width</q> unit <code>vw</code> to
-          stop the contents beoming too wide leaving us with horizontal
+          stop the contents becoming too wide leaving us with horizontal
           scrollies at narrower widths.
         </P>
 
@@ -389,9 +389,10 @@ Grid.variant1>.mid {
           fluid units as you see them in action.
         </P>
         <P>
-          Collaborate if you are not the designer, demo and discuss the options,
-          walk through them together and agree on the best outcome. Get your
-          phones and ipads out, things always look different on device.
+          If you are not the designer then collaborate with them, demo and
+          discuss the options, walk through them together and agree on the best
+          outcome. Get your phones and ipads out, things always look different
+          on device.
         </P>
 
         <H2 vol={4} uppercase>
@@ -401,35 +402,34 @@ Grid.variant1>.mid {
         <P>Falbacks... they ruin all the fun don&apos;t they!?</P>
 
         <P>
-          Fallback... don&apos;t you just love them and the way that they make
-          you feel! Hacks with a fancy name but required if you are to support
-          the annoying versions of IE that still pain us.
+          Hacks with a fancy name but required if you are to support the
+          annoying versions of IE that still pain us.
         </P>
 
         <P>
-          IE11 but also early verison of Edge on things like TV&apos;s at large
-          clients offices that they like to do demos on.
+          Namely IE11 these days but also early versions of Edge on things like
+          TV&apos;s at large clients offices that they like to do demos on
+          catching you off guard. 😱
         </P>
 
         <P>
-          We do support none grid browsers but we don&apos;t want to spend too
-          much time on them so we tend to something that works and they hack
-          together a fallback often opting for a visual but functional
-          differace. As long as your main grid is solid then it shouldn&apos;t
-          be too hard to hack in some fallbacks as and when.
+          We tend to support none-grid browsers but we don&apos;t want to spend
+          too much time on them. As long as your main grid is solid then it
+          shouldn&apos;t be too hard to float/hack some fallbacks in as and
+          when.
         </P>
 
         <P>
-          The <code>-ms-grid</code> implementaion implememtes the old spec,
+          The <code>-ms-grid</code> implementation implements the old spec,
           perhaps we can use that? Errr, nope, not in this instance unless you
-          fancy specifing the index of each row, no thanks. It&apos;s also IE11+
-          specific so is it that useful?
+          fancy specifying the index of each row, no thanks. It&apos;s also
+          IE11+ specific so is it really useful?
         </P>
 
         <P>
           Maybe we can just do something fairly simple for the main layout that
           isn&apos;t a proprietary Microsoft thang? I&apos;m pretty sure we can
-          mimin our three main columns with some <code>max-width</code> and a
+          mimic our three main columns with some <code>max-width</code> and a
           litle <code>margin: auto</code>
         </P>
 
@@ -473,9 +473,9 @@ Grid .mid {
           Accessibility, UX &amp; the Law
         </H2>
         <P>
-          In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement in terms both value that it provides and the
-          law.
+          In terms of WCAG and the law, this is ranked as Level A which makes it
+          a core requirement in terms both value that it provides and legal
+          implications.
         </P>
       </Grid>
     </DefaultLayout>

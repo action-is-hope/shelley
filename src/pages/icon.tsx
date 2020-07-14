@@ -32,9 +32,9 @@ const IconDocs = () => {
 
         <P>
           Shelley borrows from the mighty Material UI here. We really like the
-          ease of using their <code>SVGIcon</code> in that it extends the base{" "}
-          <code>svg</code> thus allowing to use any old icon you find on the web
-          by shoving in a svg <code>path</code> as a child.
+          ease of using their <code>SVGIcon</code> as it extends the base{" "}
+          <code>svg</code> allowing us to use any old icon we find on the web by
+          inserting the svg <code>path</code> as a child.
         </P>
 
         <P>
@@ -79,15 +79,13 @@ const IconDocs = () => {
           own so inline sizing and color is especially bad.
         </P>
         <P>
-          We tend to apply these &apos;glue&apos; styles within other component
-          compositions, or application components if you will, where size and
-          colour are a aspect. You can wrap this up and augment the api as you
-          please.
+          We tend to apply these &apos;glue&apos; styles within our component
+          compositions, or application components if you will.
         </P>
         <P>
           So at this level there isn&apos;t much to say on styling other than by
           default this is one of the few components that we so provide some
-          default styles at the core.
+          default styles as part of the core.
         </P>
         <StyleInfo
           componentName={meta.name}
@@ -98,7 +96,7 @@ const IconDocs = () => {
           <strong>Note:</strong> In terms of text alternative we opted for
           visually hidden text over using titles within the <code>svg</code>{" "}
           itself or an <code>aria-label</code>. The icon is a non-focusable
-          element so it might get ignored; in our experiance this is{" "}
+          element so it might get ignored; in our experience this is{" "}
           <a href="https://simplyaccessible.com/article/7-solutions-svgs/">
             a reliable method for accessible SVG icons
           </a>{" "}
@@ -110,9 +108,8 @@ const IconDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement in terms both value that it provides and the
-          law.
+          In terms of WCAG and the law this, is ranked as Level A which makes it
+          a requirement for us.
         </P>
 
         <Blockquote
@@ -138,7 +135,7 @@ const IconDocs = () => {
           </a>
           . If you are using a visible label then an icon is classified as
           decorative, if you are not using a visible label then the image is
-          functional and thus you should provide equivalent.
+          functional and thus you should provide an equivalent.
         </P>
 
         <H2 uppercase vol={4}>
@@ -185,18 +182,18 @@ const IconDocs = () => {
         </P>
 
         <P>
-          We speak from experiance working within government sectors in the U.K.
-          It will also trip you up if you have an international audiance, the
+          We speak from experience working within government sectors in the U.K.
+          It will also trip you up if you have an international audience, the
           Great Firewall of China is known to interfere with such things. So
           unless you like presenting a load of empty boxes to your stakeholders
           then avoid using icon fonts.
         </P>
 
         <P>
-          They are usually inserted with via an <code>i</code> tag this does not
+          They are usually inserted via an <code>i</code> tag, this does not
           stand for <em>icon</em> but for <em>italic</em>. Lastly they will all
           be downloaded even if you only use five. As we said, they are
-          inventive though from that perspective they are flawless.
+          inventive, from that perspective they are flawless.
         </P>
 
         <H3 uppercase vol={2}>
@@ -205,7 +202,7 @@ const IconDocs = () => {
 
         <P>
           Perhaps the most tempting reason to use icon fonts is the fact that
-          you get access to all of them in one go with no need to import import
+          you get access to all of them in one go with no need to import
           individual icons. Useful in a CMS if you are offering a number of icon
           options to your content authors.
         </P>
@@ -221,7 +218,7 @@ const IconDocs = () => {
           starting with an empty sprite injecting icons into it as a user
           progresses? Sounds fiddly and server side, well... Maybe use a sprite
           but try no to put a whole icon set in it if you only use 5 icons!
-          Serve what you use.
+          Serve what they need.
         </P>
       </Grid>
     </DefaultLayout>

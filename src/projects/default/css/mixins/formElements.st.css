@@ -17,7 +17,7 @@
  *
  */
 
-/* project and vars */
+/* = Project and vars */
 :import {
   -st-from: "../../project.st.css";
   -st-named:
@@ -44,6 +44,13 @@
     textVol;
 }
 
+/* :import {
+  -st-from: '../utils.st.css';
+  -st-named:
+    peudoFocus,
+    peudoFocusVisible;
+} */
+
 
 :import {
   -st-from: "../../../../components/Label/label.st.css";
@@ -55,9 +62,27 @@
   -st-default: SelectionControl;
 }
 
+:vars {
+  inputVol1Label: "0.95em";
+  inputVol1SelectionControl: "16px";
+  inputVol2Label: "0.9em";
+  inputVol2SelectionControl: "20px";
+  inputVol3Label: "0.85em";
+  inputVol3SelectionControl: "24px";
+  inputVol4Label: "0.8em";
+  inputVol4SelectionControl: "28px";
+  inputVol5Label: "0.75em";
+  inputVol5SelectionControl: "32px";
+  inputVol6Label: "0.7em";
+  inputVol6SelectionControl: "36px";
+}
 
+/**
+ * = System resets
+ */
+
+/* = Hide the default 'appearance'. */
 .hideWebkitAppearance {
-  /* Hide the default appearance */
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -66,7 +91,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hack to get rid of the bloody autofill bg - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs */
+/* = Hack to get rid of the bloody autofill bg 
+ * - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs 
+ */
 .hideWebkitAppearance:-webkit-autofill,
 .hideWebkitAppearance:-webkit-autofill:hover,
 .hideWebkitAppearance:-webkit-autofill:focus,
@@ -74,44 +101,17 @@
   -webkit-transition-delay: 99999s;
 }
 
-/* .errorText {
-  color: value(--color-status-error-default);
-  color: var(--color-status-error, value(--color-status-error-default));
-  display: block;
-  position: relative;
-  font-size: .8rem;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
-
-.errorText::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  content: "";
-  width: 1px;
-  background-color: value(--color-status-error-default);
-  background-color: var(--color-status-error, value(--color-status-error-default));
-  opacity: 0.5;
-  transition: background-color 0.3s;
-} */
-
-/* @media screen and (min-width: 600px) {
-  .errorText {
-    font-size: .625rem;
-  }
-} */
 
 
 /**
- * Text Based Fields
+ * = BASE - TEXTUAL FIELD
  *
  * Text, Number, Select, Combo style fields are all examples of what we mean by
- * 'text-based'. Naming these things is a nightmare.
- */
+ * 'textual', they are text orientaed I guess. Naming things is a nightmare!
+ *
+ * ------------------------------------------------------------------------- */
 
-/*= Field Root */
+/* = The 'root' element - <div> */
 .textualFieldRoot {
   /* 
     Showing the error before the field in question is the most logical but in 
@@ -124,14 +124,14 @@
   flex-direction: column;
 }
 
-/*= Field Container */
+/* = Field container - <div> */
 .textualFieldContainer {
   position: relative;
   display: inline-flex;
   line-height: 1.5;
 }
 
-/*= Pseudo indicator */
+/* = Field indicator, via pseudo. */
 .textualFieldContainer::before,
 .textualFieldContainer::after {
   position: absolute;
@@ -141,8 +141,8 @@
   width: 1px;
   background-color: value(--color-form-mark-default);
   background-color: var(--color-form-mark, value(--color-form-mark-default));
-  /* Dull it down a bit... */
-  opacity: 0.5;
+  /* = Dull it down a bit... */
+  /* opacity: 0.5; */
   transition: background-color 0.3s;
 }
 
@@ -156,7 +156,7 @@
   display: none;
 }
 
-/*= The actual field <input> */
+/* = The actual field <input> */
 .textualFieldInput {
   -st-mixin: hideWebkitAppearance;
   background: none;
@@ -172,19 +172,22 @@
   line-height: 1.5;
 }
 
-/* .select:after {
-  content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' stroke='rgb(255, 255, 255)' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>");
-  background-repeat: no-repeat;
-  width: 12px;
-  height: 12px;
-  filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-} */
+
+
+/**
+ * = SELECT - TEXTUAL FIELD 
+ *
+ * Uses all of the about textual base styles but a <select> has a little 
+ * extra styling over that of our <input>'s.
+ *
+ * ------------------------------------------------------------------------- */
+
 
 .selectFieldContainer {
-
   /* filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5); */
 }
 
+/* = Apply the --select-icon (see project vars) and associated icon styles. */
 .selectFieldInput {
   border-radius: 0;
   background-image: value(--select-icon-default);
@@ -197,43 +200,53 @@
 
 
 
-/*= States */
+/**
+ * = STATES - TEXTUAL FIELD
+ *
+ * Input focus, error and disabled state being the main areas of concern for 
+ * our text orientated fields.
+ *
+ * ------------------------------------------------------------------------- */
 
-/*= Focused */
+
+/* = Focus - custom */
 .textualFieldContainer:focus-within::before,
 .textualFieldContainer:focus-within::after {
+  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
   /* display: block; */
   opacity: 1;
-  /*= Give us that 'glow' effect for the focused state.*/
+  /* = Give us that 'glow' effect for the focused state.*/
   box-shadow: 0 0 1px 1px value(--color-focus-default);
   box-shadow: 0 0 1px 1px var(--color-focus, value(--color-focus-default));
-  /*= The glow from the box-shadow means we don't want the width, too chunky. */
+  /* = The glow from the box-shadow means we don't want the width, too chunky. */
   width: 0;
 }
 
-/*= Error */
+/* = Error */
 .textualFieldContainerHasError::before,
 .textualFieldContainerHasError::after {
+  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
   /* display: block; */
   background-color: value(--color-status-error-default);
   background-color: var(--color-status-error, value(--color-status-error-default));
 }
 
-/*= Disabled */
+/* = Disabled */
 .disabledField {
+  /* = Dim the whole lot... */
   filter: saturate(15%) brightness(70%);
 }
 
-/* Set the container, label and input all to have error cursor. */
+/* = Set the container, label and input all to have error cursor. */
 .disabledField,
 .disabledField input,
 .disabledField label {
   cursor: not-allowed;
 }
 
-/*==== INPUT VOLUMES ====*/
-
 /**
+ * = INPUT VOLUMES
+ *
  * When it comes to our input volumes we want to make sure that they are never
  * below 16px on device else we will get some auto 'form zoom' happening which 
  * can catch you off guard. "Why is is zooming, FFS!" ;-)
@@ -246,79 +259,72 @@
  * This is great as it means that we don't have to churn out a load more media 
  * queries.
  *
- */
+ * ------------------------------------------------------------------------- */
 
-/*= Volume 1 */
+
+/* = Volume 1 */
 .inputVol1 {
-  /* 16px all the way from mobile to desktop. */
+  /* = equates to 16px all the way from mobile to desktop. */
   font-size: 1em;
 }
 
-.inputLabelVol1,
 .inputVol1 InputLabel {
-  font-size: .95em;
+  font-size: value(inputVol1Label);
 }
 
-.selectionControlVol1,
 .inputVol1 SelectionControl {
-  font-size: 16px;
+  font-size: value(inputVol1SelectionControl);
 }
 
-/*= Volume 2 */
+/* = Volume 2 */
 .inputVol2 {
   /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
   -st-mixin:
     textVol;
 }
 
-.inputLabelVol2,
 .inputVol2 InputLabel {
-  font-size: .9em;
+  font-size: value(inputVol2Label);
 }
 
-.selectionControlVol2,
 .inputVol2 SelectionControl {
-  font-size: 20px;
+  font-size: value(inputVol2SelectionControl);
 }
 
-/*= Volume 3 */
+/* = Volume 3 */
 .inputVol3 {
   -st-mixin:
     textVol(scale value(text-vol-3-scale),
       max value(text-vol-3-max));
 }
 
-.inputLabelVol3,
 .inputVol3 InputLabel {
-  font-size: .85em;
+  font-size: value(inputVol3Label);
 }
 
-.selectionControlVol3,
 .inputVol3 SelectionControl {
-  font-size: 24px;
+  font-size: value(inputVol3SelectionControl);
 }
 
-/*= Volume 4 */
+/* = Volume 4 */
 .inputVol4 {
   -st-mixin:
     textVol(scale value(text-vol-4-scale),
       max value(text-vol-4-max));
 }
 
-.inputLabelVol4,
 .inputVol4 InputLabel {
-  font-size: .8em;
+  font-size: value(inputVol4Label);
 }
 
-.selectionControlVol4,
 .inputVol4 SelectionControl {
-  font-size: 28px;
+  font-size: value(inputVol4SelectionControl);
 }
 
-/*= Volume 5 */
+/* = Volume 5 */
 .inputVol5 {
   /* We love calc!! Here we can shave off a little from our larger sizes, our 
-   * our rem value is on a scale so this has greated impact at larges 
+   * our rem value is on a scale so has greater impact at larger
    * resoultions. What fun!
    */
   -st-mixin:
@@ -326,17 +332,15 @@
       max calc(value(text-vol-5-max) - 0.15rem));
 }
 
-.inputLabelVol5,
 .inputVol5 InputLabel {
-  font-size: .75em;
+  font-size: value(inputVol5Label);
 }
 
-.selectionControlVol5,
 .inputVol5 SelectionControl {
-  font-size: 32px;
+  font-size: value(inputVol5SelectionControl);
 }
 
-/*= Volume 6 */
+/* = Volume 6 */
 .inputVol6 {
   /* We love calc!! Here we can shave off a little from our larger sizes, our 
    * our rem value is on a scale so this has greated impact at larges 
@@ -347,12 +351,11 @@
       max calc(value(text-vol-6-max) - 0.15rem));
 }
 
-.inputLabelVol6,
 .inputVol6 InputLabel {
-  font-size: .7em;
+  font-size: value(inputVol6Label);
 }
 
-.selectionControlVol6,
 .inputVol6 SelectionControl {
   font-size: 36px;
+  font-size: value(inputVol6SelectionControl);
 }

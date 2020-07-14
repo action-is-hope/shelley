@@ -226,7 +226,7 @@ export const Collection = () => (
 export const Example1 = () => (
   <Icon
     viewBox="8 -4 24 24"
-    alt="infection plotted against time domonstrating exponential growth"
+    alt="infection plotted against time demonstrating exponential growth"
     style={{
       fontSize: "1.75rem",
       width: "2em",

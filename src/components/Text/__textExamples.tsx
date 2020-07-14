@@ -87,11 +87,12 @@ export const ComponentDemo = () => {
       <br />
       <br />
       <Text tag="p" vol={3}>
-        For completness:{" "}
+        Just in case:{" "}
         <a href="https://www.ipcc.ch/reports/">
           <abbr title="Intergovernmental Panel on Climate Change">IPCC</abbr>{" "}
           reports
         </a>{" "}
+        🌍
       </Text>
     </PropsDemo>
   );

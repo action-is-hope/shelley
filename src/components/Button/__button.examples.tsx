@@ -1,8 +1,9 @@
 /* buttonExamples.tsx */
 import React from "react";
-// Example Component
+/* Example Component */
 import Button from "./Button";
-// Supporting Components
+/* Supporting Components */
+import Icon from "../../components/Icon/Icon";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import grid from "../../projects/default/css/grid.st.css";
@@ -15,7 +16,7 @@ export const QuickRef = () => (
     className={grid.mid}
   >{`import Button from "@action-is-hope/shelley";
 \n<Button>Climate fight club</Button>
-/* The only rule is that we talk about climate change; with intent. */`}</CodeSample>
+/* One rule: We don't fight, we act on climate change with intent. */`}</CodeSample>
 );
 
 // Props Demo - Examples below.
@@ -25,7 +26,6 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      // value: "Step up to Earth Guardians of Earth"
       value: "Earth Solutionists required"
     },
     {
@@ -63,7 +63,7 @@ export const ComponentDemo = () => {
       name: "tip",
       label: "tip",
       type: "text",
-      value: "@todo icon"
+      value: "@todo - unsure on this..."
     }
   ]);
   return (
@@ -73,7 +73,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLButtonElement"
       renderExample={
-        <CodeSample>{`import { Button } from "@action-is-hope/shelley";\n\n<Button ${
+        <CodeSample>{`import { Button, Icon } from "@action-is-hope/shelley";\n\n<Button ${
           labelDemoProps[1].value > 0
             ? `\n  tone={${labelDemoProps[1].value}}`
             : `\n  tone={false}`
@@ -86,24 +86,32 @@ export const ComponentDemo = () => {
             ? `\n  volume={${labelDemoProps[3].value}}`
             : `\n  volume={false}`
         } ${
-          labelDemoProps[1].value ? `\n  icon="${labelDemoProps[3].value}"` : ``
+          labelDemoProps[4].value === "Yes"
+            ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`
+            : ``
         }  \n>\n ${labelDemoProps[0].value}\n</Button>`}</CodeSample>
       }
     >
       <Button
         tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
-        // icon={
-        //   <Icon>
-        //     {/* crack open an svg to find the path and shove it in. */}
-        //     <path d="M16 14h-16v-12h16v12zM1 13h14v-10h-14v10z"></path>
-        //     <path d="M2 10v2h12v-1c0 0 0.2-1.7-2-2-1.9-0.3-2.2 0.6-3.8 0.6-1.1 0-0.9-1.6-3.2-1.6-1.7 0-3 2-3 2z"></path>
-        //     <path d="M13 6c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-        //   </Icon>
-        // }
+        icon={
+          labelDemoProps[4].value === "No" ? (
+            false
+          ) : (
+            <Icon alt={labelDemoProps[1].value}>
+              {/* crack open an svg to find the path and shove it in. */}
+              <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+              {/* <path d="M16 14h-16v-12h16v12zM1 13h14v-10h-14v10z"></path> */}
+              {/* <path d="M2 10v2h12v-1c0 0 0.2-1.7-2-2-1.9-0.3-2.2 0.6-3.8 0.6-1.1 0-0.9-1.6-3.2-1.6-1.7 0-3 2-3 2z"></path> */}
+              {/* <path d="M13 6c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path> */}
+            </Icon>
+          )
+        }
         variant={
           labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
         }
         vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
+        // tip="hi"
       >
         {labelDemoProps[0].value}
       </Button>

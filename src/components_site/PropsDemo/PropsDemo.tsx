@@ -1,4 +1,5 @@
 /** PropsDemo.tsx */
+/** @todo Tidy this up, including types and maybe expose it. */
 import React from "react";
 import style from "./propsDemo.st.css";
 import classNames from "classnames";
@@ -6,7 +7,7 @@ import classNames from "classnames";
 import InputText from "../../components/InputText/InputText";
 import InputSelect from "../../components/InputSelect/InputSelect";
 import InputSelection from "../../components/InputSelection/InputSelection";
-import Text, { H2, H3, P } from "../../components/Text/Text";
+import { H2, H3, P } from "../../components/Text/Text";
 
 interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
   className?: string;

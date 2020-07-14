@@ -14,8 +14,7 @@
     --dark-01-raw,
     --light-01,
     --light-01-raw,
-    --color-accent-3-default,
-    --color-accent-4-default
+    --color-focus-default;
 }
 
 :import {
@@ -64,8 +63,8 @@
   --color-ui-inverse: value(--light-01);
   --color-ui-raw-inverse: value(--light-01-raw);
 
-  --color-form-mark: #79aad8;
-  --color-focus: #09b1f1;
+  --color-form-mark: rgba(121, 170, 216, 0.4);
+  --color-focus: rgba(9, 177, 241, 0.55);
 
 
 

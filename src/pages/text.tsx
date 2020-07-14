@@ -25,7 +25,7 @@ const TextDocs = () => {
       <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
           Text is for presenting words, we love words, they&apos;re the best.
-          Simple, enguaging and on point.
+          Keep it simple, enguaging and on point.
         </P>
 
         <H2 vol={2} uppercase>
@@ -91,7 +91,6 @@ const TextDocs = () => {
             Smashing mag did a worthwhile piece on fluid typograhy
           </a>{" "}
           back in 2016; probably the most memorable thing to happen that year...
-          Yup, think so.
         </P>
 
         <P>
@@ -114,18 +113,17 @@ const TextDocs = () => {
         </P>
 
         <P>
-          In terms of spacing and alignment you will notice these are pretty
-          thin on the ground here. Go and check out how we use [Link]Grid. and
-          we might use some generic helper classes in future. No idea! We remain
-          unlimited and agile!
+          In terms of spacing and alignment we haven&apos;t provided options as
+          we tend set them based on the use-case. @todo [Link] to info on how we
+          use &apos;formatted&apos; prop on Grid.
         </P>
 
-        <P>
-          We found margins were best set in place on as part of a context else
+        {/* <P>
+          We find margins are best set in place on as part of a context else
           we end up always needing to override. You will likely have helpers for
           spacing defined elsewhere, your grid perhaps. That&apos;s where I
           think we will put ours initially at lease.
-        </P>
+        </P> */}
 
         <H2 vol={2} className={grid.mbSmall} uppercase>
           Shelley text volumes
@@ -208,6 +206,19 @@ const TextDocs = () => {
           Figure SPM.1
         </P>
         <H2 vol={5}>Observed Impacts on People and Ecosystem Services</H2>
+        <P>&hellip;</P>
+        <P>
+          It is worth being aware of these reports and also that they tend to be
+          conservative in order to achieve concensus. I know, it doesn&apos;t
+          help does it?
+        </P>
+        <P>
+          Source:{" "}
+          <a href="https://www.ipcc.ch/srocc/chapter/summary-for-policymakers/">
+            Special Report: Special Report on the Ocean and Cryosphere in a
+            Changing Climate - Summary for Policymakers
+          </a>
+        </P>
       </Grid>
     </DefaultLayout>
   );

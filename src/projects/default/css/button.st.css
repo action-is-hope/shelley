@@ -20,6 +20,13 @@
 }
 
 :import {
+  -st-from: './utils.st.css';
+  -st-named:
+    peudoFocus,
+    peudoFocusVisible;
+}
+
+:import {
   -st-from: "../../../components/Icon/icon.st.css";
   -st-default: Icon;
 }
@@ -47,12 +54,12 @@
 }
 
 
-/* This is how we can scope the styles. */
+/* This is how we can scope the styles in Stylable. */
 @st-scope Default {
 
-  /*  Default styles */
+  /* = The base <button> element. */
   Button {
-    /* = */
+    /* = Removes system styles. */
     -st-mixin: hideWebkitAppearance;
     /* = Local variables values which are manipulated by other selectors. */
     --accent: transparent;
@@ -80,7 +87,7 @@
     cursor: pointer;
     /* = Explicitly set font-family else it will default to system style. */
     font-family: inherit;
-    /* Weight choice will likely factor the font-smoothing used. */
+    /* = Weight choice will likely factor the font-smoothing used. */
     font-weight: 400;
     /* = Horizontal alignment. */
     justify-content: center;
@@ -102,6 +109,7 @@
     outline: none;
   }
 
+  /* = Inner <span> */
   Button::inner {
     /*= Put the padding on top so an icon can grow a little without affecting 
     the height.*/
@@ -109,13 +117,14 @@
     padding-bottom: 0.55em;
   }
 
-  /* = Divider rendered with Icon only, rename?*/
+  /* = Divider - <span> rendered with Icon only, rename perhaps?*/
   Button::divider {
     display: inline-block;
     width: 1em;
     line-height: 0;
   }
 
+  /* = Targets an Icon component if present. */
   Button Icon {
     /* = Not ideal as we get a little rounding issues on the svgs when they / 2 
     due to the respScale. */
@@ -127,23 +136,11 @@
   }
 
   Button::after {
-    /* @todo: move to common. */
-    content: "";
-    display: block;
-    transition: opacity 0.2s;
-    position: absolute;
-    box-shadow: 0 0 1px 2px #09b1f1;
-    top: -3px;
-    left: -3px;
-    bottom: -3px;
-    right: -3px;
-    opacity: 0;
-    /* custom.. */
-    border-radius: 4px;
+    -st-mixin: peudoFocus border-radius: 4px;
   }
 
   Button:focus::after {
-    opacity: 1
+    -st-mixin: peudoFocusVisible;
   }
 
 

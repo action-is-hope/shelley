@@ -2,9 +2,7 @@ import React from "react";
 import DefaultLayout from "../layouts";
 import { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
-
 import PageTitle from "../components_site/PageTitle/PageTitle";
-
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
 import {
@@ -22,8 +20,8 @@ const InputSelectionDocs = () => {
       <PageTitle>InputSelection</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
-          This be for selecting things, radio, checkbox or toggle switches.
-          @todo
+          Selecting those always visiable options such as radios, checkboxs or
+          toggle switches. @todo
         </P>
 
         <H2 vol={2} uppercase>

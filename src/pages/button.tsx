@@ -42,7 +42,7 @@ const ButtonDocs = () => {
         <QuickRef />
 
         <P>
-          Get more familar with{" "}
+          Get more familiar with{" "}
           <a href="https://www.w3.org/TR/wai-aria-practices/#button">
             aria and buttons
           </a>{" "}
@@ -52,9 +52,9 @@ const ButtonDocs = () => {
         </P>
 
         <P>
-          Lets take a look at a few variations, there are a load of permutaions
-          but you will likely end up using only a few as defined by your design
-          system.
+          Let&apos;s take a look at a few variations, there are a load of
+          permutations but you will likely end up using only a few as defined by
+          your design system.
         </P>
 
         <ComponentDemo />
@@ -77,9 +77,9 @@ const ButtonDocs = () => {
         </P>
 
         <P>
-          In terms of proving state styles for things like loading or pressed
-          then we suggest you use the aria attributes and target the attribute
-          states. @todo example
+          When providing state styles for things like loading or pressed then we
+          suggest you use the aria attributes and target the attribute states.
+          @todo example
         </P>
 
         <StyleInfo
@@ -94,8 +94,7 @@ const ButtonDocs = () => {
 
         <P>
           In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement in terms both value that it provides and the
-          law.
+          makes it a requirement both in the value that it provides and the law.
         </P>
 
         <Blockquote
@@ -133,7 +132,7 @@ const ButtonDocs = () => {
         </P>
 
         <P>
-          As mentioned earlier get more familar with{" "}
+          As mentioned earlier get more familiar with{" "}
           <a href="https://www.w3.org/TR/wai-aria-practices/#button">
             aria and buttons
           </a>{" "}

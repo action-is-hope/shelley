@@ -22,8 +22,8 @@ const LabelsDocs = () => {
 
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
-          Blockquote&apos;s are used for quoting peeps and papers; they tell any
-          tech listening that this is a referance to someone elses words.
+          Blockquotes are used for quoting peeps and papers; they tell any tech
+          listening that this is a reference to someone else&apos;s words.
         </P>
 
         <H2 vol={2} uppercase>
@@ -34,21 +34,20 @@ const LabelsDocs = () => {
 
         <P>
           Tech like a screen reader might emphasise <code>blockquote</code> text
-          whilst a search bot might consider relavant when ranking.
+          whilst a search bot might consider it relevant when ranking.
         </P>
 
         <P>
           Digression Alert: Did you read the example quote?{" "}
           <a href="https://www.theguardian.com/technology/2020/feb/21/climate-tweets-twitter-bots-analysis">
             {" "}
-            a quarter of all tweets about climate crisis produced by bots!
+            a quarter of all tweets about the climate crisis produced by bots!
           </a>{" "}
           That is a lot. Is this not a <em>very</em> concerning trend? AI is
           advancing and our ability to sort fact from fiction is fast
           diminishing. Shelley suggests reading{" "}
-          <a href="https://www.gutenberg.org/ebooks/42324">Frankeinstein</a>,
-          apparently it&apos;s relatable and contains a warning about this type
-          of crap from when it was released in 1818...2020... Huh.
+          <a href="https://www.gutenberg.org/ebooks/42324">Frankenstein</a>,
+          apparently it&apos;s relatable even if released in 1818...2020... Huh.
           {/* the missing 1919... https://en.wikipedia.org/wiki/1919 :-0 */}
           {/* https://www.latimes.com/environment/story/2019-10-21/oil-companies-exxon-climate-change-denial-report */}
           {/* https://www.theguardian.com/commentisfree/2019/oct/23/exxon-climate-change-fossil-fuels-disinformation */}
@@ -62,10 +61,10 @@ const LabelsDocs = () => {
           they work best in conjunction with the <code>Text</code> components.
         </P>
         <P>
-          Lets take a look at a few variations, note that we are using different{" "}
-          <code>Text</code> volumes as best fits the use case. There are a load
-          of permutaions but you will likely end up using only a few as defined
-          by your design system and what works best in situ.
+          Let&apos;s take a look at a few variations, note that we are using
+          different <code>Text</code> volumes as best fits the use case. There
+          are a load of permutations but you will likely end up using only a few
+          as defined by your design system and what works best in situ.
         </P>
 
         <ComponentDemo />
@@ -86,9 +85,9 @@ const LabelsDocs = () => {
         </P>
 
         <P>
-          In terms of sizing this can can be defined by the children. Internally
-          we use the <code>Text</code> component to render the <code>cite</code>{" "}
-          tag but it has a class for you to latch on to for some styling love.
+          Sizing is defined by the children. Internally we use the{" "}
+          <code>Text</code> component to render the <code>cite</code> tag but it
+          has a class for you to latch on to for some custom love.
         </P>
 
         <StyleInfo
@@ -102,9 +101,8 @@ const LabelsDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement in terms both value that it provides and the
-          law.
+          In terms of WCAG and the law, this is ranked as Level A which makes it
+          a requirement for us.
         </P>
 
         <Blockquote
@@ -134,23 +132,21 @@ const LabelsDocs = () => {
         </Blockquote>
 
         <P>
-          This one is pretty simple to grasp... Visually quotes allow use to see
-          that we can apply one of our wonderfully funny internal voices to
-          something in the knowledge that it is a quote. We need to enable
-          screen readers so that they too can read quotes out in a funny voice
-          to their listeners.
+          This one is pretty simple to grasp... Visually, quotes allow people to
+          see that we switch voices. We need to enable screen readers so that
+          they too can &apos;see&apos; quotes as quotes. Semantics!
         </P>
 
         <P>
           A life of listening to a monotone screen reader without any emotion is
           dull. We must give the assistive tech the hooks so that they can relay
-          an alternate experiance.
+          a more true experiance, as the author intended.
         </P>
 
         <P>
           They will have other uses too, perhaps being pulled out as snippets by
           search bots or ranked as keywords. Let the content be the king though,
-          don&apos;t try to manipulate the bots by loading with too many
+          don&apos;t try to manipulate the bots by loading them with too many
           keywords.
         </P>
       </Grid>
