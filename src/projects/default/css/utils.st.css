@@ -36,40 +36,6 @@
   -st-default: Text;
 }
 
-
-/**
- * = MAIN Comment Block
- *
- * A Main Comment Block for a file. Recognized by the 
- * 'heavy' bottom border. This comment lives at the top of a file and 
- * document's its function.
- * 
- * ========================================================================= */
-
-
-/**
- * = SECTION Comment Block
- *
- * A Section Comment Block document's a section.
- * It has a 'lighter' bottom-border
- *
- * ------------------------------------------------------------------------- */
-
-
-/**
- * = A SUBSECTION Comment Block
- *
- * A simple comment block, documenting some subsection/code
- */
-
-
-/* = An INLINE Comment */
-
-
-/* = Variables which are not used as runtime variables should follow the -- */
-
-
-
 /**
  * = Clearfix
  *
