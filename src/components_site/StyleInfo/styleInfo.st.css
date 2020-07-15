@@ -1,0 +1,23 @@
+/** styleInfo.st.css */
+
+.root {
+  /* grid-column: edge; */
+}
+
+.html,
+.css {
+  /* grid-column: goal-start / half; */
+  /* grid-row: 1 */
+  overflow-x: auto
+}
+
+.css {
+  /* grid-row: 1 */
+  /* grid-column: half / goal-end; */
+}
+
+.meta {
+  align-self: flex-end;
+  position: relative;
+  top: -1.4rem;
+}

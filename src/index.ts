@@ -4,34 +4,15 @@
 */
 
 /** Default components in alphabetical order */
-import Button from "./components/Button/Button";
-import Text, {
-  Code,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  P,
-  PRE,
-  SPAN
-} from "./components/Text/Text";
+// import Button from "./components/Button";
+// import Text, { H1, H2, H3, H4, H5, H6, P } from "./components/Text/Text";
 
-import { Theme as DefaultTheme } from "./themes/default";
+// import { Theme as DefaultTheme } from "./projects/default";
 
-export {
-  DefaultTheme,
-  Button,
-  Text,
-  Code,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  P,
-  PRE,
-  SPAN
-};
+// export { DefaultTheme, Button, Text, H1, H2, H3, H4, H5, H6, P };
+
+export { default as Button } from "./components/Button/Button";
+export * from "./components/Button/Button";
+
+export { default as Text } from "./components/Text/Text";
+export * from "./components/Text/Text";

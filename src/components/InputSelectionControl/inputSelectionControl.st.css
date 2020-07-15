@@ -1,0 +1,19 @@
+/** inputSelectionControl.st.css */
+
+.root {
+  -st-states: disabled, error;
+  ;
+}
+
+.inputContainer {}
+
+.inputField {}
+
+/* These are root level selectors for these types. */
+.radio {}
+
+.checkbox {}
+
+.toggle {}
+
+.switch {}

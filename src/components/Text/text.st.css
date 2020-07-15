@@ -1,41 +1,38 @@
-/** Text styles */
+/** text.st.css */
+
 .root {
-  -st-states: truncate;
+  -st-states:
+    truncate,
+    weight(enum(1, 2, 3, 4, 5, 6, 7, 8));
 }
 
-/* Variants */
-.v0 {}
+/* Volume */
 
-.v1 {}
+.vol1 {}
 
-.v2 {}
+.vol2 {}
 
-.v3 {}
+.vol3 {}
 
-.v4 {}
+.vol4 {}
 
-.v5 {}
+.vol5 {}
 
-.v6 {}
+.vol6 {}
 
-.v7 {}
+.vol7 {}
 
-.v8 {}
+.vol8 {}
 
-.v9 {}
+.vol9 {}
 
-.v10 {}
+.vol10 {}
 
-.v11 {}
+.vol11 {}
 
-.v12 {}
-
-.v13 {}
-
-.v14 {}
+.vol12 {}
 
 /* Extras */
-.blockquote {}
 
 .uppercase {}
 
@@ -43,7 +40,6 @@
 
 .bold {}
 
-/* State selectors */
 .root:truncate {
   display: block;
   text-overflow: ellipsis;

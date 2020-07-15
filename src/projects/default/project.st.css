@@ -1,0 +1,322 @@
+/**
+ * Project - Default
+ * 
+ * Our main project which is essentially a theme but it itself can have themes
+ * so project seems more appropriate. 
+ */
+
+@namespace "Default";
+
+:import {
+  -st-from: "./formatters/common";
+  -st-named: multiply, divide, respScale;
+}
+
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+
+:vars {
+
+  /*=== LAYOUT AND GRID ===*/
+
+  /** Breakpoints */
+  breakpoint-xs: "only screen and (min-width: 0px)";
+  breakpoint-sm: "only screen and (min-width: 568px)";
+  breakpoint-md: "only screen and (min-width: 950px)";
+  breakpoint-lg: "only screen and (min-width: 1200px)";
+  breakpoint-xl: "only screen and (min-width: 1600px)";
+  breakpoint-xxl: "only screen and (min-width: 1800px)";
+
+  /*= Using min-width vs max-width... Up to you... some people switch it in 
+  production because max-width looks cleaner with less styles applied to elmements at 
+  any given time. But for development it is handy to be able to toggle off styes with 
+  the inspector and have the overriden value apply. Personally, it we you are 
+  overriding the values that exist already then we tend to use min-widths, if we are 
+  having to turn off styles accross breakpoints we use max-width for those styles. */
+
+  breakpoint-xs-max: "only screen and (max-width: 0px)";
+  breakpoint-sm-max: "only screen and (max-width: 567px)";
+  breakpoint-md-max: "only screen and (max-width: 949px)";
+  breakpoint-lg-max: "only screen and (max-width: 1199px)";
+  breakpoint-xl-max: "only screen and (max-width: 1599px)";
+  breakpoint-xxl-max: "only screen and (max-width: 1799px)";
+
+  /** Spacing */
+  spacing-unit: 0.69231rem;
+  /* text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max)); */
+  /* font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5))) */
+  /* 18px when at breakpoint-xxl */
+
+  /** Grid */
+
+  grid-gap-xs: 0.75rem;
+  grid-gap-md: 1.45rem;
+
+  /* This is a calc that will give you mobile column width. */
+  --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
+  --grid-base-column-width-md: 4.011vw;
+  /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
+  --grid-template-columns-base-sm: [touch-start] 12px [goal-start mid-start] repeat(12, 1fr) [mid-end goal-end] 12px [touch-end];
+  --grid-template-columns-base-md: [touch-start] auto [goal-start] repeat(2, minmax(0, 4.011vw)) [mid-start] repeat(8, minmax(0, 4.011vw)) [mid-end] repeat(2, minmax(0, 4.011vw)) [goal-end] auto [touch-end];
+  /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
+  --grid-template-columns-base-mid-start-end: repeat(12, minmax(0, 4.011vw));
+
+
+  /*=== TYPE AND TEXT ===*/
+
+  /** Fonts */
+  font-plain:
+    Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-special:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-mono:
+    Menlo, Courier, Courier New, Andale Mono, monospace;
+
+  /* Base font min is 1em (16px) and max (20px) is 1.25em */
+  font-base-min: 1em;
+  font-base-max: 1.25em;
+
+  /**
+   * Scales - https://type-scale.com/
+   *
+   * We use these as ratios to bump up our text from one lebvel to the next.
+   * Shelley likes to mix it up so we pulled in a bunch of these.
+   */
+  minor-second: 1.067;
+  major-second: 1.125;
+  minor-third: 1.2;
+  major-third: 1.25;
+  perfect-forth: 1.333;
+
+  /**
+   * Volumes / Text sizes
+   *
+   * Are you ready for some serious over engineering? :-)
+   *
+   * Modular scale tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *
+   * Still with us? Now have a little gander at the variables we are setting for 
+   * our text volumes below this comment block.
+   *
+   * You will notice each text size is comprised of three values:
+   *
+   * - min: The minimum font size, this is the font size we want at our smallest 
+   *   expected screen size, 320px, 16px for us. We use this number as an input to our crazy 
+   *   modular fluid text CSS formula thingy that we found. It's cool. We 
+   *   can also use this number to set a CSS lock (https://css-tricks.com/css-locks/)
+   *   if we are concerned that the font might get to small... Watch maybe?
+   * 
+   * - max: The maximum font size, this is the font size we want at whatever screen size you
+   *   like, I think we chose 1800px. So when the browser is 1800px wide then I want the
+   *   text to be... 20px in our case. We also this number as an input to our crazy 
+   *   stolen formula.
+   *
+   * - scale: This is the font size we use in between the range 320px - 1800px. This
+   *   is the dynamic font-size that is always changing when the browser is winging 
+   *   around the 320px-1800px zone. If we din't have the CSS lock then it would just 
+   *   get bigger and bigger. This is the output of the crazyness. 
+   * 
+   *   The scale magically (read the article or just go with it) gives you back a value
+   *   that looks like this: calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *
+   *   So the browser looks at that and goes, "Right! Got it! 16px at 320px wide, 20px 
+   *   at 1800px wide and everything in between I will scale make floaty and fluid, 
+   *   ahhhhhhh all is well with the world.... Zen..."
+   *
+   *   Just to confuse you more Shelley has this all set in em values, so that made no 
+   *   sense but we like to add to the mystery. Here is how that works out:
+   *   20em = 320px
+   *   92.5em = 1800px
+   *   1em = 16px
+   *   1.25em = 20px
+   *
+   *   But wait... there is more...
+   *   
+   *   calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *45px @ 2000 
+   *   and once you have wrapped you head around all of that and understand it, you 
+   *   know CSS fundermentals quite well. Fun isn't it? I have no hair, #justSaying.
+   *
+   *   Shelley loves it.
+   *
+   *   Thanks and pops for the hard work and innovators:
+   *   - https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *   - https://type-scale.com/ 
+   *   - https://css-tricks.com/css-locks/
+   * 
+   * Quite nice how the selectors follow the same shape as the rendered text
+   * a part from volume 3 which is the base so that makes sense.
+   */
+
+  /* Volume 1 */
+  text-vol-1-min: divide(value(font-base-min), value(major-second), value(major-second));
+  text-vol-1-max: divide(value(font-base-max), value(major-third), value(minor-second));
+  text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max));
+  text-vol-1-line-height: 1.45;
+
+  /* Volume 2 */
+  text-vol-2-min: divide(value(font-base-min), value(major-second));
+  text-vol-2-max: divide(value(font-base-max), value(minor-third));
+  text-vol-2-scale: respScale(value(text-vol-2-min), value(text-vol-2-max));
+  text-vol-2-line-height: 1.65;
+
+  /* Volume 3 - The base */
+  text-vol-3-min: value(font-base-min);
+  text-vol-3-max: value(font-base-max);
+  text-vol-3-scale: respScale(value(font-base-min), value(font-base-max));
+  text-vol-3-line-height: 1.8;
+
+  /* Volume 4 */
+  text-vol-4-min: multiply(value(font-base-min), value(major-second));
+  text-vol-4-max: multiply(value(font-base-max), value(major-third));
+  text-vol-4-scale: respScale(value(text-vol-4-min), value(text-vol-4-max));
+  text-vol-4-line-height: 1.45;
+
+  /* Volume 5 */
+  text-vol-5-min: multiply(value(font-base-min), value(major-second), value(minor-third));
+  text-vol-5-max: multiply(value(font-base-max), value(major-third), value(perfect-forth));
+  text-vol-5-scale: respScale(value(text-vol-5-min), value(text-vol-5-max));
+  text-vol-5-line-height: 1.4;
+
+  /* Volume 6 */
+  text-vol-6-min: multiply(value(font-base-min), value(major-second), value(major-second), value(minor-third));
+  text-vol-6-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth));
+  text-vol-6-scale: respScale(value(text-vol-6-min), value(text-vol-6-max));
+  text-vol-6-line-height: 1.3;
+
+  /* Volume 7 */
+  text-vol-7-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third));
+  text-vol-7-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth));
+  text-vol-7-scale: respScale(value(text-vol-7-min), value(text-vol-7-max));
+  text-vol-7-line-height: 1.15;
+
+  /* Volume 8 */
+  text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
+  text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+  text-vol-8-scale: respScale(value(text-vol-8-min), value(text-vol-8-max));
+  text-vol-8-line-height: 1.1;
+
+  /* Volume 9 */
+  text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-9-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+  text-vol-9-scale: respScale(value(text-vol-9-min), value(text-vol-9-max));
+  text-vol-9-line-height: 1.05;
+
+  /* Volume 10 */
+  text-vol-10-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-10-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+  text-vol-10-scale: respScale(value(text-vol-10-min), value(text-vol-10-max));
+  text-vol-10-line-height: 1.05;
+
+  /* Volume 11 */
+  text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
+  text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+  text-vol-11-scale: respScale(value(text-vol-11-min), value(text-vol-11-max));
+  text-vol-11-line-height: 1.05;
+
+  /*=== COLOURS - The Queens English darling... ===*/
+
+  /* Core light . */
+  --light-01-raw: 255, 255, 255;
+  --light-01: rgb(value(--light-01-raw));
+  /* Core dark . */
+  --dark-01-raw: 51, 51, 51;
+  --dark-01: rgb(value(--dark-01-raw));
+
+  /* Default site values which will be used for the fallbacks. */
+  /* --color-accent-1-default: rgb(14, 97, 148);  */
+  /* --color-accent-1-default: rgb(83, 180, 218); */
+  --color-accent-1-default: #65bfff;
+
+  /* rgb(83, 180, 218) */
+  --color-accent-2-default: #52fba7;
+  --color-accent-3-default: #ea91ff;
+  --color-accent-4-default: #f7e1b9;
+
+  /* F87060, CDD7D6 */
+
+  --color-background-1-default: rgb(23, 26, 35);
+  --color-background-2-default: rgba(0, 0, 0, 0.4);
+  --color-background-3-default: rgba(160, 160, 160, 0.06);
+  --color-background-4-default: rgba(11, 13, 18, 0.34);
+  --color-background-modal-default: rgba(23, 26, 35, 0.98);
+
+  --color-text-1-default: value(--light-01);
+  --color-text-2-default: rgba(value(--light-01-raw), 0.9);
+  --color-text-3-default: rgba(value(--light-01-raw), 0.8);
+  --color-text-4-default: #f7e1b9;
+
+  --color-status-error-default: #b66b6e;
+  --color-status-warn-default: orange;
+  --color-status-neutral-default: blue;
+  --color-status-success-default: green;
+
+  --color-ui-default: value(--light-01);
+  --color-ui-inverse-default: value(--dark-01);
+  /* rgb(212, 212, 212) */
+  --color-ui-raw-default: value(--light-01-raw);
+  --color-ui-raw-inverse-default: value(--dark-01-raw);
+  /* rgb(212, 212, 212) */
+  --color-form-mark-default: rgba(119, 140, 157, 0.7);
+  --color-form-selection-track-default: rgba(119, 140, 157, 1);
+  --color-form-selection-mark-default: value(--color-accent-2-default);
+  --color-focus-default: #09b1f1;
+
+  --grad-1-default: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+
+  --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>")
+}
+
+/*= See theme files for project colour schemes. */
+
+/*=== GLOBAL CSS ===*/
+
+/** 
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./css/allGlobals.st.css 
+ * which is pulled in within index.ts */
+.root {
+  font-family: value(font-plain);
+  /* font-size: 100%; */
+  min-height: 100vh;
+}
+
+/*= Give ourselves a fluid rem value to use for padding or whatever. */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@supports (display: grid) {
+  html {
+    /** This is our responsive rem value, this will equal 1rem wherever we are.*/
+    font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
+  }
+
+  @media screen and (min-width: 1800px) {
+    html {
+      /* font-size: value(text-vol-3-max); */
+      font-size: 26px;
+    }
+  }
+}
+
+
+body {
+  /**
+   * = Set the body font-size to initial value.
+   *
+   * Why? Using rem for everything means we can't set a container to say 
+   * font-size: 90% to tweak the size of the contained elements as they would 
+   * always size off the root html element.
+   *
+   * This way we can use a responsive rem value when we want to but also 
+   * leverage ems as described above.
+   */
+  font-size: initial;
+  /*= Main foreground including fallback. */
+  color: value(--color-ui-default);
+  color: var(--color-ui, value(--color-ui-default));
+  /*= Main background including fallback. */
+  background-color: value(--color-background-1-default);
+  background-color: var(--color-background-1, value(--color-background-1-default));
+}

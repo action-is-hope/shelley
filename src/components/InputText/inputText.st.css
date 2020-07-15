@@ -1,0 +1,35 @@
+/** inputText.st.css */
+/* .select {
+  -st-states: disabled, error, labelPos(enum(above, below, start, end));
+} */
+
+:import {
+  -st-from: '../InputBase/inputBase.st.css';
+  -st-default: InputBase
+}
+
+.root {
+  -st-extends: InputBase;
+}
+
+/* .inputFeild {} */
+
+/* Types - Top level type classes shoudl you need to target them. */
+
+.email {}
+
+.number {}
+
+.password {}
+
+.search {}
+
+.tel {}
+
+.text {}
+
+.textarea {}
+
+.time {}
+
+.url {}

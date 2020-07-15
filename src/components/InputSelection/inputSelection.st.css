@@ -1,0 +1,42 @@
+/** inputSelection.st.css */
+.root {
+  -st-states: disabled, error, labelPos(enum(above, below, start, end));
+}
+
+.radio {}
+
+.checkbox {}
+
+.toggle {}
+
+.switch {}
+
+
+/* Variants */
+
+.variant1 {}
+
+.variant2 {}
+
+.variant3 {}
+
+.variant4 {}
+
+.variant5 {}
+
+.variant6 {}
+
+
+/* Volume */
+
+.vol1 {}
+
+.vol2 {}
+
+.vol3 {}
+
+.vol4 {}
+
+.vol5 {}
+
+.vol6 {}

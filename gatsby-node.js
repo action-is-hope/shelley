@@ -1,6 +1,9 @@
 const StylableWebpackPlugin = require("@stylable/webpack-plugin");
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
+exports.onCreateWebpackConfig = ({
+  actions,
+  getConfig
+}, pluginOptions) => {
   const config = getConfig();
 
   // Exclude .st.css files from CSS loaders.

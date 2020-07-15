@@ -1,29 +1,85 @@
 :import {
-  -st-from: "../themes/default/theme.st.css";
+  -st-from: "../projects/default/project.st.css";
   -st-default: Default;
-  -st-named: --color-text-1-default, --color-ui-default, --color-background-1-default;
+  -st-named:
+    spacing-unit,
+    --color-text-1-default,
+    --color-ui-default,
+    --color-background-1-default;
+  /* --color-text-faint-2-default; */
 }
 
 .navbar {
   background: var(--color-background-1, value(--color-background-1-default));
-  /* color: rgb(var(--color-ui-raw)); */
+}
+
+.title {
+  text-decoration: none;
+  display: inline-flex;
+  /* margin-left: 27px; */
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 10px;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.controls {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.inner {
+  padding: 0.8rem calc(value(spacing-unit) * 3);
+  /* background: rgba(76, 76, 76, 0.4392156862745098); */
+  position: relative;
+  display: flex;
+  z-index: 1000;
+  justify-content: space-between;
+}
+
+.footer {
+  margin-top: 25vh;
+  background: rgba(76, 76, 76, 0.4392156862745098);
   color: var(--color-text-faint-2, value(--color-text-1-default));
-  margin-bottom: 1.45rem;
 }
 
-.navbarInner {
-  margin: 0 auto;
-  max-width: 95vw;
-  padding: 1.45rem 1.0875rem;
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .logo {
   display: inline-flex;
-  transform: scale(.6);
+  /* transform: scale(.6); */
   transform-origin: 100% 120%;
-  margin-top: -100%;
-  margin-left: -96px;
+  /* margin-top: -100%;
+  margin-left: -96px; */
 }
 
 .logo:before,
@@ -44,6 +100,8 @@
   height: 94px;
   margin-left: -50px;
   margin-right: -50px;
+  margin-left: -47px;
+  margin-right: -47px;
   position: relative;
   display: flex;
   width: 47px;
@@ -52,13 +110,4 @@
 
 .logo:after {
   box-shadow: -2px 0px 3px #1acaff;
-}
-
-.title {
-  text-decoration: none;
-  display: inline-flex;
-  margin-left: 27px;
-  text-transform: uppercase;
-  font-weight: 100;
-  letter-spacing: 10px;
 }

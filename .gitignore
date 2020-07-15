@@ -13,6 +13,8 @@ pids
 
 # Dependency directories
 node_modules/
+src/pages/tharpe
+src/localStash
 
 # Typescript v1 declaration files
 typings/

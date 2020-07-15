@@ -1,0 +1,284 @@
+/** text.st.css */
+
+/* = = Project and vars */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    /* = font-plain, */
+    spacing-unit,
+    /* = --color-ui-default, */
+    text-vol-1-max, text-vol-1-scale, text-vol-1-line-height,
+    text-vol-2-max, text-vol-2-scale, text-vol-2-line-height,
+    text-vol-3-max, text-vol-3-scale, text-vol-3-line-height,
+    text-vol-4-max, text-vol-4-scale, text-vol-4-line-height,
+    text-vol-5-max, text-vol-5-scale, text-vol-5-line-height,
+    text-vol-6-max, text-vol-6-scale, text-vol-6-line-height,
+    text-vol-7-max, text-vol-7-scale, text-vol-7-line-height,
+    text-vol-8-max, text-vol-8-scale, text-vol-8-line-height,
+    text-vol-9-max, text-vol-9-scale, text-vol-9-line-height,
+    text-vol-10-max, text-vol-10-scale, text-vol-10-line-height,
+    text-vol-11-max, text-vol-11-scale, text-vol-11-line-height,
+
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-accent-4-default;
+
+}
+
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
+}
+
+:import {
+  -st-from: "../../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: "../../../components/Grid/grid.st.css";
+  -st-default: Grid;
+}
+
+@st-scope Default {
+  Text {
+    font-weight: 400;
+    /* = switch off for light / dark bgs.... */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* = Volume 1 */
+
+  Text.vol1 {
+    -st-mixin:
+      textVol(scale value(text-vol-1-scale),
+        max value(text-vol-1-max),
+        lineHeight value(text-vol-1-line-height));
+  }
+
+  /* = Volume 2 */
+  Text.vol2 {
+    -st-mixin:
+      textVol(scale value(text-vol-2-scale),
+        max value(text-vol-2-max),
+        lineHeight value(text-vol-2-line-height));
+  }
+
+  /* = Volume 3 */
+  Text.vol3 {
+    -st-mixin:
+      textVol(scale value(text-vol-3-scale),
+        max value(text-vol-3-max),
+        lineHeight value(text-vol-3-line-height));
+  }
+
+
+  /* = Volume 4 */
+  Text.vol4 {
+    -st-mixin:
+      textVol(scale value(text-vol-4-scale),
+        max value(text-vol-4-max),
+        lineHeight value(text-vol-4-line-height));
+  }
+
+  /* = Volume 5 */
+  Text.vol5 {
+    -st-mixin:
+      textVol(scale value(text-vol-5-scale),
+        max value(text-vol-5-max),
+        lineHeight value(text-vol-5-line-height));
+  }
+
+  /* = Volume 6 */
+  Text.vol6 {
+    -st-mixin:
+      textVol(scale value(text-vol-6-scale),
+        max value(text-vol-6-max),
+        lineHeight value(text-vol-6-line-height));
+  }
+
+  /* = Volume 7 */
+  Text.vol7 {
+    -st-mixin:
+      textVol(scale value(text-vol-7-scale),
+        max value(text-vol-7-max),
+        lineHeight value(text-vol-7-line-height));
+    font-weight: 300;
+  }
+
+  /* = Volume 8 */
+  Text.vol8 {
+    -st-mixin:
+      textVol(scale value(text-vol-8-scale),
+        max value(text-vol-8-max),
+        lineHeight value(text-vol-8-line-height));
+    font-weight: 300;
+  }
+
+  /* = Volume 9 */
+  Text.vol9 {
+    -st-mixin:
+      textVol(scale value(text-vol-9-scale),
+        max value(text-vol-9-max),
+        lineHeight value(text-vol-9-line-height));
+    font-weight: 300;
+  }
+
+  /* = Volume 10 */
+  Text.vol10 {
+    -st-mixin:
+      textVol(scale value(text-vol-10-scale),
+        max value(text-vol-10-max),
+        lineHeight value(text-vol-10-line-height));
+    font-weight: 300;
+  }
+
+  /* = Volume 11 */
+  Text.vol11 {
+    -st-mixin:
+      textVol(scale value(text-vol-11-scale),
+        max value(text-vol-11-max),
+        lineHeight value(text-vol-11-line-height));
+    font-weight: 300;
+  }
+
+
+  /* = Uppercase */
+  Text.uppercase {
+    text-transform: uppercase;
+    letter-spacing: .25em;
+  }
+
+  Text.vol1.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol2.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol3.uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text.vol4.uppercase {
+    letter-spacing: .31em;
+  }
+
+
+  /* = State selectors - Note: Inherits functional styles from Shelley. */
+  Text:truncate {
+    /*
+      Probably best remove this and set widths as and when you use truncate. 
+      The styles require a known width container and this is an example we use.
+
+      Try not to use truncate but we know that sometimes it can be a compromise.
+    */
+    max-width: 32rem
+      /* = FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
+  }
+
+  /* = State selectors */
+  Text:weight(1) {
+    font-weight: 100;
+  }
+
+  Text:weight(2) {
+    font-weight: 200;
+  }
+
+  Text:weight(3) {
+    font-weight: 300;
+  }
+
+  Text:weight(4) {
+    font-weight: 400;
+  }
+
+  Text:weight(5) {
+    font-weight: 500;
+  }
+
+  Text:weight(6) {
+    font-weight: 600;
+  }
+
+
+  /* = Styles - typical child children. @todo tidy... */
+
+
+  abbr[title] {
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(243, 243, 202, 0.39);
+    cursor: help;
+    padding-bottom: 0.1rem;
+  }
+
+  code [title]:hover {
+    text-shadow: 0 0 10px rgb(197, 197, 197)
+  }
+
+  Text a {
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 1px;
+    color: value(--color-accent-1-default);
+    color: var(--color-accent-1, value(--color-accent-1-default));
+    border: 0 solid rgba(110, 164, 218, 0.5);
+    border-width: 0 0 0.05em 0;
+    transition: border-color .15s ease-out;
+  }
+
+  Text a:hover,
+  Text a:focus {
+    border-color: #81c1ff
+  }
+
+  Text del,
+  Text ins {
+    text-decoration: none;
+    padding: 0.1rem 0;
+  }
+
+  Text del {
+    background-position: 0 -0.5em;
+    background-image: linear-gradient(0deg, #ff6a6a 0%, transparent 2px);
+  }
+
+  Text ins {
+    background-image: linear-gradient(0deg, #23c48d 0%, transparent 2px);
+  }
+
+  Text em {
+    font-weight: 400;
+  }
+
+  Text code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+    font-size: .8em;
+    font-weight: 600 color: value(--color-accent-4-default);
+    color: var(--color-accent-4, value(--color-accent-4-default));
+  }
+
+  /* = Styles - typical child children. */
+  .large {
+    background: green
+  }
+
+  .dl {
+    display: grid;
+    grid-column-gap: 1vw;
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .dl dt {
+    text-align: end;
+  }
+
+  .dl dd:before {
+    /* = content: " - " */
+  }
+}

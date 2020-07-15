@@ -1,23 +1,30 @@
 import React from "react";
+import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
 import style from "./button.st.css";
 import PropTypes from "prop-types";
-// import { ButtonProps } from "./";
+import { AlignPos } from "../types";
 
 /**
- * Button props extending those of a regular button.
+ * Button props extending those of a regular button, we are overriding tone.
  */
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Type of the button default, primary..*/
-  color?: string;
-  /** Optional ref. */
-  ref?: React.Ref<HTMLButtonElement>;
-  /** Button sizes: xs, sm, md, lg */
-  size?: string;
-  /** Button variant. */
-  variant?: string;
-  /** Extra text that can be used to render a tooltip on hover/focus. */
+export interface ButtonProps
+  extends Pick<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "tone">
+  > {
+  /** Chuck in an Icon if you please, ours or yours. */
+  icon?: React.ReactNode;
+  /** The position of the label relative to the input. */
+  iconPos?: AlignPos;
+  /** Extra text that can be used to render a infotip / tooltip on hover/focus. */
   tip?: string;
+  /** tone index. */
+  tone?: Accent;
+  /** Variant index. */
+  variant?: Variant;
+  /** How 'loud' should this Button be? */
+  vol?: Volume;
 }
 
 const Button = React.forwardRef(
@@ -25,9 +32,11 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
-      color = "c1",
-      size = "md",
-      variant = "v1",
+      tone = 1,
+      variant = 1,
+      iconPos = "end",
+      vol = 3,
+      icon,
       tip,
       ...rest
     }: ButtonProps,
@@ -35,15 +44,31 @@ const Button = React.forwardRef(
   ) => {
     const rootClassNames = classnames(
       style.root,
-      style[color],
-      style[size],
-      style[variant],
+      style["tone" + tone],
+      style["vol" + vol],
+      style["variant" + variant],
       classNameProp
     );
 
     return (
-      <button {...style(rootClassNames, {}, rest)} {...rest} ref={ref}>
-        <span className={style.inner}>{children}</span>
+      <button
+        {...style(
+          rootClassNames,
+          {
+            iconPos
+          },
+          rest
+        )}
+        {...rest}
+        ref={ref}
+      >
+        {icon && (
+          <>
+            {icon}
+            <span className={style.divider}></span>
+          </>
+        )}
+        {children && <span className={style.inner}>{children}</span>}
         {tip && <span className={style.tip}>{tip}</span>}
       </button>
     );

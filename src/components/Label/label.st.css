@@ -1,0 +1,11 @@
+/** label.st.css */
+
+.root {
+  -st-states: inputPos(enum(top, end, bottom, start));
+}
+
+.hasInput {}
+
+.textContainer {}
+
+.labelText {}
