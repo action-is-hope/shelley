@@ -274,14 +274,14 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               As developers we strive to make our codebase cleaner every time we
-              touch it, why? Maintainability for future iterations. The same
-              principles applies, for the same reasons; you know this.
+              touch it, why? Maintainability for future iterations /
+              generations.
             </P>
 
             <P>
-              With that in mind; the best way to support us is to apply the same
-              level of pride, thoughtfulness and accounability to your planet,
-              throughout life.
+              With that in mind; the best way to support us is to apply that
+              same level of pride, thoughtfulness and accounability to your
+              planet, throughout life.
             </P>
 
             <P>

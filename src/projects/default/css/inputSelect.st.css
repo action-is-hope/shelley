@@ -1,3 +1,12 @@
+/**
+ * = INPUT SELECT - inputSelect.st.css
+ *
+ * The base styles taken care of by InputBase, here we are just adding the 
+ * that we want for our <select> element.
+ *
+ * ========================================================================= */
+
+
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -22,22 +31,24 @@
 
 @st-scope Default {
 
-  /*= Base styles taken care of by InputBase. */
-
+  /* = Example targeting the root. */
   InputSelect {}
 
+  /* = Example targeting the label. */
   InputSelect InputLabel {}
 
+  /* = Apply selectFieldContainer to the base fieldContainer. */
   InputSelect::fieldContainer {
     -st-mixin: selectFieldContainer;
   }
 
+  /* = Display the right hand indicator on <select>'s to encase the arrow icon. */
   InputSelect::fieldContainer::after {
     display: block;
   }
 
+  /*= Applies the down arrow, aka --select-icon and associated styles. */
   InputSelect::fieldInput {
-    /*= Applies the down arrow, aka --select-icon and associated styles. */
     -st-mixin: selectFieldInput;
   }
 }

@@ -1,4 +1,11 @@
-/* CSS */
+/**
+ * = TEXT MIXIN - /mixins/text.st.css
+ *
+ * Mixin churning out our fluid styles including CSS lock at 1800px. 
+ * 
+ * ========================================================================= */
+
+
 :vars {
   scale: calc(1em + 0.125 * ((100vw - 20em) / (92.5)));
   max: 1.125em;

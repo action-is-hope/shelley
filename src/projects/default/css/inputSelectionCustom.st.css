@@ -16,6 +16,7 @@
 }
 
 :import {
+
   -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: SelectionControl;
 }

@@ -1,6 +1,12 @@
-/** hintText.st.css */
+/**
+ * = HINT TEXT - hintText.st.css
+ *
+ * Could have been a class only but we have a component and here is it's style.
+ * 
+ * ========================================================================= */
 
-/* project and vars */
+
+/* = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -12,6 +18,8 @@
 }
 
 @st-scope Default {
+
+  /* = Root */
   Hint {
     display: flex;
     font-weight: 400;

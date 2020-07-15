@@ -41,7 +41,10 @@
     --color-ui-inverse-default,
     --color-ui-raw-inverse-default,
 
+
     --color-form-mark-default,
+    --color-form-selection-track-default,
+    --color-form-selection-mark-default,
     --color-focus-default,
 
     --grad-1-default,
@@ -89,6 +92,10 @@
   --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
 
   --color-form-mark: value(--color-form-mark-default);
+  --color-form-selection-track: value(--color-form-selection-track-default);
+  --color-form-selection-mark: value(--color-form-selection-mark-default);
+  --color-toggle-mark: value(--color-ui-default);
+
   --color-focus: value(--color-focus-default);
 
   --grad-1: value(--grad-1-default);

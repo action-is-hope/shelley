@@ -4,81 +4,36 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named:
-    spacing-unit,
-    /* --color-status-error-default, */
-    --color-form-mark-default,
-    --color-focus-default,
-    --color-ui-default,
 }
 
-:import {
-  -st-from: './utils.st.css';
-  -st-named:
-    peudoFocus,
-    peudoFocusVisible;
-}
 
 :import {
   -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: InputSelectionControl;
-  -st-named: inputContainer
 }
 
 :import {
   -st-from: './mixins/formElements.st.css';
-  -st-named: hideWebkitAppearance;
-}
-
-:import {
-  -st-from: "../../../components/Icon/icon.st.css";
-  -st-default: Icon;
+  -st-named:
+    SelectionControlRoot,
+    SelectionControlFieldInput,
+    RadioCheckboxCommon,
+    CheckboxFieldInput,
+    RadioFieldInput,
+    ToggleFieldInput;
 }
 
 /* = This is how we can scope the styles. */
 @st-scope Default {
 
   InputSelectionControl {
-    /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
-    display: flex;
-    /* Force hardware acceleration on... Why did I do this...? */
-    /* transform: translateZ(0); */
-    /* A default, maybe we should remove it... */
-    font-size: 20px;
+    -st-mixin: SelectionControlRoot;
   }
-
 
   InputSelectionControl::inputField {
-    -st-mixin: hideWebkitAppearance;
-    font-size: inherit;
-    background: transparent;
-    height: 1em;
-    width: 1em;
-    /* -webkit-appearance: none;
-    -moz-appearance: none; */
-    cursor: pointer;
-    position: relative;
-    border: 2px solid #bce3ff;
-    border-radius: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    /* See below for replacement, I know, if we must! ;-) */
-    outline: none;
+    -st-mixin: SelectionControlFieldInput;
   }
 
-  /* Custom focus element, experimenting..*/
-  InputSelectionControl::inputField::after {
-    -st-mixin: peudoFocus;
-  }
-
-  /* = For future: https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ */
-
-  /* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
-  InputSelectionControl::inputField:focus::after,
-  InputSelectionControl::inputField:active::after {
-    -st-mixin: peudoFocusVisible
-  }
 
   @-moz-document url-prefix() {
 
@@ -94,69 +49,19 @@
     }
   }
 
-  /* = Disabled - common */
-  InputSelectionControl::inputField:disabled::after {
-    opacity: 0;
-  }
-
-  InputSelectionControl::inputField:disabled {
-    cursor: not-allowed;
-    filter: saturate(15%) brightness(70%);
-  }
-
-
-  /* = Checkbox / Radio Common */
-  InputSelectionControl::checkbox::before,
-  InputSelectionControl::radio::before {
-    content: "";
-    transition: opacity 120ms;
-    background: #89ffca;
-    width: 0.5em;
-    height: 0.5em;
-    opacity: 0;
-    display: block
-  }
-
-  InputSelectionControl::checkbox:checked::before,
-  InputSelectionControl::radio:checked::before {
-    opacity: 1;
+  /* = Radio Checkboc common styles. */
+  InputSelectionControl::checkbox,
+  InputSelectionControl::radio {
+    -st-mixin: RadioCheckboxCommon;
   }
 
   /* = Radio */
-  InputSelectionControl::radio,
-  InputSelectionControl::radio::after,
-  InputSelectionControl::radio::before {
-    border-radius: 50%;
+  InputSelectionControl::radio {
+    -st-mixin: RadioFieldInput;
   }
 
   /* = Toggle */
   InputSelectionControl::toggle {
-    width: 2em;
-    border-radius: 9999px;
-    /* transition: transform 120ms;? */
+    -st-mixin: ToggleFieldInput;
   }
-
-  InputSelectionControl::toggle::after {
-    border-radius: 9999px;
-  }
-
-  InputSelectionControl::toggle::before {
-    content: "";
-    position: absolute;
-    /* background: #fff; */
-    background-color: value(--color-ui-default);
-    box-shadow: 0 0 1px 2px var(--color-ui, value(--color-ui-default));
-    width: 1.3em;
-    height: 1.3em;
-    border-radius: 9999px;
-    transition: all 0.2s;
-    transform: translate(-50%);
-    z-index: 1;
-  }
-
-  InputSelectionControl::toggle:checked::before {
-    transform: translate(50%);
-    background: #52da98;
-  }
-
 }

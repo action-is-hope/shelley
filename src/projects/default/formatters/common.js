@@ -65,11 +65,11 @@ module.exports = {
     const fontSizeDiff = maxValue - minValue;
     const widthRemainer = transitionWidthUp - transitionWidthDown;
     if (!minUnit) {
-      console.warn(`No min unit ${min}- ${minUnit} ${max}- ${minUnit}`);
+      // console.warn(`No min unit ${min}- ${minUnit} ${max}- ${minUnit}`);
     } else if (minUnit != maxUnit) {
-      console.warn(
-        `Unit mismatch for respScale args $${min}- ${minUnit} ${max}- ${minUnit}`
-      );
+      // console.warn(
+      //   `Unit mismatch for respScale args $${min}- ${minUnit} ${max}- ${minUnit}`
+      // );
     } else {
       unit = minUnit;
     }

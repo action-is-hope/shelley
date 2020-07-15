@@ -63,13 +63,22 @@
   --color-ui-inverse: value(--light-01);
   --color-ui-raw-inverse: value(--light-01-raw);
 
-  --color-form-mark: rgba(121, 170, 216, 0.4);
-  --color-focus: rgba(9, 177, 241, 0.55);
+  --color-form-mark: rgba(121, 170, 216, 0.5);
+
+  --color-form-selection-track: rgba(121, 170, 216, 1);
+  --color-form-selection-mark: #20af68;
 
 
+  /* --color-focus: rgba(9, 177, 241, 0.55); */
+  --color-focus: var(--color-focus-default);
+
+
+  --color-toggle-mark: #a5a5a5;
+
+  /* 97acc1 - 8294a7 */
 
   --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);
-  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='pink' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>");
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='333333' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>");
 
   --status-background: #ebbbbb;
   --support-background: #cee1e7;

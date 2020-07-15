@@ -1,10 +1,10 @@
 /**
- * = Grid - grid.st.css 
+ * = GRID - grid.st.css 
  *
- * Out main grid styles live here, you maybe tempted to make add a load of
+ * Our main grid styles live here, you maybe tempted to make add a load of
  * utilities that configure your grid in a load of ways... Be warned that having
  * too much layout specified with the markup via props/classnames is a real pain 
- * when you are trying to make changes to a page full of grids, trust us.
+ * when you are trying to make changes to a page full of grids. Opinion.
  * 
  * ========================================================================= */
 
@@ -50,31 +50,31 @@
     grid-gap: 3vw;
   }
 
-  /*= IE Fallback for images only on nested grids? */
+  /* = IE Fallback for images only on nested grids? */
   Grid>Grid {
     text-align: center;
   }
 
-  /*= Reset children else they will inherit the text-align. */
+  /* = Reset children else they will inherit the text-align. */
   Grid>Grid>* {
     text-align: initial;
   }
 
-  /*= Reset for grid. */
+  /* = Reset for grid. */
   @supports (display: grid) {
     Grid>Grid {
       text-align: initial;
     }
   }
 
-  /*= Hook up the formatting styles to this prop. */
+  /* = Hook up the formatting styles to this prop. */
   Grid:formatted {
     -st-mixin: formatted;
   }
 
-  /*= Variant 1: Core Grid */
+  /* = Variant 1: Core Grid */
 
-  /*= See grid docs on shelley.earth for initial walkthrough. */
+  /* = See grid docs on shelley.earth for initial walkthrough. */
   Grid.variant1 {
     display: grid;
     grid-row-gap: 0;
@@ -82,7 +82,7 @@
       [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
   }
 
-  /*= width tweaks and seperating 'pen' from 'goal' for sm and above. */
+  /* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
   @media value(breakpoint-sm) {
     Grid.variant1 {
       grid-template-columns:
@@ -90,7 +90,7 @@
     }
   }
 
-  /*= width tweaks for md and above. */
+  /* = width tweaks for md and above. */
   @media value(breakpoint-md) {
     Grid.variant1 {
       grid-template-columns:
@@ -98,21 +98,21 @@
     }
   }
 
-  /*= Set any direct descendant Grid on the 'goal' grid lines. */
+  /* = Set any direct descendant Grid on the 'goal' grid lines. */
   /* Grid.variant1>Grid {
     grid-column: goal;
   } */
 
 
-  /*= Set direct descendant Grid variant1 to 'edge' grid lines. */
+  /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
   Grid.variant1>Grid.variant1 {
     grid-column: edge;
   }
 }
 
-/*= Columms: Align common grid items, including fallback styles. */
+/* = Columms: Align common grid items, including fallback styles. */
 
-/*= @todo: #stylable These are outside of @st-scope XXX {) due to a bug with 
+/* = @todo: #stylable These are outside of @st-scope XXX {) due to a bug with 
  *  stylable where only the first item gets the scope prefix. */
 Grid.variant1>h1,
 Grid.variant1>h2,
@@ -131,7 +131,7 @@ Grid.variant1>figure {
   -st-mixin: gridItem;
 }
 
-/*= If you need to jump these based on media query then do it with a custom class. */
+/* = If you need to jump these based on media query then do it with a custom class. */
 Grid.variant1>.mid {
   -st-mixin: gridItem;
 }
@@ -197,7 +197,7 @@ Grid.variant1>.snapMidToGoal {
     -st-mixin: gridItemReset;
   }
 
-  /*= end */
+  /* = end */
 
   /** 
    * = Other grid variants

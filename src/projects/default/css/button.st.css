@@ -1,4 +1,12 @@
-/** button.st.css */
+/**
+ * = BUTTON - button.st.css
+ *
+ * We only have one, so far so good. YOu should have enough sizes and hooks
+ * but you can always add your own custome classes for whatever you need or 
+ * wrap this button up inside other buttons pre configured for your usecases.
+ * 
+ * ========================================================================= */
+
 
 /* project and vars */
 :import {

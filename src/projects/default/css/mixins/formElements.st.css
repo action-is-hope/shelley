@@ -1,21 +1,21 @@
-/* formElements.st.css  */
-
 /**
- * Now we've been around the block a few times... whilst it is nice to live in 
- * the magical labd of React sometime we have to use shit we don't much care for
- * and that usually involves us having to use someone elses input fields. Booo!!
- * 
- * Most often than not it's forms... you might need to integrate a newsletter widget
- * or perhaps a media selection widget. 
- * 
- * We already know we will be doing this so we are making sure that our form styles 
- * as much as possible can be recycled and composed and used for a other things 
- * without being locked-in our main form components.
+ * = FORM ELEMENTS - formElements.st.css
  *
- * This actually makes sense anyway for us as we will want to be using our own 
- * styles for across similar components.
+ * 
+ * Whilst it's nice to always use our form items usually we will have to style 
+ * forms that are not within our control. We might need to integrate a 
+ * newsletter widget or perhaps a media selection widget, etc.
  *
- */
+ * Here you will find the base styles for form input elements which are mixin'd
+ * to our form .st.css styles. You can use reuse them in the same way to when 
+ * styling for 3rd party form elements.
+ *
+ * Maybe the file is too long, we just like these all togther. Lots of comments 
+ * but much longer and we'll consider splitting them.. but most everyting else 
+ * should be variant overrides in situ.
+ * 
+ * ========================================================================= */
+
 
 /* = Project and vars */
 :import {
@@ -28,6 +28,8 @@
     text-vol-6-scale, text-vol-6-max,
     --color-status-error-default,
     --color-form-mark-default,
+    --color-form-selection-track-default,
+    --color-form-selection-mark-default,
     --color-focus-default,
     --color-ui-default,
     --select-icon-default;
@@ -44,12 +46,12 @@
     textVol;
 }
 
-/* :import {
+:import {
   -st-from: '../utils.st.css';
   -st-named:
     peudoFocus,
     peudoFocusVisible;
-} */
+}
 
 
 :import {
@@ -78,8 +80,11 @@
 }
 
 /**
- * = System resets
- */
+ * = Helper mixins
+ *
+ * Some resued bits, they can be used externally.
+ *
+ * ------------------------------------------------------------------------- */
 
 /* = Hide the default 'appearance'. */
 .hideWebkitAppearance {
@@ -118,7 +123,7 @@
     practice we want to render it below so as to avoid the field moving when
     it is in an eror state. We are using flex to move the error but you could 
     use grid with named grid-lines but wider support exists for flex so less 
-    fallbacks are required. We might use grid in future though.
+    fallbacks are required. We might use grid in future though.?
   */
   display: flex;
   flex-direction: column;
@@ -141,8 +146,6 @@
   width: 1px;
   background-color: value(--color-form-mark-default);
   background-color: var(--color-form-mark, value(--color-form-mark-default));
-  /* = Dull it down a bit... */
-  /* opacity: 0.5; */
   transition: background-color 0.3s;
 }
 
@@ -153,6 +156,7 @@
 
 .textualFieldContainer::after {
   right: 0;
+  /* = Choosing only to show the first edge indicator by default. */
   display: none;
 }
 
@@ -244,8 +248,10 @@
   cursor: not-allowed;
 }
 
+
+
 /**
- * = INPUT VOLUMES
+ * = INPUT VOLUMES - COMMON
  *
  * When it comes to our input volumes we want to make sure that they are never
  * below 16px on device else we will get some auto 'form zoom' happening which 
@@ -359,3 +365,157 @@
   font-size: 36px;
   font-size: value(inputVol6SelectionControl);
 }
+
+
+
+
+/**
+ * = INPUT SELECTION CONTROLS
+ *
+ * Checkboxes, radios, toggles and switches.
+ *
+ * ------------------------------------------------------------------------- */
+
+
+/* = 'Root' of the control - <span> */
+.SelectionControlRoot {
+  /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
+  display: flex;
+  /* = Force hardware acceleration on... Why did I do this...? Commenting for now. */
+  /* transform: translateZ(0); */
+  /* = A default, maybe we should remove it... */
+  font-size: 20px;
+}
+
+
+/* = The actual field - <input> */
+.SelectionControlFieldInput {
+  -st-mixin: hideWebkitAppearance;
+  font-size: inherit;
+  background: transparent;
+  height: 1em;
+  width: 1em;
+  cursor: pointer;
+  position: relative;
+  /* border: 2px solid #bce3ff; */
+  border: 2px solid value(--color-form-selection-track-default);
+  border-color: var(--color-form-selection-track, value(--color-form-selection-track-default));
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* = See below for replacement, I know, I know "if we must". We must! ;-) */
+  outline: none;
+}
+
+/* = Field focus indicator, via pseudo element. */
+.SelectionControlFieldInput::after {
+  -st-mixin: peudoFocus;
+}
+
+/* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
+.SelectionControlFieldInput:focus::after,
+.SelectionControlFieldInput:active::after {
+  -st-mixin: peudoFocusVisible
+}
+
+@-moz-document url-prefix() {
+  /* = See inputSelectionControl.st.css for FF issue. @stylable not picking up. */
+}
+
+/* = For future: 
+ * https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ 
+ */
+
+
+
+/**
+ * = DISABLED - COMMON
+ */
+
+/* = Hide the pesudo focus style when field is disabled. */
+.SelectionControlFieldInput:disabled::after {
+  opacity: 0;
+}
+
+/* = Dull out the field and apply suitable cursor. */
+.SelectionControlFieldInput:disabled {
+  cursor: not-allowed;
+  filter: saturate(15%) brightness(70%);
+}
+
+
+/**
+ * = RADIO / CHECKBOX - COMMON
+ */
+.RadioCheckboxCommon {}
+
+/* = The 'mark' of the field, radio and checkboxes both have one. */
+.RadioCheckboxCommon::before {
+  content: "";
+  transition: opacity 120ms;
+  background-color: value(--color-form-selection-mark-default);
+  background-color: var(--color-form-selection-mark, value(--color-form-selection-mark-default));
+  width: 0.5em;
+  height: 0.5em;
+  opacity: 0;
+  display: block
+}
+
+.RadioCheckboxCommon:checked::before {
+  opacity: 1;
+}
+
+/**
+ * = RADIO
+ */
+.RadioFieldInput,
+.RadioFieldInput::before,
+.RadioFieldInput::after {
+  border-radius: 50%;
+}
+
+/**
+ * = CHECKBOX
+ */
+.CheckboxFieldInput {}
+
+
+/**
+ * = TOGGLE
+ *
+ * Which is really just a checkbox in diguise...
+ */
+
+.ToggleFieldInput {
+  width: 2em;
+  border-radius: 9999px;
+}
+
+.ToggleFieldInput::after {
+  border-radius: 9999px;
+}
+
+.ToggleFieldInput::before {
+  content: "";
+  position: absolute;
+  background-color: var(--color-ui, value(--color-ui-default));
+  background-color: var(--color-toggle-mark);
+  /* 
+  too much... 
+  box-shadow: 0 0 1px 2px var(--color-ui, value(--color-ui-default)); */
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 9999px;
+  transition: all 0.2s;
+  transform: translate(-50%);
+  z-index: 1;
+}
+
+.ToggleFieldInput:checked::before {
+  transform: translate(50%);
+  background-color: value(--color-form-selection-mark-default);
+  background-color: var(--color-form-selection-mark, value(--color-form-selection-mark-default));
+}
+
+/* .SwitchFieldInput {} */

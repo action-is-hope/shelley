@@ -1,4 +1,14 @@
-/** inputBase.st.css */
+/**
+ * = INPUT BASE - inputBase.st.css
+ *
+ * This file applies the base styles to our textal form components such as 
+ * inputs, textareas and selects or any compbo boxes we might construct.
+ *
+ * Most of the base styles live in the mixins so they can be shared but the 
+ * variants are styled here as they are more specific to our markup.
+ * 
+ * ========================================================================= */
+
 
 :import {
   -st-from: "../project.st.css";
