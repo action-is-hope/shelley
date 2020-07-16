@@ -1,3 +1,6 @@
+/* = shelleyBanner.st.css*/
+@namespace "ShelleyBanner";
+
 :import {
   -st-from: "../../components/Text/text.st.css";
   -st-default: Text;

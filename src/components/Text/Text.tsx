@@ -26,9 +26,9 @@ const Text = React.forwardRef(
     {
       tag: tagName,
       children,
-      className,
+      className: classNameProp,
       truncate = false,
-      uppercase,
+      uppercase = false,
       visuallyHidden,
       weight = false,
       vol = 3,
@@ -36,20 +36,12 @@ const Text = React.forwardRef(
     }: TextProps,
     ref?: React.Ref<HTMLBaseElement>
   ) => {
-    const rootClassNames = classNames(
-      classes.root,
-      classes["vol" + vol],
-      className,
-      {
-        uppercase
-      }
-    );
+    const rootClassNames = classNames(classes.root, classNameProp);
 
     const text = React.createElement(
       tagName,
       {
-        // ...style(rootClassNames, { truncate, weight }, rest),
-        className: st(rootClassNames, { truncate, weight }),
+        className: st(rootClassNames, { truncate, weight, uppercase, vol }),
         ref: ref,
         ...rest
       },

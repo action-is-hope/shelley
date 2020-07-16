@@ -39,7 +39,7 @@ const Grid = React.forwardRef(
         //   { formatted },
         //   rest
         // ),
-        className: st(rootClassNames, { formatted }),
+        className: st(rootClassNames, { formatted, variant }),
         ref: ref,
         ...rest
       },

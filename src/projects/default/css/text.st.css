@@ -52,7 +52,7 @@
 
   /* = Volume 1 */
 
-  Text.vol1 {
+  Text:vol(1) {
     -st-mixin:
       textVol(scale value(text-vol-1-scale),
         max value(text-vol-1-max),
@@ -60,7 +60,7 @@
   }
 
   /* = Volume 2 */
-  Text.vol2 {
+  Text:vol(2) {
     -st-mixin:
       textVol(scale value(text-vol-2-scale),
         max value(text-vol-2-max),
@@ -68,7 +68,7 @@
   }
 
   /* = Volume 3 */
-  Text.vol3 {
+  Text:vol(3) {
     -st-mixin:
       textVol(scale value(text-vol-3-scale),
         max value(text-vol-3-max),
@@ -77,7 +77,7 @@
 
 
   /* = Volume 4 */
-  Text.vol4 {
+  Text:vol(4) {
     -st-mixin:
       textVol(scale value(text-vol-4-scale),
         max value(text-vol-4-max),
@@ -85,7 +85,7 @@
   }
 
   /* = Volume 5 */
-  Text.vol5 {
+  Text:vol(5) {
     -st-mixin:
       textVol(scale value(text-vol-5-scale),
         max value(text-vol-5-max),
@@ -93,7 +93,7 @@
   }
 
   /* = Volume 6 */
-  Text.vol6 {
+  Text:vol(6) {
     -st-mixin:
       textVol(scale value(text-vol-6-scale),
         max value(text-vol-6-max),
@@ -101,7 +101,7 @@
   }
 
   /* = Volume 7 */
-  Text.vol7 {
+  Text:vol(7) {
     -st-mixin:
       textVol(scale value(text-vol-7-scale),
         max value(text-vol-7-max),
@@ -110,7 +110,7 @@
   }
 
   /* = Volume 8 */
-  Text.vol8 {
+  Text:vol(8) {
     -st-mixin:
       textVol(scale value(text-vol-8-scale),
         max value(text-vol-8-max),
@@ -119,7 +119,7 @@
   }
 
   /* = Volume 9 */
-  Text.vol9 {
+  Text:vol(9) {
     -st-mixin:
       textVol(scale value(text-vol-9-scale),
         max value(text-vol-9-max),
@@ -128,7 +128,7 @@
   }
 
   /* = Volume 10 */
-  Text.vol10 {
+  Text:vol(10) {
     -st-mixin:
       textVol(scale value(text-vol-10-scale),
         max value(text-vol-10-max),
@@ -137,7 +137,7 @@
   }
 
   /* = Volume 11 */
-  Text.vol11 {
+  Text:vol(11) {
     -st-mixin:
       textVol(scale value(text-vol-11-scale),
         max value(text-vol-11-max),
@@ -147,24 +147,24 @@
 
 
   /* = Uppercase */
-  Text.uppercase {
+  Text:uppercase {
     text-transform: uppercase;
     letter-spacing: .25em;
   }
 
-  Text.vol1.uppercase {
+  Text:vol(1):uppercase {
     letter-spacing: .41em;
   }
 
-  Text.vol2.uppercase {
+  Text:vol(2):uppercase {
     letter-spacing: .41em;
   }
 
-  Text.vol3.uppercase {
+  Text:vol(3):uppercase {
     letter-spacing: .41em;
   }
 
-  Text.vol4.uppercase {
+  Text:vol(4):uppercase {
     letter-spacing: .31em;
   }
 

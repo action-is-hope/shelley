@@ -3,15 +3,15 @@ import project from "./default/project.st.css";
 // import { classes as basic } from "./themes/basic.st.css";
 import light from "./default/light.st.css";
 import dark from "./default/dark.st.css";
-import inputSelection from "./default/css/inputSelection.st.css";
-import inputSelectionCustom from "./default/css/inputSelectionCustom.st.css";
+// import inputSelection from "./default/css/inputSelection.st.css";
+import { classes as inputSelectionCustom } from "./default/css/inputSelectionCustom.st.css";
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 import classnames from "classnames";
 
 const themes = {
-  dark: [project.root, dark.root],
-  light: [project.root, light.root]
+  dark: [project.classes.root, dark.classes.root],
+  light: [project.classes.root, light.classes.root]
 };
 
 // This functions changes the application them by appending the selected

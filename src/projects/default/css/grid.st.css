@@ -75,7 +75,7 @@
   /* = Variant 1: Core Grid */
 
   /* = See grid docs on shelley.earth for initial walkthrough. */
-  Grid.variant1 {
+  Grid:variant(1) {
     display: grid;
     grid-row-gap: 0;
     grid-template-columns:
@@ -84,7 +84,7 @@
 
   /* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
   @media value(breakpoint-sm) {
-    Grid.variant1 {
+    Grid:variant(1) {
       grid-template-columns:
         [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
     }
@@ -92,20 +92,20 @@
 
   /* = width tweaks for md and above. */
   @media value(breakpoint-md) {
-    Grid.variant1 {
+    Grid:variant(1) {
       grid-template-columns:
         [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
     }
   }
 
   /* = Set any direct descendant Grid on the 'goal' grid lines. */
-  /* Grid.variant1>Grid {
+  /* Grid:variant(1)>Grid {
     grid-column: goal;
   } */
 
 
   /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
-  Grid.variant1>Grid.variant1 {
+  Grid:variant(1)>Grid:variant(1) {
     grid-column: edge;
   }
 }
@@ -114,48 +114,48 @@
 
 /* = @todo: #stylable These are outside of @st-scope XXX {) due to a bug with 
  *  stylable where only the first item gets the scope prefix. */
-Grid.variant1>h1,
-Grid.variant1>h2,
-Grid.variant1>h3,
-Grid.variant1>h4,
-Grid.variant1>h5,
-Grid.variant1>h6,
-Grid.variant1>p,
-Grid.variant1>ul,
-Grid.variant1>ol,
-Grid.variant1>dl,
-Grid.variant1>blockquote,
-Grid.variant1>pre,
-Grid.variant1>img,
-Grid.variant1>figure {
+Grid:variant(1)>h1,
+Grid:variant(1)>h2,
+Grid:variant(1)>h3,
+Grid:variant(1)>h4,
+Grid:variant(1)>h5,
+Grid:variant(1)>h6,
+Grid:variant(1)>p,
+Grid:variant(1)>ul,
+Grid:variant(1)>ol,
+Grid:variant(1)>dl,
+Grid:variant(1)>blockquote,
+Grid:variant(1)>pre,
+Grid:variant(1)>img,
+Grid:variant(1)>figure {
   -st-mixin: gridItem;
 }
 
 /* = If you need to jump these based on media query then do it with a custom class. */
-Grid.variant1>.mid {
+Grid:variant(1)>.mid {
   -st-mixin: gridItem;
 }
 
-Grid.variant1>.pen {
+Grid:variant(1)>.pen {
   -st-mixin: gridItem(gridCol pen, fallbackMaxWidth 50rem);
 }
 
-Grid.variant1>.goal {
+Grid:variant(1)>.goal {
   -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
 }
 
-Grid.variant1>.edge {
+Grid:variant(1)>.edge {
   -st-mixin: gridItem(gridCol edge, fallbackMaxWidth 100%);
 }
 
 /* = Common jump patterns, you can set these up like a bootstrap grid if you like 
 littering your HTML with conditional positional info*/
-Grid.variant1>.snapMidToGoal {
+Grid:variant(1)>.snapMidToGoal {
   grid-column: mid;
 }
 
 @media value(breakpoint-md) {
-  Grid.variant1>.snapMidToGoal {
+  Grid:variant(1)>.snapMidToGoal {
     -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
   }
 }
@@ -163,37 +163,37 @@ Grid.variant1>.snapMidToGoal {
 /* = @todo: This should be able to move to the gridItem mixin, if stylable bug confirmed. */
 @supports (display: grid) {
 
-  Grid.variant1>h1,
-  Grid.variant1>h2,
-  Grid.variant1>h3,
-  Grid.variant1>h4,
-  Grid.variant1>h5,
-  Grid.variant1>h6,
-  Grid.variant1>p,
-  Grid.variant1>ul,
-  Grid.variant1>ol,
-  Grid.variant1>dl,
-  Grid.variant1>blockquote,
-  Grid.variant1>pre,
-  Grid.variant1>img,
-  Grid.variant1>figure,
-  Grid.variant1>.snapMidToGoal {
+  Grid:variant(1)>h1,
+  Grid:variant(1)>h2,
+  Grid:variant(1)>h3,
+  Grid:variant(1)>h4,
+  Grid:variant(1)>h5,
+  Grid:variant(1)>h6,
+  Grid:variant(1)>p,
+  Grid:variant(1)>ul,
+  Grid:variant(1)>ol,
+  Grid:variant(1)>dl,
+  Grid:variant(1)>blockquote,
+  Grid:variant(1)>pre,
+  Grid:variant(1)>img,
+  Grid:variant(1)>figure,
+  Grid:variant(1)>.snapMidToGoal {
     -st-mixin: gridItemReset;
   }
 
-  Grid.variant1>.mid {
+  Grid:variant(1)>.mid {
     -st-mixin: gridItemReset;
   }
 
-  Grid.variant1>.pen {
+  Grid:variant(1)>.pen {
     -st-mixin: gridItemReset;
   }
 
-  Grid.variant1>.goal {
+  Grid:variant(1)>.goal {
     -st-mixin: gridItemReset;
   }
 
-  Grid.variant1>.edge {
+  Grid:variant(1)>.edge {
     -st-mixin: gridItemReset;
   }
 
@@ -217,7 +217,7 @@ Grid.variant1>.snapMidToGoal {
 
 
   /* = Variant 2: 1 | 1 */
-  Grid.variant2 {
+  Grid:variant(2) {
     -st-mixin: clearfix;
     grid-template-columns: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
 
@@ -225,7 +225,7 @@ Grid.variant1>.snapMidToGoal {
   }
 
   @media value(breakpoint-md) {
-    Grid.variant2 {
+    Grid:variant(2) {
       grid-column: goal;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -233,23 +233,23 @@ Grid.variant1>.snapMidToGoal {
     }
 
     /* = Fallbacks: Just because a browser is old doesn't mean it is stupid, calc is useful. */
-    Grid.variant2>* {
+    Grid:variant(2)>* {
       width: calc(50% - 1.5vw);
     }
 
-    Grid.variant2>*:nth-child(odd) {
+    Grid:variant(2)>*:nth-child(odd) {
       float: left;
       /* = rtl*/
     }
 
-    Grid.variant2>*:nth-child(even) {
+    Grid:variant(2)>*:nth-child(even) {
       float: right;
       /* = rtl*/
     }
 
     /* = Reset fallback styles: no need for floats as they loose 'rock paper scissors' to grid in terms of layout. */
     @supports (display: grid) {
-      Grid.variant2>* {
+      Grid:variant(2)>* {
         width: initial;
       }
     }
@@ -259,17 +259,17 @@ Grid.variant1>.snapMidToGoal {
 
 
   /* = Variant 3: 7 | 5 */
-  Grid.variant3 {
+  Grid:variant(3) {
     display: grid;
     grid-column: goal;
   }
 
   @media value(breakpoint-sm) {
-    Grid.variant3 {
+    Grid:variant(3) {
       -st-mixin: clearfix;
     }
 
-    Grid.variant3 {
+    Grid:variant(3) {
       grid-template-columns: 7fr 5fr;
     }
   }

@@ -121,9 +121,9 @@
 /* Override our uppercase headings.
    Handy use of :global() if you want to style based on a tag, useful where a 
    component, link Text can output a number of tags as it's root element. */
-.root :global(h2)Text.uppercase,
-.root :global(h3)Text.uppercase,
-.root :global(h4)Text.uppercase {
+.root :global(h2)Text:uppercase,
+.root :global(h3)Text:uppercase,
+.root :global(h4)Text:uppercase {
   color: value(--color-accent-2-default);
   color: var(--color-accent-2, value(--color-accent-2-default));
 }

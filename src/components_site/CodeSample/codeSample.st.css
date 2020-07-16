@@ -1,4 +1,6 @@
 /** codeSample.st.css */
+@namespace "CodeSample";
+
 .root {
   /* Fixes 'zoomed' layout issue on mobile. */
   display: inherit;

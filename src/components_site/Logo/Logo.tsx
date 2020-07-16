@@ -1,15 +1,17 @@
 /** Logo.tsx */
 import React from "react";
-import style from "./logo.st.css";
 import classNames from "classnames";
+/* = Style API. */
+import { st, classes } from "./logo.st.css";
 
 const Logo = ({
   className: classNameProp,
   ...rest
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div {...style(classNames(style.root, classNameProp), {}, rest)}>
-      <span className={style.logoInner}></span>
+    <div className={st(classNames(classes.root, classNameProp))} {...rest}>
+      {/* ...style(classNames(classes.root, classNameProp), {}, rest)} */}
+      <span className={classes.logoInner}></span>
     </div>
   );
 };

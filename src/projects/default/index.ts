@@ -34,6 +34,7 @@ const getStylableClassNames = (
   rootcls: string
 ) => {
   const clsArray = values.map((cls: string) => stylesheet[cls] || null);
+  // console.log("HELLO", { values });
   return classnames(stylesheet[rootcls], clsArray);
 };
 
@@ -87,4 +88,4 @@ export const propsDemo = (...values: []) =>
 export const logo = (...values: []) =>
   getStylableClassNames(values, Logo, "logo");
 
-export const Theme = Default.root;
+export const Theme = Default.classes;

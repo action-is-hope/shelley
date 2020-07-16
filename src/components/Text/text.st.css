@@ -4,42 +4,12 @@
 .root {
   -st-states:
     truncate,
-    weight(enum(1, 2, 3, 4, 5, 6, 7, 8));
+    weight(enum(1, 2, 3, 4, 5, 6, 7, 8)),
+    uppercase,
+    vol(enum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12));
 }
 
-/* Volume */
-
-.vol1 {}
-
-.vol2 {}
-
-.vol3 {}
-
-.vol4 {}
-
-.vol5 {}
-
-.vol6 {}
-
-.vol7 {}
-
-.vol8 {}
-
-.vol9 {}
-
-.vol10 {}
-
-.vol11 {}
-
-.vol12 {}
-
 /* Extras */
-
-.uppercase {}
-
-.underline {}
-
-.bold {}
 
 .root:truncate {
   display: block;

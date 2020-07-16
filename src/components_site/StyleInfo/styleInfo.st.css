@@ -1,4 +1,5 @@
 /** styleInfo.st.css */
+@namespace "StyleInfo";
 
 .root {
   /* grid-column: edge; */

@@ -1,13 +1,13 @@
 /** PropsDemo.tsx */
 /** @todo Tidy this up, including types and maybe expose it. */
 import React from "react";
-import style from "./propsDemo.st.css";
 import classNames from "classnames";
-
 import InputText from "../../components/InputText/InputText";
 import InputSelect from "../../components/InputSelect/InputSelect";
 import InputSelection from "../../components/InputSelection/InputSelection";
 import { H2, H3, P } from "../../components/Text/Text";
+/* = Style API. */
+import { st, classes } from "./propsDemo.st.css";
 
 interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
   className?: string;
@@ -16,8 +16,8 @@ interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
   demoNonProps?: any;
   renderExample?: any;
   tsExtends?: string;
-  setDemoProps?: (demoProps) => void;
-  setNonDemoProps?: (demoNonProps) => void;
+  setDemoProps?: (demoProps: any) => void;
+  setNonDemoProps?: (demoNonProps: any) => void;
 }
 
 const PropsDemo = ({
@@ -32,7 +32,7 @@ const PropsDemo = ({
   componentName,
   ...rest
 }: PropsDemoProps) => {
-  const rootClassNames = classNames(style.root, className);
+  const rootClassNames = classNames(classes.root, className);
 
   const setInput = (
     item: any,
@@ -158,24 +158,24 @@ const PropsDemo = ({
   };
 
   return (
-    <section {...style(rootClassNames, {}, rest)} {...rest}>
+    <section className={st(rootClassNames)} {...rest}>
       {demoProps && (
-        <H2 vol={3} className={style.propsHeading} uppercase>
+        <H2 vol={3} className={classes.propsHeading} uppercase>
           <span>Props Playground</span>
         </H2>
       )}
-      <div className={style.gridOverflow}>
-        <div className={style.internalGrid}>
-          <div className={style.propsPlayground}>
+      <div className={classes.gridOverflow}>
+        <div className={classes.internalGrid}>
+          <div className={classes.propsPlayground}>
             {demoProps && (
               <>
-                {/* <H2 vol={3} className={style.propsHeading} uppercase>
+                {/* <H2 vol={3} className={classes.propsHeading} uppercase>
                   <span>Props Playground</span>
                 </H2> */}
-                <P vol={2} className={style.propsHint}>
+                <P vol={2} className={classes.propsHint}>
                   Have a little play around with the props below:
                 </P>
-                <div className={style.propInputs}>
+                <div className={classes.propInputs}>
                   {demoProps.map((item: any, i: number) => {
                     return setInput(item, i, demoProps, setDemoProps);
                   })}
@@ -183,9 +183,9 @@ const PropsDemo = ({
               </>
             )}
             {tsExtends && (
-              <P vol={2} className={style.tsExtends}>
+              <P vol={2} className={classes.tsExtends}>
                 <abbr title="TypeScript">
-                  <span className={style.tsLogo}>TS</span>
+                  <span className={classes.tsLogo}>TS</span>
                 </abbr>
                 based on: <code>{tsExtends}</code>
               </P>
@@ -193,10 +193,10 @@ const PropsDemo = ({
 
             {demoNonProps && (
               <>
-                <H2 vol={3} className={style.propsHeading} uppercase>
+                <H2 vol={3} className={classes.propsHeading} uppercase>
                   <span>Props Playground</span>
                 </H2>
-                <div className={style.propInputs}>
+                <div className={classes.propInputs}>
                   {demoNonProps.map((item: any, i: number) => {
                     return setInput(item, i, demoNonProps, setNonDemoProps);
                   })}
@@ -205,17 +205,17 @@ const PropsDemo = ({
             )}
           </div>
 
-          <div className={style.codeExample}>
-            <H3 vol={1} className={style.exampleHeading} uppercase>
+          <div className={classes.codeExample}>
+            <H3 vol={1} className={classes.exampleHeading} uppercase>
               React Code:
             </H3>
             {renderExample}
           </div>
-          <div className={style.demoExample}>
-            <H3 vol={1} className={style.exampleHeading} uppercase>
+          <div className={classes.demoExample}>
+            <H3 vol={1} className={classes.exampleHeading} uppercase>
               Preview:
             </H3>
-            <div className={style.demo}>{children}</div>
+            <div className={classes.demo}>{children}</div>
           </div>
         </div>
       </div>

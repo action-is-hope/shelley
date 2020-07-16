@@ -1,3 +1,5 @@
+@namespace "PageTitle";
+
 :import {
   -st-from: "../../projects/default/project.st.css";
   -st-default: Default;
