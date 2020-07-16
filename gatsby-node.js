@@ -1,4 +1,6 @@
-const StylableWebpackPlugin = require("@stylable/webpack-plugin");
+const {
+  StylableWebpackPlugin
+} = require("@stylable/webpack-plugin");
 
 exports.onCreateWebpackConfig = ({
   actions,
@@ -35,9 +37,9 @@ exports.onCreateWebpackConfig = ({
     optimize: {
       // The following two options need testing in prod.
       classNameOptimizations: false,
-      shortNamespaces: false
+      shortNamespaces: false,
     },
-    ...pluginOptions
+    ...pluginOptions,
   };
   config.plugins.push(new StylableWebpackPlugin(options));
 

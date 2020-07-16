@@ -1,15 +1,20 @@
 /** InputAdornment.tsx */
 import React from "react";
-import style from "./inputAdornment.st.css";
 import classnames from "classnames";
+/* = Style API. */
+import { st, classes } from "./inputAdornment.st.css";
 
 const InputAdornment = ({
   children,
-  className,
+  className: classNameProp,
   ...rest
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span {...style(classnames(style.root, className), {}, rest)} {...rest}>
+    <span
+      className={st(classnames(classes.root, classNameProp))}
+      // {...style(classnames(style.root, className), {}, rest)}
+      {...rest}
+    >
       {children}
     </span>
   );

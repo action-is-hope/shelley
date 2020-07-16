@@ -1,4 +1,6 @@
 /** inputSelection.st.css */
+@namespace "InputSelection";
+
 .root {
   -st-states: disabled, error, labelPos(enum(above, below, start, end));
 }

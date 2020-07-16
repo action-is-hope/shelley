@@ -1,9 +1,10 @@
 /* Text.tsx */
 import React from "react";
 import { TextVolume } from "../types";
-import style from "./text.st.css";
 import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+/* = Style API. */
+import { st, classes } from "./text.st.css";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** HTML tag to render as this Text item. */
@@ -36,8 +37,8 @@ const Text = React.forwardRef(
     ref?: React.Ref<HTMLBaseElement>
   ) => {
     const rootClassNames = classNames(
-      style.root,
-      style["vol" + vol],
+      classes.root,
+      classes["vol" + vol],
       className,
       {
         uppercase
@@ -47,7 +48,8 @@ const Text = React.forwardRef(
     const text = React.createElement(
       tagName,
       {
-        ...style(rootClassNames, { truncate, weight }, rest),
+        // ...style(rootClassNames, { truncate, weight }, rest),
+        className: st(rootClassNames, { truncate, weight }),
         ref: ref,
         ...rest
       },

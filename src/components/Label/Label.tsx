@@ -1,10 +1,11 @@
 /** Label.tsx */
 import React from "react";
 import { AlignPos } from "../types";
-import style from "./label.st.css";
 import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import HintText from "../HintText/HintText";
+/* = Style API. */
+import { st, classes } from "./label.st.css";
 
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
@@ -28,23 +29,30 @@ const Label = ({
   ...attrs
 }: LabelProps) => {
   const labelText = (
-    <span className={style.textContainer}>
-      <span className={style.labelText}>{children}</span>
+    <span className={classes.textContainer}>
+      <span className={classes.labelText}>{children}</span>
       {hint && <HintText>{hint}</HintText>}
     </span>
   );
 
+  const rootClassNames = classNames(
+    classes.root,
+    // { [classes.hasInput]: inputControl },
+    classNameProp
+  );
+
   return (
     <label
-      {...style(
-        classNames(
-          style.root,
-          { [style.hasInput]: inputControl },
-          classNameProp
-        ),
-        { inputPos },
-        attrs
-      )}
+      // {...style(
+      //   classNames(
+      //     style.root,
+      //     { [style.hasInput]: inputControl },
+      //     classNameProp
+      //   ),
+      //   { inputPos },
+      //   attrs
+      // )}
+      className={st(rootClassNames, { inputPos })}
       {...attrs}
     >
       {visuallyHidden ? (

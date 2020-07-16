@@ -1,4 +1,5 @@
 /** inputSelectionControl.st.css */
+@namespace "InputSelectionControl";
 
 .root {
   -st-states: disabled, error;

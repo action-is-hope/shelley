@@ -1,10 +1,11 @@
 import React from "react";
 import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import classnames from "classnames";
-import style from "./inputSelection.st.css";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
+/* = Style API. */
+import { st, classes } from "./inputSelection.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface RadioCheckInputProps
@@ -77,20 +78,18 @@ const InputSelection = React.forwardRef(
         }}
       />
     );
+
+    const rootClassNames = classnames(
+      classes.root,
+      classes["vol" + vol],
+      // classes["variant" + variant],
+      // classes[color],
+      // classes[variant],
+      classNameProp
+    );
+
     return (
-      <div
-        {...style(
-          classnames(
-            style.root,
-            style[type],
-            style["variant" + variant],
-            style["vol" + vol],
-            classNameProp
-          ),
-          { error, disabled },
-          rest
-        )}
-      >
+      <div className={st(rootClassNames, { variant, type, disabled, vol })}>
         {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
         <Label

@@ -1,10 +1,10 @@
 /** Blockquote.tsx */
 import React from "react";
 import { Volume, Variant } from "../types";
-import style from "./blockquote.st.css";
-import classNames from "classnames";
-
+import classnames from "classnames";
 import Text from "../Text/Text";
+/* = Style API. */
+import { st, classes } from "./blockquote.st.css";
 
 interface BlockquoteProps
   extends Pick<
@@ -31,20 +31,26 @@ const Blockquote = ({
   variant,
   ...rest
 }: BlockquoteProps) => {
+  const rootClassNames = classnames(
+    classes.root,
+    classes["variant" + variant],
+    classNameProp
+  );
   return (
     <blockquote
-      {...style(
-        classNames(style.root, style["variant" + variant], classNameProp),
-        {},
-        rest
-      )}
+      className={st(rootClassNames)}
+      // {...style(
+      //   classNames(style.root, style["variant" + variant], classNameProp),
+      //   {},
+      //   rest
+      // )}
       cite={citeAttr}
       {...rest}
     >
-      <div className={style.content}>{children}</div>
+      <div className={classes.content}>{children}</div>
       {cite && (
-        <footer className={style.footer}>
-          <Text tag="cite" vol={citeVol} className={style.cite}>
+        <footer className={classes.footer}>
+          <Text tag="cite" vol={citeVol} className={classes.cite}>
             {cite}
           </Text>
         </footer>

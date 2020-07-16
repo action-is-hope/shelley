@@ -1,15 +1,15 @@
 /** ErrorText.tsx */
 import React from "react";
-import style from "./errorText.st.css";
 import classnames from "classnames";
-
+/* = Style API. */
+import { st, classes } from "./errorText.st.css";
 const ErrorText = ({
   children,
-  className,
+  className: classNameProp,
   ...rest
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span {...style(classnames(style.root, className), {}, rest)} {...rest}>
+    <span className={st(classnames(classes.root, classNameProp))} {...rest}>
       {children}
     </span>
   );

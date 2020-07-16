@@ -1,4 +1,6 @@
 /* button.st.css */
+@namespace "Button";
+
 .root {
   -st-states: iconPos(enum(top, end, bottom, start));
   display: inline-flex;

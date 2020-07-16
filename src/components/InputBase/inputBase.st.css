@@ -1,4 +1,5 @@
 /** inputRow.st.css */
+@namespace "InputBase";
 
 .root {
   -st-states: disabled, error;

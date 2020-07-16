@@ -1,9 +1,10 @@
 import React from "react";
 import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
-import style from "./button.st.css";
 import PropTypes from "prop-types";
 import { AlignPos } from "../types";
+/* = Style API. */
+import { st, classes } from "./button.st.css";
 
 /**
  * Button props extending those of a regular button, we are overriding tone.
@@ -43,33 +44,34 @@ const Button = React.forwardRef(
     ref?: React.Ref<HTMLButtonElement>
   ) => {
     const rootClassNames = classnames(
-      style.root,
-      style["tone" + tone],
-      style["vol" + vol],
-      style["variant" + variant],
+      classes.root,
+      classes["tone" + tone],
+      classes["vol" + vol],
+      classes["variant" + variant],
       classNameProp
     );
 
     return (
       <button
-        {...style(
-          rootClassNames,
-          {
-            iconPos
-          },
-          rest
-        )}
+        className={st(rootClassNames, { iconPos })}
+        // {...style(
+        //   rootClassNames,
+        //   {
+        //     iconPos
+        //   },
+        //   rest
+        // )}
         {...rest}
         ref={ref}
       >
         {icon && (
           <>
             {icon}
-            <span className={style.divider}></span>
+            <span className={classes.divider}></span>
           </>
         )}
-        {children && <span className={style.inner}>{children}</span>}
-        {tip && <span className={style.tip}>{tip}</span>}
+        {children && <span className={classes.inner}>{children}</span>}
+        {tip && <span className={classes.tip}>{tip}</span>}
       </button>
     );
   }

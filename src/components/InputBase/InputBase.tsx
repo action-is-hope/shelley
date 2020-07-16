@@ -1,11 +1,12 @@
 import React from "react";
 import { Volume, Variant } from "../types";
 import classnames from "classnames";
-import style from "./inputBase.st.css";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import InputAdornment from "../InputAdornment/InputAdornment";
+/* = Style API. */
+import { st, classes } from "./inputBase.st.css";
 
 export type InputBaseProps = {
   /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility. */
@@ -68,7 +69,7 @@ const InputBase = ({
 
   const inputAttrs = {
     id,
-    className: style.fieldInput,
+    className: classes.fieldInput,
     disabled,
     // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
     "aria-invalid": error ? true : undefined,
@@ -82,18 +83,26 @@ const InputBase = ({
     });
   });
 
+  const rootClassNames = classnames(
+    classes.root,
+    classes["variant" + variant],
+    classes["vol" + vol],
+    classNameProp
+  );
+
   return (
     <div
-      {...style(
-        classnames(
-          style.root,
-          style["variant" + variant],
-          style["vol" + vol],
-          classNameProp
-        ),
-        { error, disabled },
-        attrs // We do want stylable to get spread attrs.
-      )}
+      className={st(rootClassNames, { error, disabled })}
+      // {...style(
+      //   classnames(
+      //     style.root,
+      //     style["variant" + variant],
+      //     style["vol" + vol],
+      //     classNameProp
+      //   ),
+      //   { error, disabled },
+      //   attrs // We do want stylable to get spread attrs.
+      // )}
     >
       {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
@@ -109,7 +118,7 @@ const InputBase = ({
         </Label>
       )}
 
-      <div className={style.fieldContainer}>
+      <div className={classes.fieldContainer}>
         {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}
         {childrenWithProps}
         {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}

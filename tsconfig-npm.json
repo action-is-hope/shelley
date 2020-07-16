@@ -11,7 +11,7 @@
     "outDir": "dist",
     "target": "es5",
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    // "skipLibCheck": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,

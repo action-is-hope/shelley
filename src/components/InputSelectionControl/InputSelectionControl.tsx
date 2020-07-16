@@ -1,7 +1,8 @@
 import React from "react";
 import { SelectionControlType } from "../types";
 import classnames from "classnames";
-import style from "./inputSelectionControl.st.css";
+/* = Style API. */
+import { st, classes } from "./inputSelectionControl.st.css";
 
 interface RadioCheckInputProps extends React.HTMLProps<HTMLInputElement> {
   /** Provide an error message that triggers the stylable error state. */
@@ -24,16 +25,20 @@ const InputSelectionControl = React.forwardRef(
     ref?: React.Ref<HTMLInputElement>
   ) => (
     <span
-      {...style(
-        classnames(style.root, classNameProp),
-        { error, disabled },
-        rest
-      )}
+      className={st(classnames(classes.root, classNameProp), {
+        error,
+        disabled
+      })}
+      // {...style(
+      //   classnames(classes.root, classNameProp),
+      //   { error, disabled },
+      //   rest
+      // )}
     >
       <input
         {...{
           id,
-          className: classnames(style.inputField, style[type]),
+          className: classnames(classes.inputField, classes[type]),
           disabled,
           defaultChecked,
           ref,
