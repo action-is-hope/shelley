@@ -1,11 +1,6 @@
 /** inputSelection.st.css */
 @namespace "InputSelect";
 
-
-/* .select {
-  -st-states: disabled, error, labelPos(enum(above, below, start, end));
-} */
-
 :import {
   -st-from: '../InputBase/inputBase.st.css';
   -st-default: InputBase
@@ -14,5 +9,3 @@
 .root {
   -st-extends: InputBase;
 }
-
-.inputFeild {}

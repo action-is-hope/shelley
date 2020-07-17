@@ -10,7 +10,7 @@ import { st, classes } from "./styleInfo.st.css";
 // import { st, classes } from "../../projects/default/css/grid.st.css";
 import { classes as grid } from "../../projects/default/css/grid.st.css";
 import { classes as text } from "../../projects/default/css/text.st.css";
-// import grid from "../../projects/default/css/grid.st.css";
+// import {classes as grid} from "../../projects/default/css/grid.st.css";
 // import text from "../../projects/default/css/text.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {

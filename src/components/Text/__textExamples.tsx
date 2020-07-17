@@ -10,7 +10,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { P } from "../../components/Text/Text";
 
 // Styles.
-import grid from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../projects/default/css/grid.st.css";
 
 export const meta = {
   name: "Button"

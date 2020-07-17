@@ -35,6 +35,15 @@
     --select-icon-default;
 }
 
+@st-global-custom-property --color-status-error,
+--color-form-mark,
+--color-form-selection-track,
+--color-form-selection-mark,
+--color-focus,
+--color-toggle-mark,
+--color-ui,
+--select-icon;
+
 :import {
   -st-from: "../../formatters/common";
   -st-named: respScale;

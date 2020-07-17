@@ -27,7 +27,8 @@ const InputSelectionControl = React.forwardRef(
     <span
       className={st(classnames(classes.root, classNameProp), {
         error,
-        disabled
+        disabled,
+        type
       })}
       // {...style(
       //   classnames(classes.root, classNameProp),

@@ -1,8 +1,6 @@
 /* inputAdornment.st.css */
 @namespace "InputAdornment";
 
-.root {}
-
 .root {
   height: 0.01em;
   display: flex;

@@ -83,26 +83,12 @@ const InputBase = ({
     });
   });
 
-  const rootClassNames = classnames(
-    classes.root,
-    classes["variant" + variant],
-    classes["vol" + vol],
-    classNameProp
-  );
+  const rootClassNames = classnames(classes.root, classNameProp);
 
   return (
     <div
-      className={st(rootClassNames, { error, disabled })}
-      // {...style(
-      //   classnames(
-      //     style.root,
-      //     style["variant" + variant],
-      //     style["vol" + vol],
-      //     classNameProp
-      //   ),
-      //   { error, disabled },
-      //   attrs // We do want stylable to get spread attrs.
-      // )}
+      className={st(rootClassNames, { error, disabled, variant, vol })}
+      // attrs // We do want stylable to get spread attrs??
     >
       {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 

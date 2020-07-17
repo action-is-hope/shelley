@@ -8,19 +8,24 @@
  * ========================================================================= */
 
 
-/* project and vars */
+/* = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
-    --color-ui-default,
     --color-ui-inverse-default,
     --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
     --color-accent-4-default;
 }
+
+@st-global-custom-property --color-accent-1,
+--color-accent-2,
+--color-accent-3,
+--color-accent-4,
+--color-ui-inverse;
 
 :import {
   -st-from: "../../../components/Button/button.st.css";
@@ -169,7 +174,7 @@
   /*==== VOLUMES ====*/
 
   /* Volume 1 */
-  Button.vol1 {
+  Button:vol(1) {
     -st-mixin:
       textVol(scale respScale(0.625em, 0.75em),
         max 0.75em, lineHeight 1.5);
@@ -177,35 +182,35 @@
 
 
   /* Volume 2 */
-  Button.vol2 {
+  Button:vol(2) {
     -st-mixin:
       textVol(scale respScale(0.75em, 0.875em),
         max 0.875em, lineHeight 1.5);
   }
 
   /* Volume 3 */
-  Button.vol3 {
+  Button:vol(3) {
     -st-mixin:
       textVol(scale respScale(0.875em, 1em),
         max 1em, lineHeight 1.5);
   }
 
   /* Volume 4 */
-  Button.vol4 {
+  Button:vol(4) {
     -st-mixin:
       textVol(scale respScale(1em, 1.125em),
         max 1.125em, lineHeight 1.5);
   }
 
   /* Volume 5 */
-  Button.vol5 {
+  Button:vol(5) {
     -st-mixin:
       textVol(scale respScale(1.125em, 1.25em),
         max 1.25em, lineHeight 1.5);
   }
 
   /* Volume 6 */
-  Button.vol6 {
+  Button:vol(6) {
     font-size: respScale(1.25em, 1.375em);
     -st-mixin:
       textVol(scale respScale(1.25em, 1.375),
@@ -215,36 +220,36 @@
 
   /* Button COLOURS */
 
-  Button.tone1 {
+  Button:tone(1) {
     --accent: var(--color-accent-1);
   }
 
-  Button.tone2 {
+  Button:tone(2) {
     --accent: var(--color-accent-2);
   }
 
-  Button.tone3 {
+  Button:tone(3) {
     --accent: var(--color-accent-3);
   }
 
-  Button.tone4 {
+  Button:tone(4) {
     --accent: var(--color-accent-4);
   }
 
 
   /* DEFAULT */
-  Button.variant1 {
+  Button:variant(1) {
     --text-color: var(--color-ui-inverse);
     --bg-color: var(--accent);
   }
 
-  Button.variant2 {
+  Button:variant(2) {
     --border-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
 
   /*= Variant 3 - FAB */
-  Button.variant3 {
+  Button:variant(3) {
     --text-color: var(--color-ui-inverse);
     --bg-color: var(--accent);
     padding: 0;
@@ -252,77 +257,77 @@
     justify-content: center;
   }
 
-  Button.variant3::divider {
+  Button:variant(3)::divider {
     display: none;
   }
 
-  Button.variant3::inner {
+  Button:variant(3)::inner {
     -st-mixin: visuallyHidden;
   }
 
-  Button.variant3::after {
+  Button:variant(3)::after {
     border-radius: 999px;
   }
 
   /*= FAB are all about the icons so we don't want rounding issues on these. Set with values that / 2. */
 
   /*= FAB - Volume 1 */
-  Button.variant3.vol1 {
+  Button:variant(3):vol(1) {
     width: 32px;
     height: 32px;
   }
 
-  Button.variant3.vol1 Icon {
+  Button:variant(3):vol(1) Icon {
     font-size: 16px;
   }
 
   /*= FAB - Volume 2 */
-  Button.variant3.vol2 {
+  Button:variant(3):vol(2) {
     width: 40px;
     height: 40px;
   }
 
-  Button.variant3.vol2 Icon {
+  Button:variant(3):vol(2) Icon {
     font-size: 18px;
   }
 
   /*= FAB - Volume 3 */
-  Button.variant3.vol3 {
+  Button:variant(3):vol(3) {
     width: 48px;
     height: 48px;
   }
 
-  Button.variant3.vol3 Icon {
+  Button:variant(3):vol(3) Icon {
     font-size: 18px;
   }
 
   /*= FAB - Volume 4 */
-  Button.variant3.vol4 {
+  Button:variant(3):vol(4) {
     width: 56px;
     height: 56px;
   }
 
-  Button.variant3.vol4 Icon {
+  Button:variant(3):vol(4) Icon {
     font-size: 20px;
   }
 
   /*= FAB - Volume 5 */
-  Button.variant3.vol5 {
+  Button:variant(3):vol(5) {
     width: 64px;
     height: 64px;
   }
 
-  Button.variant3.vol5 Icon {
+  Button:variant(3):vol(5) Icon {
     font-size: 22px;
   }
 
   /*= FAB - Volume 6 */
-  Button.variant3.vol6 {
+  Button:variant(3):vol(6) {
     width: 72px;
     height: 72px;
   }
 
-  Button.variant3.vol6 Icon {
+  Button:variant(3):vol(6) Icon {
     font-size: 24px;
   }
 }

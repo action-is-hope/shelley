@@ -8,7 +8,7 @@ import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 // import styleExamples from "./__gridExample.st.css";
 
-import grid from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../projects/default/css/grid.st.css";
 import Text, { P } from "../Text/Text";
 import Label from "../Label/Label";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";

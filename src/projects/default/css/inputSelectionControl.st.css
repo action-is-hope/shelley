@@ -50,18 +50,18 @@
   }
 
   /* = Radio Checkboc common styles. */
-  InputSelectionControl::checkbox,
-  InputSelectionControl::radio {
+  InputSelectionControl:type(checkbox)::inputField,
+  InputSelectionControl:type(radio)::inputField {
     -st-mixin: RadioCheckboxCommon;
   }
 
   /* = Radio */
-  InputSelectionControl::radio {
+  InputSelectionControl:type(radio)::inputField {
     -st-mixin: RadioFieldInput;
   }
 
   /* = Toggle */
-  InputSelectionControl::toggle {
+  InputSelectionControl:type(toggle)::inputField {
     -st-mixin: ToggleFieldInput;
   }
 }

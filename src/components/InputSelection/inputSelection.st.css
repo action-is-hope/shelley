@@ -2,43 +2,11 @@
 @namespace "InputSelection";
 
 .root {
-  -st-states: disabled, error, labelPos(enum(above, below, start, end));
+  -st-states:
+    disabled,
+    error,
+    type(enum(checkbox, radio, switch, toggle)),
+    variant(enum(1, 2, 3, 4, 5, 6)),
+    vol(enum(1, 2, 3, 4, 5, 6));
+  ;
 }
-
-.radio {}
-
-.checkbox {}
-
-.toggle {}
-
-.switch {}
-
-
-/* Variants */
-
-.variant1 {}
-
-.variant2 {}
-
-.variant3 {}
-
-.variant4 {}
-
-.variant5 {}
-
-.variant6 {}
-
-
-/* Volume */
-
-.vol1 {}
-
-.vol2 {}
-
-.vol3 {}
-
-.vol4 {}
-
-.vol5 {}
-
-.vol6 {}

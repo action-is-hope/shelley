@@ -23,14 +23,11 @@
     cite,
     content,
     footer,
-    variant1,
-    variant2
 }
 
 :import {
   -st-from: "../../../components/Text/text.st.css";
   -st-default: Text;
-  -st-named: vol1, vol2, vol4;
 }
 
 @st-scope Default {
@@ -63,7 +60,7 @@
    */
 
   /* @todo: Same time as upgrade switch to 'state' helpers as I much prefer this syntax: Blockquote:variant(1)::content { */
-  Blockquote.variant1::content {
+  Blockquote:variant(1)::content {
     background: var(--color-background-2, value(--color-background-2-default));
     background: rgba(255, 255, 255, 0.04);
     background: rgba(64, 121, 230, 0.87);
@@ -75,7 +72,7 @@
     position: relative;
   }
 
-  Blockquote.variant1::content::before {
+  Blockquote:variant(1)::content::before {
     border-right: 20px solid transparent;
     border-top: 20px solid var(--color-background-2, value(--color-background-2-default));
     border-top: 20px solid rgba(255, 255, 255, 0.04);
@@ -92,7 +89,7 @@
    * A typical main body style for proper quotes.
    */
 
-  Blockquote.variant2 {
+  Blockquote:variant(2) {
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
     border-radius: 4px;
@@ -101,15 +98,15 @@
     font-size: 92.5%;
   }
 
-  Blockquote.variant2::content {
+  Blockquote:variant(2)::content {
     position: relative;
   }
 
-  Blockquote.variant2::content Text:first-child::before {
+  Blockquote:variant(2)::content Text:first-child::before {
     display: none;
   }
 
-  Blockquote.variant2::content::before {
+  Blockquote:variant(2)::content::before {
     content: "";
     display: inline-block;
     position: absolute;

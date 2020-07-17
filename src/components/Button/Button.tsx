@@ -45,15 +45,15 @@ const Button = React.forwardRef(
   ) => {
     const rootClassNames = classnames(
       classes.root,
-      classes["tone" + tone],
-      classes["vol" + vol],
-      classes["variant" + variant],
+      // classes["tone" + tone],
+      // classes["vol" + vol],
+      // classes["variant" + variant],
       classNameProp
     );
 
     return (
       <button
-        className={st(rootClassNames, { iconPos })}
+        className={st(rootClassNames, { tone, variant, vol, iconPos })}
         // {...style(
         //   rootClassNames,
         //   {

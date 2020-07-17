@@ -28,22 +28,13 @@ const Blockquote = ({
   citeAttr,
   citeVol = 2,
   className: classNameProp,
-  variant,
+  variant = 1,
   ...rest
 }: BlockquoteProps) => {
-  const rootClassNames = classnames(
-    classes.root,
-    classes["variant" + variant],
-    classNameProp
-  );
+  const rootClassNames = classnames(classes.root, classNameProp);
   return (
     <blockquote
-      className={st(rootClassNames)}
-      // {...style(
-      //   classNames(style.root, style["variant" + variant], classNameProp),
-      //   {},
-      //   rest
-      // )}
+      className={st(rootClassNames, { variant })}
       cite={citeAttr}
       {...rest}
     >

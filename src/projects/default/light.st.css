@@ -6,6 +6,40 @@
  * Try to stay organised.
  */
 
+@namespace "light";
+
+@st-global-custom-property --color,
+--bg,
+--color-accent-1,
+--color-accent-2,
+--color-accent-3,
+--color-accent-4,
+--color-background-1,
+--color-background-2,
+--color-background-3,
+--color-background-4,
+--color-background-modal,
+--color-text-1,
+--color-text-2,
+--color-text-3,
+--color-text-4,
+--color-status-error,
+--color-status-warn,
+--color-status-neutral,
+--color-status-success,
+--color-ui,
+--color-ui-raw,
+--color-ui-inverse,
+--color-ui-raw-inverse,
+--color-form-mark,
+--color-form-selection-track,
+--color-form-selection-mark,
+--color-toggle-mark,
+--color-focus,
+--grad-1,
+--status-background,
+--support-background,
+--select-icon;
 
 :import {
   -st-from: "./project.st.css";
