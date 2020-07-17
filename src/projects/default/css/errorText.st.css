@@ -13,6 +13,9 @@
   -st-named: --color-status-error-default;
 }
 
+@st-global-custom-property --color-status-error;
+
+
 :import {
   -st-from: "../../../components/ErrorText/errorText.st.css";
   -st-default: Error;

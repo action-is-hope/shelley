@@ -49,7 +49,7 @@
     }
   }
 
-  /* = Radio Checkboc common styles. */
+  /* = Radio Checkbox common styles. */
   InputSelectionControl:type(checkbox)::inputField,
   InputSelectionControl:type(radio)::inputField {
     -st-mixin: RadioCheckboxCommon;

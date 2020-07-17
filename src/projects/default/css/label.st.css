@@ -1,4 +1,5 @@
 /** label.st.css */
+@namespace "Label";
 
 /* = Project and vars */
 :import {
@@ -7,13 +8,15 @@
   -st-named: --color-text-2-default;
 }
 
+@st-global-custom-property --color-text-2;
+
+
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;
   -st-named:
     textContainer,
-    labelText,
-    hasInput;
+    labelText
 }
 
 :import {
@@ -35,7 +38,7 @@
   }
 
   /*==== Has Input  ====*/
-  Label.hasInput {
+  Label:hasInput {
     /* = If the Label includes an inline assume we want a basic checkbox/radio layout. */
     display: inline-flex;
     /* = Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
@@ -71,7 +74,7 @@
   /*==== Input Positions ====*/
 
   /* = top */
-  Label:inputPos(top).hasInput {
+  Label:inputPos(top):hasInput {
     flex-direction: column-reverse;
   }
 
@@ -81,7 +84,7 @@
   }
 
   /* = end / right */
-  Label:inputPos(end).hasInput {
+  Label:inputPos(end):hasInput {
     flex-direction: row;
   }
 
@@ -91,7 +94,7 @@
   }
 
   /* = bottom */
-  Label:inputPos(bottom).hasInput {
+  Label:inputPos(bottom):hasInput {
     flex-direction: column;
   }
 

@@ -88,4 +88,4 @@ export const propsDemo = (...values: []) =>
 export const logo = (...values: []) =>
   getStylableClassNames(values, Logo, "logo");
 
-export const Theme = Default.classes;
+export const Theme = Default.classes.root;

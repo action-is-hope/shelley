@@ -21,11 +21,11 @@
     text-vol-11-max, text-vol-11-scale, text-vol-11-line-height,
 
     --color-accent-1-default,
-    --color-accent-2-default,
-    --color-accent-3-default,
     --color-accent-4-default;
-
 }
+
+@st-global-custom-property --color-accent-1,
+--color-accent-4;
 
 :import {
   -st-from: './mixins/text.st.css';

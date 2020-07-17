@@ -3,11 +3,13 @@
   -st-default: Default;
   -st-named:
     spacing-unit,
-    --color-text-1-default,
     --color-ui-default,
     --color-background-1-default;
   /* --color-text-faint-2-default; */
 }
+
+@st-global-custom-property --color-background-1,
+--color-ui;
 
 .navbar {
   background: var(--color-background-1, value(--color-background-1-default));
@@ -41,7 +43,6 @@
 .footer {
   margin-top: 25vh;
   background: rgba(76, 76, 76, 0.4392156862745098);
-  color: var(--color-text-faint-2, value(--color-text-1-default));
 }
 
 

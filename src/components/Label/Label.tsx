@@ -41,6 +41,8 @@ const Label = ({
     classNameProp
   );
 
+  const hasInput = inputControl ? true : false;
+
   return (
     <label
       // {...style(
@@ -52,7 +54,7 @@ const Label = ({
       //   { inputPos },
       //   attrs
       // )}
-      className={st(rootClassNames, { inputPos })}
+      className={st(rootClassNames, { inputPos, hasInput })}
       {...attrs}
     >
       {visuallyHidden ? (

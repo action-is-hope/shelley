@@ -300,6 +300,8 @@ html {
   }
 }
 
+@st-global-custom-property --color-background-1,
+--color-ui;
 
 body {
   /**

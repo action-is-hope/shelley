@@ -9,10 +9,12 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --color-accent-1-default,
     --color-ui-default,
     --color-background-1-default;
 }
+
+@st-global-custom-property --color-ui,
+--color-background-1;
 
 :import {
   -st-from: "../../../components/Text/text.st.css";

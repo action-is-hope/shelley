@@ -1,24 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
-import style from "./index.st.css";
+import { classes as index } from "./index.st.css";
 import { Theme as defaultTheme } from "../projects/default";
-import { ThemeBar, changeTheme } from "../projects/themeSelector";
-import project from "../projects/default/project.st.css";
+import { ThemeBar } from "../projects/themeSelector";
+// import project from "../projects/default/project.st.css";
 // import { classes as basic } from "./themes/basic.st.css";
-import light from "../projects/default/light.st.css";
-import dark from "../projects/default/dark.st.css";
+// import { classes as light } from "../projects/default/light.st.css";
+import { classes as dark } from "../projects/default/dark.st.css";
 import classnames from "classnames";
 
-import PageTitle from "../components_site/PageTitle/PageTitle";
-
-const theme = "light";
-// changeTheme(theme);
-
 const Header = () => (
-  <div className={style.navbar}>
-    <div className={style.inner}>
-      <h1 className={style.title}>
+  <div className={index.navbar}>
+    <div className={index.inner}>
+      <h1 className={index.title}>
         <Link
           to="/"
           style={{
@@ -28,7 +23,7 @@ const Header = () => (
           Shelley
         </Link>
       </h1>
-      <div className={style.controls}>
+      <div className={index.controls}>
         <ThemeBar />
       </div>
     </div>
@@ -36,8 +31,8 @@ const Header = () => (
 );
 
 const Footer = () => (
-  <div className={style.footer}>
-    <div className={style.inner}>
+  <div className={index.footer}>
+    <div className={index.inner}>
       {/* <Link
         to="/"
         style={{
@@ -50,7 +45,7 @@ const Footer = () => (
   </div>
 );
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ children }: any) => (
   <div className={defaultTheme}>
     <>
       <Helmet
@@ -64,8 +59,9 @@ const DefaultLayout = ({ children }) => (
           { name: "keywords", content: "sample, something" }
         ]}
         htmlAttributes={{
-          lang: "en",
-          className: classnames(defaultTheme, dark.root)
+          lang: "en"
+          // @todo fix so no FOUC
+          // className: classnames(defaultTheme, dark.root)
         }}
       />
       <Header />

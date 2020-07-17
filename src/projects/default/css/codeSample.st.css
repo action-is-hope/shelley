@@ -5,13 +5,18 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --color-ui-default,
     --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
     --color-text-4-default,
     --color-background-3-default;
 }
+
+@st-global-custom-property --color-accent-1,
+--color-accent-2,
+--color-accent-3,
+--color-text-4,
+--color-background-3;
 
 
 :import {

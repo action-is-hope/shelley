@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import { graphql } from "gatsby";
-import style from "./index.st.css";
+import { classes } from "./index.st.css";
 
 import DefaultLayout from "../layouts";
 import Text, { H2, P } from "../components/Text/Text";
@@ -27,7 +27,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
       <Grid tag="main">
         <Grid variant={3}>
-          <div className={style.card}>
+          <div className={classes.card}>
             <H2 uppercase vol={4}>
               Synopsis
             </H2>
@@ -93,7 +93,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               code base, especially our theme when we &apos;finish&apos; it.
             </P>
 
-            <ul className={style.menuList}>
+            <ul className={classes.menuList}>
               <Text tag="li">
                 <Link to="/button/">Button</Link>
               </Text>
@@ -153,7 +153,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               it&apos;s just Shelleys personal CSS dumping ground.
             </P>
           </div>
-          <div className={style.card}>
+          <div className={classes.card}>
             <H2 uppercase vol={4}>
               About
             </H2>
@@ -200,7 +200,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               space.
             </P> */}
           </div>
-          <div className={style.card}>
+          <div className={classes.card}>
             <H2 uppercase vol={3}>
               Status
             </H2>
@@ -231,7 +231,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               .
             </P>
           </div>
-          <div className={style.card}>
+          <div className={classes.card}>
             <H2 uppercase vol={3}>
               Treeware 🌲 TBC
             </H2>
@@ -259,7 +259,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <code>state</code> of our planet today.
             </P>
           </div>
-          <div className={style.card}>
+          <div className={classes.card}>
             <H2 uppercase vol={3}>
               Support Shelley
             </H2>

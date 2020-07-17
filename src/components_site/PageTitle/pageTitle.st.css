@@ -6,6 +6,8 @@
   -st-named: --color-background-4-default;
 }
 
+@st-global-custom-property --color-background-4;
+
 :import {
   -st-from: "../../components/Text/text.st.css";
   -st-default: Text;

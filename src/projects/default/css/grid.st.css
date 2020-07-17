@@ -18,11 +18,9 @@
     breakpoint-lg,
     breakpoint-xl,
     breakpoint-xxl,
+    /* @todo */
     grid-gap-xs,
     grid-gap-md,
-    --grid-template-columns-base-sm,
-    --grid-template-columns-base-md,
-    --grid-template-columns-base-mid-start-end
 }
 
 :import {

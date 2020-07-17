@@ -7,7 +7,7 @@
  * ========================================================================= */
 
 
-/* = Project and vars. */
+/* = Project and vars */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
@@ -17,47 +17,10 @@
     --color-form-mark-default;
 }
 
-:import {
-  -st-from: "../../../components/InputSelection/inputSelection.st.css";
-  -st-default: InputSelection;
-}
+@st-global-custom-property --color-background-3,
+--color-form-mark;
 
-:import {
-  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
-  -st-default: SelectionControl;
-}
-
-:import {
-  -st-from: "../../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
-
-/* 
-:import {
-  -st-from: "../../../components/HintText/hintText.st.css";
-  -st-default: HintText;
-} */
-
-:import {
-  -st-from: "../../../components/ErrorText/errorText.st.css";
-  -st-default: ErrorText;
-}
-
-:import {
-  -st-from: "../../../components/Icon/icon.st.css";
-  -st-default: Icon;
-}
-
-/* :import {
-  -st-from: '../../../components/mixins/visuallyHidden.st.css';
-  -st-named: visuallyHidden
-} */
-
-/* :import {
-  -st-from: "../formatters/common";
-  -st-named: respScale;
-} */
-
+/* = Mixins */
 :import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
@@ -68,6 +31,33 @@
     inputVol4,
     inputVol5,
     inputVol6;
+}
+
+/* = Root style API. */
+:import {
+  -st-from: "../../../components/InputSelection/inputSelection.st.css";
+  -st-default: InputSelection;
+}
+
+/* = Child component styles API's */
+:import {
+  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: SelectionControl;
+}
+
+:import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-default: ErrorText;
+}
+
+:import {
+  -st-from: "../../../components/Icon/icon.st.css";
+  -st-default: Icon;
 }
 
 @st-scope Default {
@@ -159,7 +149,7 @@
     display: flex;
   }
 
-  InputSelection:variant(2) InputLabel.hasInput {
+  InputSelection:variant(2) InputLabel:hasInput {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: value(spacing-unit);

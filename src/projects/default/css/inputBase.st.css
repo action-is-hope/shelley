@@ -15,10 +15,13 @@
   -st-default: Default;
   -st-named:
     spacing-unit,
-    --color-ui-default,
-    --color-status-error-default,
     --color-background-3-default;
 }
+
+@st-global-custom-property --color-background-3;
+
+
+
 
 :import {
   -st-from: './mixins/formElements.st.css';

@@ -7,8 +7,14 @@
   -st-named:
     spacing-unit,
     --color-background-3-default,
-    --color-form-mark-default;
+    --color-form-mark-default,
+    --color-ui-default;
 }
+
+@st-global-custom-property --color-background-3,
+--color-ui,
+--color-form-mark,
+--color-focus;
 
 :import {
   -st-from: "../../../components/InputSelection/inputSelection.st.css";
@@ -78,6 +84,7 @@
     -st-mixin: visuallyHidden;
   }
 
+  /* = The 'mark' */
   .darkLightToggle InputLabel::labelText::after {
     content: "";
     width: 18px;
@@ -89,6 +96,7 @@
     position: absolute;
     border: 1px solid transparent;
     transition: left 190ms, box-shadow 190ms;
+    /* background-color: var(--color-ui) */
   }
 
   .darkLightToggle Icon {

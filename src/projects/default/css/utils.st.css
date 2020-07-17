@@ -21,6 +21,8 @@
     --color-focus-default,
 }
 
+@st-global-custom-property --color-focus;
+
 :import {
   -st-from: "../../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;

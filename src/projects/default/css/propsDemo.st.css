@@ -8,10 +8,12 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    --color-accent-1-default,
     --color-ui-raw-default,
     --color-background-1-default;
 }
+
+@st-global-custom-property --color-ui-raw,
+--color-background-1;
 
 :import {
   -st-from: "../../../components/Label/label.st.css";

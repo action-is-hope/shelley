@@ -45,23 +45,10 @@
 --select-icon;
 
 :import {
-  -st-from: "../../formatters/common";
-  -st-named: respScale;
-}
-
-:import {
   -st-from: './text.st.css';
   -st-named:
     textVol;
 }
-
-:import {
-  -st-from: '../utils.st.css';
-  -st-named:
-    peudoFocus,
-    peudoFocusVisible;
-}
-
 
 :import {
   -st-from: "../../../../components/Label/label.st.css";
@@ -73,6 +60,19 @@
   -st-default: SelectionControl;
 }
 
+:import {
+  -st-from: "../../formatters/common";
+  -st-named: respScale;
+}
+
+:import {
+  -st-from: '../utils.st.css';
+  -st-named:
+    peudoFocus,
+    peudoFocusVisible;
+}
+
+/* Local buildtime vars. */
 :vars {
   inputVol1Label: "0.95em";
   inputVol1SelectionControl: "16px";
