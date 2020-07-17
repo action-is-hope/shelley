@@ -34,7 +34,6 @@ const getStylableClassNames = (
   rootcls: string
 ) => {
   const clsArray = values.map((cls: string) => stylesheet[cls] || null);
-  // console.log("HELLO", { values });
   return classnames(stylesheet[rootcls], clsArray);
 };
 
