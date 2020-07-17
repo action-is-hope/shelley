@@ -34,21 +34,6 @@
     -st-mixin: SelectionControlFieldInput;
   }
 
-
-  @-moz-document url-prefix() {
-
-    /**
-    * = Cross browser - Firefox 
-    
-    * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
-    * rule for focus but will show our active styles that we only set to avoid the opposite
-    * in Chrome. 
-    */
-    InputSelectionControl::inputField:active::after {
-      opacity: 0;
-    }
-  }
-
   /* = Radio Checkbox common styles. */
   InputSelectionControl:type(checkbox)::inputField,
   InputSelectionControl:type(radio)::inputField {
@@ -63,5 +48,22 @@
   /* = Toggle */
   InputSelectionControl:type(toggle)::inputField {
     -st-mixin: ToggleFieldInput;
+  }
+}
+
+
+@-moz-document url-prefix() {
+
+  /**
+    * = Cross browser - Firefox 
+    
+    * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
+    * rule for focus but will show our active styles that we only set to avoid the opposite
+    * in Chrome. 
+    */
+  @st-scope Default {
+    InputSelectionControl::inputField:active::after {
+      opacity: 0;
+    }
   }
 }

@@ -26,6 +26,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
+
 .controls {
   display: inline-flex;
   justify-content: flex-end;
@@ -83,8 +84,8 @@
   margin-left: -96px; */
 }
 
-.logo:before,
-.logo:after {
+.logo::before,
+.logo::after {
   content: "";
   display: flex;
   height: 94px;
@@ -93,7 +94,7 @@
   border-radius: 500px
 }
 
-.logo:before {
+.logo::before {
   box-shadow: 2px 0px 3px #1acaff;
 }
 
@@ -109,6 +110,6 @@
   background: var(--color-background-1, value(--color-background-1-default))
 }
 
-.logo:after {
+.logo::after {
   box-shadow: -2px 0px 3px #1acaff;
 }

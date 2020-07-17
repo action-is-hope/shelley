@@ -30,7 +30,8 @@ import Default from "./project.st.css";
 // @todo Ask Wix how they do things.
 const getStylableClassNames = (
   values: [],
-  stylesheet: RuntimeStylesheet,
+  // stylesheet: RuntimeStylesheet,
+  stylesheet: any,
   rootcls: string
 ) => {
   const clsArray = values.map((cls: string) => stylesheet[cls] || null);

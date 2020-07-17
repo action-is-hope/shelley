@@ -282,18 +282,18 @@
 }
 
 /*= Give ourselves a fluid rem value to use for padding or whatever. */
-html {
+:global(html) {
   -webkit-text-size-adjust: 100%;
 }
 
 @supports (display: grid) {
-  html {
+  :global(html) {
     /** This is our responsive rem value, this will equal 1rem wherever we are.*/
     font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
   }
 
   @media screen and (min-width: 1800px) {
-    html {
+    :global(html) {
       /* font-size: value(text-vol-3-max); */
       font-size: 26px;
     }
@@ -303,7 +303,7 @@ html {
 @st-global-custom-property --color-background-1,
 --color-ui;
 
-body {
+:global(body) {
   /**
    * = Set the body font-size to initial value.
    *

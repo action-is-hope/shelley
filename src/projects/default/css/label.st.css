@@ -61,17 +61,19 @@
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
+}
 
-  @media screen and (min-width: 600px) {
-
+@media screen and (min-width: 600px) {
+  @st-scope Default {
     Label::labelText {
       /* - uppercase */
       /* font-size: .9em; */
     }
   }
+}
 
-
-  /*==== Input Positions ====*/
+/*==== Input Positions ====*/
+@st-scope Default {
 
   /* = top */
   Label:inputPos(top):hasInput {

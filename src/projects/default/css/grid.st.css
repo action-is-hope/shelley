@@ -57,18 +57,24 @@
   Grid>Grid>* {
     text-align: initial;
   }
+}
 
-  /* = Reset for grid. */
-  @supports (display: grid) {
+/* = Reset for grid. */
+@supports (display: grid) {
+  @st-scope Default {
     Grid>Grid {
       text-align: initial;
     }
   }
+}
+
+@st-scope Default {
 
   /* = Hook up the formatting styles to this prop. */
   Grid:formatted {
     -st-mixin: formatted;
   }
+
 
   /* = Variant 1: Core Grid */
 
@@ -79,28 +85,34 @@
     grid-template-columns:
       [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
   }
+}
 
-  /* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
-  @media value(breakpoint-sm) {
+/* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
+@media value(breakpoint-sm) {
+  @st-scope Default {
     Grid:variant(1) {
       grid-template-columns:
         [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
     }
   }
+}
 
-  /* = width tweaks for md and above. */
-  @media value(breakpoint-md) {
+/* = width tweaks for md and above. */
+@media value(breakpoint-md) {
+  @st-scope Default {
     Grid:variant(1) {
       grid-template-columns:
         [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
     }
   }
+}
 
-  /* = Set any direct descendant Grid on the 'goal' grid lines. */
-  /* Grid:variant(1)>Grid {
+/* = Set any direct descendant Grid on the 'goal' grid lines. */
+/* Grid:variant(1)>Grid {
     grid-column: goal;
   } */
 
+@st-scope Default {
 
   /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
   Grid:variant(1)>Grid:variant(1) {
@@ -112,54 +124,7 @@
 
 /* = @todo: #stylable These are outside of @st-scope XXX {) due to a bug with 
  *  stylable where only the first item gets the scope prefix. */
-Grid:variant(1)>h1,
-Grid:variant(1)>h2,
-Grid:variant(1)>h3,
-Grid:variant(1)>h4,
-Grid:variant(1)>h5,
-Grid:variant(1)>h6,
-Grid:variant(1)>p,
-Grid:variant(1)>ul,
-Grid:variant(1)>ol,
-Grid:variant(1)>dl,
-Grid:variant(1)>blockquote,
-Grid:variant(1)>pre,
-Grid:variant(1)>img,
-Grid:variant(1)>figure {
-  -st-mixin: gridItem;
-}
-
-/* = If you need to jump these based on media query then do it with a custom class. */
-Grid:variant(1)>.mid {
-  -st-mixin: gridItem;
-}
-
-Grid:variant(1)>.pen {
-  -st-mixin: gridItem(gridCol pen, fallbackMaxWidth 50rem);
-}
-
-Grid:variant(1)>.goal {
-  -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
-}
-
-Grid:variant(1)>.edge {
-  -st-mixin: gridItem(gridCol edge, fallbackMaxWidth 100%);
-}
-
-/* = Common jump patterns, you can set these up like a bootstrap grid if you like 
-littering your HTML with conditional positional info*/
-Grid:variant(1)>.snapMidToGoal {
-  grid-column: mid;
-}
-
-@media value(breakpoint-md) {
-  Grid:variant(1)>.snapMidToGoal {
-    -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
-  }
-}
-
-/* = @todo: This should be able to move to the gridItem mixin, if stylable bug confirmed. */
-@supports (display: grid) {
+@st-scope Default {
 
   Grid:variant(1)>h1,
   Grid:variant(1)>h2,
@@ -174,25 +139,81 @@ Grid:variant(1)>.snapMidToGoal {
   Grid:variant(1)>blockquote,
   Grid:variant(1)>pre,
   Grid:variant(1)>img,
-  Grid:variant(1)>figure,
-  Grid:variant(1)>.snapMidToGoal {
-    -st-mixin: gridItemReset;
+  Grid:variant(1)>figure {
+    -st-mixin: gridItem;
   }
 
+  /* = If you need to jump these based on media query then do it with a custom class. */
   Grid:variant(1)>.mid {
-    -st-mixin: gridItemReset;
+    -st-mixin: gridItem;
   }
 
   Grid:variant(1)>.pen {
-    -st-mixin: gridItemReset;
+    -st-mixin: gridItem(gridCol pen, fallbackMaxWidth 50rem);
   }
 
   Grid:variant(1)>.goal {
-    -st-mixin: gridItemReset;
+    -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
   }
 
   Grid:variant(1)>.edge {
-    -st-mixin: gridItemReset;
+    -st-mixin: gridItem(gridCol edge, fallbackMaxWidth 100%);
+  }
+
+  /* = Common jump patterns, you can set these up like a bootstrap grid if you like 
+littering your HTML with conditional positional info*/
+
+  Grid:variant(1)>.snapMidToGoal {
+    grid-column: mid;
+  }
+}
+
+@media value(breakpoint-md) {
+  @st-scope Default {
+    Grid:variant(1)>.snapMidToGoal {
+      -st-mixin: gridItem(gridCol goal, fallbackMaxWidth 85%);
+    }
+  }
+}
+
+/* = @todo: This should be able to move to the gridItem mixin, if stylable bug confirmed. */
+@supports (display: grid) {
+  @st-scope Default {
+
+    Grid:variant(1)>h1,
+    Grid:variant(1)>h2,
+    Grid:variant(1)>h3,
+    Grid:variant(1)>h4,
+    Grid:variant(1)>h5,
+    Grid:variant(1)>h6,
+    Grid:variant(1)>p,
+    Grid:variant(1)>ul,
+    Grid:variant(1)>ol,
+    Grid:variant(1)>dl,
+    Grid:variant(1)>blockquote,
+    Grid:variant(1)>pre,
+    Grid:variant(1)>img,
+    Grid:variant(1)>figure,
+    Grid:variant(1)>.snapMidToGoal {
+      -st-mixin: gridItemReset;
+    }
+
+
+    Grid:variant(1)>.mid {
+      -st-mixin: gridItemReset;
+    }
+
+    Grid:variant(1)>.pen {
+      -st-mixin: gridItemReset;
+    }
+
+    Grid:variant(1)>.goal {
+      -st-mixin: gridItemReset;
+    }
+
+    Grid:variant(1)>.edge {
+      -st-mixin: gridItemReset;
+    }
   }
 
   /* = end */
@@ -215,40 +236,47 @@ Grid:variant(1)>.snapMidToGoal {
 
 
   /* = Variant 2: 1 | 1 */
-  Grid:variant(2) {
-    -st-mixin: clearfix;
-    grid-template-columns: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  @st-scope Default {
+    Grid:variant(2) {
+      -st-mixin: clearfix;
+      grid-template-columns: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
 
-    grid-column: mid;
+      grid-column: mid;
+    }
   }
 
+
   @media value(breakpoint-md) {
-    Grid:variant(2) {
-      grid-column: goal;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    @st-scope Default {
+      Grid:variant(2) {
+        grid-column: goal;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 
-    }
+      }
 
-    /* = Fallbacks: Just because a browser is old doesn't mean it is stupid, calc is useful. */
-    Grid:variant(2)>* {
-      width: calc(50% - 1.5vw);
-    }
+      /* = Fallbacks: Just because a browser is old doesn't mean it is stupid, calc is useful. */
+      Grid:variant(2)>* {
+        width: calc(50% - 1.5vw);
+      }
 
-    Grid:variant(2)>*:nth-child(odd) {
-      float: left;
-      /* = rtl*/
-    }
+      Grid:variant(2)>*:nth-child(odd) {
+        float: left;
+        /* = rtl*/
+      }
 
-    Grid:variant(2)>*:nth-child(even) {
-      float: right;
-      /* = rtl*/
+      Grid:variant(2)>*:nth-child(even) {
+        float: right;
+        /* = rtl*/
+      }
     }
 
     /* = Reset fallback styles: no need for floats as they loose 'rock paper scissors' to grid in terms of layout. */
     @supports (display: grid) {
-      Grid:variant(2)>* {
-        width: initial;
+      @st-scope Default {
+        Grid:variant(2)>* {
+          width: initial;
+        }
       }
     }
   }
@@ -257,39 +285,44 @@ Grid:variant(1)>.snapMidToGoal {
 
 
   /* = Variant 3: 7 | 5 */
-  Grid:variant(3) {
-    display: grid;
-    grid-column: goal;
+  @st-scope Default {
+    Grid:variant(3) {
+      display: grid;
+      grid-column: goal;
+    }
   }
 
   @media value(breakpoint-sm) {
-    Grid:variant(3) {
-      -st-mixin: clearfix;
-    }
+    @st-scope Default {
+      Grid:variant(3) {
+        -st-mixin: clearfix;
+      }
 
-    Grid:variant(3) {
-      grid-template-columns: 7fr 5fr;
+      Grid:variant(3) {
+        grid-template-columns: 7fr 5fr;
+      }
     }
   }
 }
 
+@st-scope Default {
+  .mt1 {
+    margin-top: calc(value(spacing-unit) * 4)
+  }
 
-.mt1 {
-  margin-top: calc(value(spacing-unit) * 4)
-}
+  .mb1 {
+    margin-bottom: calc(value(spacing-unit) * 4)
+  }
 
-.mb1 {
-  margin-bottom: calc(value(spacing-unit) * 4)
-}
+  .mt2 {
+    margin-top: calc(value(spacing-unit) * 8)
+  }
 
-.mt2 {
-  margin-top: calc(value(spacing-unit) * 8)
-}
+  .mb2 {
+    margin-bottom: calc(value(spacing-unit) * 8)
+  }
 
-.mb2 {
-  margin-bottom: calc(value(spacing-unit) * 8)
-}
-
-.mtAuto {
-  margin-top: auto;
+  .mtAuto {
+    margin-top: auto;
+  }
 }

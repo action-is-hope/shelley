@@ -1,24 +1,33 @@
 /** styleInfo.st.css */
 @namespace "StyleInfo";
 
-.root {
-  /* grid-column: edge; */
+:import {
+  -st-from: "../../projects/default/project.st.css";
+  -st-default: Default;
+
 }
 
-.html,
-.css {
-  /* grid-column: goal-start / half; */
-  /* grid-row: 1 */
-  overflow-x: auto
-}
+@st-scope Default {
 
-.css {
-  /* grid-row: 1 */
-  /* grid-column: half / goal-end; */
-}
+  .root {
+    /* grid-column: edge; */
+  }
 
-.meta {
-  align-self: flex-end;
-  position: relative;
-  top: -1.4rem;
+  .html,
+  .css {
+    /* grid-column: goal-start / half; */
+    /* grid-row: 1 */
+    overflow-x: auto
+  }
+
+  .css {
+    /* grid-row: 1 */
+    /* grid-column: half / goal-end; */
+  }
+
+  .meta {
+    align-self: flex-end;
+    position: relative;
+    top: -1.4rem;
+  }
 }

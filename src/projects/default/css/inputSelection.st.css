@@ -176,3 +176,4 @@
     /* 12px is from 18px / 3 * 2 */
     margin-left: calc(100% / 3 + 12px);
   }
+}

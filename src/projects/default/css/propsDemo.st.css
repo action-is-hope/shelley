@@ -46,10 +46,12 @@
 }
 
 @media screen and (max-width: 950px) {
-  PropsDemo::gridOverflow {
-    width: calc(100vw - 2rem - 2.6rem);
-    overflow-x: scroll;
-    overflow-y: visible;
+  @st-scope Default {
+    PropsDemo::gridOverflow {
+      width: calc(100vw - 2rem - 2.6rem);
+      overflow-x: scroll;
+      overflow-y: visible;
+    }
   }
 }
 
@@ -61,19 +63,25 @@
     grid-column-gap: 5.1vw;
     grid-row-gap: 54px;
   }
+}
 
-  @media screen and (min-width: 767px) {
+@media screen and (min-width: 767px) {
+  @st-scope Default {
     PropsDemo::internalGrid {
       grid-template-columns: 1.4fr 2fr;
     }
   }
+}
 
-  @media screen and (min-width: 950px) {
+@media screen and (min-width: 950px) {
+  @st-scope Default {
     PropsDemo::internalGrid {
       grid-template-columns: 1fr 2fr;
     }
   }
+}
 
+@st-scope Default {
   PropsDemo::propsPlayground {
     grid-row: 1 / span 2;
     /* crude fallback for IE */
@@ -93,8 +101,10 @@
     /* crude fallback for IE */
     clear: both
   }
+}
 
-  @media screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
+  @st-scope Default {
     PropsDemo::propsPlayground {
       grid-row: 1;
     }
@@ -110,10 +120,11 @@
       grid-row: 2;
     }
   }
+}
 
 
 
-
+@st-scope Default {
   PropsDemo::codeExample>div {
     margin-top: 0;
     height: 100%;

@@ -42,11 +42,12 @@ export function ThemeBar({ theme }: { theme?: string }) {
           <path d="M16 8l-2.2-1.6 1.1-2.4-2.7-0.2-0.2-2.7-2.4 1.1-1.6-2.2-1.6 2.2-2.4-1.1-0.2 2.7-2.7 0.2 1.1 2.4-2.2 1.6 2.2 1.6-1.1 2.4 2.7 0.2 0.2 2.7 2.4-1.1 1.6 2.2 1.6-2.2 2.4 1.1 0.2-2.7 2.7-0.2-1.1-2.4 2.2-1.6zM8 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"></path>
         </Icon>
       }
-      defaultChecked={lightTheme}
+      // defaultChecked={lightTheme}
       className={classnames(inputSelectionCustom.darkLightToggle, {
         [inputSelectionCustom.on]: lightTheme
       })}
-      checked={lightTheme}
+      // checked={lightTheme}
+
       onKeyPress={event => {
         if (event.key === "Enter") {
           setLightTheme(!lightTheme);
