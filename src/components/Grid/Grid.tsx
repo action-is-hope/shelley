@@ -34,11 +34,6 @@ const Grid = React.forwardRef(
     const gridRoot = React.createElement(
       tagName,
       {
-        // ...style(
-        //   classNames(style.root, style["variant" + variant], classNameProp),
-        //   { formatted },
-        //   rest
-        // ),
         className: st(rootClassNames, { formatted, variant }),
         ref: ref,
         ...rest

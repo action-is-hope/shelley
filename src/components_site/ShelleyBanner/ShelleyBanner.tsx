@@ -7,19 +7,11 @@ import Grid from "../../components/Grid/Grid";
 /* = Style API. */
 import { st, classes } from "./shelleyBanner.st.css";
 
-// interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
-//   variant?: number;
-// }
-
 const ShelleyBanner = ({
-  className: classNameProp,
-  ...rest
+  className: classNameProp
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Grid
-      className={st(classnames(classes.root, classNameProp))}
-      // {...style(classnames(style.root, classNameProp), {}, rest)}
-    >
+    <Grid className={st(classnames(classes.root, classNameProp))}>
       <div className={classes.internalGrid}>
         <Text tag="h1" className={classes.title} uppercase vol={8}>
           Shelley

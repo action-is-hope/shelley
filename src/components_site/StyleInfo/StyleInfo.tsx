@@ -1,17 +1,13 @@
 /** StyleInfo.tsx */
 import React from "react";
-// import style from "./styleInfo.st.css";
 import classNames from "classnames";
 import Grid from "../../components/Grid/Grid";
 import { P } from "../../components/Text/Text";
 import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./styleInfo.st.css";
-// import { st, classes } from "../../projects/default/css/grid.st.css";
 import { classes as grid } from "../../projects/default/css/grid.st.css";
 import { classes as text } from "../../projects/default/css/text.st.css";
-// import {classes as grid} from "../../projects/default/css/grid.st.css";
-// import text from "../../projects/default/css/text.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -25,9 +21,9 @@ const StyleInfo = ({
   // children,
   componentName,
   componentHTML,
-  componentCSS,
-  ...rest
-}: StyleInfoProps) => {
+  componentCSS
+}: // ...rest
+StyleInfoProps) => {
   const rootClassNames = classNames(
     classes.root,
     grid.snapMidToGoal,

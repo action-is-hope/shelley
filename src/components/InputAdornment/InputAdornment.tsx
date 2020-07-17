@@ -10,11 +10,7 @@ const InputAdornment = ({
   ...rest
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span
-      className={st(classnames(classes.root, classNameProp))}
-      // {...style(classnames(style.root, className), {}, rest)}
-      {...rest}
-    >
+    <span className={st(classnames(classes.root, classNameProp))} {...rest}>
       {children}
     </span>
   );

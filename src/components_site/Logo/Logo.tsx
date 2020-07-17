@@ -10,7 +10,6 @@ const Logo = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className={st(classNames(classes.root, classNameProp))} {...rest}>
-      {/* ...style(classNames(classes.root, classNameProp), {}, rest)} */}
       <span className={classes.logoInner}></span>
     </div>
   );

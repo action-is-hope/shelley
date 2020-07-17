@@ -82,9 +82,6 @@ const InputSelection = React.forwardRef(
     const rootClassNames = classnames(
       classes.root,
       classes["vol" + vol],
-      // classes["variant" + variant],
-      // classes[color],
-      // classes[variant],
       classNameProp
     );
 

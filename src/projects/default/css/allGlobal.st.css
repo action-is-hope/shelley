@@ -7,54 +7,59 @@
 
 
 
-html {
+/* 
+    General purpose CSS reset
+ */
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  /* -webkit-font-smoothing: antialiased; */
-  /* -moz-osx-font-smoothing: grayscale; */
 }
 
-*,
-*::before,
-*::after {
+:global(*),
+:global(*:before),
+:global(*:after) {
   box-sizing: inherit;
 }
 
-[hidden] {
+
+:global([hidden]) {
   display: none;
 }
 
-[hidden]+* {
+:global([hidden]+*) {
   margin-top: 0 !important;
 }
 
-svg:not(:root) {
+:global(svg:not(:root)) {
   overflow: hidden;
 }
 
-body {
+:global(body) {
   margin: 0;
   padding: 0;
 }
 
-a:visited {
+:global(a:visited) {
   color: inherit
 }
 
-footer,
-header,
-main,
-nav {
+:global(footer),
+:global(header),
+:global(main),
+:global(nav) {
   display: block;
 }
 
 /* We are resetting these so when we use the <Text vol={false}> we don't end up with the defaults. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+:global(h1),
+:global(h2),
+:global(h3),
+:global(h4),
+:global(h5),
+:global(h6),
+:global(p) {
   font-size: 1em;
   margin: 0;
 }

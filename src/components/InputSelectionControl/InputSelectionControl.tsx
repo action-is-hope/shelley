@@ -30,11 +30,6 @@ const InputSelectionControl = React.forwardRef(
         disabled,
         type
       })}
-      // {...style(
-      //   classnames(classes.root, classNameProp),
-      //   { error, disabled },
-      //   rest
-      // )}
     >
       <input
         {...{

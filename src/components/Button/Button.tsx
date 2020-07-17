@@ -43,24 +43,11 @@ const Button = React.forwardRef(
     }: ButtonProps,
     ref?: React.Ref<HTMLButtonElement>
   ) => {
-    const rootClassNames = classnames(
-      classes.root,
-      // classes["tone" + tone],
-      // classes["vol" + vol],
-      // classes["variant" + variant],
-      classNameProp
-    );
+    const rootClassNames = classnames(classes.root, classNameProp);
 
     return (
       <button
         className={st(rootClassNames, { tone, variant, vol, iconPos })}
-        // {...style(
-        //   rootClassNames,
-        //   {
-        //     iconPos
-        //   },
-        //   rest
-        // )}
         {...rest}
         ref={ref}
       >

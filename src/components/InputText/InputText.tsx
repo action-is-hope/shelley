@@ -4,7 +4,7 @@ import classnames from "classnames";
 import Textarea from "react-expanding-textarea";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";
 /* = Style API. */
-import { st, classes } from "./inputText.st.css";
+import { classes } from "./inputText.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface InputTextProps

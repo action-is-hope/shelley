@@ -20,16 +20,7 @@ const CodeSample = ({
     [classes.fixedHeight]: fixedHeight
   });
   return (
-    <div
-      className={st(rootClassNames)}
-      // {...style(
-      //   classnames(style.root, classNameProp, {
-      //     [style.fixedHeight]: fixedHeight
-      //   }),
-      //   {},
-      //   rest
-      // )}
-    >
+    <div className={st(rootClassNames)}>
       <SyntaxHighlighter
         language={language}
         style={false}

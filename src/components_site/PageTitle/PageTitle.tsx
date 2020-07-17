@@ -18,10 +18,7 @@ const PageTitle = ({
   vol = 9
 }: PageTitleProps) => {
   return (
-    <Grid
-      // {...style(classNames(classes.root, classNameProp), {}, rest)}
-      className={st(classNames(classes.root, classNameProp))}
-    >
+    <Grid className={st(classNames(classes.root, classNameProp))}>
       <H1 vol={vol} className={classes.title}>
         {/* <span>&lt;</span> */}
         {children}
