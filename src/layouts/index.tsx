@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { classes as index } from "./index.st.css";
@@ -62,24 +62,24 @@ const themes = {
 // only a single theme is applied at a time.
 // @remove and dumify this so we can reuse it.
 export function changeTheme(name: keyof typeof themes) {
-  localStorage.currentTheme = name;
-  document.documentElement.className = themes[name].join(" ");
+  // localStorage.currentTheme = name;
+  // document.documentElement.className = themes[name].join(" ");
 }
 
-const DefaultLayout = ({ children }: { children: ReactNode }) => {
+const DefaultLayout = ({ children }: { children: any }) => {
   // Theme state.
   const [currentTheme, setCurrentTheme] = useState<themeOptions>("dark");
-  useEffect(() => {
-    const theme: themeOptions =
-      window.localStorage.getItem("currentTheme") === "light"
-        ? "light"
-        : "dark";
-    // Set the theme to stored value else dark as default.
-    setCurrentTheme(theme);
-  }, []);
+  // useEffect(() => {
+  //   const theme: themeOptions =
+  //     window.localStorage.getItem("currentTheme") === "light"
+  //       ? "light"
+  //       : "dark";
+  //   // Set the theme to stored value else dark as default.
+  //   setCurrentTheme(theme);
+  // }, []);
 
   const toggleTheme = (name: themeOptions) => {
-    changeTheme(name);
+    // changeTheme(name);
     setCurrentTheme(name);
   };
 

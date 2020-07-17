@@ -4,8 +4,8 @@ import classnames from "classnames";
 import Text, { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
+import { classes as text } from "../projects/default/css/text.st.css";
+import { classes as grid } from "../projects/default/css/grid.st.css";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import {
   meta,
