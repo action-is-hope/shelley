@@ -5,8 +5,8 @@ import { P, H2, H3, H4 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 /* Style imports */
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
+import { classes as text } from "../projects/default/css/text.st.css";
+import { classes as grid } from "../projects/default/css/grid.st.css";
 
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
