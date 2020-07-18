@@ -231,13 +231,13 @@
    *
    */
 
-  /* = Main UI forground colour and inverted and rgb only as 'raw'. */
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui-default: value(--light-01);
   --color-ui-inverse-default: value(--dark-01);
   --color-ui-raw-default: value(--light-01);
   --color-ui-raw-inverse-default: value(--dark-01-raw);
 
-  /* = Generic accent style colours. */
+  /* = Accent colours */
   --color-accent-1-default: #65bfff;
   --color-accent-2-default: #52fba7;
   --color-accent-3-default: #ea91ff;
@@ -274,7 +274,10 @@
   --grad-1-default: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
 
   /* = Misc */
-  --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>")
+  /* --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
+  --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+  --status-background-default: #692e2e;
+  --support-background-default: #2e5b69;
 }
 
 /*=== GLOBAL CSS ===*/
@@ -289,44 +292,55 @@
   min-height: 100vh;
 }
 
-
+/* = Map stylable build time variables to CSS variables for theme switching. */
 :root {
-  --color-ui-default: value(--color-ui-default);
-  /* font-family: value(font-plain); */
-  /* font-size: 100%; */
-  /* min-height: 100vh; */
-  /* = Map stylable build time variables to CSS variables for theme switching. */
-  --color-accent-1: value(--color-accent-1-default);
-  --color-accent-2: value(--color-accent-2-default);
-  --color-accent-3: value(--color-accent-3-default);
-  --color-accent-4: value(--color-accent-4-default);
-  --color-background-1: value(--color-background-1-default);
-  --color-background-2: value(--color-background-2-default);
-  --color-background-3: value(--color-background-3-default);
-  --color-background-4: value(--color-background-4-default);
-  --color-background-modal: value(--color-background-modal-default);
-  --color-text-1: value(--color-text-1-default);
-  --color-text-2: value(--color-text-2-default);
-  --color-text-3: value(--color-text-3-default);
-  --color-text-4: value(--color-text-4-default);
-  --color-status-error: value(--color-status-error-default);
-  --color-status-warn: value(--color-status-warn-default);
-  --color-status-neutral: value(--color-status-neutral-default);
-  --color-status-success: value(--color-status-success-default);
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui: value(--color-ui-default);
   --color-ui-raw: value(--color-ui-raw-default);
   --color-ui-inverse: value(--color-ui-inverse-default);
   --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
 
+  /* = Accent colours */
+  --color-accent-1: value(--color-accent-1-default);
+  --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
+
+  /* = Background colours */
+  --color-background-1: value(--color-background-1-default);
+  --color-background-2: value(--color-background-2-default);
+  --color-background-3: value(--color-background-3-default);
+  --color-background-4: value(--color-background-4-default);
+  --color-background-modal: value(--color-background-modal-default);
+
+  /* = Text colours */
+  --color-text-1: value(--color-text-1-default);
+  --color-text-2: value(--color-text-2-default);
+  --color-text-3: value(--color-text-3-default);
+  --color-text-4: value(--color-text-4-default);
+
+  /* = Status colours */
+  --color-status-error: value(--color-status-error-default);
+  --color-status-warn: value(--color-status-warn-default);
+  --color-status-neutral: value(--color-status-neutral-default);
+  --color-status-success: value(--color-status-success-default);
+
+  /* = Indicator colours */
+  --color-focus: value(--color-focus-default);
+
+  /* = Form colours */
   --color-form-mark: value(--color-form-mark-default);
   --color-form-selection-track: value(--color-form-selection-track-default);
   --color-form-selection-mark: value(--color-form-selection-mark-default);
   --color-toggle-mark: value(--color-ui-default);
 
-  --color-focus: value(--color-focus-default);
-
+  /* = Gradiants */
   --grad-1: value(--grad-1-default);
+
+  /* = Misc */
   --select-icon: value(--select-icon-default);
+  --status-background: value(--status-background-default);
+  --support-background: value(--support-background-default)
 }
 
 /*= Give ourselves a fluid rem value to use for padding or whatever. */

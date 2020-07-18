@@ -1,54 +1,20 @@
 /**
- * = Default colour scheme - Light
+ * = Dark
  *
- * These are our alternate color schemes, only variable aware browers will see 
- * these so no need to set that as stylable build variables unless you want to.
- * Try to stay organised.
+ * Most of this is done as per the default in project.
+ * Somehthing interesting to follow... @todo
  */
 @namespace "dark";
 
 :import {
   -st-from: "./project.st.css";
   -st-named:
-    --dark-01,
-    --dark-01-raw,
-    --light-01,
-    --light-01-raw,
-
+    /* = Build time colours - whatever we need for this file. */
     --color-ui-default,
     --color-background-1-default,
     --color-accent-2-default,
-
-    --color-accent-1,
-    --color-accent-2,
-    --color-accent-3,
-    --color-accent-4,
-    --color-background-1,
-    --color-background-2,
-    --color-background-3,
-    --color-background-4,
-    --color-background-modal,
-    --color-text-1,
-    --color-text-2,
-    --color-text-3,
-    --color-text-4,
-    --color-status-error,
-    --color-status-warn,
-    --color-status-neutral,
-    --color-status-success,
-    --color-ui,
-    --color-ui-raw,
-    --color-ui-inverse,
-    --color-ui-raw-inverse,
-    --color-form-mark,
-    --color-form-selection-track,
-    --color-form-selection-mark,
-    --color-toggle-mark,
-    --color-focus,
-    --grad-1,
-    --status-background,
-    --support-background,
-    --select-icon
+    /* = CSS - runtime version of the vars, used globally. */
+    /* ... */
 }
 
 :import {
@@ -56,80 +22,34 @@
   -st-default: Text;
 }
 
-
-/* === SET CSS RUN-TIME VARIABLES ===*/
-
-/**
- * Default color scheme variables
- * 
- * We make use of the Stylable build variables and map them to equivalent CSS 
- * runtime variables. This allows us to the -default version as our fallback,
- * it is a little confusing at first so keep checking your browser list.
- */
-
-.root {
-  /* --color-accent-1: value(--color-accent-1-default);
-  --color-accent-2: value(--color-accent-2-default);
-  --color-accent-3: value(--color-accent-3-default);
-  --color-accent-4: value(--color-accent-4-default);
-  --color-background-1: value(--color-background-1-default);
-  --color-background-2: value(--color-background-2-default);
-  --color-background-3: value(--color-background-3-default);
-  --color-background-4: value(--color-background-4-default);
-  --color-background-modal: value(--color-background-modal-default);
-  --color-text-1: value(--color-text-1-default);
-  --color-text-2: value(--color-text-2-default);
-  --color-text-3: value(--color-text-3-default);
-  --color-text-4: value(--color-text-4-default);
-  --color-status-error: value(--color-status-error-default);
-  --color-status-warn: value(--color-status-warn-default);
-  --color-status-neutral: value(--color-status-neutral-default);
-  --color-status-success: value(--color-status-success-default);
-  --color-ui: value(--color-ui-default);
-  --color-ui-raw: value(--color-ui-raw-default);
-  --color-ui-inverse: value(--color-ui-inverse-default);
-  --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
-
-  --color-form-mark: value(--color-form-mark-default);
-  --color-form-selection-track: value(--color-form-selection-track-default);
-  --color-form-selection-mark: value(--color-form-selection-mark-default);
-  --color-toggle-mark: value(--color-ui-default);
-
-  --color-focus: value(--color-focus-default);
-
-  --grad-1: value(--grad-1-default); */
-  /* --color-toggle-mark: value(--color-ui-default); */
-  --status-background: #692e2e;
-  --support-background: #2e5b69;
-
-  /* background: #51d6de;
-    background: #50de98;
-    background: #99ffcd;
-    background: #92e6bd;
-    background: #d1ffe9;
-    background: #287750;
-    background: #2f5442;
-    background: #2e5b69; */
-
-  /* --select-icon: value(--select-icon-default); */
-
-  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>")
-}
+.root {}
 
 .root :global(body) {
   /* = Set CSS vars for switcher to utilise, fallbacks are in project.st.css */
-  color: var((value(--color-ui-default)), value(--color-ui-default));
+  color: var(--color-ui, value(--color-ui-default));
   background-color: var(--color-background-1, value(--color-background-1-default));
 }
 
+/* 
+ * = Theme differences
+ * 
+ * While all sounds well with "just change the colors" it is never that 
+ * simple, ever. So here we can tweak styles for the theme specifically.
+ * 
+ */
 
-/* = While all sounds well with "just change the colors to their counterparts it is never that simple, ever. "*/
-/* Override our uppercase headings.
-   Handy use of :global() if you want to style based on a tag, useful where a 
-   component, link Text can output a number of tags as it's root element. */
+/* = Override our uppercase headings.*/
 .root :global(h2)Text:uppercase,
 .root :global(h3)Text:uppercase,
 .root :global(h4)Text:uppercase {
   color: value(--color-accent-2-default);
   color: var(--color-accent-2, value(--color-accent-2-default));
 }
+
+/* 
+ * :global(h2)Text:uppercase {...}
+ *
+ * = Handy use of :global() if you want to style based on a tag.
+ * Useful where a component, like our 'Text' can output a number
+ * of tags as its root element. 
+ */
