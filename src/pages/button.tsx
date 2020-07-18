@@ -6,6 +6,7 @@ import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import { classes as text } from "../projects/default/css/text.st.css";
 import { classes as grid } from "../projects/default/css/grid.st.css";
+import stylesheet from "../projects/default/css/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import {
   meta,
@@ -25,6 +26,8 @@ const ButtonDocs = () => {
     // `current` points to the mounted text input element
     node && node.focus();
   };
+
+  console.log("ST", { stylesheet });
 
   return (
     <DefaultLayout>

@@ -79,11 +79,7 @@ const InputSelection = React.forwardRef(
       />
     );
 
-    const rootClassNames = classnames(
-      classes.root,
-      classes["vol" + vol],
-      classNameProp
-    );
+    const rootClassNames = classnames(classes.root, classNameProp);
 
     return (
       <div className={st(rootClassNames, { variant, type, disabled, vol })}>

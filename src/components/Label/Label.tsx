@@ -35,11 +35,7 @@ const Label = ({
     </span>
   );
 
-  const rootClassNames = classNames(
-    classes.root,
-    // { [classes.hasInput]: inputControl },
-    classNameProp
-  );
+  const rootClassNames = classNames(classes.root, classNameProp);
 
   const hasInput = inputControl ? true : false;
 

@@ -20,21 +20,6 @@
     --color-form-mark;
 }
 
-@st-global-custom-property ;
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    hideWebkitAppearance,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6;
-}
-
 /* = Root style API. */
 :import {
   -st-from: "../../../components/InputSelection/inputSelection.st.css";

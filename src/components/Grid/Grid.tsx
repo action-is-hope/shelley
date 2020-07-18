@@ -25,11 +25,7 @@ const Grid = React.forwardRef(
     }: GridProps,
     ref?: React.Ref<HTMLBaseElement>
   ) => {
-    const rootClassNames = classNames(
-      classes.root,
-      classes["variant" + variant],
-      classNameProp
-    );
+    const rootClassNames = classNames(classes.root, classNameProp);
 
     const gridRoot = React.createElement(
       tagName,

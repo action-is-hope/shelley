@@ -24,6 +24,8 @@ import PropsDemo from "./css/propsDemo.st.css";
 import CodeSample from "./css/codeSample.st.css";
 import Logo from "./css/logo.st.css";
 
+// classes: Record<string, string>
+// type test = Record<string, string>
 // Theme
 import Default from "./project.st.css";
 
@@ -31,11 +33,11 @@ import Default from "./project.st.css";
 const getStylableClassNames = (
   values: [],
   // stylesheet: RuntimeStylesheet,
-  stylesheet: any,
+  stylesheet: RuntimeStylesheet,
   rootcls: string
 ) => {
-  const clsArray = values.map((cls: string) => stylesheet[cls] || null);
-  return classnames(stylesheet[rootcls], clsArray);
+  const clsArray = values.map((cls: string) => stylesheet.classes[cls] || null);
+  return classnames(stylesheet.classes[rootcls], clsArray);
 };
 
 // Foundation Components
