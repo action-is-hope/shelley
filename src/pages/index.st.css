@@ -6,12 +6,12 @@
 :import {
   -st-from: "../projects/default/project.st.css";
   -st-default: Default;
-  -st-named: --color-accent-1-default;
+  -st-named: --color-accent-1-default,
+    /* = CSS3 Switcher vars. */
+    --grad-1,
+    --status-background,
+    --support-background;
 }
-
-@st-global-custom-property --grad-1,
---status-background,
---support-background;
 
 :import {
   -st-from: "../components/Button/button.st.css";

@@ -7,9 +7,7 @@
  */
 @namespace "dark";
 
-@st-global-custom-property --color,
---bg,
---color-accent-1,
+/* @st-global-custom-property --color-accent-1,
 --color-accent-2,
 --color-accent-3,
 --color-accent-4,
@@ -38,7 +36,7 @@
 --grad-1,
 --status-background,
 --support-background,
---select-icon;
+--select-icon; */
 
 :import {
   -st-from: "./project.st.css";
@@ -48,41 +46,40 @@
     --light-01,
     --light-01-raw,
 
-    --color-accent-1-default,
-    --color-accent-2-default,
-    --color-accent-3-default,
-    --color-accent-4-default,
-
-    --color-background-1-default,
-    --color-background-2-default,
-    --color-background-3-default,
-    --color-background-4-default,
-    --color-background-modal-default,
-
-    --color-text-1-default,
-    --color-text-2-default,
-    --color-text-3-default,
-    --color-text-4-default,
-
-    --color-status-error-default,
-    --color-status-warn-default,
-    --color-status-neutral-default,
-    --color-status-success-default,
-
     --color-ui-default,
-    --color-ui-raw-default,
-    --color-ui-inverse-default,
-    --color-ui-raw-inverse-default,
+    --color-background-1-default,
+    --color-accent-2-default,
 
-
-    --color-form-mark-default,
-    --color-form-selection-track-default,
-    --color-form-selection-mark-default,
-    --color-focus-default,
-
-    --grad-1-default,
-
-    --select-icon-default
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4,
+    --color-background-1,
+    --color-background-2,
+    --color-background-3,
+    --color-background-4,
+    --color-background-modal,
+    --color-text-1,
+    --color-text-2,
+    --color-text-3,
+    --color-text-4,
+    --color-status-error,
+    --color-status-warn,
+    --color-status-neutral,
+    --color-status-success,
+    --color-ui,
+    --color-ui-raw,
+    --color-ui-inverse,
+    --color-ui-raw-inverse,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-toggle-mark,
+    --color-focus,
+    --grad-1,
+    --status-background,
+    --support-background,
+    --select-icon
 }
 
 :import {
@@ -102,7 +99,7 @@
  */
 
 .root {
-  --color-accent-1: value(--color-accent-1-default);
+  /* --color-accent-1: value(--color-accent-1-default);
   --color-accent-2: value(--color-accent-2-default);
   --color-accent-3: value(--color-accent-3-default);
   --color-accent-4: value(--color-accent-4-default);
@@ -131,7 +128,7 @@
 
   --color-focus: value(--color-focus-default);
 
-  --grad-1: value(--grad-1-default);
+  --grad-1: value(--grad-1-default); */
 
   --status-background: #692e2e;
   --support-background: #2e5b69;
@@ -148,6 +145,29 @@
   /* --select-icon: value(--select-icon-default); */
 
   --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>")
+}
+
+/* @st-global-custom-property --color-background-1,
+--color-ui; */
+
+.root :global(body) {
+  /**
+   * = Set the body font-size to initial value.
+   *
+   * Why? Using rem for everything means we can't set a container to say 
+   * font-size: 90% to tweak the size of the contained elements as they would 
+   * always size off the root html element.
+   *
+   * This way we can use a responsive rem value when we want to but also 
+   * leverage ems as described above.
+   */
+  font-size: initial;
+  /*= Main foreground including fallback. */
+  color: value(--color-ui-default);
+  color: var(--color-ui, value(--color-ui-default));
+  /*= Main background including fallback. */
+  background-color: value(--color-background-1-default);
+  background-color: var(--color-background-1, value(--color-background-1-default));
 }
 
 

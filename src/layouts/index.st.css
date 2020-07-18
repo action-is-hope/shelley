@@ -4,12 +4,11 @@
   -st-named:
     spacing-unit,
     --color-ui-default,
-    --color-background-1-default;
-  /* --color-text-faint-2-default; */
+    --color-background-1-default,
+    /* = CSS3 Switcher vars. */
+    --color-background-1,
+    --color-ui;
 }
-
-@st-global-custom-property --color-background-1,
---color-ui;
 
 .navbar {
   background: var(--color-background-1, value(--color-background-1-default));

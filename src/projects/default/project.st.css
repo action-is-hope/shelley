@@ -275,10 +275,42 @@
  * This ideally will just be a spinkling of higher level styles that use 
  * variables. For the reset globals we set them in ./css/allGlobals.st.css 
  * which is pulled in within index.ts */
-.root {
+:root {
   font-family: value(font-plain);
   /* font-size: 100%; */
   min-height: 100vh;
+
+  --color-accent-1: value(--color-accent-1-default);
+  --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
+  --color-background-1: value(--color-background-1-default);
+  --color-background-2: value(--color-background-2-default);
+  --color-background-3: value(--color-background-3-default);
+  --color-background-4: value(--color-background-4-default);
+  --color-background-modal: value(--color-background-modal-default);
+  --color-text-1: value(--color-text-1-default);
+  --color-text-2: value(--color-text-2-default);
+  --color-text-3: value(--color-text-3-default);
+  --color-text-4: value(--color-text-4-default);
+  --color-status-error: value(--color-status-error-default);
+  --color-status-warn: value(--color-status-warn-default);
+  --color-status-neutral: value(--color-status-neutral-default);
+  --color-status-success: value(--color-status-success-default);
+  --color-ui: value(--color-ui-default);
+  --color-ui-raw: value(--color-ui-raw-default);
+  --color-ui-inverse: value(--color-ui-inverse-default);
+  --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
+
+  --color-form-mark: value(--color-form-mark-default);
+  --color-form-selection-track: value(--color-form-selection-track-default);
+  --color-form-selection-mark: value(--color-form-selection-mark-default);
+  --color-toggle-mark: value(--color-ui-default);
+
+  --color-focus: value(--color-focus-default);
+
+  --grad-1: value(--grad-1-default);
+  --select-icon: value(--select-icon-default);
 }
 
 /*= Give ourselves a fluid rem value to use for padding or whatever. */
@@ -300,8 +332,8 @@
   }
 }
 
-@st-global-custom-property --color-background-1,
---color-ui;
+/* @st-global-custom-property --color-background-1,
+--color-ui; */
 
 :global(body) {
   /**
@@ -316,9 +348,9 @@
    */
   font-size: initial;
   /*= Main foreground including fallback. */
-  color: value(--color-ui-default);
-  color: var(--color-ui, value(--color-ui-default));
+  /* color: value(--color-ui-default);
+  color: var(--color-ui, value(--color-ui-default)); */
   /*= Main background including fallback. */
-  background-color: value(--color-background-1-default);
-  background-color: var(--color-background-1, value(--color-background-1-default));
+  /* background-color: value(--color-background-1-default);
+  background-color: var(--color-background-1, value(--color-background-1-default)); */
 }

@@ -9,16 +9,16 @@
     --color-accent-2-default,
     --color-accent-3-default,
     --color-text-4-default,
-    --color-background-3-default;
+    --color-background-3-default,
+    /* = CSS3 Switcher vars. */
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-text-4,
+    --color-background-3;
 }
 
-@st-global-custom-property --color-accent-1,
---color-accent-2,
---color-accent-3,
---color-text-4,
---color-background-3;
-
-
+/* = Root Component */
 :import {
   -st-from: "../../../components_site/CodeSample/codeSample.st.css";
   -st-default: CodeSample;

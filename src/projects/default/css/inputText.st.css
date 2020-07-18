@@ -1,8 +1,10 @@
+/* = inputText.st.css */
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
 }
 
+/* = Root Component */
 :import {
   -st-from: "../../../components/InputText/inputText.st.css";
   -st-default: InputText;

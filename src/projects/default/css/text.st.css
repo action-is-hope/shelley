@@ -5,9 +5,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    /* = font-plain, */
     spacing-unit,
-    /* = --color-ui-default, */
     text-vol-1-max, text-vol-1-scale, text-vol-1-line-height,
     text-vol-2-max, text-vol-2-scale, text-vol-2-line-height,
     text-vol-3-max, text-vol-3-scale, text-vol-3-line-height,
@@ -21,26 +19,22 @@
     text-vol-11-max, text-vol-11-scale, text-vol-11-line-height,
 
     --color-accent-1-default,
-    --color-accent-4-default;
+    --color-accent-4-default,
+    /* = CSS3 Switcher vars. */
+    --color-accent-1,
+    --color-accent-4;
 }
 
-@st-global-custom-property --color-accent-1,
---color-accent-4;
-
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
-
+/* = Root Component */
 :import {
   -st-from: "../../../components/Text/text.st.css";
   -st-default: Text;
 }
 
 :import {
-  -st-from: "../../../components/Grid/grid.st.css";
-  -st-default: Grid;
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
 }
 
 @st-scope Default {

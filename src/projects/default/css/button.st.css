@@ -15,22 +15,46 @@
   -st-named:
     spacing-unit,
     --color-ui-inverse-default,
-    --color-accent-1-default,
     --color-accent-2-default,
     --color-accent-3-default,
-    --color-accent-4-default;
+    --color-accent-4-default,
+    /* = CSS3 Switcher vars. */
+    --color-ui-inverse,
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4;
 }
 
-@st-global-custom-property --color-accent-1,
---color-accent-2,
---color-accent-3,
---color-accent-4,
---color-ui-inverse;
-
+/* = Root Component */
 :import {
   -st-from: "../../../components/Button/button.st.css";
   -st-default: Button;
 }
+
+:import {
+  -st-from: "../../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
+}
+
+/* = Mixins, Utils & Formatters */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    hideWebkitAppearance;
+}
+
+:import {
+  -st-from: '../../../components/mixins/visuallyHidden.st.css';
+  -st-named: visuallyHidden;
+}
+
 
 :import {
   -st-from: './utils.st.css';
@@ -40,32 +64,9 @@
 }
 
 :import {
-  -st-from: "../../../components/Icon/icon.st.css";
-  -st-default: Icon;
-}
-
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    hideWebkitAppearance;
-}
-
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
-
-:import {
   -st-from: "../formatters/common";
   -st-named: respScale;
 }
-
-:import {
-  -st-from: '../../../components/mixins/visuallyHidden.st.css';
-  -st-named: visuallyHidden;
-}
-
 
 /* This is how we can scope the styles in Stylable. */
 @st-scope Default {

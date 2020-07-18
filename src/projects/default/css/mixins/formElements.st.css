@@ -32,17 +32,17 @@
     --color-form-selection-mark-default,
     --color-focus-default,
     --color-ui-default,
-    --select-icon-default;
-}
+    --select-icon-default,
+    /* = CSS3 Switcher vars. */
+    --color-status-error,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-focus,
+    --color-ui,
+    --select-icon;
 
-@st-global-custom-property --color-status-error,
---color-form-mark,
---color-form-selection-track,
---color-form-selection-mark,
---color-focus,
---color-toggle-mark,
---color-ui,
---select-icon;
+}
 
 :import {
   -st-from: './text.st.css';
@@ -112,6 +112,7 @@
 .hideWebkitAppearance:-webkit-autofill:hover,
 .hideWebkitAppearance:-webkit-autofill:focus,
 .hideWebkitAppearance:-webkit-autofill:active {
+  transition-delay: 99999s;
   -webkit-transition-delay: 99999s;
 }
 

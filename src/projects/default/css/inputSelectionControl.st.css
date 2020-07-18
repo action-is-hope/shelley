@@ -6,12 +6,13 @@
   -st-default: Default;
 }
 
-
+/* = Root Component */
 :import {
   -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: InputSelectionControl;
 }
 
+/* = Mixins */
 :import {
   -st-from: './mixins/formElements.st.css';
   -st-named:

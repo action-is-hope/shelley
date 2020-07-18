@@ -9,12 +9,13 @@
   -st-default: Default;
   -st-named:
     --color-ui-raw-default,
-    --color-background-1-default;
+    --color-background-1-default,
+    /* = CSS3 Switcher vars. */
+    --color-ui-raw,
+    --color-background-1;
 }
 
-@st-global-custom-property --color-ui-raw,
---color-background-1;
-
+/* = Root Component */
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: Label;

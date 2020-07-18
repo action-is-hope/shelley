@@ -12,21 +12,23 @@
   -st-default: Default;
 }
 
+/* = Root Component */
 :import {
   -st-from: "../../../components/InputSelect/inputSelect.st.css";
   -st-default: InputSelect;
 }
 
 :import {
+  -st-from: "../../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+/* = Mixins */
+:import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
     selectFieldContainer,
     selectFieldInput;
-}
-
-:import {
-  -st-from: "../../../components/Label/label.st.css";
-  -st-default: InputLabel;
 }
 
 @st-scope Default {

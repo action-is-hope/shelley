@@ -10,10 +10,11 @@
 :import {
   -st-from: "../project.st.css";
   -st-default: Default;
-  -st-named: --color-status-error-default;
+  -st-named:
+    --color-status-error-default,
+    /* = CSS3 Switcher vars. */
+    --color-status-error;
 }
-
-@st-global-custom-property --color-status-error;
 
 
 :import {

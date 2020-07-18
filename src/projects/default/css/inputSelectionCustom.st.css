@@ -6,16 +6,10 @@
   -st-default: Default;
   -st-named:
     spacing-unit,
-    --color-background-3-default,
-    --color-form-mark-default,
-    --color-ui-default;
+    --color-ui;
 }
 
-@st-global-custom-property --color-background-3,
---color-ui,
---color-form-mark,
---color-focus;
-
+/* = Root Component */
 :import {
   -st-from: "../../../components/InputSelection/inputSelection.st.css";
   -st-default: InputSelection;
@@ -38,27 +32,11 @@
 }
 
 :import {
-  -st-from: "../../../components/ErrorText/errorText.st.css";
-  -st-default: ErrorText;
-}
-
-:import {
   -st-from: "../../../components/Icon/icon.st.css";
   -st-default: Icon;
 }
 
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    hideWebkitAppearance,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6;
-}
-
+/* = Mixins */
 :import {
   -st-from: './mixins/tooltip.st.css';
   -st-named:

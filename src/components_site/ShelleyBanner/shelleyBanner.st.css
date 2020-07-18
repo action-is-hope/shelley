@@ -13,7 +13,9 @@
   -st-named:
     --color-accent-1-default,
     --color-accent-2-default,
-    --color-ui-default;
+    --color-ui-default
+    /* = CSS3 Switcher vars. */
+    --color-accent-2;
 }
 
 @st-scope Default {

@@ -12,6 +12,7 @@
   -st-default: Default;
 }
 
+/* = Root Component. */
 :import {
   -st-from: "../../../components/HintText/hintText.st.css";
   -st-default: Hint;

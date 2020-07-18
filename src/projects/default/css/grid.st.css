@@ -23,11 +23,13 @@
     grid-gap-md,
 }
 
+/* = Root Component */
 :import {
   -st-from: "../../../components/Grid/grid.st.css";
   -st-default: Grid;
 }
 
+/* = Mixins & Utils */
 :import {
   -st-from: './mixins/gridItem.st.css';
   -st-named:

@@ -50,7 +50,7 @@ const Footer = () => (
   </div>
 );
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ children }: any) => (
   <div className={defaultTheme}>
     <>
       <Helmet
@@ -64,8 +64,8 @@ const DefaultLayout = ({ children }) => (
           { name: "keywords", content: "sample, something" }
         ]}
         htmlAttributes={{
-          lang: "en",
-          className: classnames(defaultTheme, dark.root)
+          lang: "en"
+          // className: classnames(defaultTheme, dark.root)
         }}
       />
       <Header />

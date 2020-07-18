@@ -9,12 +9,14 @@
   -st-named:
     spacing-unit,
     --color-accent-1-default,
-    --color-background-2-default;
+    --color-background-2-default,
+    /* = CSS3 Switcher vars. */
+    --color-accent-1,
+    --color-background-2;
 }
 
-@st-global-custom-property --color-accent-1,
---color-background-2;
 
+/* Root Component */
 :import {
   -st-from: "../../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;
@@ -111,7 +113,7 @@
     position: absolute;
     opacity: 0.3;
     left: -1.5rem;
-    border: 1px solid var(--color-accent-1);
+    border: 1px solid var(--color-accent-1, value(--color-accent-1-default));
     border-width: 1px 0 1px 1px;
     width: 18px;
     top: 0;

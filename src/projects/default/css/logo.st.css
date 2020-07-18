@@ -1,20 +1,21 @@
 /** logo.st.css WIP */
 
 :import {
-  -st-from: "../../../components_site/Logo/logo.st.css";
-  -st-default: Logo;
-}
-
-:import {
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
     --color-ui-default,
-    --color-background-1-default;
+    --color-background-1-default,
+    /* = CSS3 Switcher vars. */
+    --color-ui,
+    --color-background-1;
 }
 
-@st-global-custom-property --color-ui,
---color-background-1;
+/* = Root Component */
+:import {
+  -st-from: "../../../components_site/Logo/logo.st.css";
+  -st-default: Logo;
+}
 
 :import {
   -st-from: "../../../components/Text/text.st.css";
