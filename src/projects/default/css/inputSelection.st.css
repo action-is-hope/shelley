@@ -47,6 +47,18 @@
   -st-default: Icon;
 }
 
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
+}
+
 @st-scope Default {
 
   /* = Don't really 'type' at this level but they exist should we/you need. */

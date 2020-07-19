@@ -120,7 +120,7 @@
    *   that looks like this: calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
    *
    *   So the browser looks at that and goes, "Right! Got it! 16px at 320px wide, 20px 
-   *   at 1800px wide and everything in between I will scale make floaty and fluid, 
+   *   at 1800px wide and everything in between I will scale make smooth and fluid, 
    *   ahhhhhhh all is well with the world.... Zen..."
    *
    *   Just to confuse you more Shelley has this all set in em values, so that made no 
