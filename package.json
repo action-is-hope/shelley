@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "0.1.1-alpha.16",
+  "version": "0.1.1-alpha.18",
   "license": "ISC",
   "description": "Gatsby, stylable boilerplate.",
   "repository": {
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/action-is-hope/shelley#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "create-index": "^2.5.0",
     "react-expanding-textarea": "^2.0.4"
   },
   "main": "index.js",
@@ -34,7 +33,9 @@
     "develop": "gatsby develop",
     "build-dist": "npm run clean && npm run copy && tsc --build tsconfig-npm.json && rimraf dist/layouts && rimraf dist/pages",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
-    "test": "jest"
+    "test": "jest",
+    "version": "npm build dist",
+    "release": "np"
   },
   "np": {
     "yarn": false,
