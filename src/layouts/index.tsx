@@ -65,7 +65,7 @@ const DefaultLayout = ({ children }: any) => (
         ]}
         htmlAttributes={{
           lang: "en"
-          // className: classnames(defaultTheme, dark.root)
+          // class: classnames(defaultTheme, dark.root)
         }}
       />
       <Header />
