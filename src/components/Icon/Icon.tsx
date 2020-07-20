@@ -7,7 +7,7 @@ import { st, classes } from "./icon.st.css";
 /**
  * Icon props extending those of an svg element.
  */
-interface IconProps
+export interface IconProps
   extends Pick<
     React.SVGProps<SVGSVGElement>,
     Exclude<keyof React.SVGProps<SVGSVGElement>, "color">

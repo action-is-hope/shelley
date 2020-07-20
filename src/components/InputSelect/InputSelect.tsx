@@ -6,7 +6,7 @@ import { InputBaseProps } from "../InputBase/InputBase";
 import { classes } from "./inputSelect.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface InputSelectProps
+export interface InputSelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement>,
     InputBaseProps {
   /**

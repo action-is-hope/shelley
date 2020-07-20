@@ -8,7 +8,7 @@ import InputSelectionControl from "../InputSelectionControl/InputSelectionContro
 import { st, classes } from "./inputSelection.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface RadioCheckInputProps
+export interface InputSelectionProps
   extends Pick<
     React.HTMLProps<HTMLInputElement>,
     Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
@@ -54,7 +54,7 @@ const InputSelection = React.forwardRef(
       inputPos = "end",
       vol = 3,
       ...rest
-    }: RadioCheckInputProps,
+    }: InputSelectionProps,
     ref?: React.Ref<HTMLInputElement>
   ) => {
     id === "NOID" &&

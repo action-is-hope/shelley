@@ -7,7 +7,7 @@ import InputBase, { InputBaseProps } from "../InputBase/InputBase";
 import { classes } from "./inputText.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface InputTextProps
+export interface InputTextProps
   extends Pick<
       React.HTMLProps<HTMLInputElement>,
       Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">

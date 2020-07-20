@@ -4,7 +4,8 @@ import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./inputSelectionControl.st.css";
 
-interface RadioCheckInputProps extends React.HTMLProps<HTMLInputElement> {
+export interface InputSelectionControlProps
+  extends React.HTMLProps<HTMLInputElement> {
   /** Provide an error message that triggers the stylable error state. */
   error?: boolean;
   /** The type of slection control to render. */
@@ -21,7 +22,7 @@ const InputSelectionControl = React.forwardRef(
       type = "checkbox",
       defaultChecked = false,
       ...rest
-    }: RadioCheckInputProps,
+    }: InputSelectionControlProps,
     ref?: React.Ref<HTMLInputElement>
   ) => (
     <span

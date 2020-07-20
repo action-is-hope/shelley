@@ -6,7 +6,7 @@ import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
 
-interface BlockquoteProps
+export interface BlockquoteProps
   extends Pick<
     React.HTMLProps<HTMLQuoteElement>,
     Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">

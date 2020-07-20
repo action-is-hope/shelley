@@ -10,7 +10,7 @@ import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./visuallyHidden.st.css";
 
-interface VisuallyHiddenProps extends React.HTMLProps<HTMLSpanElement> {
+export interface VisuallyHiddenProps extends React.HTMLProps<HTMLSpanElement> {
   visuallyHidden?: boolean;
   focusable?: boolean;
 }

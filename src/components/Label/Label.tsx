@@ -7,7 +7,7 @@ import HintText from "../HintText/HintText";
 /* = Style API. */
 import { st, classes } from "./label.st.css";
 
-interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
+export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
   /** Hint can take a React node which is placed inside the internal HintText.*/
   hint?: React.ReactNode;

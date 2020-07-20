@@ -4,7 +4,7 @@ import classNames from "classnames";
 /* = Style API. */
 import { st, classes } from "./grid.st.css";
 
-interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
+export interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** HTML tag to render as the root for your grid. */
   tag?: string;
   /** Designed to toggle child formatting/alignment rules. */
