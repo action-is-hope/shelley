@@ -34,7 +34,7 @@
     "build-dist": "npm run clean && npm run copy && tsc --build tsconfig-npm.json && rimraf dist/layouts && rimraf dist/pages",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "jest",
-    "version": "npm build dist",
+    "prepublishOnly": "npm build dist",
     "release": "np"
   },
   "np": {
