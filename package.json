@@ -36,6 +36,9 @@
     "test": "jest",
     "release": "np"
   },
+  "files": [
+    "dist"
+  ],
   "np": {
     "yarn": false,
     "anyBranch": true,
