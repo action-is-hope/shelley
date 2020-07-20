@@ -26,7 +26,7 @@
   "scripts": {
     "type-check": "tsc",
     "clean": "rimraf dist",
-    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.js\" dist && copyfiles package.json \"./package.json\" dist && copyfiles README.md \"./README.md\" dist",
+    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.js\" dist && copyfiles README.md \"./README.md\" dist",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "npm run lint --fix",
     "build": "gatsby build",
@@ -34,7 +34,6 @@
     "build-dist": "npm run clean && npm run copy && tsc --build tsconfig-npm.json && rimraf dist/layouts && rimraf dist/pages",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "jest",
-    "prepublish": "npm build dist",
     "release": "np"
   },
   "np": {
