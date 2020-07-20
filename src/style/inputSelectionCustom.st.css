@@ -2,7 +2,7 @@
 
 /* = Project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -11,28 +11,28 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/InputSelection/inputSelection.st.css";
+  -st-from: "../components/InputSelection/inputSelection.st.css";
   -st-default: InputSelection;
 }
 
 :import {
 
-  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-from: "../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: SelectionControl;
 }
 
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: InputLabel;
 }
 
 :import {
-  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-from: "../components/HintText/hintText.st.css";
   -st-default: HintText;
 }
 
 :import {
-  -st-from: "../../../components/Icon/icon.st.css";
+  -st-from: "../components/Icon/icon.st.css";
   -st-default: Icon;
 }
 
@@ -45,7 +45,7 @@
 }
 
 :import {
-  -st-from: '../../../components/mixins/visuallyHidden.st.css';
+  -st-from: '../components/mixins/visuallyHidden.st.css';
   -st-named: visuallyHidden
 }
 

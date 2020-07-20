@@ -10,7 +10,7 @@
 
 /* = Project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -28,12 +28,12 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/Button/button.st.css";
+  -st-from: "../components/Button/button.st.css";
   -st-default: Button;
 }
 
 :import {
-  -st-from: "../../../components/Icon/icon.st.css";
+  -st-from: "../components/Icon/icon.st.css";
   -st-default: Icon;
 }
 
@@ -51,7 +51,7 @@
 }
 
 :import {
-  -st-from: '../../../components/mixins/visuallyHidden.st.css';
+  -st-from: '../components/mixins/visuallyHidden.st.css';
   -st-named: visuallyHidden;
 }
 

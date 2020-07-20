@@ -1,7 +1,7 @@
 /** logo.st.css WIP */
 
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     --color-ui-default,
@@ -13,12 +13,12 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components_site/Logo/logo.st.css";
+  -st-from: "../components_site/Logo/logo.st.css";
   -st-default: Logo;
 }
 
 :import {
-  -st-from: "../../../components/Text/text.st.css";
+  -st-from: "../components/Text/text.st.css";
   -st-default: Text;
 }
 

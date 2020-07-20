@@ -9,7 +9,7 @@
 
 
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -24,12 +24,12 @@
 }
 
 :import {
-  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-from: "../components_site/CodeSample/codeSample.st.css";
   -st-default: CodeSample;
 }
 
 :import {
-  -st-from: "../../../components/Text/text.st.css";
+  -st-from: "../components/Text/text.st.css";
   -st-default: Text;
 }
 

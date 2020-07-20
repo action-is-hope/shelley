@@ -8,7 +8,7 @@
 
 /* = Project and vars. */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     --color-status-error-default,
@@ -18,7 +18,7 @@
 
 
 :import {
-  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-from: "../components/ErrorText/errorText.st.css";
   -st-default: Error;
 }
 

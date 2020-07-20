@@ -10,7 +10,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { P } from "../../components/Text/Text";
 
 // Styles.
-import { classes as grid } from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../style/grid.st.css";
 
 export const meta = {
   name: "Button"
@@ -104,7 +104,7 @@ export const ComponentCSS = () => (
   <CodeSample className={grid.mid} fixedHeight>{`/** text.st.css */
 
   :import {
-    -st-from: "../../../components/Text/text.st.css";
+    -st-from: "../components/Text/text.st.css";
     -st-default: Text;
   }
   

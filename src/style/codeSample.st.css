@@ -2,7 +2,7 @@
 
 /* project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     --color-accent-1-default,
@@ -20,7 +20,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-from: "../components_site/CodeSample/codeSample.st.css";
   -st-default: CodeSample;
 }
 

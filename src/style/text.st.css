@@ -2,7 +2,7 @@
 
 /* = = Project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -27,7 +27,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/Text/text.st.css";
+  -st-from: "../components/Text/text.st.css";
   -st-default: Text;
 }
 

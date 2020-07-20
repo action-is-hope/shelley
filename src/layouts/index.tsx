@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { classes as style } from "./index.st.css";
-import { Theme as defaultTheme } from "../projects/default";
-import { ThemeBar, changeTheme } from "../projects/themeSelector";
-import { classes as project } from "../projects/default/project.st.css";
+import { Theme as defaultTheme } from "../style";
+import { ThemeBar, changeTheme } from "../style/themeSelector";
+import { classes as project } from "../style/project.st.css";
 // import { classes as basic } from "./themes/basic.st.css";
-import { classes as light } from "../projects/default/light.st.css";
-import { classes as dark } from "../projects/default/dark.st.css";
+import { classes as light } from "../style/light.st.css";
+import { classes as dark } from "../style/dark.st.css";
 import classnames from "classnames";
 
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -82,10 +82,10 @@ export default DefaultLayout;
 // import Helmet from "react-helmet";
 // import { classes as index } from "./index.st.css";
 // import { ThemeBar } from "../projects/themeSelector";
-// import { classes as project } from "../projects/default/project.st.css";
+// import { classes as project } from "../style/project.st.css";
 
-// import { classes as light } from "../projects/default/light.st.css";
-// import { classes as dark } from "../projects/default/dark.st.css";
+// import { classes as light } from "../style/light.st.css";
+// import { classes as dark } from "../style/dark.st.css";
 // import classnames from "classnames";
 
 // type themeOptions = "light" | "dark";

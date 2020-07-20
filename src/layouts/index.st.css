@@ -1,5 +1,5 @@
 :import {
-  -st-from: "../projects/default/project.st.css";
+  -st-from: "../style/project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,

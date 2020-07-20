@@ -19,7 +19,7 @@
 
 /* = Project and vars */
 :import {
-  -st-from: "../../project.st.css";
+  -st-from: "../project.st.css";
   -st-named:
     spacing-unit,
     text-vol-3-scale, text-vol-3-max,
@@ -52,17 +52,17 @@
 }
 
 :import {
-  -st-from: "../../../../components/Label/label.st.css";
+  -st-from: "../../components/Label/label.st.css";
   -st-default: InputLabel;
 }
 
 :import {
-  -st-from: "../../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-from: "../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: SelectionControl;
 }
 
 :import {
-  -st-from: "../../formatters/common";
+  -st-from: "../formatters/common";
   -st-named: respScale;
 }
 

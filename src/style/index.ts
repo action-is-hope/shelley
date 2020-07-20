@@ -2,27 +2,27 @@ import { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
 
 // Bundle 'ALL' () Global
-import "./css/allGlobal.st.css";
+import "./allGlobal.st.css";
 
 // Foundation Components
-import Button from "./css/button.st.css";
-import Blockquote from "./css/blockquote.st.css";
-import Grid from "./css/grid.st.css";
-import Label from "./css/label.st.css";
-// import FormElements from "./css/formElements.st.css";
-import InputSelection from "./css/inputSelection.st.css";
-import InputSelectionControl from "./css/inputSelectionControl.st.css";
-import InputText from "./css/inputText.st.css";
-import InputSelect from "./css/inputSelect.st.css";
-import InputBase from "./css/inputBase.st.css";
-import Text from "./css/text.st.css";
-import ErrorText from "./css/errorText.st.css";
-import HintText from "./css/hintText.st.css";
+import Button from "./button.st.css";
+import Blockquote from "./blockquote.st.css";
+import Grid from "./grid.st.css";
+import Label from "./label.st.css";
+// import FormElements from "./formElements.st.css";
+import InputSelection from "./inputSelection.st.css";
+import InputSelectionControl from "./inputSelectionControl.st.css";
+import InputText from "./inputText.st.css";
+import InputSelect from "./inputSelect.st.css";
+import InputBase from "./inputBase.st.css";
+import Text from "./text.st.css";
+import ErrorText from "./errorText.st.css";
+import HintText from "./hintText.st.css";
 
 // Application Components
-import PropsDemo from "./css/propsDemo.st.css";
-import CodeSample from "./css/codeSample.st.css";
-import Logo from "./css/logo.st.css";
+import PropsDemo from "./propsDemo.st.css";
+import CodeSample from "./codeSample.st.css";
+import Logo from "./logo.st.css";
 
 // classes: Record<string, string>
 // type test = Record<string, string>

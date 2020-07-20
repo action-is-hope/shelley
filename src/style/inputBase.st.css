@@ -11,7 +11,7 @@
 
 
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -22,28 +22,28 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/InputBase/inputBase.st.css";
+  -st-from: "../components/InputBase/inputBase.st.css";
   -st-default: InputBase;
   -st-named: fieldInput
 }
 
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: InputLabel;
 }
 
 :import {
-  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-from: "../components/HintText/hintText.st.css";
   -st-default: HintText;
 }
 
 :import {
-  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-from: "../components/ErrorText/errorText.st.css";
   -st-default: ErrorText;
 }
 
 :import {
-  -st-from: "../../../components/InputAdornment/inputAdornment.st.css";
+  -st-from: "../components/InputAdornment/inputAdornment.st.css";
   -st-default: Adornment;
 }
 

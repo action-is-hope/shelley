@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { classes as project } from "./default/project.st.css";
+import { classes as project } from "./project.st.css";
 // import { classes as basic } from "./themes/basic.st.css";
-import { classes as light } from "./default/light.st.css";
-import { classes as dark } from "./default/dark.st.css";
-import { classes as inputSelection } from "./default/css/inputSelection.st.css";
-import { classes as inputSelectionCustom } from "./default/css/inputSelectionCustom.st.css";
+import { classes as light } from "./light.st.css";
+import { classes as dark } from "./dark.st.css";
+// import { classes as inputSelection } from "./inputSelection.st.css";
+import { classes as inputSelectionCustom } from "./inputSelectionCustom.st.css";
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 import classnames from "classnames";

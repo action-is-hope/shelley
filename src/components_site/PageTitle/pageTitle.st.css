@@ -1,7 +1,7 @@
 @namespace "PageTitle";
 
 :import {
-  -st-from: "../../projects/default/project.st.css";
+  -st-from: "../../style/project.st.css";
   -st-default: Default;
   -st-named: --color-background-4-default,
     /* = CSS3 Switcher vars. */

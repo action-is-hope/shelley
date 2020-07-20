@@ -3,7 +3,7 @@
 
 /* = Project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named: --color-text-2-default,
     /* = CSS3 Switcher vars. */
@@ -12,7 +12,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: Label;
   -st-named:
     textContainer,
@@ -20,12 +20,12 @@
 }
 
 :import {
-  -st-from: "../../../components/HintText/hintText.st.css";
+  -st-from: "../components/HintText/hintText.st.css";
   -st-default: HintText;
 }
 
 :import {
-  -st-from: "../../../components/Icon/icon.st.css";
+  -st-from: "../components/Icon/icon.st.css";
   -st-default: Icon;
 }
 

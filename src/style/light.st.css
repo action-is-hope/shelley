@@ -62,7 +62,7 @@
 }
 
 :import {
-  -st-from: "../../components/InputSelect/inputSelect.st.css";
+  -st-from: "../components/InputSelect/inputSelect.st.css";
   -st-default: InputSelect;
 }
 

@@ -9,7 +9,7 @@
 
 /* = Project and vars */
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -22,28 +22,28 @@
 
 /* = Root style API. */
 :import {
-  -st-from: "../../../components/InputSelection/inputSelection.st.css";
+  -st-from: "../components/InputSelection/inputSelection.st.css";
   -st-default: InputSelection;
 }
 
 /* = Child component styles API's */
 :import {
-  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-from: "../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: SelectionControl;
 }
 
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: InputLabel;
 }
 
 :import {
-  -st-from: "../../../components/ErrorText/errorText.st.css";
+  -st-from: "../components/ErrorText/errorText.st.css";
   -st-default: ErrorText;
 }
 
 :import {
-  -st-from: "../../../components/Icon/icon.st.css";
+  -st-from: "../components/Icon/icon.st.css";
   -st-default: Icon;
 }
 

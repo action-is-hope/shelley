@@ -2,7 +2,7 @@
 @namespace "CodeSample";
 
 :import {
-  -st-from: "../../projects/default/project.st.css";
+  -st-from: "../../style/project.st.css";
   -st-default: Default;
 }
 

@@ -5,7 +5,7 @@ import Icon from "./Icon";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
-import { classes as grid } from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../style/grid.st.css";
 
 export const meta = {
   name: "SVGSVGElement"

@@ -1,11 +1,11 @@
 /** propsDemo.st.css */
 :import {
-  -st-from: "../../../components_site/PropsDemo/propsDemo.st.css";
+  -st-from: "../components_site/PropsDemo/propsDemo.st.css";
   -st-default: PropsDemo;
 }
 
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
     --color-ui-raw-default,
@@ -17,7 +17,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: Label;
   -st-named: textContainer, labelText;
 }

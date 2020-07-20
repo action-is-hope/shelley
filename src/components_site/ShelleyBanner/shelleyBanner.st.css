@@ -8,7 +8,7 @@
 
 
 :import {
-  -st-from: "../../projects/default/project.st.css";
+  -st-from: "../../style/project.st.css";
   -st-default: Default;
   -st-named:
     --color-accent-1-default,

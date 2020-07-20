@@ -8,18 +8,18 @@
 
 
 :import {
-  -st-from: "../project.st.css";
+  -st-from: "./project.st.css";
   -st-default: Default;
 }
 
 /* = Root Component */
 :import {
-  -st-from: "../../../components/InputSelect/inputSelect.st.css";
+  -st-from: "../components/InputSelect/inputSelect.st.css";
   -st-default: InputSelect;
 }
 
 :import {
-  -st-from: "../../../components/Label/label.st.css";
+  -st-from: "../components/Label/label.st.css";
   -st-default: InputLabel;
 }
 

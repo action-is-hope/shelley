@@ -284,7 +284,7 @@
 
 /** 
  * This ideally will just be a spinkling of higher level styles that use 
- * variables. For the reset globals we set them in ./css/allGlobals.st.css 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
  * which is pulled in within index.ts */
 .root {
   font-family: value(font-plain);

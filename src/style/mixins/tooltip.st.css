@@ -8,7 +8,7 @@
 
 /* = Project and vars. */
 :import {
-  -st-from: "../../project.st.css";
+  -st-from: "../project.st.css";
   -st-named:
     spacing-unit
 }
