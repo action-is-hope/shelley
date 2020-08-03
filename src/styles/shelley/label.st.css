@@ -1,0 +1,33 @@
+/**
+ * = LABEL - label.st.css
+ * 
+ * ========================================================================= */
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-text-2-default,
+    /* = CSS3 Switcher vars. */
+    --color-text-2;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named:
+    textContainer,
+    labelText
+}
+
+
+@st-scope Shelley {
+
+  Label::textContainer {
+    color: value(--color-text-2-default);
+    color: var(--color-text-2, value(--color-text-2-default));
+  }
+
+}

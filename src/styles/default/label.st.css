@@ -1,0 +1,108 @@
+/**
+ * = LABEL - label.st.css
+ * 
+ * ========================================================================= */
+
+@namespace "Label";
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --color-text-2-default,
+    /* = CSS3 Switcher vars. */
+    --color-text-2;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named:
+    textContainer,
+    labelText
+}
+
+:import {
+  -st-from: "../../components/HintText/hintText.st.css";
+  -st-default: HintText;
+}
+
+:import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+@st-scope Default {
+  Label {
+    /* = Flex enables our positional styles, grid could work too. */
+    display: flex;
+    /* = Stops the text from getting selecting when clicking on labels. */
+    user-select: none;
+  }
+
+  /*==== Has Input  ====*/
+  Label:hasInput {
+    /* = If the Label includes an inline assume we want a basic checkbox/radio layout. */
+    display: inline-flex;
+    /* = Reserve the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
+    flex-direction: row-reverse;
+    /* = Vertically align the items. */
+    align-items: center;
+    /* = Align to the end which as we have reversed the direction is now left in ltr languages.*/
+    justify-content: flex-end;
+  }
+
+  Label::textContainer {
+    display: block;
+    /* = color: #eaeaea; */
+    color: value(--color-text-2-default);
+    color: var(--color-text-2, value(--color-text-2-default));
+  }
+
+  Label::labelText {
+    display: flex;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*==== Input Positions ====*/
+
+  /* = top */
+  Label:inputPos(top):hasInput {
+    flex-direction: column-reverse;
+  }
+
+  Label:inputPos(top)::labelText,
+  Label:inputPos(top) HintText {
+    justify-content: center;
+  }
+
+  /* = end / right */
+  Label:inputPos(end):hasInput {
+    flex-direction: row;
+  }
+
+  Label:inputPos(end)::labelText,
+  Label:inputPos(end) HintText {
+    justify-content: flex-end;
+  }
+
+  /* = bottom */
+  Label:inputPos(bottom):hasInput {
+    flex-direction: column;
+  }
+
+  Label:inputPos(bottom)::labelText,
+  Label:inputPos(bottom) HintText {
+    justify-content: center;
+  }
+
+  /* = start / left */
+
+  /*==== Icon ====*/
+  Label Icon {
+    font-size: 1.75em;
+  }
+}

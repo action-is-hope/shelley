@@ -1,0 +1,99 @@
+/**
+ * = BUTTON - button.st.css
+ *
+ * We only have one, so far so good. YOu should have enough sizes and hooks
+ * but you can always add your own custome classes for whatever you need or 
+ * wrap this button up inside other buttons pre configured for your usecases.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-ui-inverse-default,
+    --color-accent-2-default,
+    --color-accent-3-default,
+    --color-accent-4-default,
+    /* = CSS3 Switcher vars. */
+    --color-ui-inverse,
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Button/button.st.css";
+  -st-default: Button;
+}
+
+/* = Child components */
+/* :import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+} */
+
+/* = This is how we can scope the styles in Stylable. */
+@st-scope Shelley {
+
+  /* = = The base <button> element. */
+  Button {
+    --accent: transparent;
+    --bg-color: transparent;
+    --border-color: transparent;
+    --text-color: inherit;
+    /* = Set the like for like variable but -accent is special as we use 
+    it to assign the colour index to the properties as we have used them
+    in our variants. */
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+  }
+
+
+  /* = 'Filled' */
+  Button:variant(1) {
+    --text-color: var(--color-ui-inverse);
+    --bg-color: var(--accent);
+  }
+
+  /* = 'Outline' */
+  Button:variant(2) {
+    --border-color: var(--accent);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* = 'Floating Action Button (FAB)' */
+  Button:variant(3) {
+    --text-color: var(--color-ui-inverse);
+    --bg-color: var(--accent);
+  }
+
+
+  /* = Tones/Colours */
+  Button:tone(1) {
+    --accent: var(--color-accent-1);
+  }
+
+  Button:tone(2) {
+    --accent: var(--color-accent-2);
+  }
+
+  Button:tone(3) {
+    --accent: var(--color-accent-3);
+  }
+
+  Button:tone(4) {
+    --accent: var(--color-accent-4);
+  }

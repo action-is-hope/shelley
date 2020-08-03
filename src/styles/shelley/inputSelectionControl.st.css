@@ -1,0 +1,46 @@
+/**
+ * = INPUTSELECTIONCONTROL - inputSelectionControl.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component. */
+:import {
+  -st-from: "../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: InputSelectionControl;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    SelectionControlFieldInput,
+    RadioCheckboxCommon,
+    ToggleFieldInput;
+}
+
+
+/* = This is how we can scope the styles. */
+@st-scope Shelley {
+
+  InputSelectionControl::inputField {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  /* = Radio Checkbox common styles. */
+  InputSelectionControl:type(checkbox)::inputField,
+  InputSelectionControl:type(radio)::inputField {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  /* = Toggle */
+  InputSelectionControl:type(toggle)::inputField {
+    -st-mixin: ToggleFieldInput;
+  }
+}

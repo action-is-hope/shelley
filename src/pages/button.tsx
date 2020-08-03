@@ -4,9 +4,9 @@ import Text, { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../style/text.st.css";
-import { classes as grid } from "../style/grid.st.css";
-import stylesheet from "../style/grid.st.css";
+import { classes as text } from "../styles/default/text.st.css";
+import { classes as grid } from "../styles/default/grid.st.css";
+import stylesheet from "../styles/default/grid.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import {
   meta,

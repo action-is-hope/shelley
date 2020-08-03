@@ -12,7 +12,7 @@ import Label from "../../components/Label/Label";
 import { P, H1, H2 } from "../../components/Text/Text";
 import Icon from "../../components/Icon/Icon";
 
-import { classes as grid } from "../../style/grid.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
   name: "Button"

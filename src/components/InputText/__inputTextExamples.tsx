@@ -11,7 +11,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { P, H1, H2 } from "../../components/Text/Text";
 
 // Styles.
-import { classes as grid } from "../../style/grid.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
   name: "Button"

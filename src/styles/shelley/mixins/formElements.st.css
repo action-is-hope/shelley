@@ -1,0 +1,204 @@
+/**
+ * = FORM ELEMENTS - formElements.st.css
+ *
+ * 
+ * Whilst it's nice to always use our form items usually we will have to style 
+ * forms that are not within our control. We might need to integrate a 
+ * newsletter widget or perhaps a media selection widget, etc.
+ *
+ * Here you will find the base styles for form input elements which are mixin'd
+ * to our form .st.css styles. You can use reuse them in the same way to when 
+ * styling for 3rd party form elements.
+ *
+ * Maybe the file is too long, we just like these all togther. Lots of comments 
+ * but much longer and we'll consider splitting them.. but most everyting else 
+ * should be variant overrides in situ.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+
+/* = Shelley project vars. */
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    --color-status-error-default,
+    --color-form-mark-default,
+    --color-form-selection-track-default,
+    --color-form-selection-mark-default,
+    --color-focus-default,
+    --color-ui-default,
+    --select-icon-default,
+    /* = CSS3 Switcher vars. */
+    --color-status-error,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-focus,
+    --color-ui,
+    --select-icon,
+    --color-toggle-mark;
+}
+
+
+/**
+ * = BASE - TEXTUAL FIELD
+ *
+ * Text, Number, Select, Combo style fields are all examples of what we mean by
+ * 'textual', they are text orientaed I guess. Naming things is a nightmare!
+ *
+ * ------------------------------------------------------------------------- */
+
+/* = The 'root' element - <div> */
+/* .textualFieldRoot {} */
+
+/* = Field container - <div> */
+/* .textualFieldContainer {} */
+
+/* = Field indicator, via pseudo. */
+.textualFieldContainer::before,
+.textualFieldContainer::after {
+  background-color: value(--color-form-mark-default);
+  background-color: var(--color-form-mark, value(--color-form-mark-default));
+  /* transition: background-color 0.3s; */
+}
+
+/* .textualFieldContainer::before {} */
+
+/* .textualFieldContainer::after {} */
+
+/* = The actual field <input> */
+/* .textualFieldInput {} */
+
+
+
+/**
+ * = SELECT - TEXTUAL FIELD 
+ *
+ * Uses all of the about textual base styles but a <select> has a little 
+ * extra styling over that of our <input>'s.
+ *
+ * ------------------------------------------------------------------------- */
+
+/* = Apply the --select-icon (see project vars) and associated icon styles. */
+.selectFieldInput {
+  background-image: value(--select-icon-default);
+  background-image: var(--select-icon, value(--select-icon-default));
+}
+
+
+
+/**
+ * = STATES - TEXTUAL FIELD
+ *
+ * Input focus, error and disabled state being the main areas of concern for 
+ * our text orientated fields.
+ *
+ * ------------------------------------------------------------------------- */
+
+
+/* = Focus - custom */
+.textualFieldContainer:focus-within::before,
+.textualFieldContainer:focus-within::after {
+  /* = Adjust the pseudo field indicators to cater for custom focus style. */
+  /* = Give us that 'glow' effect for the focused state.*/
+  box-shadow: 0 0 1px 1px value(--color-focus-default);
+  box-shadow: 0 0 1px 1px var(--color-focus, value(--color-focus-default));
+}
+
+/* = Error */
+.textualFieldContainerHasError::before,
+.textualFieldContainerHasError::after {
+  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
+  /* display: block; */
+  background-color: value(--color-status-error-default);
+  background-color: var(--color-status-error, value(--color-status-error-default));
+}
+
+
+/**
+ * = INPUT SELECTION CONTROLS
+ *
+ * Checkboxes, radios, toggles and switches.
+ *
+ * ------------------------------------------------------------------------- */
+
+
+/* = 'Root' of the control - <span> */
+/* .SelectionControlRoot {} */
+
+
+/* = The actual field - <input> */
+.SelectionControlFieldInput {
+  /* border: 2px solid #bce3ff; */
+  border: 2px solid value(--color-form-selection-track-default);
+  border-color: var(--color-form-selection-track, value(--color-form-selection-track-default));
+}
+
+/**
+ * = DISABLED - COMMON
+ */
+
+/* = Hide the pesudo focus style when field is disabled. */
+.SelectionControlFieldInput:disabled::after {
+  /* opacity: 0; */
+}
+
+/* = Dull out the field and apply suitable cursor. */
+.SelectionControlFieldInput:disabled {
+  /* cursor: not-allowed;
+  filter: saturate(15%) brightness(70%); */
+}
+
+
+/**
+ * = RADIO / CHECKBOX - COMMON
+ */
+/* .RadioCheckboxCommon {} */
+
+/* = The 'mark' of the field, radio and checkboxes both have one. */
+.RadioCheckboxCommon::before {
+  background-color: value(--color-form-selection-mark-default);
+  background-color: var(--color-form-selection-mark, value(--color-form-selection-mark-default));
+}
+
+/**
+ * = RADIO
+ */
+/* .RadioFieldInput {} */
+
+
+/**
+ * = CHECKBOX
+ */
+/* .CheckboxFieldInput {} */
+
+
+/**
+ * = TOGGLE
+ *
+ * Which is really just a checkbox in disguise...
+ */
+
+
+.ToggleFieldInput::before {
+  background-color: var(--color-ui, value(--color-ui-default));
+  background-color: var(--color-toggle-mark);
+  /* 
+  too much... 
+  box-shadow: 0 0 1px 2px var(--color-ui, value(--color-ui-default)); */
+}
+
+.ToggleFieldInput:checked::before {
+  background-color: value(--color-form-selection-mark-default);
+  background-color: var(--color-form-selection-mark, value(--color-form-selection-mark-default));
+}
+
+/* .SwitchFieldInput {} */

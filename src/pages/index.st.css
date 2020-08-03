@@ -4,7 +4,7 @@
  */
 
 :import {
-  -st-from: "../style/project.st.css";
+  -st-from: "../styles/default/project.st.css";
   -st-default: Default;
   -st-named: --color-accent-1-default,
     /* = CSS3 Switcher vars. */
@@ -19,7 +19,7 @@
 }
 
 :import {
-  -st-from: "../style/utils.st.css";
+  -st-from: "../styles/default/utils.st.css";
   -st-named: formatted;
 }
 

@@ -1,0 +1,264 @@
+/**
+ * = BUTTON - button.st.css
+ *
+ * We only have one, so far so good. YOu should have enough sizes and hooks
+ * but you can always add your own custome classes for whatever you need or 
+ * wrap this button up inside other buttons pre configured for your usecases.
+ * 
+ * ========================================================================= */
+
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    spacing-unit;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Button/button.st.css";
+  -st-default: Button;
+}
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+:import {
+  -st-from: '../../components/mixins/visuallyHidden.st.css';
+  -st-named: visuallyHidden;
+}
+
+/* = Mixins, Utils & Formatters */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    hideWebkitAppearance;
+}
+
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
+}
+
+:import {
+  -st-from: './utils.st.css';
+  -st-named:
+    peudoFocus,
+    peudoFocusVisible;
+}
+
+:import {
+  -st-from: "./formatters/common";
+  -st-named: respScale;
+}
+
+/* This is how we can scope the styles in Stylable. */
+@st-scope Default {
+
+  /* = The base <button> element. */
+  Button {
+    /* = Removes system styles. */
+    -st-mixin: hideWebkitAppearance;
+    /* = Really really opinionated, only do this if you are willing to provide 
+    a suitable replacement. We are control freaks. */
+    outline: none;
+    /* = Spaced out the characters a little as they are a little squashed in 
+    uppercase land. */
+    letter-spacing: .034em;
+    /* = Weight choice will likely factor the font-smoothing used. */
+    font-weight: 400;
+    /* Using em values allowing the button to 'grow' insync with font-size. */
+    padding: .2em 1em;
+    /* = Caters postioned children, e.g focus pseudo element. Also 
+    'activates' z-index should you need it. */
+    position: relative;
+    /* = Effects - 'all' --maybe-- IS too much... project var perhaps. */
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    /* = Material defo popularised uppercase buttons, we like it but readability 
+    takes a hit and be careful in some langauges such as Greek. */
+    text-transform: uppercase;
+  }
+
+  /* = Inner <span> */
+  Button::inner {
+    /*= Put the padding on top so an icon can grow a little without affecting 
+    the height.*/
+    padding-top: 0.58em;
+    padding-bottom: 0.55em;
+  }
+
+  /* = Divider - <span> rendered with Icon only, rename perhaps?*/
+  Button::divider {
+    display: inline-block;
+    width: 1em;
+    line-height: 0;
+  }
+
+  /* = Targets an Icon component if present. */
+  Button Icon {
+    /* = Not ideal as we get a little rounding issues on the svgs when they / 2 
+    due to the respScale. */
+    font-size: calc(1em + 2px);
+  }
+
+  Button:hover {
+    opacity: 0.7;
+  }
+
+  Button::after {
+    -st-mixin: peudoFocus border-radius: 4px;
+  }
+
+  Button:focus::after {
+    -st-mixin: peudoFocusVisible;
+  }
+
+
+  /* = Button CSS STATES PSEUDO */
+  /* = Disabled */
+  Button:disabled,
+  Button:disabled:hover,
+  Button:disabled:focus,
+  Button:disabled:active,
+  Button:disabled:active:hover {
+    opacity: 0.5
+  }
+
+  /* = ACTIVE */
+  Button:active,
+  Button:active:hover {}
+
+  /*==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  Button:vol(1) {
+    -st-mixin:
+      textVol(scale respScale(0.625em, 0.75em),
+        max 0.75em, lineHeight 1.5);
+  }
+
+
+  /* = Volume 2 */
+  Button:vol(2) {
+    -st-mixin:
+      textVol(scale respScale(0.75em, 0.875em),
+        max 0.875em, lineHeight 1.5);
+  }
+
+  /* = Volume 3 */
+  Button:vol(3) {
+    -st-mixin:
+      textVol(scale respScale(0.875em, 1em),
+        max 1em, lineHeight 1.5);
+  }
+
+  /* = Volume 4 */
+  Button:vol(4) {
+    -st-mixin:
+      textVol(scale respScale(1em, 1.125em),
+        max 1.125em, lineHeight 1.5);
+  }
+
+  /* = Volume 5 */
+  Button:vol(5) {
+    -st-mixin:
+      textVol(scale respScale(1.125em, 1.25em),
+        max 1.25em, lineHeight 1.5);
+  }
+
+  /* = Volume 6 */
+  Button:vol(6) {
+    font-size: respScale(1.25em, 1.375em);
+    -st-mixin:
+      textVol(scale respScale(1.25em, 1.375),
+        max 1.375em, lineHeight 1.5);
+  }
+
+
+  /*= Variant 3 - FAB */
+  Button:variant(3) {
+    padding: 0;
+    border-radius: 999px;
+    justify-content: center;
+  }
+
+  Button:variant(3)::divider {
+    display: none;
+  }
+
+  Button:variant(3)::inner {
+    -st-mixin: visuallyHidden;
+  }
+
+  Button:variant(3)::after {
+    border-radius: 999px;
+  }
+
+  /*= FAB are all about the icons so we don't want rounding issues on these. Set with values that / 2. */
+
+  /*= FAB - Volume 1 */
+  Button:variant(3):vol(1) {
+    width: 32px;
+    height: 32px;
+  }
+
+  Button:variant(3):vol(1) Icon {
+    font-size: 16px;
+  }
+
+  /*= FAB - Volume 2 */
+  Button:variant(3):vol(2) {
+    width: 40px;
+    height: 40px;
+  }
+
+  Button:variant(3):vol(2) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 3 */
+  Button:variant(3):vol(3) {
+    width: 48px;
+    height: 48px;
+  }
+
+  Button:variant(3):vol(3) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 4 */
+  Button:variant(3):vol(4) {
+    width: 56px;
+    height: 56px;
+  }
+
+  Button:variant(3):vol(4) Icon {
+    font-size: 20px;
+  }
+
+  /*= FAB - Volume 5 */
+  Button:variant(3):vol(5) {
+    width: 64px;
+    height: 64px;
+  }
+
+  Button:variant(3):vol(5) Icon {
+    font-size: 22px;
+  }
+
+  /*= FAB - Volume 6 */
+  Button:variant(3):vol(6) {
+    width: 72px;
+    height: 72px;
+  }
+
+  Button:variant(3):vol(6) Icon {
+    font-size: 24px;
+  }
+}

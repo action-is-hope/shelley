@@ -1,0 +1,156 @@
+/**
+ * Shelley Project - project.st.css
+ * 
+ * Our main project which is essentially a theme but it itself can have themes
+ * so project seems more appropriate. 
+ */
+
+@namespace "Shelley";
+
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+
+:vars {
+  /*=== TYPE AND TEXT ===*/
+
+  /** Fonts */
+  font-plain:
+    Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-special:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-mono:
+    Menlo, Courier, Courier New, Andale Mono, monospace;
+
+
+  /*=== COLOURS - The Queens English darling... ===*/
+
+  /* = Core light - always the same. */
+  --light-01-raw: 255, 255, 255;
+  --light-01: rgb(value(--light-01-raw));
+  /* = Core dark . */
+  --dark-01-raw: 51, 51, 51;
+  --dark-01: rgb(value(--dark-01-raw));
+
+  /* 
+   * = 'Default' site values 
+   * 
+   * These are our fallbacks, remember these are stylable build time 
+   * variables, not CSS vars; we map them to CSS vars in the next section.
+   *
+   */
+
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  --color-ui-default: value(--light-01);
+  --color-ui-inverse-default: value(--dark-01);
+  --color-ui-raw-default: value(--light-01);
+  --color-ui-raw-inverse-default: value(--dark-01-raw);
+
+  /* = Accent colours */
+  --color-accent-1-default: #65bfff;
+  --color-accent-2-default: #52fba7;
+  --color-accent-3-default: #ea91ff;
+  --color-accent-4-default: #f7e1b9;
+
+  /* = Background colours */
+  --color-background-1-default: rgb(23, 26, 35);
+  --color-background-2-default: rgba(0, 0, 0, 0.4);
+  --color-background-3-default: rgba(160, 160, 160, 0.06);
+  --color-background-4-default: rgba(11, 13, 18, 0.34);
+  --color-background-modal-default: rgba(23, 26, 35, 0.98);
+
+  /* = Text colours */
+  --color-text-1-default: value(--light-01);
+  --color-text-2-default: rgba(value(--light-01-raw), 0.9);
+  --color-text-3-default: rgba(value(--light-01-raw), 0.8);
+  --color-text-4-default: #f7e1b9;
+
+  /* = Status colours */
+  --color-status-error-default: #b66b6e;
+  --color-status-warn-default: orange;
+  --color-status-neutral-default: blue;
+  --color-status-success-default: green;
+
+  /* = Indicator colours */
+  --color-focus-default: #09b1f1;
+
+  /* = Form colours */
+  --color-form-mark-default: rgba(119, 140, 157, 0.7);
+  --color-form-selection-track-default: rgba(119, 140, 157, 1);
+  --color-form-selection-mark-default: value(--color-accent-2-default);
+
+  /* = Gradiants */
+  --grad-1-default: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+
+  /* = Misc */
+  /* --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
+  --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+  --status-background-default: #692e2e;
+  --support-background-default: #2e5b69;
+}
+
+/*=== GLOBAL CSS ===*/
+
+/** 
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
+ * which is pulled in within index.ts */
+.root {
+  font-family: value(font-plain);
+}
+
+/* = Map stylable build time variables to CSS variables for theme switching. */
+:root {
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  --color-ui: value(--color-ui-default);
+  --color-ui-raw: value(--color-ui-raw-default);
+  --color-ui-inverse: value(--color-ui-inverse-default);
+  --color-ui-raw-inverse: value(--color-ui-raw-inverse-default);
+
+  /* = Accent colours */
+  --color-accent-1: value(--color-accent-1-default);
+  --color-accent-2: value(--color-accent-2-default);
+  --color-accent-3: value(--color-accent-3-default);
+  --color-accent-4: value(--color-accent-4-default);
+
+  /* = Background colours */
+  --color-background-1: value(--color-background-1-default);
+  --color-background-2: value(--color-background-2-default);
+  --color-background-3: value(--color-background-3-default);
+  --color-background-4: value(--color-background-4-default);
+  --color-background-modal: value(--color-background-modal-default);
+
+  /* = Text colours */
+  --color-text-1: value(--color-text-1-default);
+  --color-text-2: value(--color-text-2-default);
+  --color-text-3: value(--color-text-3-default);
+  --color-text-4: value(--color-text-4-default);
+
+  /* = Status colours */
+  --color-status-error: value(--color-status-error-default);
+  --color-status-warn: value(--color-status-warn-default);
+  --color-status-neutral: value(--color-status-neutral-default);
+  --color-status-success: value(--color-status-success-default);
+
+  /* = Indicator colours */
+  --color-focus: value(--color-focus-default);
+
+  /* = Form colours */
+  --color-form-mark: value(--color-form-mark-default);
+  --color-form-selection-track: value(--color-form-selection-track-default);
+  --color-form-selection-mark: value(--color-form-selection-mark-default);
+  --color-toggle-mark: value(--color-ui-default);
+
+  /* = Gradiants */
+  --grad-1: value(--grad-1-default);
+
+  /* = Misc */
+  --select-icon: value(--select-icon-default);
+  --status-background: value(--status-background-default);
+  --support-background: value(--support-background-default)
+}
+
+:global(body) {
+  /*= Set fallbacks here to avoid fouc on body. */
+  background-color: value(--color-background-1-default);
+  color: var(--color-ui, value(--color-ui-default));
+}

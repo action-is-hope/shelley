@@ -1,0 +1,30 @@
+/**
+ * = HINT TEXT - hintText.st.css
+ *
+ * Could have been a class only but we have a component and here is it's style.
+ * 
+ * ========================================================================= */
+
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+}
+
+/* = Root Component. */
+:import {
+  -st-from: "../../components/HintText/hintText.st.css";
+  -st-default: Hint;
+}
+
+@st-scope Default {
+
+  /* = Root */
+  Hint {
+    display: flex;
+    font-weight: 400;
+    opacity: 0.7;
+    -webkit-font-smoothing: antialiased;
+  }
+}

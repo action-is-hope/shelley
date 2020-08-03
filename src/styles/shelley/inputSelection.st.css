@@ -1,0 +1,57 @@
+/**
+ * = INPUT SELECTION - inputSelection.st.css
+ *
+ * Selection control (radio, checkboxes, toggle) with label, positioning 
+ * and variants
+ *
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+/* = Shelley project scope. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-background-3-default,
+    --color-form-mark-default,
+    /* = CSS3 Switcher vars. */
+    --color-background-3,
+    --color-form-mark;
+}
+
+
+/* = Root Component. */
+:import {
+  -st-from: "../../components/InputSelection/inputSelection.st.css";
+  -st-default: InputSelection;
+}
+
+/* = Child component styles API's */
+:import {
+  -st-from: "../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: SelectionControl;
+}
+
+
+@st-scope Shelley {
+
+  /* ==== VARIANTS ====*/
+
+  /* = Variant 2 - Form row style. */
+  InputSelection:variant(2) {
+    background-color: value(--color-background-3-default);
+    background-color: var(--color-background-3, value(--color-background-3-default));
+  }
+
+  InputSelection:variant(2) SelectionControl {
+    border-left: 1px solid value(--color-form-mark-default);
+    border-left: 1px solid var(--color-form-mark, value(--color-form-mark-default));
+  }
+}

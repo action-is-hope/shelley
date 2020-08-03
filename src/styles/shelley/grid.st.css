@@ -1,0 +1,33 @@
+/**
+ * = GRID - grid.st.css 
+ *
+ * Our main grid styles live here, you maybe tempted to make add a load of
+ * utilities that configure your grid in a load of ways... Be warned that having
+ * too much layout specified with the markup via props/classnames is a real pain 
+ * when you are trying to make changes to a page full of grids. Opinion.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Grid/grid.st.css";
+  -st-default: Grid;
+}
+
+@st-scope Shelley {
+  /* = Your grid styles here... */
+}

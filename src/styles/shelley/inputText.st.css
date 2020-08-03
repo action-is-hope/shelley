@@ -1,0 +1,31 @@
+/**
+ * = INPUTTEXT - inputText.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+/* = Shelley project scope. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/InputText/inputText.st.css";
+  -st-default: InputText;
+}
+
+
+@st-scope Shelley {
+
+  /* = Base styles taken care of by InputBase. */
+  InputText {}
+}

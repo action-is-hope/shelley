@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { classes as style } from "./index.st.css";
-import { Theme as defaultTheme } from "../style";
-import { ThemeBar, changeTheme } from "../style/themeSelector";
-import { classes as project } from "../style/project.st.css";
+import { Theme as defaultTheme } from "../styles/default";
+import { Theme as shelleyTheme } from "../styles/shelley";
+import { ThemeBar, changeTheme } from "../styles/default/themeSelector";
+import { classes as project } from "../styles/default/project.st.css";
 // import { classes as basic } from "./themes/basic.st.css";
-import { classes as light } from "../style/light.st.css";
-import { classes as dark } from "../style/dark.st.css";
+import { classes as light } from "../styles/default/light.st.css";
+import { classes as dark } from "../styles/default/dark.st.css";
 import classnames from "classnames";
 
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -51,7 +52,7 @@ const Footer = () => (
 );
 
 const DefaultLayout = ({ children }: any) => (
-  <div className={defaultTheme}>
+  <div className={classnames(defaultTheme, shelleyTheme)}>
     <>
       <Helmet
         title="Shelley - A Stylable User Interface"
@@ -82,10 +83,10 @@ export default DefaultLayout;
 // import Helmet from "react-helmet";
 // import { classes as index } from "./index.st.css";
 // import { ThemeBar } from "../projects/themeSelector";
-// import { classes as project } from "../style/project.st.css";
+// import { classes as project } from "../styles/default/project.st.css";
 
-// import { classes as light } from "../style/light.st.css";
-// import { classes as dark } from "../style/dark.st.css";
+// import { classes as light } from "../styles/default/light.st.css";
+// import { classes as dark } from "../styles/default/dark.st.css";
 // import classnames from "classnames";
 
 // type themeOptions = "light" | "dark";

@@ -6,8 +6,8 @@ import { P } from "../../components/Text/Text";
 import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./styleInfo.st.css";
-import { classes as grid } from "../../style/grid.st.css";
-import { classes as text } from "../../style/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as text } from "../../styles/default/text.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
