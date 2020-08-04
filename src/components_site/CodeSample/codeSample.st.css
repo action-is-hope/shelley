@@ -58,8 +58,6 @@
     line-height: 17px;
   }
 
-
-
   code :global(.caption) {
     text-shadow: 0 0 0 transparent;
     transition: none;
@@ -81,7 +79,6 @@
     -o-user-select: none;
     user-select: none;
   }
-
 
   code :global(.plain-text) {
     white-space: pre-wrap;

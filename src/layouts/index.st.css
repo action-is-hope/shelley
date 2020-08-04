@@ -1,14 +1,22 @@
+/* = Default project vars. */
 :import {
   -st-from: "../styles/default/project.st.css";
-  -st-default: Default;
   -st-named:
     spacing-unit,
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "../styles/shelley/project.st.css";
+  -st-default: Shelley;
+  -st-named:
     --color-ui-default,
     --color-background-1-default,
     /* = CSS3 Switcher vars. */
     --color-background-1,
     --color-ui;
 }
+
 
 .navbar {
   background: var(--color-background-1, value(--color-background-1-default));

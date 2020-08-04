@@ -47,10 +47,10 @@
 }
 
 :import {
-  -st-from: './utils.st.css';
+  -st-from: './mixins/focus.st.css';
   -st-named:
-    peudoFocus,
-    peudoFocusVisible;
+    pseudoFocus,
+    pseudoFocusVisible;
 }
 
 :import {
@@ -112,11 +112,12 @@
   }
 
   Button::after {
-    -st-mixin: peudoFocus border-radius: 4px;
+    -st-mixin: pseudoFocus;
+    border-radius: 4px;
   }
 
   Button:focus::after {
-    -st-mixin: peudoFocusVisible;
+    -st-mixin: pseudoFocusVisible;
   }
 
 

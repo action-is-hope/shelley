@@ -1,5 +1,7 @@
 import { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
+import { classes as light } from "./light.st.css";
+import { classes as dark } from "./dark.st.css";
 
 // = Foundation Components
 import Button from "./button.st.css";
@@ -80,4 +82,7 @@ export const logo = (...values: []) =>
 export const propsDemo = (...values: []) =>
   getStylableClassNames(values, PropsDemo, "propsDemo");
 
-export const Theme = Shelley.classes.root;
+export const Project = Shelley.classes.root;
+
+export const Light = light.root;
+export const Dark = dark.root;

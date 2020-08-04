@@ -1,25 +1,27 @@
 @namespace "PageTitle";
 
+
+/* = Shelley project scope and vars. */
 :import {
-  -st-from: "../../styles/default/project.st.css";
-  -st-default: Default;
-  -st-named: --color-background-4-default,
+  -st-from: "../../styles/shelley/project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-background-4-default,
     /* = CSS3 Switcher vars. */
     --color-background-4;
 }
+
 
 :import {
   -st-from: "../../components/Text/text.st.css";
   -st-default: Text;
 }
 
-@st-scope Default {
+@st-scope Shelley {
   .root {
     /*= Main background including fallback. */
     background-color: value(--color-background-4-default);
     background-color: var(--color-background-4, value(--color-background-4-default));
-
-    /* background: rgba(11, 13, 18, 0.3411764705882353); */
     min-height: 12rem;
     margin-bottom: 56px;
     align-items: center;
@@ -28,10 +30,5 @@
 
   .root .linkText {
     align-self: flex-end
-  }
-
-  .root Text.title,
-  .root Text {
-    /* grid-column: mid */
   }
 }

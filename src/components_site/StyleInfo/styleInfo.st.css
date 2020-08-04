@@ -1,13 +1,15 @@
 /** styleInfo.st.css */
 @namespace "StyleInfo";
 
+/* = Shelley project scope and vars. */
 :import {
-  -st-from: "../../styles/default/project.st.css";
-  -st-default: Default;
-
+  -st-from: "../../styles/shelley/project.st.css";
+  -st-default: Shelley;
 }
 
-@st-scope Default {
+
+
+@st-scope Shelley {
 
   .root {
     /* grid-column: edge; */

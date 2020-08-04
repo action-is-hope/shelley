@@ -68,4 +68,4 @@ export const hintText = (...values: []) =>
 export const inputText = (...values: []) =>
   getStylableClassNames(values, InputText, "inputText");
 
-export const Theme = Default.classes.root;
+export const Project = Default.classes.root;

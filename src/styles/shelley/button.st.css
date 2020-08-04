@@ -44,6 +44,13 @@
   -st-default: Icon;
 } */
 
+:import {
+  -st-from: './mixins/focus.st.css';
+  -st-named:
+    pseudoFocus;
+}
+
+
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {
 
@@ -61,6 +68,9 @@
     border-color: var(--border-color);
   }
 
+  Button::after {
+    -st-mixin: pseudoFocus;
+  }
 
   /* = 'Filled' */
   Button:variant(1) {

@@ -45,7 +45,7 @@ const InputSelection = React.forwardRef(
       disabled = false,
       error: errorMessage,
       touched = false,
-      defaultChecked = false,
+      // defaultChecked = undefined,
       type = "checkbox",
       hint,
       variant = 1,
@@ -68,7 +68,7 @@ const InputSelection = React.forwardRef(
         {...{
           id,
           disabled,
-          defaultChecked,
+          // defaultChecked,
           error,
           ref,
           type,

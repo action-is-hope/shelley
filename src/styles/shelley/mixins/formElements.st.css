@@ -47,6 +47,11 @@
     --color-toggle-mark;
 }
 
+:import {
+  -st-from: './focus.st.css';
+  -st-named:
+    pseudoFocus;
+}
 
 /**
  * = BASE - TEXTUAL FIELD
@@ -67,12 +72,7 @@
 .textualFieldContainer::after {
   background-color: value(--color-form-mark-default);
   background-color: var(--color-form-mark, value(--color-form-mark-default));
-  /* transition: background-color 0.3s; */
 }
-
-/* .textualFieldContainer::before {} */
-
-/* .textualFieldContainer::after {} */
 
 /* = The actual field <input> */
 /* .textualFieldInput {} */
@@ -122,6 +122,9 @@
   background-color: var(--color-status-error, value(--color-status-error-default));
 }
 
+/* = Disabled */
+/* .disabledField {} */
+
 
 /**
  * = INPUT SELECTION CONTROLS
@@ -142,20 +145,14 @@
   border-color: var(--color-form-selection-track, value(--color-form-selection-track-default));
 }
 
+/* = Field focus indicator, via pseudo element. */
+.SelectionControlFieldInput::after {
+  -st-mixin: pseudoFocus;
+}
+
 /**
  * = DISABLED - COMMON
  */
-
-/* = Hide the pesudo focus style when field is disabled. */
-.SelectionControlFieldInput:disabled::after {
-  /* opacity: 0; */
-}
-
-/* = Dull out the field and apply suitable cursor. */
-.SelectionControlFieldInput:disabled {
-  /* cursor: not-allowed;
-  filter: saturate(15%) brightness(70%); */
-}
 
 
 /**
@@ -182,11 +179,9 @@
 
 
 /**
- * = TOGGLE
- *
- * Which is really just a checkbox in disguise...
+ * = TOGGLE - a checkbox in disguise...
  */
-
+/* .ToggleFieldInput {} */
 
 .ToggleFieldInput::before {
   background-color: var(--color-ui, value(--color-ui-default));
@@ -200,5 +195,3 @@
   background-color: value(--color-form-selection-mark-default);
   background-color: var(--color-form-selection-mark, value(--color-form-selection-mark-default));
 }
-
-/* .SwitchFieldInput {} */

@@ -58,7 +58,9 @@
     /* = Misc */
     --select-icon,
     /* = Misc - CSS var only, fix?? */
-    --color-toggle-mark;
+    --color-toggle-mark,
+    --status-background,
+    --support-background;
 }
 
 :import {

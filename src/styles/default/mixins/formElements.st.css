@@ -25,23 +25,7 @@
     text-vol-3-scale, text-vol-3-max,
     text-vol-4-scale, text-vol-4-max,
     text-vol-5-scale, text-vol-5-max,
-    text-vol-6-scale, text-vol-6-max,
-    --color-status-error-default,
-    --color-form-mark-default,
-    --color-form-selection-track-default,
-    --color-form-selection-mark-default,
-    --color-focus-default,
-    --color-ui-default,
-    --select-icon-default,
-    /* = CSS3 Switcher vars. */
-    --color-status-error,
-    --color-form-mark,
-    --color-form-selection-track,
-    --color-form-selection-mark,
-    --color-focus,
-    --color-ui,
-    --select-icon,
-    --color-toggle-mark;
+    text-vol-6-scale, text-vol-6-max;
 }
 
 /* = Root Component */
@@ -70,10 +54,10 @@
 }
 
 :import {
-  -st-from: '../utils.st.css';
+  -st-from: '../mixins/focus.st.css';
   -st-named:
-    peudoFocus,
-    peudoFocusVisible;
+    pseudoFocus,
+    pseudoFocusVisible;
 }
 
 /* Local buildtime vars. */
@@ -398,13 +382,13 @@
 
 /* = Field focus indicator, via pseudo element. */
 .SelectionControlFieldInput::after {
-  -st-mixin: peudoFocus;
+  -st-mixin: pseudoFocus;
 }
 
 /* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
 .SelectionControlFieldInput:focus::after,
 .SelectionControlFieldInput:active::after {
-  -st-mixin: peudoFocusVisible
+  -st-mixin: pseudoFocusVisible
 }
 
 @-moz-document url-prefix() {
@@ -414,7 +398,6 @@
 /* = For future: 
  * https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ 
  */
-
 
 
 /**

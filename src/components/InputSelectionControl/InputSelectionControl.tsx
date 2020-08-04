@@ -20,7 +20,7 @@ const InputSelectionControl = React.forwardRef(
       disabled = false,
       error = false,
       type = "checkbox",
-      defaultChecked = false,
+      // defaultChecked = undefined,
       ...rest
     }: InputSelectionControlProps,
     ref?: React.Ref<HTMLInputElement>
@@ -37,7 +37,7 @@ const InputSelectionControl = React.forwardRef(
           id,
           className: classnames(classes.inputField, classes[type]),
           disabled,
-          defaultChecked,
+          // defaultChecked,
           ref,
           type: type === "radio" ? "radio" : "checkbox",
           // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html

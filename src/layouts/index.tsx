@@ -1,22 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import classnames from "classnames";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { classes as style } from "./index.st.css";
-import { Theme as defaultTheme } from "../styles/default";
-import { Theme as shelleyTheme } from "../styles/shelley";
-import { ThemeBar, changeTheme } from "../styles/default/themeSelector";
-import { classes as project } from "../styles/default/project.st.css";
-// import { classes as basic } from "./themes/basic.st.css";
-import { classes as light } from "../styles/default/light.st.css";
-import { classes as dark } from "../styles/default/dark.st.css";
-import classnames from "classnames";
 
-import PageTitle from "../components_site/PageTitle/PageTitle";
+import { Project as Default } from "../styles/default";
+import { Project as Shelley, Light, Dark } from "../styles/shelley";
 
-const theme = "light";
-// changeTheme(theme);
+import { classes as inputSelection } from "../styles/shelley/inputSelection.st.css";
+import InputSelection from "../components/InputSelection/InputSelection";
+import Icon from "../components/Icon/Icon";
 
-const Header = () => (
+const Header = ({ altTheme, changeTheme }: any) => (
   <div className={style.navbar}>
     <div className={style.inner}>
       <h1 className={style.title}>
@@ -30,7 +25,29 @@ const Header = () => (
         </Link>
       </h1>
       <div className={style.controls}>
-        <ThemeBar />
+        <InputSelection
+          id="themeSelector"
+          variant={false}
+          hint="Toggle light mode"
+          label={
+            <Icon alt="Toggle light mode">
+              <path d="M16 8l-2.2-1.6 1.1-2.4-2.7-0.2-0.2-2.7-2.4 1.1-1.6-2.2-1.6 2.2-2.4-1.1-0.2 2.7-2.7 0.2 1.1 2.4-2.2 1.6 2.2 1.6-1.1 2.4 2.7 0.2 0.2 2.7 2.4-1.1 1.6 2.2 1.6-2.2 2.4 1.1 0.2-2.7 2.7-0.2-1.1-2.4 2.2-1.6zM8 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"></path>
+            </Icon>
+          }
+          className={classnames(inputSelection.darkLightToggle, {
+            [inputSelection.on]: altTheme
+          })}
+          checked={altTheme}
+          onKeyPress={event => {
+            if (event.key === "Enter") {
+              changeTheme();
+            }
+          }}
+          onChange={() => {
+            changeTheme();
+          }}
+          type="checkbox"
+        />
       </div>
     </div>
   </div>
@@ -51,142 +68,53 @@ const Footer = () => (
   </div>
 );
 
-const DefaultLayout = ({ children }: any) => (
-  <div className={classnames(defaultTheme, shelleyTheme)}>
-    <>
-      <Helmet
-        title="Shelley - A Stylable User Interface"
-        meta={[
-          {
-            name: "description",
-            content:
-              "React UI lib: Create something beautiful from recycled body parts."
-          },
-          { name: "keywords", content: "sample, something" }
-        ]}
-        htmlAttributes={{
-          lang: "en"
-          // class: classnames(defaultTheme, dark.root)
-        }}
-      />
-      <Header />
-      {children}
-      <Footer />
-    </>
-  </div>
-);
+const DefaultLayout = ({ children }: any) => {
+  // Define the class names for out theme.
+  const ShelleyDark = classnames(Default, Shelley, Dark);
+  const ShelleyLight = classnames(Default, Shelley, Light);
+  // Toggle 'alternative' theme state.
+  const [altTheme, setAltTheme] = useState<boolean>(false);
+  // The alternative here is the light theme.
+  const currentTheme = altTheme ? ShelleyLight : ShelleyDark;
+
+  const changeTheme = () => {
+    // Set local storage named key: value.
+    localStorage.currentTheme = !altTheme ? "light" : "dark";
+    // Toggle between alt theme on and off.
+    setAltTheme(!altTheme);
+  };
+
+  useEffect(
+    // Set the theme based on what is in local storage.
+    () => setAltTheme(window.localStorage.getItem("currentTheme") === "light"),
+    [altTheme]
+  );
+  return (
+    <div>
+      <>
+        <Helmet
+          title="Shelley - A Stylable User Interface"
+          meta={[
+            {
+              name: "description",
+              content:
+                "React UI lib: Create something beautiful from recycled body parts."
+            },
+            { name: "keywords", content: "sample, something" }
+          ]}
+          htmlAttributes={{
+            lang: "en",
+            class: currentTheme
+          }}
+        />
+
+        <Header {...{ altTheme, changeTheme }} />
+
+        {children}
+        <Footer />
+      </>
+    </div>
+  );
+};
 
 export default DefaultLayout;
-
-// import React, { useState, useEffect } from "react";
-// import Link from "gatsby-link";
-// import Helmet from "react-helmet";
-// import { classes as index } from "./index.st.css";
-// import { ThemeBar } from "../projects/themeSelector";
-// import { classes as project } from "../styles/default/project.st.css";
-
-// import { classes as light } from "../styles/default/light.st.css";
-// import { classes as dark } from "../styles/default/dark.st.css";
-// import classnames from "classnames";
-
-// type themeOptions = "light" | "dark";
-
-// const Header = ({
-//   currentTheme,
-//   toggleTheme
-// }: {
-//   currentTheme: themeOptions;
-//   toggleTheme: (theme: themeOptions) => void;
-// }) => (
-//   <div className={index.navbar}>
-//     <div className={index.inner}>
-//       <h1 className={index.title}>
-//         <Link
-//           to="/"
-//           style={{
-//             textDecoration: "none"
-//           }}
-//         >
-//           Shelley
-//         </Link>
-//       </h1>
-//       <div className={index.controls}>
-//         <ThemeBar {...{ currentTheme, toggleTheme }} />
-//       </div>
-//     </div>
-//   </div>
-// );
-
-// const Footer = () => (
-//   <div className={index.footer}>
-//     <div className={index.inner}>
-//       {/* <Link
-//         to="/"
-//         style={{
-//           textDecoration: "none"
-//         }}
-//       >
-//         Home
-//       </Link> */}
-//     </div>
-//   </div>
-// );
-
-// const themes = {
-//   dark: [project.root, dark.root],
-//   light: [project.root, light.root]
-// };
-
-// // This functions changes the application them by appending the selected
-// // theme class name to the top of the document. In this application,
-// // only a single theme is applied at a time.
-// // @remove and dumify this so we can reuse it.
-// export function changeTheme(name: keyof typeof themes) {
-//   // localStorage.currentTheme = name;
-//   // document.documentElement.className = themes[name].join(" ");
-// }
-
-// const DefaultLayout = ({ children }: { children: any }) => {
-//   // Theme state.
-//   const [currentTheme, setCurrentTheme] = useState<themeOptions>("dark");
-//   // useEffect(() => {
-//   //   const theme: themeOptions =
-//   //     window.localStorage.getItem("currentTheme") === "light"
-//   //       ? "light"
-//   //       : "dark";
-//   //   // Set the theme to stored value else dark as default.
-//   //   setCurrentTheme(theme);
-//   // }, []);
-
-//   const toggleTheme = (name: themeOptions) => {
-//     // changeTheme(name);
-//     setCurrentTheme(name);
-//   };
-
-//   return (
-//     <div>
-//       <>
-//         <Helmet
-//           title="Shelley - A Stylable User Interface"
-//           meta={[
-//             {
-//               name: "description",
-//               content:
-//                 "React UI lib: Create something beautiful from recycled body parts."
-//             },
-//             { name: "keywords", content: "sample, something" }
-//           ]}
-//           htmlAttributes={{
-//             lang: "en",
-//             class: classnames(themes[currentTheme])
-//           }}
-//         />
-//         <Header {...{ currentTheme, toggleTheme }} />
-//         {children}
-//         <Footer />
-//       </>
-//     </div>
-//   );
-// };
-
-// export default DefaultLayout;
