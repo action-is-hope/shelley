@@ -242,7 +242,6 @@ littering your HTML with conditional positional info*/
     Grid:variant(2) {
       -st-mixin: clearfix;
       grid-template-columns: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
-
       grid-column: mid;
     }
   }

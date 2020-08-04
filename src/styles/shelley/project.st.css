@@ -148,9 +148,3 @@
   --status-background: value(--status-background-default);
   --support-background: value(--support-background-default)
 }
-
-:global(body) {
-  /*= Set fallbacks here to avoid fouc on body. */
-  background-color: value(--color-background-1-default);
-  color: var(--color-ui, value(--color-ui-default));
-}

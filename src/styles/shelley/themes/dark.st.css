@@ -1,34 +1,36 @@
 /**
  * = Dark
  *
- * Most of this is done as per the default in project.
- * Somehthing interesting to follow... @todo
+ * Most of this is done as part of the default in project.
+ * So here we are just really setting out body colours and 
+ * defining the 'dark' specific overrides.
  */
+
 @namespace "dark";
 
 :import {
-  -st-from: "./project.st.css";
+  -st-from: "../project.st.css";
   -st-named:
     /* = Build time colours - whatever we need for this file. */
     --color-ui-default,
     --color-background-1-default,
     --color-accent-2-default,
-    /* = CSS - runtime version of the vars, used globally. */
-    /* ... */
 }
 
 :import {
-  -st-from: "../../components/Text/text.st.css";
+  -st-from: "../../../components/Text/text.st.css";
   -st-default: Text;
 }
 
-.root {}
-
 .root :global(body) {
-  /* = Set CSS vars for switcher to utilise, fallbacks are in project.st.css */
+  /*= Main foreground including fallback. */
+  color: value(--color-ui-default);
   color: var(--color-ui, value(--color-ui-default));
+  /*= Main background including fallback. */
+  background-color: value(--color-background-1-default);
   background-color: var(--color-background-1, value(--color-background-1-default));
 }
+
 
 /* 
  * = Theme differences
@@ -38,7 +40,7 @@
  * 
  */
 
-/* = Override our uppercase headings.*/
+/* = Override our uppercase headings. */
 .root :global(h2)Text:uppercase,
 .root :global(h3)Text:uppercase,
 .root :global(h4)Text:uppercase {
@@ -51,5 +53,9 @@
  *
  * = Handy use of :global() if you want to style based on a tag.
  * Useful where a component, like our 'Text' can output a number
- * of tags as its root element. 
+ * of html tags as its root element making it difficult to target.
+ * 
+ * This would not work as you can see:
+ *
+ *  h2Text:uppercase {...}
  */

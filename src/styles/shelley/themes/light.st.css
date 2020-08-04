@@ -9,7 +9,7 @@
 @namespace "light";
 
 :import {
-  -st-from: "./project.st.css";
+  -st-from: "../project.st.css";
   -st-named:
     /* = Build time vars (Stylable). */
     --dark-01,
@@ -64,7 +64,7 @@
 }
 
 :import {
-  -st-from: "../../components/InputSelect/inputSelect.st.css";
+  -st-from: "../../../components/InputSelect/inputSelect.st.css";
   -st-default: InputSelect;
 }
 
@@ -126,10 +126,7 @@
 }
 
 .root :global(body) {
-  /*= Main foreground including fallback. */
-  color: value(--color-ui-default);
+  /*= Main light colours, no fallback as switcher is dependant upon CSS var support anyway. */
   color: var(--color-ui, value(--color-ui-default));
-  /*= Main background including fallback. */
-  background-color: value(--color-background-1-default);
   background-color: var(--color-background-1, value(--color-background-1-default));
 }

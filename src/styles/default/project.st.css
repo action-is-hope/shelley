@@ -63,15 +63,6 @@
 
   /*=== TYPE AND TEXT ===*/
 
-  /** Fonts */
-  font-plain:
-    Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-special:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-mono:
-    Menlo, Courier, Courier New, Andale Mono, monospace;
-
   /* Base font min is 1em (16px) and max (20px) is 1.25em */
   font-base-min: 1em;
   font-base-max: 1.25em;
@@ -223,26 +214,23 @@
  * variables. For the reset globals we set them in ./allGlobals.st.css 
  * which is pulled in within index.ts */
 .root {
-  font-family: value(font-plain);
-  /* font-size: 100%; */
   min-height: 100vh;
 }
 
-/*= Give ourselves a fluid rem value to use for padding or whatever. */
 :global(html) {
   -webkit-text-size-adjust: 100%;
 }
 
+/* = Using supports grid as a test of a modern brower, IE11 will not get this. */
 @supports (display: grid) {
   :global(html) {
-    /** This is our responsive rem value, this will equal 1rem wherever we are.*/
+    /** This is our responsive rem value, this will equal 1rem wherever we are. */
     font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
   }
 
   @media screen and (min-width: 1800px) {
     :global(html) {
-      /* font-size: value(text-vol-3-max); */
-      font-size: 26px;
+      font-size: 1.625em;
     }
   }
 }
@@ -259,5 +247,4 @@
    * leverage ems as described above.
    */
   font-size: initial;
-
 }

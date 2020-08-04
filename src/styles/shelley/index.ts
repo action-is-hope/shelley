@@ -1,7 +1,7 @@
 import { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
-import { classes as light } from "./light.st.css";
-import { classes as dark } from "./dark.st.css";
+import { classes as light } from "./themes/light.st.css";
+import { classes as dark } from "./themes/dark.st.css";
 
 // = Foundation Components
 import Button from "./button.st.css";
@@ -35,7 +35,7 @@ const getStylableClassNames = (
   return classnames(stylesheet.classes[rootcls], clsArray);
 };
 
-// = Foundation Components
+// = Foundation component exports
 export const button = (...values: []) =>
   getStylableClassNames(values, Button, "button");
 
@@ -72,7 +72,7 @@ export const label = (...values: []) =>
 export const text = (...values: []) =>
   getStylableClassNames(values, Text, "text");
 
-// Application Components
+// Application component exports
 export const codeSample = (...values: []) =>
   getStylableClassNames(values, CodeSample, "codeSample");
 
@@ -82,7 +82,9 @@ export const logo = (...values: []) =>
 export const propsDemo = (...values: []) =>
   getStylableClassNames(values, PropsDemo, "propsDemo");
 
+// = Main classname export
 export const Project = Shelley.classes.root;
 
+// = Theme exports
 export const Light = light.root;
 export const Dark = dark.root;

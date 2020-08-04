@@ -55,13 +55,9 @@
 
 @st-scope Shelley {
 
-
-
   Logo {
     display: inline-flex;
-    /* transform-origin: 100% 120%; */
     transform-origin: 50% 70%;
-    /* transform: rotate(-716deg); */
     transform: rotate(4deg) translateZ(0);
     align-items: center;
     transition-property: transform;
@@ -70,6 +66,7 @@
     transition-delay: .5s;
   }
 
+  /* = Tilt Shelley on hover :-) */
   Logo:hover {
     transform: rotate(-4deg);
   }
@@ -84,12 +81,11 @@
     */
     height: 6em;
     width: 6em;
-    /* border: 3px solid var(--color-ui, value(--color-ui-default)); */
-    border: 0.1875em solid var(--color-ui, value(--color-ui-default));
-    border: 0.158em solid var(--color-ui, value(--color-ui-default));
     border: 0.115em solid var(--color-ui, value(--color-ui-default));
-    /* 0.115em */
-    /* margin-top: 2px; */
+    border-style: solid;
+    border-color: value(--color-ui-default);
+    border-color: var(--color-ui, value(--color-ui-default));
+    border-width: 0.115em;
     border-radius: 500px
   }
 
@@ -99,15 +95,14 @@
   }
 
   Logo::logoInner {
-    /* height: 94px; */
     height: 6em;
     height: 5.85em;
     margin-left: -2.9375em;
     margin-right: -2.9375em;
     position: relative;
     display: flex;
-    /* width: 47px; */
     width: 2.9375em;
+    background: value(--color-background-1-default);
     background: var(--color-background-1, value(--color-background-1-default))
   }
 
