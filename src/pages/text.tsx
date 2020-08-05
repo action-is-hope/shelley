@@ -125,7 +125,7 @@ const TextDocs = () => {
           think we will put ours initially at lease.
         </P> */}
 
-        <H2 vol={2} className={grid.mbSmall} uppercase>
+        <H2 vol={2} uppercase>
           Shelley text volumes
           <br />
           <br />

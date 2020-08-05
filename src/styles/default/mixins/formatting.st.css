@@ -1,15 +1,11 @@
 /**
- * = Utilities / Common - utils.st.css
+ * = Formatting
  *
- * Some helpful bits that can be used by themselves, depending on 
- * the specificity of properites already set that is... and you are able 
- * to use these as mixins within your component styles.
- * 
- * ========================================================================= */
-
+ * Formatting - might need it's own file eventually.
+ */
 
 :import {
-  -st-from: "./project.st.css";
+  -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
     spacing-unit,
@@ -19,55 +15,6 @@
     breakpoint-xl,
     breakpoint-xxl,
 }
-
-:import {
-  -st-from: "../../components_site/CodeSample/codeSample.st.css";
-  -st-default: CodeSample;
-}
-
-:import {
-  -st-from: "../../components/Text/text.st.css";
-  -st-default: Text;
-}
-
-/**
- * = Clearfix
- *
- * Just because we use CSS3 doesn't mean we throw all of our old tools away. ;-)
- * history: https://css-tricks.com/snippets/css/clear-fix/
- */
-
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-/**
- * = Candidate component CSS
- *
- * Some light styles that we are not sure what to do with.
- */
-
-.exampleBox {
-  padding: 64px;
-  padding-top: 54px;
-  border: 1px dashed rgba(255, 255, 255, 0.13);
-  margin-top: 48px;
-  margin-bottom: 48px;
-}
-
-.mbSmall {
-  margin-bottom: 2rem
-}
-
-
-/**
- * = Formatting
- *
- * Formatting - might need it's own file eventually.
- */
 
 .formatted>p+p,
 .formatted>p+h4,

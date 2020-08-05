@@ -1,0 +1,12 @@
+/**
+ * = Clearfix
+ *
+ * Just because we use CSS3 doesn't mean we throw all of our old tools away. ;-)
+ * history: https://css-tricks.com/snippets/css/clear-fix/
+ */
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}

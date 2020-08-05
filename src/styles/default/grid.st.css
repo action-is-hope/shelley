@@ -29,7 +29,7 @@
   -st-default: Grid;
 }
 
-/* = Mixins & Utils */
+/* = Project Mixins & Utils */
 :import {
   -st-from: './mixins/gridItem.st.css';
   -st-named:
@@ -38,11 +38,18 @@
 }
 
 :import {
-  -st-from: './utils.st.css';
+  -st-from: './mixins/formatting.st.css';
   -st-named:
-    formatted,
+    formatted;
+}
+
+/* = Shelley Mixins */
+:import {
+  -st-from: '../../components/mixins/clearfix.st.css';
+  -st-named:
     clearfix;
 }
+
 
 @st-scope Default {
 

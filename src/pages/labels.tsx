@@ -8,7 +8,7 @@ import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import { classes as text } from "../styles/default/text.st.css";
 import { classes as grid } from "../styles/default/grid.st.css";
-import { classes as utils } from "../styles/default/utils.st.css";
+import { classes as utils } from "../styles/shelley/utils.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import InputText from "../components/InputText/InputText";
 import {

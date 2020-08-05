@@ -22,7 +22,7 @@
 }
 
 :import {
-  -st-from: "../styles/default/utils.st.css";
+  -st-from: "../styles/default/mixins/formatting.st.css";
   -st-named: formatted;
 }
 
