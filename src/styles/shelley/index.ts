@@ -20,7 +20,10 @@ import Text from "./text.st.css";
 // = Application Components
 import CodeSample from "./codeSample.st.css";
 import Logo from "./logo.st.css";
+import PageTitle from "./pageTitle.st.css";
 import PropsDemo from "./propsDemo.st.css";
+import ShelleyBanner from "./shelleyBanner.st.css";
+import StyleInfo from "./styleInfo.st.css";
 
 // = Project
 import Shelley from "./project.st.css";
@@ -79,8 +82,17 @@ export const codeSample = (...values: []) =>
 export const logo = (...values: []) =>
   getStylableClassNames(values, Logo, "logo");
 
+export const pageTitle = (...values: []) =>
+  getStylableClassNames(values, PageTitle, "pageTitle");
+
 export const propsDemo = (...values: []) =>
   getStylableClassNames(values, PropsDemo, "propsDemo");
+
+export const shelleyBanner = (...values: []) =>
+  getStylableClassNames(values, ShelleyBanner, "shelleyBanner");
+
+export const styleInfo = (...values: []) =>
+  getStylableClassNames(values, StyleInfo, "styleInfo");
 
 // = Main classname export
 export const Project = Shelley.classes.root;

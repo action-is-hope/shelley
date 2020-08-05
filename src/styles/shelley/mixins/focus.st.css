@@ -1,3 +1,9 @@
+/**
+ * = PSEUDO FOCUS - mixins/focus.st.css
+ * 
+ * ========================================================================= */
+
+
 /* = Shelley project scope and vars. */
 :import {
   -st-from: "../project.st.css";

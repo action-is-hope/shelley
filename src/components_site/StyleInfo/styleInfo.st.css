@@ -11,25 +11,11 @@
 
 @st-scope Shelley {
 
-  .root {
-    /* grid-column: edge; */
-  }
+  .root {}
 
-  .html,
-  .css {
-    /* grid-column: goal-start / half; */
-    /* grid-row: 1 */
-    overflow-x: auto
-  }
+  .html {}
 
-  .css {
-    /* grid-row: 1 */
-    /* grid-column: half / goal-end; */
-  }
+  .css {}
 
-  .meta {
-    align-self: flex-end;
-    position: relative;
-    top: -1.4rem;
-  }
+  .meta {}
 }

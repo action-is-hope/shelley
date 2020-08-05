@@ -1,0 +1,46 @@
+/**
+ * = PAGE TITLE - pageTitle.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-background-4-default,
+    /* = CSS3 Switcher vars. */
+    --color-background-4;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/PageTitle/pageTitle.st.css";
+  -st-default: PageTitle;
+}
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+@st-scope Shelley {
+  PageTitle {
+    /*= Main background including fallback. */
+    background-color: value(--color-background-4-default);
+    background-color: var(--color-background-4, value(--color-background-4-default));
+    min-height: 12rem;
+    margin-bottom: 56px;
+    align-items: center;
+    grid-row-gap: 8px;
+  }
+}

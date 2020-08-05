@@ -1,6 +1,8 @@
 /**
- * = Pseudo focus shared styles.
- */
+ * = PSEUDO FOCUS - mixins/focus.st.css
+ * 
+ * ========================================================================= */
+
 .pseudoFocus {
   display: block;
   content: "";
@@ -9,11 +11,7 @@
   left: -3px;
   bottom: -3px;
   right: -3px;
-  /*= Give us that 'glow' effect for the focused state.*/
-  /* box-shadow: 0 0 1px 2px value(--color-focus-default);
-  box-shadow: 0 0 1px 2px var(--color-focus, value(--color-focus-default)); */
   opacity: 0;
-  /* transition: opacity 0.2s; */
   transition: opacity 120ms;
 }
 

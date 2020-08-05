@@ -19,12 +19,7 @@
     text-vol-8-max, text-vol-8-scale, text-vol-8-line-height,
     text-vol-9-max, text-vol-9-scale, text-vol-9-line-height,
     text-vol-10-max, text-vol-10-scale, text-vol-10-line-height,
-    text-vol-11-max, text-vol-11-scale, text-vol-11-line-height,
-    --color-accent-1-default,
-    --color-accent-4-default,
-    /* = CSS3 Switcher vars. */
-    --color-accent-1,
-    --color-accent-4;
+    text-vol-11-max, text-vol-11-scale, text-vol-11-line-height;
 }
 
 /* = Root Component. */

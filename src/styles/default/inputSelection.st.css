@@ -12,12 +12,7 @@
   -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit,
-    --color-background-3-default,
-    --color-form-mark-default,
-    /* = CSS3 Switcher vars. */
-    --color-background-3,
-    --color-form-mark;
+    spacing-unit;
 }
 
 /* = Root style API. */

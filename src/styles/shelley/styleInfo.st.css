@@ -1,0 +1,35 @@
+/**
+ * = STYLE INFO - styleInfo.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/StyleInfo/styleInfo.st.css";
+  -st-default: StyleInfo;
+}
+
+@st-scope Shelley {
+
+  StyleInfo {}
+
+  StyleInfo::html,
+  StyleInfo::css {
+    overflow-x: auto
+  }
+
+  StyleInfo::css {}
+
+  StyleInfo::meta {
+    align-self: flex-end;
+    position: relative;
+    top: -1.4rem;
+  }
+}

@@ -1,0 +1,94 @@
+/**
+ * = SHELLEY BANNER - propsDshelleyBanneremo.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-accent-1-default,
+    --color-accent-2-default,
+    --color-ui-default
+    /* = CSS3 Switcher vars. */
+    --color-accent-2;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/ShelleyBanner/shelleyBanner.st.css";
+  -st-default: Banner;
+  -st-named:
+    tagline,
+    tld;
+}
+
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+@st-scope Shelley {
+  Banner {
+    margin: 40px 0;
+    padding-top: 50px;
+    padding-bottom: 90px;
+  }
+
+  Banner::internalGrid {
+    grid-column-start: goal-start;
+    grid-column-end: goal-end;
+    display: grid;
+    justify-items: center;
+
+    /* grid-row-gap: 24px;
+    grid-template-columns: 8fr 4fr; */
+
+    grid-row-gap: 84px;
+    grid-template-columns: 7fr 5fr;
+  }
+
+  Banner::logoPosition {
+    grid-row: 1;
+    grid-column-start: 2;
+    font-size: 1.25em;
+    font-size: 1.35em;
+  }
+
+  Banner Text.title.uppercase {
+    grid-row: 1;
+    grid-column-start: 1;
+    justify-self: center;
+    align-self: center;
+    letter-spacing: 0.4em;
+  }
+
+  Banner Text.tagline {
+    grid-row: 2;
+    grid-column-start: 1;
+    /* justify-self: start; */
+    justify-self: center;
+    align-self: center;
+  }
+
+  Banner Text.tld {
+    grid-row: 2;
+    grid-column-start: 2;
+    align-self: end;
+    font-size: 12px;
+    letter-spacing: 16px;
+    text-transform: uppercase;
+    transform: rotate(1deg);
+    /* color: #59ff59; */
+    color: #51de98;
+    color: var(--color-accent-2);
+    font-size: 14px;
+    letter-spacing: 18px;
+    font-size: 0.9372071227741331em;
+    letter-spacing: 22px;
+  }
+}
