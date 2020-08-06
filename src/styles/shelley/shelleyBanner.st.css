@@ -3,6 +3,13 @@
  * 
  * ========================================================================= */
 
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    spacing-unit,
+}
+
 
 /* = Shelley project scope and vars. */
 :import {
@@ -11,7 +18,7 @@
   -st-named:
     --color-accent-1-default,
     --color-accent-2-default,
-    --color-ui-default
+    --color-ui-default,
     /* = CSS3 Switcher vars. */
     --color-accent-2;
 }
@@ -75,7 +82,7 @@
     align-self: center;
   }
 
-  Banner Text.tld {
+  Banner::tld {
     grid-row: 2;
     grid-column-start: 2;
     align-self: end;
@@ -83,9 +90,8 @@
     letter-spacing: 16px;
     text-transform: uppercase;
     transform: rotate(1deg);
-    /* color: #59ff59; */
-    color: #51de98;
-    color: var(--color-accent-2);
+    color: value(--color-accent-2-default);
+    color: var(--color-accent-2, value(--color-accent-2-default));
     font-size: 14px;
     letter-spacing: 18px;
     font-size: 0.9372071227741331em;
