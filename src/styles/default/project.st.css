@@ -198,6 +198,23 @@
 
 /*=== GLOBAL CSS ===*/
 :root {
+  /* = Colours */
+
+  /* = Indicator colours */
+  --color-focus: #09b1f1;
+  /* = Status colours */
+  --color-status-error: #b66b6e;
+  --color-status-warn: orange;
+  --color-status-neutral: blue;
+  --color-status-success: green;
+  /* = Form colours */
+  --color-form-mark: rgba(119, 140, 157, 0.7);
+  --color-form-selection-track: rgba(119, 140, 157, 1);
+  --color-form-selection-mark: #333;
+  --color-toggle-mark: #fff;
+  /*= Misc */
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+
   /* = Grid */
   --grid-gap: 3vw;
 

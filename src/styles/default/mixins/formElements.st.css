@@ -25,7 +25,16 @@
     text-vol-3-scale, text-vol-3-max,
     text-vol-4-scale, text-vol-4-max,
     text-vol-5-scale, text-vol-5-max,
-    text-vol-6-scale, text-vol-6-max;
+    text-vol-6-scale, text-vol-6-max,
+    /* = CSS3 Vars. */
+    --color-focus,
+    --color-status-error,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-toggle-mark,
+    --select-icon;
+
 }
 
 /* = Root Component */
@@ -143,6 +152,7 @@
   content: "";
   width: 1px;
   transition: background-color 0.3s;
+  background-color: var(--color-form-mark);
 }
 
 .textualFieldContainer::before {
@@ -194,6 +204,7 @@
   background-size: 18px 18px;
   background-position: right 18px top 50%;
   padding-right: calc(2 * value(spacing-unit));
+  background-image: var(--select-icon);
 }
 
 /**
@@ -212,11 +223,17 @@
   opacity: 1;
   /* = The glow from the box-shadow means we don't want the width, too chunky. */
   width: 0;
+  /* = Give us that 'glow' effect for the focused state.*/
+  box-shadow: 0 0 1px 1px var(--color-focus);
 }
 
 /* = Error */
 .textualFieldContainerHasError::before,
-.textualFieldContainerHasError::after {}
+.textualFieldContainerHasError::after {
+  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
+  /* display: block; */
+  background-color: var(--color-status-error);
+}
 
 /* = Disabled */
 .disabledField {
@@ -378,6 +395,7 @@
   justify-content: center;
   /* = See below for replacement, I know, I know "if we must". We must! ;-) */
   outline: none;
+  border-color: var(--color-form-selection-track);
 }
 
 /* = Field focus indicator, via pseudo element. */
@@ -428,7 +446,9 @@
   width: 0.5em;
   height: 0.5em;
   opacity: 0;
-  display: block
+  display: block;
+  background-color: #ddd;
+  background-color: var(--color-form-selection-mark);
 }
 
 .RadioCheckboxCommon:checked::before {
@@ -474,10 +494,12 @@
   transition: all 0.2s;
   transform: translate(-50%);
   z-index: 1;
+  background-color: var(--color-toggle-mark);
 }
 
 .ToggleFieldInput:checked::before {
   transform: translate(50%);
+  background-color: var(--color-form-selection-mark);
 }
 
 /* .SwitchFieldInput {} */

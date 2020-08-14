@@ -3,6 +3,15 @@
  * 
  * ========================================================================= */
 
+/* = Default project vars. */
+:import {
+  -st-from: "../../default/project.st.css";
+  -st-named:
+    spacing-unit,
+    --color-focus;
+}
+
+/* = pseudoFocus mixing baby! */
 .pseudoFocus {
   display: block;
   content: "";
@@ -13,6 +22,7 @@
   right: -3px;
   opacity: 0;
   transition: opacity 120ms;
+  box-shadow: 0 0 1px 2px var(--color-focus);
 }
 
 .pseudoFocusVisible {

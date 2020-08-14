@@ -20,7 +20,6 @@
   -st-default: Shelley;
 }
 
-
 /* = Root Component */
 :import {
   -st-from: "../../components/InputSelect/inputSelect.st.css";
@@ -32,30 +31,20 @@
   -st-default: InputLabel;
 }
 
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    selectFieldInput;
-}
-
-
 @st-scope Shelley {
 
   /* = Example targeting the root. */
-  InputSelect {}
+  /* InputSelect {} */
 
   /* = Example targeting the label. */
-  InputSelect InputLabel {}
+  /* InputSelect InputLabel {} */
 
-  /* = Apply selectFieldContainer to the base fieldContainer. */
-  InputSelect::fieldContainer {}
+  /* = The container. */
+  /* InputSelect::fieldContainer {} */
 
-  /* = Display the right hand indicator on <select>'s to encase the arrow icon. */
-  InputSelect::fieldContainer::after {}
+  /* = Right hight hand indicator on <select>'s encasing the arrow icon. */
+  /* InputSelect::fieldContainer::after {} */
 
-  /*= Applies the down arrow, aka --select-icon and associated styles. */
-  InputSelect::fieldInput {
-    -st-mixin: selectFieldInput;
-  }
+  /* = The actual field. */
+  /* InputSelect::fieldInput {} */
 }

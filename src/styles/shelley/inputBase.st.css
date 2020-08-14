@@ -23,7 +23,6 @@
   -st-default: Shelley;
   -st-named:
     --color-background-3-default,
-    /* = CSS3 Switcher vars. */
     --color-background-3;
 }
 
@@ -32,44 +31,18 @@
 :import {
   -st-from: "../../components/InputBase/inputBase.st.css";
   -st-default: InputBase;
-  -st-named: fieldInput
-}
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    textualFieldContainer,
-    textualFieldContainerHasError;
 }
 
 
 @st-scope Shelley {
 
-  /*==== BASE ====*/
-
-  InputBase {}
-
-  InputBase::fieldContainer {
-    -st-mixin: textualFieldContainer;
-  }
-
-  /* = Native input field. */
-  InputBase::fieldInput {}
-
-
-  /*==== STATES ====*/
-
-  /* = Error */
-  InputBase:error::fieldContainer {
-    -st-mixin: textualFieldContainerHasError
-  }
-
+  /* = Example targeting the root. */
+  /* InputBase {} */
 
   /*==== VARIANTS ====*/
 
   /* = Variant 1 - "Body" */
-  InputBase:variant(1) {}
+  /* InputBase:variant(1) {} */
 
 
   /* = Variant 2 - "Data" */

@@ -1,5 +1,5 @@
 /**
- * = INPUTSELECTIONCONTROL - inputSelectionControl.st.css
+ * = INPUT SELECTION CONTROL - inputSelectionControl.st.css
  * 
  * ========================================================================= */
 
@@ -16,31 +16,17 @@
   -st-default: InputSelectionControl;
 }
 
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    SelectionControlFieldInput,
-    RadioCheckboxCommon,
-    ToggleFieldInput;
-}
-
-
 /* = This is how we can scope the styles. */
 @st-scope Shelley {
 
-  InputSelectionControl::inputField {
-    -st-mixin: SelectionControlFieldInput;
-  }
+  /* InputSelectionControl{} */
+
+  /* InputSelectionControl::inputField {} */
 
   /* = Radio Checkbox common styles. */
-  InputSelectionControl:type(checkbox)::inputField,
-  InputSelectionControl:type(radio)::inputField {
-    -st-mixin: RadioCheckboxCommon;
-  }
+  /* InputSelectionControl:type(checkbox)::inputField,
+  InputSelectionControl:type(radio)::inputField {} */
 
   /* = Toggle */
-  InputSelectionControl:type(toggle)::inputField {
-    -st-mixin: ToggleFieldInput;
-  }
+  /* InputSelectionControl:type(toggle)::inputField {} */
 }

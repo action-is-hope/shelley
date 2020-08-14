@@ -11,6 +11,21 @@
 :import {
   -st-from: "../project.st.css";
   -st-named:
+    --color-focus,
+    --color-status-error,
+    --color-status-warn,
+    --color-status-neutral,
+    --color-status-success,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-toggle-mark,
+    --select-icon,
+}
+
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
     /* = Build time vars (Stylable). */
     --dark-01,
     --dark-01-raw,
@@ -19,7 +34,6 @@
     /* = Colours - whatever we need for this file. */
     --color-ui-default,
     --color-background-1-default,
-    --color-focus-default,
     /* = Run time vars (CSS) - importing maintains the namespace. */
     /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
     --color-ui,
@@ -43,22 +57,22 @@
     --color-text-3,
     --color-text-4,
     /* = Status colours */
-    --color-status-error,
+    /* --color-status-error,
     --color-status-warn,
     --color-status-neutral,
-    --color-status-success,
+    --color-status-success, */
     /* = Indicator colours */
-    --color-focus,
+    /* --color-focus, */
     /* = Form colours */
-    --color-form-mark,
+    /* --color-form-mark,
     --color-form-selection-track,
-    --color-form-selection-mark,
+    --color-form-selection-mark, */
     /* = Gradiants */
     --grad-1,
     /* = Misc */
-    --select-icon,
+    /* --select-icon, */
     /* = Misc - CSS var only, fix?? */
-    --color-toggle-mark,
+    /* --color-toggle-mark, */
     --status-background,
     --support-background;
 }
@@ -107,7 +121,7 @@
   --color-status-success: green;
 
   /* = Indicator colours */
-  --color-focus: value(--color-focus-default);
+  /* --color-focus: pink; */
 
   /* = Form colours */
   --color-form-mark: rgba(121, 170, 216, 0.5);

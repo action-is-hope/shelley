@@ -11,6 +11,16 @@
 :import {
   -st-from: "../default/project.st.css";
   -st-named:
+    --color-focus,
+    --color-status-error,
+    --color-status-warn,
+    --color-status-neutral,
+    --color-status-success,
+    --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark,
+    --color-toggle-mark,
+    --select-icon,
     --grid-gap,
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,
@@ -77,25 +87,25 @@
   --color-text-4-default: #f7e1b9;
 
   /* = Status colours */
-  --color-status-error-default: #b66b6e;
+  /* --color-status-error-default: #b66b6e;
   --color-status-warn-default: orange;
   --color-status-neutral-default: blue;
-  --color-status-success-default: green;
+  --color-status-success-default: green; */
 
   /* = Indicator colours */
-  --color-focus-default: #09b1f1;
+  /* --color-focus-default: #09b1f1; */
 
   /* = Form colours */
-  --color-form-mark-default: rgba(119, 140, 157, 0.7);
+  /* --color-form-mark-default: rgba(119, 140, 157, 0.7);
   --color-form-selection-track-default: rgba(119, 140, 157, 1);
-  --color-form-selection-mark-default: value(--color-accent-2-default);
+  --color-form-selection-mark-default: value(--color-accent-2-default); */
 
   /* = Gradiants */
   --grad-1-default: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
 
   /* = Misc */
   /* --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
-  --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+  /* --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
   --status-background-default: #692e2e;
   --support-background-default: #2e5b69;
 }
@@ -138,25 +148,26 @@
   --color-text-4: value(--color-text-4-default);
 
   /* = Status colours */
-  --color-status-error: value(--color-status-error-default);
+  /* --color-status-error: value(--color-status-error-default);
   --color-status-warn: value(--color-status-warn-default);
   --color-status-neutral: value(--color-status-neutral-default);
-  --color-status-success: value(--color-status-success-default);
+  --color-status-success: value(--color-status-success-default); */
 
   /* = Indicator colours */
-  --color-focus: value(--color-focus-default);
+  /* --color-focus: green; */
 
   /* = Form colours */
-  --color-form-mark: value(--color-form-mark-default);
+  /* --color-form-mark: value(--color-form-mark-default);
   --color-form-selection-track: value(--color-form-selection-track-default);
-  --color-form-selection-mark: value(--color-form-selection-mark-default);
-  --color-toggle-mark: value(--color-ui-default);
+  --color-form-selection-mark: value(--color-form-selection-mark-default); */
+  /* --color-toggle-mark: value(--color-ui-default); */
+  /* --color-toggle-mark: pink; */
 
   /* = Gradiants */
   --grad-1: value(--grad-1-default);
 
   /* = Misc */
-  --select-icon: value(--select-icon-default);
+  /* --select-icon: value(--select-icon-default); */
   --status-background: value(--status-background-default);
   --support-background: value(--support-background-default);
 
