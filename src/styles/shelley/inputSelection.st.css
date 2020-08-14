@@ -58,7 +58,7 @@
 
 /* = Shelley Mixins */
 :import {
-  -st-from: '../../components/mixins/visuallyHidden.st.css';
+  -st-from: '../mixins/visuallyHidden.st.css';
   -st-named: visuallyHidden
 }
 

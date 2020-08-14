@@ -7,6 +7,18 @@
 
 @namespace "Shelley";
 
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --grid-gap,
+    --grid-v1-cols-xs,
+    --grid-v1-cols-sm,
+    --grid-v1-cols-md;
+}
+
+
+
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
 
 :vars {
@@ -146,5 +158,7 @@
   /* = Misc */
   --select-icon: value(--select-icon-default);
   --status-background: value(--status-background-default);
-  --support-background: value(--support-background-default)
+  --support-background: value(--support-background-default);
+
+  /* --grid-v1-cols-md: 1fr; */
 }

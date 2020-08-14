@@ -39,7 +39,6 @@
 :import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
-    textualFieldRoot,
     textualFieldContainer,
     textualFieldContainerHasError;
 }

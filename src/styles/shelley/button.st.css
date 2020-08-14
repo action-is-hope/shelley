@@ -107,3 +107,9 @@
   Button:tone(4) {
     --accent: var(--color-accent-4);
   }
+
+  /* = Custom classes, you will need to import this stylesheet to use them. */
+  .block {
+    width: 100%;
+  }
+}

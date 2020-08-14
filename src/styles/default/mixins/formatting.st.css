@@ -28,8 +28,7 @@
   margin-top: calc(value(spacing-unit) * 2);
 }
 
-.formatted>blockquote,
-.formatted>CodeSample {
+.formatted>blockquote {
   margin-top: calc(value(spacing-unit) * 4);
   margin-bottom: calc(value(spacing-unit) * 5);
   margin-bottom: 0;
@@ -39,8 +38,7 @@
   margin-top: calc(value(spacing-unit) * 2);
 }
 
-.formatted>blockquote+Text,
-.formatted>CodeSample+Text {
+.formatted>blockquote+Text {
   margin-top: calc(value(spacing-unit) * 6);
 }
 
@@ -60,19 +58,3 @@
 .formatted>p+h6 {
   margin-top: calc(value(spacing-unit) * 2);
 }
-
-/* Grid:typographic>CodeSample:last-child {
-  margin-bottom: 0;
-} */
-
-/* Grid:typographic>blockquote+p {
-  margin-top: calc(value(spacing-unit) * 3);
-} */
-
-/* Grid:typographic>p+blockquote {
-  margin-top: calc(value(spacing-unit) * 4);
-}
-
-Grid:typographic>blockquote+p {
-  margin-top: calc(value(spacing-unit) * 3);
-} */

@@ -1,0 +1,71 @@
+/* = Default project vars. */
+:import {
+  -st-from: "../../default/project.st.css";
+  -st-named:
+    spacing-unit;
+}
+
+/**
+ * = Margins
+ */
+.mtGridGap {
+  margin-top: 3vw;
+}
+
+.mt1 {
+  margin-top: value(spacing-unit);
+}
+
+.mt2 {
+  margin-top: calc(value(spacing-unit) * 2);
+}
+
+.mt3 {
+  margin-top: calc(value(spacing-unit) * 3);
+}
+
+.mt4 {
+  margin-top: calc(value(spacing-unit) * 4);
+}
+
+.mt8 {
+  margin-top: calc(value(spacing-unit) * 8);
+}
+
+.mb1 {
+  margin-bottom: value(spacing-unit);
+}
+
+.mb2 {
+  margin-bottom: calc(value(spacing-unit) * 2);
+}
+
+.mb3 {
+  margin-bottom: calc(value(spacing-unit) * 3);
+}
+
+.mb4 {
+  margin-bottom: calc(value(spacing-unit) * 4);
+}
+
+/* 
+@st-scope Default {
+  .mt1 {
+    margin-top: calc(value(spacing-unit) * 4)
+  }
+
+  .mb1 {
+    margin-bottom: calc(value(spacing-unit) * 4)
+  }
+
+  .mt2 {
+    margin-top: calc(value(spacing-unit) * 8)
+  }
+
+  .mb2 {
+    margin-bottom: calc(value(spacing-unit) * 8)
+  }
+
+  .mtAuto {
+    margin-top: auto;
+  } */

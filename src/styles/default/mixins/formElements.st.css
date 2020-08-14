@@ -49,7 +49,7 @@
 /* = Mixins & Utils */
 
 :import {
-  -st-from: "../formatters/common";
+  -st-from: "../../formatters/common";
   -st-named: respScale;
 }
 

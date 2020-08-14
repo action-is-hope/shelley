@@ -60,6 +60,6 @@
 :global(h5),
 :global(h6),
 :global(p) {
-  font-size: 1em;
+  /* font-size: 1em; */
   margin: 0;
 }

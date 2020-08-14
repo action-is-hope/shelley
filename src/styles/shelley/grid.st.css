@@ -14,6 +14,7 @@
   -st-from: "../default/project.st.css";
   -st-named:
     spacing-unit,
+    breakpoint-sm;
 }
 
 /* = Shelley project scope and vars. */
@@ -30,4 +31,20 @@
 
 @st-scope Shelley {
   /* = Your grid styles here... */
+
+
+  /* = Variant 3: 7 | 5 */
+
+  Grid:variant(5) {
+    display: grid;
+    grid-column: goal;
+  }
+}
+
+@media value(breakpoint-sm) {
+  @st-scope Shelley {
+    Grid:variant(5) {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
 }

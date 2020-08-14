@@ -8,7 +8,7 @@
 @namespace "Default";
 
 :import {
-  -st-from: "./formatters/common";
+  -st-from: "../formatters/common";
   -st-named: multiply, divide, respScale;
 }
 
@@ -19,7 +19,7 @@
   /*=== LAYOUT AND GRID ===*/
 
   /** Breakpoints */
-  breakpoint-xs: "only screen and (min-width: 0px)";
+  /* @todo - Switch to env when it supports authored vars. */
   breakpoint-sm: "only screen and (min-width: 568px)";
   breakpoint-md: "only screen and (min-width: 950px)";
   breakpoint-lg: "only screen and (min-width: 1200px)";
@@ -33,7 +33,6 @@
   overriding the values that exist already then we tend to use min-widths, if we are 
   having to turn off styles accross breakpoints we use max-width for those styles. */
 
-  breakpoint-xs-max: "only screen and (max-width: 0px)";
   breakpoint-sm-max: "only screen and (max-width: 567px)";
   breakpoint-md-max: "only screen and (max-width: 949px)";
   breakpoint-lg-max: "only screen and (max-width: 1199px)";
@@ -48,17 +47,7 @@
 
   /** Grid */
 
-  grid-gap-xs: 0.75rem;
-  grid-gap-md: 1.45rem;
 
-  /* This is a calc that will give you mobile column width. */
-  --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
-  --grid-base-column-width-md: 4.011vw;
-  /* Base grid-template-column values for the 14 column grid, 2 columns are auto and we have 12 that make up the main working area. */
-  --grid-template-columns-base-sm: [touch-start] 12px [goal-start mid-start] repeat(12, 1fr) [mid-end goal-end] 12px [touch-end];
-  --grid-template-columns-base-md: [touch-start] auto [goal-start] repeat(2, minmax(0, 4.011vw)) [mid-start] repeat(8, minmax(0, 4.011vw)) [mid-end] repeat(2, minmax(0, 4.011vw)) [goal-end] auto [touch-end];
-  /* When we use the grid inside a grid we want to define the columns iniside above grid rule. So use this when using a grid inside a container */
-  --grid-template-columns-base-mid-start-end: repeat(12, minmax(0, 4.011vw));
 
 
   /*=== TYPE AND TEXT ===*/
@@ -208,6 +197,60 @@
 }
 
 /*=== GLOBAL CSS ===*/
+:root {
+  /* = Grid */
+  --grid-gap: 3vw;
+
+  /* 
+   * = Variant 1: Core single column 
+   *
+   * This is our 'go to' core layout grid with some named
+   * lines which act as a type of tetris informing the element
+   * how wide the slot is as we drop them in.
+   */
+  --grid-v1-cols-xs:
+    [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  --grid-v1-cols-sm:
+    [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+  --grid-v1-cols-md:
+    [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+  /* 
+   * = 'Subgrids'
+   *
+   * We tend to use these in conjuction with variant 1 so xs is siply set to 
+   * initial so that items sit on the mobile grid lines set by --grid-v1-cols-xs.
+   *
+   * We liked that they just ended up matching the variant numbers but override them
+   * to whatever makes sense for you.
+   *
+   * We only set breakpoints in core up to md/lr and slots 5 onwards are completely 
+   * unstyled so you will need to set them up however you want them in grid.st.css 
+   *
+   * You can also also augment anything you need for slots 1-5 if you need something 
+   * different at wider resolutions. We haven't found the need... yet.
+   */
+
+  /* = Variant 2: Standard 2 col. */
+  --grid-v2-cols-xs: initial;
+  --grid-v2-cols-sm: 1fr 1fr;
+  /* We want the same for md as sm so we point to that value. */
+  --grid-v2-cols-md: var(--grid-v2-cols-sm);
+
+  /* = Variant 3: Standard 3 col. */
+  --grid-v3-cols-xs: initial;
+  --grid-v3-cols-sm: 1fr 1fr;
+  --grid-v3-cols-md: 1fr 1fr 1fr;
+
+  /* = Variant 4: Standard 4 col. */
+  --grid-v4-cols-xs: initial;
+  --grid-v4-cols-sm: 1fr 1fr;
+  --grid-v4-cols-md: 1fr 1fr 1fr 1fr;
+}
+
+/* This is a calc that will give you mobile column width. */
+/* --grid-base-column-width-sm: calc((100vw - 24px - (13 * 12px)) / 12);
+  --grid-base-column-width-md: 4.011vw; */
+
 
 /** 
  * This ideally will just be a spinkling of higher level styles that use 

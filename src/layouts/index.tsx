@@ -11,6 +11,8 @@ import { classes as inputSelection } from "../styles/shelley/inputSelection.st.c
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 
+import { colorSwatchSize } from "../styles/default/environmentVars";
+
 const Header = ({ altTheme, changeTheme }: any) => (
   <div className={style.navbar}>
     <div className={style.inner}>

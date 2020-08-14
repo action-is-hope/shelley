@@ -26,7 +26,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
       <ShelleyBanner />
 
       <Grid tag="main">
-        <Grid variant={3}>
+        <Grid variant={5}>
           <div className={classes.card}>
             <H2 uppercase vol={4}>
               Synopsis

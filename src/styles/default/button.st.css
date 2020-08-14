@@ -30,7 +30,7 @@
 
 /* = Shelley Mixins */
 :import {
-  -st-from: '../../components/mixins/visuallyHidden.st.css';
+  -st-from: '../mixins/visuallyHidden.st.css';
   -st-named: visuallyHidden;
 }
 
@@ -55,7 +55,7 @@
 }
 
 :import {
-  -st-from: "./formatters/common";
+  -st-from: "../formatters/common";
   -st-named: respScale;
 }
 
@@ -84,6 +84,9 @@
     /* = Material defo popularised uppercase buttons, we like it but readability 
     takes a hit and be careful in some langauges such as Greek. */
     text-transform: uppercase;
+
+    height: env(--color-swatch-size);
+
   }
 
   /* = Inner <span> */

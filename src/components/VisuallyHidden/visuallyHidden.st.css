@@ -1,5 +1,5 @@
 :import {
-	-st-from: '../mixins/visuallyHidden.st.css';
+	-st-from: '../../styles/mixins/visuallyHidden.st.css';
 	-st-named: visuallyHidden
 }
 
