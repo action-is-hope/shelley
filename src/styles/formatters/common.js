@@ -50,7 +50,7 @@ module.exports = {
    * @param  {String} max Max font-size, unit optional.
    * @param  {String} transitionWidthUp Starting width where min should be true.
    * @param  {String} transitionWidthDown End width where max should be true.
-   * @param  {String} unit Optional unit if min and max are unitless.
+   * @param  {String} unit Optional unit if min is unitless.
    * @return {String} A responsive calc value that is not limited to font-size...
    */
   respScale: (
@@ -66,13 +66,9 @@ module.exports = {
     const widthRemainer = transitionWidthUp - transitionWidthDown;
     if (!minUnit) {
       // console.warn(`No min unit ${min}- ${minUnit} ${max}- ${minUnit}`);
-    } else if (minUnit != maxUnit) {
-      // console.warn(
-      //   `Unit mismatch for respScale args $${min}- ${minUnit} ${max}- ${minUnit}`
-      // );
     } else {
       unit = minUnit;
     }
-    return `calc(${minValue}${unit} + ${fontSizeDiff} * ((100vw - ${transitionWidthDown}${unit}) / (${widthRemainer})))`;
+    return `calc(${minValue}${unit} + ${fontSizeDiff} * (100vw - ${transitionWidthDown}${unit}) / (${widthRemainer}))`;
   }
 };

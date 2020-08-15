@@ -12,10 +12,7 @@
   -st-from: "../default/project.st.css";
   -st-named:
     --color-focus,
-    --color-status-error,
-    --color-status-warn,
-    --color-status-neutral,
-    --color-status-success,
+    --color-error,
     --color-form-mark,
     --color-form-selection-track,
     --color-form-selection-mark,
@@ -24,7 +21,12 @@
     --grid-gap,
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,
-    --grid-v1-cols-md;
+    --grid-v1-cols-md,
+
+    --text-vol-10-min,
+    --text-vol-10-max,
+    --text-vol-10-scale,
+    --text-vol-10-line-height;
 }
 
 
@@ -46,12 +48,15 @@
 
   /*=== COLOURS - The Queens English darling... ===*/
 
-  /* = Core light - always the same. */
+  /* = Core light - always light or dark regardless of theme. */
   --light-01-raw: 255, 255, 255;
   --light-01: rgb(value(--light-01-raw));
   /* = Core dark . */
   --dark-01-raw: 51, 51, 51;
   --dark-01: rgb(value(--dark-01-raw));
+  /* = 'raw' are just the rgb values we we can use them with rgba 
+   * where we can provide the alpha yet still have the raw value change
+   * for our style-switcher and within lots of alpha variant vars. */
 
   /* 
    * = 'Default' site values 
@@ -64,7 +69,7 @@
   /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui-default: value(--light-01);
   --color-ui-inverse-default: value(--dark-01);
-  --color-ui-raw-default: value(--light-01);
+  --color-ui-raw-default: value(--light-01-raw);
   --color-ui-raw-inverse-default: value(--dark-01-raw);
 
   /* = Accent colours */
@@ -87,10 +92,7 @@
   --color-text-4-default: #f7e1b9;
 
   /* = Status colours */
-  /* --color-status-error-default: #b66b6e;
-  --color-status-warn-default: orange;
-  --color-status-neutral-default: blue;
-  --color-status-success-default: green; */
+  /* --color-error-default: #b66b6e; */
 
   /* = Indicator colours */
   /* --color-focus-default: #09b1f1; */
@@ -108,17 +110,11 @@
   /* --select-icon-default: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
   --status-background-default: #692e2e;
   --support-background-default: #2e5b69;
+
+
 }
 
-/*=== GLOBAL CSS ===*/
-
-/** 
- * This ideally will just be a spinkling of higher level styles that use 
- * variables. For the reset globals we set them in ./allGlobals.st.css 
- * which is pulled in within index.ts */
-.root {
-  font-family: value(font-plain);
-}
+/*=== Root Level CSS Variables - 'run time' ===*/
 
 /* = Map stylable build time variables to CSS variables for theme switching. */
 :root {
@@ -148,10 +144,11 @@
   --color-text-4: value(--color-text-4-default);
 
   /* = Status colours */
-  /* --color-status-error: value(--color-status-error-default);
-  --color-status-warn: value(--color-status-warn-default);
-  --color-status-neutral: value(--color-status-neutral-default);
-  --color-status-success: value(--color-status-success-default); */
+  /* --color-error: value(--color-error-default); */
+  /* = Important: Any variables overridden from our default will need to be 
+   * imported from the default project file and not from your project file,
+   * we just override them here but they are initially set as part of default. */
+  --color-error: pink;
 
   /* = Indicator colours */
   /* --color-focus: green; */
@@ -162,6 +159,7 @@
   --color-form-selection-mark: value(--color-form-selection-mark-default); */
   /* --color-toggle-mark: value(--color-ui-default); */
   /* --color-toggle-mark: pink; */
+  --color-form-selection-mark: var(--color-accent-2);
 
   /* = Gradiants */
   --grad-1: value(--grad-1-default);
@@ -172,4 +170,16 @@
   --support-background: value(--support-background-default);
 
   /* --grid-v1-cols-md: 1fr; */
+  --text-vol-10-scale: 18px;
+}
+
+/*=== Root Level CSS ===*/
+
+/** 
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
+ * which is pulled in within index.ts */
+.root {
+  font-family: value(font-plain);
+  color: rgba(var(--color-ui-raw), 0.9)
 }

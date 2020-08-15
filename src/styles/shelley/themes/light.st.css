@@ -12,15 +12,12 @@
   -st-from: "../project.st.css";
   -st-named:
     --color-focus,
-    --color-status-error,
-    --color-status-warn,
-    --color-status-neutral,
-    --color-status-success,
+    --color-error,
     --color-form-mark,
     --color-form-selection-track,
     --color-form-selection-mark,
     --color-toggle-mark,
-    --select-icon,
+    --select-icon;
 }
 
 :import {
@@ -57,10 +54,7 @@
     --color-text-3,
     --color-text-4,
     /* = Status colours */
-    /* --color-status-error,
-    --color-status-warn,
-    --color-status-neutral,
-    --color-status-success, */
+    /* --color-error, */
     /* = Indicator colours */
     /* --color-focus, */
     /* = Form colours */
@@ -115,10 +109,7 @@
   --color-text-4: rgb(134, 102, 30);
 
   /* = Status colours - TBC */
-  --color-status-error: red;
-  --color-status-warn: orange;
-  --color-status-neutral: blue;
-  --color-status-success: green;
+  --color-error: red;
 
   /* = Indicator colours */
   /* --color-focus: pink; */

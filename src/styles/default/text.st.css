@@ -9,17 +9,17 @@
   -st-default: Default;
   -st-named:
     spacing-unit,
-    text-vol-1-max, text-vol-1-scale, text-vol-1-line-height,
-    text-vol-2-max, text-vol-2-scale, text-vol-2-line-height,
-    text-vol-3-max, text-vol-3-scale, text-vol-3-line-height,
-    text-vol-4-max, text-vol-4-scale, text-vol-4-line-height,
-    text-vol-5-max, text-vol-5-scale, text-vol-5-line-height,
-    text-vol-6-max, text-vol-6-scale, text-vol-6-line-height,
-    text-vol-7-max, text-vol-7-scale, text-vol-7-line-height,
-    text-vol-8-max, text-vol-8-scale, text-vol-8-line-height,
-    text-vol-9-max, text-vol-9-scale, text-vol-9-line-height,
-    text-vol-10-max, text-vol-10-scale, text-vol-10-line-height,
-    text-vol-11-max, text-vol-11-scale, text-vol-11-line-height;
+    --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
+    --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
+    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height,
+    --text-vol-4-max, --text-vol-4-scale, --text-vol-4-line-height,
+    --text-vol-5-max, --text-vol-5-scale, --text-vol-5-line-height,
+    --text-vol-6-max, --text-vol-6-scale, --text-vol-6-line-height,
+    --text-vol-7-max, --text-vol-7-scale, --text-vol-7-line-height,
+    --text-vol-8-max, --text-vol-8-scale, --text-vol-8-line-height,
+    --text-vol-9-max, --text-vol-9-scale, --text-vol-9-line-height,
+    --text-vol-10-max, --text-vol-10-scale, --text-vol-10-line-height,
+    --text-vol-11-max, --text-vol-11-scale, --text-vol-11-line-height;
 }
 
 /* = Root Component. */
@@ -46,94 +46,94 @@
 
   Text:vol(1) {
     -st-mixin:
-      textVol(scale value(text-vol-1-scale),
-        max value(text-vol-1-max),
-        lineHeight value(text-vol-1-line-height));
+      textVol(scale var(--text-vol-1-scale),
+        max var(--text-vol-1-max),
+        lineHeight var(--text-vol-1-line-height));
   }
 
   /* = Volume 2 */
   Text:vol(2) {
     -st-mixin:
-      textVol(scale value(text-vol-2-scale),
-        max value(text-vol-2-max),
-        lineHeight value(text-vol-2-line-height));
+      textVol(scale var(--text-vol-2-scale),
+        max var(--text-vol-2-max),
+        lineHeight var(--text-vol-2-line-height));
   }
 
   /* = Volume 3 */
   Text:vol(3) {
     -st-mixin:
-      textVol(scale value(text-vol-3-scale),
-        max value(text-vol-3-max),
-        lineHeight value(text-vol-3-line-height));
+      textVol(scale var(--text-vol-3-scale),
+        max var(--text-vol-3-max),
+        lineHeight var(--text-vol-3-line-height));
   }
 
 
   /* = Volume 4 */
   Text:vol(4) {
     -st-mixin:
-      textVol(scale value(text-vol-4-scale),
-        max value(text-vol-4-max),
-        lineHeight value(text-vol-4-line-height));
+      textVol(scale var(--text-vol-4-scale),
+        max var(--text-vol-4-max),
+        lineHeight var(--text-vol-4-line-height));
   }
 
   /* = Volume 5 */
   Text:vol(5) {
     -st-mixin:
-      textVol(scale value(text-vol-5-scale),
-        max value(text-vol-5-max),
-        lineHeight value(text-vol-5-line-height));
+      textVol(scale var(--text-vol-5-scale),
+        max var(--text-vol-5-max),
+        lineHeight var(--text-vol-5-line-height));
   }
 
   /* = Volume 6 */
   Text:vol(6) {
     -st-mixin:
-      textVol(scale value(text-vol-6-scale),
-        max value(text-vol-6-max),
-        lineHeight value(text-vol-6-line-height));
+      textVol(scale var(--text-vol-6-scale),
+        max var(--text-vol-6-max),
+        lineHeight var(--text-vol-6-line-height));
   }
 
   /* = Volume 7 */
   Text:vol(7) {
     -st-mixin:
-      textVol(scale value(text-vol-7-scale),
-        max value(text-vol-7-max),
-        lineHeight value(text-vol-7-line-height));
+      textVol(scale var(--text-vol-7-scale),
+        max var(--text-vol-7-max),
+        lineHeight var(--text-vol-7-line-height));
     font-weight: 300;
   }
 
   /* = Volume 8 */
   Text:vol(8) {
     -st-mixin:
-      textVol(scale value(text-vol-8-scale),
-        max value(text-vol-8-max),
-        lineHeight value(text-vol-8-line-height));
+      textVol(scale var(--text-vol-8-scale),
+        max var(--text-vol-8-max),
+        lineHeight var(--text-vol-8-line-height));
     font-weight: 300;
   }
 
   /* = Volume 9 */
   Text:vol(9) {
     -st-mixin:
-      textVol(scale value(text-vol-9-scale),
-        max value(text-vol-9-max),
-        lineHeight value(text-vol-9-line-height));
+      textVol(scale var(--text-vol-9-scale),
+        max var(--text-vol-9-max),
+        lineHeight var(--text-vol-9-line-height));
     font-weight: 300;
   }
 
   /* = Volume 10 */
   Text:vol(10) {
     -st-mixin:
-      textVol(scale value(text-vol-10-scale),
-        max value(text-vol-10-max),
-        lineHeight value(text-vol-10-line-height));
+      textVol(scale var(--text-vol-10-scale),
+        max var(--text-vol-10-max),
+        lineHeight var(--text-vol-10-line-height));
     font-weight: 300;
   }
 
   /* = Volume 11 */
   Text:vol(11) {
     -st-mixin:
-      textVol(scale value(text-vol-11-scale),
-        max value(text-vol-11-max),
-        lineHeight value(text-vol-11-line-height));
+      textVol(scale var(--text-vol-11-scale),
+        max var(--text-vol-11-max),
+        lineHeight var(--text-vol-11-line-height));
     font-weight: 300;
   }
 

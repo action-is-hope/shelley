@@ -10,6 +10,7 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Default;
+  -st-named: --color-error;
 }
 
 /* = Root Component */
@@ -27,6 +28,7 @@
     font-size: .8rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    color: var(--color-error);
   }
 
   /* = Error indicator bar. */
@@ -40,6 +42,7 @@
     width: 1px;
     transition: background-color 0.3s;
     opacity: 0.5;
+    background-color: var(--color-error);
   }
 }
 

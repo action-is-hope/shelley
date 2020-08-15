@@ -18,9 +18,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-status-error-default,
-    /* = CSS3 Switcher vars. */
-    --color-status-error;
+    --color-error;
 }
 
 
@@ -33,15 +31,8 @@
 @st-scope Shelley {
 
   /* = Root */
-  Error {
-    color: value(--color-status-error-default);
-    color: var(--color-status-error, value(--color-status-error-default));
-    -webkit-font-smoothing: antialiased;
-  }
+  Error {}
 
-  /* = Error indicator bar. */
-  Error::before {
-    background-color: value(--color-status-error-default);
-    background-color: var(--color-status-error, value(--color-status-error-default));
-  }
+  /* = Error indicator. */
+  Error::before {}
 }

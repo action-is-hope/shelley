@@ -34,9 +34,10 @@
   margin-bottom: 0;
 }
 
+/* 
 .formatted>h2+CodeSample {
   margin-top: calc(value(spacing-unit) * 2);
-}
+} */
 
 .formatted>blockquote+Text {
   margin-top: calc(value(spacing-unit) * 6);

@@ -22,13 +22,13 @@
   -st-from: "../project.st.css";
   -st-named:
     spacing-unit,
-    text-vol-3-scale, text-vol-3-max,
-    text-vol-4-scale, text-vol-4-max,
-    text-vol-5-scale, text-vol-5-max,
-    text-vol-6-scale, text-vol-6-max,
+    --text-vol-3-scale, --text-vol-3-max,
+    --text-vol-4-scale, --text-vol-4-max,
+    --text-vol-5-scale, --text-vol-5-max,
+    --text-vol-6-scale, --text-vol-6-max,
     /* = CSS3 Vars. */
     --color-focus,
-    --color-status-error,
+    --color-error,
     --color-form-mark,
     --color-form-selection-track,
     --color-form-selection-mark,
@@ -232,7 +232,7 @@
 .textualFieldContainerHasError::after {
   /* = Adjust the pseudo feild indicators to cater for custom focus style. */
   /* display: block; */
-  background-color: var(--color-status-error);
+  background-color: var(--color-error);
 }
 
 /* = Disabled */
@@ -292,8 +292,8 @@
 /* = Volume 3 */
 .inputVol3 {
   -st-mixin:
-    textVol(scale value(text-vol-3-scale),
-      max value(text-vol-3-max));
+    textVol(scale var(--text-vol-3-scale),
+      max var(--text-vol-3-max));
 }
 
 .inputVol3 InputLabel {
@@ -307,8 +307,8 @@
 /* = Volume 4 */
 .inputVol4 {
   -st-mixin:
-    textVol(scale value(text-vol-4-scale),
-      max value(text-vol-4-max));
+    textVol(scale var(--text-vol-4-scale),
+      max var(--text-vol-4-max));
 }
 
 .inputVol4 InputLabel {
@@ -326,8 +326,8 @@
    * resoultions. What fun!
    */
   -st-mixin:
-    textVol(scale calc(value(text-vol-5-scale) - 0.15rem),
-      max calc(value(text-vol-5-max) - 0.15rem));
+    textVol(scale calc(var(--text-vol-5-scale) - 0.15rem),
+      max calc(var(--text-vol-5-max) - 0.15rem));
 }
 
 .inputVol5 InputLabel {
@@ -345,8 +345,8 @@
    * resoultions. What fun!
    */
   -st-mixin:
-    textVol(scale calc(value(text-vol-6-scale) - 0.15rem),
-      max calc(value(text-vol-6-max) - 0.15rem));
+    textVol(scale calc(var(--text-vol-6-scale) - 0.15rem),
+      max calc(var(--text-vol-6-max) - 0.15rem));
 }
 
 .inputVol6 InputLabel {
@@ -395,6 +395,7 @@
   justify-content: center;
   /* = See below for replacement, I know, I know "if we must". We must! ;-) */
   outline: none;
+  border: 2px solid #333;
   border-color: var(--color-form-selection-track);
 }
 
