@@ -23,15 +23,11 @@
 :import {
   -st-from: "../project.st.css";
   -st-named:
-    /* = Build time vars (Stylable). */
+    /* = Run time vars (CSS) - importing maintains the namespace. */
     --dark-01,
     --dark-01-raw,
     --light-01,
     --light-01-raw,
-    /* = Colours - whatever we need for this file. */
-    --color-ui-default,
-    --color-background-1-default,
-    /* = Run time vars (CSS) - importing maintains the namespace. */
     /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
     --color-ui,
     --color-ui-raw,
@@ -84,10 +80,10 @@
   /* = Override our CSS runtime variables, if our user prefers it light as a feather. */
 
   /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
-  --color-ui: value(--dark-01);
-  --color-ui-raw: value(--dark-01-raw);
-  --color-ui-inverse: value(--light-01);
-  --color-ui-raw-inverse: value(--light-01-raw);
+  --color-ui: var(--dark-01);
+  --color-ui-raw: var(--dark-01-raw);
+  --color-ui-inverse: var(--light-01);
+  --color-ui-raw-inverse: var(--light-01-raw);
 
   /* = Accent colours */
   --color-accent-1: rgb(15, 108, 189);
@@ -103,9 +99,9 @@
   --color-background-modal: rgba(249, 249, 249, 0.98);
 
   /* = Text colours */
-  --color-text-1: value(--dark-01);
-  --color-text-2: rgba(value(--dark-01-raw), 0.9);
-  --color-text-3: rgba(value(--dark-01-raw), 0.8);
+  --color-text-1: var(--dark-01);
+  --color-text-2: rgba(var(--dark-01-raw), 0.9);
+  --color-text-3: rgba(var(--dark-01-raw), 0.8);
   --color-text-4: rgb(134, 102, 30);
 
   /* = Status colours - TBC */
@@ -131,7 +127,7 @@
 }
 
 .root :global(body) {
-  /*= Main light colours, no fallback as switcher is dependant upon CSS var support anyway. */
-  color: var(--color-ui, value(--color-ui-default));
-  background-color: var(--color-background-1, value(--color-background-1-default));
+  /*= Main light colours. */
+  color: var(--color-ui);
+  background-color: var(--color-background-1);
 }

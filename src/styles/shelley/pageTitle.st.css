@@ -16,8 +16,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-background-4-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS2 Vars. */
     --color-background-4;
 }
 
@@ -36,8 +35,7 @@
 @st-scope Shelley {
   PageTitle {
     /*= Main background including fallback. */
-    background-color: value(--color-background-4-default);
-    background-color: var(--color-background-4, value(--color-background-4-default));
+    background-color: var(--color-background-4);
     min-height: 12rem;
     margin-bottom: 56px;
     align-items: center;

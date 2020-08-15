@@ -4,18 +4,7 @@
 :import {
   -st-from: "../default/project.st.css";
   -st-named:
-    spacing-unit,
-    text-vol-1-max, text-vol-1-scale, text-vol-1-line-height,
-    text-vol-2-max, text-vol-2-scale, text-vol-2-line-height,
-    text-vol-3-max, text-vol-3-scale, text-vol-3-line-height,
-    text-vol-4-max, text-vol-4-scale, text-vol-4-line-height,
-    text-vol-5-max, text-vol-5-scale, text-vol-5-line-height,
-    text-vol-6-max, text-vol-6-scale, text-vol-6-line-height,
-    text-vol-7-max, text-vol-7-scale, text-vol-7-line-height,
-    text-vol-8-max, text-vol-8-scale, text-vol-8-line-height,
-    text-vol-9-max, text-vol-9-scale, text-vol-9-line-height,
-    text-vol-10-max, text-vol-10-scale, text-vol-10-line-height,
-    text-vol-11-max, text-vol-11-scale, text-vol-11-line-height;
+    spacing-unit;
 }
 
 /* = Shelley project scope and vars. */
@@ -23,9 +12,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-accent-1-default,
-    --color-accent-4-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-accent-1,
     --color-accent-4;
 }
@@ -83,8 +70,7 @@
     text-decoration: none;
     position: relative;
     padding-bottom: 1px;
-    color: value(--color-accent-1-default);
-    color: var(--color-accent-1, value(--color-accent-1-default));
+    color: var(--color-accent-1);
     border: 0 solid rgba(110, 164, 218, 0.5);
     border-width: 0 0 0.05em 0;
     transition: border-color .15s ease-out;
@@ -117,8 +103,8 @@
   Text code {
     font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
     font-size: .8em;
-    font-weight: 600 color: value(--color-accent-4-default);
-    color: var(--color-accent-4, value(--color-accent-4-default));
+    font-weight: 600;
+    color: var(--color-accent-4);
   }
 
   /* = Styles - typical child children. */

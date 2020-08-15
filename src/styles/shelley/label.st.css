@@ -8,8 +8,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-text-2-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-text-2;
 }
 
@@ -26,8 +25,7 @@
 @st-scope Shelley {
 
   Label::textContainer {
-    color: value(--color-text-2-default);
-    color: var(--color-text-2, value(--color-text-2-default));
+    color: var(--color-text-2);
   }
 
 }

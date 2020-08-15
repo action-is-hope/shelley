@@ -21,7 +21,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-background-3,
     --color-ui;
 }

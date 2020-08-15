@@ -20,11 +20,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-ui-inverse-default,
-    --color-accent-2-default,
-    --color-accent-3-default,
-    --color-accent-4-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-ui-inverse,
     --color-accent-1,
     --color-accent-2,

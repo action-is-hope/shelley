@@ -9,9 +9,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-ui-raw-default,
-    --color-background-1-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-ui-raw,
     --color-background-1;
 }
@@ -185,8 +183,7 @@
 
   PropsDemo::propsHeading span {
     /*= Main background including fallback. */
-    background-color: value(--color-background-1-default);
-    background-color: var(--color-background-1, value(--color-background-1-default));
+    background-color: var(--color-background-1);
     display: inline-block;
     padding: 0 4px;
   }

@@ -16,9 +16,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-accent-1-default,
-    --color-background-2-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-accent-1,
     --color-background-2;
 }
@@ -55,8 +53,8 @@
 
   /* @todo: Same time as upgrade switch to 'state' helpers as I much prefer this syntax: Blockquote:variant(1)::content { */
   Blockquote:variant(1)::content {
-    background-color: var(--color-background-2, value(--color-background-2-default));
-    background-color: rgba(255, 255, 255, 0.04);
+    /* background-color: var(--color-background-2);
+    background-color: rgba(255, 255, 255, 0.04); */
     background-color: rgba(64, 121, 230, 0.87);
     /* background: var(--accent); */
     padding: 16px 36px;
@@ -68,8 +66,8 @@
 
   Blockquote:variant(1)::content::before {
     border-right: 20px solid transparent;
-    border-top: 20px solid var(--color-background-2, value(--color-background-2-default));
-    border-top: 20px solid rgba(255, 255, 255, 0.04);
+    /* border-top: 20px solid var(--color-background-2);
+    border-top: 20px solid rgba(255, 255, 255, 0.04); */
     border-top-color: rgba(64, 121, 230, 0.87);
     bottom: -20px;
     content: "";
@@ -102,7 +100,7 @@
     position: absolute;
     opacity: 0.3;
     left: -1.5rem;
-    border: 1px solid var(--color-accent-1, value(--color-accent-1-default));
+    border: 1px solid var(--color-accent-1);
     border-width: 1px 0 1px 1px;
     width: 18px;
     top: 0;

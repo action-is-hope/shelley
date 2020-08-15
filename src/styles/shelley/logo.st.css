@@ -8,8 +8,6 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-ui-default,
-    --color-background-1-default,
     /* = CSS3 Switcher vars. */
     --color-ui,
     --color-background-1;
@@ -81,10 +79,8 @@
     */
     height: 6em;
     width: 6em;
-    border: 0.115em solid var(--color-ui, value(--color-ui-default));
     border-style: solid;
-    border-color: value(--color-ui-default);
-    border-color: var(--color-ui, value(--color-ui-default));
+    border-color: var(--color-ui);
     border-width: 0.115em;
     border-radius: 500px
   }
@@ -102,8 +98,7 @@
     position: relative;
     display: flex;
     width: 2.9375em;
-    background: value(--color-background-1-default);
-    background: var(--color-background-1, value(--color-background-1-default))
+    background: var(--color-background-1)
   }
 
   Logo::after {

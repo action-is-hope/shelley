@@ -1,8 +1,8 @@
 /**
  * = Dark
  *
- * Most of this is done as part of the default in project.
- * So here we are just really setting out body colours and 
+ * Most of this is done as part of the Shelley project file.
+ * Here we are just really setting out body colours and 
  * defining the 'dark' specific overrides.
  */
 
@@ -12,9 +12,9 @@
   -st-from: "../project.st.css";
   -st-named:
     /* = Build time colours - whatever we need for this file. */
-    --color-ui-default,
-    --color-background-1-default,
-    --color-accent-2-default,
+    --color-ui,
+    --color-background-1,
+    --color-accent-2,
 }
 
 :import {
@@ -23,14 +23,11 @@
 }
 
 .root :global(body) {
-  /*= Main foreground including fallback. */
-  color: value(--color-ui-default);
-  color: var(--color-ui, value(--color-ui-default));
-  /*= Main background including fallback. */
-  background-color: value(--color-background-1-default);
-  background-color: var(--color-background-1, value(--color-background-1-default));
+  /*= Main foreground. */
+  color: var(--color-ui);
+  /*= Main background. */
+  background-color: var(--color-background-1);
 }
-
 
 /* 
  * = Theme differences
@@ -44,18 +41,17 @@
 .root :global(h2)Text:uppercase,
 .root :global(h3)Text:uppercase,
 .root :global(h4)Text:uppercase {
-  color: value(--color-accent-2-default);
-  color: var(--color-accent-2, value(--color-accent-2-default));
+  color: var(--color-accent-2);
 }
 
-/* 
- * :global(h2)Text:uppercase {...}
- *
+/*
  * = Handy use of :global() if you want to style based on a tag.
  * Useful where a component, like our 'Text' can output a number
  * of html tags as its root element making it difficult to target.
+ *
+ * :global(h2)Text:uppercase {...}
  * 
  * This would not work as you can see:
  *
- *  h2Text:uppercase {...}
+ * h2Text:uppercase {...}
  */
