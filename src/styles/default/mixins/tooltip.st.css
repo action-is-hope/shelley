@@ -10,7 +10,7 @@
 :import {
   -st-from: "../project.st.css";
   -st-named:
-    spacing-unit
+    --spacing-unit
 }
 
 .tooltip {
