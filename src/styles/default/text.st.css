@@ -8,7 +8,7 @@
   -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit,
+    --spacing-unit,
     --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
     --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
     --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height,

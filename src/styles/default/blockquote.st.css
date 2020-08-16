@@ -44,7 +44,7 @@
   Blockquote::cite a {}
 
   Blockquote::footer {
-    margin-top: value(spacing-unit)
+    margin-top: var(--spacing-unit)
   }
 
 }

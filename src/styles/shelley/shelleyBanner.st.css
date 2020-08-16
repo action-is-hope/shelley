@@ -7,7 +7,7 @@
 :import {
   -st-from: "../default/project.st.css";
   -st-named:
-    spacing-unit,
+    --spacing-unit;
 }
 
 
@@ -16,10 +16,7 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-accent-1-default,
-    --color-accent-2-default,
-    --color-ui-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --color-accent-2;
 }
 
@@ -90,8 +87,7 @@
     letter-spacing: 16px;
     text-transform: uppercase;
     transform: rotate(1deg);
-    color: value(--color-accent-2-default);
-    color: var(--color-accent-2, value(--color-accent-2-default));
+    color: var(--color-accent-2);
     font-size: 14px;
     letter-spacing: 18px;
     font-size: 0.9372071227741331em;

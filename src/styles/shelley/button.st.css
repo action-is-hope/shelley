@@ -13,7 +13,7 @@
   -st-from: "../default/project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit,
+    --spacing-unit,
 }
 
 /* = Shelley project scope and vars. */

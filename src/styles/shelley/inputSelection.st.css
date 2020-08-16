@@ -11,7 +11,7 @@
 :import {
   -st-from: "../default/project.st.css";
   -st-named:
-    spacing-unit,
+    --spacing-unit,
     --color-focus;
 }
 
@@ -132,7 +132,7 @@
 
   .darkLightToggle HintText {
     -st-mixin: tooltip;
-    right: calc(0px - value(spacing-unit) * 2);
+    right: calc(0px - var(--spacing-unit) * 2);
     bottom: -38px;
   }
 

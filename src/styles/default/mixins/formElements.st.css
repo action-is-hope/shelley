@@ -21,7 +21,7 @@
 :import {
   -st-from: "../project.st.css";
   -st-named:
-    spacing-unit,
+    --spacing-unit,
     --text-vol-3-scale, --text-vol-3-max,
     --text-vol-4-scale, --text-vol-4-max,
     --text-vol-5-scale, --text-vol-5-max,
@@ -176,7 +176,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  padding: calc(0.2rem + 0.2em) value(spacing-unit);
+  padding: calc(0.2rem + 0.2em) var(--spacing-unit);
   border: none;
   font: inherit;
   line-height: 1.5;
@@ -203,7 +203,7 @@
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: right 18px top 50%;
-  padding-right: calc(2 * value(spacing-unit));
+  padding-right: calc(2 * var(--spacing-unit));
   background-image: var(--select-icon);
 }
 

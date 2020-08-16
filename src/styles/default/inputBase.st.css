@@ -82,17 +82,17 @@
   /* = Use a named import as a class to get the adjacent selectors working. */
   InputBase Adornment+.fieldInput,
   InputBase::fieldInput+Adornment {
-    margin-left: calc(-.2rem - value(spacing-unit));
+    margin-left: calc(-.2rem - var(--spacing-unit));
   }
 
   InputBase HintText {
-    margin-top: calc(value(spacing-unit) / 2)
+    margin-top: calc(var(--spacing-unit) / 2)
   }
 
   InputBase ErrorText {
     /* = Send the error message which is first in the source order to appear under the form input. */
     order: 3;
-    padding: 8px value(spacing-unit) 0 value(spacing-unit);
+    padding: 8px var(--spacing-unit) 0 var(--spacing-unit);
   }
 
   InputBase ErrorText::before {
@@ -157,11 +157,11 @@
 
   /* = Variant 1 - "Body" */
   InputBase:variant(1) InputLabel {
-    margin-bottom: value(spacing-unit);
+    margin-bottom: var(--spacing-unit);
   }
 
   InputBase:variant(1)+InputBase:variant(1) {
-    margin-top: calc(value(spacing-unit) * 1)
+    margin-top: calc(var(--spacing-unit) * 1)
   }
 
 
@@ -170,7 +170,7 @@
   InputBase:variant(2) {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-column-gap: value(spacing-unit);
+    grid-column-gap: var(--spacing-unit);
   }
 
   InputBase:variant(2) InputLabel {

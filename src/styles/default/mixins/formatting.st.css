@@ -8,7 +8,7 @@
   -st-from: "../project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit,
+    --spacing-unit,
     breakpoint-sm,
     breakpoint-md,
     breakpoint-lg,
@@ -25,37 +25,37 @@
 .formatted>h5+p,
 .formatted>h6+p,
 .formatted>h4+h5 {
-  margin-top: calc(value(spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
 }
 
 .formatted>blockquote {
-  margin-top: calc(value(spacing-unit) * 4);
-  margin-bottom: calc(value(spacing-unit) * 5);
+  margin-top: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 5);
   margin-bottom: 0;
 }
 
 /* 
 .formatted>h2+CodeSample {
-  margin-top: calc(value(spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
 } */
 
 .formatted>blockquote+Text {
-  margin-top: calc(value(spacing-unit) * 6);
+  margin-top: calc(var(--spacing-unit) * 6);
 }
 
 .formatted>p+h2 {
-  margin-top: calc(value(spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 4);
 }
 
 .formatted>p+Text.vol4 {
-  margin-top: calc(value(spacing-unit) * 8);
+  margin-top: calc(var(--spacing-unit) * 8);
 }
 
 .formatted>p+h3,
 .formatted>h2+h3 {
-  margin-top: calc(value(spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 4);
 }
 
 .formatted>p+h6 {
-  margin-top: calc(value(spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
 }

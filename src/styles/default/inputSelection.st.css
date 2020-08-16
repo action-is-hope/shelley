@@ -12,7 +12,7 @@
   -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
-    spacing-unit,
+    --spacing-unit,
     --color-form-base-border;
 }
 
@@ -74,8 +74,8 @@
   }
 
   InputSelection ErrorText {
-    padding-top: value(spacing-unit);
-    padding-bottom: value(spacing-unit);
+    padding-top: var(--spacing-unit);
+    padding-bottom: var(--spacing-unit);
   }
 
   /* ==== VOLUMES ====*/
@@ -120,21 +120,21 @@
   }
 
   InputSelection:variant(1) InputLabel:inputPos(top)::textContainer {
-    padding-top: calc(value(spacing-unit) / 2 + 0.2em);
+    padding-top: calc(var(--spacing-unit) / 2 + 0.2em);
   }
 
   InputSelection:variant(1) InputLabel:inputPos(end)::textContainer {
-    /* rtl padding-left: value(spacing-unit); */
-    padding-right: value(spacing-unit);
+    /* rtl padding-left: var(--spacing-unit); */
+    padding-right: var(--spacing-unit);
   }
 
   InputSelection:variant(1) InputLabel:inputPos(bottom)::textContainer {
-    padding-bottom: calc(value(spacing-unit) / 2 + 0.2em);
+    padding-bottom: calc(var(--spacing-unit) / 2 + 0.2em);
   }
 
   InputSelection:variant(1) InputLabel:inputPos(start)::textContainer {
-    padding-left: value(spacing-unit);
-    /* = rtl padding-right: value(spacing-unit); */
+    padding-left: var(--spacing-unit);
+    /* = rtl padding-right: var(--spacing-unit); */
   }
 
 
@@ -146,7 +146,7 @@
   InputSelection:variant(2) InputLabel:hasInput {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-column-gap: value(spacing-unit);
+    grid-column-gap: var(--spacing-unit);
   }
 
   InputSelection:variant(2) InputLabel::labelText {
@@ -154,13 +154,13 @@
   }
 
   InputSelection:variant(2) SelectionControl {
-    padding: value(spacing-unit);
+    padding: var(--spacing-unit);
     border-left: 1px solid var(--color-form-base-border);
   }
 
   InputSelection:variant(2) ErrorText {
     border-left-width: 1px;
-    padding: 4px value(spacing-unit) 8px;
+    padding: 4px var(--spacing-unit) 8px;
     /* 12px is from 18px / 3 * 2 */
     margin-left: calc(100% / 3 + 12px);
   }
