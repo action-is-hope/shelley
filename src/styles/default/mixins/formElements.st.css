@@ -395,7 +395,9 @@
   justify-content: center;
   /* = See below for replacement, I know, I know "if we must". We must! ;-) */
   outline: none;
-  border: 2px solid #333;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #333;
   border-color: var(--color-form-selection-border);
 }
 

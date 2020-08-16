@@ -52,7 +52,7 @@
   display: block;
 }
 
-/* We are resetting these so when we use the <Text vol={false}> we don't end up with the defaults. */
+/* Get rid of the margins... */
 :global(h1),
 :global(h2),
 :global(h3),
@@ -60,6 +60,5 @@
 :global(h5),
 :global(h6),
 :global(p) {
-  /* font-size: 1em; */
   margin: 0;
 }

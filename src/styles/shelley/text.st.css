@@ -25,11 +25,12 @@
 }
 
 @st-scope Shelley {
-  Text {
-    /* font-weight: 400; */
-    /* = switch off for light / dark bgs.... */
-    /* -webkit-font-smoothing: antialiased; */
-  }
+
+  /* = switch off for light / dark bgs.... */
+  /* Text {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  } */
 
   /* = Uppercase */
   Text:uppercase {
