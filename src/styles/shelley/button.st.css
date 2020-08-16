@@ -11,6 +11,7 @@
 /* = Default project vars. */
 :import {
   -st-from: "../default/project.st.css";
+  -st-default: Default;
   -st-named:
     spacing-unit,
 }

@@ -2,12 +2,26 @@
  * Shelley Project - project.st.css
  * 
  * Our main project which is essentially a theme but it itself can have themes
- * so project seems more appropriate. 
+ * so 'project' is more appropriate.
+ *
+ * This project is to be used in conjunction with Shelley's 'default' 
+ * styles|theme|project whatever you want to call it.
+ *
+ * Shelley's default provides the base and this sits on top of that and here
+ * we can import and override the CSS variables declared as part of the default. 
+ * We also set all of our project specifics such as colours and fonts. 
+ *
+ * Limitatons: We use CSS vars so IE11 is mostly out the window. We are also 
+ * unable to use override the values of the breakpoints and that's about it.
+ *
+ * You are able to clone our default and just use that as a fork and go from 
+ * there, that way you can override everything at the base and use that as your
+ * go to for your projects. Up to you.
  */
 
 @namespace "Shelley";
 
-/* = Default project vars. */
+/* = Default project vars to be overridden. */
 :import {
   -st-from: "../default/project.st.css";
   -st-named:

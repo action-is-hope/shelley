@@ -39,7 +39,13 @@
   breakpoint-xxl-max: "only screen and (max-width: 1799px)";
 
   /** = Spacing */
-  spacing-unit: 0.69231rem;
+  spacing-unit: 0.692306rem;
+  /**
+   * 18px @breakpoint xxl which is what we want for our vertical rhythm.
+   * Vertical rhythm is a pain in the arse but we always wanted to get it
+   * working on a project. This seems to work nicely when tested with baseliner
+   * but more tweaks required to get it more bulletproof.
+   */
   /* text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max)); */
   /* font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5))) */
   /* 18px when at breakpoint-xxl */
@@ -169,7 +175,9 @@
 
   /* = Misc */
   --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+}
 
+:root {
   /* = Grid */
   --grid-gap: 3vw;
 
@@ -180,12 +188,11 @@
    * lines which act as a type of tetris informing the element
    * how wide the slot is as we drop them in.
    */
-  --grid-v1-cols-xs:
-    [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
-  --grid-v1-cols-sm:
-    [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
-  --grid-v1-cols-md:
-    [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+  --grid-v1-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  --grid-v1-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+  --grid-v1-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+
+
 
   /* 
    * = 'Subgrids'
@@ -218,7 +225,9 @@
   --grid-v4-cols-xs: initial;
   --grid-v4-cols-sm: 1fr 1fr;
   --grid-v4-cols-md: 1fr 1fr 1fr 1fr;
+}
 
+:root {
 
   /**
    * Volumes / Text sizes
@@ -361,6 +370,7 @@
 }
 
 :global(html) {
+  /* = https://stackoverflow.com/questions/15861093/what-does-webkit-text-size-adjust-do */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -368,6 +378,9 @@
 @supports (display: grid) {
   :global(html) {
     /** This is our responsive rem value, this will equal 1rem wherever we are. */
+    /* This value goes from 16px to 26px over our breakpoints giving us some flex
+     * in a unit that we can use wherever we like, so we like to use a slice of it
+     * as our spacing unit. */
     font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
   }
 
