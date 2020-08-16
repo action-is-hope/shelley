@@ -137,18 +137,6 @@
  *
  */
 :root {
-  /** = Spacing */
-  --spacing-unit: 0.692306rem;
-  /**
-   * 18px @breakpoint xxl which is what we want for our vertical rhythm.
-   * Vertical rhythm is a pain in the arse but we always wanted to get it
-   * working on a project. This seems to work nicely when tested with baseliner
-   * but more tweaks required to get it more bulletproof.
-   */
-  /* text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max)); */
-  /* font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5))) */
-  /* 18px when at breakpoint-xxl */
-
   /** 
    * = Colours 
    *
@@ -223,7 +211,7 @@
   --grid-v4-cols-md: 1fr 1fr 1fr 1fr;
 
   /**
-   * Volumes / Text sizes
+   * = Volumes / Text sizes
    *
    * Above we declared some text volume min and max, no we will explain as we
    * churn all of these values out as CSS3 vars (perhaps we are abusing them a little...).
@@ -351,49 +339,62 @@
   --text-vol-11-scale: respScale(value(text-vol-11-min), value(text-vol-11-max));
   --text-vol-11-max: value(text-vol-11-max);
   --text-vol-11-line-height: 1.05;
+
+  /** 
+   * Our html scale goes from 16px to 26px through our breakpoints giving us 
+   * some flex in a unit that we can use wherever we like. We like to use a 
+   * slice of it as our --spacing-unit var. */
+  --html-resp-scale: calc(1em + 0.625 * ((100vw - 20em) / (92.5)));
+  /** - 18px when at breakpoint-xxl */
+  --html-resp-max: 1.625em;
+  /** = Spacing - 18px when at breakpoint-xxl */
+  --spacing-unit: 0.692306rem;
+  /**
+   * 18px @breakpoint xxl which is what we want for our vertical rhythm.
+   * Vertical rhythm is a pain in the arse but we always wanted to get it
+   * working on a project. This seems to work nicely when tested with baseliner
+   * but more tweaks required to get it more bulletproof.
+   */
 }
 
 
-/** 
+/**
+ * = Global CSS
+ *  
  * This ideally will just be a spinkling of higher level styles that use 
  * variables. For the reset globals we set them in ./allGlobals.st.css 
- * which is pulled in within index.ts */
-.root {
-  min-height: 100vh;
-}
+ * which is pulled in within index.ts 
+ */
 
-:global(html) {
-  /* = https://stackoverflow.com/questions/15861093/what-does-webkit-text-size-adjust-do */
-  -webkit-text-size-adjust: 100%;
-}
 
-/* = Using supports grid as a test of a modern brower, IE11 will not get this. */
-@supports (display: grid) {
+@supports(--css: variables) {
   :global(html) {
     /** This is our responsive rem value, this will equal 1rem wherever we are. */
-    /* This value goes from 16px to 26px over our breakpoints giving us some flex
-     * in a unit that we can use wherever we like, so we like to use a slice of it
-     * as our spacing unit. */
-    font-size: calc(1em + 0.625 * ((100vw - 20em) / (92.5)))
+    font-size: var(--html-resp-scale);
   }
 
-  @media screen and (min-width: 1800px) {
+  /* This is the CSS lock so our spacing unit doesn't get too big. */
+  @media value(breakpoint-xxl) {
     :global(html) {
-      font-size: 1.625em;
+      font-size: var(--html-resp-max);
     }
   }
 }
 
 :global(body) {
   /**
-   * = Set the body font-size to initial value.
+   * = Set the body font-size back to initial value.
    *
-   * Why? Using rem for everything means we can't set a container to say 
-   * font-size: 90% to tweak the size of the contained elements as they would 
-   * always size off the root html element.
+   * Why? Some people like to use rem everywhere. Using rem for everything means 
+   * we can't set a container to say font-size: 90% to tweak the size of the 
+   * contained elements as they would always size off the root html element 
+   * which is rem.
    *
    * This way we can use a responsive rem value when we want to but also 
    * leverage ems as described above.
+   *
+   * I'm aware this is a terrible description. Basically we don't want 1em to 
+   * equal 1rem as we are leveraging rem for a dynamic responsive spacing unit.
    */
   font-size: initial;
 }

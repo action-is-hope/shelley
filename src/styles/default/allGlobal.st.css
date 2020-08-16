@@ -7,8 +7,8 @@
 
 
 
-/* 
-    General purpose CSS reset
+/**
+ * = General purpose CSS reset
  */
 :global(html),
 :global(body) {
@@ -17,12 +17,16 @@
   box-sizing: border-box;
 }
 
+:global(html) {
+  /* = https://stackoverflow.com/questions/15861093/what-does-webkit-text-size-adjust-do */
+  -webkit-text-size-adjust: 100%;
+}
+
 :global(*),
 :global(*:before),
 :global(*:after) {
   box-sizing: inherit;
 }
-
 
 :global([hidden]) {
   display: none;
@@ -52,13 +56,19 @@
   display: block;
 }
 
-/* Get rid of the margins... */
-:global(h1),
-:global(h2),
-:global(h3),
-:global(h4),
-:global(h5),
-:global(h6),
-:global(p) {
-  margin: 0;
+@supports(--css: variables) {
+
+  /**
+   *  Get rid of the margins for those browsers that support CSS Vars... which 
+   * is how we set ours. Old browsers can have their defaults.
+    */
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6),
+  :global(p) {
+    margin: 0;
+  }
 }

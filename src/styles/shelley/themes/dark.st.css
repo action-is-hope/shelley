@@ -22,13 +22,6 @@
   -st-default: Text;
 }
 
-.root :global(body) {
-  /*= Main foreground. */
-  color: var(--color-ui);
-  /*= Main background. */
-  background-color: var(--color-background-1);
-}
-
 /* 
  * = Theme differences
  * 

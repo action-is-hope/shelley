@@ -9,11 +9,6 @@
   -st-default: Default;
   -st-named:
     --spacing-unit,
-    breakpoint-sm,
-    breakpoint-md,
-    breakpoint-lg,
-    breakpoint-xl,
-    breakpoint-xxl,
 }
 
 .formatted>p+p,

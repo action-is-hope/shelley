@@ -5,6 +5,12 @@
  * 
  * ========================================================================= */
 
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    breakpoint-xxl;
+}
 
 :vars {
   scale: calc(1em + 0.125 * ((100vw - 20em) / (92.5)));
@@ -17,7 +23,7 @@
   line-height: value(lineHeight);
 }
 
-@media screen and (min-width: 1800px) {
+@media value(breakpoint-xxl) {
   .textVol {
     font-size: value(max);
   }

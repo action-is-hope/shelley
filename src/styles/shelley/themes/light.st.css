@@ -125,9 +125,3 @@
   --status-background: #ebbbbb;
   --support-background: #cee1e7;
 }
-
-.root :global(body) {
-  /*= Main light colours. */
-  color: var(--color-ui);
-  background-color: var(--color-background-1);
-}

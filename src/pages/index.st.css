@@ -8,8 +8,7 @@
   -st-from: "../styles/shelley/project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-accent-1-default,
-    /* = CSS3 Switcher vars. */
+    /* = CSS3 Vars. */
     --grad-1,
     --status-background,
     --support-background;

@@ -38,7 +38,6 @@
     --grid-v1-cols-sm,
     --grid-v1-cols-md,
 
-    --text-vol-10-min,
     --text-vol-10-max,
     --text-vol-10-scale,
     --text-vol-10-line-height;
@@ -49,9 +48,7 @@
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
 
 :vars {
-  /*=== TYPE AND TEXT ===*/
-
-  /** Fonts */
+  /** Fonts - Could be CSS Vars if changing them in a switcher for example. */
   font-plain:
     Helvetica Neue, Helvetica, Arial, sans-serif;
   font-special:
@@ -60,17 +57,13 @@
   font-mono:
     Menlo, Courier, Courier New, Andale Mono, monospace;
 
-
-  /*=== COLOURS - The Queens English darling... ===*/
-
-
-
 }
 
 /*=== Root Level CSS Variables - 'run time' ===*/
 
-/* = Map stylable build time variables to CSS variables for theme switching. */
 :root {
+
+  /*=== COLOURS - The Queens English darling... ===*/
 
   /* = Core light - always light or dark regardless of theme. */
   --light-01-raw: 255, 255, 255;
@@ -80,7 +73,10 @@
   --dark-01: rgb(51, 51, 51);
   /* = 'raw' are just the rgb values we we can use them with rgba 
    * where we can provide the alpha yet still have the raw value change
-   * for our style-switcher and within lots of alpha variant vars. */
+   * for our style-switcher and within lots of alpha variant vars. 
+   * 
+   * e.g color: rgba(var(--color-ui-raw), 0.9);
+   */
 
   /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui: var(--light-01);
@@ -130,7 +126,7 @@
 
 
   /* --grid-v1-cols-md: 1fr; */
-  --text-vol-10-scale: 18px;
+  /* --text-vol-10-scale: 18px; */
 }
 
 /*=== Root Level CSS ===*/
@@ -141,5 +137,6 @@
  * which is pulled in within index.ts */
 .root {
   font-family: value(font-plain);
-  color: rgba(var(--color-ui-raw), 0.9)
+  color: var(--color-ui);
+  background-color: var(--color-background-1);
 }
