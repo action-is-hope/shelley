@@ -29,10 +29,10 @@
     /* = CSS3 Vars. */
     --color-focus,
     --color-error,
-    --color-form-mark,
-    --color-form-selection-track,
-    --color-form-selection-mark,
-    --color-toggle-mark,
+    --color-form-base-border,
+    --color-form-selection-border,
+    --color-form-selection-notch,
+    --color-toggle-notch,
     --select-icon;
 
 }
@@ -152,7 +152,7 @@
   content: "";
   width: 1px;
   transition: background-color 0.3s;
-  background-color: var(--color-form-mark);
+  background-color: var(--color-form-base-border);
 }
 
 .textualFieldContainer::before {
@@ -396,7 +396,7 @@
   /* = See below for replacement, I know, I know "if we must". We must! ;-) */
   outline: none;
   border: 2px solid #333;
-  border-color: var(--color-form-selection-track);
+  border-color: var(--color-form-selection-border);
 }
 
 /* = Field focus indicator, via pseudo element. */
@@ -449,7 +449,7 @@
   opacity: 0;
   display: block;
   background-color: #ddd;
-  background-color: var(--color-form-selection-mark);
+  background-color: var(--color-form-selection-notch);
 }
 
 .RadioCheckboxCommon:checked::before {
@@ -495,12 +495,12 @@
   transition: all 0.2s;
   transform: translate(-50%);
   z-index: 1;
-  background-color: var(--color-toggle-mark);
+  background-color: var(--color-toggle-notch);
 }
 
 .ToggleFieldInput:checked::before {
   transform: translate(50%);
-  background-color: var(--color-form-selection-mark);
+  background-color: var(--color-form-selection-notch);
 }
 
 /* .SwitchFieldInput {} */

@@ -12,8 +12,7 @@
   -st-from: "../default/project.st.css";
   -st-named:
     spacing-unit,
-    --color-focus,
-    --color-form-mark;
+    --color-focus;
 }
 
 /* = Shelley project scope. */
@@ -77,11 +76,6 @@
   InputSelection:variant(2) {
     background-color: var(--color-background-3);
   }
-
-  InputSelection:variant(2) SelectionControl {
-    border-left: 1px solid var(--color-form-mark);
-  }
-
 
   /* ==== CUSTOM - "ONE OFF'S" ====*/
 
