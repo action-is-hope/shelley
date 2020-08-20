@@ -350,7 +350,7 @@
   /** = Spacing - 18px when at breakpoint-xxl */
   --spacing-unit: 0.692306rem;
   /**
-   * 18px @breakpoint xxl which is what we want for our vertical rhythm.
+   * 18px @breakpoint xxl because this is what we want for our vertical rhythm.
    * Vertical rhythm is a pain in the arse but we always wanted to get it
    * working on a project. This seems to work nicely when tested with baseliner
    * but more tweaks required to get it more bulletproof.
@@ -385,10 +385,19 @@
   /**
    * = Set the body font-size back to initial value.
    *
-   * Why? Some people like to use rem everywhere. Using rem for everything means 
-   * we can't set a container to say font-size: 90% to tweak the size of the 
-   * contained elements as they would always size off the root html element 
-   * which is rem.
+   * Why? If we don't do this then 1em will default to 1rem which we are using
+   * as a responsive scale to help us with things like responsive margins as an 
+   * attempt to get fluid vertical rythum.
+   * 
+   * The downside to that, if we want to adjust down a Text components size
+   * by making it's container say font-size: 0.8em then that would be 0.8 of 
+   * 1rem as it trickles all the way up to first set item, the root element. 
+   * This is an issue as we have a custom responsive scale for our text and this 
+   * essentially doubles us up on responsiveness.
+   * 
+   * We set the body to initial so that as it trickles up it will until it sees
+   * body is set body and be sized relative to that, initial which is our base of 
+   * 16px.
    *
    * This way we can use a responsive rem value when we want to but also 
    * leverage ems as described above.

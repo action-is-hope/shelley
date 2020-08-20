@@ -19,11 +19,11 @@
   border-width: 1px;
   border-radius: 4px;
   /**
-     * = Opininated: Some disagree with setting cursor: pointer (the hand) on 
-     * interactive elements arguing system controls don't do this. Meh, for 
-     * us it offers an additional cue to interaction which we feel asserts 
-     * confidence. Many sites do this so perhaps it's expected by many users. 
-     */
+   * = Opininated: Some disagree with setting cursor: pointer (the hand) on 
+   * interactive elements arguing system controls don't do this. Meh, for 
+   * us it offers an additional cue to interaction which we feel asserts 
+   * confidence. Many sites do this so perhaps it's expected by many users. 
+   */
   cursor: pointer;
   /* = Horizontal alignment. */
   justify-content: center;

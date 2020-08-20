@@ -13,7 +13,7 @@
   -st-from: "../default/project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit,
+    --spacing-unit;
 }
 
 /* = Shelley project scope and vars. */
@@ -22,6 +22,7 @@
   -st-default: Shelley;
   -st-named:
     /* = CSS3 Vars. */
+    --color-ui,
     --color-ui-inverse,
     --color-accent-1,
     --color-accent-2,
@@ -47,7 +48,7 @@
 
   /* = = The base <button> element. */
   Button {
-    --accent: transparent;
+    /* = Colour variables and associated properties. */
     --bg-color: transparent;
     --border-color: transparent;
     --text-color: inherit;
@@ -61,8 +62,8 @@
 
   /* = 'Filled' */
   Button:variant(1) {
-    --text-color: var(--color-ui-inverse);
     --bg-color: var(--accent);
+    --text-color: var(--color-ui-inverse);
   }
 
   /* = 'Outline' */
@@ -73,10 +74,9 @@
 
   /* = 'Floating Action Button (FAB)' */
   Button:variant(3) {
-    --text-color: var(--color-ui-inverse);
     --bg-color: var(--accent);
+    --text-color: var(--color-ui-inverse);
   }
-
 
   /* = Tones/Colours */
   Button:tone(1) {
