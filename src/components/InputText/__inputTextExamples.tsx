@@ -11,20 +11,22 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { P, H1, H2 } from "../../components/Text/Text";
 
 // Styles.
-import grid from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "Button"
+  name: "InputText"
 };
 
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
   >{`import InputText from "@action-is-hope/shelley";
-\n<InputText    
+\n<InputText
+  id="id-required"
   label="Form item label" 
   placeholder="Placeholder text"   
-  variant={1} 
+  variant={1}
+  vol={2}
 />`}</CodeSample>
 );
 

@@ -1,7 +1,8 @@
 /** CodeSample.tsx */
 import React from "react";
-import style from "./codeSample.st.css";
-import classNames from "classnames";
+import classnames from "classnames";
+/* = Style API. */
+import { st, classes } from "./codeSample.st.css";
 
 import {
   Prism as SyntaxHighlighter,
@@ -15,16 +16,11 @@ const CodeSample = ({
   fixedHeight,
   ...rest
 }: SyntaxHighlighterProps) => {
+  const rootClassNames = classnames(classes.root, classNameProp, {
+    [classes.fixedHeight]: fixedHeight
+  });
   return (
-    <div
-      {...style(
-        classNames(style.root, classNameProp, {
-          [style.fixedHeight]: fixedHeight
-        }),
-        {},
-        rest
-      )}
-    >
+    <div className={st(rootClassNames)}>
       <SyntaxHighlighter
         language={language}
         style={false}

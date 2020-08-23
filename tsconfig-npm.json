@@ -11,7 +11,7 @@
     "outDir": "dist",
     "target": "es5",
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    // "skipLibCheck": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -25,34 +25,3 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/__tests__/*", "src/**/*.examples.tsx"]
 }
-
-// {
-//   "compilerOptions": {
-//     "module": "esnext",
-//     "target": "es5",
-//     "lib": ["es6", "dom"],
-//     "jsx": "preserve",
-//     "moduleResolution": "node",
-//     "forceConsistentCasingInFileNames": true,
-//     "strict": true,
-//     "noEmit": true,
-//     "experimentalDecorators": true,
-//     "baseUrl": "./",
-//     "allowSyntheticDefaultImports": true,
-//     "noErrorTruncation": true,
-//     "allowJs": true,
-//     "paths": {
-//       "@actionishope/shelley/": ["./packages/material-ui/src"],
-//       "@material-ui/core": ["./packages/material-ui/src"],
-//       "@material-ui/core/*": ["./packages/material-ui/src/*"],
-//       "@material-ui/lab": ["./packages/material-ui-lab/src"],
-//       "@material-ui/lab/*": ["./packages/material-ui-lab/src/*"],
-//       "@material-ui/styles": ["./packages/material-ui-styles/src"],
-//       "@material-ui/styles/*": ["./packages/material-ui-styles/src/*"],
-//       "@material-ui/system": ["./packages/material-ui-system/src"],
-//       "@material-ui/types": ["./packages/material-ui-types"],
-//       "test/*": ["./test/*"]
-//     }
-//   },
-//   "exclude": ["**/build/"]
-// }

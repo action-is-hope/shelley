@@ -1,0 +1,50 @@
+/**
+ * = Dark
+ *
+ * Most of this is done as part of the Shelley project file.
+ * Here we are just really setting out body colours and 
+ * defining the 'dark' specific overrides.
+ */
+
+@namespace "dark";
+
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    /* = Build time colours - whatever we need for this file. */
+    --color-ui,
+    --color-background-1,
+    --color-accent-2,
+}
+
+:import {
+  -st-from: "../../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+/* 
+ * = Theme differences
+ * 
+ * While all sounds well with "just change the colors" it is never that 
+ * simple, ever. So here we can tweak styles for the theme specifically.
+ * 
+ */
+
+/* = Override our uppercase headings. */
+.root :global(h2)Text:uppercase,
+.root :global(h3)Text:uppercase,
+.root :global(h4)Text:uppercase {
+  color: var(--color-accent-2);
+}
+
+/*
+ * = Handy use of :global() if you want to style based on a tag.
+ * Useful where a component, like our 'Text' can output a number
+ * of html tags as its root element making it difficult to target.
+ *
+ * :global(h2)Text:uppercase {...}
+ * 
+ * This would not work as you can see:
+ *
+ * h2Text:uppercase {...}
+ */

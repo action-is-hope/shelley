@@ -1,9 +1,10 @@
 /** PageTitle.tsx */
 import React from "react";
-import style from "./pageTitle.st.css";
 import classNames from "classnames";
 import { H1 } from "../../components/Text/Text";
 import Grid from "../../components/Grid/Grid";
+/* = Style API. */
+import { st, classes } from "./pageTitle.st.css";
 
 interface PageTitleProps extends React.HTMLProps<HTMLDivElement> {
   id?: string;
@@ -14,12 +15,11 @@ interface PageTitleProps extends React.HTMLProps<HTMLDivElement> {
 const PageTitle = ({
   className: classNameProp,
   children,
-  vol = 9,
-  ...rest
+  vol = 9
 }: PageTitleProps) => {
   return (
-    <Grid {...style(classNames(style.root, classNameProp), {}, rest)}>
-      <H1 vol={vol} className={style.title}>
+    <Grid className={st(classNames(classes.root, classNameProp))}>
+      <H1 vol={vol} className={classes.title}>
         {/* <span>&lt;</span> */}
         {children}
         {/* <span>&gt;</span> */}

@@ -1,13 +1,14 @@
 import React from "react";
 import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import classnames from "classnames";
-import style from "./inputSelection.st.css";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
+/* = Style API. */
+import { st, classes } from "./inputSelection.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface RadioCheckInputProps
+export interface InputSelectionProps
   extends Pick<
     React.HTMLProps<HTMLInputElement>,
     Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
@@ -44,7 +45,7 @@ const InputSelection = React.forwardRef(
       disabled = false,
       error: errorMessage,
       touched = false,
-      defaultChecked = false,
+      // defaultChecked = undefined,
       type = "checkbox",
       hint,
       variant = 1,
@@ -53,7 +54,7 @@ const InputSelection = React.forwardRef(
       inputPos = "end",
       vol = 3,
       ...rest
-    }: RadioCheckInputProps,
+    }: InputSelectionProps,
     ref?: React.Ref<HTMLInputElement>
   ) => {
     id === "NOID" &&
@@ -67,7 +68,7 @@ const InputSelection = React.forwardRef(
         {...{
           id,
           disabled,
-          defaultChecked,
+          // defaultChecked,
           error,
           ref,
           type,
@@ -77,20 +78,11 @@ const InputSelection = React.forwardRef(
         }}
       />
     );
+
+    const rootClassNames = classnames(classes.root, classNameProp);
+
     return (
-      <div
-        {...style(
-          classnames(
-            style.root,
-            style[type],
-            style["variant" + variant],
-            style["vol" + vol],
-            classNameProp
-          ),
-          { error, disabled },
-          rest
-        )}
-      >
+      <div className={st(rootClassNames, { variant, type, disabled, vol })}>
         {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
         <Label

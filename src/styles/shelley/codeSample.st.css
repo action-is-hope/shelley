@@ -1,0 +1,78 @@
+/**
+ * = CODESAMPLE - codeSample.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit,
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    /* = CSS3 Vars. */
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-text-4,
+    --color-background-3;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/CodeSample/codeSample.st.css";
+  -st-default: CodeSample;
+}
+
+@st-scope Shelley {
+  CodeSample {
+    background-color: var(--color-background-3);
+  }
+
+  CodeSample code :global(.prop b),
+  CodeSample code :global(.prop)::after,
+  CodeSample code :global(.st-modifier)::before,
+  CodeSample code :global(.class-name) {
+    color: #4eea9d;
+  }
+
+  /* ff51a9 */
+  CodeSample code :global(.operator.token) {
+    /* color: #ff51a9; */
+  }
+
+  CodeSample code :global(.attr-name),
+  CodeSample code :global(.constant),
+  CodeSample code :global(.maybe-class-name),
+  CodeSample code :global(.tag),
+  CodeSample code :global(.selector) {
+    color: var(--color-accent-1);
+  }
+
+  CodeSample code :global(.punctuation) {
+    color: grey
+  }
+
+  CodeSample code :global(.keyword),
+  CodeSample code :global(.number) {
+    color: var(--color-accent-3);
+  }
+
+  CodeSample code :global(.string),
+  CodeSample code :global(.attr-value) {
+    color: var(--color-text-4);
+    /* color: #ce9734; */
+    /* #ce9734 */
+  }
+
+  CodeSample code :global(.comment) {
+    color: #29a065
+      /* 2ea96c, 29a065 */
+  }
+}

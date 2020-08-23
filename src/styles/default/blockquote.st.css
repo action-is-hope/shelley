@@ -1,0 +1,50 @@
+/** blcokquote.st.css */
+
+/* Useful if you want some quote chars via the content property https://css-tricks.com/css-content/ */
+
+/* project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
+
+
+/* Root Component */
+:import {
+  -st-from: "../../components/Blockquote/blockquote.st.css";
+  -st-default: Blockquote;
+  -st-named:
+    cite,
+    content,
+    footer;
+}
+
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+@st-scope Default {
+
+  /* Base styles. */
+  Blockquote {}
+
+  Blockquote::content {
+    display: grid;
+    grid-row-gap: 0.8rem;
+    font-style: italic;
+  }
+
+  Blockquote::cite {
+    font-style: normal;
+  }
+
+  Blockquote::cite a {}
+
+  Blockquote::footer {
+    margin-top: var(--spacing-unit)
+  }
+
+}

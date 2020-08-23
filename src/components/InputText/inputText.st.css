@@ -1,4 +1,6 @@
 /** inputText.st.css */
+@namespace "InputText";
+
 /* .select {
   -st-states: disabled, error, labelPos(enum(above, below, start, end));
 } */

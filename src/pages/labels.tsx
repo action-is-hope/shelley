@@ -6,9 +6,9 @@ import { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import CodeSample from "../components_site/CodeSample/CodeSample";
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
-import utils from "../projects/default/css/utils.st.css";
+import { classes as text } from "../styles/default/text.st.css";
+import { classes as grid } from "../styles/default/grid.st.css";
+import { classes as utils } from "../styles/shelley/utils.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import InputText from "../components/InputText/InputText";
 import {

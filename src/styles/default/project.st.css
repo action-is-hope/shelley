@@ -1,0 +1,409 @@
+/**
+ * Project - Default
+ * 
+ * Our main project which is essentially a theme but it itself can have themes
+ * so project seems more appropriate. 
+ */
+
+@namespace "Default";
+
+:import {
+  -st-from: "../formatters/common";
+  -st-named: multiply, divide, respScale;
+}
+
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+
+:vars {
+
+  /*=== LAYOUT AND GRID ===*/
+
+  /** = Breakpoints */
+  /* @todo - Switch to env when it supports authored vars. */
+  breakpoint-sm: "only screen and (min-width: 568px)";
+  breakpoint-md: "only screen and (min-width: 950px)";
+  breakpoint-lg: "only screen and (min-width: 1200px)";
+  breakpoint-xl: "only screen and (min-width: 1600px)";
+  breakpoint-xxl: "only screen and (min-width: 1800px)";
+
+  /* = Using min-width vs max-width... max-width looks cleaner with less styles 
+  applied to elmements at any given time. But for development it is handy to be 
+  able to toggle off styes with the inspector and have the overriden value apply. 
+  If overriding values that exist already then we tend to use min-widths, if 
+  turning off styles across breakpoints we use max-width, e.g mobile -> desktop menu. */
+
+  breakpoint-sm-max: "only screen and (max-width: 567px)";
+  breakpoint-md-max: "only screen and (max-width: 949px)";
+  breakpoint-lg-max: "only screen and (max-width: 1199px)";
+  breakpoint-xl-max: "only screen and (max-width: 1599px)";
+  breakpoint-xxl-max: "only screen and (max-width: 1799px)";
+
+
+  /*=== TYPE AND TEXT ===*/
+
+  /**
+   * = Fluid Text Scale
+   * 
+   * We are using a fluid set up based on:
+   * https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *
+   * Later on in the file we will state all of our CSS variables and give you a 
+   * better description off what's going on.
+   */
+
+  /* = Base font min is 1em (16px) and max (20px) is 1.25em */
+  font-base-min: 1em;
+  font-base-max: 1.25em;
+
+  /**
+   * = Scales multipliers - https://type-scale.com/
+   *
+   * We use these as ratios to bump up our text from one level to the next.
+   * Shelley likes to mix it up so we pulled in a bunch of these as musical 
+   * mulipliers to use with our base min/max so our scale sings!
+   *
+   */
+
+  minor-second: 1.067;
+  major-second: 1.125;
+  minor-third: 1.2;
+  major-third: 1.25;
+  perfect-forth: 1.333;
+
+  /**
+   * = Volumes / Text sizes
+   *
+   * Here we are just setting the min and max for our text volumes as build 
+   * variables so we can use them in our formatters (see CSS variable section). 
+   * 
+   * These are pretty random, just where we ended up after hours of fiddling
+   * with the multipliers.
+   */
+
+  /* Volume 1 */
+  text-vol-1-min: divide(value(font-base-min), value(major-second), value(major-second));
+  text-vol-1-max: divide(value(font-base-max), value(major-third), value(minor-second));
+
+  /* Volume 2 */
+  text-vol-2-min: divide(value(font-base-min), value(major-second));
+  text-vol-2-max: divide(value(font-base-max), value(minor-third));
+
+  /* Volume 3 - Base, from here we are either dividing or multipling with various scale ratios. */
+  text-vol-3-min: value(font-base-min);
+  text-vol-3-max: value(font-base-max);
+
+  /* Volume 4 */
+  text-vol-4-min: multiply(value(font-base-min), value(major-second));
+  text-vol-4-max: multiply(value(font-base-max), value(major-third));
+
+  /* Volume 5 */
+  text-vol-5-min: multiply(value(font-base-min), value(major-second), value(minor-third));
+  text-vol-5-max: multiply(value(font-base-max), value(major-third), value(perfect-forth));
+
+  /* Volume 6 */
+  text-vol-6-min: multiply(value(font-base-min), value(major-second), value(major-second), value(minor-third));
+  text-vol-6-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth));
+
+  /* Volume 7 */
+  text-vol-7-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third));
+  text-vol-7-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 8 */
+  text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
+  text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 9 */
+  text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-9-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 10 */
+  text-vol-10-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-10-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 11 */
+  text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
+  text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+}
+
+/*=== ROOT LEVEL CSS VARIABLES ===*/
+
+/** 
+ * = Overiding
+ * 
+ * All of these variables can be inpirted into your project file and then
+ * overridden BUT when using them you must still import them from this file
+ * which is where they of course are initially declared. These will namespaced 
+ * with 'Default' if you check the root element via the inspector. 
+ *
+ */
+:root {
+  /** 
+   * = Colours 
+   *
+   * We only declare a small number of core colours, only to keep overriding 
+   * more simplistic else you would need to import a load of mixins just to 
+   * apply them.
+   *
+   * We have tried not to apply colour so as not to lock us into any given 
+   * nomenclature. You declare all the colours you need and use them however you 
+   * like, defining naming patterns that suit your app / website / thingy.
+   */
+
+  /* = Indicator colours */
+  --color-focus: #09b1f1;
+  --color-error: #b66b6e;
+
+  /* = Form colours */
+  --color-form-base-border: rgba(119, 140, 157, 0.7);
+  --color-form-selection-border: rgba(119, 140, 157, 1);
+  --color-form-selection-notch: #333;
+  --color-toggle-notch: #fff;
+
+  /* = Misc */
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+
+  /* = Grid */
+  --grid-gap: 3vw;
+
+  /* 
+   * = Variant 1: Core single column 
+   *
+   * This is our 'go to' core layout grid with some named
+   * lines which act as a type of tetris informing the element
+   * how wide the slot is as we drop them in.
+   */
+  --grid-v1-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  --grid-v1-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+  --grid-v1-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+
+
+
+  /* 
+   * = 'Subgrids'
+   *
+   * We tend to use these in conjuction with variant 1 so xs is siply set to 
+   * initial so that items sit on the mobile grid lines set by --grid-v1-cols-xs.
+   *
+   * We liked that they just ended up matching the variant numbers but override them
+   * to whatever makes sense for you.
+   *
+   * We only set breakpoints in core up to md/lr and slots 5 onwards are completely 
+   * unstyled so you will need to set them up however you want them in grid.st.css 
+   *
+   * You can also also augment anything you need for slots 1-5 if you need something 
+   * different at wider resolutions. We haven't found the need... yet.
+   */
+
+  /* = Variant 2: Standard 2 col. */
+  --grid-v2-cols-xs: initial;
+  --grid-v2-cols-sm: 1fr 1fr;
+  /* = We want the same for md as sm so we point to that value. */
+  --grid-v2-cols-md: var(--grid-v2-cols-sm);
+
+  /* = Variant 3: Standard 3 col. */
+  --grid-v3-cols-xs: initial;
+  --grid-v3-cols-sm: 1fr 1fr;
+  --grid-v3-cols-md: 1fr 1fr 1fr;
+
+  /* = Variant 4: Standard 4 col. */
+  --grid-v4-cols-xs: initial;
+  --grid-v4-cols-sm: 1fr 1fr;
+  --grid-v4-cols-md: 1fr 1fr 1fr 1fr;
+
+  /**
+   * = Volumes / Text sizes
+   *
+   * Above we declared some text volume min and max, no we will explain as we
+   * churn all of these values out as CSS3 vars (perhaps we are abusing them a little...).
+   *
+   * Are you ready for some serious over engineering? :-)
+   *
+   * Fluid type tutorial: https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *
+   * Still with us? Now have a little gander at the variables we are setting for 
+   * our text volumes below this comment block.
+   *
+   * You will notice each text size is comprised of three main font-size related values:
+   *
+   * - **min**: The minimum font size, this is the font size we want at our smallest 
+   *   expected screen size, 320px, 16px for us. We use this number as an input to our crazy 
+   *   modular fluid text CSS formula thingy that we found. It's cool. We 
+   *   can also use this number to set a CSS lock (https://css-tricks.com/css-locks/)
+   *   if we are concerned that the font might get to small... Watch maybe?
+   * 
+   * - **max**: The maximum font size, this is the font size we want at whatever screen size you
+   *   like, I think we chose 1800px. So when the browser is 1800px wide then I want the
+   *   text to be... 20px in our case. We also this number as an input to our crazy 
+   *   stolen formula.
+   *
+   * - **scale**: This is the font size we use in between the range 320px - 1800px. This
+   *   is the dynamic font-size that is always changing when the browser is winging 
+   *   around the 320px-1800px zone. If we din't have the CSS lock then it would just 
+   *   get bigger and bigger. This is the output of the crazyness. 
+   * 
+   *   The scale magically (read the article or just go with it) gives you back a value
+   *   that looks like this: calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *
+   *   So the browser looks at that and goes, "Right! Got it! 16px at 320px wide, 20px 
+   *   at 1800px wide and everything in between I will scale make smooth and fluid, 
+   *   ahhhhhhh all is well with the world.... Zen..."
+   *
+   *   Just to confuse you more Shelley has this all set in em values, so that made no 
+   *   sense but we like to add to the mystery. Here is how that works out:
+   *   20em = 320px
+   *   92.5em = 1800px
+   *   1em = 16px
+   *   1.25em = 20px
+   *
+   *   But wait... there is more...
+   *   
+   *   calc(1em + 0.25 * ((100vw - 20em) / (92.5)))
+   *45px @ 2000 
+   *   and once you have wrapped you head around all of that and understand it, you 
+   *   know CSS fundermentals quite well. Fun isn't it? I have no hair, #justSaying.
+   *
+   *   Shelley loves it.
+   *
+   *   Thanks and pops for the hard work and innovators:
+   *   - https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *   - https://type-scale.com/ 
+   *   - https://css-tricks.com/css-locks/
+   * 
+   * Quite nice how the selectors follow the same shape as the rendered text
+   * a part from volume 3 which is the base so that makes sense.
+   *
+   * = Overriding.
+   *
+   * If you want to override the font sizes to something different than ours... 
+   * then you need to override them following CSS variables in your project file 
+   * (import first and then overide). So all that crap your saw above for fonts, 
+   * you may want to copy that and the following block as well, tweak till you 
+   * can't tweak no more.
+   *
+   * If you are overriding everything and feel restricted then maybe you should 
+   * clone our entire default theme, essentially forking it and making it your
+   * own. Shelley is unstyled by default so anything goes.
+   */
+
+
+  --text-vol-1-scale: respScale(value(text-vol-1-min), value(text-vol-1-max));
+  --text-vol-1-max: value(text-vol-1-max);
+  --text-vol-1-line-height: 1.45;
+
+
+  --text-vol-2-scale: respScale(value(text-vol-2-min), value(text-vol-2-max));
+  --text-vol-2-max: value(text-vol-2-max);
+  --text-vol-2-line-height: 1.65;
+
+
+  --text-vol-3-scale: respScale(value(text-vol-3-min), value(text-vol-3-max));
+  --text-vol-3-max: value(text-vol-3-max);
+  --text-vol-3-line-height: 1.8;
+
+
+  --text-vol-4-scale: respScale(value(text-vol-4-min), value(text-vol-4-max));
+  --text-vol-4-max: value(text-vol-4-max);
+  --text-vol-4-line-height: 1.45;
+
+
+  --text-vol-5-scale: respScale(value(text-vol-5-min), value(text-vol-5-max));
+  --text-vol-5-max: value(text-vol-5-max);
+  --text-vol-5-line-height: 1.4;
+
+
+  --text-vol-6-scale: respScale(value(text-vol-6-min), value(text-vol-6-max));
+  --text-vol-6-max: value(text-vol-6-max);
+  --text-vol-6-line-height: 1.3;
+
+
+  --text-vol-7-scale: respScale(value(text-vol-7-min), value(text-vol-7-max));
+  --text-vol-7-max: value(text-vol-7-max);
+  --text-vol-7-line-height: 1.15;
+
+
+  --text-vol-8-scale: respScale(value(text-vol-8-min), value(text-vol-8-max));
+  --text-vol-8-max: value(text-vol-8-max);
+  --text-vol-8-line-height: 1.1;
+
+
+  --text-vol-9-scale: respScale(value(text-vol-9-min), value(text-vol-9-max));
+  --text-vol-9-max: value(text-vol-9-max);
+  --text-vol-9-line-height: 1.05;
+
+
+  --text-vol-10-scale: respScale(value(text-vol-10-min), value(text-vol-10-max));
+  --text-vol-10-max: value(text-vol-10-max);
+  --text-vol-10-line-height: 1.05;
+
+
+  --text-vol-11-scale: respScale(value(text-vol-11-min), value(text-vol-11-max));
+  --text-vol-11-max: value(text-vol-11-max);
+  --text-vol-11-line-height: 1.05;
+
+  /** 
+   * Our html scale goes from 16px to 26px through our breakpoints giving us 
+   * some flex in a unit that we can use wherever we like. We like to use a 
+   * slice of it as our --spacing-unit var. */
+  --html-resp-scale: calc(1em + 0.625 * ((100vw - 20em) / (92.5)));
+  /** - 18px when at breakpoint-xxl */
+  --html-resp-max: 1.625em;
+  /** = Spacing - 18px when at breakpoint-xxl */
+  --spacing-unit: 0.692306rem;
+  /**
+   * 18px @breakpoint xxl because this is what we want for our vertical rhythm.
+   * Vertical rhythm is a pain in the arse but we always wanted to get it
+   * working on a project. This seems to work nicely when tested with baseliner
+   * but more tweaks required to get it more bulletproof.
+   */
+}
+
+
+/**
+ * = Global CSS
+ *  
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
+ * which is pulled in within index.ts 
+ */
+
+
+@supports(--css: variables) {
+  :global(html) {
+    /** This is our responsive rem value, this will equal 1rem wherever we are. */
+    font-size: var(--html-resp-scale);
+  }
+
+  /* This is the CSS lock so our spacing unit doesn't get too big. */
+  @media value(breakpoint-xxl) {
+    :global(html) {
+      font-size: var(--html-resp-max);
+    }
+  }
+}
+
+:global(body) {
+  /**
+   * = Set the body font-size back to initial value.
+   *
+   * Why? If we don't do this then 1em will default to 1rem which we are using
+   * as a responsive scale to help us with things like responsive margins as an 
+   * attempt to get fluid vertical rythum.
+   * 
+   * The downside to that, if we want to adjust down a Text components size
+   * by making it's container say font-size: 0.8em then that would be 0.8 of 
+   * 1rem as it trickles all the way up to first set item, the root element. 
+   * This is an issue as we have a custom responsive scale for our text and this 
+   * essentially doubles us up on responsiveness.
+   * 
+   * We set the body to initial so that as it trickles up it will until it sees
+   * body is set body and be sized relative to that, initial which is our base of 
+   * 16px.
+   *
+   * This way we can use a responsive rem value when we want to but also 
+   * leverage ems as described above.
+   *
+   * I'm aware this is a terrible description. Basically we don't want 1em to 
+   * equal 1rem as we are leveraging rem for a dynamic responsive spacing unit.
+   */
+  font-size: initial;
+}

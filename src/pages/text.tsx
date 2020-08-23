@@ -5,8 +5,8 @@ import { P, H2, H3, H4 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 /* Style imports */
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
+import { classes as text } from "../styles/default/text.st.css";
+import { classes as grid } from "../styles/default/grid.st.css";
 
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
@@ -125,7 +125,7 @@ const TextDocs = () => {
           think we will put ours initially at lease.
         </P> */}
 
-        <H2 vol={2} className={grid.mbSmall} uppercase>
+        <H2 vol={2} uppercase>
           Shelley text volumes
           <br />
           <br />

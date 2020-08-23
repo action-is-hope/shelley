@@ -1,4 +1,5 @@
 /** propsDemo.st.css */
+@namespace "PropsDemo";
 
 .root {}
 
@@ -39,5 +40,5 @@
   padding-top: .9em;
   letter-spacing: -0.5px;
   background: #037acc;
-  margin-right: 12px
+  margin-right: 12px;
 }

@@ -1,15 +1,16 @@
 /** hintText.tsx */
 import React from "react";
-import style from "./hintText.st.css";
 import classnames from "classnames";
+/* = Style API. */
+import { st, classes } from "./hintText.st.css";
 
 const HintText = ({
   children,
-  className,
+  className: classNameProp,
   ...rest
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span {...style(classnames(style.root, className), {}, rest)} {...rest}>
+    <span className={st(classnames(classes.root, classNameProp))} {...rest}>
       {children}
     </span>
   );

@@ -1,0 +1,195 @@
+/**
+ * = GRID - grid.st.css 
+ *
+ * Our main grid styles live here, you maybe tempted to make add a load of
+ * utilities that configure your grid in a load of ways... Be warned that having
+ * too much layout specified with the markup via props/classnames is a real pain 
+ * when you are trying to make changes to a page full of grids. Opinion.
+ * 
+ * ========================================================================= */
+
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    breakpoint-sm,
+    breakpoint-md,
+    breakpoint-lg,
+    breakpoint-xl,
+    breakpoint-xxl,
+    --grid-gap,
+    --grid-v1-cols-xs, --grid-v1-cols-sm, --grid-v1-cols-md,
+    --grid-v2-cols-xs, --grid-v2-cols-sm, --grid-v2-cols-md,
+    --grid-v3-cols-xs, --grid-v3-cols-sm, --grid-v3-cols-md,
+    --grid-v4-cols-xs, --grid-v4-cols-sm, --grid-v4-cols-md;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Grid/grid.st.css";
+  -st-default: Grid;
+}
+
+/* = Project Mixins & Utils */
+:import {
+  -st-from: './mixins/formatting.st.css';
+  -st-named:
+    formatted;
+}
+
+
+
+@st-scope Default {
+  Grid {
+    display: grid;
+    grid-gap: var(--grid-gap);
+  }
+
+  /* = Assign formatting styles when formatted prop is set. */
+  Grid:formatted {
+    -st-mixin: formatted;
+  }
+
+  /* 
+   * = Variant 1: Core single column 
+   *
+   * This is our 'go to' core layout grid with some named
+   * lines which act as a type of tetris informing the element
+   * how wide the slot is as we drop them in.
+   */
+
+  /* = See grid docs on shelley.earth for initial walkthrough. */
+  Grid:variant(1) {
+    display: grid;
+    grid-row-gap: 0;
+    grid-template-columns: var(--grid-v1-cols-xs)
+  }
+}
+
+/* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
+@media value(breakpoint-sm) {
+  @st-scope Default {
+    Grid:variant(1) {
+      grid-template-columns: var(--grid-v1-cols-sm)
+    }
+  }
+}
+
+/* = width tweaks for md and above. */
+@media value(breakpoint-md) {
+  @st-scope Default {
+    Grid:variant(1) {
+      grid-template-columns: var(--grid-v1-cols-md);
+    }
+  }
+}
+
+/* = Set any direct descendant Grid on the 'goal' grid lines. */
+/* Grid:variant(1)>Grid {
+    grid-column: goal;
+  } */
+
+@st-scope Default {
+
+  /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
+  Grid:variant(1)>Grid:variant(1) {
+    grid-column: edge;
+  }
+
+  Grid:variant(1)>h1,
+  Grid:variant(1)>h2,
+  Grid:variant(1)>h3,
+  Grid:variant(1)>h4,
+  Grid:variant(1)>h5,
+  Grid:variant(1)>h6,
+  Grid:variant(1)>p,
+  Grid:variant(1)>ul,
+  Grid:variant(1)>ol,
+  Grid:variant(1)>dl,
+  Grid:variant(1)>blockquote,
+  Grid:variant(1)>pre,
+  Grid:variant(1)>img,
+  Grid:variant(1)>figure {
+    grid-column: mid;
+  }
+
+  /* = If you need to jump these based on media query then do it with a custom class. */
+  Grid:variant(1)>.mid {
+    grid-column: mid;
+  }
+
+  Grid:variant(1)>.pen {
+    grid-column: pen;
+  }
+
+  Grid:variant(1)>.goal {
+    grid-column: goal;
+  }
+
+  Grid:variant(1)>.edge {
+    grid-column: edge;
+  }
+
+  /* = Common snap patterns, you can set these up like a bootstrap grid if you like 
+   * littering your HTML with conditional positional info. */
+
+  Grid:variant(1)>.snapMidToGoal {
+    grid-column: mid;
+  }
+}
+
+@media value(breakpoint-md) {
+  @st-scope Default {
+    Grid:variant(1)>.snapMidToGoal {
+      grid-column: goal;
+    }
+  }
+}
+
+
+
+/* = end */
+
+/** 
+   * = Other grid variants
+   *
+   * One might call these our 'subgrids' as we usually will use them as children
+   * of the main grid, variant 1. 
+   * 
+   * When to add a new variant/subgrid? Not straightway?? maybe after you use it
+   * on more than one component, you don't really want a variant with just one 
+   * usage and in custom cases you migth use use some variables to build up a grid
+   * within a component CSS insteads. I think commony used patterns are fine, especially
+   * ones with a well defined responsive rules including fallback.
+   *
+   * You might like to use one as the basis of a custom style leveraging the fallback 
+   * but then overiding grid-template-columns with something else.
+   */
+
+
+/* = Variant 2: Standard 2 col. */
+@st-scope Default {
+  Grid:variant(2) {
+    grid-column: mid;
+    grid-template-columns: var(--grid-v2-cols-xs);
+  }
+}
+
+@media value(breakpoint-sm) {
+  @st-scope Default {
+    Grid:variant(2) {
+      grid-column: goal;
+      grid-template-columns: var(--grid-v2-cols-sm);
+    }
+  }
+}
+
+@media value(breakpoint-md) {
+  @st-scope Default {
+    Grid:variant(2) {
+      grid-column: goal;
+      grid-template-columns: var(--grid-v2-cols-md);
+    }
+  }
+}

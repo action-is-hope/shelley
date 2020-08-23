@@ -1,7 +1,13 @@
 /** inputRow.st.css */
+@namespace "InputBase";
 
 .root {
-  -st-states: disabled, error;
+  -st-states:
+    disabled,
+    error,
+    variant(enum(1, 2, 3, 4, 5, 6)),
+    vol(enum(1, 2, 3, 4, 5, 6));
+  ;
 }
 
 
@@ -16,32 +22,3 @@
 .fieldInput {}
 
 .errorMessage {}
-
-/* Variants */
-
-.variant1 {}
-
-.variant2 {}
-
-.variant3 {}
-
-.variant4 {}
-
-.variant5 {}
-
-.variant6 {}
-
-
-/* Volume */
-
-.vol1 {}
-
-.vol2 {}
-
-.vol3 {}
-
-.vol4 {}
-
-.vol5 {}
-
-.vol6 {}

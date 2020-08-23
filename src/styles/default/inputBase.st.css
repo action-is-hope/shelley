@@ -1,0 +1,208 @@
+/**
+ * = INPUT BASE - inputBase.st.css
+ *
+ * This file applies the base styles to our textal form components such as 
+ * inputs, textareas and selects or any compbo boxes we might construct.
+ *
+ * Most of the base styles live in the mixins so they can be shared but the 
+ * variants are styled here as they are more specific to our markup.
+ * 
+ * ========================================================================= */
+
+
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/InputBase/inputBase.st.css";
+  -st-default: InputBase;
+  -st-named: fieldInput
+}
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../components/HintText/hintText.st.css";
+  -st-default: HintText;
+}
+
+:import {
+  -st-from: "../../components/ErrorText/errorText.st.css";
+  -st-default: ErrorText;
+}
+
+:import {
+  -st-from: "../../components/InputAdornment/inputAdornment.st.css";
+  -st-default: Adornment;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    textualFieldRoot,
+    textualFieldContainer,
+    textualFieldContainerHasError,
+    textualFieldInput,
+    disabledField,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
+}
+
+@st-scope Default {
+
+  /*==== BASE ====*/
+
+  InputBase {
+    -st-mixin: textualFieldRoot;
+  }
+
+  InputBase::fieldContainer {
+    -st-mixin: textualFieldContainer;
+  }
+
+  /* = Native input field. */
+  InputBase::fieldInput {
+    -st-mixin: textualFieldInput;
+  }
+
+  /* = Use a named import as a class to get the adjacent selectors working. */
+  InputBase Adornment+.fieldInput,
+  InputBase::fieldInput+Adornment {
+    margin-left: calc(-.2rem - var(--spacing-unit));
+  }
+
+  InputBase HintText {
+    margin-top: calc(var(--spacing-unit) / 2)
+  }
+
+  InputBase ErrorText {
+    /* = Send the error message which is first in the source order to appear under the form input. */
+    order: 3;
+    padding: 8px var(--spacing-unit) 0 var(--spacing-unit);
+  }
+
+  InputBase ErrorText::before {
+    display: block;
+  }
+
+  /* = Textarea wrapper which can be used for scrolling. */
+  InputBase::textAreaWrap {
+    display: block;
+    width: 100%;
+  }
+
+
+  /*==== STATES ====*/
+
+  /* = Error */
+  InputBase:error::fieldContainer {
+    -st-mixin: textualFieldContainerHasError
+  }
+
+  /* = Disabled */
+  InputBase:disabled {
+    -st-mixin: disabledField
+  }
+
+  /*==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  InputBase:vol(1) {
+    -st-mixin: inputVol1
+  }
+
+  /* = Volume 2 */
+  InputBase:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  /* = Volume 3 */
+  InputBase:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+
+  /* = Volume 4 */
+  InputBase:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  /* = Volume 5 */
+  InputBase:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  /* = Volume 6 */
+  InputBase:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+
+
+  /*==== VARIANTS ====*/
+
+  /* = Variant 1 - "Body" */
+  InputBase:variant(1) InputLabel {
+    margin-bottom: var(--spacing-unit);
+  }
+
+  InputBase:variant(1)+InputBase:variant(1) {
+    margin-top: calc(var(--spacing-unit) * 1)
+  }
+
+
+  /* = Variant 2 - "Data" */
+
+  InputBase:variant(2) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: var(--spacing-unit);
+  }
+
+  InputBase:variant(2) InputLabel {
+    order: initial;
+  }
+
+  InputBase:variant(2)::fieldInput {
+    padding-top: calc(0.2rem + .58em);
+    padding-bottom: calc(0.2rem + .58em);
+  }
+
+  InputBase:variant(2) ErrorText {
+    grid-column: 2;
+    padding-top: 4px;
+    padding-bottom: 8px;
+  }
+
+  InputBase:variant(2) InputLabel {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  InputBase:variant(2) InputLabel::textContainer {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  InputBase:variant(2) InputLabel::labelText {
+    text-align: end;
+  }
+
+}

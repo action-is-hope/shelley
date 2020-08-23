@@ -3,11 +3,17 @@
  * in which it is used.
  */
 
+/* = Shelley project scope and vars. */
 :import {
-  -st-from: "../projects/default/project.st.css";
-  -st-default: Default;
-  -st-named: --color-accent-1-default, --color-ui-default;
+  -st-from: "../styles/shelley/project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    /* = CSS3 Vars. */
+    --grad-1,
+    --status-background,
+    --support-background;
 }
+
 
 :import {
   -st-from: "../components/Button/button.st.css";
@@ -15,12 +21,12 @@
 }
 
 :import {
-  -st-from: "../projects/default/css/utils.st.css";
+  -st-from: "../styles/default/mixins/formatting.st.css";
   -st-named: formatted;
 }
 
 
-@st-scope Default {
+@st-scope Shelley {
   Button.override {
     background: rebeccapurple;
     margin-bottom: 16px;

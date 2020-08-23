@@ -1,30 +1,13 @@
 /** blockquote.st.css */
+@namespace "Blockquote";
 
-.root {}
-
-/* 
-Again, this is much nicer:
 .root {
   -st-states:
-    variant(enum(1, 2, 3, 4, 5)),
-} */
+    variant(enum(1, 2, 3, 4, 5, 6));
+}
 
 .content {}
 
 .footer {}
 
 .cite {}
-
-/*= Variants */
-
-.variant1 {}
-
-.variant2 {}
-
-.variant3 {}
-
-.variant4 {}
-
-.variant5 {}
-
-.variant6 {}

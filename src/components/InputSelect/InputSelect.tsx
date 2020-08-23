@@ -1,11 +1,12 @@
 import React from "react";
 import classnames from "classnames";
-import style from "./inputSelect.st.css";
 import InputBase from "../InputBase/InputBase";
 import { InputBaseProps } from "../InputBase/InputBase";
+/* = Style API. */
+import { classes } from "./inputSelect.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface InputSelectProps
+export interface InputSelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement>,
     InputBaseProps {
   /**
@@ -50,7 +51,7 @@ const InputSelect = React.forwardRef(
           startAdornment
           // endAdornment Fiddly to do a nice job, parking support for native select.
         }}
-        className={classnames(style.root, classNameProp)}
+        className={classnames(classes.root, classNameProp)}
       >
         <select
           {...{

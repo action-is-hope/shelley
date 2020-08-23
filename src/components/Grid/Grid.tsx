@@ -1,9 +1,10 @@
 /** Grid.tsx */
 import React from "react";
-import style from "./grid.st.css";
-import classNames from "classnames";
+import classnames from "classnames";
+/* = Style API. */
+import { st, classes } from "./grid.st.css";
 
-interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
+export interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** HTML tag to render as the root for your grid. */
   tag?: string;
   /** Designed to toggle child formatting/alignment rules. */
@@ -24,21 +25,19 @@ const Grid = React.forwardRef(
     }: GridProps,
     ref?: React.Ref<HTMLBaseElement>
   ) => {
-    const gridRoot = React.createElement(
+    const rootClassNames = classnames(classes.root, classNameProp);
+
+    const GridRoot = React.createElement(
       tagName,
       {
-        ...style(
-          classNames(style.root, style["variant" + variant], classNameProp),
-          { formatted },
-          rest
-        ),
+        className: st(rootClassNames, { formatted, variant }),
         ref: ref,
         ...rest
       },
       children
     );
 
-    return gridRoot;
+    return GridRoot;
   }
 );
 

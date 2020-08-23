@@ -1,0 +1,30 @@
+/**
+ * = TEXT MIXIN - /mixins/text.st.css
+ *
+ * Mixin churning out our fluid styles including CSS lock at 1800px. 
+ * 
+ * ========================================================================= */
+
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    breakpoint-xxl;
+}
+
+:vars {
+  scale: calc(1em + 0.125 * ((100vw - 20em) / (92.5)));
+  max: 1.125em;
+  lineHeight: normal;
+}
+
+.textVol {
+  font-size: value(scale);
+  line-height: value(lineHeight);
+}
+
+@media value(breakpoint-xxl) {
+  .textVol {
+    font-size: value(max);
+  }
+}

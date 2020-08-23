@@ -1,0 +1,122 @@
+/**
+ * = Alternate colour scheme - Light
+ *
+ * These are our alternate color schemes, only variable aware browers will see 
+ * these so no need to set that as stylable build variables unless you want to.
+ * Try to stay organised.
+ */
+
+@namespace "light";
+
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    --color-focus,
+    --color-error,
+    --color-form-base-border,
+    --color-form-selection-border,
+    --color-form-selection-notch,
+    --color-toggle-notch,
+    --select-icon;
+}
+
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    /* = Run time vars (CSS) - importing maintains the namespace. */
+    --dark-01,
+    --dark-01-raw,
+    --light-01,
+    --light-01-raw,
+    /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+    --color-ui,
+    --color-ui-raw,
+    --color-ui-inverse,
+    --color-ui-raw-inverse,
+    /* = Accent colours */
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4,
+    /* = Background colours */
+    --color-background-1,
+    --color-background-2,
+    --color-background-3,
+    --color-background-4,
+    --color-background-modal,
+    /* = Text colours */
+    --color-text-1,
+    --color-text-2,
+    --color-text-3,
+    --color-text-4,
+    /* = Status colours */
+    /* --color-error, */
+    /* = Indicator colours */
+    /* --color-focus, */
+    /* = Form colours */
+    /* --color-form-mark,
+    --color-form-selection-track,
+    --color-form-selection-mark, */
+    /* = Gradiants */
+    --grad-1,
+    /* = Misc */
+    /* --select-icon, */
+    /* = Misc - CSS var only, fix?? */
+    /* --color-toggle-mark, */
+    --status-background,
+    --support-background;
+}
+
+/* 
+  = This 'theme' overrides some of the css variables defined in the project.st.css file,
+  replacing the entire design of the application.
+ */
+.root {
+  /* = Override our CSS runtime variables, if our user prefers it light as a feather. */
+
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  --color-ui: var(--dark-01);
+  --color-ui-raw: var(--dark-01-raw);
+  --color-ui-inverse: var(--light-01);
+  --color-ui-raw-inverse: var(--light-01-raw);
+
+  /* = Accent colours */
+  --color-accent-1: rgb(15, 108, 189);
+  --color-accent-2: rgb(3, 123, 70);
+  --color-accent-3: rgb(171, 45, 201);
+  --color-accent-4: rgb(134, 102, 30);
+
+  /* = Background colours */
+  --color-background-1: rgba(239, 239, 239, 1) !important;
+  --color-background-2: rgb(255, 255, 255);
+  --color-background-3: rgb(255, 255, 255);
+  --color-background-4: rgb(255, 255, 255, 0.8);
+  --color-background-modal: rgba(249, 249, 249, 0.98);
+
+  /* = Text colours */
+  --color-text-1: var(--dark-01);
+  --color-text-2: rgba(var(--dark-01-raw), 0.9);
+  --color-text-3: rgba(var(--dark-01-raw), 0.8);
+  --color-text-4: rgb(134, 102, 30);
+
+  /* = Status colours - TBC */
+  --color-error: red;
+
+  /* = Indicator colours */
+  /* --color-focus: pink; */
+
+  /* = Form colours */
+  --color-form-base-border: rgba(121, 170, 216, 0.5);
+  --color-form-selection-border: rgba(121, 170, 216, 1);
+  --color-form-selection-notch: #20af68;
+  --color-toggle-notch: #a5a5a5;
+
+  /* = Gradiants */
+  --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);
+
+  /* = Misc */
+  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='333333' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='333333' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+  --status-background: #ebbbbb;
+  --support-background: #cee1e7;
+}

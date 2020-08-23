@@ -1,0 +1,50 @@
+/**
+ * = INPUT SELECT - inputSelect.st.css
+ *
+ * The base styles taken care of by InputBase, here we are just adding the 
+ * that we want for our <select> element.
+ *
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/InputSelect/inputSelect.st.css";
+  -st-default: InputSelect;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+@st-scope Shelley {
+
+  /* = Example targeting the root. */
+  /* InputSelect {} */
+
+  /* = Example targeting the label. */
+  /* InputSelect InputLabel {} */
+
+  /* = The container. */
+  /* InputSelect::fieldContainer {} */
+
+  /* = Right hight hand indicator on <select>'s encasing the arrow icon. */
+  /* InputSelect::fieldContainer::after {} */
+
+  /* = The actual field. */
+  /* InputSelect::fieldInput {} */
+}

@@ -1,0 +1,108 @@
+/**
+ * = LOGO - logo.st.css
+ * 
+ * ========================================================================= */
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    /* = CSS3 Switcher vars. */
+    --color-ui,
+    --color-background-1;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/Logo/logo.st.css";
+  -st-default: Logo;
+}
+
+:import {
+  -st-from: "../../components/Text/text.st.css";
+  -st-default: Text;
+}
+
+/* https://www.sacredgeometryshop.com/sacred-geometry/vesica-piscis-sacred-geometry/ */
+@keyframes headTilt {
+  0% {
+    transform: rotate(4deg);
+  }
+
+  1% {
+    transform: rotate(-4deg);
+  }
+
+  33% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  66% {
+    transform: rotate(-4deg);
+  }
+
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@st-scope Shelley {
+
+  Logo {
+    display: inline-flex;
+    transform-origin: 50% 70%;
+    transform: rotate(4deg) translateZ(0);
+    align-items: center;
+    transition-property: transform;
+    transition-duration: .1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: .5s;
+  }
+
+  /* = Tilt Shelley on hover :-) */
+  Logo:hover {
+    transform: rotate(-4deg);
+  }
+
+  Logo::before,
+  Logo::after {
+    content: "";
+    display: flex;
+    /* 
+    height: 94px;
+    width: 94px; 
+    */
+    height: 6em;
+    width: 6em;
+    border-style: solid;
+    border-color: var(--color-ui);
+    border-width: 0.115em;
+    border-radius: 500px
+  }
+
+  Logo::before {
+    box-shadow: 2px 0px 3px #1acaff;
+    box-shadow: 0.125em 0px 0.1875em #1acaff;
+  }
+
+  Logo::logoInner {
+    height: 6em;
+    height: 5.85em;
+    margin-left: -2.9375em;
+    margin-right: -2.9375em;
+    position: relative;
+    display: flex;
+    width: 2.9375em;
+    background: var(--color-background-1)
+  }
+
+  Logo::after {
+    box-shadow: -2px 0px 3px #1acaff;
+    box-shadow: -0.125em 0px 0.1875em #1acaff;
+  }
+}

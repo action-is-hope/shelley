@@ -1,0 +1,197 @@
+/**
+ * = PROPSDEMO - propsDemo.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    /* = CSS3 Vars. */
+    --color-ui-raw,
+    --color-background-1;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components_site/PropsDemo/propsDemo.st.css";
+  -st-default: PropsDemo;
+}
+
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: Label;
+  -st-named: textContainer, labelText;
+}
+
+@st-scope Shelley {
+  PropsDemo {
+    padding: 1.3rem;
+    padding-top: 2rem;
+    /* border: 1px dashed value(color-ui-raw-default); */
+    border: 1px dashed rgba(var(--color-ui-raw), 0.2);
+    margin-top: 5.8rem;
+    margin-bottom: 5.8rem;
+    grid-column: edge;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 951px) {
+  @st-scope Shelley {
+    PropsDemo {
+      padding: 64px;
+      padding-top: 54px;
+      margin: 5.8rem 0;
+      grid-column: goal;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  @st-scope Shelley {
+    PropsDemo::gridOverflow {
+      width: calc(100vw - 2rem - 2.6rem);
+      overflow-x: scroll;
+      overflow-y: visible;
+    }
+  }
+}
+
+@st-scope Shelley {
+
+  PropsDemo::internalGrid {
+    display: grid;
+    grid-template-columns: 72vw 100vw;
+    grid-column-gap: 5.1vw;
+    grid-row-gap: 54px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  @st-scope Shelley {
+    PropsDemo::internalGrid {
+      grid-template-columns: 1.4fr 2fr;
+    }
+  }
+}
+
+@media screen and (min-width: 950px) {
+  @st-scope Shelley {
+    PropsDemo::internalGrid {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+}
+
+@st-scope Shelley {
+  PropsDemo::propsPlayground {
+    grid-row: 1 / span 2;
+    /* crude fallback for IE */
+    float: left;
+  }
+
+  PropsDemo::codeExample {
+    grid-row: 1;
+    grid-column: 2;
+    /* crude fallback for IE */
+    float: right;
+  }
+
+  PropsDemo::demoExample {
+    grid-column: 2;
+    grid-row: 2;
+    /* crude fallback for IE */
+    clear: both
+  }
+}
+
+@media screen and (max-width: 950px) {
+  @st-scope Shelley {
+    PropsDemo::propsPlayground {
+      grid-row: 1;
+    }
+
+    PropsDemo::codeExample {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    PropsDemo::demoExample {
+      grid-column: 1 / span 2;
+      width: calc(100vw - 2rem - 2.6rem);
+      grid-row: 2;
+    }
+  }
+}
+
+
+
+@st-scope Shelley {
+  PropsDemo::codeExample>div {
+    margin-top: 0;
+    height: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  PropsDemo::propsHeading {
+    /* margin: -44px 0 26px;
+  text-align: right;
+  text-align: end; */
+    position: absolute;
+    /* right: 0; */
+    top: -1.8em;
+  }
+
+  PropsDemo::propsHint {
+    color: #a9a9a9;
+    margin-bottom: 24px;
+  }
+
+  PropsDemo::tsExtends {
+    color: #a9a9a9;
+    margin-top: 16px
+  }
+
+  /* .tsLogo {
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1em;
+  padding-top: 1em;
+  width: 1.9em;
+  text-align: end;
+  font-family: Arial;
+  letter-spacing: .05em;
+  padding: .22em;
+  padding-top: .9em;
+  letter-spacing: -0.5px;
+  background: #037acc;
+  margin-right: 12px
+} */
+
+
+  PropsDemo::exampleHeading {
+    margin-bottom: 24px
+  }
+
+  PropsDemo::propsHeading span {
+    /*= Main background including fallback. */
+    background-color: var(--color-background-1);
+    display: inline-block;
+    padding: 0 4px;
+  }
+
+  PropsDemo::propInputs {
+    /* width: 50%; */
+    display: grid;
+    grid-row-gap: 1px;
+    /* margin-bottom: 48px */
+  }
+}

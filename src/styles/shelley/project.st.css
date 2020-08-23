@@ -1,0 +1,142 @@
+/**
+ * Shelley Project - project.st.css
+ * 
+ * Our main project which is essentially a theme but it itself can have themes
+ * so 'project' is more appropriate.
+ *
+ * This project is to be used in conjunction with Shelley's 'default' 
+ * styles|theme|project whatever you want to call it.
+ *
+ * Shelley's default provides the base and this sits on top of that and here
+ * we can import and override the CSS variables declared as part of the default. 
+ * We also set all of our project specifics such as colours and fonts. 
+ *
+ * Limitatons: We use CSS vars so IE11 is mostly out the window. We are also 
+ * unable to use override the values of the breakpoints and that's about it.
+ *
+ * You are able to clone our default and just use that as a fork and go from 
+ * there, that way you can override everything at the base and use that as your
+ * go to for your projects. Up to you.
+ */
+
+@namespace "Shelley";
+
+/* = Default project vars to be overridden. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --color-focus,
+    --color-error,
+    --color-form-base-border,
+    --color-form-selection-border,
+    --color-form-selection-notch,
+    --color-toggle-notch,
+
+    --select-icon,
+    --grid-gap,
+    --grid-v1-cols-xs,
+    --grid-v1-cols-sm,
+    --grid-v1-cols-md,
+
+    --text-vol-10-max,
+    --text-vol-10-scale,
+    --text-vol-10-line-height;
+}
+
+
+
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+
+:vars {
+  /** Fonts - Could be CSS Vars if changing them in a switcher for example. */
+  font-plain:
+    Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-special:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-mono:
+    Menlo, Courier, Courier New, Andale Mono, monospace;
+
+}
+
+/*=== Root Level CSS Variables - 'run time' ===*/
+
+:root {
+
+  /*=== COLOURS - The Queens English darling... ===*/
+
+  /* = Core light - always light or dark regardless of theme. */
+  --light-01-raw: 255, 255, 255;
+  --light-01: rgb(255, 255, 255);
+  /* = Core dark . */
+  --dark-01-raw: 51, 51, 51;
+  --dark-01: rgb(51, 51, 51);
+  /* = 'raw' are just the rgb values we we can use them with rgba 
+   * where we can provide the alpha yet still have the raw value change
+   * for our style-switcher and within lots of alpha variant vars. 
+   * 
+   * e.g color: rgba(var(--color-ui-raw), 0.9);
+   */
+
+  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  --color-ui: var(--light-01);
+  --color-ui-inverse: var(--dark-01);
+  --color-ui-raw: var(--light-01-raw);
+  --color-ui-raw-inverse: var(--dark-01-raw);
+
+  /* = Accent colours */
+  --color-accent-1: #65bfff;
+  --color-accent-2: #52fba7;
+  --color-accent-3: #ea91ff;
+  --color-accent-4: #f7e1b9;
+
+  /* = Background colours */
+  --color-background-1: rgb(23, 26, 35);
+  --color-background-2: rgba(0, 0, 0, 0.4);
+  --color-background-3: rgba(160, 160, 160, 0.06);
+  --color-background-4: rgba(11, 13, 18, 0.34);
+  --color-background-modal: rgba(23, 26, 35, 0.98);
+
+  /* = Text colours */
+  --color-text-1: var(--light-01);
+  --color-text-2: rgba(var(--light-01-raw), 0.9);
+  --color-text-3: rgba(var(--light-01-raw), 0.8);
+  --color-text-4: #f7e1b9;
+
+  /* = Status colours */
+  /* --color-error: #b66b6e; */
+
+  /* = Indicator colours */
+  /* --color-focus: #09b1f1; */
+
+  /* = Form colours */
+  /* --color-form-base-border: rgba(119, 140, 157, 0.7); */
+  /* --color-form-selection-border: rgba(119, 140, 157, 1); */
+  --color-form-selection-notch: var(--color-accent-2);
+  /* --color-toggle-notch:  */
+
+  /* = Gradiants */
+  --grad-1: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+
+  /* = Misc */
+  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
+  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
+  --status-background: #692e2e;
+  --support-background: #2e5b69;
+
+
+  /* --grid-v1-cols-md: 1fr; */
+  /* --text-vol-10-scale: 18px; */
+}
+
+/*=== Root Level CSS ===*/
+
+/** 
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
+ * which is pulled in within index.ts */
+.root {
+  font-family: value(font-plain);
+  color: var(--color-ui);
+  background-color: var(--color-background-1);
+}

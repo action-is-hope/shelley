@@ -1,19 +1,14 @@
 /** inputSelectionControl.st.css */
+@namespace "InputSelectionControl";
 
 .root {
-  -st-states: disabled, error;
+  -st-states:
+    disabled,
+    error,
+    type(enum(checkbox, radio, switch, toggle));
   ;
 }
 
 .inputContainer {}
 
 .inputField {}
-
-/* These are root level selectors for these types. */
-.radio {}
-
-.checkbox {}
-
-.toggle {}
-
-.switch {}

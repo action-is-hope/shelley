@@ -1,0 +1,70 @@
+/** inputSelectionControl.st.css */
+
+/* project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: InputSelectionControl;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    SelectionControlRoot,
+    SelectionControlFieldInput,
+    RadioCheckboxCommon,
+    CheckboxFieldInput,
+    RadioFieldInput,
+    ToggleFieldInput;
+}
+
+/* = This is how we can scope the styles. */
+@st-scope Default {
+
+  InputSelectionControl {
+    -st-mixin: SelectionControlRoot;
+  }
+
+  InputSelectionControl::inputField {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  /* = Radio Checkbox common styles. */
+  InputSelectionControl:type(checkbox)::inputField,
+  InputSelectionControl:type(radio)::inputField {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  /* = Radio */
+  InputSelectionControl:type(radio)::inputField {
+    -st-mixin: RadioFieldInput;
+  }
+
+  /* = Toggle */
+  InputSelectionControl:type(toggle)::inputField {
+    -st-mixin: ToggleFieldInput;
+  }
+}
+
+
+@-moz-document url-prefix() {
+
+  /**
+    * = Cross browser - Firefox 
+    
+    * This is annoying but Firefox is opposite as it seems to follow a focus-visible 
+    * rule for focus but will show our active styles that we only set to avoid the opposite
+    * in Chrome. 
+    */
+  @st-scope Default {
+    InputSelectionControl::inputField:active::after {
+      opacity: 0;
+    }
+  }
+}

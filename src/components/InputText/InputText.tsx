@@ -1,12 +1,13 @@
 import React from "react";
 import { TextInputType } from "../types";
 import classnames from "classnames";
-import style from "./inputText.st.css";
 import Textarea from "react-expanding-textarea";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";
+/* = Style API. */
+import { classes } from "./inputText.st.css";
 
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-interface InputTextProps
+export interface InputTextProps
   extends Pick<
       React.HTMLProps<HTMLInputElement>,
       Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
@@ -69,7 +70,7 @@ const InputText = React.forwardRef(
           variant,
           vol
         }}
-        className={classnames(style.root, style[type], classNameProp)}
+        className={classnames(classes.root, classes[type], classNameProp)}
       >
         {input}
       </InputBase>

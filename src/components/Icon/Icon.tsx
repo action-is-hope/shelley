@@ -1,12 +1,13 @@
 import React from "react";
 import classnames from "classnames";
-import style from "./icon.st.css";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+/* = Style API. */
+import { st, classes } from "./icon.st.css";
 
 /**
  * Icon props extending those of an svg element.
  */
-interface IconProps
+export interface IconProps
   extends Pick<
     React.SVGProps<SVGSVGElement>,
     Exclude<keyof React.SVGProps<SVGSVGElement>, "color">
@@ -33,13 +34,13 @@ const Icon = React.forwardRef(
     }: IconProps,
     ref?: React.Ref<SVGSVGElement>
   ) => {
-    const rootClassNames = classnames(style.root, classNameProp);
+    const rootClassNames = classnames(classes.root, classNameProp);
     const label = alt ? alt : ariaLabel;
 
     return (
       <>
         <svg
-          {...style(rootClassNames, {}, attrs)}
+          className={st(rootClassNames)}
           focusable="false"
           viewBox={viewBox}
           aria-hidden={true}

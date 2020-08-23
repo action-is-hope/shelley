@@ -6,7 +6,7 @@ import Button from "./Button";
 import Icon from "../../components/Icon/Icon";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
-import grid from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 export const meta = {
   name: "HTMLInputElement"
 };
@@ -83,8 +83,8 @@ export const ComponentDemo = () => {
             : `\n  variant={false}`
         } ${
           labelDemoProps[3].value > 0
-            ? `\n  volume={${labelDemoProps[3].value}}`
-            : `\n  volume={false}`
+            ? `\n  vol={${labelDemoProps[3].value}}`
+            : `\n  vol={false}`
         } ${
           labelDemoProps[4].value === "Yes"
             ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`

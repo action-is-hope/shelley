@@ -6,8 +6,8 @@ import Grid from "../components/Grid/Grid";
 import Blockquote from "../components/Blockquote/Blockquote";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
+import { classes as text } from "../styles/default/text.st.css";
+import { classes as grid } from "../styles/default/grid.st.css";
 
 // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
 

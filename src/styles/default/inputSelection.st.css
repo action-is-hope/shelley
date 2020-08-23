@@ -1,0 +1,167 @@
+/**
+ * = INPUT SELECTION - inputSelection.st.css
+ *
+ * Selection control (radio, checkboxes, toggle) with label, positioning 
+ * and variants
+ *
+ * ========================================================================= */
+
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-form-base-border;
+}
+
+/* = Root style API. */
+:import {
+  -st-from: "../../components/InputSelection/inputSelection.st.css";
+  -st-default: InputSelection;
+}
+
+/* = Child component styles API's */
+:import {
+  -st-from: "../../components/InputSelectionControl/inputSelectionControl.st.css";
+  -st-default: SelectionControl;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../components/ErrorText/errorText.st.css";
+  -st-default: ErrorText;
+}
+
+:import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6;
+}
+
+@st-scope Default {
+
+  /* = Don't really 'type' at this level but they exist should we/you need. */
+  InputSelection:type(radio) {}
+
+  InputSelection {
+    display: inline-flex;
+    flex-direction: column-reverse;
+  }
+
+  InputSelection InputLabel {
+    cursor: pointer
+  }
+
+  InputSelection:disabled InputLabel {
+    cursor: not-allowed;
+  }
+
+  InputSelection ErrorText {
+    padding-top: var(--spacing-unit);
+    padding-bottom: var(--spacing-unit);
+  }
+
+  /* ==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  InputSelection:vol(1) {
+    -st-mixin: inputVol1
+  }
+
+  /* = Volume 2 */
+  InputSelection:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  /* = Volume 3 */
+  InputSelection:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+  /* = Volume 4 */
+  InputSelection:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  /* = Volume 5 */
+  InputSelection:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  /* = Volume 6 */
+  InputSelection:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+
+  /* ==== VARIANTS ====*/
+
+  /* = Variant 1 - Basic alignment. */
+
+  InputSelection Icon {
+    font-size: 2em;
+  }
+
+  InputSelection:variant(1) InputLabel:inputPos(top)::textContainer {
+    padding-top: calc(var(--spacing-unit) / 2);
+  }
+
+  InputSelection:variant(1) InputLabel:inputPos(end)::textContainer {
+    /* rtl padding-left: var(--spacing-unit); */
+    padding-right: var(--spacing-unit);
+  }
+
+  InputSelection:variant(1) InputLabel:inputPos(bottom)::textContainer {
+    padding-bottom: calc(var(--spacing-unit) / 2);
+  }
+
+  InputSelection:variant(1) InputLabel:inputPos(start)::textContainer {
+    padding-left: var(--spacing-unit);
+    /* = rtl padding-right: var(--spacing-unit); */
+  }
+
+
+  /* = Variant 2 - Form row style. */
+  InputSelection:variant(2) {
+    display: flex;
+  }
+
+  InputSelection:variant(2) InputLabel:hasInput {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: var(--spacing-unit);
+  }
+
+  InputSelection:variant(2) InputLabel::labelText {
+    justify-content: flex-end;
+  }
+
+  InputSelection:variant(2) SelectionControl {
+    padding: var(--spacing-unit);
+    border-left: 1px solid var(--color-form-base-border);
+  }
+
+  InputSelection:variant(2) ErrorText {
+    border-left-width: 1px;
+    padding: 4px var(--spacing-unit) 8px;
+    /* 12px is from 18px / 3 * 2 */
+    margin-left: calc(100% / 3 + 12px);
+  }
+}

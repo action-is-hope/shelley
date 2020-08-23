@@ -1,0 +1,31 @@
+/**
+ * = HINTTEXT - hintText.st.css
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component. */
+:import {
+  -st-from: "../../components/HintText/hintText.st.css";
+  -st-default: Hint;
+}
+
+@st-scope Shelley {
+
+  /* = Root */
+  Hint {}
+
+}

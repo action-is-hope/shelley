@@ -1,6 +1,5 @@
 /* inputAdornment.st.css */
-
-.root {}
+@namespace "InputAdornment";
 
 .root {
   height: 0.01em;

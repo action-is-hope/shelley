@@ -6,9 +6,9 @@ import classnames from "classnames";
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
-import styleExamples from "./__gridExample.st.css";
+import { classes as styleExamples } from "./__gridExample.st.css";
 import Grid from "./Grid";
-import grid from "../../projects/default/css/grid.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 import Text, { P } from "../Text/Text";
 
 export const meta = {
@@ -94,7 +94,7 @@ export const ComponentCSS = () => (
 
 /* import the Shelley component selectors */
 :import {
-  -st-from: "../../../components/Grid/grid.st.css";
+  -st-from: "../components/Grid/grid.st.css";
   -st-default: Grid;
 }
   

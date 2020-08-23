@@ -4,8 +4,9 @@ import classnames from "classnames";
 import Text, { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
-import text from "../projects/default/css/text.st.css";
-import grid from "../projects/default/css/grid.st.css";
+import { classes as text } from "../styles/default/text.st.css";
+import { classes as grid } from "../styles/default/grid.st.css";
+import { classes as spacing } from "../styles/shelley/mixins/spacing.st.css";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import {
   meta,
@@ -100,14 +101,14 @@ variant?: number;`}</CodeSample>
           Shelley&apos;s field grid
         </H2>
 
-        <P className={grid.mb1}>
+        <P className={spacing.mb1}>
           This is our <q>one we made earlier</q>, our main grid variant. It
           started to resemble a games field so we just went with it. Outrageous!
         </P>
 
         <Example1 />
 
-        <P className={grid.mt2}>
+        <P className={spacing.mt2}>
           We like this layout as a concept, inspired by Medium; designed to
           support{" "}
           <a href="https://baymard.com/blog/line-length-readability">
@@ -154,7 +155,7 @@ variant?: number;`}</CodeSample>
 
         <Grid
           tag="figure"
-          className={classnames(grid.edge, grid.mt2, grid.mb2)}
+          className={classnames(grid.edge, spacing.mt2, spacing.mb2)}
           variant={1}
         >
           <img
@@ -166,7 +167,7 @@ variant?: number;`}</CodeSample>
           <Text
             tag="figcaption"
             vol={2}
-            className={classnames(grid.mid, grid.mt1)}
+            className={classnames(grid.mid, spacing.mt1)}
           >
             A Maasai woman is sprinkling her feet with hot spring water,
             believed to be medicinal. Lake Magadi is among the salt lakes that
@@ -246,7 +247,7 @@ variant?: number;`}</CodeSample>
           on a sports field. A few developers like sport... I think, maybe...
         </P>
 
-        <dl className={classnames(grid.mt1, grid.mb1, text.dl)}>
+        <dl className={classnames(spacing.mt1, spacing.mb1, text.dl)}>
           <Text tag="dt">
             <code>mid</code>
           </Text>

@@ -1,0 +1,53 @@
+/**
+ * = INPUT BASE - inputBase.st.css
+ *
+ * This file applies the base styles to our textal form components such as 
+ * inputs, textareas and selects or any compbo boxes we might construct.
+ *
+ * Most of the base styles live in the mixins so they can be shared but the 
+ * variants are styled here as they are more specific to our markup.
+ * 
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    --color-background-3;
+}
+
+
+/* = Root Component. */
+:import {
+  -st-from: "../../components/InputBase/inputBase.st.css";
+  -st-default: InputBase;
+}
+
+
+@st-scope Shelley {
+
+  /* = Example targeting the root. */
+  /* InputBase {} */
+
+  /*==== VARIANTS ====*/
+
+  /* = Variant 1 - "Body" */
+  /* InputBase:variant(1) {} */
+
+
+  /* = Variant 2 - "Data" */
+
+  InputBase:variant(2) {
+    background-color: var(--color-background-3);
+  }
+
+}

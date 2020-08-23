@@ -1,11 +1,16 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   extends: [
+    // "eslint:recommended",
+    // "plugin:react/recommended",
+    // "plugin:@typescript-eslint/recommended",
+    // // "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    // "prettier/@typescript-eslint",
+
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:@typescript-eslint/recommended"
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   settings: {
     react: {
@@ -15,10 +20,10 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es2020: true,
     jest: true
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react-hooks"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -27,8 +32,13 @@ module.exports = {
     sourceType: "module" // Allows for the use of imports
   },
   rules: {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     "react/prop-types": "off", // Disable prop-types as we use TypeScript for type checking
-    "@typescript-eslint/explicit-function-return-type": "off"
+    // "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+    // "no-unused-vars": "off"
+    // "@typescript-eslint/no-unused-vars": ["off"]
   },
   overrides: [
     // Override some TypeScript rules just for .js files

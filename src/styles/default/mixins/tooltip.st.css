@@ -1,0 +1,34 @@
+/**
+ * = TOOLTIP MIXIN - /mixins/tooltip.st.css
+ *
+ * Basic CSS tooltip where we can get away with it.
+ * 
+ * ========================================================================= */
+
+
+/* = Project and vars. */
+:import {
+  -st-from: "../project.st.css";
+  -st-named:
+    --spacing-unit
+}
+
+.tooltip {
+  transform: scale(0);
+  transition: transform 120ms;
+  transition-delay: .2s;
+  position: absolute;
+  font-size: 12px;
+  background: #0000009e;
+  color: #fff;
+  /* background: rgba(var(--color-ui-raw-inverse), 0.7); */
+  /* justify-content: end; */
+  padding: 5px 8px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
+  white-space: nowrap;
+}
+
+.tooltipVisible {
+  transform: scale(1);
+}

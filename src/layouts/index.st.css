@@ -1,16 +1,23 @@
+/* = Default project vars. */
 :import {
-  -st-from: "../projects/default/project.st.css";
-  -st-default: Default;
+  -st-from: "../styles/default/project.st.css";
   -st-named:
-    spacing-unit,
-    --color-text-1-default,
-    --color-ui-default,
-    --color-background-1-default;
-  /* --color-text-faint-2-default; */
+    --spacing-unit;
 }
 
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "../styles/shelley/project.st.css";
+  -st-default: Shelley;
+  -st-named:
+    /* = CSS3 Vars. */
+    --color-background-1,
+    --color-ui;
+}
+
+
 .navbar {
-  background: var(--color-background-1, value(--color-background-1-default));
+  background: var(--color-background-1);
 }
 
 .title {
@@ -24,13 +31,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
+
 .controls {
   display: inline-flex;
   justify-content: flex-end;
 }
 
 .inner {
-  padding: 0.8rem calc(value(spacing-unit) * 3);
+  padding: 0.8rem calc(var(--spacing-unit) * 3);
   /* background: rgba(76, 76, 76, 0.4392156862745098); */
   position: relative;
   display: flex;
@@ -41,7 +49,6 @@
 .footer {
   margin-top: 25vh;
   background: rgba(76, 76, 76, 0.4392156862745098);
-  color: var(--color-text-faint-2, value(--color-text-1-default));
 }
 
 
@@ -82,8 +89,8 @@
   margin-left: -96px; */
 }
 
-.logo:before,
-.logo:after {
+.logo::before,
+.logo::after {
   content: "";
   display: flex;
   height: 94px;
@@ -92,7 +99,7 @@
   border-radius: 500px
 }
 
-.logo:before {
+.logo::before {
   box-shadow: 2px 0px 3px #1acaff;
 }
 
@@ -108,6 +115,6 @@
   background: var(--color-background-1, value(--color-background-1-default))
 }
 
-.logo:after {
+.logo::after {
   box-shadow: -2px 0px 3px #1acaff;
 }
