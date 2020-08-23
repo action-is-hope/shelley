@@ -120,7 +120,7 @@
   }
 
   InputSelection:variant(1) InputLabel:inputPos(top)::textContainer {
-    padding-top: calc(var(--spacing-unit) / 2 + 0.2em);
+    padding-top: calc(var(--spacing-unit) / 2);
   }
 
   InputSelection:variant(1) InputLabel:inputPos(end)::textContainer {
@@ -129,7 +129,7 @@
   }
 
   InputSelection:variant(1) InputLabel:inputPos(bottom)::textContainer {
-    padding-bottom: calc(var(--spacing-unit) / 2 + 0.2em);
+    padding-bottom: calc(var(--spacing-unit) / 2);
   }
 
   InputSelection:variant(1) InputLabel:inputPos(start)::textContainer {

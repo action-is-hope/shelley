@@ -13,7 +13,7 @@ import { P } from "../../components/Text/Text";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "Button"
+  name: "Text"
 };
 
 export const QuickRef = () => (

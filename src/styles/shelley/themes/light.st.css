@@ -67,11 +67,6 @@
     --support-background;
 }
 
-:import {
-  -st-from: "../../../components/InputSelect/inputSelect.st.css";
-  -st-default: InputSelect;
-}
-
 /* 
   = This 'theme' overrides some of the css variables defined in the project.st.css file,
   replacing the entire design of the application.

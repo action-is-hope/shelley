@@ -51,7 +51,7 @@ const Button = React.forwardRef(
         {...rest}
         ref={ref}
       >
-        {icon && (
+        {icon && children && (
           <>
             {icon}
             <span className={classes.divider}></span>
