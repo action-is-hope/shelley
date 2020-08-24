@@ -1,0 +1,41 @@
+.root {
+  -st-states:
+    orientation(enum(horizontal, vertical));
+}
+
+
+.root {
+  display: inline-flex;
+}
+
+.root>button:focus {
+  z-index: 1;
+}
+
+/* Styles applied to the children if `orientation="horizontal"`. */
+.root:orientation(horizontal)>button:not(:first-child),
+.root:orientation(horizontal)>button:not(:first-child)::after {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.root:orientation(horizontal)>button:not(:last-child),
+.root:orientation(horizontal)>button:not(:last-child)::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.root:orientation(horizontal)>button:not(:first-child) {
+  border-left-width: 0;
+}
+
+/* Styles applied to the children if `orientation="vertical"`. */
+.root:orientation(vertical)>button:not(:first-child) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.root:orientation(vertical)>button:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
