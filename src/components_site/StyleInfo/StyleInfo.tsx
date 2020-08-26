@@ -37,10 +37,10 @@ StyleInfoProps) => {
           The raw <code>HMTL</code> output from <code>{componentName}:</code>
         </P>
         {componentHTML}
-        <P vol={2}>
+        {/* <P vol={2}>
           View the Shelley {componentName} CSS on GitHub inclusive of comments
           :-)
-        </P>
+        </P> */}
       </div>
       <div className={classes.css}>
         <P>

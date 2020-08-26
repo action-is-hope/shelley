@@ -56,7 +56,8 @@ const ButtonGroup = React.forwardRef(
             disabled: child.props.disabled || disabled,
             tone: child.props.tone || tone,
             vol: child.props.vol || vol,
-            variant: child.props.variant || variant
+            variant: child.props.variant || variant,
+            icon: child.props.icon
           });
         })}
       </div>

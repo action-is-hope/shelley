@@ -1,0 +1,48 @@
+/**
+ * = BUTTON GROUP - buttonGroup.st.css
+ *
+ * ========================================================================= */
+
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/ButtonGroup/buttonGroup.st.css";
+  -st-default: ButtonGroup;
+}
+
+/* = Child components */
+:import {
+  -st-from: "../../components/Button/button.st.css";
+  -st-default: Button;
+}
+
+/* This is how we can scope the styles in Stylable. */
+@st-scope Default {
+
+  /* = The base <button> element. */
+  ButtonGroup {}
+
+  ButtonGroup:orientation(horizontal) {}
+
+  ButtonGroup:orientation(vertical) {}
+
+  /* .root:orientation(horizontal)>button:not(:first-child),
+  .root:orientation(horizontal)>button:not(:first-child)::after {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .root:orientation(horizontal)>button:not(:last-child),
+  .root:orientation(horizontal)>button:not(:last-child)::after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  } */
+}

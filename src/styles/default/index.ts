@@ -6,6 +6,7 @@ import "./allGlobal.st.css";
 
 // = Foundation Components
 import Button from "./button.st.css";
+// import ButtonGroup from "./buttonGroup.st.css";
 import Blockquote from "./blockquote.st.css";
 import ErrorText from "./errorText.st.css";
 import Grid from "./grid.st.css";
@@ -34,6 +35,9 @@ const getStylableClassNames = (
 // = Foundation Components
 export const button = (...values: []) =>
   getStylableClassNames(values, Button, "button");
+
+// export const buttonGroup = (...values: []) =>
+//   getStylableClassNames(values, ButtonGroup, "buttonGroup");
 
 export const blockquote = (...values: []) =>
   getStylableClassNames(values, Blockquote, "blockquote");
