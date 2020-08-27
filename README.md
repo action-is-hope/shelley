@@ -24,7 +24,7 @@ https://marketplace.visualstudio.com/items?itemName=wix.stylable-intelligence
 To begin with this project it primaily driving sone of our internal projects. However we are planning to keep generic /configurable as possible for our own use as it will drive multiple sites. Stylable allows us to essenetially define our 'holy grain' HTML which is essentially exposed as a styling API for any CSS that we want to throw at it.
 
 ## Styling
-Components come unstyled by default (a few exceptions) with all the styles coming from the theme, so you can completely do you own thing. This feature is one of the reasons for writing this, in honour of http://www.csszengarden.com/ before it is forgotton. CSS has always been versatile.
+Components come unstyled by default (a few exceptions) with all the styles coming from the theme, so you can completely do you own thing. This feature is one of the reasons for writing this, in honour of (CSS Zen Garden)[http://www.csszengarden.com/ before it is forgotton. CSS has always been versatile].
 
 We are providing a base project/theme which we have just called `Default` whihch you are welcome to either extend off or copy and make your own.
 
