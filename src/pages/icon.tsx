@@ -11,7 +11,9 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
+  A11yIconWrong,
+  Collection
 } from "../components/Icon/__iconExamples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
@@ -21,14 +23,21 @@ const IconDocs = () => {
       <PageTitle>Icon</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
-          Icon&apos;s are universal translators,some are more visually
-          descriptive than others so consider labels.
+          Icon's are universal translators,some are more visually descriptive
+          than others, so consider labels.
         </P>
 
         <H2 vol={2} uppercase>
           Quick reference:
         </H2>
         <QuickRef />
+
+        <P>
+          <A11yIconWrong />
+        </P>
+        <P>
+          <Collection />
+        </P>
 
         <P>
           Shelley borrows from the mighty Material UI here. We really like the
@@ -42,29 +51,16 @@ const IconDocs = () => {
           <a href="https://cdn.vaadin.com/vaadin-icons/4.3.1/demo/#icons-basic-demos">
             vaadin-icons
           </a>
-          , an Open Source set that is fairly extensive. We do have some beef**
-          with the &apos;accessibility&apos; icon denoting a wheelchair... but
-          this is not an issue specific to this icon set. We shall see how we
-          get on with it but may well fallback to the Material set.
+          , an Open Source set that is fairly extensive. We do have some beef
+          with the 'accessibility' icon denoting a wheelchair... but this is not
+          an issue specific to this icon set. We shall see how we get on with it
+          but may well fallback to the Material set.
         </P>
 
         <P>
           If you use an icon as a replacement for a text label be sure to use
           the <code>label</code> prop which will output a{" "}
-          <code>VisuallyHidden</code> one for you, it&apos;s the law.
-        </P>
-
-        <P>
-          **Digression: We love the taste of beef, not gonna lie, but we
-          don&apos;t trust the non transparency of our supply chain to be
-          sustainable or humain, can it even be sustainable? Interested in the
-          potential to run herds (mimicking nature) to help reverse
-          desertification.{" "}
-          <a href="https://www.youtube.com/watch?v=q7pI7IYaJLI">
-            Holistic grazing
-          </a>{" "}
-          is an interesting area and whilst Savoy has his critics we have
-          noticed that in the soil space he has support.
+          <code>VisuallyHidden</code> one for you, it's the law.
         </P>
 
         <ComponentDemo />
@@ -79,11 +75,11 @@ const IconDocs = () => {
           own so inline sizing and color is especially bad.
         </P>
         <P>
-          We tend to apply these &apos;glue&apos; styles within our component
+          We tend to apply these 'glue' styles within our component
           compositions, or application components if you will.
         </P>
         <P>
-          So at this level there isn&apos;t much to say on styling other than by
+          So at this level there isn't much to say on styling other than by
           default this is one of the few components that we so provide some
           default styles as part of the core.
         </P>
@@ -108,8 +104,9 @@ const IconDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law this, is ranked as Level A which makes it
-          a requirement for us.
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
+          law this, is ranked as Level A which makes it a requirement for us.
         </P>
 
         <Blockquote
@@ -144,11 +141,11 @@ const IconDocs = () => {
 
         <P>
           This is the shape of the Covid-19 exponential growth <Example1 />{" "}
-          spread; we found an article that was using it just like that, loved
+          spread; we found an article that was using like that, inline. Loved
           it! When we find it we will post it! It will only work on the first
-          line of a text block really at this size but it&apos;s a nice
-          addition. Feels like this one should have an equivalent. See{" "}
-          <code>Example1</code> within <a href="#">icon examples on github</a>.
+          line of a text block but it's a nice addition. Feels like this one
+          should have an equivalent. See <code>Example1</code> within{" "}
+          <a href="#">icon examples on github</a>.
         </P>
 
         <P>
@@ -165,9 +162,9 @@ const IconDocs = () => {
         </H2>
 
         <P>
-          We don&apos;t like them and we don&apos;t recommend them as a
-          professional solution, however are inventive; we like that about them
-          - it&apos;s defo worth understanding how they work.
+          We don't like them and we don't recommend them as a professional
+          solution, however are inventive; we like that about them - it's defo
+          worth understanding how they work.
         </P>
 
         <H3 uppercase vol={2}>

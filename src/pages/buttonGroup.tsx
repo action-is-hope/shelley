@@ -1,11 +1,11 @@
 import React from "react";
 import DefaultLayout from "../layouts";
-import Text, { P, H2 } from "../components/Text/Text";
+import { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
+// import { classes as grid } from "../styles/default/grid.st.css";
 import { classes as spacing } from "../styles/shelley/mixins/spacing.st.css";
 import Blockquote from "../components/Blockquote/Blockquote";
 import {
@@ -17,17 +17,8 @@ import {
   Example1
 } from "../components/ButtonGroup/__buttonGroup.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
-import Button from "../components/Button/Button";
 
 const ButtonDocs = () => {
-  const test = React.createRef<HTMLBaseElement>();
-  const onButtonClick = () => {
-    const node = test.current;
-    console.log(node);
-    // `current` points to the mounted text input element
-    node && node.focus();
-  };
-
   return (
     <DefaultLayout>
       <PageTitle>ButtonGroup</PageTitle>
@@ -45,15 +36,15 @@ const ButtonDocs = () => {
         <P>
           The button related <code>props</code> set on the{" "}
           <code>ButtonGroup</code> are applied to the children unless a child
-          has that prop set. Let&apos;s take a look at a few variations.
+          has that prop set. Let's take a look at a few variations.
         </P>
 
         <ComponentDemo />
 
         <P>
-          As ever, if this component isn&apos;t really working for you then you
-          can make your own, clone ours for a starting point if you need a
-          legup. It&apos;s pretty simple, we like simple.
+          As ever, if this component isn't really working for you then you can
+          make your own, clone ours for a starting point if you need a legup.
+          It's pretty simple, we like simple.
         </P>
 
         <H2 vol={4} uppercase>
@@ -73,10 +64,12 @@ const ButtonDocs = () => {
         />
 
         <H2 vol={4} uppercase>
-          Usage
+          Examples
         </H2>
 
-        <P className={spacing.mb2}>Split button</P>
+        <P className={spacing.mb2}>
+          Split button: Simple example, we've yet to add a
+        </P>
 
         <Example1 />
         <H2 vol={4} uppercase>
@@ -84,8 +77,12 @@ const ButtonDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement both in the value that it provides and the law.
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">
+            <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+          </abbr>{" "}
+          and the law, this is covered under Level A which makes it a
+          requirement both in the value that it provides and the law.
         </P>
 
         <Blockquote
@@ -123,15 +120,6 @@ const ButtonDocs = () => {
           as you need but worth a scan read when you have a mo so that light
           goes off in your head when you need it to.
         </P>
-
-        <div className={grid.mid}>
-          <Button onClick={() => onButtonClick()} vol={1}>
-            Test Ref
-          </Button>{" "}
-          <Text tag="span" ref={test} tabIndex={1} vol={2}>
-            TODO: Remove and add tests for refs in general.
-          </Text>
-        </div>
       </Grid>
     </DefaultLayout>
   );

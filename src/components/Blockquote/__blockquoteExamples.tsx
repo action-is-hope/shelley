@@ -15,7 +15,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>{`import Blockquote from "shelley-ui";\n
 <Blockquote
-  cite="The Guardian, accepts react node so tect or link"
+  cite="The Guardian - cite accepts react node, text or link etc"
   >
   <P>These findings suggest a substantial impact of mechanized bots in amplifying denialist messages about climate change, including support for Trump’s withdrawal from the Paris agreement.</P>
 </Blockquote>`}</CodeSample>
@@ -30,7 +30,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 0
+      value: 1
     },
     {
       name: "cite",

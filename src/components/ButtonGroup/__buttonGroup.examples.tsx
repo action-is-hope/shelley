@@ -154,11 +154,3 @@ export const Example1 = () => (
 </ButtonGroup>`}</CodeSample>
   </>
 );
-// Add some tests to check refs and tings are spread properly.
-// const inputEl = React.useRef();
-// const test = React.createRef<HTMLButtonElement>();
-// const onButtonClick = () => {
-//   const node = test.current;
-//   // `current` points to the mounted text input element
-//   node && node.focus();
-// };
