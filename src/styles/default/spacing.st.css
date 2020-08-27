@@ -12,6 +12,18 @@
   margin-top: 3vw;
 }
 
+.mbGridGap {
+  margin-top: 3vw;
+}
+
+.mtAuto {
+  margin-top: auto;
+}
+
+.mbAuto {
+  margin-top: auto;
+}
+
 .mt1 {
   margin-top: var(--spacing-unit);
 }
@@ -48,24 +60,18 @@
   margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
-/* 
-@st-scope Default {
-  .mt1 {
-    margin-top: calc(var(--spacing-unit) * 4)
-  }
+.mb5 {
+  margin-bottom: calc(var(--spacing-unit) * 5);
+}
 
-  .mb1 {
-    margin-bottom: calc(var(--spacing-unit) * 4)
-  }
+.mb6 {
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
 
-  .mt2 {
-    margin-top: calc(var(--spacing-unit) * 8)
-  }
+.mb7 {
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
 
-  .mb2 {
-    margin-bottom: calc(var(--spacing-unit) * 8)
-  }
-
-  .mtAuto {
-    margin-top: auto;
-  } */
+.mb8 {
+  margin-bottom: calc(var(--spacing-unit) * 8);
+}
