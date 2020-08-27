@@ -23,7 +23,8 @@
 @st-scope Shelley {
 
   StyleInfo {
-    margin-top: calc(var(--spacing-unit) * 4)
+    margin-top: calc(var(--spacing-unit) * 4);
+    margin-bottom: calc(var(--spacing-unit) * 4)
   }
 
   StyleInfo::html,

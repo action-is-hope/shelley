@@ -38,8 +38,6 @@
     formatted;
 }
 
-
-
 @st-scope Default {
   Grid {
     display: grid;
@@ -59,7 +57,7 @@
    * how wide the slot is as we drop them in.
    */
 
-  /* = See grid docs on shelley.earth for initial walkthrough. */
+  /* = See grid docs on https://shelley.earth/grid for initial walkthrough. */
   Grid:variant(1) {
     display: grid;
     grid-row-gap: 0;
@@ -67,7 +65,7 @@
   }
 }
 
-/* = width tweaks and seperating 'pen' from 'goal' for sm and above. */
+/* = Width tweaks for sm and above. */
 @media value(breakpoint-sm) {
   @st-scope Default {
     Grid:variant(1) {
@@ -76,7 +74,7 @@
   }
 }
 
-/* = width tweaks for md and above. */
+/* = Width tweaks for md and above. */
 @media value(breakpoint-md) {
   @st-scope Default {
     Grid:variant(1) {
@@ -84,11 +82,6 @@
     }
   }
 }
-
-/* = Set any direct descendant Grid on the 'goal' grid lines. */
-/* Grid:variant(1)>Grid {
-    grid-column: goal;
-  } */
 
 @st-scope Default {
 

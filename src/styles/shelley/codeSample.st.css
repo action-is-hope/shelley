@@ -67,12 +67,9 @@
   CodeSample code :global(.string),
   CodeSample code :global(.attr-value) {
     color: var(--color-text-4);
-    /* color: #ce9734; */
-    /* #ce9734 */
   }
 
   CodeSample code :global(.comment) {
     color: #29a065
-      /* 2ea96c, 29a065 */
   }
 }

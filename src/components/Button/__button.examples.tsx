@@ -8,7 +8,7 @@ import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 export const meta = {
-  name: "HTMLInputElement"
+  name: "Button"
 };
 
 export const QuickRef = () => (

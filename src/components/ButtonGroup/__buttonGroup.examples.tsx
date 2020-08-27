@@ -17,28 +17,14 @@ export const QuickRef = () => (
     className={grid.mid}
   >{`import { ButtonGroup, Button } from "@action-is-hope/shelley";
 \n<ButtonGroup vol={2} tone={2} variant={1}>
-<Button>Publish</Button>
-<Button
-  icon={
-    <Icon alt="Select action">
-      {/* chevron-down-small path */}
-    </Icon>
-  }
-  aria-label="Page actions"
-  aria-haspopup="menu"
-></Button>
+  <Button>Button one</Button>
+  <Button>Button two</Button>
 </ButtonGroup>`}</CodeSample>
 );
 
 // Props Demo - Examples below.
 export const ComponentDemo = () => {
   const [labelDemoProps, setLabelDemoProps]: any = React.useState([
-    {
-      name: "children",
-      label: "children",
-      type: "text",
-      value: "Earth Solutionists required"
-    },
     {
       name: "tone",
       label: "tone",
@@ -64,13 +50,6 @@ export const ComponentDemo = () => {
       value: 2
     },
     {
-      name: "icon",
-      label: "icon",
-      type: "select",
-      value: "No",
-      options: ["Yes", "No"]
-    },
-    {
       name: "orientation",
       label: "orientation",
       type: "select",
@@ -86,56 +65,38 @@ export const ComponentDemo = () => {
       tsExtends="HTMLDivElement"
       renderExample={
         <CodeSample>{`import { Button, Icon } from "@action-is-hope/shelley";\n\n<ButtonGroup ${
-          labelDemoProps[1].value > 0
-            ? `\n  tone={${labelDemoProps[1].value}}`
+          labelDemoProps[0].value > 0
+            ? `\n  tone={${labelDemoProps[0].value}}`
             : `\n  tone={false}`
         } ${
-          labelDemoProps[2].value > 0
-            ? `\n  variant={${labelDemoProps[2].value}}`
+          labelDemoProps[1].value > 0
+            ? `\n  variant={${labelDemoProps[1].value}}`
             : `\n  variant={false}`
         } ${
-          labelDemoProps[3].value > 0
-            ? `\n  vol={${labelDemoProps[3].value}}`
+          labelDemoProps[2].value > 0
+            ? `\n  vol={${labelDemoProps[2].value}}`
             : `\n  vol={false}`
         } ${
-          labelDemoProps[5].value === "vertical"
+          labelDemoProps[3].value === "vertical"
             ? `\n  orientation="vertical"`
             : ``
-        } ${
-          labelDemoProps[4].value === "Yes"
-            ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`
-            : ``
-        }  \n>
+        } \n>
   <Button>Button one</Button>
   <Button>Button two</Button>
 </ButtonGroup>`}</CodeSample>
       }
     >
       <ButtonGroup
-        orientation={labelDemoProps[5].value}
-        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
+        tone={labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value}
         variant={
-          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
+          labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value
         }
-        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
+        vol={labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value}
+        orientation={labelDemoProps[3].value}
       >
         <Button>Button one</Button>
         <Button>Button two</Button>
       </ButtonGroup>
-      {/* <Button
-        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
-        icon={
-          <Icon>
-            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-          </Icon>
-        }
-        variant={
-          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
-        }
-        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
-      >
-        &nbsp;
-      </Button> */}
     </PropsDemo>
   );
 };

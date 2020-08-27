@@ -42,19 +42,12 @@
     --text-color;
 }
 
-/* = Possible Parent components */
+/* = Parent components */
 :import {
   -st-from: "../../components/ButtonGroup/buttonGroup.st.css";
   -st-default: ButtonGroup;
   -st-named: --seperator-color;
 }
-
-/* = Child components */
-/* :import {
-  -st-from: "../../components/Icon/icon.st.css";
-  -st-default: Icon;
-} */
-
 
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {

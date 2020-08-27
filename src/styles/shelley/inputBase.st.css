@@ -41,13 +41,16 @@
   /*==== VARIANTS ====*/
 
   /* = Variant 1 - "Body" */
-  /* InputBase:variant(1) {} */
+  InputBase:variant(1) {
+    -webkit-font-smoothing: antialiased;
+  }
 
 
   /* = Variant 2 - "Data" */
 
   InputBase:variant(2) {
     background-color: var(--color-background-3);
+    -webkit-font-smoothing: antialiased;
   }
 
 }

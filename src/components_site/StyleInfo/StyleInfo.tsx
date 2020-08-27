@@ -6,6 +6,7 @@ import { P } from "../../components/Text/Text";
 /* = Style API. */
 import { st, classes } from "./styleInfo.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as spacing } from "../../styles/shelley/mixins/spacing.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -30,6 +31,10 @@ StyleInfoProps) => {
     className
   );
 
+  const cssFileName =
+    componentName &&
+    componentName.charAt(0).toLowerCase() + componentName.slice(1);
+
   return (
     <Grid variant={2} className={st(rootClassNames)}>
       <div className={classes.html}>
@@ -37,10 +42,27 @@ StyleInfoProps) => {
           The raw <code>HMTL</code> output from <code>{componentName}:</code>
         </P>
         {componentHTML}
-        {/* <P vol={2}>
-          View the Shelley {componentName} CSS on GitHub inclusive of comments
-          :-)
-        </P> */}
+        <P vol={2}>
+          <a
+            href={`https://github.com/action-is-hope/shelley/tree/master/src/components/${componentName}/${cssFileName}.st.css`}
+          >
+            Core styles
+          </a>{" "}
+        </P>
+        <P vol={2}>
+          <a
+            href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
+          >
+            Shelley default styles
+          </a>{" "}
+        </P>
+        <P vol={2}>
+          <a
+            href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
+          >
+            Shelley custom styles
+          </a>{" "}
+        </P>
       </div>
       <div className={classes.css}>
         <P>

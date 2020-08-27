@@ -17,7 +17,6 @@ import {
   Example1
 } from "../components/ButtonGroup/__buttonGroup.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
-import ButtonGroup from "../components/ButtonGroup/ButtonGroup";
 import Button from "../components/Button/Button";
 
 const ButtonDocs = () => {
@@ -44,13 +43,9 @@ const ButtonDocs = () => {
         <QuickRef />
 
         <P>
-          Get more familiar with{" "}
-          <a href="https://www.w3.org/TR/wai-aria-practices/#button">
-            aria and buttons
-          </a>{" "}
-          as you need, attributes are spread down to the actual{" "}
-          <code>button</code> so treat it as a regular HTML button when it comes
-          to supporting our friends using assistive tech.
+          The button related <code>props</code> set on the{" "}
+          <code>ButtonGroup</code> are applied to the children unless a child
+          has that prop set. Let&apos;s take a look at a few variations.
         </P>
 
         <ComponentDemo />
