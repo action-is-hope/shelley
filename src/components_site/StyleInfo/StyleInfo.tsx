@@ -6,7 +6,7 @@ import { P } from "../../components/Text/Text";
 /* = Style API. */
 import { st, classes } from "./styleInfo.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
-import { classes as spacing } from "../../styles/shelley/mixins/spacing.st.css";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
