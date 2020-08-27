@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: shelley.earth
+Token: a76d15544ce5138b3715027a983dbf49e005779002aaee671d7eb594caf7844f
