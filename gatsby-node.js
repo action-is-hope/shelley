@@ -49,6 +49,6 @@ exports.onPostBuild = (pages, callback) => {
   // Copy well-known.
   fs.copySync(
     path.join(__dirname, "/.well-known"),
-    path.join(__dirname, "/public/well-known")
+    path.join(__dirname, "/public/.well-known")
   );
 };
