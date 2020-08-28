@@ -1,8 +1,8 @@
 {
   "name": "@actionishope/shelley",
-  "version": "0.1.1-alpha.24",
+  "version": "0.1.1-alpha.25",
   "license": "ISC",
-  "description": "Gatsby, stylable boilerplate.",
+  "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/action-is-hope/shelley.git"
