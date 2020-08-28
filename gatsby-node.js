@@ -1,11 +1,9 @@
-const {
-  StylableWebpackPlugin
-} = require("@stylable/webpack-plugin");
+var fs = require("fs-extra");
+var path = require("path");
 
-exports.onCreateWebpackConfig = ({
-  actions,
-  getConfig
-}, pluginOptions) => {
+const { StylableWebpackPlugin } = require("@stylable/webpack-plugin");
+
+exports.onCreateWebpackConfig = ({ actions, getConfig }, pluginOptions) => {
   const config = getConfig();
 
   // Exclude .st.css files from CSS loaders.
@@ -37,11 +35,20 @@ exports.onCreateWebpackConfig = ({
     optimize: {
       // The following two options need testing in prod.
       classNameOptimizations: false,
-      shortNamespaces: false,
+      shortNamespaces: false
     },
-    ...pluginOptions,
+    ...pluginOptions
   };
   config.plugins.push(new StylableWebpackPlugin(options));
 
   actions.replaceWebpackConfig(config);
+};
+
+exports.onPostBuild = (pages, callback) => {
+  console.log("Building Atom feed");
+  // Copy well-known.
+  fs.copySync(
+    path.join(__dirname, "/.well-known"),
+    path.join(__dirname, "/public/well-known")
+  );
 };
