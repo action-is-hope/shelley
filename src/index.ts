@@ -11,6 +11,9 @@ export * from "./components/Blockquote/Blockquote";
 export { default as Button } from "./components/Button/Button";
 export * from "./components/Button/Button";
 
+export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
+export * from "./components/ButtonGroup/ButtonGroup";
+
 export { default as ErrorText } from "./components/ErrorText/ErrorText";
 export * from "./components/ErrorText/ErrorText";
 

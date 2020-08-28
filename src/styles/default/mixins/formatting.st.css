@@ -11,6 +11,11 @@
     --spacing-unit,
 }
 
+:import {
+  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-default: CodeSample;
+}
+
 .formatted>p+p,
 .formatted>p+h4,
 .formatted>p+h5,
@@ -26,13 +31,18 @@
 .formatted>blockquote {
   margin-top: calc(var(--spacing-unit) * 4);
   margin-bottom: calc(var(--spacing-unit) * 5);
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
 }
 
-/* 
-.formatted>h2+CodeSample {
+
+.formatted>CodeSample {
   margin-top: calc(var(--spacing-unit) * 2);
-} */
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.formatted>p+div {
+  /* margin-top: calc(var(--spacing-unit) * 2); */
+}
 
 .formatted>blockquote+Text {
   margin-top: calc(var(--spacing-unit) * 6);

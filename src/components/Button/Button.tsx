@@ -26,6 +26,8 @@ export interface ButtonProps
   variant?: Variant;
   /** How 'loud' should this Button be? */
   vol?: Volume;
+  /** Applies width of 100%; */
+  fullWidth?: boolean;
 }
 
 const Button = React.forwardRef(
@@ -33,11 +35,12 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
+      icon,
+      iconPos = "end",
+      fullWidth = false,
       tone = 1,
       variant = 1,
-      iconPos = "end",
       vol = 3,
-      icon,
       tip,
       ...rest
     }: ButtonProps,
@@ -47,14 +50,20 @@ const Button = React.forwardRef(
 
     return (
       <button
-        className={st(rootClassNames, { tone, variant, vol, iconPos })}
+        className={st(rootClassNames, {
+          iconPos,
+          fullWidth,
+          tone,
+          variant,
+          vol
+        })}
         {...rest}
         ref={ref}
       >
-        {icon && children && (
+        {icon && (
           <>
             {icon}
-            <span className={classes.divider}></span>
+            {children && <span className={classes.divider}></span>}
           </>
         )}
         {children && <span className={classes.inner}>{children}</span>}

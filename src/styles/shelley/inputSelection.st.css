@@ -88,7 +88,7 @@
     -st-mixin: visuallyHidden;
   }
 
-  /* = The 'mark' */
+  /* = 'knob' - shhh. */
   .darkLightToggle InputLabel::labelText::after {
     content: "";
     width: 18px;

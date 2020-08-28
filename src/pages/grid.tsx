@@ -6,7 +6,7 @@ import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import { classes as text } from "../styles/default/text.st.css";
 import { classes as grid } from "../styles/default/grid.st.css";
-import { classes as spacing } from "../styles/shelley/mixins/spacing.st.css";
+import { classes as spacing } from "../styles/default/spacing.st.css";
 import CodeSample from "../components_site/CodeSample/CodeSample";
 import {
   meta,
@@ -474,9 +474,10 @@ Grid .mid {
           Accessibility, UX &amp; the Law
         </H2>
         <P>
-          In terms of WCAG and the law, this is ranked as Level A which makes it
-          a core requirement in terms both value that it provides and legal
-          implications.
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
+          law, this is ranked as Level A which makes it a core requirement in
+          terms both value that it provides and legal implications.
         </P>
       </Grid>
     </DefaultLayout>

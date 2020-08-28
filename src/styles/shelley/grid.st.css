@@ -30,10 +30,16 @@
 }
 
 @st-scope Shelley {
+
   /* = Your grid styles here... */
 
+  /**
+   * Grid:variant(1 - 4) have been assigned as part of our default.
+   * You can overide those in your project file. Just import them 
+   * from our default and override.
+   */
 
-  /* = Variant 3: 7 | 5 */
+  /* = Variant 5: ratio 7 : 5 */
 
   Grid:variant(5) {
     display: grid;

@@ -101,8 +101,12 @@ const LabelsDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law, this is ranked as Level A which makes it
-          a requirement for us.
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">
+            <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+          </abbr>{" "}
+          and the law, this is ranked as Level A which makes it a requirement
+          for us.
         </P>
 
         <Blockquote

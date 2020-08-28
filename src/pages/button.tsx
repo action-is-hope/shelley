@@ -93,8 +93,10 @@ const ButtonDocs = () => {
         </H2>
 
         <P>
-          In terms of WCAG and the law this, this is marked as Level A which
-          makes it a requirement both in the value that it provides and the law.
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
+          law, this is covered under Level A which makes it a requirement both
+          in the value that it provides and the law.
         </P>
 
         <Blockquote

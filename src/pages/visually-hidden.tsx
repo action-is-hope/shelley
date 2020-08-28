@@ -42,13 +42,13 @@ const VisuallyHiddenDocs = () => {
         </P>
 
         <P>
-          &apos;Visually Hidden&apos; as a concept is often referred to as{" "}
+          'Visually Hidden' as a concept is often referred to as{" "}
           <code>
             <abbr title="Screen Reader Only">srOnly</abbr>
           </code>{" "}
           and should not be confused with <code>visibility: hidden</code> which
           will hide stuff from everybody. Visually <em>sounds</em> like
-          visibility but it&apos;s not. Got it? Great, let&apos;s move on.
+          visibility but it's not. Got it? Great, let's move on.
         </P>
         <H2 vol={4} uppercase>
           Why?
@@ -72,10 +72,10 @@ const VisuallyHiddenDocs = () => {
           Example: See more
         </H2>
         <P>
-          But wait. Let&apos;s take an imaginary screen reader for a spin.
-          Consider a typical <em>see more...</em> link, like that you&apos;ve
-          seen a hundred times, one that gives no meaningful context at all,
-          just dots, three of them. How thoughtful.
+          But wait. Let's take an imaginary screen reader for a spin. Consider a
+          typical <em>see more...</em> link, like that you've seen a hundred
+          times, one that gives no meaningful context at all, just dots, three
+          of them. How thoughtful.
         </P>
 
         <CodeSample className={grid.mid}>
@@ -111,7 +111,7 @@ const VisuallyHiddenDocs = () => {
         <P>
           We found a fantastic{" "}
           <a href="https://www.youtube.com/watch?v=ZUGHomfxTlY&feature=youtu.be&t=43">
-            demonstration of &apos;click here&apos; links on a screen reader
+            demonstration of 'click here' links on a screen reader
           </a>
           , which you should check out. On the SEO front:
         </P>
@@ -160,12 +160,12 @@ const VisuallyHiddenDocs = () => {
 
         <P>
           With the changes in place our screen reader will announce the entire
-          link whilst sighted users will simply see &apos;See more&hellip;&apos;
-          as <del>God intended</del>&hellip; I mean as your{" "}
+          link whilst sighted users will simply see 'See more&hellip;' as{" "}
+          <del>God intended</del>&hellip; I mean as your{" "}
           <ins>designer requested</ins>. 😇
         </P>
 
-        <P>Maybe things aren&apos;t so easy in a CMS?</P>
+        <P>Maybe things aren't so easy in a CMS?</P>
 
         <P>
           When choosing link text or building web pages we need awareness and
@@ -176,13 +176,8 @@ const VisuallyHiddenDocs = () => {
         https://developers.google.com/web/fundamentals/accessibility/how-to-review */}
         <P>
           Lets help you navigate the{" "}
-          <abbr
-            title="Web Content Accessibiliy
-          Guidelines"
-          >
-            WCAG
-          </abbr>
-          , in this case we are looking at:
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>, in
+          this case we are looking at:
         </P>
         <Blockquote
           cite={
@@ -225,27 +220,26 @@ const VisuallyHiddenDocs = () => {
           development and we must...
         </P>
         <P>
-          The peeps over there do a great job; it&apos;s a tough task, we
-          empathise with them. Ultimately they are trying to make these things
-          as exact as possible so as to remove ambiguity. This is essential for
-          all implementers, from developers to browser vendors. Handy from a
-          legal perspective too if you happen to be holding orgs to account.
+          The peeps over there do a great job; it's a tough task, we empathise
+          with them. Ultimately they are trying to make these things as exact as
+          possible so as to remove ambiguity. This is essential for all
+          implementers, from developers to browser vendors. Handy from a legal
+          perspective too if you happen to be holding orgs to account.
         </P>
         <P>
-          It is exact, but it somehow misses the &apos;why&apos;. We should
-          always look for the &apos;why&apos;; accessibility then becomes less
-          of a &apos;tick box&apos; exercise and more thought provoking. Lets
-          have a go at rewriting it from the perspective of our glorious users!
+          It is exact, but it somehow misses the 'why'. We should always look
+          for the 'why'; accessibility then becomes less of a 'tick box'
+          exercise and more thought provoking. Lets have a go at rewriting it
+          from the perspective of our glorious users!
         </P>
 
         {/* https://offset.earth/about   */}
         <Blockquote variant={2}>
           <P>
             When reading out links by themselves, I can get a good idea of where
-            the link will take me or what it will do if I select it. Unless
-            it&apos;s something like a game of &apos;snap&apos; where it would
-            kinda of defeat the point of the game if I can see through the card.
-            :-)
+            the link will take me or what it will do if I select it. Unless it's
+            something like a game of 'snap' where it would kinda of defeat the
+            point of the game if I can see through the card. :-)
           </P>
         </Blockquote>
         <P>
@@ -266,14 +260,14 @@ const VisuallyHiddenDocs = () => {
         </CodeSample>
         <P>
           We really need a new breed of clever CMS, including link text tips and
-          decent framing of the <q>why</q>. Continual auditing doesn&apos;t
-          work; it is admirable but unless you are educating authors you are
-          just gonna have the same issues over and over.
+          decent framing of the <q>why</q>. Continual auditing doesn't work; it
+          is admirable but unless you are educating authors you are just gonna
+          have the same issues over and over.
         </P>
 
         <P>
-          Make your creations accessible - it&apos;s your duty as a master
-          builder ;-)
+          Make your creations accessible - it's your duty as a master builder
+          ;-)
         </P>
       </Grid>
     </DefaultLayout>
