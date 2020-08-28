@@ -35,10 +35,12 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "react/prop-types": "off", // Disable prop-types as we use TypeScript for type checking
-    // "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
-    // "no-unused-vars": "off"
-    // "@typescript-eslint/no-unused-vars": ["off"]
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-unused-vars": "off",
+    "ts/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/no-unescaped-entities": 0
   },
   overrides: [
     // Override some TypeScript rules just for .js files

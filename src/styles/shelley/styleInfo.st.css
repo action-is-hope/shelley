@@ -3,6 +3,10 @@
  * 
  * ========================================================================= */
 
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named: --spacing-unit;
+}
 
 /* = Shelley project scope and vars. */
 :import {
@@ -18,7 +22,10 @@
 
 @st-scope Shelley {
 
-  StyleInfo {}
+  StyleInfo {
+    margin-top: calc(var(--spacing-unit) * 4);
+    margin-bottom: calc(var(--spacing-unit) * 4)
+  }
 
   StyleInfo::html,
   StyleInfo::css {

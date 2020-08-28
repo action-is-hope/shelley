@@ -13,7 +13,7 @@ import { P, H1, H2 } from "../../components/Text/Text";
 import Icon from "../../components/Icon/Icon";
 
 import { classes as grid } from "../../styles/default/grid.st.css";
-import { classes as spacing } from "../../styles/shelley/mixins/spacing.st.css";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
 
 export const meta = {
   name: "InputSelection"

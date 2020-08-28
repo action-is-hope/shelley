@@ -143,7 +143,7 @@ const PropsDemo = ({
               setPropsArray(newDemoProps);
             }}
           >
-            {item.options.map((item: string, index: number) => {
+            {item.options.map((item: string) => {
               return (
                 <option key={item} value={item}>
                   {item}
@@ -153,7 +153,8 @@ const PropsDemo = ({
           </InputSelect>
         );
       default:
-      // code block
+        // code block
+        return false;
     }
   };
 

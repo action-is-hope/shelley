@@ -56,17 +56,6 @@
 
   /* = Styles - typical child children. @todo tidy... */
 
-  :global(abbr[title]) {
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(243, 243, 202, 0.39);
-    cursor: help;
-    padding-bottom: 0.1rem;
-  }
-
-  :global(code [title]:hover) {
-    text-shadow: 0 0 10px rgb(197, 197, 197)
-  }
-
   Text a {
     text-decoration: none;
     position: relative;
@@ -108,10 +97,7 @@
     color: var(--color-accent-4);
   }
 
-  /* = Styles - typical child children. */
-  .large {
-    background: green
-  }
+  /* = @todo: move this crap. */
 
   .dl {
     display: grid;

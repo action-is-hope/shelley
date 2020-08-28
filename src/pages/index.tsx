@@ -98,6 +98,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 <Link to="/button/">Button</Link>
               </Text>
               <Text tag="li">
+                <Link to="/buttonGroup/">ButtonGroup</Link>
+              </Text>
+              <Text tag="li">
                 <Link to="/text/">Text</Link>
               </Text>
               <Text tag="li">

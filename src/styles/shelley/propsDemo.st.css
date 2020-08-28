@@ -144,7 +144,6 @@
   text-align: right;
   text-align: end; */
     position: absolute;
-    /* right: 0; */
     top: -1.8em;
   }
 
@@ -158,25 +157,6 @@
     margin-top: 16px
   }
 
-  /* .tsLogo {
-  display: inline-block;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1em;
-  padding-top: 1em;
-  width: 1.9em;
-  text-align: end;
-  font-family: Arial;
-  letter-spacing: .05em;
-  padding: .22em;
-  padding-top: .9em;
-  letter-spacing: -0.5px;
-  background: #037acc;
-  margin-right: 12px
-} */
-
-
   PropsDemo::exampleHeading {
     margin-bottom: 24px
   }
@@ -189,9 +169,7 @@
   }
 
   PropsDemo::propInputs {
-    /* width: 50%; */
     display: grid;
     grid-row-gap: 1px;
-    /* margin-bottom: 48px */
   }
 }
