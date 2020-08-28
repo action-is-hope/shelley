@@ -13,14 +13,17 @@ interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   componentName?: string;
   componentHTML: React.ReactNode;
   componentCSS: React.ReactNode;
+  disableDefaultLink?: boolean;
+  disableShelleyLink?: boolean;
 }
 
 const StyleInfo = ({
   className,
-  // children,
   componentName,
   componentHTML,
-  componentCSS
+  componentCSS,
+  disableDefaultLink = false,
+  disableShelleyLink = false
 }: // ...rest
 StyleInfoProps) => {
   const rootClassNames = classNames(
@@ -49,20 +52,24 @@ StyleInfoProps) => {
             Core styles
           </a>{" "}
         </P>
-        <P vol={2}>
-          <a
-            href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
-          >
-            Shelley default styles
-          </a>{" "}
-        </P>
-        <P vol={2}>
-          <a
-            href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
-          >
-            Shelley custom styles
-          </a>{" "}
-        </P>
+        {!disableDefaultLink && (
+          <P vol={2}>
+            <a
+              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
+            >
+              Shelley default styles
+            </a>{" "}
+          </P>
+        )}
+        {!disableShelleyLink && (
+          <P vol={2}>
+            <a
+              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
+            >
+              Shelley custom styles
+            </a>{" "}
+          </P>
+        )}
       </div>
       <div className={classes.css}>
         <P>

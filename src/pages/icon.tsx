@@ -11,9 +11,7 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1,
-  A11yIconWrong,
-  Collection
+  Example1
 } from "../components/Icon/__iconExamples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
@@ -31,13 +29,6 @@ const IconDocs = () => {
           Quick reference:
         </H2>
         <QuickRef />
-
-        <P>
-          <A11yIconWrong />
-        </P>
-        <P>
-          <Collection />
-        </P>
 
         <P>
           Shelley borrows from the mighty Material UI here. We really like the
@@ -87,6 +78,8 @@ const IconDocs = () => {
           componentName={meta.name}
           componentHTML={<ComponentHTML />}
           componentCSS={<ComponentCSS />}
+          disableDefaultLink
+          disableShelleyLink
         />
         <P>
           <strong>Note:</strong> In terms of text alternative we opted for
@@ -145,7 +138,10 @@ const IconDocs = () => {
           it! When we find it we will post it! It will only work on the first
           line of a text block but it's a nice addition. Feels like this one
           should have an equivalent. See <code>Example1</code> within{" "}
-          <a href="#">icon examples on github</a>.
+          <a href="https://github.com/action-is-hope/shelley/blob/master/src/components/Icon/__iconExamples.tsx">
+            icon examples on github
+          </a>
+          .
         </P>
 
         <P>

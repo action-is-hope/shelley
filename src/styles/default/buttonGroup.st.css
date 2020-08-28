@@ -27,22 +27,10 @@
 /* This is how we can scope the styles in Stylable. */
 @st-scope Default {
 
-  /* = The base <button> element. */
-  ButtonGroup {}
+  /* = The base element. */
+  /* ButtonGroup {}
 
   ButtonGroup:orientation(horizontal) {}
 
-  ButtonGroup:orientation(vertical) {}
-
-  /* .root:orientation(horizontal)>button:not(:first-child),
-  .root:orientation(horizontal)>button:not(:first-child)::after {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .root:orientation(horizontal)>button:not(:last-child),
-  .root:orientation(horizontal)>button:not(:last-child)::after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  } */
+  ButtonGroup:orientation(vertical) {} */
 }

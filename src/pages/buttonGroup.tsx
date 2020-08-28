@@ -61,6 +61,7 @@ const ButtonDocs = () => {
           componentName={meta.name}
           componentHTML={<ComponentHTML />}
           componentCSS={<ComponentCSS />}
+          disableShelleyLink
         />
 
         <H2 vol={4} uppercase>
