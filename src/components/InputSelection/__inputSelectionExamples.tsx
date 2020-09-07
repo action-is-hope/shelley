@@ -2,14 +2,12 @@
 import React from "react";
 // Example Component
 import InputSelection from "./InputSelection";
-import InputSelectionControl from "../../components/InputSelectionControl/InputSelectionControl";
 
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import Button from "../Button/Button";
-import Label from "../../components/Label/Label";
-import { P, H1, H2 } from "../../components/Text/Text";
+import { P, H2 } from "../../components/Text/Text";
 import Icon from "../../components/Icon/Icon";
 
 import { classes as grid } from "../../styles/default/grid.st.css";
@@ -20,7 +18,9 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Icon from "@action-is-hope/shelley";
+  <CodeSample
+    className={grid.mid}
+  >{`import { Icon } from "@actionishope/shelley";
 \n<Icon>
   {/* crack open an svg to find the path and shove it in. */}
   <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
@@ -105,7 +105,7 @@ export const ComponentDemo = () => {
         demoProps={InputDemoProps}
         setDemoProps={setInputDemoProps}
         renderExample={
-          <CodeSample>{`import InputSelection from "@action-is-hope/shelley-ui";
+          <CodeSample>{`import { InputSelection } from "@actionishope/shelley";
 
 <InputSelection    ${
             InputDemoProps[0].value

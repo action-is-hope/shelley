@@ -18,7 +18,7 @@ export const meta = {
 
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>
-    {`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@action-is-hope/shelley";
+    {`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@actionishope/shelley";
 
 <H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
   
@@ -68,7 +68,7 @@ export const ComponentDemo = () => {
       tsExtends="HTMLBaseElement"
       // className={grid.goal}
       renderExample={
-        <CodeSample>{`import { P } from "@action-is-hope/shelley";\n<P ${
+        <CodeSample>{`import { P } from "@actionishope/shelley";\n<P ${
           TextDemoProps[0].value ? `\n  vol={${TextDemoProps[0].value}}` : ``
         } ${TextDemoProps[1].value ? `\n  truncate` : ``} ${
           TextDemoProps[3].value !== "none" ? `\n  uppercase` : ``

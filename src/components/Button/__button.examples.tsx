@@ -14,7 +14,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
-  >{`import Button from "@action-is-hope/shelley";
+  >{`import { Button } from "@actionishope/shelley";
 \n<Button>Climate fight club</Button>
 /* One rule: We don't fight, we act on climate change with intent. */`}</CodeSample>
 );
@@ -73,7 +73,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLButtonElement"
       renderExample={
-        <CodeSample>{`import { Button, Icon } from "@action-is-hope/shelley";\n\n<Button ${
+        <CodeSample>{`import { Button, Icon } from "@actionishope/shelley";\n\n<Button ${
           labelDemoProps[1].value > 0
             ? `\n  tone={${labelDemoProps[1].value}}`
             : `\n  tone={false}`

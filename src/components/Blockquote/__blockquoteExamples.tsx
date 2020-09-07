@@ -13,9 +13,13 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Blockquote from "shelley-ui";\n
+  <CodeSample className={grid.mid}>{`import Blockquote from "shelley";\n
 <Blockquote
-  cite="The Guardian - cite accepts react node, text or link etc"
+  cite={
+    <a href="https://www.theguardian.com/technology/2020/feb/21/climate-tweets-twitter-bots-analysis">
+      Revealed: quarter of all tweets about climate crisis produced by bots
+    </a>
+    }
   >
   <P>These findings suggest a substantial impact of mechanized bots in amplifying denialist messages about climate change, including support for Trump’s withdrawal from the Paris agreement.</P>
 </Blockquote>`}</CodeSample>
@@ -67,7 +71,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLQuoteElement"
       renderExample={
-        <CodeSample>{`import { Blockquote } from "@action-is-hope/shelley";\n\n<Blockquote ${
+        <CodeSample>{`import { Blockquote } from "@actionishope/shelley";\n\n<Blockquote ${
           labelDemoProps[0].value > 0
             ? `\n  variant={${labelDemoProps[0].value}}`
             : `\n  variant={ false }`

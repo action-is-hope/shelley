@@ -138,7 +138,7 @@ const IconDocs = () => {
           it! When we find it we will post it! It will only work on the first
           line of a text block but it's a nice addition. Feels like this one
           should have an equivalent. See <code>Example1</code> within{" "}
-          <a href="https://github.com/action-is-hope/shelley/blob/master/src/components/Icon/__iconExamples.tsx">
+          <a href="https://github.com/actionishope/shelley/blob/master/src/components/Icon/__iconExamples.tsx">
             icon examples on github
           </a>
           .
