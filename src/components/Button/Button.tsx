@@ -28,6 +28,8 @@ export interface ButtonProps
   vol?: Volume;
   /** Applies width of 100%; */
   fullWidth?: boolean;
+  /** Custom element to render. */
+  component?: any;
 }
 
 const Button = React.forwardRef(
@@ -35,6 +37,7 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
+      component: Component,
       icon,
       iconPos = "end",
       fullWidth = false,
@@ -47,19 +50,15 @@ const Button = React.forwardRef(
     ref?: React.Ref<HTMLButtonElement>
   ) => {
     const rootClassNames = classnames(classes.root, classNameProp);
-
-    return (
-      <button
-        className={st(rootClassNames, {
-          iconPos,
-          fullWidth,
-          tone,
-          variant,
-          vol
-        })}
-        {...rest}
-        ref={ref}
-      >
+    const className = st(rootClassNames, {
+      iconPos,
+      fullWidth,
+      tone,
+      variant,
+      vol
+    });
+    const content = (
+      <>
         {icon && (
           <>
             {icon}
@@ -68,7 +67,12 @@ const Button = React.forwardRef(
         )}
         {children && <span className={classes.inner}>{children}</span>}
         {tip && <span className={classes.tip}>{tip}</span>}
-      </button>
+      </>
+    );
+    return Component ? (
+      <Component {...{ className, ...rest, ref }}>{content}</Component>
+    ) : (
+      <button {...{ className, ...rest, ref }}>{content}</button>
     );
   }
 );

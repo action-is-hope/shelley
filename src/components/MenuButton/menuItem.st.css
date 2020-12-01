@@ -1,0 +1,29 @@
+/* menuItem.st.css */
+
+/* Used by Reach UI MenuButton to detect if we have styles or not. */
+:root {
+  --reach-menu-button: 1;
+}
+
+.root {
+  display: block;
+  user-select: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  /* both */
+  padding: 5px 20px;
+}
+
+/* pseudo pseudo selector */
+.root[data-selected] {
+  background: hsl(211, 81%, 36%);
+  color: white;
+  outline: none;
+}
+
+.root[aria-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
