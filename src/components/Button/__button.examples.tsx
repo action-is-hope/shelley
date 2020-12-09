@@ -7,9 +7,11 @@ import Icon from "../../components/Icon/Icon";
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
 export const meta = {
   name: "Button"
 };
+import { H2, P } from "../../components/Text/Text";
 
 export const QuickRef = () => (
   <CodeSample
@@ -182,12 +184,39 @@ Button.variant5 {}
 Button.variant6 {}`}</CodeSample>
 );
 
-// export const Example1 = () => <Demo></Demo>;
-// Add some tests to check refs and tings are spread properly.
-// const inputEl = React.useRef();
-// const test = React.createRef<HTMLButtonElement>();
-// const onButtonClick = () => {
-//   const node = test.current;
-//   // `current` points to the mounted text input element
-//   node && node.focus();
-// };
+export const Example1 = () => (
+  <>
+    <H2 vol={2} className={spacing.mb2} uppercase>
+      Anchor link Buttons
+    </H2>
+
+    <P className={spacing.mb2}>
+      To use <code>Button</code> styles in conjuction with a link you can use
+      the <code>as</code> to provide a cutom <code>Link</code> component such as{" "}
+      <code>gatsby-link</code> or just a plain old <code>a</code>.
+    </P>
+
+    <div className={grid.mid}>
+      <Button
+        variant={3}
+        as={"a"}
+        to="https://www.w3schools.com/html/html_links.asp"
+      >
+        Basic anchor link
+      </Button>
+    </div>
+    <CodeSample className={grid.mid}>
+      {`import Link from "gatsby-link";
+
+<Button variant={3} as={Link} to="/path-to-resource">
+  Custom Link component
+</Button>
+
+or
+
+<Button variant={3} as={"a"} to="/path-to-resource">
+  Anchor link Button
+</Button>`}
+    </CodeSample>
+  </>
+);

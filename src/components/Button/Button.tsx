@@ -1,7 +1,6 @@
 import React from "react";
 import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 import { AlignPos } from "../types";
 /* = Style API. */
 import { st, classes } from "./button.st.css";
@@ -20,6 +19,8 @@ export interface ButtonProps
   iconPos?: AlignPos;
   /** Extra text that can be used to render a infotip / tooltip on hover/focus. */
   tip?: string;
+  /** Provide a url path for a custom component via 'as' prop. */
+  to?: string;
   /** tone index. */
   tone?: Accent;
   /** Variant index. */
@@ -42,6 +43,7 @@ const Button = React.forwardRef(
       iconPos = "end",
       fullWidth = false,
       tone = 1,
+      to,
       variant = 1,
       vol = 3,
       tip,
@@ -57,7 +59,7 @@ const Button = React.forwardRef(
       variant,
       vol
     });
-    const content = (
+    const internal = (
       <>
         {icon && (
           <>
@@ -70,17 +72,19 @@ const Button = React.forwardRef(
       </>
     );
     return Component ? (
-      <Component {...{ className, ...rest, ref }}>{content}</Component>
+      Component === "a" ? (
+        <Component {...{ className, ...rest, ref }} href={to}>
+          {internal}
+        </Component>
+      ) : (
+        <Component {...{ className, to, ...rest, ref }}>{internal}</Component>
+      )
     ) : (
-      <button {...{ className, ...rest, ref }}>{content}</button>
+      <button {...{ className, ...rest, ref }}>{internal}</button>
     );
   }
 );
 
 Button.displayName = "Button";
-Button.propTypes = {
-  style: PropTypes.object
-};
 
 export default Button;
-export const proptype = Button.propTypes;
