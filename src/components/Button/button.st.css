@@ -5,7 +5,7 @@
   -st-states:
     iconPos(enum(top, end, bottom, start)),
     fullWidth,
-    tone(enum(1, 2, 3, 4, 5, 6)),
+    tone(enum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)),
     variant(enum(1, 2, 3, 4, 5, 6)),
     vol(enum(1, 2, 3, 4, 5, 6));
   display: inline-flex;
@@ -39,6 +39,8 @@
   color: var(--text-color);
   background-color: var(--bg-color);
   border-color: var(--border-color);
+  /* = Safari spacing issue with button groups MacOs and IOS. */
+  margin: 0;
 }
 
 /*==== Input Positions ====*/

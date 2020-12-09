@@ -100,18 +100,23 @@ const IndexPage = ({ data }: IndexPageProps) => {
               <Text tag="li">
                 <Link to="/buttonGroup/">ButtonGroup</Link>
               </Text>
+
               <Text tag="li">
                 <Link to="/text/">Text</Link>
               </Text>
               <Text tag="li">
-                <Link to="/grid/">Grid</Link>
+                <Link to="/blockquote/">Blockquote</Link>
               </Text>
               <Text tag="li">
-                <Link to="/blockquote/">Blockquote</Link>
+                <Link to="/icon/">Icons</Link>
               </Text>
 
               <Text tag="li">
-                <Link to="/icon/">Icons</Link>
+                <Link to="/grid/">Grid</Link>
+              </Text>
+
+              <Text tag="li">
+                <Link to="/menu/">Menu</Link>
               </Text>
 
               <Text tag="li">

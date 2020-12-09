@@ -29,7 +29,7 @@ export interface ButtonProps
   /** Applies width of 100%; */
   fullWidth?: boolean;
   /** Custom element to render. */
-  component?: any;
+  as?: any;
 }
 
 const Button = React.forwardRef(
@@ -37,7 +37,7 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
-      component: Component,
+      as: Component,
       icon,
       iconPos = "end",
       fullWidth = false,

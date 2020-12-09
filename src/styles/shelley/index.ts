@@ -15,6 +15,7 @@ import InputSelection from "./inputSelection.st.css";
 import InputSelectionControl from "./inputSelectionControl.st.css";
 import InputText from "./inputText.st.css";
 import Label from "./label.st.css";
+import Menu from "./menu.st.css";
 import Text from "./text.st.css";
 
 // = Application Components
@@ -71,6 +72,9 @@ export const inputText = (...values: []) =>
 
 export const label = (...values: []) =>
   getStylableClassNames(values, Label, "label");
+
+export const menu = (...values: []) =>
+  getStylableClassNames(values, Menu, "menu");
 
 export const text = (...values: []) =>
   getStylableClassNames(values, Text, "text");

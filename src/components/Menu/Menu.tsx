@@ -1,7 +1,7 @@
 /**
- * MenuButton.tsx
+ * Menu.tsx
  *
- * This file wraps the awesome Reach UI MenuButton components.
+ * This file wraps the awesome Reach UI 'MenuButton' collection.
  * https://reach.tech/menu-button
  *
  * Please do checkout the library, it is very good, it has been
@@ -36,10 +36,14 @@ import { st as stItem, classes as item } from "./menuItem.st.css";
 
 export type MenuProps = ReachMenuProps;
 export type MenuButtonProps = ButtonProps;
-export type MenuListProps = ReachMenuListProps;
+export interface MenuListProps extends ReachMenuListProps {
+  as?: "ul" | "div";
+}
 export type MenuItemsProps = ReachMenuItemsProps;
 export interface MenuItemProps extends ReachMenuItemProps {
   className?: string;
+  disabled?: boolean;
+  as?: "li" | "div";
 }
 export type MenuPopoverProps = ReachMenuPopoverProps;
 export type MenuLinkProps = ReachMenuLinkProps;
@@ -59,7 +63,7 @@ export const MenuButton = React.forwardRef(
     { children, ...rest }: MenuButtonProps,
     ref?: React.Ref<HTMLButtonElement>
   ) => (
-    <Button component={ReachMenuButton} ref={ref} {...rest}>
+    <Button as={ReachMenuButton} ref={ref} {...rest}>
       {children}
     </Button>
   )
@@ -89,7 +93,10 @@ MenuList.displayName = "MenuList";
  * Reach UI MenuItems - see Reach docs, ccustom uses cases so no class provided.
  */
 export const MenuItems = React.forwardRef(
-  ({ children, ...rest }: MenuItemsProps, ref?: React.Ref<HTMLDivElement>) => (
+  (
+    { children, ...rest }: MenuItemsProps,
+    ref?: React.Ref<HTMLUListElement | HTMLDivElement>
+  ) => (
     <ReachMenuItems ref={ref} {...rest}>
       {children}
     </ReachMenuItems>
@@ -102,8 +109,8 @@ MenuItems.displayName = "MenuItems";
  */
 export const MenuItem = React.forwardRef(
   (
-    { className, children, ...rest }: MenuItemProps,
-    ref?: React.Ref<HTMLDivElement>
+    { className, children, as = "div", ...rest }: MenuItemProps,
+    ref?: React.Ref<HTMLLIElement | HTMLDivElement>
   ) => (
     <ReachMenuItem
       className={stItem(classnames(item.root, className))}
