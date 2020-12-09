@@ -3,6 +3,7 @@ import DefaultLayout from "../layouts";
 import classnames from "classnames";
 import Text, { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
+import Blockquote from "../components/Blockquote/Blockquote";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import { classes as text } from "../styles/default/text.st.css";
 import { classes as grid } from "../styles/default/grid.st.css";
@@ -476,9 +477,24 @@ Grid .mid {
         <P>
           In terms of{" "}
           <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
-          law, this is ranked as Level A which makes it a core requirement in
-          terms both value that it provides and legal implications.
+          law, the area of most concern for you here is to present the
+          information in a logical order which is ranked as Level A.
         </P>
+
+        <Blockquote
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-sequence.html">
+              Meaningful Sequence: Understanding SC 1.3.2
+            </a>
+          }
+          variant={2}
+        >
+          <P>
+            1.3.2 Meaningful Sequence: When the sequence in which content is
+            presented affects its meaning, a correct reading sequence can be
+            programmatically determined. (Level A)
+          </P>
+        </Blockquote>
       </Grid>
     </DefaultLayout>
   );
