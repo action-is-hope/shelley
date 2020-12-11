@@ -5,13 +5,13 @@ import renderer from "react-test-renderer";
 import Icon from "../../Icon/Icon";
 import Link from "gatsby-link";
 
-import { MenuButton as ReachMenuButton } from "@reach/menu-button";
-import { Menu } from "../../Menu/Menu";
+// import { MenuButton as ReachMenuButton } from "@reach/menu-button";
+// import { Menu } from "../../Menu/Menu";
 
 const buttonRef = React.createRef<HTMLButtonElement>();
 const BigButtsString = "I love big buttons and I cannot lie...";
 
-it("Button renders correctly as a button", () => {
+it("Button renders correctly as a basic button", () => {
   const tree = renderer
     .create(
       <Button
@@ -19,9 +19,6 @@ it("Button renders correctly as a button", () => {
         onClick={() => console.log("onClick")}
         onMouseEnter={() => console.log("onMouseEnter")}
         ref={buttonRef}
-        variant={1}
-        tone={1}
-        vol={1}
       >
         {BigButtsString}
       </Button>
@@ -30,7 +27,27 @@ it("Button renders correctly as a button", () => {
   expect(tree).toMatchSnapshot();
 });
 
-it("Button renders correctly as a basic link", () => {
+it("Button renders with stylable state prop overrides, tone, variant, vol and fullwidth", () => {
+  const tree = renderer
+    .create(
+      <Button
+        data-testid="button-data-testid"
+        onClick={() => console.log("onClick")}
+        onMouseEnter={() => console.log("onMouseEnter")}
+        ref={buttonRef}
+        tone={6}
+        variant={6}
+        vol={6}
+        fullWidth
+      >
+        {BigButtsString}
+      </Button>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("Button renders correctly as a basic anchor link via 'as' and 'to' props", () => {
   const tree = renderer
     .create(
       <Button
@@ -40,9 +57,6 @@ it("Button renders correctly as a basic link", () => {
         onMouseEnter={() => console.log("onMouseEnter")}
         to="http://shelley.earth"
         ref={buttonRef}
-        variant={2}
-        tone={2}
-        vol={2}
       >
         {BigButtsString}
       </Button>
@@ -51,7 +65,7 @@ it("Button renders correctly as a basic link", () => {
   expect(tree).toMatchSnapshot();
 });
 
-it("Button renders correctly as a link with component", () => {
+it("Button renders as an anchor providing custom component via 'as' and 'to' props", () => {
   const tree = renderer
     .create(
       <Button
@@ -67,13 +81,12 @@ it("Button renders correctly as a link with component", () => {
   expect(tree).toMatchSnapshot();
 });
 
-it("Button renders correctly with an icon", () => {
+it("Button includes icon, divider and children", () => {
   const tree = renderer
     .create(
       <Button
         data-testid="button-data-testid"
         ref={buttonRef}
-        variant={4}
         icon={
           <Icon>
             <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
@@ -82,6 +95,24 @@ it("Button renders correctly with an icon", () => {
       >
         {BigButtsString}
       </Button>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("Button includes icon as self closing tag, a11y text provided via icon alt", () => {
+  const tree = renderer
+    .create(
+      <Button
+        data-testid="button-data-testid"
+        ref={buttonRef}
+        variant={4}
+        icon={
+          <Icon alt={BigButtsString}>
+            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+          </Icon>
+        }
+      />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
