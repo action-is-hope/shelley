@@ -56,7 +56,6 @@ const ButtonDocs = () => {
           Let&apos;s take a look at a few variations, there are a load of
           permutations but you will likely end up using only a few as defined by
           your design system.
-          <Button tip="YOYO">Hi</Button>
         </P>
 
         <ComponentDemo />
