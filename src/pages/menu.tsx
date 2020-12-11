@@ -169,7 +169,7 @@ const MenuDocs = () => {
 
         <P>
           In terms of the <code>MenuButton</code> this is just a button so
-          styling comes from there but you can contextually customise
+          styling comes from there.
         </P>
 
         {/* <P>

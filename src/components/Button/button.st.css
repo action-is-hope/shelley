@@ -52,7 +52,7 @@
 
 /* top */
 .root:iconPos(top) {
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 /* end / right */
@@ -62,7 +62,7 @@
 
 /* bottom */
 .root:iconPos(bottom) {
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 /* start / left */

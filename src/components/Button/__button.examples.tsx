@@ -17,8 +17,7 @@ export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
   >{`import Button from "@action-is-hope/shelley";
-\n<Button>Climate fight club</Button>
-/* One rule: We don't fight, we act on climate change with intent. */`}</CodeSample>
+\n<Button>Action IS Hope</Button>`}</CodeSample>
 );
 
 // Props Demo - Examples below.
@@ -28,7 +27,7 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      value: "Earth Solutionists required"
+      value: "Climate Action"
     },
     {
       name: "tone",
@@ -44,7 +43,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 3
     },
     {
       name: "volume",
@@ -52,7 +51,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 2
+      value: 3
     },
     {
       name: "icon",
@@ -62,10 +61,11 @@ export const ComponentDemo = () => {
       options: ["Yes", "No"]
     },
     {
-      name: "tip",
-      label: "tip",
-      type: "text",
-      value: "@todo - unsure on this..."
+      name: "iconPos",
+      label: "iconPos",
+      type: "select",
+      value: "end",
+      options: ["top", "end", "bottom", "start"]
     }
   ]);
   return (
@@ -91,6 +91,10 @@ export const ComponentDemo = () => {
           labelDemoProps[4].value === "Yes"
             ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`
             : ``
+        } ${
+          labelDemoProps[4].value === "Yes"
+            ? `\n  iconPos={${labelDemoProps[5].value}}`
+            : ``
         }  \n>\n ${labelDemoProps[0].value}\n</Button>`}</CodeSample>
       }
     >
@@ -100,37 +104,19 @@ export const ComponentDemo = () => {
           labelDemoProps[4].value === "No" ? (
             false
           ) : (
-            <Icon alt={labelDemoProps[1].value}>
-              {/* crack open an svg to find the path and shove it in. */}
+            <Icon>
               <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-              {/* <path d="M16 14h-16v-12h16v12zM1 13h14v-10h-14v10z"></path> */}
-              {/* <path d="M2 10v2h12v-1c0 0 0.2-1.7-2-2-1.9-0.3-2.2 0.6-3.8 0.6-1.1 0-0.9-1.6-3.2-1.6-1.7 0-3 2-3 2z"></path> */}
-              {/* <path d="M13 6c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path> */}
             </Icon>
           )
         }
+        iconPos={labelDemoProps[5].value}
         variant={
           labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
         }
         vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
-        // tip="hi"
       >
         {labelDemoProps[0].value}
       </Button>
-      {/* <Button
-        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
-        icon={
-          <Icon>
-            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-          </Icon>
-        }
-        variant={
-          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
-        }
-        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
-      >
-        &nbsp;
-      </Button> */}
     </PropsDemo>
   );
 };
@@ -207,6 +193,7 @@ export const Example1 = () => (
     </div>
     <CodeSample className={grid.mid}>
       {`import Link from "gatsby-link";
+/* use any Link component that supports a 'to' prop. */
 
 <Button variant={3} as={Link} to="/path-to-resource">
   Custom Link component
