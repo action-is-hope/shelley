@@ -17,7 +17,8 @@ export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
   >{`import Button from "@action-is-hope/shelley";
-\n<Button>Action IS Hope</Button>`}</CodeSample>
+\n<Button>Climate fight club</Button>
+/* One rule: Fight climate change, not each other. */`}</CodeSample>
 );
 
 // Props Demo - Examples below.
@@ -27,7 +28,7 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      value: "Climate Action"
+      value: "Climate fight club"
     },
     {
       name: "tone",

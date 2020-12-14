@@ -256,7 +256,7 @@ export const Example2 = () => (
       Button Group example
     </H2>
     <div className={grid.mid}>
-      <Menu>
+      <Menu data-testid="test">
         <ButtonGroup vol={4} tone={2} variant={3}>
           <Button fullWidth>Publish</Button>
           <MenuButton

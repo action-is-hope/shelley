@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu supports Reach Menu Button via #as 1`] = `
+exports[`Menu renders the MenuButton as an array with MenuList elsewhere. 1`] = `
 Array [
   <button
     aria-controls="menu--1"
