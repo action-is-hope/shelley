@@ -166,7 +166,7 @@ variant?: number;`}</CodeSample>
             style={{ width: "100%" }}
           />
           <Text
-            tag="figcaption"
+            as="figcaption"
             vol={2}
             className={classnames(grid.mid, spacing.mt1)}
           >
