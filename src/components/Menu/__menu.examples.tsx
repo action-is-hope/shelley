@@ -153,53 +153,18 @@ export const ComponentDemo = () => {
   );
 };
 
-export const ComponentHTML = () => (
-  <CodeSample>{`<button class="button-root button-tone1 button-variant1 button-vol2">
-  <span class="button-inner">Earth Guardians</span>
-</button>`}</CodeSample>
-);
+export const ComponentHTML = () => <CodeSample>{`TBC`}</CodeSample>;
 
 export const ComponentCSS = () => (
-  <CodeSample fixedHeight>{`/** button.st.css */
+  <CodeSample fixedHeight>{`/** menuList.st.css */
 
-/* Root */
-Button {}
+TBC - see Reach and local .st.css
 
-/* Parts */
+/** menuItem.st.css */
 
-/* 'inner' button, use for vertical spacing to give a potential Icon more room */
-Button::inner {}
+TBC - see Reach and local .st.css
 
-/* The divider which is rendered with an icon only. */
-Button::divider {}
-
-/* A basic CSS tooltip. */
-Button::tip {}
-
-
-/* Accent colours */
-Button.tone1 {}
-Button.tone2 {}
-Button.tone3 {}
-Button.tone4 {}
-Button.tone5 {}
-Button.tone6 {}
-
-/* Volumes */
-Button.vol1 {}
-Button.vol2 {}
-Button.vol3 {}
-Button.vol4 {}
-Button.vol5 {}
-Button.vol6 {}
-
-/* Variants */
-Button.variant1 {}
-Button.variant2 {}
-Button.variant3 {}
-Button.variant4 {}
-Button.variant5 {}
-Button.variant6 {}`}</CodeSample>
+`}</CodeSample>
 );
 
 export const Example1 = () => (

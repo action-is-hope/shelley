@@ -1,7 +1,6 @@
 import React from "react";
 import DefaultLayout from "../layouts";
-import Text, { P, H2 } from "../components/Text/Text";
-import Icon from "../components/Icon/Icon";
+import { P, H2 } from "../components/Text/Text";
 
 import Grid from "../components/Grid/Grid";
 import PageTitle from "../components_site/PageTitle/PageTitle";
@@ -20,16 +19,6 @@ import {
   Example4
 } from "../components/Menu/__menu.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
-import Button from "../components/Button/Button";
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  MenuPopover
-} from "../components/Menu/Menu";
-import ButtonGroup from "../components/ButtonGroup/ButtonGroup";
 
 const MenuDocs = () => {
   return (
@@ -80,18 +69,10 @@ const MenuDocs = () => {
           styling comes from there.
         </P>
 
-        {/* <P>
-          In terms of HTML structure, we have a button and an inner button. The
-          inner button is pretty key if we are to throw in other things like
-          icons inside. We put out vertical alignment on the inner item so as to
-          allow an adjacent icon to span the full height.
-        </P>
-
         <P>
-          When providing state styles for things like loading or pressed then we
-          suggest you use the aria attributes and target the attribute states.
-          @todo example
-        </P> */}
+          @todo, for now see menu.st.css files in default theme and shelley
+          theme folders.
+        </P>
 
         <StyleInfo
           componentName={meta.name}
