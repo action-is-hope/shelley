@@ -15,7 +15,9 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1,
-  Example2
+  Example2,
+  Example3,
+  Example4
 } from "../components/Menu/__menu.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 import Button from "../components/Button/Button";
@@ -63,103 +65,9 @@ const MenuDocs = () => {
 
         <Example2 />
 
-        <div className={grid.mid}>
-          {" "}
-          <Menu>
-            <br />
+        <Example3 />
 
-            <ButtonGroup vol={4} tone={2} variant={3}>
-              <Button fullWidth>Publish</Button>
-              <MenuButton
-                icon={
-                  <Icon alt="Block settings">
-                    <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
-                    {/* <path d="M3 7v2l5 5 5-5v-2l-5 5z"></path> */}
-                  </Icon>
-                }
-                onMouseDown={() => console.log("hi2")}
-              />
-            </ButtonGroup>
-            <MenuList>
-              <Text as="label" uppercase vol={1}>
-                Change status
-              </Text>
-              <MenuItem onSelect={() => console.log("hi")}>Publish</MenuItem>
-              <MenuItem onSelect={() => console.log("hi")}>Archive</MenuItem>
-              <MenuItem onSelect={() => console.log("hi")}>Delete</MenuItem>
-            </MenuList>
-          </Menu>
-        </div>
-        {/* <path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path> */}
-        <div className={grid.mid}>
-          {" "}
-          <Menu>
-            <MenuButton
-              tone={10}
-              variant={4}
-              vol={1}
-              icon={
-                <Icon alt="Block settings">
-                  <g id="ellipsis-dots-h">
-                    <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-                    <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-                    <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-                  </g>
-                </Icon>
-              }
-            />
-
-            <MenuList>
-              {/* 'Manage blocks' is a consistant option thus always at the top. */}
-              <MenuItem onSelect={() => console.log("hi")}>
-                Manage blocks
-              </MenuItem>
-              <MenuItem onSelect={() => console.log("hi")}>
-                Block settings
-              </MenuItem>
-              <MenuItem onSelect={() => console.log("hi")}>
-                Delete block
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </div>
-
-        <P>Example 2</P>
-
-        <div className={grid.mid}>
-          <Menu>
-            <MenuButton vol={5} tone={3} onMouseDown={() => console.log("hi2")}>
-              Hello2
-            </MenuButton>
-            <MenuPopover className="test">
-              <div className="arbitrary-element">
-                <MenuItems>
-                  <MenuItem
-                    onSelect={() => {
-                      console.log("HIS<S<S");
-                    }}
-                  >
-                    Downloads
-                  </MenuItem>
-                  <MenuItem
-                    onSelect={() => {
-                      console.log("HIS<S<S");
-                    }}
-                  >
-                    Downloads
-                  </MenuItem>
-                  <MenuItem
-                    onSelect={() => {
-                      console.log("HIS<S<S");
-                    }}
-                  >
-                    Downloads
-                  </MenuItem>
-                </MenuItems>
-              </div>
-            </MenuPopover>
-          </Menu>
-        </div>
+        <Example4 />
 
         {/* <ComponentDemo /> */}
 

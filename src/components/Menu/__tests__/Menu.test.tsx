@@ -15,7 +15,10 @@ const BigButtsString = "I love big buttons and I cannot lie...";
 
 afterEach(cleanup);
 
-/** Most if the functionality is covered by Reach so these are smoke tests for happy paths. */
+/**
+ * Most if the functionality is covered by Reach so these are smoke tests for
+ * happy paths such as basic render and check visibility on menu open.
+ * */
 describe("Menu", () => {
   // @todo fix jestconfig to map ONLY CSS files to identity-obj-proxy to support Reach CSS check.
   it("renders the MenuButton as an array with MenuList elsewhere.", () => {
@@ -36,9 +39,8 @@ describe("Menu", () => {
   });
 
   it("renders MenuList in portal and activates onKeyDown properly via hidden attribute", async () => {
-    const handleOnSelect = jest.fn();
     const handleOnKeyDown = jest.fn();
-
+    const handleOnSelect = jest.fn();
     // Arrange
     const MenuExample = () => (
       <Menu>

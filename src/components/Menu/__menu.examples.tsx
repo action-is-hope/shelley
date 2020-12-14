@@ -223,9 +223,9 @@ export const Example1 = () => (
           Add Content
         </MenuButton>
         <MenuList>
-          <MenuItem onSelect={() => alert("selected!")}>Page</MenuItem>
-          <MenuItem onSelect={() => alert("selected!")}>Blog post</MenuItem>
-          <MenuItem onSelect={() => alert("selected!")}>Event</MenuItem>
+          <MenuItem onSelect={() => alert("🌎")}>Page</MenuItem>
+          <MenuItem onSelect={() => alert("🌎")}>Blog post</MenuItem>
+          <MenuItem onSelect={() => alert("🌎")}>Event</MenuItem>
         </MenuList>
       </Menu>
     </div>
@@ -265,18 +265,17 @@ export const Example2 = () => (
                 <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
               </Icon>
             }
-            onMouseDown={() => console.log("hi2")}
           />
         </ButtonGroup>
         <MenuList>
           <Text as="label" uppercase vol={1}>
             Change status
           </Text>
-          <MenuItem disabled onSelect={() => alert("selected!")}>
+          <MenuItem disabled onSelect={() => alert("🌎")}>
             Publish
           </MenuItem>
-          <MenuItem onSelect={() => alert("selected!")}>Archive</MenuItem>
-          <MenuItem onSelect={() => alert("selected!")}>Delete</MenuItem>
+          <MenuItem onSelect={() => alert("🌎")}>Archive</MenuItem>
+          <MenuItem onSelect={() => alert("🌎")}>Delete</MenuItem>
         </MenuList>
       </Menu>
     </div>
@@ -290,27 +289,124 @@ export const Example2 = () => (
           <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
         </Icon>
       }
-      onMouseDown={() => console.log("hi2")}
     />
   </ButtonGroup>
   <MenuList>
     <Text as="label" uppercase vol={1}>
       Change status
     </Text>
-    <MenuItem disabed onSelect={() => alert("selected!")}>Publish</MenuItem>
-    <MenuItem onSelect={() => alert("selected!")}>Archive</MenuItem>
-    <MenuItem onSelect={() => alert("selected!")}>Delete</MenuItem>
+    <MenuItem disabed onSelect={() => alert("🌎")}>Publish</MenuItem>
+    <MenuItem onSelect={() => alert("🌎")}>Archive</MenuItem>
+    <MenuItem onSelect={() => alert("🌎")}>Delete</MenuItem>
   </MenuList>
 </Menu>`}
     </CodeSample>
   </>
 );
 
-// Add some tests to check refs and tings are spread properly.
-// const inputEl = React.useRef();
-// const test = React.createRef<HTMLButtonElement>();
-// const onButtonClick = () => {
-//   const node = test.current;
-//   // `current` points to the mounted text input element
-//   node && node.focus();
-// };
+export const Example3 = () => (
+  <>
+    <H2 vol={2} className={spacing.mb2} uppercase>
+      Icon Button example
+    </H2>
+    <div className={grid.mid}>
+      <Menu>
+        <MenuButton
+          tone={10}
+          variant={4}
+          vol={1}
+          icon={
+            <Icon alt="Block settings">
+              <g id="ellipsis-dots-h">
+                <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+                <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+                <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+              </g>
+            </Icon>
+          }
+        />
+
+        <MenuList>
+          {/* 'Manage blocks' is a consistant option thus always at the top. */}
+          <MenuItem onSelect={() => alert("🌎 🚒")}>Manage blocks</MenuItem>
+          <MenuItem onSelect={() => alert("🌎 🚒")}>Block settings</MenuItem>
+          <MenuItem onSelect={() => alert("🌎 🚒")}>Delete block</MenuItem>
+        </MenuList>
+      </Menu>
+    </div>
+    <CodeSample className={grid.mid}>
+      {`<Menu>
+  <MenuButton
+    tone={10}
+    variant={4}
+    vol={1}
+    icon={
+      <Icon alt="Block settings">
+        <g id="ellipsis-dots-h">
+          <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+          <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+          <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+        </g>
+      </Icon>
+    }
+  />
+
+  <MenuList>
+    <MenuItem onSelect={() => alert("🌎 🚒")}>
+      Manage blocks
+    </MenuItem>
+    <MenuItem onSelect={() => alert("🌎 🚒")}>
+      Block settings
+    </MenuItem>
+    <MenuItem onSelect={() => alert("🌎 🚒")}>
+      Delete block
+    </MenuItem>
+  </MenuList>
+</Menu>`}
+    </CodeSample>
+  </>
+);
+
+export const Example4 = () => (
+  <>
+    <H2 vol={2} className={spacing.mb2} uppercase>
+      Popover with arbitrary element
+    </H2>
+    <div className={grid.mid}>
+      <Menu>
+        <MenuButton>Activate</MenuButton>
+        <MenuPopover className="test">
+          <div className="arbitrary-element">
+            <MenuItems>
+              <MenuItem
+                onSelect={() => {
+                  alert("🌎 🚒");
+                }}
+              >
+                Downloads
+              </MenuItem>
+            </MenuItems>
+          </div>
+        </MenuPopover>
+      </Menu>
+    </div>
+    <CodeSample className={grid.mid}>
+      {`<Menu>
+  <MenuButton>Activate</MenuButton>
+  <MenuPopover className="test">
+    <div className="arbitrary-element">
+      <MenuItems>
+        <MenuItem
+          onSelect={() => {
+            alert("🌎 🚒");
+          }}
+        >
+          Downloads
+        </MenuItem>
+      </MenuItems>
+    </div>
+  </MenuPopover>
+</Menu>`}
+    </CodeSample>
+  </>
+);

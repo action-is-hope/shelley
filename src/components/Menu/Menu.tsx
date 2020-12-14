@@ -32,6 +32,7 @@ import "./styles.css";
 import Button, { ButtonProps } from "../Button/Button";
 import { st as stList, classes as list } from "./menuList.st.css";
 import { st as stItem, classes as item } from "./menuItem.st.css";
+import { st as stLink, classes as link } from "./menuLink.st.css";
 
 export type MenuProps = ReachMenuProps;
 export type MenuButtonProps = ButtonProps;
@@ -136,6 +137,25 @@ export const MenuPopover = React.forwardRef(
   )
 );
 MenuPopover.displayName = "MenuPopover";
+
+/**
+ * Reach UI MenuLink - Decorated with stylable stylesheet.
+ */
+// export const MenuLink = React.forwardRef(
+//   (
+//     { className, children, as = "div", ...rest }: MenuLinkProps,
+//     ref?: React.Ref<HTMLLIElement | HTMLDivElement>
+//   ) => (
+//     <ReachMenuLink
+//       className={stItem(classnames(item.root, className))}
+//       ref={ref}
+//       {...rest}
+//     >
+//       {children}
+//     </ReachMenuLink>
+//   )
+// );
+// MenuLink.displayName = "MenuLink";
 
 /**
  * Reach UI MenuLink - see Reach docs, custom uses cases so no class provided.
