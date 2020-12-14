@@ -13,7 +13,9 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "tone">
   > {
-  /** Define an Icon, postion via iconPos. */
+  /** Turns into a basic link, for internal links use #as and #to props. */
+  href?: string;
+  /** Define an Icon, postion via #iconPos. */
   icon?: React.ReactNode;
   /** The position of the label relative to the input. */
   iconPos?: AlignPos;
@@ -27,7 +29,7 @@ export interface ButtonProps
   vol?: Volume;
   /** Applies width of 100%. */
   fullWidth?: boolean;
-  /** Custom element to render as an anchor, 'a' for basic link or provide a component that supports 'to'. */
+  /** Custom element to render a component that supports #to and has forwarded refs. */
   as?: any;
 }
 
@@ -36,9 +38,10 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
-      as: Component,
+      as,
       icon,
       iconPos = "end",
+      href,
       fullWidth = false,
       tone = 1,
       to,
@@ -49,9 +52,10 @@ const Button = React.forwardRef(
     ref?: React.Ref<HTMLButtonElement>
   ) => {
     to &&
-      !Component &&
-      console.warn(`No anchor element defined, do this via the 'as' prop `);
-
+      !as &&
+      console.warn(
+        `No element supporting 'to' prop defined, do this via the 'as' prop.`
+      );
     const rootClassNames = classnames(classes.root, classNameProp);
     const className = st(rootClassNames, {
       iconPos: icon ? iconPos : false,
@@ -71,16 +75,11 @@ const Button = React.forwardRef(
         {children && <span className={classes.inner}>{children}</span>}
       </>
     );
-    return Component ? (
-      Component === "a" ? (
-        <Component {...{ className, ...rest, ref }} href={to}>
-          {internal}
-        </Component>
-      ) : (
-        <Component {...{ className, to, ...rest, ref }}>{internal}</Component>
-      )
-    ) : (
-      <button {...{ className, ...rest, ref }}>{internal}</button>
+    const Component = href ? "a" : as ? as : "button";
+    return (
+      <Component {...{ className, href, to, ref, ...rest }}>
+        {internal}
+      </Component>
     );
   }
 );

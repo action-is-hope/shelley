@@ -1,4 +1,4 @@
-/* buttonExamples.tsx */
+/* menuExamples.tsx */
 import React from "react";
 /* Example Component */
 import {
@@ -269,7 +269,7 @@ export const Example2 = () => (
           />
         </ButtonGroup>
         <MenuList>
-          <Text tag="label" uppercase vol={1}>
+          <Text as="label" uppercase vol={1}>
             Change status
           </Text>
           <MenuItem disabled onSelect={() => alert("selected!")}>

@@ -21,7 +21,6 @@ import {
   MenuPopover as ReachMenuPopover,
   MenuLink as ReachMenuLink,
   MenuProps as ReachMenuProps,
-  // MenuButtonProps as ReactMenuButtonProps,
   MenuListProps as ReachMenuListProps,
   MenuItemsProps as ReachMenuItemsProps,
   MenuItemProps as ReachMenuItemProps,
@@ -90,7 +89,7 @@ export const MenuList = React.forwardRef(
 MenuList.displayName = "MenuList";
 
 /**
- * Reach UI MenuItems - see Reach docs, ccustom uses cases so no class provided.
+ * Reach UI MenuItems - see Reach docs, custom uses cases so no class provided.
  */
 export const MenuItems = React.forwardRef(
   (
@@ -137,3 +136,18 @@ export const MenuPopover = React.forwardRef(
   )
 );
 MenuPopover.displayName = "MenuPopover";
+
+/**
+ * Reach UI MenuLink - see Reach docs, custom uses cases so no class provided.
+ */
+export const MenuLink = React.forwardRef(
+  (
+    { children, ...rest }: MenuLinkProps,
+    ref?: React.Ref<HTMLAnchorElement>
+  ) => (
+    <ReachMenuLink ref={ref} {...rest}>
+      {children}
+    </ReachMenuLink>
+  )
+);
+MenuLink.displayName = "MenuLink";

@@ -149,7 +149,7 @@ const ButtonDocs = () => {
           <Button onClick={() => onButtonClick()} vol={1}>
             Test Ref
           </Button>{" "}
-          <Text tag="span" ref={test} tabIndex={1} vol={2}>
+          <Text as="span" ref={test} tabIndex={1} vol={2}>
             TODO: Remove and add tests for refs in general.
           </Text>
         </div>

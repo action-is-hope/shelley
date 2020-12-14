@@ -81,7 +81,7 @@ const MenuDocs = () => {
               />
             </ButtonGroup>
             <MenuList>
-              <Text tag="label" uppercase vol={1}>
+              <Text as="label" uppercase vol={1}>
                 Change status
               </Text>
               <MenuItem onSelect={() => console.log("hi")}>Publish</MenuItem>
