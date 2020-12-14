@@ -41,7 +41,7 @@ const Blockquote = ({
       <div className={classes.content}>{children}</div>
       {cite && (
         <footer className={classes.footer}>
-          <Text tag="cite" vol={citeVol} className={classes.cite}>
+          <Text as="cite" vol={citeVol} className={classes.cite}>
             {cite}
           </Text>
         </footer>

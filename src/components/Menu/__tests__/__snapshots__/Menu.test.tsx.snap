@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu supports Reach Menu Button via #as 1`] = `
+Array [
+  <button
+    aria-controls="menu--1"
+    aria-haspopup={true}
+    className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+    data-reach-menu-button=""
+    data-testid="button-data-testid"
+    id="menu-button--menu"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    type="button"
+  >
+    <span
+      className="Button2465625684__inner"
+    >
+      I love big buttons and I cannot lie...
+    </span>
+  </button>,
+  <span />,
+]
+`;

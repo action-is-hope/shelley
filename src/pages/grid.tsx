@@ -249,28 +249,28 @@ variant?: number;`}</CodeSample>
         </P>
 
         <dl className={classnames(spacing.mt1, spacing.mb1, text.dl)}>
-          <Text tag="dt">
+          <Text as="dt">
             <code>mid</code>
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             midfield lines - <q>majority of the action</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>pen</code>
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             penalty / 22 yard lines - <q>it&apos;s a hell of a run!</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>goal</code>{" "}
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             goal lines - <q>end to end stuff!</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>edge</code>{" "}
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             touch lines - <q>the crowd goes wild!</q>
           </Text>
         </dl>

@@ -139,11 +139,11 @@ const VisuallyHiddenDocs = () => {
           ensure that it is clear what is on the other end of it. Steps:
         </P>
         <ol>
-          <Text tag="li">
+          <Text as="li">
             Hide the ... from assistive tech via <code>aria-hidden</code>, the
             logical opposite to <code>VisuallyHidden</code>. Handy.
           </Text>
-          <Text tag="li">
+          <Text as="li">
             Define some text for the link itself to give it context and then
             hide it with <code>VisuallyHidden</code>. Done.
           </Text>
