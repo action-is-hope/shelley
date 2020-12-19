@@ -87,6 +87,7 @@ export const ComponentDemo = () => {
       }
     >
       <ButtonGroup
+        fullWidth
         tone={labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value}
         variant={
           labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value

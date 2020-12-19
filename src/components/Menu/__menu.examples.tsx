@@ -260,7 +260,7 @@ export const Example2 = () => (
     <Text as="label" uppercase vol={1}>
       Change status
     </Text>
-    <MenuItem disabed onSelect={() => alert("🌎")}>Publish</MenuItem>
+    <MenuItem onSelect={() => alert("🌎")}>Publish</MenuItem>
     <MenuItem onSelect={() => alert("🌎")}>Archive</MenuItem>
     <MenuItem onSelect={() => alert("🌎")}>Delete</MenuItem>
   </MenuList>

@@ -12,7 +12,7 @@
 /* pseudo pseudo selector */
 .root[data-selected] {}
 
-.root[disabled] {
+.root[aria-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
 }

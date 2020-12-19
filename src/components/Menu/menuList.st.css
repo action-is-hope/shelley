@@ -3,3 +3,7 @@
 .root {
   white-space: nowrap;
 }
+
+[data-reach-menu-popover] {
+  z-index: 1000;
+}

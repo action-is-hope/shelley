@@ -25,6 +25,7 @@ export interface ButtonGroupProps
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
+  fullWidth?: boolean;
 }
 
 const ButtonGroup = React.forwardRef(
@@ -33,6 +34,7 @@ const ButtonGroup = React.forwardRef(
       buttonClassName,
       children,
       className: classNameProp,
+      fullWidth = false,
       disabled,
       tone = 1,
       variant = 1,
@@ -45,7 +47,11 @@ const ButtonGroup = React.forwardRef(
     const rootClassNames = classnames(classes.root, classNameProp);
 
     return (
-      <div className={st(rootClassNames, { orientation })} {...rest} ref={ref}>
+      <div
+        className={st(rootClassNames, { orientation, fullWidth })}
+        {...rest}
+        ref={ref}
+      >
         {React.Children.map(children, child => {
           if (!React.isValidElement(child)) {
             return null;
