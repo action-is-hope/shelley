@@ -5,9 +5,13 @@
   -st-states:
     iconPos(enum(top, end, bottom, start)),
     fullWidth,
-    tone(enum(1, 2, 3, 4, 5, 6)),
+    tone(enum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)),
     variant(enum(1, 2, 3, 4, 5, 6)),
     vol(enum(1, 2, 3, 4, 5, 6));
+}
+
+.root,
+.root:visited {
   display: inline-flex;
   justify-content: space-between;
   /* = Explicitly set font-family else it will default to system style. */
@@ -39,13 +43,16 @@
   color: var(--text-color);
   background-color: var(--bg-color);
   border-color: var(--border-color);
+  /* = Safari spacing issue with button groups MacOs and IOS. */
+  margin: 0;
+  text-decoration: none;
 }
 
 /*==== Input Positions ====*/
 
 /* top */
 .root:iconPos(top) {
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 /* end / right */
@@ -55,7 +62,7 @@
 
 /* bottom */
 .root:iconPos(bottom) {
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 /* start / left */

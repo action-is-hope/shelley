@@ -207,7 +207,7 @@ export const Collection = () => (
 export const Example1 = () => (
   <Grid variant={1} className={styleExamples.pitch} tag="article">
     <Text
-      tag="div"
+      as="div"
       vol={2}
       className={classnames(grid.edge, styleExamples.pitchArea)}
     >
@@ -215,7 +215,7 @@ export const Example1 = () => (
       <code>edge-end</code>
     </Text>
     <Text
-      tag="div"
+      as="div"
       vol={2}
       className={classnames(grid.goal, styleExamples.pitchArea)}
     >
@@ -223,7 +223,7 @@ export const Example1 = () => (
       <code>goal-end</code>
     </Text>
     <Text
-      tag="div"
+      as="div"
       vol={2}
       className={classnames(grid.pen, styleExamples.pitchArea)}
     >
@@ -231,7 +231,7 @@ export const Example1 = () => (
       <code>pen-end</code>
     </Text>
     <Text
-      tag="div"
+      as="div"
       vol={2}
       className={classnames(grid.mid, styleExamples.pitchArea)}
     >

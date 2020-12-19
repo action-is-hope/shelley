@@ -118,4 +118,18 @@
     --accent: var(--color-accent-4);
   }
 
+
+  Button:tone(10) {
+    --text-color: inherit;
+    --accent: transparent;
+    opacity: 0.7;
+  }
+
+  Button:tone(10):hover,
+  Button:tone(10):focus {
+    opacity: 1;
+  }
+
+
+
 }

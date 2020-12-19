@@ -23,7 +23,7 @@ export const QuickRef = () => (
 <H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
   
 <P>The mighty paragraph, defaults to a volume of 3.</P>
-<Text tag="span">Text with your choice of tag via the "tag" prop.</Text>`}
+<Text as="span">Text with your choice of tag via the "as" prop.</Text>`}
   </CodeSample>
 );
 
@@ -77,7 +77,7 @@ export const ComponentDemo = () => {
     >
       <Text
         id="textDemo"
-        tag="p"
+        as="p"
         vol={TextDemoProps[0].value}
         truncate={TextDemoProps[1].value}
         uppercase={TextDemoProps[2].value}
@@ -86,7 +86,7 @@ export const ComponentDemo = () => {
       </Text>
       <br />
       <br />
-      <Text tag="p" vol={3}>
+      <Text as="p" vol={3}>
         Just in case:{" "}
         <a href="https://www.ipcc.ch/reports/">
           <abbr title="Intergovernmental Panel on Climate Change">IPCC</abbr>{" "}

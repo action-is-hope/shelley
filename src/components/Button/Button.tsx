@@ -1,7 +1,6 @@
 import React from "react";
 import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 import { AlignPos } from "../types";
 /* = Style API. */
 import { st, classes } from "./button.st.css";
@@ -14,20 +13,24 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     Exclude<keyof React.ButtonHTMLAttributes<HTMLButtonElement>, "tone">
   > {
-  /** Chuck in an Icon if you please, ours or yours. */
+  /** Turns into a basic link, for internal links use #as and #to props. */
+  href?: string;
+  /** Define an Icon, postion via #iconPos. */
   icon?: React.ReactNode;
   /** The position of the label relative to the input. */
   iconPos?: AlignPos;
-  /** Extra text that can be used to render a infotip / tooltip on hover/focus. */
-  tip?: string;
-  /** tone index. */
+  /** Provide a url path for a custom component via 'as' prop. */
+  to?: string;
+  /** Tone index, defines the color palette. */
   tone?: Accent;
-  /** Variant index. */
+  /** Variant index, defines the 'look'. */
   variant?: Variant;
-  /** How 'loud' should this Button be? */
+  /** Defines how 'loud' the Button should be in term of it's size. */
   vol?: Volume;
-  /** Applies width of 100%; */
+  /** Applies width of 100%. */
   fullWidth?: boolean;
+  /** Custom element to render a component that supports #to and has forwarded refs. */
+  as?: any;
 }
 
 const Button = React.forwardRef(
@@ -35,31 +38,34 @@ const Button = React.forwardRef(
     {
       children,
       className: classNameProp,
+      as,
       icon,
       iconPos = "end",
+      href,
       fullWidth = false,
       tone = 1,
+      to,
       variant = 1,
       vol = 3,
-      tip,
       ...rest
     }: ButtonProps,
     ref?: React.Ref<HTMLButtonElement>
   ) => {
+    to &&
+      !as &&
+      console.warn(
+        `No element supporting 'to' prop defined, do this via the 'as' prop.`
+      );
     const rootClassNames = classnames(classes.root, classNameProp);
-
-    return (
-      <button
-        className={st(rootClassNames, {
-          iconPos,
-          fullWidth,
-          tone,
-          variant,
-          vol
-        })}
-        {...rest}
-        ref={ref}
-      >
+    const className = st(rootClassNames, {
+      iconPos: icon ? iconPos : false,
+      fullWidth,
+      tone,
+      variant,
+      vol
+    });
+    const internal = (
+      <>
         {icon && (
           <>
             {icon}
@@ -67,16 +73,17 @@ const Button = React.forwardRef(
           </>
         )}
         {children && <span className={classes.inner}>{children}</span>}
-        {tip && <span className={classes.tip}>{tip}</span>}
-      </button>
+      </>
+    );
+    const Component = href ? "a" : as ? as : "button";
+    return (
+      <Component {...{ className, href, to, ref, ...rest }}>
+        {internal}
+      </Component>
     );
   }
 );
 
 Button.displayName = "Button";
-Button.propTypes = {
-  style: PropTypes.object
-};
 
 export default Button;
-export const proptype = Button.propTypes;

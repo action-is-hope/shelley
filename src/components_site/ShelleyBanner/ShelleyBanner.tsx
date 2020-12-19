@@ -13,16 +13,16 @@ const ShelleyBanner = ({
   return (
     <Grid className={st(classnames(classes.root, classNameProp))}>
       <div className={classes.internalGrid}>
-        <Text tag="h1" className={classes.title} uppercase vol={8}>
+        <Text as="h1" className={classes.title} uppercase vol={8}>
           Shelley
         </Text>
-        <Text tag="p" className={classes.tld} vol={2}>
+        <Text as="p" className={classes.tld} vol={2}>
           .earth
         </Text>
 
         <Logo className={classes.logoPosition} />
 
-        <Text tag="p" className={classes.tagline} vol={2} uppercase>
+        <Text as="p" className={classes.tagline} vol={2} uppercase>
           {/* Stylable <abbr title="User Interface">UI</abbr> blocks */}A{" "}
           {/* <a href="http://jhdjdii.com">Stylable</a> User Interface */}
           Stylable User Interface

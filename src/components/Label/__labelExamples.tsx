@@ -157,7 +157,7 @@ Label:inputPos(start) {}
 );
 
 export const Example1 = () => (
-  <Text tag="div" vol={2} className={classnames(grid.mid)}>
+  <Text as="div" vol={2} className={classnames(grid.mid)}>
     <code>mid-start</code>
     <code>mid-end</code>
   </Text>

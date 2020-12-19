@@ -77,7 +77,7 @@
     uppercase land. */
     letter-spacing: .034em;
     /* = Weight choice will likely factor the font-smoothing used. */
-    font-weight: 400;
+    font-weight: 500;
     /* Using em values allowing the button to 'grow' insync with font-size. */
     padding: .2em 1em;
     /* = Caters postioned children, e.g focus pseudo element. Also 
@@ -145,45 +145,69 @@
   /* = Volume 1 */
   Button:vol(1) {
     -st-mixin:
+      textVol(scale respScale(0.67em, 0.675em),
+        max 0.675em, lineHeight 1);
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+  }
+
+  /* Button:vol(1) {
+    -st-mixin:
       textVol(scale respScale(0.625em, 0.75em),
         max 0.75em, lineHeight 1.5);
-  }
+  } */
 
 
   /* = Volume 2 */
-  Button:vol(2) {
+  /* Button:vol(2) {
     -st-mixin:
       textVol(scale respScale(0.75em, 0.875em),
         max 0.875em, lineHeight 1.5);
+  } */
+
+  Button:vol(2) {
+    -st-mixin:
+      textVol(scale respScale(0.75em, 0.71em),
+        max 0.71em, lineHeight 1);
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
   }
 
   /* = Volume 3 */
   Button:vol(3) {
     -st-mixin:
+      textVol(scale respScale(0.8em, 0.78em),
+        max 0.78em, lineHeight 1.1);
+  }
+
+
+  /* -st-mixin:
       textVol(scale respScale(0.875em, 1em),
         max 1em, lineHeight 1.5);
-  }
+  } */
 
   /* = Volume 4 */
   Button:vol(4) {
-    -st-mixin:
+    /* -st-mixin:
       textVol(scale respScale(1em, 1.125em),
-        max 1.125em, lineHeight 1.5);
+        max 1.125em, lineHeight 1.5); */
+    -st-mixin:
+      textVol(scale respScale(0.85em, .83em),
+        max .875em, lineHeight 1.1);
   }
 
   /* = Volume 5 */
   Button:vol(5) {
     -st-mixin:
-      textVol(scale respScale(1.125em, 1.25em),
-        max 1.25em, lineHeight 1.5);
+      textVol(scale respScale(1em, 1em),
+        max 1em, lineHeight 1.15);
   }
 
   /* = Volume 6 */
   Button:vol(6) {
-    font-size: respScale(1.25em, 1.375em);
     -st-mixin:
-      textVol(scale respScale(1.25em, 1.375),
-        max 1.375em, lineHeight 1.5);
+      textVol(scale respScale(1.15em, 1.125em),
+        max 1.125em, lineHeight 1.15);
   }
 
 

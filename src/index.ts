@@ -47,6 +47,8 @@ export * from "./components/InputText/InputText";
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";
 
+export * from "./components/Menu/Menu";
+
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";
 

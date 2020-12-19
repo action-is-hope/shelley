@@ -17,6 +17,7 @@ import InputSelectionControl from "./inputSelectionControl.st.css";
 import InputText from "./inputText.st.css";
 import Label from "./label.st.css";
 import Text from "./text.st.css";
+import Menu from "./menu.st.css";
 
 // = Project
 import Default from "./project.st.css";
@@ -67,5 +68,8 @@ export const hintText = (...values: []) =>
 
 export const inputText = (...values: []) =>
   getStylableClassNames(values, InputText, "inputText");
+
+export const menu = (...values: []) =>
+  getStylableClassNames(values, Menu, "menu");
 
 export const Project = Default.classes.root;

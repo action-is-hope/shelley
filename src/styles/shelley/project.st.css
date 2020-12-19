@@ -96,6 +96,7 @@
   --color-background-3: rgba(160, 160, 160, 0.06);
   --color-background-4: rgba(11, 13, 18, 0.34);
   --color-background-modal: rgba(23, 26, 35, 0.98);
+  --color-background-menu: rgb(23, 26, 35);
 
   /* = Text colours */
   --color-text-1: var(--light-01);

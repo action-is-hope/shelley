@@ -3,6 +3,7 @@ import DefaultLayout from "../layouts";
 import classnames from "classnames";
 import Text, { P, H2 } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
+import Blockquote from "../components/Blockquote/Blockquote";
 import PageTitle from "../components_site/PageTitle/PageTitle";
 import { classes as text } from "../styles/default/text.st.css";
 import { classes as grid } from "../styles/default/grid.st.css";
@@ -165,7 +166,7 @@ variant?: number;`}</CodeSample>
             style={{ width: "100%" }}
           />
           <Text
-            tag="figcaption"
+            as="figcaption"
             vol={2}
             className={classnames(grid.mid, spacing.mt1)}
           >
@@ -248,28 +249,28 @@ variant?: number;`}</CodeSample>
         </P>
 
         <dl className={classnames(spacing.mt1, spacing.mb1, text.dl)}>
-          <Text tag="dt">
+          <Text as="dt">
             <code>mid</code>
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             midfield lines - <q>majority of the action</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>pen</code>
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             penalty / 22 yard lines - <q>it&apos;s a hell of a run!</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>goal</code>{" "}
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             goal lines - <q>end to end stuff!</q>
           </Text>
-          <Text tag="dt">
+          <Text as="dt">
             <code>edge</code>{" "}
           </Text>
-          <Text tag="dd">
+          <Text as="dd">
             touch lines - <q>the crowd goes wild!</q>
           </Text>
         </dl>
@@ -476,9 +477,24 @@ Grid .mid {
         <P>
           In terms of{" "}
           <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
-          law, this is ranked as Level A which makes it a core requirement in
-          terms both value that it provides and legal implications.
+          law, the area of most concern for you here is to present the
+          information in a logical order which is ranked as Level A.
         </P>
+
+        <Blockquote
+          cite={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-sequence.html">
+              Meaningful Sequence: Understanding SC 1.3.2
+            </a>
+          }
+          variant={2}
+        >
+          <P>
+            1.3.2 Meaningful Sequence: When the sequence in which content is
+            presented affects its meaning, a correct reading sequence can be
+            programmatically determined. (Level A)
+          </P>
+        </Blockquote>
       </Grid>
     </DefaultLayout>
   );

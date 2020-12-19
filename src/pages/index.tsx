@@ -94,36 +94,41 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <ul className={classes.menuList}>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/button/">Button</Link>
               </Text>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/buttonGroup/">ButtonGroup</Link>
               </Text>
-              <Text tag="li">
+
+              <Text as="li">
                 <Link to="/text/">Text</Link>
               </Text>
-              <Text tag="li">
-                <Link to="/grid/">Grid</Link>
-              </Text>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/blockquote/">Blockquote</Link>
               </Text>
-
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/icon/">Icons</Link>
               </Text>
 
-              <Text tag="li">
+              <Text as="li">
+                <Link to="/grid/">Grid</Link>
+              </Text>
+
+              <Text as="li">
+                <Link to="/menu/">Menu</Link>
+              </Text>
+
+              <Text as="li">
                 <Link to="/labels/">Labels</Link>
               </Text>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/inputText/">Input Text</Link>
               </Text>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/inputSelection/">Input Selection</Link>
               </Text>
-              <Text tag="li">
+              <Text as="li">
                 <Link to="/visually-hidden/">VisuallyHidden</Link>
               </Text>
             </ul>
@@ -210,7 +215,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <P>
               Currently Shelley is in an <em>alpha</em> phase looking at moving
-              into a public <em>beta</em> late Summer 2020.
+              into a public <em>beta</em> sometime 2021.
             </P>
 
             <P>

@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button includes #icon via prop positioned via #iconPos divider and children 1`] = `
+<button
+  className="Button2465625684__root Button2465625684---iconPos-5-start Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  data-testid="button-data-testid"
+>
+  <svg
+    aria-hidden={true}
+    className="Icon2050503392__root"
+    focusable="false"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"
+    />
+  </svg>
+  <span
+    className="Button2465625684__divider"
+  />
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</button>
+`;
+
+exports[`Button includes #icon, no children, visually hidden label text provided via Icon alt prop 1`] = `
+<button
+  className="Button2465625684__root Button2465625684---iconPos-3-end Button2465625684---tone-1-1 Button2465625684---variant-1-4 Button2465625684---vol-1-3"
+  data-testid="button-data-testid"
+>
+  <svg
+    aria-hidden={true}
+    className="Icon2050503392__root"
+    focusable="false"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"
+    />
+  </svg>
+  <span
+    className="visuallyHidden930791739__root"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</button>
+`;
+
+exports[`Button renders as a basic anchor link via #href prop 1`] = `
+<a
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  data-testid="button-data-testid"
+  href="http://shelley.earth"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</a>
+`;
+
+exports[`Button renders as a basic button with custom #className 1`] = `
+<button
+  className="Button2465625684__root for-which-nobody-can-deny Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  data-testid="button-data-testid"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</button>
+`;
+
+exports[`Button renders as third party anchor provided via #as and #t props 1`] = `
+<a
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  data-testid="button-data-testid"
+  href="/internal-link"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</a>
+`;
+
+exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
+<button
+  className="Button2465625684__root Button2465625684--fullWidth Button2465625684---tone-1-6 Button2465625684---variant-1-6 Button2465625684---vol-1-6"
+  data-testid="button-data-testid"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</button>
+`;
+
+exports[`Button supports Reach Menu Button via #as 1`] = `
+<button
+  aria-controls="menu--1"
+  aria-haspopup={true}
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  data-reach-menu-button=""
+  data-testid="button-data-testid"
+  id="menu-button--menu"
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  type="button"
+>
+  <span
+    className="Button2465625684__inner"
+  >
+    I love big buttons and I cannot lie...
+  </span>
+</button>
+`;

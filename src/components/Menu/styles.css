@@ -1,0 +1,4 @@
+/* Suppresses the Reach warning notifying of missing styles. */
+:root {
+  --reach-menu-button: 1;
+}

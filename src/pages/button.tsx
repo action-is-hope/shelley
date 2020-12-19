@@ -12,7 +12,8 @@ import {
   QuickRef,
   ComponentDemo,
   ComponentHTML,
-  ComponentCSS
+  ComponentCSS,
+  Example1
 } from "../components/Button/__button.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 import Button from "../components/Button/Button";
@@ -64,6 +65,8 @@ const ButtonDocs = () => {
           can make your own, clone ours for a starting point if you need a
           legup. It&apos;s pretty simple, we like simple.
         </P>
+
+        <Example1 />
 
         <H2 vol={4} uppercase>
           Styling
@@ -146,7 +149,7 @@ const ButtonDocs = () => {
           <Button onClick={() => onButtonClick()} vol={1}>
             Test Ref
           </Button>{" "}
-          <Text tag="span" ref={test} tabIndex={1} vol={2}>
+          <Text as="span" ref={test} tabIndex={1} vol={2}>
             TODO: Remove and add tests for refs in general.
           </Text>
         </div>
