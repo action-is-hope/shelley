@@ -1,0 +1,13 @@
+/* toolbar.st.css CSS API */
+.root {
+  -st-states:
+    variant(enum(1, 2, 3, 4, 5, 6)),
+    align(enum(center, inherit, justify, start, end));
+
+  display: flex;
+  position: relative;
+  align-items: center;
+
+
+  padding: 24px
+}

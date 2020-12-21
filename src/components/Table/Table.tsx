@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { Variant, Volume } from "../types";
 import { st, classes } from "./table.st.css";
 
-interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
+export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   /** Variant index, defines the 'look'. */
   variant?: Variant;
   /** Defines volumne/size. */

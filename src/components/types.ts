@@ -3,6 +3,13 @@
 // "top" "right" "bottom" "left" but using right to left aware langauge.
 export declare type AlignPos = "top" | "end" | "bottom" | "start" | false;
 
+export declare type TextAlign =
+  | "center"
+  | "inherit"
+  | "justify"
+  | "start"
+  | "end";
+
 /** Accent color indexes */
 export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | false;
 
