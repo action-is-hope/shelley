@@ -3,15 +3,12 @@ import classnames from "classnames";
 import { st, classes } from "./tablePagination.st.css";
 import Text from "../Text/Text";
 
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  MenuPopover
-} from "../Menu/Menu";
+import { Menu, MenuList, MenuButton, MenuItem } from "../Menu/Menu";
 import Toolbar from "../Toolbar/Toolbar";
+
+import AngleLeft from "../icons/AngleLeft";
+import AngleRight from "../icons/AngleRight";
+import Button, { ButtonProps } from "../Button/Button";
 
 interface rowsPerPageOption {
   value: number;
@@ -19,66 +16,120 @@ interface rowsPerPageOption {
   index: number;
 }
 
+type labelDisplayedRowsArgs = {
+  from: number;
+  to: number;
+  count: number;
+};
 interface TablePaginationProps extends React.HTMLAttributes<HTMLDivElement> {
-  onRowsPerPageChange: () => void;
+  id: string;
+  count: number;
+  currentPage: number;
+  onRowsPerPageChange: (value: string) => void;
   rowsPerPage: number;
   rowsPerPageOptions: Array<any | rowsPerPageOption>;
+  labelRowsPerPage?: string;
+  labelDisplayedRows?: (args: labelDisplayedRowsArgs) => React.ReactNode;
+  "data-testid"?: string;
+  iconPrev?: React.ReactNode;
+  iconNext?: React.ReactNode;
+  onPageChange: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    requestedPage: number
+  ) => void;
+  prevIconButtonProps: ButtonProps;
+  nextIconButtonProps: ButtonProps;
 }
+
+const defaultLabelDisplayedRows = ({
+  from,
+  to,
+  count
+}: labelDisplayedRowsArgs) => {
+  return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`}`;
+};
+
 const TablePagination = React.forwardRef(
   (
     {
       className: classNameProp,
       children,
-
       // ActionsComponent = TablePaginationActions,
-      // backIconButtonProps,
-      // colSpan: colSpanProp,
-      // component: Component = TableCell,
-      // count,
-      // getItemAriaLabel = defaultGetAriaLabel,
-      // labelDisplayedRows = defaultLabelDisplayedRows,
-      // labelRowsPerPage = 'Rows per page:',
-      // nextIconButtonProps,
-      // onPageChange,
-      // onRowsPerPageChange,
-      // page,
+      count,
+      iconPrev = <AngleLeft alt="Previous" />,
+      iconNext = <AngleRight alt="Next" />,
+      id = "tablePagination",
+      labelDisplayedRows = defaultLabelDisplayedRows,
+      labelRowsPerPage = "Rows per page:",
+      nextIconButtonProps,
+      onPageChange,
+      "data-testid": dataTestId,
+      currentPage,
       rowsPerPage,
       rowsPerPageOptions = [10, 25, 50, 100],
       onRowsPerPageChange,
-      // SelectProps = {},
+      prevIconButtonProps,
       // showFirstButton = false,
       // showLastButton = false,
-
       ...rest
     }: TablePaginationProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    // if (Component === TableCell || Component === 'td') {
-    //   colSpan = colSpanProp || 1000; // col-span over everything
-    // }
+    const getLabelDisplayedRowsTo = () => {
+      if (count === -1) return (currentPage + 1) * rowsPerPage;
+      return rowsPerPage === -1
+        ? count
+        : Math.min(count, (currentPage + 1) * rowsPerPage);
+    };
 
-    // const selectId = useId(SelectProps.id);
-    // const labelId = useId(SelectProps.labelId);
-    // const MenuItemComponent = SelectProps.native ? 'option' : MenuItem;
+    // const handleFirstPageButtonClick = (
+    //   event: React.MouseEvent<HTMLButtonElement>
+    // ) => {
+    //   onPageChange(event, 0);
+    // };
 
-    // const getLabelDisplayedRowsTo = () => {
-    //   if (count === -1) return (page + 1) * rowsPerPage;
-    //   return rowsPerPage === -1 ? count : Math.min(count, (page + 1) * rowsPerPage);
+    const handlePrevButtonClick = (
+      event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+      onPageChange(event, currentPage - 1);
+    };
+
+    const handleNextButtonClick = (
+      event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+      onPageChange(event, currentPage + 1);
+    };
+
+    // const handleLastPageButtonClick = (
+    //   event: React.MouseEvent<HTMLButtonElement>
+    // ) => {
+    //   onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
     // };
 
     return (
       <div
         className={st(classnames(classes.root, classNameProp), {})}
-        {...rest}
-        ref={ref}
+        data-testid={dataTestId}
+        {...{ id, ref, ...rest }}
       >
-        <Toolbar>
-          <Text as="span" vol={1}>
-            Rows per page:
+        <Toolbar align="end">
+          <Text
+            as="span"
+            data-testid={dataTestId && `${dataTestId}RowsButtonLabel`}
+            id={`${id}RowsButtonLabel`}
+            vol={1}
+          >
+            {labelRowsPerPage}
           </Text>
           <Menu>
-            <MenuButton variant={3} tone={10} vol={4}>
-              {rowsPerPage} ▾
+            <MenuButton
+              variant={3}
+              tone={10}
+              vol={4}
+              data-testid={dataTestId && `${dataTestId}RowsMenuButton`}
+              aria-labelledby={`${id}RowsButtonLabel`}
+            >
+              {rowsPerPage} <span aria-hidden>▾</span>
             </MenuButton>
             <MenuList>
               {rowsPerPageOptions.map(
@@ -86,16 +137,17 @@ const TablePagination = React.forwardRef(
                   <MenuItem
                     className={classes.menuItem}
                     key={
-                      `${rowsPerPageOption.value}`
+                      rowsPerPageOption.value
                         ? `${rowsPerPageOption.value}`
                         : `${rowsPerPageOption}`
                     }
-                    onSelect={onRowsPerPageChange}
-                    // value={
-                    //   rowsPerPageOption.value
-                    //     ? rowsPerPageOption.value
-                    //     : rowsPerPageOption
-                    // }
+                    onSelect={() =>
+                      onRowsPerPageChange(
+                        rowsPerPageOption.value
+                          ? `${rowsPerPageOption.value}`
+                          : `${rowsPerPageOption}`
+                      )
+                    }
                   >
                     {rowsPerPageOption.label
                       ? rowsPerPageOption.label
@@ -105,7 +157,47 @@ const TablePagination = React.forwardRef(
               )}
             </MenuList>
           </Menu>
-          {children}
+          <Text
+            as="span"
+            data-testid={dataTestId && `${dataTestId}labelDisplayedRows`}
+            vol={1}
+          >
+            {labelDisplayedRows({
+              from: count === 0 ? 0 : currentPage * rowsPerPage + 1,
+              to: getLabelDisplayedRowsTo(),
+              count: count === -1 ? -1 : count
+              // currentPage
+            })}
+          </Text>
+
+          {/* {showFirstButton && ()} */}
+          <Button
+            data-testid={dataTestId && `${dataTestId}PrevButton`}
+            tone={10}
+            variant={4}
+            vol={3}
+            icon={iconPrev}
+            iconPos={"end"}
+            onClick={handlePrevButtonClick}
+            disabled={currentPage === 0}
+            {...prevIconButtonProps}
+          />
+          <Button
+            data-testid={dataTestId && `${dataTestId}NextButton`}
+            tone={10}
+            variant={4}
+            vol={3}
+            icon={iconNext}
+            iconPos={"end"}
+            onClick={handleNextButtonClick}
+            disabled={
+              count !== -1
+                ? currentPage >= Math.ceil(count / rowsPerPage) - 1
+                : false
+            }
+            {...nextIconButtonProps}
+          />
+          {/* {showLastButton && ()} */}
         </Toolbar>
       </div>
     );
@@ -115,60 +207,3 @@ const TablePagination = React.forwardRef(
 TablePagination.displayName = "TablePagination";
 
 export default TablePagination;
-
-// <Component className={clsx(classes.root, className)} colSpan={colSpan} ref={ref} {...other}>
-// <Toolbar className={classes.toolbar}>
-//   <div className={classes.spacer} />
-//   {rowsPerPageOptions.length > 1 && (
-//     <Typography color="inherit" variant="body2" className={classes.caption} id={labelId}>
-//       {labelRowsPerPage}
-//     </Typography>
-//   )}
-
-//   {rowsPerPageOptions.length > 1 && (
-//     <Select
-//       classes={{
-//         select: classes.select,
-//         icon: classes.selectIcon,
-//       }}
-//       input={<InputBase className={clsx(classes.input, classes.selectRoot)} />}
-//       value={rowsPerPage}
-//       onChange={onRowsPerPageChange}
-//       id={selectId}
-//       labelId={labelId}
-//       {...SelectProps}
-//     >
-// {rowsPerPageOptions.map((rowsPerPageOption) => (
-//   <MenuItemComponent
-//     className={classes.menuItem}
-//     key={rowsPerPageOption.value ? rowsPerPageOption.value : rowsPerPageOption}
-//     value={rowsPerPageOption.value ? rowsPerPageOption.value : rowsPerPageOption}
-//   >
-//     {rowsPerPageOption.label ? rowsPerPageOption.label : rowsPerPageOption}
-//   </MenuItemComponent>
-// ))}
-//     </Select>
-//   )}
-
-//   <Typography color="inherit" variant="body2" className={classes.caption}>
-//     {labelDisplayedRows({
-//       from: count === 0 ? 0 : page * rowsPerPage + 1,
-//       to: getLabelDisplayedRowsTo(),
-//       count: count === -1 ? -1 : count,
-//       page,
-//     })}
-//   </Typography>
-//   <ActionsComponent
-//     className={classes.actions}
-//     backIconButtonProps={backIconButtonProps}
-//     count={count}
-//     nextIconButtonProps={nextIconButtonProps}
-//     onPageChange={onPageChange}
-//     page={page}
-//     rowsPerPage={rowsPerPage}
-//     showFirstButton={showFirstButton}
-//     showLastButton={showLastButton}
-//     getItemAriaLabel={getItemAriaLabel}
-//   />
-// </Toolbar>
-// </Component>

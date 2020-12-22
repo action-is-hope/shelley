@@ -1,6 +1,14 @@
-/* footer.st.css CSS API */
+/* tablePagination.st.css CSS API */
 .root {}
 
-.navList {}
 
-.navItem {}
+:import {
+  -st-from: "../Toolbar/toolbar.st.css";
+  -st-default: Toolbar;
+}
+
+.root Toolbar {
+  padding-top: 6px;
+  padding-right: 4px;
+  padding-bottom: 6px;
+}

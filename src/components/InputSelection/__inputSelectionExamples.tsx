@@ -107,15 +107,10 @@ export const ComponentDemo = () => {
         renderExample={
           <CodeSample>{`import InputSelection from "@action-is-hope/shelley-ui";
 
-<InputSelection    ${
-            InputDemoProps[0].value
-              ? `\n  label="${InputDemoProps[0].value}"`
-              : ``
-          } ${
-            InputDemoProps[1].value
-              ? `\n  hint="${InputDemoProps[1].value}"`
-              : ``
-          } ${
+<InputSelection 
+  id="myId" ${
+    InputDemoProps[0].value ? `\n  label="${InputDemoProps[0].value}"` : ``
+  } ${InputDemoProps[1].value ? `\n  hint="${InputDemoProps[1].value}"` : ``} ${
             InputDemoProps[2].value
               ? `\n  type="${InputDemoProps[2].value}"`
               : ``

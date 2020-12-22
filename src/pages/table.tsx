@@ -25,6 +25,7 @@ import {
 
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 import { classes as grid } from "../styles/default/grid.st.css";
+import InputSelection from "../components/InputSelection/InputSelection";
 
 const createData = (
   name: string,
@@ -84,7 +85,15 @@ const LabelsDocs = () => {
                 {rows.map(row => (
                   <TableRow key={row.name}>
                     <TableCell header scope="row">
-                      {row.name}
+                      <InputSelection
+                        id={row.name}
+                        label={row.name}
+                        type="checkbox"
+                        variant={1}
+                        vol={3}
+                        inputPos="start"
+                        error="Form item error message"
+                      />
                     </TableCell>
                     <TableCell align="end">{row.calories}</TableCell>
                     <TableCell align="end">{row.fat}</TableCell>
@@ -95,6 +104,10 @@ const LabelsDocs = () => {
               </TableBody>
             </Table>
             <TablePagination
+              id="myTable"
+              data-testid="hello"
+              count={48}
+              currentPage={0}
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
               // colSpan={3}
               // count={rows.length}
@@ -106,6 +119,7 @@ const LabelsDocs = () => {
               // }}
               // onChangePage={handleChangePage}
               // onChangeRowsPerPage={handleChangeRowsPerPage}
+              onRowsPerPageChange={e => console.log(e)}
               // ActionsComponent={TablePaginationActions}
             />
           </TableContainer>

@@ -121,15 +121,13 @@
 
   Button:tone(10) {
     --text-color: inherit;
-    --accent: transparent;
-    opacity: 0.7;
+    --accent: rgba(var(--color-ui-raw), 0);
+
   }
 
   Button:tone(10):hover,
   Button:tone(10):focus {
+    --accent: rgba(var(--color-ui-raw), 0.1);
     opacity: 1;
   }
-
-
-
 }

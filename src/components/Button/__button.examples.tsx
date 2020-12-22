@@ -94,7 +94,7 @@ export const ComponentDemo = () => {
             : ``
         } ${
           labelDemoProps[4].value === "Yes"
-            ? `\n  iconPos={${labelDemoProps[5].value}}`
+            ? `\n  iconPos={"${labelDemoProps[5].value}"}`
             : ``
         }  \n>\n ${labelDemoProps[0].value}\n</Button>`}</CodeSample>
       }

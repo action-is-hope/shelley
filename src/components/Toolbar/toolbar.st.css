@@ -9,5 +9,10 @@
   align-items: center;
 
 
-  padding: 24px
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.root:align(end) {
+  justify-content: flex-end;
 }
