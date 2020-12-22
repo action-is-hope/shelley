@@ -1,9 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { st, classes } from "./layout.st.css";
-
-import { Grid, GridProps, Text } from "@actionishope/shelley";
-import { classes as grid } from "@actionishope/shelley/styles/default/grid.st.css";
+import { st, classes } from "./ref.st.css";
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   gridMode: "default" | "previewFullScreen";

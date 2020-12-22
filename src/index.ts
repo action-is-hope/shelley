@@ -52,6 +52,30 @@ export * from "./components/Menu/Menu";
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";
 
+export { default as Table } from "./components/Table/Table";
+export * from "./components/Table/Table";
+
+export { default as TableBody } from "./components/TableBody/TableBody";
+export * from "./components/TableBody/TableBody";
+
+export { default as TableCell } from "./components/TableCell/TableCell";
+export * from "./components/TableCell/TableCell";
+
+export { default as TableContainer } from "./components/TableContainer/TableContainer";
+export * from "./components/TableContainer/TableContainer";
+
+export { default as TableHead } from "./components/TableHead/TableHead";
+export * from "./components/TableHead/TableHead";
+
+export { default as TableRow } from "./components/TableRow/TableRow";
+export * from "./components/TableRow/TableRow";
+
+export { default as TablePagination } from "./components/TablePagination/TablePagination";
+export * from "./components/TablePagination/TablePagination";
+
+export { default as Toolbar } from "./components/Toolbar/Toolbar";
+export * from "./components/Toolbar/Toolbar";
+
 export { default as VisuallyHidden } from "./components/VisuallyHidden/VisuallyHidden";
 export * from "./components/VisuallyHidden/VisuallyHidden";
 

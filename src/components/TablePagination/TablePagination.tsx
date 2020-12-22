@@ -37,8 +37,8 @@ interface TablePaginationProps extends React.HTMLAttributes<HTMLDivElement> {
     event: React.MouseEvent<HTMLButtonElement>,
     requestedPage: number
   ) => void;
-  prevIconButtonProps: ButtonProps;
-  nextIconButtonProps: ButtonProps;
+  prevIconButtonProps?: ButtonProps;
+  nextIconButtonProps?: ButtonProps;
 }
 
 const defaultLabelDisplayedRows = ({
