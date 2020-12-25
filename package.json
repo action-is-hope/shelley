@@ -21,7 +21,7 @@
   "dependencies": {
     "@stylable/dom-test-kit": "^3.11.9",
     "classnames": "^2.2.6",
-    "react-expanding-textarea": "^2.2.3"
+    "react-expanding-textarea": "^2.2.4"
   },
   "main": "index.js",
   "scripts": {
