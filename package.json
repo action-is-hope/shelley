@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/action-is-hope/shelley#readme",
   "dependencies": {
-    "@stylable/dom-test-kit": "^3.11.9",
+    "@stylable/dom-test-kit": "^3.11.10",
     "classnames": "^2.2.6",
     "react-expanding-textarea": "^2.2.3"
   },
