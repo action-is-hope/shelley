@@ -13,7 +13,7 @@ const Toolbar = React.forwardRef(
   (
     {
       align = "end",
-      as = "div",
+      as: Component = "div",
       className: classNameProp,
       children,
       variant = false,
@@ -21,7 +21,6 @@ const Toolbar = React.forwardRef(
     }: ToolbarProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    const Component = as;
     return (
       <Component
         className={st(classnames(classes.root, classNameProp), {
