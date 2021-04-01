@@ -3,8 +3,6 @@
   It's what will get exposed to other packages when added as a dependency.
 */
 
-import ShelleyBanner from "./components_site/ShelleyBanner/ShelleyBanner";
-
 /** Default components in alphabetical order */
 
 export { default as Blockquote } from "./components/Blockquote/Blockquote";
