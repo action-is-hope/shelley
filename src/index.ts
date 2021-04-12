@@ -57,8 +57,10 @@ export * from "./components/VisuallyHidden/VisuallyHidden";
 
 /** Extras - Temp */
 
-export { default as CodeSample } from "./components_site/CodeSample/CodeSample";
-export * from "./components_site/CodeSample/CodeSample";
+// @todo Move these into a seperate package designed to help building UI libs on top of Shelley.
 
-export { default as Logo } from "./components_site/Logo/Logo";
-export * from "./components_site/Logo/Logo";
+// export { default as CodeSample } from "./components_site/CodeSample/CodeSample";
+// export * from "./components_site/CodeSample/CodeSample";
+
+// export { default as Logo } from "./components_site/Logo/Logo";
+// export * from "./components_site/Logo/Logo";

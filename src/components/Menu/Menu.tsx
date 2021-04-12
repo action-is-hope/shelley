@@ -27,12 +27,11 @@ import {
   MenuPopoverProps as ReachMenuPopoverProps,
   MenuLinkProps as ReachMenuLinkProps
 } from "@reach/menu-button";
-import "./styles.css";
 
 import Button, { ButtonProps } from "../Button/Button";
 import { st as stList, classes as list } from "./menuList.st.css";
 import { st as stItem, classes as item } from "./menuItem.st.css";
-import { st as stLink, classes as link } from "./menuLink.st.css";
+// import { st as stLink, classes as link } from "./menuLink.st.css";
 
 export type MenuProps = ReachMenuProps;
 export type MenuButtonProps = ButtonProps;
