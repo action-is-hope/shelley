@@ -1,4 +1,10 @@
 /* menuList.st.css CSS API */
+@st-global-custom-property --reach-menu-button;
+
+/* Suppresses the Reach warning notifying of missing styles. */
+:root {
+  --reach-menu-button: 1;
+}
 
 .root {
   white-space: nowrap;
