@@ -1,4 +1,4 @@
-/* __tableExamples.tsx */
+/* __table  Examples.tsx */
 import React from "react";
 
 import CodeSample from "../../components_site/CodeSample/CodeSample";
@@ -16,7 +16,7 @@ export const QuickRef = () => (
     TableHead,
     TableRow,
     TablePagination } from "@actionishope/shelley";\n
-TBC`}</CodeSample>
+TODO`}</CodeSample>
 );
 
 export const ComponentHTML = () => (
