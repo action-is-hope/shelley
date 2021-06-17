@@ -340,7 +340,7 @@ export const Example4 = () => (
     <div className={grid.mid}>
       <Menu>
         <MenuButton>Activate</MenuButton>
-        <MenuPopover className="test">
+        <MenuPopover>
           <div className="arbitrary-element">
             <MenuItems>
               <MenuItem
@@ -358,7 +358,7 @@ export const Example4 = () => (
     <CodeSample className={grid.mid}>
       {`<Menu>
   <MenuButton>Activate</MenuButton>
-  <MenuPopover className="test">
+  <MenuPopover>
     <div className="arbitrary-element">
       <MenuItems>
         <MenuItem

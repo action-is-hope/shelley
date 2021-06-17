@@ -36,13 +36,14 @@ import { st as stItem, classes as item } from "./menuItem.st.css";
 export type MenuProps = ReachMenuProps;
 export type MenuButtonProps = ButtonProps;
 export interface MenuListProps extends ReachMenuListProps {
-  as?: "ul" | "div";
+  className?: string;
+  as?: any;
 }
 export type MenuItemsProps = ReachMenuItemsProps;
 export interface MenuItemProps extends ReachMenuItemProps {
   className?: string;
   disabled?: boolean;
-  as?: "li" | "div";
+  as?: any;
 }
 export type MenuPopoverProps = ReachMenuPopoverProps;
 export type MenuLinkProps = ReachMenuLinkProps;
@@ -92,10 +93,7 @@ MenuList.displayName = "MenuList";
  * Reach UI MenuItems - see Reach docs, custom uses cases so no class provided.
  */
 export const MenuItems = React.forwardRef(
-  (
-    { children, ...rest }: MenuItemsProps,
-    ref?: React.Ref<HTMLUListElement | HTMLDivElement>
-  ) => (
+  ({ children, ...rest }: MenuItemsProps, ref?: React.Ref<HTMLDivElement>) => (
     <ReachMenuItems ref={ref} {...rest}>
       {children}
     </ReachMenuItems>
@@ -109,7 +107,7 @@ MenuItems.displayName = "MenuItems";
 export const MenuItem = React.forwardRef(
   (
     { className, children, as = "div", ...rest }: MenuItemProps,
-    ref?: React.Ref<HTMLLIElement | HTMLDivElement>
+    ref?: React.Ref<HTMLDivElement>
   ) => (
     <ReachMenuItem
       className={stItem(classnames(item.root, className))}
