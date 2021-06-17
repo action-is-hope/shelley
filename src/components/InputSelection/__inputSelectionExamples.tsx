@@ -20,7 +20,7 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Icon from "@action-is-hope/shelley";
+  <CodeSample className={grid.mid}>{`import Icon from "@actionishope/shelley";
 \n<Icon>
   {/* crack open an svg to find the path and shove it in. */}
   <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
@@ -105,17 +105,12 @@ export const ComponentDemo = () => {
         demoProps={InputDemoProps}
         setDemoProps={setInputDemoProps}
         renderExample={
-          <CodeSample>{`import InputSelection from "@action-is-hope/shelley-ui";
+          <CodeSample>{`import InputSelection from "@actionishope/shelley-ui";
 
-<InputSelection    ${
-            InputDemoProps[0].value
-              ? `\n  label="${InputDemoProps[0].value}"`
-              : ``
-          } ${
-            InputDemoProps[1].value
-              ? `\n  hint="${InputDemoProps[1].value}"`
-              : ``
-          } ${
+<InputSelection 
+  id="myId" ${
+    InputDemoProps[0].value ? `\n  label="${InputDemoProps[0].value}"` : ``
+  } ${InputDemoProps[1].value ? `\n  hint="${InputDemoProps[1].value}"` : ``} ${
             InputDemoProps[2].value
               ? `\n  type="${InputDemoProps[2].value}"`
               : ``

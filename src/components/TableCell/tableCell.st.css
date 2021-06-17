@@ -1,0 +1,38 @@
+/* tableCell.st.css CSS API */
+.root {
+  -st-states:
+    vol(enum(1, 2, 3, 4, 5, 6)),
+    align(enum(center, inherit, justify, start, end));
+}
+
+.root {
+  display: table-cell;
+  padding: 16px;
+  /* font-size: 0.875rem; */
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.43;
+  border-bottom: 1px solid rgba(81, 81, 81, 1);
+  letter-spacing: 0.01071em;
+  vertical-align: inherit;
+}
+
+.root:align(center) {
+  text-align: center;
+}
+
+.root:align(inherit) {
+  text-align: inherit;
+}
+
+.root:align(justify) {
+  text-align: justify;
+}
+
+.root:align(start) {
+  text-align: start;
+}
+
+.root:align(end) {
+  text-align: end;
+}

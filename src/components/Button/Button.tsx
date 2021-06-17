@@ -1,7 +1,6 @@
 import React from "react";
-import { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
-import { AlignPos } from "../types";
+import { Accent, AlignPos, Volume, Variant } from "../types";
 /* = Style API. */
 import { st, classes } from "./button.st.css";
 

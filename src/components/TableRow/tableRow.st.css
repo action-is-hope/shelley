@@ -1,0 +1,9 @@
+/* tableRow.st.css CSS API */
+.root {
+  -st-states: selected;
+
+  color: inherit;
+  display: table-row;
+  outline: 0;
+  vertical-align: middle;
+}

@@ -68,6 +68,7 @@
   /* = Core light - always light or dark regardless of theme. */
   --light-01-raw: 255, 255, 255;
   --light-01: rgb(255, 255, 255);
+
   /* = Core dark . */
   --dark-01-raw: 51, 51, 51;
   --dark-01: rgb(51, 51, 51);

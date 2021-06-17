@@ -73,7 +73,7 @@ export const ComponentDemo = () => {
       renderExample={
         <CodeSample className={grid.mid}>{`import { Label${
           labelDemoProps[4].value !== "none" ? `, InputSelectionControl` : ``
-        } } from "@action-is-hope/shelley";\n<Label ${
+        } } from "@actionishope/shelley";\n<Label ${
           labelDemoProps[1].value ? `\n  hint="${labelDemoProps[1].value}"` : ``
         } ${
           labelDemoProps[2].value

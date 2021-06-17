@@ -1,7 +1,7 @@
 /**
  * = BUTTON - button.st.css
  *
- * We only have one, so far so good. YOu should have enough sizes and hooks
+ * We only have one, so far so good. You should have enough sizes and hooks
  * but you can always add your own custome classes for whatever you need or 
  * wrap this button up inside other buttons pre configured for your usecases.
  * 
@@ -86,7 +86,7 @@
     --text-color: var(--color-ui-inverse);
   }
 
-  /* = We need to a seperator color for when in a group. */
+  /* = We a seperator color for when in a group. */
   ButtonGroup Button:variant(3) {
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
@@ -118,18 +118,15 @@
     --accent: var(--color-accent-4);
   }
 
-
   Button:tone(10) {
     --text-color: inherit;
-    --accent: transparent;
-    opacity: 0.7;
+    --accent: rgba(var(--color-ui-raw), 0);
+
   }
 
   Button:tone(10):hover,
   Button:tone(10):focus {
+    --accent: rgba(var(--color-ui-raw), 0.1);
     opacity: 1;
   }
-
-
-
 }
