@@ -104,7 +104,7 @@ const LabelsDocs = () => {
               </TableBody>
             </Table>
             <TablePagination
-              id="myTable"
+              id="myTablePage"
               data-testid="basicExample"
               count={48}
               currentPage={0}

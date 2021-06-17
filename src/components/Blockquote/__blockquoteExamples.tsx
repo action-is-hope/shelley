@@ -13,7 +13,9 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Blockquote from "shelley-ui";\n
+  <CodeSample
+    className={grid.mid}
+  >{`import { Blockquote } from "@action-is-hope/shelley";\n
 <Blockquote
   cite="The Guardian - cite accepts react node, text or link etc"
   >
