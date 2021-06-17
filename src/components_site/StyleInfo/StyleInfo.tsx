@@ -47,7 +47,7 @@ StyleInfoProps) => {
         {componentHTML}
         <P vol={2}>
           <a
-            href={`https://github.com/action-is-hope/shelley/tree/master/src/components/${componentName}/${cssFileName}.st.css`}
+            href={`https://github.com/actionishope/shelley/tree/master/src/components/${componentName}/${cssFileName}.st.css`}
           >
             Core styles
           </a>{" "}
@@ -55,7 +55,7 @@ StyleInfoProps) => {
         {!disableDefaultLink && (
           <P vol={2}>
             <a
-              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
+              href={`https://github.com/actionishope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
             >
               Shelley default styles
             </a>{" "}
@@ -64,7 +64,7 @@ StyleInfoProps) => {
         {!disableShelleyLink && (
           <P vol={2}>
             <a
-              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
+              href={`https://github.com/actionishope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
             >
               Shelley custom styles
             </a>{" "}

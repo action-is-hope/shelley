@@ -16,7 +16,7 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Grid from "@action-is-hope/shelley";
+  <CodeSample className={grid.mid}>{`import Grid from "@actionishope/shelley";
 \n<Grid tag="section" variant={1} formatted>
   {/* children */}
 </Grid>`}</CodeSample>
@@ -51,7 +51,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="SVGSVGElement"
       renderExample={
-        <CodeSample>{`import { Icon } from "@action-is-hope/shelley";\n\n<Icon ${
+        <CodeSample>{`import { Icon } from "@actionishope/shelley";\n\n<Icon ${
           labelDemoProps[0].value
             ? `\n  alt="${labelDemoProps[0].value}"`
             : `\n  alt="false"`

@@ -28,7 +28,7 @@ export const QuickRef = () => (
     Menu,
     MenuList,
     MenuButton
-  } from "@action-is-hope/shelley";
+  } from "@actionishope/shelley";
 \n
 <Menu>
   <MenuButton
@@ -98,7 +98,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLButtonElement"
       renderExample={
-        <CodeSample>{`import { Button, Icon } from "@action-is-hope/shelley";\n\n<Button ${
+        <CodeSample>{`import { Button, Icon } from "@actionishope/shelley";\n\n<Button ${
           labelDemoProps[1].value > 0
             ? `\n  tone={${labelDemoProps[1].value}}`
             : `\n  tone={false}`

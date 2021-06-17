@@ -15,7 +15,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
-  >{`import { ButtonGroup, Button } from "@action-is-hope/shelley";
+  >{`import { ButtonGroup, Button } from "@actionishope/shelley";
 \n<ButtonGroup vol={2} tone={2} variant={1}>
   <Button>Button one</Button>
   <Button>Button two</Button>
@@ -64,7 +64,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLDivElement"
       renderExample={
-        <CodeSample>{`import { Button, Icon } from "@action-is-hope/shelley";\n\n<ButtonGroup ${
+        <CodeSample>{`import { Button, Icon } from "@actionishope/shelley";\n\n<ButtonGroup ${
           labelDemoProps[0].value > 0
             ? `\n  tone={${labelDemoProps[0].value}}`
             : `\n  tone={false}`
@@ -141,7 +141,7 @@ export const Example1 = () => (
 
     <CodeSample
       className={grid.mid}
-    >{`import { ButtonGroup, Button } from "@action-is-hope/shelley";
+    >{`import { ButtonGroup, Button } from "@actionishope/shelley";
   \n<ButtonGroup vol={2} tone={2} variant={1}>
   <Button>Publish</Button>
   <Button

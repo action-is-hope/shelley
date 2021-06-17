@@ -15,7 +15,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
-  >{`import { Blockquote } from "@action-is-hope/shelley";\n
+  >{`import { Blockquote } from "@actionishope/shelley";\n
 <Blockquote
   cite="The Guardian - cite accepts react node, text or link etc"
   >
@@ -69,7 +69,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="HTMLQuoteElement"
       renderExample={
-        <CodeSample>{`import { Blockquote } from "@action-is-hope/shelley";\n\n<Blockquote ${
+        <CodeSample>{`import { Blockquote } from "@actionishope/shelley";\n\n<Blockquote ${
           labelDemoProps[0].value > 0
             ? `\n  variant={${labelDemoProps[0].value}}`
             : `\n  variant={ false }`

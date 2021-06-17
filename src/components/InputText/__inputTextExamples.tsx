@@ -20,7 +20,7 @@ export const meta = {
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
-  >{`import InputText from "@action-is-hope/shelley";
+  >{`import InputText from "@actionishope/shelley";
 \n<InputText
   id="id-required"
   label="Form item label" 
@@ -112,7 +112,7 @@ export const ComponentDemo = () => {
       demoProps={InputDemoProps}
       setDemoProps={setInputDemoProps}
       renderExample={
-        <CodeSample>{`import InputText from "@action-is-hope/shelley-ui";
+        <CodeSample>{`import InputText from "@actionishope/shelley-ui";
 
 <InputText    ${
           InputDemoProps[0].value

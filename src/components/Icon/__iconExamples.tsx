@@ -12,7 +12,7 @@ export const meta = {
 };
 
 export const QuickRef = () => (
-  <CodeSample className={grid.mid}>{`import Icon from "@action-is-hope/shelley";
+  <CodeSample className={grid.mid}>{`import Icon from "@actionishope/shelley";
 \n<Icon>
   {/* crack open an svg to find the path and shove it in. */}
   <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
@@ -49,7 +49,7 @@ export const ComponentDemo = () => {
       setDemoProps={setLabelDemoProps}
       tsExtends="SVGSVGElement"
       renderExample={
-        <CodeSample>{`import { Icon } from "@action-is-hope/shelley";\n\n<Icon ${
+        <CodeSample>{`import { Icon } from "@actionishope/shelley";\n\n<Icon ${
           labelDemoProps[0].value
             ? `\n  alt="${labelDemoProps[0].value}"`
             : `\n  alt="false"`
@@ -118,7 +118,7 @@ Icon {}
 /* Example of styling within inputSelection.st.css */
 
 :import {
-  -st-from: "../node_modules/@action-is-hope/shelley/components/Icon/icon.st.css";
+  -st-from: "../node_modules/@actionishope/shelley/components/Icon/icon.st.css";
   -st-default: Icon;
 }
 

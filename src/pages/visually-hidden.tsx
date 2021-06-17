@@ -28,7 +28,7 @@ const VisuallyHiddenDocs = () => {
         </H2>
 
         <CodeSample className={grid.mid}>
-          {`import VisuallyHidden from "@action-is-hope/shelley";
+          {`import VisuallyHidden from "@actionishope/shelley";
 <VisuallyHidden>
   Hidden text that remains accessible and indexable.
 </VisuallyHidden>`}
