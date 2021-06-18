@@ -1,6 +1,6 @@
 /** Blockquote.tsx */
-import React from "react";
-import { Volume, Variant } from "../types";
+import type React from "react";
+import type { Volume, Variant } from "../types";
 import classnames from "classnames";
 import Text from "../Text/Text";
 /* = Style API. */

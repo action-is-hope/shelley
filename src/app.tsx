@@ -2,7 +2,7 @@ import type React from "react";
 import { st, classes } from "./app.st.css";
 // import { Header } from "./header";
 import BlockquoteDocs from "./components/Blockquote/__blockquoteDocs";
-import Button from "./pages/button";
+import ButtonDocs from "./components/Button/__buttonDocs";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -38,7 +38,7 @@ export const App: React.VFC<AppProps> = ({ className }) => {
               <BlockquoteDocs />
             </Route>
             <Route path="/button">
-              <Button />
+              <ButtonDocs />
             </Route>
             <Route path="/">
               <Home />

@@ -3,7 +3,7 @@ import Button from "../Button";
 import { render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import Icon from "../../Icon/Icon";
-import Link from "gatsby-link";
+// import { Link } from "react-router-dom";
 
 import { MenuButton as ReachMenuButton } from "@reach/menu-button";
 import { Menu } from "../../Menu/Menu";
@@ -77,21 +77,21 @@ describe("Button", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders as third party anchor provided via #as and #t props", () => {
-    const tree = renderer
-      .create(
-        <Button
-          as={Link}
-          data-testid="button-data-testid"
-          to="internal-link"
-          ref={buttonRef}
-        >
-          {BigButtsString}
-        </Button>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  // it("renders as third party anchor provided via #as and #t props", () => {
+  //   const tree = renderer
+  //     .create(
+  //       <Button
+  //         as={Link}
+  //         data-testid="button-data-testid"
+  //         to="internal-link"
+  //         ref={buttonRef}
+  //       >
+  //         {BigButtsString}
+  //       </Button>
+  //     )
+  //     .toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 
   it("includes #icon via prop positioned via #iconPos divider and children", () => {
     const tree = renderer

@@ -1,12 +1,10 @@
 import React from "react";
-import DefaultLayout from "../layouts";
-import Text, { P, H2 } from "../components/Text/Text";
+import DefaultLayout from "../../layouts";
+import { Blockquote, Button, Grid, Text, P, H2 } from "../../indexLib";
 
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
-import Blockquote from "../components/Blockquote/Blockquote";
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
+
 import {
   meta,
   QuickRef,
@@ -14,9 +12,10 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/Button/__button.examples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
-import Button from "../components/Button/Button";
+} from "./__button.examples";
+
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
 
 const ButtonDocs = () => {
   const test = React.createRef<HTMLBaseElement>();

@@ -5,19 +5,19 @@ import classnames from "classnames";
 import "./allGlobal.st.css";
 
 // = Foundation Components
-import Button from "./button.st.css";
-import Blockquote from "./blockquote.st.css";
-import ErrorText from "./errorText.st.css";
-import Grid from "./grid.st.css";
-import HintText from "./hintText.st.css";
-import InputBase from "./inputBase.st.css";
-import InputSelect from "./inputSelect.st.css";
-import InputSelection from "./inputSelection.st.css";
-import InputSelectionControl from "./inputSelectionControl.st.css";
-import InputText from "./inputText.st.css";
-import Label from "./label.st.css";
-import Text from "./text.st.css";
-import Menu from "./menu.st.css";
+import { classes as Button } from "./button.st.css";
+import { classes as Blockquote } from "./blockquote.st.css";
+import { classes as ErrorText } from "./errorText.st.css";
+import { classes as Grid } from "./grid.st.css";
+import { classes as HintText } from "./hintText.st.css";
+import { classes as InputBase } from "./inputBase.st.css";
+import { classes as InputSelect } from "./inputSelect.st.css";
+import { classes as InputSelection } from "./inputSelection.st.css";
+import { classes as InputSelectionControl } from "./inputSelectionControl.st.css";
+import { classes as InputText } from "./inputText.st.css";
+import { classes as Label } from "./label.st.css";
+import { classes as Text } from "./text.st.css";
+import { classes as Menu } from "./menu.st.css";
 
 // = Project
 import { classes as ShelleyDefaultProject } from "./project.st.css";
@@ -25,12 +25,12 @@ import { classes as ShelleyDefaultProject } from "./project.st.css";
 // @todo Ask Wix how they do things.
 const getStylableClassNames = (
   values: [],
-  stylesheet: RuntimeStylesheet,
+  classes: RuntimeStylesheet["classes"],
   rootcls: string
 ) => {
-  const clsArray = values.map((cls: string) => stylesheet.classes[cls] || null);
+  const clsArray = values.map((cls: string) => classes[cls] || null);
 
-  return classnames(stylesheet.classes[rootcls], clsArray);
+  return classnames(classes[rootcls], clsArray);
 };
 
 // = Foundation Components
