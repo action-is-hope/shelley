@@ -18,7 +18,7 @@ import {
 } from "../components/ButtonGroup/__buttonGroup.examples";
 import StyleInfo from "../components_site/StyleInfo/StyleInfo";
 
-const ButtonDocs = () => {
+const ButtonGroupDocs = () => {
   return (
     <DefaultLayout>
       <PageTitle>ButtonGroup</PageTitle>
@@ -126,4 +126,4 @@ const ButtonDocs = () => {
   );
 };
 
-export default ButtonDocs;
+export default ButtonGroupDocs;

@@ -1,57 +1,67 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
-import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import { classes as style } from "./index.st.css";
 
 import { Project as Default } from "../styles/default";
+
+// import {classes as ShelleyDefault} from "../styles/default/project.st.css"
 import { Project as Shelley, Light, Dark } from "../styles/shelley";
 
 import { classes as inputSelection } from "../styles/shelley/inputSelection.st.css";
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 
-const Header = ({ altTheme, changeTheme }: any) => (
-  <div className={style.navbar}>
-    <div className={style.inner}>
-      <h1 className={style.title}>
-        <Link
-          to="/"
-          style={{
-            textDecoration: "none"
-          }}
-        >
-          Shelley
-        </Link>
-      </h1>
-      <div className={style.controls}>
-        <InputSelection
-          id="themeSelector"
-          variant={false}
-          hint="Toggle light mode"
-          label={
-            <Icon alt="Toggle light mode">
-              <path d="M16 8l-2.2-1.6 1.1-2.4-2.7-0.2-0.2-2.7-2.4 1.1-1.6-2.2-1.6 2.2-2.4-1.1-0.2 2.7-2.7 0.2 1.1 2.4-2.2 1.6 2.2 1.6-1.1 2.4 2.7 0.2 0.2 2.7 2.4-1.1 1.6 2.2 1.6-2.2 2.4 1.1 0.2-2.7 2.7-0.2-1.1-2.4 2.2-1.6zM8 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"></path>
-            </Icon>
-          }
-          className={classnames(inputSelection.darkLightToggle, {
-            [inputSelection.on]: altTheme
-          })}
-          checked={altTheme}
-          onKeyPress={event => {
-            if (event.key === "Enter") {
-              changeTheme();
+import { Link } from "react-router-dom";
+
+export interface HeaderProps {
+  altTheme: boolean;
+  changeTheme: () => void;
+}
+
+const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
+  return (
+    <div className={style.navbar}>
+      <div className={style.inner}>
+        <h1 className={style.title}>
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none"
+            }}
+          >
+            Shelley
+          </Link>
+        </h1>
+        <div className={style.controls}>
+          <InputSelection
+            id="themeSelector"
+            variant={false}
+            hint="Toggle light mode"
+            label={
+              <Icon alt="Toggle light mode">
+                <path d="M16 8l-2.2-1.6 1.1-2.4-2.7-0.2-0.2-2.7-2.4 1.1-1.6-2.2-1.6 2.2-2.4-1.1-0.2 2.7-2.7 0.2 1.1 2.4-2.2 1.6 2.2 1.6-1.1 2.4 2.7 0.2 0.2 2.7 2.4-1.1 1.6 2.2 1.6-2.2 2.4 1.1 0.2-2.7 2.7-0.2-1.1-2.4 2.2-1.6zM8 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"></path>
+              </Icon>
             }
-          }}
-          onChange={() => {
-            changeTheme();
-          }}
-          type="checkbox"
-        />
+            className={classnames(inputSelection.darkLightToggle, {
+              // [inputSelection.on]: altTheme
+            })}
+            checked={altTheme}
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                changeTheme();
+              }
+            }}
+            onChange={() => {
+              changeTheme();
+            }}
+            type="checkbox"
+          />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Footer = () => (
   <div className={style.footer}>

@@ -1,7 +1,5 @@
-import { RuntimeStylesheet } from "@stylable/runtime";
+import type { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
-import { classes as light } from "./themes/light.st.css";
-import { classes as dark } from "./themes/dark.st.css";
 
 // = Foundation Components
 import Button from "./button.st.css";
@@ -27,7 +25,11 @@ import ShelleyBanner from "./shelleyBanner.st.css";
 import StyleInfo from "./styleInfo.st.css";
 
 // = Project
-import Shelley from "./project.st.css";
+import { classes as shelleyProject } from "./project.st.css";
+
+// = Themes
+import { classes as light } from "./themes/light.st.css";
+import { classes as dark } from "./themes/dark.st.css";
 
 // = Helper to extract the class names.
 const getStylableClassNames = (
@@ -99,7 +101,7 @@ export const styleInfo = (...values: []) =>
   getStylableClassNames(values, StyleInfo, "styleInfo");
 
 // = Main classname export
-export const Project = Shelley.classes.root;
+export const Project = shelleyProject.root;
 
 // = Theme exports
 export const Light = light.root;

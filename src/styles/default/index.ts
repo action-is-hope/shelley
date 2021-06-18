@@ -1,4 +1,4 @@
-import { RuntimeStylesheet } from "@stylable/runtime";
+import type { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
 
 // = Bundle 'ALL' () Global
@@ -20,7 +20,7 @@ import Text from "./text.st.css";
 import Menu from "./menu.st.css";
 
 // = Project
-import Default from "./project.st.css";
+import { classes as ShelleyDefaultProject } from "./project.st.css";
 
 // @todo Ask Wix how they do things.
 const getStylableClassNames = (
@@ -29,6 +29,7 @@ const getStylableClassNames = (
   rootcls: string
 ) => {
   const clsArray = values.map((cls: string) => stylesheet.classes[cls] || null);
+
   return classnames(stylesheet.classes[rootcls], clsArray);
 };
 
@@ -72,4 +73,4 @@ export const inputText = (...values: []) =>
 export const menu = (...values: []) =>
   getStylableClassNames(values, Menu, "menu");
 
-export const Project = Default.classes.root;
+export const Project = ShelleyDefaultProject.root;

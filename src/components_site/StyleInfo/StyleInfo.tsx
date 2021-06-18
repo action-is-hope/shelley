@@ -1,12 +1,12 @@
 /** StyleInfo.tsx */
-import React from "react";
+import type React from "react";
 import classNames from "classnames";
 import Grid from "../../components/Grid/Grid";
 import { P } from "../../components/Text/Text";
 /* = Style API. */
 import { st, classes } from "./styleInfo.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
-import { classes as spacing } from "../../styles/default/spacing.st.css";
+// import { classes as spacing } from "../../styles/default/spacing.st.css";
 
 interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
@@ -17,15 +17,16 @@ interface StyleInfoProps extends React.HTMLProps<HTMLDivElement> {
   disableShelleyLink?: boolean;
 }
 
-const StyleInfo = ({
-  className,
-  componentName,
-  componentHTML,
-  componentCSS,
-  disableDefaultLink = false,
-  disableShelleyLink = false
-}: // ...rest
-StyleInfoProps) => {
+const StyleInfo: React.VFC<StyleInfoProps> = (
+  {
+    className,
+    componentName,
+    componentHTML,
+    componentCSS,
+    disableDefaultLink = false,
+    disableShelleyLink = false
+  } // ...rest
+) => {
   const rootClassNames = classNames(
     classes.root,
     grid.snapMidToGoal,
@@ -47,7 +48,7 @@ StyleInfoProps) => {
         {componentHTML}
         <P vol={2}>
           <a
-            href={`https://github.com/actionishope/shelley/tree/master/src/components/${componentName}/${cssFileName}.st.css`}
+            href={`https://github.com/action-is-hope/shelley/tree/master/src/components/${componentName}/${cssFileName}.st.css`}
           >
             Core styles
           </a>{" "}
@@ -55,7 +56,7 @@ StyleInfoProps) => {
         {!disableDefaultLink && (
           <P vol={2}>
             <a
-              href={`https://github.com/actionishope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
+              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/default/${cssFileName}.st.css`}
             >
               Shelley default styles
             </a>{" "}
@@ -64,7 +65,7 @@ StyleInfoProps) => {
         {!disableShelleyLink && (
           <P vol={2}>
             <a
-              href={`https://github.com/actionishope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
+              href={`https://github.com/action-is-hope/shelley/blob/master/src/styles/shelley/${cssFileName}.st.css`}
             >
               Shelley custom styles
             </a>{" "}

@@ -1,21 +1,21 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
+import type React from "react";
+import DefaultLayout from "../../layouts";
 
-import Blockquote from "../components/Blockquote/Blockquote";
+import { P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+
 import {
   meta,
   QuickRef,
   ComponentDemo,
   ComponentHTML,
   ComponentCSS
-} from "../components/Blockquote/__blockquoteExamples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__blockquoteExamples";
 
-const LabelsDocs = () => {
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+
+const BlockquoteDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Blockquote</PageTitle>
@@ -38,27 +38,8 @@ const LabelsDocs = () => {
         </P>
 
         <P>
-          Digression Alert: Did you read the example quote?{" "}
-          <a href="https://www.theguardian.com/technology/2020/feb/21/climate-tweets-twitter-bots-analysis">
-            {" "}
-            a quarter of all tweets about the climate crisis produced by bots!
-          </a>{" "}
-          That is a lot. Is this not a <em>very</em> concerning trend? AI is
-          advancing and our ability to sort fact from fiction is fast
-          diminishing. Shelley suggests reading{" "}
-          <a href="https://www.gutenberg.org/ebooks/42324">Frankenstein</a>,
-          apparently it&apos;s relatable even if released in 1818...2020... Huh.
-          {/* the missing 1919... https://en.wikipedia.org/wiki/1919 :-0 */}
-          {/* https://www.latimes.com/environment/story/2019-10-21/oil-companies-exxon-climate-change-denial-report */}
-          {/* https://www.theguardian.com/commentisfree/2019/oct/23/exxon-climate-change-fossil-fuels-disinformation */}
-        </P>
-
-        <P>
-          Anyway.... back to these blockquotes!{" "}
-          <em>Keep Calm and Carry on Coding</em> would seem to be the current{" "}
-          <em>action</em>, we do need to express and share ideas effectively
-          after all. Anyways, there isn&apos;t much to blockquotes, just that
-          they work best in conjunction with the <code>Text</code> components.
+          There isn&apos;t much to blockquotes, just that they work best in
+          conjunction with the <code>Text</code> components.
         </P>
         <P>
           Let&apos;s take a look at a few variations, note that we are using
@@ -158,4 +139,4 @@ const LabelsDocs = () => {
   );
 };
 
-export default LabelsDocs;
+export default BlockquoteDocs;

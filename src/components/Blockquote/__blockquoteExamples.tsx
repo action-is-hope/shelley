@@ -138,11 +138,11 @@ Blockquote::content {}
 Blockquote::cite {}
 Blockquote::footer {}
 
-/* Variants */
-Blockquote.variant1 {}
-Blockquote.variant2 {}
-Blockquote.variant3 {}
-Blockquote.variant4 {}
-Blockquote.variant5 {}
-Blockquote.variant6 {}`}</CodeSample>
+/* Variant slots for custom variations */
+Blockquote:variant(1) {}
+Blockquote:variant(2) {}
+Blockquote:variant(3) {}
+Blockquote:variant(4) {}
+Blockquote:variant(5) {}
+Blockquote:variant(6) {}`}</CodeSample>
 );
