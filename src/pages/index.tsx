@@ -1,26 +1,12 @@
-import React from "react";
-import Link from "gatsby-link";
-import { graphql } from "gatsby";
+import type React from "react";
 import { classes } from "./index.st.css";
-
+import { Link } from "react-router-dom";
 import DefaultLayout from "../layouts";
 import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema.
-interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
-}
-
-const IndexPage = ({ data }: IndexPageProps) => {
+const IndexPage: React.VFC = () => {
   return (
     <DefaultLayout>
       <ShelleyBanner />
@@ -95,41 +81,41 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <ul className={classes.menuList}>
               <Text as="li">
-                <Link to="/button/">Button</Link>
+                <Link to="/button">Button</Link>
               </Text>
               <Text as="li">
-                <Link to="/buttonGroup/">ButtonGroup</Link>
-              </Text>
-
-              <Text as="li">
-                <Link to="/text/">Text</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/blockquote/">Blockquote</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/icon/">Icons</Link>
+                <Link to="/buttonGroup">ButtonGroup</Link>
               </Text>
 
               <Text as="li">
-                <Link to="/grid/">Grid</Link>
+                <Link to="/text">Text</Link>
+              </Text>
+              <Text as="li">
+                <Link to="/blockquote">Blockquote</Link>
+              </Text>
+              <Text as="li">
+                <Link to="/icon">Icons</Link>
               </Text>
 
               <Text as="li">
-                <Link to="/menu/">Menu</Link>
+                <Link to="/grid">Grid</Link>
               </Text>
 
               <Text as="li">
-                <Link to="/labels/">Labels</Link>
+                <Link to="/menu">Menu</Link>
+              </Text>
+
+              <Text as="li">
+                <Link to="/labels">Labels</Link>
               </Text>
               <Text as="li">
-                <Link to="/inputText/">Input Text</Link>
+                <Link to="/inputText">Input Text</Link>
               </Text>
               <Text as="li">
-                <Link to="/inputSelection/">Input Selection</Link>
+                <Link to="/inputSelection">Input Selection</Link>
               </Text>
               <Text as="li">
-                <Link to="/visually-hidden/">VisuallyHidden</Link>
+                <Link to="/visually-hidden">VisuallyHidden</Link>
               </Text>
             </ul>
 
@@ -325,13 +311,3 @@ const IndexPage = ({ data }: IndexPageProps) => {
 };
 
 export default IndexPage;
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

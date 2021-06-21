@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as styleExamples } from "./__gridExample.st.css";
 import Grid from "./Grid";
 import { classes as grid } from "../../styles/default/grid.st.css";
-import Text, { P } from "../Text/Text";
+import Text from "../Text/Text";
 
 export const meta = {
   name: "Grid"

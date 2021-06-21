@@ -1,5 +1,5 @@
 /* __table  Examples.tsx */
-import React from "react";
+import type React from "react";
 
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
@@ -8,7 +8,7 @@ export const meta = {
   name: "Table"
 };
 
-export const QuickRef = () => (
+export const QuickRef: React.VFC = () => (
   <CodeSample className={grid.mid}>{`import { Table,
     TableBody,
     TableCell,
@@ -19,7 +19,7 @@ export const QuickRef = () => (
 TODO`}</CodeSample>
 );
 
-export const ComponentHTML = () => (
+export const ComponentHTML: React.VFC = () => (
   <CodeSample language="html">{`TBC`}</CodeSample>
 );
 

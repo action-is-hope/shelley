@@ -8,6 +8,7 @@
 
 @st-scope Default {
   .root {
+    -st-states: fixedHeight;
     /* Fixes 'zoomed' layout issue on mobile. */
     display: inherit;
     overflow-x: auto;
@@ -21,11 +22,11 @@
     border-radius: 4px
   }
 
-  .root>pre {
+  .root > pre {
     padding: 1.45rem;
   }
 
-  .root.fixedHeight {
+  .root:fixedHeight {
     height: 50vh;
   }
 
@@ -53,7 +54,7 @@
     overflow: hidden;
   }
 
-  code>span {
+  code > span {
     transition: all 125ms ease-in;
     line-height: 17px;
   }

@@ -1,9 +1,7 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2, H3 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import Blockquote from "../components/Blockquote/Blockquote";
+import type React from "react";
+import DefaultLayout from "../../layouts";
+
+import { P, H2, H3, Grid, Blockquote } from "../../indexLib";
 
 import {
   meta,
@@ -12,10 +10,12 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/Icon/__iconExamples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__iconExamples";
 
-const IconDocs = () => {
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const IconDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Icon</PageTitle>

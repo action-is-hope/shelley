@@ -1,26 +1,26 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import classnames from "classnames";
-import { P, H2 } from "../components/Text/Text";
+import type React from "react";
 
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import CodeSample from "../components_site/CodeSample/CodeSample";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
+import DefaultLayout from "../../layouts";
+import classnames from "classnames";
+
+import { InputText, P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as utils } from "../styles/shelley/utils.st.css";
-import Blockquote from "../components/Blockquote/Blockquote";
-import InputText from "../components/InputText/InputText";
+
 import {
   meta,
   QuickRef,
   ComponentDemo,
   ComponentHTML,
   ComponentCSS
-} from "../components/Label/__labelExamples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__labelExamples";
 
-const LabelsDocs = () => {
+import CodeSample from "../../components_site/CodeSample/CodeSample";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const LabelsDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Label</PageTitle>

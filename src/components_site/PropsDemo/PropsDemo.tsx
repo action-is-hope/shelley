@@ -1,11 +1,17 @@
 /** PropsDemo.tsx */
 /** @todo Tidy this up, including types and maybe expose it. */
-import React from "react";
+import type React from "react";
 import classNames from "classnames";
-import InputText from "../../components/InputText/InputText";
-import InputSelect from "../../components/InputSelect/InputSelect";
-import InputSelection from "../../components/InputSelection/InputSelection";
-import { H2, H3, P } from "../../components/Text/Text";
+
+import {
+  H2,
+  H3,
+  P,
+  InputText,
+  InputSelect,
+  InputSelection
+} from "../../indexLib";
+
 /* = Style API. */
 import { st, classes } from "./propsDemo.st.css";
 
@@ -20,7 +26,7 @@ interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
   setNonDemoProps?: (demoNonProps: any) => void;
 }
 
-const PropsDemo = ({
+const PropsDemo: React.VFC<PropsDemoProps> = ({
   className,
   children,
   demoProps,
@@ -31,7 +37,7 @@ const PropsDemo = ({
   tsExtends,
   componentName,
   ...rest
-}: PropsDemoProps) => {
+}) => {
   const rootClassNames = classNames(classes.root, className);
 
   const setInput = (
@@ -107,7 +113,7 @@ const PropsDemo = ({
             label={`${item.label}:`}
             // labelVisuallyHidden={true}
             type="toggle"
-            onChange={(e: any) => {
+            onChange={() => {
               const newDemoProps = [...propsArray];
               newDemoProps[i].value = !newDemoProps[i].value;
               setPropsArray(newDemoProps);

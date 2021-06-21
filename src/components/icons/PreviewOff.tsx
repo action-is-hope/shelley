@@ -1,8 +1,8 @@
-import React from "react";
+import type React from "react";
 
 import Icon, { IconProps } from "../Icon/Icon";
 
-const PreviewOffIcon = ({ className, alt }: IconProps) => {
+const PreviewOffIcon: React.VFC<IconProps> = ({ className, alt }) => {
   return (
     <Icon alt={alt} viewBox="0 0 24 24" className={className}>
       <path

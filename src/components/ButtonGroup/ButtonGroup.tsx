@@ -1,5 +1,5 @@
 import React from "react";
-import { Accent, Volume, Variant } from "../types";
+import type { Accent, Volume, Variant } from "../types";
 import classnames from "classnames";
 
 /* = Style API. */

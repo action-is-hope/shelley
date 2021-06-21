@@ -1,9 +1,7 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+import type React from "react";
+import DefaultLayout from "../../layouts";
+
+import { P, H2, Grid } from "../../indexLib";
 
 import {
   meta,
@@ -12,9 +10,12 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/InputSelection/__inputSelectionExamples";
+} from "./__inputSelectionExamples";
 
-const InputSelectionDocs = () => {
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const InputSelectionDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>InputSelection</PageTitle>

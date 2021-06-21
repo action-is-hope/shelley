@@ -1,8 +1,8 @@
-import React from "react";
+import type React from "react";
 
 import Icon, { IconProps } from "../Icon/Icon";
 
-const MoreHor = ({ className, alt }: IconProps) => {
+const MoreHor: React.VFC<IconProps> = ({ className, alt }) => {
   return (
     <Icon alt={alt} className={className}>
       <g id="ellipsis-dots-h">

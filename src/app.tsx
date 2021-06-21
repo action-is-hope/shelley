@@ -4,6 +4,8 @@ import { st, classes } from "./app.st.css";
 import BlockquoteDocs from "./components/Blockquote/__blockquoteDocs";
 import ButtonDocs from "./components/Button/__buttonDocs";
 
+import IndexPage from "./pages/index";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export interface AppProps {
@@ -41,7 +43,7 @@ export const App: React.VFC<AppProps> = ({ className }) => {
               <ButtonDocs />
             </Route>
             <Route path="/">
-              <Home />
+              <IndexPage />
             </Route>
           </Switch>
         </div>
@@ -49,7 +51,3 @@ export const App: React.VFC<AppProps> = ({ className }) => {
     </main>
   );
 };
-
-function Home() {
-  return <h2>Home</h2>;
-}

@@ -1,15 +1,13 @@
-/* buttonExamples.tsx */
+/* inputSelectionExamples.tsx */
 import React from "react";
 // Example Component
 import InputSelection from "./InputSelection";
-import InputSelectionControl from "../../components/InputSelectionControl/InputSelectionControl";
 
 // Supporting Components
 import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
 import CodeSample from "../../components_site/CodeSample/CodeSample";
 import Button from "../Button/Button";
-import Label from "../../components/Label/Label";
-import { P, H1, H2 } from "../../components/Text/Text";
+import { P, H2 } from "../../components/Text/Text";
 import Icon from "../../components/Icon/Icon";
 
 import { classes as grid } from "../../styles/default/grid.st.css";

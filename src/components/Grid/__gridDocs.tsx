@@ -1,24 +1,25 @@
-import React from "react";
-import DefaultLayout from "../layouts";
+import type React from "react";
+import DefaultLayout from "../../layouts";
 import classnames from "classnames";
-import Text, { P, H2 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import Blockquote from "../components/Blockquote/Blockquote";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
-import { classes as spacing } from "../styles/default/spacing.st.css";
-import CodeSample from "../components_site/CodeSample/CodeSample";
+
+import { Text, P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
+
 import {
   meta,
   QuickRef,
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/Grid/__gridExamples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__gridExamples";
 
-const GridDocs = () => {
+import CodeSample from "../../components_site/CodeSample/CodeSample";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const GridDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Grid</PageTitle>

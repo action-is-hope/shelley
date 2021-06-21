@@ -1,7 +1,7 @@
-import React from "react";
+import type React from "react";
 import Icon, { IconProps } from "../Icon/Icon";
 
-const Logo = ({ className, alt }: IconProps) => {
+const AddToBoard: React.VFC<IconProps> = ({ className, alt }) => {
   return (
     <Icon alt={alt} viewBox="0 0 24 24" className={className}>
       <path d="M0 0h24v24H0V0z" fill="none" />
@@ -10,4 +10,4 @@ const Logo = ({ className, alt }: IconProps) => {
   );
 };
 
-export default Logo;
+export default AddToBoard;

@@ -1,13 +1,13 @@
 /** Logo.tsx */
-import React from "react";
+import type React from "react";
 import classNames from "classnames";
 /* = Style API. */
 import { st, classes } from "./logo.st.css";
 
-const Logo = ({
+const Logo: React.VFC<React.HTMLAttributes<HTMLDivElement>> = ({
   className: classNameProp,
   ...rest
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}) => {
   return (
     <div className={st(classNames(classes.root, classNameProp))} {...rest}>
       <span className={classes.logoInner}></span>

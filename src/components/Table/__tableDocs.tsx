@@ -1,16 +1,22 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-import Table from "../components/Table/Table";
-import TableBody from "../components/TableBody/TableBody";
-import TableCell from "../components/TableCell/TableCell";
-import TableContainer from "../components/TableContainer/TableContainer";
-import TableHead from "../components/TableHead/TableHead";
-import TableRow from "../components/TableRow/TableRow";
-import TablePagination from "../components/TablePagination/TablePagination";
+import type React from "react";
+import DefaultLayout from "../../layouts";
+
+import {
+  P,
+  H2,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+  InputSelection
+} from "../../indexLib";
+
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
 
 import {
   // meta,
@@ -18,10 +24,9 @@ import {
   // ComponentDemo,
   // ComponentHTML,
   // ComponentCSS
-} from "../components/Table/__tableExamples";
+} from "./__tableExamples";
 
-import { classes as grid } from "../styles/default/grid.st.css";
-import InputSelection from "../components/InputSelection/InputSelection";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const createData = (
   name: string,
@@ -41,7 +46,7 @@ const rows = [
   createData("Doge", 356, 16, 300, 999)
 ];
 
-const LabelsDocs = () => {
+const TableDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Tables</PageTitle>
@@ -121,4 +126,4 @@ const LabelsDocs = () => {
   );
 };
 
-export default LabelsDocs;
+export default TableDocs;

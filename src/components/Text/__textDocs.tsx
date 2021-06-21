@@ -1,14 +1,8 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-/* Shelley */
-import { P, H2, H3, H4 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-/* Style imports */
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
+import type React from "react";
+import DefaultLayout from "../../layouts";
 
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+import { P, H2, H3, H4, Grid } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
 
 import {
   meta,
@@ -16,9 +10,12 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS
-} from "../components/Text/__textExamples";
+} from "./__textExamples";
 
-const TextDocs = () => {
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const TextDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Text</PageTitle>

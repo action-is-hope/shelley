@@ -27,7 +27,7 @@
     "serve": "serve ./dist",
     "lint": "eslint . -f codeframe",
     "typecheck": "tsc --noEmit",
-    "test": "jest --watch"
+    "test": "npm run typecheck && npm run lint && jest"
   },
   "jest": {
     "verbose": true
@@ -51,6 +51,7 @@
     "@types/react-dom": "^17.0.7",
     "@types/react-helmet": "^6.1.1",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-syntax-highlighter": "^13.5.0",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",

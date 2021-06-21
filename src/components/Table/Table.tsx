@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { Variant, Volume } from "../types";
+import type { Variant, Volume } from "../types";
 import { st, classes } from "./table.st.css";
 
 export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {

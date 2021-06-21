@@ -1,17 +1,16 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import Text, { P, H2, H3 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
+import type React from "react";
+import DefaultLayout from "../../layouts";
 
-import Blockquote from "../components/Blockquote/Blockquote";
-import CodeSample from "../components_site/CodeSample/CodeSample";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
+import { Text, P, H2, H3, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
+
+import CodeSample from "../../components_site/CodeSample/CodeSample";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
 
-const VisuallyHiddenDocs = () => {
+const VisuallyHiddenDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>VisuallyHidden</PageTitle>

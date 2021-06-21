@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { st, classes } from "./toolbar.st.css";
-import { TextAlign, Variant } from "../types";
+import type { TextAlign, Variant } from "../types";
 
 interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: any;

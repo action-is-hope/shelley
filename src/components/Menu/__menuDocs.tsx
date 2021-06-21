@@ -1,26 +1,24 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
+import type React from "react";
+import DefaultLayout from "../../layouts";
 
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
-import Blockquote from "../components/Blockquote/Blockquote";
+import { P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+
 import {
   meta,
   QuickRef,
-  ComponentDemo,
   ComponentHTML,
   ComponentCSS,
   Example1,
   Example2,
   Example3,
   Example4
-} from "../components/Menu/__menu.examples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__menu.examples";
 
-const MenuDocs = () => {
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const MenuDocs: React.VFC = () => {
   return (
     <DefaultLayout>
       <PageTitle>Menu</PageTitle>

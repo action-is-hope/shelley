@@ -1,8 +1,8 @@
-import React from "react";
+import type React from "react";
 
 import Icon, { IconProps } from "../Icon/Icon";
 
-const ExpandScreenIcon = ({ className, alt }: IconProps) => {
+const ExpandScreenIcon: React.VFC<IconProps> = ({ className, alt }) => {
   return (
     <Icon alt={alt} className={className}>
       {/* fullscreen square */}
