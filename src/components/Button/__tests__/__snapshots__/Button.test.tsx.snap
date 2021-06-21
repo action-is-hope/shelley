@@ -86,7 +86,6 @@ exports[`Button renders as third party anchor provided via #as and #t props 1`] 
   data-testid="button-data-testid"
   href="/internal-link"
   onClick={[Function]}
-  onMouseEnter={[Function]}
 >
   <span
     className="Button2465625684__inner"
