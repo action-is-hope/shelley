@@ -1,5 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
 import classnames from "classnames";
 
 import { Text, P, H2, Grid, Blockquote } from "../../indexLib";
@@ -21,7 +20,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const GridDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Grid</PageTitle>
 
       <Grid variant={1} formatted>
@@ -497,7 +496,7 @@ Grid .mid {
           </P>
         </Blockquote>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

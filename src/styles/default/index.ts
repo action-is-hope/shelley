@@ -7,6 +7,7 @@ import "./allGlobal.st.css";
 // = Foundation Components
 import { classes as Button } from "./button.st.css";
 import { classes as Blockquote } from "./blockquote.st.css";
+import { classes as ComboboxSingle } from "./comboboxSingle.st.css";
 import { classes as ErrorText } from "./errorText.st.css";
 import { classes as Grid } from "./grid.st.css";
 import { classes as HintText } from "./hintText.st.css";
@@ -39,6 +40,9 @@ export const button = (...values: []) =>
 
 export const blockquote = (...values: []) =>
   getStylableClassNames(values, Blockquote, "blockquote");
+
+export const comboboxSingle = (...values: []) =>
+  getStylableClassNames(values, ComboboxSingle, "comboboxSingle");
 
 export const grid = (...values: []) =>
   getStylableClassNames(values, Grid, "grid");

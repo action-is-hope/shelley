@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { classes as style } from "./index.st.css";
 
 import { Project as Default } from "../styles/default";
@@ -12,7 +12,11 @@ import { classes as inputSelection } from "../styles/shelley/inputSelection.st.c
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import ComboboxSingle from "../components/ComboboxSingle/ComboboxSingle";
+
+import { componentNav } from "../Routes";
 
 export interface HeaderProps {
   altTheme: boolean;
@@ -20,6 +24,15 @@ export interface HeaderProps {
 }
 
 const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
+  const items = componentNav.map((item) => {
+    return { id: item.path, value: item.linkText };
+  });
+
+  const history = useHistory();
+
+  history.listen((url) => {
+    console.log(url);
+  });
   return (
     <div className={style.navbar}>
       <div className={style.inner}>
@@ -27,13 +40,17 @@ const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
           <Link
             to="/"
             style={{
-              textDecoration: "none"
+              textDecoration: "none",
             }}
           >
             Shelley
           </Link>
         </h1>
         <div className={style.controls}>
+          <ComboboxSingle
+            items={items}
+            onChange={(result) => history.push(`${result.id}`)}
+          />
           <InputSelection
             id="themeSelector"
             variant={false}
@@ -47,7 +64,7 @@ const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
               // [inputSelection.on]: altTheme
             })}
             checked={altTheme}
-            onKeyPress={event => {
+            onKeyPress={(event) => {
               if (event.key === "Enter") {
                 changeTheme();
               }
@@ -101,28 +118,26 @@ const DefaultLayout = ({ children }: any) => {
   );
   return (
     <div>
-      <>
-        <Helmet
-          title="Shelley - A Stylable User Interface"
-          meta={[
-            {
-              name: "description",
-              content:
-                "React UI lib: Create something beautiful from recycled body parts."
-            },
-            { name: "keywords", content: "sample, something" }
-          ]}
-          htmlAttributes={{
-            lang: "en",
-            class: currentTheme
-          }}
-        />
+      <Helmet
+        title="Shelley - A Stylable User Interface"
+        meta={[
+          {
+            name: "description",
+            content:
+              "React UI lib: Create something beautiful from recycled body parts.",
+          },
+          { name: "keywords", content: "sample, something" },
+        ]}
+        htmlAttributes={{
+          lang: "en",
+          class: currentTheme,
+        }}
+      />
 
-        <Header {...{ altTheme, changeTheme }} />
+      <Header {...{ altTheme, changeTheme }} />
 
-        {children}
-        <Footer />
-      </>
+      {children}
+      <Footer />
     </div>
   );
 };

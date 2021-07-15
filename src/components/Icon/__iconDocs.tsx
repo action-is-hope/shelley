@@ -1,5 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
 
 import { P, H2, H3, Grid, Blockquote } from "../../indexLib";
 
@@ -17,7 +16,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const IconDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Icon</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
@@ -214,7 +213,7 @@ const IconDocs: React.VFC = () => {
           Serve what they need.
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

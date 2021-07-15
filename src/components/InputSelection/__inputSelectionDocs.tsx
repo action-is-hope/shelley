@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { P, H2, Grid } from "../../indexLib";
 
 import {
@@ -17,7 +15,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const InputSelectionDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>InputSelection</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
@@ -44,7 +42,7 @@ const InputSelectionDocs: React.VFC = () => {
 
         <Example1 />
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

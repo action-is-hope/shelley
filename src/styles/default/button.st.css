@@ -1,7 +1,7 @@
 /**
  * = BUTTON - button.st.css
  *
- * We only have one, so far so good. YOu should have enough sizes and hooks
+ * We only have one, so far so good. You should have enough sizes and hooks
  * but you can always add your own custome classes for whatever you need or 
  * wrap this button up inside other buttons pre configured for your usecases.
  * 
@@ -180,17 +180,8 @@
         max 0.78em, lineHeight 1.1);
   }
 
-
-  /* -st-mixin:
-      textVol(scale respScale(0.875em, 1em),
-        max 1em, lineHeight 1.5);
-  } */
-
   /* = Volume 4 */
   Button:vol(4) {
-    /* -st-mixin:
-      textVol(scale respScale(1em, 1.125em),
-        max 1.125em, lineHeight 1.5); */
     -st-mixin:
       textVol(scale respScale(0.85em, .83em),
         max .875em, lineHeight 1.1);

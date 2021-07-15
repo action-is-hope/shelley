@@ -1,6 +1,4 @@
 import type React from "react";
-
-import DefaultLayout from "../../layouts";
 import { P, H2, Grid, Blockquote } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 // import { classes as grid } from "../../styles/default/grid.st.css";
@@ -19,7 +17,7 @@ import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
 
 const ButtonGroupDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>ButtonGroup</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -121,7 +119,7 @@ const ButtonGroupDocs: React.VFC = () => {
           goes off in your head when you need it to.
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

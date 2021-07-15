@@ -1,0 +1,105 @@
+:import {
+  -st-from: "./focus.st.css";
+  -st-default: Focus;
+}
+
+:vars {
+  /* Mixin defaults, what to set these to? */
+  border-radius: 5px;
+  border-width: 2px;
+  padding: 0.96em 35px;
+  bg-hover: #333;
+  text-hover: #fff;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.root {
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  padding: value(padding);
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  /* We assign this local var per variant (bg, text, border) but set it via our tones. */
+  --accent-color: initial;
+  /* = Color variables and associated properties for theming. */
+  --bg-color: transparent;
+  --border-color: transparent;
+  --text-color: inherit;
+  /* = Set the like for like (properties to variables). */
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+  /* Border */
+  border-style: solid;
+  border-width: value(border-width);
+  border-radius: value(border-radius);
+  font-family: value(font-family);
+  transition: value(transition);
+}
+
+.root:focus {
+  -st-mixin: Focus;
+}
+
+.root:disabled {
+  cursor: not-allowed;
+}
+
+/* = Filled button */
+
+.filledBtn {
+  --bg-color: var(--accent-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+.filledBtn:hover:not(:disabled),
+.filledBtn:focus:not(:disabled),
+.filledBtn:active:not(:disabled) {
+  /* Note: to override use variant(primary):tone(xxx) within your stylesheets. */
+  --bg-color: value(bg-hover);
+  --text-color: value(text-hover);
+}
+
+.filledBtn:disabled {
+  filter: opacity(0.5);
+}
+
+/* = Hollow/Bordered button */
+
+.hollowBtn {
+  --border-color: var(--accent-color);
+  --text-color: var(--accent-color);
+}
+
+.hollowBtn:hover:not(:disabled),
+.hollowBtn:focus:not(:disabled),
+.hollowBtn:active:not(:disabled) {
+  /* Note: to override use variant(secondary):tone(xxx). */
+  --bg-color: value(bg-hover);
+  --border-color: value(bg-hover);
+  --text-color: value(text-hover);
+}
+
+/* Disabled for hollow button type */
+.hollowBtn:disabled {
+  filter: opacity(0.5);
+}
+
+/* = Variant: 'Link' - visually like a link. */
+.linkBtn {
+  --text-color: var(--accent-color);
+  padding: 0;
+  text-decoration: underline;
+}
+
+.linkBtn:hover:not(:disabled) {
+  text-decoration: none;
+}
+
+/* Disabled for link button */
+.linkBtn:disabled {
+  /* filter: opacity(0.7); */
+}

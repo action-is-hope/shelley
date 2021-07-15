@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { P, H2, H3, H4, Grid } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 
@@ -17,7 +15,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const TextDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Text</PageTitle>
       <Grid variant={1} formatted>
         <P vol={4} className={text.intro}>
@@ -217,7 +215,7 @@ const TextDocs: React.VFC = () => {
           </a>
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

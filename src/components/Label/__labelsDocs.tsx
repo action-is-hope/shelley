@@ -1,12 +1,10 @@
 import type React from "react";
-
-import DefaultLayout from "../../layouts";
 import classnames from "classnames";
 
 import { InputText, P, H2, Grid, Blockquote } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
-import { classes as utils } from "../styles/shelley/utils.st.css";
+import { classes as utils } from "../../styles/shelley/utils.st.css";
 
 import {
   meta,
@@ -22,7 +20,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const LabelsDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Label</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -199,7 +197,7 @@ const LabelsDocs: React.VFC = () => {
           than users, it will cost you clients as well. Fact. 👀
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

@@ -59,8 +59,7 @@ export const ComponentDemo = () => {
             : `\n  viewBox="false"`
         } \n  style={{fontSize: ${
           labelDemoProps[2].value ? labelDemoProps[2].value : false
-        }}} \n>\n  {/* icon deets - the globe icon breaks the code preview... this is a phone :-) */}\n  <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>\n</Icon>
-{/* FYI: Avoid inline 'style' especially font-size and color, oh the irony! */}`}</CodeSample>
+        }}} \n>\n  {/* icon */}\n<path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>\n</Icon>`}</CodeSample>
       }
     >
       <Icon

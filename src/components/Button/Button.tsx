@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import type { Accent, AlignPos, Volume, Variant } from "../types";
 /* = Style API. */
 import { st, classes } from "./button.st.css";
@@ -7,6 +6,7 @@ import { st, classes } from "./button.st.css";
 /**
  * Button props extending those of a regular button, we are overriding tone.
  */
+
 export interface ButtonProps
   extends Pick<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -55,14 +55,17 @@ const Button = React.forwardRef(
       console.warn(
         `No element supporting 'to' prop defined, do this via the 'as' prop.`
       );
-    const rootClassNames = classnames(classes.root, classNameProp);
-    const className = st(rootClassNames, {
-      iconPos: icon ? iconPos : false,
-      fullWidth,
-      tone,
-      variant,
-      vol
-    });
+    const className = st(
+      classes.root,
+      {
+        iconPos: icon ? iconPos : false,
+        fullWidth,
+        tone,
+        variant,
+        vol,
+      },
+      classNameProp
+    );
     const internal = (
       <>
         {icon && (

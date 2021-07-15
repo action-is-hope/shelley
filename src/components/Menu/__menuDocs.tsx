@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { P, H2, Grid, Blockquote } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 
@@ -20,7 +18,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const MenuDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Menu</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -156,7 +154,7 @@ const MenuDocs: React.VFC = () => {
           icon which mirrors that of an image. Please try and remember!
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

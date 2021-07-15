@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import {
   P,
   H2,
@@ -48,7 +46,7 @@ const rows = [
 
 const TableDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Tables</PageTitle>
 
       <Grid variant={1} tag="main" formatted>
@@ -122,7 +120,7 @@ const TableDocs: React.VFC = () => {
           </TableContainer>
         </div>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

@@ -25,7 +25,7 @@ import {
   MenuItemsProps as ReachMenuItemsProps,
   MenuItemProps as ReachMenuItemProps,
   MenuPopoverProps as ReachMenuPopoverProps,
-  MenuLinkProps as ReachMenuLinkProps
+  MenuLinkProps as ReachMenuLinkProps,
 } from "@reach/menu-button";
 
 import Button, { ButtonProps } from "../Button/Button";

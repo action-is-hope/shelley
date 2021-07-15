@@ -1,5 +1,4 @@
 import React from "react";
-import DefaultLayout from "../../layouts";
 import { Blockquote, Button, Grid, Text, P, H2 } from "../../indexLib";
 
 import { classes as text } from "../../styles/default/text.st.css";
@@ -27,7 +26,7 @@ const ButtonDocs = () => {
   };
 
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Button</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -153,7 +152,7 @@ const ButtonDocs = () => {
           </Text>
         </div>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

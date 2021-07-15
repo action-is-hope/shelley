@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { P, H2, Grid } from "../../indexLib";
 
 import {
@@ -15,9 +13,9 @@ import {
 import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
 import PageTitle from "../../components_site/PageTitle/PageTitle";
 
-const InputDocs: React.VFC = () => {
+const InputTextDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>InputText</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
@@ -55,8 +53,8 @@ const InputDocs: React.VFC = () => {
           classname.
         </P> */}
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 
-export default InputDocs;
+export default InputTextDocs;

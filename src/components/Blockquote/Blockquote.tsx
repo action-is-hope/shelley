@@ -1,7 +1,6 @@
 /** Blockquote.tsx */
 import type React from "react";
 import type { Volume, Variant } from "../types";
-import classnames from "classnames";
 import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
@@ -22,7 +21,7 @@ export interface BlockquoteProps
   variant?: Variant;
 }
 
-const Blockquote = ({
+const Blockquote: React.VFC<BlockquoteProps> = ({
   children,
   cite,
   citeAttr,
@@ -30,24 +29,21 @@ const Blockquote = ({
   className: classNameProp,
   variant = 1,
   ...rest
-}: BlockquoteProps) => {
-  const rootClassNames = classnames(classes.root, classNameProp);
-  return (
-    <blockquote
-      className={st(rootClassNames, { variant })}
-      cite={citeAttr}
-      {...rest}
-    >
-      <div className={classes.content}>{children}</div>
-      {cite && (
-        <footer className={classes.footer}>
-          <Text as="cite" vol={citeVol} className={classes.cite}>
-            {cite}
-          </Text>
-        </footer>
-      )}
-    </blockquote>
-  );
-};
+}) => (
+  <blockquote
+    className={st(classes.root, { variant }, classNameProp)}
+    cite={citeAttr}
+    {...rest}
+  >
+    <div className={classes.content}>{children}</div>
+    {cite && (
+      <footer className={classes.footer}>
+        <Text as="cite" vol={citeVol} className={classes.cite}>
+          {cite}
+        </Text>
+      </footer>
+    )}
+  </blockquote>
+);
 
 export default Blockquote;

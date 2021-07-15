@@ -14,7 +14,7 @@ export declare type TextAlign =
 export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | false;
 
 /** Color indexes */
-export declare type Color = 1 | 2 | 3 | 4 | 5 | 6 | false;
+// export declare type Color = 1 | 2 | 3 | 4 | 5 | 6 | false;
 
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | false;

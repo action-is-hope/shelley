@@ -1,6 +1,5 @@
 import React from "react";
 import type { Accent, Volume, Variant } from "../types";
-import classnames from "classnames";
 
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
@@ -44,11 +43,9 @@ const ButtonGroup = React.forwardRef(
     }: ButtonGroupProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    const rootClassNames = classnames(classes.root, classNameProp);
-
     return (
       <div
-        className={st(rootClassNames, { orientation, fullWidth })}
+        className={st(classes.root, { orientation, fullWidth }, classNameProp)}
         {...rest}
         ref={ref}
       >
@@ -58,7 +55,7 @@ const ButtonGroup = React.forwardRef(
           }
 
           return React.cloneElement(child, {
-            className: classnames(buttonClassName, child.props.className),
+            className: `${buttonClassName} ${child.props.className}`,
             disabled: child.props.disabled || disabled,
             tone: child.props.tone || tone,
             vol: child.props.vol || vol,

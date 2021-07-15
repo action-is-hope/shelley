@@ -18,12 +18,13 @@ export const meta = {
 
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>
-    {`import { Text, P, H1, H2, H3, H4, H5, H6 } from "@actionishope/shelley";
+    {`import { Text, P, H2, H3 } from "@actionishope/shelley";
 
-<H1 vol={8}>Shortcuts for html headings, h1-h6, set your own volume.</H1>
+<H2> Headings available as H1-H6</H2>
   
 <P>The mighty paragraph, defaults to a volume of 3.</P>
-<Text as="span">Text with your choice of tag via the "as" prop.</Text>`}
+
+<Text as="span">To define element use Text and {as} prop.</Text>`}
   </CodeSample>
 );
 
@@ -56,7 +57,7 @@ export const ComponentDemo = () => {
       type: "textarea",
       value:
         // "The IPCC prepares comprehensive Assessment Reports about knowledge on climate change, its causes, potential impacts and response options. The IPCC also produces Special Reports, which are an assessment on a specific issue and Methodology Reports, which provide practical guidelines for the preparation of greenhouse gas inventories."
-        "IPCC, how can I explain it, I'll take you frame by frame it. Shelley likes to rap about climate change reports in the hope that people might read them, go figure. Shelley also thanks Naughty By Nature for their contribution to music and head bopping."
+        "Valid children go here."
     }
   ]);
 
@@ -84,16 +85,16 @@ export const ComponentDemo = () => {
       >
         {TextDemoProps[3].value}
       </Text>
-      <br />
-      <br />
-      <Text as="p" vol={3}>
+      {/* <br />
+      <br /> */}
+      {/* <Text as="p" vol={3}>
         Just in case:{" "}
         <a href="https://www.ipcc.ch/reports/">
           <abbr title="Intergovernmental Panel on Climate Change">IPCC</abbr>{" "}
           reports
         </a>{" "}
         🌍
-      </Text>
+      </Text> */}
     </PropsDemo>
   );
 };

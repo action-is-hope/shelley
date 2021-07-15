@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { P, H2, Grid, Blockquote } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 
@@ -17,7 +15,7 @@ import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
 
 const BlockquoteDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Blockquote</PageTitle>
 
       <Grid variant={1} tag="main" formatted>
@@ -135,7 +133,7 @@ const BlockquoteDocs: React.VFC = () => {
           keywords.
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

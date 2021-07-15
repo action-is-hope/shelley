@@ -1,6 +1,4 @@
 import type React from "react";
-import DefaultLayout from "../../layouts";
-
 import { Text, P, H2, H3, Grid, Blockquote } from "../../indexLib";
 import { classes as text } from "../../styles/default/text.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
@@ -12,7 +10,7 @@ import PageTitle from "../../components_site/PageTitle/PageTitle";
 
 const VisuallyHiddenDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>VisuallyHidden</PageTitle>
 
       <Grid variant={1} formatted>
@@ -269,7 +267,7 @@ const VisuallyHiddenDocs: React.VFC = () => {
           ;-)
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 
