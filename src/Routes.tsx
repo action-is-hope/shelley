@@ -29,71 +29,71 @@ export const componentNav: Navigation = [
   {
     path: "/button",
     docs: <ButtonDocs />,
-    linkText: "Button"
+    linkText: "Button",
   },
   {
     path: "/button-group",
     docs: <ButtonGroupDocs />,
-    linkText: "Button Group"
+    linkText: "Button Group",
   },
   {
     path: "/blockquote",
     docs: <BlockquoteDocs />,
-    linkText: "Blockquote"
+    linkText: "Blockquote",
   },
 
   {
     path: "/input-text",
     docs: <InputTextDocs />,
-    linkText: "Input Text"
+    linkText: "Input Text",
   },
 
   {
     path: "/input-selection",
     docs: <InputSelectionDocs />,
-    linkText: "Input Selection"
+    linkText: "Input Selection",
   },
 
   {
     path: "/grid",
     docs: <GridDocs />,
-    linkText: "Grid"
+    linkText: "Grid",
   },
 
   {
     path: "/icon",
     docs: <IconDocs />,
-    linkText: "Icon"
+    linkText: "Icon",
   },
 
   {
     path: "/label",
     docs: <LabelsDocs />,
-    linkText: "Label"
+    linkText: "Label",
   },
 
   {
     path: "/menu",
     docs: <MenuDocs />,
-    linkText: "Menu"
+    linkText: "Menu",
   },
 
   {
     path: "/text",
     docs: <TextDocs />,
-    linkText: "Text"
+    linkText: "Text",
   },
 
   {
     path: "/visually-hidden",
     docs: <VisuallyHiddenDocs />,
-    linkText: "Visually Hidden"
-  }
+    linkText: "Visually Hidden",
+  },
 ];
 
 const Routes: React.VFC = () => (
   <Switch>
-    {componentNav.map(item => (
+    {componentNav.map((item) => (
       <Route path={item.path} key={item.path}>
         {item.docs}
       </Route>

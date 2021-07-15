@@ -1,19 +1,17 @@
 import type React from "react";
-import { st, classes } from "./app.st.css";
-// import { Header } from "./header";
 import DefaultLayout from "./layouts";
 import { HelmetProvider } from "react-helmet-async";
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./Routes";
 
 export interface AppProps {
   className?: string;
 }
 
-export const App: React.VFC<AppProps> = ({ className }) => {
+export const App: React.VFC<AppProps> = () => {
   return (
-    <main className={st(classes.root, className)}>
+    <main>
       <HelmetProvider>
         <Router>
           <DefaultLayout>
