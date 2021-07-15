@@ -6,9 +6,6 @@ import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
-// import ComboboxSingle from "../components/ComboboxSingle/ComboBoxSingle";
-// import { classes as grid } from "../styles/default/grid.st.css";
-
 import { componentNav } from "../Routes";
 
 const IndexPage: React.VFC = () => {
@@ -85,7 +82,7 @@ const IndexPage: React.VFC = () => {
             </P>
 
             <ul className={classes.menuList}>
-              {componentNav.map(item => (
+              {componentNav.map((item) => (
                 <Text as="li" key={item.path}>
                   <Link to={item.path}>{item.linkText}</Link>
                 </Text>
