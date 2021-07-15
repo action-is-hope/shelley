@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 // import styleExamples from "./__gridExample.st.css";
 
 import { classes as grid } from "../../styles/default/grid.st.css";
-import Text, { P } from "../Text/Text";
+import Text from "../Text/Text";
 import Label from "../Label/Label";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
 

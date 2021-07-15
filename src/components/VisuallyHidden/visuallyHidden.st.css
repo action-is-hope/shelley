@@ -5,9 +5,9 @@
 
 .root {
 	-st-mixin: visuallyHidden;
-}
+	-st-states: focusable;
 
-.focusable {}
+}
 
 /* 
 .focusable:focus,

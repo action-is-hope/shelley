@@ -1,5 +1,5 @@
 /** CodeSample.tsx */
-import React from "react";
+import type React from "react";
 import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./codeSample.st.css";
@@ -9,18 +9,16 @@ import {
   SyntaxHighlighterProps
 } from "react-syntax-highlighter";
 
-const CodeSample = ({
+const CodeSample: React.VFC<SyntaxHighlighterProps> = ({
   className: classNameProp,
   children,
   language = "tsx",
   fixedHeight,
   ...rest
-}: SyntaxHighlighterProps) => {
-  const rootClassNames = classnames(classes.root, classNameProp, {
-    [classes.fixedHeight]: fixedHeight
-  });
+}) => {
+  const rootClassNames = classnames(classes.root, classNameProp);
   return (
-    <div className={st(rootClassNames)}>
+    <div className={st(rootClassNames, { fixedHeight })}>
       <SyntaxHighlighter
         language={language}
         style={false}

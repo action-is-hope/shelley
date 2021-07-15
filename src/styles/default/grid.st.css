@@ -59,7 +59,6 @@
 
   /* = See grid docs on https://shelley.earth/grid for initial walkthrough. */
   Grid:variant(1) {
-    display: grid;
     grid-row-gap: 0;
     grid-template-columns: var(--grid-v1-cols-xs)
   }
@@ -86,55 +85,55 @@
 @st-scope Default {
 
   /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
-  Grid:variant(1)>Grid:variant(1) {
+  Grid:variant(1) > Grid:variant(1) {
     grid-column: edge;
   }
 
-  Grid:variant(1)>h1,
-  Grid:variant(1)>h2,
-  Grid:variant(1)>h3,
-  Grid:variant(1)>h4,
-  Grid:variant(1)>h5,
-  Grid:variant(1)>h6,
-  Grid:variant(1)>p,
-  Grid:variant(1)>ul,
-  Grid:variant(1)>ol,
-  Grid:variant(1)>dl,
-  Grid:variant(1)>blockquote,
-  Grid:variant(1)>pre,
-  Grid:variant(1)>img,
-  Grid:variant(1)>figure {
+  Grid:variant(1) > h1,
+  Grid:variant(1) > h2,
+  Grid:variant(1) > h3,
+  Grid:variant(1) > h4,
+  Grid:variant(1) > h5,
+  Grid:variant(1) > h6,
+  Grid:variant(1) > p,
+  Grid:variant(1) > ul,
+  Grid:variant(1) > ol,
+  Grid:variant(1) > dl,
+  Grid:variant(1) > blockquote,
+  Grid:variant(1) > pre,
+  Grid:variant(1) > img,
+  Grid:variant(1) > figure {
     grid-column: mid;
   }
 
   /* = If you need to jump these based on media query then do it with a custom class. */
-  Grid:variant(1)>.mid {
+  Grid:variant(1) > .mid {
     grid-column: mid;
   }
 
-  Grid:variant(1)>.pen {
+  Grid:variant(1) > .pen {
     grid-column: pen;
   }
 
-  Grid:variant(1)>.goal {
+  Grid:variant(1) > .goal {
     grid-column: goal;
   }
 
-  Grid:variant(1)>.edge {
+  Grid:variant(1) > .edge {
     grid-column: edge;
   }
 
   /* = Common snap patterns, you can set these up like a bootstrap grid if you like 
    * littering your HTML with conditional positional info. */
 
-  Grid:variant(1)>.snapMidToGoal {
+  Grid:variant(1) > .snapMidToGoal {
     grid-column: mid;
   }
 }
 
 @media value(breakpoint-md) {
   @st-scope Default {
-    Grid:variant(1)>.snapMidToGoal {
+    Grid:variant(1) > .snapMidToGoal {
       grid-column: goal;
     }
   }

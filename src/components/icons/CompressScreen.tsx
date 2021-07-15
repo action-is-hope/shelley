@@ -1,7 +1,7 @@
-import React from "react";
+import type React from "react";
 import Icon, { IconProps } from "../Icon/Icon";
 
-const CompressScreenIcon = ({ className, alt }: IconProps) => {
+const CompressScreenIcon: React.VFC<IconProps> = ({ className, alt }) => {
   return (
     <Icon alt={alt} className={className}>
       {/* compress-square */}

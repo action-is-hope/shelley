@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { Volume, TextAlign } from "../types";
+import type { Volume, TextAlign } from "../types";
 import { st, classes } from "./tableCell.st.css";
 
 interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {

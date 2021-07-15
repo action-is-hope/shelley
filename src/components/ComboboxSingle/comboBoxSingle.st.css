@@ -1,0 +1,12 @@
+/* comboboxSingle.st.css CSS API */
+@namespace "ComboboxSingle";
+
+.root {}
+
+.menuList {}
+
+.menuList:empty {
+  display: none;
+}
+
+.menuItem {}

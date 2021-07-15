@@ -1,13 +1,8 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
-
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import { classes as text } from "../styles/default/text.st.css";
-// import { classes as grid } from "../styles/default/grid.st.css";
-import { classes as spacing } from "../styles/default/spacing.st.css";
-import Blockquote from "../components/Blockquote/Blockquote";
+import type React from "react";
+import { P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+// import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
 import {
   meta,
   QuickRef,
@@ -15,12 +10,14 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/ButtonGroup/__buttonGroup.examples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__buttonGroup.examples";
 
-const ButtonDocs = () => {
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+
+const ButtonGroupDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>ButtonGroup</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -122,8 +119,8 @@ const ButtonDocs = () => {
           goes off in your head when you need it to.
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 
-export default ButtonDocs;
+export default ButtonGroupDocs;

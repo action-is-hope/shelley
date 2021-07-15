@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInputType } from "../types";
+import type { TextInputType } from "../types";
 import classnames from "classnames";
 import Textarea from "react-expanding-textarea";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";

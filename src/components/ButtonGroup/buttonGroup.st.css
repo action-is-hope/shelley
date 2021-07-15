@@ -1,10 +1,6 @@
 :import {
   -st-from: "../Button/button.st.css";
   -st-default: Button;
-  /* -st-named:
-    --bg-color,
-    --border-color,
-    --text-color; */
 }
 
 .root {

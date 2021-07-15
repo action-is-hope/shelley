@@ -1,28 +1,16 @@
-import React from "react";
-import Link from "gatsby-link";
-import { graphql } from "gatsby";
+import type React from "react";
 import { classes } from "./index.st.css";
+import { Link } from "react-router-dom";
 
-import DefaultLayout from "../layouts";
 import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema.
-interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
-}
+import { componentNav } from "../Routes";
 
-const IndexPage = ({ data }: IndexPageProps) => {
+const IndexPage: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <ShelleyBanner />
 
       <Grid tag="main">
@@ -94,43 +82,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
             </P>
 
             <ul className={classes.menuList}>
-              <Text as="li">
-                <Link to="/button/">Button</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/buttonGroup/">ButtonGroup</Link>
-              </Text>
-
-              <Text as="li">
-                <Link to="/text/">Text</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/blockquote/">Blockquote</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/icon/">Icons</Link>
-              </Text>
-
-              <Text as="li">
-                <Link to="/grid/">Grid</Link>
-              </Text>
-
-              <Text as="li">
-                <Link to="/menu/">Menu</Link>
-              </Text>
-
-              <Text as="li">
-                <Link to="/labels/">Labels</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/inputText/">Input Text</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/inputSelection/">Input Selection</Link>
-              </Text>
-              <Text as="li">
-                <Link to="/visually-hidden/">VisuallyHidden</Link>
-              </Text>
+              {componentNav.map((item) => (
+                <Text as="li" key={item.path}>
+                  <Link to={item.path}>{item.linkText}</Link>
+                </Text>
+              ))}
             </ul>
 
             <H2 uppercase vol={3}>
@@ -320,18 +276,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
           </div>
         </Grid>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 
 export default IndexPage;
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

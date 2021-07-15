@@ -1,9 +1,5 @@
-import React from "react";
-import DefaultLayout from "../layouts";
-import { P, H2 } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+import type React from "react";
+import { P, H2, Grid } from "../../indexLib";
 
 import {
   meta,
@@ -12,11 +8,14 @@ import {
   ComponentHTML,
   ComponentCSS,
   Example1
-} from "../components/InputText/__inputTextExamples";
+} from "./__inputTextExamples";
 
-const InputDocs = () => {
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const InputTextDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>InputText</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
@@ -54,8 +53,8 @@ const InputDocs = () => {
           classname.
         </P> */}
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 
-export default InputDocs;
+export default InputTextDocs;

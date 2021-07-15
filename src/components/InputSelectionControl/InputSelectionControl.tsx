@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectionControlType } from "../types";
+import type { SelectionControlType } from "../types";
 import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./inputSelectionControl.st.css";

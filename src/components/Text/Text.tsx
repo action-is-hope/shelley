@@ -1,6 +1,6 @@
 /* Text.tsx */
 import React from "react";
-import { TextVolume } from "../types";
+import type { TextVolume } from "../types";
 import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */

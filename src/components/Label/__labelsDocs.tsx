@@ -1,28 +1,26 @@
-import React from "react";
-import DefaultLayout from "../layouts";
+import type React from "react";
 import classnames from "classnames";
-import { P, H2 } from "../components/Text/Text";
 
-import Grid from "../components/Grid/Grid";
-import PageTitle from "../components_site/PageTitle/PageTitle";
-import CodeSample from "../components_site/CodeSample/CodeSample";
-import { classes as text } from "../styles/default/text.st.css";
-import { classes as grid } from "../styles/default/grid.st.css";
-import { classes as utils } from "../styles/shelley/utils.st.css";
-import Blockquote from "../components/Blockquote/Blockquote";
-import InputText from "../components/InputText/InputText";
+import { InputText, P, H2, Grid, Blockquote } from "../../indexLib";
+import { classes as text } from "../../styles/default/text.st.css";
+import { classes as grid } from "../../styles/default/grid.st.css";
+import { classes as utils } from "../../styles/shelley/utils.st.css";
+
 import {
   meta,
   QuickRef,
   ComponentDemo,
   ComponentHTML,
   ComponentCSS
-} from "../components/Label/__labelExamples";
-import StyleInfo from "../components_site/StyleInfo/StyleInfo";
+} from "./__labelExamples";
 
-const LabelsDocs = () => {
+import CodeSample from "../../components_site/CodeSample/CodeSample";
+import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components_site/PageTitle/PageTitle";
+
+const LabelsDocs: React.VFC = () => {
   return (
-    <DefaultLayout>
+    <>
       <PageTitle>Label</PageTitle>
       <Grid variant={1} tag="main" formatted>
         <P vol={4} className={text.intro}>
@@ -199,7 +197,7 @@ const LabelsDocs = () => {
           than users, it will cost you clients as well. Fact. 👀
         </P>
       </Grid>
-    </DefaultLayout>
+    </>
   );
 };
 

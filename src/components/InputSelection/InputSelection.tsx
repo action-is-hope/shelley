@@ -1,5 +1,5 @@
 import React from "react";
-import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
+import type { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import classnames from "classnames";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";

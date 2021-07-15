@@ -1,42 +1,44 @@
-import { RuntimeStylesheet } from "@stylable/runtime";
+import type { RuntimeStylesheet } from "@stylable/runtime";
 import classnames from "classnames";
-import { classes as light } from "./themes/light.st.css";
-import { classes as dark } from "./themes/dark.st.css";
 
 // = Foundation Components
-import Button from "./button.st.css";
-import Blockquote from "./blockquote.st.css";
-import ErrorText from "./errorText.st.css";
-import Grid from "./grid.st.css";
-import HintText from "./hintText.st.css";
-import InputBase from "./inputBase.st.css";
-import InputSelect from "./inputSelect.st.css";
-import InputSelection from "./inputSelection.st.css";
-import InputSelectionControl from "./inputSelectionControl.st.css";
-import InputText from "./inputText.st.css";
-import Label from "./label.st.css";
-import Menu from "./menu.st.css";
-import Text from "./text.st.css";
+import { classes as Button } from "./button.st.css";
+import { classes as Blockquote } from "./blockquote.st.css";
+import { classes as ErrorText } from "./errorText.st.css";
+import { classes as Grid } from "./grid.st.css";
+import { classes as HintText } from "./hintText.st.css";
+import { classes as InputBase } from "./inputBase.st.css";
+import { classes as InputSelect } from "./inputSelect.st.css";
+import { classes as InputSelection } from "./inputSelection.st.css";
+import { classes as InputSelectionControl } from "./inputSelectionControl.st.css";
+import { classes as InputText } from "./inputText.st.css";
+import { classes as Label } from "./label.st.css";
+import { classes as Menu } from "./menu.st.css";
+import { classes as Text } from "./text.st.css";
 
 // = Application Components
-import CodeSample from "./codeSample.st.css";
-import Logo from "./logo.st.css";
-import PageTitle from "./pageTitle.st.css";
-import PropsDemo from "./propsDemo.st.css";
-import ShelleyBanner from "./shelleyBanner.st.css";
-import StyleInfo from "./styleInfo.st.css";
+import { classes as CodeSample } from "./codeSample.st.css";
+import { classes as Logo } from "./logo.st.css";
+import { classes as PageTitle } from "./pageTitle.st.css";
+import { classes as PropsDemo } from "./propsDemo.st.css";
+import { classes as ShelleyBanner } from "./shelleyBanner.st.css";
+import { classes as StyleInfo } from "./styleInfo.st.css";
 
 // = Project
-import Shelley from "./project.st.css";
+import { classes as shelleyProject } from "./project.st.css";
+
+// = Themes
+import { classes as light } from "./themes/light.st.css";
+import { classes as dark } from "./themes/dark.st.css";
 
 // = Helper to extract the class names.
 const getStylableClassNames = (
   values: [],
-  stylesheet: RuntimeStylesheet,
+  classes: RuntimeStylesheet["classes"],
   rootcls: string
 ) => {
-  const clsArray = values.map((cls: string) => stylesheet.classes[cls] || null);
-  return classnames(stylesheet.classes[rootcls], clsArray);
+  const clsArray = values.map((cls: string) => classes[cls] || null);
+  return classnames(classes[rootcls], clsArray);
 };
 
 // = Foundation component exports
@@ -99,7 +101,7 @@ export const styleInfo = (...values: []) =>
   getStylableClassNames(values, StyleInfo, "styleInfo");
 
 // = Main classname export
-export const Project = Shelley.classes.root;
+export const Project = shelleyProject.root;
 
 // = Theme exports
 export const Light = light.root;

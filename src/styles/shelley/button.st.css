@@ -58,7 +58,10 @@
     --accent: initial;
   }
 
-  /* = 'Text'  */
+
+  /* = Variants - Using the accent to assign the colors to reduce code. */
+
+  /* = Variant 1: 'Text' */
   Button:variant(1) {
     --text-color: var(--accent);
   }
@@ -73,14 +76,13 @@
     --seperator-color: var(--accent);
   }
 
-
-  /* = 'Outline' */
+  /* = Variant 2: 'Outline' */
   Button:variant(2) {
     --border-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
 
-  /* = 'Filled' */
+  /* = Variant 3: 'Filled' */
   Button:variant(3) {
     --bg-color: var(--accent);
     --text-color: var(--color-ui-inverse);

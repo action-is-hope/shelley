@@ -17,19 +17,23 @@ export interface VisuallyHiddenProps extends React.HTMLProps<HTMLSpanElement> {
 
 const VisuallyHidden = React.forwardRef(
   (
-    { className: classNameProp, focusable, ...rest }: VisuallyHiddenProps,
+    {
+      className: classNameProp,
+      focusable = false,
+      ...rest
+    }: VisuallyHiddenProps,
     ref?: React.Ref<HTMLSpanElement>
   ) => {
     const rootClassNames = classnames(
       classes.root,
-      {
-        [classes.focusable]: focusable
-      },
+      // {
+      //   [classes.focusable]: focusable
+      // },
       classNameProp
     );
     return (
       <span
-        className={st(rootClassNames)}
+        className={st(rootClassNames, { focusable })}
         tabIndex={focusable ? 0 : undefined}
         ref={ref}
         {...rest}

@@ -1,16 +1,9 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   extends: [
-    // "eslint:recommended",
-    // "plugin:react/recommended",
-    // "plugin:@typescript-eslint/recommended",
-    // // "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    // "prettier/@typescript-eslint",
-
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
-    // "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   settings: {
     react: {
@@ -40,7 +33,9 @@ module.exports = {
     "no-unused-vars": "off",
     "ts/no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   },
   overrides: [
     // Override some TypeScript rules just for .js files

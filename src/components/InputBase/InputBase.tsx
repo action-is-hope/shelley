@@ -1,5 +1,5 @@
 import React from "react";
-import { Volume, Variant } from "../types";
+import type { Volume, Variant } from "../types";
 import classnames from "classnames";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
@@ -58,9 +58,9 @@ const InputBase = ({
   ),
   labelVisuallyHidden = false,
   variant = 1,
-  vol = 3,
-  ...attrs
-}: InputBaseInternalProps) => {
+  vol = 3
+}: // ...attrs
+InputBaseInternalProps) => {
   id === "NOID" &&
     console.warn(
       `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'NOID' to these inputs should you want to check the DOM.\n`

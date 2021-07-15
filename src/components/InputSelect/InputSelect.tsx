@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import InputBase from "../InputBase/InputBase";
-import { InputBaseProps } from "../InputBase/InputBase";
+import type { InputBaseProps } from "../InputBase/InputBase";
 /* = Style API. */
 import { classes } from "./inputSelect.st.css";
 
