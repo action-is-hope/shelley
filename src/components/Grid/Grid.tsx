@@ -1,6 +1,5 @@
 /** Grid.tsx */
 import React from "react";
-import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./grid.st.css";
 
@@ -25,14 +24,12 @@ const Grid = React.forwardRef(
     }: GridProps,
     ref?: React.Ref<HTMLBaseElement>
   ) => {
-    const rootClassNames = classnames(classes.root, classNameProp);
-
     const GridRoot = React.createElement(
       tagName,
       {
-        className: st(rootClassNames, { formatted, variant }),
+        className: st(classes.root, { formatted, variant }, classNameProp),
         ref: ref,
-        ...rest
+        ...rest,
       },
       children
     );

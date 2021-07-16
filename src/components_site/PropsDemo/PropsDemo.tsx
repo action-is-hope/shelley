@@ -9,7 +9,7 @@ import {
   P,
   InputText,
   InputSelect,
-  InputSelection
+  InputSelection,
 } from "../../indexLib";
 
 /* = Style API. */
@@ -222,7 +222,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
             <H3 vol={1} className={classes.exampleHeading} uppercase>
               Preview:
             </H3>
-            <div className={classes.demo}>{children}</div>
+            <div>{children}</div>
           </div>
         </div>
       </div>

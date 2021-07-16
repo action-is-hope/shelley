@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./tableHead.st.css";
 
 const TableHead = React.forwardRef(
@@ -12,11 +11,7 @@ const TableHead = React.forwardRef(
     ref?: React.Ref<HTMLTableSectionElement>
   ) => {
     return (
-      <thead
-        className={st(classnames(classes.root, classNameProp))}
-        ref={ref}
-        {...rest}
-      >
+      <thead className={st(classes.root, classNameProp)} ref={ref} {...rest}>
         {children}
       </thead>
     );

@@ -9,7 +9,7 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
 } from "./__buttonGroup.examples";
 
 import PageTitle from "../../components_site/PageTitle/PageTitle";
@@ -20,7 +20,7 @@ const ButtonGroupDocs: React.VFC = () => {
     <>
       <PageTitle>ButtonGroup</PageTitle>
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           If Buttons created a cooperative it would look like a ButtonGroup.
         </P>
 

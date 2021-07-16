@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import classnames from "classnames";
 import { Helmet } from "react-helmet-async";
 import { classes as style } from "./index.st.css";
 
@@ -30,9 +29,6 @@ const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
 
   const history = useHistory();
 
-  history.listen((url) => {
-    console.log(url);
-  });
   return (
     <div className={style.navbar}>
       <div className={style.inner}>
@@ -53,16 +49,14 @@ const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
           />
           <InputSelection
             id="themeSelector"
-            variant={false}
+            variant={undefined}
             hint="Toggle light mode"
             label={
               <Icon alt="Toggle light mode">
                 <path d="M16 8l-2.2-1.6 1.1-2.4-2.7-0.2-0.2-2.7-2.4 1.1-1.6-2.2-1.6 2.2-2.4-1.1-0.2 2.7-2.7 0.2 1.1 2.4-2.2 1.6 2.2 1.6-1.1 2.4 2.7 0.2 0.2 2.7 2.4-1.1 1.6 2.2 1.6-2.2 2.4 1.1 0.2-2.7 2.7-0.2-1.1-2.4 2.2-1.6zM8 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"></path>
               </Icon>
             }
-            className={classnames(inputSelection.darkLightToggle, {
-              // [inputSelection.on]: altTheme
-            })}
+            className={inputSelection.darkLightToggle}
             checked={altTheme}
             onKeyPress={(event) => {
               if (event.key === "Enter") {
@@ -97,8 +91,8 @@ const Footer = () => (
 
 const DefaultLayout = ({ children }: any) => {
   // Define the class names for out theme.
-  const ShelleyDark = classnames(Default, Shelley, Dark);
-  const ShelleyLight = classnames(Default, Shelley, Light);
+  const ShelleyDark = `${Default} ${Shelley} ${Dark}`;
+  const ShelleyLight = `${Default} ${Shelley} ${Light}`;
   // Toggle 'alternative' theme state.
   const [altTheme, setAltTheme] = useState<boolean>(false);
   // The alternative here is the light theme.

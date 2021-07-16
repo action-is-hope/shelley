@@ -1,6 +1,5 @@
 /** hintText.tsx */
 import type React from "react";
-import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./hintText.st.css";
 
@@ -10,7 +9,7 @@ const HintText: React.VFC<React.HTMLAttributes<HTMLSpanElement>> = ({
   ...rest
 }) => {
   return (
-    <span className={st(classnames(classes.root, classNameProp))} {...rest}>
+    <span className={st(classes.root, classNameProp)} {...rest}>
       {children}
     </span>
   );

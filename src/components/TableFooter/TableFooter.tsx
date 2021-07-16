@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./tableFooter.st.css";
 
 const TableFooter = React.forwardRef(
@@ -12,11 +11,7 @@ const TableFooter = React.forwardRef(
     ref?: React.Ref<HTMLTableSectionElement>
   ) => {
     return (
-      <div
-        className={st(classnames(classes.root, classNameProp))}
-        ref={ref}
-        {...rest}
-      >
+      <div className={st(classes.root, classNameProp)} ref={ref} {...rest}>
         {children}
       </div>
     );

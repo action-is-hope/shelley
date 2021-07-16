@@ -1,6 +1,5 @@
 import React from "react";
 import type { Volume, Variant } from "../types";
-import classnames from "classnames";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -58,7 +57,7 @@ const InputBase = ({
   ),
   labelVisuallyHidden = false,
   variant = 1,
-  vol = 3
+  vol = 3,
 }: // ...attrs
 InputBaseInternalProps) => {
   id === "NOID" &&
@@ -73,21 +72,23 @@ InputBaseInternalProps) => {
     disabled,
     // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
     "aria-invalid": error ? true : undefined,
-    "aria-describedby": error ? `${id}-error` : undefined
+    "aria-describedby": error ? `${id}-error` : undefined,
     // ...attrs We only want to re-apply what we pulled off.
   };
 
-  const childrenWithProps = React.Children.map(children, child => {
+  const childrenWithProps = React.Children.map(children, (child) => {
     return React.cloneElement(child as React.ReactElement<any>, {
-      ...inputAttrs
+      ...inputAttrs,
     });
   });
 
-  const rootClassNames = classnames(classes.root, classNameProp);
-
   return (
     <div
-      className={st(rootClassNames, { error, disabled, variant, vol })}
+      className={st(
+        classes.root,
+        { error, disabled, variant, vol },
+        classNameProp
+      )}
       // attrs // We do want stylable to get spread attrs??
     >
       {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}

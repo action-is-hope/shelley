@@ -6,7 +6,6 @@
  */
 
 import React from "react";
-import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./visuallyHidden.st.css";
 
@@ -24,16 +23,9 @@ const VisuallyHidden = React.forwardRef(
     }: VisuallyHiddenProps,
     ref?: React.Ref<HTMLSpanElement>
   ) => {
-    const rootClassNames = classnames(
-      classes.root,
-      // {
-      //   [classes.focusable]: focusable
-      // },
-      classNameProp
-    );
     return (
       <span
-        className={st(rootClassNames, { focusable })}
+        className={st(classes.root, { focusable }, classNameProp)}
         tabIndex={focusable ? 0 : undefined}
         ref={ref}
         {...rest}

@@ -1,12 +1,11 @@
 /** CodeSample.tsx */
 import type React from "react";
-import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./codeSample.st.css";
 
 import {
   Prism as SyntaxHighlighter,
-  SyntaxHighlighterProps
+  SyntaxHighlighterProps,
 } from "react-syntax-highlighter";
 
 const CodeSample: React.VFC<SyntaxHighlighterProps> = ({
@@ -16,9 +15,8 @@ const CodeSample: React.VFC<SyntaxHighlighterProps> = ({
   fixedHeight,
   ...rest
 }) => {
-  const rootClassNames = classnames(classes.root, classNameProp);
   return (
-    <div className={st(rootClassNames, { fixedHeight })}>
+    <div className={st(classes.root, { fixedHeight }, classNameProp)}>
       <SyntaxHighlighter
         language={language}
         style={false}

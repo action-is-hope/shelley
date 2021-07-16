@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import type { Volume, TextAlign } from "../types";
 import { st, classes } from "./tableCell.st.css";
 
@@ -29,7 +28,7 @@ const TableCell = React.forwardRef(
     const scope = header && !scopeProp ? "col" : scopeProp;
     return (
       <Component
-        className={st(classnames(classes.root, classNameProp), { vol, align })}
+        className={st(classes.root, { vol, align }, classNameProp)}
         scope={scope}
         ref={ref}
         {...rest}

@@ -11,7 +11,7 @@ import {
   QuickRef,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
 } from "./__gridExamples";
 
 import CodeSample from "../../components_site/CodeSample/CodeSample";
@@ -24,7 +24,7 @@ const GridDocs: React.VFC = () => {
       <PageTitle>Grid</PageTitle>
 
       <Grid variant={1} formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Grid is for layout; personal to your site or style, limited only by
           old skool thinking around grid systems.
         </P>

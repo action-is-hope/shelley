@@ -10,7 +10,7 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
 } from "./__button.examples";
 
 import PageTitle from "../../components_site/PageTitle/PageTitle";
@@ -29,7 +29,7 @@ const ButtonDocs = () => {
     <>
       <PageTitle>Button</PageTitle>
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Buttons are not clicked, they are &apos;selected&apos; so forget the
           mouse, the key resides in the keyboard. Deep.
         </P>

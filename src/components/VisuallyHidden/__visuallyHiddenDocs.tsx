@@ -1,6 +1,5 @@
 import type React from "react";
 import { Text, P, H2, H3, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 import CodeSample from "../../components_site/CodeSample/CodeSample";
@@ -14,7 +13,7 @@ const VisuallyHiddenDocs: React.VFC = () => {
       <PageTitle>VisuallyHidden</PageTitle>
 
       <Grid variant={1} formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Allows us to leave hidden messages, visible only to those using
           assistive technologies such as screen readers but not only to
           assistive tech, to search bots as well. Very interesting!

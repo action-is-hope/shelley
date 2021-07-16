@@ -1,6 +1,5 @@
 import React from "react";
 import type { TextInputType } from "../types";
-import classnames from "classnames";
 import Textarea from "react-expanding-textarea";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";
 /* = Style API. */
@@ -68,9 +67,9 @@ const InputText = React.forwardRef(
           endAdornment,
           hint,
           variant,
-          vol
+          vol,
         }}
-        className={classnames(classes.root, classes[type], classNameProp)}
+        className={`${classes.root} ${classes[type]}`}
       >
         {input}
       </InputBase>

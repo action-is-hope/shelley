@@ -1,6 +1,5 @@
 /** Logo.tsx */
 import type React from "react";
-import classnames from "classnames";
 import Logo from "../Logo/Logo";
 import Text from "../../components/Text/Text";
 import Grid from "../../components/Grid/Grid";
@@ -8,10 +7,10 @@ import Grid from "../../components/Grid/Grid";
 import { st, classes } from "./shelleyBanner.st.css";
 
 const ShelleyBanner: React.VFC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className: classNameProp
+  className: classNameProp,
 }) => {
   return (
-    <Grid className={st(classnames(classes.root, classNameProp))}>
+    <Grid className={st(classes.root, classNameProp)}>
       <div className={classes.internalGrid}>
         <Text as="h1" className={classes.title} uppercase vol={8}>
           Shelley

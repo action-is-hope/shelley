@@ -27,7 +27,7 @@ const Blockquote: React.VFC<BlockquoteProps> = ({
   citeAttr,
   citeVol = 2,
   className: classNameProp,
-  variant = 1,
+  variant,
   ...rest
 }) => (
   <blockquote

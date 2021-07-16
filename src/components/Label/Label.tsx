@@ -1,7 +1,6 @@
 /** Label.tsx */
 import type React from "react";
 import type { AlignPos } from "../types";
-import classNames from "classnames";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import HintText from "../HintText/HintText";
 /* = Style API. */
@@ -23,7 +22,7 @@ const Label: React.VFC<LabelProps> = ({
   className: classNameProp,
   inputControl,
   children,
-  inputPos = false,
+  inputPos = undefined,
   hint,
   visuallyHidden,
   ...attrs
@@ -35,12 +34,13 @@ const Label: React.VFC<LabelProps> = ({
     </span>
   );
 
-  const rootClassNames = classNames(classes.root, classNameProp);
-
-  const hasInput = inputControl ? true : false;
+  const hasInput: boolean = inputControl ? true : false;
 
   return (
-    <label className={st(rootClassNames, { inputPos, hasInput })} {...attrs}>
+    <label
+      className={st(classes.root, { inputPos, hasInput }, classNameProp)}
+      {...attrs}
+    >
       {visuallyHidden ? (
         <VisuallyHidden>{labelText}</VisuallyHidden>
       ) : (

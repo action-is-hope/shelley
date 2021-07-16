@@ -1,6 +1,5 @@
 /** StyleInfo.tsx */
 import type React from "react";
-import classNames from "classnames";
 import Grid from "../../components/Grid/Grid";
 import { P } from "../../components/Text/Text";
 /* = Style API. */
@@ -24,23 +23,24 @@ const StyleInfo: React.VFC<StyleInfoProps> = (
     componentHTML,
     componentCSS,
     disableDefaultLink = false,
-    disableShelleyLink = false
+    disableShelleyLink = false,
   } // ...rest
 ) => {
-  const rootClassNames = classNames(
-    classes.root,
-    grid.snapMidToGoal,
-    grid.mt1,
-    grid.mb2,
-    className
-  );
-
   const cssFileName =
     componentName &&
     componentName.charAt(0).toLowerCase() + componentName.slice(1);
 
   return (
-    <Grid variant={2} className={st(rootClassNames)}>
+    <Grid
+      variant={2}
+      className={st(
+        classes.root,
+        grid.snapMidToGoal,
+        // grid.mt1,
+        // grid.mb2,
+        className
+      )}
+    >
       <div className={classes.html}>
         <P>
           The raw <code>HMTL</code> output from <code>{componentName}:</code>

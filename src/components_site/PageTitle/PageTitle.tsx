@@ -1,6 +1,5 @@
 /** PageTitle.tsx */
 import type React from "react";
-import classNames from "classnames";
 import { H1 } from "../../components/Text/Text";
 import Grid from "../../components/Grid/Grid";
 /* = Style API. */
@@ -15,11 +14,11 @@ interface PageTitleProps extends React.HTMLProps<HTMLDivElement> {
 const PageTitle: React.VFC<PageTitleProps> = ({
   className: classNameProp,
   children,
-  vol = 9
+  vol = 9,
 }) => {
   return (
-    <Grid className={st(classNames(classes.root, classNameProp))}>
-      <H1 vol={vol} className={classes.title}>
+    <Grid className={st(classes.root, classNameProp)}>
+      <H1 vol={vol}>
         {/* <span>&lt;</span> */}
         {children}
         {/* <span>&gt;</span> */}

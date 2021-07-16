@@ -58,7 +58,7 @@ const Button = React.forwardRef(
     const className = st(
       classes.root,
       {
-        iconPos: icon ? iconPos : false,
+        iconPos: icon ? iconPos : undefined,
         fullWidth,
         tone,
         variant,

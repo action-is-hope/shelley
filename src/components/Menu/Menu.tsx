@@ -11,7 +11,6 @@
 
 import React from "react";
 
-import classnames from "classnames";
 import {
   Menu as ReachMenu,
   MenuButton as ReachMenuButton,
@@ -78,11 +77,7 @@ export const MenuList = React.forwardRef(
     { className, children, ...rest }: MenuListProps,
     ref?: React.Ref<HTMLDivElement>
   ) => (
-    <ReachMenuList
-      className={stList(classnames(list.root, className))}
-      ref={ref}
-      {...rest}
-    >
+    <ReachMenuList className={stList(list.root, className)} ref={ref} {...rest}>
       {children}
     </ReachMenuList>
   )
@@ -109,11 +104,7 @@ export const MenuItem = React.forwardRef(
     { className, children, as = "div", ...rest }: MenuItemProps,
     ref?: React.Ref<HTMLDivElement>
   ) => (
-    <ReachMenuItem
-      className={stItem(classnames(item.root, className))}
-      ref={ref}
-      {...rest}
-    >
+    <ReachMenuItem className={stItem(item.root, className)} ref={ref} {...rest}>
       {children}
     </ReachMenuItem>
   )
@@ -144,7 +135,7 @@ MenuPopover.displayName = "MenuPopover";
 //     ref?: React.Ref<HTMLLIElement | HTMLDivElement>
 //   ) => (
 //     <ReachMenuLink
-//       className={stItem(classnames(item.root, className))}
+//       className={stItem(item.root, className)}
 //       ref={ref}
 //       {...rest}
 //     >

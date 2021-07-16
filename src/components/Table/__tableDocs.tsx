@@ -10,7 +10,7 @@ import {
   TableHead,
   TableRow,
   TablePagination,
-  InputSelection
+  InputSelection,
 } from "../../indexLib";
 
 import { classes as text } from "../../styles/default/text.st.css";
@@ -18,7 +18,7 @@ import { classes as grid } from "../../styles/default/grid.st.css";
 
 import {
   // meta,
-  QuickRef
+  QuickRef,
   // ComponentDemo,
   // ComponentHTML,
   // ComponentCSS
@@ -41,7 +41,7 @@ const rows = [
   createData("Artic Fox", 40, 0.6, 8, 12),
   createData("Grey Wolf", 70, 1.6, 80, 20),
   createData("African Wild dog", 56, 1.1, 36, 12),
-  createData("Doge", 356, 16, 300, 999)
+  createData("Doge", 356, 16, 300, 999),
 ];
 
 const TableDocs: React.VFC = () => {
@@ -50,7 +50,7 @@ const TableDocs: React.VFC = () => {
       <PageTitle>Tables</PageTitle>
 
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Tables are for data d-d-data, d-d-data, never for layout...
         </P>
 
@@ -81,7 +81,7 @@ const TableDocs: React.VFC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(row => (
+                {rows.map((row) => (
                   <TableRow key={row.name}>
                     <TableCell header scope="row">
                       <InputSelection
@@ -114,7 +114,7 @@ const TableDocs: React.VFC = () => {
               //   native: true
               // }}
               onPageChange={(e, num) => console.log(e, num, "boom")}
-              onRowsPerPageChange={e => console.log(e)}
+              onRowsPerPageChange={(e) => console.log(e)}
               // ActionsComponent={TablePaginationActions}
             />
           </TableContainer>

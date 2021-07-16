@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./tablePagination.st.css";
 import Text from "../Text/Text";
 
@@ -44,7 +43,7 @@ interface TablePaginationProps extends React.HTMLAttributes<HTMLDivElement> {
 const defaultLabelDisplayedRows = ({
   from,
   to,
-  count
+  count,
 }: labelDisplayedRowsArgs) => {
   return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`}`;
 };
@@ -108,7 +107,7 @@ const TablePagination = React.forwardRef(
 
     return (
       <div
-        className={st(classnames(classes.root, classNameProp), {})}
+        className={st(classes.root, classNameProp)}
         data-testid={dataTestId}
         {...{ id, ref, ...rest }}
       >
@@ -135,7 +134,6 @@ const TablePagination = React.forwardRef(
               {rowsPerPageOptions.map(
                 (rowsPerPageOption: rowsPerPageOption) => (
                   <MenuItem
-                    className={classes.menuItem}
                     key={
                       rowsPerPageOption.value
                         ? `${rowsPerPageOption.value}`
@@ -165,7 +163,7 @@ const TablePagination = React.forwardRef(
             {labelDisplayedRows({
               from: count === 0 ? 0 : currentPage * rowsPerPage + 1,
               to: getLabelDisplayedRowsTo(),
-              count: count === -1 ? -1 : count
+              count: count === -1 ? -1 : count,
               // currentPage
             })}
           </Text>

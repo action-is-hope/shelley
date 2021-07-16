@@ -11,7 +11,7 @@ import {
   QuickRef,
   ComponentDemo,
   ComponentHTML,
-  ComponentCSS
+  ComponentCSS,
 } from "./__labelExamples";
 
 import CodeSample from "../../components_site/CodeSample/CodeSample";
@@ -23,7 +23,7 @@ const LabelsDocs: React.VFC = () => {
     <>
       <PageTitle>Label</PageTitle>
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Labels are rather aptly <code>for</code> labelling things, form{" "}
           <code>input</code> tags specifically, <code>label</code> is one of the
           most important semantic tags to get right in terms of usability,
