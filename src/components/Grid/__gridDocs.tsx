@@ -2,7 +2,6 @@ import type React from "react";
 import classnames from "classnames";
 
 import { Text, P, H2, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
 
@@ -248,7 +247,7 @@ variant?: number;`}</CodeSample>
           on a sports field. A few developers like sport... I think, maybe...
         </P>
 
-        <dl className={classnames(spacing.mt1, spacing.mb1, text.dl)}>
+        <dl className={classnames(spacing.mt1, spacing.mb1)}>
           <Text as="dt">
             <code>mid</code>
           </Text>

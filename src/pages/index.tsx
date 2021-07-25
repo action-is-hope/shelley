@@ -6,7 +6,13 @@ import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
+import { Item } from "@react-stately/collections";
+
 import { componentNav } from "../Routes";
+import MenuButton from "../components/MenuButton/MenuButton";
+import Button from "../components/Button/Button";
+import Label from "../components/Label/Label";
+import ButtonGroup from "../components/ButtonGroup/ButtonGroup";
 
 const IndexPage: React.VFC = () => {
   return (
@@ -19,7 +25,26 @@ const IndexPage: React.VFC = () => {
             <H2 uppercase vol={4}>
               Synopsis
             </H2>
-
+            {/* <ButtonGroup>
+              <Button>Test</Button>
+              <MenuButton
+                label="Actions"
+                onAction={(info: string) => console.log("info", info)}
+              >
+                <Item key="copy">Copy</Item>
+                <Item key="cut">Cut</Item>
+                <Item key="paste">Paste</Item>
+              </MenuButton>
+            </ButtonGroup> */}
+            <MenuButton
+              label="Actions"
+              onAction={(info: string) => console.log("info", info)}
+              variant={2}
+            >
+              <Item key="copy">Copy</Item>
+              <Item key="cut">Cut</Item>
+              <Item key="paste">Paste</Item>
+            </MenuButton>
             <P vol={4}>
               Follow the story of a digital nomad and a digital entity called
               Shelley as they strive night and day to create something beautiful

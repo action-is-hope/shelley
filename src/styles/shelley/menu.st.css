@@ -28,15 +28,36 @@
 
 :import {
   -st-from: "../../components/Menu/menuItem.st.css";
+  -st-default: MenuItem as MI;
+}
+
+:import {
+  -st-from: "../../components/MenuPopup/menuPopup.st.css";
+  -st-default: MenuPopup;
+}
+
+:import {
+  -st-from: "../../components/MenuItem/menuItem.st.css";
   -st-default: MenuItem;
 }
+
+
 
 @st-scope Shelley {
   MenuList {
     background: var(--color-background-1);
   }
 
-  MenuItem[data-selected] {
+  MI[data-selected] {
+    background: hsl(211, 81%, 36%);
+  }
+
+
+  MenuPopup {
+    background: var(--color-background-1);
+  }
+
+  MenuItem:isFocused {
     background: hsl(211, 81%, 36%);
   }
 

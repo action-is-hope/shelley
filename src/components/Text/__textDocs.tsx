@@ -1,13 +1,12 @@
 import type React from "react";
 import { P, H2, H3, H4, Grid } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 
 import {
   meta,
   QuickRef,
   ComponentDemo,
   ComponentHTML,
-  ComponentCSS
+  ComponentCSS,
 } from "./__textExamples";
 
 import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
@@ -18,7 +17,7 @@ const TextDocs: React.VFC = () => {
     <>
       <PageTitle>Text</PageTitle>
       <Grid variant={1} formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Text is for presenting words, we love words, they&apos;re the best.
           Keep it simple, enguaging and on point.
         </P>

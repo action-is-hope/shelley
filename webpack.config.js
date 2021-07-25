@@ -11,20 +11,20 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         loader: "ts-loader",
         options: {
-          transpileOnly: true
-        }
+          transpileOnly: true,
+        },
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        type: "asset"
-      }
-    ]
+        type: "asset",
+      },
+    ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new StylableWebpackPlugin({
@@ -34,11 +34,11 @@ module.exports = {
         // removeStylableDirectives: true,
         // classNameOptimizations: false,
         // Required until https://github.com/wix/stylable/issues/1870
-        shortNamespaces: false
+        shortNamespaces: false,
         // minify: true
-      }
+      },
     }),
-    new HtmlWebpackPlugin({ title: "Stylable App" })
+    new HtmlWebpackPlugin({ title: "Stylable App" }),
   ],
-  cache: { type: "filesystem" }
+  cache: { type: "filesystem" },
 };

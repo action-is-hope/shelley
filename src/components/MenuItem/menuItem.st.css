@@ -1,0 +1,5 @@
+/* menuItem.st.css CSS API */
+
+.root {
+  -st-states: isFocused;
+}

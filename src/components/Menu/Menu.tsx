@@ -57,17 +57,33 @@ export const Menu = ({ children, ...rest }: MenuProps) => (
 /**
  * Reach UI MenuButton - Churned out as Shelley button which provides styles.
  */
-export const MenuButton = React.forwardRef(
-  (
-    { children, ...rest }: MenuButtonProps,
-    ref?: React.Ref<HTMLButtonElement>
-  ) => (
+
+function MenuButtonBase<P extends React.ElementType = "button">(
+  { ...rest }: ButtonProps<P>,
+  ref: any
+) {
+  return (
     <Button as={ReachMenuButton} ref={ref} {...rest}>
-      {children}
+      {rest.children}
     </Button>
-  )
-);
-MenuButton.displayName = "MenuButton";
+  );
+}
+
+export const MenuButton = React.forwardRef(
+  MenuButtonBase
+) as typeof MenuButtonBase;
+
+// export const MenuButton = React.forwardRef(
+//   (
+//     { children, ...rest }: MenuButtonProps,
+//     ref?: React.Ref<HTMLButtonElement>
+//   ) => (
+//     <Button as={ReachMenuButton} ref={ref} {...rest}>
+//       {children}
+//     </Button>
+//   )
+// );
+// MenuButton.displayName = "MenuButton";
 
 /**
  * Reach UI MenuList - Decorated with stylable stylesheet.

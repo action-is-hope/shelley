@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { classes as style } from "./index.st.css";
+import { classes as style } from "./layout.st.css";
 
 import { Project as Default } from "../styles/default";
 

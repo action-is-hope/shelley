@@ -13,9 +13,6 @@ export declare type TextAlign =
 /** Accent color indexes */
 export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | undefined;
 
-/** Color indexes */
-// export declare type Color = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
-
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
 

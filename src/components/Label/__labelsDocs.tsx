@@ -2,7 +2,6 @@ import type React from "react";
 import classnames from "classnames";
 
 import { InputText, P, H2, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as utils } from "../../styles/shelley/utils.st.css";
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders as a basic button with custom #className 1`] = `
+exports[`Error renders as a basic button with custom #className 1`] = `
 <span
   className="ErrorText1524698733__root custom-class"
   data-testid="error-data-testid"

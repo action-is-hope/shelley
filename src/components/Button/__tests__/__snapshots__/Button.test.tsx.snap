@@ -67,7 +67,7 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
 
 exports[`Button renders as a basic button with custom #className 1`] = `
 <button
-  className="Button2465625684__root for-which-nobody-can-deny Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3 for-which-nobody-can-deny"
   data-testid="button-data-testid"
   onClick={[Function]}
   onMouseEnter={[Function]}
@@ -80,7 +80,7 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 </button>
 `;
 
-exports[`Button renders as third party anchor provided via #as and #t props 1`] = `
+exports[`Button renders as third party (react-router) anchor provided via #as and #to props 1`] = `
 <a
   className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
   data-testid="button-data-testid"
@@ -101,26 +101,6 @@ exports[`Button renders with stylable state prop classes, #tone, #variant, #vol 
   data-testid="button-data-testid"
   onClick={[Function]}
   onMouseEnter={[Function]}
->
-  <span
-    className="Button2465625684__inner"
-  >
-    I love big buttons and I cannot lie...
-  </span>
-</button>
-`;
-
-exports[`Button supports Reach Menu Button via #as 1`] = `
-<button
-  aria-controls="menu--1"
-  aria-haspopup={true}
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
-  data-reach-menu-button=""
-  data-testid="button-data-testid"
-  id="menu-button--menu"
-  onKeyDown={[Function]}
-  onMouseDown={[Function]}
-  type="button"
 >
   <span
     className="Button2465625684__inner"

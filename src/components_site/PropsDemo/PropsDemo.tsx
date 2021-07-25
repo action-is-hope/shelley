@@ -1,7 +1,6 @@
 /** PropsDemo.tsx */
 /** @todo Tidy this up, including types and maybe expose it. */
 import type React from "react";
-import classNames from "classnames";
 
 import {
   H2,
@@ -27,7 +26,7 @@ interface PropsDemoProps extends React.HTMLProps<HTMLSelectElement> {
 }
 
 const PropsDemo: React.VFC<PropsDemoProps> = ({
-  className,
+  className: classNameProp,
   children,
   demoProps,
   demoNonProps,
@@ -38,8 +37,6 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
   componentName,
   ...rest
 }) => {
-  const rootClassNames = classNames(classes.root, className);
-
   const setInput = (
     item: any,
     i: number,
@@ -92,7 +89,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
             aria-label={item.label}
             label={`${item.label}:`}
             type={item.type}
-            min={item.min}
+            // min={item.min}
             max={item.max}
             vol={1}
             variant={2}
@@ -165,7 +162,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
   };
 
   return (
-    <section className={st(rootClassNames)} {...rest}>
+    <section className={st(classes.root, classNameProp)} {...rest}>
       {demoProps && (
         <H2 vol={3} className={classes.propsHeading} uppercase>
           <span>Props Playground</span>

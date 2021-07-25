@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
 export const meta = {
-  name: "Button"
+  name: "Button",
 };
 import { H2, P } from "../../components/Text/Text";
 
@@ -26,7 +26,7 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      value: "Climate fight club"
+      value: "Climate fight club",
     },
     {
       name: "tone",
@@ -34,7 +34,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 1,
     },
     {
       name: "variant",
@@ -42,7 +42,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 3
+      value: 3,
     },
     {
       name: "volume",
@@ -50,22 +50,22 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 3
+      value: 3,
     },
     {
       name: "icon",
       label: "icon",
       type: "select",
       value: "No",
-      options: ["Yes", "No"]
+      options: ["Yes", "No"],
     },
     {
       name: "iconPos",
       label: "iconPos",
       type: "select",
       value: "end",
-      options: ["top", "end", "bottom", "start"]
-    }
+      options: ["top", "end", "bottom", "start"],
+    },
   ]);
   return (
     <PropsDemo
@@ -182,11 +182,7 @@ export const Example1 = () => (
     </P>
 
     <div className={grid.mid}>
-      <Button
-        variant={3}
-        as={"a"}
-        to="https://www.w3schools.com/html/html_links.asp"
-      >
+      <Button as={"a"} href="hhii">
         Basic anchor link
       </Button>
     </div>

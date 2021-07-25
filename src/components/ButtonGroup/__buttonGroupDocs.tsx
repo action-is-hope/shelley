@@ -1,7 +1,5 @@
 import type React from "react";
 import { P, H2, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
-// import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
 import {
   meta,

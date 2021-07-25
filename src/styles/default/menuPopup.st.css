@@ -1,0 +1,25 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+}
+
+/* = Component CSS API */
+:import {
+  -st-from: "../../components/MenuPopup/menuPopup.st.css";
+  -st-default: MenuPopup;
+}
+
+:import {
+  -st-from: "./mixins/menu.st.css";
+  -st-default: MenuMixin;
+  -st-named: menuList;
+}
+
+@st-scope Default {
+  MenuPopup {}
+
+  MenuPopup::list {
+    -st-mixin: menuList;
+  }
+}

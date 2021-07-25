@@ -15,13 +15,7 @@
 
 :vars {
   /* Mixin defaults, what to set these to? */
-  border-radius: 5px;
-  border-width: 2px;
-  padding: 0.96em 35px;
-  bg-hover: #333;
-  text-hover: #fff;
-  font-family: Arial, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  focus-bg: hsl(211, 81%, 36%);
 }
 
 .menuList {
@@ -56,6 +50,13 @@
   text-decoration: initial;
   padding: 0.4rem var(--spacing-unit);
 }
+
+.menuItem:hover,
+.menuItem:focus {
+  background: value(focus-bg);
+  outline: none;
+}
+
 
 .menuItemDisabled {
   opacity: 0.5;

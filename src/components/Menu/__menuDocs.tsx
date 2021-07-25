@@ -1,6 +1,5 @@
 import type React from "react";
 import { P, H2, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 
 import {
   meta,
@@ -10,7 +9,7 @@ import {
   Example1,
   Example2,
   Example3,
-  Example4
+  Example4,
 } from "./__menu.examples";
 
 import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
@@ -21,7 +20,7 @@ const MenuDocs: React.VFC = () => {
     <>
       <PageTitle>Menu</PageTitle>
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Menus are for selecting an action. Keyboard acccess is via the arrow
           keys rather than tab.
         </P>

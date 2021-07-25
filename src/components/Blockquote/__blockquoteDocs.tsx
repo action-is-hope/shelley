@@ -1,13 +1,12 @@
 import type React from "react";
 import { P, H2, Grid, Blockquote } from "../../indexLib";
-import { classes as text } from "../../styles/default/text.st.css";
 
 import {
   meta,
   QuickRef,
   ComponentDemo,
   ComponentHTML,
-  ComponentCSS
+  ComponentCSS,
 } from "./__blockquoteExamples";
 
 import PageTitle from "../../components_site/PageTitle/PageTitle";
@@ -19,7 +18,7 @@ const BlockquoteDocs: React.VFC = () => {
       <PageTitle>Blockquote</PageTitle>
 
       <Grid variant={1} tag="main" formatted>
-        <P vol={4} className={text.intro}>
+        <P vol={4}>
           Blockquotes are used for quoting peeps and papers; they tell any tech
           listening that this is a reference to someone else&apos;s words.
         </P>
