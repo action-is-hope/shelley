@@ -13,6 +13,7 @@ import {
 
 import PageTitle from "../../components_site/PageTitle/PageTitle";
 import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 const ButtonDocs = () => {
   const test = React.createRef<HTMLBaseElement>();
@@ -49,18 +50,24 @@ const ButtonDocs = () => {
         </P>
 
         <P>
-          Let&apos;s take a look at a few variations, there are a load of
-          permutations but you will likely end up using only a few as defined by
-          your design system.
+          Button is built upon <code>@react-aria/useButton</code> which{" "}
+          <q>
+            provides the behavior and accessibility implementation for a button
+            component
+          </q>{" "}
+          <a href="https://react-spectrum.adobe.com/react-aria/useButton.html">
+            <VisuallyHidden>React Aria </VisuallyHidden>- useButton docs
+          </a>
+          . The main differenace is that where we refer to our <code>as</code>{" "}
+          prop which maps to their <code>elementType</code>.
+        </P>
+
+        <P>
+          Moving onto the more visual aspects, let&apos;s take a look at a few
+          variations by messing about with some of the props we have available:
         </P>
 
         <ComponentDemo />
-
-        <P>
-          As ever, if this component isn&apos;t really working for you then you
-          can make your own, clone ours for a starting point if you need a
-          legup. It&apos;s pretty simple, we like simple.
-        </P>
 
         <Example1 />
 

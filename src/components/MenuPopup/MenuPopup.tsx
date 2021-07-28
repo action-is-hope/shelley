@@ -18,10 +18,14 @@ export type Ref = any;
 
 export const MenuPopup = React.forwardRef((props: any, ref: any) => {
   // Create menu state based on the incoming props
-  const state = useTreeState({ ...props, selectionMode: "none" });
+  const state = useTreeState({
+    ...props,
+    selectionMode: "none",
+  });
 
   // Get props for the menu element
   const menuRef = React.useRef(null);
+  console.log(props, state);
   const { menuProps } = useMenu(props, state, menuRef);
 
   // Handle events that should cause the menu to close,
@@ -33,9 +37,12 @@ export const MenuPopup = React.forwardRef((props: any, ref: any) => {
       shouldCloseOnBlur: true,
       isOpen: true,
       isDismissable: true,
+      isKeyboardDismissDisabled: false,
     },
     overlayRef
   );
+
+  // console.log("me", overlayProps);
   // Wrap in <FocusScope> so that focus is restored back to the
   // trigger when the menu is closed. In addition, add hidden
   // <DismissButton> components at the start and end of the list
@@ -60,6 +67,10 @@ export const MenuPopup = React.forwardRef((props: any, ref: any) => {
               item={item}
               state={state}
               onAction={props.onAction}
+              // onAction={(i: any) => {
+              //   console.log("YO", i);
+              //   return props.onAction(i);
+              // }}
               onClose={props.onClose}
             />
           ))}

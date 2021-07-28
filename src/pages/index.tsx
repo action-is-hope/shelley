@@ -25,7 +25,7 @@ const IndexPage: React.VFC = () => {
             <H2 uppercase vol={4}>
               Synopsis
             </H2>
-            {/* <ButtonGroup>
+            <ButtonGroup variant={3}>
               <Button>Test</Button>
               <MenuButton
                 label="Actions"
@@ -35,11 +35,23 @@ const IndexPage: React.VFC = () => {
                 <Item key="cut">Cut</Item>
                 <Item key="paste">Paste</Item>
               </MenuButton>
-            </ButtonGroup> */}
+            </ButtonGroup>
+            <Button
+              as={Link}
+              to="/button"
+              // isDisabled
+              onPress={(info: any) => console.log(info)}
+            >
+              Testings
+            </Button>
             <MenuButton
               label="Actions"
+              position={{ offset: 50 }}
               onAction={(info: string) => console.log("info", info)}
               variant={2}
+              // selectedKeys={["cut"]}
+              // disabledKeys={["cut"]}
+              // focusStrategy="last"
             >
               <Item key="copy">Copy</Item>
               <Item key="cut">Cut</Item>

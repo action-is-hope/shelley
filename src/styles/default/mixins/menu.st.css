@@ -53,11 +53,11 @@
 
 .menuItem:hover,
 .menuItem:focus {
-  background: value(focus-bg);
+  /* background: value(focus-bg); */
   outline: none;
 }
 
-
+.menuItem[aria-disabled=true],
 .menuItemDisabled {
   opacity: 0.5;
   cursor: not-allowed;

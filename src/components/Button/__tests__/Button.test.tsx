@@ -70,11 +70,11 @@ describe("Button", () => {
       .create(
         <Button
           data-testid="button-data-testid"
-          onClick={() => console.log("onClick")}
-          onMouseEnter={() => console.log("onMouseEnter")}
+          // onClick={() => console.log("onClick")}
+          // onMouseEnter={() => console.log("onMouseEnter")}
           href="http://shelley.earth"
           as="a"
-          ref={buttonRefAnchor}
+          // ref={buttonRefAnchor}
         >
           {btnText}
         </Button>
@@ -92,6 +92,7 @@ describe("Button", () => {
             as={Link}
             data-testid="button-data-testid"
             to="internal-link"
+            onPress={() => console.log("hi")}
             ref={buttonRefAnchor}
           >
             {btnText}

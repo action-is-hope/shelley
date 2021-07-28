@@ -1,14 +1,23 @@
 import React from "react";
+/* Adobe libs */
+// Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
+import { useButton } from "@react-aria/button";
+// import { mergeProps } from "@react-aria/utils";
+import type { AriaButtonProps } from "@react-types/button";
+/* Internal */
 import type { Accent, AlignPos, Volume, Variant } from "../types";
 import type { MergeElementProps } from "../utils";
-/* = Style API. */
+/* Style API */
 import { st, classes } from "./button.st.css";
 
 /**
- * Props
+ * Leveraging Adobes 'useButton' for the lions share of features.
+ * N.B: Omitting 'elementType' as preference is to use existing 'as'.
+ *
+ * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
  */
 
-export interface ButtonBaseProps {
+export interface ButtonBaseProps extends Omit<AriaButtonProps, "elementType"> {
   /** Define an Icon node, postion via #iconPos. */
   icon?: React.ReactNode;
   /** The position of the icon relative to the label. */
@@ -30,19 +39,82 @@ export type ButtonProps<P extends React.ElementType = "button"> = {
 
 function ButtonBase<T extends React.ElementType = "button">(
   {
+    as: As,
     children,
     className: classNameProp,
-    as,
     icon,
     iconPos = "end",
     fullWidth = false,
     tone = 1,
     variant = 1,
     vol = 3,
+    // Pull off known inputs of useButton
+    isDisabled,
+    // children,
+    onPress,
+    onPressStart,
+    onPressEnd,
+    onPressChange,
+    onPressUp,
+    autoFocus,
+    onFocus,
+    onBlur,
+    onFocusChange,
+    onKeyDown,
+    onKeyUp,
+    href,
+    target,
+    rel,
+    // elementType,
+    ariaExpanded,
+    ariaHaspopup,
+    ariaControls,
+    ariaPressed,
+    type,
+    id,
+    ariaLabel,
+    ariaLabelledby,
+    ariaDescribedby,
+    ariaDetails,
     ...rest
   }: ButtonProps<T>,
-  ref: React.Ref<T>
+  ref: React.Ref<HTMLElement>
 ) {
+  const { buttonProps, isPressed } = useButton(
+    {
+      isDisabled,
+      // children,
+      onPress,
+      onPressStart,
+      onPressEnd,
+      onPressChange,
+      onPressUp,
+      autoFocus,
+      onFocus,
+      onBlur,
+      onFocusChange,
+      onKeyDown,
+      onKeyUp,
+      href,
+      target,
+      rel,
+      // elementType,
+      "aria-expanded": ariaExpanded,
+      "aria-haspopup": ariaHaspopup,
+      "aria-controls": ariaControls,
+      "aria-pressed": ariaPressed,
+      type,
+      id,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
+      "aria-details": ariaDetails,
+      // Castings to use adobe libs...
+      elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
+    },
+    ref as React.RefObject<HTMLElement>
+  );
+
   const className = st(
     classes.root,
     {
@@ -51,6 +123,8 @@ function ButtonBase<T extends React.ElementType = "button">(
       tone,
       variant,
       vol,
+      isPressed,
+      isDisabled,
     },
     classNameProp
   );
@@ -66,11 +140,12 @@ function ButtonBase<T extends React.ElementType = "button">(
     </>
   );
   return React.createElement(
-    as || "button",
+    As || "button",
     {
       ref,
-      ...rest,
+      ...buttonProps,
       className,
+      ...rest,
     },
     internal
   );

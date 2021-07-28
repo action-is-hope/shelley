@@ -7,7 +7,9 @@
     fullWidth,
     tone(number),
     variant(number),
-    vol(number);
+    vol(number),
+    isPressed,
+    isDisabled;
 }
 
 .root,

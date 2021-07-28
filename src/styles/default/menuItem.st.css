@@ -21,7 +21,7 @@
     -st-mixin: menuItem;
   }
 
-  /* MenuItem:isFocused {
-    background: yellow;
-  } */
+  MenuItem:isSelected {
+    background-color: pink !important;
+  }
 }

@@ -1,5 +1,5 @@
 /* menuItem.st.css CSS API */
 
 .root {
-  -st-states: isFocused;
+  -st-states: isFocused, isSelected;
 }
