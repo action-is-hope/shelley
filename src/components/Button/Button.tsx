@@ -16,7 +16,7 @@ import { st, classes } from "./button.st.css";
  *
  * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
  */
-
+type ButtonVariants = "primary" | "secondary" | "quiet" | "fab" | string;
 export interface ButtonCustomProps
   extends Omit<AriaButtonProps, "elementType"> {
   /** Define an Icon node, postion via #iconPos. */
@@ -26,7 +26,7 @@ export interface ButtonCustomProps
   /** Tone index, defines the color palette. */
   tone?: Accent;
   /** Variant index, defines the 'look'. */
-  variant?: Variant;
+  variant?: ButtonVariants;
   /** Defines how 'loud' the Button should be in term of it's size. */
   vol?: Volume;
   /** Applies width of 100%. */
@@ -48,7 +48,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     iconPos = "end",
     fullWidth = false,
     tone = 1,
-    variant = 1,
+    variant = "primary",
     vol = 3,
     // Pull off known inputs for @react-aria -> useButton minus 'elementType'
     isDisabled,

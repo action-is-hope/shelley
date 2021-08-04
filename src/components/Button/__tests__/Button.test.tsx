@@ -54,7 +54,7 @@ describe("Button", () => {
           onMouseEnter={() => console.log("onMouseEnter")}
           ref={buttonRef}
           tone={6}
-          variant={6}
+          variant="primary"
           vol={6}
           fullWidth
         >
@@ -125,7 +125,7 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           ref={buttonRef}
-          variant={4}
+          variant="secondary"
           icon={<Icon alt={btnText}>{iconPath}</Icon>}
         />
       )

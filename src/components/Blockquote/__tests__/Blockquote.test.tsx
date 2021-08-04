@@ -6,7 +6,7 @@ const quoteText =
 const citeText = "Mahatma Gandhi";
 
 describe("Blockquote", () => {
-  it("renders as a basic blockquote with custom #className", () => {
+  it("renders as a basic blockquote with custom #className and data attr to test spread.", () => {
     const tree = renderer
       .create(
         <Blockquote
@@ -21,12 +21,11 @@ describe("Blockquote", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders as a blockquote with description as a <cite> node at a larger volume", () => {
+  it("renders as a blockquote with description as a <cite> node at a larger volume.", () => {
     const tree = renderer
       .create(
         <Blockquote
           variant={2}
-          data-testid="blockquote-data-testid"
           className="for-which-nobody-can-deny"
           desc={<cite>{citeText}</cite>}
           descVol={3}

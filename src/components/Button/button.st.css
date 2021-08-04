@@ -6,7 +6,7 @@
     iconPos(enum(top, end, bottom, start)),
     fullWidth,
     tone(number),
-    variant(number),
+    variant(string),
     vol(number),
     isPressed,
     isDisabled;

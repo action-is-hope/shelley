@@ -39,10 +39,9 @@ export const ComponentDemo = () => {
     {
       name: "variant",
       label: "variant",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 3,
+      type: "select",
+      value: "primary",
+      options: ["primary", "secondary", "quiet", "fab"],
     },
     {
       name: "volume",
@@ -182,7 +181,7 @@ export const Example1 = () => (
     </P>
 
     <div className={grid.mid}>
-      <Button as={"a"} href="hhii">
+      <Button as={"a"} variant="secondary" href="hhii">
         Basic anchor link
       </Button>
     </div>
