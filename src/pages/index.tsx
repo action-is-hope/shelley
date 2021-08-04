@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
+
 import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
 
 import { Item } from "@react-stately/collections";
@@ -11,7 +12,7 @@ import { Item } from "@react-stately/collections";
 import { componentNav } from "../Routes";
 import MenuButton from "../components/MenuButton/MenuButton";
 import Button from "../components/Button/Button";
-import Label from "../components/Label/Label";
+// import Label from "../components/Label/Label";
 import ButtonGroup from "../components/ButtonGroup/ButtonGroup";
 
 const IndexPage: React.VFC = () => {

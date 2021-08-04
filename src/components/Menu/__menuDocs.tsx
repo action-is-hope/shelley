@@ -93,7 +93,7 @@ const MenuDocs: React.VFC = () => {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/WCAG20/">
               Guideline 2.1 Keyboard Accessible: Make all functionality
               available from a keyboard.
@@ -128,7 +128,7 @@ const MenuDocs: React.VFC = () => {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/WCAG20/">
               Guideline 3.2 Predictable: Make Web pages appear and operate in
               predictable ways.

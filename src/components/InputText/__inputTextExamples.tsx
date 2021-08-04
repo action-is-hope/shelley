@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "InputText"
+  name: "InputText",
 };
 
 export const QuickRef = () => (
@@ -32,19 +32,19 @@ export const ComponentDemo = () => {
       name: "label",
       label: "label",
       type: "text",
-      value: "Form item label"
+      value: "Form item label",
     },
     {
       name: "hint",
       label: "hint",
       type: "text",
-      value: "Form item hint message"
+      value: "Form item hint message",
     },
     {
       name: "placeholder",
       label: "placeholder",
       type: "text",
-      value: "Placeholder text"
+      value: "Placeholder text",
     },
     {
       name: "rows",
@@ -52,7 +52,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 100,
-      value: 0
+      value: 0,
     },
     {
       name: "variant",
@@ -60,7 +60,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 1,
     },
     {
       name: "vol",
@@ -68,38 +68,38 @@ export const ComponentDemo = () => {
       type: "number",
       min: 1,
       max: 6,
-      value: 3
+      value: 3,
     },
     {
       name: "startAdornment",
       label: "startAdornment",
       type: "text",
-      value: ""
+      value: "",
     },
     {
       name: "endAdornment",
       label: "endAdornment",
       type: "text",
-      value: ""
+      value: "",
     },
     {
       name: "error",
       label: "error",
       type: "text",
-      value: "Form item error message"
+      value: "Form item error message",
     },
     {
       name: "touched",
       label: "touched",
       type: "checkbox",
-      value: false
+      value: false,
     },
     {
       name: "disabled",
       label: "disabled",
       type: "checkbox",
-      value: false
-    }
+      value: false,
+    },
   ]);
 
   return (
@@ -221,6 +221,8 @@ export const Example1 = () => (
       labelVisuallyHidden
       vol={6}
       autoComplete="off"
+      // type="text"
+      rows={2}
     />
     <br />
     <InputText

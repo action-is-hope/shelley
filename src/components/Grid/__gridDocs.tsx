@@ -481,7 +481,7 @@ Grid .mid {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-sequence.html">
               Meaningful Sequence: Understanding SC 1.3.2
             </a>

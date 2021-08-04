@@ -76,8 +76,8 @@ export const hintText = (...values: []) =>
 export const inputText = (...values: []) =>
   getStylableClassNames(values, InputText, "inputText");
 
-export const menu = (...values: []) =>
-  getStylableClassNames(values, Menu, "menu");
+// export const menu = (...values: []) =>
+//   getStylableClassNames(values, Menu, "menu");
 
 export const menuPopup = (...values: []) =>
   getStylableClassNames(values, MenuPopup, "menuPopup");

@@ -7,7 +7,7 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./inputBase.st.css";
 
-export type InputBaseProps = {
+export interface InputBaseProps {
   /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility. */
   //  id: string;
   /** Provide an error message that triggers the stylable error state. */
@@ -30,7 +30,7 @@ export type InputBaseProps = {
   vol?: Volume;
   /** @todo Wrap the children in a scroll wrapper. */
   // overflow?: boolean;
-};
+}
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface InputBaseInternalProps
@@ -77,8 +77,16 @@ InputBaseInternalProps) => {
   };
 
   const childrenWithProps = React.Children.map(children, (child) => {
-    return React.cloneElement(child as React.ReactElement<any>, {
+    console.log("to", child);
+    const item = child as React.ReactElement<React.PropsWithChildren<any>>;
+
+    // return React.cloneElement(child as React.ReactNode, {
+    //   ...inputAttrs,
+    //   className: st(classes.fieldInput, child?.props.className),
+    // });
+    return React.cloneElement(item, {
       ...inputAttrs,
+      className: st(classes.fieldInput, item.props.className),
     });
   });
 
@@ -116,4 +124,4 @@ InputBaseInternalProps) => {
 
 export default InputBase;
 
-InputBase.displayName = "InputBase";
+// InputBase.displayName = "InputBase";

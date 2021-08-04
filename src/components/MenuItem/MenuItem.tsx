@@ -7,8 +7,8 @@ import {
   AriaMenuItemProps,
 } from "@react-aria/menu";
 
-import { mergeProps } from "@react-aria/utils";
-import { useFocus } from "@react-aria/interactions";
+// import { mergeProps } from "@react-aria/utils";
+// import { useFocus } from "@react-aria/interactions";
 
 /* = Style API. */
 import { st, classes } from "./menuItem.st.css";
@@ -30,8 +30,8 @@ const MenuItem = ({
   state,
   onAction,
   onClose,
-  ...rest
-}: MenuItemProps) => {
+}: // ...rest
+MenuItemProps) => {
   // Get props for the menu item element
   const ref = React.useRef(null);
 

@@ -3,6 +3,8 @@
   It's what will get exposed to other packages when added as a dependency.
 */
 
+export * from "./components/types";
+
 /** Default components in alphabetical order */
 
 export { default as Blockquote } from "./components/Blockquote/Blockquote";

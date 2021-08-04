@@ -9,7 +9,7 @@ import CodeSample from "../../components_site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "Blockquote"
+  name: "Blockquote",
 };
 
 export const QuickRef = () => (
@@ -17,7 +17,7 @@ export const QuickRef = () => (
     className={grid.mid}
   >{`import { Blockquote } from "@actionishope/shelley";\n
 <Blockquote
-  cite="The Guardian - cite accepts react node, text or link etc"
+  desc="The Guardian - cite accepts react node, text or link etc"
   >
   <P>These findings suggest a substantial impact of mechanized bots in amplifying denialist messages about climate change, including support for Trump’s withdrawal from the Paris agreement.</P>
 </Blockquote>`}</CodeSample>
@@ -32,14 +32,14 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 1,
     },
     {
       name: "cite",
       label: "cite",
       type: "text",
-      value: "Donella Meadows, environmental scientist, 1941-2001 "
-    }
+      value: "Donella Meadows, environmental scientist, 1941-2001 ",
+    },
     // {
     //   name: "citeAttr",
     //   label: "citeAttr",
@@ -58,7 +58,7 @@ export const ComponentDemo = () => {
     `Faith in technology as the ultimate solution to all problems
     can thus divert our attention from the most fundamental
     problem-the problem of growth in a wfinite system and prevent
-    us from taking effective action to solve it.`
+    us from taking effective action to solve it.`,
   ];
   {
     /* https://www.bbc.co.uk/sounds/play/w3csyx5b - we've been here before! */
@@ -74,7 +74,7 @@ export const ComponentDemo = () => {
             ? `\n  variant={${labelDemoProps[0].value}}`
             : `\n  variant={ false }`
         } ${
-          labelDemoProps[1].value ? `\n  cite="${labelDemoProps[1].value}"` : ``
+          labelDemoProps[1].value ? `\n  desc="${labelDemoProps[1].value}"` : ``
         } \n>
 ${labelDemoProps[0].value == 0 ? `<P vol={4}>${quotes[0]}</P>` : ``} ${
           labelDemoProps[0].value == 1 ? `<P>${quotes[0]}</P>` : ``
@@ -93,7 +93,7 @@ ${labelDemoProps[0].value == 0 ? `<P vol={4}>${quotes[0]}</P>` : ``} ${
         variant={
           labelDemoProps[0].value === 0 ? false : labelDemoProps[0].value
         }
-        cite={labelDemoProps[1].value}
+        desc={labelDemoProps[1].value}
         // citeAttr={labelDemoProps[2].value}
       >
         {/* Render a few deferent examples depending on the variant. */}

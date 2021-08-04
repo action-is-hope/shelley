@@ -5,43 +5,36 @@ import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
 
-export interface BlockquoteProps
-  extends Pick<
-    React.HTMLProps<HTMLQuoteElement>,
-    Exclude<keyof React.HTMLProps<HTMLQuoteElement>, "cite">
-  > {
+export interface BlockquoteCustomProps {
   children: React.ReactNode;
-  /** Chuck in a citation node rendered within a Text component. */
-  cite?: React.ReactNode;
-  /* = The text volume to use for the citation if provided. */
-  citeAttr?: string;
-  /* = The native, visually cite attr value. */
-  citeVol?: Volume;
+  /** Describe the quote with inline elemnts like cite and/or links to the source. */
+  desc?: React.ReactNode;
+  /** Changes the volume of the description. */
+  descVol?: Volume;
   /** Variant index. */
   variant?: Variant;
 }
 
+export type BlockquoteProps = BlockquoteCustomProps &
+  React.HTMLAttributes<HTMLQuoteElement>;
+
 const Blockquote: React.VFC<BlockquoteProps> = ({
   children,
-  cite,
-  citeAttr,
-  citeVol = 2,
   className: classNameProp,
+  desc,
+  descVol = 2,
   variant,
   ...rest
 }) => (
   <blockquote
     className={st(classes.root, { variant }, classNameProp)}
-    cite={citeAttr}
     {...rest}
   >
     <div className={classes.content}>{children}</div>
-    {cite && (
-      <footer className={classes.footer}>
-        <Text as="cite" vol={citeVol} className={classes.cite}>
-          {cite}
-        </Text>
-      </footer>
+    {desc && (
+      <Text as="footer" vol={descVol} className={classes.desc}>
+        {desc}
+      </Text>
     )}
   </blockquote>
 );

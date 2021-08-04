@@ -4,14 +4,7 @@ import type { Accent, Volume, Variant } from "../types";
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
 
-/**
- * ButtonGroup props extending those of a regular button, we are overriding tone.
- */
-export interface ButtonGroupProps
-  extends Pick<
-    React.HTMLAttributes<HTMLDivElement>,
-    Exclude<keyof React.HTMLAttributes<HTMLDivElement>, "tone">
-  > {
+export interface ButtonGroupCustomProps {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
@@ -20,12 +13,15 @@ export interface ButtonGroupProps
   tone?: Accent;
   /** Variant index. */
   variant?: Variant;
-  /** How 'loud' should this ButtonGroup be? */
+  /** Changes the volume of the buttons. */
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
   fullWidth?: boolean;
 }
+
+export type ButtonGroupProps = ButtonGroupCustomProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
 const ButtonGroup = React.forwardRef(
   (
@@ -49,7 +45,7 @@ const ButtonGroup = React.forwardRef(
         {...rest}
         ref={ref}
       >
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child) => {
           if (!React.isValidElement(child)) {
             return null;
           }
@@ -60,7 +56,7 @@ const ButtonGroup = React.forwardRef(
             tone: child.props.tone || tone,
             vol: child.props.vol || vol,
             variant: child.props.variant || variant,
-            icon: child.props.icon
+            icon: child.props.icon,
           });
         })}
       </div>

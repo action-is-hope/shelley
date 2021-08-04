@@ -17,7 +17,8 @@ import { st, classes } from "./button.st.css";
  * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
  */
 
-export interface ButtonBaseProps extends Omit<AriaButtonProps, "elementType"> {
+export interface ButtonCustomProps
+  extends Omit<AriaButtonProps, "elementType"> {
   /** Define an Icon node, postion via #iconPos. */
   icon?: React.ReactNode;
   /** The position of the icon relative to the label. */
@@ -35,7 +36,8 @@ export interface ButtonBaseProps extends Omit<AriaButtonProps, "elementType"> {
 export type ButtonProps<P extends React.ElementType = "button"> = {
   /** Custom element to render such as an anchor "a" or a router "Link" component. */
   as?: P;
-} & MergeElementProps<P, ButtonBaseProps>;
+  // Dynamically apply element props types based on the input (P).
+} & MergeElementProps<P, Omit<ButtonCustomProps, "as">>;
 
 function ButtonBase<T extends React.ElementType = "button">(
   {
@@ -48,9 +50,8 @@ function ButtonBase<T extends React.ElementType = "button">(
     tone = 1,
     variant = 1,
     vol = 3,
-    // Pull off known inputs of useButton
+    // Pull off known inputs for @react-aria -> useButton minus 'elementType'
     isDisabled,
-    // children,
     onPress,
     onPressStart,
     onPressEnd,
@@ -65,7 +66,6 @@ function ButtonBase<T extends React.ElementType = "button">(
     href,
     target,
     rel,
-    // elementType,
     ariaExpanded,
     ariaHaspopup,
     ariaControls,
@@ -83,7 +83,6 @@ function ButtonBase<T extends React.ElementType = "button">(
   const { buttonProps, isPressed } = useButton(
     {
       isDisabled,
-      // children,
       onPress,
       onPressStart,
       onPressEnd,
@@ -98,7 +97,6 @@ function ButtonBase<T extends React.ElementType = "button">(
       href,
       target,
       rel,
-      // elementType,
       "aria-expanded": ariaExpanded,
       "aria-haspopup": ariaHaspopup,
       "aria-controls": ariaControls,
@@ -109,7 +107,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby,
       "aria-details": ariaDetails,
-      // Castings to use adobe libs...
+      // Map 'as' to elementType, casting to please adobe libs...
       elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
     },
     ref as React.RefObject<HTMLElement>

@@ -3,14 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
-import { useOverlayTriggerState } from "@react-stately/overlays";
+// import { useOverlayTriggerState } from "@react-stately/overlays";
 import type { PositionProps } from "@react-types/overlays";
 
 // https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
-import { useButton } from "@react-aria/button";
+// import { useButton } from "@react-aria/button";
 // @react-types/menu
 //import {useOverlayTriggerState} from '@react-stately/overlays';
-import { useOverlayPosition, useOverlayTrigger } from "@react-aria/overlays";
+import { useOverlayPosition } from "@react-aria/overlays";
 // import type { MenuTriggerProps } from "@react-types/menu";
 // import type { PositionProps } from "@react-types/overlays";
 /* = Style API. */
@@ -20,9 +20,10 @@ import Button, { ButtonProps } from "../Button/Button";
 
 export interface MenuButtonProps extends ButtonProps {
   // omit as
-  position: PositionProps;
+  position?: PositionProps;
   label: string;
   focusStrategy?: "first" | "last";
+  onAction?: (e: any) => void;
 }
 // extend position props and button
 const MenuButton = ({
@@ -106,7 +107,7 @@ const MenuButton = ({
             ref={overlayRef}
             // onAction={(i: any) => console.log("onPress", i)}
           />,
-          document.querySelector("body")
+          document.querySelector("body") as HTMLElement
         )}
     </>
   );

@@ -88,7 +88,7 @@ const BlockquoteDocs: React.VFC = () => {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#mid-structure-separation-programmatic">
               Labels or Instructions: Understanding SC 3.3.2
             </a>

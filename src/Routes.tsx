@@ -25,6 +25,8 @@ interface NavigationItem {
 
 type Navigation = NavigationItem[];
 
+// const data = require("../docs/docs-data.json");
+// console.log("hi", data);
 export const componentNav: Navigation = [
   {
     path: "/button",

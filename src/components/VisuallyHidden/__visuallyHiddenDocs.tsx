@@ -84,7 +84,7 @@ const VisuallyHiddenDocs: React.VFC = () => {
         <P>
           How does a page full of those bad boys sound on our screen reader?
         </P>
-        <Blockquote variant={1} citeVol={2} cite="Shelley 'Reader'">
+        <Blockquote variant={1} descVol={2} desc="Shelley 'Reader'">
           <P vol={2}>
             See more... See more... See more... See more... See more...
           </P>
@@ -114,8 +114,8 @@ const VisuallyHiddenDocs: React.VFC = () => {
 
         <Blockquote
           variant={2}
-          citeVol={2}
-          cite={
+          descVol={2}
+          desc={
             <a href="https://moz.com/learn/seo/anchor-text">
               Source: Anchor text keyword density - Moz, Anchor Text article
             </a>
@@ -176,7 +176,7 @@ const VisuallyHiddenDocs: React.VFC = () => {
           this case we are looking at:
         </P>
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html">
               Link Purpose (In Context): Understanding Success Criterion 2.4.4
             </a>
@@ -194,7 +194,7 @@ const VisuallyHiddenDocs: React.VFC = () => {
           criterion of 2.4.4 which states:
         </P>
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html">
               Link Purpose (In Context): Understanding Success Criterion 2.4.4
             </a>

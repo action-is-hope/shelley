@@ -163,7 +163,7 @@ const LabelsDocs: React.VFC = () => {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html">
               Labels or Instructions: Understanding SC 3.3.2
             </a>

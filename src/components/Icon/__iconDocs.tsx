@@ -8,7 +8,7 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
 } from "./__iconExamples";
 
 import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
@@ -102,7 +102,7 @@ const IconDocs: React.VFC = () => {
         </P>
 
         <Blockquote
-          cite={
+          desc={
             <a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html">
               Non-text Content: Understanding SC 1.1.1
             </a>

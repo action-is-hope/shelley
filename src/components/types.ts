@@ -43,7 +43,6 @@ export declare type TextInputType =
   | "search"
   | "tel"
   | "text"
-  | "textarea" // Internally map to textarea element.
   | "time"
   | "url";
 
