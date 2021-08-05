@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Text, { H2, P } from "../components/Text/Text";
 import Grid from "../components/Grid/Grid";
 
-import ShelleyBanner from "../components_site/ShelleyBanner/ShelleyBanner";
+import ShelleyBanner from "../components-site/ShelleyBanner/ShelleyBanner";
 
 import { Item } from "@react-stately/collections";
 
@@ -49,7 +49,7 @@ const IndexPage: React.VFC = () => {
               label="Actions"
               position={{ offset: 50 }}
               onAction={(info: string) => console.log("info", info)}
-              variant={2}
+              variant="secondary"
               // selectedKeys={["cut"]}
               // disabledKeys={["cut"]}
               // focusStrategy="last"

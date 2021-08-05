@@ -1,20 +1,16 @@
 /* inputSelectionExamples.tsx */
 import React from "react";
-// Example Component
-import InputSelection from "./InputSelection";
+import { InputSelection, Button, Icon, P, H2 } from "../../indexLib";
 
 // Supporting Components
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
-import Button from "../Button/Button";
-import { P, H2 } from "../../components/Text/Text";
-import Icon from "../../components/Icon/Icon";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
 
 export const meta = {
-  name: "InputSelection"
+  name: "InputSelection",
 };
 
 export const QuickRef = () => (
@@ -33,19 +29,19 @@ export const ComponentDemo = () => {
       name: "label",
       label: "label",
       type: "text",
-      value: "Form item label"
+      value: "Form item label",
     },
     {
       name: "hint",
       label: "hint",
       type: "text",
-      value: ""
+      value: "",
     },
     {
       name: "type",
       label: "type",
       type: "text",
-      value: "checkbox"
+      value: "checkbox",
     },
     {
       name: "variant",
@@ -53,7 +49,7 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 1,
     },
     {
       name: "vol",
@@ -61,33 +57,33 @@ export const ComponentDemo = () => {
       type: "number",
       min: 1,
       max: 6,
-      value: 3
+      value: 3,
     },
     {
       name: "inputPos",
       label: "inputPos",
       type: "select",
       value: "end",
-      options: ["top", "end", "bottom", "start"]
+      options: ["top", "end", "bottom", "start"],
     },
     {
       name: "error",
       label: "error",
       type: "text",
-      value: "Form item error message"
+      value: "Form item error message",
     },
     {
       name: "touched",
       label: "touched",
       type: "checkbox",
-      value: false
+      value: false,
     },
     {
       name: "disabled",
       label: "disabled",
       type: "checkbox",
-      value: false
-    }
+      value: false,
+    },
   ]);
   // const inputEl = React.useRef();
   const selectionRef = React.createRef<HTMLInputElement>();

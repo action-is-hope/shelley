@@ -9,8 +9,8 @@ import {
   ComponentCSS,
 } from "./__textExamples";
 
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const TextDocs: React.VFC = () => {
   return (

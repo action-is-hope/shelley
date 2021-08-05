@@ -22,7 +22,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/PageTitle/pageTitle.st.css";
+  -st-from: "../../components-site/PageTitle/pageTitle.st.css";
   -st-default: PageTitle;
 }
 

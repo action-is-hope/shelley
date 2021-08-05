@@ -211,8 +211,7 @@
   /* = 'Quiet' */
   Button:variant(quiet) {}
 
-  /* = 'Floating Action Button (FAB)' - Thank you Material! */
-
+  /* = 'FAB - Floating Action Button' - Thank you Material! */
   Button:variant(fab) {
     padding: 0;
     border-radius: 999px;

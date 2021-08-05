@@ -1,15 +1,12 @@
 /* buttonGroupExamples.tsx */
 import React from "react";
-/* Example Component */
-import Button from "../Button/Button";
+import { Button, ButtonGroup, Icon } from "../../indexLib";
 /* Supporting Components */
-import Icon from "../Icon/Icon";
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
-import ButtonGroup from "./ButtonGroup";
 export const meta = {
-  name: "ButtonGroup"
+  name: "ButtonGroup",
 };
 
 export const QuickRef = () => (
@@ -31,15 +28,14 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 1
+      value: 1,
     },
     {
       name: "variant",
       label: "variant",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 1
+      type: "select",
+      value: "primary",
+      options: ["primary", "secondary", "quiet", "fab", "false"],
     },
     {
       name: "volume",
@@ -47,15 +43,15 @@ export const ComponentDemo = () => {
       type: "number",
       min: 0,
       max: 6,
-      value: 2
+      value: 2,
     },
     {
       name: "orientation",
       label: "orientation",
       type: "select",
       value: "horizontal",
-      options: ["horizontal", "vertical"]
-    }
+      options: ["horizontal", "vertical"],
+    },
   ]);
   return (
     <PropsDemo
@@ -69,7 +65,7 @@ export const ComponentDemo = () => {
             ? `\n  tone={${labelDemoProps[0].value}}`
             : `\n  tone={false}`
         } ${
-          labelDemoProps[1].value > 0
+          labelDemoProps[1].value !== "undefined"
             ? `\n  variant={${labelDemoProps[1].value}}`
             : `\n  variant={false}`
         } ${

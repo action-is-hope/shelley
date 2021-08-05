@@ -71,11 +71,13 @@
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
 
+
   /* = Variant 2: 'Secondary' */
   Button:variant(secondary) {
     --border-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
+
 
   /* = Variant 3: 'Quiet' */
   Button:variant(quiet) {
@@ -104,6 +106,7 @@
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
 
+
   /* = Tones/Colours */
   Button:tone(1) {
     --accent: var(--color-accent-1);
@@ -124,7 +127,6 @@
   Button:tone(10) {
     --text-color: inherit;
     --accent: rgba(var(--color-ui-raw), 0);
-
   }
 
   Button:tone(10):hover,

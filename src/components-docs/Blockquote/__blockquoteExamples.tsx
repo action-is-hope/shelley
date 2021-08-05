@@ -1,11 +1,11 @@
 /* __blockquoteExamples.tsx */
 import React from "react";
 // Example Component
-import Blockquote from "./Blockquote";
+import { Blockquote } from "../../indexLib";
 // Supporting Components
 import { P, H2 } from "../../components/Text/Text";
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
@@ -35,17 +35,11 @@ export const ComponentDemo = () => {
       value: 1,
     },
     {
-      name: "cite",
-      label: "cite",
+      name: "desc",
+      label: "desc",
       type: "text",
       value: "Donella Meadows, environmental scientist, 1941-2001 ",
     },
-    // {
-    //   name: "citeAttr",
-    //   label: "citeAttr",
-    //   type: "text",
-    //   value: "https://en.wikipedia.org/wiki/Donella_Meadows"
-    // }
   ]);
 
   const quotes = [

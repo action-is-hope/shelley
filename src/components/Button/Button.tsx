@@ -5,7 +5,7 @@ import { useButton } from "@react-aria/button";
 // import { mergeProps } from "@react-aria/utils";
 import type { AriaButtonProps } from "@react-types/button";
 /* Internal */
-import type { Accent, AlignPos, Volume, Variant } from "../types";
+import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
 import type { MergeElementProps } from "../utils";
 /* Style API */
 import { st, classes } from "./button.st.css";
@@ -16,7 +16,7 @@ import { st, classes } from "./button.st.css";
  *
  * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
  */
-type ButtonVariants = "primary" | "secondary" | "quiet" | "fab" | string;
+
 export interface ButtonCustomProps
   extends Omit<AriaButtonProps, "elementType"> {
   /** Define an Icon node, postion via #iconPos. */

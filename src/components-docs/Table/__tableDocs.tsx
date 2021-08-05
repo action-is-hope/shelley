@@ -22,7 +22,7 @@ import {
   // ComponentCSS
 } from "./__tableExamples";
 
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const createData = (
   name: string,

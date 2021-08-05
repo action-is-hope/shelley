@@ -11,8 +11,8 @@ import {
   Example1,
 } from "./__iconExamples";
 
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const IconDocs: React.VFC = () => {
   return (

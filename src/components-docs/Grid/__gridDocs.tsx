@@ -13,9 +13,9 @@ import {
   Example1,
 } from "./__gridExamples";
 
-import CodeSample from "../../components_site/CodeSample/CodeSample";
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const GridDocs: React.VFC = () => {
   return (

@@ -1,11 +1,11 @@
 /* __table  Examples.tsx */
 import type React from "react";
 
-import CodeSample from "../../components_site/CodeSample/CodeSample";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "Table"
+  name: "Table",
 };
 
 export const QuickRef: React.VFC = () => (

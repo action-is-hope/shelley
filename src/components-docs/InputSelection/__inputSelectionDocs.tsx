@@ -7,11 +7,11 @@ import {
   ComponentDemo,
   ComponentHTML,
   ComponentCSS,
-  Example1
+  Example1,
 } from "./__inputSelectionExamples";
 
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const InputSelectionDocs: React.VFC = () => {
   return (

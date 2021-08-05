@@ -12,8 +12,8 @@ import {
   Example4,
 } from "./__menu.examples";
 
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import PageTitle from "../../components_site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
 
 const MenuDocs: React.VFC = () => {
   return (

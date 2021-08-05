@@ -12,55 +12,55 @@
 }
 
 :import {
-  -st-from: "../../../components_site/CodeSample/codeSample.st.css";
+  -st-from: "../../../components-site/CodeSample/codeSample.st.css";
   -st-default: CodeSample;
 }
 
-.formatted>p+p,
-.formatted>p+h4,
-.formatted>p+h5,
-.formatted>h2+p,
-.formatted>h3+p,
-.formatted>h4+p,
-.formatted>h5+p,
-.formatted>h6+p,
-.formatted>h4+h5 {
+.formatted > p + p,
+.formatted > p + h4,
+.formatted > p + h5,
+.formatted > h2 + p,
+.formatted > h3 + p,
+.formatted > h4 + p,
+.formatted > h5 + p,
+.formatted > h6 + p,
+.formatted > h4 + h5 {
   margin-top: calc(var(--spacing-unit) * 2);
 }
 
-.formatted>blockquote {
+.formatted > blockquote {
   margin-top: calc(var(--spacing-unit) * 4);
   margin-bottom: calc(var(--spacing-unit) * 5);
   /* margin-bottom: 0; */
 }
 
 
-.formatted>CodeSample {
+.formatted > CodeSample {
   margin-top: calc(var(--spacing-unit) * 2);
   margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
-.formatted>p+div {
+.formatted > p + div {
   /* margin-top: calc(var(--spacing-unit) * 2); */
 }
 
-.formatted>blockquote+Text {
+.formatted > blockquote + Text {
   margin-top: calc(var(--spacing-unit) * 6);
 }
 
-.formatted>p+h2 {
+.formatted > p + h2 {
   margin-top: calc(var(--spacing-unit) * 4);
 }
 
-.formatted>p+Text.vol4 {
+.formatted > p + Text.vol4 {
   margin-top: calc(var(--spacing-unit) * 8);
 }
 
-.formatted>p+h3,
-.formatted>h2+h3 {
+.formatted > p + h3,
+.formatted > h2 + h3 {
   margin-top: calc(var(--spacing-unit) * 4);
 }
 
-.formatted>p+h6 {
+.formatted > p + h6 {
   margin-top: calc(var(--spacing-unit) * 2);
 }

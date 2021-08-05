@@ -85,8 +85,8 @@ export * from "./components/VisuallyHidden/VisuallyHidden";
 
 // @todo Move these into a seperate package designed to help building UI libs on top of Shelley.
 
-// export { default as CodeSample } from "./components_site/CodeSample/CodeSample";
-// export * from "./components_site/CodeSample/CodeSample";
+// export { default as CodeSample } from "./components-site/CodeSample/CodeSample";
+// export * from "./components-site/CodeSample/CodeSample";
 
-// export { default as Logo } from "./components_site/Logo/Logo";
-// export * from "./components_site/Logo/Logo";
+// export { default as Logo } from "./components-site/Logo/Logo";
+// export * from "./components-site/Logo/Logo";

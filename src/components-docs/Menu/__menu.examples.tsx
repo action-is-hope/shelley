@@ -1,6 +1,6 @@
 /* menuExamples.tsx */
 import React from "react";
-/* Example Component */
+
 import {
   Menu,
   MenuList,
@@ -8,12 +8,15 @@ import {
   MenuItem,
   MenuItems,
   MenuPopover,
-} from "./Menu";
+  Icon,
+  Button,
+  ButtonGroup,
+  Text,
+  H2,
+} from "../../indexLib";
+
 /* Supporting Components */
-import Icon from "../Icon/Icon";
-import Button from "../Button/Button";
-import ButtonGroup from "../ButtonGroup/ButtonGroup";
-import Text, { H2 } from "../Text/Text";
+
 import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
 import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";

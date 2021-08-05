@@ -1,11 +1,12 @@
 /* buttonExamples.tsx */
 import React from "react";
 /* Example Component */
-import Button from "./Button";
+import { Button } from "../../indexLib";
+
 /* Supporting Components */
 import Icon from "../../components/Icon/Icon";
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
 export const meta = {
@@ -15,7 +16,7 @@ import { H2, P } from "../../components/Text/Text";
 
 export const QuickRef = () => (
   <CodeSample className={grid.mid}>{`import Button from "@actionishope/shelley";
-\n<Button>Climate fight club</Button>
+\n<Button>Hemp 4 Victory!</Button>
 /* One rule: Fight climate change, not each other. */`}</CodeSample>
 );
 
@@ -26,7 +27,7 @@ export const ComponentDemo = () => {
       name: "children",
       label: "children",
       type: "text",
-      value: "Climate fight club",
+      value: "Hemp 4 Victory!",
     },
     {
       name: "tone",
@@ -41,7 +42,7 @@ export const ComponentDemo = () => {
       label: "variant",
       type: "select",
       value: "primary",
-      options: ["primary", "secondary", "quiet", "fab"],
+      options: ["primary", "secondary", "quiet", "fab", "false"],
     },
     {
       name: "volume",
@@ -78,15 +79,15 @@ export const ComponentDemo = () => {
             ? `\n  tone={${labelDemoProps[1].value}}`
             : `\n  tone={false}`
         } ${
-          labelDemoProps[2].value > 0
-            ? `\n  variant={${labelDemoProps[2].value}}`
+          labelDemoProps[2].value !== "false"
+            ? `\n  variant="${labelDemoProps[2].value}"`
             : `\n  variant={false}`
         } ${
           labelDemoProps[3].value > 0
             ? `\n  vol={${labelDemoProps[3].value}}`
             : `\n  vol={false}`
         } ${
-          labelDemoProps[4].value === "Yes"
+          labelDemoProps[4].value === "Yes" || labelDemoProps[2].value === "fab"
             ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`
             : ``
         } ${
@@ -99,12 +100,13 @@ export const ComponentDemo = () => {
       <Button
         tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
         icon={
-          labelDemoProps[4].value === "No" ? (
-            false
-          ) : (
+          labelDemoProps[4].value === "Yes" ||
+          labelDemoProps[2].value === "fab" ? (
             <Icon>
               <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
             </Icon>
+          ) : (
+            false
           )
         }
         iconPos={labelDemoProps[5].value}
@@ -120,52 +122,39 @@ export const ComponentDemo = () => {
 };
 
 export const ComponentHTML = () => (
-  <CodeSample>{`<button class="button-root button-tone1 button-variant1 button-vol2">
+  <CodeSample>{`<button class="button-root button-tone1 button-variant-primary button-vol2">
   <span class="button-inner">Earth Guardians</span>
 </button>`}</CodeSample>
 );
 
 export const ComponentCSS = () => (
-  <CodeSample fixedHeight>{`/** button.st.css */
+  <CodeSample fixedHeight>{`/** button.st.css selector examples... */
 
-/* Root */
-Button {}
+  /** Variants selectors */
 
-/* Parts */
+  /* = 'Primary' */
+  Button:variant(primary) {}
 
-/* 'inner' button, use for vertical spacing to give a potential Icon more room */
-Button::inner {}
+  /* = 'Secondary' */
+  Button:variant(secondary) {}
 
-/* The divider which is rendered with an icon only. */
-Button::divider {}
+  /* = 'Quiet' */
+  Button:variant(quiet) {}
 
-/* A basic CSS tooltip. */
-Button::tip {}
+  /* = 'Floating Action Button'  */
+  Button:variant(fab) {}
 
+  /* You can also specify your own variants... */
 
-/* Accent colours */
-Button.tone1 {}
-Button.tone2 {}
-Button.tone3 {}
-Button.tone4 {}
-Button.tone5 {}
-Button.tone6 {}
+  /** Volumes selectors (1-6) */
+  Button:vol(1) {}
+  Button:vol(2) {}
+  Button:vol(3) {}
+  Button:vol(4) {}
+  Button:vol(5) {}
+  Button:vol(6) {}
 
-/* Volumes */
-Button.vol1 {}
-Button.vol2 {}
-Button.vol3 {}
-Button.vol4 {}
-Button.vol5 {}
-Button.vol6 {}
-
-/* Variants */
-Button.variant1 {}
-Button.variant2 {}
-Button.variant3 {}
-Button.variant4 {}
-Button.variant5 {}
-Button.variant6 {}`}</CodeSample>
+`}</CodeSample>
 );
 
 export const Example1 = () => (

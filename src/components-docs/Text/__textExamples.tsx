@@ -1,19 +1,15 @@
 /* textExamples.tsx */
 import React from "react";
-// Example Component.
-import Text from "./Text";
-import Grid from "../../components/Grid/Grid";
+import { P, Text, Grid } from "../../indexLib";
 
 // Supporting Components.
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
-import { P } from "../../components/Text/Text";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 
-// Styles.
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "Text"
+  name: "Text",
 };
 
 export const QuickRef = () => (
@@ -37,19 +33,19 @@ export const ComponentDemo = () => {
       type: "number",
       min: 1,
       max: 12,
-      value: 3
+      value: 3,
     },
     {
       name: "truncate",
       label: "truncate",
       type: "checkbox",
-      value: false
+      value: false,
     },
     {
       name: "uppercase",
       label: "uppercase",
       type: "checkbox",
-      value: false
+      value: false,
     },
     {
       name: "children",
@@ -57,8 +53,8 @@ export const ComponentDemo = () => {
       type: "textarea",
       value:
         // "The IPCC prepares comprehensive Assessment Reports about knowledge on climate change, its causes, potential impacts and response options. The IPCC also produces Special Reports, which are an assessment on a specific issue and Methodology Reports, which provide practical guidelines for the preparation of greenhouse gas inventories."
-        "Valid children go here."
-    }
+        "Valid children go here.",
+    },
   ]);
 
   return (

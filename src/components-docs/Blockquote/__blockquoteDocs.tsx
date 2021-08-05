@@ -9,8 +9,8 @@ import {
   ComponentCSS,
 } from "./__blockquoteExamples";
 
-import PageTitle from "../../components_site/PageTitle/PageTitle";
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
 
 const BlockquoteDocs: React.VFC = () => {
   return (
@@ -46,12 +46,6 @@ const BlockquoteDocs: React.VFC = () => {
         </P>
 
         <ComponentDemo />
-
-        <P>
-          As ever, if this component isn&apos;t really working for you then you
-          can make your own, clone ours for a starting point if you need a
-          legup. It&apos;s pretty simple, we like simple.
-        </P>
 
         <H2 vol={4} uppercase>
           Styling

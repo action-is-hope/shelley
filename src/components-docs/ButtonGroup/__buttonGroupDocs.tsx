@@ -10,8 +10,8 @@ import {
   Example1,
 } from "./__buttonGroup.examples";
 
-import PageTitle from "../../components_site/PageTitle/PageTitle";
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
 
 const ButtonGroupDocs: React.VFC = () => {
   return (
@@ -31,16 +31,10 @@ const ButtonGroupDocs: React.VFC = () => {
         <P>
           The button related <code>props</code> set on the{" "}
           <code>ButtonGroup</code> are applied to the children unless a child
-          has that prop set. Let's take a look at a few variations.
+          has that prop set. Take a look at a few visual variations.
         </P>
 
         <ComponentDemo />
-
-        <P>
-          As ever, if this component isn't really working for you then you can
-          make your own, clone ours for a starting point if you need a legup.
-          It's pretty simple, we like simple.
-        </P>
 
         <H2 vol={4} uppercase>
           Styling

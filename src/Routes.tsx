@@ -2,18 +2,18 @@ import type { ReactNode } from "react";
 import type React from "react";
 import { Route, Switch } from "react-router-dom";
 
-// Components
-import BlockquoteDocs from "./components/Blockquote/__blockquoteDocs";
-import ButtonDocs from "./components/Button/__buttonDocs";
-import ButtonGroupDocs from "./components/ButtonGroup/__buttonGroupDocs";
-import GridDocs from "./components/Grid/__gridDocs";
-import IconDocs from "./components/Icon/__iconDocs";
-import InputSelectionDocs from "./components/InputSelection/__inputSelectionDocs";
-import InputTextDocs from "./components/InputText/__inputTextDocs";
-import LabelsDocs from "./components/Label/__labelsDocs";
-import MenuDocs from "./components/Menu/__menuDocs";
-import TextDocs from "./components/Text/__textDocs";
-import VisuallyHiddenDocs from "./components/VisuallyHidden/__visuallyHiddenDocs";
+// Component docs
+import BlockquoteDocs from "./components-docs/Blockquote/__blockquoteDocs";
+import ButtonDocs from "./components-docs/Button/__buttonDocs";
+import ButtonGroupDocs from "./components-docs/ButtonGroup/__buttonGroupDocs";
+import GridDocs from "./components-docs/Grid/__gridDocs";
+import IconDocs from "./components-docs/Icon/__iconDocs";
+import InputSelectionDocs from "./components-docs/InputSelection/__inputSelectionDocs";
+import InputTextDocs from "./components-docs/InputText/__inputTextDocs";
+import LabelsDocs from "./components-docs/Label/__labelsDocs";
+import MenuDocs from "./components-docs/Menu/__menuDocs";
+import TextDocs from "./components-docs/Text/__textDocs";
+import VisuallyHiddenDocs from "./components-docs/VisuallyHidden/__visuallyHiddenDocs";
 
 import IndexPage from "./pages/index";
 
@@ -25,8 +25,6 @@ interface NavigationItem {
 
 type Navigation = NavigationItem[];
 
-// const data = require("../docs/docs-data.json");
-// console.log("hi", data);
 export const componentNav: Navigation = [
   {
     path: "/button",

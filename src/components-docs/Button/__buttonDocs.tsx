@@ -1,5 +1,13 @@
 import React from "react";
-import { Blockquote, Button, Grid, Text, P, H2 } from "../../indexLib";
+import {
+  Blockquote,
+  Button,
+  Grid,
+  Text,
+  P,
+  H2,
+  VisuallyHidden,
+} from "../../indexLib";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 import {
@@ -11,9 +19,8 @@ import {
   Example1,
 } from "./__button.examples";
 
-import PageTitle from "../../components_site/PageTitle/PageTitle";
-import StyleInfo from "../../components_site/StyleInfo/StyleInfo";
-import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+import PageTitle from "../../components-site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
 
 const ButtonDocs = () => {
   const test = React.createRef<HTMLBaseElement>();

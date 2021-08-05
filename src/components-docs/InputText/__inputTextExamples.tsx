@@ -2,8 +2,8 @@
 import React from "react";
 import { InputText, InputSelection, InputSelect } from "../../indexLib";
 
-import PropsDemo from "../../components_site/PropsDemo/PropsDemo";
-import CodeSample from "../../components_site/CodeSample/CodeSample";
+import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
+import CodeSample from "../../components-site/CodeSample/CodeSample";
 
 // Styles.
 import { classes as grid } from "../../styles/default/grid.st.css";
