@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Blockquote renders as a basic blockquote with custom #className 1`] = `
+exports[`Blockquote renders as a basic blockquote with custom #className and data attr to test spread. 1`] = `
 <blockquote
   className="Blockquote3358720002__root for-which-nobody-can-deny"
   data-testid="blockquote-data-testid"
@@ -18,10 +18,9 @@ exports[`Blockquote renders as a basic blockquote with custom #className 1`] = `
 </blockquote>
 `;
 
-exports[`Blockquote renders as a blockquote with description as a <cite> node at a larger volume 1`] = `
+exports[`Blockquote renders as a blockquote with description as a <cite> node at a larger volume. 1`] = `
 <blockquote
   className="Blockquote3358720002__root Blockquote3358720002---variant-1-2 for-which-nobody-can-deny"
-  data-testid="blockquote-data-testid"
 >
   <div
     className="Blockquote3358720002__content"
