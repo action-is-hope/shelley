@@ -42,6 +42,8 @@ public
 
 # dist files
 dist
+
+# docs
  
 # Mac files
 .DS_Store
