@@ -20,12 +20,15 @@
   "homepage": "https://github.com/action-is-hope/shelley#readme",
   "main": "indexLib.js",
   "types": "indexLib.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rimraf dist",
-    "copy": "copyfiles -u 1 \"./src/**/*.st.css\" \"./src/**/*.css\" \"./src/**/*.js\" dist && copyfiles package.json \"./package.json\" dist && copyfiles README.md \"./README.md\" dist",
+    "copy": "copyfiles package.json \"./package.json\" \"./README.md\" dist",
     "prebuild": "npm run clean",
     "build": "webpack --mode production --no-devtool",
-    "build-dist": "npm run clean && tsc --project tsconfig-npm.json && npm run build-components-stcss && npm run build-components-styles-stcss && npm run build-components-site-stcss",
+    "build-dist": "npm run clean && npm run copy && tsc --project tsconfig-npm.json && npm run build-components-stcss && npm run build-components-styles-stcss && npm run build-components-site-stcss",
     "build-components-stcss": "stc --srcDir=\"./src/components\" --outDir=\"./dist/components\" --stcss",
     "build-components-styles-stcss": "stc --srcDir=\"./src/styles\" --outDir=\"./dist/styles\" --stcss",
     "build-components-site-stcss": "stc --srcDir=\"./src/components-site\" --outDir=\"./dist/components-site\" --stcss",
