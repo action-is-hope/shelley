@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
@@ -23,7 +23,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "files":["**/*.ts", "components/**/*.js", "indexLib.js", "**/*.map", "**/*.st.css"],
+  "files": [
+    "**/*.ts",
+    "components/**/*.js",
+    "indexLib.js",
+    "**/*.map",
+    "**/*.st.css"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "copy": "copyfiles package.json \"./package.json\" \"./README.md\" dist",
