@@ -9,7 +9,6 @@ import {
   Example1,
   Example2,
   Example3,
-  Example4,
 } from "./__menu.examples";
 
 import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
@@ -50,8 +49,6 @@ const MenuDocs: React.VFC = () => {
         <Example2 />
 
         <Example3 />
-
-        <Example4 />
 
         {/* <ComponentDemo /> */}
 

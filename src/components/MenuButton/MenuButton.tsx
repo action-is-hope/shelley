@@ -21,7 +21,8 @@ import Button, { ButtonProps } from "../Button/Button";
 export interface MenuButtonProps extends ButtonProps {
   // omit as
   position?: PositionProps;
-  label: string;
+  /** Label for the button, if you are using an icon only remember to provide an alt! */
+  label?: string;
   focusStrategy?: "first" | "last";
   onAction?: (e: any) => void;
 }

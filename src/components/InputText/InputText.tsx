@@ -15,19 +15,19 @@ interface ITextCustomProps extends InputBaseProps {
   rows?: number;
 }
 
-interface TextareaProps extends ITextCustomProps {
+export interface TextareaProps extends ITextCustomProps {
   /** Defines the type of input. */
   type?: "textarea";
 }
 
-interface TextInputProps extends ITextCustomProps {
+export interface TextInputProps extends ITextCustomProps {
   /** Defines the type of input. */
   type?: TextInputType;
   /** Defines the number of rows, only valid for type="textarea". */
   rows?: never;
 }
 
-type InputTextProps<P extends React.ElementType = "textarea"> =
+export type InputTextProps<P extends React.ElementType = "input"> =
   MergeElementProps<P, TextareaProps | TextInputProps>;
 
 function InputTextBase(

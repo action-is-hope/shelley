@@ -1,19 +1,9 @@
 import type React from "react";
-import { classes } from "./index.st.css";
 import { Link } from "react-router-dom";
-
-import Text, { H2, P } from "../components/Text/Text";
-import Grid from "../components/Grid/Grid";
-
+import { H2, P, Text, Grid } from "../indexLib";
 import ShelleyBanner from "../components-site/ShelleyBanner/ShelleyBanner";
-
-import { Item } from "@react-stately/collections";
-
 import { componentNav } from "../Routes";
-import MenuButton from "../components/MenuButton/MenuButton";
-import Button from "../components/Button/Button";
-// import Label from "../components/Label/Label";
-import ButtonGroup from "../components/ButtonGroup/ButtonGroup";
+import { classes } from "./index.st.css";
 
 const IndexPage: React.VFC = () => {
   return (
@@ -26,38 +16,6 @@ const IndexPage: React.VFC = () => {
             <H2 uppercase vol={4}>
               Synopsis
             </H2>
-            <ButtonGroup variant={3}>
-              <Button>Test</Button>
-              <MenuButton
-                label="Actions"
-                onAction={(info: string) => console.log("info", info)}
-              >
-                <Item key="copy">Copy</Item>
-                <Item key="cut">Cut</Item>
-                <Item key="paste">Paste</Item>
-              </MenuButton>
-            </ButtonGroup>
-            <Button
-              as={Link}
-              to="/button"
-              // isDisabled
-              onPress={(info: any) => console.log(info)}
-            >
-              Testings
-            </Button>
-            <MenuButton
-              label="Actions"
-              position={{ offset: 50 }}
-              onAction={(info: string) => console.log("info", info)}
-              variant="secondary"
-              // selectedKeys={["cut"]}
-              // disabledKeys={["cut"]}
-              // focusStrategy="last"
-            >
-              <Item key="copy">Copy</Item>
-              <Item key="cut">Cut</Item>
-              <Item key="paste">Paste</Item>
-            </MenuButton>
             <P vol={4}>
               Follow the story of a digital nomad and a digital entity called
               Shelley as they strive night and day to create something beautiful

@@ -90,7 +90,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
             label={`${item.label}:`}
             type={item.type}
             // min={item.min}
-            max={item.max}
+            // max={item.max}
             vol={1}
             variant={2}
             onChange={(e: any) => {

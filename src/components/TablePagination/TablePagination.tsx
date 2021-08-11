@@ -2,7 +2,7 @@ import React from "react";
 import { st, classes } from "./tablePagination.st.css";
 import Text from "../Text/Text";
 
-import { Menu, MenuList, MenuButton, MenuItem } from "../Menu/Menu";
+// import { Menu, MenuList, MenuButton, MenuItem } from "../Menu/Menu";
 import Toolbar from "../Toolbar/Toolbar";
 
 import AngleLeft from "../icons/AngleLeft";
@@ -120,7 +120,7 @@ const TablePagination = React.forwardRef(
           >
             {labelRowsPerPage}
           </Text>
-          <Menu>
+          {/* <Menu>
             <MenuButton
               variant={3}
               tone={10}
@@ -154,7 +154,7 @@ const TablePagination = React.forwardRef(
                 )
               )}
             </MenuList>
-          </Menu>
+          </Menu> */}
           <Text
             as="span"
             data-testid={dataTestId && `${dataTestId}labelDisplayedRows`}
@@ -172,7 +172,7 @@ const TablePagination = React.forwardRef(
           <Button
             data-testid={dataTestId && `${dataTestId}PrevButton`}
             tone={10}
-            variant={4}
+            variant="fab"
             vol={3}
             icon={iconPrev}
             iconPos={"end"}
@@ -183,7 +183,7 @@ const TablePagination = React.forwardRef(
           <Button
             data-testid={dataTestId && `${dataTestId}NextButton`}
             tone={10}
-            variant={4}
+            variant="fab"
             vol={3}
             icon={iconNext}
             iconPos={"end"}

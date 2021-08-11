@@ -120,7 +120,7 @@ ButtonGroup:orientation(horizontal) {}`}</CodeSample>
 export const Example1 = () => (
   <>
     <div className={grid.mid}>
-      <ButtonGroup vol={2} tone={1} variant={3}>
+      <ButtonGroup vol={2} tone={1} variant="primary">
         <Button>Publish</Button>
         <Button
           icon={

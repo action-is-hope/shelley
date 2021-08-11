@@ -1,23 +1,9 @@
 /* menuExamples.tsx */
-import React from "react";
+import { MenuButton, Icon, Button, ButtonGroup, H2 } from "../../indexLib";
 
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  MenuPopover,
-  Icon,
-  Button,
-  ButtonGroup,
-  Text,
-  H2,
-} from "../../indexLib";
+import { Item } from "@react-stately/collections";
 
 /* Supporting Components */
-
-import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
 import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as spacing } from "../../styles/default/spacing.st.css";
@@ -47,115 +33,6 @@ export const QuickRef = () => (
 </Menu>`}</CodeSample>
 );
 
-// Props Demo - Examples below.
-export const ComponentDemo = () => {
-  const [labelDemoProps, setLabelDemoProps]: any = React.useState([
-    {
-      name: "children",
-      label: "children",
-      type: "text",
-      value: "Earth Solutionists required",
-    },
-    {
-      name: "tone",
-      label: "tone",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 1,
-    },
-    {
-      name: "variant",
-      label: "variant",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 1,
-    },
-    {
-      name: "volume",
-      label: "volume",
-      type: "number",
-      min: 0,
-      max: 6,
-      value: 2,
-    },
-    {
-      name: "icon",
-      label: "icon",
-      type: "select",
-      value: "No",
-      options: ["Yes", "No"],
-    },
-    {
-      name: "tip",
-      label: "tip",
-      type: "text",
-      value: "@todo - unsure on this...",
-    },
-  ]);
-  return (
-    <PropsDemo
-      demoProps={labelDemoProps}
-      componentName="Button"
-      setDemoProps={setLabelDemoProps}
-      tsExtends="HTMLButtonElement"
-      renderExample={
-        <CodeSample>{`import { Button, Icon } from "@actionishope/shelley";\n\n<Button ${
-          labelDemoProps[1].value > 0
-            ? `\n  tone={${labelDemoProps[1].value}}`
-            : `\n  tone={false}`
-        } ${
-          labelDemoProps[2].value > 0
-            ? `\n  variant={${labelDemoProps[2].value}}`
-            : `\n  variant={false}`
-        } ${
-          labelDemoProps[3].value > 0
-            ? `\n  vol={${labelDemoProps[3].value}}`
-            : `\n  vol={false}`
-        } ${
-          labelDemoProps[4].value === "Yes"
-            ? `\n  icon={<Icon><path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path></Icon>}`
-            : ``
-        }  \n>\n ${labelDemoProps[0].value}\n</Button>`}</CodeSample>
-      }
-    >
-      {/* <MenuButton
-        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
-        icon={
-          labelDemoProps[4].value === "No" ? (
-            false
-          ) : (
-            <Icon alt={labelDemoProps[1].value}>
-              <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-            </Icon>
-          )
-        }
-        variant={
-          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
-        }
-        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
-      >
-        {labelDemoProps[0].value}
-      </MenuButton> */}
-      {/* <Button
-        tone={labelDemoProps[1].value === 0 ? false : labelDemoProps[1].value}
-        icon={
-          <Icon>
-            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-          </Icon>
-        }
-        variant={
-          labelDemoProps[2].value === 0 ? false : labelDemoProps[2].value
-        }
-        vol={labelDemoProps[3].value === 0 ? false : labelDemoProps[3].value}
-      >
-        &nbsp;
-      </Button> */}
-    </PropsDemo>
-  );
-};
-
 export const ComponentHTML = () => <CodeSample>{`TBC`}</CodeSample>;
 
 export const ComponentCSS = () => (
@@ -176,44 +53,42 @@ export const Example1 = () => (
       Icon/Text Menu Button example
     </H2>
     <div className={grid.mid}>
-      <Menu>
-        <MenuButton
-          vol={3}
-          tone={2}
-          variant="primary"
-          iconPos="start"
-          icon={
-            <Icon alt="Block settings">
-              <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-            </Icon>
-          }
-        >
-          Add Content
-        </MenuButton>
-        <MenuList>
-          <MenuItem onSelect={() => alert("🌎")}>Page</MenuItem>
-          <MenuItem onSelect={() => alert("🌎")}>Blog post</MenuItem>
-          <MenuItem onSelect={() => alert("🌎")}>Event</MenuItem>
-        </MenuList>
-      </Menu>
+      <MenuButton
+        vol={3}
+        tone={2}
+        variant="primary"
+        iconPos="start"
+        icon={
+          <Icon alt="Block settings">
+            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+          </Icon>
+        }
+        label="Actions"
+        onAction={(info: string) => alert(info)}
+      >
+        <Item key="page">Page</Item>
+        <Item key="blog">Blog post</Item>
+        <Item key="event">Event</Item>
+      </MenuButton>
     </div>
     <CodeSample className={grid.mid}>
-      {`<Menu>
-  <MenuButton
+      {`<MenuButton
     vol={3}
     tone={2}
-    variant={3}
-    iconPos="start" 
+    variant="primary"
+    iconPos="start"
     icon={
       <Icon alt="Block settings">
         <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
       </Icon>
     }
+    label="Actions"
+    onAction={(info: string) => alert(info)}
   >
-    Add Content
-  </MenuButton>
-  ... see quick reference
-</Menu>`}
+    <Item key="page">Page</Item>
+    <Item key="blog">Blog post</Item>
+    <Item key="event">Event</Item>
+  </MenuButton>`}
     </CodeSample>
   </>
 );
@@ -224,50 +99,46 @@ export const Example2 = () => (
       Button Group example
     </H2>
     <div className={grid.mid}>
-      <Menu data-testid="test">
-        <ButtonGroup vol={4} tone={2} variant={3}>
-          <Button fullWidth>Publish</Button>
-          <MenuButton
-            icon={
-              <Icon alt="Block settings">
-                <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
-              </Icon>
-            }
-          />
-        </ButtonGroup>
-        <MenuList>
-          <Text as="label" uppercase vol={1}>
-            Change status
-          </Text>
-          <MenuItem disabled onSelect={() => alert("🌎")}>
-            Publish
-          </MenuItem>
-          <MenuItem onSelect={() => alert("🌎")}>Archive</MenuItem>
-          <MenuItem onSelect={() => alert("🌎")}>Delete</MenuItem>
-        </MenuList>
-      </Menu>
+      <ButtonGroup vol={4} tone={2} variant="primary">
+        <Button fullWidth>Publish</Button>
+        <MenuButton
+          vol={3}
+          tone={2}
+          variant="primary"
+          iconPos="start"
+          icon={
+            <Icon alt="Change status">
+              <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+            </Icon>
+          }
+          onAction={(info: string) => alert(info)}
+        >
+          <Item key="publish">Publish</Item>
+          <Item key="archive">Archive</Item>
+          <Item key="delete">Delete</Item>
+        </MenuButton>
+      </ButtonGroup>
     </div>
     <CodeSample className={grid.mid}>
-      {`<Menu>
-  <ButtonGroup vol={4} tone={2} variant={3}>
-    <Button fullWidth>Publish</Button>
-    <MenuButton
-      icon={
-        <Icon alt="">
-          <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
-        </Icon>
-      }
-    />
-  </ButtonGroup>
-  <MenuList>
-    <Text as="label" uppercase vol={1}>
-      Change status
-    </Text>
-    <MenuItem onSelect={() => alert("🌎")}>Publish</MenuItem>
-    <MenuItem onSelect={() => alert("🌎")}>Archive</MenuItem>
-    <MenuItem onSelect={() => alert("🌎")}>Delete</MenuItem>
-  </MenuList>
-</Menu>`}
+      {`<ButtonGroup vol={4} tone={2} variant="primary">
+  <Button fullWidth>Publish</Button>
+  <MenuButton
+    vol={3}
+    tone={2}
+    variant="primary"
+    iconPos="start"
+    icon={
+      <Icon alt="Change status">
+        <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+      </Icon>
+    }
+    onAction={(info: string) => alert(info)}
+  >
+    <Item key="publish">Publish</Item>
+    <Item key="archive">Archive</Item>
+    <Item key="delete">Delete</Item>
+  </MenuButton>
+</ButtonGroup>`}
     </CodeSample>
   </>
 );
@@ -278,103 +149,46 @@ export const Example3 = () => (
       Icon Button example
     </H2>
     <div className={grid.mid}>
-      <Menu>
-        <MenuButton
-          tone={10}
-          variant="fab"
-          vol={1}
-          icon={
-            <Icon alt="Block settings">
-              <g id="ellipsis-dots-h">
-                <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-                <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-                <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-              </g>
-            </Icon>
-          }
-        />
-
-        <MenuList>
-          {/* 'Manage blocks' is a consistant option thus always at the top. */}
-          <MenuItem onSelect={() => alert("🌎 🚒")}>Manage blocks</MenuItem>
-          <MenuItem onSelect={() => alert("🌎 🚒")}>Block settings</MenuItem>
-          <MenuItem onSelect={() => alert("🌎 🚒")}>Delete block</MenuItem>
-        </MenuList>
-      </Menu>
+      <MenuButton
+        tone={10}
+        variant="fab"
+        vol={1}
+        icon={
+          <Icon alt="Block settings">
+            <g id="ellipsis-dots-h">
+              <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+              <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+              <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+            </g>
+          </Icon>
+        }
+        onAction={(info: string) => alert(info)}
+      >
+        <Item key="manage-block">Manage blocks</Item>
+        <Item key="blog-settings">Block settings</Item>
+        <Item key="delete-block">Delete block</Item>
+      </MenuButton>
     </div>
     <CodeSample className={grid.mid}>
-      {`<Menu>
-  <MenuButton
-    tone={10}
-    variant={4}
-    vol={1}
-    icon={
-      <Icon alt="Block settings">
-        <g id="ellipsis-dots-h">
-          <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-          <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-          <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-        </g>
-      </Icon>
-    }
-  />
-
-  <MenuList>
-    <MenuItem onSelect={() => alert("🌎 🚒")}>
-      Manage blocks
-    </MenuItem>
-    <MenuItem onSelect={() => alert("🌎 🚒")}>
-      Block settings
-    </MenuItem>
-    <MenuItem onSelect={() => alert("🌎 🚒")}>
-      Delete block
-    </MenuItem>
-  </MenuList>
-</Menu>`}
-    </CodeSample>
-  </>
-);
-
-export const Example4 = () => (
-  <>
-    <H2 vol={2} className={spacing.mb2} uppercase>
-      Popover with arbitrary element
-    </H2>
-    <div className={grid.mid}>
-      <Menu>
-        <MenuButton>Activate</MenuButton>
-        <MenuPopover>
-          <div className="arbitrary-element">
-            <MenuItems>
-              <MenuItem
-                onSelect={() => {
-                  alert("🌎 🚒");
-                }}
-              >
-                Downloads
-              </MenuItem>
-            </MenuItems>
-          </div>
-        </MenuPopover>
-      </Menu>
-    </div>
-    <CodeSample className={grid.mid}>
-      {`<Menu>
-  <MenuButton>Activate</MenuButton>
-  <MenuPopover>
-    <div className="arbitrary-element">
-      <MenuItems>
-        <MenuItem
-          onSelect={() => {
-            alert("🌎 🚒");
-          }}
-        >
-          Downloads
-        </MenuItem>
-      </MenuItems>
-    </div>
-  </MenuPopover>
-</Menu>`}
+      {`<MenuButton
+  tone={10}
+  variant="fab"
+  vol={1}
+  icon={
+    <Icon alt="Block settings">
+      <g id="ellipsis-dots-h">
+        <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+        <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+        <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+      </g>
+    </Icon>
+  }
+  onAction={(info: string) => alert(info)}
+>
+  <Item key="manage-block">Manage blocks</Item>
+  <Item key="blog-settings">Block settings</Item>
+  <Item key="delete-block">Delete block</Item>
+</MenuButton>`}
     </CodeSample>
   </>
 );

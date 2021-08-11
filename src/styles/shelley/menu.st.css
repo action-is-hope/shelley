@@ -16,20 +16,11 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-focus,
+    /* --color-focus, */
     --color-background-1;
 }
 
 /* = Components */
-:import {
-  -st-from: "../../components/Menu/menuList.st.css";
-  -st-default: MenuList;
-}
-
-:import {
-  -st-from: "../../components/Menu/menuItem.st.css";
-  -st-default: MenuItem as MI;
-}
 
 :import {
   -st-from: "../../components/MenuPopup/menuPopup.st.css";
@@ -41,17 +32,7 @@
   -st-default: MenuItem;
 }
 
-
-
 @st-scope Shelley {
-  MenuList {
-    background: var(--color-background-1);
-  }
-
-  MI[data-selected] {
-    background: hsl(211, 81%, 36%);
-  }
-
 
   MenuPopup {
     background: var(--color-background-1);
@@ -60,5 +41,4 @@
   MenuItem:isFocused {
     background: hsl(211, 81%, 36%);
   }
-
 }

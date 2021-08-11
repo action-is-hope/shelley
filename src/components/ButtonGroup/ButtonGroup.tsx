@@ -1,5 +1,5 @@
 import React from "react";
-import type { Accent, Volume, Variant } from "../types";
+import type { Accent, Volume, ButtonVariants } from "../types";
 
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
@@ -12,11 +12,12 @@ export interface ButtonGroupCustomProps {
   /** Tone index. */
   tone?: Accent;
   /** Variant index. */
-  variant?: Variant;
+  variant?: ButtonVariants;
   /** Changes the volume of the buttons. */
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
+  /** Applies width: 100%; to the button. */
   fullWidth?: boolean;
 }
 
@@ -32,7 +33,7 @@ const ButtonGroup = React.forwardRef(
       fullWidth = false,
       disabled,
       tone = 1,
-      variant = 1,
+      variant = "quiet",
       orientation = "horizontal",
       vol = 3,
       ...rest

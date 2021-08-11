@@ -25,7 +25,6 @@
 :import {
   -st-from: "../../components/Label/label.st.css";
   -st-default: Label;
-  -st-named: textContainer, labelText;
 }
 
 @st-scope Shelley {

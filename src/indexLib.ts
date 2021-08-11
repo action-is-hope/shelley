@@ -49,7 +49,14 @@ export * from "./components/InputText/InputText";
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";
 
-export * from "./components/Menu/Menu";
+export { default as MenuButton } from "./components/MenuButton/MenuButton";
+export * from "./components/MenuButton/MenuButton";
+
+export { default as MenuPopup } from "./components/MenuPopup/MenuPopup";
+export * from "./components/MenuPopup/MenuPopup";
+
+export { default as MenuItem } from "./components/MenuItem/MenuItem";
+export * from "./components/MenuItem/MenuItem";
 
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";
@@ -80,13 +87,3 @@ export * from "./components/Toolbar/Toolbar";
 
 export { default as VisuallyHidden } from "./components/VisuallyHidden/VisuallyHidden";
 export * from "./components/VisuallyHidden/VisuallyHidden";
-
-/** Extras - Temp */
-
-// @todo Move these into a seperate package designed to help building UI libs on top of Shelley.
-
-// export { default as CodeSample } from "./components-site/CodeSample/CodeSample";
-// export * from "./components-site/CodeSample/CodeSample";
-
-// export { default as Logo } from "./components-site/Logo/Logo";
-// export * from "./components-site/Logo/Logo";
