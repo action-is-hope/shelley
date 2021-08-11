@@ -26,10 +26,6 @@
 :import {
   -st-from: "../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;
-  -st-named:
-    cite,
-    content,
-    footer;
 }
 
 /* = Child Components */

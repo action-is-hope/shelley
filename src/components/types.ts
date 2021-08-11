@@ -1,7 +1,7 @@
 /** types.ts */
 
 // "top" "right" "bottom" "left" but using right to left aware langauge.
-export declare type AlignPos = "top" | "end" | "bottom" | "start" | false;
+export declare type AlignPos = "top" | "end" | "bottom" | "start" | undefined;
 
 export declare type TextAlign =
   | "center"
@@ -11,16 +11,21 @@ export declare type TextAlign =
   | "end";
 
 /** Accent color indexes */
-export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | false;
-
-/** Color indexes */
-export declare type Color = 1 | 2 | 3 | 4 | 5 | 6 | false;
+export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | undefined;
 
 /** Variant indexes */
-export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | false;
+export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+
+export declare type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "quiet"
+  | "fab"
+  | string
+  | undefined;
 
 /** Generic volume levels */
-export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | false;
+export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
 
 /** Text volume levels */
 export declare type TextVolume =
@@ -36,7 +41,7 @@ export declare type TextVolume =
   | 10
   | 11
   | 12
-  | false;
+  | undefined;
 
 /** Text input types - maps to input type attribute. */
 export declare type TextInputType =
@@ -46,7 +51,6 @@ export declare type TextInputType =
   | "search"
   | "tel"
   | "text"
-  | "textarea" // Internally map to textarea element.
   | "time"
   | "url";
 

@@ -1,0 +1,87 @@
+/** codeSample.st.css */
+@namespace "CodeSample";
+
+:import {
+  -st-from: "../../styles/default/project.st.css";
+  -st-default: Default;
+}
+
+@st-scope Default {
+  .root {
+    -st-states: fixedHeight;
+    /* Fixes 'zoomed' layout issue on mobile. */
+    display: inherit;
+    overflow-x: auto;
+    /* grid-column: mid-start / mid-end; */
+    margin-top: 1rem;
+    margin-bottom: 48px;
+    font-size: 12px;
+
+    line-height: 1.45rem;
+    line-height: 1.1rem;
+    border-radius: 4px
+  }
+
+  .root > pre {
+    padding: 1.45rem;
+  }
+
+  .root:fixedHeight {
+    height: 50vh;
+  }
+
+  .root code {
+    font-family: Menlo, Consolas, 'Andale Mono', monospace;
+    font-size: 11px;
+    line-height: 16px;
+    position: relative;
+    border: none;
+    overflow: hidden;
+  }
+
+  @media (min-width: 550px) {
+    .root code {
+      font-size: 14px;
+    }
+  }
+
+  code {
+    font-family: Menlo, Consolas, 'Andale Mono', monospace;
+    font-size: 11px;
+    line-height: 16px;
+    position: relative;
+    border: none;
+    overflow: hidden;
+  }
+
+  code > span {
+    transition: all 125ms ease-in;
+    line-height: 17px;
+  }
+
+  code :global(.caption) {
+    text-shadow: 0 0 0 transparent;
+    transition: none;
+    color: #808080;
+    background: #171c25;
+    display: block;
+    font-size: 11px;
+    padding: 4px 12px;
+    font-weight: 500;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  code :global(.plain-text) {
+    white-space: pre-wrap;
+  }
+}

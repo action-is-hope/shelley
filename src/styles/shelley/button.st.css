@@ -58,48 +58,54 @@
     --accent: initial;
   }
 
-  /* = 'Text'  */
-  Button:variant(1) {
-    --text-color: var(--accent);
+  /* = Variants - Using the accent to assign the colors to reduce code. */
+
+  /* = Variant 1: 'Primary' */
+  Button:variant(primary) {
+    --bg-color: var(--accent);
+    --text-color: var(--color-ui-inverse);
   }
 
-  Button:variant(1):hover,
-  Button:variant(1):focus {
-    background-color: rgba(var(--color-ui-raw), .02);
-  }
-
-  /* = We need to a seperator color for when in a group. */
-  ButtonGroup Button:variant(1) {
-    --seperator-color: var(--accent);
+  /* = Seperator color for when in a group. */
+  ButtonGroup Button:variant(primary) {
+    --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
 
 
-  /* = 'Outline' */
-  Button:variant(2) {
+  /* = Variant 2: 'Secondary' */
+  Button:variant(secondary) {
     --border-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
 
-  /* = 'Filled' */
-  Button:variant(3) {
+
+  /* = Variant 3: 'Quiet' */
+  Button:variant(quiet) {
+    --text-color: var(--accent);
+  }
+
+  Button:variant(quiet):hover,
+  Button:variant(quiet):focus {
+    background-color: rgba(var(--color-ui-raw), .02);
+  }
+
+  /* = Seperator color for when in a group. */
+  ButtonGroup Button:variant(quiet) {
+    --seperator-color: var(--accent);
+  }
+
+
+  /* = Variant 4: 'Floating Action Button (FAB)' - Thank you Material! */
+  Button:variant(fab) {
     --bg-color: var(--accent);
     --text-color: var(--color-ui-inverse);
   }
 
-  /* = We a seperator color for when in a group. */
-  ButtonGroup Button:variant(3) {
+  /* = Seperator color for when in a group. */
+  ButtonGroup Button:variant(fab) {
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
 
-  /* = 'Floating Action Button (FAB)' - Thank you Material! */
-  Button:variant(4) {
-    --bg-color: var(--accent);
-    --text-color: var(--color-ui-inverse);
-  }
-
-  ButtonGroup Button:variant(4) {
-    --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
-  }
 
   /* = Tones/Colours */
   Button:tone(1) {
@@ -121,7 +127,6 @@
   Button:tone(10) {
     --text-color: inherit;
     --accent: rgba(var(--color-ui-raw), 0);
-
   }
 
   Button:tone(10):hover,

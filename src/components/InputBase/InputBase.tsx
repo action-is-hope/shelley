@@ -1,6 +1,5 @@
 import React from "react";
-import { Volume, Variant } from "../types";
-import classnames from "classnames";
+import type { Volume, Variant } from "../types";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -8,7 +7,7 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./inputBase.st.css";
 
-export type InputBaseProps = {
+export interface InputBaseProps {
   /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility. */
   //  id: string;
   /** Provide an error message that triggers the stylable error state. */
@@ -31,7 +30,7 @@ export type InputBaseProps = {
   vol?: Volume;
   /** @todo Wrap the children in a scroll wrapper. */
   // overflow?: boolean;
-};
+}
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface InputBaseInternalProps
@@ -59,8 +58,8 @@ const InputBase = ({
   labelVisuallyHidden = false,
   variant = 1,
   vol = 3,
-  ...attrs
-}: InputBaseInternalProps) => {
+}: // ...attrs
+InputBaseInternalProps) => {
   id === "NOID" &&
     console.warn(
       `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
@@ -73,21 +72,31 @@ const InputBase = ({
     disabled,
     // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
     "aria-invalid": error ? true : undefined,
-    "aria-describedby": error ? `${id}-error` : undefined
+    "aria-describedby": error ? `${id}-error` : undefined,
     // ...attrs We only want to re-apply what we pulled off.
   };
 
-  const childrenWithProps = React.Children.map(children, child => {
-    return React.cloneElement(child as React.ReactElement<any>, {
-      ...inputAttrs
+  const childrenWithProps = React.Children.map(children, (child) => {
+    console.log("to", child);
+    const item = child as React.ReactElement<React.PropsWithChildren<any>>;
+
+    // return React.cloneElement(child as React.ReactNode, {
+    //   ...inputAttrs,
+    //   className: st(classes.fieldInput, child?.props.className),
+    // });
+    return React.cloneElement(item, {
+      ...inputAttrs,
+      className: st(classes.fieldInput, item.props.className),
     });
   });
 
-  const rootClassNames = classnames(classes.root, classNameProp);
-
   return (
     <div
-      className={st(rootClassNames, { error, disabled, variant, vol })}
+      className={st(
+        classes.root,
+        { error, disabled, variant, vol },
+        classNameProp
+      )}
       // attrs // We do want stylable to get spread attrs??
     >
       {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
@@ -115,4 +124,4 @@ const InputBase = ({
 
 export default InputBase;
 
-InputBase.displayName = "InputBase";
+// InputBase.displayName = "InputBase";

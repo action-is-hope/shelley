@@ -1,7 +1,7 @@
 /**
  * = BUTTON - button.st.css
  *
- * We only have one, so far so good. YOu should have enough sizes and hooks
+ * We only have one, so far so good. You should have enough sizes and hooks
  * but you can always add your own custome classes for whatever you need or 
  * wrap this button up inside other buttons pre configured for your usecases.
  * 
@@ -180,17 +180,8 @@
         max 0.78em, lineHeight 1.1);
   }
 
-
-  /* -st-mixin:
-      textVol(scale respScale(0.875em, 1em),
-        max 1em, lineHeight 1.5);
-  } */
-
   /* = Volume 4 */
   Button:vol(4) {
-    /* -st-mixin:
-      textVol(scale respScale(1em, 1.125em),
-        max 1.125em, lineHeight 1.5); */
     -st-mixin:
       textVol(scale respScale(0.85em, .83em),
         max .875em, lineHeight 1.1);
@@ -211,96 +202,93 @@
   }
 
 
-  /* = 'Default' */
-  Button:variant(1) {}
+  /* = 'Primary' */
+  Button:variant(primary) {}
 
-  /* = 'Outline' */
-  Button:variant(2) {}
+  /* = 'Secondary' */
+  Button:variant(secondary) {}
 
-  /* = 'Filled' */
-  Button:variant(3) {}
+  /* = 'Quiet' */
+  Button:variant(quiet) {}
 
-  /* = 'Floating Action Button (FAB)' - Thank you Material! */
-  Button:variant(4) {}
-
-  /*= Variant 4 - FAB */
-  Button:variant(4) {
+  /* = 'FAB - Floating Action Button' - Thank you Material! */
+  Button:variant(fab) {
     padding: 0;
     border-radius: 999px;
     justify-content: center;
   }
 
-  Button:variant(4)::divider {
+  Button:variant(fab)::divider {
     display: none;
   }
 
-  Button:variant(4)::inner {
+  Button:variant(fab)::inner {
     -st-mixin: visuallyHidden;
   }
 
-  Button:variant(4)::after {
+  Button:variant(fab)::after {
     border-radius: 999px;
   }
 
   /*= FAB are all about the icons so we don't want rounding issues on these. Set with values that / 2. */
 
   /*= FAB - Volume 1 */
-  Button:variant(4):vol(1) {
+  Button:variant(fab):vol(1) {
     width: 32px;
     height: 32px;
   }
 
-  Button:variant(4):vol(1) Icon {
+  Button:variant(fab):vol(1) Icon {
     font-size: 16px;
   }
 
   /*= FAB - Volume 2 */
-  Button:variant(4):vol(2) {
+  Button:variant(fab):vol(2) {
     width: 40px;
     height: 40px;
   }
 
-  Button:variant(4):vol(2) Icon {
+  Button:variant(fab):vol(2) Icon {
     font-size: 18px;
   }
 
   /*= FAB - Volume 3 */
-  Button:variant(4):vol(3) {
+  Button:variant(fab):vol(3) {
     width: 48px;
     height: 48px;
   }
 
-  Button:variant(4):vol(3) Icon {
+  Button:variant(fab):vol(3) Icon {
     font-size: 18px;
   }
 
   /*= FAB - Volume 4 */
-  Button:variant(4):vol(4) {
+  Button:variant(fab):vol(4) {
     width: 56px;
     height: 56px;
   }
 
-  Button:variant(4):vol(4) Icon {
+  Button:variant(fab):vol(4) Icon {
     font-size: 20px;
   }
 
   /*= FAB - Volume 5 */
-  Button:variant(4):vol(5) {
+  Button:variant(fab):vol(5) {
     width: 64px;
     height: 64px;
   }
 
-  Button:variant(4):vol(5) Icon {
+  Button:variant(fab):vol(5) Icon {
     font-size: 22px;
   }
 
   /*= FAB - Volume 6 */
-  Button:variant(4):vol(6) {
+  Button:variant(fab):vol(6) {
     width: 72px;
     height: 72px;
   }
 
-  Button:variant(4):vol(6) Icon {
+  Button:variant(fab):vol(6) Icon {
     font-size: 24px;
   }
 }

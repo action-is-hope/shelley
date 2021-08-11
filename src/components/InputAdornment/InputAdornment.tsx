@@ -1,16 +1,15 @@
 /** InputAdornment.tsx */
-import React from "react";
-import classnames from "classnames";
+import type React from "react";
 /* = Style API. */
 import { st, classes } from "./inputAdornment.st.css";
 
-const InputAdornment = ({
+const InputAdornment: React.VFC<React.HTMLAttributes<HTMLSpanElement>> = ({
   children,
   className: classNameProp,
   ...rest
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}) => {
   return (
-    <span className={st(classnames(classes.root, classNameProp))} {...rest}>
+    <span className={st(classes.root, classNameProp)} {...rest}>
       {children}
     </span>
   );

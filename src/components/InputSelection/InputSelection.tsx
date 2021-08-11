@@ -1,6 +1,5 @@
 import React from "react";
-import { Volume, SelectionControlType, AlignPos, Variant } from "../types";
-import classnames from "classnames";
+import type { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import Label from "../Label/Label";
 import ErrorText from "../ErrorText/ErrorText";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
@@ -74,15 +73,19 @@ const InputSelection = React.forwardRef(
           type,
           // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
           "aria-describedby": error ? `${id}-error` : undefined,
-          ...rest
+          ...rest,
         }}
       />
     );
 
-    const rootClassNames = classnames(classes.root, classNameProp);
-
     return (
-      <div className={st(rootClassNames, { variant, type, disabled, vol })}>
+      <div
+        className={st(
+          classes.root,
+          { variant, type, disabled, vol },
+          classNameProp
+        )}
+      >
         {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
         <Label

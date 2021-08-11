@@ -16,7 +16,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/StyleInfo/styleInfo.st.css";
+  -st-from: "../../components-site/StyleInfo/styleInfo.st.css";
   -st-default: StyleInfo;
 }
 

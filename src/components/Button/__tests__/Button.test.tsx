@@ -1,15 +1,20 @@
 import React from "react";
 import Button from "../Button";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import Icon from "../../Icon/Icon";
-import Link from "gatsby-link";
+import { Router, Link } from "react-router-dom";
 
-import { MenuButton as ReachMenuButton } from "@reach/menu-button";
-import { Menu } from "../../Menu/Menu";
+import { createMemoryHistory } from "history";
+// import { StaticRouter } from 'react-router'
+
+// import { MenuButton as ReachMenuButton } from "@reach/menu-button";
+// import { Menu } from "../../Menu/Menu";
 
 const buttonRef = React.createRef<HTMLButtonElement>();
-const BigButtsString = "I love big buttons and I cannot lie...";
+
+const buttonRefAnchor = React.createRef<HTMLAnchorElement>();
+const btnText = "I love big buttons and I cannot lie...";
 const iconPath = <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>;
 
 describe("Button", () => {
@@ -23,22 +28,22 @@ describe("Button", () => {
           onMouseEnter={() => console.log("onMouseEnter")}
           ref={buttonRef}
         >
-          {BigButtsString}
+          {btnText}
         </Button>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders as disabled", () => {
-    const DisabledButton = () => (
-      <Button data-testid="button-data-testid" ref={buttonRef} disabled>
-        {BigButtsString}
-      </Button>
-    );
-    const { getByTestId } = render(<DisabledButton />);
-    expect(getByTestId("button-data-testid")).toHaveAttribute("disabled");
-  });
+  // it("renders as disabled", () => {
+  //   const DisabledButton = () => (
+  //     <Button data-testid="button-data-testid" ref={buttonRef} disabled>
+  //       {btnText}
+  //     </Button>
+  //   );
+  //   const { getByTestId } = render(<DisabledButton />);
+  //   expect(getByTestId("button-data-testid")).toHaveAttribute("disabled");
+  // });
 
   it("renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth", () => {
     const tree = renderer
@@ -49,11 +54,11 @@ describe("Button", () => {
           onMouseEnter={() => console.log("onMouseEnter")}
           ref={buttonRef}
           tone={6}
-          variant={6}
+          variant="primary"
           vol={6}
           fullWidth
         >
-          {BigButtsString}
+          {btnText}
         </Button>
       )
       .toJSON();
@@ -65,29 +70,34 @@ describe("Button", () => {
       .create(
         <Button
           data-testid="button-data-testid"
-          onClick={() => console.log("onClick")}
-          onMouseEnter={() => console.log("onMouseEnter")}
+          // onClick={() => console.log("onClick")}
+          // onMouseEnter={() => console.log("onMouseEnter")}
           href="http://shelley.earth"
-          ref={buttonRef}
+          as="a"
+          // ref={buttonRefAnchor}
         >
-          {BigButtsString}
+          {btnText}
         </Button>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders as third party anchor provided via #as and #t props", () => {
+  it("renders as third party (react-router) anchor provided via #as and #to props", () => {
+    const memHistory = createMemoryHistory();
     const tree = renderer
       .create(
-        <Button
-          as={Link}
-          data-testid="button-data-testid"
-          to="internal-link"
-          ref={buttonRef}
-        >
-          {BigButtsString}
-        </Button>
+        <Router history={memHistory}>
+          <Button
+            as={Link}
+            data-testid="button-data-testid"
+            to="internal-link"
+            onPress={() => console.log("hi")}
+            ref={buttonRefAnchor}
+          >
+            {btnText}
+          </Button>
+        </Router>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -102,7 +112,7 @@ describe("Button", () => {
           icon={<Icon>{iconPath}</Icon>}
           iconPos="start"
         >
-          {BigButtsString}
+          {btnText}
         </Button>
       )
       .toJSON();
@@ -115,8 +125,8 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           ref={buttonRef}
-          variant={4}
-          icon={<Icon alt={BigButtsString}>{iconPath}</Icon>}
+          variant="secondary"
+          icon={<Icon alt={btnText}>{iconPath}</Icon>}
         />
       )
       .toJSON();
@@ -124,20 +134,20 @@ describe("Button", () => {
   });
 
   // @todo fix jestconfig to map ONLY CSS files to identity-obj-proxy to support Reach CSS check.
-  it("supports Reach Menu Button via #as", () => {
-    const tree = renderer
-      .create(
-        <Menu>
-          <Button
-            as={ReachMenuButton}
-            data-testid="button-data-testid"
-            ref={buttonRef}
-          >
-            {BigButtsString}
-          </Button>
-        </Menu>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  // it("supports Reach Menu Button via #as", () => {
+  //   const tree = renderer
+  //     .create(
+  //       // <Menu>
+  //       <Button
+  //         as={ReachMenuButton}
+  //         data-testid="button-data-testid"
+  //         ref={buttonRef}
+  //       >
+  //         {btnText}
+  //       </Button>
+  //       // </Menu>
+  //     )
+  //     .toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 });

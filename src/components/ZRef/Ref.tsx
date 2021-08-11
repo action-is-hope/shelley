@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./ref.st.css";
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,7 +16,7 @@ const Layout = React.forwardRef(
   ) => {
     return (
       <div
-        className={st(classnames(classes.root, classNameProp), { gridMode })}
+        className={st(classes.root, { gridMode }, classNameProp)}
         {...rest}
         ref={ref}
       >

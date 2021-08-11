@@ -1,0 +1,72 @@
+/* = Default project vars. */
+:import {
+  -st-from: "../project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-focus;
+}
+
+
+/* :import {
+  -st-from: "./focus.st.css";
+  -st-default: Focus;
+} */
+
+:vars {
+  /* Mixin defaults, what to set these to? */
+  focus-bg: hsl(211, 81%, 36%);
+}
+
+.menuList {
+  outline: none;
+  box-shadow: 0 0 1px 2px var(--color-focus);
+  border: solid 1px transparent;
+  padding: 0.25rem 0;
+  font-size: 87%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  /* From Reach */
+  white-space: nowrap;
+
+  /* background: var(--color-background-1); */
+}
+
+.menuList .label {
+  padding: 0.2rem var(--spacing-unit) 0.4rem;
+  display: inline-block;
+  font-size: 90%;
+  letter-spacing: .3em;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.menuItem {
+  display: block;
+  user-select: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  padding: 0.4rem var(--spacing-unit);
+}
+
+.menuItem:hover,
+.menuItem:focus {
+  /* background: value(focus-bg); */
+  outline: none;
+}
+
+.menuItem[aria-disabled=true],
+.menuItemDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* .menuItem[data-selected] {
+  outline: none;
+} */
+
+.root:focus {
+  /* -st-mixin: Focus; */
+}

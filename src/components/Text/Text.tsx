@@ -1,7 +1,6 @@
 /* Text.tsx */
 import React from "react";
-import { TextVolume } from "../types";
-import classNames from "classnames";
+import type { TextVolume } from "../types";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */
 import { st, classes } from "./text.st.css";
@@ -14,7 +13,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   /** Toggles uppercase styles. */
   uppercase?: boolean;
   /** Set the weight index. */
-  weight?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | false;
+  weight?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined;
   /** Visually hides the element, visible to screen readers. */
   visuallyHidden?: boolean;
   /** How 'loud' should this Text be? */
@@ -30,20 +29,22 @@ const Text = React.forwardRef(
       truncate = false,
       uppercase = false,
       visuallyHidden,
-      weight = false,
+      weight = undefined,
       vol = 3,
       ...rest
     }: TextProps,
     ref?: React.Ref<HTMLBaseElement>
   ) => {
-    const rootClassNames = classNames(classes.root, classNameProp);
-
     const text = React.createElement(
       tagName,
       {
-        className: st(rootClassNames, { truncate, weight, uppercase, vol }),
+        className: st(
+          classes.root,
+          { truncate, weight, uppercase, vol },
+          classNameProp
+        ),
         ref: ref,
-        ...rest
+        ...rest,
       },
       children
     );

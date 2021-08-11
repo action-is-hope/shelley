@@ -15,10 +15,6 @@
 :import {
   -st-from: "../../components/Blockquote/blockquote.st.css";
   -st-default: Blockquote;
-  -st-named:
-    cite,
-    content,
-    footer;
 }
 
 :import {
@@ -37,13 +33,8 @@
     font-style: italic;
   }
 
-  Blockquote::cite {
+  Blockquote::desc {
     font-style: normal;
-  }
-
-  Blockquote::cite a {}
-
-  Blockquote::footer {
     margin-top: var(--spacing-unit)
   }
 

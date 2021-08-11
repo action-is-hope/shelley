@@ -1,7 +1,6 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./toolbar.st.css";
-import { TextAlign, Variant } from "../types";
+import type { TextAlign, Variant } from "../types";
 
 interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: any;
@@ -16,17 +15,21 @@ const Toolbar = React.forwardRef(
       as: Component = "div",
       className: classNameProp,
       children,
-      variant = false,
+      variant = undefined,
       ...rest
     }: ToolbarProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
     return (
       <Component
-        className={st(classnames(classes.root, classNameProp), {
-          variant,
-          align
-        })}
+        className={st(
+          classes.root,
+          {
+            variant,
+            align,
+          },
+          classNameProp
+        )}
         {...rest}
         ref={ref}
       >

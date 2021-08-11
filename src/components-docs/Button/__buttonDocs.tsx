@@ -1,0 +1,171 @@
+import React from "react";
+import {
+  Blockquote,
+  Button,
+  Grid,
+  Text,
+  P,
+  H2,
+  VisuallyHidden,
+} from "../../indexLib";
+import { classes as grid } from "../../styles/default/grid.st.css";
+
+import {
+  meta,
+  QuickRef,
+  ComponentDemo,
+  ComponentHTML,
+  ComponentCSS,
+  Example1,
+} from "./__button.examples";
+
+import PageTitle from "../../components-site/PageTitle/PageTitle";
+import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
+
+const ButtonDocs = () => {
+  const test = React.createRef<HTMLBaseElement>();
+  const onButtonClick = () => {
+    const node = test.current;
+    console.log(node);
+    // `current` points to the mounted text input element
+    node && node.focus();
+  };
+
+  return (
+    <>
+      <PageTitle>Button</PageTitle>
+      <Grid variant={1} tag="main" formatted>
+        <P vol={4}>
+          Buttons are not clicked, they are &apos;selected&apos; so forget the
+          mouse, the key resides in the keyboard. Deep.
+        </P>
+
+        <H2 vol={2} uppercase>
+          Quick reference:
+        </H2>
+
+        <QuickRef />
+
+        <P>
+          Get more familiar with{" "}
+          <a href="https://www.w3.org/TR/wai-aria-practices/#button">
+            aria and buttons
+          </a>{" "}
+          as you need, attributes are spread down to the actual{" "}
+          <code>button</code> so treat it as a regular HTML button when it comes
+          to supporting our friends using assistive tech.
+        </P>
+
+        <P>
+          Button is built upon <code>@react-aria/useButton</code> which{" "}
+          <q>
+            provides the behavior and accessibility implementation for a button
+            component
+          </q>{" "}
+          <a href="https://react-spectrum.adobe.com/react-aria/useButton.html">
+            <VisuallyHidden>React Aria </VisuallyHidden>- useButton docs
+          </a>
+          . The main differenace is that where we refer to our <code>as</code>{" "}
+          prop which maps to their <code>elementType</code>.
+        </P>
+
+        <P>
+          Moving onto the more visual aspects, let&apos;s take a look at a few
+          variations by messing about with some of the props we have available:
+        </P>
+
+        <ComponentDemo />
+
+        <Example1 />
+
+        <H2 vol={4} uppercase>
+          Styling
+        </H2>
+
+        <P>
+          In terms of HTML structure, we have a button and an inner button. The
+          inner button is pretty key if we are to throw in other things like
+          icons inside. We put out vertical alignment on the inner item so as to
+          allow an adjacent icon to span the full height.
+        </P>
+
+        <P>
+          When providing state styles for things like loading or pressed then we
+          suggest you use the aria attributes and target the attribute states.
+          @todo example
+        </P>
+
+        <StyleInfo
+          componentName={meta.name}
+          componentHTML={<ComponentHTML />}
+          componentCSS={<ComponentCSS />}
+        />
+
+        <H2 vol={4} uppercase>
+          Accessibility, UX &amp; the Law
+        </H2>
+
+        <P>
+          In terms of{" "}
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> and the
+          law, this is covered under Level A which makes it a requirement both
+          in the value that it provides and the law.
+        </P>
+
+        <Blockquote
+          desc={
+            <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html">
+              On Input: Understanding SC 3.2.2
+            </a>
+          }
+          variant={2}
+        >
+          <P>
+            3.2.2 On Input: Changing the setting of any user interface component
+            does not automatically cause a change of context unless the user has
+            been advised of the behavior before using the component. (Level A)
+          </P>
+        </Blockquote>
+
+        <P>
+          It&apos;s a <code>button</code>, use it, don&apos;t use a{" "}
+          <code>div</code> styled to look like a button, just use a button. Make
+          sure it has good focus styles and make sure that it does what it
+          should when you test it with the keyboard.
+        </P>
+
+        <P>
+          If you are throwing an <code>Icon</code> inside with no visible text
+          label then be sure to provide one via the <code>alt</code> prop on the
+          icon which mirrors that of an image.
+        </P>
+
+        <P>
+          Use them sensibly to ensure that your interface is{" "}
+          <em>predictable</em>, so no auto-forwarding or context shifting{" "}
+          <code>onKeydown</code> or anything weird, <em>use</em> buttons.
+        </P>
+
+        <P>
+          As mentioned earlier get more familiar with{" "}
+          <a href="https://www.w3.org/TR/wai-aria-practices/#button">
+            aria and buttons
+          </a>{" "}
+          as you need but worth a scan read when you have a mo so that light
+          goes off in your head when you need it to.
+        </P>
+
+        <div className={grid.mid}>
+          <Button onClick={() => onButtonClick()} vol={1}>
+            Test Ref
+          </Button>{" "}
+          <Text as="span" ref={test} tabIndex={1} vol={2}>
+            TODO: Remove and add tests for refs in general.
+          </Text>
+        </div>
+      </Grid>
+    </>
+  );
+};
+
+export default ButtonDocs;

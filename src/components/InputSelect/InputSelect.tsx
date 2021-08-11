@@ -1,7 +1,6 @@
 import React from "react";
-import classnames from "classnames";
 import InputBase from "../InputBase/InputBase";
-import { InputBaseProps } from "../InputBase/InputBase";
+import type { InputBaseProps } from "../InputBase/InputBase";
 /* = Style API. */
 import { classes } from "./inputSelect.st.css";
 
@@ -48,16 +47,16 @@ const InputSelect = React.forwardRef(
           hint,
           variant,
           vol,
-          startAdornment
+          startAdornment,
           // endAdornment Fiddly to do a nice job, parking support for native select.
         }}
-        className={classnames(classes.root, classNameProp)}
+        className={`${classes.root} ${classNameProp}`}
       >
         <select
           {...{
             // InputBase applies id, disabled and sets error related aria attrs.
             ref,
-            ...attrs
+            ...attrs,
           }}
         >
           {children}

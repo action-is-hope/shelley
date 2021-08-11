@@ -1,5 +1,7 @@
-/* footer.st.css CSS API */
-.root {}
+/* ref.st.css CSS API */
+.root {
+  -st-states: gridMode(string);
+}
 
 .navList {}
 

@@ -15,7 +15,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/Logo/logo.st.css";
+  -st-from: "../../components-site/Logo/logo.st.css";
   -st-default: Logo;
 }
 

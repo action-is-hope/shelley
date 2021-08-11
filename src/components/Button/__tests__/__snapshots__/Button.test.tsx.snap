@@ -2,8 +2,21 @@
 
 exports[`Button includes #icon via prop positioned via #iconPos divider and children 1`] = `
 <button
-  className="Button2465625684__root Button2465625684---iconPos-5-start Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---iconPos-5-start Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
   data-testid="button-data-testid"
+  onClick={[Function]}
+  onDragStart={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  type="button"
 >
   <svg
     aria-hidden={true}
@@ -28,8 +41,21 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 
 exports[`Button includes #icon, no children, visually hidden label text provided via Icon alt prop 1`] = `
 <button
-  className="Button2465625684__root Button2465625684---iconPos-3-end Button2465625684---tone-1-1 Button2465625684---variant-1-4 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---iconPos-3-end Button2465625684---tone-1-1 Button2465625684---variant-9-secondary Button2465625684---vol-1-3"
   data-testid="button-data-testid"
+  onClick={[Function]}
+  onDragStart={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  type="button"
 >
   <svg
     aria-hidden={true}
@@ -51,11 +77,23 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 
 exports[`Button renders as a basic anchor link via #href prop 1`] = `
 <a
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
   data-testid="button-data-testid"
   href="http://shelley.earth"
   onClick={[Function]}
+  onDragStart={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  role="button"
+  tabIndex={0}
 >
   <span
     className="Button2465625684__inner"
@@ -67,10 +105,21 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
 
 exports[`Button renders as a basic button with custom #className 1`] = `
 <button
-  className="Button2465625684__root for-which-nobody-can-deny Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3 for-which-nobody-can-deny"
   data-testid="button-data-testid"
   onClick={[Function]}
+  onDragStart={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  type="button"
 >
   <span
     className="Button2465625684__inner"
@@ -80,13 +129,25 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 </button>
 `;
 
-exports[`Button renders as third party anchor provided via #as and #t props 1`] = `
+exports[`Button renders as third party (react-router) anchor provided via #as and #to props 1`] = `
 <a
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
+  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
   data-testid="button-data-testid"
   href="/internal-link"
   onClick={[Function]}
+  onDragStart={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  role="button"
+  tabIndex={0}
 >
   <span
     className="Button2465625684__inner"
@@ -98,29 +159,20 @@ exports[`Button renders as third party anchor provided via #as and #t props 1`] 
 
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
-  className="Button2465625684__root Button2465625684--fullWidth Button2465625684---tone-1-6 Button2465625684---variant-1-6 Button2465625684---vol-1-6"
+  className="Button2465625684__root Button2465625684--fullWidth Button2465625684---tone-1-6 Button2465625684---variant-7-primary Button2465625684---vol-1-6"
   data-testid="button-data-testid"
   onClick={[Function]}
-  onMouseEnter={[Function]}
->
-  <span
-    className="Button2465625684__inner"
-  >
-    I love big buttons and I cannot lie...
-  </span>
-</button>
-`;
-
-exports[`Button supports Reach Menu Button via #as 1`] = `
-<button
-  aria-controls="menu--1"
-  aria-haspopup={true}
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-1-1 Button2465625684---vol-1-3"
-  data-reach-menu-button=""
-  data-testid="button-data-testid"
-  id="menu-button--menu"
+  onDragStart={[Function]}
   onKeyDown={[Function]}
+  onKeyUp={[Function]}
   onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
   type="button"
 >
   <span

@@ -1,5 +1,7 @@
 /* table.st.css CSS API */
-.root {}
+.root {
+  -st-states: variant(number), vol(number);
+}
 
 /* Styles applied to the root element. */
 .root {

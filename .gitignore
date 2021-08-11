@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+*.st.css.d.ts
+*.st.css.d.ts.map
 # Runtime data
 pids
 *.pid
@@ -40,6 +42,8 @@ public
 
 # dist files
 dist
+
+docs
  
 # Mac files
 .DS_Store

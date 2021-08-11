@@ -1,7 +1,6 @@
 /** Label.tsx */
-import React from "react";
-import { AlignPos } from "../types";
-import classNames from "classnames";
+import type React from "react";
+import type { AlignPos } from "../types";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import HintText from "../HintText/HintText";
 /* = Style API. */
@@ -19,15 +18,15 @@ export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   inputControl?: React.ReactNode;
 }
 
-const Label = ({
+const Label: React.VFC<LabelProps> = ({
   className: classNameProp,
   inputControl,
   children,
-  inputPos = false,
+  inputPos = undefined,
   hint,
   visuallyHidden,
   ...attrs
-}: LabelProps) => {
+}) => {
   const labelText = (
     <span className={classes.textContainer}>
       <span className={classes.labelText}>{children}</span>
@@ -35,12 +34,13 @@ const Label = ({
     </span>
   );
 
-  const rootClassNames = classNames(classes.root, classNameProp);
-
-  const hasInput = inputControl ? true : false;
+  const hasInput: boolean = inputControl ? true : false;
 
   return (
-    <label className={st(rootClassNames, { inputPos, hasInput })} {...attrs}>
+    <label
+      className={st(classes.root, { inputPos, hasInput }, classNameProp)}
+      {...attrs}
+    >
       {visuallyHidden ? (
         <VisuallyHidden>{labelText}</VisuallyHidden>
       ) : (

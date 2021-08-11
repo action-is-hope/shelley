@@ -5,9 +5,12 @@
   -st-states:
     iconPos(enum(top, end, bottom, start)),
     fullWidth,
-    tone(enum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)),
-    variant(enum(1, 2, 3, 4, 5, 6)),
-    vol(enum(1, 2, 3, 4, 5, 6));
+    tone(number),
+    variant(string),
+    vol(number),
+    isPressed,
+    isDisabled;
+
 }
 
 .root,
@@ -37,6 +40,7 @@
   --bg-color: transparent;
   --border-color: transparent;
   --text-color: inherit;
+
   /* = Set the like for like variable but -accent is special as we use 
     it to assign the colour index to the properties as we have used them
     in our variants. */

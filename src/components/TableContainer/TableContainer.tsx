@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./tableContainer.st.css";
 
 export interface TableContainerProps
@@ -14,7 +13,7 @@ const TableContainer = React.forwardRef(
     const Component = as || "div";
     return (
       <Component
-        className={st(classnames(classes.root, classNameProp))}
+        className={st(classes.root, classNameProp)}
         ref={ref}
         {...rest}
       >

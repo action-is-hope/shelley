@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 import { st, classes } from "./tableRow.st.css";
 
 export interface TableRowProps
@@ -19,7 +18,7 @@ const TableRow = React.forwardRef(
   ) => {
     return (
       <tr
-        className={st(classnames(classes.root, classNameProp), { selected })}
+        className={st(classes.root, { selected }, classNameProp)}
         ref={ref}
         {...rest}
       >

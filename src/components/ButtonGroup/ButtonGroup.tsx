@@ -1,18 +1,10 @@
 import React from "react";
-import { Accent, Volume, Variant } from "../types";
-import classnames from "classnames";
+import type { Accent, Volume, ButtonVariants } from "../types";
 
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
 
-/**
- * ButtonGroup props extending those of a regular button, we are overriding tone.
- */
-export interface ButtonGroupProps
-  extends Pick<
-    React.HTMLAttributes<HTMLDivElement>,
-    Exclude<keyof React.HTMLAttributes<HTMLDivElement>, "tone">
-  > {
+export interface ButtonGroupCustomProps {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
@@ -20,13 +12,17 @@ export interface ButtonGroupProps
   /** Tone index. */
   tone?: Accent;
   /** Variant index. */
-  variant?: Variant;
-  /** How 'loud' should this ButtonGroup be? */
+  variant?: ButtonVariants;
+  /** Changes the volume of the buttons. */
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
+  /** Applies width: 100%; to the button. */
   fullWidth?: boolean;
 }
+
+export type ButtonGroupProps = ButtonGroupCustomProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
 const ButtonGroup = React.forwardRef(
   (
@@ -37,33 +33,31 @@ const ButtonGroup = React.forwardRef(
       fullWidth = false,
       disabled,
       tone = 1,
-      variant = 1,
+      variant = "quiet",
       orientation = "horizontal",
       vol = 3,
       ...rest
     }: ButtonGroupProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    const rootClassNames = classnames(classes.root, classNameProp);
-
     return (
       <div
-        className={st(rootClassNames, { orientation, fullWidth })}
+        className={st(classes.root, { orientation, fullWidth }, classNameProp)}
         {...rest}
         ref={ref}
       >
-        {React.Children.map(children, child => {
+        {React.Children.map(children, (child) => {
           if (!React.isValidElement(child)) {
             return null;
           }
 
           return React.cloneElement(child, {
-            className: classnames(buttonClassName, child.props.className),
+            className: `${buttonClassName} ${child.props.className}`,
             disabled: child.props.disabled || disabled,
             tone: child.props.tone || tone,
             vol: child.props.vol || vol,
             variant: child.props.variant || variant,
-            icon: child.props.icon
+            icon: child.props.icon,
           });
         })}
       </div>

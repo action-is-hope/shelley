@@ -16,7 +16,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/PropsDemo/propsDemo.st.css";
+  -st-from: "../../components-site/PropsDemo/propsDemo.st.css";
   -st-default: PropsDemo;
 }
 
@@ -25,7 +25,6 @@
 :import {
   -st-from: "../../components/Label/label.st.css";
   -st-default: Label;
-  -st-named: textContainer, labelText;
 }
 
 @st-scope Shelley {
@@ -132,7 +131,7 @@
 
 
 @st-scope Shelley {
-  PropsDemo::codeExample>div {
+  PropsDemo::codeExample > div {
     margin-top: 0;
     height: 100%;
     margin-bottom: 0;

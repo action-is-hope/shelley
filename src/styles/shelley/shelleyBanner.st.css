@@ -22,7 +22,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/ShelleyBanner/shelleyBanner.st.css";
+  -st-from: "../../components-site/ShelleyBanner/shelleyBanner.st.css";
   -st-default: Banner;
   -st-named:
     tagline,

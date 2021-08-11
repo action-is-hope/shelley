@@ -1,0 +1,31 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/ComboboxSingle/comboboxSingle.st.css";
+  -st-default: ComboboxSingle;
+}
+
+:import {
+  -st-from: "./mixins/menu.st.css";
+  -st-default: MenuMixin;
+  -st-named: menuList, menuItem;
+}
+
+@st-scope Default {
+  ComboBoxSingle {}
+
+  ComboboxSingle::menuList {
+    -st-mixin: menuList;
+  }
+
+  ComboboxSingle::menuItem {
+    -st-mixin: menuItem;
+  }
+}

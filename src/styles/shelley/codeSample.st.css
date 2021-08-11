@@ -26,7 +26,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components_site/CodeSample/codeSample.st.css";
+  -st-from: "../../components-site/CodeSample/codeSample.st.css";
   -st-default: CodeSample;
 }
 
