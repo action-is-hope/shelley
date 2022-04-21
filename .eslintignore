@@ -3,6 +3,6 @@ cjs
 esm
 umd
 dist
-
+# Stylable definitions.
 *.st.css.d.ts
 *.st.css.d.ts.map

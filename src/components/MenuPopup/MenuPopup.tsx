@@ -36,7 +36,6 @@ export const MenuPopup = React.forwardRef((props: any, ref: any) => {
     overlayRef
   );
 
-  // console.log("me", overlayProps);
   // Wrap in <FocusScope> so that focus is restored back to the
   // trigger when the menu is closed. In addition, add hidden
   // <DismissButton> components at the start and end of the list
@@ -61,10 +60,6 @@ export const MenuPopup = React.forwardRef((props: any, ref: any) => {
               item={item}
               state={state}
               onAction={props.onAction}
-              // onAction={(i: any) => {
-              //   console.log("YO", i);
-              //   return props.onAction(i);
-              // }}
               onClose={props.onClose}
             />
           ))}
