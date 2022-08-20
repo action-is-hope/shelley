@@ -15,6 +15,8 @@ import MenuDocs from "./components-docs/Menu/__menuDocs";
 import TextDocs from "./components-docs/Text/__textDocs";
 import VisuallyHiddenDocs from "./components-docs/VisuallyHidden/__visuallyHiddenDocs";
 
+import TableDocs from "./components-docs/Table/__tableDocs";
+
 import IndexPage from "./pages/index";
 
 interface NavigationItem {
@@ -76,6 +78,12 @@ export const componentNav: Navigation = [
     path: "/menu",
     docs: <MenuDocs />,
     linkText: "Menu",
+  },
+
+  {
+    path: "/table",
+    docs: <TableDocs />,
+    linkText: "Table",
   },
 
   {

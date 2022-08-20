@@ -1,0 +1,86 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  Props,
+} from "@storybook/addon-docs/blocks";
+import Button from "../../components/Button/Button";
+import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
+// MyComponent.stories.mdx
+import { ArgsTable } from "@storybook/addon-docs";
+import { Example4 } from "../../components-docs/Menu/__menu.examples";
+
+export const Template = (args) => (
+  <ButtonGroup {...args}>
+    <Button variant="primary">ONe</Button>
+    <Button variant="primary">Two</Button>
+  </ButtonGroup>
+);
+
+<Meta
+  title="MDX/Badge"
+  argTypes={{
+    desc: {
+      control: {
+        type: "text",
+      },
+    },
+    children: {
+      value: "Hello",
+      control: {
+        type: "text",
+      },
+    },
+  }}
+  component={ButtonGroup}
+/>
+
+# My Component!
+
+<Preview>
+  <Story
+    name="ButtonGroup test"
+    args={{
+      desc: "Desc",
+      variant: "primary",
+      children: "Hi",
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable of={ButtonGroup} />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story
+    name="button"
+    args={{
+      desc: "Desc",
+      variant: 1,
+      children: "Hi",
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={ButtonGroup} />
+
+<Preview>
+  <Story
+    name="j) Icon Buttons"
+    args={{
+      variant: "primary",
+    }}
+  >
+    <Example4 />
+  </Story>
+</Preview>

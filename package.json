@@ -44,7 +44,9 @@
     "lint": "eslint . -f codeframe",
     "typecheck": "tsc --noEmit",
     "gen-docs": "rimraf docs && typedoc --out docs src/indexLib.ts",
-    "test": "npm run typecheck && npm run lint && jest"
+    "test": "npm run typecheck && npm run lint && jest",
+    "storybook": "start-storybook -p 6006 --no-manager-cache",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "verbose": true
@@ -61,9 +63,19 @@
     "@react-types/overlays": "^3.5.4",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7",
+    "react-accessible-dropdown-menu-hook": "^3.2.0",
     "react-popper": "^2.2.5"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.4.22",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-docs": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/addon-queryparams": "^6.2.9",
+    "@storybook/builder-webpack5": "^6.4.22",
+    "@storybook/manager-webpack5": "^6.4.22",
+    "@storybook/react": "^6.4.22",
     "@stylable/cli": "^4.13.0",
     "@stylable/core": "^4.13.0",
     "@stylable/jest": "^4.13.0",
@@ -82,6 +94,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "copyfiles": "^2.4.1",
+    "cypress": "^10.6.0",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
@@ -99,6 +112,7 @@
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "serve": "^12.0.0",
+    "storybook-addon-rtl": "^0.4.2",
     "ts-jest": "27.0.3",
     "ts-loader": "^9.2.8",
     "typedoc": "^0.22.15",

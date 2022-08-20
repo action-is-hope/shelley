@@ -1,27 +1,17 @@
 /** MenuItem.tsx */
 import React, { RefObject } from "react";
-import {
-  // useMenu,
-  useMenuItem,
-  // useMenuTrigger,
-  AriaMenuItemProps,
-} from "@react-aria/menu";
+import { useMenuItem, AriaMenuItemProps } from "@react-aria/menu";
 
-// import { mergeProps } from "@react-aria/utils";
-// import { useFocus } from "@react-aria/interactions";
+import type { TreeState } from "@react-stately/tree";
+import type { Node } from "@react-types/shared/src/collections";
 
 /* = Style API. */
 import { st, classes } from "./menuItem.st.css";
 
-// export type ButtonProps<P extends React.ElementType = "button"> = {
-//   /** Custom element to render such as an anchor "a" or a router "Link" component. */
-//   as?: P;
-// } & MergeElementProps<P, ButtonBaseProps>;
-
 interface MenuItemProps extends AriaMenuItemProps {
   highlight?: boolean;
-  state: any;
-  item: any;
+  state: TreeState<object>;
+  item: Node<object>;
   ref?: RefObject<HTMLElement>;
 }
 
@@ -32,9 +22,9 @@ const MenuItem = ({
   onClose,
 }: // ...rest
 MenuItemProps) => {
-  // Get props for the menu item element
   const ref = React.useRef(null);
 
+  // Get props for the menu item element
   const isDisabled = state.disabledKeys.has(item.key);
   const isFocused = state.selectionManager.focusedKey === item.key;
   const isSelected = state.selectionManager.selectedKeys.has(item.key);
@@ -42,7 +32,6 @@ MenuItemProps) => {
   const { menuItemProps } = useMenuItem(
     {
       key: item.key,
-      // isDisabled: item.isDisabled,
       isDisabled,
       isSelected,
       onAction,
@@ -51,15 +40,9 @@ MenuItemProps) => {
     state,
     ref
   );
-  // console.log(menuItemProps);
-  // Handle focus events so we can apply highlighted
-  // style to the focused menu item
-  // const [isFocused, setFocused] = React.useState(false);
 
-  // const { focusProps } = useFocus({ onFocusChange: setFocused });
   return (
     <li
-      // {...mergeProps(menuItemProps, focusProps)}
       {...menuItemProps}
       ref={ref}
       className={st(classes.root, {

@@ -15,10 +15,6 @@
   display: inline-flex;
 }
 
-.root:fullWidth {
-  display: flex;
-}
-
 .root > Button:focus {
   z-index: 1;
 }

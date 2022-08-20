@@ -17,8 +17,6 @@ export interface ButtonGroupCustomProps {
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
-  /** Applies width: 100%; to the button. */
-  fullWidth?: boolean;
 }
 
 export type ButtonGroupProps = ButtonGroupCustomProps &
@@ -30,7 +28,6 @@ const ButtonGroup = React.forwardRef(
       buttonClassName,
       children,
       className: classNameProp,
-      fullWidth = false,
       disabled,
       tone = 1,
       variant = "quiet",
@@ -39,30 +36,28 @@ const ButtonGroup = React.forwardRef(
       ...rest
     }: ButtonGroupProps,
     ref?: React.Ref<HTMLDivElement>
-  ) => {
-    return (
-      <div
-        className={st(classes.root, { orientation, fullWidth }, classNameProp)}
-        {...rest}
-        ref={ref}
-      >
-        {React.Children.map(children, (child) => {
-          if (!React.isValidElement(child)) {
-            return null;
-          }
+  ) => (
+    <div
+      className={st(classes.root, { orientation }, classNameProp)}
+      {...rest}
+      ref={ref}
+    >
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
 
-          return React.cloneElement(child, {
-            className: `${buttonClassName} ${child.props.className}`,
-            disabled: child.props.disabled || disabled,
-            tone: child.props.tone || tone,
-            vol: child.props.vol || vol,
-            variant: child.props.variant || variant,
-            icon: child.props.icon,
-          });
-        })}
-      </div>
-    );
-  }
+        return React.cloneElement(child, {
+          className: st(buttonClassName, child.props.className),
+          disabled: child.props.disabled || disabled,
+          tone: child.props.tone || tone,
+          vol: child.props.vol || vol,
+          variant: child.props.variant || variant,
+          icon: child.props.icon,
+        });
+      })}
+    </div>
+  )
 );
 
 ButtonGroup.displayName = "ButtonGroup";

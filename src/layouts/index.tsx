@@ -13,7 +13,7 @@ import Icon from "../components/Icon/Icon";
 
 import { Link, useHistory } from "react-router-dom";
 
-import ComboboxSingle from "../components/ComboboxSingle/ComboboxSingle";
+import ComboboxSingle from "../components/ComboboxSingle/ComboBoxSingle";
 
 import { componentNav } from "../Routes";
 

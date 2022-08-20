@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button";
+import Button from "../ButtonARIA";
 // import { render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import Icon from "../../Icon/Icon";
@@ -92,7 +92,7 @@ describe("Button", () => {
             as={Link}
             data-testid="button-data-testid"
             to="internal-link"
-            onPress={() => console.log("hi")}
+            // onPress={() => console.log("hi")}
             ref={buttonRefAnchor}
           >
             {btnText}

@@ -1,0 +1,62 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  Props,
+} from "@storybook/addon-docs/blocks";
+import Button from "../../components/Button/Button";
+import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
+import { ArgsTable } from "@storybook/addon-docs";
+
+export const BasicButton = (args) => (
+  <ButtonGroup variant="primary" {...args}>
+    <Button>One</Button>
+    <Button>Two</Button>
+    <Button>Three</Button>
+  </ButtonGroup>
+);
+
+<Meta title="MDX/ButtonGroup" argTypes={{}} component={ButtonGroup} />
+
+# ButtonGroup
+
+The ButtonGroup component can be used to group related buttons.
+If Buttons created a cooperative it would look like a ButtonGroup.
+Use with `Button`.
+
+## Basic button group
+
+The buttons can be grouped by wrapping them with the `ButtonGroup` component. They need to be immediate children.
+
+<Preview>
+  <Story
+    name="ButtonGroup test"
+    args={{
+      variant: "primary",
+    }}
+  >
+    {BasicButton.bind({})}
+  </Story>
+</Preview>
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story
+    name="button"
+    args={{
+      variant: "Secondary",
+    }}
+  >
+    {BasicButton.bind({})}
+  </Story>
+</Preview>
+
+# Props
+
+<ArgsTable of={ButtonGroup} />
+
+<Props of={ButtonGroup} />

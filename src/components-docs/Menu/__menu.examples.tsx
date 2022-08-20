@@ -1,6 +1,8 @@
 /* menuExamples.tsx */
 import { MenuButton, Icon, Button, ButtonGroup, H2 } from "../../indexLib";
 
+import useDropdownMenu from "react-accessible-dropdown-menu-hook";
+
 import { Item } from "@react-stately/collections";
 
 /* Supporting Components */
@@ -192,3 +194,25 @@ export const Example3 = () => (
     </CodeSample>
   </>
 );
+
+export const Example4 = () => {
+  const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
+
+  return (
+    <>
+      <ButtonGroup vol={4} tone={2} variant="primary">
+        <Button {...buttonProps} fullWidth>
+          Publish
+        </Button>
+        <div className={isOpen ? "visible" : ""} role="menu">
+          <a {...itemProps[0]} href="https://example.com">
+            Regular link
+          </a>
+          <a {...itemProps[1]} onClick={() => console.log("hello")}>
+            With click handler
+          </a>
+        </div>
+      </ButtonGroup>
+    </>
+  );
+};
