@@ -9,7 +9,9 @@ import { useOverlayPosition } from "@react-aria/overlays";
 /* = Style API. */
 // import { st, classes } from "./menuButton.st.css";
 import MenuPopup from "../MenuPopup/MenuPopup";
-import Button, { ButtonProps } from "../Button/ButtonARIA";
+import Button, { ButtonProps } from "../Button/Button";
+
+import type { CollectionChildren } from "@react-types/shared/src/collections";
 
 export interface MenuButtonProps extends ButtonProps {
   // omit as
@@ -18,6 +20,7 @@ export interface MenuButtonProps extends ButtonProps {
   label?: string;
   focusStrategy?: "first" | "last";
   onAction?: (key: string) => void;
+  children: CollectionChildren<object>;
 }
 // extend position props and button
 const MenuButton = ({
@@ -87,10 +90,10 @@ const MenuButton = ({
         ReactDOM.createPortal(
           <MenuPopup
             // {...rest}
-            {...{ children, onAction }}
             {...positionProps}
+            {...{ children, onAction }}
             // Required to supress a11y console warning, actual value provided by menuProps.
-            aria-labelledby
+            // aria-labelledby
             domProps={menuProps}
             autoFocus={focusStrategy || state.focusStrategy}
             onClose={() => state.close()}

@@ -69,13 +69,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  options: {
-    storySort: {
-      method: "alphabetical",
-      order: [],
-      locales: "",
-    },
-  },
+  // options: {
+  //   storySort: {
+  //     method: "",
+  //     order: [],
+  //     locales: "",
+  //   },
+  // },
   viewport: {
     viewports: bronteViewports,
   },
@@ -105,17 +105,7 @@ export const globalTypes = {
 
 const withBronteTheme = (Story, context) => {
   return (
-    <div
-      className={context.globals.bronteTheme}
-      style={{
-        width: "100%",
-        height: "100%",
-        minHeight: "20vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className={context.globals.bronteTheme}>
       <Story {...context} />
     </div>
   );

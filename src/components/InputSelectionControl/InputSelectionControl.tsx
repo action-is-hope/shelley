@@ -1,6 +1,5 @@
 import React from "react";
 import type { SelectionControlType } from "../types";
-import classnames from "classnames";
 /* = Style API. */
 import { st, classes } from "./inputSelectionControl.st.css";
 
@@ -16,11 +15,9 @@ const InputSelectionControl = React.forwardRef(
   (
     {
       className: classNameProp,
-      id = "NOID",
       disabled = false,
       error = false,
       type = "checkbox",
-      // defaultChecked = undefined,
       ...rest
     }: InputSelectionControlProps,
     ref?: React.Ref<HTMLInputElement>
@@ -38,11 +35,8 @@ const InputSelectionControl = React.forwardRef(
     >
       <input
         {...{
-          id,
-          // className: classnames(classes.inputField, classes[type]),
-          className: classnames(classes.inputField),
+          className: classes.inputField,
           disabled,
-          // defaultChecked,
           ref,
           type: type === "radio" ? "radio" : "checkbox",
           // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html

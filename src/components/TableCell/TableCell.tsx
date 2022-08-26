@@ -10,15 +10,19 @@ interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   scope?: string;
   /** Defines volumne/size. */
   vol?: Volume;
+  padding?: "standard" | "none" | "checkbox";
+  sortDirection?: "ascending" | "descending" | false;
 }
 const TableCell = React.forwardRef(
   (
     {
       align = "start",
+      padding = "standard",
       children,
       className: classNameProp,
       header = false,
       scope: scopeProp,
+      sortDirection,
       vol = 3,
       ...rest
     }: TableCellProps,
@@ -26,11 +30,13 @@ const TableCell = React.forwardRef(
   ) => {
     const Component = header ? "th" : "td";
     const scope = header && !scopeProp ? "col" : scopeProp;
+    // console.log(padding);
     return (
       <Component
-        className={st(classes.root, { vol, align }, classNameProp)}
+        className={st(classes.root, { vol, align, padding }, classNameProp)}
         scope={scope}
         ref={ref}
+        aria-sort={sortDirection || undefined}
         {...rest}
       >
         {children}

@@ -45,6 +45,7 @@
     "typecheck": "tsc --noEmit",
     "gen-docs": "rimraf docs && typedoc --out docs src/indexLib.ts",
     "test": "npm run typecheck && npm run lint && jest",
+    "unit-test": "npm run jest",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
   },
@@ -97,6 +98,7 @@
     "cypress": "^10.6.0",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
     "eslint-plugin-stylable": "^4.13.0",

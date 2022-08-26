@@ -2,8 +2,9 @@
 
 exports[`Button includes #icon via prop positioned via #iconPos divider and children 1`] = `
 <button
-  className="Button2465625684__root Button2465625684---iconPos-5-start Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
+  className="Button224607090__root Button224607090---iconPos-5-start Button224607090---tone-1-1 Button224607090---variant-7-primary Button224607090---vol-1-3"
   data-testid="button-data-testid"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -20,7 +21,7 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 >
   <svg
     aria-hidden={true}
-    className="Icon2050503392__root"
+    className="Icon2275031589__root"
     focusable="false"
     viewBox="0 0 16 16"
   >
@@ -29,10 +30,10 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
     />
   </svg>
   <span
-    className="Button2465625684__divider"
+    className="Button224607090__divider"
   />
   <span
-    className="Button2465625684__inner"
+    className="Button224607090__inner"
   >
     I love big buttons and I cannot lie...
   </span>
@@ -41,8 +42,9 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 
 exports[`Button includes #icon, no children, visually hidden label text provided via Icon alt prop 1`] = `
 <button
-  className="Button2465625684__root Button2465625684---iconPos-3-end Button2465625684---tone-1-1 Button2465625684---variant-9-secondary Button2465625684---vol-1-3"
+  className="Button224607090__root Button224607090---iconPos-3-end Button224607090---tone-1-1 Button224607090---variant-9-secondary Button224607090---vol-1-3"
   data-testid="button-data-testid"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -59,7 +61,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 >
   <svg
     aria-hidden={true}
-    className="Icon2050503392__root"
+    className="Icon2275031589__root"
     focusable="false"
     viewBox="0 0 16 16"
   >
@@ -68,7 +70,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
     />
   </svg>
   <span
-    className="visuallyHidden930791739__root"
+    className="visuallyHidden519588831__root"
   >
     I love big buttons and I cannot lie...
   </span>
@@ -77,9 +79,10 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 
 exports[`Button renders as a basic anchor link via #href prop 1`] = `
 <a
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
+  className="Button224607090__root Button224607090---tone-1-1 Button224607090---variant-7-primary Button224607090---vol-1-3"
   data-testid="button-data-testid"
   href="http://shelley.earth"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -96,7 +99,7 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
   tabIndex={0}
 >
   <span
-    className="Button2465625684__inner"
+    className="Button224607090__inner"
   >
     I love big buttons and I cannot lie...
   </span>
@@ -105,8 +108,9 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
 
 exports[`Button renders as a basic button with custom #className 1`] = `
 <button
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3 for-which-nobody-can-deny"
+  className="Button224607090__root Button224607090---tone-1-1 Button224607090---variant-7-primary Button224607090---vol-1-3 for-which-nobody-can-deny"
   data-testid="button-data-testid"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -122,7 +126,7 @@ exports[`Button renders as a basic button with custom #className 1`] = `
   type="button"
 >
   <span
-    className="Button2465625684__inner"
+    className="Button224607090__inner"
   >
     I love big buttons and I cannot lie...
   </span>
@@ -131,9 +135,10 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 
 exports[`Button renders as third party (react-router) anchor provided via #as and #to props 1`] = `
 <a
-  className="Button2465625684__root Button2465625684---tone-1-1 Button2465625684---variant-7-primary Button2465625684---vol-1-3"
+  className="Button224607090__root Button224607090---tone-1-1 Button224607090---variant-7-primary Button224607090---vol-1-3"
   data-testid="button-data-testid"
   href="/internal-link"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -150,7 +155,7 @@ exports[`Button renders as third party (react-router) anchor provided via #as an
   tabIndex={0}
 >
   <span
-    className="Button2465625684__inner"
+    className="Button224607090__inner"
   >
     I love big buttons and I cannot lie...
   </span>
@@ -159,8 +164,9 @@ exports[`Button renders as third party (react-router) anchor provided via #as an
 
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
-  className="Button2465625684__root Button2465625684--fullWidth Button2465625684---tone-1-6 Button2465625684---variant-7-primary Button2465625684---vol-1-6"
+  className="Button224607090__root Button224607090--fullWidth Button224607090---tone-1-6 Button224607090---variant-7-primary Button224607090---vol-1-6"
   data-testid="button-data-testid"
+  onBlur={null}
   onClick={[Function]}
   onDragStart={[Function]}
   onKeyDown={[Function]}
@@ -176,7 +182,7 @@ exports[`Button renders with stylable state prop classes, #tone, #variant, #vol 
   type="button"
 >
   <span
-    className="Button2465625684__inner"
+    className="Button224607090__inner"
   >
     I love big buttons and I cannot lie...
   </span>

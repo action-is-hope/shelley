@@ -7,11 +7,15 @@ import {
 } from "@storybook/addon-docs/blocks";
 import { Button, ButtonGroup, Icon } from "../../indexLib";
 import { ArgsTable } from "@storybook/addon-docs";
-
-export const BasicButton = (args) => <Button {...args}>Text label</Button>;
+import { StoryCenteredInline } from "../StoryLayout";
+export const BasicButton = (args) => (
+  <StoryCenteredInline>
+    <Button {...args}>Text label</Button>
+  </StoryCenteredInline>
+);
 
 <Meta
-  title="MDX/Button"
+  title="Inputs/Button"
   argTypes={{
     tone: {
       options: [1, 2, 3, 4],
@@ -41,24 +45,21 @@ Buttons communicate actions that users can take. They are typically placed throu
 - Cards
 - Toolbars
 
+## Basic Button
+
 <Preview>
-  <Story name="a) Basic Button">{BasicButton.bind({})}</Story>
+  <Story name="a) Basic button">{BasicButton.bind({})}</Story>
 </Preview>
 
 <ArgsTable of={Button} />
 
-## Basic variants
+## Button variants
 
 The Button comes with four variants: primary (default), secondary, quiet and fab.
 
 <Preview>
-  <Story
-    name="b) Button Variants"
-    args={{
-      variant: "primary",
-    }}
-  >
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+  <Story name="b) Button variants">
+    <StoryCenteredInline>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="quiet">Quiet</Button>
@@ -72,7 +73,7 @@ The Button comes with four variants: primary (default), secondary, quiet and fab
       >
         Fab
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -81,14 +82,14 @@ The Button comes with four variants: primary (default), secondary, quiet and fab
 Primary buttons are high-emphasis, distinguished by their use of obvious actionable styling like a fill. They contain actions that are primary to your app.
 
 <Preview>
-  <Story name="c) Primary Button">
-    <div style={{ display: "flex", gap: "20px" }}>
+  <Story name="c) Primary button">
+    <StoryCenteredInline>
       <Button>Primary</Button>
       <Button disabled>Disabled</Button>
       <Button as="a" href="#text-buttons">
         Link
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -99,8 +100,8 @@ Secondary buttons are medium-emphasis buttons. They contain actions that are imp
 Secondary buttons are also a lower emphasis alternative to primary buttons, or a higher emphasis alternative to quiet buttons.
 
 <Preview>
-  <Story name="d) Secondary Button">
-    <div style={{ display: "flex", gap: "20px" }}>
+  <Story name="d) Secondary button">
+    <StoryCenteredInline>
       <Button variant="secondary">Secondary</Button>
       <Button variant="secondary" disabled>
         Disabled
@@ -108,7 +109,7 @@ Secondary buttons are also a lower emphasis alternative to primary buttons, or a
       <Button variant="secondary" as="a" href="#text-buttons">
         Link
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -117,8 +118,8 @@ Secondary buttons are also a lower emphasis alternative to primary buttons, or a
 Quiet buttons are typically used for less-pronounced actions, including those located: in dialogs, in cards. In cards, text buttons help maintain an emphasis on card content.
 
 <Preview>
-  <Story name="d) Quiet Buttons">
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+  <Story name="e) Quiet button">
+    <StoryCenteredInline>
       <Button variant="quiet">Quiet</Button>
       <Button variant="quiet" disabled>
         Disabled
@@ -126,11 +127,11 @@ Quiet buttons are typically used for less-pronounced actions, including those lo
       <Button variant="quiet" as="a" href="#text-buttons">
         Link
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
-## Floating action button (FAB)
+## Floating Action Button (FAB)
 
 A floating action button (FAB) performs the primary, or most common, action on a screen.
 
@@ -141,8 +142,8 @@ A floating action button appears in front of all screen content, typically as a 
 Only use a FAB if it is the most suitable way to present a screen's primary action. Only one component is recommended per screen to represent the most common action.
 
 <Preview>
-  <Story name="f) Floating Action Button (FAB)">
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+  <Story name="f) Floating action button (FAB)">
+    <StoryCenteredInline>
       <Button
         icon={
           <Icon>
@@ -176,22 +177,22 @@ Only use a FAB if it is the most suitable way to present a screen's primary acti
       >
         Label
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
-## Tone / Colour
+## Tone
 
 The Button has the option to set the tone of the button according to variables set up as part of the theme. You may not need to use these at all if you don't really use other colours in your UI but they are customisable should you need them with 10 slots available which follow a number index so as not to impose a fixed nomenclature.
 
 <Preview>
   <Story
-    name="g) Tone / Colour"
+    name="g) Tone"
     args={{
       variant: "primary",
     }}
   >
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+    <StoryCenteredInline>
       <Button variant="primary" tone={1}>
         Tone 1
       </Button>
@@ -204,22 +205,22 @@ The Button has the option to set the tone of the button according to variables s
       <Button variant="primary" tone={4}>
         Tone 4
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
-## Vol / Size
+## Volume
 
-The Button has the option to set the volume to define how 'loud` it should be. This is purely a number index with 1 begin the smallest and 6 being the largest. Set them up in your themes as you wish.
+The Button has the option to set the `volume` to define how 'loud` it should be. This is purely a number index with 1 begin the smallest and 6 being the largest. Set them up in your themes as you wish.
 
 <Preview>
   <Story
-    name="h) Vol / Size"
+    name="h) Volume"
     args={{
       variant: "primary",
     }}
   >
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+    <StoryCenteredInline>
       <Button variant="primary" vol={1}>
         Vol 1
       </Button>
@@ -238,7 +239,7 @@ The Button has the option to set the volume to define how 'loud` it should be. T
       <Button variant="primary" vol={6}>
         Vol 6
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -246,23 +247,25 @@ The Button has the option to set the volume to define how 'loud` it should be. T
 
 <Preview>
   <Story
-    name="i) Upload Button"
+    name="i) Upload button"
     args={{
       variant: "primary",
     }}
   >
-    <label htmlFor="contained-button-file">
-      <input
-        hidden
-        accept="image/*"
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <Button variant="primary" as="span">
-        Upload
-      </Button>
-    </label>
+    <StoryCenteredInline>
+      <label htmlFor="contained-button-file">
+        <input
+          hidden
+          accept="image/*"
+          id="contained-button-file"
+          multiple
+          type="file"
+        />
+        <Button variant="primary" as="span">
+          Upload
+        </Button>
+      </label>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -272,12 +275,12 @@ Sometimes you might want to have icons for certain buttons to enhance the UX of 
 
 <Preview>
   <Story
-    name="j) Icon Buttons"
+    name="j) Icon and label buttons"
     args={{
       variant: "primary",
     }}
   >
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+    <StoryCenteredInline>
       <Button
         icon={
           <Icon>
@@ -311,7 +314,7 @@ Sometimes you might want to have icons for certain buttons to enhance the UX of 
       >
         Add
       </Button>
-    </div>
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
@@ -323,21 +326,23 @@ Icons are also appropriate for toggle buttons that allow a single choice to be s
 
 <Preview>
   <Story
-    name="k) Upload Button"
+    name="k) Icon button"
     args={{
       variant: "primary",
     }}
   >
-    <Button
-      icon={
-        <Icon alt="Add">
-          <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-        </Icon>
-      }
-    />
+    <StoryCenteredInline>
+      <Button
+        icon={
+          <Icon alt="Add">
+            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+          </Icon>
+        }
+      />
+    </StoryCenteredInline>
   </Story>
 </Preview>
 
-# Props
+## Button Props
 
 <Props of={ButtonGroup} />

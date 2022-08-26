@@ -5,7 +5,7 @@ import { FocusScope } from "@react-aria/focus";
 import { mergeProps } from "@react-aria/utils";
 import { useOverlay, DismissButton } from "@react-aria/overlays";
 import { useTreeState, TreeProps } from "@react-stately/tree";
-import type { CollectionChildren } from "@react-types/shared/src/collections";
+// import type { CollectionChildren } from "@react-types/shared/src/collections";
 import MenuItem from "../MenuItem/MenuItem";
 /* = Style API. */
 import { st, classes } from "./menuPopup.st.css";
@@ -13,9 +13,10 @@ import { st, classes } from "./menuPopup.st.css";
 interface MenuPopupProps extends TreeProps<object> {
   onClose: () => void;
   // children: CollectionChildren<object>;
-  style: any;
-  domProps: any;
-  onAction: any;
+  style?: any;
+  domProps?: any;
+  onAction?: any;
+  autoFocus?: any;
 }
 
 export const MenuPopup = React.forwardRef(
@@ -32,7 +33,8 @@ export const MenuPopup = React.forwardRef(
     const state = useTreeState({
       // ...props,
       children: props.children,
-      // selectionMode: "none",
+      selectionMode: "none",
+      // blah: "test",
     });
 
     const overlayRef = ref;

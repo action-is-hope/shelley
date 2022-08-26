@@ -68,6 +68,10 @@
 
     /* Advanced Options */
     // "skipLibCheck": true,                        /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
-  }
+    "forceConsistentCasingInFileNames": true,        /* Disallow inconsistently-cased references to the same file. */
+    "resolveJsonModule": true
+  },
+  // https://stackoverflow.com/questions/58999086/cypress-causing-type-errors-in-jest-assertions
+  // https://github.com/cypress-io/cypress-and-jest-typescript-example
+  "include": ["src/**/*"],
 }

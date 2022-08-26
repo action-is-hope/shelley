@@ -1,66 +1,118 @@
-// import * as React from "react";
-import type { ElementType, ReactNode, Ref } from "react";
-import { createElement, forwardRef } from "react";
+import React from "react";
+/* Adobe libs */
+// Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
+import { useButton } from "@react-aria/button";
+import type { AriaButtonProps } from "@react-types/button";
+/* Internal */
 import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
 import type { MergeElementProps } from "../utils";
-/* = Style API. */
+/* Style API */
 import { st, classes } from "./button.st.css";
 
 /**
- * Props
+ * Leveraging Adobes 'useButton' to enable use with their hooks.
+ * N.B: Omitting 'elementType' as preference is to use existing 'as'.
+ *
+ * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
  */
 
-export interface ButtonBaseProps {
-  /**
-   * Define an Icon node; position the icon via #iconPos.
-   **/
-  icon?: ReactNode;
-  /**
-   * The position of the icon relative to the label.
-   **/
+export interface ButtonCustomProps
+  extends Omit<AriaButtonProps, "elementType"> {
+  /** Define an Icon node, postion via #iconPos. */
+  icon?: React.ReactNode;
+  /** The position of the icon relative to the label. */
   iconPos?: AlignPos;
-  /**
-   * Tone index, changes color of button if required.
-   **/
+  /** Tone index, defines the color palette. */
   tone?: Accent;
-  /**
-   * Variant index, defines the 'look'.
-   **/
+  /** Variant index, defines the 'look'. */
   variant?: ButtonVariants;
-  /**
-   * Defines how 'loud' the Button should be in term of it's size.
-   **/
+  /** Defines how 'loud' the Button should be in term of it's size. */
   vol?: Volume;
-  /**
-   * Applies width of 100%.
-   **/
+  /** Applies width of 100%. */
   fullWidth?: boolean;
 }
 
-export type ButtonProps<P extends ElementType = "button"> = {
-  /**
-   * Custom element to render such as an anchor "a" or a router "Link" component.
-   **/
+export type ButtonProps<P extends React.ElementType = "button"> = {
+  /** Custom element to render such as an anchor "a" or a router "Link" component. */
   as?: P;
-} & MergeElementProps<P, ButtonBaseProps>;
+  // Dynamically apply element props types based on the input (P).
+} & MergeElementProps<P, Omit<ButtonCustomProps, "as">>;
 
-export function ButtonBase<T extends ElementType = "button">(
+function ButtonBase<T extends React.ElementType = "button">(
   {
+    as: As,
     children,
     className: classNameProp,
-    as,
     icon,
     iconPos = "end",
     fullWidth = false,
     tone = 1,
     variant = "primary",
-    // onPress,
-    // onPressStart,
     vol = 3,
+    // Pull off known inputs for @react-aria -> useButton minus 'elementType'
+    isDisabled,
+    onPress,
+    onPressStart,
+    onPressEnd,
+    onPressChange,
+    onPressUp,
+    autoFocus,
+    onFocus,
+    onBlur,
+    onFocusChange,
+    onKeyDown,
+    onKeyUp,
+    href,
+    target,
+    rel,
+    ariaExpanded,
+    ariaHaspopup,
+    ariaControls,
+    ariaPressed,
+    type,
+    id,
+    ariaLabel,
+    ariaLabelledby,
+    ariaDescribedby,
+    ariaDetails,
     ...rest
   }: ButtonProps<T>,
-  ref: Ref<T>
+  ref: React.Ref<HTMLElement>
 ) {
+  const { buttonProps, isPressed } = useButton(
+    {
+      isDisabled,
+      onPress,
+      onPressStart,
+      onPressEnd,
+      onPressChange,
+      onPressUp,
+      autoFocus,
+      onFocus,
+      onBlur,
+      onFocusChange,
+      onKeyDown,
+      onKeyUp,
+      href,
+      target,
+      rel,
+      "aria-expanded": ariaExpanded,
+      "aria-haspopup": ariaHaspopup,
+      "aria-controls": ariaControls,
+      "aria-pressed": ariaPressed,
+      type,
+      id,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
+      "aria-details": ariaDetails,
+      // Map 'as' to elementType for adobe-aria...
+      // ...rest,
+      elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
+    },
+    ref as React.RefObject<HTMLElement>
+  );
+
   const className = st(
     classes.root,
     {
@@ -69,6 +121,8 @@ export function ButtonBase<T extends ElementType = "button">(
       tone,
       variant,
       vol,
+      isPressed,
+      isDisabled,
     },
     classNameProp
   );
@@ -83,19 +137,21 @@ export function ButtonBase<T extends ElementType = "button">(
       {children && <span className={classes.inner}>{children}</span>}
     </>
   );
-  return createElement(
-    as || "button",
+  return React.createElement(
+    As || "button",
     {
       ref,
-      ...rest,
+      ...buttonProps,
       className,
+      ...rest,
     },
     internal
   );
 }
 
-const Button = forwardRef(ButtonBase) as typeof ButtonBase;
+// const Button = React.forwardRef(ButtonBase);
+const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
 
-ButtonBase.displayName = "Button";
+// Button.displayName = "Button";
 
 export default Button;

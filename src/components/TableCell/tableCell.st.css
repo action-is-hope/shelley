@@ -2,12 +2,12 @@
 .root {
   -st-states:
     vol(number),
-    align(enum(center, inherit, justify, start, end));
+    align(enum(center, inherit, justify, start, end)),
+    padding(enum(standard, none, checkbox));
 }
 
 .root {
   display: table-cell;
-  padding: 16px;
   /* font-size: 0.875rem; */
   font-family: inherit;
   font-weight: 400;
@@ -35,4 +35,8 @@
 
 .root:align(end) {
   text-align: end;
+}
+
+.root:padding(standard) {
+  padding: 16px;
 }

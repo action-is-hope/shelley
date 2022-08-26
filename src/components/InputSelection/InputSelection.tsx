@@ -12,8 +12,6 @@ export interface InputSelectionProps
     React.HTMLProps<HTMLInputElement>,
     Exclude<keyof React.HTMLProps<HTMLInputElement>, "label">
   > {
-  /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility*/
-  id: string;
   /** Provide an error message that triggers the stylable error state. */
   error?: React.ReactNode;
   /** Provide some hint text to the label component. */
@@ -23,7 +21,7 @@ export interface InputSelectionProps
   /** Variant index. */
   variant?: Variant;
   /** The label to associated with the input. */
-  label: React.ReactNode;
+  label?: React.ReactNode;
   /** The position of the label relative to the label. */
   inputPos?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
@@ -40,7 +38,7 @@ const InputSelection = React.forwardRef(
   (
     {
       className: classNameProp,
-      id = "NOID",
+      id = "no-id",
       disabled = false,
       error: errorMessage,
       touched = false,
@@ -56,9 +54,9 @@ const InputSelection = React.forwardRef(
     }: InputSelectionProps,
     ref?: React.Ref<HTMLInputElement>
   ) => {
-    id === "NOID" &&
+    id === "no-id" &&
       console.warn(
-        `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nWe have applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
+        `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nWe have applied an id of 'no-id' to these inputs should you want to check the DOM.\n`
       );
     const error = errorMessage && touched ? true : false;
 
@@ -88,15 +86,17 @@ const InputSelection = React.forwardRef(
       >
         {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
 
-        <Label
-          htmlFor={id}
-          hint={hint}
-          inputControl={inputControl}
-          visuallyHidden={labelVisuallyHidden}
-          inputPos={inputPos}
-        >
-          {label}
-        </Label>
+        {label ? (
+          <Label
+            htmlFor={id}
+            {...{ hint, inputControl, inputPos }}
+            visuallyHidden={labelVisuallyHidden}
+          >
+            {label}
+          </Label>
+        ) : (
+          inputControl
+        )}
       </div>
     );
   }

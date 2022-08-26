@@ -1,0 +1,109 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  Props,
+} from "@storybook/addon-docs/blocks";
+
+import { Example1, Example3, Example4 } from "./Table.examples";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+} from "../../indexLib";
+
+import { ArgsTable } from "@storybook/addon-docs";
+
+export const BasicTable = (args) => {
+  return <Example1 {...args} />;
+};
+
+export const SelectingTable = (args) => {
+  return <Example3 {...args} />;
+};
+
+export const Pagination = (args) => {
+  return <Example4 {...args} />;
+};
+
+<Meta title="Data/Table" component={Table} />
+
+# Tables
+
+Tables display sets of data. They can be fully customised.
+
+Tables display information in a way that's easy to scan, so that users can look for patterns and insights. They can be embedded in primary content, such as cards. They can include:
+
+- A corresponding visualization
+- Navigation
+- Tools to query and manipulate data
+
+## Basic table
+
+A simple example with no frills.
+
+<Preview>
+  <Story name="a) Basic Table" args={{}}>
+    {BasicTable.bind({})}
+  </Story>
+</Preview>
+
+## Sorting & Selecting
+
+A simple example with checkboxes and a select all feature.
+
+<Preview>
+  <Story name="b) Selecting Table" args={{}}>
+    {SelectingTable.bind({})}
+  </Story>
+</Preview>
+
+TODO - Create proxy comps to us InputSelection for Switch, Checkbox and Radio
+
+## Pagination
+
+Pagination...
+
+<Preview>
+  <Story name="c) Paginated Table" args={{}}>
+    {Pagination.bind({})}
+  </Story>
+</Preview>
+
+## Props
+
+Find the prop tables below:
+
+### Table
+
+<ArgsTable of={Table} />
+
+### TableBody
+
+<ArgsTable of={TableBody} />
+
+### TableCell
+
+<ArgsTable of={TableCell} />
+
+### TableContainer
+
+<ArgsTable of={TableContainer} />
+
+### TableHead
+
+<ArgsTable of={TableHead} />
+
+### TableRow
+
+<ArgsTable of={TableRow} />
+
+### TablePagination
+
+<ArgsTable of={TablePagination} />

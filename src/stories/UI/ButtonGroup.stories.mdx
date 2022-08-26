@@ -5,21 +5,29 @@ import {
   Preview,
   Props,
 } from "@storybook/addon-docs/blocks";
+import {
+  StoryCentered,
+  StoryCenteredInline,
+  StoryCenteredColumn,
+} from "../StoryLayout";
 import Button from "../../components/Button/Button";
 import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
+import Icon from "../../components/Icon/Icon";
 import { ArgsTable } from "@storybook/addon-docs";
 
-export const BasicButton = (args) => (
-  <ButtonGroup variant="primary" {...args}>
-    <Button>One</Button>
-    <Button>Two</Button>
-    <Button>Three</Button>
-  </ButtonGroup>
+export const BasicButtonGroup = (args) => (
+  <StoryCentered>
+    <ButtonGroup variant="primary" {...args}>
+      <Button>One</Button>
+      <Button>Two</Button>
+      <Button>Three</Button>
+    </ButtonGroup>
+  </StoryCentered>
 );
 
-<Meta title="MDX/ButtonGroup" argTypes={{}} component={ButtonGroup} />
+<Meta title="Inputs/Button group" argTypes={{}} component={ButtonGroup} />
 
-# ButtonGroup
+# Button group
 
 The ButtonGroup component can be used to group related buttons.
 If Buttons created a cooperative it would look like a ButtonGroup.
@@ -31,32 +39,164 @@ The buttons can be grouped by wrapping them with the `ButtonGroup` component. Th
 
 <Preview>
   <Story
-    name="ButtonGroup test"
+    name="a) Basic button group"
     args={{
       variant: "primary",
     }}
   >
-    {BasicButton.bind({})}
+    {BasicButtonGroup.bind({})}
   </Story>
 </Preview>
 
-Here's some _markdown_!
+## Button variants
 
-# Preview
+All the standard button variants are supported.
 
 <Preview>
-  <Story
-    name="button"
-    args={{
-      variant: "Secondary",
-    }}
-  >
-    {BasicButton.bind({})}
+  <Story name="b) Button variants">
+    <StoryCenteredColumn>
+      <ButtonGroup variant="primary" aria-label="primary button group">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup variant="secondary" aria-label="secondary button group">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup variant="quiet" aria-label="quiet button group">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+    </StoryCenteredColumn>
   </Story>
 </Preview>
 
-# Props
+## Volume and tone
 
-<ArgsTable of={ButtonGroup} />
+More standard props, `volume` and `tone`.
+
+<Preview>
+  <Story name="c) Volume and tone">
+    <StoryCenteredColumn>
+      <ButtonGroup vol={1} variant="primary" aria-label="primary button group">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        vol={2}
+        tone={2}
+        variant="primary"
+        aria-label="primary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup tone={3} variant="primary" aria-label="primary button group">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        vol={4}
+        variant="secondary"
+        aria-label="secondary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        vol={5}
+        tone={2}
+        variant="secondary"
+        aria-label="secondary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        vol={6}
+        tone={3}
+        variant="secondary"
+        aria-label="secondary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+    </StoryCenteredColumn>
+  </Story>
+</Preview>
+
+## Vertical group
+
+The button group can be displayed vertically using the `orientation` prop.
+
+<Preview>
+  <Story name="d) Vertical group">
+    <StoryCenteredInline>
+      <ButtonGroup
+        variant="secondary"
+        orientation="vertical"
+        aria-label="secondary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        variant="primary"
+        orientation="vertical"
+        aria-label="primary button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        variant="quiet"
+        orientation="vertical"
+        aria-label="quiet button group"
+      >
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+    </StoryCenteredInline>
+  </Story>
+</Preview>
+
+## Split button
+
+`ButtonGroup` can also be used to create a split button.
+
+The dropdown could change the button text and action or be used to immediately trigger a related action.
+
+<Preview>
+  <Story name="e) Split button">
+    <StoryCenteredInline>
+      <ButtonGroup vol={2} tone={2} variant="primary">
+        <Button>Publish</Button>
+        <Button
+          icon={
+            <Icon alt="Select action">
+              <path d="M8 12l-6.32-6.32 1.67-1.68 4.65 4.65 4.65-4.65 1.67 1.68-6.32 6.32z"></path>
+            </Icon>
+          }
+          aria-label="Page actions"
+          aria-haspopup="menu"
+        />
+      </ButtonGroup>
+    </StoryCenteredInline>
+  </Story>
+</Preview>
+
+## ButtonGroup Props
 
 <Props of={ButtonGroup} />
