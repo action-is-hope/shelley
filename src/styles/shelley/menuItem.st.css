@@ -1,5 +1,7 @@
 /**
- * = Menu - menu.st.css
+ * = ErrorText - menuItem.st.css
+ *
+ * Could have been a class only but we have a component and here is it's style.
  * 
  * ========================================================================= */
 
@@ -16,17 +18,11 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    /* --color-focus, */
-    --color-background-1;
+    --color-background-item-hover;
 }
 
-/* = Components */
 
-:import {
-  -st-from: "../../components/Menu/menu.st.css";
-  -st-default: Menu;
-}
-
+/* = Root Component */
 :import {
   -st-from: "../../components/MenuItem/menuItem.st.css";
   -st-default: MenuItem;
@@ -34,7 +30,11 @@
 
 @st-scope Shelley {
 
-  Menu {
-    background: var(--color-background-1);
+  /* = Root */
+  MenuItem {}
+
+  MenuItem:isFocused {
+    /* Set a background vaiable for this... */
+    background-color: var(--color-background-item-hover);
   }
 }

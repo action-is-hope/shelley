@@ -3,7 +3,6 @@ import themes from "../src/styles";
 
 import { initializeRTL } from "storybook-addon-rtl";
 initializeRTL();
-// Mirroring the viewports from Bronte.
 const bronteViewports = {
   tiny: {
     name: "Tiny",
@@ -69,19 +68,19 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  // options: {
-  //   storySort: {
-  //     method: "",
-  //     order: [],
-  //     locales: "",
-  //   },
-  // },
+  options: {
+    storySort: {
+      method: "alphabetical",
+      order: [],
+      locales: "",
+    },
+  },
   viewport: {
     viewports: bronteViewports,
   },
 };
 export const globalTypes = {
-  bronteTheme: {
+  shelleyTheme: {
     name: "Theme",
     description: "Theme Switcher",
     defaultValue: themes["shelley"],
@@ -89,7 +88,6 @@ export const globalTypes = {
       icon: "switchalt",
       title: "Theme Switch",
       items: [
-        /** TODO: Tidy away...*/
         {
           value: themes["base"],
           title: "Base",
@@ -102,13 +100,17 @@ export const globalTypes = {
     },
   },
 };
+// preview.js
 
-const withBronteTheme = (Story, context) => {
+const withShelleyTheme = (Story, context) => {
+  // Add theme class to Body so that our portaled styles still work.
+  document.body.className = `${document.body.className} ${context.globals.shelleyTheme}`;
   return (
-    <div className={context.globals.bronteTheme}>
+    // We need it as a wrapper on the stories as well else the bg is wrong in the Docs.
+    <div className={context.globals.shelleyTheme}>
       <Story {...context} />
     </div>
   );
 };
 
-export const decorators = [withBronteTheme];
+export const decorators = [withShelleyTheme];

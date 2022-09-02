@@ -149,6 +149,9 @@ function ButtonBase<T extends React.ElementType = "button">(
   );
 }
 
+// See:
+// https://github.com/adobe/react-spectrum/blob/main/packages/%40react-spectrum/listbox/src/ListBox.tsx
+
 // const Button = React.forwardRef(ButtonBase);
 const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
 

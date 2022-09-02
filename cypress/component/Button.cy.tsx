@@ -1,7 +1,6 @@
-// import { Button } from "../../src/indexLib";
+import React from "react";
 import { createRef } from "react";
-import Button from "../../src/components/Button/ButtonARIA";
-// import button from "../fixtures/example.json";
+import Button from "../../src/components/Button/Button";
 
 describe("Button", () => {
   it("mounts as button with onPress called via click", () => {
@@ -38,15 +37,12 @@ describe("Button", () => {
 
   it("mounts as anchor with href", () => {
     cy.mount(
-      <Button as={"a"} variant="quiet" href="https://google.com">
+      <Button as={"a"} href="https://google.com">
         Link to Google
       </Button>
     );
 
-    // cy.get("a").should("have.class", "Button224607090---variant-5-quiet");
-    // cy.get("a").should("have.attr", "class").and("match" /*quiet*/);
-    cy.get("a").should("have.attr", "class").and("to.have.string", "quiet");
-
-    // cy.get("a").should("have.class", /<([\w]+)[^>]*>variant-5-quiet<\/\1>/);
+    //classContains
+    // cy.get("a").should("have.attr", "class").and("to.have.string", "quiet");
   });
 });

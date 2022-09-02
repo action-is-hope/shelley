@@ -9,7 +9,6 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        // exclude: /node_modules\/(?!(cypress-react-unit-test)\/).*/,
         loader: "ts-loader",
         options: {
           transpileOnly: true,

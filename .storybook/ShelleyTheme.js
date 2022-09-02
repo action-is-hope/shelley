@@ -1,4 +1,4 @@
-// .storybook/BCTheme.js
+// .storybook/ShelleyTheme.js
 import { create } from "@storybook/theming";
 
 export default create({

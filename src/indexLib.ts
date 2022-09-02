@@ -10,8 +10,8 @@ export * from "./components/types";
 export { default as Blockquote } from "./components/Blockquote/Blockquote";
 export * from "./components/Blockquote/Blockquote";
 
-export { default as Button } from "./components/Button/Button";
-export * from "./components/Button/Button";
+export { default as Button } from "./components/Button/ButtonnoAria";
+export * from "./components/Button/ButtonnoAria";
 
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export * from "./components/ButtonGroup/ButtonGroup";
@@ -52,11 +52,13 @@ export * from "./components/Label/Label";
 export { default as MenuButton } from "./components/MenuButton/MenuButton";
 export * from "./components/MenuButton/MenuButton";
 
-export { default as MenuPopup } from "./components/MenuPopup/MenuPopup";
-export * from "./components/MenuPopup/MenuPopup";
+export { default as Menu } from "./components/Menu/Menu";
+export * from "./components/Menu/Menu";
 
 export { default as MenuItem } from "./components/MenuItem/MenuItem";
 export * from "./components/MenuItem/MenuItem";
+
+export { default as Item } from "./components/Item/Item";
 
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";

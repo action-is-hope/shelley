@@ -1,8 +1,8 @@
 // .storybook/manager.js
 
 import { addons } from "@storybook/addons";
-import BCTheme from "./BCTheme";
+import ShelleyTheme from "./ShelleyTheme";
 
 addons.setConfig({
-  theme: BCTheme
+  theme: ShelleyTheme,
 });

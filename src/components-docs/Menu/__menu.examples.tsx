@@ -64,7 +64,7 @@ export const Example1 = () => (
           </Icon>
         }
         label="Actions"
-        onAction={(info: string) => alert(info)}
+        onAction={(key) => alert(key)}
       >
         <Item key="page">Page</Item>
         <Item key="blog">Blog post</Item>
@@ -111,7 +111,8 @@ export const Example2 = () => (
               <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
             </Icon>
           }
-          onAction={(info: string) => alert(info)}
+          onAction={(key: string | number) => alert(key)}
+          position={{ offset: 50, containerPadding: 80 }}
         >
           <Item key="publish">Publish</Item>
           <Item key="archive">Archive</Item>
@@ -162,7 +163,7 @@ export const Example3 = () => (
             </g>
           </Icon>
         }
-        onAction={(info: string) => alert(info)}
+        onAction={(key) => alert(key)}
       >
         <Item key="manage-block">Manage blocks</Item>
         <Item key="blog-settings">Block settings</Item>

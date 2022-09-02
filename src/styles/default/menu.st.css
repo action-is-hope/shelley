@@ -6,8 +6,8 @@
 
 /* = Component CSS API */
 :import {
-  -st-from: "../../components/MenuPopup/menuPopup.st.css";
-  -st-default: MenuPopup;
+  -st-from: "../../components/Menu/menu.st.css";
+  -st-default: Menu;
 }
 
 :import {
@@ -17,9 +17,9 @@
 }
 
 @st-scope Default {
-  MenuPopup {}
-
-  MenuPopup::list {
+  Menu {
     -st-mixin: menuList;
   }
+
+  Menu::item {}
 }

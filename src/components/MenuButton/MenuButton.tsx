@@ -1,29 +1,31 @@
 /** MenuButton.tsx */
-import React from "react";
+import React, { Key } from "react";
 import ReactDOM from "react-dom";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import type { PositionProps } from "@react-types/overlays";
-// https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
-import { useOverlayPosition } from "@react-aria/overlays";
+// https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658 Should be resolved...
+// import { useOverlayPosition } from "@react-aria/overlays";
 /* = Style API. */
 // import { st, classes } from "./menuButton.st.css";
-import MenuPopup from "../MenuPopup/MenuPopup";
+import Popup from "../Popup/Popup";
+import Menu, { MenuProps } from "../Menu/Menu";
 import Button, { ButtonProps } from "../Button/Button";
 
 import type { CollectionChildren } from "@react-types/shared/src/collections";
 
-export interface MenuButtonProps extends ButtonProps {
-  // omit as
-  position?: PositionProps;
+export interface MenuButtonProps<T>
+  extends Omit<ButtonProps, "autoFocus" | "children" | "as"> {
+  menuProps?: MenuProps<T>;
+  position?: PositionProps; // @todo We don't want all of the props from overlays
   /** Label for the button, if you are using an icon only remember to provide an alt! */
   label?: string;
   focusStrategy?: "first" | "last";
-  onAction?: (key: string) => void;
+  onAction?: (key: Key) => void;
   children: CollectionChildren<object>;
 }
 // extend position props and button
-const MenuButton = ({
+export function MenuButton<T extends object>({
   position: positionFromProps,
   focusStrategy,
   children,
@@ -32,77 +34,66 @@ const MenuButton = ({
   onAction,
   // onPress,
   ...rest
-}: MenuButtonProps) => {
+}: MenuButtonProps<T>) {
   const triggerRef = React.useRef(null);
   const overlayRef = React.useRef(null);
 
   // Create state based on the incoming props /// removed props...
   const state = useMenuTriggerState({
-    onOpenChange: () => console.log("working"),
-    // align: "start",
-    // focusStrategy: "last",
-    closeOnSelect: false,
+    onOpenChange: () => console.log("working"), // works
+    // defaultOpen: true, // works
+    // Alignment related props have no effect as we are using useOverlayPosition for positioning.
   });
 
-  const { menuTriggerProps: triggerProps, menuProps } = useMenuTrigger(
-    // /** The type of menu that the menu trigger opens. */
+  const { menuTriggerProps, menuProps } = useMenuTrigger(
+    /** The type of menu that the menu trigger opens. */
     // type?: 'menu' | 'listbox';
-    // /** Whether menu trigger is disabled. */
+    /** Whether menu trigger is disabled. */
     // isDisabled?: boolean;
-    { isDisabled: false }, //isDisabled
-    state,
+    /** How menu is triggered. */
+    // trigger?: MenuTriggerType;
+    {
+      isDisabled: rest.disabled,
+    },
+    { ...state },
     triggerRef
   );
 
-  // console.log("TriggerProps", triggerProps);
-  // console.log("MenuProps", menuProps);
-
-  // Get props for the trigger and overlay. This also handles
-  // hiding the overlay when a parent element of the trigger scrolls
-  // (which invalidates the MenuPopup positioning).
-  // const { triggerProps, overlayProps: overlayTriggerProps } = useOverlayTrigger(
-  //   { type: "menu" },
-  //   state,
-  //   triggerRef
-  // );
-
-  // Get MenuPopup positioning props relative to the trigger
-  const { overlayProps: positionProps } = useOverlayPosition({
-    targetRef: triggerRef,
-    overlayRef,
-    // Position Props
-    placement: "top",
-    offset: 5,
-    crossOffset: -4,
-    containerPadding: 0,
-    isOpen: state.isOpen,
-    // override from prop values
-    ...positionFromProps,
-  });
-
-  // console.log("rest", rest);
   return (
     <>
-      <Button {...triggerProps} {...rest} ref={triggerRef}>
+      <Button
+        {...menuTriggerProps}
+        aria-haspopup="menu"
+        {...rest}
+        ref={triggerRef}
+      >
         {rest.label}
       </Button>
       {state.isOpen &&
         ReactDOM.createPortal(
-          <MenuPopup
-            // {...rest}
-            {...positionProps}
-            {...{ children, onAction }}
-            // Required to supress a11y console warning, actual value provided by menuProps.
-            // aria-labelledby
-            domProps={menuProps}
-            autoFocus={focusStrategy || state.focusStrategy}
+          <Popup
+            // Focus
+            overlayProps={{ ...positionFromProps }}
+            isOpen={state.isOpen}
             onClose={() => state.close()}
+            triggerRef={triggerRef}
             ref={overlayRef}
-          />,
+          >
+            <Menu
+              {...{ children, onAction }}
+              // Required to supress Adobe #a11y prop checker which issues a console warning, the actual value is provided by menuProps so lighthouse reports etc are fine.
+              aria-labelledby=""
+              ariaProps={menuProps}
+              onClose={() => state.close()}
+              // autoFocus="last"
+              // selectionMode="multiple"
+              // autoFocus={focusStrategy || state.focusStrategy}
+            />
+          </Popup>,
           document.querySelector("body") as HTMLElement
         )}
     </>
   );
-};
+}
 
 export default MenuButton;

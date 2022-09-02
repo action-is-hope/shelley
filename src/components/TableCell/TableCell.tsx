@@ -30,7 +30,6 @@ const TableCell = React.forwardRef(
   ) => {
     const Component = header ? "th" : "td";
     const scope = header && !scopeProp ? "col" : scopeProp;
-    // console.log(padding);
     return (
       <Component
         className={st(classes.root, { vol, align, padding }, classNameProp)}

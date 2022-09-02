@@ -1,0 +1,124 @@
+import { useRef } from "react";
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  Props,
+} from "@storybook/addon-docs/blocks";
+import {
+  Dynamic,
+  SingleUnControlled,
+  MultipleControlled,
+} from "./Menu.examples";
+import { Menu } from "../../indexLib";
+import { Item } from "@react-stately/collections";
+
+import { ArgsTable } from "@storybook/addon-docs";
+import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
+
+export const BasicMenu = (args) => (
+  <Menu onAction={(info) => alert(info)}>
+    <Item key="publish">Publish</Item>
+    <Item key="archive">Archive</Item>
+    <Item key="delete">Delete</Item>
+  </Menu>
+);
+
+<Meta
+  title="Selection/Menu"
+  argTypes={{
+    autoFocus: {
+      options: ["first", "last", true, false],
+      control: { type: "inline-radio" },
+      description: "Where the focus should be set.",
+    },
+    shouldFocusWrap: {
+      options: ["true", "false"],
+      control: { type: "inline-radio" },
+    },
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={Menu}
+/>
+
+# Menu
+
+Menus display a list of actions or options on temporary surfaces that a user can choose.
+
+The 'surface' on which the Menu sits is provided by the component consuming the Menu such as [MenuButton](?path=/docs/inputs-menubutton--a-basic-button) which provides the `Popup` as a 'surface'. You can use Menu to build custom components in the same way that MenuButton does.
+
+```ts
+import { Menu } from "@actionishope/shelley";
+import { Item } from "@react-stately/collections";
+
+<Menu onAction={(key) => alert(key)}>
+  <Item key="publish">Publish</Item>
+  <Item key="archive">Archive</Item>
+  <Item key="delete">Delete</Item>
+</Menu>;
+```
+
+<Preview>
+  <Story name="a) Menu">
+    <StoryCenteredInline>
+      <Menu onAction={(key) => console.log(key)} aria-label="Dynamic menu">
+        <Item key="publish">Publish</Item>
+        <Item key="archive">Archive</Item>
+        <Item key="delete">Delete</Item>
+      </Menu>
+    </StoryCenteredInline>
+  </Story>
+</Preview>
+
+**Notea:**
+
+- `autoFocus` is set to `"first"` by default
+- `aria-label` or `aria-labelledby` required in order to suppress the console warning.
+
+## Dynamic collections
+
+Menu follows the [Collection Components API](https://react-spectrum.adobe.com/react-stately/collections.html), accepting both static and dynamic collections. The examples above show static collections, which can be used when the full list of options is known ahead of time. Dynamic collections, as shown below, can be used when the options come from an external data source such as an API call, or update over time.
+
+As seen below, an iterable list of options is passed to the Menu using the `items` prop. Each item accepts a key prop, which is passed to the onSelectionChange handler to identify the selected item. Alternatively, if the item objects contain an id property, as shown in the example below, then this is used automatically and a key prop is not required.
+
+<Preview>
+  <Story name="b) Dynamic collections">
+    <StoryCenteredInline>
+      <Dynamic />
+    </StoryCenteredInline>
+  </Story>
+</Preview>
+
+## Selection
+
+Menu supports multiple selection modes. By default, selection is disabled, however this can be changed using the selectionMode prop. Use defaultSelectedKeys to provide a default set of selected items (uncontrolled) and selectedKeys to set the selected items (controlled). The value of the selected keys must match the key prop of the items. See the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html#selected-key-data-type) for more details.
+
+<Preview>
+  <Story name="c) Single selection">
+    <StoryCenteredColumn>
+      <SingleUnControlled />
+    </StoryCenteredColumn>
+  </Story>
+</Preview>
+
+Set `selectionMode` prop to `multiple` to allow more than one selection.
+
+<Preview>
+  <Story name="d) Multi selection">
+    <StoryCenteredColumn>
+      <MultipleControlled />
+    </StoryCenteredColumn>
+  </Story>
+</Preview>
+
+## Menu rops
+
+Menu is built with [useMenu](https://react-spectrum.adobe.com/react-aria/useMenu.html) and [useTreeState](https://react-spectrum.adobe.com/react-stately/useTreeState.html) accepting `AriaMenuOptions` and `TreeProps` respectfully as per the Adobe docs.
+
+<Props of={Menu} />
+
+See also Adobes React component, it's similar! https://react-spectrum.adobe.com/react-spectrum/Menu.html
