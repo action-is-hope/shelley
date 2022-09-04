@@ -2,14 +2,6 @@ import { useState } from "react";
 import { Item } from "@react-stately/collections";
 import { Menu, MenuProps } from "../../indexLib";
 
-// export const BasicMenu = (args: MenuProps<T>) => (
-//   <Menu onAction={(info) => alert(info)} {...args}>
-//     <Item key="publish">Publish</Item>
-//     <Item key="archive">Archive</Item>
-//     <Item key="delete">Delete</Item>
-//   </Menu>
-// );
-
 function _BasicMenu<T extends object>(args: MenuProps<T>) {
   return (
     <Menu onAction={(info) => alert(info)} aria-label="Menu" {...args}>
@@ -22,7 +14,7 @@ function _BasicMenu<T extends object>(args: MenuProps<T>) {
 export const BasicMenu = _BasicMenu;
 
 export const Dynamic = () => {
-  const [animals, setAnimals] = useState([
+  const [animals] = useState([
     { id: 1, name: "Aardvark" },
     { id: 2, name: "Kangaroo" },
     { id: 3, name: "Snake" },
@@ -34,12 +26,7 @@ export const Dynamic = () => {
       items={animals}
       aria-label="Dynamic menu"
     >
-      {(item) => (
-        <Item>
-          {item.name}
-          {item.id}
-        </Item>
-      )}
+      {(item) => <Item>{item.name}</Item>}
     </Menu>
   );
 };

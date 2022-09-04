@@ -1,13 +1,15 @@
 /** Popup.tsx */
 import React, { Ref, forwardRef, RefObject } from "react";
-import type { PositionProps } from "@react-types/overlays/src";
-import type { AriaOverlayProps } from "@react-aria/overlays/src";
+// import type { PositionProps } from "@react-types/overlays/src";
+import type { PositionProps } from "@react-types/overlays";
+// import type { AriaOverlayProps } from "@react-aria/overlays/src";
 import { FocusScope } from "@react-aria/focus";
 import { mergeProps } from "@react-aria/utils";
 import {
   useOverlay,
   DismissButton,
   useOverlayPosition,
+  AriaOverlayProps,
 } from "@react-aria/overlays";
 
 /* = Style API. */
