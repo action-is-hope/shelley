@@ -7,43 +7,22 @@ import {
   Props,
 } from "@storybook/addon-docs/blocks";
 import {
+  BasicMenu,
   Dynamic,
   SingleUnControlled,
   MultipleControlled,
 } from "./Menu.examples";
-import { Menu } from "../../indexLib";
-import { Item } from "@react-stately/collections";
-
+import { Menu, Item } from "../../indexLib";
 import { ArgsTable } from "@storybook/addon-docs";
 import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
 
-export const BasicMenu = (args) => (
-  <Menu onAction={(info) => alert(info)}>
-    <Item key="publish">Publish</Item>
-    <Item key="archive">Archive</Item>
-    <Item key="delete">Delete</Item>
-  </Menu>
+export const BasicMenuStory = (args) => (
+  <StoryCenteredInline>
+    <BasicMenu {...args} />
+  </StoryCenteredInline>
 );
 
-<Meta
-  title="Selection/Menu"
-  argTypes={{
-    autoFocus: {
-      options: ["first", "last", true, false],
-      control: { type: "inline-radio" },
-      description: "Where the focus should be set.",
-    },
-    shouldFocusWrap: {
-      options: ["true", "false"],
-      control: { type: "inline-radio" },
-    },
-    vol: {
-      options: [1, 2, 3, 4, 5, 6],
-      control: { type: "inline-radio" },
-    },
-  }}
-  component={Menu}
-/>
+<Meta title="Selection/Menu" component={Menu} />
 
 # Menu
 
@@ -52,8 +31,7 @@ Menus display a list of actions or options on temporary surfaces that a user can
 The 'surface' on which the Menu sits is provided by the component consuming the Menu such as [MenuButton](?path=/docs/inputs-menubutton--a-basic-button) which provides the `Popup` as a 'surface'. You can use Menu to build custom components in the same way that MenuButton does.
 
 ```ts
-import { Menu } from "@actionishope/shelley";
-import { Item } from "@react-stately/collections";
+import { Menu, Item } from "@actionishope/shelley";
 
 <Menu onAction={(key) => alert(key)}>
   <Item key="publish">Publish</Item>
@@ -63,16 +41,14 @@ import { Item } from "@react-stately/collections";
 ```
 
 <Preview>
-  <Story name="a) Menu">
-    <StoryCenteredInline>
-      <Menu onAction={(key) => console.log(key)} aria-label="Dynamic menu">
-        <Item key="publish">Publish</Item>
-        <Item key="archive">Archive</Item>
-        <Item key="delete">Delete</Item>
-      </Menu>
-    </StoryCenteredInline>
-  </Story>
+  <Story name="a) Menu">{BasicMenuStory.bind({})}</Story>
 </Preview>
+
+## Menu props
+
+Menu is built with [useMenu](https://react-spectrum.adobe.com/react-aria/useMenu.html) and [useTreeState](https://react-spectrum.adobe.com/react-stately/useTreeState.html) accepting `AriaMenuOptions` and `TreeProps` respectfully as per the Adobe docs.
+
+<Props of={Menu} />
 
 **Notea:**
 
@@ -115,7 +91,7 @@ Set `selectionMode` prop to `multiple` to allow more than one selection.
   </Story>
 </Preview>
 
-## Menu rops
+## Menu props
 
 Menu is built with [useMenu](https://react-spectrum.adobe.com/react-aria/useMenu.html) and [useTreeState](https://react-spectrum.adobe.com/react-stately/useTreeState.html) accepting `AriaMenuOptions` and `TreeProps` respectfully as per the Adobe docs.
 

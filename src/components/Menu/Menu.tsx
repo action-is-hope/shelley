@@ -3,7 +3,8 @@ import { useRef, HTMLAttributes } from "react";
 import type { AriaMenuProps } from "@react-types/menu";
 import { useMenu } from "@react-aria/menu";
 import { mergeProps } from "@react-aria/utils";
-import { useTreeState, TreeProps } from "@react-stately/tree";
+import { useTreeState } from "@react-stately/tree";
+import type { TreeProps } from "@react-stately/tree/dist/types";
 import MenuItem from "../MenuItem/MenuItem";
 /* = Style API. */
 import { st, classes } from "./menu.st.css";
@@ -20,11 +21,7 @@ export interface MenuProps<T> extends TreeProps<T>, AriaMenuProps<T> {
 export function Menu<T extends object>(props: MenuProps<T>) {
   const { className, onAction, onClose, ariaProps = {} } = props;
   // Create menu state based on the incoming props.
-  const state = useTreeState({
-    ...props,
-    // @todo: look to add support for diffrent selection modes.
-    // selectionMode: "none",
-  });
+  const state = useTreeState({ ...props });
   const menuRef = useRef(null);
 
   // Create menu based on the incoming props.

@@ -1,8 +1,25 @@
-/* Table.examples.tsx */
-// https://www.worldwildlife.org/species/directory?direction=desc&sort=extinction_status
-import { useState, Key } from "react";
+import { useState } from "react";
 import { Item } from "@react-stately/collections";
-import { Menu } from "../../indexLib";
+import { Menu, MenuProps } from "../../indexLib";
+
+// export const BasicMenu = (args: MenuProps<T>) => (
+//   <Menu onAction={(info) => alert(info)} {...args}>
+//     <Item key="publish">Publish</Item>
+//     <Item key="archive">Archive</Item>
+//     <Item key="delete">Delete</Item>
+//   </Menu>
+// );
+
+function _BasicMenu<T extends object>(args: MenuProps<T>) {
+  return (
+    <Menu onAction={(info) => alert(info)} aria-label="Menu" {...args}>
+      <Item key="publish">Publish</Item>
+      <Item key="archive">Archive</Item>
+      <Item key="delete">Delete</Item>
+    </Menu>
+  );
+}
+export const BasicMenu = _BasicMenu;
 
 export const Dynamic = () => {
   const [animals, setAnimals] = useState([

@@ -1,10 +1,18 @@
-import React from "react";
+import React, {
+  Children,
+  ReactElement,
+  cloneElement,
+  forwardRef,
+  // Importing from via React. stops EVERYTHING from being dumped out by doc gen.
+  // HTMLAttributes,
+  isValidElement,
+  Ref,
+} from "react";
 import type { Accent, Volume, ButtonVariants } from "../types";
-
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
 
-export interface ButtonGroupCustomProps {
+export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
@@ -19,10 +27,7 @@ export interface ButtonGroupCustomProps {
   orientation?: "vertical" | "horizontal";
 }
 
-export type ButtonGroupProps = ButtonGroupCustomProps &
-  React.HTMLAttributes<HTMLDivElement>;
-
-const ButtonGroup = React.forwardRef(
+const ButtonGroup = forwardRef(
   (
     {
       buttonClassName,
@@ -35,19 +40,19 @@ const ButtonGroup = React.forwardRef(
       vol = 3,
       ...rest
     }: ButtonGroupProps,
-    ref?: React.Ref<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
   ) => (
     <div
       className={st(classes.root, { orientation }, classNameProp)}
       {...rest}
       ref={ref}
     >
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) {
+      {Children.map(children, (child) => {
+        if (!isValidElement(child)) {
           return null;
         }
 
-        return React.cloneElement(child, {
+        return cloneElement(child as ReactElement, {
           className: st(buttonClassName, child.props.className),
           disabled: child.props.disabled || disabled,
           tone: child.props.tone || tone,

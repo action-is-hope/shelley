@@ -73,7 +73,7 @@ export function MenuButton<T extends object>({
         ReactDOM.createPortal(
           <Popup
             // Focus
-            overlayProps={{ ...positionFromProps }}
+            // overlayProps={{ ...positionFromProps }}
             isOpen={state.isOpen}
             onClose={() => state.close()}
             triggerRef={triggerRef}
@@ -81,6 +81,10 @@ export function MenuButton<T extends object>({
           >
             <Menu
               {...{ children, onAction }}
+              // placement: "top",
+              // offset: 5,
+              // crossOffset: -4,
+              // containerPadding: 0,
               // Required to supress Adobe #a11y prop checker which issues a console warning, the actual value is provided by menuProps so lighthouse reports etc are fine.
               aria-labelledby=""
               ariaProps={menuProps}

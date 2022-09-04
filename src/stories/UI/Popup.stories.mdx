@@ -1,0 +1,103 @@
+import { useRef } from "react";
+import { Meta, Canvas, Story, Preview } from "@storybook/addon-docs/blocks";
+import { SimplePopup } from "./Popup.examples";
+import { Popup } from "../../indexLib";
+
+import { ArgsTable } from "@storybook/addon-docs";
+import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
+
+export const SimplePopupStory = (args) => (
+  <StoryCenteredInline>
+    <SimplePopup {...args} />
+  </StoryCenteredInline>
+);
+
+<Meta
+  title="Overlays/Popup"
+  argTypes={{
+    triggerRef: {
+      table: {
+        disable: true,
+      },
+    },
+    placement: {
+      control: {
+        type: "select",
+        options: [
+          "bottom",
+          "bottom left",
+          "bottom right",
+          "bottom start",
+          "bottom end",
+          "top",
+          "top left",
+          "top right",
+          "top start",
+          "top end",
+          "left",
+          "left top",
+          "left bottom",
+          "start",
+          "start top",
+          "start bottom",
+          "right",
+          "right top",
+          "right bottom",
+          "end",
+          "end top",
+          "end bottom",
+        ],
+      },
+    },
+    isOpen: {
+      table: {
+        disable: true,
+      },
+    },
+    shouldCloseOnInteractOutside: {
+      table: {
+        disable: true,
+      },
+    },
+    onClose: {
+      table: {
+        disable: true,
+      },
+    },
+    key: {
+      table: {
+        disable: true,
+      },
+    },
+    ref: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+  component={Popup}
+/>
+
+# Popup
+
+A Popup can be used to display some content on top of another.
+
+Things to know when using the Popup component:
+
+The component is built on top of [`useOverlay`](https://react-spectrum.adobe.com/react-aria/useOverlay.html) and [`useOverlayPosition`](https://react-spectrum.adobe.com/react-aria/useOverlayPosition.html)
+
+```ts
+TBC;
+```
+
+Something
+
+<Preview>
+  <Story name="a) Popup">{SimplePopupStory.bind({})}</Story>
+</Preview>
+
+```tsx
+
+```
+
+<ArgsTable of={Popup} />

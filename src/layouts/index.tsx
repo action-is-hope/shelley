@@ -11,11 +11,7 @@ import { classes as inputSelection } from "../styles/shelley/inputSelection.st.c
 import InputSelection from "../components/InputSelection/InputSelection";
 import Icon from "../components/Icon/Icon";
 
-import { Link, useHistory } from "react-router-dom";
-
-import ComboboxSingle from "../components/ComboboxSingle/ComboBoxSingle";
-
-import { componentNav } from "../Routes";
+import { Link } from "react-router-dom";
 
 export interface HeaderProps {
   altTheme: boolean;
@@ -23,12 +19,6 @@ export interface HeaderProps {
 }
 
 const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
-  const items = componentNav.map((item) => {
-    return { id: item.path, value: item.linkText };
-  });
-
-  const history = useHistory();
-
   return (
     <div className={style.navbar}>
       <div className={style.inner}>
@@ -43,10 +33,6 @@ const Header: React.VFC<HeaderProps> = ({ altTheme, changeTheme }) => {
           </Link>
         </h1>
         <div className={style.controls}>
-          <ComboboxSingle
-            items={items}
-            onChange={(result) => history.push(`${result.id}`)}
-          />
           <InputSelection
             id="themeSelector"
             variant={undefined}

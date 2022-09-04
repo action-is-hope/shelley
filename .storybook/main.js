@@ -19,15 +19,15 @@ module.exports = {
     // },
     "@storybook/addon-essentials",
   ],
-  // typescript: {
-  //   reactDocgen: "react-docgen-typescript",
-  //   reactDocgenTypescriptOptions: {
-  //     compilerOptions: {
-  //       allowSyntheticDefaultImports: false,
-  //       esModuleInterop: false,
-  //     },
-  //   },
-  // },
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+    },
+  },
   // typescript: {
   //   reactDocgen: "react-docgen-typescript",
   //   reactDocgenTypescriptOptions: {
