@@ -22,7 +22,126 @@ export const BasicMenuStory = (args) => (
   </StoryCenteredInline>
 );
 
-<Meta title="Selection/Menu" component={Menu} />
+<Meta
+  title="Selection/Menu"
+  argTypes={{
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    autoFocus: {
+      table: {
+        disable: true,
+      },
+    },
+    items: {
+      table: {
+        disable: true,
+      },
+    },
+    disabledKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    expandedKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    defaultExpandedKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    onExpandedChange: {
+      table: {
+        disable: true,
+      },
+    },
+    selectionMode: {
+      control: "select",
+      options: ["single", "multiple", undefined],
+    },
+    disallowEmptySelection: {
+      table: {
+        disable: true,
+      },
+    },
+    selectedKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    defaultSelectedKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    onSelectionChange: {
+      table: {
+        disable: true,
+      },
+    },
+    disabledKeys: {
+      table: {
+        disable: true,
+      },
+    },
+    onAction: {
+      table: {
+        disable: true,
+      },
+    },
+    onAction: {
+      table: {
+        disable: true,
+      },
+    },
+    onClose: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
+    "aria-label": {
+      table: {
+        disable: true,
+      },
+    },
+    "aria-labelledby": {
+      table: {
+        disable: true,
+      },
+    },
+    "aria-describedby": {
+      table: {
+        disable: true,
+      },
+    },
+    "aria-details": {
+      table: {
+        disable: true,
+      },
+    },
+    "aria-describedby": {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+  component={Menu}
+/>
 
 # Menu
 
@@ -91,10 +210,11 @@ Set `selectionMode` prop to `multiple` to allow more than one selection.
   </Story>
 </Preview>
 
-## Menu props
+## Menu Item
 
-Menu is built with [useMenu](https://react-spectrum.adobe.com/react-aria/useMenu.html) and [useTreeState](https://react-spectrum.adobe.com/react-stately/useTreeState.html) accepting `AriaMenuOptions` and `TreeProps` respectfully as per the Adobe docs.
+`Item` is mapped to `MenuItem`
 
-<Props of={Menu} />
+@todo: Add some stuff on menu item:
 
-See also Adobes React component, it's similar! https://react-spectrum.adobe.com/react-spectrum/Menu.html
+- Internally Item is mapped to the `MenuItem`
+- Grid alignment of MenuItem, icon, descriptions etc.

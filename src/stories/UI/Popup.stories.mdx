@@ -84,20 +84,65 @@ A Popup can be used to display some content on top of another.
 
 Things to know when using the Popup component:
 
-The component is built on top of [`useOverlay`](https://react-spectrum.adobe.com/react-aria/useOverlay.html) and [`useOverlayPosition`](https://react-spectrum.adobe.com/react-aria/useOverlayPosition.html)
+- Built on top of [`useOverlay`](https://react-spectrum.adobe.com/react-aria/useOverlay.html) and [`useOverlayPosition`](https://react-spectrum.adobe.com/react-aria/useOverlayPosition.html)
+- By itself not _that_ useful, but very use when building things like tooltips, models, menus etc.
+- Doesn't provide `is-labelledby` or type/role of model, this would be provided by useMenu, useDialog etc.
+- When rendering into a portal ensure the portal is wrapped by the main theme classes else it will appear unstyled.
+- When using `shouldCloseOnBlur` don't expect `isDismissable={false}` to work.
 
-```ts
-TBC;
-```
-
-Something
+Checkout the Canvas view for some of the more visual props and their effect naming around positioning and offsets.
 
 <Preview>
   <Story name="a) Popup">{SimplePopupStory.bind({})}</Story>
 </Preview>
 
 ```tsx
+import { useRef } from "react";
+import { Popup, PopupProps, Button } from "@actionishope/shelley";
+import { useOverlayTrigger } from "react-aria";
+import { useOverlayTriggerState } from "@react-stately/overlays";
 
+export const SimplePopup = (props: PopupProps) => {
+  const triggerRef = useRef(null);
+  const overlayRef = useRef(null);
+  const state = useOverlayTriggerState({});
+
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    {
+      type: "dialog",
+    },
+    state,
+    triggerRef
+  );
+
+  return (
+    <>
+      {/* Whatever you use as a trigger will need an onPress prop... */}
+      <Button
+        id="test"
+        {...triggerProps}
+        ref={triggerRef}
+        disabled={state.isOpen}
+      >
+        Click me
+      </Button>
+      {state.isOpen && (
+        <Popup
+          {...overlayProps}
+          {...props}
+          isOpen={state.isOpen}
+          onClose={() => state.close()}
+          ref={overlayRef}
+          triggerRef={triggerRef}
+        >
+          Children
+        </Popup>
+      )}
+    </>
+  );
+};
 ```
+
+## Popup props
 
 <ArgsTable of={Popup} />

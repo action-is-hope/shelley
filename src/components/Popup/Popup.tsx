@@ -1,8 +1,6 @@
 /** Popup.tsx */
 import React, { Ref, forwardRef, RefObject } from "react";
-// import type { PositionProps } from "@react-types/overlays/src";
 import type { PositionProps } from "@react-types/overlays";
-// import type { AriaOverlayProps } from "@react-aria/overlays/src";
 import { FocusScope } from "@react-aria/focus";
 import { mergeProps } from "@react-aria/utils";
 import {
@@ -23,6 +21,7 @@ export interface PopupProps
    * The ref for the element which the popup positions itself with respect to.
    */
   triggerRef: RefObject<HTMLElement>;
+  // @todo Focus options
 }
 
 export const Popup = forwardRef(
@@ -31,7 +30,7 @@ export const Popup = forwardRef(
       triggerRef,
       // AriaOverlayProps
       isOpen,
-      isDismissable,
+      isDismissable = true,
       isKeyboardDismissDisabled,
       onClose,
       shouldCloseOnBlur,

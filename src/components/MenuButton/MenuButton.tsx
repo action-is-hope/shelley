@@ -23,6 +23,7 @@ export interface MenuButtonProps<T>
   focusStrategy?: "first" | "last";
   onAction?: (key: Key) => void;
   children: CollectionChildren<object>;
+  portalSelector?: string;
 }
 // extend position props and button
 export function MenuButton<T extends object>({
@@ -32,6 +33,7 @@ export function MenuButton<T extends object>({
   // Button props
   // isDisabled,
   onAction,
+  portalSelector = "body",
   // onPress,
   ...rest
 }: MenuButtonProps<T>) {
@@ -45,7 +47,7 @@ export function MenuButton<T extends object>({
     // Alignment related props have no effect as we are using useOverlayPosition for positioning.
   });
 
-  const { menuTriggerProps, menuProps } = useMenuTrigger(
+  const { menuTriggerProps, menuProps } = useMenuTrigger<T>(
     /** The type of menu that the menu trigger opens. */
     // type?: 'menu' | 'listbox';
     /** Whether menu trigger is disabled. */
@@ -78,23 +80,18 @@ export function MenuButton<T extends object>({
             onClose={() => state.close()}
             triggerRef={triggerRef}
             ref={overlayRef}
+            placement="left"
+            // isDismissable={false}
           >
             <Menu
-              {...{ children, onAction }}
-              // placement: "top",
-              // offset: 5,
-              // crossOffset: -4,
-              // containerPadding: 0,
-              // Required to supress Adobe #a11y prop checker which issues a console warning, the actual value is provided by menuProps so lighthouse reports etc are fine.
-              aria-labelledby=""
-              ariaProps={menuProps}
+              {...{ children, onAction, ...menuProps }}
               onClose={() => state.close()}
               // autoFocus="last"
               // selectionMode="multiple"
               // autoFocus={focusStrategy || state.focusStrategy}
             />
           </Popup>,
-          document.querySelector("body") as HTMLElement
+          document.querySelector(portalSelector) as HTMLElement
         )}
     </>
   );

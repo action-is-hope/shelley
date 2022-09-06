@@ -50,6 +50,7 @@ MenuButton will give you a Menu and a trigger Button.
         }
         label="Actions"
         onAction={(key) => alert(key)}
+        portalSelector="#portal"
       >
         <Item key="page">Page</Item>
         <Item key="blog">Blog post</Item>
@@ -78,6 +79,7 @@ MenuButton will give you a Menu and a trigger Button.
           </Icon>
         }
         onAction={(key) => alert(key)}
+        portalSelector="#portal"
       >
         <Item key="manage-block">Manage blocks</Item>
         <Item key="blog-settings">Block settings</Item>
@@ -102,6 +104,7 @@ MenuButton will give you a Menu and a trigger Button.
           }
           aria-label="Page actions"
           onAction={(info) => alert(info)}
+          portalSelector="#portal"
         >
           <Item key="publish">Publish</Item>
           <Item key="archive">Archive</Item>

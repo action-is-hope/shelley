@@ -8,6 +8,7 @@ import {
 import { Button, ButtonGroup, Icon } from "../../indexLib";
 import { ArgsTable } from "@storybook/addon-docs";
 import { StoryCenteredInline } from "../StoryLayout";
+
 export const BasicButton = (args) => (
   <StoryCenteredInline>
     <Button {...args}>Text label</Button>
@@ -134,8 +135,6 @@ Quiet buttons are typically used for less-pronounced actions, including those lo
 A floating action button (FAB) performs the primary, or most common, action on a screen.
 
 A floating action button appears in front of all screen content, typically as a circular shape with an icon in its center.
-
-<!-- FABs come in two types: regular, and extended. -->
 
 Only use a FAB if it is the most suitable way to present a screen's primary action. Only one component is recommended per screen to represent the most common action.
 

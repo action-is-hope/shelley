@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, MenuProps, Item } from "../../src/indexLib";
 
+const menu = '[role="menu"]';
 const itemOne = '[data-key="item-one"]';
 const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
@@ -18,6 +19,28 @@ const BasicMenu = function <T extends object>(
 };
 
 describe("Basic Menu", () => {
+  it("Renders required aria attributes from props.", () => {
+    cy.mount(
+      <BasicMenu
+        id="example1"
+        // Defines a string value that labels the current element.
+        aria-label="Basic Menu"
+        // Identifies the element (or elements) that labels the current element.
+        aria-labelledby="Labelled by"
+        // Identifies the element (or elements) that describes the object.
+        aria-describedby="Described by"
+        // Identifies the element (or elements) that provide a detailed, extended description for the object.
+        aria-details="Details"
+      />
+    );
+    cy.get(menu)
+      .should("have.attr", "id", "example1")
+      .and("have.attr", "aria-label", "Basic Menu")
+      .and("have.attr", "aria-labelledby", "Labelled by")
+      .and("have.attr", "aria-describedby", "Described by")
+      .and("have.attr", "aria-details", "Details");
+  });
+
   it("first item is focused by default", () => {
     cy.mount(<BasicMenu />);
     cy.get(itemOne).should("be.focused");
@@ -68,9 +91,11 @@ describe("Basic Menu", () => {
 describe("Uncontrolled menu selection", () => {
   it("uncontrolled: selected item is marked as 'checked' visually and accessibly", () => {
     cy.mount(<BasicMenu selectionMode="single" />);
-    cy.get(itemThree).click();
+    cy.get(itemThree)
+      .click()
+      .should("have.attr", "aria-checked")
+      .and("equal", "true");
     cy.get(`${itemThree} [data-id="selected-icon"]`).should("be.visible");
-    cy.get(itemThree).should("have.attr", "aria-checked").and("equal", "true");
   });
 
   it("uncontrolled: allows for pre-selected keys", () => {
@@ -107,8 +132,9 @@ describe("Uncontrolled menu selection", () => {
     );
     // And another
     cy.get(itemOne).click();
-    cy.get("@onSelectionChangeSpy").should("have.been.calledWith", "item-one");
-    cy.get("@onSelectionChangeSpy").should("have.been.calledTwice");
+    cy.get("@onSelectionChangeSpy")
+      .should("have.been.calledWith", "item-one")
+      .and("have.been.calledTwice");
     cy.get("@numSelected").should("have.been.calledWith", 1);
     // Deselect the same item
     cy.get(itemOne).click();

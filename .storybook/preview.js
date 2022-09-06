@@ -103,8 +103,14 @@ export const globalTypes = {
 // preview.js
 
 const withShelleyTheme = (Story, context) => {
-  // Add theme class to Body so that our portaled styles still work.
-  document.body.className = `${document.body.className} ${context.globals.shelleyTheme}`;
+  // Create a themed div for portal content so styles still work. Noy needed if you put your theme class on html.
+  if (!document.getElementById("portal")) {
+    const portal = document.createElement("div");
+    portal.setAttribute("id", "portal");
+    portal.setAttribute("class", context.globals.shelleyTheme);
+    document.body.appendChild(portal);
+  }
+
   return (
     // We need it as a wrapper on the stories as well else the bg is wrong in the Docs.
     <div className={context.globals.shelleyTheme}>

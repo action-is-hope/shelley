@@ -1,23 +1,25 @@
 const path = require("path");
 
 module.exports = {
-  stories: [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-  ],
   addons: [
     "@storybook/addon-links",
-
     "@storybook/addon-a11y",
     "storybook-addon-rtl",
     "@storybook/addon-docs",
-    // {
-    //   name: "@storybook/addon-docs",
-    //   options: {
-    //     configureJSX: true,
-    //   },
-    // },
     "@storybook/addon-essentials",
+  ],
+  core: {
+    builder: "webpack5",
+  },
+  // https://github.com/storybookjs/storybook/issues/18094#issuecomment-1134326831
+  // Issues updating to 6.5.x of storybook, reverting for now.
+  // features: {
+  //   previewMdx2: true,
+  // },
+  presets: [path.resolve(__dirname, "./storybook.config.js")],
+  stories: [
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
   ],
   typescript: {
     reactDocgen: "react-docgen-typescript",
@@ -28,21 +30,4 @@ module.exports = {
       },
     },
   },
-  // typescript: {
-  //   reactDocgen: "react-docgen-typescript",
-  //   reactDocgenTypescriptOptions: {
-  //     propFilter: (prop) => {
-  //       console.log("Hi", prop);
-  //       return prop.parent ? !/node_modules/.test(prop.parent.fileName) : true;
-  //     },
-  //     compilerOptions: {
-  //       allowSyntheticDefaultImports: false,
-  //       esModuleInterop: false,
-  //     },
-  //   },
-  // },
-  core: {
-    builder: "webpack5",
-  },
-  presets: [path.resolve(__dirname, "./storybook.config.js")],
 };
