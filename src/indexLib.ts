@@ -49,8 +49,8 @@ export * from "./components/InputText/InputText";
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";
 
-export { default as MenuButton } from "./components/MenuButton/MenuButton";
-export * from "./components/MenuButton/MenuButton";
+export { default as MenuTrigger } from "./components/MenuTrigger/MenuTrigger";
+export * from "./components/MenuTrigger/MenuTrigger";
 
 export { default as Menu } from "./components/Menu/Menu";
 export * from "./components/Menu/Menu";

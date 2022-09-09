@@ -40,7 +40,7 @@ const MenuDocs: React.VFC = () => {
         </P>
 
         <P>
-          The <code>MenuButton</code> is wrapped with a Shelley Button and
+          The <code>MenuTrigger</code> is wrapped with a Shelley Button and
           behaves like one too.
         </P>
 

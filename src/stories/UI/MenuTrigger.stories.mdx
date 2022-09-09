@@ -1,0 +1,132 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import { MenuTrigger, Icon, Button, ButtonGroup } from "../../indexLib";
+import { Item } from "@react-stately/collections";
+import { StoryCenteredInline } from "../StoryLayout";
+import dedent from "ts-dedent";
+import {
+  TriggerMenu,
+  IconTriggerMenu,
+  ButtonGroupTriggerMenu,
+  MultipleSelectionMenuTrigger,
+  OpenState,
+} from "./MenuTrigger.examples";
+
+<Meta
+  title="Selection/Menu trigger"
+  argTypes={{}}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+  component={MenuTrigger}
+/>
+
+# Menu Trigger
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { MenuTrigger, Menu } from "@actionishope/shelley";
+  `}
+/>
+
+MenuTrigger serves as a wrapper around a Menu and its associated trigger, linking the Menu's open state with the trigger's press state.
+
+The MenuTrigger accepts exactly two children: the element which triggers the opening of the Menu and the Menu itself. The trigger element must be the first child passed into the MenuTrigger and should support press events.
+
+<Canvas withSource="closed">
+  <Story
+    name="a) Menu trigger"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+            <MenuTrigger>
+              <Button>Menu</Button>
+              <Menu onAction={(info) => alert(info)}>
+                <Item key="publish">Publish</Item>
+                <Item key="archive">Archive</Item>
+                <Item key="delete">Delete</Item>
+              </Menu>
+            </MenuTrigger>`,
+        },
+      },
+    }}
+  >
+    {TriggerMenu.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={MenuTrigger} />
+
+## Open
+
+The `isOpen` and `defaultOpen` props on the MenuTrigger control whether the Menu is open by default. They apply controlled and uncontrolled behavior on the Menu respectively.
+
+When the overlay's open state changes the `onOpenChange` handler.
+
+<Canvas>
+  <Story name="e) Open state">
+    <OpenState />
+  </Story>
+</Canvas>
+
+## Close on select
+
+~~You'll want to set `closeOnSelect` to `false` if you are using a multiple select menu.~~
+
+If using a menu in `multiple` selection mode the menu will automatically _not_ close on select. If you are using in `single` mode then it _will_ close on select. If you want to override this then use the `closeOnSelect` prop.
+
+<Canvas>
+  <Story name="d) Close on select">
+    <MultipleSelectionMenuTrigger />
+  </Story>
+</Canvas>
+
+## Positioning
+
+Positioning is controlled interally by `Popup` and the more commonly used props are exposed directly by MenuTrigger:
+
+- `shouldFlip`
+- `placement`
+- ...
+
+Additional options can be set via `popupProps`:
+
+- `offset`
+- `crossOffset`
+- ...
+
+## Menu Button variations
+
+## Icon Button
+
+<Canvas>
+  <Story name="b) Icon Menu button">{IconTriggerMenu.bind({})}</Story>
+</Canvas>
+
+## Button group
+
+<Canvas>
+  <Story name="c) Menu button group">
+    <ButtonGroupTriggerMenu />
+  </Story>
+</Canvas>
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

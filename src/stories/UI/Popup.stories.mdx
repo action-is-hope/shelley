@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Meta, Canvas, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas, Story, Preview } from "@storybook/addon-docs";
 import { SimplePopup } from "./Popup.examples";
 import { Popup } from "../../indexLib";
 
@@ -117,13 +117,8 @@ export const SimplePopup = (props: PopupProps) => {
 
   return (
     <>
-      {/* Whatever you use as a trigger will need an onPress prop... */}
-      <Button
-        id="test"
-        {...triggerProps}
-        ref={triggerRef}
-        disabled={state.isOpen}
-      >
+      {/* Whatever you use as a trigger will need an onPress prop... See: https://react-spectrum.adobe.com/react-aria/useButton.html*/}
+      <Button {...triggerProps} ref={triggerRef} disabled={state.isOpen}>
         Click me
       </Button>
       {state.isOpen && (
@@ -132,8 +127,8 @@ export const SimplePopup = (props: PopupProps) => {
           {...props}
           isOpen={state.isOpen}
           onClose={() => state.close()}
-          ref={overlayRef}
           triggerRef={triggerRef}
+          ref={overlayRef}
         >
           Children
         </Popup>

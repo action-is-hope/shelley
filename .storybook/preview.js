@@ -110,7 +110,6 @@ const withShelleyTheme = (Story, context) => {
     portal.setAttribute("class", context.globals.shelleyTheme);
     document.body.appendChild(portal);
   }
-
   return (
     // We need it as a wrapper on the stories as well else the bg is wrong in the Docs.
     <div className={context.globals.shelleyTheme}>

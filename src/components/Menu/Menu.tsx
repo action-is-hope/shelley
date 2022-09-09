@@ -37,8 +37,9 @@ export function Menu<T extends object>(props: MenuProps<T>) {
           className={classes.item}
           item={item}
           state={state}
-          onAction={onAction}
-          onClose={onClose}
+          // Do we need these now?
+          // onAction={onAction}
+          // onClose={onClose}
         />
       ))}
     </ul>
