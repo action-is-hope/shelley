@@ -4,11 +4,11 @@ import { Item } from "@react-stately/collections";
 import { StoryCenteredInline } from "../StoryLayout";
 import dedent from "ts-dedent";
 import {
-  TriggerMenu,
+  BasicMenuTrigger,
+  ControlledMenuTrigger,
   IconTriggerMenu,
   ButtonGroupTriggerMenu,
   MultipleSelectionMenuTrigger,
-  OpenState,
 } from "./MenuTrigger.examples";
 
 <Meta
@@ -37,6 +37,8 @@ MenuTrigger serves as a wrapper around a Menu and its associated trigger, linkin
 
 The MenuTrigger accepts exactly two children: the element which triggers the opening of the Menu and the Menu itself. The trigger element must be the first child passed into the MenuTrigger and should support press events.
 
+portalSelector
+
 <Canvas withSource="closed">
   <Story
     name="a) Menu trigger"
@@ -56,11 +58,11 @@ The MenuTrigger accepts exactly two children: the element which triggers the ope
       },
     }}
   >
-    {TriggerMenu.bind({})}
+    {BasicMenuTrigger.bind({})}
   </Story>
 </Canvas>
 
-## Props
+## Menu Trigger Props
 
 <ArgsTable of={MenuTrigger} />
 
@@ -71,8 +73,26 @@ The `isOpen` and `defaultOpen` props on the MenuTrigger control whether the Menu
 When the overlay's open state changes the `onOpenChange` handler.
 
 <Canvas>
-  <Story name="e) Open state">
-    <OpenState />
+  <Story
+    name="e) Open state"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+            const [open, setOpen] = useState(false);
+            <MenuTrigger isOpen={open} onOpenChange={setOpen}>
+              <Button>View</Button>
+              <Menu selectionMode="multiple">
+                <Item key="side">Side bar</Item>
+                <Item key="options">Page options</Item>
+                <Item key="edit">Edit Panel</Item>
+              </Menu>
+            </MenuTrigger>`,
+        },
+      },
+    }}
+  >
+    <ControlledMenuTrigger />
   </Story>
 </Canvas>
 

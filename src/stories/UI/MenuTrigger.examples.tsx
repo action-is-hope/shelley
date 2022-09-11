@@ -8,19 +8,33 @@ import {
   Icon,
 } from "../../indexLib";
 
-function _TriggerMenu(args: MenuTriggerProps) {
+export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
     <MenuTrigger portalSelector="#portal" {...args}>
-      <Button>Menu</Button>
+      <Button>Edit</Button>
       <Menu onAction={(info) => alert(info)}>
-        <Item key="publish">Publish</Item>
-        <Item key="archive">Archive</Item>
-        <Item key="delete">Delete</Item>
+        <Item key="cut">Cut</Item>
+        <Item key="copy">Copy</Item>
+        <Item key="paste">Paste</Item>
+      </Menu>
+    </MenuTrigger>
+  );
+};
+
+export function ControlledMenuTrigger() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <MenuTrigger portalSelector="#portal" isOpen={open} onOpenChange={setOpen}>
+      <Button>View</Button>
+      <Menu selectionMode="multiple">
+        <Item key="side">Side bar</Item>
+        <Item key="options">Page options</Item>
+        <Item key="edit">Edit Panel</Item>
       </Menu>
     </MenuTrigger>
   );
 }
-export const TriggerMenu = _TriggerMenu;
 
 export const IconTriggerMenu = (args: MenuTriggerProps) => {
   return (
@@ -75,9 +89,9 @@ export const MultipleSelectionMenuTrigger = () => {
         selectionMode="multiple"
         onSelectionChange={(keys) => console.log("selection change", keys)}
       >
-        <Item key="page">Page</Item>
-        <Item key="blog">Blog post</Item>
-        <Item key="event">Event</Item>
+        <Item key="side">Side bar</Item>
+        <Item key="options">Page options</Item>
+        <Item key="edit">Edit Panel</Item>
       </Menu>
     </MenuTrigger>
   );
@@ -118,21 +132,3 @@ export const MultipleControlled = () => {
     </>
   );
 };
-
-export function OpenState() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <MenuTrigger isOpen={open} onOpenChange={setOpen}>
-        <Button>View</Button>
-        <Menu selectionMode="multiple">
-          <Item key="side">Side bar</Item>
-          <Item key="options">Page options</Item>
-          <Item key="edit">Edit Panel</Item>
-        </Menu>
-      </MenuTrigger>
-      <Button onPress={() => setOpen(!open)}></Button>
-    </>
-  );
-}
