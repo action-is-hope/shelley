@@ -1,20 +1,23 @@
 /** MenuTrigger.tsx */
-import React, { ReactNode, cloneElement, ReactElement } from "react";
+import React, { cloneElement, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import { useMenuTrigger } from "@react-aria/menu";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
-// import { mergeProps } from "@react-aria/utils";
-import type { PositionProps } from "@react-types/overlays";
-// https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658 Should be resolved...
-// import { useOverlayPosition } from "@react-aria/overlays";
-import Popup from "../Popup/Popup";
+import Popup, { PopupProps } from "../Popup/Popup";
 
-export interface MenuTriggerProps {
-  position?: PositionProps; // @todo We don't want all of the props from overlays
+export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Disables the menu popup. */
   disabled?: boolean;
+  /**
+   * The selector of the element that the menu should render inside of.
+   * @default 'body'
+   */
   portalSelector?: string;
-  children: ReactNode;
+  /**
+   * The contents of the MenuTrigger - a trigger and a Menu.
+   */
+  children: ReactElement[];
   /**
    * How the menu is triggered.
    * @default 'press'
@@ -25,48 +28,56 @@ export interface MenuTriggerProps {
    * @default true
    */
   closeOnSelect?: boolean;
-  /** Whether the overlay is open by default (controlled). */
+  /**
+   * Whether the overlay is open by default (controlled).
+   */
   isOpen?: boolean;
-  /** Whether the overlay is open by default (uncontrolled). */
+  /**
+   * Whether the overlay is open by default (uncontrolled).
+   */
   defaultOpen?: boolean;
-  /** Handler that is called when the overlay's open state changes. */
+  /**
+   * Handler that is called when the overlay's open state changes.
+   */
   onOpenChange?: (isOpen: boolean) => void;
   /**
    * Whether the menu should automatically flip direction when space is limited.
    * @default true
    */
   shouldFlip?: boolean;
+  /**
+   * The placement of the menu with respect to the trigger.
+   * @default 'bottom start'
+   */
+  placement?: PopupProps["placement"];
+  /**
+   * The additional offset applied along the main axis between the menu and its
+   * trigger element.
+   * @default 0
+   */
+  offset?: number;
+  /**
+   * The additional offset applied along the cross axis between the menu and its
+   * trigger element.
+   * @default 0
+   */
+  crossOffset?: number;
 }
 
-// {
-//     /**
-//    * How the menu is triggered.
-//    * @default 'press'
-//    */
-//      trigger?: MenuTriggerType,
-//      /**
-//       * Alignment of the menu relative to the trigger.
-//       * @default 'start'
-//       */
-//      align?: Alignment,
-//      /**
-//       * Where the Menu opens relative to its trigger.
-//       * @default 'bottom'
-//       */
-//      direction?: 'bottom' | 'top' | 'left' | 'right' | 'start' | 'end',
-
-// extend position props and button
 export function MenuTrigger({
-  position: positionFromProps,
   children,
-  disabled,
   closeOnSelect = true,
-  onOpenChange,
-  shouldFlip,
+  crossOffset,
   defaultOpen,
+  disabled,
   isOpen,
-  trigger,
+  offset,
+  onOpenChange,
+  placement = "bottom start",
   portalSelector = "body",
+  shouldFlip,
+  trigger,
+  ...rest
 }: MenuTriggerProps) {
   const triggerRef = React.useRef(null);
   const overlayRef = React.useRef(null);
@@ -104,15 +115,19 @@ export function MenuTrigger({
       {state.isOpen &&
         ReactDOM.createPortal(
           <Popup
-            // Focus
-            // overlayProps={{ ...positionFromProps }}
             isOpen={state.isOpen}
-            // onClose={() => state.close()}
             onClose={state.close}
             ref={overlayRef}
-            {...{ shouldFlip, triggerRef }}
-            shouldCloseOnBlur
-            placement="bottom start"
+            {...{
+              shouldFlip,
+              triggerRef,
+              placement,
+              offset,
+              crossOffset,
+              ...rest,
+            }}
+            // shouldCloseOnBlur
+            isDismissable={false}
           >
             {menu}
           </Popup>,

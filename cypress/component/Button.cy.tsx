@@ -35,12 +35,19 @@ describe("Button", () => {
     cy.get(`[data-id="cy-button"]`).should("be.focused");
   });
 
-  it("mounts as anchor with href", () => {
+  it("mounts as anchor with href and the link works as expected", () => {
     cy.mount(
       <Button as={"a"} href="https://google.com">
         Link to Google
       </Button>
     );
+
+    cy.get("a")
+      .invoke("attr", "href")
+      .should("equal", "https://google.com")
+      .then((href) => {
+        href && cy.request(href).its("status").should("eq", 200);
+      });
 
     //classContains
     // cy.get("a").should("have.attr", "class").and("to.have.string", "quiet");

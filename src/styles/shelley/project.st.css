@@ -98,7 +98,7 @@
   --color-background-4: rgba(11, 13, 18, 0.34);
   --color-background-modal: rgba(23, 26, 35, 0.98);
   --color-background-menu: rgb(23, 26, 35);
-  --color-background-item-hover: rgba(var(--light-01-raw), 0.2);
+  --color-background-item-hover: rgba(var(--light-01-raw), 0.1);
 
   /* = Text colours */
   --color-text-1: var(--light-01);

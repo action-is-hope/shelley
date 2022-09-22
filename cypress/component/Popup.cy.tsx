@@ -3,8 +3,14 @@ import React, { useRef } from "react";
 import { Popup, PopupProps, Button } from "../../src/indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
+import { getOffset } from "@react-aria/utils";
 
 const popupElm = "[data-cy-popup]";
+
+// @todo:
+// crossOffset
+// getOffset
+// shouldFlip
 
 export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
   const triggerRef = useRef(null);
