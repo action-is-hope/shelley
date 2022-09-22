@@ -17,7 +17,7 @@ export interface MenuProps<T> extends TreeProps<T>, AriaMenuProps<T> {
 }
 
 export function Menu<T extends object>(props: MenuProps<T>) {
-  const { className, onAction, onClose } = props;
+  const { className } = props;
   // Create menu state based on the incoming props.
   const state = useTreeState({ ...props });
   const menuRef = useRef(null);
@@ -37,9 +37,6 @@ export function Menu<T extends object>(props: MenuProps<T>) {
           className={classes.item}
           item={item}
           state={state}
-          // Do we need these now?
-          // onAction={onAction}
-          // onClose={onClose}
         />
       ))}
     </ul>

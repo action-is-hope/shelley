@@ -49,9 +49,6 @@
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
   },
-  "jest": {
-    "verbose": true
-  },
   "dependencies": {
     "@react-aria/button": "3.6.1",
     "@react-aria/interactions": "^3.11.0",
