@@ -126,8 +126,7 @@ export function MenuTrigger({
               crossOffset,
               ...rest,
             }}
-            // shouldCloseOnBlur
-            isDismissable={false}
+            shouldCloseOnBlur
           >
             {menu}
           </Popup>,
