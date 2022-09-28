@@ -13,10 +13,4 @@ export default create({
   // Text colors
   textColor: "#cdcfd9",
   textInverseColor: "#333",
-
-  // Form colors
-  // inputBg: "white",
-  // inputBorder: "silver",
-  // inputTextColor: "black",
-  // inputBorderRadius: 4,
 });
