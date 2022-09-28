@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import {
   MenuTrigger,
@@ -8,27 +8,32 @@ import {
   MenuTriggerProps,
 } from "../../src/indexLib";
 
-// portalSelector
-// controlled
-// shouldFlip
-
 const BasicMenuTrigger = (args: Omit<MenuTriggerProps, "children">) => (
-  <MenuTrigger data-cy="popup" {...args}>
-    <Button data-cy="trigger">View</Button>
-    <Menu>
-      <Item key="item-one">Item One</Item>
-      <Item key="item-two">Item Two</Item>
-      <Item key="item-three">Item Three</Item>
-    </Menu>
-  </MenuTrigger>
+  <>
+    <MenuTrigger data-cy="popup" {...args}>
+      <Button data-cy="trigger">View</Button>
+      <Menu>
+        <Item key="item-one">Item One</Item>
+        <Item key="item-two">Item Two</Item>
+        <Item key="item-three">Item Three</Item>
+      </Menu>
+    </MenuTrigger>
+    <button data-cy="focusable-element">Focusable element</button>
+    <div id="popupContainer" />
+  </>
 );
 
-const ControlledMenuTrigger = (args: MenuTriggerProps) => {
+const ControlledMenuTrigger = (args: Omit<MenuTriggerProps, "children">) => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <MenuTrigger data-cy="popup" isOpen={open} onOpenChange={setOpen}>
+      <MenuTrigger
+        data-cy="popup"
+        isOpen={open}
+        onOpenChange={setOpen}
+        {...args}
+      >
         <Button data-cy="trigger">View</Button>
         <Menu>
           <Item key="item-one">Item One</Item>
@@ -36,21 +41,30 @@ const ControlledMenuTrigger = (args: MenuTriggerProps) => {
           <Item key="item-three">Item Three</Item>
         </Menu>
       </MenuTrigger>
-      <Button onPress={() => setOpen(!open)}></Button>
+      <Button data-cy="external-trigger" onPress={() => setOpen(!open)}>
+        Set Open
+      </Button>
     </>
   );
 };
 
 describe("MenuTrigger", () => {
-  it("Renders with correct aria attributes on trigger and menu.", () => {
+  it("Renders and functions with correct aria attributes on trigger and menu.", () => {
     cy.mount(<BasicMenuTrigger />);
     cy.getDataCy("popup").should("not.exist");
-    cy.getDataCy("trigger").should("have.attr", "aria-haspopup").and("equal", "true");
-    cy.getDataCy("trigger").should("have.attr", "aria-expanded").and("equal", "false");
+    cy.getDataCy("trigger")
+      .should("have.attr", "aria-haspopup")
+      .and("equal", "true");
+    cy.getDataCy("trigger")
+      .should("have.attr", "aria-expanded")
+      .and("equal", "false");
     cy.getDataCy("trigger").should("have.attr", "id");
 
     cy.getDataCy("trigger").click();
-    cy.getDataCy("trigger").should("have.attr", "aria-expanded").and("equal", "true");
+
+    cy.getDataCy("trigger")
+      .should("have.attr", "aria-expanded")
+      .and("equal", "true");
     cy.getDataCy("trigger").should("have.attr", "aria-controls");
 
     cy.getDataCy("popup").should("be.visible");
@@ -60,71 +74,36 @@ describe("MenuTrigger", () => {
       const triggerId = $Trigger.attr("id");
       const triggerAriaControls = $Trigger.attr("aria-controls");
       // Assert that we can find the menu using the id's from button in our selectors.
-      cy.getDataCy("popup").get(`[aria-labelledby="${triggerId}"]`).should("exist")
-      cy.getDataCy("popup").get(`#${triggerAriaControls}`).should("exist")
+      cy.getDataCy("popup")
+        .get(`[aria-labelledby="${triggerId}"]`)
+        .should("exist");
+      cy.getDataCy("popup").get(`#${triggerAriaControls}`).should("exist");
     });
+
+    cy.getDataCy("popup").trigger("keydown", { keyCode: 27 });
+    cy.getDataCy("popup").should("not.exist");
   });
 
-  // it("is dismissable by default.", () => {
-  //   cy.mount(<SimplePopup />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get("body").click();
-  //   cy.get(popupElm).should("not.exist");
-  //   cy.get("#focusLink").click();
-  // });
+  it("Renders into a choosen element via portal", () => {
+    cy.mount(<BasicMenuTrigger portalSelector="#popupContainer" />);
+    cy.getDataCy("trigger").click();
+    cy.get("#popupContainer > [data-cy=popup]").should("exist");
+  });
 
-  // it("is not close on blur by default.", () => {
-  //   cy.mount(<SimplePopup />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get("#focusLink").focus();
-  //   cy.get(popupElm).should("be.visible");
-  // });
+  it("Closes onBlur", () => {
+    cy.mount(<BasicMenuTrigger />);
+    cy.getDataCy("trigger").click();
+    cy.getDataCy("popup").should("exist");
+    cy.getDataCy("focusable-element").focus();
+    cy.getDataCy("popup").should("not.exist");
+  });
 
-  // it("close on blur.", () => {
-  //   cy.mount(<SimplePopup shouldCloseOnBlur />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get("#focusLink").focus();
-  //   cy.get(popupElm).should("not.exist");
-  // });
-
-  // it("is keyboard dismissable by default.", () => {
-  //   cy.mount(<SimplePopup />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get(popupElm).trigger("keydown", { keyCode: 27 });
-  //   cy.get(popupElm).should("not.exist");
-  // });
-
-  // it("is not dismissable but is keyboard dismissable", () => {
-  //   cy.mount(<SimplePopup isDismissable={false} />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get(popupElm).trigger("keydown", { keyCode: 27 });
-  //   cy.get(popupElm).should("not.exist");
-  // });
-
-  // it("is not dismissable or keyboard dismissable", () => {
-  //   cy.mount(
-  //     <SimplePopup isDismissable={false} isKeyboardDismissDisabled={true} />
-  //   );
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm).should("be.visible");
-  //   cy.get(popupElm).trigger("keydown", { keyCode: 27 });
-  //   cy.get(popupElm).should("exist");
-  // });
-});
-
-describe("Popup placement", () => {
-  /* 'bottom' */
-  // it("'bottom' is positioned as expected", () => {
-  //   cy.mount(<SimplePopup placement="bottom" />);
-  //   cy.get("#buttonTrigger").click();
-  //   cy.get(popupElm)
-  //     .should("have.css", "position", "absolute")
-  //     .and("have.css", "top", "160px")
-  //     .and("have.css", "left", "100px");
-  // });
+  it("allows for controlled state via open props", () => {
+    cy.mount(<ControlledMenuTrigger />);
+    cy.getDataCy("popup").should("not.exist");
+    cy.getDataCy("external-trigger").click();
+    cy.getDataCy("popup").should("exist");
+    cy.getDataCy("trigger").click();
+    cy.getDataCy("popup").should("not.exist");
+  });
 });

@@ -3,13 +3,10 @@ import React, { useRef } from "react";
 import { Popup, PopupProps, Button } from "../../src/indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
-import { getOffset } from "@react-aria/utils";
 
 const popupElm = "[data-cy-popup]";
 
 // @todo:
-// crossOffset
-// getOffset
 // shouldFlip
 
 export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
@@ -58,8 +55,6 @@ export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
   );
 };
 
-// Does Flip
-
 describe("Basic Popup", () => {
   it("Renders required aria attributes.", () => {
     cy.mount(<SimplePopup />);
@@ -77,7 +72,7 @@ describe("Basic Popup", () => {
     cy.get("#focusLink").click();
   });
 
-  it("is not close on blur by default.", () => {
+  it("does not close onBlur by default.", () => {
     cy.mount(<SimplePopup />);
     cy.get("#buttonTrigger").click();
     cy.get(popupElm).should("be.visible");
@@ -85,7 +80,7 @@ describe("Basic Popup", () => {
     cy.get(popupElm).should("be.visible");
   });
 
-  it("close on blur.", () => {
+  it("closes on blur when set.", () => {
     cy.mount(<SimplePopup shouldCloseOnBlur />);
     cy.get("#buttonTrigger").click();
     cy.get(popupElm).should("be.visible");
@@ -120,6 +115,40 @@ describe("Basic Popup", () => {
     // dismiss - .type('{esc}') not working, using tigger() instead.
     cy.get(popupElm).trigger("keydown", { keyCode: 27 });
     cy.get(popupElm).should("exist");
+  });
+});
+
+describe("Popup offsets", () => {
+  it("offset is set for positive numbers", () => {
+    cy.mount(<SimplePopup offset={10} />);
+    cy.get("#buttonTrigger").click();
+    cy.get(popupElm)
+      .should("have.css", "position", "absolute")
+      .and("have.css", "top", "170px");
+  });
+
+  it("offset is set for negative numbers", () => {
+    cy.mount(<SimplePopup offset={-10} />);
+    cy.get("#buttonTrigger").click();
+    cy.get(popupElm)
+      .should("have.css", "position", "absolute")
+      .and("have.css", "top", "150px");
+  });
+
+  it("crossOffset is set for positive numbers", () => {
+    cy.mount(<SimplePopup crossOffset={10} />);
+    cy.get("#buttonTrigger").click();
+    cy.get(popupElm)
+      .should("have.css", "position", "absolute")
+      .and("have.css", "left", "110px");
+  });
+
+  it("crossoffset is set for negative numbers", () => {
+    cy.mount(<SimplePopup crossOffset={-10} />);
+    cy.get("#buttonTrigger").click();
+    cy.get(popupElm)
+      .should("have.css", "position", "absolute")
+      .and("have.css", "left", "90px");
   });
 });
 
