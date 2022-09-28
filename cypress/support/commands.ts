@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference path="../index.d.ts" />
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +36,11 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add("getDataCy", (selector, ...args) => {
+  return cy.get(`[data-cy=${selector}]`, ...args);
+});
+
+Cypress.Commands.add("getDataCyLike", (selector, ...args) => {
+  return cy.get(`[data-cy*=${selector}]`, ...args);
+});

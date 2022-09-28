@@ -1,5 +1,3 @@
-import { CYCLIC_KEY } from "@storybook/addon-actions";
-import { equal } from "assert";
 import React, { useRef, useState } from "react";
 
 import {
@@ -10,13 +8,13 @@ import {
   MenuTriggerProps,
 } from "../../src/indexLib";
 
-const popover = "[data-cy-popover]";
-const trigger = "[data-cy-trigger]";
 // portalSelector
+// controlled
+// shouldFlip
 
 const BasicMenuTrigger = (args: Omit<MenuTriggerProps, "children">) => (
-  <MenuTrigger data-cy-popover="" {...args}>
-    <Button data-cy-trigger="">View</Button>
+  <MenuTrigger data-cy="popup" {...args}>
+    <Button data-cy="trigger">View</Button>
     <Menu>
       <Item key="item-one">Item One</Item>
       <Item key="item-two">Item Two</Item>
@@ -30,8 +28,8 @@ const ControlledMenuTrigger = (args: MenuTriggerProps) => {
 
   return (
     <>
-      <MenuTrigger data-cy-popover="" isOpen={open} onOpenChange={setOpen}>
-        <Button data-cy-trigger="">View</Button>
+      <MenuTrigger data-cy="popup" isOpen={open} onOpenChange={setOpen}>
+        <Button data-cy="trigger">View</Button>
         <Menu>
           <Item key="item-one">Item One</Item>
           <Item key="item-two">Item Two</Item>
@@ -43,29 +41,27 @@ const ControlledMenuTrigger = (args: MenuTriggerProps) => {
   );
 };
 
-// Does Flip
-
 describe("MenuTrigger", () => {
   it("Renders with correct aria attributes on trigger and menu.", () => {
     cy.mount(<BasicMenuTrigger />);
-    cy.get(popover).should("not.exist");
-    cy.get(trigger).should("have.attr", "aria-haspopup").and("equal", "true");
-    cy.get(trigger).should("have.attr", "aria-expanded").and("equal", "false");
-    cy.get(trigger).should("have.attr", "id");
+    cy.getDataCy("popup").should("not.exist");
+    cy.getDataCy("trigger").should("have.attr", "aria-haspopup").and("equal", "true");
+    cy.getDataCy("trigger").should("have.attr", "aria-expanded").and("equal", "false");
+    cy.getDataCy("trigger").should("have.attr", "id");
 
-    cy.get(trigger).click();
-    cy.get(trigger).should("have.attr", "aria-expanded").and("equal", "true");
-    cy.get(trigger).should("have.attr", "aria-controls");
+    cy.getDataCy("trigger").click();
+    cy.getDataCy("trigger").should("have.attr", "aria-expanded").and("equal", "true");
+    cy.getDataCy("trigger").should("have.attr", "aria-controls");
 
-    cy.get(popover).should("be.visible");
+    cy.getDataCy("popup").should("be.visible");
 
-    cy.get(trigger).then(($Trigger) => {
+    cy.getDataCy("trigger").then(($Trigger) => {
       // Get ids from the button
       const triggerId = $Trigger.attr("id");
       const triggerAriaControls = $Trigger.attr("aria-controls");
-      // Assert that we can find the menu using the id's from button
-      cy.get(`${popover} [aria-labelledby="${triggerId}"]`).should("exist");
-      cy.get(`${popover} #${triggerAriaControls}`).should("exist");
+      // Assert that we can find the menu using the id's from button in our selectors.
+      cy.getDataCy("popup").get(`[aria-labelledby="${triggerId}"]`).should("exist")
+      cy.getDataCy("popup").get(`#${triggerAriaControls}`).should("exist")
     });
   });
 
