@@ -3,7 +3,7 @@ import themes from "../src/styles";
 
 import { initializeRTL } from "storybook-addon-rtl";
 initializeRTL();
-const bronteViewports = {
+const sampleViewports = {
   tiny: {
     name: "Tiny",
     styles: {
@@ -76,7 +76,7 @@ export const parameters = {
     },
   },
   viewport: {
-    viewports: bronteViewports,
+    viewports: sampleViewports,
   },
 };
 export const globalTypes = {
