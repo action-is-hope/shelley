@@ -29,7 +29,6 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
 */
 
   /** = Breakpoints */
-  /* @todo - Switch to env when it supports authored vars. */
   breakpoint-sm: "only screen and (min-width: 568px)";
   breakpoint-md: "only screen and (min-width: 950px)";
   breakpoint-lg: "only screen and (min-width: 1200px)";
