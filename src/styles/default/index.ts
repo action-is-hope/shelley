@@ -7,7 +7,6 @@ import "./allGlobal.st.css";
 // = Foundation Components
 import { classes as Button } from "./button.st.css";
 import { classes as Blockquote } from "./blockquote.st.css";
-import { classes as ComboboxSingle } from "./comboboxSingle.st.css";
 import { classes as ErrorText } from "./errorText.st.css";
 import { classes as Grid } from "./grid.st.css";
 import { classes as HintText } from "./hintText.st.css";
@@ -18,7 +17,7 @@ import { classes as InputSelectionControl } from "./inputSelectionControl.st.css
 import { classes as InputText } from "./inputText.st.css";
 import { classes as Label } from "./label.st.css";
 import { classes as Text } from "./text.st.css";
-import { classes as MenuPopup } from "./menuPopup.st.css";
+import { classes as Menu } from "./menu.st.css";
 import { classes as MenuItem } from "./menuItem.st.css";
 
 // = Project
@@ -41,9 +40,6 @@ export const button = (...values: []) =>
 
 export const blockquote = (...values: []) =>
   getStylableClassNames(values, Blockquote, "blockquote");
-
-export const comboboxSingle = (...values: []) =>
-  getStylableClassNames(values, ComboboxSingle, "comboboxSingle");
 
 export const grid = (...values: []) =>
   getStylableClassNames(values, Grid, "grid");
@@ -75,8 +71,8 @@ export const hintText = (...values: []) =>
 export const inputText = (...values: []) =>
   getStylableClassNames(values, InputText, "inputText");
 
-export const menuPopup = (...values: []) =>
-  getStylableClassNames(values, MenuPopup, "menuPopup");
+export const menu = (...values: []) =>
+  getStylableClassNames(values, Menu, "menu");
 
 export const menuItem = (...values: []) =>
   getStylableClassNames(values, MenuItem, "menuItem");

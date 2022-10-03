@@ -8,8 +8,6 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 import { st, classes } from "./inputBase.st.css";
 
 export interface InputBaseProps {
-  /** Id is required to associate fields with labels programatically for better UX and a legal requirement for accessibility. */
-  //  id: string;
   /** Provide an error message that triggers the stylable error state. */
   error?: React.ReactNode;
   /** Provide some hint text to the label component. */
@@ -41,7 +39,7 @@ interface InputBaseInternalProps
     InputBaseProps {}
 
 const InputBase = ({
-  id = "NOID",
+  id = "no-id",
   className: classNameProp,
   children,
   disabled = false,
@@ -60,9 +58,9 @@ const InputBase = ({
   vol = 3,
 }: // ...attrs
 InputBaseInternalProps) => {
-  id === "NOID" &&
+  id === "no-id" &&
     console.warn(
-      `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'NOID' to these inputs should you want to check the DOM.\n`
+      `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'no-id' to these inputs should you want to check the DOM.\n`
     );
   const error = errorMessage && touched ? true : false;
 

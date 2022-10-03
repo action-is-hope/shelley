@@ -2,7 +2,6 @@ import React from "react";
 /* Adobe libs */
 // Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
 import { useButton } from "@react-aria/button";
-// import { mergeProps } from "@react-aria/utils";
 import type { AriaButtonProps } from "@react-types/button";
 /* Internal */
 import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
@@ -11,7 +10,7 @@ import type { MergeElementProps } from "../utils";
 import { st, classes } from "./button.st.css";
 
 /**
- * Leveraging Adobes 'useButton' for the lions share of features.
+ * Leveraging Adobes 'useButton' to enable use with their hooks.
  * N.B: Omitting 'elementType' as preference is to use existing 'as'.
  *
  * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
@@ -107,7 +106,8 @@ function ButtonBase<T extends React.ElementType = "button">(
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby,
       "aria-details": ariaDetails,
-      // Map 'as' to elementType, casting to please adobe libs...
+      // Map 'as' to elementType for adobe-aria...
+      // ...rest,
       elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
     },
     ref as React.RefObject<HTMLElement>
@@ -149,6 +149,12 @@ function ButtonBase<T extends React.ElementType = "button">(
   );
 }
 
+// See:
+// https://github.com/adobe/react-spectrum/blob/main/packages/%40react-spectrum/listbox/src/ListBox.tsx
+
+// const Button = React.forwardRef(ButtonBase);
 const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
+
+// Button.displayName = "Button";
 
 export default Button;

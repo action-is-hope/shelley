@@ -49,14 +49,19 @@ export * from "./components/InputText/InputText";
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";
 
-export { default as MenuButton } from "./components/MenuButton/MenuButton";
-export * from "./components/MenuButton/MenuButton";
+export { default as MenuTrigger } from "./components/MenuTrigger/MenuTrigger";
+export * from "./components/MenuTrigger/MenuTrigger";
 
-export { default as MenuPopup } from "./components/MenuPopup/MenuPopup";
-export * from "./components/MenuPopup/MenuPopup";
+export { default as Menu } from "./components/Menu/Menu";
+export * from "./components/Menu/Menu";
 
 export { default as MenuItem } from "./components/MenuItem/MenuItem";
 export * from "./components/MenuItem/MenuItem";
+
+export { default as Popup } from "./components/Popup/Popup";
+export * from "./components/Popup/Popup";
+
+export { default as Item } from "./components/Item/Item";
 
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";

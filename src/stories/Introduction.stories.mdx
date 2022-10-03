@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Introduction" />
+
+# Shelley
+
+Shelley is an _unstyled first_ UI library, meaning that it ships with a very minimal set of styles giving you complete control of your styling strategy.
+
+That doesn't mean we don't have a base theme for you to start with, it just means that you have complete control over your styles and how they are put together. If you are a fan of CSS and like/need to control the CSS used in your project then Shelley might be for you. if this idea repulses you then maybe go for something like Material UI which actually does have an unstyled option these days. Adobe Spectrum looks good too.
+
+## Accessible
+
+Shelley is built on top of various `react-aria` hooks, Adobe has done the work here and has been kind enough to open source it! Nice one!
+
+Accessibility is super important as it is about inclusion at the end of the day and who are we to tell you that you have to exclude people if you wanna use our stuff!! Any issues please report them on Github with as much info as possible and we will attempt to make hast on progress.
+
+## Flexible
+
+We aim to be flexible because we know every project asks for different things so we need to be able to build anything.
+
+NOT HERE: You don't have to use the props that we provide, you could just use classnames and inherit the style api from whatever component you are using and style it's internal parts easily.
+
+## Stylable
+
+Styling is handled using Stylable from Wix... Wix have got a great team and have built _and maintain_ a great product. Whilst it's not a mainstream library _(meaning using it with CRA is a pain best avoided due to the required webpack configure)_ the fact that Wix with the scale of their operation decided to 'do something else' makes one pay attention.
+
+Huge thanks to the Wix team who have been a pleasure to work with when we have needed to and have always gone above and beyond.
+
+## Planning
+
+The first question, are you planning to build multiple sites with one HTML structure and multiple themes?
+
+If no then you can use the props throughout your markup to define the types of buttons and text you would like as you are working to just one design.
+
+If yes then you might set yourself up with a load of mixins and point to them instead. Think: What the design changes between theme? I.E Component A with design A has a CTA of type "primary" but Component A with design B has a cta type of "secondary". Now you would be in the position that you need to override a primary button to look like a secondary button just for that component. By turning the look and feel props off you get a raw button and you can then apply classes to your component A button which in turn can point to a mixin of primary. This way you can granula control over the styles applied to buttons on a component by component basis...
+
+Note: Add a component API stability marker aside with some info about current status etc.
+
+https://storybook.js.org/docs/react/configure/theming

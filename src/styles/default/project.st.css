@@ -18,8 +18,17 @@
 
   /*=== LAYOUT AND GRID ===*/
 
+  /* 
+  Review breakpoints, how true is this list, work out the what newer devices break this convention:
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV 
+src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-design/
+*/
+
   /** = Breakpoints */
-  /* @todo - Switch to env when it supports authored vars. */
   breakpoint-sm: "only screen and (min-width: 568px)";
   breakpoint-md: "only screen and (min-width: 950px)";
   breakpoint-lg: "only screen and (min-width: 1200px)";

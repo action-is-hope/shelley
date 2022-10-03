@@ -2,6 +2,7 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Default;
+  -st-named: --color-focus, --spacing-unit;
 }
 
 /* = Component CSS API */
@@ -18,10 +19,63 @@
 
 @st-scope Default {
   MenuItem {
-    -st-mixin: menuItem;
+    /* -st-mixin: menuItem; */
+    display: grid;
+    grid-template-columns: calc(var(--spacing-unit) / 2) auto 1fr 24px auto auto calc(var(--spacing-unit) / 2);
+    grid-template-areas:
+      ". . . . . . ."
+      ".icon text checkmark end keyboard."
+      ".icon description checkmark end keyboard."
+      ". . . . . . .";
+    grid-template-rows: calc(var(--spacing-unit) / 2) 1fr auto calc(var(--spacing-unit) / 2);
+
+    user-select: none;
+    /* cursor: pointer; */
+    color: inherit;
+    font: inherit;
+    text-decoration: initial;
+    outline: none;
+
+    border-left: 2px solid transparent;
   }
 
-  MenuItem:isSelected {
-    background-color: pink !important;
+  MenuItem::text {
+    grid-area: text;
+  }
+
+  MenuItem:isSelected {}
+
+  MenuItem:isFocusVisible {
+    border-color: var(--color-focus);
+  }
+
+  MenuItem::selectedIcon {
+    grid-area: checkmark;
+    place-self: center end;
+    font-size: 11px;
+    color: var(--color-focus);
   }
 }
+
+
+/* .menuItem {
+  display: block;
+  user-select: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  padding: 0.4rem var(--spacing-unit);
+}
+
+.menuItem:hover,
+.menuItem:focus {
+  background: value(focus-bg);
+  outline: none;
+}
+
+.menuItem[aria-disabled=true],
+.menuItemDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} */

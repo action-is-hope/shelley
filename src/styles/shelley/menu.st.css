@@ -23,8 +23,8 @@
 /* = Components */
 
 :import {
-  -st-from: "../../components/MenuPopup/menuPopup.st.css";
-  -st-default: MenuPopup;
+  -st-from: "../../components/Menu/menu.st.css";
+  -st-default: Menu;
 }
 
 :import {
@@ -34,11 +34,7 @@
 
 @st-scope Shelley {
 
-  MenuPopup {
+  Menu {
     background: var(--color-background-1);
-  }
-
-  MenuItem:isFocused {
-    background: hsl(211, 81%, 36%);
   }
 }

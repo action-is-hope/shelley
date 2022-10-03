@@ -1,24 +1,31 @@
 /** Blockquote.tsx */
-import type React from "react";
+// import type React from "react";
+import type { HTMLAttributes, ReactNode, VFC } from "react";
 import type { Volume, Variant } from "../types";
 import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
 
 export interface BlockquoteCustomProps {
-  children: React.ReactNode;
-  /** Describe the quote with inline elemnts like cite and/or links to the source. */
-  desc?: React.ReactNode;
-  /** Changes the volume of the description. */
+  children: ReactNode;
+  /**
+   * Describe the quote with inline elements like cite and/or links to the source.
+   **/
+  desc?: ReactNode;
+  /**
+   * Changes the volume of the description.
+   **/
   descVol?: Volume;
-  /** Variant index. */
+  /**
+   * Variant index.
+   **/
   variant?: Variant;
 }
 
 export type BlockquoteProps = BlockquoteCustomProps &
-  React.HTMLAttributes<HTMLQuoteElement>;
+  HTMLAttributes<HTMLQuoteElement>;
 
-const Blockquote: React.VFC<BlockquoteProps> = ({
+export const Blockquote: VFC<BlockquoteProps> = ({
   children,
   className: classNameProp,
   desc,

@@ -1,10 +1,18 @@
-import React from "react";
+import React, {
+  Children,
+  ReactElement,
+  cloneElement,
+  forwardRef,
+  // Importing from via React. stops EVERYTHING from being dumped out by doc gen.
+  // HTMLAttributes,
+  isValidElement,
+  Ref,
+} from "react";
 import type { Accent, Volume, ButtonVariants } from "../types";
-
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
 
-export interface ButtonGroupCustomProps {
+export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
@@ -17,20 +25,14 @@ export interface ButtonGroupCustomProps {
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
-  /** Applies width: 100%; to the button. */
-  fullWidth?: boolean;
 }
 
-export type ButtonGroupProps = ButtonGroupCustomProps &
-  React.HTMLAttributes<HTMLDivElement>;
-
-const ButtonGroup = React.forwardRef(
+const ButtonGroup = forwardRef(
   (
     {
       buttonClassName,
       children,
       className: classNameProp,
-      fullWidth = false,
       disabled,
       tone = 1,
       variant = "quiet",
@@ -38,31 +40,29 @@ const ButtonGroup = React.forwardRef(
       vol = 3,
       ...rest
     }: ButtonGroupProps,
-    ref?: React.Ref<HTMLDivElement>
-  ) => {
-    return (
-      <div
-        className={st(classes.root, { orientation, fullWidth }, classNameProp)}
-        {...rest}
-        ref={ref}
-      >
-        {React.Children.map(children, (child) => {
-          if (!React.isValidElement(child)) {
-            return null;
-          }
+    ref?: Ref<HTMLDivElement>
+  ) => (
+    <div
+      className={st(classes.root, { orientation }, classNameProp)}
+      {...rest}
+      ref={ref}
+    >
+      {Children.map(children, (child) => {
+        if (!isValidElement(child)) {
+          return null;
+        }
 
-          return React.cloneElement(child, {
-            className: `${buttonClassName} ${child.props.className}`,
-            disabled: child.props.disabled || disabled,
-            tone: child.props.tone || tone,
-            vol: child.props.vol || vol,
-            variant: child.props.variant || variant,
-            icon: child.props.icon,
-          });
-        })}
-      </div>
-    );
-  }
+        return cloneElement(child as ReactElement, {
+          className: st(buttonClassName, child.props.className),
+          disabled: child.props.disabled || disabled,
+          tone: child.props.tone || tone,
+          vol: child.props.vol || vol,
+          variant: child.props.variant || variant,
+          icon: child.props.icon,
+        });
+      })}
+    </div>
+  )
 );
 
 ButtonGroup.displayName = "ButtonGroup";

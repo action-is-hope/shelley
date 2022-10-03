@@ -1,0 +1,143 @@
+import { useRef } from "react";
+import { Meta, Canvas, Story, Preview } from "@storybook/addon-docs";
+import { SimplePopup } from "./Popup.examples";
+import { Popup } from "../../indexLib";
+
+import { ArgsTable } from "@storybook/addon-docs";
+import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
+
+export const SimplePopupStory = (args) => (
+  <StoryCenteredInline>
+    <SimplePopup {...args} />
+  </StoryCenteredInline>
+);
+
+<Meta
+  title="Overlays/Popup"
+  argTypes={{
+    triggerRef: {
+      table: {
+        disable: true,
+      },
+    },
+    placement: {
+      control: {
+        type: "select",
+        options: [
+          "bottom",
+          "bottom left",
+          "bottom right",
+          "bottom start",
+          "bottom end",
+          "top",
+          "top left",
+          "top right",
+          "top start",
+          "top end",
+          "left",
+          "left top",
+          "left bottom",
+          "start",
+          "start top",
+          "start bottom",
+          "right",
+          "right top",
+          "right bottom",
+          "end",
+          "end top",
+          "end bottom",
+        ],
+      },
+    },
+    isOpen: {
+      table: {
+        disable: true,
+      },
+    },
+    shouldCloseOnInteractOutside: {
+      table: {
+        disable: true,
+      },
+    },
+    onClose: {
+      table: {
+        disable: true,
+      },
+    },
+    key: {
+      table: {
+        disable: true,
+      },
+    },
+    ref: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+  component={Popup}
+/>
+
+# Popup
+
+A Popup can be used to display some content on top of another.
+
+Things to know when using the Popup component:
+
+- Built on top of [`useOverlay`](https://react-spectrum.adobe.com/react-aria/useOverlay.html) and [`useOverlayPosition`](https://react-spectrum.adobe.com/react-aria/useOverlayPosition.html)
+- By itself not _that_ useful, but very use when building things like tooltips, models, menus etc.
+- Doesn't provide `is-labelledby` or type/role of model, this would be provided by useMenu, useDialog etc.
+- When rendering into a portal ensure the portal is wrapped by the main theme classes else it will appear unstyled.
+- When using `shouldCloseOnBlur` don't expect `isDismissable={false}` to work.
+
+Checkout the Canvas view for some of the more visual props and their effect naming around positioning and offsets.
+
+<Preview>
+  <Story name="a) Popup">{SimplePopupStory.bind({})}</Story>
+</Preview>
+
+```tsx
+import { useRef } from "react";
+import { Popup, PopupProps, Button } from "@actionishope/shelley";
+import { useOverlayTrigger } from "react-aria";
+import { useOverlayTriggerState } from "@react-stately/overlays";
+
+export const SimplePopup = (props: PopupProps) => {
+  const triggerRef = useRef(null);
+  const overlayRef = useRef(null);
+  const state = useOverlayTriggerState({});
+
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    {
+      type: "dialog",
+    },
+    state,
+    triggerRef
+  );
+
+  return (
+    <>
+      {/* Whatever you use as a trigger will need an onPress prop... See: https://react-spectrum.adobe.com/react-aria/useButton.html*/}
+      <Button {...triggerProps} ref={triggerRef} disabled={state.isOpen}>
+        Click me
+      </Button>
+      {state.isOpen && (
+        <Popup
+          {...overlayProps}
+          {...props}
+          isOpen={state.isOpen}
+          onClose={() => state.close()}
+          triggerRef={triggerRef}
+          ref={overlayRef}
+        >
+          Children
+        </Popup>
+      )}
+    </>
+  );
+};
+```
+
+## Popup props
+
+<ArgsTable of={Popup} />

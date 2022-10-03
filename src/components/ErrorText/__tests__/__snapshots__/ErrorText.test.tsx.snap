@@ -2,7 +2,7 @@
 
 exports[`Error renders as a basic button with custom #className 1`] = `
 <span
-  className="ErrorText1524698733__root custom-class"
+  className="ErrorText4259465581__root custom-class"
   data-testid="error-data-testid"
 >
   Error message

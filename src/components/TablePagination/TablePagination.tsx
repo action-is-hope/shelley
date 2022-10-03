@@ -1,8 +1,6 @@
 import React from "react";
 import { st, classes } from "./tablePagination.st.css";
 import Text from "../Text/Text";
-
-// import { Menu, MenuList, MenuButton, MenuItem } from "../Menu/Menu";
 import Toolbar from "../Toolbar/Toolbar";
 
 import AngleLeft from "../icons/AngleLeft";
