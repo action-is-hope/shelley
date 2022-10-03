@@ -1,5 +1,5 @@
 /** Popup.tsx */
-import React, { Ref, forwardRef, RefObject, HTMLAttributes } from "react";
+import React, { Ref, forwardRef, RefObject } from "react";
 import type { PositionProps } from "@react-types/overlays";
 import { FocusScope } from "@react-aria/focus";
 import { mergeProps } from "@react-aria/utils";
