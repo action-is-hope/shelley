@@ -14,7 +14,10 @@
   -st-from: "./project.st.css";
   -st-default: Default;
   -st-named:
-    --spacing-unit;
+    --spacing-unit,
+    --color-error,
+    --color-focus,
+    --color-form-base-border;
 }
 
 /* = Root Component */
@@ -22,22 +25,6 @@
   -st-from: "../../components/InputBase/inputBase.st.css";
   -st-default: InputBase;
   -st-named: fieldInput
-}
-
-/* = Child components */
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
-
-:import {
-  -st-from: "../../components/HintText/hintText.st.css";
-  -st-default: HintText;
-}
-
-:import {
-  -st-from: "../../components/ErrorText/errorText.st.css";
-  -st-default: ErrorText;
 }
 
 :import {
@@ -51,7 +38,8 @@
   -st-named:
     textualFieldRoot,
     textualFieldContainer,
-    textualFieldContainerHasError,
+    startFieldIndicatorHasError,
+    startFieldIndicator,
     textualFieldInput,
     disabledField,
     inputVol1,
@@ -59,7 +47,9 @@
     inputVol3,
     inputVol4,
     inputVol5,
-    inputVol6;
+    inputVol6,
+    label,
+    labelSmall;
 }
 
 @st-scope Default {
@@ -80,22 +70,16 @@
   }
 
   /* = Use a named import as a class to get the adjacent selectors working. */
-  InputBase Adornment+.fieldInput,
-  InputBase::fieldInput+Adornment {
+  InputBase Adornment + .fieldInput,
+  InputBase::fieldInput + Adornment {
     margin-left: calc(-.2rem - var(--spacing-unit));
   }
 
-  InputBase HintText {
-    margin-top: calc(var(--spacing-unit) / 2)
+  InputBase::helpText {
+    margin-top: calc(var(--spacing-unit) / 4);
   }
 
-  InputBase ErrorText {
-    /* = Send the error message which is first in the source order to appear under the form input. */
-    order: 3;
-    padding: 8px var(--spacing-unit) 0 var(--spacing-unit);
-  }
-
-  InputBase ErrorText::before {
+  InputBase::helpText::before {
     display: block;
   }
 
@@ -108,9 +92,14 @@
 
   /*==== STATES ====*/
 
+  /* InputBase:labelposition(side) {
+    align-items: flex-start;
+    display: inline-flex;
+  } */
+
   /* = Error */
   InputBase:error::fieldContainer {
-    -st-mixin: textualFieldContainerHasError
+    /* -st-mixin: startFieldIndicatorHasError */
   }
 
   /* = Disabled */
@@ -122,7 +111,7 @@
 
   /* = Volume 1 */
   InputBase:vol(1) {
-    -st-mixin: inputVol1
+    -st-mixin: inputVol1;
   }
 
   /* = Volume 2 */
@@ -155,54 +144,104 @@
 
   /*==== VARIANTS ====*/
 
-  /* = Variant 1 - "Body" */
-  InputBase:variant(1) InputLabel {
-    margin-bottom: var(--spacing-unit);
+
+  InputBase:labelPosition(over)::inputLabel {
+    -st-mixin: label;
+    transform: translate(0.7rem, 8px) scale(1);
   }
 
-  InputBase:variant(1)+InputBase:variant(1) {
+  InputBase:labelPosition(over)::helpText {
+    font-size: 0.75em;
+  }
+
+  InputBase:labelPosition(over):focus-within::inputLabel,
+  InputBase:labelPosition(over):hasValue::inputLabel {
+    transform: translate(0.7rem, -0.73em);
+  }
+
+  InputBase:labelPosition(over)::legend {}
+
+
+  /* Side */
+  InputBase:labelPosition(side) {
+    column-gap: var(--spacing-unit);
+  }
+
+  InputBase:labelPosition(side)::inputLabel {
+    justify-self: flex-end;
+  }
+
+
+  /* = Variant - "quiet" */
+  /* InputBase:variant(quiet) + InputBase:variant(quiet) {
     margin-top: calc(var(--spacing-unit) * 1)
+  } */
+
+  InputBase:variant(quiet)::fieldContainer {
+    -st-mixin: startFieldIndicator;
   }
 
-
-  /* = Variant 2 - "Data" */
-
-  InputBase:variant(2) {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-column-gap: var(--spacing-unit);
+  InputBase:variant(quiet):error::fieldContainer {
+    -st-mixin: startFieldIndicatorHasError
   }
 
-  InputBase:variant(2) InputLabel {
-    order: initial;
+  InputBase:variant(quiet)::fieldset {
+    border-color: transparent;
   }
 
-  InputBase:variant(2)::fieldInput {
-    padding-top: calc(0.2rem + .58em);
-    padding-bottom: calc(0.2rem + .58em);
+  /* = Variant - "Outlined" */
+
+  InputBase:variant(outlined)::fieldset {
+    border-color: var(--color-form-base-border);
   }
 
-  InputBase:variant(2) ErrorText {
-    grid-column: 2;
-    padding-top: 4px;
-    padding-bottom: 8px;
+  InputBase:variant(outlined)::fieldset,
+  InputBase:variant(outlined)::fieldContainer {
+    border-radius: 8px;
   }
 
-  InputBase:variant(2) InputLabel {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+  InputBase:variant(outlined):error::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-error);
   }
 
-  InputBase:variant(2) InputLabel::textContainer {
-    padding-top: 16px;
-    padding-bottom: 16px;
+  InputBase:variant(outlined):focus-within::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-focus);
   }
 
-  InputBase:variant(2) InputLabel::labelText {
-    text-align: end;
+  InputBase:variant(outlined):focus-within::fieldContainer {
+    box-shadow: 1px 0 0px 0px var(--color-focus);
+  }
+
+  /* = Variant - "Filled" */
+
+  InputBase:variant(filled)::fieldset {
+    border-color: transparent;
+
+  }
+
+  InputBase:variant(filled)::fieldset,
+  InputBase:variant(filled)::fieldContainer {
+    border-radius: 8px;
+  }
+
+  InputBase:variant(filled)::fieldContainer {
+    background-color: #1e212c
+  }
+
+  InputBase:variant(filled):error::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-error);
+  }
+
+  InputBase:variant(filled):focus-within::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-focus);
+  }
+
+  InputBase:variant(filled):focus-within::fieldContainer {
+    box-shadow: 1px 0 0px 0px var(--color-focus);
   }
 
 }

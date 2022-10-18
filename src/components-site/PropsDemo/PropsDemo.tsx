@@ -108,7 +108,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
             vol={1}
             variant={2}
             label={`${item.label}:`}
-            // labelVisuallyHidden={true}
+            // visuallyHideLabel={true}
             type="toggle"
             onChange={() => {
               const newDemoProps = [...propsArray];

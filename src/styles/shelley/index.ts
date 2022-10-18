@@ -4,7 +4,7 @@ import classnames from "classnames";
 // = Foundation Components
 import { classes as Button } from "./button.st.css";
 import { classes as Blockquote } from "./blockquote.st.css";
-import { classes as ErrorText } from "./errorText.st.css";
+import { classes as HelpText } from "./helpText.st.css";
 import { classes as Grid } from "./grid.st.css";
 import { classes as HintText } from "./hintText.st.css";
 import { classes as InputBase } from "./inputBase.st.css";
@@ -49,8 +49,8 @@ export const button = (...values: []) =>
 export const blockquote = (...values: []) =>
   getStylableClassNames(values, Blockquote, "blockquote");
 
-export const errorText = (...values: []) =>
-  getStylableClassNames(values, ErrorText, "errorText");
+export const helpText = (...values: []) =>
+  getStylableClassNames(values, HelpText, "HelpText");
 
 export const grid = (...values: []) =>
   getStylableClassNames(values, Grid, "grid");

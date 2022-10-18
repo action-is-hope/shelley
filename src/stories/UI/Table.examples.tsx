@@ -182,7 +182,7 @@ export const Example3 = () => {
                 vol={1}
                 inputPos="start"
                 error="Form item error message"
-                labelVisuallyHidden
+                visuallyHideLabel
                 onChange={handleSelectAllClick}
               />
             </TableCell>
@@ -300,7 +300,7 @@ export const Example4 = () => {
                 vol={1}
                 inputPos="start"
                 error="Form item error message"
-                labelVisuallyHidden
+                visuallyHideLabel
                 onChange={handleSelectAllClick}
               />
             </TableCell>

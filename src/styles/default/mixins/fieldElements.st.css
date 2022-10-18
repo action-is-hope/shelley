@@ -51,11 +51,6 @@
 }
 
 :import {
-  -st-from: "../../../components/HelpText/helpText.st.css";
-  -st-default: HelpText;
-}
-
-:import {
   -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
   -st-default: SelectionControl;
 }
@@ -165,17 +160,29 @@
   font-size: 1em;
   line-height: 1.4em;
   /* letter-spacing: 0.00938em; */
-  padding: 0;
+  padding: 0 8px;
+  display: block;
+  transform-origin: left top;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(133% - 24px);
+  position: absolute;
+  left: 0;
+  top: 0;
   /* transform: translate(7px, 9px) scale(1); */
   /* transform: translate(7px, 13px) scale(1); */
 
+
+  transform: translate(7px, 9px) scale(1);
   /* 10 @ vol3 8 @vol1 7@vol2*/
-  transform: translateZ(0);
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  z-index: 1;
 }
 
 .labelSmall {
   /* transform: translate(9px, -10px) scale(0.75); */
-  /* transform: translate(9px, -10px) scale(0.75); */
+  transform: translate(9px, -10px) scale(0.75);
 
   /* 
   2@0.694
@@ -204,7 +211,7 @@
   /* box-shadow: 0 0 0 8px #181a23; */
 
   /* quiet */
-
+  transform: translate(8px, -14px) scale(0.75);
 }
 
 /* Quiet */
@@ -317,8 +324,7 @@
   font-size: 1em;
 }
 
-.inputVol1 InputLabel,
-.inputVol1 HelpText {
+.inputVol1 InputLabel {
   font-size: value(inputVol1Label);
 }
 
@@ -329,12 +335,10 @@
 /* = Volume 2 */
 .inputVol2 {
   /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
-  -st-mixin:
-    textVol;
+  -st-mixin: textVol;
 }
 
-.inputVol2 InputLabel,
-.inputVol2 HelpText {
+.inputVol2 InputLabel {
   font-size: value(inputVol2Label);
 }
 
@@ -349,8 +353,7 @@
       max var(--text-vol-3-max));
 }
 
-.inputVol3 InputLabel,
-.inputVol3 HelpText {
+.inputVol3 InputLabel {
   font-size: value(inputVol3Label);
 }
 
@@ -365,8 +368,7 @@
       max var(--text-vol-4-max));
 }
 
-.inputVol4 InputLabel,
-.inputVol4 HelpText {
+.inputVol4 InputLabel {
   font-size: value(inputVol4Label);
 }
 
@@ -385,8 +387,7 @@
       max calc(var(--text-vol-5-max) - 0.15rem));
 }
 
-.inputVol5 InputLabel,
-.inputVol5 HelpText {
+.inputVol5 InputLabel {
   font-size: value(inputVol5Label);
 }
 
@@ -405,161 +406,6 @@
       max calc(var(--text-vol-6-max) - 0.15rem));
 }
 
-.inputVol6 InputLabel,
-.inputVol6 HelpText {
+.inputVol6 InputLabel {
   font-size: value(inputVol6Label);
 }
-
-.inputVol6 SelectionControl {
-  font-size: 36px;
-  font-size: value(inputVol6SelectionControl);
-}
-
-
-
-
-/**
- * = INPUT SELECTION CONTROLS
- *
- * Checkboxes, radios, toggles and switches.
- *
- * ------------------------------------------------------------------------- */
-
-
-/* = 'Root' of the control - <span> */
-.SelectionControlRoot {
-  /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
-  display: flex;
-  /* = Force hardware acceleration on... Why did I do this...? Commenting for now. */
-  /* transform: translateZ(0); */
-  /* = A default, maybe we should remove it... */
-  font-size: 20px;
-}
-
-
-/* = The actual field - <input> */
-.SelectionControlFieldInput {
-  -st-mixin: hideWebkitAppearance;
-  font-size: inherit;
-  background: transparent;
-  height: 1em;
-  width: 1em;
-  cursor: pointer;
-  position: relative;
-  border-radius: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  /* = See below for replacement focus state, I know, I know "if we must". We must! ;-) */
-  outline: none;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #333;
-  border-color: var(--color-form-selection-border);
-}
-
-/* = Field focus indicator, via pseudo element. */
-.SelectionControlFieldInput::after {
-  -st-mixin: pseudoFocus;
-}
-
-/* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
-.SelectionControlFieldInput:focus::after,
-.SelectionControlFieldInput:active::after {
-  -st-mixin: pseudoFocusVisible
-}
-
-@-moz-document url-prefix() {
-  /* = See inputSelectionControl.st.css for FF issue. @stylable not picking up. */
-}
-
-/* = For future: 
- * https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ 
- */
-
-
-/**
- * = DISABLED - COMMON
- */
-
-/* = Hide the pesudo focus style when field is disabled. */
-.SelectionControlFieldInput:disabled::after {
-  opacity: 0;
-}
-
-/* = Dull out the field and apply suitable cursor. */
-.SelectionControlFieldInput:disabled {
-  cursor: not-allowed;
-  filter: saturate(15%) brightness(70%);
-}
-
-
-/**
- * = RADIO / CHECKBOX - COMMON
- */
-.RadioCheckboxCommon {}
-
-/* = The 'mark' of the field, radio and checkboxes both have one. */
-.RadioCheckboxCommon::before {
-  content: "";
-  transition: opacity 120ms;
-  width: 0.5em;
-  height: 0.5em;
-  opacity: 0;
-  display: block;
-  background-color: #ddd;
-  background-color: var(--color-form-selection-notch);
-}
-
-.RadioCheckboxCommon:checked::before {
-  opacity: 1;
-}
-
-/**
- * = RADIO
- */
-.RadioFieldInput,
-.RadioFieldInput::before,
-.RadioFieldInput::after {
-  border-radius: 50%;
-}
-
-/**
- * = CHECKBOX
- */
-.CheckboxFieldInput {}
-
-
-/**
- * = TOGGLE
- *
- * Which is really just a checkbox in disguise...
- */
-
-.ToggleFieldInput {
-  width: 2em;
-  border-radius: 9999px;
-}
-
-.ToggleFieldInput::after {
-  border-radius: 9999px;
-}
-
-.ToggleFieldInput::before {
-  content: "";
-  position: absolute;
-  width: 1.3em;
-  height: 1.3em;
-  border-radius: 9999px;
-  transition: all 0.2s;
-  transform: translate(-50%);
-  z-index: 1;
-  background-color: var(--color-toggle-notch);
-}
-
-.ToggleFieldInput:checked::before {
-  transform: translate(50%);
-  background-color: var(--color-form-selection-notch);
-}
-
-/* .SwitchFieldInput {} */

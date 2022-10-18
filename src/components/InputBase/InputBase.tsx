@@ -1,33 +1,61 @@
-import React from "react";
-import type { Volume, Variant } from "../types";
+import type React from "react";
+
+import {
+  ReactNode,
+  ReactElement,
+  cloneElement,
+  isValidElement,
+  Children,
+  HTMLAttributes,
+} from "react";
+import type { Volume, FieldVariants } from "../types";
+import type { Validation } from "../../typings/shared-types";
 import Label from "../Label/Label";
-import ErrorText from "../ErrorText/ErrorText";
+import { HelpText } from "../HelpText/HelpText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./inputBase.st.css";
 
-export interface InputBaseProps {
+export interface InputBaseProps extends Validation {
   /** Provide an error message that triggers the stylable error state. */
-  error?: React.ReactNode;
-  /** Provide some hint text to the label component. */
-  hint?: React.ReactNode;
-  /** Triggers the Inputs stylable error state. */
-  touched?: boolean;
+  errorMessage?: ReactNode;
+  /** Provide some description or hint text to the field. */
+  description?: ReactNode;
   /** Place a component so as to appear inside the TextInput start. */
-  startAdornment?: React.ReactNode;
+  startAdornment?: ReactNode;
   /** Place a component so as to appear inside the TextInput end. */
-  endAdornment?: React.ReactNode;
+  endAdornment?: ReactNode;
   /** The label to associated with the input. */
-  label: React.ReactNode;
-  /** Variant index. */
-  variant?: Variant;
-  /** Visually hide the label so it is still accessible to assistive technologies. */
-  labelVisuallyHidden?: boolean;
-  /** How loud should this input row be? */
+  label: ReactNode;
+  /**
+   * Position of the label.
+   * @default "over"
+   */
+  labelPosition?: "top" | "side" | "over" | "hidden";
+  /**
+   * Disable the label transition.
+   * @default false
+   */
+  disableLabelTransition?: boolean;
+  /** Props for the label element. */
+  labelProps?: HTMLAttributes<HTMLElement>;
+  /**
+   * Variant index.
+   * @default "outlined"
+   */
+  variant?: FieldVariants;
+  /**
+   * Defines how 'loud' the field should be.
+   * @default 3
+   */
   vol?: Volume;
-  /** @todo Wrap the children in a scroll wrapper. */
-  // overflow?: boolean;
+  /** Does the containing input have a value. */
+  hasValue?: boolean;
+  /** Props for the help text description element. */
+  descriptionProps?: HTMLAttributes<HTMLElement>;
+  /** Props for the help text error message element. */
+  errorMessageProps?: HTMLAttributes<HTMLElement>;
 }
 // https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
@@ -37,85 +65,81 @@ interface InputBaseInternalProps
       Exclude<keyof React.HTMLProps<HTMLBaseElement>, "label">
     >,
     InputBaseProps {}
-
+// isRequired
 const InputBase = ({
-  id = "no-id",
   className: classNameProp,
   children,
   disabled = false,
-  error: errorMessage,
+  errorMessage,
+  validationState,
   startAdornment,
   endAdornment,
-  touched = false,
-  hint,
-  label = (
-    <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/H44">
-      <code>label</code> is a Level A WCAG requirement.
-    </a>
-  ),
-  labelVisuallyHidden = false,
-  variant = 1,
+  description,
+  label: labelProp,
+  labelProps,
+  labelPosition = "over",
+  descriptionProps,
+  errorMessageProps,
+  disableLabelTransition = false,
+  variant = "outlined",
+  hasValue: hasValueProp,
   vol = 3,
-}: // ...attrs
-InputBaseInternalProps) => {
-  id === "no-id" &&
-    console.warn(
-      `#a11y You have an input without an id suggesting you don't have a label associated properly with it via the for attribute.\n\nShelley has applied an id of 'no-id' to these inputs should you want to check the DOM.\n`
-    );
-  const error = errorMessage && touched ? true : false;
+}: InputBaseInternalProps) => {
+  const hasValue =
+    disableLabelTransition || startAdornment ? true : hasValueProp;
 
-  const inputAttrs = {
-    id,
-    className: classes.fieldInput,
-    disabled,
-    // Implements from Example 2: https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21.html
-    "aria-invalid": error ? true : undefined,
-    "aria-describedby": error ? `${id}-error` : undefined,
-    // ...attrs We only want to re-apply what we pulled off.
-  };
-
-  const childrenWithProps = React.Children.map(children, (child) => {
-    console.log("to", child);
-    const item = child as React.ReactElement<React.PropsWithChildren<any>>;
-
-    // return React.cloneElement(child as React.ReactNode, {
-    //   ...inputAttrs,
-    //   className: st(classes.fieldInput, child?.props.className),
-    // });
-    return React.cloneElement(item, {
-      ...inputAttrs,
-      className: st(classes.fieldInput, item.props.className),
-    });
+  const error = validationState === "invalid";
+  const childrenWithProps = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child as ReactElement, {
+        className: st(classes.fieldInput, child?.props.className),
+      });
+    } else return;
   });
 
+  const label = (
+    <Label className={classes.inputLabel} {...labelProps}>
+      {labelProp}
+    </Label>
+  );
+  const hideLabel = labelPosition === "hidden";
   return (
     <div
       className={st(
         classes.root,
-        { error, disabled, variant, vol },
+        {
+          hasValue,
+          error,
+          disabled,
+          variant: variant || undefined,
+          vol,
+          labelPosition,
+        },
         classNameProp
       )}
-      // attrs // We do want stylable to get spread attrs??
     >
-      {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
-
-      {labelVisuallyHidden ? (
-        <VisuallyHidden>
-          <Label htmlFor={id} hint={hint}>
-            {label}
-          </Label>
-        </VisuallyHidden>
-      ) : (
-        <Label htmlFor={id} hint={hint}>
-          {label}
-        </Label>
-      )}
+      {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
       <div className={classes.fieldContainer}>
         {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}
         {childrenWithProps}
         {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}
+        {/*  */}
+        <fieldset aria-hidden="true" className={classes.fieldset}>
+          <legend className={classes.legend}>{!hideLabel && labelProp}</legend>
+        </fieldset>
       </div>
+
+      <HelpText
+        className={classes.helpText}
+        {...{
+          description,
+          descriptionProps,
+          errorMessage,
+          errorMessageProps,
+          validationState,
+        }}
+      />
     </div>
   );
 };

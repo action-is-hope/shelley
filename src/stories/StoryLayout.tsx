@@ -36,3 +36,9 @@ export const StoryCenteredColumn = (props: any) => (
     </div>
   </div>
 );
+
+export const StoryGrid = (props: any) => (
+  <div style={{ ...containerbase, ...containerCenter }}>
+    <div style={{ display: "grid", gap: "24px" }}>{props.children}</div>
+  </div>
+);

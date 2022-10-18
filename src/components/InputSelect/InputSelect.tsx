@@ -28,7 +28,7 @@ const InputSelect = React.forwardRef(
       hint,
       variant,
       label,
-      labelVisuallyHidden,
+      visuallyHideLabel,
       vol,
       children,
       ...attrs
@@ -43,7 +43,7 @@ const InputSelect = React.forwardRef(
           error,
           touched,
           label,
-          labelVisuallyHidden,
+          visuallyHideLabel,
           hint,
           variant,
           vol,

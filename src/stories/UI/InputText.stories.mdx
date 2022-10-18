@@ -1,0 +1,94 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import { P, Blockquote } from "../../indexLib";
+import { Item } from "@react-stately/collections";
+import { StoryCenteredInline } from "../StoryLayout";
+import dedent from "ts-dedent";
+import {
+  BasicMenuTrigger,
+  ControlledMenuTrigger,
+  IconTriggerMenu,
+  ButtonGroupTriggerMenu,
+  MultipleSelectionMenuTrigger,
+} from "./MenuTrigger.examples";
+
+export const BasicBlockquote = (args) => (
+  <Blockquote
+    variant={1}
+    desc="Donella Meadows, environmental scientist, 1941-2001"
+    {...args}
+  >
+    <P>
+      A system is a set of related components that work together in a particular
+      environment to perform whatever functions are required to achieve the
+      system's objective.
+    </P>
+  </Blockquote>
+);
+
+<Meta
+  title="Data/Blockquote"
+  argTypes={{
+    descVol: {
+      options: [1, 2, 3, 4],
+      control: { type: "inline-radio" },
+      description: "Volumn of the description",
+    },
+    variant: {
+      options: [1, 2],
+      control: { type: "inline-radio" },
+    },
+    desc: {
+      control: { type: "text" },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+  component={Blockquote}
+/>
+
+# Blockquote
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Blockquote } from "@actionishope/shelley";
+  `}
+/>
+
+Blockquotes are used for quoting; they tell any tech listening that this is a reference to someone else's words. A screen reader might announce or emphasise blockquote text whilst a search bot _might_ consider it relevant when assigning value to a page.
+
+They should only be used semantically, i.e. don't just use them just for 'visual effect'.
+
+See Smashing Magazine 2008 - [Block Quotes and Pull Quotes: Examples and Good Practices](https://www.smashingmagazine.com/2008/06/block-quotes-and-pull-quotes-examples-and-good-practices/); the designs might be outdated but the semantic info and advise on usage still applies.
+
+<Canvas withSource="closed">
+  <Story name="a) Basic blockquote">{BasicBlockquote.bind({})}</Story>
+</Canvas>
+
+## Blockquote Props
+
+<ArgsTable of={Blockquote} />
+
+Example of using with cite:
+https://www.st-andrews.ac.uk/dpl/1.15.5/patterns/long-form-quotes/index.html
+
+While there is no “pull quote” element, the latest iteration of the html spec encourages use of the Aside element.
+https://www.studiopress.com/how-to-use-block-quotes/#:~:text=The%20main%20purpose%20of%20a,reader%20in%20scanning%20the%20article.
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

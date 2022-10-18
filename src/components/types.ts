@@ -20,6 +20,8 @@ export declare type ButtonVariants = "primary" | "secondary" | "quiet" | "fab";
 // | string
 // | undefined;
 
+export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
+
 /** Generic volume levels */
 export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
 

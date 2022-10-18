@@ -12,11 +12,20 @@ import {
 
 import StyleInfo from "../../components-site/StyleInfo/StyleInfo";
 import PageTitle from "../../components-site/PageTitle/PageTitle";
+import { HelpText } from "../../components/HelpText/HelpText";
 
 const InputTextDocs: React.VFC = () => {
   return (
     <>
       <PageTitle>InputText</PageTitle>
+
+      <HelpText
+        description="Hellos"
+        errorMessage="HI"
+        validationState="invalid"
+        showErrorIcon
+      />
+
       <Grid variant={1} tag="main" formatted>
         <P vol={4}>
           Allows our wonderful users to tell us something interesting by

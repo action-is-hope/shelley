@@ -154,6 +154,24 @@ export const ComponentDemo = () => {
         label={InputDemoProps[0].value}
         hint={InputDemoProps[1].value}
         placeholder={InputDemoProps[2].value}
+        rows={7}
+        type="textarea"
+        // type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
+        variant="outlined"
+        vol={InputDemoProps[5].value}
+        startAdornment={InputDemoProps[6].value}
+        endAdornment={InputDemoProps[7].value}
+        error={InputDemoProps[8].value}
+        touched={InputDemoProps[9].value}
+        disabled={InputDemoProps[10].value}
+        onBlur={() => console.log("LOL")}
+      />
+
+      <InputText
+        id="username"
+        label={InputDemoProps[0].value}
+        hint={InputDemoProps[1].value}
+        placeholder={InputDemoProps[2].value}
         rows={InputDemoProps[3].value}
         type={InputDemoProps[3].value > 0 ? "textarea" : "text"}
         variant={InputDemoProps[4].value}
@@ -218,7 +236,7 @@ export const Example1 = () => (
       label="Page title"
       placeholder="Enter a page title"
       hint="Enter a page title"
-      labelVisuallyHidden
+      visuallyHideLabel
       vol={6}
       autoComplete="off"
       // type="text"
@@ -230,7 +248,7 @@ export const Example1 = () => (
       label="Subtitle"
       placeholder="Enter a page subtitle"
       hint="Enter a page subtitle"
-      labelVisuallyHidden
+      visuallyHideLabel
       vol={4}
       autoComplete="off"
     />
@@ -239,7 +257,7 @@ export const Example1 = () => (
       label="Page description"
       placeholder="Enter a page description"
       hint="Enter a page description"
-      labelVisuallyHidden
+      visuallyHideLabel
       vol={3}
       autoComplete="off"
     />

@@ -16,8 +16,8 @@ export * from "./components/Button/Button";
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export * from "./components/ButtonGroup/ButtonGroup";
 
-export { default as ErrorText } from "./components/ErrorText/ErrorText";
-export * from "./components/ErrorText/ErrorText";
+export { HelpText } from "./components/HelpText/HelpText";
+export * from "./components/HelpText/HelpText";
 
 export { default as Grid } from "./components/Grid/Grid";
 export * from "./components/Grid/Grid";
@@ -43,7 +43,7 @@ export * from "./components/InputSelection/InputSelection";
 export { default as InputSelectionControl } from "./components/InputSelectionControl/InputSelectionControl";
 export * from "./components/InputSelectionControl/InputSelectionControl";
 
-export { default as InputText } from "./components/InputText/InputText";
+export { InputText } from "./components/InputText/InputText";
 export * from "./components/InputText/InputText";
 
 export { default as Label } from "./components/Label/Label";

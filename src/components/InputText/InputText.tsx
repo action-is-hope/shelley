@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import type React from "react";
+import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
 import type { TextInputType } from "../types";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";
+import { useTextField } from "react-aria";
+import type { AriaTextFieldProps } from "@react-types/textfield";
+
 /* = Style API. */
 import { classes } from "./inputText.st.css";
 
 import type { MergeElementProps } from "../utils";
 
-interface ITextCustomProps extends InputBaseProps {
-  /** Required to associate the form label and input #a11y. */
-  id: string;
-  /** onChange handler */
-  onChange?: (e: React.ChangeEvent) => void;
-  /** Defines the number of rows for a textarea and forces type to be 'textarea'. */
+interface ITextCustomProps
+  extends InputBaseProps,
+    Omit<AriaTextFieldProps, "label"> {
   rows?: number;
 }
 
@@ -30,77 +31,116 @@ export interface TextInputProps extends ITextCustomProps {
 export type InputTextProps<P extends React.ElementType = "input"> =
   MergeElementProps<P, TextareaProps | TextInputProps>;
 
-function InputTextBase(
+function InputText(
   {
-    error,
-    touched,
-    hint,
+    errorMessage,
+    validationState,
+    description,
+    disabled,
     variant,
     label,
     onChange,
-    labelVisuallyHidden,
     startAdornment,
-    // endAdornment,
+    isReadOnly,
+    isRequired,
+    isDisabled,
+    endAdornment,
+    placeholder,
+    labelPosition,
+    disableLabelTransition,
     vol,
     type = "text",
+    value,
+    defaultValue,
     ...rest
   }: InputTextProps<"input" | "textarea">,
-  ref?: React.Ref<HTMLTextAreaElement | HTMLInputElement>
+  ref?: Ref<HTMLTextAreaElement | HTMLInputElement>
 ) {
   /**
-   * textareaValue stores the value to be used to format multiline:
+   * textValue stores the value to be used to format multiline and stylews for hasValue:
    * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
    */
-  const [textareaValue, setTextareaValue] = useState("");
-
+  // @todo useEffect else it won't work onload with values applied
+  const [textValue, setTextValue] = useState(value || defaultValue);
   const rows = rest.rows || 0;
-  let input: React.ReactElement;
+  const isTextArea = type === "textarea" || rows > 0;
+  const textareaRef = ref as RefObject<HTMLTextAreaElement>;
+  const inputRef = ref as RefObject<HTMLInputElement>;
 
-  if (type === "textarea" || rows > 0) {
-    const props = rest as InputTextProps<"textarea">;
-    const textareaRef = ref as React.Ref<HTMLTextAreaElement>;
-    input = (
-      // span > textarea is valid mark up -as we want to mimic an inline input.
-      <div className={classes.textareaWrap} data-value={textareaValue}>
-        <textarea
-          className={classes.textareaInput}
-          {...props}
-          onChange={(e) => {
-            setTextareaValue(e.target.value);
-            onChange && onChange(e);
-          }}
-          ref={textareaRef}
-        />
-      </div>
-    );
-  } else {
-    const props = rest as InputTextProps<"input">;
-    const inputRef = ref as React.Ref<HTMLInputElement>;
-    input = <input {...{ onChange, ...props, type }} ref={inputRef} />;
+  let isLabelSmall = false;
+  if (textValue) {
+    isLabelSmall = true;
   }
+
+  let { labelProps, inputProps, descriptionProps, errorMessageProps } =
+    useTextField(
+      {
+        value,
+        defaultValue,
+        label,
+        isDisabled: disabled,
+        isReadOnly,
+        placeholder,
+        isRequired,
+        errorMessage,
+        description,
+        type,
+        validationState,
+        onChange: (value) => {
+          setTextValue(value);
+          onChange && onChange(value);
+        },
+        inputElementType: isTextArea ? "textarea" : "input",
+        ...rest,
+      },
+      isTextArea ? textareaRef : inputRef
+    );
+  console.log(textValue);
 
   return (
     <InputBase
       {...{
-        id: rest.id,
-        disabled: rest.disabled,
-        error,
-        touched,
+        disabled,
+        errorMessage,
+        validationState,
         label,
-        labelVisuallyHidden,
         startAdornment,
-        // endAdornment,
-        hint,
+        hasValue: isLabelSmall,
+        isRequired,
+        isReadOnly,
+        endAdornment,
+        description,
         variant,
         vol,
+        labelProps,
+        labelPosition,
+        disableLabelTransition,
+        descriptionProps,
+        errorMessageProps,
       }}
       className={`${classes.root} ${classes[type]}`}
     >
-      {input}
+      {/* span > textarea is valid mark up -as we want to mimic an inline input. */}
+
+      {isTextArea ? (
+        <div className={classes.textareaWrap} data-value={textValue}>
+          <textarea
+            className={classes.textareaInput}
+            rows={rows}
+            {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
+            ref={textareaRef}
+          />
+        </div>
+      ) : (
+        <input
+          // className={classes.textareaInput}
+          {...(inputProps as HTMLAttributes<HTMLInputElement>)}
+          ref={inputRef}
+        />
+      )}
     </InputBase>
   );
 }
 
-const InputText = React.forwardRef(InputTextBase) as typeof InputTextBase;
-
-export default InputText;
+const _InputText = forwardRef(InputText);
+export { _InputText as InputText };

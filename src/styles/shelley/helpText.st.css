@@ -1,5 +1,5 @@
 /**
- * = ErrorText - errorText.st.css
+ * = HelpText - helpText.st.css
  *
  * Could have been a class only but we have a component and here is it's style.
  * 
@@ -18,21 +18,23 @@
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named:
-    --color-error;
+    --color-error, --color-text-help;
 }
 
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/ErrorText/errorText.st.css";
-  -st-default: Error;
+  -st-from: "../../components/HelpText/helpText.st.css";
+  -st-default: HelpText;
 }
 
 @st-scope Shelley {
 
   /* = Root */
-  Error {}
+  HelpText {
+    color: var(--color-text-help)
+  }
 
-  /* = Error indicator. */
-  Error::before {}
+  /* = HelpText indicator. */
+  HelpText::before {}
 }
