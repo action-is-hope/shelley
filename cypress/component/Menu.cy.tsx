@@ -53,7 +53,7 @@ describe("Basic Menu", () => {
 
   it("keyboard focus wraps (loops)", () => {
     cy.mount(<BasicMenu />);
-    cy.get("[data-cy-root]").type(
+    cy.get("[data-cy-root] li:first-child").type(
       "{downArrow}{downArrow}{downArrow}{downArrow}"
     );
     cy.get(itemTwo).should("be.focused");

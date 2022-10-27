@@ -8,7 +8,7 @@ interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   header?: boolean;
   /** Set scope attribute. */
   scope?: string;
-  /** Defines volumne/size. */
+  /** Defines volumee/size. */
   vol?: Volume;
   padding?: "standard" | "none" | "checkbox";
   sortDirection?: "ascending" | "descending" | false;

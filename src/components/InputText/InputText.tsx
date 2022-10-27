@@ -32,7 +32,10 @@ export type InputTextProps<P extends React.ElementType = "input"> =
   MergeElementProps<P, TextareaProps | TextInputProps>;
 
 function InputText(
-  {
+  props: InputTextProps<"input" | "textarea">,
+  ref?: Ref<HTMLTextAreaElement | HTMLInputElement>
+) {
+  const {
     errorMessage,
     validationState,
     description,
@@ -53,9 +56,7 @@ function InputText(
     value,
     defaultValue,
     ...rest
-  }: InputTextProps<"input" | "textarea">,
-  ref?: Ref<HTMLTextAreaElement | HTMLInputElement>
-) {
+  } = props;
   /**
    * textValue stores the value to be used to format multiline and stylews for hasValue:
    * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
@@ -95,7 +96,6 @@ function InputText(
       },
       isTextArea ? textareaRef : inputRef
     );
-  console.log(textValue);
 
   return (
     <InputBase

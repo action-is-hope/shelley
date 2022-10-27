@@ -104,7 +104,6 @@ import { useOverlayTriggerState } from "@react-stately/overlays";
 
 export const SimplePopup = (props: PopupProps) => {
   const triggerRef = useRef(null);
-  const overlayRef = useRef(null);
   const state = useOverlayTriggerState({});
 
   const { triggerProps, overlayProps } = useOverlayTrigger(
@@ -128,7 +127,6 @@ export const SimplePopup = (props: PopupProps) => {
           isOpen={state.isOpen}
           onClose={() => state.close()}
           triggerRef={triggerRef}
-          ref={overlayRef}
         >
           Children
         </Popup>

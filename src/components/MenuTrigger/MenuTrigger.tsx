@@ -80,7 +80,6 @@ export function MenuTrigger({
   ...rest
 }: MenuTriggerProps) {
   const triggerRef = React.useRef(null);
-  const overlayRef = React.useRef(null);
   const [menuTriggerChild, menuChild] = React.Children.toArray(children);
 
   // Create state based on the incoming props /// removed props...
@@ -117,7 +116,6 @@ export function MenuTrigger({
           <Popup
             isOpen={state.isOpen}
             onClose={state.close}
-            ref={overlayRef}
             {...{
               shouldFlip,
               triggerRef,

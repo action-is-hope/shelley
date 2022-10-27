@@ -34,7 +34,7 @@ export * from "./components/InputAdornment/InputAdornment";
 export { default as InputBase } from "./components/InputBase/InputBase";
 export * from "./components/InputBase/InputBase";
 
-export { default as InputSelect } from "./components/InputSelect/InputSelect";
+export { InputSelect } from "./components/InputSelect/InputSelect";
 export * from "./components/InputSelect/InputSelect";
 
 export { default as InputSelection } from "./components/InputSelection/InputSelection";
@@ -45,6 +45,9 @@ export * from "./components/InputSelectionControl/InputSelectionControl";
 
 export { InputText } from "./components/InputText/InputText";
 export * from "./components/InputText/InputText";
+
+export { default as ListBox } from "./components/ListBox/ListBox";
+export * from "./components/ListBox/ListBox";
 
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";

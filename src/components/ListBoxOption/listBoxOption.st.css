@@ -4,6 +4,7 @@
   -st-states:
     isDisabled,
     isFocused,
+    isHovered,
     isSelected,
     isFocusVisible;
 }

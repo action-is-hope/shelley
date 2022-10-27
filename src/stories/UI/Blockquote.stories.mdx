@@ -3,13 +3,6 @@ import { P, Blockquote } from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryCenteredInline } from "../StoryLayout";
 import dedent from "ts-dedent";
-import {
-  BasicMenuTrigger,
-  ControlledMenuTrigger,
-  IconTriggerMenu,
-  ButtonGroupTriggerMenu,
-  MultipleSelectionMenuTrigger,
-} from "./MenuTrigger.examples";
 
 export const BasicBlockquote = (args) => (
   <Blockquote
@@ -31,7 +24,7 @@ export const BasicBlockquote = (args) => (
     descVol: {
       options: [1, 2, 3, 4],
       control: { type: "inline-radio" },
-      description: "Volumn of the description",
+      description: "volume of the description",
     },
     variant: {
       options: [1, 2],

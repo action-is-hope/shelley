@@ -1,5 +1,4 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import dedent from "ts-dedent";
 import { P, Blockquote, InputText, InputBase } from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
@@ -12,11 +11,12 @@ import {
   TypeExample,
   TextFieldType,
 } from "./TextField.examples";
+import dedent from "ts-dedent";
 
 export const BasicTextField = (args) => <InputText {...args} />;
 
 <Meta
-  title="Inputs/TextField"
+  title="Inputs/Select"
   argTypes={{
     vol: {
       options: [1, 2, 3, 4, 5, 6],
@@ -80,23 +80,23 @@ export const BasicTextField = (args) => <InputText {...args} />;
 
 Allows our wonderful users to tell us something interesting by inputting some text into a little box. [Tap Tap Tap-a-roo!](https://www.youtube.com/watch?v=-br7JKuaZHQ)
 
-<Story
-  name="a) TextField"
-  args={{
-    label: "Name",
-  }}
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`<InputText label="Name" />`,
+<Canvas withSource="closed">
+  <Story
+    name="a) TextField"
+    args={{
+      label: "Name",
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`<InputText label="Name" />`,
+        },
       },
-    },
-  }}
->
-  {BasicTextField.bind({})}
-</Story>
-
-<Source language="tsx" id="inputs-textfield--a-text-field" />
+    }}
+  >
+    {BasicTextField.bind({})}
+  </Story>
+</Canvas>
 
 ## Value
 

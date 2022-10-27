@@ -23,7 +23,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         {...{
           label: "Name",
           vol: 1,
-          placeholder: "Volumn 1",
+          placeholder: "volume 1",
         }}
         {...args}
       />
@@ -32,7 +32,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
           label: "Email",
           type: "email",
           vol: 2,
-          placeholder: "Volumn 2",
+          placeholder: "volume 2",
         }}
         {...args}
       />
@@ -41,7 +41,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
           label: "Address",
           type: "textarea",
           vol: 3,
-          placeholder: "Volumn 3",
+          placeholder: "volume 3",
         }}
         {...args}
       />
@@ -50,7 +50,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
           label: "Telephone",
           type: "tel",
           vol: 4,
-          placeholder: "Volumn 4",
+          placeholder: "volume 4",
         }}
         {...args}
       />
@@ -58,7 +58,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         {...{
           label: "Fax",
           vol: 5,
-          placeholder: "Volumn 5",
+          placeholder: "volume 5",
         }}
         {...args}
       />
@@ -66,7 +66,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         {...{
           label: "What3words",
           vol: 6,
-          placeholder: "Volumn 6",
+          placeholder: "volume 6",
         }}
         {...args}
       />

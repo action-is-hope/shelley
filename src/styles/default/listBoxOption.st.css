@@ -9,8 +9,8 @@
 
 /* = Component CSS API */
 :import {
-  -st-from: "../../components/MenuItem/menuItem.st.css";
-  -st-default: MenuItem;
+  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
+  -st-default: ListBoxOption;
 }
 
 :import {
@@ -25,23 +25,23 @@
 }
 
 @st-scope Default {
-  MenuItem {
+  ListBoxOption {
     -st-mixin: menuItem;
   }
 
-  MenuItem:isDisabled {
+  ListBoxOption:isDisabled {
     -st-mixin: menuItemDisabled;
   }
 
-  MenuItem:isFocusVisible {
+  ListBoxOption:isFocusVisible {
     -st-mixin: menuItemFocusVisible;
   }
 
-  MenuItem::text {
+  ListBoxOption::text {
     -st-mixin: menuItemText;
   }
 
-  MenuItem::selectedIcon {
+  ListBoxOption::selectedIcon {
     -st-mixin: menuItemSelectedIcon;
   }
 }

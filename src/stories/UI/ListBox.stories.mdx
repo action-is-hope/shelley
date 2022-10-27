@@ -1,0 +1,217 @@
+import { useRef } from "react";
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import {
+  BasicListBox,
+  Dynamic,
+  SingleUnControlled,
+  MultipleControlled,
+  SelectTest,
+} from "./ListBox.examples";
+import { Menu, ListBox } from "../../indexLib";
+import { StoryGrid, StoryCenteredColumn } from "../StoryLayout";
+
+<Meta
+  title="Selection/ListBox"
+  argTypes={{
+    selectionMode: {
+      control: "select",
+      options: ["single", "multiple", undefined],
+      defaultValue: "single",
+    },
+  }}
+  component={ListBox}
+  decorators={[
+    (Story) => (
+      <StoryGrid gap="0">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+  parameters={{
+    controls: {
+      include: ["shouldFocusWrap", "selectionMode"],
+    },
+  }}
+/>
+
+# ListBox
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ListBox, Item } from "@actionishope/shelley";
+  `}
+/>
+
+A listbox displays a list of options and allows a user to select one or more of them. Used internally by components such as combo boxes, select drop downs.
+
+<Story
+  name="a) ListBox"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+          <ListBox
+            onSelectionChange={(key) => console.log(key)}
+            label="Label"
+          >
+            <Item key="publish">Publish</Item>
+            <Item key="archive">Archive</Item>
+            <Item key="delete">Delete</Item>
+          </ListBox>`,
+      },
+    },
+  }}
+>
+  {BasicListBox.bind({})}
+</Story>
+
+<Source language="tsx" id="selection-listbox--a-list-box" />
+
+## Dynamic collections
+
+ListBox follows the [Collection Components API](https://react-spectrum.adobe.com/react-stately/collections.html), accepting both static and dynamic collections. The examples above show static collections, which can be used when the full list of options is known ahead of time. Dynamic collections, as shown below, can be used when the options come from an external data source such as an API call, or update over time.
+
+As seen below, an iterable list of options is passed to the ListBox using the `items` prop. Each item accepts a key prop, which is passed to the onSelectionChange handler to identify the selected item. Alternatively, if the item objects contain an id property, as shown in the example below, then this is used automatically and a key prop is not required.
+
+<Story
+  name="b) Dynamic collections"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [animals] = useState([
+    { id: 1, name: "Aardvark" },
+    { id: 2, name: "Kangaroo" },
+    { id: 3, name: "Snake" },
+  ]);\n
+  <ListBox
+    onSelectionChange={(key) => console.log(key)}
+    items={animals}
+    selectionMode="single"
+    aria-label="Dynamic collection"
+  >
+    {(item) => <Item>{item.name}</Item>}
+  </ListBox>`,
+      },
+    },
+  }}
+>
+  <Dynamic />
+</Story>
+
+<Source language="tsx" id="selection-listbox--b-dynamic-collections" />
+
+## Selection
+
+ListBox supports multiple selection modes. By default, selection is disabled, however this can be changed using the selectionMode prop. Use defaultSelectedKeys to provide a default set of selected items (uncontrolled) and selectedKeys to set the selected items (controlled). The value of the selected keys must match the key prop of the items. See the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html#selected-key-data-type) for more details.
+
+<Story
+  name="c) Single selection"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <ListBox
+    selectionMode="single"
+    defaultSelectedKeys={new Set(["middle"])}
+    onSelectionChange={(i) => console.log([...i][0])}
+    aria-label="Single selection"
+  >
+    <Item key="left">Left</Item>
+    <Item key="middle">Middle...</Item>
+    <Item key="right">Right</Item>
+  </ListBox>`,
+      },
+    },
+  }}
+>
+  <SingleUnControlled />
+</Story>
+
+<Source language="tsx" id="selection-listbox--c-single-selection" />
+
+Set `selectionMode` prop to `multiple` to allow more than one selection.
+
+<Canvas>
+  <Story
+    name="d) Multi selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+  const options = [
+    { name: "Koala" },
+    { name: "Kangaroo" },
+    { name: "Platypus" },
+    { name: "Bald Eagle" },
+    { name: "Bison" },
+    { name: "Skunk" },
+  ];
+  const [animal, setAnimal] = useState(["Bison"]);\n
+  return (
+    <>
+      <ListBox
+        selectionMode="multiple"
+        aria-label="Pick an animal"
+        items={options}
+        defaultSelectedKeys={["Bison", "Koala"]}
+      >
+        {(item) => <Item key={item.name}>{item.name}</Item>}
+      </ListBox>\n
+      <ListBox
+        selectionMode="multiple"
+        aria-label="Pick an animal"
+        items={options}
+        selectedKeys={animal}
+        onSelectionChange={(selected) =>
+          setAnimal(Array.from(selected as Set<string>))
+        }
+      >
+        {(item) => <Item key={item.name}>{item.name}</Item>}
+      </ListBox>
+    </>
+  );`,
+        },
+      },
+    }}
+    decorators={[
+      (Story) => (
+        <StoryGrid cols="1fr 1fr">
+          <Story />
+        </StoryGrid>
+      ),
+    ]}
+  >
+    <MultipleControlled />
+  </Story>
+</Canvas>
+
+<Source language="tsx" id="selection-listbox--d-multi-selection" />
+
+## Events
+
+ListBox supports selection via mouse, keyboard, and touch. You can handle all of these via the onSelectionChange prop. ListBox will pass the selected key to the `onSelectionChange` handler.
+
+As you have seen, the previous example uses an `onSelectionChange` handler to update the selection stored in React state.
+
+## ListBoxOption
+
+`Item` is mapped to `ListBoxOption`
+
+@todo: Add some stuff on ListBoxOption:
+
+- Internally Item is mapped to the `ListBoxOption`
+- Grid alignment of ListBoxOption, icon, descriptions etc.
+
+## ListBoxOption props
+
+Menu is built with [useMenu](https://react-spectrum.adobe.com/react-aria/useMenu.html) and [useTreeState](https://react-spectrum.adobe.com/react-stately/useTreeState.html) accepting `AriaMenuOptions` and `TreeProps` respectfully as per the Adobe docs.
+
+<ArgsTable of={ListBox} />
+
+**Notes:**
+
+- `autoFocus` is set to `"first"` by default
+- `aria-label` or `aria-labelledby` required in order to suppress the console warning.

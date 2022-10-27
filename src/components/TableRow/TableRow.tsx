@@ -3,7 +3,7 @@ import { st, classes } from "./tableRow.st.css";
 
 export interface TableRowProps
   extends React.HTMLAttributes<HTMLTableRowElement> {
-  /** Defines volumne/size. */
+  /** Defines volumee/size. */
   selected?: boolean;
 }
 const TableRow = React.forwardRef(

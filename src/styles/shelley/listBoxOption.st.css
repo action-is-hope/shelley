@@ -1,10 +1,3 @@
-/* = Default project vars. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-named:
-    --spacing-unit;
-}
-
 /* = Shelley project scope and vars. */
 :import {
   -st-from: "./project.st.css";
@@ -14,15 +7,16 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/MenuItem/menuItem.st.css";
-  -st-default: MenuItem;
+  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
+  -st-default: ListBoxOption;
 }
 
 @st-scope Shelley {
 
-  MenuItem {}
+  ListBoxOption {}
 
-  MenuItem:isFocused {
+  ListBoxOption:isFocused,
+  ListBoxOption:isHovered {
     background-color: var(--color-background-item-hover);
   }
 }

@@ -4,7 +4,7 @@ import { Menu, MenuProps } from "../../indexLib";
 
 function _BasicMenu<T extends object>(args: MenuProps<T>) {
   return (
-    <Menu onAction={(info) => alert(info)} aria-label="Menu" {...args}>
+    <Menu onAction={(key) => console.log(key)} aria-label="Menu" {...args}>
       <Item key="publish">Publish</Item>
       <Item key="archive">Archive</Item>
       <Item key="delete">Delete</Item>
@@ -25,6 +25,7 @@ export const Dynamic = () => {
       onAction={(key) => console.log(key)}
       items={animals}
       aria-label="Dynamic menu"
+      disabledKeys={[1, 2]}
     >
       {(item) => <Item>{item.name}</Item>}
     </Menu>
@@ -53,8 +54,14 @@ export const MultipleControlled = () => {
       <Menu
         selectionMode="multiple"
         selectedKeys={selected}
-        // @todo figure out the error without the as...
-        onSelectionChange={(i) => setSelected(i as Set<string>)}
+        onSelectionChange={(selection) => {
+          /**
+           * - Selection type can be "all" | Set(Key)
+           * - Key (string | number) is not compatible with our state Set<string>
+           * Casting required (as Set<string>) we know what we get back.
+           */
+          selection !== "all" && setSelected(selection as Set<string>);
+        }}
         aria-label="Multi selection menu"
       >
         <Item key="sidebar">Sidebar</Item>
