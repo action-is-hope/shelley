@@ -27,10 +27,10 @@
 @st-scope Shelley {
 
   /* = switch off for light / dark bgs.... */
-  /* Text {
+  Text {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
-  } */
+  }
 
   /* = Uppercase */
   Text:uppercase {
@@ -51,6 +51,19 @@
 
   Text:vol(4):uppercase {
     letter-spacing: .31em;
+  }
+
+  /* = Set default weights for certain volumes */
+  Text:vol(7) {
+    font-weight: 300;
+  }
+
+  Text:vol(8) {
+    font-weight: 300;
+  }
+
+  Text:vol(9) {
+    font-weight: 300;
   }
 
 

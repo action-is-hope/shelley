@@ -36,11 +36,7 @@
 }
 
 @st-scope Default {
-  Text {
-    font-weight: 400;
-    /* = switch off for light / dark bgs.... */
-    -webkit-font-smoothing: antialiased;
-  }
+  Text {}
 
   /* = Volume 1 */
 
@@ -98,7 +94,6 @@
       textVol(scale var(--text-vol-7-scale),
         max var(--text-vol-7-max),
         lineHeight var(--text-vol-7-line-height));
-    font-weight: 300;
   }
 
   /* = Volume 8 */
@@ -107,7 +102,6 @@
       textVol(scale var(--text-vol-8-scale),
         max var(--text-vol-8-max),
         lineHeight var(--text-vol-8-line-height));
-    font-weight: 300;
   }
 
   /* = Volume 9 */
@@ -116,7 +110,6 @@
       textVol(scale var(--text-vol-9-scale),
         max var(--text-vol-9-max),
         lineHeight var(--text-vol-9-line-height));
-    font-weight: 300;
   }
 
   /* = Volume 10 */
@@ -137,48 +130,45 @@
     font-weight: 300;
   }
 
-
-  /* = Uppercase */
-  Text:uppercase {
-    text-transform: uppercase;
-  }
-
-
-  /* = State selectors - Note: Inherits functional styles from Shelley. */
-  Text:truncate {
-    /*
-      Probably best remove this and set widths as and when you use truncate. 
-      The styles require a known width container and this is an example we use.
-
-      Try not to use truncate but we know that sometimes it can be a compromise.
-    */
-    max-width: 32rem;
-    /* = FYI: We will change the API to support multiline via https://caniuse.com/#feat=css-line-clamp*/
-  }
-
-  /* = State selectors */
-  Text:weight(1) {
+  /* = Weights */
+  /** 
+   * :not(any) is a specificity hack ensuring these are applied even if a 
+   * theme has set defaults on them via the volumes. 
+   */
+  Text:weight(1):not(any) {
     font-weight: 100;
   }
 
-  Text:weight(2) {
+  Text:weight(2):not(any) {
     font-weight: 200;
   }
 
-  Text:weight(3) {
+  Text:weight(3):not(any) {
     font-weight: 300;
   }
 
-  Text:weight(4) {
+  Text:weight(4):not(any) {
     font-weight: 400;
   }
 
-  Text:weight(5) {
+  Text:weight(5):not(any) {
     font-weight: 500;
   }
 
-  Text:weight(6) {
+  Text:weight(6):not(any) {
     font-weight: 600;
+  }
+
+  Text:weight(7):not(any) {
+    font-weight: 700;
+  }
+
+  Text:weight(8):not(any) {
+    font-weight: 800;
+  }
+
+  Text:weight(9):not(any) {
+    font-weight: 900;
   }
 
 }

@@ -1,0 +1,267 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { P, H1, H2, Text } from "../../indexLib";
+import { Item } from "@react-stately/collections";
+import { StoryGrid } from "../StoryLayout";
+import { TextPropTable } from "./Text.examples";
+
+export const BasicTextField = (args) => (
+  <>
+    <H2 {...args} />
+    <P {...args} />
+    <Text {...args} />
+  </>
+);
+
+<Meta
+  title="Data/Text"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume",
+      value: 3,
+    },
+    variant: {
+      options: ["outlined", "filled", "quiet", false],
+      control: { type: "inline-radio" },
+    },
+    placeholder: {
+      control: { type: "text" },
+    },
+    rows: {
+      control: { type: "number" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    children: {
+      control: { type: "text" },
+      defaultValue: "I am Groot!",
+    },
+    as: {
+      options: ["p", "span", "h1", "h2", "h3", "h4"],
+      control: { type: "select" },
+      description: "Element type to use",
+      value: "span",
+    },
+  }}
+  component={Text}
+  decorators={[
+    (Story) => (
+      <StoryGrid gap="0">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Text
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { H1, H2, H3, H4, H5, P, Text } from "@actionishope/shelley";
+  `}
+/>
+
+Text is for presenting words, we love words, they're the best. Keep it simple, enguaging and on point.
+
+<Story
+  name="a) Text"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+        <H2>I Am Groot!</H2>
+        <P>I Am Groot!</P>
+        <Text>I Am Groot!</Text>
+        `,
+      },
+    },
+  }}
+>
+  {BasicTextField.bind({})}
+</Story>
+
+<Source language="tsx" id="data-text--a-text" />
+
+The Text component is designed for all areas of the site to be used as and when you need semantic or nonsemantic textual elements rendered on the page. Text by default will output a nonsemantic `span` by default but you can overide that via the `as` prop.
+
+You can also use the exported semantic shorcuts P, H1, H2 etc which will use the corresponding element type and sets a default volume size.
+
+## Volume
+
+Shelley uses a volume property, `vol` for the general sizing of components. Text accepts `vol={1-12}` in tghis case as well as an option to turn it off, `vol={false}`. Simples.
+
+<Story name="b) Volume" args={{ label: "Email", defaultValue: "me@earth.com" }}>
+  <P vol={1}>vol 1. Text</P>
+  <P vol={2}>vol 2. Text</P>
+  <P>vol 3. Text</P>
+  <P vol={4}>vol 4. Text</P>
+  <P vol={5}>vol 5. Text</P>
+  <P vol={6}>vol 6. Text</P>
+  <P vol={7}>vol 7. Text</P>
+  <P vol={8}>vol 8. Text</P>
+  <P vol={9}>vol 9. Text</P>
+  <P vol={10}>vol 10. Text</P>
+</Story>
+
+<Source language="tsx" id="data-text--b-volume" />
+
+It's essentially a non-semantic size property, we wanted to avoid semantics so as to avoid this type of situation: `<P variant="h2">some text that looks like a heading but isn't</P>` whilst this likely valid and accessible it just feels a bit mixed up and wrong and it reads badly from a code perspective.
+
+We also avoided `size` because it conflicts with a real html attribute used on inputs, so we went with `vol` short for volume instead.
+
+## Truncation
+
+Some would argue that truncation is bad, but with limited screen real estate it can become something we need to implement in order to keep things tidy and scanable. As long as the full text is available somewhere somehow then this should be fine.
+
+We used to be limited to single line truncation but now with `-webkit-line-clamp` it has never been easier to have multiline truncation with graceful reflow provided by the browser. If anyone has had to do this on mobile previously with JS they will understand the significance of this when faced with this requirement.
+
+To implement sungle line set `truncate` to `true`, fo multiline set it to a `number` between 1 and 10. This will only apply to the element that it is set on so in the case of a passage of text apply it on the last paragragh.
+
+If that's a real pain then you might try putting all of the text into a container and setting the line clamp properties on the container.
+
+<Story
+  name="c) Truncation"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<H2 vol={4}>Single line</H2>
+<P truncate>
+  All people on Earth depend directly or indirectly on the ocean and
+  cryosphere. The global ocean covers 71% of the Earth surface and contains
+  about 97% of the Earth’s water.
+</P>\n
+<H2 vol={4}>Multiline set to 2</H2>
+<P truncate={2}>
+  The cryosphere refers to frozen components of the Earth system. Around 10%
+  of Earth’s land area is covered by glaciers or ice sheets. The ocean and
+  cryosphere support unique habitats, and are interconnected with other
+  components of the climate system through global exchange of water, energy
+  and carbon.
+</P>\n
+<H2 vol={4}>Using a container set to 6</H2>
+<Text as="div" truncate={6} vol={false}>
+  <P>
+    All people on Earth depend directly or indirectly on the ocean and
+    cryosphere. The global ocean covers 71% of the Earth surface and contains
+    about 97% of the Earth’s water.
+  </P>\n
+  <P>
+    The cryosphere refers to frozen components of the Earth system. Around 10%
+    of Earth’s land area is covered by glaciers or ice sheets. The ocean and
+    cryosphere support unique habitats, and are interconnected with other
+    components of the climate system through global exchange of water, energy
+    and carbon.
+  </P>
+</Text>`,
+      },
+    },
+  }}
+>
+  <H2 vol={4}>Single line</H2>
+  <P truncate>
+    All people on Earth depend directly or indirectly on the ocean and
+    cryosphere. The global ocean covers 71% of the Earth surface and contains
+    about 97% of the Earth’s water.
+  </P>
+  <br />
+  <H2 vol={4}>Multiline set to 2</H2>
+  <P truncate={2}>
+    The cryosphere refers to frozen components of the Earth system. Around 10%
+    of Earth’s land area is covered by glaciers or ice sheets. The ocean and
+    cryosphere support unique habitats, and are interconnected with other
+    components of the climate system through global exchange of water, energy
+    and carbon.
+  </P>
+  <br />
+  <H2 vol={4}>Using a container set to 6</H2>
+  <br />
+  <Text as="div" truncate={6} vol={false}>
+    <P>
+      All people on Earth depend directly or indirectly on the ocean and
+      cryosphere. The global ocean covers 71% of the Earth surface and contains
+      about 97% of the Earth’s water.
+    </P>
+    <br />
+    <P>
+      The cryosphere refers to frozen components of the Earth system. Around 10%
+      of Earth’s land area is covered by glaciers or ice sheets. The ocean and
+      cryosphere support unique habitats, and are interconnected with other
+      components of the climate system through global exchange of water, energy
+      and carbon.
+    </P>
+  </Text>
+</Story>
+
+<Source language="tsx" id="data-text--c-truncation" />
+
+## Weight
+
+This will be very dependant on the fonts you are using but if like us you stick to something with a good range you will have a nice array of options available to you should you need them. You might want to set some defualts on some volumes in you theme but these should still override those if you are using the default theme as a base.
+
+If you are wanting 'sternly' semantics then use the `strong` tag as you usually would; `weight` is a nonsemantic effect so consider your use case.
+
+<Story name="d) Weight">
+  <P vol={8} weight={1}>
+    vol 8 <strong>Text</strong>
+  </P>
+  <P vol={8} weight={2}>
+    vol 8 Text
+  </P>
+  <P vol={8} weight={3}>
+    vol 8 Text
+  </P>
+  <P vol={8} weight={4}>
+    vol 8 Text
+  </P>
+  <P vol={8} weight={5}>
+    vol 8 Text
+  </P>
+  <P vol={8} weight={6}>
+    vol 8 Text
+  </P>
+</Story>
+
+<Source language="tsx" id="data-text--d-weight" />
+
+## Uppercase
+
+Does what it says on the tin really, applies `text-transform` to uppercase. As with truncation one could argue against the use of uppercase too much because it doesn't read as well. A interesting read was found when looking for a citation for this 'general knowledge' [It’s a Myth That All Capital Letters Are Inherently Harder to Read](https://www.blog.theteamw.com/2009/12/23/100-things-you-should-know-about-people-19-its-a-myth-that-all-capital-letters-are-inherently-harder-to-read/). It will likely be your design team that will call the shots anyway but I'm quite partial to some uppercase headings and who are we to argue with the ALIEN franchise!
+
+<Story name="e) Uppercase">
+  <H1 uppercase>Aliens</H1>
+</Story>
+
+<Source language="tsx" id="data-text--e-uppercase" />
+
+## TextField Props
+
+<ArgsTable of={TextPropTable} />
+
+## Stying
+
+Text usually accounts for a large proportion of a website / application and is integral to the overall typographic approach and layout of the design you are implementing. Define it early, tweak as you need.
+
+Shelley allows you to do whatever you want in terms of styling via pre-defined style hooks. You can of course add your own style variants by adding additional CSS class selectors within your text.st.css file:
+
+If you are starting from scratch then [type-scale](https://type-scale.com/) is a good starting place to generate a text scale. Just map the values into respective volume selectors above.
+
+Note: We set our typical copy text to a volume of three and then scale up/down from there; 1 is small, 12 is big. Just define the ones you need, it is doubtful you will need all twelve.
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>
