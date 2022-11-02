@@ -50,7 +50,15 @@
   }
 
   /*= Applies the down arrow, aka --select-icon and associated styles. */
-  InputSelect::fieldInput {
+  InputSelect::trigger {
     -st-mixin: selectFieldInput;
+  }
+
+  InputSelect::trigger::inner {
+    padding: 0;
+  }
+
+  InputSelect:labelPosition(over)::placeholder {
+    visibility: hidden;
   }
 }

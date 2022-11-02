@@ -14,7 +14,7 @@ import ListBox from "../ListBox/ListBox";
 
 export interface InputSelectProps<T>
   extends AriaSelectOptions<T>,
-    Omit<InputBaseProps, "label"> {
+    Omit<InputBaseProps, "label" | "startAdornment" | "endAdornment"> {
   disabled?: boolean;
   className?: string;
   /**
@@ -26,25 +26,22 @@ export interface InputSelectProps<T>
 
 function InputSelect<T extends object>(
   props: InputSelectProps<T>,
-  ref?: Ref<HTMLButtonElement>
+  ref?: React.RefObject<HTMLButtonElement>
 ) {
   const {
     className: classNameProp,
-    id,
+    description,
     disabled,
     isDisabled,
     errorMessage,
-    errorMessageProps,
-    description,
-    descriptionProps,
-    startAdornment,
-    // endAdornment,
+    validationState,
     portalSelector = "body",
     variant,
     label,
     labelPosition,
     vol,
     children,
+    placeholder = "Select an option",
     ...rest
   } = props;
 
@@ -53,8 +50,15 @@ function InputSelect<T extends object>(
 
   // Get props for child elements from useSelect
   const localRef = ref || useRef(null);
-
-  let { labelProps, triggerProps, valueProps, menuProps } = useSelect(
+  // const buttonRef = useRef(null);
+  let {
+    labelProps,
+    triggerProps,
+    valueProps,
+    menuProps,
+    errorMessageProps,
+    descriptionProps,
+  } = useSelect(
     { ...props, isDisabled: disabled },
     state,
     localRef as RefObject<HTMLButtonElement>
@@ -63,20 +67,24 @@ function InputSelect<T extends object>(
   return (
     <InputBase
       {...{
-        id,
         disabled,
         errorMessage,
+        validationState,
         errorMessageProps,
         description,
         descriptionProps,
         label,
         labelPosition,
-        labelProps,
-
+        labelProps: {
+          ...labelProps,
+          onClick: () => {
+            // Manually trigger a click on the button if clicking the label text.
+            localRef?.current?.click();
+          },
+        },
+        disableLabelTransition: state.isOpen || Boolean(state.selectedItem),
         variant,
         vol,
-        startAdornment,
-        // endAdornment Fiddly to do a nice job, parking support for native select.
       }}
       className={`${classes.root} ${classNameProp}`}
     >
@@ -87,14 +95,19 @@ function InputSelect<T extends object>(
           label={props.label}
           name={props.name}
         />
-        <Button {...triggerProps} ref={localRef} variant="quiet">
+        <Button
+          {...triggerProps}
+          ref={localRef}
+          variant={false}
+          className={classes.trigger}
+        >
           <span {...valueProps}>
-            {state.selectedItem
-              ? state.selectedItem.rendered
-              : "Select an option"}
-          </span>
-          <span aria-hidden="true" style={{ paddingLeft: 5 }}>
-            ▼
+            {/* {state.selectedItem ? state.selectedItem.rendered : placeholder} */}
+            {state.selectedItem ? (
+              state.selectedItem.rendered
+            ) : (
+              <span className={classes.placeholder}>{placeholder}</span>
+            )}
           </span>
         </Button>
 
@@ -104,6 +117,7 @@ function InputSelect<T extends object>(
               isOpen={state.isOpen}
               onClose={state.close}
               triggerRef={localRef}
+              placement="bottom start"
             >
               <ListBox children={children} {...menuProps} state={state} />
             </Popup>,

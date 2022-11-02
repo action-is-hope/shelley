@@ -6,6 +6,20 @@
   -st-default: InputBase
 }
 
+:import {
+  -st-from: '../Button/button.st.css';
+  -st-default: Button
+}
+
 .root {
   -st-extends: InputBase;
+}
+
+.trigger {
+  -st-extends: Button;
+}
+
+.placeholder {
+  font-style: italic;
+  /* visibility: hidden; */
 }

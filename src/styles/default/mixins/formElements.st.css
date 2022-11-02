@@ -271,8 +271,22 @@
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: right 18px top 50%;
-  padding-right: calc(2 * var(--spacing-unit));
+  /* padding: calc(0.2rem + 0.2em) var(--spacing-unit); */
+  padding: calc(0.2rem + 0.2em) var(--spacing-unit);
+  padding-right: calc(3.5 * var(--spacing-unit));
   background-image: var(--select-icon);
+  text-transform: inherit;
+  font-size: 1em;
+  line-height: 1.5;
+  width: 100%;
+  /* text-align: start; */
+  justify-content: stretch;
+  font-weight: 400;
+  border-width: 0;
+}
+
+.selectFieldInput:focus::after {
+  opacity: 0;
 }
 
 /**

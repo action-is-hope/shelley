@@ -121,7 +121,6 @@ function InputText(
       className={`${classes.root} ${classes[type]}`}
     >
       {/* span > textarea is valid mark up -as we want to mimic an inline input. */}
-
       {isTextArea ? (
         <div className={classes.textareaWrap} data-value={textValue}>
           <textarea
@@ -133,7 +132,6 @@ function InputText(
         </div>
       ) : (
         <input
-          // className={classes.textareaInput}
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
           ref={inputRef}
         />

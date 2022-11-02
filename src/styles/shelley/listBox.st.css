@@ -1,5 +1,5 @@
 /**
- * = Menu - menu.st.css
+ * = ListBox - listBox.st.css
  * 
  * ========================================================================= */
 
@@ -13,13 +13,13 @@
 /* = Components */
 
 :import {
-  -st-from: "../../components/Menu/menu.st.css";
-  -st-default: Menu;
+  -st-from: "../../components/ListBox/listBox.st.css";
+  -st-default: ListBox;
 }
 
 @st-scope Shelley {
 
-  Menu {
+  ListBox {
     background: var(--color-background-1);
   }
 }

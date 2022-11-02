@@ -1,5 +1,11 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import { P, Blockquote, InputText, InputBase } from "../../indexLib";
+import {
+  P,
+  Blockquote,
+  InputText,
+  InputSelect,
+  InputBase,
+} from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import {
@@ -11,9 +17,9 @@ import {
   TypeExample,
   TextFieldType,
 } from "./TextField.examples";
-import dedent from "ts-dedent";
 
-export const BasicTextField = (args) => <InputText {...args} />;
+import { BasicSelect, SelectEvents } from "./Select.examples";
+import dedent from "ts-dedent";
 
 <Meta
   title="Inputs/Select"
@@ -69,34 +75,42 @@ export const BasicTextField = (args) => <InputText {...args} />;
   ]}
 />
 
-# TextField
+# Select
 
 <Source
   language="tsx"
   code={dedent`
-    import { TextField } from "@actionishope/shelley";
+    import { Select } from "@actionishope/shelley";
   `}
 />
 
-Allows our wonderful users to tell us something interesting by inputting some text into a little box. [Tap Tap Tap-a-roo!](https://www.youtube.com/watch?v=-br7JKuaZHQ)
+Select allows users to choose a single option from a collapsible list of options when space is limited.
 
-<Canvas withSource="closed">
-  <Story
-    name="a) TextField"
-    args={{
-      label: "Name",
-    }}
-    parameters={{
-      docs: {
-        source: {
-          code: dedent`<InputText label="Name" />`,
-        },
+<Story
+  name="a) Select"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+    <InputSelect
+      label="Choose frequency"
+      onSelectionChange={(key) => console.log(key)}
+    >
+      <Item key="rarely">Rarely</Item>
+      <Item key="sometimes">Sometimes</Item>
+      <Item key="always">Always</Item>
+    </InputSelect>`,
       },
-    }}
-  >
-    {BasicTextField.bind({})}
-  </Story>
-</Canvas>
+    },
+  }}
+>
+  {BasicSelect.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-select--a-select" />
 
 ## Value
 
@@ -222,7 +236,7 @@ If you want a clean base to create a new variant from (styled via className) the
     },
   }}
 >
-  {BasicTextField.bind()}
+  {SelectEvents.bind()}
 </Story>
 
 <ArgsTable story="d) Variants &amp; label position" />

@@ -119,7 +119,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       iconPos: icon ? iconPos : undefined,
       fullWidth,
       tone,
-      variant,
+      variant: variant !== false ? variant : undefined,
       vol,
       isPressed,
       isDisabled,

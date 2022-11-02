@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Item } from "@react-stately/collections";
-import { Menu, InputSelect } from "../../indexLib";
-
 import { ListBox, ListBoxProps } from "../../indexLib";
 
 function _BasicListBox<T extends object>(args: ListBoxProps<T>) {
@@ -89,28 +87,6 @@ export const MultipleControlled = () => {
       >
         {(item) => <Item key={item.name}>{item.name}</Item>}
       </ListBox>
-    </>
-  );
-};
-
-export const SelectTest = () => {
-  const [animals] = useState([
-    { id: 1, name: "Aardvark" },
-    { id: 2, name: "Kangaroo" },
-    { id: 3, name: "Snake" },
-  ]);
-
-  return (
-    <>
-      <InputSelect
-        onSelectionChange={(key) => console.log(key)}
-        items={animals}
-        label="Select"
-        labelPosition="top"
-        portalSelector="#portal"
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </InputSelect>
     </>
   );
 };
