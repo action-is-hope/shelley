@@ -30,6 +30,7 @@ export const BasicTextField = (args) => <InputText {...args} />;
     labelPosition: {
       options: ["over", "top", "side", "hidden"],
       control: { type: "inline-radio" },
+      defaultValue: "over",
     },
     description: {
       control: { type: "text" },
@@ -258,7 +259,7 @@ The `isReadOnly` boolean prop makes the TextField's text content immutable. Unli
 
 <Canvas>
   <Story
-    name="c) Variants"
+    name="g) Volume / Size"
     args={{
       variant: "outlined",
       labelPosition: "side",
@@ -340,7 +341,7 @@ The main way is with an `InputAdornment`. This can be used to add a prefix, a su
   {AdornmentExample.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--h-help-text" />
+<Source language="tsx" id="inputs-textfield--i-input-adornments" />
 
 ## TextField Props
 

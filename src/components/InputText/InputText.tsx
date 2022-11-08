@@ -1,26 +1,22 @@
 import type React from "react";
 import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
+import type { MergeElementProps } from "../utils";
 import type { TextInputType } from "../types";
 import InputBase, { InputBaseProps } from "../InputBase/InputBase";
 import { useTextField } from "react-aria";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 
 /* = Style API. */
-import { classes } from "./inputText.st.css";
-
-import type { MergeElementProps } from "../utils";
-
+import { st, classes } from "./inputText.st.css";
 interface ITextCustomProps
   extends InputBaseProps,
     Omit<AriaTextFieldProps, "label"> {
   rows?: number;
 }
-
 export interface TextareaProps extends ITextCustomProps {
   /** Defines the type of input. */
   type?: "textarea";
 }
-
 export interface TextInputProps extends ITextCustomProps {
   /** Defines the type of input. */
   type?: TextInputType;
@@ -36,26 +32,27 @@ function InputText(
   ref?: Ref<HTMLTextAreaElement | HTMLInputElement>
 ) {
   const {
-    errorMessage,
-    validationState,
+    className: classNameProp,
     description,
     disabled,
+    errorMessage,
+    validationState,
     variant,
     label,
+    labelPosition,
+    disableLabelTransition,
+    vol,
     onChange,
     startAdornment,
     isReadOnly,
     isRequired,
-    isDisabled,
+    // isDisabled,
     endAdornment,
-    placeholder,
-    labelPosition,
-    disableLabelTransition,
-    vol,
+    // placeholder,
     type = "text",
     value,
     defaultValue,
-    ...rest
+    // ...rest
   } = props;
   /**
    * textValue stores the value to be used to format multiline and stylews for hasValue:
@@ -63,36 +60,37 @@ function InputText(
    */
   // @todo useEffect else it won't work onload with values applied
   const [textValue, setTextValue] = useState(value || defaultValue);
-  const rows = rest.rows || 0;
+  const rows = props.rows || 0;
   const isTextArea = type === "textarea" || rows > 0;
   const textareaRef = ref as RefObject<HTMLTextAreaElement>;
   const inputRef = ref as RefObject<HTMLInputElement>;
 
-  let isLabelSmall = false;
-  if (textValue) {
-    isLabelSmall = true;
-  }
+  // let isLabelSmall = false;
+  // if (textValue) {
+  //   // isLabelSmall = true;
+  // }
 
   let { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField(
       {
-        value,
-        defaultValue,
-        label,
+        ...props,
+        // value,
+        // defaultValue,
+        // label,
         isDisabled: disabled,
-        isReadOnly,
-        placeholder,
-        isRequired,
-        errorMessage,
-        description,
-        type,
-        validationState,
+        // isReadOnly,
+        // placeholder,
+        // isRequired,
+        // errorMessage,
+        // description,
+        // type,
+        // validationState,
         onChange: (value) => {
           setTextValue(value);
           onChange && onChange(value);
         },
         inputElementType: isTextArea ? "textarea" : "input",
-        ...rest,
+        // ...rest,
       },
       isTextArea ? textareaRef : inputRef
     );
@@ -105,7 +103,7 @@ function InputText(
         validationState,
         label,
         startAdornment,
-        hasValue: isLabelSmall,
+        hasValue: Boolean(textValue),
         isRequired,
         isReadOnly,
         endAdornment,
@@ -118,7 +116,7 @@ function InputText(
         descriptionProps,
         errorMessageProps,
       }}
-      className={`${classes.root} ${classes[type]}`}
+      className={st(classes.root, classNameProp)}
     >
       {/* span > textarea is valid mark up -as we want to mimic an inline input. */}
       {isTextArea ? (

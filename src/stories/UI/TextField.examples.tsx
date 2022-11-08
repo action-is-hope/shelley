@@ -8,11 +8,11 @@ import {
 import Eye from "../../components/icons/Eye";
 import React, { useState, useMemo, useRef } from "react";
 
-export interface Test extends InputBaseProps {
+export interface InputTextPropsDocs extends InputBaseProps {
   /** The type of input field. */
-  type: string;
+  type?: string;
 }
-export function TextFieldType(props: Test) {
+export function TextFieldType(props: InputTextPropsDocs) {
   <>{props.type}</>;
 }
 

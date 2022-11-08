@@ -114,17 +114,16 @@
   z-index: 1;
 
   cursor: text;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: calc(100% - 8px);
+  max-width: calc(100% - 3em);
 }
 
 .root:labelPosition(over)::inputLabel::labelText {
   display: block;
   transform-origin: 0;
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .root:labelPosition(over):focus-within::inputLabel,
@@ -135,6 +134,8 @@
 .root:labelPosition(over):focus-within::inputLabel::labelText,
 .root:labelPosition(over):hasValue::inputLabel::labelText {
   transform: scale(0.75);
+  /* Makes the label wider to avoid truncation of the zommed out element. */
+  /* width: 120%; */
 }
 
 

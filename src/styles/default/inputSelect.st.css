@@ -61,4 +61,13 @@
   InputSelect:labelPosition(over)::placeholder {
     visibility: hidden;
   }
+
+  /* InputSelect:labelPosition(over):hasValue::placeholder {
+    visibility: visible;
+  } */
+
+  InputSelect::placeholder {
+    opacity: .8;
+    letter-spacing: 0.2px;
+  }
 }

@@ -83,7 +83,7 @@ const InputBase = ({
   disableLabelTransition = false,
   variant = "outlined",
   hasValue: hasValueProp,
-  vol = 3,
+  vol = 1,
 }: InputBaseInternalProps) => {
   const hasValue =
     disableLabelTransition || startAdornment ? true : hasValueProp;

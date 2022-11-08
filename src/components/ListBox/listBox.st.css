@@ -1,4 +1,7 @@
 /* menu.st.css CSS API */
-.root {}
+.root {
+  max-height: 40vh;
+  overflow: scroll;
+}
 
 .item {}

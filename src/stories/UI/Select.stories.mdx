@@ -9,16 +9,15 @@ import {
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import {
-  TextFieldSizes,
-  ValueExample,
-  EventExample,
+  SelectType,
+  BasicSelect,
+  SelectEvents,
+  DynamicCollection,
+  ControlledSelect,
+  AsyncLoadingExample,
+  SelectSizes,
   HelpTextExample,
-  AdornmentExample,
-  TypeExample,
-  TextFieldType,
-} from "./TextField.examples";
-
-import { BasicSelect, SelectEvents } from "./Select.examples";
+} from "./Select.examples";
 import dedent from "ts-dedent";
 
 <Meta
@@ -36,21 +35,13 @@ import dedent from "ts-dedent";
     labelPosition: {
       options: ["over", "top", "side", "hidden"],
       control: { type: "inline-radio" },
+      defaultValue: "over",
     },
     description: {
       control: { type: "text" },
     },
     placeholder: {
       control: { type: "text" },
-    },
-    rows: {
-      control: { type: "number" },
-    },
-    disabled: {
-      control: { type: "boolean" },
-    },
-    readOnly: {
-      control: { type: "boolean" },
     },
     disableLabelTransition: {
       control: "boolean",
@@ -65,10 +56,10 @@ import dedent from "ts-dedent";
       control: { type: "inline-radio" },
     },
   }}
-  component={TextFieldType}
+  component={SelectType}
   decorators={[
     (Story) => (
-      <StoryGrid>
+      <StoryGrid minWidth={250}>
         <Story />
       </StoryGrid>
     ),
@@ -89,7 +80,7 @@ Select allows users to choose a single option from a collapsible list of options
 <Story
   name="a) Select"
   args={{
-    label: "Name",
+    label: "Choose frequency",
   }}
   parameters={{
     docs: {
@@ -112,43 +103,50 @@ Select allows users to choose a single option from a collapsible list of options
 
 <Source language="tsx" id="inputs-select--a-select" />
 
-## Value
+## Dynamic collections
 
-A TextField's `value` is empty by default, but an initial, uncontrolled, value can be provided using the `defaultValue` prop. Alternatively, a controlled value can be provided using the `value` prop.
+Select follows the [Collection Components API](https://react-spectrum.adobe.com/react-stately/collections.html), accepting both static and dynamic collections. The examples above show static collections, which can be used when the full list of options is known ahead of time. Dynamic collections, as shown below, can be used when the options come from an external data source such as an API call, or update over time.
+
+As seen below, an iterable list of options is passed to the Select using the items prop. Each item accepts a key prop, which is passed to the `onSelectionChange` handler to identify the selected item. Alternatively, if the item objects contain an id property, as shown in the example below, then this is used automatically and a key prop is not required.
 
 <Story
-  name="b) Value"
-  args={{ label: "Email", defaultValue: "me@earth.com" }}
+  name="b) Dynamic collections"
   parameters={{
     docs: {
       source: {
         code: dedent`
-let [value, setValue] = useState("me@email.com");
-return (
-  <>
-    <InputText
-      vol={1}
-      label="Email (Uncontrolled)"
-      defaultValue="me@email.com"
-    />
-    <InputText
-      vol={1}
-      label="Email (Controlled)"
-      value={value}
-      onChange={setValue}
-    />
-  </>
-);`,
+export const DynamicCollection = () => {
+  const options = [
+    { id: 1, name: "Aerospace" },
+    { id: 2, name: "Mechanical" },
+    { id: 3, name: "Civil" },
+    { id: 4, name: "Biomedical" },
+    { id: 5, name: "Nuclear" },
+    { id: 6, name: "Industrial" },
+    { id: 7, name: "Chemical" },
+    { id: 8, name: "Agricultural" },
+    { id: 9, name: "Electrical" },
+  ];\n
+  return (
+    <>
+      <InputSelect label="Pick an engineering major" items={options}>
+        {(item) => <Item>{item.name}</Item>}
+      </InputSelect>
+    </>
+  );
+};`,
       },
     },
   }}
 >
-  {ValueExample.bind({})}
+  {DynamicCollection.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--b-value" />
+<Source language="tsx" id="inputs-select--b-dynamic-collections" />
 
-## Events
+## Controlled selection
+
+Setting a selected option can be done by using the defaultSelectedKey or selectedKey prop. The selected key corresponds to the key of an item. When Select is used with a dynamic collection as described above, the key of each item is derived from the data. See the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html) for more details.
 
 TextField accepts an `onChange` prop which is triggered whenever the value is edited by the user.
 
@@ -157,57 +155,122 @@ TextField is intrincically either an input or a textarea so all usual events are
 The example below uses onChange to update a separate pre element with the same text entered into the TextField.
 
 <Story
-  name="c) Events"
+  name="c) Controlled"
   parameters={{
     docs: {
       source: {
         code: dedent`
-  let [text, setText] = useState("");
+  const options = [
+    { name: "Koala" },
+    { name: "Kangaroo" },
+    { name: "Platypus" },
+    { name: "Bald Eagle" },
+    { name: "Bison" },
+    { name: "Skunk" },
+  ];
+  const [animal, setAnimal] = useState("Bison");\n
   return (
-    <>
-      <InputText {...args} onChange={setText} label="Your text" />
-      <pre>Mirrored text: {text}</pre>
-    </>
+    <InputSelect
+      label="Pick an animal (controlled)"
+      items={options}
+      selectedKey={animal}
+      onSelectionChange={(selected) =>
+        setAnimal(selected as SetStateAction<string>)
+      }
+    >
+      {(item) => <Item key={item.name}>{item.name}</Item>}
+    </InputSelect>
   );`,
       },
     },
   }}
 >
-  {EventExample.bind({})}
+  {ControlledSelect.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--c-events" />
+<Source language="tsx" id="inputs-select--c-controlled" />
 
-## Type
+## Asynchronous loading
 
-Standard text based input types supported (password, number etc) with the option to choose `textarea` and `rows` to define the number of rows to start with.
+This example uses the [useAsyncList](https://react-spectrum.adobe.com/react-stately/useAsyncList.html) hook to handle asynchronous loading of data from a server.
+
+We will be adding loading indicator and virtualisation support as we come to do ComboBox where ListBox will likely need it.
 
 <Story
-  name="d) Type"
-  args={{
-    label: "Textarea",
-    type: "password",
-  }}
+  name="d) Asynchronous loading"
   parameters={{
     docs: {
       source: {
         code: dedent`
-      <InputText type="password" label="Password" />
-      <InputText type="textarea" label="Textarea" />
-      <InputText type="textarea" label="Textarea" rows={1} />
-      <InputText type="textarea" label="Textarea" rows={4} />`,
+  const list: { items: ItemsType[] } = useAsyncList({
+    async load({ signal, filterText }) {
+      let res = await fetch(\`https://pokeapi.co/api/v2/pokemon\`, { signal });
+      let json = await res.json();
+      return {
+        items: json.results,
+      };
+    },
+  });\n
+  return (
+    <InputSelect
+      label="Pick a Pokemon"
+      items={list.items}
+      portalSelector="#portal"
+      shouldFocusOnHover={false}
+      {...args}
+    >
+      {(item) => <Item key={item.name}>{item.name}</Item>}
+    </InputSelect>
+  );`,
       },
     },
   }}
 >
-  {TypeExample.bind({})}
+  {AsyncLoadingExample.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--d-type" />
+<Source language="tsx" id="inputs-select--d-asynchronous-loading" />
+
+## Disabled
+
+A select in a `disabled` state shows that a select exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
+
+<Story name="e) Disabled">
+  <InputSelect label="Choose frequency" portalSelector="#portal" disabled>
+    <Item key="rarely">Rarely</Item>
+    <Item key="sometimes">Sometimes</Item>
+    <Item key="always">Always</Item>
+  </InputSelect>
+</Story>
+
+<Source language="tsx" id="inputs-select--e-disabled" />
+
+## Disabled options
+
+Select supports marking items as disabled using the `disabledKeys` prop. Each key in this list corresponds with the `key` prop passed to the Item component, or automatically derived from the values passed to the items prop. See Collections for more details.
+
+Disabled items are not focusable, selectable, or keyboard navigable.
+
+<Story name="f) Disabled options">
+  <InputSelect
+    portalSelector="#portal"
+    label="Favorite Animal"
+    disabledKeys={["cat", "kangaroo"]}
+  >
+    <Item key="red panda">Red Panda</Item>
+    <Item key="cat">Cat</Item>
+    <Item key="dog">Dog</Item>
+    <Item key="aardvark">Aardvark</Item>
+    <Item key="kangaroo">Kangaroo</Item>
+    <Item key="snake">Snake</Item>
+  </InputSelect>
+</Story>
+
+<Source language="tsx" id="inputs-select--f-disabled-options" />
 
 ## Variants &amp; label position
 
-TextField is a complete form control including a label, input, and help text. It comes with three variants:
+Select is a complete form control including a label, input, and help text. It comes with three variants:
 
 - `outlined` (default)
 - `filled`
@@ -216,7 +279,7 @@ TextField is a complete form control including a label, input, and help text. It
 If you want a clean base to create a new variant from (styled via className) then set variant to `false`.
 
 <Story
-  name="d) Variants &amp; label position"
+  name="g) Variants &amp; label position"
   args={{
     label: "Label",
     variant: "outlined",
@@ -232,6 +295,7 @@ If you want a clean base to create a new variant from (styled via className) the
         "variant",
         "placeholder",
         "vol",
+        "disabled",
       ],
     },
   }}
@@ -239,7 +303,7 @@ If you want a clean base to create a new variant from (styled via className) the
   {SelectEvents.bind()}
 </Story>
 
-<ArgsTable story="d) Variants &amp; label position" />
+<ArgsTable story="g) Variants &amp; label position" />
 
 Each variant supports multiple label positions giving us lots of options when laying out our forms:
 
@@ -248,31 +312,11 @@ Each variant supports multiple label positions giving us lots of options when la
 - `side`
   or it can be `hidden`
 
-## Disabled
-
-A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
-
-<Story name="e) Disabled">
-  <InputText label="Label" defaultValue="Disabled" disabled />
-</Story>
-
-<Source language="tsx" id="inputs-textfield--e-disabled" />
-
-## Readonly
-
-The `isReadOnly` boolean prop makes the TextField's text content immutable. Unlike `disabled`, the TextField remains focusable and the contents can still be copied. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
-
-<Story name="f) Readonly">
-  <InputText label="Label" defaultValue="Read only" isReadOnly />
-</Story>
-
-<Source language="tsx" id="inputs-textfield--f-readonly" />
-
 ## Volume/Size
 
 <Canvas>
   <Story
-    name="c) Variants"
+    name="h) Volume / Size"
     args={{
       variant: "outlined",
       labelPosition: "side",
@@ -289,7 +333,7 @@ The `isReadOnly` boolean prop makes the TextField's text content immutable. Unli
       },
     }}
   >
-    {TextFieldSizes.bind({})}
+    {SelectSizes.bind({})}
   </Story>
 </Canvas>
 
@@ -298,7 +342,7 @@ The `isReadOnly` boolean prop makes the TextField's text content immutable. Unli
 Both a description and an error message can be supplied to a TextField. The description is always visible unless the validationState is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localized.
 
 <Story
-  name="h) Help text"
+  name="i) Help text"
   args={{
     label: "Name",
   }}
@@ -306,8 +350,8 @@ Both a description and an error message can be supplied to a TextField. The desc
     docs: {
       source: {
         code: dedent`
-  let [value, setValue] = useState("0");
-  let isValid = useMemo(() => /^\d$/.test(value), [value]);
+  const [value, setValue] = useState("0");
+  const isValid = useMemo(() => /^\d$/.test(value), [value]);
   return (
     <InputText
       validationState={isValid ? "valid" : "invalid"}
@@ -330,35 +374,11 @@ Both a description and an error message can be supplied to a TextField. The desc
   {HelpTextExample.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--h-help-text" />
+<Source language="tsx" id="inputs-select--i-help-text" />
 
-## Input Adornments
+## Select Props
 
-The main way is with an `InputAdornment`. This can be used to add a prefix, a suffix, or an action to an input. For instance, you can use an icon button to hide or reveal the password.
-
-<Story
-  name="i) Input Adornments"
-  args={{
-    label: "Name",
-  }}
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-    <InputText label="Amount" startAdornment="$" />
-`,
-      },
-    },
-  }}
->
-  {AdornmentExample.bind({})}
-</Story>
-
-<Source language="tsx" id="inputs-textfield--h-help-text" />
-
-## TextField Props
-
-<ArgsTable of={TextFieldType} />
+<ArgsTable of={SelectType} />
 
 argTypes: { label: { control: { type: 'text'} } }
 

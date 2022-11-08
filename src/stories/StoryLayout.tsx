@@ -44,6 +44,7 @@ export const StoryGrid = (props: any) => (
         display: "grid",
         gap: props.gap || "24px",
         gridTemplateColumns: props.cols || undefined,
+        minWidth: props.minWidth,
       }}
     >
       {props.children}

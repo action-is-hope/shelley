@@ -21,5 +21,7 @@
 
 .placeholder {
   font-style: italic;
-  /* visibility: hidden; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

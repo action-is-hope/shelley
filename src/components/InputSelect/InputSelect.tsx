@@ -1,19 +1,17 @@
 import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
 import ReactDOM from "react-dom";
 import InputBase from "../InputBase/InputBase";
-
 import type { InputBaseProps } from "../InputBase/InputBase";
-/* = Style API. */
-import { classes } from "./inputSelect.st.css";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
-
 import Popup from "../Popup/Popup";
 import Button from "../Button/Button";
 import ListBox from "../ListBox/ListBox";
+/* = Style API. */
+import { st, classes } from "./inputSelect.st.css";
 
 export interface InputSelectProps<T>
-  extends AriaSelectOptions<T>,
+  extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
     Omit<InputBaseProps, "label" | "startAdornment" | "endAdornment"> {
   disabled?: boolean;
   className?: string;
@@ -22,27 +20,32 @@ export interface InputSelectProps<T>
    * @default 'body'
    */
   portalSelector?: string;
+  /**
+   * Should the ListBox items be focused on hover.
+   * Useful for scrolled lists to stop a jump on hover when reselecting.
+   */
+  shouldFocusOnHover?: boolean;
 }
 
 function InputSelect<T extends object>(
   props: InputSelectProps<T>,
-  ref?: React.RefObject<HTMLButtonElement>
+  ref?: React.Ref<HTMLButtonElement>
 ) {
   const {
     className: classNameProp,
     description,
     disabled,
-    isDisabled,
     errorMessage,
     validationState,
     portalSelector = "body",
     variant,
     label,
     labelPosition,
+    disableLabelTransition,
     vol,
     children,
     placeholder = "Select an option",
-    ...rest
+    shouldFocusOnHover = true,
   } = props;
 
   // Create state based on the incoming props
@@ -50,7 +53,7 @@ function InputSelect<T extends object>(
 
   // Get props for child elements from useSelect
   const localRef = ref || useRef(null);
-  // const buttonRef = useRef(null);
+
   let {
     labelProps,
     triggerProps,
@@ -79,14 +82,16 @@ function InputSelect<T extends object>(
           ...labelProps,
           onClick: () => {
             // Manually trigger a click on the button if clicking the label text.
-            localRef?.current?.click();
+            !state.isOpen &&
+              (localRef as RefObject<HTMLButtonElement>)?.current?.click();
           },
         },
-        disableLabelTransition: state.isOpen || Boolean(state.selectedItem),
+        disableLabelTransition:
+          disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,
         vol,
       }}
-      className={`${classes.root} ${classNameProp}`}
+      className={st(classes.root, classNameProp)}
     >
       <>
         <HiddenSelect
@@ -119,7 +124,14 @@ function InputSelect<T extends object>(
               triggerRef={localRef}
               placement="bottom start"
             >
-              <ListBox children={children} {...menuProps} state={state} />
+              <ListBox
+                {...menuProps}
+                {...{
+                  children,
+                  shouldFocusOnHover,
+                  state,
+                }}
+              />
             </Popup>,
             document.querySelector(portalSelector) as HTMLElement
           )}
@@ -133,7 +145,7 @@ function InputSelect<T extends object>(
  */
 // forwardRef doesn't support generic parameters, so cast the result to the correct type
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _InputSelect = React.forwardRef(InputSelect) as <T>(
+const _InputSelect = forwardRef(InputSelect) as <T>(
   props: InputSelectProps<T> & { ref?: Ref<HTMLButtonElement> }
 ) => ReactElement;
 export { _InputSelect as InputSelect };
