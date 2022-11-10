@@ -24,7 +24,7 @@ interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
 }
 
 function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
-  let {
+  const {
     description,
     errorMessage,
     validationState,
@@ -34,7 +34,8 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     errorMessageProps,
     className: classNameProp,
   } = props;
-  let isErrorMessage = (errorMessage && validationState === "invalid") || false;
+  const isErrorMessage =
+    (errorMessage && validationState === "invalid") || false;
 
   return (
     <>

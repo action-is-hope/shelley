@@ -4,6 +4,7 @@ import InputBase from "../InputBase/InputBase";
 import type { InputBaseProps } from "../InputBase/InputBase";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
+import { mergeRefs } from "@react-aria/utils";
 import Popup from "../Popup/Popup";
 import Button from "../Button/Button";
 import ListBox from "../ListBox/ListBox";
@@ -51,10 +52,9 @@ function InputSelect<T extends object>(
   // Create state based on the incoming props
   const state = useSelectState(props);
 
-  // Get props for child elements from useSelect
-  const localRef = ref || useRef(null);
+  const localRef = useRef(null);
 
-  let {
+  const {
     labelProps,
     triggerProps,
     valueProps,
@@ -102,7 +102,8 @@ function InputSelect<T extends object>(
         />
         <Button
           {...triggerProps}
-          ref={localRef}
+          // This is where we put the forwardedRef and the local one.
+          ref={ref ? mergeRefs(ref, localRef) : localRef}
           variant={false}
           className={classes.trigger}
         >

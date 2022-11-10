@@ -2,7 +2,7 @@
 import React, { Ref, forwardRef, RefObject, useRef } from "react";
 import type { PositionProps } from "@react-types/overlays";
 import { FocusScope } from "@react-aria/focus";
-import { mergeProps } from "@react-aria/utils";
+import { mergeProps, mergeRefs } from "@react-aria/utils";
 import {
   useOverlay,
   DismissButton,
@@ -42,7 +42,8 @@ export const Popup = forwardRef(
       shouldFlip,
       ...rest
     } = props;
-    const localRef = ref || useRef(null);
+    const localRef = useRef(null);
+    // Aria hook
     const { overlayProps } = useOverlay(
       {
         onClose,
@@ -74,7 +75,7 @@ export const Popup = forwardRef(
         <div
           className={st(classes.root)}
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
-          ref={localRef}
+          ref={ref ? mergeRefs(ref, localRef) : localRef}
         >
           <DismissButton onDismiss={props.onClose} />
           {props.children}

@@ -18,8 +18,11 @@ export interface ListBoxProps<T> extends AriaListBoxOptions<T> {
 export function ListBox<T extends object>(props: ListBoxProps<T>) {
   const { className } = props;
   const ref = useRef(null);
-  // Create state based on the incoming props.
-  const state = props.state || useListState({ ...props });
+
+  // Create state based on the incoming props, if state is provided use that.
+  let state = useListState({ ...props });
+  if (props.state) state = props.state;
+
   // Get props for the listbox element
   const { listBoxProps, labelProps } = useListBox(props, state, ref);
 

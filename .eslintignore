@@ -6,3 +6,6 @@ dist
 # Stylable definitions.
 *.st.css.d.ts
 *.st.css.d.ts.map
+#Files
+cypress/support/commands.ts
+src/stories/*

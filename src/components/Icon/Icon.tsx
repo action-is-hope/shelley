@@ -39,7 +39,7 @@ const Icon = React.forwardRef(
       <>
         <svg
           className={st(classes.root, classNameProp)}
-          focusable="false"
+          // focusable="false"
           viewBox={viewBox}
           aria-hidden={true}
           ref={ref}

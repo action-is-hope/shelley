@@ -46,13 +46,10 @@ function InputText(
     startAdornment,
     isReadOnly,
     isRequired,
-    // isDisabled,
     endAdornment,
-    // placeholder,
     type = "text",
     value,
     defaultValue,
-    // ...rest
   } = props;
   /**
    * textValue stores the value to be used to format multiline and stylews for hasValue:
@@ -65,32 +62,16 @@ function InputText(
   const textareaRef = ref as RefObject<HTMLTextAreaElement>;
   const inputRef = ref as RefObject<HTMLInputElement>;
 
-  // let isLabelSmall = false;
-  // if (textValue) {
-  //   // isLabelSmall = true;
-  // }
-
-  let { labelProps, inputProps, descriptionProps, errorMessageProps } =
+  const { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField(
       {
         ...props,
-        // value,
-        // defaultValue,
-        // label,
         isDisabled: disabled,
-        // isReadOnly,
-        // placeholder,
-        // isRequired,
-        // errorMessage,
-        // description,
-        // type,
-        // validationState,
         onChange: (value) => {
           setTextValue(value);
           onChange && onChange(value);
         },
         inputElementType: isTextArea ? "textarea" : "input",
-        // ...rest,
       },
       isTextArea ? textareaRef : inputRef
     );

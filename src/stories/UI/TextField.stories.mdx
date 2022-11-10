@@ -165,12 +165,12 @@ The example below uses onChange to update a separate pre element with the same t
 
 <Source language="tsx" id="inputs-textfield--c-events" />
 
-## Type
+## Type and rows
 
 Standard text based input types supported (password, number etc) with the option to choose `textarea` and `rows` to define the number of rows to start with.
 
 <Story
-  name="d) Type"
+  name="d) Type and textareas"
   args={{
     label: "Textarea",
     type: "password",
@@ -190,7 +190,51 @@ Standard text based input types supported (password, number etc) with the option
   {TypeExample.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--d-type" />
+<Source language="tsx" id="inputs-textfield--d-type-and-textareas" />
+
+## Input Adornments
+
+The main way is with an `InputAdornment`. This can be used to add a prefix, a suffix, or an action to an input. For instance, you can use an icon button to hide or reveal the password.
+
+<Story
+  name="e) Input Adornments"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+    <InputText label="Amount" startAdornment="$" />
+`,
+      },
+    },
+  }}
+>
+  {AdornmentExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--e-input-adornments" />
+
+## Disabled
+
+A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
+
+<Story name="f) Disabled">
+  <InputText label="Label" defaultValue="Disabled" disabled />
+</Story>
+
+<Source language="tsx" id="inputs-textfield--f-disabled" />
+
+## Readonly
+
+The `isReadOnly` boolean prop makes the TextField's text content immutable. Unlike `disabled`, the TextField remains focusable and the contents can still be copied. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
+
+<Story name="g) Readonly">
+  <InputText label="Label" defaultValue="Read only" isReadOnly />
+</Story>
+
+<Source language="tsx" id="inputs-textfield--g-readonly" />
 
 ## Variants &amp; label position
 
@@ -203,7 +247,7 @@ TextField is a complete form control including a label, input, and help text. It
 If you want a clean base to create a new variant from (styled via className) then set variant to `false`.
 
 <Story
-  name="d) Variants &amp; label position"
+  name="h) Variants &amp; label position"
   args={{
     label: "Label",
     variant: "outlined",
@@ -226,7 +270,7 @@ If you want a clean base to create a new variant from (styled via className) the
   {BasicTextField.bind()}
 </Story>
 
-<ArgsTable story="d) Variants &amp; label position" />
+<ArgsTable story="h) Variants &amp; label position" />
 
 Each variant supports multiple label positions giving us lots of options when laying out our forms:
 
@@ -235,45 +279,15 @@ Each variant supports multiple label positions giving us lots of options when la
 - `side`
   or it can be `hidden`
 
-## Disabled
-
-A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
-
-<Story name="e) Disabled">
-  <InputText label="Label" defaultValue="Disabled" disabled />
-</Story>
-
-<Source language="tsx" id="inputs-textfield--e-disabled" />
-
-## Readonly
-
-The `isReadOnly` boolean prop makes the TextField's text content immutable. Unlike `disabled`, the TextField remains focusable and the contents can still be copied. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
-
-<Story name="f) Readonly">
-  <InputText label="Label" defaultValue="Read only" isReadOnly />
-</Story>
-
-<Source language="tsx" id="inputs-textfield--f-readonly" />
-
 ## Volume/Size
 
 <Canvas>
   <Story
-    name="g) Volume / Size"
+    name="i) Volume / Size"
     args={{
       variant: "outlined",
       labelPosition: "side",
       disableLabelTransition: false,
-    }}
-    argTypes={{
-      backgroundColor: {
-        control: "color",
-        table: {
-          category: "Colors",
-          // Assigns the argTypes to a specific subcategory
-          subcategory: "Button colors",
-        },
-      },
     }}
   >
     {TextFieldSizes.bind({})}
@@ -285,7 +299,7 @@ The `isReadOnly` boolean prop makes the TextField's text content immutable. Unli
 Both a description and an error message can be supplied to a TextField. The description is always visible unless the validationState is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localized.
 
 <Story
-  name="h) Help text"
+  name="j) Help text"
   args={{
     label: "Name",
   }}
@@ -317,31 +331,7 @@ Both a description and an error message can be supplied to a TextField. The desc
   {HelpTextExample.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-textfield--h-help-text" />
-
-## Input Adornments
-
-The main way is with an `InputAdornment`. This can be used to add a prefix, a suffix, or an action to an input. For instance, you can use an icon button to hide or reveal the password.
-
-<Story
-  name="i) Input Adornments"
-  args={{
-    label: "Name",
-  }}
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-    <InputText label="Amount" startAdornment="$" />
-`,
-      },
-    },
-  }}
->
-  {AdornmentExample.bind({})}
-</Story>
-
-<Source language="tsx" id="inputs-textfield--i-input-adornments" />
+<Source language="tsx" id="inputs-textfield--j-help-text" />
 
 ## TextField Props
 

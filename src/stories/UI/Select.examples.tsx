@@ -5,7 +5,7 @@ import { InputSelect, InputSelectProps, InputText } from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
-export interface SelectPropsDocs extends InputSelectProps<object> {}
+export type SelectPropsDocs = InputSelectProps<object>;
 export function SelectType(props: SelectPropsDocs) {
   <>{props}</>;
 }
@@ -133,8 +133,8 @@ export const ControlledSelect = (args: InputSelectProps<ItemsType>) => {
 export const AsyncLoadingExample = (args: InputSelectProps<ItemsType>) => {
   const list: { items: ItemsType[] } = useAsyncList({
     async load({ signal, filterText }) {
-      let res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
-      let json = await res.json();
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
+      const json = await res.json();
 
       return {
         items: json.results,
@@ -232,8 +232,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
 };
 
 export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
-  let [animalId, setAnimalId] = useState(0);
-  let options = [
+  const [animalId, setAnimalId] = useState(0);
+  const options = [
     { id: 1, name: "Aardvark" },
     { id: 2, name: "Cat" },
     { id: 3, name: "Dog" },
@@ -244,7 +244,7 @@ export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
     { id: 8, name: "Turtle" },
     { id: 9, name: "Wombat" },
   ];
-  let isValid = useMemo(() => animalId !== 2 && animalId !== 7, [animalId]);
+  const isValid = useMemo(() => animalId !== 2 && animalId !== 7, [animalId]);
 
   return (
     <InputSelect
@@ -256,12 +256,12 @@ export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
           ? "The author of this example is a dog person."
           : "Oh god it's a snake! Choose anything else."
       }
-      vol={1}
       items={options}
       selectedKey={animalId}
       onSelectionChange={(selected) =>
         setAnimalId(selected as SetStateAction<number>)
       }
+      portalSelector="#portal"
     >
       {(item) => <Item>{item.name}</Item>}
     </InputSelect>

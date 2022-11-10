@@ -6,7 +6,7 @@ import {
   TextInputProps,
 } from "../../indexLib";
 import Eye from "../../components/icons/Eye";
-import React, { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 
 export interface InputTextPropsDocs extends InputBaseProps {
   /** The type of input field. */
@@ -75,7 +75,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
 };
 
 export const ValueExample = (args: InputTextProps) => {
-  let [value, setValue] = useState("me@email.com");
+  const [value, setValue] = useState("me@email.com");
 
   return (
     <>
@@ -98,7 +98,7 @@ export const ValueExample = (args: InputTextProps) => {
 };
 
 export const EventExample = (args: InputTextProps) => {
-  let [text, setText] = useState("");
+  const [text, setText] = useState("");
 
   return (
     <>
@@ -133,8 +133,8 @@ export const TypeExample = (args: TextInputProps) => {
 };
 
 export const HelpTextExample = (args: InputTextProps) => {
-  let [value, setValue] = useState("0");
-  let isValid = useMemo(() => /^\d$/.test(value), [value]);
+  const [value, setValue] = useState("0");
+  const isValid = useMemo(() => /^\d$/.test(value), [value]);
 
   return (
     <InputText
@@ -154,7 +154,7 @@ export const HelpTextExample = (args: InputTextProps) => {
 };
 
 export const AdornmentExample = (args: InputTextProps) => {
-  let [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   return (
