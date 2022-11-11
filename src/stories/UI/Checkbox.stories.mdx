@@ -1,17 +1,8 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { P, Blockquote, InputText, InputBase, Checkbox } from "../../indexLib";
-import { Item } from "@react-stately/collections";
+import { Checkbox } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
-import {
-  TextFieldSizes,
-  EventExample,
-  HelpTextExample,
-  AdornmentExample,
-  TypeExample,
-  TextFieldType,
-} from "./TextField.examples";
-import {ValueExample} from "./Checkbox.examples";
+import {ValueExample, EventExample} from "./Checkbox.examples";
 
 export const BasicCheckbox = (args) => <Checkbox {...args} />;
 
@@ -42,7 +33,7 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
   component={Checkbox}
   decorators={[
     (Story) => (
-      <StoryGrid>
+      <StoryGrid minWidth="150px" gap="8px">
         <Story />
       </StoryGrid>
     ),
@@ -141,6 +132,78 @@ A Checkbox can be in an indeterminate state, controlled using the `isIndetermina
 </Story>
 
 <Source language="tsx" id="inputs-checkbox--c-indeterminate" />
+
+## Events
+
+Checkboxes accept a user defined onChange prop, triggered whenever the Checkbox is clicked. The example below uses onChange to alert the user to changes in the checkbox's state.
+
+<Story
+  name="d) Events"
+  args={{children: "I accept the terms and conditions"}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  let [selected, setSelection] = useState(false);\n
+  return (
+    <>
+      <Checkbox isSelected={selected} onChange={setSelection}>
+        Subscribe
+      </Checkbox>
+      <P vol={1}>{\`You \${selected ? "have accepted" : "have not accepted"}\`}</P>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {EventExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--d-events" />
+
+## Validation
+
+Checkboxes can display a validation state to communicate to the user if the current value is invalid. Implement your own validation logic in your app and pass "invalid" to the Checkbox via the `validationState` prop.
+
+<Story
+  name="e) Validation"
+  args={{children: "I accept the terms and conditions", validationState: "invalid"}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Checkbox validationState="invalid">
+  I accept the terms and conditions
+</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--e-validation" />
+
+## Disabled 
+<Story
+  name="f) Disabled"
+  args={{children: "I accept the terms and conditions", disabled: true}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Checkbox disabled>
+  I accept the terms and conditions
+</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--e-validation" />
 
 
 ## Checkbox Props

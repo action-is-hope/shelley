@@ -1,9 +1,7 @@
 import {
   InputText,
-  InputTextProps,
+  P,
   InputBaseProps,
-  Button,
-  TextInputProps,
   Checkbox,
   CheckboxProps,
 } from "../../indexLib";
@@ -29,6 +27,19 @@ export const ValueExample = (args: CheckboxProps) => {
       <Checkbox {...args} isSelected={selected} onChange={setSelected}>
         Subscribe (controlled)
       </Checkbox>
+    </>
+  );
+};
+
+export const EventExample = (args: CheckboxProps) => {
+  let [selected, setSelection] = useState(false);
+
+  return (
+    <>
+      <Checkbox {...args} isSelected={selected} onChange={setSelection}>
+        I accept the terms and conditions
+      </Checkbox>
+      <P vol={1}>{`You ${selected ? "have accepted" : "have not accepted"}`}</P>
     </>
   );
 };

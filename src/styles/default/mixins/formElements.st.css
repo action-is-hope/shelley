@@ -429,6 +429,7 @@
   background: transparent;
   height: 1em;
   width: 1em;
+  margin: 0;
   cursor: pointer;
   position: relative;
   border-radius: 0;
