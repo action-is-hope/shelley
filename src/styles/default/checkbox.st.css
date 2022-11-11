@@ -1,0 +1,199 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-form-base-border;
+}
+
+/* = Root style API. */
+:import {
+  -st-from: "../../components/Checkbox/checkbox.st.css";
+  -st-default: Checkbox;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    SelectionControlRoot,
+    SelectionControlFieldInput,
+    RadioCheckboxCommon,
+    CheckboxFieldInput,
+    CheckboxIsIndeterminate,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6,
+    selectionControlVol1,
+    selectionControlVol2,
+    selectionControlVol3,
+    selectionControlVol4,
+    selectionControlVol5,
+    selectionControlVol6;
+}
+
+@st-scope Default {
+
+  Checkbox {
+    /* display: inline-flex;
+    flex-direction: column-reverse; */
+  }
+
+  Checkbox::inputLabel {
+    gap: calc(var(--spacing-unit) / 2);
+    cursor: pointer;
+  }
+
+  Checkbox:disabled::inputLabel {
+    cursor: not-allowed;
+  }
+
+  Checkbox::inputContainer {
+    -st-mixin: SelectionControlRoot;
+  }
+
+  Checkbox::input {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  /* = Radio Checkbox common styles. */
+  Checkbox::input {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  Checkbox::input {
+    -st-mixin: CheckboxFieldInput;
+  }
+
+  Checkbox:isIndeterminate::input {
+    -st-mixin: CheckboxIsIndeterminate;
+  }
+
+  Checkbox:isFocusVisible::input::after {
+    opacity: 1;
+  }
+
+  /* ==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  Checkbox:vol(1) {
+    -st-mixin: inputVol1
+  }
+
+  Checkbox:vol(1)::inputContainer {
+    -st-mixin: selectionControlVol1
+  }
+
+  /* = Volume 2 */
+  Checkbox:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  Checkbox:vol(2)::inputContainer {
+    -st-mixin: selectionControlVol2;
+  }
+
+  /* = Volume 3 */
+  Checkbox:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+  Checkbox:vol(3)::inputContainer {
+    -st-mixin: selectionControlVol3
+  }
+
+  /* = Volume 4 */
+  Checkbox:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  Checkbox:vol(4)::inputContainer {
+    -st-mixin: selectionControlVol4
+  }
+
+  /* = Volume 5 */
+  Checkbox:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  Checkbox:vol(5)::inputContainer {
+    -st-mixin: selectionControlVol5
+  }
+
+  /* = Volume 6 */
+  Checkbox:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+  Checkbox:vol(6)::inputContainer {
+    -st-mixin: selectionControlVol6
+  }
+
+  /* ==== VARIANTS ====*/
+
+  /* = Variant 1 - Basic alignment. */
+
+  Checkbox Icon {
+    font-size: 2em;
+  }
+
+  Checkbox:variant(1)::inputLabel:inputPos(top)::textContainer {
+    padding-top: calc(var(--spacing-unit) / 2);
+  }
+
+  Checkbox:variant(1)::inputLabel:inputPos(end)::textContainer {
+    /* rtl padding-left: var(--spacing-unit); */
+    padding-right: var(--spacing-unit);
+  }
+
+  Checkbox:variant(1)::inputLabel:inputPos(bottom)::textContainer {
+    padding-bottom: calc(var(--spacing-unit) / 2);
+  }
+
+  Checkbox:variant(1)::inputLabel:inputPos(start)::textContainer {
+    padding-left: var(--spacing-unit);
+    /* = rtl padding-right: var(--spacing-unit); */
+  }
+
+
+  /* = Variant 2 - Form row style. */
+  Checkbox:variant(2) {
+    display: flex;
+  }
+
+  Checkbox:variant(2)::inputLabel:hasInput {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: var(--spacing-unit);
+  }
+
+  Checkbox:variant(2)::inputLabel::labelText {
+    justify-content: flex-end;
+  }
+
+  Checkbox:variant(2) SelectionControl {
+    padding: var(--spacing-unit);
+    border-left: 1px solid var(--color-form-base-border);
+  }
+
+  Checkbox:variant(2) HelpText {
+    border-left-width: 1px;
+    padding: 4px var(--spacing-unit) 8px;
+    /* 12px is from 18px / 3 * 2 */
+    margin-left: calc(100% / 3 + 12px);
+  }
+}

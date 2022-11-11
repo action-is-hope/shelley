@@ -11,7 +11,7 @@
     --color-focus;
 }
 
-/* = pseudoFocus mixing baby! */
+/* = pseudoFocus mixin. */
 .pseudoFocus {
   display: block;
   content: "";

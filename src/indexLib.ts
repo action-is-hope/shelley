@@ -16,6 +16,9 @@ export * from "./components/Button/Button";
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export * from "./components/ButtonGroup/ButtonGroup";
 
+export { default as Checkbox } from "./components/Checkbox/Checkbox";
+export * from "./components/Checkbox/Checkbox";
+
 export { HelpText } from "./components/HelpText/HelpText";
 export * from "./components/HelpText/HelpText";
 

@@ -176,35 +176,6 @@
 .labelSmall {
   /* transform: translate(9px, -10px) scale(0.75); */
   /* transform: translate(9px, -10px) scale(0.75); */
-
-  /* 
-  2@0.694
-  3@0.631
-  4@0.5046
-  5@0.4336
-  */
-  /*
-  1 = 16px = 12
-  2= 17.554px 0.675  0.7  0.69->12.075  6.85->12.02
-  3 = 19.1108
-
-  size: 4 scale 6
-  size: 5 scale 55
-  size: 6 scale 45
-
-  4@65
-  5@6
-  6@55
-
-  */
-
-  /* transform: translate(17px, -13px) scale(0.45); */
-
-  /* background: #181a23; */
-  /* box-shadow: 0 0 0 8px #181a23; */
-
-  /* quiet */
-
 }
 
 /* Quiet */
@@ -336,7 +307,7 @@
   font-size: value(inputVol1Label);
 }
 
-.inputVol1 SelectionControl {
+.selectionControlVol1 {
   font-size: value(inputVol1SelectionControl);
 }
 
@@ -352,7 +323,7 @@
   font-size: value(inputVol2Label);
 }
 
-.inputVol2 SelectionControl {
+.selectionControlVol2 {
   font-size: value(inputVol2SelectionControl);
 }
 
@@ -368,7 +339,7 @@
   font-size: value(inputVol3Label);
 }
 
-.inputVol3 SelectionControl {
+.selectionControlVol3 {
   font-size: value(inputVol3SelectionControl);
 }
 
@@ -384,7 +355,7 @@
   font-size: value(inputVol4Label);
 }
 
-.inputVol4 SelectionControl {
+.selectionControlVol4 {
   font-size: value(inputVol4SelectionControl);
 }
 
@@ -404,7 +375,7 @@
   font-size: value(inputVol5Label);
 }
 
-.inputVol5 SelectionControl {
+.selectionControlVol5 {
   font-size: value(inputVol5SelectionControl);
 }
 
@@ -424,7 +395,7 @@
   font-size: value(inputVol6Label);
 }
 
-.inputVol6 SelectionControl {
+.selectionControlVol6 {
   font-size: 36px;
   font-size: value(inputVol6SelectionControl);
 }
@@ -478,10 +449,10 @@
 }
 
 /* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
-.SelectionControlFieldInput:focus::after,
+/* .SelectionControlFieldInput:focus::after,
 .SelectionControlFieldInput:active::after {
   -st-mixin: pseudoFocusVisible
-}
+} */
 
 @-moz-document url-prefix() {
   /* = See inputSelectionControl.st.css for FF issue. @stylable not picking up. */
@@ -521,12 +492,7 @@
   height: 0.5em;
   opacity: 0;
   display: block;
-  background-color: #ddd;
   background-color: var(--color-form-selection-notch);
-}
-
-.RadioCheckboxCommon:checked::before {
-  opacity: 1;
 }
 
 /**
@@ -538,10 +504,22 @@
   border-radius: 50%;
 }
 
+.RadioFieldInput:checked::before {
+  opacity: 1;
+}
+
 /**
  * = CHECKBOX
  */
-.CheckboxFieldInput {}
+
+.CheckboxFieldInput:checked::before {
+  opacity: 1;
+}
+
+.CheckboxIsIndeterminate::before {
+  opacity: 1;
+  height: 0.1em;
+}
 
 
 /**

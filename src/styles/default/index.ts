@@ -4,6 +4,7 @@ import "./allGlobal.st.css";
 // = Foundation Components
 import "./button.st.css";
 import "./blockquote.st.css";
+import "./checkbox.st.css";
 import "./helpText.st.css";
 import "./grid.st.css";
 import "./hintText.st.css";

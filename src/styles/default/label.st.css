@@ -43,8 +43,6 @@
   }
 
   Label::labelText {
-    /* display: flex; */
-    align-self: flex-end;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }

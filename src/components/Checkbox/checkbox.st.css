@@ -1,0 +1,24 @@
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+.root {
+  -st-states:
+    disabled,
+    error,
+    isFocusVisible,
+    isIndeterminate,
+    isSelected,
+    validationState(enum(valid, invalid)),
+    variant(number),
+    vol(number);
+}
+
+.inputLabel {
+  -st-extends: InputLabel;
+}
+
+.inputContainer {}
+
+.input {}
