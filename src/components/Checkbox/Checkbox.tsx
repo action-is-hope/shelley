@@ -12,9 +12,8 @@ import { st, classes } from "./checkbox.st.css";
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 export interface CheckboxProps extends Omit<AriaCheckBoxProps, "isDisabled"> {
   className?: string;
+  /** Disables the checkbox. */
   disabled?: boolean;
-  /** Variant index. */
-  variant?: Variant;
   /** The position of the label relative to the label. */
   inputPos?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
@@ -30,7 +29,6 @@ const Checkbox = forwardRef(
       children,
       disabled = false,
       validationState,
-      variant = 1,
       visuallyHideLabel,
       inputPos,
       isIndeterminate,
@@ -63,7 +61,6 @@ const Checkbox = forwardRef(
         className={st(
           classes.root,
           {
-            variant,
             disabled,
             isFocusVisible,
             isIndeterminate,

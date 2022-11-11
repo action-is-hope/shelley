@@ -1,20 +1,5 @@
-import {
-  InputText,
-  P,
-  InputBaseProps,
-  Checkbox,
-  CheckboxProps,
-} from "../../indexLib";
-import Eye from "../../components/icons/Eye";
-import { useState, useMemo, useRef } from "react";
-
-export interface InputTextPropsDocs extends InputBaseProps {
-  /** The type of input field. */
-  type?: string;
-}
-export function TextFieldType(props: InputTextPropsDocs) {
-  <>{props.type}</>;
-}
+import { P, Checkbox, CheckboxProps } from "../../indexLib";
+import { useState } from "react";
 
 export const ValueExample = (args: CheckboxProps) => {
   let [selected, setSelected] = useState(true);
