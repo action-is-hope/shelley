@@ -60,8 +60,8 @@ export const ComponentDemo = () => {
       value: 3,
     },
     {
-      name: "inputPos",
-      label: "inputPos",
+      name: "inputPosition",
+      label: "inputPosition",
       type: "select",
       value: "end",
       options: ["top", "end", "bottom", "start"],
@@ -118,7 +118,7 @@ export const ComponentDemo = () => {
               : ``
           } ${
             InputDemoProps[5].value
-              ? `\n  inputPos="${InputDemoProps[5].value}"`
+              ? `\n  inputPosition="${InputDemoProps[5].value}"`
               : ``
           } ${
             InputDemoProps[6].value
@@ -143,7 +143,7 @@ export const ComponentDemo = () => {
           type={InputDemoProps[2].value}
           variant={InputDemoProps[3].value}
           vol={InputDemoProps[4].value}
-          inputPos={InputDemoProps[5].value}
+          inputPosition={InputDemoProps[5].value}
           error={InputDemoProps[6].value}
           touched={InputDemoProps[7].value}
           disabled={InputDemoProps[8].value}
@@ -184,14 +184,14 @@ export const Example1 = () => (
         </Icon>
       }
       vol={1}
-      inputPos="bottom"
+      inputPosition="bottom"
       type="toggle"
     />
     <br />
 
     <InputSelection
       id="laptop"
-      inputPos="top"
+      inputPosition="top"
       name="viewPort"
       label={
         <Icon alt="Laptop">
@@ -204,7 +204,7 @@ export const Example1 = () => (
     />
     <InputSelection
       id="tablet"
-      inputPos="top"
+      inputPosition="top"
       name="viewPort"
       label={
         <Icon alt="Tablet">
@@ -217,7 +217,7 @@ export const Example1 = () => (
     />
     <InputSelection
       id="mobile"
-      inputPos="top"
+      inputPosition="top"
       name="viewPort"
       label={
         <Icon alt="Mobile">
@@ -239,14 +239,14 @@ export const Example1 = () => (
     </Icon>
   }
   vol={1}
-  inputPos="bottom"
+  inputPosition="bottom"
   type="toggle"
 />
 
 /* = Device selection radio group. */
 <InputSelection
   id="laptop"
-  inputPos="top"
+  inputPosition="top"
   name="viewPort"
   label={
     <Icon alt="Laptop">
@@ -258,7 +258,7 @@ export const Example1 = () => (
 />
 <InputSelection
   id="tablet"
-  inputPos="top"
+  inputPosition="top"
   name="viewPort"
   label={
     <Icon alt="Tablet">
@@ -270,7 +270,7 @@ export const Example1 = () => (
 />
 <InputSelection
   id="mobile"
-  inputPos="top"
+  inputPosition="top"
   name="viewPort"
   label={
     <Icon alt="Mobile">
@@ -286,7 +286,7 @@ export const Example1 = () => (
     {/* <div>
       <Label
         htmlFor="id-ex1-1"
-        inputPos="bottom"
+        inputPosition="bottom"
         inputControl={<InputSelectionControl id="id-ex1-1" type="toggle" />}
       >
         <Icon viewBox="0 0 24 24" alt="Toggle preview">

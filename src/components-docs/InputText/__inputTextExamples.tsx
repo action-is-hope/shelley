@@ -205,7 +205,7 @@ export const ComponentDemo = () => {
 
       <InputSelection
         id="laptop"
-        inputPos="start"
+        inputPosition="start"
         name="viewPort"
         label="Check the terms and conditions"
         error="You have an error here yo"

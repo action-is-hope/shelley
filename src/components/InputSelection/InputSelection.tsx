@@ -23,7 +23,7 @@ export interface InputSelectionProps
   /** The label to associated with the input. */
   label?: React.ReactNode;
   /** The position of the label relative to the label. */
-  inputPos?: AlignPos;
+  inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
@@ -48,7 +48,7 @@ const InputSelection = React.forwardRef(
       variant = 1,
       label,
       visuallyHideLabel,
-      inputPos = "end",
+      inputPosition = "end",
       vol = 3,
       ...rest
     }: InputSelectionProps,
@@ -89,7 +89,7 @@ const InputSelection = React.forwardRef(
         {label ? (
           <Label
             htmlFor={id}
-            {...{ hint, inputControl, inputPos }}
+            {...{ hint, inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
           >
             {label}

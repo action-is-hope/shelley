@@ -88,7 +88,7 @@ const TableDocs: React.VFC = () => {
                         type="checkbox"
                         variant={1}
                         vol={3}
-                        inputPos="start"
+                        inputPosition="start"
                         error="Form item error message"
                       />
                     </TableCell>

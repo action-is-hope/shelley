@@ -110,7 +110,7 @@ export const Example1 = () => {
 //                   type="checkbox"
 //                   variant={1}
 //                   vol={1}
-//                   inputPos="start"
+//                   inputPosition="start"
 //                   error="Form item error message"
 //                 />
 //               </TableCell>
@@ -180,7 +180,7 @@ export const Example3 = () => {
                 type="checkbox"
                 variant={1}
                 vol={1}
-                inputPos="start"
+                inputPosition="start"
                 error="Form item error message"
                 visuallyHideLabel
                 onChange={handleSelectAllClick}
@@ -298,7 +298,7 @@ export const Example4 = () => {
                 type="checkbox"
                 variant={1}
                 vol={1}
-                inputPos="start"
+                inputPosition="start"
                 error="Form item error message"
                 visuallyHideLabel
                 onChange={handleSelectAllClick}

@@ -85,7 +85,7 @@ export const ComponentDemo = () => {
         hint={labelDemoProps[1].value}
         // htmlFor={labelDemoProps[2].value}
         visuallyHidden={labelDemoProps[3].value}
-        inputPos="bottom"
+        inputPosition="bottom"
         inputControl={
           labelDemoProps[4].value !== "none" ? (
             <InputSelectionControl
@@ -144,10 +144,10 @@ Label Hint {}
 Label.hasInput {}
 
 /* Input positions */
-Label:inputPos(top) {}
-Label:inputPos(end) {}
-Label:inputPos(bottom) {}
-Label:inputPos(start) {}
+Label:inputPosition(top) {}
+Label:inputPosition(end) {}
+Label:inputPosition(bottom) {}
+Label:inputPosition(start) {}
 `}</CodeSample>
 );
 

@@ -15,7 +15,7 @@ export interface CheckboxProps extends Omit<AriaCheckBoxProps, "isDisabled"> {
   /** Disables the checkbox. */
   disabled?: boolean;
   /** The position of the label relative to the label. */
-  inputPos?: AlignPos;
+  inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
@@ -30,7 +30,7 @@ const Checkbox = forwardRef(
       disabled = false,
       validationState,
       visuallyHideLabel,
-      inputPos,
+      inputPosition,
       isIndeterminate,
       vol = 1,
     } = props;
@@ -74,7 +74,7 @@ const Checkbox = forwardRef(
         {children ? (
           <Label
             className={classes.inputLabel}
-            {...{ inputControl, inputPos }}
+            {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
           >
             {children}

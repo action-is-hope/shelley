@@ -50,29 +50,29 @@
   /*==== Input Positions ====*/
 
   /* = top */
-  Label:inputPos(top):hasInput {
+  Label:inputPosition(top):hasInput {
     flex-direction: column-reverse;
   }
 
-  Label:inputPos(top)::labelText {
+  Label:inputPosition(top)::labelText {
     justify-content: center;
   }
 
   /* = end / right */
-  Label:inputPos(end):hasInput {
+  Label:inputPosition(end):hasInput {
     flex-direction: row;
   }
 
-  Label:inputPos(end)::labelText {
+  Label:inputPosition(end)::labelText {
     justify-content: flex-end;
   }
 
   /* = bottom */
-  Label:inputPos(bottom):hasInput {
+  Label:inputPosition(bottom):hasInput {
     flex-direction: column;
   }
 
-  Label:inputPos(bottom)::labelText {
+  Label:inputPosition(bottom)::labelText {
     justify-content: center;
   }
 
