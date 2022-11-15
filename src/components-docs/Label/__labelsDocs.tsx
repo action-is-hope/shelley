@@ -1,7 +1,7 @@
 import type React from "react";
 import classnames from "classnames";
 
-import { InputText, P, H2, Grid, Blockquote } from "../../indexLib";
+import { TextField, P, H2, Grid, Blockquote } from "../../indexLib";
 import { classes as grid } from "../../styles/default/grid.st.css";
 import { classes as utils } from "../../styles/shelley/utils.st.css";
 
@@ -68,7 +68,7 @@ const LabelsDocs: React.VFC = () => {
         </P>
 
         <div className={classnames(grid.pen, utils.exampleBox)}>
-          <InputText
+          <TextField
             id="labelExampleId1"
             label={"Label text"}
             placeholder="We need some focus, up in here, up in here!"

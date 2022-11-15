@@ -6,7 +6,7 @@ import {
   H2,
   H3,
   P,
-  InputText,
+  TextField,
   InputSelect,
   InputSelection,
 } from "../../indexLib";
@@ -46,7 +46,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
     switch (item.type) {
       case "text":
         return (
-          <InputText
+          <TextField
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             placeholder={item.label}
@@ -63,7 +63,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
         );
       case "textarea":
         return (
-          <InputText
+          <TextField
             id={`${item.name}`}
             key={`${item.name}-${i}`}
             type="textarea"
@@ -82,7 +82,7 @@ const PropsDemo: React.VFC<PropsDemoProps> = ({
         );
       case "number":
         return (
-          <InputText
+          <TextField
             id={`${item.name}`}
             defaultValue={item.value}
             key={`${item.name}-${i}`}

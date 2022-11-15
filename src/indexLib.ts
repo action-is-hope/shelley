@@ -49,8 +49,8 @@ export * from "./components/InputSelection/InputSelection";
 export { default as InputSelectionControl } from "./components/InputSelectionControl/InputSelectionControl";
 export * from "./components/InputSelectionControl/InputSelectionControl";
 
-export { InputText } from "./components/InputText/InputText";
-export * from "./components/InputText/InputText";
+export { TextField } from "./components/TextField/TextField";
+export * from "./components/TextField/TextField";
 
 export { default as ListBox } from "./components/ListBox/ListBox";
 export * from "./components/ListBox/ListBox";

@@ -1,4 +1,4 @@
-/* = inputText.st.css */
+/* = textField.st.css */
 :import {
   -st-from: "./project.st.css";
   -st-default: Default;
@@ -6,8 +6,8 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/InputText/inputText.st.css";
-  -st-default: InputText;
+  -st-from: "../../components/TextField/textField.st.css";
+  -st-default: TextField;
 }
 
 :import {
@@ -18,9 +18,9 @@
 @st-scope Default {
 
   /* = Base styles taken care of by Field. */
-  InputText {}
+  TextField {}
 
-  InputText InputLabel {}
+  TextField InputLabel {}
 
-  InputText::fieldContainer {}
+  TextField::fieldContainer {}
 }

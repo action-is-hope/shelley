@@ -17,7 +17,7 @@ import { HelpText } from "../../components/HelpText/HelpText";
 const InputTextDocs: React.VFC = () => {
   return (
     <>
-      <PageTitle>InputText</PageTitle>
+      <PageTitle>TextField</PageTitle>
 
       <HelpText
         description="Hellos"

@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { P, Blockquote, InputText, Field } from "../../indexLib";
+import { P, Blockquote, TextField, Field } from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import {
@@ -13,7 +13,7 @@ import {
   TextFieldType,
 } from "./TextField.examples";
 
-export const BasicTextField = (args) => <InputText {...args} />;
+export const BasicTextField = (args) => <TextField {...args} />;
 
 <Meta
   title="Inputs/TextField"
@@ -75,7 +75,7 @@ export const BasicTextField = (args) => <InputText {...args} />;
 <Source
   language="tsx"
   code={dedent`
-    import { InputText } from "@actionishope/shelley";
+    import { TextField } from "@actionishope/shelley";
   `}
 />
 
@@ -89,7 +89,7 @@ Allows our wonderful users to tell us something interesting by inputting some te
   parameters={{
     docs: {
       source: {
-        code: dedent`<InputText label="Name" />`,
+        code: dedent`<TextField label="Name" />`,
       },
     },
   }}
@@ -113,12 +113,12 @@ A TextField's `value` is empty by default, but an initial, uncontrolled, value c
 let [value, setValue] = useState("me@email.com");
 return (
   <>
-    <InputText
+    <TextField
       vol={1}
       label="Email (Uncontrolled)"
       defaultValue="me@email.com"
     />
-    <InputText
+    <TextField
       vol={1}
       label="Email (Controlled)"
       value={value}
@@ -152,7 +152,7 @@ The example below uses onChange to update a separate pre element with the same t
   let [text, setText] = useState("");
   return (
     <>
-      <InputText {...args} onChange={setText} label="Your text" />
+      <TextField {...args} onChange={setText} label="Your text" />
       <pre>Mirrored text: {text}</pre>
     </>
   );`,
@@ -179,10 +179,10 @@ Standard text based input types supported (password, number etc) with the option
     docs: {
       source: {
         code: dedent`
-      <InputText type="password" label="Password" />
-      <InputText type="textarea" label="Textarea" />
-      <InputText type="textarea" label="Textarea" rows={1} />
-      <InputText type="textarea" label="Textarea" rows={4} />`,
+      <TextField type="password" label="Password" />
+      <TextField type="textarea" label="Textarea" />
+      <TextField type="textarea" label="Textarea" rows={1} />
+      <TextField type="textarea" label="Textarea" rows={4} />`,
       },
     },
   }}
@@ -205,7 +205,7 @@ The main way is with an `InputAdornment`. This can be used to add a prefix, a su
     docs: {
       source: {
         code: dedent`
-    <InputText label="Amount" startAdornment="$" />
+    <TextField label="Amount" startAdornment="$" />
 `,
       },
     },
@@ -221,7 +221,7 @@ The main way is with an `InputAdornment`. This can be used to add a prefix, a su
 A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
 
 <Story name="f) Disabled">
-  <InputText label="Label" defaultValue="Disabled" disabled />
+  <TextField label="Label" defaultValue="Disabled" disabled />
 </Story>
 
 <Source language="tsx" id="inputs-textfield--f-disabled" />
@@ -231,7 +231,7 @@ A text field in a `disabled` state shows that an input field exists, but is not 
 The `isReadOnly` boolean prop makes the TextField's text content immutable. Unlike `disabled`, the TextField remains focusable and the contents can still be copied. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
 
 <Story name="g) Readonly">
-  <InputText label="Label" defaultValue="Read only" isReadOnly />
+  <TextField label="Label" defaultValue="Read only" isReadOnly />
 </Story>
 
 <Source language="tsx" id="inputs-textfield--g-readonly" />
@@ -310,7 +310,7 @@ Both a description and an error message can be supplied to a TextField. The desc
   let [value, setValue] = useState("0");
   let isValid = useMemo(() => /^\d$/.test(value), [value]);
   return (
-    <InputText
+    <TextField
       validationState={isValid ? "valid" : "invalid"}
       value={value}
       onChange={setValue}

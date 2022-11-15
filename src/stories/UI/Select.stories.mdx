@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import { P, Blockquote, InputText, InputSelect, Field } from "../../indexLib";
+import { P, Blockquote, TextField, InputSelect, Field } from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import {
@@ -347,7 +347,7 @@ Both a description and an error message can be supplied to a TextField. The desc
   const [value, setValue] = useState("0");
   const isValid = useMemo(() => /^\d$/.test(value), [value]);
   return (
-    <InputText
+    <TextField
       validationState={isValid ? "valid" : "invalid"}
       value={value}
       onChange={setValue}

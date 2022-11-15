@@ -1,0 +1,270 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Checkbox, CheckboxGroup } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import { ValueExample, EventExample } from "./CheckboxGroup.examples";
+
+export const BasicCheckboxGroup = (args) => (
+  <CheckboxGroup label="Favorite sports" {...args}>
+    <Checkbox value="football">Football</Checkbox>
+    <Checkbox value="baseball">Baseball</Checkbox>
+    <Checkbox value="basketball">Basketball</Checkbox>
+  </CheckboxGroup>
+);
+
+<Meta
+  title="Inputs/CheckboxGroup"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      value: "over",
+    },
+    validationState: {
+      options: ["valid", "invalid"],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={CheckboxGroup}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Checkbox group
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { CheckboxGroup, Checkbox } from "@actionishope/shelley";
+  `}
+/>
+
+A CheckboxGroup allows users to select one or more items from a list of choices.
+
+<Story
+  name="a) Checkbox group"
+  args={{
+    children: "Subscribe",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <CheckboxGroup label="Favorite sports">
+    <Checkbox value="football">Football</Checkbox>
+    <Checkbox value="baseball">Baseball</Checkbox>
+    <Checkbox value="basketball">Basketball</Checkbox>
+  </CheckboxGroup>`,
+      },
+    },
+  }}
+>
+  {BasicCheckboxGroup.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--a-checkbox-group" />
+
+## Content
+
+CheckboxGroup accepts multiple Checkbox elements as children. Each Checkbox represents an option that can be selected, labeled by its children.
+
+### Accessibility
+
+If a visible label isn't specified for a CheckboxGroup, an `aria-label` must be provided for accessibility. If the field is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+
+Checkbox elements within a group should always have a visible label.
+
+### Internationalization
+
+To internationalize a CheckboxGroup, a localized string should be passed to the label prop and as the child content of the Checkbox elements. For languages that are read right-to-left (e.g. Hebrew and Arabic), the Checkbox is automatically placed on the right side of the text.
+
+## Value
+
+CheckboxGroup supports selecting zero or more items. An initial, uncontrolled value can be provided to the CheckboxGroup using the `defaultValue` prop. Alternatively, a controlled value can be provided using the value prop. Both of these props accept an array of selected items, which map to the value prop on each item.
+
+<Story
+  name="b) Value"
+  args={{ label: "Email", value: "me@earth.com" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelected] = useState(["football", "baseball"]);\n
+  return (
+    <>
+      <CheckboxGroup
+        label="Favorite sports (uncontrolled)"
+        defaultValue={["football", "baseball"]}
+      >
+        <Checkbox value="football">Football</Checkbox>
+        <Checkbox value="baseball">Baseball</Checkbox>
+        <Checkbox value="basketball">Basketball</Checkbox>
+      </CheckboxGroup>\n
+      <CheckboxGroup
+        label="Favorite sports (controlled)"
+        value={selected}
+        onChange={setSelected}
+      >
+        <Checkbox value="football">Football</Checkbox>
+        <Checkbox value="baseball">Baseball</Checkbox>
+        <Checkbox value="basketball">Basketball</Checkbox>
+      </CheckboxGroup>
+    </>
+  );`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid cols="1fr 1fr">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <ValueExample />
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--b-value" />
+
+## Events
+
+Checkboxes accept a user defined `onChange` prop, triggered whenever the Checkbox is clicked. The example below uses `onChange` to alert the user to changes in the checkbox's state.
+
+<Story
+  name="c) Events"
+  args={{ children: "I accept the terms and conditions" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelected] = useState<string[]>([]);\n
+  return (
+    <>
+      <CheckboxGroup
+        label="Favorite sports"
+        value={selected}
+        onChange={setSelected}
+      >
+        <Checkbox value="football">Football</Checkbox>
+        <Checkbox value="baseball">Baseball</Checkbox>
+        <Checkbox value="basketball">Basketball</Checkbox>
+      </CheckboxGroup>
+      <P vol={1}>You have selected: {selected.join(", ")}</P>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {EventExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--c-events" />
+
+## Validation
+
+Checkboxes can display a validation state to communicate to the user if the current value is invalid. Implement your own validation logic in your app and pass "invalid" to the Checkbox via the `validationState` prop.
+
+<Story
+  name="d) Validation"
+  args={{
+    validationState: "invalid",
+    errorMessage: "Error message",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <CheckboxGroup label="Favorite sports" validationState="invalid">
+    <Checkbox value="football">Football</Checkbox>
+    <Checkbox value="baseball">Baseball</Checkbox>
+    <Checkbox value="basketball">Basketball</Checkbox>
+  </CheckboxGroup>`,
+      },
+    },
+  }}
+>
+  {BasicCheckboxGroup.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--d-validation" />
+
+## Disabled
+
+The entire CheckboxGroup can be disabled with the `isDisabled` prop.
+
+<Story
+  name="e) Disabled"
+  args={{ isDisabled: true }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <CheckboxGroup label="Favorite sports" isDisabled>
+    <Checkbox value="football">Football</Checkbox>
+    <Checkbox value="baseball">Baseball</Checkbox>
+    <Checkbox value="basketball">Basketball</Checkbox>
+  </CheckboxGroup>`,
+      },
+    },
+  }}
+>
+  {BasicCheckboxGroup.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--e-disabled" />
+
+To disable an individual checkbox, pass isDisabled to the Checkbox instead.
+
+## Read only
+
+The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Checkbox remains focusable. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
+
+<Story
+  name="f) Read only"
+  args={{
+    isReadOnly: true,
+    defaultValue: ["baseball"],
+    isSelected: true,
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+        <Checkbox isSelected isReadOnly>I accept the terms and conditions<Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckboxGroup.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkboxgroup--f-read-only" />
+
+## CheckboxGroup Props
+
+<ArgsTable of={CheckboxGroup} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

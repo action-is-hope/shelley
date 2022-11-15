@@ -1,5 +1,5 @@
-/** inputText.st.css */
-@namespace "InputText";
+/** textField.st.css */
+@namespace "TextField";
 
 :import {
   -st-from: '../Field/field.st.css';

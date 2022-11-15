@@ -7,7 +7,7 @@ import { useTextField } from "react-aria";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 
 /* = Style API. */
-import { st, classes } from "./inputText.st.css";
+import { st, classes } from "./textField.st.css";
 interface ITextCustomProps
   extends FieldProps,
     Omit<AriaTextFieldProps, "label"> {
@@ -27,7 +27,7 @@ export interface TextInputProps extends ITextCustomProps {
 export type InputTextProps<P extends React.ElementType = "input"> =
   MergeElementProps<P, TextareaProps | TextInputProps>;
 
-function InputText(
+function TextField(
   props: InputTextProps<"input" | "textarea">,
   ref?: Ref<HTMLTextAreaElement | HTMLInputElement>
 ) {
@@ -119,5 +119,5 @@ function InputText(
   );
 }
 
-const _InputText = forwardRef(InputText);
-export { _InputText as InputText };
+const _InputText = forwardRef(TextField);
+export { _InputText as TextField };

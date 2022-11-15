@@ -1,5 +1,5 @@
 import {
-  InputText,
+  TextField,
   InputTextProps,
   FieldProps,
   Button,
@@ -19,7 +19,7 @@ export function TextFieldType(props: InputTextPropsDocs) {
 export const TextFieldSizes = (args: TextInputProps) => {
   return (
     <>
-      <InputText
+      <TextField
         {...{
           label: "Name",
           vol: 1,
@@ -27,7 +27,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         }}
         {...args}
       />
-      <InputText
+      <TextField
         {...{
           label: "Email",
           type: "email",
@@ -36,7 +36,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         }}
         {...args}
       />
-      <InputText
+      <TextField
         {...{
           label: "Address",
           type: "textarea",
@@ -45,7 +45,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         }}
         {...args}
       />
-      <InputText
+      <TextField
         {...{
           label: "Telephone",
           type: "tel",
@@ -54,7 +54,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         }}
         {...args}
       />
-      <InputText
+      <TextField
         {...{
           label: "Fax",
           vol: 5,
@@ -62,7 +62,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
         }}
         {...args}
       />
-      <InputText
+      <TextField
         {...{
           label: "What3words",
           vol: 6,
@@ -79,14 +79,14 @@ export const ValueExample = (args: InputTextProps) => {
 
   return (
     <>
-      <InputText
+      <TextField
         vol={1}
         {...args}
         label="Email (Uncontrolled)"
         defaultValue="me@email.com"
       />
 
-      <InputText
+      <TextField
         vol={1}
         {...args}
         label="Email (Controlled)"
@@ -102,7 +102,7 @@ export const EventExample = (args: InputTextProps) => {
 
   return (
     <>
-      <InputText {...args} onChange={setText} label="Your text" />
+      <TextField {...args} onChange={setText} label="Your text" />
       <pre>Mirrored text: {text}</pre>
     </>
   );
@@ -111,18 +111,18 @@ export const EventExample = (args: InputTextProps) => {
 export const TypeExample = (args: TextInputProps) => {
   return (
     <>
-      <InputText {...args} type="password" label="Password" />
+      <TextField {...args} type="password" label="Password" />
 
-      <InputText {...args} type="textarea" label="Textarea (default rows)" />
+      <TextField {...args} type="textarea" label="Textarea (default rows)" />
 
-      <InputText
+      <TextField
         {...args}
         type="textarea"
         label="Textarea (single row)"
         rows={1}
       />
 
-      <InputText
+      <TextField
         {...args}
         type="textarea"
         label="Textarea (four rows)"
@@ -137,7 +137,7 @@ export const HelpTextExample = (args: InputTextProps) => {
   const isValid = useMemo(() => /^\d$/.test(value), [value]);
 
   return (
-    <InputText
+    <TextField
       validationState={isValid ? "valid" : "invalid"}
       value={value}
       onChange={setValue}
@@ -159,11 +159,11 @@ export const AdornmentExample = (args: InputTextProps) => {
 
   return (
     <>
-      <InputText label="Amount" startAdornment="$" />
+      <TextField label="Amount" startAdornment="$" />
 
-      <InputText label="Weight" endAdornment="kg" />
+      <TextField label="Weight" endAdornment="kg" />
 
-      <InputText
+      <TextField
         label="Password"
         type={showPassword ? "text" : "password"}
         ref={passwordRef}

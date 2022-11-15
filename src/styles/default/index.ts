@@ -12,7 +12,7 @@ import "./field.st.css";
 import "./inputSelect.st.css";
 import "./inputSelection.st.css";
 import "./inputSelectionControl.st.css";
-import "./inputText.st.css";
+import "./textField.st.css";
 import "./label.st.css";
 import "./listBox.st.css";
 import "./listBoxOption.st.css";

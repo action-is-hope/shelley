@@ -1,7 +1,7 @@
 import { SetStateAction, useState, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { InputSelect, InputSelectProps, InputText } from "../../indexLib";
+import { InputSelect, InputSelectProps, TextField } from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
@@ -44,7 +44,7 @@ export const SelectEvents = (args: ItemsType) => {
   const [animal, setAnimal] = useState("Bison");
   return (
     <>
-      <InputText label="Name" vol={1} placeholder="Type name" />
+      <TextField label="Name" vol={1} placeholder="Type name" />
       <InputSelect
         onSelectionChange={(key) => console.log(key)}
         items={animals}
@@ -58,7 +58,7 @@ export const SelectEvents = (args: ItemsType) => {
         {(item) => <Item>{item.name}</Item>}
       </InputSelect>
 
-      <InputText label="Name" />
+      <TextField label="Name" />
 
       <InputSelect
         label="Choose frequency"

@@ -1,6 +1,6 @@
 /* buttonExamples.tsx */
 import React from "react";
-import { InputText, InputSelection, InputSelect } from "../../indexLib";
+import { TextField, InputSelection, InputSelect } from "../../indexLib";
 
 import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
 import CodeSample from "../../components-site/CodeSample/CodeSample";
@@ -9,14 +9,14 @@ import CodeSample from "../../components-site/CodeSample/CodeSample";
 import { classes as grid } from "../../styles/default/grid.st.css";
 
 export const meta = {
-  name: "InputText",
+  name: "TextField",
 };
 
 export const QuickRef = () => (
   <CodeSample
     className={grid.mid}
-  >{`import InputText from "@actionishope/shelley";
-\n<InputText
+  >{`import TextField from "@actionishope/shelley";
+\n<TextField
   id="id-required"
   label="Form item label" 
   placeholder="Placeholder text"   
@@ -107,9 +107,9 @@ export const ComponentDemo = () => {
       demoProps={InputDemoProps}
       setDemoProps={setInputDemoProps}
       renderExample={
-        <CodeSample>{`import InputText from "@actionishope/shelley-ui";
+        <CodeSample>{`import TextField from "@actionishope/shelley-ui";
 
-<InputText    ${
+<TextField    ${
           InputDemoProps[0].value
             ? `\n  label="${InputDemoProps[0].value}"`
             : ``
@@ -149,7 +149,7 @@ export const ComponentDemo = () => {
 /* vol defaults to 3 */`}</CodeSample>
       }
     >
-      <InputText
+      <TextField
         id="username"
         label={InputDemoProps[0].value}
         hint={InputDemoProps[1].value}
@@ -167,7 +167,7 @@ export const ComponentDemo = () => {
         onBlur={() => console.log("LOL")}
       />
 
-      <InputText
+      <TextField
         id="username"
         label={InputDemoProps[0].value}
         hint={InputDemoProps[1].value}
@@ -231,7 +231,7 @@ export const ComponentCSS = () => (
 
 export const Example1 = () => (
   <div className={grid.mid}>
-    <InputText
+    <TextField
       id="pageTitle"
       label="Page title"
       placeholder="Enter a page title"
@@ -243,7 +243,7 @@ export const Example1 = () => (
       rows={2}
     />
     <br />
-    <InputText
+    <TextField
       id="subTitle"
       label="Subtitle"
       placeholder="Enter a page subtitle"
@@ -252,7 +252,7 @@ export const Example1 = () => (
       vol={4}
       autoComplete="off"
     />
-    <InputText
+    <TextField
       id="pageDescription"
       label="Page description"
       placeholder="Enter a page description"
