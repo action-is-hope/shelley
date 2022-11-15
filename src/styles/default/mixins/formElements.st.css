@@ -130,9 +130,8 @@
 
 /* = The 'root' element - <div> */
 .textualFieldRoot {
-  /* display: grid;
-  position: relative; */
   align-items: center;
+  /*top aligns the labels - prop?*/
 }
 
 
@@ -164,19 +163,11 @@
   font-weight: 400;
   font-size: 1em;
   line-height: 1.4em;
-  /* letter-spacing: 0.00938em; */
   padding: 0;
   /* transform: translate(7px, 9px) scale(1); */
-  /* transform: translate(7px, 13px) scale(1); */
-
-  /* 10 @ vol3 8 @vol1 7@vol2*/
   transform: translateZ(0);
 }
 
-.labelSmall {
-  /* transform: translate(9px, -10px) scale(0.75); */
-  /* transform: translate(9px, -10px) scale(0.75); */
-}
 
 /* Quiet */
 

@@ -12,7 +12,7 @@
 
 /* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
 .textareaWrap {
-  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  /* gris is an easy way to stack elements and have them both sized based on the tallest one's height */
   display: grid !important;
 }
 
@@ -37,7 +37,7 @@
 
 .textareaInput,
 .textareaWrap::after {
-  /* Identical styling required! */
+  /* Identical styling required for input and pseudo elements. */
   padding: 0;
   border: none;
   font: inherit;

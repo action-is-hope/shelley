@@ -48,8 +48,7 @@
     inputVol4,
     inputVol5,
     inputVol6,
-    label,
-    labelSmall;
+    label;
 }
 
 @st-scope Default {
@@ -92,11 +91,6 @@
 
   /*==== STATES ====*/
 
-  /* InputBase:labelposition(side) {
-    align-items: flex-start;
-    display: inline-flex;
-  } */
-
   /* = Error */
   InputBase:error::fieldContainer {
     /* -st-mixin: startFieldIndicatorHasError */
@@ -124,7 +118,6 @@
     -st-mixin: inputVol3
   }
 
-
   /* = Volume 4 */
   InputBase:vol(4) {
     -st-mixin: inputVol4
@@ -139,7 +132,6 @@
   InputBase:vol(6) {
     -st-mixin: inputVol6
   }
-
 
 
   /*==== VARIANTS ====*/
@@ -171,6 +163,8 @@
     justify-self: flex-end;
   }
 
+
+  /*==== VARIANTS ====*/
 
   /* = Variant - "quiet" */
   /* InputBase:variant(quiet) + InputBase:variant(quiet) {
@@ -218,7 +212,6 @@
 
   InputBase:variant(filled)::fieldset {
     border-color: transparent;
-
   }
 
   InputBase:variant(filled)::fieldset,

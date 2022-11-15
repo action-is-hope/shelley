@@ -61,8 +61,8 @@ export interface InputBaseProps extends Validation {
 /** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
 interface InputBaseInternalProps
   extends Pick<
-      React.HTMLProps<HTMLBaseElement>,
-      Exclude<keyof React.HTMLProps<HTMLBaseElement>, "label">
+      React.HTMLProps<HTMLDivElement>,
+      Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">
     >,
     InputBaseProps {}
 // isRequired
@@ -84,6 +84,7 @@ const InputBase = ({
   variant = "outlined",
   hasValue: hasValueProp,
   vol = 1,
+  ...rest
 }: InputBaseInternalProps) => {
   const hasValue =
     disableLabelTransition || startAdornment ? true : hasValueProp;
@@ -117,6 +118,7 @@ const InputBase = ({
         },
         classNameProp
       )}
+      {...rest}
     >
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
@@ -125,9 +127,13 @@ const InputBase = ({
         {childrenWithProps}
         {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}
         {/*  */}
-        <fieldset aria-hidden="true" className={classes.fieldset}>
-          <legend className={classes.legend}>{!hideLabel && labelProp}</legend>
-        </fieldset>
+        {variant && (
+          <fieldset aria-hidden="true" className={classes.fieldset}>
+            <legend className={classes.legend}>
+              {!hideLabel && labelProp}
+            </legend>
+          </fieldset>
+        )}
       </div>
 
       <HelpText

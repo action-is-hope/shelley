@@ -94,12 +94,6 @@ function InputSelect<T extends object>(
       className={st(classes.root, classNameProp)}
     >
       <>
-        <HiddenSelect
-          state={state}
-          triggerRef={localRef as RefObject<HTMLButtonElement>}
-          label={props.label}
-          name={props.name}
-        />
         <Button
           {...triggerProps}
           // This is where we put the forwardedRef and the local one.
@@ -116,7 +110,12 @@ function InputSelect<T extends object>(
             )}
           </span>
         </Button>
-
+        <HiddenSelect
+          state={state}
+          triggerRef={localRef as RefObject<HTMLButtonElement>}
+          label={props.label}
+          name={props.name}
+        />
         {state.isOpen &&
           ReactDOM.createPortal(
             <Popup
