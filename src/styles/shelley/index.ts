@@ -5,7 +5,6 @@ import "./helpText.st.css";
 import "./field.st.css";
 import "./grid.st.css";
 import "./hintText.st.css";
-import "./inputSelect.st.css";
 import "./inputSelection.st.css";
 import "./inputSelectionControl.st.css";
 import "./textField.st.css";
@@ -15,6 +14,7 @@ import "./listBoxOption.st.css";
 import "./menu.st.css";
 import "./menuItem.st.css";
 import "./text.st.css";
+import "./select.st.css";
 
 // = Application Components
 import "./codeSample.st.css";

@@ -1,6 +1,6 @@
 /* buttonExamples.tsx */
 import React from "react";
-import { TextField, InputSelection, InputSelect } from "../../indexLib";
+import { TextField, Selection, Select } from "../../indexLib";
 
 import PropsDemo from "../../components-site/PropsDemo/PropsDemo";
 import CodeSample from "../../components-site/CodeSample/CodeSample";
@@ -184,7 +184,7 @@ export const ComponentDemo = () => {
         onBlur={() => console.log("LOL")}
       />
 
-      <InputSelect
+      <Select
         id="selectYo"
         label={InputDemoProps[0].value}
         hint={InputDemoProps[1].value}
@@ -201,9 +201,9 @@ export const ComponentDemo = () => {
         onBlur={() => console.log("LOL")}
       >
         <option>Yo</option>
-      </InputSelect>
+      </Select>
 
-      <InputSelection
+      <Selection
         id="laptop"
         inputPosition="start"
         name="viewPort"

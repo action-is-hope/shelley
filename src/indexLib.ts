@@ -40,8 +40,8 @@ export * from "./components/InputAdornment/InputAdornment";
 export { default as Field } from "./components/Field/Field";
 export * from "./components/Field/Field";
 
-export { InputSelect } from "./components/InputSelect/InputSelect";
-export * from "./components/InputSelect/InputSelect";
+export { Select } from "./components/Select/Select";
+export * from "./components/Select/Select";
 
 export { default as InputSelection } from "./components/InputSelection/InputSelection";
 export * from "./components/InputSelection/InputSelection";

@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import { P, Blockquote, TextField, InputSelect, Field } from "../../indexLib";
+import { P, Blockquote, TextField, Select, Field } from "../../indexLib";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import {
@@ -80,14 +80,14 @@ Select allows users to choose a single option from a collapsible list of options
     docs: {
       source: {
         code: dedent`
-    <InputSelect
+    <Select
       label="Choose frequency"
       onSelectionChange={(key) => console.log(key)}
     >
       <Item key="rarely">Rarely</Item>
       <Item key="sometimes">Sometimes</Item>
       <Item key="always">Always</Item>
-    </InputSelect>`,
+    </Select>`,
       },
     },
   }}
@@ -123,9 +123,9 @@ export const DynamicCollection = () => {
   ];\n
   return (
     <>
-      <InputSelect label="Pick an engineering major" items={options}>
+      <Select label="Pick an engineering major" items={options}>
         {(item) => <Item>{item.name}</Item>}
-      </InputSelect>
+      </Select>
     </>
   );
 };`,
@@ -164,7 +164,7 @@ The example below uses onChange to update a separate pre element with the same t
   ];
   const [animal, setAnimal] = useState("Bison");\n
   return (
-    <InputSelect
+    <Select
       label="Pick an animal (controlled)"
       items={options}
       selectedKey={animal}
@@ -173,7 +173,7 @@ The example below uses onChange to update a separate pre element with the same t
       }
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
-    </InputSelect>
+    </Select>
   );`,
       },
     },
@@ -206,7 +206,7 @@ We will be adding loading indicator and virtualisation support as we come to do 
     },
   });\n
   return (
-    <InputSelect
+    <Select
       label="Pick a Pokemon"
       items={list.items}
       portalSelector="#portal"
@@ -214,7 +214,7 @@ We will be adding loading indicator and virtualisation support as we come to do 
       {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
-    </InputSelect>
+    </Select>
   );`,
       },
     },
@@ -230,11 +230,11 @@ We will be adding loading indicator and virtualisation support as we come to do 
 A select in a `disabled` state shows that a select exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
 
 <Story name="e) Disabled">
-  <InputSelect label="Choose frequency" portalSelector="#portal" disabled>
+  <Select label="Choose frequency" portalSelector="#portal" disabled>
     <Item key="rarely">Rarely</Item>
     <Item key="sometimes">Sometimes</Item>
     <Item key="always">Always</Item>
-  </InputSelect>
+  </Select>
 </Story>
 
 <Source language="tsx" id="inputs-select--e-disabled" />
@@ -246,7 +246,7 @@ Select supports marking items as disabled using the `disabledKeys` prop. Each ke
 Disabled items are not focusable, selectable, or keyboard navigable.
 
 <Story name="f) Disabled options">
-  <InputSelect
+  <Select
     portalSelector="#portal"
     label="Favorite Animal"
     disabledKeys={["cat", "kangaroo"]}
@@ -257,7 +257,7 @@ Disabled items are not focusable, selectable, or keyboard navigable.
     <Item key="aardvark">Aardvark</Item>
     <Item key="kangaroo">Kangaroo</Item>
     <Item key="snake">Snake</Item>
-  </InputSelect>
+  </Select>
 </Story>
 
 <Source language="tsx" id="inputs-select--f-disabled-options" />

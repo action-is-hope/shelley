@@ -14,8 +14,8 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/InputSelect/inputSelect.st.css";
-  -st-default: InputSelect;
+  -st-from: "../../components/Select/select.st.css";
+  -st-default: Select;
 }
 
 :import {
@@ -34,39 +34,39 @@
 @st-scope Default {
 
   /* = Example targeting the root. */
-  InputSelect {}
+  Select {}
 
   /* = Example targeting the label. */
-  InputSelect InputLabel {}
+  Select InputLabel {}
 
   /* = Apply selectFieldContainer to the base fieldContainer. */
-  InputSelect::fieldContainer {
+  Select::fieldContainer {
     -st-mixin: selectFieldContainer;
   }
 
   /* = Display the right hand indicator on <select>'s to encase the arrow icon. */
-  InputSelect::fieldContainer::after {
+  Select::fieldContainer::after {
     display: block;
   }
 
   /*= Applies the down arrow, aka --select-icon and associated styles. */
-  InputSelect::trigger {
+  Select::trigger {
     -st-mixin: selectFieldInput;
   }
 
-  InputSelect::trigger::inner {
+  Select::trigger::inner {
     padding: 0;
   }
 
-  InputSelect:labelPosition(over)::placeholder {
+  Select:labelPosition(over)::placeholder {
     visibility: hidden;
   }
 
-  /* InputSelect:labelPosition(over):hasValue::placeholder {
+  /* Select:labelPosition(over):hasValue::placeholder {
     visibility: visible;
   } */
 
-  InputSelect::placeholder {
+  Select::placeholder {
     opacity: .8;
     letter-spacing: 0.2px;
   }

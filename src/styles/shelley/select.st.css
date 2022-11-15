@@ -1,5 +1,5 @@
 /**
- * = INPUT SELECT - inputSelect.st.css
+ * = SELECT - select.st.css
  *
  * The base styles taken care of by Field, here we are just adding the 
  * that we want for our <select> element.
@@ -22,8 +22,8 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/InputSelect/inputSelect.st.css";
-  -st-default: InputSelect;
+  -st-from: "../../components/Select/select.st.css";
+  -st-default: Select;
 }
 
 :import {
@@ -34,17 +34,17 @@
 @st-scope Shelley {
 
   /* = Example targeting the root. */
-  /* InputSelect {} */
+  /* Select {} */
 
   /* = Example targeting the label. */
-  /* InputSelect InputLabel {} */
+  /* Select InputLabel {} */
 
   /* = The container. */
-  /* InputSelect::fieldContainer {} */
+  /* Select::fieldContainer {} */
 
   /* = Right hight hand indicator on <select>'s encasing the arrow icon. */
-  /* InputSelect::fieldContainer::after {} */
+  /* Select::fieldContainer::after {} */
 
   /* = The actual field. */
-  /* InputSelect::fieldInput {} */
+  /* Select::fieldInput {} */
 }

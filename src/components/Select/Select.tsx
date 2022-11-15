@@ -9,9 +9,9 @@ import Popup from "../Popup/Popup";
 import Button from "../Button/Button";
 import ListBox from "../ListBox/ListBox";
 /* = Style API. */
-import { st, classes } from "./inputSelect.st.css";
+import { st, classes } from "./select.st.css";
 
-export interface InputSelectProps<T>
+export interface SelectProps<T>
   extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
     Omit<FieldProps, "label" | "startAdornment" | "endAdornment"> {
   disabled?: boolean;
@@ -28,8 +28,8 @@ export interface InputSelectProps<T>
   shouldFocusOnHover?: boolean;
 }
 
-function InputSelect<T extends object>(
-  props: InputSelectProps<T>,
+function Select<T extends object>(
+  props: SelectProps<T>,
   ref?: React.Ref<HTMLButtonElement>
 ) {
   const {
@@ -141,11 +141,11 @@ function InputSelect<T extends object>(
 }
 
 /**
- * InputSelects allow users to choose a single option from a collapsible list of options when space is limited.
+ * Selects allow users to choose a single option from a collapsible list of options when space is limited.
  */
 // forwardRef doesn't support generic parameters, so cast the result to the correct type
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _InputSelect = forwardRef(InputSelect) as <T>(
-  props: InputSelectProps<T> & { ref?: Ref<HTMLButtonElement> }
+const _Select = forwardRef(Select) as <T>(
+  props: SelectProps<T> & { ref?: Ref<HTMLButtonElement> }
 ) => ReactElement;
-export { _InputSelect as InputSelect };
+export { _Select as Select };

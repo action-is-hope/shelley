@@ -1,18 +1,18 @@
 import { SetStateAction, useState, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { InputSelect, InputSelectProps, TextField } from "../../indexLib";
+import { Select, SelectProps, TextField } from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
-export type SelectPropsDocs = InputSelectProps<object>;
+export type SelectPropsDocs = SelectProps<object>;
 export function SelectType(props: SelectPropsDocs) {
   <>{props}</>;
 }
 
 export const BasicSelect = (args: ItemsType) => {
   return (
-    <InputSelect
+    <Select
       label="Choose frequency"
       onSelectionChange={(key) => console.log(key)}
       vol={1}
@@ -22,7 +22,7 @@ export const BasicSelect = (args: ItemsType) => {
       <Item key="rarely">Rarely</Item>
       <Item key="sometimes">Sometimes</Item>
       <Item key="always">Always</Item>
-    </InputSelect>
+    </Select>
   );
 };
 
@@ -45,7 +45,7 @@ export const SelectEvents = (args: ItemsType) => {
   return (
     <>
       <TextField label="Name" vol={1} placeholder="Type name" />
-      <InputSelect
+      <Select
         onSelectionChange={(key) => console.log(key)}
         items={animals}
         label="Select"
@@ -56,11 +56,11 @@ export const SelectEvents = (args: ItemsType) => {
         {...args}
       >
         {(item) => <Item>{item.name}</Item>}
-      </InputSelect>
+      </Select>
 
       <TextField label="Name" />
 
-      <InputSelect
+      <Select
         label="Choose frequency"
         portalSelector="#portal"
         selectedKey={animal}
@@ -71,12 +71,12 @@ export const SelectEvents = (args: ItemsType) => {
         {...args}
       >
         {(item) => <Item key={item.name}>{item.name}</Item>}
-      </InputSelect>
+      </Select>
     </>
   );
 };
 
-export const DynamicCollection = (args: InputSelectProps<ItemsType>) => {
+export const DynamicCollection = (args: SelectProps<ItemsType>) => {
   const options = [
     { id: 1, name: "Aerospace" },
     { id: 2, name: "Mechanical" },
@@ -91,19 +91,19 @@ export const DynamicCollection = (args: InputSelectProps<ItemsType>) => {
 
   return (
     <>
-      <InputSelect
+      <Select
         label="Engineering major"
         items={options}
         portalSelector="#portal"
         {...args}
       >
         {(item) => <Item>{item.name}</Item>}
-      </InputSelect>
+      </Select>
     </>
   );
 };
 
-export const ControlledSelect = (args: InputSelectProps<ItemsType>) => {
+export const ControlledSelect = (args: SelectProps<ItemsType>) => {
   const options = [
     { name: "Koala" },
     { name: "Kangaroo" },
@@ -115,7 +115,7 @@ export const ControlledSelect = (args: InputSelectProps<ItemsType>) => {
   const [animal, setAnimal] = useState("Bison");
 
   return (
-    <InputSelect
+    <Select
       label="Pick an animal"
       items={options}
       selectedKey={animal}
@@ -126,11 +126,11 @@ export const ControlledSelect = (args: InputSelectProps<ItemsType>) => {
       {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
-    </InputSelect>
+    </Select>
   );
 };
 
-export const AsyncLoadingExample = (args: InputSelectProps<ItemsType>) => {
+export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
   const list: { items: ItemsType[] } = useAsyncList({
     async load({ signal, filterText }) {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
@@ -143,7 +143,7 @@ export const AsyncLoadingExample = (args: InputSelectProps<ItemsType>) => {
   });
 
   return (
-    <InputSelect
+    <Select
       label="Pick a Pokemon"
       items={list.items}
       portalSelector="#portal"
@@ -151,14 +151,14 @@ export const AsyncLoadingExample = (args: InputSelectProps<ItemsType>) => {
       {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
-    </InputSelect>
+    </Select>
   );
 };
 
-export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
+export const SelectSizes = (args: SelectProps<ItemsType>) => {
   return (
     <>
-      <InputSelect
+      <Select
         {...{
           label: "Name",
           vol: 1,
@@ -168,8 +168,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
-      <InputSelect
+      </Select>
+      <Select
         {...{
           label: "Email",
           type: "email",
@@ -180,8 +180,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
-      <InputSelect
+      </Select>
+      <Select
         {...{
           label: "Address",
           type: "textarea",
@@ -192,8 +192,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
-      <InputSelect
+      </Select>
+      <Select
         {...{
           label: "Telephone",
           type: "tel",
@@ -204,8 +204,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
-      <InputSelect
+      </Select>
+      <Select
         {...{
           label: "Fax",
           vol: 5,
@@ -215,8 +215,8 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
-      <InputSelect
+      </Select>
+      <Select
         {...{
           label: "What3words",
           vol: 6,
@@ -226,12 +226,12 @@ export const SelectSizes = (args: InputSelectProps<ItemsType>) => {
         {...args}
       >
         <Item>One</Item>
-      </InputSelect>
+      </Select>
     </>
   );
 };
 
-export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
+export const HelpTextExample = (args: SelectProps<ItemsType>) => {
   const [animalId, setAnimalId] = useState(0);
   const options = [
     { id: 1, name: "Aardvark" },
@@ -247,7 +247,7 @@ export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
   const isValid = useMemo(() => animalId !== 2 && animalId !== 7, [animalId]);
 
   return (
-    <InputSelect
+    <Select
       validationState={isValid ? "valid" : "invalid"}
       label="Favorite animal"
       description="Pick your favorite animal, you will be judged."
@@ -264,6 +264,6 @@ export const HelpTextExample = (args: InputSelectProps<ItemsType>) => {
       portalSelector="#portal"
     >
       {(item) => <Item>{item.name}</Item>}
-    </InputSelect>
+    </Select>
   );
 };

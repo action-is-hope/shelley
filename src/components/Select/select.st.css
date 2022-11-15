@@ -1,5 +1,5 @@
-/** inputSelection.st.css */
-@namespace "InputSelect";
+/** select.st.css */
+@namespace "Select";
 
 :import {
   -st-from: '../Field/field.st.css';
