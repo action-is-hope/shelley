@@ -2,14 +2,14 @@ import type React from "react";
 import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
 import type { MergeElementProps } from "../utils";
 import type { TextInputType } from "../types";
-import InputBase, { InputBaseProps } from "../InputBase/InputBase";
+import Field, { FieldProps } from "../Field/Field";
 import { useTextField } from "react-aria";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 
 /* = Style API. */
 import { st, classes } from "./inputText.st.css";
 interface ITextCustomProps
-  extends InputBaseProps,
+  extends FieldProps,
     Omit<AriaTextFieldProps, "label"> {
   rows?: number;
 }
@@ -77,7 +77,7 @@ function InputText(
     );
 
   return (
-    <InputBase
+    <Field
       {...{
         disabled,
         errorMessage,
@@ -115,7 +115,7 @@ function InputText(
           ref={inputRef}
         />
       )}
-    </InputBase>
+    </Field>
   );
 }
 

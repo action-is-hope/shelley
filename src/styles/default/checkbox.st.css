@@ -8,6 +8,8 @@
     --color-error;
 }
 
+/* @namespace "Checkbox"; */
+
 /* = Root style API. */
 :import {
   -st-from: "../../components/Checkbox/checkbox.st.css";

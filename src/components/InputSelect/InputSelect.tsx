@@ -1,7 +1,7 @@
 import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
 import ReactDOM from "react-dom";
-import InputBase from "../InputBase/InputBase";
-import type { InputBaseProps } from "../InputBase/InputBase";
+import Field from "../Field/Field";
+import type { FieldProps } from "../Field/Field";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
@@ -13,7 +13,7 @@ import { st, classes } from "./inputSelect.st.css";
 
 export interface InputSelectProps<T>
   extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
-    Omit<InputBaseProps, "label" | "startAdornment" | "endAdornment"> {
+    Omit<FieldProps, "label" | "startAdornment" | "endAdornment"> {
   disabled?: boolean;
   className?: string;
   /**
@@ -68,7 +68,7 @@ function InputSelect<T extends object>(
   );
 
   return (
-    <InputBase
+    <Field
       {...{
         disabled,
         errorMessage,
@@ -136,7 +136,7 @@ function InputSelect<T extends object>(
             document.querySelector(portalSelector) as HTMLElement
           )}
       </>
-    </InputBase>
+    </Field>
   );
 }
 

@@ -2,12 +2,12 @@
 @namespace "InputText";
 
 :import {
-  -st-from: '../InputBase/inputBase.st.css';
-  -st-default: InputBase
+  -st-from: '../Field/field.st.css';
+  -st-default: Field
 }
 
 .root {
-  -st-extends: InputBase;
+  -st-extends: Field;
 }
 
 /* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */

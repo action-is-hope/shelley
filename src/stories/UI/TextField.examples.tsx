@@ -1,14 +1,14 @@
 import {
   InputText,
   InputTextProps,
-  InputBaseProps,
+  FieldProps,
   Button,
   TextInputProps,
 } from "../../indexLib";
 import Eye from "../../components/icons/Eye";
 import { useState, useMemo, useRef } from "react";
 
-export interface InputTextPropsDocs extends InputBaseProps {
+export interface InputTextPropsDocs extends FieldProps {
   /** The type of input field. */
   type?: string;
 }

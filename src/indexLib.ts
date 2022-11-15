@@ -37,8 +37,8 @@ export * from "./components/Icon/Icon";
 export { default as InputAdornment } from "./components/InputAdornment/InputAdornment";
 export * from "./components/InputAdornment/InputAdornment";
 
-export { default as InputBase } from "./components/InputBase/InputBase";
-export * from "./components/InputBase/InputBase";
+export { default as Field } from "./components/Field/Field";
+export * from "./components/Field/Field";
 
 export { InputSelect } from "./components/InputSelect/InputSelect";
 export * from "./components/InputSelect/InputSelect";

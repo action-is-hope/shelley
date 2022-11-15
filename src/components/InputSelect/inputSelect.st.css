@@ -2,8 +2,8 @@
 @namespace "InputSelect";
 
 :import {
-  -st-from: '../InputBase/inputBase.st.css';
-  -st-default: InputBase
+  -st-from: '../Field/field.st.css';
+  -st-default: Field
 }
 
 :import {
@@ -12,7 +12,7 @@
 }
 
 .root {
-  -st-extends: InputBase;
+  -st-extends: Field;
 }
 
 .trigger {

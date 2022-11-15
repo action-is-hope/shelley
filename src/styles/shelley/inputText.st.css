@@ -26,6 +26,6 @@
 
 @st-scope Shelley {
 
-  /* = Base styles taken care of by InputBase. */
+  /* = Base styles taken care of by Field. */
   InputText {}
 }
