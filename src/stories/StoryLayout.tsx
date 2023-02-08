@@ -6,7 +6,7 @@ const containerbase = {
 };
 
 const containerCenter = {
-  display: "flex",
+  display: "grid",
   alignItems: "center",
   justifyContent: "center",
 };
@@ -38,13 +38,19 @@ export const StoryCenteredColumn = (props: any) => (
 );
 
 export const StoryGrid = (props: any) => (
-  <div style={{ ...containerbase, ...containerCenter }}>
+  <div
+    style={{
+      ...containerbase,
+      ...containerCenter,
+      justifyContent: props.justifyContent,
+    }}
+  >
     <div
       style={{
         display: "grid",
         gap: props.gap || "24px",
         gridTemplateColumns: props.cols || undefined,
-        minWidth: props.minWidth,
+        ...props,
       }}
     >
       {props.children}

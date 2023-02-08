@@ -21,29 +21,29 @@ export interface IconProps
 }
 
 const Icon = React.forwardRef(
-  (
-    {
+  (props: IconProps, ref?: React.Ref<SVGSVGElement>) => {
+    const {
       children,
       className: classNameProp,
       alt,
       viewBox = "0 0 16 16",
       /* Pull off the aria label so we can honour an accessible solution. */
-      "aria-label": ariaLabel,
-      ...attrs
-    }: IconProps,
-    ref?: React.Ref<SVGSVGElement>
-  ) => {
-    const label = alt ? alt : ariaLabel;
-
+      // "aria-label": ariaLabel,
+      ...rest
+    } = props;
+    // const label = alt ? alt : ariaLabel;
+    if (alt && props["aria-label"])
+      console.warn(
+        "An <Icon> element has been given both an alt an aria-label. The aria-label will take precedence."
+      );
     return (
       <>
         <svg
           className={st(classes.root, classNameProp)}
-          // focusable="false"
           viewBox={viewBox}
-          aria-hidden={true}
+          aria-hidden={props["aria-label"] ? undefined : true}
           ref={ref}
-          {...attrs}
+          {...rest}
         >
           {children}
         </svg>
@@ -51,7 +51,7 @@ const Icon = React.forwardRef(
             on a non-focusable element. The is a very reliable method. 
             - https://simplyaccessible.com/article/7-solutions-svgs/. 
         */}
-        {label && <VisuallyHidden>{label}</VisuallyHidden>}
+        {alt && !props["aria-label"] && <VisuallyHidden>{alt}</VisuallyHidden>}
       </>
     );
   }

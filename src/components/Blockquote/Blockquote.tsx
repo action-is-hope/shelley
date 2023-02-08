@@ -9,7 +9,7 @@ import { st, classes } from "./blockquote.st.css";
 export interface BlockquoteProps
   extends React.HTMLAttributes<HTMLQuoteElement> {
   children: ReactNode;
-  /**
+  /*
    * Describe the quote with inline elements like cite and/or links to the source.
    **/
   desc?: ReactNode | string;

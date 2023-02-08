@@ -1,13 +1,13 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { Checkbox } from "../../indexLib";
+import { Checkbox, Icon, P } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
 import { ValueExample, EventExample } from "./Checkbox.examples";
 
 export const BasicCheckbox = (args) => <Checkbox {...args} />;
 
 <Meta
-  title="Inputs/Checkbox"
+  title="Data/Icon"
   argTypes={{
     vol: {
       options: [1, 2, 3, 4, 5, 6],
@@ -33,51 +33,102 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
   component={Checkbox}
   decorators={[
     (Story) => (
-      <StoryGrid minWidth="150px" gap="8px">
+      <StoryGrid
+        cols="repeat(auto-fit, minmax(100px, 1fr))"
+        gap="8px"
+        justifyContent="start"
+      >
         <Story />
       </StoryGrid>
     ),
   ]}
 />
 
-# Checkbox
+# Icon
 
 <Source
   language="tsx"
   code={dedent`
-    import { Checkbox } from "@actionishope/shelley";
+    import { Icon } from "@actionishope/shelley";
   `}
 />
 
-Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected.
+Icon's are like universal translators but some are more visually descriptive/obvious than others, so always consider labels.
 
-<Story
-  name="a) Checkbox"
-  args={{
-    children: "Subscribe",
-  }}
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`<Checkbox>Subscribe</Checkbox>`,
+Icons are very specific to the design of a site and as such we don't attempt to specify them but provide tools to use any icon set.
+
+<Canvas>
+  <Story
+    name="a) Icon"
+    args={{
+      children: "Subscribe",
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`<Checkbox>Subscribe</Checkbox>`,
+        },
       },
-    },
-  }}
->
-  {BasicCheckbox.bind({})}
-</Story>
+    }}
+  >
+    <>
+      <span style={{ textAlign: "center" }}>
+        <Icon style={{ fontSize: "2em" }} aria-label="Test">
+          {/* https://cdn.vaadin.com/vaadin-icons/4.3.1/demo/#icons-basic-demos ->  vaadin:mobile */}
+          <path d="M4 1v14h8v-14h-8zM9 14h-2v-1h2v1zM11 12h-6v-9h6v9z"></path>
+        </Icon>
+        <P vol={1}>Vaadin</P>
+      </span>
+      <Icon style={{ fontSize: "2em" }} viewBox="0 0 24 24">
+        {/* https://mui.com/material-ui/material-icons/?query=phone&selected=StayCurrentPortrait */}
+        <path d="M17 1.01 7 1c-1.1 0-1.99.9-1.99 2v18c0 1.1.89 2 1.99 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"></path>
+      </Icon>
+      <Icon style={{ fontSize: "2em" }} viewBox="0 0 20 20">
+        {/* http://www.entypo.com/ -> mobile */}
+        <path
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#FFFFFF"
+          d="M14.004,0H5.996C4.894,0,4,0.894,4,1.996v16.007C4,19.106,4.894,20,5.996,20h8.007  C15.106,20,16,19.106,16,18.004V1.996C16,0.894,15.106,0,14.004,0z M10,19c-0.69,0-1.25-0.447-1.25-1s0.56-1,1.25-1  s1.25,0.447,1.25,1S10.69,19,10,19z M14,16H6V2h8V16z"
+        />
+      </Icon>
+      <Icon
+        style={{ fontSize: "2em", fill: "none" }}
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        {/* https://www.majesticons.com/ ->  */}
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M18 19V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9 6.001V6m0 3.001V9m3 .001V9m0-2.999V6m3 .001V6m0 3.001V9m-6 3.001V12m3 .001V12"
+        ></path>
+      </Icon>
+      <Icon
+        style={{ fontSize: "2em", fill: "none", stroke: "currentColor" }}
+        viewBox="0 0 24 24"
+      >
+        {/* https://v1.heroicons.com/ -> device-mobile */}
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+        />
+      </Icon>
+    </>
+  </Story>
+</Canvas>
 
 <Source language="tsx" id="inputs-checkbox--a-checkbox" />
 
-A checkbox consists of a visual selection indicator and a label. Checkboxes support three selection states: checked, unchecked, and indeterminate. Users may click or touch a checkbox to toggle the selection state, or use the Tab key to navigate to it and the Space key to toggle it.
-
 ## Content
 
-Checkboxes accept `children`, which are rendered as the label.
+Icons accept `children`, which should be the `path` of the icon to render.
 
 ### Accessibility
 
-In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+In some cases we won't need to label icons but they often will convey some type of meaning
 
 ### Internationalization
 
