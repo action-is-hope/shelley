@@ -1,111 +1,146 @@
 import React, { useState } from "react";
-import { Menu, MenuProps, Item } from "../../src/indexLib";
+import { ListBox, ListBoxProps, Item } from "../../src/indexLib";
 
-const menu = '[role="menu"]';
+const listbox = '[role="listbox"]';
 const itemOne = '[data-key="item-one"]';
 const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
 
-const BasicMenu = function <T extends object>(
-  props: Omit<MenuProps<T>, "children">
+const BasicListBox = function <T extends object>(
+  props: Omit<ListBoxProps<T>, "children">
 ) {
   return (
-    <Menu aria-label="Basic Menu" {...props}>
+    <ListBox {...props}>
       <Item key="item-one">Item One</Item>
       <Item key="item-two">Item Two</Item>
       <Item key="item-three">Item Three</Item>
-    </Menu>
+    </ListBox>
   );
 };
 
-describe("Basic Menu", () => {
+describe("Basic ListBox", () => {
   it("Renders required aria attributes from props.", () => {
     cy.mount(
-      <BasicMenu
+      <BasicListBox
         id="example1"
-        // Defines a string value that labels the current element.
-        aria-label="Basic Menu"
         // Identifies the element (or elements) that labels the current element.
-        aria-labelledby="Labelled by"
+        aria-labelledby="labelled-by-id"
         // Identifies the element (or elements) that describes the object.
-        aria-describedby="Described by"
+        aria-describedby="described-by-id"
         // Identifies the element (or elements) that provide a detailed, extended description for the object.
-        aria-details="Details"
+        aria-details="details-id"
       />
     );
-    cy.get(menu)
+    cy.get(listbox)
       .should("have.attr", "id", "example1")
-      .and("have.attr", "aria-label", "Basic Menu")
-      .and("have.attr", "aria-labelledby", "Labelled by")
-      .and("have.attr", "aria-describedby", "Described by")
-      .and("have.attr", "aria-details", "Details");
+      .and("have.attr", "aria-labelledby", "labelled-by-id")
+      .and("have.attr", "aria-describedby", "described-by-id")
+      .and("have.attr", "aria-details", "details-id");
   });
 
-  it("first item is focused by default", () => {
-    cy.mount(<BasicMenu />);
+  it("Should refer it itself if an aria-label and aria-labelledby are provided", () => {
+    cy.mount(
+      <BasicListBox
+        id="example2"
+        aria-labelledby="labelled-by-id"
+        aria-label="I label myself if I have aria-label"
+      />
+    );
+    cy.get(listbox).and(
+      "have.attr",
+      "aria-labelledby",
+      "labelled-by-id example2"
+    );
+  });
+
+  it("first item is not focused by default", () => {
+    cy.mount(<BasicListBox />);
+    cy.get(itemOne).should("not.be.focused");
+  });
+
+  it("first item focused", () => {
+    cy.mount(<BasicListBox autoFocus="first" />);
     cy.get(itemOne).should("be.focused");
   });
 
   it("last item focused", () => {
-    cy.mount(<BasicMenu autoFocus="last" />);
+    cy.mount(<BasicListBox autoFocus="last" />);
     cy.get(itemThree).should("be.focused");
   });
 
-  it("keyboard focus wraps (loops)", () => {
-    cy.mount(<BasicMenu />);
-    cy.get("[data-cy-root] li:first-child").type(
-      "{downArrow}{downArrow}{downArrow}{downArrow}"
-    );
-    cy.get(itemTwo).should("be.focused");
-  });
-
-  it("keyboard focus should not wrap", () => {
-    cy.mount(<BasicMenu shouldFocusWrap={false} />);
+  it("keyboard focus should not wrap by default", () => {
+    cy.mount(<BasicListBox autoFocus="first" />);
     cy.get("[data-cy-root]").type(
       "{downArrow}{downArrow}{downArrow}{downArrow}"
     );
     cy.get(itemThree).should("be.focused");
   });
 
+  it("keyboard focus wraps (loops) via shouldFocusWrap", () => {
+    cy.mount(<BasicListBox autoFocus="first" shouldFocusWrap />);
+    cy.get("[data-cy-root] li:first-child").type(
+      "{downArrow}{downArrow}{downArrow}{downArrow}"
+    );
+    cy.get(itemTwo).should("be.focused");
+  });
+
   it("onAction handler is called correctly", () => {
     const onActionSpy = cy.spy().as("onActionSpy");
-    cy.mount(<BasicMenu onAction={onActionSpy} />);
+    cy.mount(<BasicListBox onAction={onActionSpy} />);
     cy.get(itemTwo).click();
     cy.get("@onActionSpy").should("have.been.calledWith", "item-two");
     cy.get(itemTwo).type("{enter}");
     cy.get("@onActionSpy").should("have.been.calledWith", "item-two");
     cy.get(itemTwo).type(" ");
     cy.get("@onActionSpy").should("have.been.calledWith", "item-two");
-    // Flakey, sometimes 5... manual testing seems okay...
-    // cy.get("@onActionSpy").should("have.been.calledThrice");
   });
 
-  it("onClose handler is called when selecting an item", () => {
-    const onCloseSpy = cy.spy().as("onCloseSpy");
-    cy.mount(<BasicMenu onClose={onCloseSpy} />);
+  it("onSelectionChange handler is called correctly", () => {
+    const onSelectionChangeSpy = cy.spy().as("onSelectionChangeSpy");
+
+    cy.mount(
+      <BasicListBox
+        selectionMode="single"
+        onSelectionChange={onSelectionChangeSpy}
+      />
+    );
     cy.get(itemTwo).click();
-    cy.get("@onCloseSpy").should("have.been.calledOnce");
+    cy.get("@onSelectionChangeSpy").should("have.been.calledOnce", "item-two");
+    cy.get(itemTwo).type("{enter}");
+    cy.get("@onSelectionChangeSpy").should("have.been.calledTwice", "item-two");
+    cy.get(itemTwo).type(" ");
+    cy.get("@onSelectionChangeSpy").should(
+      "have.been.calledThrice",
+      "item-two"
+    );
   });
 });
+//   it("onClose handler is called when selecting an item", () => {
+//     const onCloseSpy = cy.spy().as("onCloseSpy");
+//     cy.mount(<BasicMenu onClose={onCloseSpy} />);
+//     cy.get(itemTwo).click();
+//     cy.get("@onCloseSpy").should("have.been.calledOnce");
+//   });
+// });
 
-describe("Uncontrolled menu selection", () => {
+describe("Uncontrolled listbox selection", () => {
   it("uncontrolled: selected item is marked as 'checked' visually and accessibly", () => {
-    cy.mount(<BasicMenu selectionMode="single" />);
+    cy.mount(<BasicListBox selectionMode="single" />);
     cy.get(itemThree)
       .click()
-      .should("have.attr", "aria-checked")
+      .should("have.attr", "aria-selected")
       .and("equal", "true");
     cy.get(`${itemThree} [data-id="selected-icon"]`).should("be.visible");
   });
 
   it("uncontrolled: allows for pre-selected keys", () => {
     cy.mount(
-      <BasicMenu
+      <BasicListBox
         selectionMode="single"
         defaultSelectedKeys={new Set(["item-two"])}
       />
     );
-    cy.get(itemTwo).should("have.attr", "aria-checked").and("equal", "true");
+    cy.get(itemTwo).should("have.attr", "aria-selected").and("equal", "true");
   });
 
   it("uncontrolled: single selection mode allows for 0 or 1 selection", () => {
@@ -113,7 +148,7 @@ describe("Uncontrolled menu selection", () => {
     const numSelected = cy.spy().as("numSelected");
 
     cy.mount(
-      <BasicMenu
+      <BasicListBox
         selectionMode="single"
         onSelectionChange={(i) => {
           const result = i as Set<string>;
@@ -142,15 +177,15 @@ describe("Uncontrolled menu selection", () => {
   });
 });
 
-// Controlled Menu
-const ControlledMenu = function <T extends object>(
-  props: Omit<MenuProps<T>, "children">
+// Controlled ListBox
+const ControlledListBox = function <T extends object>(
+  props: Omit<ListBoxProps<T>, "children">
 ) {
   const [selected, setSelected] = useState(props.selectedKeys || new Set([]));
   return (
     <>
-      <Menu
-        aria-label="Controlled menu"
+      <ListBox
+        aria-label="Controlled listbox"
         selectedKeys={selected}
         onSelectionChange={setSelected}
         {...props}
@@ -158,7 +193,7 @@ const ControlledMenu = function <T extends object>(
         <Item key="item-one">Item One</Item>
         <Item key="item-two">Item Two</Item>
         <Item key="item-three">Item Three</Item>
-      </Menu>
+      </ListBox>
 
       <p>
         Current selection (controlled):{" "}
@@ -168,26 +203,26 @@ const ControlledMenu = function <T extends object>(
   );
 };
 
-describe("Controlled menu selection", () => {
+describe("Controlled listbox selection", () => {
   it("controlled: selected item is marked as 'checked' visually and accessibly", () => {
-    cy.mount(<ControlledMenu selectionMode="single" />);
+    cy.mount(<ControlledListBox selectionMode="single" />);
     cy.get(itemThree).click();
     cy.get(`${itemThree} [data-id="selected-icon"]`).should("be.visible");
-    cy.get(itemThree).should("have.attr", "aria-checked").and("equal", "true");
+    cy.get(itemThree).should("have.attr", "aria-selected").and("equal", "true");
   });
 
   it("controlled: allows for pre-selected keys", () => {
     cy.mount(
-      <ControlledMenu
+      <ControlledListBox
         selectionMode="single"
         selectedKeys={new Set(["item-two"])}
       />
     );
-    cy.get(itemTwo).should("be.focused");
+    cy.get(itemTwo).should("have.attr", "aria-selected").and("equal", "true");
   });
 
   it("controlled: single selection mode selects only one item", () => {
-    cy.mount(<ControlledMenu selectionMode="single" />);
+    cy.mount(<ControlledListBox selectionMode="single" />);
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').contains("item-three");
     cy.get(itemOne).click();
@@ -195,7 +230,7 @@ describe("Controlled menu selection", () => {
   });
 
   it("controlled: multiple selection mode selects multiple items", () => {
-    cy.mount(<ControlledMenu selectionMode="multiple" />);
+    cy.mount(<ControlledListBox selectionMode="multiple" />);
     cy.get(itemOne).click();
     cy.get('[data-id="selected-items"]').should("have.text", "item-one");
     cy.get(itemThree).click();
@@ -206,7 +241,7 @@ describe("Controlled menu selection", () => {
   });
 
   it("controlled: multiple selection mode retains the order items where selected", () => {
-    cy.mount(<ControlledMenu selectionMode="multiple" />);
+    cy.mount(<ControlledListBox selectionMode="multiple" />);
     cy.get(itemThree).click();
     cy.get('[data-id="selected-items"]').should("have.text", "item-three");
     cy.get(itemOne).click();

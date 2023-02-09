@@ -5,10 +5,13 @@ import { ListBox, ListBoxProps } from "../../indexLib";
 function _BasicListBox<T extends object>(args: ListBoxProps<T>) {
   return (
     <ListBox
+      selectionMode="single"
+      // Requires selection mode to be set...
       onSelectionChange={(key) => console.log(key)}
       label="Label"
       // shouldFocusWrap={true}
       // shouldFocusOnHover={false}
+
       {...args}
     >
       <Item key="publish">Publish</Item>

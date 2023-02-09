@@ -49,6 +49,7 @@ function Select<T extends object>(
     shouldFocusOnHover = true,
   } = props;
 
+  console.log(props);
   // Create state based on the incoming props
   const state = useSelectState(props);
 
@@ -127,6 +128,7 @@ function Select<T extends object>(
               <ListBox
                 {...menuProps}
                 {...{
+                  items: props?.items,
                   children,
                   shouldFocusOnHover,
                   state,

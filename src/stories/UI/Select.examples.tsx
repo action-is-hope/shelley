@@ -119,11 +119,11 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
       label="Pick an animal"
       items={options}
       selectedKey={animal}
+      {...args}
       onSelectionChange={(selected) =>
         setAnimal(selected as SetStateAction<string>)
       }
       portalSelector="#portal"
-      {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </Select>
