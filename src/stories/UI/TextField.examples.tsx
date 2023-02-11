@@ -132,7 +132,7 @@ export const TypeExample = (args: TextInputProps) => {
   );
 };
 
-export const HelpTextExample = (args: InputTextProps) => {
+export const HelpTextExample = () => {
   const [value, setValue] = useState("0");
   const isValid = useMemo(() => /^\d$/.test(value), [value]);
 
@@ -153,7 +153,7 @@ export const HelpTextExample = (args: InputTextProps) => {
   );
 };
 
-export const AdornmentExample = (args: InputTextProps) => {
+export const AdornmentExample = () => {
   const [showPassword, setShowPassword] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
 

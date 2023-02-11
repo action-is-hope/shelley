@@ -132,7 +132,7 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
 
 export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
   const list: { items: ItemsType[] } = useAsyncList({
-    async load({ signal, filterText }) {
+    async load({ signal }) {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
       const json = await res.json();
 
@@ -231,7 +231,7 @@ export const SelectSizes = (args: SelectProps<ItemsType>) => {
   );
 };
 
-export const HelpTextExample = (args: SelectProps<ItemsType>) => {
+export const HelpTextExample = () => {
   const [animalId, setAnimalId] = useState(0);
   const options = [
     { id: 1, name: "Aardvark" },

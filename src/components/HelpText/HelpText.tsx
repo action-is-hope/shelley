@@ -21,6 +21,9 @@ interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLAttributes<HTMLElement>;
+
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
@@ -33,10 +36,10 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     descriptionProps,
     errorMessageProps,
     className: classNameProp,
+    includeDataIds = false,
   } = props;
   const isErrorMessage =
     (errorMessage && validationState === "invalid") || false;
-
   return (
     <>
       {(description || isErrorMessage) && (
@@ -51,12 +54,20 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
           {isErrorMessage ? (
             <>
               {showErrorIcon && <Warning />}
-              <div {...errorMessageProps} className={st(classes.helpText)}>
+              <div
+                {...errorMessageProps}
+                className={st(classes.helpText)}
+                data-id={includeDataIds ? "help--error" : undefined}
+              >
                 {errorMessage}
               </div>
             </>
           ) : (
-            <div {...descriptionProps} className={st(classes.helpText)}>
+            <div
+              {...descriptionProps}
+              className={st(classes.helpText)}
+              data-id={includeDataIds ? "help--description" : undefined}
+            >
               {description}
             </div>
           )}

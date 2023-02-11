@@ -39,7 +39,7 @@ export interface FieldProps extends Validation {
    */
   disableLabelTransition?: boolean;
   /** Props for the label element. */
-  labelProps?: HTMLAttributes<HTMLElement>;
+  labelProps?: React.HTMLProps<HTMLLabelElement>;
   /**
    * Variant index.
    * @default "outlined"
@@ -52,6 +52,8 @@ export interface FieldProps extends Validation {
   vol?: Volume;
   /** Does the containing input have a value. */
   hasValue?: boolean;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
   /** Props for the help text description element. */
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
@@ -75,12 +77,13 @@ const Field = ({
   startAdornment,
   endAdornment,
   description,
-  label: labelProp,
+  label: labelStringProp,
   labelProps,
   labelPosition = "over",
   descriptionProps,
   errorMessageProps,
   disableLabelTransition = false,
+  includeDataIds = false,
   variant = "outlined",
   hasValue: hasValueProp,
   vol = 1,
@@ -99,8 +102,12 @@ const Field = ({
   });
 
   const label = (
-    <Label className={classes.inputLabel} {...labelProps}>
-      {labelProp}
+    <Label
+      className={classes.inputLabel}
+      data-id={includeDataIds ? "field--label" : undefined}
+      {...labelProps}
+    >
+      {labelStringProp}
     </Label>
   );
   const hideLabel = labelPosition === "hidden";
@@ -123,14 +130,26 @@ const Field = ({
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
       <div className={classes.fieldContainer}>
-        {startAdornment && <InputAdornment>{startAdornment}</InputAdornment>}
+        {startAdornment && (
+          <InputAdornment
+            data-id={includeDataIds ? "field--start-adornment" : undefined}
+          >
+            {startAdornment}
+          </InputAdornment>
+        )}
         {childrenWithProps}
-        {endAdornment && <InputAdornment>{endAdornment}</InputAdornment>}
+        {endAdornment && (
+          <InputAdornment
+            data-id={includeDataIds ? "field--end-adornment" : undefined}
+          >
+            {endAdornment}
+          </InputAdornment>
+        )}
         {/*  */}
         {variant && (
           <fieldset aria-hidden="true" className={classes.fieldset}>
             <legend className={classes.legend}>
-              {!hideLabel && labelProp}
+              {!hideLabel && labelStringProp}
             </legend>
           </fieldset>
         )}
@@ -145,6 +164,7 @@ const Field = ({
           errorMessageProps,
           validationState,
         }}
+        includeDataIds={includeDataIds}
       />
     </div>
   );

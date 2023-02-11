@@ -9,9 +9,7 @@ import ButtonGroupDocs from "./components-docs/ButtonGroup/__buttonGroupDocs";
 import GridDocs from "./components-docs/Grid/__gridDocs";
 import IconDocs from "./components-docs/Icon/__iconDocs";
 import InputSelectionDocs from "./components-docs/InputSelection/__inputSelectionDocs";
-import InputTextDocs from "./components-docs/TextField/__inputTextDocs";
 import LabelsDocs from "./components-docs/Label/__labelsDocs";
-import MenuDocs from "./components-docs/Menu/__menuDocs";
 import TextDocs from "./components-docs/Text/__textDocs";
 import VisuallyHiddenDocs from "./components-docs/VisuallyHidden/__visuallyHiddenDocs";
 
