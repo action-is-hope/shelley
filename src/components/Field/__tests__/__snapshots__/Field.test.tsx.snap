@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field Renders basic field 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;

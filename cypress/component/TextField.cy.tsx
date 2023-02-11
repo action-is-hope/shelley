@@ -77,7 +77,7 @@ describe("Field Help", () => {
           id="testField"
           type="text"
           aria-labelledby="label-id"
-          aria-describedBy="description-id"
+          aria-describedby="description-id"
         />
       </Field>
     );
@@ -99,7 +99,7 @@ describe("Field Help", () => {
           type="text"
           aria-labelledby="label-id"
           aria-invalid="true"
-          aria-describedBy="error-id"
+          aria-describedby="error-id"
         />
       </Field>
     );
@@ -123,7 +123,7 @@ describe("Field Help", () => {
           type="text"
           aria-labelledby="label-id"
           aria-invalid="true"
-          aria-describedBy="error-id"
+          aria-describedby="error-id"
         />
       </Field>
     );

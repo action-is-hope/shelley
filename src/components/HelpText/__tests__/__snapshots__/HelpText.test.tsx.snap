@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpText renders help text 1`] = `
+<div
+  className="HelpText31700443__root custom-class"
+>
+  <div
+    className="HelpText31700443__helpText"
+  >
+    Help text
+  </div>
+</div>
+`;

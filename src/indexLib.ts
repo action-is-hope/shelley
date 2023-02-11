@@ -28,9 +28,6 @@ export * from "./components/HelpText/HelpText";
 export { default as Grid } from "./components/Grid/Grid";
 export * from "./components/Grid/Grid";
 
-export { default as HintText } from "./components/HintText/HintText";
-export * from "./components/HintText/HintText";
-
 export { default as Icon } from "./components/Icon/Icon";
 export * from "./components/Icon/Icon";
 

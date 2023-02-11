@@ -3,7 +3,7 @@ import { st, classes } from "./toolbar.st.css";
 import type { TextAlign, Variant } from "../types";
 
 interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  as?: any;
+  as?: React.ElementType;
   align?: TextAlign;
   /** Variant index, defines the 'look'. */
   variant?: Variant;
