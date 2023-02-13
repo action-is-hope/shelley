@@ -50,7 +50,7 @@ const Text = React.forwardRef(
             truncate: truncate !== false,
             weight,
             uppercase,
-            vol,
+            vol: vol !== false ? vol : undefined,
             lineClamp: typeof truncate === "number" ? truncate : undefined,
           },
           classNameProp

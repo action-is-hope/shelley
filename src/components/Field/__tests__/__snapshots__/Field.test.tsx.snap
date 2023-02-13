@@ -1,8 +1,600 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Field Renders basic field 1`] = `
+exports[`Field Renderd as variant 'filled' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-6-filled Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renderd as variant 'outlined' 1`] = `
 <div
   className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders as variant 'quiet' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-5-quiet Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders default field as variant 'outlined', labelPosition 'over', volume '1' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with labelPosition 'hidden' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-6-hidden"
+  data-id="field"
+>
+  <span
+    className="visuallyHidden519588831__root"
+  >
+    <label
+      className="Label3203939847__root Field2808104046__inputLabel"
+      data="random"
+      htmlFor="test"
+      id="label-id"
+    >
+      <span
+        className="Label3203939847__labelText"
+      >
+        My field
+      </span>
+    </label>
+  </span>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      />
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with labelPosition 'over' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with labelPosition 'side' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-side"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with labelPosition 'top' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-3-top"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with no variant 'false' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Field Renders with no volume 'undefined' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '1' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '2' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-2 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '3' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-3 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '4' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-4 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '5' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-5 Field2808104046---labelPosition-4-over"
+  data-id="field"
+>
+  <label
+    className="Label3203939847__root Field2808104046__inputLabel"
+    data="random"
+    htmlFor="test"
+    id="label-id"
+  >
+    <span
+      className="Label3203939847__labelText"
+    >
+      My field
+    </span>
+  </label>
+  <div
+    className="Field2808104046__fieldContainer"
+  >
+    <input
+      aria-labelledby="label-id"
+      className="Field2808104046__fieldInput"
+      id="testField"
+      type="text"
+    />
+    <fieldset
+      aria-hidden="true"
+      className="Field2808104046__fieldset"
+    >
+      <legend
+        className="Field2808104046__legend"
+      >
+        My field
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Field Renders with volume '6' 1`] = `
+<div
+  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-6 Field2808104046---labelPosition-4-over"
   data-id="field"
 >
   <label

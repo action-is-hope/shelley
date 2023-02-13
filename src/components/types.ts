@@ -28,7 +28,7 @@ export declare type ButtonVariants =
 export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
 
 /** Generic volume levels */
-export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | false;
 
 /** Text volume levels */
 export declare type TextVolume =
@@ -44,7 +44,7 @@ export declare type TextVolume =
   | 10
   | 11
   | 12
-  | undefined;
+  | false;
 
 /** Text input types - maps to input type attribute. */
 export declare type TextInputType =

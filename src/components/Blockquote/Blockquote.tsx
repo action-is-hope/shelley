@@ -1,7 +1,7 @@
 /** Blockquote.tsx */
 import type React from "react";
 import type { ReactNode, VFC } from "react";
-import type { Volume, Variant } from "../types";
+import type { TextVolume, Variant } from "../types";
 import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
@@ -16,7 +16,7 @@ export interface BlockquoteProps
   /**
    * Changes the volume of the description.
    **/
-  descVol?: Volume;
+  descVol?: TextVolume;
   /**
    * Variant index.
    **/

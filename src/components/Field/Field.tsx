@@ -47,7 +47,7 @@ export interface FieldProps extends Validation {
   variant?: FieldVariants;
   /**
    * Defines how 'loud' the field should be.
-   * @default 3
+   * @default 1
    */
   vol?: Volume;
   /** Does the containing input have a value. */
@@ -120,7 +120,7 @@ const Field = ({
           error,
           disabled,
           variant: variant || undefined,
-          vol,
+          vol: vol !== false ? vol : undefined,
           labelPosition,
         },
         classNameProp

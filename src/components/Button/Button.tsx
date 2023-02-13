@@ -120,7 +120,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       fullWidth,
       tone,
       variant: variant !== false ? variant : undefined,
-      vol,
+      vol: vol !== false ? vol : undefined,
       isPressed,
       isDisabled,
     },
