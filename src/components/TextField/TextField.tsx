@@ -12,6 +12,8 @@ interface ITextCustomProps
   extends FieldProps,
     Omit<AriaTextFieldProps, "label"> {
   rows?: number;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 export interface TextareaProps extends ITextCustomProps {
   /** Defines the type of input. */
@@ -50,6 +52,7 @@ function TextField(
     type = "text",
     value,
     defaultValue,
+    includeDataIds,
   } = props;
   /**
    * textValue stores the value to be used to format multiline and stylews for hasValue:
@@ -66,7 +69,6 @@ function TextField(
     useTextField(
       {
         ...props,
-        isDisabled: disabled,
         onChange: (value) => {
           setTextValue(value);
           onChange && onChange(value);
@@ -96,6 +98,8 @@ function TextField(
         disableLabelTransition,
         descriptionProps,
         errorMessageProps,
+        includeDataIds,
+        "data-id": includeDataIds ? "textfield" : undefined,
       }}
       className={st(classes.root, classNameProp)}
     >
@@ -106,12 +110,14 @@ function TextField(
             className={classes.textareaInput}
             rows={rows}
             {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
+            data-id={includeDataIds ? "textfield--textarea" : undefined}
             ref={textareaRef}
           />
         </div>
       ) : (
         <input
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
+          data-id={includeDataIds ? "textfield--input" : undefined}
           ref={inputRef}
         />
       )}

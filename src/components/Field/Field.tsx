@@ -1,5 +1,4 @@
 import type React from "react";
-
 import {
   ReactNode,
   ReactElement,
@@ -58,20 +57,19 @@ export interface FieldProps extends Validation {
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLAttributes<HTMLElement>;
+  /** Enable disabled state. */
+  isDisabled?: boolean;
 }
-// https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/
-/** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
+
 interface FieldInternalProps
   extends Pick<
       React.HTMLProps<HTMLDivElement>,
       Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">
     >,
     FieldProps {}
-// isRequired
 const Field = ({
   className: classNameProp,
   children,
-  disabled = false,
   errorMessage,
   validationState,
   startAdornment,
@@ -86,6 +84,8 @@ const Field = ({
   includeDataIds = false,
   variant = "outlined",
   hasValue: hasValueProp,
+  isRequired,
+  isDisabled,
   vol = 1,
   ...rest
 }: FieldInternalProps) => {
@@ -118,7 +118,8 @@ const Field = ({
         {
           hasValue,
           error,
-          disabled,
+          isDisabled,
+          isRequired,
           variant: variant || undefined,
           vol: vol !== false ? vol : undefined,
           labelPosition,
@@ -171,5 +172,3 @@ const Field = ({
 };
 
 export default Field;
-
-// Field.displayName = "Field";

@@ -11,11 +11,6 @@
     --spacing-unit,
 }
 
-:import {
-  -st-from: "../../../components-site/CodeSample/codeSample.st.css";
-  -st-default: CodeSample;
-}
-
 .formatted > p + p,
 .formatted > p + h4,
 .formatted > p + h5,
@@ -32,12 +27,6 @@
   margin-top: calc(var(--spacing-unit) * 4);
   margin-bottom: calc(var(--spacing-unit) * 5);
   /* margin-bottom: 0; */
-}
-
-
-.formatted > CodeSample {
-  margin-top: calc(var(--spacing-unit) * 2);
-  margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
 .formatted > p + div {

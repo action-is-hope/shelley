@@ -14,7 +14,9 @@
 
 .root {
   -st-states:
-    disabled,
+    isRequired,
+    isDisabled,
+    isReadOnly,
     hasValue,
     error,
     variant(string),

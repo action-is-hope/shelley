@@ -97,7 +97,7 @@
   }
 
   /* = Disabled */
-  Field:disabled {
+  Field:isDisabled {
     -st-mixin: disabledField
   }
 

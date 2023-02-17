@@ -10,8 +10,7 @@ import { CheckboxGroupContext } from "../CheckboxGroup/context";
 /* = Style API. */
 import { st, classes } from "./checkbox.st.css";
 
-/** HTMLInputElement has a 'label' attribute apparently; so replacing it. */
-export interface CheckboxProps extends Omit<AriaCheckboxProps, "isDisabled2"> {
+export interface CheckboxProps extends AriaCheckboxProps {
   className?: string;
   /** The position of the label relative to the label. */
   inputPosition?: AlignPos;
@@ -89,7 +88,7 @@ const Checkbox = forwardRef(
             isIndeterminate,
             // isSelected,
             validationState,
-            vol,
+            vol: vol ? vol : undefined,
           },
           classNameProp
         )}
@@ -112,4 +111,4 @@ const Checkbox = forwardRef(
 
 export default Checkbox;
 
-Checkbox.displayName = "Checkbox";
+// Checkbox.displayName = "Checkbox";

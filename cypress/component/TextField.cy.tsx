@@ -1,222 +1,172 @@
-import React, { RefObject } from "react";
-import { createRef } from "react";
-import type { AriaTextFieldProps } from "@react-types/textfield";
-import { Field, FieldProps, HelpText } from "../../src/indexLib";
-import { useTextField } from "react-aria";
+import React from "react";
+import { TextField } from "../../src/indexLib";
 
-const fieldTest = '[data-id="field"]';
-const labelTest = '[data-id="field--label"]';
-const descriptionTest = '[data-id="help--description"]';
-const errorTest = '[data-id="help--error"]';
-
-const itemTwo = '[data-key="item-two"]';
-const itemThree = '[data-key="item-three"]';
-
-interface BasicFieldProps extends FieldProps {
-  testingProps?: React.HTMLAttributes<HTMLInputElement>;
-}
+const textField = `[data-id="textfield"]`;
+const fieldLabel = '[data-id="field--label"]';
+const fieldInput = `[data-id="textfield--input"]`;
+const fieldTextArea = `[data-id="textfield--textarea"]`;
+const fieldDesc = '[data-id="help--description"]';
+const fieldError = '[data-id="help--error"]';
 
 const fieldPropsTest = {
-  "data-id": "field",
+  "data-id": "textfield",
   label: "My field",
-  labelProps: {
-    id: "label-id",
-    htmlFor: "test",
-    data: "random",
-  },
   includeDataIds: true,
 };
 
-// const BasicField = function (props: FieldProps) {
-//   const inputRef = React.useRef() as RefObject<HTMLInputElement>;
-
-//   return (
-//     <Field {...props}>
-//       <input id="test" aria-labelledby="label-id" type="text" />
-//     </Field>
-//   );
-// };
-
-describe("Basic Field", () => {
-  it("renders with children, child renders correctly.", () => {
-    cy.mount(
-      <Field {...fieldPropsTest}>
-        <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
-    );
-    cy.get("#testField")
-      .should("be.visible")
-      .and("have.attr", "id", "testField")
-      .and("have.attr", "type", "text")
-      .and("have.attr", "aria-labelledby", "label-id");
+describe("Basic TextField", () => {
+  it("renders input correctly.", () => {
+    cy.mount(<TextField {...fieldPropsTest} />);
+    cy.get(fieldLabel).should("be.visible");
+    cy.get(fieldInput).should("be.visible");
   });
 
-  it("renders a label and spreads labelProps to it.", () => {
+  it("renders label and input #a11y related attributes correctly.", () => {
+    cy.mount(<TextField {...fieldPropsTest} />);
+    cy.get(fieldInput)
+      .invoke("attr", "id")
+      .then((id) => cy.get(fieldLabel).should("have.attr", "for", id));
+    cy.get(fieldLabel)
+      .should("have.text", "My field")
+      .invoke("attr", "id")
+      .then((id) =>
+        cy.get(fieldInput).should("have.attr", "aria-labelledby", id)
+      );
+  });
+
+  it("takes input and fires onChange.", () => {
+    const onChangeSpy = cy.spy().as("onChangeSpy");
+    cy.mount(<TextField {...fieldPropsTest} onChange={onChangeSpy} />);
+    cy.get(fieldInput).type("More input! More input!");
+    cy.get(fieldInput).should("have.value", "More input! More input!");
+    cy.get("@onChangeSpy").should("have.been.called");
+  });
+
+  it("isDisabled.", () => {
+    cy.mount(<TextField {...fieldPropsTest} isDisabled />);
+    cy.get(fieldInput).should("be.disabled");
+  });
+
+  it("isReadOnly.", () => {
     cy.mount(
-      <Field {...fieldPropsTest}>
-        <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
+      <TextField {...fieldPropsTest} value="Delete me if you can!" isReadOnly />
     );
-    cy.get(labelTest)
-      .should("have.attr", "id", "label-id")
-      .and("have.attr", "for", "test")
-      .and("have.attr", "data", "random")
-      .and("have.text", "My field");
+    cy.get(fieldInput)
+      .should("have.value", "Delete me if you can!")
+      .and("have.attr", "readonly");
   });
 });
 
-describe("Field Help", () => {
-  it("renders a description and spreads descriptionProps to it.", () => {
+describe("TextField Help", () => {
+  it("renders description correctly.", () => {
     cy.mount(
-      <Field
-        {...fieldPropsTest}
-        description="Chocolate teapot"
-        descriptionProps={{ id: "description-id" }}
-      >
-        <input
-          id="testField"
-          type="text"
-          aria-labelledby="label-id"
-          aria-describedby="description-id"
-        />
-      </Field>
+      <TextField {...fieldPropsTest} description="Number 5 likes input." />
     );
-    cy.get(descriptionTest)
-      .should("have.attr", "id", "description-id")
-      .and("have.text", "Chocolate teapot");
+    cy.get(fieldDesc)
+      .should("have.text", "Number 5 likes input.")
+      .invoke("attr", "id")
+      .then((id) =>
+        cy.get(fieldInput).should("have.attr", "aria-describedby", id)
+      );
   });
 
-  it("renders an error message and spreads errorProps to it.", () => {
+  it("renders as invalid.", () => {
+    cy.mount(<TextField {...fieldPropsTest} validationState="invalid" />);
+    cy.get(fieldInput).should("have.attr", "aria-invalid", "true");
+  });
+
+  it("renders errorMessage correctly.", () => {
     cy.mount(
-      <Field
+      <TextField
         {...fieldPropsTest}
+        errorMessage="No input!"
         validationState="invalid"
-        errorMessage="Teapot fail!"
-        errorMessageProps={{ id: "error-id" }}
-      >
-        <input
-          id="testField"
-          type="text"
-          aria-labelledby="label-id"
-          aria-invalid="true"
-          aria-describedby="error-id"
-        />
-      </Field>
+      />
     );
-    cy.get(errorTest)
-      .should("have.attr", "id", "error-id")
-      .and("have.text", "Teapot fail!");
+    cy.get(fieldError)
+      .should("have.text", "No input!")
+      .invoke("attr", "id")
+      .then((id) =>
+        cy
+          .get(fieldInput)
+          .should("have.attr", "aria-describedby", id)
+          .should("have.attr", "aria-invalid", "true")
+      );
   });
 
-  it("error takes precidence replacing help description.", () => {
+  it("renders errorMessage instead of description.", () => {
     cy.mount(
-      <Field
+      <TextField
         {...fieldPropsTest}
-        description="Chocolate teapot"
-        descriptionProps={{ id: "description-id" }}
+        description="Number 5 likes input."
+        errorMessage="No input!"
         validationState="invalid"
-        errorMessage="Teapot fail!"
-        errorMessageProps={{ id: "error-id" }}
-      >
-        <input
-          id="testField"
-          type="text"
-          aria-labelledby="label-id"
-          aria-invalid="true"
-          aria-describedby="error-id"
-        />
-      </Field>
+      />
     );
-    cy.get(descriptionTest).should("not.exist");
-    cy.get(errorTest).should("be.visible");
+    cy.get(fieldDesc).should("not.exist");
+    cy.get(fieldError)
+      .should("have.text", "No input!")
+      .invoke("attr", "id")
+      .then((id) =>
+        cy
+          .get(fieldInput)
+          .should("have.attr", "aria-describedby", id)
+          .should("have.attr", "aria-invalid", "true")
+      );
   });
 });
 
-describe("Adornments", () => {
-  it("renders start adornment", () => {
-    cy.mount(
-      <Field {...fieldPropsTest} startAdornment="£">
-        <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
-    );
-    cy.get('[data-id="field--start-adornment"]')
-      .should("exist")
-      .and("have.text", "£");
+describe("TextField Types", () => {
+  it("renders as type password.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="password" />);
+    cy.get(fieldInput).should("have.attr", "type", "password");
   });
 
-  it("renders end adornment", () => {
-    cy.mount(
-      <Field {...fieldPropsTest} endAdornment=".00">
-        <input id="testField" type="text" aria-labelledby="label-id" />
-      </Field>
-    );
-    cy.get('[data-id="field--end-adornment"]')
-      .should("exist")
-      .and("have.text", ".00");
+  it("renders as type email.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="email" />);
+    cy.get(fieldInput).should("have.attr", "type", "email");
   });
 
-  // it("renders a label and spreads labelProps to it.", () => {
-  //   cy.mount(
-  //     <Field {...fieldPropsTest}>
-  //       <input id="testField" type="text" aria-labelledby="label-id" />
-  //     </Field>
-  //   );
-  //   cy.get(labelTest)
-  //     .should("have.attr", "id", "label-id")
-  //     .and("have.attr", "for", "test")
-  //     .and("have.attr", "data", "random")
-  //     .and("have.text", "My field");
-  // });
+  it("renders as type number.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="number" />);
+    cy.get(fieldInput).should("have.attr", "type", "number");
+  });
+
+  it("renders as type tel.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="tel" />);
+    cy.get(fieldInput).should("have.attr", "type", "tel");
+  });
+
+  it("renders as type time.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="time" />);
+    cy.get(fieldInput).should("have.attr", "type", "time");
+  });
+
+  it("renders as type url.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="url" />);
+    cy.get(fieldInput).should("have.attr", "type", "url");
+  });
+
+  it("renders as type search.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="search" />);
+    cy.get(fieldInput).should("have.attr", "type", "search");
+  });
 });
 
-// Renders a fieldset when variant is added
-// Renders classes...? See snapshots...
-// Changes label position
+describe("TextField as textarea", () => {
+  it("renders correctly.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="textarea" />);
+    cy.get(`${textField} textarea`).should("exist");
+  });
 
-// it("renders as button with onPress called via click", () => {
-//   const onPressSpy = cy.spy().as("onPressSpy");
-//   cy.mount(<Button onPress={onPressSpy}>Save changes</Button>);
-//   cy.get(":button").click();
-//   cy.get("@onPressSpy").should("have.been.called");
-// });
-// it("renders as disabled button", () => {
-//   cy.mount(<Button disabled>Save changes</Button>);
-//   cy.get(":button").should("be.disabled");
-// });
-// it("renders with custom class name", () => {
-//   cy.mount(<Button className="cypress-test">Custom classname</Button>);
-//   cy.get(":button")
-//     .should("have.attr", "class")
-//     .and("to.have.string", "cypress-test");
-// });
-// it("forwards refs", () => {
-//   const buttonRef = createRef<HTMLButtonElement>();
-//   cy.mount(
-//     <>
-//       <button
-//         data-id="cy-button-trigger"
-//         onClick={() => buttonRef?.current?.focus()}
-//       >
-//         Click me
-//       </button>
-//       <Button data-id="cy-button" ref={buttonRef}>
-//         Save changes
-//       </Button>
-//     </>
-//   );
-//   cy.get(`[data-id="cy-button-trigger"]`).click();
-//   cy.get(`[data-id="cy-button"]`).should("be.focused");
-// });
-// it("renders as anchor with href and the link works as expected", () => {
-//   cy.mount(
-//     <Button as={"a"} href="https://google.com">
-//       Link to Google
-//     </Button>
-//   );
-//   cy.get("a")
-//     .invoke("attr", "href")
-//     .should("equal", "https://google.com")
-//     .then((href) => {
-//       href && cy.request(href).its("status").should("eq", 200);
-//     });
-// });
+  it("renders with rows.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="textarea" rows={2} />);
+    cy.get(fieldTextArea).should("have.attr", "rows", "2");
+  });
+
+  it("renders with value as data attribute for styling purposes.", () => {
+    cy.mount(<TextField {...fieldPropsTest} type="textarea" rows={2} />);
+    cy.get(fieldTextArea).type("Expanding textarea...");
+    cy.get(`[data-value="Expanding textarea..."]`).should("exist");
+  });
+});
