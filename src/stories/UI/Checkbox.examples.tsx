@@ -2,7 +2,7 @@ import { P, Checkbox, CheckboxProps } from "../../indexLib";
 import { useState } from "react";
 
 export const ValueExample = (args: CheckboxProps) => {
-  let [selected, setSelected] = useState(true);
+  const [selected, setSelected] = useState(true);
 
   return (
     <>
@@ -17,7 +17,7 @@ export const ValueExample = (args: CheckboxProps) => {
 };
 
 export const EventExample = (args: CheckboxProps) => {
-  let [selected, setSelection] = useState(false);
+  const [selected, setSelection] = useState(false);
 
   return (
     <>

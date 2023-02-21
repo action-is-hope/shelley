@@ -94,7 +94,7 @@ Checkboxes are not selected by default. The `defaultSelected` prop can be used t
     docs: {
       source: {
         code: dedent`
-  let [selected, setSelected] = useState(true);\n
+  const [selected, setSelected] = useState(true);\n
   return (
     <>
       <Checkbox defaultSelected>
@@ -146,7 +146,7 @@ Checkboxes accept a user defined onChange prop, triggered whenever the Checkbox 
     docs: {
       source: {
         code: dedent`
-  let [selected, setSelection] = useState(false);\n
+  const [selected, setSelection] = useState(false);\n
   return (
     <>
       <Checkbox isSelected={selected} onChange={setSelection}>

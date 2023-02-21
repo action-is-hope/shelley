@@ -10,7 +10,7 @@ const fieldPropsTest = {
   label: "My field",
   labelProps: {
     id: "label-id",
-    htmlFor: "test",
+    htmlFor: "testField",
     data: "random",
   },
   includeDataIds: true,
@@ -40,7 +40,7 @@ describe("Basic Field", () => {
     );
     cy.get(labelTest)
       .should("have.attr", "id", "label-id")
-      .and("have.attr", "for", "test")
+      .and("have.attr", "for", "testField")
       .and("have.attr", "data", "random")
       .and("have.text", "My field");
   });
