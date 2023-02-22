@@ -25,7 +25,7 @@ const Table = React.forwardRef(
           classes.root,
           {
             variant,
-            vol,
+            vol: vol !== false ? vol : undefined,
           },
           classNameProp
         )}

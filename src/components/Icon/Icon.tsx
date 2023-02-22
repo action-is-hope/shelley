@@ -1,4 +1,4 @@
-import React, { forwardRef, SVGProps } from "react";
+import React, { forwardRef } from "react";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */
 import { st, classes } from "./icon.st.css";

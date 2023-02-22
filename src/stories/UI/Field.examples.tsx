@@ -1,5 +1,5 @@
 import { Field, FieldProps } from "../../indexLib";
-import React, { useRef, useState, ElementType } from "react";
+import React, { useRef, useState } from "react";
 import { useTextField } from "react-aria";
 
 export const FieldExample = (args: FieldProps) => {

@@ -80,7 +80,7 @@ const InputSelection = React.forwardRef(
       <div
         className={st(
           classes.root,
-          { variant, type, disabled, vol },
+          { variant, type, disabled, vol: vol !== false ? vol : undefined },
           classNameProp
         )}
       >
