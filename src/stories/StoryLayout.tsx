@@ -57,3 +57,24 @@ export const StoryGrid = (props: any) => (
     </div>
   </div>
 );
+
+export const StoryGridV2 = (props: any) => (
+  <div
+    style={{
+      ...containerbase,
+      ...containerCenter,
+      justifyContent: props.justifyContent,
+    }}
+  >
+    <div
+      style={{
+        display: "grid",
+        gap: props.gap || "24px",
+        gridTemplateColumns: props.cols || undefined,
+        ...props,
+      }}
+    >
+      {props.children}
+    </div>
+  </div>
+);
