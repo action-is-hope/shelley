@@ -50,7 +50,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@react-aria/button": "3.6.1",
+    "@react-aria/button": "3.6.4",
     "@react-aria/interactions": "^3.11.0",
     "@react-aria/menu": "^3.6.1",
     "@react-aria/overlays": "^3.10.1",
