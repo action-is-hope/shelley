@@ -1,7 +1,7 @@
 /** MenuTrigger.tsx */
 import React, { cloneElement, ReactElement } from "react";
 import ReactDOM from "react-dom";
-import { useMenuTrigger } from "@react-aria/menu";
+import { useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import Popup, { PopupProps } from "../Popup/Popup";

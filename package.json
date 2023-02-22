@@ -48,16 +48,12 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@react-aria/button": "3.6.2",
-    "@react-aria/interactions": "^3.12.0",
-    "@react-aria/menu": "^3.6.2",
-    "@react-aria/overlays": "^3.11.0",
-    "@react-aria/utils": "^3.14.0",
-    "@react-stately/tree": "^3.3.4",
-    "@react-types/menu": "^3.7.2",
-    "@react-types/overlays": "^3.6.4",
-    "react-aria": "^3.20.0",
-    "react-stately": "^3.18.0"
+    "@react-aria/utils": "^3.14.2",
+    "@react-stately/tree": "^3.4.1",
+    "@react-types/menu": "^3.7.3",
+    "@react-types/overlays": "^3.6.5",
+    "react-aria": "^3.22.0",
+    "react-stately": "^3.20.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.5.15",

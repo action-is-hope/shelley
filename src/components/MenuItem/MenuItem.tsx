@@ -1,6 +1,6 @@
 /** MenuItem.tsx */
 import React, { useRef } from "react";
-import { useMenuItem, AriaMenuItemProps } from "@react-aria/menu";
+import { useMenuItem, AriaMenuItemProps } from "react-aria";
 import CheckIcon from "../icons/Check";
 import type { TreeState } from "@react-stately/tree";
 import type { Node } from "@react-types/shared/src/collections";

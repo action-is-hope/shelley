@@ -8,7 +8,7 @@ import {
   DismissButton,
   useOverlayPosition,
   AriaOverlayProps,
-} from "@react-aria/overlays";
+} from "react-aria";
 
 /* = Style API. */
 import { st, classes } from "./popup.st.css";

@@ -1,7 +1,7 @@
 /** Menu.tsx */
 import { useRef } from "react";
 import type { AriaMenuProps } from "@react-types/menu";
-import { useMenu } from "@react-aria/menu";
+import { useMenu } from "react-aria";
 // import { mergeProps } from "@react-aria/utils";
 import { useTreeState } from "@react-stately/tree";
 import type { TreeProps } from "@react-stately/tree/dist/types";
