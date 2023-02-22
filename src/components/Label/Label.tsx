@@ -2,16 +2,13 @@
 import type React from "react";
 import type { AlignPos } from "../types";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
-import HintText from "../HintText/HintText";
 /* = Style API. */
 import { st, classes } from "./label.st.css";
 
 export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   children: React.ReactNode;
-  /** Hint can take a React node which is placed inside the internal HintText.*/
-  hint?: React.ReactNode;
   /** The position of the label relative to the input. */
-  inputPos?: AlignPos;
+  inputPosition?: AlignPos;
   /** Visually hides the labelText container within Label. */
   visuallyHidden?: boolean;
   /** An optional input to shove inside the label. */
@@ -22,23 +19,15 @@ const Label: React.VFC<LabelProps> = ({
   className: classNameProp,
   inputControl,
   children,
-  inputPos = undefined,
-  hint,
+  inputPosition = undefined,
   visuallyHidden,
   ...attrs
 }) => {
-  const labelText = (
-    <span className={classes.textContainer}>
-      <span className={classes.labelText}>{children}</span>
-      {hint && <HintText>{hint}</HintText>}
-    </span>
-  );
-
   const hasInput: boolean = inputControl ? true : false;
-
+  const labelText = <span className={classes.labelText}>{children}</span>;
   return (
     <label
-      className={st(classes.root, { inputPos, hasInput }, classNameProp)}
+      className={st(classes.root, { inputPosition, hasInput }, classNameProp)}
       {...attrs}
     >
       {visuallyHidden ? (

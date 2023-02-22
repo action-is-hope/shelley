@@ -102,9 +102,11 @@
 
   /* = Text colours */
   --color-text-1: var(--light-01);
-  --color-text-2: rgba(var(--light-01-raw), 0.9);
+  --color-text-2: rgba(var(--light-01-raw), 0.6);
   --color-text-3: rgba(var(--light-01-raw), 0.8);
   --color-text-4: #f7e1b9;
+
+  --color-text-help: rgba(var(--light-01-raw), 0.6);
 
   /* = Status colours */
   /* --color-error: #b66b6e; */

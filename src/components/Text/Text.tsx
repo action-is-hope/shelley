@@ -1,29 +1,35 @@
 /* Text.tsx */
-import React from "react";
+import React, { Ref } from "react";
 import type { TextVolume } from "../types";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */
 import { st, classes } from "./text.st.css";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
-  /** HTML as to render as this Text item. */
+  /**
+   * HTML as to render as this Text item.
+   * @default span
+   */
   as: string;
-  /** Single line truncation - requires a 'known' width. */
-  truncate?: boolean;
-  /** Toggles uppercase styles. */
+  /** Truncate text to specified line number. */
+  truncate?: boolean | number;
+  /** Toggles uppercase. */
   uppercase?: boolean;
-  /** Set the weight index. */
-  weight?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined;
+  /** Set the weight. */
+  weight?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | undefined;
   /** Visually hides the element, visible to screen readers. */
   visuallyHidden?: boolean;
-  /** How 'loud' should this Text be? */
+  /**
+   * How 'loud' should this Text be?
+   * @default 3
+   */
   vol?: TextVolume;
 }
 
 const Text = React.forwardRef(
   (
     {
-      as: tagName,
+      as: tagName = "span",
       children,
       className: classNameProp,
       truncate = false,
@@ -33,14 +39,20 @@ const Text = React.forwardRef(
       vol = 3,
       ...rest
     }: TextProps,
-    ref?: React.Ref<HTMLBaseElement>
+    ref?: Ref<HTMLBaseElement>
   ) => {
     const text = React.createElement(
       tagName,
       {
         className: st(
           classes.root,
-          { truncate, weight, uppercase, vol },
+          {
+            truncate: truncate !== false,
+            weight,
+            uppercase,
+            vol: vol !== false ? vol : undefined,
+            lineClamp: typeof truncate === "number" ? truncate : undefined,
+          },
           classNameProp
         ),
         ref: ref,
@@ -61,10 +73,7 @@ interface TextExportsProps
     TextExports {}
 
 export const H1 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h1" vol={8} ref={ref} {...rest}>
       {children}
     </Text>
@@ -73,10 +82,7 @@ export const H1 = React.forwardRef(
 H1.displayName = "H1";
 
 export const H2 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h2" vol={7} ref={ref} {...rest}>
       {children}
     </Text>
@@ -85,10 +91,7 @@ export const H2 = React.forwardRef(
 H2.displayName = "H2";
 
 export const H3 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h3" vol={6} ref={ref} {...rest}>
       {children}
     </Text>
@@ -97,10 +100,7 @@ export const H3 = React.forwardRef(
 H3.displayName = "H3";
 
 export const H4 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h4" vol={5} ref={ref} {...rest}>
       {children}
     </Text>
@@ -109,10 +109,7 @@ export const H4 = React.forwardRef(
 H4.displayName = "H4";
 
 export const H5 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h5" vol={4} ref={ref} {...rest}>
       {children}
     </Text>
@@ -121,10 +118,7 @@ export const H5 = React.forwardRef(
 H5.displayName = "H5";
 
 export const H6 = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="h6" vol={4} ref={ref} {...rest}>
       {children}
     </Text>
@@ -133,10 +127,7 @@ export const H6 = React.forwardRef(
 H6.displayName = "H6";
 
 export const P = React.forwardRef(
-  (
-    { children, ...rest }: TextExportsProps,
-    ref?: React.Ref<HTMLBaseElement>
-  ) => (
+  ({ children, ...rest }: TextExportsProps, ref?: Ref<HTMLBaseElement>) => (
     <Text as="p" ref={ref} {...rest}>
       {children}
     </Text>

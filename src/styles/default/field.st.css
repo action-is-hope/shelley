@@ -1,0 +1,240 @@
+/**
+ * = Field - field.st.css
+ *
+ * This file applies the base styles to our form components such as 
+ * inputs, textareas and selects, combo boxes, checkbox / radio groups etc.
+ *
+ * Most of the base styles live in the mixins so they can be shared but the 
+ * variants are styled here as they are more specific to our markup.
+ * 
+ * ========================================================================= */
+
+
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-error,
+    --color-focus,
+    --color-form-base-border;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Field/field.st.css";
+  -st-default: Field;
+  -st-named: fieldInput
+}
+
+:import {
+  -st-from: "../../components/InputAdornment/inputAdornment.st.css";
+  -st-default: Adornment;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    textualFieldRoot,
+    textualFieldContainer,
+    startFieldIndicatorHasError,
+    startFieldIndicator,
+    textualFieldInput,
+    disabledField,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6,
+    label;
+}
+
+@st-scope Default {
+
+  /*==== BASE ====*/
+
+  Field {
+    -st-mixin: textualFieldRoot;
+  }
+
+  Field::fieldContainer {
+    -st-mixin: textualFieldContainer;
+  }
+
+  /* = Native input field. */
+  Field::fieldInput {
+    -st-mixin: textualFieldInput;
+  }
+
+  /* = Use a named import as a class to get the adjacent selectors working. */
+  Field Adornment + .fieldInput,
+  Field::fieldInput + Adornment {
+    margin-left: calc(-.2rem - var(--spacing-unit));
+  }
+
+  Field::helpText {
+    margin-top: calc(var(--spacing-unit) / 4);
+  }
+
+  Field::helpText::before {
+    display: block;
+  }
+
+  /* = Textarea wrapper which can be used for scrolling. */
+  Field::textAreaWrap {
+    display: block;
+    width: 100%;
+  }
+
+
+  /*==== STATES ====*/
+
+  /* = Error */
+  Field:error::fieldContainer {
+    /* -st-mixin: startFieldIndicatorHasError */
+  }
+
+  /* = Disabled */
+  Field:isDisabled {
+    -st-mixin: disabledField
+  }
+
+  /*==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  Field:vol(1) {
+    -st-mixin: inputVol1;
+  }
+
+  /* = Volume 2 */
+  Field:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  /* = Volume 3 */
+  Field:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+  /* = Volume 4 */
+  Field:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  /* = Volume 5 */
+  Field:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  /* = Volume 6 */
+  Field:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+
+  /*==== VARIANTS ====*/
+
+
+  Field:labelPosition(over)::inputLabel {
+    -st-mixin: label;
+    transform: translate(0.7rem, 8px) scale(1);
+  }
+
+  Field:labelPosition(over)::helpText {
+    font-size: 0.75em;
+  }
+
+  Field:labelPosition(over):focus-within::inputLabel,
+  Field:labelPosition(over):hasValue::inputLabel {
+    transform: translate(0.7rem, -0.73em);
+  }
+
+  Field:labelPosition(over)::legend {}
+
+
+  /* Side */
+  Field:labelPosition(side) {
+    column-gap: var(--spacing-unit);
+  }
+
+  Field:labelPosition(side)::inputLabel {
+    justify-self: flex-end;
+  }
+
+
+  /*==== VARIANTS ====*/
+
+  /* = Variant - "quiet" */
+  /* Field:variant(quiet) + Field:variant(quiet) {
+    margin-top: calc(var(--spacing-unit) * 1)
+  } */
+
+  Field:variant(quiet)::fieldContainer {
+    -st-mixin: startFieldIndicator;
+  }
+
+  Field:variant(quiet):error::fieldContainer {
+    -st-mixin: startFieldIndicatorHasError
+  }
+
+  Field:variant(quiet)::fieldset {
+    border-color: transparent;
+  }
+
+  /* = Variant - "Outlined" */
+
+  Field:variant(outlined)::fieldset {
+    border-color: var(--color-form-base-border);
+  }
+
+  Field:variant(outlined)::fieldset,
+  Field:variant(outlined)::fieldContainer {
+    border-radius: 8px;
+  }
+
+  Field:variant(outlined):error::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-error);
+  }
+
+  Field:variant(outlined):focus-within::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-focus);
+  }
+
+  Field:variant(outlined):focus-within::fieldContainer {
+    box-shadow: 1px 0 0px 0px var(--color-focus);
+  }
+
+  /* = Variant - "Filled" */
+
+  Field:variant(filled)::fieldset {
+    border-color: transparent;
+  }
+
+  Field:variant(filled)::fieldset,
+  Field:variant(filled)::fieldContainer {
+    border-radius: 8px;
+  }
+
+  Field:variant(filled)::fieldContainer {
+    background-color: #1e212c
+  }
+
+  Field:variant(filled):error::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-error);
+  }
+
+  Field:variant(filled):focus-within::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0px 0px var(--color-focus);
+  }
+
+  Field:variant(filled):focus-within::fieldContainer {
+    box-shadow: 1px 0 0px 0px var(--color-focus);
+  }
+
+}

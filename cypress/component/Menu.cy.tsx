@@ -53,7 +53,7 @@ describe("Basic Menu", () => {
 
   it("keyboard focus wraps (loops)", () => {
     cy.mount(<BasicMenu />);
-    cy.get("[data-cy-root]").type(
+    cy.get("[data-cy-root] li:first-child").type(
       "{downArrow}{downArrow}{downArrow}{downArrow}"
     );
     cy.get(itemTwo).should("be.focused");
@@ -105,7 +105,7 @@ describe("Uncontrolled menu selection", () => {
         defaultSelectedKeys={new Set(["item-two"])}
       />
     );
-    cy.get(itemTwo).should("be.focused");
+    cy.get(itemTwo).should("have.attr", "aria-checked").and("equal", "true");
   });
 
   it("uncontrolled: single selection mode allows for 0 or 1 selection", () => {

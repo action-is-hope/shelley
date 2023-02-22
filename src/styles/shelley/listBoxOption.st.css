@@ -1,0 +1,22 @@
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named: --color-background-item-hover;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
+  -st-default: ListBoxOption;
+}
+
+@st-scope Shelley {
+
+  ListBoxOption {}
+
+  ListBoxOption:isFocused,
+  ListBoxOption:isHovered {
+    background-color: var(--color-background-item-hover);
+  }
+}

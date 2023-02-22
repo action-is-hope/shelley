@@ -1,0 +1,50 @@
+/**
+ * = SELECT - select.st.css
+ *
+ * The base styles taken care of by Field, here we are just adding the 
+ * that we want for our <select> element.
+ *
+ * ========================================================================= */
+
+
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Select/select.st.css";
+  -st-default: Select;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+@st-scope Shelley {
+
+  /* = Example targeting the root. */
+  /* Select {} */
+
+  /* = Example targeting the label. */
+  /* Select InputLabel {} */
+
+  /* = The container. */
+  /* Select::fieldContainer {} */
+
+  /* = Right hight hand indicator on <select>'s encasing the arrow icon. */
+  /* Select::fieldContainer::after {} */
+
+  /* = The actual field. */
+  /* Select::fieldInput {} */
+}

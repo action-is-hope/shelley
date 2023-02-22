@@ -89,7 +89,14 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           ref={buttonRef}
-          icon={<Icon>{iconPath}</Icon>}
+          icon={
+            <Icon
+              // https://github.com/svg/svgo/issues/1011 Still best practice for buttons?
+              focusable="false"
+            >
+              {iconPath}
+            </Icon>
+          }
           iconPos="start"
         >
           {btnText}
@@ -106,7 +113,15 @@ describe("Button", () => {
           data-testid="button-data-testid"
           ref={buttonRef}
           variant="secondary"
-          icon={<Icon alt={btnText}>{iconPath}</Icon>}
+          icon={
+            <Icon
+              alt={btnText}
+              // https://github.com/svg/svgo/issues/1011 Still best practice?
+              focusable="false"
+            >
+              {iconPath}
+            </Icon>
+          }
         />
       )
       .toJSON();

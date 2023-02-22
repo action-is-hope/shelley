@@ -1,0 +1,25 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+}
+
+/* = Component CSS API */
+:import {
+  -st-from: "../../components/ListBox/listBox.st.css";
+  -st-default: ListBox;
+}
+
+:import {
+  -st-from: "./mixins/menu.st.css";
+  -st-default: MenuMixin;
+  -st-named: menuList;
+}
+
+@st-scope Default {
+  ListBox {
+    -st-mixin: menuList;
+  }
+
+  ListBox::item {}
+}

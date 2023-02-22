@@ -1,0 +1,61 @@
+/**
+ * = Help Text - helpText.st.css
+ */
+
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named: --color-error, --spacing-unit;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/HelpText/helpText.st.css";
+  -st-default: HelpText;
+}
+
+@st-scope Default {
+
+  /* = Root */
+  HelpText {
+    display: block;
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding: 0 var(--spacing-unit);
+    -webkit-font-smoothing: antialiased;
+    transition: color 0.2s;
+  }
+
+  /* = HelpText indicator bar. */
+  HelpText::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    content: "";
+    width: 1px;
+    transition: background-color 0.1s;
+    /* opacity: 0.5; */
+    background-color: transparent;
+  }
+
+  HelpText:isErrorMessage::before {
+    background-color: var(--color-error);
+  }
+
+  HelpText:isErrorMessage {
+    color: var(--color-error);
+  }
+
+
+}
+
+@media screen and (min-width: 600px) {
+  @st-scope Default {
+    HelpText {
+      font-size: 0.625rem;
+    }
+  }
+}

@@ -1,0 +1,163 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit,
+    --color-form-base-border,
+    --color-error;
+}
+
+/* = Root style API. */
+:import {
+  -st-from: "../../components/Checkbox/checkbox.st.css";
+  -st-default: Checkbox;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+:import {
+  -st-from: "../../components/Icon/icon.st.css";
+  -st-default: Icon;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    SelectionControlRoot,
+    SelectionControlFieldInput,
+    RadioCheckboxCommon,
+    CheckboxFieldInput,
+    CheckboxIsIndeterminate,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6,
+    selectionControlVol1,
+    selectionControlVol2,
+    selectionControlVol3,
+    selectionControlVol4,
+    selectionControlVol5,
+    selectionControlVol6;
+}
+
+@st-scope Default {
+
+  Checkbox {
+    /* display: inline-flex;
+    flex-direction: column-reverse; */
+  }
+
+  Checkbox::inputLabel {
+    gap: calc(var(--spacing-unit) / 2);
+    cursor: pointer;
+  }
+
+  Checkbox:disabled::inputLabel {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  Checkbox:validationState(invalid)::inputLabel::labelText {
+    color: var(--color-error);
+  }
+
+  Checkbox:validationState(invalid)::input {
+    border-color: var(--color-error);
+  }
+
+  Checkbox:validationState(invalid)::input::before {
+    background-color: var(--color-error);
+  }
+
+  Checkbox::inputContainer {
+    -st-mixin: SelectionControlRoot;
+  }
+
+  Checkbox::input {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  /* = Checkbox common styles. */
+  Checkbox::input {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  Checkbox::input {
+    -st-mixin: CheckboxFieldInput;
+  }
+
+  Checkbox:isIndeterminate::input {
+    -st-mixin: CheckboxIsIndeterminate;
+  }
+
+  Checkbox:isFocusVisible::input::after {
+    opacity: 1;
+  }
+
+  /* ==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  Checkbox:vol(1) {
+    -st-mixin: inputVol1
+  }
+
+  Checkbox:vol(1)::inputContainer {
+    -st-mixin: selectionControlVol1
+  }
+
+  /* = Volume 2 */
+  Checkbox:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  Checkbox:vol(2)::inputContainer {
+    -st-mixin: selectionControlVol2;
+  }
+
+  /* = Volume 3 */
+  Checkbox:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+  Checkbox:vol(3)::inputContainer {
+    -st-mixin: selectionControlVol3
+  }
+
+  /* = Volume 4 */
+  Checkbox:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  Checkbox:vol(4)::inputContainer {
+    -st-mixin: selectionControlVol4
+  }
+
+  /* = Volume 5 */
+  Checkbox:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  Checkbox:vol(5)::inputContainer {
+    -st-mixin: selectionControlVol5
+  }
+
+  /* = Volume 6 */
+  Checkbox:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+  Checkbox:vol(6)::inputContainer {
+    -st-mixin: selectionControlVol6
+  }
+
+  Checkbox Icon {
+    font-size: 2em;
+  }
+}

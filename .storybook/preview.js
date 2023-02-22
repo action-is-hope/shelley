@@ -89,6 +89,10 @@ export const globalTypes = {
       title: "Theme Switch",
       items: [
         {
+          value: "",
+          title: "None",
+        },
+        {
           value: themes["base"],
           title: "Base",
         },

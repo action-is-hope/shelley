@@ -1,5 +1,4 @@
 const { StylableWebpackPlugin } = require("@stylable/webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -38,7 +37,6 @@ module.exports = {
         // minify: true
       },
     }),
-    new HtmlWebpackPlugin({ title: "Stylable App" }),
   ],
   cache: { type: "filesystem" },
 };

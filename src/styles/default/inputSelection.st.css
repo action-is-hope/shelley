@@ -34,8 +34,8 @@
 }
 
 :import {
-  -st-from: "../../components/ErrorText/errorText.st.css";
-  -st-default: ErrorText;
+  -st-from: "../../components/HelpText/helpText.st.css";
+  -st-default: HelpText;
 }
 
 :import {
@@ -73,7 +73,7 @@
     cursor: not-allowed;
   }
 
-  InputSelection ErrorText {
+  InputSelection HelpText {
     padding-top: var(--spacing-unit);
     padding-bottom: var(--spacing-unit);
   }
@@ -119,20 +119,20 @@
     font-size: 2em;
   }
 
-  InputSelection:variant(1) InputLabel:inputPos(top)::textContainer {
+  InputSelection:variant(1) InputLabel:inputPosition(top)::textContainer {
     padding-top: calc(var(--spacing-unit) / 2);
   }
 
-  InputSelection:variant(1) InputLabel:inputPos(end)::textContainer {
+  InputSelection:variant(1) InputLabel:inputPosition(end)::textContainer {
     /* rtl padding-left: var(--spacing-unit); */
     padding-right: var(--spacing-unit);
   }
 
-  InputSelection:variant(1) InputLabel:inputPos(bottom)::textContainer {
+  InputSelection:variant(1) InputLabel:inputPosition(bottom)::textContainer {
     padding-bottom: calc(var(--spacing-unit) / 2);
   }
 
-  InputSelection:variant(1) InputLabel:inputPos(start)::textContainer {
+  InputSelection:variant(1) InputLabel:inputPosition(start)::textContainer {
     padding-left: var(--spacing-unit);
     /* = rtl padding-right: var(--spacing-unit); */
   }
@@ -158,7 +158,7 @@
     border-left: 1px solid var(--color-form-base-border);
   }
 
-  InputSelection:variant(2) ErrorText {
+  InputSelection:variant(2) HelpText {
     border-left-width: 1px;
     padding: 4px var(--spacing-unit) 8px;
     /* 12px is from 18px / 3 * 2 */

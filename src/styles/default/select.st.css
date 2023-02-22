@@ -1,0 +1,73 @@
+/**
+ * = INPUT SELECT - inputSelect.st.css
+ *
+ * The base styles taken care of by Field, here we are just adding the 
+ * that we want for our <select> element.
+ *
+ * ========================================================================= */
+
+
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/Select/select.st.css";
+  -st-default: Select;
+}
+
+:import {
+  -st-from: "../../components/Label/label.st.css";
+  -st-default: InputLabel;
+}
+
+/* = Mixins */
+:import {
+  -st-from: './mixins/formElements.st.css';
+  -st-named:
+    selectFieldContainer,
+    selectFieldInput;
+}
+
+@st-scope Default {
+
+  /* = Example targeting the root. */
+  Select {}
+
+  /* = Example targeting the label. */
+  Select InputLabel {}
+
+  /* = Apply selectFieldContainer to the base fieldContainer. */
+  Select::fieldContainer {
+    -st-mixin: selectFieldContainer;
+  }
+
+  /* = Display the right hand indicator on <select>'s to encase the arrow icon. */
+  Select::fieldContainer::after {
+    display: block;
+  }
+
+  /*= Applies the down arrow, aka --select-icon and associated styles. */
+  Select::trigger {
+    -st-mixin: selectFieldInput;
+  }
+
+  Select::trigger::inner {
+    padding: 0;
+  }
+
+  Select:labelPosition(over)::placeholder {
+    visibility: hidden;
+  }
+
+  /* Select:labelPosition(over):hasValue::placeholder {
+    visibility: visible;
+  } */
+
+  Select::placeholder {
+    opacity: .8;
+    letter-spacing: 0.2px;
+  }
+}

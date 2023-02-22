@@ -1,0 +1,27 @@
+/** checkboxGroup.st.css */
+@namespace "CheckboxGroup";
+
+:import {
+  -st-from: '../Field/field.st.css';
+  -st-default: Field
+}
+
+:import {
+  -st-from: '../Button/button.st.css';
+  -st-default: Button
+}
+
+.root {
+  -st-extends: Field;
+}
+
+.trigger {
+  -st-extends: Button;
+}
+
+.placeholder {
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

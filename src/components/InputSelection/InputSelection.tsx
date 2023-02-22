@@ -1,7 +1,7 @@
 import React from "react";
 import type { Volume, SelectionControlType, AlignPos, Variant } from "../types";
 import Label from "../Label/Label";
-import ErrorText from "../ErrorText/ErrorText";
+import { HelpText } from "../HelpText/HelpText";
 import InputSelectionControl from "../InputSelectionControl/InputSelectionControl";
 /* = Style API. */
 import { st, classes } from "./inputSelection.st.css";
@@ -23,9 +23,9 @@ export interface InputSelectionProps
   /** The label to associated with the input. */
   label?: React.ReactNode;
   /** The position of the label relative to the label. */
-  inputPos?: AlignPos;
+  inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
-  labelVisuallyHidden?: boolean;
+  visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
   /** The type of slection control to render. */
@@ -47,8 +47,8 @@ const InputSelection = React.forwardRef(
       hint,
       variant = 1,
       label,
-      labelVisuallyHidden,
-      inputPos = "end",
+      visuallyHideLabel,
+      inputPosition = "end",
       vol = 3,
       ...rest
     }: InputSelectionProps,
@@ -80,17 +80,17 @@ const InputSelection = React.forwardRef(
       <div
         className={st(
           classes.root,
-          { variant, type, disabled, vol },
+          { variant, type, disabled, vol: vol !== false ? vol : undefined },
           classNameProp
         )}
       >
-        {error && <ErrorText id={`${id}-error`}>{errorMessage}</ErrorText>}
+        {error && <HelpText description={"errorMessage"} />}
 
         {label ? (
           <Label
             htmlFor={id}
-            {...{ hint, inputControl, inputPos }}
-            visuallyHidden={labelVisuallyHidden}
+            {...{ hint, inputControl, inputPosition }}
+            visuallyHidden={visuallyHideLabel}
           >
             {label}
           </Label>

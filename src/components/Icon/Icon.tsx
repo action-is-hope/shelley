@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */
 import { st, classes } from "./icon.st.css";
@@ -6,44 +6,34 @@ import { st, classes } from "./icon.st.css";
 /**
  * Icon props extending those of an svg element.
  */
-export interface IconProps
-  extends Pick<
-    React.SVGProps<SVGSVGElement>,
-    Exclude<keyof React.SVGProps<SVGSVGElement>, "color">
-  > {
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
   /** Alternative text via VisuallyHidden */
   alt?: string;
-  /** Defaults to "0 0 16 16" based on vaadin icon set:
-   *  https://github.com/vaadin/vaadin-icons/tree/master/assets/svg
-   * For material-ui set to "0 0 24 24".]
-   */
+  /** Set to match icon set; e.g. for Material UI icons use "0 0 24 24". */
   viewBox?: string;
 }
 
-const Icon = React.forwardRef(
-  (
-    {
+export const Icon = forwardRef(
+  (props: IconProps, ref?: React.Ref<SVGSVGElement>) => {
+    const {
       children,
       className: classNameProp,
       alt,
       viewBox = "0 0 16 16",
-      /* Pull off the aria label so we can honour an accessible solution. */
-      "aria-label": ariaLabel,
-      ...attrs
-    }: IconProps,
-    ref?: React.Ref<SVGSVGElement>
-  ) => {
-    const label = alt ? alt : ariaLabel;
-
+      ...rest
+    } = props;
+    if (alt && props["aria-label"])
+      console.warn(
+        "An <Icon> element has been given both an alt an aria-label. The aria-label will take precedence."
+      );
     return (
       <>
         <svg
           className={st(classes.root, classNameProp)}
-          focusable="false"
           viewBox={viewBox}
-          aria-hidden={true}
+          aria-hidden={props["aria-label"] ? undefined : true}
           ref={ref}
-          {...attrs}
+          {...rest}
         >
           {children}
         </svg>
@@ -51,7 +41,7 @@ const Icon = React.forwardRef(
             on a non-focusable element. The is a very reliable method. 
             - https://simplyaccessible.com/article/7-solutions-svgs/. 
         */}
-        {label && <VisuallyHidden>{label}</VisuallyHidden>}
+        {alt && !props["aria-label"] && <VisuallyHidden>{alt}</VisuallyHidden>}
       </>
     );
   }

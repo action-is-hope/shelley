@@ -16,14 +16,17 @@ export * from "./components/Button/Button";
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export * from "./components/ButtonGroup/ButtonGroup";
 
-export { default as ErrorText } from "./components/ErrorText/ErrorText";
-export * from "./components/ErrorText/ErrorText";
+export { default as Checkbox } from "./components/Checkbox/Checkbox";
+export * from "./components/Checkbox/Checkbox";
+
+export { CheckboxGroup } from "./components/CheckboxGroup/CheckboxGroup";
+export * from "./components/CheckboxGroup/CheckboxGroup";
+
+export { HelpText } from "./components/HelpText/HelpText";
+export * from "./components/HelpText/HelpText";
 
 export { default as Grid } from "./components/Grid/Grid";
 export * from "./components/Grid/Grid";
-
-export { default as HintText } from "./components/HintText/HintText";
-export * from "./components/HintText/HintText";
 
 export { default as Icon } from "./components/Icon/Icon";
 export * from "./components/Icon/Icon";
@@ -31,11 +34,11 @@ export * from "./components/Icon/Icon";
 export { default as InputAdornment } from "./components/InputAdornment/InputAdornment";
 export * from "./components/InputAdornment/InputAdornment";
 
-export { default as InputBase } from "./components/InputBase/InputBase";
-export * from "./components/InputBase/InputBase";
+export { default as Field } from "./components/Field/Field";
+export * from "./components/Field/Field";
 
-export { default as InputSelect } from "./components/InputSelect/InputSelect";
-export * from "./components/InputSelect/InputSelect";
+export { Select } from "./components/Select/Select";
+export * from "./components/Select/Select";
 
 export { default as InputSelection } from "./components/InputSelection/InputSelection";
 export * from "./components/InputSelection/InputSelection";
@@ -43,8 +46,11 @@ export * from "./components/InputSelection/InputSelection";
 export { default as InputSelectionControl } from "./components/InputSelectionControl/InputSelectionControl";
 export * from "./components/InputSelectionControl/InputSelectionControl";
 
-export { default as InputText } from "./components/InputText/InputText";
-export * from "./components/InputText/InputText";
+export { TextField } from "./components/TextField/TextField";
+export * from "./components/TextField/TextField";
+
+export { default as ListBox } from "./components/ListBox/ListBox";
+export * from "./components/ListBox/ListBox";
 
 export { default as Label } from "./components/Label/Label";
 export * from "./components/Label/Label";

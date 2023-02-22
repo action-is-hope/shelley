@@ -11,7 +11,6 @@ const popupElm = "[data-cy-popup]";
 
 export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
   const triggerRef = useRef(null);
-  const overlayRef = useRef(null);
   const state = useOverlayTriggerState({});
 
   const { triggerProps, overlayProps } = useOverlayTrigger(
@@ -40,7 +39,6 @@ export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
           isOpen={state.isOpen}
           onClose={() => state.close()}
           {...args}
-          ref={overlayRef}
           triggerRef={triggerRef}
         >
           <div style={{ height: "80px", width: "80px", background: "grey" }}>

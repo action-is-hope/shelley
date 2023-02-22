@@ -1,0 +1,141 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Field } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import { FieldExample, TextFieldExample } from "./Field.examples";
+
+export const BasicField = (args) => (
+  <Field
+    label="My label"
+    labelProps={{
+      id: "label-id",
+      htmlFor: "test",
+    }}
+    labelPosition="top"
+    {...args}
+  >
+    <input id="testField" type="text" aria-labelledby="label-id" />
+  </Field>
+);
+
+<Meta
+  title="Internal/Field"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    readOnly: {
+      control: { type: "boolean" },
+    },
+    validationState: {
+      options: ["valid", "invalid"],
+      control: { type: "inline-radio" },
+    },
+    variant: {
+      options: ["outlined", "filled", "quiet", false],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={Field}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Field
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Field } from "@actionishope/shelley";
+  `}
+/>
+
+Used internally within fields like `TextField`, `Select` or input groups namely `CheckboxGroup` and `RadioGroup`. It handles the rendering of the main field container, label and help (description and error) associated with the given input rendered via the `children` prop.
+
+We encourage the use of the fields that Shelley offers but you might find a situation where these are not what you need but you would still like to your custom filed to follow the same format. In that case you can use the `Field` component and make your own.
+
+## Building a TextField
+
+A very basic TextField with the `labelPosition` set to `over` (default) would look something like this:
+
+<Story
+  name="a) TextField example"
+  args={{
+    label: "My Label",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+export const TextFieldExample = (props) => {
+  const { value, onChange } = props;
+  const [textValue, setTextValue] = useState(value);
+  return (
+    <Field
+      label="My label"
+      labelProps={{
+        id: "label-id",
+        // Match the id given to the input.
+        htmlFor: "testField",
+      }}
+      labelPosition="over"
+      // Only required for labelPosition -> "over".
+      hasValue={Boolean(textValue)}
+    >
+      <input
+        id="testField"
+        type="text"
+        // Match the id given to the label.
+        aria-labelledby="label-id"
+        onChange={(e) => {
+          setTextValue(e.target.value);
+          onChange && onChange(e);
+        }}
+      />
+    </Field>
+  );
+};`,
+      },
+    },
+  }}
+>
+  {TextFieldExample.bind({})}
+</Story>
+
+<Source language="tsx" id="internal-field--a-text-field-example" />
+
+Internally `Field` renders a fieldset which is used to provide the textual based field styles, Combo, Text, Select etc. This is for visual purposes only as the native `legand` element has a the great benefit of hiding the fieldset behind it without setting a background. It is hidden from screenreaders users who will only see the regular label. This was inspired by Material UI. 👊
+
+Setting `variant` to `false` renders without the fieldset which is suitable for Checkbox, Radio groups i.e where we don't need the variants (outline, filled, quiet).
+
+## TextField Props
+
+<ArgsTable of={Field} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

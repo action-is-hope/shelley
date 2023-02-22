@@ -18,9 +18,7 @@ module.exports = {
     window: {},
     // document: {},
   },
-  testEnvironment: "node",
-  testURL: "http://localhost",
-  // setupFiles: ["<rootDir>/loadershim.js"],
+  testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: ["<rootDir>/setup-test-env.ts"],
-  verbose: true
+  verbose: true,
 };

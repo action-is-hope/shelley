@@ -1,7 +1,11 @@
 /* menuItem.st.css CSS API */
 
 .root {
-  -st-states: isFocused, isSelected, isFocusVisible;
+  -st-states:
+    isDisabled,
+    isFocused,
+    isSelected,
+    isFocusVisible;
 }
 
 .selectedIcon {}

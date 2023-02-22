@@ -1,52 +1,39 @@
 /** MenuItem.tsx */
-import React from "react";
-import { useMenuItem, AriaMenuItemProps } from "@react-aria/menu";
+import React, { useRef } from "react";
+import { useMenuItem, AriaMenuItemProps } from "react-aria";
 import CheckIcon from "../icons/Check";
 import type { TreeState } from "@react-stately/tree";
 import type { Node } from "@react-types/shared/src/collections";
-import { useFocusRing } from "react-aria";
+import { mergeProps, useFocusRing } from "react-aria";
 
 /* = Style API. */
 import { st, classes } from "./menuItem.st.css";
 
-interface MenuItemProps extends AriaMenuItemProps {
+interface MenuItemProps<T> extends AriaMenuItemProps {
   highlight?: boolean;
-  state: TreeState<object>;
-  item: Node<object>;
+  state: TreeState<T>;
+  item: Node<T>;
   className?: string;
   selectedIcon?: React.ReactNode;
 }
 
-const MenuItem = ({
-  className: classNameProp,
-  item,
-  state,
-  selectedIcon,
-}: MenuItemProps) => {
-  const ref = React.useRef(null);
-
+export function MenuItem<T extends object>(props: MenuItemProps<T>) {
+  const ref = useRef(null);
+  const { className: classNameProp, item, state, selectedIcon } = props;
   // Get props for the menu item element
-  const isDisabled = state.disabledKeys.has(item.key);
-  const isFocused = state.selectionManager.focusedKey === item.key;
-  const isSelected = state.selectionManager.selectedKeys.has(item.key);
   const { isFocusVisible, focusProps } = useFocusRing();
-  const { menuItemProps } = useMenuItem(
-    {
-      key: item.key,
-      isDisabled,
-      isSelected,
-    },
+  const { menuItemProps, isFocused, isSelected, isDisabled } = useMenuItem(
+    { key: item.key },
     state,
     ref
   );
-
   const icon = selectedIcon || (
     <CheckIcon data-id="selected-icon" className={classes.selectedIcon} />
   );
+
   return (
     <li
-      {...menuItemProps}
-      {...focusProps}
+      {...mergeProps(menuItemProps, focusProps)}
       ref={ref}
       className={st(
         classes.root,
@@ -54,6 +41,7 @@ const MenuItem = ({
           isFocused,
           isFocusVisible,
           isSelected,
+          isDisabled,
         },
         classNameProp
       )}
@@ -62,6 +50,6 @@ const MenuItem = ({
       {isSelected && icon}
     </li>
   );
-};
+}
 
 export default MenuItem;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Item } from "@react-stately/collections";
 import {
   Button,
+  ButtonGroup,
   Menu,
   MenuTrigger,
   MenuTriggerProps,
@@ -99,16 +100,27 @@ export const MultipleSelectionMenuTrigger = () => {
 
 export const ButtonGroupTriggerMenu = () => {
   return (
-    <Menu
-      selectionMode="single"
-      defaultSelectedKeys={new Set(["middle"])}
-      onSelectionChange={(i) => console.log([...i][0])}
-      aria-label="Single selection menu"
-    >
-      <Item key="left">Left</Item>
-      <Item key="middle">Middle...</Item>
-      <Item key="right">Right</Item>
-    </Menu>
+    <ButtonGroup vol={3} tone={2} variant="primary">
+      {/* // fullWidth */}
+      <Button fullWidth>Publish</Button>
+      <MenuTrigger portalSelector="#portal">
+        <Button
+          tone={2}
+          variant="primary"
+          vol={2}
+          icon={
+            <Icon alt="Change status">
+              <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+            </Icon>
+          }
+        />
+        <Menu onAction={(key) => console.log("onAcion change", key)}>
+          <Item key="publish">Publish</Item>
+          <Item key="archive">Archive</Item>
+          <Item key="delete">Delete</Item>
+        </Menu>
+      </MenuTrigger>
+    </ButtonGroup>
   );
 };
 

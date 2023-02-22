@@ -8,7 +8,7 @@ interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   header?: boolean;
   /** Set scope attribute. */
   scope?: string;
-  /** Defines volumne/size. */
+  /** Defines volumee/size. */
   vol?: Volume;
   padding?: "standard" | "none" | "checkbox";
   sortDirection?: "ascending" | "descending" | false;
@@ -32,7 +32,11 @@ const TableCell = React.forwardRef(
     const scope = header && !scopeProp ? "col" : scopeProp;
     return (
       <Component
-        className={st(classes.root, { vol, align, padding }, classNameProp)}
+        className={st(
+          classes.root,
+          { vol: vol !== false ? vol : undefined, align, padding },
+          classNameProp
+        )}
         scope={scope}
         ref={ref}
         aria-sort={sortDirection || undefined}

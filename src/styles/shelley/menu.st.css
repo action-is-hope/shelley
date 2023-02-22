@@ -3,21 +3,11 @@
  * 
  * ========================================================================= */
 
-
-/* = Default project vars. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-named:
-    --spacing-unit;
-}
-
 /* = Shelley project scope and vars. */
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
-  -st-named:
-    /* --color-focus, */
-    --color-background-1;
+  -st-named: --color-background-1;
 }
 
 /* = Components */
@@ -25,11 +15,6 @@
 :import {
   -st-from: "../../components/Menu/menu.st.css";
   -st-default: Menu;
-}
-
-:import {
-  -st-from: "../../components/MenuItem/menuItem.st.css";
-  -st-default: MenuItem;
 }
 
 @st-scope Shelley {

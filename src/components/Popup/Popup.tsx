@@ -1,14 +1,14 @@
 /** Popup.tsx */
-import React, { Ref, forwardRef, RefObject, HTMLAttributes } from "react";
+import React, { Ref, forwardRef, RefObject, useRef } from "react";
 import type { PositionProps } from "@react-types/overlays";
 import { FocusScope } from "@react-aria/focus";
-import { mergeProps } from "@react-aria/utils";
+import { mergeProps, mergeRefs } from "@react-aria/utils";
 import {
   useOverlay,
   DismissButton,
   useOverlayPosition,
   AriaOverlayProps,
-} from "@react-aria/overlays";
+} from "react-aria";
 
 /* = Style API. */
 import { st, classes } from "./popup.st.css";
@@ -20,12 +20,12 @@ export interface PopupProps
   /**
    * The ref for the element which the popup positions itself with respect to.
    */
-  triggerRef: RefObject<HTMLElement>;
+  triggerRef: Ref<HTMLButtonElement>;
   // @todo Focus options
 }
 
 export const Popup = forwardRef(
-  (props: PopupProps, ref: Ref<HTMLDivElement>) => {
+  (props: PopupProps, ref?: Ref<HTMLDivElement>) => {
     const {
       triggerRef,
       // AriaOverlayProps:
@@ -42,6 +42,8 @@ export const Popup = forwardRef(
       shouldFlip,
       ...rest
     } = props;
+    const localRef = useRef(null);
+    // Aria hook
     const { overlayProps } = useOverlay(
       {
         onClose,
@@ -50,13 +52,13 @@ export const Popup = forwardRef(
         isKeyboardDismissDisabled,
         shouldCloseOnBlur,
       },
-      ref as RefObject<HTMLElement>
+      localRef as RefObject<HTMLElement>
     );
 
     // Get MenuPopup positioning props relative to the trigger
     const { overlayProps: overlayPositionProps } = useOverlayPosition({
-      targetRef: triggerRef,
-      overlayRef: ref as RefObject<HTMLElement>,
+      targetRef: triggerRef as RefObject<HTMLElement>,
+      overlayRef: localRef as RefObject<HTMLElement>,
       placement,
       containerPadding,
       offset,
@@ -73,7 +75,7 @@ export const Popup = forwardRef(
         <div
           className={st(classes.root)}
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
-          ref={ref}
+          ref={ref ? mergeRefs(ref, localRef) : localRef}
         >
           <DismissButton onDismiss={props.onClose} />
           {props.children}

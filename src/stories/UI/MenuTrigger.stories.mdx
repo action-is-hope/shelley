@@ -74,7 +74,7 @@ When the overlay's open state changes the `onOpenChange` handler is called.
 
 <Canvas>
   <Story
-    name="e) Open state"
+    name="b) Open state"
     parameters={{
       docs: {
         source: {
@@ -103,7 +103,7 @@ When the overlay's open state changes the `onOpenChange` handler is called.
 If using a menu in `multiple` selection mode the menu will automatically _not_ close on select. If you are using in `single` mode then it _will_ close on select. If you want to override this then use the `closeOnSelect` prop.
 
 <Canvas>
-  <Story name="d) Close on select">
+  <Story name="c) Close on select">
     <MultipleSelectionMenuTrigger />
   </Story>
 </Canvas>
@@ -127,13 +127,13 @@ Additional options can be set via `popupProps`:
 ## Icon Button
 
 <Canvas>
-  <Story name="b) Icon Menu button">{IconTriggerMenu.bind({})}</Story>
+  <Story name="d) Icon Menu button">{IconTriggerMenu.bind({})}</Story>
 </Canvas>
 
 ## Button group
 
 <Canvas>
-  <Story name="c) Menu button group">
+  <Story name="e) Menu button group">
     <ButtonGroupTriggerMenu />
   </Story>
 </Canvas>

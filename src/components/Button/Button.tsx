@@ -1,7 +1,7 @@
 import React from "react";
 /* Adobe libs */
 // Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
-import { useButton } from "@react-aria/button";
+import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 /* Internal */
 import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
@@ -119,8 +119,8 @@ function ButtonBase<T extends React.ElementType = "button">(
       iconPos: icon ? iconPos : undefined,
       fullWidth,
       tone,
-      variant,
-      vol,
+      variant: variant !== false ? variant : undefined,
+      vol: vol !== false ? vol : undefined,
       isPressed,
       isDisabled,
     },

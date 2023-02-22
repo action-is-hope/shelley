@@ -1,0 +1,8 @@
+/* helpText.st.css */
+@namespace "HelpText";
+
+.root {
+  -st-states: isDisabled, isErrorMessage;
+}
+
+.helpText {}

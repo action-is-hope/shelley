@@ -1,0 +1,355 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { P, Blockquote, TextField, Field } from "../../indexLib";
+import { Item } from "@react-stately/collections";
+import { StoryGrid } from "../StoryLayout";
+import {
+  TextFieldSizes,
+  ValueExample,
+  EventExample,
+  HelpTextExample,
+  AdornmentExample,
+  TypeExample,
+  TextFieldType,
+} from "./TextField.examples";
+
+export const BasicTextField = (args) => <TextField {...args} />;
+
+<Meta
+  title="Inputs/TextField"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    variant: {
+      options: ["outlined", "filled", "quiet", false],
+      control: { type: "inline-radio" },
+    },
+    labelPosition: {
+      options: ["over", "top", "side", "hidden"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+    description: {
+      control: { type: "text" },
+    },
+    placeholder: {
+      control: { type: "text" },
+    },
+    rows: {
+      control: { type: "number" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    readOnly: {
+      control: { type: "boolean" },
+    },
+    disableLabelTransition: {
+      control: "boolean",
+      if: { arg: "labelPosition", eq: "over" },
+    },
+    errorMessage: {
+      control: { type: "text" },
+      defaultValue: "Error message...",
+    },
+    validationState: {
+      options: ["valid", "invalid"],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={TextFieldType}
+  decorators={[
+    (Story) => (
+      <StoryGrid>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# TextField
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { TextField } from "@actionishope/shelley";
+  `}
+/>
+
+Allows our wonderful users to tell us something interesting by inputting some text into a little box. [Tap Tap Tap-a-roo!](https://www.youtube.com/watch?v=-br7JKuaZHQ)
+
+<Story
+  name="a) TextField"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`<TextField label="Name" />`,
+      },
+    },
+  }}
+>
+  {BasicTextField.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--a-text-field" />
+
+## Value
+
+A TextField's `value` is empty by default, but an initial, uncontrolled, value can be provided using the `defaultValue` prop. Alternatively, a controlled value can be provided using the `value` prop.
+
+<Story
+  name="b) Value"
+  args={{ label: "Email", defaultValue: "me@earth.com" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+let [value, setValue] = useState("me@email.com");
+return (
+  <>
+    <TextField
+      vol={1}
+      label="Email (Uncontrolled)"
+      defaultValue="me@email.com"
+    />
+    <TextField
+      vol={1}
+      label="Email (Controlled)"
+      value={value}
+      onChange={setValue}
+    />
+  </>
+);`,
+      },
+    },
+  }}
+>
+  {ValueExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--b-value" />
+
+## Events
+
+TextField accepts an `onChange` prop which is triggered whenever the value is edited by the user.
+
+TextField is intrincically either an input or a textarea so all usual events are supported if not documented in the props tables.
+
+The example below uses onChange to update a separate pre element with the same text entered into the TextField.
+
+<Story
+  name="c) Events"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  let [text, setText] = useState("");
+  return (
+    <>
+      <TextField {...args} onChange={setText} label="Your text" />
+      <pre>Mirrored text: {text}</pre>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {EventExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--c-events" />
+
+## Type and rows
+
+Standard text based input types supported (password, number etc) with the option to choose `textarea` and `rows` to define the number of rows to start with.
+
+<Story
+  name="d) Type and textareas"
+  args={{
+    label: "Textarea",
+    type: "password",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+      <TextField type="password" label="Password" />
+      <TextField type="textarea" label="Textarea" />
+      <TextField type="textarea" label="Textarea" rows={1} />
+      <TextField type="textarea" label="Textarea" rows={4} />`,
+      },
+    },
+  }}
+>
+  {TypeExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--d-type-and-textareas" />
+
+## Input Adornments
+
+The main way is with an `InputAdornment`. This can be used to add a prefix, a suffix, or an action to an input. For instance, you can use an icon button to hide or reveal the password.
+
+<Story
+  name="e) Input Adornments"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+    <TextField label="Amount" startAdornment="$" />
+`,
+      },
+    },
+  }}
+>
+  {AdornmentExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--e-input-adornments" />
+
+## Disabled
+
+A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
+
+<Story name="f) Disabled">
+  <TextField label="Label" defaultValue="Disabled" disabled />
+</Story>
+
+<Source language="tsx" id="inputs-textfield--f-disabled" />
+
+## Readonly
+
+The `isReadOnly` boolean prop makes the TextField's text content immutable. Unlike `disabled`, the TextField remains focusable and the contents can still be copied. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
+
+<Story name="g) Readonly">
+  <TextField label="Label" defaultValue="Read only" isReadOnly />
+</Story>
+
+<Source language="tsx" id="inputs-textfield--g-readonly" />
+
+## Variants &amp; label position
+
+TextField is a complete form control including a label, input, and help text. It comes with three variants:
+
+- `outlined` (default)
+- `filled`
+- `quiet`
+
+If you want a clean base to create a new variant from (styled via className) then set variant to `false`.
+
+<Story
+  name="h) Variants &amp; label position"
+  args={{
+    label: "Label",
+    variant: "outlined",
+    labelPosition: "over",
+    placeholder: "Placeholder text",
+    vol: 3,
+  }}
+  parameters={{
+    controls: {
+      include: [
+        "labelPosition",
+        "disableLabelTransition",
+        "variant",
+        "placeholder",
+        "vol",
+      ],
+    },
+  }}
+>
+  {BasicTextField.bind()}
+</Story>
+
+<ArgsTable story="h) Variants &amp; label position" />
+
+Each variant supports multiple label positions giving us lots of options when laying out our forms:
+
+- `top`
+- `over` (default) - disabled the transition via `disableLabelTransition`
+- `side`
+  or it can be `hidden`
+
+## Volume/Size
+
+<Canvas>
+  <Story
+    name="i) Volume / Size"
+    args={{
+      variant: "outlined",
+      labelPosition: "side",
+      disableLabelTransition: false,
+    }}
+  >
+    {TextFieldSizes.bind({})}
+  </Story>
+</Canvas>
+
+## HelpText
+
+Both a description and an error message can be supplied to a TextField. The description is always visible unless the validationState is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localized.
+
+<Story
+  name="j) Help text"
+  args={{
+    label: "Name",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  let [value, setValue] = useState("0");
+  let isValid = useMemo(() => /^\d$/.test(value), [value]);
+  return (
+    <TextField
+      validationState={isValid ? "valid" : "invalid"}
+      value={value}
+      onChange={setValue}
+      label="Favorite number"
+      maxLength={1}
+      description="Enter a single digit number."
+      errorMessage={
+        value === ""
+          ? "Empty input not allowed."
+          : "Single digit numbers are 0-9."
+      }
+    />
+  );`,
+      },
+    },
+  }}
+>
+  {HelpTextExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-textfield--j-help-text" />
+
+## TextField Props
+
+<ArgsTable of={TextFieldType} />
+
+argTypes: { label: { control: { type: 'text'} } }
+
+## Stying
+
+Shelley provides a load of visual options via props, if you are building your own theme then you can choose to support the props that you need or just ignore them and drive your variants with classNames instead. The latter might be advised if you are wanting to support a load of themes based off one html output - i.e, you cannot change the props theme to theme but you can swap out the CSS.
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

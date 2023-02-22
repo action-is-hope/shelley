@@ -16,12 +16,19 @@ export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | undefined;
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
 
-export declare type ButtonVariants = "primary" | "secondary" | "quiet" | "fab";
+export declare type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "quiet"
+  | "fab"
+  | false;
 // | string
 // | undefined;
 
+export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
+
 /** Generic volume levels */
-export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | false;
 
 /** Text volume levels */
 export declare type TextVolume =
@@ -37,7 +44,7 @@ export declare type TextVolume =
   | 10
   | 11
   | 12
-  | undefined;
+  | false;
 
 /** Text input types - maps to input type attribute. */
 export declare type TextInputType =

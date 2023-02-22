@@ -1,0 +1,256 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Checkbox } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import { ValueExample, EventExample } from "./Checkbox.examples";
+
+export const BasicCheckbox = (args) => <Checkbox {...args} />;
+
+<Meta
+  title="Inputs/Checkbox"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      value: "over",
+    },
+    isDisabled: {
+      control: { type: "boolean" },
+    },
+    readOnly: {
+      control: { type: "boolean" },
+    },
+    validationState: {
+      options: ["valid", "invalid"],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={Checkbox}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Checkbox
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Checkbox } from "@actionishope/shelley";
+  `}
+/>
+
+Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected.
+
+<Story
+  name="a) Checkbox"
+  args={{
+    children: "Subscribe",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`<Checkbox>Subscribe</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--a-checkbox" />
+
+A checkbox consists of a visual selection indicator and a label. Checkboxes support three selection states: checked, unchecked, and indeterminate. Users may click or touch a checkbox to toggle the selection state, or use the Tab key to navigate to it and the Space key to toggle it.
+
+## Content
+
+Checkboxes accept `children`, which are rendered as the label.
+
+### Accessibility
+
+In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+
+### Internationalization
+
+To internationalize a Checkbox, a localized label should be passed to the children or aria-label prop. For languages that are read right-to-left (e.g. Hebrew and Arabic), the layout of the checkbox is automatically flipped.
+
+## Value
+
+Checkboxes are not selected by default. The `defaultSelected` prop can be used to set the default state (uncontrolled). Alternatively, the `isSelected` prop can be used to make the selected state controlled. See React's documentation on [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html) for more info.
+
+<Story
+  name="b) Value"
+  args={{ label: "Email", value: "me@earth.com" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelected] = useState(true);\n
+  return (
+    <>
+      <Checkbox defaultSelected>
+        Subscribe (uncontrolled)
+      </Checkbox>
+      <Checkbox isSelected={selected} onChange={setSelected}>
+        Subscribe (controlled)
+      </Checkbox>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {ValueExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--b-value" />
+
+## Indeterminate
+
+A Checkbox can be in an indeterminate state, controlled using the `isIndeterminate` prop. This overrides the appearance of the Checkbox, whether selection is controlled or uncontrolled. The Checkbox will visually remain indeterminate until the `isIndeterminate` prop is set to `false`, regardless of user interaction.
+
+<Story
+  name="c) Indeterminate"
+  args={{ isIndeterminate: true, children: "Mixed" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Checkbox isIndeterminate>Mixed</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--c-indeterminate" />
+
+## Events
+
+Checkboxes accept a user defined onChange prop, triggered whenever the Checkbox is clicked. The example below uses onChange to alert the user to changes in the checkbox's state.
+
+<Story
+  name="d) Events"
+  args={{ children: "I accept the terms and conditions" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelection] = useState(false);\n
+  return (
+    <>
+      <Checkbox isSelected={selected} onChange={setSelection}>
+        Subscribe
+      </Checkbox>
+      <P vol={1}>{\`You \${selected ? "have accepted" : "have not accepted"}\`}</P>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {EventExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--d-events" />
+
+## Validation
+
+Checkboxes can display a validation state to communicate to the user if the current value is invalid. Implement your own validation logic in your app and pass "invalid" to the Checkbox via the `validationState` prop.
+
+<Story
+  name="e) Validation"
+  args={{
+    children: "I accept the terms and conditions",
+    validationState: "invalid",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Checkbox validationState="invalid">
+  I accept the terms and conditions
+</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--e-validation" />
+
+## Disabled
+
+Checkboxes can be disabled using the `isDisabled` prop.
+
+<Story
+  name="f) Disabled"
+  args={{ children: "I accept the terms and conditions", isDisabled: true }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Checkbox isDisabled>
+  I accept the terms and conditions
+</Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--f-disabled" />
+
+## Read only
+
+The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Checkbox remains focusable. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
+
+<Story
+  name="g) Read only"
+  args={{
+    children: "I accept the terms and conditions",
+    isReadOnly: true,
+    isSelected: true,
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+        <Checkbox isSelected isReadOnly>I accept the terms and conditions<Checkbox>`,
+      },
+    },
+  }}
+>
+  {BasicCheckbox.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--g-read-only" />
+
+## Checkbox Props
+
+<ArgsTable of={Checkbox} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

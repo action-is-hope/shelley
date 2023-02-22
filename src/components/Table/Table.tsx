@@ -5,7 +5,7 @@ import { st, classes } from "./table.st.css";
 export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   /** Variant index, defines the 'look'. */
   variant?: Variant;
-  /** Defines volumne/size. */
+  /** Defines volumee/size. */
   vol?: Volume;
 }
 const Table = React.forwardRef(
@@ -25,7 +25,7 @@ const Table = React.forwardRef(
           classes.root,
           {
             variant,
-            vol,
+            vol: vol !== false ? vol : undefined,
           },
           classNameProp
         )}

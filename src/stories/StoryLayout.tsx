@@ -6,7 +6,7 @@ const containerbase = {
 };
 
 const containerCenter = {
-  display: "flex",
+  display: "grid",
   alignItems: "center",
   justifyContent: "center",
 };
@@ -32,6 +32,48 @@ export const StoryCenteredInline = (props: any) => (
 export const StoryCenteredColumn = (props: any) => (
   <div style={{ ...containerbase, ...containerCenter }}>
     <div style={{ ...contentInlineCentered, flexDirection: "column" }}>
+      {props.children}
+    </div>
+  </div>
+);
+
+export const StoryGrid = (props: any) => (
+  <div
+    style={{
+      ...containerbase,
+      ...containerCenter,
+      justifyContent: props.justifyContent,
+    }}
+  >
+    <div
+      style={{
+        display: "grid",
+        gap: props.gap || "24px",
+        gridTemplateColumns: props.cols || undefined,
+        ...props,
+      }}
+    >
+      {props.children}
+    </div>
+  </div>
+);
+
+export const StoryGridV2 = (props: any) => (
+  <div
+    style={{
+      ...containerbase,
+      ...containerCenter,
+      justifyContent: props.justifyContent,
+    }}
+  >
+    <div
+      style={{
+        display: "grid",
+        gap: props.gap || "24px",
+        gridTemplateColumns: props.cols || undefined,
+        ...props,
+      }}
+    >
       {props.children}
     </div>
   </div>

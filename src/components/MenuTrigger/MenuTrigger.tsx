@@ -1,7 +1,7 @@
 /** MenuTrigger.tsx */
 import React, { cloneElement, ReactElement } from "react";
 import ReactDOM from "react-dom";
-import { useMenuTrigger } from "@react-aria/menu";
+import { useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import Popup, { PopupProps } from "../Popup/Popup";
@@ -80,7 +80,6 @@ export function MenuTrigger({
   ...rest
 }: MenuTriggerProps) {
   const triggerRef = React.useRef(null);
-  const overlayRef = React.useRef(null);
   const [menuTriggerChild, menuChild] = React.Children.toArray(children);
 
   // Create state based on the incoming props /// removed props...
@@ -117,7 +116,6 @@ export function MenuTrigger({
           <Popup
             isOpen={state.isOpen}
             onClose={state.close}
-            ref={overlayRef}
             {...{
               shouldFlip,
               triggerRef,

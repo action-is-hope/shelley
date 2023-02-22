@@ -1,0 +1,47 @@
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --color-focus,
+    --spacing-unit;
+}
+
+/* = Component CSS API */
+:import {
+  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
+  -st-default: ListBoxOption;
+}
+
+:import {
+  -st-from: "./mixins/menu.st.css";
+  -st-default: MenuMixin;
+  -st-named:
+    menuItem,
+    menuItemDisabled,
+    menuItemFocusVisible,
+    menuItemText,
+    menuItemSelectedIcon;
+}
+
+@st-scope Default {
+  ListBoxOption {
+    -st-mixin: menuItem;
+  }
+
+  ListBoxOption:isDisabled {
+    -st-mixin: menuItemDisabled;
+  }
+
+  ListBoxOption:isFocusVisible {
+    -st-mixin: menuItemFocusVisible;
+  }
+
+  ListBoxOption::text {
+    -st-mixin: menuItemText;
+  }
+
+  ListBoxOption::selectedIcon {
+    -st-mixin: menuItemSelectedIcon;
+  }
+}

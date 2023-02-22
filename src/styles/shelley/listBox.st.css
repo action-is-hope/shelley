@@ -1,0 +1,25 @@
+/**
+ * = ListBox - listBox.st.css
+ * 
+ * ========================================================================= */
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named: --color-background-1;
+}
+
+/* = Components */
+
+:import {
+  -st-from: "../../components/ListBox/listBox.st.css";
+  -st-default: ListBox;
+}
+
+@st-scope Shelley {
+
+  ListBox {
+    background: var(--color-background-1);
+  }
+}
