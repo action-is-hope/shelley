@@ -1,7 +1,7 @@
-:import {
-  -st-from: "../Button/button.st.css";
-  -st-default: Button;
-}
+/* buttonGroup.st.css */
+
+/* = import Button component to style as child. */
+@st-import Button from "../Button/button.st.css";
 
 .root {
   -st-states:
