@@ -1,27 +1,7 @@
-/**
- * = BUTTON - button.st.css
- *
- * We only have one, so far so good. You should have enough sizes and hooks
- * but you can always add your own custome classes for whatever you need or 
- * wrap this button up inside other buttons pre configured for your usecases.
- * 
- * ========================================================================= */
+/* button.st.css */
 
-
-/* = Default project vars. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit;
-}
-
-/* = Shelley project scope and vars. */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Shelley;
-  -st-named:
-    /* = CSS3 Vars. */
+/* = Shelley project scope and vars */
+@st-import Shelley, [
     --color-ui,
     --color-ui-inverse,
     --color-ui-raw,
@@ -29,25 +9,12 @@
     --color-accent-1,
     --color-accent-2,
     --color-accent-3,
-    --color-accent-4;
-}
-
-/* = Root Component */
-:import {
-  -st-from: "../../components/Button/button.st.css";
-  -st-default: Button;
-  -st-named:
-    --bg-color,
-    --border-color,
-    --text-color;
-}
-
+    --color-accent-4
+  ] from "./project.st.css";
+/* Component API */
+@st-import Button, [--bg-color, --border-color, --text-color] from "../../components/Button/button.st.css";
 /* = Parent components */
-:import {
-  -st-from: "../../components/ButtonGroup/buttonGroup.st.css";
-  -st-default: ButtonGroup;
-  -st-named: --seperator-color;
-}
+@st-import ButtonGroup, [--seperator-color] from "../../components/ButtonGroup/buttonGroup.st.css";
 
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {
@@ -93,7 +60,6 @@
   ButtonGroup Button:variant(quiet) {
     --seperator-color: var(--accent);
   }
-
 
   /* = Variant 4: 'Floating Action Button (FAB)' - Thank you Material! */
   Button:variant(fab) {

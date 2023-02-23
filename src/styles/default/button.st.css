@@ -1,67 +1,19 @@
-/**
- * = BUTTON - button.st.css
- *
- * We only have one, so far so good. You should have enough sizes and hooks
- * but you can always add your own custom classes for whatever you need or 
- * wrap this button up inside other buttons pre configured for your usecases.
- * 
- * ========================================================================= */
+/* button.st.css */
 
-
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit;
-}
-
-/* = Root Component */
-:import {
-  -st-from: "../../components/Button/button.st.css";
-  -st-default: Button;
-  -st-named:
-    --bg-color,
-    --border-color,
-    --text-color;
-}
-
+/* = Default project and vars */
+@st-import Default from "./project.st.css";
+/* Component API */
+@st-import Button from "../../components/Button/button.st.css";
 /* = Child components */
-:import {
-  -st-from: "../../components/Icon/icon.st.css";
-  -st-default: Icon;
-}
-
+@st-import Icon from "../../components/Icon/icon.st.css";
+/* = Formatters */
+@st-import [respScale] from "../formatters/common";
+/* = Default Mixins */
+@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
 /* = Shelley Mixins */
-:import {
-  -st-from: '../mixins/visuallyHidden.st.css';
-  -st-named: visuallyHidden;
-}
-
-/* = Mixins, Utils & Formatters */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    hideWebkitAppearance;
-}
-
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
-
-:import {
-  -st-from: './mixins/focus.st.css';
-  -st-named:
-    pseudoFocus,
-    pseudoFocusVisible;
-}
-
-:import {
-  -st-from: "../formatters/common";
-  -st-named: respScale;
-}
+@st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
+@st-import [textVol] from "./mixins/text.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 /* This is how we can scope the styles in Stylable. */
 @st-scope Default {
@@ -150,20 +102,6 @@
     padding-top: 0.15em;
     padding-bottom: 0.15em;
   }
-
-  /* Button:vol(1) {
-    -st-mixin:
-      textVol(scale respScale(0.625em, 0.75em),
-        max 0.75em, lineHeight 1.5);
-  } */
-
-
-  /* = Volume 2 */
-  /* Button:vol(2) {
-    -st-mixin:
-      textVol(scale respScale(0.75em, 0.875em),
-        max 0.875em, lineHeight 1.5);
-  } */
 
   Button:vol(2) {
     -st-mixin:
