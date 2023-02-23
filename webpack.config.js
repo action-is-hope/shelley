@@ -1,3 +1,4 @@
+// @ts-check
 const { StylableWebpackPlugin } = require("@stylable/webpack-plugin");
 
 /** @type {import('webpack').Configuration} */

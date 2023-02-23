@@ -1,3 +1,4 @@
+// @ts-check
 module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
@@ -19,6 +20,6 @@ module.exports = {
     // document: {},
   },
   testEnvironment: "jest-environment-jsdom",
-  setupFilesAfterEnv: ["<rootDir>/setup-test-env.ts"],
+  setupFilesAfterEnv: ["<rootDir>/setup-test-env.cjs"],
   verbose: true,
 };

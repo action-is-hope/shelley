@@ -48,8 +48,6 @@ function Select<T extends object>(
     placeholder = "Select an option",
     shouldFocusOnHover = true,
   } = props;
-
-  console.log(props);
   // Create state based on the incoming props
   const state = useSelectState(props);
 
@@ -121,7 +119,7 @@ function Select<T extends object>(
           ReactDOM.createPortal(
             <Popup
               isOpen={state.isOpen}
-              onClose={state.close}
+              onClose={() => state.close()}
               triggerRef={localRef}
               placement="bottom start"
             >

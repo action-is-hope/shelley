@@ -96,7 +96,10 @@ const Field = ({
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
       return cloneElement(child as ReactElement, {
-        className: st(classes.fieldInput, child?.props.className),
+        className: st(
+          classes.fieldInput,
+          (child?.props as React.HTMLProps<HTMLElement>)?.className
+        ),
       });
     } else return;
   });

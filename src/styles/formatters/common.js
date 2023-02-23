@@ -1,6 +1,6 @@
 /** common.js */
 
-const explodeValue = cssValue => {
+const explodeValue = (cssValue) => {
   /**
    * Parses a CSS string and extracts value and unit, so math
    * functions can be run on the value only, without the unit
@@ -70,5 +70,5 @@ module.exports = {
       unit = minUnit;
     }
     return `calc(${minValue}${unit} + ${fontSizeDiff} * (100vw - ${transitionWidthDown}${unit}) / (${widthRemainer}))`;
-  }
+  },
 };

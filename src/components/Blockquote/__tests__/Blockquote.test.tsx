@@ -25,7 +25,7 @@ describe("Blockquote", () => {
     const tree = renderer
       .create(
         <Blockquote
-          variant={2}
+          variant="academic"
           className="for-which-nobody-can-deny"
           desc={<cite>{citeText}</cite>}
           descVol={3}

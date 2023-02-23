@@ -1,5 +1,5 @@
 /** blockquote.st.css */
-@namespace "Text";
+@namespace "Blockquote";
 
 @st-import Text from "../../components/Text/text.st.css";
 

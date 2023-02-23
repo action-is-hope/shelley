@@ -1,24 +1,19 @@
 import React from "react";
 import { st, classes } from "./tableContainer.st.css";
 
-export interface TableContainerProps
-  extends React.HTMLAttributes<HTMLBaseElement> {
-  as?: any;
-}
 const TableContainer = React.forwardRef(
   (
-    { as, className: classNameProp, children, ...rest }: TableContainerProps,
-    ref?: React.Ref<HTMLBaseElement>
+    {
+      className: classNameProp,
+      children,
+      ...rest
+    }: React.HTMLAttributes<HTMLDivElement>,
+    ref?: React.Ref<HTMLDivElement>
   ) => {
-    const Component = as || "div";
     return (
-      <Component
-        className={st(classes.root, classNameProp)}
-        ref={ref}
-        {...rest}
-      >
+      <div className={st(classes.root, classNameProp)} ref={ref} {...rest}>
         {children}
-      </Component>
+      </div>
     );
   }
 );

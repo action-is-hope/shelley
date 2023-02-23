@@ -20,7 +20,7 @@ exports[`Blockquote renders as a basic blockquote with custom #className and dat
 
 exports[`Blockquote renders as a blockquote with description as a <cite> node at a larger volume. 1`] = `
 <blockquote
-  className="Blockquote2773719531__root Blockquote2773719531---variant-1-2 for-which-nobody-can-deny"
+  className="Blockquote2773719531__root Blockquote2773719531---variant-8-academic for-which-nobody-can-deny"
 >
   <div
     className="Blockquote2773719531__content"

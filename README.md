@@ -1,16 +1,10 @@
-# Stylable App
-
-[Stylable](https://github.com/wix/stylable)-powered application. Generated using `create-stylable-app`.
+# Shelley
 
 ## Development
 
 The following scripts are available:
 
-`npm run build` - Build the application in production mode into a folder named `dist`. This folder can be served using any HTTP server. Uses [webpack](https://github.com/webpack/webpack).
-
-`npm run serve` - Statically serve the `dist` folder. Uses [serve](https://github.com/zeit/serve).
-
-`npm start` - Start the application in **development** mode (and open the web browser). Uses [webpack-dev-server](https://github.com/webpack/webpack-dev-server).
+`npm start` - Starts Storybook for component development.
 
 `npm run clean` - Delete the `dist` folder. Uses [rimraf](https://github.com/isaacs/rimraf).
 
@@ -18,4 +12,8 @@ The following scripts are available:
 
 `npm run lint` - Verify best practices and find common issues. Uses [eslint](https://github.com/eslint/eslint).
 
-`npm test` - Execute `typecheck` and `lint` scripts.
+`npm test` - Execute `typecheck`, `lint`, `unit-test` and `cypress` scripts.
+
+`npm run build` - Builds the package ready for npm into `dist`. The contents of this folder can then be deployed to npm.
+
+`npm run build-storybook` - Builds the static Storybook site into `static-storybook` ready for deployment to Netifly on merge into `main`.
