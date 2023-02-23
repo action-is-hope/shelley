@@ -18,6 +18,7 @@ module.exports = {
   // },
   presets: [path.resolve(__dirname, "./storybook.config.js")],
   stories: [
+    "../src/stories/Introduction.stories.mdx",
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
   ],

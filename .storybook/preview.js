@@ -68,13 +68,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  options: {
-    storySort: {
-      method: "alphabetical",
-      order: [],
-      locales: "",
-    },
-  },
+  // options: {
+  //   storySort: {
+  //     method: "alphabetical",
+  //     order: [],
+  //     locales: "",
+  //   },
+  // },
   viewport: {
     viewports: sampleViewports,
   },
