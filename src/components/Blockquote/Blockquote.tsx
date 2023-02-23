@@ -1,7 +1,7 @@
 /** Blockquote.tsx */
 import type React from "react";
 import type { ReactNode, VFC } from "react";
-import type { TextVolume, Variant } from "../types";
+import type { TextVolume } from "../types";
 import Text from "../Text/Text";
 /* = Style API. */
 import { st, classes } from "./blockquote.st.css";
@@ -18,9 +18,9 @@ export interface BlockquoteProps
    **/
   descVol?: TextVolume;
   /**
-   * Variant index.
+   * Variant type.
    **/
-  variant?: Variant;
+  variant?: "informal" | "academic";
 }
 
 export const Blockquote: VFC<BlockquoteProps> = ({

@@ -1,26 +1,13 @@
-/** blcokquote.st.css */
-
-/* Useful if you want some quote chars via the content property https://css-tricks.com/css-content/ */
-
-/* project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit;
-}
+/**
+ * = Blockquote - blockquote.st.css
+ * 
+ * ========================================================================= */
 
 
-/* Root Component */
-:import {
-  -st-from: "../../components/Blockquote/blockquote.st.css";
-  -st-default: Blockquote;
-}
-
-:import {
-  -st-from: "../../components/Text/text.st.css";
-  -st-default: Text;
-}
+/* Default project scope and vars. */
+@st-import Default, [--spacing-unit] from "./project.st.css";
+/* Component API. */
+@st-import Blockquote from "../../components/Blockquote/blockquote.st.css";
 
 @st-scope Default {
 
