@@ -1,6 +1,7 @@
-import { defineConfig } from "cypress";
+// @ts-check
+const { defineConfig } = require("cypress");
 
-export default defineConfig({
+module.exports = defineConfig({
   component: {
     devServer: {
       framework: "react",

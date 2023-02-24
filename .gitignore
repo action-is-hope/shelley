@@ -19,7 +19,7 @@ src/pages/tharpe
 src/localStash
 
 # Typescript v1 declaration files
-typings/
+# typings/
 
 # Optional npm cache directory
 .npm

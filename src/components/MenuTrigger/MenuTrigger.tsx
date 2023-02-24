@@ -105,7 +105,7 @@ export function MenuTrigger({
 
   const menu = cloneElement(menuChild as ReactElement, {
     ...menuProps,
-    onClose: closeOnSelect && state.close,
+    onClose: () => closeOnSelect && state.close(),
   });
 
   return (
@@ -115,7 +115,7 @@ export function MenuTrigger({
         ReactDOM.createPortal(
           <Popup
             isOpen={state.isOpen}
-            onClose={state.close}
+            onClose={() => state.close()}
             {...{
               shouldFlip,
               triggerRef,

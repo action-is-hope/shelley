@@ -8,6 +8,7 @@ import React, {
   isValidElement,
   Ref,
 } from "react";
+import type { ButtonProps } from "../Button/Button";
 import type { Accent, Volume, ButtonVariants } from "../types";
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
@@ -53,12 +54,15 @@ const ButtonGroup = forwardRef(
         }
 
         return cloneElement(child as ReactElement, {
-          className: st(buttonClassName, child.props.className),
-          disabled: child.props.disabled || disabled,
-          tone: child.props.tone || tone,
-          vol: child.props.vol || vol,
-          variant: child.props.variant || variant,
-          icon: child.props.icon,
+          className: st(
+            buttonClassName,
+            (child.props as ButtonProps)?.className
+          ),
+          disabled: (child.props as ButtonProps)?.disabled || disabled,
+          tone: (child.props as ButtonProps)?.tone || tone,
+          vol: (child.props as ButtonProps)?.vol || vol,
+          variant: (child.props as ButtonProps)?.variant || variant,
+          icon: (child.props as ButtonProps)?.icon,
         });
       })}
     </div>
