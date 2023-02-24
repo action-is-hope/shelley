@@ -21,6 +21,4 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build-stylable-types
-      - run: npm run typecheck
+      - run: npm ci && npm run build-stylable-types && npm run typecheck
