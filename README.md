@@ -1,5 +1,7 @@
 # Shelley
 
+![example workflow](https://github.com/action-is-hope/shelley/actions/workflows/main.yml/badge.svg)
+
 ## Development
 
 The following scripts are available:
