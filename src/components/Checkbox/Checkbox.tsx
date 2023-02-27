@@ -55,6 +55,19 @@ const Checkbox = forwardRef(
         useCheckbox(props, useToggleState(props), localRef);
     const { isFocusVisible, focusProps } = useFocusRing();
 
+    const classNames = st(
+      classes.root,
+      {
+        disabled: isDisabled,
+        isFocusVisible,
+        isIndeterminate,
+        // isSelected,
+        validationState,
+        vol: vol ? vol : undefined,
+      },
+      classNameProp
+    );
+
     const inputControl = (
       <span className={classes.inputContainer}>
         <input
@@ -79,32 +92,19 @@ const Checkbox = forwardRef(
     }
 
     return (
-      <div
-        className={st(
-          classes.root,
-          {
-            disabled: isDisabled,
-            isFocusVisible,
-            isIndeterminate,
-            // isSelected,
-            validationState,
-            vol: vol ? vol : undefined,
-          },
-          classNameProp
-        )}
-      >
+      <>
         {children ? (
           <Label
-            className={classes.inputLabel}
+            className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
           >
             {children}
           </Label>
         ) : (
-          inputControl
+          <span className={classNames}>{inputControl}</span>
         )}
-      </div>
+      </>
     );
   }
 );

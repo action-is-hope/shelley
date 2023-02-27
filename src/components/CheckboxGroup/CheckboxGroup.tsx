@@ -1,13 +1,12 @@
 import { Ref, forwardRef, ReactElement } from "react";
-import Field from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
-
-import { useCheckboxGroupState } from "react-stately";
-import { useCheckboxGroup } from "react-aria";
-
 import type { AriaCheckboxGroupProps } from "@react-types/checkbox";
 import type { CheckboxProps } from "../Checkbox/Checkbox";
+import type { Orientation } from "src/typings/shared-types";
+import { useCheckboxGroupState } from "react-stately";
+import { useCheckboxGroup } from "react-aria";
 import { CheckboxGroupContext } from "./context";
+import Field from "../Field/Field";
 /* = Style API. */
 import { st, classes } from "./checkboxGroup.st.css";
 
@@ -36,7 +35,7 @@ export interface CheckboxGroupProps
    * The axis the checkboxes should align with.
    * @default 'vertical'
    */
-  //  orientation?: Orientation,
+  orientation?: Orientation;
 }
 
 function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
@@ -48,6 +47,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
     validationState,
     label,
     labelPosition = "top",
+    orientation = "vertical",
     vol,
     children,
   } = props;
@@ -55,7 +55,6 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
   const state = useCheckboxGroupState(props);
   const { labelProps, groupProps, descriptionProps, errorMessageProps } =
     useCheckboxGroup(props, state);
-  // const localRef = useRef(null);
 
   return (
     <Field
@@ -71,16 +70,21 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
         labelProps,
         vol,
         variant: false,
+        fieldContainerProps: { ...groupProps, className: classes.group },
         ref,
       }}
-      className={st(classes.root, classNameProp)}
+      className={st(
+        classes.root,
+        {
+          orientation,
+        },
+        classNameProp
+      )}
     >
       <>
-        <div {...groupProps}>
-          <CheckboxGroupContext.Provider value={state}>
-            {children}
-          </CheckboxGroupContext.Provider>
-        </div>
+        <CheckboxGroupContext.Provider value={state}>
+          {children}
+        </CheckboxGroupContext.Provider>
       </>
     </Field>
   );

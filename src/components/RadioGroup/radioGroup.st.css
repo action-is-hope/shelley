@@ -1,5 +1,5 @@
-/** checkboxGroup.st.css */
-@namespace "CheckboxGroup";
+/** radioGroup.st.css */
+@namespace "RadioGroup";
 
 :import {
   -st-from: '../Field/field.st.css';
