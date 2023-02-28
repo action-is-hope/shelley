@@ -75,7 +75,7 @@ const Radio = forwardRef(
       <>
         {children ? (
           <Label
-            className={classes.inputLabel}
+            className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
           >
