@@ -2,10 +2,10 @@
 
 exports[`HelpText renders help text 1`] = `
 <div
-  className="HelpText31700443__root custom-class"
+  className="HelpText3871078742__root custom-class"
 >
   <div
-    className="HelpText31700443__helpText"
+    className="HelpText3871078742__helpText"
   >
     Help text
   </div>
