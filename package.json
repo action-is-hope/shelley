@@ -26,6 +26,7 @@
   "files": [
     "**/*.ts",
     "components/**/*.js",
+    "styles/**/*.js",
     "indexLib.js",
     "**/*.map",
     "**/*.st.css"

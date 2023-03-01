@@ -77,7 +77,7 @@ const Checkbox = forwardRef(
           className={classes.input}
           {...mergeProps(inputProps, focusProps)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
-          data-id={includeDataIds ? "checkbox-input" : undefined}
+          data-id={includeDataIds ? "checkbox--input" : undefined}
         />
       </span>
     );
@@ -97,14 +97,14 @@ const Checkbox = forwardRef(
             className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
-            data-id={includeDataIds ? "checkbox" : undefined}
+            data-id={includeDataIds ? "checkbox--label" : undefined}
           >
             {children}
           </Label>
         ) : (
           <span
             className={classNames}
-            data-id={includeDataIds ? "checkbox" : undefined}
+            data-id={includeDataIds ? "checkbox--no-label" : undefined}
           >
             {inputControl}
           </span>
