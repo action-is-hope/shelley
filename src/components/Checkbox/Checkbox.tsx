@@ -18,6 +18,8 @@ export interface CheckboxProps extends AriaCheckboxProps {
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 const Checkbox = forwardRef(
@@ -31,6 +33,7 @@ const Checkbox = forwardRef(
       isIndeterminate,
       vol = 1,
       isDisabled,
+      includeDataIds,
     } = props;
     const localRef = useRef(null);
     const groupState = useContext(CheckboxGroupContext);
@@ -74,16 +77,12 @@ const Checkbox = forwardRef(
           className={classes.input}
           {...mergeProps(inputProps, focusProps)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
+          data-id={includeDataIds ? "checkbox-input" : undefined}
         />
       </span>
     );
 
     if (groupState) {
-      // for (let key of ['isSelected', 'defaultSelected', 'isEmphasized']) {
-      //   if (originalProps[key] != null) {
-      //     console.warn(`${key} is unsupported on individual <Checkbox> elements within a <CheckboxGroup>. Please apply these props to the group instead.`);
-      //   }
-      // }
       if (props.value == null) {
         console.warn(
           "A <Checkbox> element within a <CheckboxGroup> requires a `value` property."
@@ -98,11 +97,17 @@ const Checkbox = forwardRef(
             className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
+            data-id={includeDataIds ? "checkbox" : undefined}
           >
             {children}
           </Label>
         ) : (
-          <span className={classNames}>{inputControl}</span>
+          <span
+            className={classNames}
+            data-id={includeDataIds ? "checkbox" : undefined}
+          >
+            {inputControl}
+          </span>
         )}
       </>
     );
