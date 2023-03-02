@@ -44,7 +44,7 @@ public
 dist
 
 docs
- 
+
 # Mac files
 .DS_Store
 
@@ -56,3 +56,7 @@ yarn-error.log
 .yarn-integrity
 
 storybook-static
+
+# Cypress
+cypress/videos
+cypress/screenshots
