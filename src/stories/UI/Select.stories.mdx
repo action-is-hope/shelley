@@ -31,6 +31,12 @@ import dedent from "ts-dedent";
       control: { type: "inline-radio" },
       defaultValue: "over",
     },
+    isDisabled: {
+      control: { type: "boolean" },
+    },
+    isReadOnly: {
+      control: { type: "boolean" },
+    },
     description: {
       control: { type: "text" },
     },
@@ -227,10 +233,10 @@ We will be adding loading indicator and virtualisation support as we come to do 
 
 ## Disabled
 
-A select in a `disabled` state shows that a select exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
+A select in a `isDisabled` state shows that a select exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
 
 <Story name="e) Disabled">
-  <Select label="Choose frequency" portalSelector="#portal" disabled>
+  <Select label="Choose frequency" portalSelector="#portal" isDisabled>
     <Item key="rarely">Rarely</Item>
     <Item key="sometimes">Sometimes</Item>
     <Item key="always">Always</Item>

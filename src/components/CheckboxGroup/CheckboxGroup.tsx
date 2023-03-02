@@ -36,6 +36,8 @@ export interface CheckboxGroupProps
    * @default 'vertical'
    */
   orientation?: Orientation;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
@@ -50,6 +52,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
     orientation = "vertical",
     vol,
     children,
+    includeDataIds,
   } = props;
 
   const state = useCheckboxGroupState(props);
@@ -59,7 +62,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
   return (
     <Field
       {...{
-        disabled: isDisabled,
+        isDisabled,
         errorMessage,
         validationState,
         errorMessageProps,
@@ -72,6 +75,8 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
         variant: false,
         fieldContainerProps: { ...groupProps, className: classes.group },
         ref,
+        "data-id": includeDataIds ? "checkboxGroup--field" : undefined,
+        includeDataIds,
       }}
       className={st(
         classes.root,

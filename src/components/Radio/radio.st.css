@@ -1,7 +1,7 @@
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
+@namespace "Radio";
+
+@st-import InputLabel from "../../components/Label/label.st.css";
+
 
 .root {
   -st-states:

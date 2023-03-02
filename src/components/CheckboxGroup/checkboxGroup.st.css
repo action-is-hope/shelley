@@ -1,10 +1,6 @@
-/** checkboxGroup.st.css */
 @namespace "CheckboxGroup";
 
-:import {
-  -st-from: '../Field/field.st.css';
-  -st-default: Field
-}
+@st-import Field from "../Field/field.st.css";
 
 .root {
   -st-extends: Field;

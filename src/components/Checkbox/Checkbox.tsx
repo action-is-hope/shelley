@@ -44,7 +44,7 @@ const Checkbox = forwardRef(
           {
             ...props,
             // Value is optional for standalone checkboxes, but required for CheckboxGroup items;
-            // it's passed explicitly here to avoid typescript error (requires ignore).
+            // it's cast explicitly here to avoid typescript error.
             value: props.value as string,
             // Only pass isRequired and validationState to react-aria if they came from
             // the props for this individual checkbox, and not from the group via context.

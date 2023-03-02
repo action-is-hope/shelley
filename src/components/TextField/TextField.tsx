@@ -36,7 +36,7 @@ function TextField(
   const {
     className: classNameProp,
     description,
-    disabled,
+    isDisabled,
     errorMessage,
     validationState,
     variant,
@@ -81,7 +81,7 @@ function TextField(
   return (
     <Field
       {...{
-        disabled,
+        isDisabled,
         errorMessage,
         validationState,
         label,
