@@ -2,7 +2,10 @@
 module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
-    "\\.st\\.css?$": require.resolve("@stylable/jest"),
+    "\\.st\\.css?$": [
+      "@stylable/jest",
+      { stylable: { resolveNamespace: (ns, _srcPath) => `${ns}__Test` } },
+    ],
   },
   transformIgnorePatterns: [
     "/node_modules/(?!(.*?\\.st\\.css$))", // libraries publish .st.css files in their dist
