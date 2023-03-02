@@ -6,14 +6,14 @@ exports[`Checkbox renders correctly with custom label 1`] = `
     htmlFor="test123"
   />,
   <span
-    className="Checkbox3575272054__root Checkbox3575272054---vol-1-1"
+    className="Checkbox__Test__root Checkbox__Test---vol-1-1"
   >
     <span
-      className="Checkbox3575272054__inputContainer"
+      className="Checkbox__Test__inputContainer"
     >
       <input
         checked={false}
-        className="Checkbox3575272054__input"
+        className="Checkbox__Test__input"
         disabled={false}
         id="test123"
         onBlur={[Function]}
@@ -40,19 +40,19 @@ exports[`Checkbox renders correctly with custom label 1`] = `
 
 exports[`Checkbox renders correctly with label 1`] = `
 <label
-  className="Label3314882859__root Label3314882859--hasInput Checkbox3575272054__root Checkbox3575272054---vol-1-1"
+  className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
 >
   <span
-    className="Label3314882859__labelText"
+    className="Label__Test__labelText"
   >
     Subscribe
   </span>
   <span
-    className="Checkbox3575272054__inputContainer"
+    className="Checkbox__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Checkbox3575272054__input"
+      className="Checkbox__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}

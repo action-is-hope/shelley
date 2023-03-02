@@ -1,4 +1,5 @@
-import { Checkbox, CheckboxGroup } from "src/indexLib";
+import { CheckboxGroup } from "../CheckboxGroup";
+import Checkbox from "../../Checkbox/Checkbox";
 import renderer from "react-test-renderer";
 
 describe("Checkbox", () => {
