@@ -16,7 +16,10 @@ jobs:
       - uses: actions/cache/save@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
 
   build-types:
@@ -30,7 +33,10 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - run: npm run build-stylable-types
       - uses: actions/cache/save@v3
@@ -54,7 +60,10 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/cache/restore@v3
         id: types-artefact
@@ -78,7 +87,10 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/cache/restore@v3
         id: types-artefact
@@ -102,7 +114,10 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/cache/restore@v3
         id: types-artefact
@@ -126,7 +141,10 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
           key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/cache/restore@v3
         id: types-artefact
