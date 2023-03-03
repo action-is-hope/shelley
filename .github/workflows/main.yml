@@ -13,7 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm run build-stylable-types
       - uses: actions/cache/save@v3
         id: npm-cache
         with:
