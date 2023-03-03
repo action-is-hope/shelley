@@ -37,7 +37,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    needs: install
+    needs: build-types
     strategy:
       matrix:
         node-version: [16.x, 18.x]
