@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
@@ -21,16 +21,20 @@ jobs:
             ~/.npm
             node_modules
             st_types
-          key: node-cache-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
   lint:
     runs-on: ubuntu-latest
     needs: setup
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
@@ -38,9 +42,7 @@ jobs:
             ~/.npm
             node_modules
             st-types
-          key: |
-            node-cache-${{ hashFiles('**/package-lock.json') }}
-            node-cache-
+          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
       - run: npm run lint
 
   # typecheck:
