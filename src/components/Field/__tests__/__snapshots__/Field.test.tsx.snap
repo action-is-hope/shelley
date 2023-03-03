@@ -2,36 +2,36 @@
 
 exports[`Field Renderd as variant 'filled' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-6-filled Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-6-filled Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -42,36 +42,36 @@ exports[`Field Renderd as variant 'filled' 1`] = `
 
 exports[`Field Renderd as variant 'outlined' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -82,36 +82,36 @@ exports[`Field Renderd as variant 'outlined' 1`] = `
 
 exports[`Field Renders as variant 'quiet' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-5-quiet Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-5-quiet Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -122,36 +122,36 @@ exports[`Field Renders as variant 'quiet' 1`] = `
 
 exports[`Field Renders default field as variant 'outlined', labelPosition 'over', volume '1' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -162,40 +162,40 @@ exports[`Field Renders default field as variant 'outlined', labelPosition 'over'
 
 exports[`Field Renders with labelPosition 'hidden' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-6-hidden"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-6-hidden"
   data-id="field"
 >
   <span
-    className="visuallyHidden519588831__root"
+    className="visuallyHidden__Test__root"
   >
     <label
-      className="Label3203939847__root Field2808104046__inputLabel"
+      className="Label__Test__root Field__Test__inputLabel"
       data="random"
       htmlFor="test"
       id="label-id"
     >
       <span
-        className="Label3203939847__labelText"
+        className="Label__Test__labelText"
       >
         My field
       </span>
     </label>
   </span>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       />
     </fieldset>
   </div>
@@ -204,36 +204,36 @@ exports[`Field Renders with labelPosition 'hidden' 1`] = `
 
 exports[`Field Renders with labelPosition 'over' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -244,36 +244,36 @@ exports[`Field Renders with labelPosition 'over' 1`] = `
 
 exports[`Field Renders with labelPosition 'side' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-side"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-side"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -284,36 +284,36 @@ exports[`Field Renders with labelPosition 'side' 1`] = `
 
 exports[`Field Renders with labelPosition 'top' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-3-top"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-3-top"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -324,27 +324,27 @@ exports[`Field Renders with labelPosition 'top' 1`] = `
 
 exports[`Field Renders with no variant 'false' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
@@ -354,36 +354,36 @@ exports[`Field Renders with no variant 'false' 1`] = `
 
 exports[`Field Renders with no volume 'undefined' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -394,36 +394,36 @@ exports[`Field Renders with no volume 'undefined' 1`] = `
 
 exports[`Field Renders with volume '1' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-1 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-1 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -434,36 +434,36 @@ exports[`Field Renders with volume '1' 1`] = `
 
 exports[`Field Renders with volume '2' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-2 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-2 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -474,36 +474,36 @@ exports[`Field Renders with volume '2' 1`] = `
 
 exports[`Field Renders with volume '3' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-3 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-3 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -514,36 +514,36 @@ exports[`Field Renders with volume '3' 1`] = `
 
 exports[`Field Renders with volume '4' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-4 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-4 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -554,36 +554,36 @@ exports[`Field Renders with volume '4' 1`] = `
 
 exports[`Field Renders with volume '5' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-5 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-5 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
@@ -594,36 +594,36 @@ exports[`Field Renders with volume '5' 1`] = `
 
 exports[`Field Renders with volume '6' 1`] = `
 <div
-  className="Field2808104046__root Field2808104046---variant-8-outlined Field2808104046---vol-1-6 Field2808104046---labelPosition-4-over"
+  className="Field__Test__root Field__Test---variant-8-outlined Field__Test---vol-1-6 Field__Test---labelPosition-4-over"
   data-id="field"
 >
   <label
-    className="Label3203939847__root Field2808104046__inputLabel"
+    className="Label__Test__root Field__Test__inputLabel"
     data="random"
     htmlFor="test"
     id="label-id"
   >
     <span
-      className="Label3203939847__labelText"
+      className="Label__Test__labelText"
     >
       My field
     </span>
   </label>
   <div
-    className="Field2808104046__fieldContainer"
+    className="Field__Test__fieldContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="Field2808104046__fieldInput"
+      className="Field__Test__fieldInput"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
-      className="Field2808104046__fieldset"
+      className="Field__Test__fieldset"
     >
       <legend
-        className="Field2808104046__legend"
+        className="Field__Test__legend"
       >
         My field
       </legend>
