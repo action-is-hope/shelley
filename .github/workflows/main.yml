@@ -12,16 +12,10 @@ jobs:
         node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache/restore@v3
-        id: npm-cache-restore
-        with:
-          path: |
-            ~/.npm
-          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: npm run build-stylable-types
       - uses: actions/cache/save@v3
-        id: npm-cache-save
+        id: npm-cache
         with:
           path: |
             ~/.npm
@@ -64,7 +58,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/cache/restore@v3
-        id: npm-cache-restore-lint
+        id: npm-cache
         with:
           path: |
             ~/.npm
