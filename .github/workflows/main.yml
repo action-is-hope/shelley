@@ -17,10 +17,7 @@ jobs:
       - uses: actions/cache/save@v3
         id: npm-cache
         with:
-          path: |
-            ~/.npm
-            node_modules
-            st_types
+          path: node_modules
           key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
   lint:
@@ -38,10 +35,7 @@ jobs:
       - uses: actions/cache/restore@v3
         id: npm-cache
         with:
-          path: |
-            ~/.npm
-            node_modules
-            st-types
+          path: node_modules
           key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
       - run: npm run lint
 
