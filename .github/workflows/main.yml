@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache/restore@v3
-        id: npm-cache
+        id: npm-cache-restore
         with:
           path: |
             ~/.npm
@@ -21,7 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run build-stylable-types
       - uses: actions/cache/save@v3
-        id: npm-cache
+        id: npm-cache-save
         with:
           path: |
             ~/.npm
@@ -64,7 +64,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/cache/save@v3
-        id: npm-cache
+        id: npm-cache-restore
         with:
           path: |
             ~/.npm
