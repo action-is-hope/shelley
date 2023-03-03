@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
@@ -24,7 +24,7 @@ jobs:
     needs: install
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache/restore@v3
@@ -44,7 +44,7 @@ jobs:
     needs: build-types
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -63,68 +63,74 @@ jobs:
           key: ${{ matrix.node-version }}-types-artefact-${{ hashFiles('**/package-lock.json') }}
       - run: npm run lint
 
-  # typecheck:
-  #   runs-on: ubuntu-latest
-  #   needs: setup
-  #   strategy:
-  #     matrix:
-  #       node-version: [14.x, 16.x, 18.x]
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - uses: actions/cache/save@v3
-  #       id: npm-cache
-  #       with:
-  #         path: |
-  #           ~/.npm
-  #           node_modules
-  #           st_types
-  #         key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-  #     - run: npm run typecheck
+  typecheck:
+    runs-on: ubuntu-latest
+    needs: setup
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: node_modules
+          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run typecheck
 
-  # unit-tests:
-  #   runs-on: ubuntu-latest
-  #   needs: [lint, typecheck]
-  #   strategy:
-  #     matrix:
-  #       node-version: [14.x, 16.x, 18.x]
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - uses: actions/cache/save@v3
-  #       id: npm-cache
-  #       with:
-  #         path: |
-  #           ~/.npm
-  #           node_modules
-  #           st_types
-  #         key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-  #     - run: npm run unit-tests
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: node_modules
+          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run unit-tests
 
-  # cypress-component-tests:
-  #   runs-on: ubuntu-latest
-  #   needs: [lint, typecheck]
-  #   strategy:
-  #     matrix:
-  #       node-version: [14.x, 16.x, 18.x]
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - uses: actions/cache/save@v3
-  #       id: npm-cache
-  #       with:
-  #         path: |
-  #           ~/.npm
-  #           node_modules
-  #           st_types
-  #         key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-  #     - run: npm run cypress run --component
+  cypress-component-tests:
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, unit]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: node_modules
+          key: ${{ matrix.node-version }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run cypress run --component
