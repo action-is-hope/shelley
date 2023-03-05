@@ -17,6 +17,8 @@ export interface RadioProps extends AriaRadioProps {
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 const Radio = forwardRef(
@@ -29,6 +31,7 @@ const Radio = forwardRef(
       inputPosition,
       vol = 1,
       isDisabled,
+      includeDataIds,
     } = props;
     // const localRef = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -52,9 +55,8 @@ const Radio = forwardRef(
     const classNames = st(
       classes.root,
       {
-        disabled: isDisabled,
+        isDisabled,
         isFocusVisible,
-        // isSelected,
         validationState,
         vol: vol ? vol : undefined,
       },
@@ -67,6 +69,7 @@ const Radio = forwardRef(
           className={classes.input}
           {...mergeProps(inputProps, focusProps)}
           ref={ref ? mergeRefs(ref, inputRef) : inputRef}
+          data-id={includeDataIds ? "radio--input" : undefined}
         />
       </span>
     );
@@ -78,11 +81,17 @@ const Radio = forwardRef(
             className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
+            data-id={includeDataIds ? "radio--label" : undefined}
           >
             {children}
           </Label>
         ) : (
-          <span className={classNames}>{inputControl}</span>
+          <span
+            className={classNames}
+            data-id={includeDataIds ? "radio--label" : undefined}
+          >
+            {inputControl}
+          </span>
         )}
       </>
     );

@@ -53,6 +53,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     orientation = "vertical",
     vol,
     children,
+    includeDataIds,
   } = props;
 
   const state = useRadioGroupState(props);
@@ -75,6 +76,8 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
         vol,
         variant: false,
         ref,
+        "data-id": includeDataIds ? "radioGroup--field" : undefined,
+        includeDataIds,
       }}
       className={st(classes.root, { orientation }, classNameProp)}
     >

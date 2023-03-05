@@ -39,6 +39,9 @@ describe("Checkbox", () => {
         Subscribe
       </Checkbox>
     );
+    cy.get(checkboxWithLabel)
+      .should("have.attr", "class")
+      .and("to.have.string", "isDisabled");
     cy.get(inputEl).should("be.disabled");
   });
 

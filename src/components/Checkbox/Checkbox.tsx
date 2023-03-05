@@ -61,10 +61,9 @@ const Checkbox = forwardRef(
     const classNames = st(
       classes.root,
       {
-        disabled: isDisabled,
+        isDisabled,
         isFocusVisible,
         isIndeterminate,
-        // isSelected,
         validationState,
         vol: vol ? vol : undefined,
       },

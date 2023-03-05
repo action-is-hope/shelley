@@ -132,6 +132,45 @@ describe("CheckboxGroup isDisabled and isReadOnly", () => {
     cy.get("input[value='cb1']").should("be.disabled");
     cy.get("input[value='cb2']").should("not.be.disabled");
   });
+
+  it("isReadOnly - entire group", () => {
+    const onChangeSpy = cy.spy().as("onChangeSpy");
+    cy.mount(
+      <CheckboxGroup
+        includeDataIds
+        label="Field Label"
+        onChange={onChangeSpy}
+        isReadOnly
+      >
+        <Checkbox value="cb1" includeDataIds>
+          Checkbox label 1
+        </Checkbox>
+        <Checkbox value="cb2" includeDataIds>
+          Checkbox label 2
+        </Checkbox>
+      </CheckboxGroup>
+    );
+    cy.get("input[value='cb1']").click().and("not.be.checked");
+    cy.get("input[value='cb2']").click().and("not.be.checked");
+    cy.get("@onChangeSpy").should("not.have.been.called");
+  });
+
+  it("isReadOnly - single item", () => {
+    const onChangeSpy = cy.spy().as("onChangeSpy");
+    cy.mount(
+      <CheckboxGroup includeDataIds label="Field Label" onChange={onChangeSpy}>
+        <Checkbox value="cb1" isReadOnly includeDataIds>
+          Checkbox label 1
+        </Checkbox>
+        <Checkbox value="cb2" includeDataIds>
+          Checkbox label 2
+        </Checkbox>
+      </CheckboxGroup>
+    );
+    cy.get("input[value='cb1']").click().and("not.be.checked");
+    cy.get("input[value='cb2']").click().and("be.checked");
+    cy.get("@onChangeSpy").should("have.been.called", "once");
+  });
 });
 
 describe("CheckboxGroup Help", () => {

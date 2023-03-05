@@ -4,13 +4,10 @@
 
 .root {
   -st-states:
-    disabled,
-    error,
+    isDisabled,
     isFocusVisible,
     isIndeterminate,
-    isSelected,
     validationState(enum(valid, invalid)),
-    variant(number),
     vol(number);
 }
 
