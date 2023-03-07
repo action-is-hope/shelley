@@ -75,7 +75,8 @@
   }
 
   Field::helpText {
-    margin-top: calc(var(--spacing-unit) / 4);
+    font-size: 0.75em;
+    margin-top: calc(var(--spacing-unit) / 2);
   }
 
   Field::helpText::before {
@@ -136,14 +137,14 @@
 
   /*==== VARIANTS ====*/
 
-
+  /* Over */
   Field:labelPosition(over)::inputLabel {
     -st-mixin: label;
     transform: translate(0.7rem, 8px) scale(1);
   }
 
   Field:labelPosition(over)::helpText {
-    font-size: 0.75em;
+    padding: 0 var(--spacing-unit);
   }
 
   Field:labelPosition(over):focus-within::inputLabel,
@@ -161,6 +162,12 @@
 
   Field:labelPosition(side)::inputLabel {
     justify-self: flex-end;
+  }
+
+  /* Top */
+
+  Field:labelPosition(top)::inputLabel {
+    margin-bottom: calc(var(--spacing-unit) / 2);
   }
 
 

@@ -293,8 +293,7 @@
   font-size: 1em;
 }
 
-.inputVol1 InputLabel,
-.inputVol1 HelpText {
+.inputVol1 > InputLabel {
   font-size: value(inputVol1Label);
 }
 
@@ -309,8 +308,7 @@
     textVol;
 }
 
-.inputVol2 InputLabel,
-.inputVol2 HelpText {
+.inputVol2 > InputLabel {
   font-size: value(inputVol2Label);
 }
 
@@ -325,8 +323,7 @@
       max var(--text-vol-3-max));
 }
 
-.inputVol3 InputLabel,
-.inputVol3 HelpText {
+.inputVol3 > InputLabel {
   font-size: value(inputVol3Label);
 }
 
@@ -341,8 +338,7 @@
       max var(--text-vol-4-max));
 }
 
-.inputVol4 InputLabel,
-.inputVol4 HelpText {
+.inputVol4 > InputLabel {
   font-size: value(inputVol4Label);
 }
 
@@ -361,8 +357,7 @@
       max calc(var(--text-vol-5-max) - 0.15rem));
 }
 
-.inputVol5 InputLabel,
-.inputVol5 HelpText {
+.inputVol5 > InputLabel {
   font-size: value(inputVol5Label);
 }
 
@@ -381,8 +376,7 @@
       max calc(var(--text-vol-6-max) - 0.15rem));
 }
 
-.inputVol6 InputLabel,
-.inputVol6 HelpText {
+.inputVol6 > InputLabel {
   font-size: value(inputVol6Label);
 }
 

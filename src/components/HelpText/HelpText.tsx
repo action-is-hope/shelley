@@ -3,7 +3,6 @@ import type React from "react";
 import { ReactNode, HTMLAttributes, forwardRef } from "react";
 import type { Validation } from "../../typings/shared-types";
 import Warning from "../icons/Warning";
-/* = Style API. */
 import { st, classes } from "./helpText.st.css";
 
 interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
@@ -11,17 +10,14 @@ interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
   isDisabled?: boolean;
   /** Whether an error icon is rendered. */
   showErrorIcon?: boolean;
-
   /** A description for the field. Provides a hint such as specific requirements for what to choose. */
   description?: ReactNode;
   /** An error message for the field. */
   errorMessage?: ReactNode;
-
   /** Props for the help text description element. */
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLAttributes<HTMLElement>;
-
   /** Add predefined data-id to ease testing or analytics. */
   includeDataIds?: boolean;
 }
