@@ -48,10 +48,7 @@
 
 @st-scope Default {
 
-  Radio {
-    /* Resolves formatting if placed in a css grid. */
-    justify-self: baseline;
-  }
+  Radio {}
 
   Radio {
     gap: calc(var(--spacing-unit) / 2);
