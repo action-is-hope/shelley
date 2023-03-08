@@ -14,7 +14,6 @@ import { st, classes } from "./select.st.css";
 export interface SelectProps<T>
   extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
     Omit<FieldProps, "label" | "startAdornment" | "endAdornment"> {
-  disabled?: boolean;
   className?: string;
   /**
    * The selector of the element that the menu should render inside of.
@@ -35,7 +34,7 @@ function Select<T extends object>(
   const {
     className: classNameProp,
     description,
-    disabled,
+    isDisabled,
     errorMessage,
     validationState,
     portalSelector = "body",
@@ -60,16 +59,12 @@ function Select<T extends object>(
     menuProps,
     errorMessageProps,
     descriptionProps,
-  } = useSelect(
-    { ...props, isDisabled: disabled },
-    state,
-    localRef as RefObject<HTMLButtonElement>
-  );
+  } = useSelect(props, state, localRef as RefObject<HTMLButtonElement>);
 
   return (
     <Field
       {...{
-        disabled,
+        isDisabled,
         errorMessage,
         validationState,
         errorMessageProps,

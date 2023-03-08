@@ -19,11 +19,11 @@ module.exports = {
       test: /\.css$/,
       use: ["style-loader", "css-loader"],
       include: path.resolve(__dirname, "../"),
-      exclude: /\.st\.css$/
+      exclude: /\.st\.css$/,
     });
 
     /* inject StylableWebpackPlugin */
-    config.plugins.push(new StylableWebpackPlugin());
+    config.plugins.push(new StylableWebpackPlugin({ stcConfig: true }));
     return config;
-  }
+  },
 };

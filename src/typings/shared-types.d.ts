@@ -9,3 +9,5 @@ export interface Validation {
    */
   isRequired?: boolean;
 }
+
+export type Orientation = "horizontal" | "vertical";

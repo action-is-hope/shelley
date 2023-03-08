@@ -1,4 +1,4 @@
-@namespace "Checkbox";
+@namespace "Radio";
 
 @st-import InputLabel from "../../components/Label/label.st.css";
 
@@ -6,7 +6,6 @@
   -st-states:
     isDisabled,
     isFocusVisible,
-    isIndeterminate,
     validationState(enum(valid, invalid)),
     vol(number);
 }

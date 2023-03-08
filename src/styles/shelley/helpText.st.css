@@ -1,40 +1,18 @@
-/**
- * = HelpText - helpText.st.css
- *
- * Could have been a class only but we have a component and here is it's style.
- * 
- * ========================================================================= */
-
-
 /* = Default project vars. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-named:
-    --spacing-unit;
-}
-
+@st-import [--spacing-unit] from "../default/project.st.css";
 /* = Shelley project scope and vars. */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Shelley;
-  -st-named:
-    --color-error, --color-text-help;
-}
-
-
-/* = Root Component */
-:import {
-  -st-from: "../../components/HelpText/helpText.st.css";
-  -st-default: HelpText;
-}
+@st-import Shelley, [--color-text-help] from "./project.st.css";
+/* = Component API */
+@st-import HelpText from "../../components/HelpText/helpText.st.css";
 
 @st-scope Shelley {
 
   /* = Root */
   HelpText {
-    color: var(--color-text-help)
+    color: var(--color-text-help);
+    font-size: 0.8rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* = HelpText indicator. */
-  HelpText::before {}
 }

@@ -69,6 +69,12 @@ export * from "./components/Popup/Popup";
 
 export { default as Item } from "./components/Item/Item";
 
+export { default as Radio } from "./components/Radio/Radio";
+export * from "./components/Radio/Radio";
+
+export { RadioGroup } from "./components/RadioGroup/RadioGroup";
+export * from "./components/RadioGroup/RadioGroup";
+
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";
 
