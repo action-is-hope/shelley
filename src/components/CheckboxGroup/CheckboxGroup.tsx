@@ -95,8 +95,5 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
   );
 }
 
-/**
- * A CheckboxGroup allows users to select one or more items from a list of choices.
- */
 const _CheckboxGroup = forwardRef(CheckboxGroup);
 export { _CheckboxGroup as CheckboxGroup };

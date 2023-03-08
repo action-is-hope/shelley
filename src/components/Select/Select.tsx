@@ -1,5 +1,5 @@
 import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import Field from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
 import { useSelectState } from "react-stately";
@@ -111,7 +111,7 @@ function Select<T extends object>(
           name={props.name}
         />
         {state.isOpen &&
-          ReactDOM.createPortal(
+          createPortal(
             <Popup
               isOpen={state.isOpen}
               onClose={() => state.close()}
@@ -135,10 +135,7 @@ function Select<T extends object>(
   );
 }
 
-/**
- * Selects allow users to choose a single option from a collapsible list of options when space is limited.
- */
-// forwardRef doesn't support generic parameters, so cast the result to the correct type
+// forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 const _Select = forwardRef(Select) as <T>(
   props: SelectProps<T> & { ref?: Ref<HTMLButtonElement> }
