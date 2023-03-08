@@ -22,14 +22,14 @@ export const Label: VFC<LabelProps> = ({
   children,
   inputPosition = undefined,
   visuallyHidden,
-  ...attrs
+  ...rest
 }) => {
   const hasInput: boolean = inputControl ? true : false;
   const labelText = <span className={classes.labelText}>{children}</span>;
   return (
     <label
       className={st(classes.root, { inputPosition, hasInput }, classNameProp)}
-      {...attrs}
+      {...rest}
     >
       {visuallyHidden ? (
         <VisuallyHidden>{labelText}</VisuallyHidden>
