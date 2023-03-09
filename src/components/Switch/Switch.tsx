@@ -34,8 +34,8 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
 
   const localRef = useRef(null);
 
-  let state = useToggleState(props);
-  let { inputProps } = useSwitch(props, state, localRef);
+  const state = useToggleState(props);
+  const { inputProps } = useSwitch(props, state, localRef);
 
   const { isFocusVisible, focusProps } = useFocusRing();
 

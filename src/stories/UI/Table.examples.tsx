@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
   TablePagination,
-  InputSelection,
+  Checkbox,
   // InputSelectionControl,
 } from "../../indexLib";
 
@@ -137,8 +137,8 @@ export const Example3 = () => {
 
   const [selected, setSelected] = React.useState<readonly string[]>([]);
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
+  const handleSelectAllClick = (selected: boolean) => {
+    if (selected) {
       const newSelected = rows.map((n) => n.name);
       setSelected(newSelected);
       return;
@@ -174,17 +174,14 @@ export const Example3 = () => {
         <TableHead>
           <TableRow>
             <TableCell header style={{ width: 50 }}>
-              <InputSelection
-                id={"example-2-header-checkbox"}
-                label={"Select all"}
-                type="checkbox"
-                variant={1}
+              <Checkbox
                 vol={1}
                 inputPosition="start"
-                error="Form item error message"
                 visuallyHideLabel
                 onChange={handleSelectAllClick}
-              />
+              >
+                Select all
+              </Checkbox>
             </TableCell>
             <TableCell header padding="none">
               Animal
@@ -212,25 +209,15 @@ export const Example3 = () => {
                 onClick={(event) => handleClick(event, row.name)}
               >
                 <TableCell>
-                  <InputSelection
-                    type="checkbox"
+                  <Checkbox
                     aria-labelledby={row.id}
-                    checked={isItemSelected}
+                    isSelected={isItemSelected}
                     vol={1}
                   />
                 </TableCell>
                 <TableCell header scope="row" padding="none" id={row.id}>
                   {row.name}
                 </TableCell>
-                {/* <TableCell header scope="row">
-                <InputSelectionControl
-                  type="checkbox"
-                  id={row.id}
-                />
-              </TableCell>
-              <TableCell header scope="row" id={row.id}>
-                <label htmlFor={row.id}>{row.name}</label>
-              </TableCell> */}
                 <TableCell align="end">{row.topSpeed}</TableCell>
                 <TableCell align="end">{row.maxLength}</TableCell>
                 <TableCell align="end">{row.maxWeight}</TableCell>
@@ -255,8 +242,8 @@ export const Example4 = () => {
 
   const [selected, setSelected] = React.useState<readonly string[]>([]);
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
+  const handleSelectAllClick = (selected: boolean) => {
+    if (selected) {
       const newSelected = rows.map((n) => n.name);
       setSelected(newSelected);
       return;
@@ -292,17 +279,14 @@ export const Example4 = () => {
         <TableHead>
           <TableRow>
             <TableCell header style={{ width: 50 }}>
-              <InputSelection
-                id={"example-2-header-checkbox"}
-                label={"Select all"}
-                type="checkbox"
-                variant={1}
+              <Checkbox
                 vol={1}
                 inputPosition="start"
-                error="Form item error message"
                 visuallyHideLabel
                 onChange={handleSelectAllClick}
-              />
+              >
+                Select all
+              </Checkbox>
             </TableCell>
             <TableCell header padding="none">
               Animal
@@ -330,10 +314,9 @@ export const Example4 = () => {
                 onClick={(event) => handleClick(event, row.name)}
               >
                 <TableCell>
-                  <InputSelection
-                    type="checkbox"
+                  <Checkbox
                     aria-labelledby={row.id}
-                    checked={isItemSelected}
+                    isSelected={isItemSelected}
                     vol={1}
                   />
                 </TableCell>
