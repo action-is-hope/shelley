@@ -1,28 +1,9 @@
 /* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit,
-    --color-form-base-border,
-    --color-error;
-}
-
+@st-import Default, [--spacing-unit, --color-error] from "./project.st.css";
 /* = Root style API. */
-:import {
-  -st-from: "../../components/Radio/radio.st.css";
-  -st-default: Radio;
-}
-
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
-
-:import {
-  -st-from: "../../components/Icon/icon.st.css";
-  -st-default: Icon;
-}
+@st-import Radio from "../../components/Radio/radio.st.css";
+/* = Child components. */
+@st-import Icon from "../../components/Icon/icon.st.css";
 
 /* = Mixins */
 :import {
