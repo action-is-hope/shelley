@@ -1,0 +1,231 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Switch } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import { ValueExample, EventExample, CustomLabel } from "./Switch.examples";
+
+export const BasicSwitch = (args) => <Switch {...args} />;
+
+<Meta
+  title="Inputs/Switch"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      value: "over",
+    },
+    isDisabled: {
+      control: { type: "boolean" },
+    },
+    isReadOnly: {
+      control: { type: "boolean" },
+    },
+  }}
+  component={Switch}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Switch
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Switch } from "@actionishope/shelley";
+  `}
+/>
+
+Switches allow users to turn an individual option on or off. They are usually used to activate or deactivate a specific setting.
+
+<Story
+  name="a) Switch"
+  args={{
+    children: "Switch label",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`<Switch>Switch label</Switch>`,
+      },
+    },
+  }}
+>
+  {BasicSwitch.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-switch--a-switch" />
+
+## Content
+
+Switches accept children, which are rendered as the label.
+
+Switches are best used for communicating activation (e.g. on/off states), while [checkboxes](/docs/inputs-switch--a-checkbox) are best used for communicating selection (e.g. multiple table rows). Switches, unlike checkboxes, can't have an error state.
+
+### Accessibility
+
+In certain cases a visible label isn't needed. For example, a Switch located at the top of a panel which toggles the panels options on or off.
+
+If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, see [custom label](#custom-label)
+
+### Internationalization
+
+To internationalize a Switch, a localized label should be passed to the children or aria-label prop. For languages that are read right-to-left (e.g. Hebrew and Arabic), the layout of the switch is automatically flipped.
+
+## Value
+
+Switches are not selected by default. The `defaultSelected` prop can be used to set the default state (uncontrolled).
+
+Alternatively, the `isSelected` prop can be used to make the selected state controlled. See React's documentation on [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html) for more info.
+
+<Story
+  name="b) Value"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelected] = useState(true);\n
+  return (
+    <>
+      <Switch defaultSelected>
+        Dark mode (uncontrolled)
+      </Switch>
+      <Switch isSelected={selected} onChange={setSelected}>
+        Dark mode (controlled)
+      </Switch>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {ValueExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-switch--b-value" />
+
+## Events
+
+Switches accept a user defined `onChange` prop, triggered whenever the Switch is pressed. The example below uses onChange to alert the user to changes in state.
+
+<Story
+  name="c) Events"
+  args={{ children: "Switch label" }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const [selected, setSelection] = useState(false);\n
+  return (
+    <>
+      <Switch isSelected={selected} onChange={setSelection}>
+        Switch label
+      </Switch>
+      <P vol={1}>{\`You \${selected ? "have accepted" : "have not accepted"}\`}</P>
+    </>
+  );`,
+      },
+    },
+  }}
+>
+  {EventExample.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-switch--c-events" />
+
+## Disabled
+
+Switches can be disabled using the `isDisabled` prop.
+
+<Story
+  name="d) Disabled"
+  args={{ children: "Switch label", isDisabled: true }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Switch isDisabled>
+  Switch label
+</Switch>`,
+      },
+    },
+  }}
+>
+  {BasicSwitch.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-switch--d-disabled" />
+
+## Read only
+
+The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Switch remains focusable. See the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information.
+
+<Story
+  name="e) Read only"
+  args={{
+    children: "Switch label",
+    isReadOnly: true,
+    isSelected: true,
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+        <Switch isSelected isReadOnly>Switch label<Switch>`,
+      },
+    },
+  }}
+>
+  {BasicSwitch.bind({})}
+</Story>
+
+<Source language="tsx" id="inputs-switch--e-read-only" />
+
+## Custom label
+
+All checkboxes must provide a label and it must be marked up properly. Either the checkbox should sit inside the label, in which case the label is implicitly associated with the checkbox. If the label is outside then it much be explicitly associated via `for` and `id` attributes.
+
+If you choose to provide your own label you will need to do the latter. _Tip_: Clicking the label should toggle the checkbox, if it doesn't then check the `for` and `id` are the same and unique.
+
+<Story
+  name="f) Custom label"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+      <Switch id="123" />
+      <label htmlFor="123">Custom label</label>`,
+      },
+    },
+  }}
+>
+  {CustomLabel.bind()}
+</Story>
+
+<Source language="tsx" id="inputs-switch--f-custom-label" />
+
+## Switch Props
+
+<ArgsTable of={Switch} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

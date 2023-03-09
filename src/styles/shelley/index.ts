@@ -4,8 +4,6 @@ import "./blockquote.st.css";
 import "./helpText.st.css";
 import "./field.st.css";
 import "./grid.st.css";
-import "./inputSelection.st.css";
-import "./inputSelectionControl.st.css";
 import "./textField.st.css";
 import "./label.st.css";
 import "./listBox.st.css";
