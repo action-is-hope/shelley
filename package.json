@@ -2,7 +2,7 @@
   "name": "@actionishope/shelley",
   "version": "1.0.0-alpha.4",
   "license": "ISC",
-  "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
+  "description": "An accessible headless UI library for React - built with Adobe React Spectrum packages and Stylable from Wix",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/action-is-hope/shelley.git"
@@ -13,7 +13,7 @@
     "react",
     "typescript"
   ],
-  "author": "action-is-hope<info@action-is-hope.earth>",
+  "author": "action-is-hope<actionshopeorg@gmail.com>",
   "bugs": {
     "url": "https://github.com/action-is-hope/shelley/issues"
   },

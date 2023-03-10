@@ -2,6 +2,18 @@
 
 [![Main workflow](https://github.com/action-is-hope/shelley/actions/workflows/main.yml/badge.svg)](https://github.com/action-is-hope/shelley)
 
+Shelley is an accessible _headless_ (unstyled by default) UI library for React and is built primarily upon [Adobe React Aria](https://react-spectrum.adobe.com/react-aria/index.html) and [Adobe React Stately](https://react-spectrum.adobe.com/react-stately/index.html) allowing you to implement your own design system quickly and with confidence.
+
+For styling Shelley implements [Wix's Stylable](https://stylable.io/), huge props to the team over at Wix Engineering for giving us CSS back with a bang!
+
+## Getting started
+
+There are currently two ways of starting working with Stylable:
+
+- Quickly start a new project from a [boilerplate](https://stylable.io/docs/getting-started/boilerplate)
+- Integrate into a new or existing project by [manually configuring](https://stylable.io/docs/getting-started/manual-integration) Stylable.
+
+Optionally (highly recommended), you can install [Stylable Intelligence](https://stylable.io/docs/getting-started/tooling/stylable-intelligence), an extension providing IDE support for code completion and diagnostics (currently supported only for Visual Studio Code).
 ## Development
 
 The following scripts are available:

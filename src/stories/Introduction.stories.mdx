@@ -2,44 +2,26 @@ import { Meta } from "@storybook/addon-docs";
 
 <Meta title="Introduction" />
 
-# Shelley
-
 [![Main workflow](https://github.com/action-is-hope/shelley/actions/workflows/main.yml/badge.svg)](https://github.com/action-is-hope/shelley)
 
-Shelley is an _unstyled first_ UI library, meaning that it ships with a very minimal set of styles giving you complete control of your styling strategy.
+# Shelley
 
-That doesn't mean we don't have a base theme for you to start with, it just means that you have complete control over your styles and how they are put together. If you are a fan of CSS and like/need to control the CSS used in your project then Shelley might be for you. if this idea repulses you then maybe go for something like Material UI which actually does have an unstyled option these days. Adobe Spectrum looks good too.
+Shelley is an accessible _headless_ (unstyled by default) UI library for React and is built primarily upon [Adobe React Aria](https://react-spectrum.adobe.com/react-aria/index.html) and [Adobe React Stately](https://react-spectrum.adobe.com/react-stately/index.html) allowing you to implement your own design system quickly and with confidence.
 
-## Accessible
+For styling Shelley implements [Wix's Stylable](https://stylable.io/), huge props to the team over at Wix Engineering for giving us CSS back with a bang!
 
-Shelley is built on top of various `react-aria` hooks, Adobe has done the work here and has been kind enough to open source it! Nice one!
+## Adobe React Aria & React Stately
 
-Accessibility is super important as it is about inclusion at the end of the day and who are we to tell you that you have to exclude people if you wanna use our stuff!! Any issues please report them on Github with as much info as possible and we will attempt to make hast on progress.
+The folks over at Adobe have been busy building their React component library which adhers to the [Adobe design system, Spectrum](https://spectrum.adobe.com/). Whilst that's cool if you are wanting to follow that design system, it is less useful if you do not.
 
-## Flexible
+Happily these lovely people decided to seperate out most of the [behavior](https://react-spectrum.adobe.com/react-aria/interactions.html), [accessibility](https://react-spectrum.adobe.com/react-aria/accessibility.html), and [internationalisation](https://react-spectrum.adobe.com/react-aria/internationalization.html) support and provide it for free mainly in the form of hooks.
 
-We aim to be flexible because we know every project asks for different things so we need to be able to build anything.
-
-NOT HERE: You don't have to use the props that we provide, you could just use classnames and inherit the style api from whatever component you are using and style it's internal parts easily.
+For us this was a no-brainer becuase this stuff is _hard_ and these packages allow us to focus on building out the styles defined by our design systems, whatever they may be with Stylable.
 
 ## Stylable
 
-Styling is handled using Stylable from Wix... Wix have got a great team and have built _and maintain_ a great product. Whilst it's not a mainstream library _(meaning using it with CRA is a pain best avoided due to the required webpack configure)_ the fact that Wix with the scale of their operation decided to 'do something else' makes one pay attention.
+[Stylable](https://stylable.io/) is a modern CSS pre-processor built for components. Each component exposes a style API that maps its internal parts so you can reuse components across teams without sacrificing stylability.
 
-Huge thanks to the Wix team who have been a pleasure to work with when we have needed to and have always gone above and beyond.
+Developed by [Wix Engineering](https://www.wix.engineering/) alongside the original 'web standards lovegod' [Bruce Lawson](https://brucelawson.co.uk/2018/the-making-of-stylable-the-musical/) it is simple, managable, performant and standards based whilst also giving CSS a _type system_ doing for CSS what Typescript has done for Javascript.
 
-## Planning
-
-The first question, are you planning to build multiple sites with one HTML structure and multiple themes?
-
-If no then you can use the props throughout your markup to define the types of buttons and text you would like as you are working to just one design.
-
-If yes then you might set yourself up with a load of mixins and point to them instead. Think: What the design changes between theme? I.E Component A with design A has a CTA of type "primary" but Component A with design B has a cta type of "secondary". Now you would be in the position that you need to override a primary button to look like a secondary button just for that component. By turning the look and feel props off you get a raw button and you can then apply classes to your component A button which in turn can point to a mixin of primary. This way you can granula control over the styles applied to buttons on a component by component basis...
-
-Note: Add a component API stability marker aside with some info about current status etc.
-
-https://storybook.js.org/docs/react/configure/theming
-
-## Testing strategy
-
-Shelley is covered by a combination of Jest snapshots for simple static components and Cypress component tests for more complex interactive components.
+We would recommend that you take some time looking through the [Stylable handbook](https://stylable.io/docs/guides/handbook/intro) to get more of a feel for what the super talented team at Wix have built.
