@@ -93,8 +93,5 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
   );
 }
 
-/**
- * A RadioGroup allows users to select one or more items from a list of choices.
- */
 const _RadioGroup = forwardRef(RadioGroup);
 export { _RadioGroup as RadioGroup };

@@ -22,7 +22,10 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
     isDisabled: {
       control: { type: "boolean" },
     },
-    readOnly: {
+    isIndeterminate: {
+      control: { type: "boolean" },
+    },
+    isReadOnly: {
       control: { type: "boolean" },
     },
     validationState: {
@@ -77,7 +80,7 @@ Checkboxes accept `children`, which are rendered as the label.
 
 ### Accessibility
 
-In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, see [custom label](#custom-label).
 
 ### Internationalization
 

@@ -1,40 +1,15 @@
 /* = Project and vars */
-@st-import Default, [--color-error, --spacing-unit] from "./project.st.css";
+@st-import Default, [--color-error] from "./project.st.css";
 /* = Component API */
 @st-import HelpText from "../../components/HelpText/helpText.st.css";
 
 @st-scope Default {
 
   HelpText {
-    position: relative;
     transition: color 0.2s;
-  }
-
-  /* = HelpText indicator bar. */
-  HelpText::before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    content: "";
-    width: 1px;
-    transition: background-color 0.1s;
-    background-color: transparent;
-  }
-
-  HelpText:isErrorMessage::before {
-    background-color: var(--color-error);
   }
 
   HelpText:isErrorMessage {
     color: var(--color-error);
-  }
-}
-
-@media screen and (min-width: 600px) {
-  @st-scope Default {
-    HelpText {
-      font-size: 0.625rem;
-    }
   }
 }

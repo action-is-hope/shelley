@@ -32,7 +32,7 @@
     --color-form-base-border,
     --color-form-selection-border,
     --color-form-selection-notch,
-    --color-toggle-notch,
+    --color-switch-notch,
     --select-icon;
 
 }
@@ -48,16 +48,6 @@
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: InputLabel;
-}
-
-:import {
-  -st-from: "../../../components/HelpText/helpText.st.css";
-  -st-default: HelpText;
-}
-
-:import {
-  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
-  -st-default: SelectionControl;
 }
 
 /* = Mixins & Utils */
@@ -260,8 +250,6 @@
  * ------------------------------------------------------------------------- */
 
 
-
-
 /* = Disabled */
 .disabledField {
   /* = Dim the whole lot... */
@@ -391,7 +379,7 @@
 /**
  * = INPUT SELECTION CONTROLS
  *
- * Checkboxes, radios, toggles and switches.
+ * Checkboxes, radios and switches.
  *
  * ------------------------------------------------------------------------- */
 
@@ -509,21 +497,21 @@
 
 
 /**
- * = TOGGLE
+ * = Switch
  *
  * Which is really just a checkbox in disguise...
  */
 
-.ToggleFieldInput {
+.SwitchFieldInput {
   width: 2em;
   border-radius: 9999px;
 }
 
-.ToggleFieldInput::after {
+.SwitchFieldInput::after {
   border-radius: 9999px;
 }
 
-.ToggleFieldInput::before {
+.SwitchFieldInput::before {
   content: "";
   position: absolute;
   width: 1.3em;
@@ -532,12 +520,10 @@
   transition: all 0.2s;
   transform: translate(-50%);
   z-index: 1;
-  background-color: var(--color-toggle-notch);
+  background-color: var(--color-switch-notch);
 }
 
-.ToggleFieldInput:checked::before {
+.SwitchFieldInput:checked::before {
   transform: translate(50%);
   background-color: var(--color-form-selection-notch);
 }
-
-/* .SwitchFieldInput {} */
