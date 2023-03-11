@@ -32,7 +32,7 @@
     --color-form-base-border,
     --color-form-selection-border,
     --color-form-selection-notch,
-    --color-toggle-notch,
+    --color-switch-notch,
     --select-icon;
 
 }
@@ -48,16 +48,6 @@
 :import {
   -st-from: "../../../components/Label/label.st.css";
   -st-default: InputLabel;
-}
-
-:import {
-  -st-from: "../../../components/HelpText/helpText.st.css";
-  -st-default: HelpText;
-}
-
-:import {
-  -st-from: "../../../components/InputSelectionControl/inputSelectionControl.st.css";
-  -st-default: SelectionControl;
 }
 
 /* = Mixins & Utils */
@@ -260,8 +250,6 @@
  * ------------------------------------------------------------------------- */
 
 
-
-
 /* = Disabled */
 .disabledField {
   /* = Dim the whole lot... */
@@ -293,8 +281,7 @@
   font-size: 1em;
 }
 
-.inputVol1 InputLabel,
-.inputVol1 HelpText {
+.inputVol1 > InputLabel {
   font-size: value(inputVol1Label);
 }
 
@@ -309,8 +296,7 @@
     textVol;
 }
 
-.inputVol2 InputLabel,
-.inputVol2 HelpText {
+.inputVol2 > InputLabel {
   font-size: value(inputVol2Label);
 }
 
@@ -325,8 +311,7 @@
       max var(--text-vol-3-max));
 }
 
-.inputVol3 InputLabel,
-.inputVol3 HelpText {
+.inputVol3 > InputLabel {
   font-size: value(inputVol3Label);
 }
 
@@ -341,8 +326,7 @@
       max var(--text-vol-4-max));
 }
 
-.inputVol4 InputLabel,
-.inputVol4 HelpText {
+.inputVol4 > InputLabel {
   font-size: value(inputVol4Label);
 }
 
@@ -361,8 +345,7 @@
       max calc(var(--text-vol-5-max) - 0.15rem));
 }
 
-.inputVol5 InputLabel,
-.inputVol5 HelpText {
+.inputVol5 > InputLabel {
   font-size: value(inputVol5Label);
 }
 
@@ -381,8 +364,7 @@
       max calc(var(--text-vol-6-max) - 0.15rem));
 }
 
-.inputVol6 InputLabel,
-.inputVol6 HelpText {
+.inputVol6 > InputLabel {
   font-size: value(inputVol6Label);
 }
 
@@ -397,7 +379,7 @@
 /**
  * = INPUT SELECTION CONTROLS
  *
- * Checkboxes, radios, toggles and switches.
+ * Checkboxes, radios and switches.
  *
  * ------------------------------------------------------------------------- */
 
@@ -515,21 +497,21 @@
 
 
 /**
- * = TOGGLE
+ * = Switch
  *
  * Which is really just a checkbox in disguise...
  */
 
-.ToggleFieldInput {
+.SwitchFieldInput {
   width: 2em;
   border-radius: 9999px;
 }
 
-.ToggleFieldInput::after {
+.SwitchFieldInput::after {
   border-radius: 9999px;
 }
 
-.ToggleFieldInput::before {
+.SwitchFieldInput::before {
   content: "";
   position: absolute;
   width: 1.3em;
@@ -538,12 +520,10 @@
   transition: all 0.2s;
   transform: translate(-50%);
   z-index: 1;
-  background-color: var(--color-toggle-notch);
+  background-color: var(--color-switch-notch);
 }
 
-.ToggleFieldInput:checked::before {
+.SwitchFieldInput:checked::before {
   transform: translate(50%);
   background-color: var(--color-form-selection-notch);
 }
-
-/* .SwitchFieldInput {} */

@@ -1,0 +1,135 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Field, Label } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import { FieldExample, TextFieldExample } from "./Field.examples";
+
+export const LabelStory = (args) => (
+  <Label
+    inputControl={<input type="checkbox" />}
+    inputPosition="start"
+    {...args}
+  >
+    Label text
+  </Label>
+);
+
+<Meta
+  title="Internal/Label"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={Label}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Label
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Label } from "@actionishope/shelley";
+  `}
+/>
+
+Used internally within `Field`, `Checkbox` and `Radio`.
+
+Labels are rather aptly `for` labelling things, form input tags specifically, label is one of the most important semantic tags to get right in terms of usability, accessibility and the law!
+
+## Usage
+
+### Explicit association
+
+Whilst pretty useless by themselves, labels should be paired and associated with a form input. The most reliable way to do that is explicitly via the for and id attributes.
+
+_TIP_: If you want to check if you got it right, clicking the label should focus the form field.
+
+<Source
+  language="tsx"
+  code={dedent`
+<Label htmlFor="myTextField">Label text</Label>
+<input id="myTextField" type="text" placeholder="Focus people!"/>
+  `}
+/>
+
+### Implicit association
+
+If you wrap an input _inside_ a label you don't need to specify the `for` and `id` attributes as the associatiin is implicit. We use this method for radios and checkboxes.
+
+Label takes an `inputControl` prop that caters for this.
+
+<Story
+  name="inputControl"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <Label inputControl={<input type="checkbox" />}>
+    Clicking me will prove the association
+  </Label>
+`,
+      },
+    },
+  }}
+>
+  <Label inputControl={<input type="checkbox" />}>
+    Clicking me will prove the association
+  </Label>
+</Story>
+
+<Source language="tsx" id="internal-label--input-control" />
+
+### Positioning
+
+<Source language="tsx" id="internal-label--input-position" />
+
+<Story
+  name="inputPosition"
+  args={{
+    inputPosition: "end",
+  }}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <Label inputControl={<input type="checkbox" />} inputPosition="end">
+    Clicking me will prove the association
+  </Label>
+`,
+      },
+    },
+  }}
+>
+  {LabelStory.bind()}
+</Story>
+
+<ArgsTable story="inputPosition" />
+
+## Label Props
+
+_Extends `React.HTMLProps<HTMLLabelElement>`_
+
+<ArgsTable of={Label} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

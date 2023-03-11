@@ -28,3 +28,12 @@ export const EventExample = (args: CheckboxProps) => {
     </>
   );
 };
+
+export const CustomLabel = (args: CheckboxProps) => {
+  return (
+    <>
+      <Checkbox {...args} id="123" />
+      <label htmlFor="123">Custom label</label>
+    </>
+  );
+};

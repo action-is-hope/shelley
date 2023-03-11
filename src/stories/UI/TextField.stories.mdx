@@ -41,10 +41,10 @@ export const BasicTextField = (args) => <TextField {...args} />;
     rows: {
       control: { type: "number" },
     },
-    disabled: {
+    isDisabled: {
       control: { type: "boolean" },
     },
-    readOnly: {
+    isReadOnly: {
       control: { type: "boolean" },
     },
     disableLabelTransition: {
@@ -218,10 +218,10 @@ The main way is with an `InputAdornment`. This can be used to add a prefix, a su
 
 ## Disabled
 
-A text field in a `disabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
+A text field in a `isDisabled` state shows that an input field exists, but is not available in that circumstance. This can be used to maintain layout continuity and communicate that a field may become available later.
 
 <Story name="f) Disabled">
-  <TextField label="Label" defaultValue="Disabled" disabled />
+  <TextField label="Label" defaultValue="Disabled" isDisabled />
 </Story>
 
 <Source language="tsx" id="inputs-textfield--f-disabled" />

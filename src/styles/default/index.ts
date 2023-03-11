@@ -8,8 +8,6 @@ import "./checkbox.st.css";
 import "./helpText.st.css";
 import "./grid.st.css";
 import "./field.st.css";
-import "./inputSelection.st.css";
-import "./inputSelectionControl.st.css";
 import "./select.st.css";
 import "./textField.st.css";
 import "./label.st.css";
@@ -17,6 +15,8 @@ import "./listBox.st.css";
 import "./listBoxOption.st.css";
 import "./menu.st.css";
 import "./menuItem.st.css";
+import "./radio.st.css";
+import "./switch.st.css";
 import "./text.st.css";
 
 // = Project

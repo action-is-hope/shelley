@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+<div
+  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top CheckboxGroup__Test__root CheckboxGroup__Test---orientation-8-vertical"
+>
+  <label
+    className="Label__Test__root Field__Test__inputLabel"
+    id="react-aria-1"
+  >
+    <span
+      className="Label__Test__labelText"
+    >
+      Field Label
+    </span>
+  </label>
+  <div
+    aria-labelledby="react-aria-1"
+    className="Field__Test__fieldContainer CheckboxGroup__Test__group"
+    id="cbg1"
+    role="group"
+  >
+    <label
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
+    >
+      <span
+        className="Label__Test__labelText"
+      >
+        Label1
+      </span>
+      <span
+        className="Checkbox__Test__inputContainer"
+      >
+        <input
+          checked={false}
+          className="Checkbox__Test__input"
+          disabled={false}
+          id="cb1"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onDragStart={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchCancel={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          type="checkbox"
+          value="cb1"
+        />
+      </span>
+    </label>
+    <label
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
+    >
+      <span
+        className="Label__Test__labelText"
+      >
+        Label2
+      </span>
+      <span
+        className="Checkbox__Test__inputContainer"
+      >
+        <input
+          checked={false}
+          className="Checkbox__Test__input"
+          disabled={false}
+          id="cb2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onDragStart={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchCancel={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          type="checkbox"
+          value="cb2"
+        />
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
+<div
+  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top CheckboxGroup__Test__root CheckboxGroup__Test---orientation-8-vertical"
+>
+  <label
+    className="Label__Test__root Field__Test__inputLabel"
+    id="react-aria-1"
+  >
+    <span
+      className="Label__Test__labelText"
+    >
+      Field Label
+    </span>
+  </label>
+  <div
+    aria-labelledby="react-aria-1"
+    className="Field__Test__fieldContainer CheckboxGroup__Test__group"
+    id="cbg1"
+    role="group"
+  >
+    <label
+      htmlFor="cb1"
+    >
+      Label1
+    </label>
+    <span
+      className="Checkbox__Test__root Checkbox__Test---vol-1-1"
+    >
+      <span
+        className="Checkbox__Test__inputContainer"
+      >
+        <input
+          checked={false}
+          className="Checkbox__Test__input"
+          disabled={false}
+          id="cb1"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onDragStart={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchCancel={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          type="checkbox"
+          value="cb1"
+        />
+      </span>
+    </span>
+    <label
+      htmlFor="cb2"
+    >
+      Label2
+    </label>
+    <span
+      className="Checkbox__Test__root Checkbox__Test---vol-1-1"
+    >
+      <span
+        className="Checkbox__Test__inputContainer"
+      >
+        <input
+          checked={false}
+          className="Checkbox__Test__input"
+          disabled={false}
+          id="cb2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onDragStart={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchCancel={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          type="checkbox"
+          value="cb2"
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;

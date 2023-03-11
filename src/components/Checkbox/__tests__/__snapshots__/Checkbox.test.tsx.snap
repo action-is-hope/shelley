@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly with custom label 1`] = `
+[
+  <label
+    htmlFor="test123"
+  />,
+  <span
+    className="Checkbox__Test__root Checkbox__Test---vol-1-1"
+  >
+    <span
+      className="Checkbox__Test__inputContainer"
+    >
+      <input
+        checked={false}
+        className="Checkbox__Test__input"
+        disabled={false}
+        id="test123"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        type="checkbox"
+      />
+    </span>
+  </span>,
+]
+`;
+
+exports[`Checkbox renders correctly with label 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
+>
+  <span
+    className="Label__Test__labelText"
+  >
+    Subscribe
+  </span>
+  <span
+    className="Checkbox__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Checkbox__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      type="checkbox"
+    />
+  </span>
+</label>
+`;

@@ -40,12 +40,6 @@ export * from "./components/Field/Field";
 export { Select } from "./components/Select/Select";
 export * from "./components/Select/Select";
 
-export { default as InputSelection } from "./components/InputSelection/InputSelection";
-export * from "./components/InputSelection/InputSelection";
-
-export { default as InputSelectionControl } from "./components/InputSelectionControl/InputSelectionControl";
-export * from "./components/InputSelectionControl/InputSelectionControl";
-
 export { TextField } from "./components/TextField/TextField";
 export * from "./components/TextField/TextField";
 
@@ -68,6 +62,15 @@ export { default as Popup } from "./components/Popup/Popup";
 export * from "./components/Popup/Popup";
 
 export { default as Item } from "./components/Item/Item";
+
+export { default as Radio } from "./components/Radio/Radio";
+export * from "./components/Radio/Radio";
+
+export { RadioGroup } from "./components/RadioGroup/RadioGroup";
+export * from "./components/RadioGroup/RadioGroup";
+
+export { Switch } from "./components/Switch/Switch";
+export * from "./components/Switch/Switch";
 
 export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";

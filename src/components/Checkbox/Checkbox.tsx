@@ -18,6 +18,8 @@ export interface CheckboxProps extends AriaCheckboxProps {
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 const Checkbox = forwardRef(
@@ -31,6 +33,7 @@ const Checkbox = forwardRef(
       isIndeterminate,
       vol = 1,
       isDisabled,
+      includeDataIds,
     } = props;
     const localRef = useRef(null);
     const groupState = useContext(CheckboxGroupContext);
@@ -41,7 +44,7 @@ const Checkbox = forwardRef(
           {
             ...props,
             // Value is optional for standalone checkboxes, but required for CheckboxGroup items;
-            // it's passed explicitly here to avoid typescript error (requires ignore).
+            // it's cast explicitly here to avoid typescript error.
             value: props.value as string,
             // Only pass isRequired and validationState to react-aria if they came from
             // the props for this individual checkbox, and not from the group via context.
@@ -55,22 +58,30 @@ const Checkbox = forwardRef(
         useCheckbox(props, useToggleState(props), localRef);
     const { isFocusVisible, focusProps } = useFocusRing();
 
+    const classNames = st(
+      classes.root,
+      {
+        isDisabled,
+        isFocusVisible,
+        isIndeterminate,
+        validationState,
+        vol: vol ? vol : undefined,
+      },
+      classNameProp
+    );
+
     const inputControl = (
       <span className={classes.inputContainer}>
         <input
           className={classes.input}
           {...mergeProps(inputProps, focusProps)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
+          data-id={includeDataIds ? "checkbox--input" : undefined}
         />
       </span>
     );
 
     if (groupState) {
-      // for (let key of ['isSelected', 'defaultSelected', 'isEmphasized']) {
-      //   if (originalProps[key] != null) {
-      //     console.warn(`${key} is unsupported on individual <Checkbox> elements within a <CheckboxGroup>. Please apply these props to the group instead.`);
-      //   }
-      // }
       if (props.value == null) {
         console.warn(
           "A <Checkbox> element within a <CheckboxGroup> requires a `value` property."
@@ -79,32 +90,25 @@ const Checkbox = forwardRef(
     }
 
     return (
-      <div
-        className={st(
-          classes.root,
-          {
-            disabled: isDisabled,
-            isFocusVisible,
-            isIndeterminate,
-            // isSelected,
-            validationState,
-            vol: vol ? vol : undefined,
-          },
-          classNameProp
-        )}
-      >
+      <>
         {children ? (
           <Label
-            className={classes.inputLabel}
+            className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
+            data-id={includeDataIds ? "checkbox--label" : undefined}
           >
             {children}
           </Label>
         ) : (
-          inputControl
+          <span
+            className={classNames}
+            data-id={includeDataIds ? "checkbox--no-label" : undefined}
+          >
+            {inputControl}
+          </span>
         )}
-      </div>
+      </>
     );
   }
 );
