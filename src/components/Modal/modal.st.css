@@ -1,0 +1,125 @@
+/* modal.st.css */
+
+.root {
+  -st-states:
+    variant(number),
+    transition(enum(up, zoom));
+}
+
+.backdrop {}
+
+.content {}
+
+.transition {}
+
+.blurBackground [data-focus-on-hidden] {
+  opacity: .5;
+  filter: blur(2px);
+}
+
+/* = Content Transitions */
+
+/* Map transition liftcycle classes to global CSSTransistionGroup classes. */
+.enter {
+  -st-global: '.enter'
+}
+
+.enterActive {
+  -st-global: '.enter-active'
+}
+
+.enterDone {
+  -st-global: '.enter-done'
+}
+
+.exit {
+  -st-global: '.exit'
+}
+
+.exitActive {
+  -st-global: '.exit-active'
+}
+
+/* Background transition. */
+.root.enter .backdrop {
+  opacity: 0;
+}
+
+.root.enterActive .backdrop {
+  opacity: 1;
+  transition: opacity 190ms;
+}
+
+.root.enterDone .backdrop {
+  opacity: 1;
+}
+
+.root.exit .backdrop {
+  opacity: 1;
+}
+
+.root.exitActive .backdrop {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* = up */
+.root:transition(up).enter .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+}
+
+.root:transition(up).enterActive .content {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+.root:transition(up).enterDone .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.root:transition(up).exit .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.root:transition(up).exitActive .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}
+
+/* = Zoom */
+
+.root:transition(zoom)::content {
+  background: #333 !important
+}
+
+.root:transition(zoom).enter .content {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.root:transition(zoom).enterActive .content {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+.root:transition(zoom).enterDone .content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.root:transition(zoom).exit .content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.root:transition(zoom).exitActive .content {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}

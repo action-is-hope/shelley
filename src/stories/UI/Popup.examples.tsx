@@ -15,7 +15,7 @@ export const SimplePopup = (args: PopupProps) => {
     state,
     triggerRef
   );
-
+  console.log("ref", triggerRef);
   return (
     <>
       {/* Whatever you use as a trigger will need an onPress prop... */}

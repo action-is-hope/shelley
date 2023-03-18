@@ -1,6 +1,6 @@
 /** MenuTrigger.tsx */
 import React, { cloneElement, ReactElement } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import { useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
@@ -112,7 +112,7 @@ export function MenuTrigger({
     <>
       {menuTrigger}
       {state.isOpen &&
-        ReactDOM.createPortal(
+        createPortal(
           <Popup
             isOpen={state.isOpen}
             onClose={() => state.close()}

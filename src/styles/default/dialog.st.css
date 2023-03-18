@@ -1,0 +1,23 @@
+/* = Project and vars */
+@st-import Default, [--color-error] from "./project.st.css";
+/* = Component API */
+@st-import Dialog from "../../components/Dialog/dialog.st.css";
+
+@st-import Popup from "../../components/Popup/popup.st.css";
+
+
+@st-scope Default {
+
+  Dialog {
+    transition: color 0.2s;
+
+    /* Popup */
+    background-color: #000;
+    border: 1px solid grey;
+    color: #fff
+  }
+
+
+  Popup {}
+
+}

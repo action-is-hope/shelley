@@ -20,7 +20,7 @@ export interface PopupProps
   /**
    * The ref for the element which the popup positions itself with respect to.
    */
-  triggerRef: Ref<HTMLButtonElement>;
+  triggerRef: Ref<HTMLElement>;
   // @todo Focus options
 }
 
@@ -35,7 +35,7 @@ export const Popup = forwardRef(
       onClose,
       shouldCloseOnBlur,
       // PositionProps:
-      placement,
+      placement: placementProp,
       containerPadding,
       offset,
       crossOffset,
@@ -56,15 +56,21 @@ export const Popup = forwardRef(
     );
 
     // Get MenuPopup positioning props relative to the trigger
-    const { overlayProps: overlayPositionProps } = useOverlayPosition({
+    const {
+      overlayProps: overlayPositionProps,
+      arrowProps,
+      placement,
+    } = useOverlayPosition({
       targetRef: triggerRef as RefObject<HTMLElement>,
       overlayRef: localRef as RefObject<HTMLElement>,
-      placement,
+      placement: placementProp,
       containerPadding,
       offset,
       crossOffset,
       shouldFlip,
     });
+
+    console.log("arrowProps", arrowProps);
 
     // Wrap in <FocusScope> so that focus is restored back to the
     // trigger when the menu is closed. In addition, add hidden
@@ -77,6 +83,18 @@ export const Popup = forwardRef(
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
         >
+          {/* <span {...arrowProps} className={classes.arrow} /> */}
+
+          <svg
+            {...arrowProps}
+            className={st(classes.arrow, {
+              placement,
+            })}
+            data-placement={placement}
+          >
+            <path d="M0 0,L6 6,L12 0" />
+          </svg>
+
           <DismissButton onDismiss={props.onClose} />
           {props.children}
           <DismissButton onDismiss={props.onClose} />

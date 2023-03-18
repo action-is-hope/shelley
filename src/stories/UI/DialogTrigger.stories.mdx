@@ -1,0 +1,240 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { DialogTrigger, Button, Modal, P } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import {
+  BasicDialogTrigger,
+  ContentExample,
+  DialogTriggerTargetRef,
+  EventExample,
+} from "./DialogTrigger.examples";
+
+<Meta
+  title="Overlays/DialogTrigger"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={DialogTrigger}
+  decorators={[
+    (Story) => (
+      <StoryGrid minWidth="150px" gap="8px">
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
+
+# Dialog Trigger
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { DialogTrigger, Dialog } from "@actionishope/shelley";
+  `}
+/>
+
+DialogTrigger serves as a wrapper around a Dialog and its associated trigger, linking the Dialog's open state with the trigger's press state. Additionally, it allows you to customise the type of Dialog.
+
+{/_ Positioning _/}
+
+{/_ Internally it will either render a `Modal` or a `Popup`... _/}
+
+<Story
+  name="a) Basic DialogTrigger"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+const butttonRef = useRef(null);
+return (
+  <DialogTrigger type="popup">
+    <Button ref={butttonRef}>Disk Status</Button>
+    <div className="content">
+      <H2>50% disk space remaining.</H2>
+      <P>50% disk space remaining.</P>
+    </div>
+  </DialogTrigger>
+  );
+`,
+      },
+    },
+  }}
+>
+  {BasicDialogTrigger.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--a-basic-dialog-trigger" />
+
+{/_ Check about disabling scroll when popup is up _/}
+
+## Content
+
+The DialogTrigger accepts exactly two children: the element which triggers opening of the Dialog and the Dialog itself. The trigger must be the first child passed into the DialogTrigger and _should be an element that supports press events_.
+
+If your Dialog has buttons within it that should close the Dialog when pressed, you must wrap the Dialog in a function in order to propagate the DialogTrigger's close function to the Dialog's children.
+
+{/_ Dialogs that do not contain such interactive elements can simply provide the Dialog component as is to the DialogTrigger as its second child. _/}
+
+The example below demonstrates how to pass the DialogTrigger's close function to the Dialog's buttons.
+
+<Story
+  name="b) Content"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger>
+  <Button>Checkout</Button>
+  {(close) => (
+    <div>
+      <P>You have 5 items in your cart. Proceed to checkout?</P>
+      <ButtonGroup>
+        <Button variant="secondary" onPress={close}>
+          Cancel
+        </Button>
+        <Button variant="primary" onPress={close} data-autofocus>
+          Confirm
+        </Button>
+      </ButtonGroup>
+    </div>
+  )}
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  {ContentExample.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--b-content" />
+
+## Dialog types
+
+By providing a type prop, you can specify the type of Dialog that is rendered by your DialogTrigger. Note that pressing the Esc key will close the Dialog regardless of its type.
+
+### Modal
+
+Modal Dialogs create an backdrop that blocks access to the underlying user interface until the Dialog is closed. Focus is trapped inside the Modal as per the accessibility guidelines laid out by W3C.
+
+{/_ Sizing options can be found on the Dialog page. _/}
+
+### Popup
+
+If a Dialog without an underlay is needed, consider using a Popover Dialog. See Dialog placement for how you can customise the positioning.
+
+{/_ Note that popups are automatically rendered as modals on mobile by default. See the mobile type option for more information. _/}
+
+## Positioning
+
+<Story
+  name="c) Positioning"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const targetRef = useRef(null);
+  return (
+    <>
+      <DialogTrigger type="popup" targetRef={targetRef}>
+        <Button>Trigger</Button>
+        <div className="content">
+          <P>This is a popup anchored to the span.</P>
+        </div>
+      </DialogTrigger>\n
+      <div style={{ marginTop: 80 }}>
+        <P vol={1}>
+          <span ref={targetRef}>Popover appears over here</span>
+        </P>
+      </div>
+    </>
+  );
+};
+`,
+      },
+    },
+  }}
+>
+  {DialogTriggerTargetRef.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--c-positioning" />
+
+### Placement
+
+The popup's placement with respect to its anchor element can be adjusted using the placement prop. See the props table below for a full list of available placement combinations.
+
+{/_ Example _/}
+
+### Offset and cross offset
+
+The Popover Dialog's offset with respect to its anchor element can be adjusted using the offset and crossOffset props. The offset prop controls the spacing applied along the main axis between the element and its anchor element whereas the crossOffset prop handles the spacing applied along the cross axis.
+
+Below is a popover offset by an additional 50px above the trigger.
+
+{/_ Example _/}
+
+Below is a popover cross offset by an additional 100px to the right of the trigger.
+
+{/_ Example _/}
+
+## Events
+
+DialogTrigger accepts an `onOpenChange` handler which is triggered whenever the Dialog is opened or closed.
+
+The example below uses `onOpenChange` to update a separate element with the current open state of the Dialog.
+
+<Story
+  name="d) Events"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const targetRef = useRef(null);
+  const [state, setState] = useState(false);
+  return (
+    <>
+      <DialogTrigger
+        type="popup"
+        placement="top"
+        onOpenChange={(isOpen) => setState(isOpen)}
+      >
+        <Button ref={targetRef}>Whispers</Button>
+        <>
+          <H2>Whispers and DMs</H2>
+          <P>You have 0 new messages.</P>
+        </>
+      </DialogTrigger>\n
+      <P>Current open state: {state.toString()}</P>
+    </>
+  );
+`,
+      },
+    },
+  }}
+>
+  {EventExample.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--d-events" />
+
+## Dialog Trigger Props
+
+<ArgsTable of={DialogTrigger} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

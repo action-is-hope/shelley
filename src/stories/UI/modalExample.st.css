@@ -1,0 +1,57 @@
+@st-import Modal, [enter, enterActive, enterDone, exit, exitActive, content, backdrop] from "../../components/Modal/modal.st.css";
+
+.myTransition {}
+
+.blurBackground [data-focus-on-hidden] {
+  opacity: .5;
+  filter: blur(2px);
+}
+
+/* Backdrop */
+Modal.myTransition.enter .backdrop {
+  background-color: violet;
+}
+
+Modal.myTransition.enterActive .backdrop {
+  background-color: yellow;
+}
+
+Modal.myTransition.enterDone .backdrop {
+  background-color: blue;
+}
+
+Modal.myTransition.exit .backdrop {
+  background-color: yellow;
+}
+
+Modal.myTransition.exitActive .backdrop {
+  background-color: violet;
+}
+
+/* Content */
+Modal.myTransition.enter .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+}
+
+Modal.myTransition.enterActive .content {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+Modal.myTransition.enterDone .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+Modal.myTransition.exit .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+Modal.myTransition.exitActive .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}

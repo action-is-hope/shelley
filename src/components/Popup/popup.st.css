@@ -2,3 +2,36 @@
 .root {}
 
 .list {}
+
+.arrow {
+  /* -st-states: placement(enum(top, bottom, left, right)); */
+  -st-states: placement(string);
+  position: absolute;
+
+  height: 20px;
+  width: 20px;
+}
+
+.arrow:placement(top) {
+  bottom: -19px;
+}
+
+.arrow:placement(right) {
+  rotate: 90deg;
+  left: -19px;
+}
+
+.arrow:placement(bottom) {
+  rotate: 180deg;
+  top: -19px;
+}
+
+.arrow:placement(left) {
+  right: -19px;
+  rotate: 270deg;
+}
+
+.spectrum-Popover--bottom_6115b8 .spectrum-Popover-tip_6115b8 {
+  bottom: 100%;
+  transform: scaleY(-1);
+}

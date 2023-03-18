@@ -22,7 +22,12 @@ export * from "./components/Checkbox/Checkbox";
 export { CheckboxGroup } from "./components/CheckboxGroup/CheckboxGroup";
 export * from "./components/CheckboxGroup/CheckboxGroup";
 
-export { HelpText } from "./components/HelpText/HelpText";
+// export { Modal } from "./components/Modal/Modal";
+export * from "./components/Modal/Modal";
+export * from "./components/Dialog/Dialog";
+export * from "./components/Dialog/DialogTrigger";
+
+// export { HelpText } from "./components/HelpText/HelpText";
 export * from "./components/HelpText/HelpText";
 
 export { default as Grid } from "./components/Grid/Grid";

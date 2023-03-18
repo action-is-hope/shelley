@@ -1,0 +1,243 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { DialogTrigger, Button, Modal, P, Dialog } from "../../indexLib";
+import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
+import {
+  BasicDialog,
+  GridAreas,
+  BasicDialogTrigger,
+  TypicalDialog,
+} from "./Dialog.examples";
+
+<Meta
+  title="Overlays/Dialog"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+    placement: {
+      control: {
+        type: "select",
+        options: [
+          "bottom",
+          "bottom left",
+          "bottom right",
+          "bottom start",
+          "bottom end",
+          "top",
+          "top left",
+          "top right",
+          "top start",
+          "top end",
+          "left",
+          "left top",
+          "left bottom",
+          "start",
+          "start top",
+          "start bottom",
+          "right",
+          "right top",
+          "right bottom",
+          "end",
+          "end top",
+          "end bottom",
+        ],
+      },
+    },
+  }}
+  component={DialogTrigger}
+/>
+
+# Dialog
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { DialogTrigger, Dialog } from "@actionishope/shelley";
+  `}
+/>
+
+Dialogs are windows containing contextual information, tasks, or workflows that appear over the user interface. Depending on the kind of Dialog, further interactions may be blocked until the Dialog is acknowledged.
+
+When building up a Dialog it is useful just to render the Dialog in a stand-alone fashion.
+
+<Story
+  name="a) Basic Dialog"
+  decorators={[
+    (Story) => (
+      <StoryGrid>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+/* Helper classes from dialog stylesheet to assign content to the dialog's grid areas. */
+import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+  <Dialog>
+    <H2 className={dialog.title}>Internet Speed Test</H2>
+    <Text className={dialog.header} as="header" vol={2}>
+      Connection status: Connected
+    </Text>
+    <P className={dialog.content}>Content area.</P>
+    <ButtonGroup className={dialog.buttonGroup}>
+      <Button variant="secondary" onPress={close}>
+        Cancel
+      </Button>
+      <Button variant="primary" onPress={close} data-autofocus>
+        Confirm
+      </Button>
+    </ButtonGroup>
+  </Dialog>
+`,
+      },
+    },
+  }}
+>
+  {BasicDialog.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialog--a-basic-dialog" />
+
+## Content
+
+Dialog provides the grid from the [Adobe Spectrum Dialog](https://react-spectrum.adobe.com/react-spectrum/Dialog.html) by default but use whatever grid best suits your design system.
+
+We have provided grid area classes with some basic alignment, you can import these from the component stylesheet or define your own.
+
+<Source language="tsx" id="overlays-dialog--b-content" />
+
+<Story
+  name="b) Content"
+  decorators={[
+    (Story) => (
+      <StoryGrid>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+  <Dialog>
+    <span className={dialog.title}>title</span>
+    <span className={dialog.header}>header</span>
+    <span className={dialog.content}>content</span>
+    <span className={dialog.buttonGroup}>buttonGroup</span>
+  </Dialog>
+`,
+      },
+    },
+  }}
+>
+  {GridAreas.bind()}
+</Story>
+
+### Example
+
+A typical Dialog with a title, contents, and action buttons can be created like so:
+
+<Story
+  name="Example: Typical Dialog"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger modalProps={{ transition: "zoom" }}>
+  <Button>Publish</Button>
+  {(close) => (
+    <Dialog>
+      <H2 className={dialog.title}>Publish 3 pages</H2>
+      <hr className={dialog.divider} />
+      <P className={dialog.content}>Confirm publish?</P>
+      <ButtonGroup className={dialog.buttonGroup}>
+        <Button variant="secondary" onPress={close}>
+          Cancel
+        </Button>
+        <Button variant="primary" onPress={close} data-autofocus>
+          Confirm
+        </Button>
+      </ButtonGroup>
+    </Dialog>
+  )}
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  {TypicalDialog.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialog--example-typical-dialog" />
+
+<Story
+  name="c) Dialog Trigger"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+const butttonRef = useRef(null);
+return (
+  <DialogTrigger type="popup">
+    <Button ref={butttonRef}>Disk Status</Button>
+    <div className="content">
+      <H2>50% disk space remaining.</H2>
+      <P>50% disk space remaining.</P>
+    </div>
+  </DialogTrigger>
+  );
+`,
+      },
+    },
+  }}
+>
+  {BasicDialogTrigger.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--d-events" />
+
+## Accessibility
+
+Keep in mind when creating your Dialog that the tab order within the Dialog follows the order of the children provided. You are also responsible for determining what component, if any, should be automatically focused when the Dialog opens.
+
+The dialog will auto focus the first item by default, to override this place `autoFocus` or `data-autofocus` on the element that should be initially focused.
+
+{/_ The title of a Dialog is typically provided via its heading. By default, the Dialog sets its aria-labelledby to match the heading id, but this can be overridden by providing an aria-labelledby prop to the Dialog directly. If a visible label isn't specified, an aria-label must be provided instea _/}
+
+## Dialog Props
+
+<ArgsTable of={Dialog} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

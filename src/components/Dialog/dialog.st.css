@@ -1,0 +1,135 @@
+.root {
+  -st-states: size(enum(S, M, L));
+  --dialog-padding-x: 40px;
+  --dialog-padding-y: 40px;
+  --dialog-border-radius: 4px;
+  outline: none;
+  display: flex;
+
+  border-radius: var(--dialog-border-radius);
+}
+
+.dialogGrid {
+  display: grid;
+  grid-template-columns: var(--dialog-padding-x)auto 1fr auto minmax(0,auto)var(--dialog-padding-x);
+  grid-template-rows: auto var(--dialog-padding-y) auto auto 1fr auto var(--dialog-padding-y);
+  width: 100%;
+
+  grid-template-areas:
+    "hero hero hero hero hero hero"
+    ". . . . . ."
+    ".title header header typeIcon."
+    ".divider divider divider divider."
+    ".content content content content."
+    ".footer footer buttonGroup buttonGroup."
+    ". . . . . .";
+}
+
+.dismissible {
+  grid-template-columns: var(--dialog-padding-x)auto 1fr auto minmax(0,auto)minmax(0,var(--spectrum-global-dimension-size-400))var(--dialog-padding-x);
+  -ms-grid-rows: auto var(--dialog-padding-y)auto auto 1fr auto var(--dialog-padding-y);
+  grid-template-rows: auto var(--dialog-padding-y)auto auto 1fr auto var(--dialog-padding-y);
+  grid-template-areas:
+    "hero hero hero hero hero hero hero"
+    ". . . . .closeButton closeButton"
+    ".title header header typeIcon closeButton closeButton"
+    ".divider divider divider divider divider."
+    ".content content content content content."
+    ".footer footer buttonGroup buttonGroup buttonGroup."
+    ". . . . . . .";
+}
+
+.title {
+  grid-area: title;
+}
+
+.header {
+  grid-area: header-start / header-start / typeIcon-end / typeIcon-end;
+  align-items: inherit;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+.typeIcon {
+  grid-area: typeIcon;
+}
+
+.closeButton {
+  grid-area: closeButton;
+}
+
+.content {
+  grid-area: content;
+}
+
+.divider {
+  grid-area: divider;
+}
+
+hr.divider {
+  height: 1px;
+  border: none;
+  background-color: grey;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.buttonGroup {
+  grid-area: buttonGroup;
+}
+
+
+/* .popup {
+  background-color;
+  tip
+} */
+
+.content {
+  /* color: globalgrey; */
+
+  /* box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  font-size: var(--dialog-content-text-size);
+  font-weight: var(--dialog-content-text-font-weight,var(--spectrum-global-font-weight-regular));
+  line-height: var(--dialog-content-text-line-height,var(--spectrum-alias-body-text-line-height));
+  padding: calc(var(--spectrum-global-dimension-size-25)*2);
+  margin: calc(var(--spectrum-global-dimension-size-25)*-2);
+  min-height: var(--spectrum-alias-single-line-height,var(--spectrum-global-dimension-size-400));
+  outline: none;
+  grid-area: content;
+  overflow-y: auto; */
+}
+
+/* popover.isOpen {    visibility: visible;
+    opacity: .9999;
+    pointer-events: auto;
+    transition-delay: 0s;
+    } 
+    
+Dialog {
+      box-sizing: border-box;
+    width: -moz-fit-content;
+    width: -moz-fit-content;
+    width: -moz-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: var(--dialog-min-width,var(--spectrum-global-dimension-static-size-3600));
+    max-width: 100%;
+    max-height: inherit;
+    --dialog-padding-x: var(--dialog-padding);
+    --dialog-padding-y: var(--dialog-padding);
+    --dialog-border-radius: var(--spectrum-alias-border-radius-regular,var(--spectrum-global-dimension-size-50));
+    outline: none;
+    display: flex;
+    }
+
+    small - 
+
+.spectrum-Dialog--small_6d8b48 {
+    width: 400px;
+}
+    
+    */

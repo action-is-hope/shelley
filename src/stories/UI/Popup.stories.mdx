@@ -85,8 +85,8 @@ A Popup can be used to display some content on top of another.
 Things to know when using the Popup component:
 
 - Built on top of [`useOverlay`](https://react-spectrum.adobe.com/react-aria/useOverlay.html) and [`useOverlayPosition`](https://react-spectrum.adobe.com/react-aria/useOverlayPosition.html)
-- By itself not _that_ useful, but very use when building things like tooltips, models, menus etc.
-- Doesn't provide `is-labelledby` or type/role of model, this would be provided by useMenu, useDialog etc.
+- By itself not _that_ useful, but very use when building things like tooltips, modals, menus etc.
+- Doesn't provide `is-labelledby` or type/role of modal, this would be provided by useMenu, useDialog etc.
 - When rendering into a portal ensure the portal is wrapped by the main theme classes else it will appear unstyled.
 - When using `shouldCloseOnBlur` don't expect `isDismissable={false}` to work.
 
