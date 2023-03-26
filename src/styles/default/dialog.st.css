@@ -12,9 +12,15 @@
     transition: color 0.2s;
 
     /* Popup */
-    background-color: #000;
-    border: 1px solid grey;
-    color: #fff
+    /* background-color: modal; */
+    /* border: 1px solid grey; */
+    /* background: #111; */
+    /* color: #fff; */
+  }
+
+  Dialog::content {
+    margin-top: 8px;
+    margin-bottom: 16px;
   }
 
 

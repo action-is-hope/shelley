@@ -1,105 +1,36 @@
-/* = Default project vars. */
-@st-import Default, [--spacing-unit] from "./project.st.css";
-
-
-/* = Shelley project scope and vars. */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Puma;
-  /* -st-named: */
-  /* = CSS3 Switcher vars. */
-  /* --color-ui-inverse,
-    --color-accent-1,
-
-    --color-accent-3,
-    --color-accent-4,
-    --color-modal-border-1,
-    --color-background-modal-1,
-    --color-background-modal-content-1; */
-}
-
+/* modal.st.css */
+@st-import Default, [--modal-background, --modal-backdrop] from "./project.st.css";
 @st-import Modal, [enterDone] from "../../components/Modal/modal.st.css";
 
-/* = This is how we can scope the styles in Stylable. */
 @st-scope Default {
 
-  Modal::backdrop {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  Modal::backdrop {}
 
+  Modal {}
+
+  /* 
   Modal:variant(1) {
-    position: fixed;
-    /* Invokes some extra resources to handle rendering this over other transformed items, in this case the board. */
+    // Invokes some extra resources to handle rendering this over other transformed items, in this case the board.
     transform: translateZ(0);
-    top: 0;
-    left: 0;
-    right: 0;
+    bottom: initial;
     height: 100%;
     z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  } */
+
+  Modal:variant(fixed)::backdrop {
+    background-color: var(--modal-backdrop);
   }
 
-  Modal:variant(1)::backdrop {
-    background-color: rgba(0, 0, 1, 0.88);
-  }
-
-  Modal:variant(1)::content {
-    position: relative;
+  Modal:variant(fixed)::content {
     margin: 5vh 8px 16px 8px;
-    width: calc(100vw - 16px);
-    max-width: 650px;
     padding-bottom: 1px;
     /* Kicks in the inclusion of margin-bottom of the last item in the container. */
     max-height: 85vh;
-    background-color: var(--color-background-modal-content-1);
-    align-self: flex-start;
+    background-color: var(--modal-background);
   }
 
+  /* Add your own variants */
 
-  Modal:variant(2) {
-    grid-area: stack;
-    /* Invokes some extra resources to handle rendering this over other transformed items, in this case the board. */
-    transform: translateZ(0);
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  Modal:variant(2)::backdrop {
-    /* background-color: rgb(63 47 150 / 89%); */
-    background-color: var(--color-background-modal-1);
-    border-style: solid;
-    border-width: 1px 0;
-    border-color: var(--color-modal-border-1);
-  }
-
-  Modal:variant(2)::content {
-    position: relative;
-    margin: 60px 8px 60px 8px;
-    width: calc(100vw - 16px);
-    max-width: 650px;
-    padding-bottom: 1px;
-    /* Kicks in the inclusion of margin-bottom of the last item in the container. */
-    max-height: 85vh;
-    background-color: var(--color-background-modal-content-1);
-    align-self: flex-start;
-
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--color-modal-border-1);
-    /* min-height: 300px; */
-  }
 
   /** 
    * Overriding transiton

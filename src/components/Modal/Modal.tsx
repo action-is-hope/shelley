@@ -18,6 +18,8 @@ export function composeEventHandlers(
   };
 }
 
+export type TransitionType = "up" | "zoom" | false;
+
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Controls whether the dialog is open or not. */
   isOpen?: boolean;
@@ -68,10 +70,10 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
    * Type of transition
    * @default "up"
    */
-  transition?: "up" | "zoom" | false;
+  transition?: TransitionType;
   /** Props for the internal `CSSTransition` component see - https://reactcommunity.org/react-transition-group/css-transition */
-  transitionProps?: TransitionProps;
-  variant?: number | undefined;
+  transitionProps?: Omit<TransitionProps, "addEndListener">;
+  variant?: "fixed" | string;
   /** Add predefined data-id to ease testing or analytics. */
   includeDataIds?: boolean;
   // @todo allowPinchZoom?: boolean;
@@ -83,7 +85,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     children,
     contentClassName,
     portalSelector = "body",
-    focusOnProps: FocusOnPropsInput,
+    focusOnProps: focusOnPropsInput,
     initialFocusRef,
     isOpen,
     onBackdropClick = () => null,
@@ -92,8 +94,8 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     onMouseDown = () => null,
     // theme,
     transitionProps: transitionPropsInput,
-    variant = undefined,
-    transition = "up",
+    variant = "fixed",
+    transition = "zoom",
     disableFocusLock,
     disableEscapeKey,
     disableBackdropClick,
@@ -103,6 +105,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
   } = props;
   const mouseDownTarget = useRef<EventTarget | null>(null);
 
+  console.log(transitionPropsInput);
   const activateFocusLock = React.useCallback(() => {
     if (initialFocusRef && initialFocusRef.current) {
       initialFocusRef.current.focus();
@@ -125,14 +128,11 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     unmountOnExit: true,
     ...transitionPropsInput,
   };
+  console.log(transitionProps);
 
   /* FocusOn props */
   const focusOnProps = {
-    // autoFocus: true,
-    onActivation: activateFocusLock,
-    // returnFocus: false,
     focusLock: !disableFocusLock,
-    onEscapeKey: (event: Event) => !disableEscapeKey && onDismiss(event),
     /**
      * If the dialog is persistent in the DOM via `unmountOnExit: false` then
      * disable the isolation lock else everything else will have aria-hidden="true".
@@ -140,7 +140,12 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
      * Possible work around to use shards?
      */
     noIsolation: !transitionProps.unmountOnExit,
-    ...FocusOnPropsInput,
+    ...focusOnPropsInput,
+    onEscapeKey: (event: Event) => {
+      !disableEscapeKey && onDismiss(event);
+      focusOnPropsInput?.onEscapeKey && focusOnPropsInput?.onEscapeKey(event);
+    },
+    onActivation: activateFocusLock,
     // onClickOutside: () => console.log("works - yes"),
   };
 
@@ -177,13 +182,10 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
               )}
             ></div>
             <div
-              aria-modal="true"
               data-id={includeDataIds ? "modal--content" : undefined}
               className={st(classes.content, contentClassName)}
               onMouseDown={composeEventHandlers(onMouseDown, handleMouseDown)}
               ref={ref}
-              // From Dialog or Whatever?
-              // role="dialog"
               {...rest}
             >
               {children}

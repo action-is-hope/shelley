@@ -26,6 +26,7 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
+  splitButton?: boolean;
 }
 
 const ButtonGroup = forwardRef(
@@ -39,12 +40,13 @@ const ButtonGroup = forwardRef(
       variant = "quiet",
       orientation = "horizontal",
       vol = 3,
+      splitButton,
       ...rest
     }: ButtonGroupProps,
     ref?: Ref<HTMLDivElement>
   ) => (
     <div
-      className={st(classes.root, { orientation }, classNameProp)}
+      className={st(classes.root, { orientation, splitButton }, classNameProp)}
       {...rest}
       ref={ref}
     >
@@ -52,7 +54,7 @@ const ButtonGroup = forwardRef(
         if (!isValidElement(child)) {
           return null;
         }
-
+        // @todo: validate child better, we only want to add props to buttons
         return cloneElement(child as ReactElement, {
           className: st(
             buttonClassName,

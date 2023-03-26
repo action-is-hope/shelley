@@ -1,109 +1,159 @@
-import type { AriaDialogProps } from "@react-types/dialog";
 import type {
   OverlayTriggerState,
   OverlayTriggerProps,
 } from "@react-stately/overlays";
+import type { TransitionProps } from "react-transition-group/Transition";
+import type { ReactFocusOnProps } from "react-focus-on/dist/es5/types";
 import type { PositionProps } from "@react-types/overlays";
+import type { DialogProps } from "../Dialog/Dialog";
 import React, {
   Fragment,
   ReactElement,
-  ReactNode,
   RefObject,
   useEffect,
   useRef,
 } from "react";
 import { createPortal } from "react-dom";
+import { mergeProps } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 import { PressResponder } from "@react-aria/interactions";
 import { DialogContext } from "./context";
 // import {useIsMobileDevice} from '@react-spectrum/utils';
 import { useOverlayTrigger } from "@react-aria/overlays";
-import { Modal, ModalProps } from "../Modal/Modal";
+import { Modal, TransitionType } from "../Modal/Modal";
 import { Popup } from "../Popup/Popup";
-
 import { classes as modalClasses } from "../Modal/modal.st.css";
 
-export type ShelleyDialogClose = (close: () => void) => ReactElement;
+export type DialogClose = (close: () => void) => ReactElement;
 
-export interface ShelleyDialogProps extends AriaDialogProps {
-  /** The contents of the Dialog. */
-  children?: ReactNode;
-  /** The size of the Dialog. Only applies to "modal" type Dialogs. */
-  size?: "S" | "M" | "L";
-  /** Whether the Dialog is dismissable. See the [examples](#examples) for more details. */
-  isDismissable?: boolean;
-  /** Handler that is called when the 'x' button of a dismissable Dialog is clicked. */
-  onDismiss?: () => void;
-}
+/**
+ * We cannot support onClickOutside and onEscapeKey as these
+ * are surpressed by react-aria. However we have access to
+ * onActivation and onDeactivation events.
+ */
+type TriggerFocusOnProps = Omit<
+  ReactFocusOnProps,
+  "children" | "onClickOutside" | "onEscapeKey"
+>;
 
-export interface ShelleyDialogTriggerProps
-  extends OverlayTriggerProps,
-    PositionProps {
-  /** The Dialog and its trigger element. See the DialogTrigger [Content section](#content) for more information on what to provide as children. */
-  children: [ReactElement, ShelleyDialogClose | ReactElement];
+type TriggerTransitionProps = Pick<
+  TransitionProps,
+  | "onEnter"
+  | "onEntering"
+  | "onEntered"
+  | "onExit"
+  | "onExiting"
+  | "onExited"
+  | "mountOnEnter"
+  | "unmountOnExit"
+  | "timeout"
+>;
+
+export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
+  /** The Dialog and its trigger element. */
+  children: [ReactElement, DialogClose | ReactElement];
   /**
-   * The type of Dialog that should be rendered. See the DialogTrigger [types section](#dialog-types) for an explanation on each.
+   * The type of Dialog that should be rendered.
    * @default 'modal'
    */
-  type?: "modal" | "popover" | "tray" | "fullscreen" | "fullscreenTakeover";
-  /** The type of Dialog that should be rendered when on a mobile device. See DialogTrigger [types section](#dialog-types) for an explanation on each. */
+  type?: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
+  /**
+   * The type of Dialog that should be rendered when on a
+   * mobile device.
+   */
   mobileType?: "modal" | "tray" | "fullscreen" | "fullscreenTakeover";
   /**
-   * Whether a popover type Dialog's arrow should be hidden.
+   * The selector of the element that the Dialog should render inside of.
+   * @default 'body'
+   */
+  portalSelector?: string | false;
+  /**
+   * Whether a popup type Dialog's arrow should be hidden.
    */
   hideArrow?: boolean;
-  /** The ref of the element the Dialog should visually attach itself to. Defaults to the trigger button if not defined. */
+  /**
+   * Whether the popup type Dialog should close when focus
+   * is lost or moves outside it.
+   */
+  shouldCloseOnBlur?: boolean;
+  /**
+   * The ref of the element a popup type Dialog should visually
+   * attach itself to. Defaults to the trigger button if not
+   * defined.
+   */
   targetRef?: RefObject<HTMLElement>;
   /** Whether a modal type Dialog should be dismissable. */
   isDismissable?: boolean;
-  /** Whether pressing the escape key to close the dialog should be disabled. */
+  /**
+   * Whether pressing the escape key to close the dialog should
+   * be disabled.
+   */
   isKeyboardDismissDisabled?: boolean;
+  /**
+   * Props specific to the modal, for focusOnProps use the shared
+   * prop at the top level of DialogTrigger.
+   */
 
   /**
-   * The selector of the element that the menu should render inside of.
-   * @default 'body'
+   * Props for the internal `FocusOn` component
+   * see - https://github.com/theKashey/react-focus-on#api
    */
-  portalSelector?: string;
-
-  modalProps?: ModalProps;
+  focusOnProps?: TriggerFocusOnProps;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
+  // Transition for Modal
+  transition?: TransitionType;
+  // transitionProps?: Pick<ModalProps, "transitionProps">;
+  transitionProps?: TriggerTransitionProps;
+  // contentClassName & variant
+  disableModalBackdropBlur?: boolean;
 }
 
-function DialogTrigger(props: ShelleyDialogTriggerProps) {
+function DialogTrigger(props: DialogTriggerProps) {
   const {
     children,
     type = "modal",
-    // mobileType = type === "popover" ? "modal" : type,
-    // hideArrow,
+    // mobileType = type === "popup" ? "modal" : type,
+    hideArrow,
     targetRef,
     isDismissable = false,
-    portalSelector,
+    portalSelector = "body",
     isKeyboardDismissDisabled = false,
-    modalProps,
+    // modalProps,
+    focusOnProps,
     // ...positionProps
     placement,
     containerPadding,
     offset,
     crossOffset,
     shouldFlip,
+    shouldCloseOnBlur,
+    includeDataIds,
+    transition,
+    transitionProps: transitionPropsFromProps,
+    disableModalBackdropBlur = false,
   } = props;
 
-  const positionProps = {
+  const popupSpecificProps = {
     placement,
     containerPadding,
     offset,
     crossOffset,
     shouldFlip,
+    shouldCloseOnBlur,
+    hideArrow,
   };
+
   if (!Array.isArray(children) || children.length > 2) {
     throw new Error("DialogTrigger must have exactly 2 children");
   }
   // if a function is passed as the second child, it won't appear in toArray
-  const [trigger, content] = children as [ReactElement, ShelleyDialogClose];
+  const [trigger, content] = children as [ReactElement, DialogClose];
 
-  // On small devices, show a modal or tray instead of a popover.
+  // On small devices, show a modal or tray instead of a popup.
   // const isMobile = useIsMobileDevice();
   // if (isMobile) {
-  //   // handle cases where desktop popovers need a close button for the mobile modal view
+  //   // handle cases where desktop popups need a close button for the mobile modal view
   //   if (type !== 'modal' && mobileType === 'modal') {
   //     isDismissable = true;
   //   }
@@ -125,20 +175,19 @@ function DialogTrigger(props: ShelleyDialogTriggerProps) {
 
   // Get props for the trigger and overlay. This also handles
   // hiding the overlay when a parent element of the trigger scrolls
-  // (which invalidates the popover positioning).
+  // (which invalidates the popup positioning).
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     state,
     triggerRef
   );
-  // console.log("overlayProps", overlayProps, triggerProps, triggerRef);
 
   // eslint-disable-next-line arrow-body-style
   useEffect(() => {
     return () => {
       if (
         (wasOpen.current || isExiting.current) &&
-        type !== "popover" &&
+        type !== "popup" &&
         type !== "tray"
       ) {
         console.warn(
@@ -149,10 +198,10 @@ function DialogTrigger(props: ShelleyDialogTriggerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (type === "popover") {
+  if (type === "popup") {
     return (
       <PopupTrigger
-        {...positionProps}
+        {...popupSpecificProps}
         {...{
           state,
           targetRef,
@@ -163,11 +212,28 @@ function DialogTrigger(props: ShelleyDialogTriggerProps) {
           overlayProps,
           isDismissable,
           isKeyboardDismissDisabled,
+          includeDataIds,
+          portalSelector,
         }}
+        focusOnProps={focusOnProps}
         // hideArrow={hideArrow}
       />
     );
   }
+
+  const transitionPropsDefault = {
+    timeout: 190,
+    onEntering: () => {
+      !disableModalBackdropBlur &&
+        document.body.classList.add(modalClasses.blurBackground);
+    },
+    onExiting: () => {
+      !disableModalBackdropBlur &&
+        document.body.classList.remove(modalClasses.blurBackground);
+      onExiting();
+    },
+    onExited: () => onExited(),
+  };
 
   const renderOverlay = () => {
     switch (type) {
@@ -178,26 +244,20 @@ function DialogTrigger(props: ShelleyDialogTriggerProps) {
           <Modal
             isOpen={state.isOpen}
             onDismiss={() => state.close()}
-            portalSelector={portalSelector}
             disableBackdropClick={!isDismissable}
             disableEscapeKey={isKeyboardDismissDisabled}
-            variant={1}
-            transitionProps={{
-              className: modalClasses.transition,
-              timeout: 190,
-              onEntering: () => {
-                document.body.classList.add(modalClasses.blurBackground);
-              },
-              onExiting: () => {
-                document.body.classList.remove(modalClasses.blurBackground);
-                onExiting();
-              },
-              onExited: () => {
-                onExited();
-              },
-            }}
-            {...modalProps}
+            transitionProps={
+              transitionPropsFromProps
+                ? mergeProps(transitionPropsDefault, transitionPropsFromProps)
+                : transitionPropsDefault
+            }
             {...overlayProps}
+            {...{
+              portalSelector,
+              transition,
+              focusOnProps,
+              includeDataIds,
+            }}
           >
             {typeof content === "function"
               ? content(() => state.close())
@@ -228,7 +288,7 @@ function DialogTrigger(props: ShelleyDialogTriggerProps) {
 
 // We don't want getCollectionNode to show up in the type definition??
 export const _DialogTrigger = DialogTrigger as (
-  props: ShelleyDialogTriggerProps
+  props: DialogTriggerProps
 ) => JSX.Element;
 export { _DialogTrigger as DialogTrigger };
 
@@ -237,8 +297,8 @@ export { _DialogTrigger as DialogTrigger };
  */
 
 interface PopupTriggerProps
-  extends Omit<ShelleyDialogTriggerBase, "type" | "overlay"> {
-  content: ShelleyDialogClose | ReactElement;
+  extends Omit<DialogTriggerBase, "type" | "overlay"> {
+  content: DialogClose | ReactElement;
   /**
    * The ref of the element the popup should visually attach itself to.
    * Defaults to the trigger button if not defined.
@@ -247,6 +307,10 @@ interface PopupTriggerProps
   triggerRef: React.RefObject<HTMLElement>;
   isKeyboardDismissDisabled?: boolean;
   overlayProps: any;
+  /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
+  focusOnProps?: TriggerFocusOnProps;
+  includeDataIds?: boolean;
+  portalSelector?: string | false;
 }
 
 function PopupTrigger({
@@ -258,6 +322,9 @@ function PopupTrigger({
   triggerProps,
   overlayProps,
   isDismissable,
+  includeDataIds,
+  focusOnProps,
+  portalSelector,
   // hideArrow,
   ...props
 }: PopupTriggerProps) {
@@ -266,31 +333,36 @@ function PopupTrigger({
     ref: targetRef ? undefined : triggerRef,
   };
 
+  const popup = (
+    <Popup
+      {...props}
+      // hideArrow={hideArrow}
+      triggerRef={targetRef || triggerRef}
+      offset={20}
+      {...overlayProps}
+      isOpen={state.isOpen}
+      onClose={() => state.close()}
+      focusOnProps={focusOnProps}
+      includeDataIds={includeDataIds}
+    >
+      {typeof content === "function" ? content(() => state.close()) : content}
+    </Popup>
+  );
+
   const overlay = (
     <>
-      {state.isOpen &&
-        createPortal(
-          <Popup
-            {...props}
-            // hideArrow={hideArrow}
-            triggerRef={targetRef || triggerRef}
-            offset={20}
-            {...overlayProps}
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
-            // Prop?
-            // shouldCloseOnBlur
-            // isDismissable={isDismissable}
-          >
-            {typeof content === "function" ? content(state.close) : content}
-          </Popup>,
-          document.querySelector("#portal") as HTMLElement
-        )}
+      {state.isOpen && portalSelector
+        ? // If portalSelector render inside; elso render inline.
+          createPortal(
+            popup,
+            document.querySelector(portalSelector) as HTMLElement
+          )
+        : popup}
     </>
   );
   return (
     <DialogTriggerBase
-      type="popover"
+      type="popup"
       state={state}
       triggerProps={triggerPropsWithRef}
       trigger={trigger}
@@ -304,11 +376,11 @@ function PopupTrigger({
  * DialogTriggerBase
  */
 
-export interface ShelleyDialogTriggerBase {
-  type: "modal" | "popover" | "tray" | "fullscreen" | "fullscreenTakeover";
+export interface DialogTriggerBase {
+  type: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
   state: OverlayTriggerState;
   isDismissable?: boolean;
-  dialogProps?: ShelleyDialogProps;
+  dialogProps?: DialogProps;
   triggerProps?: React.HTMLAttributes<HTMLElement>;
   overlay: ReactElement;
   trigger: ReactElement;
@@ -322,7 +394,7 @@ function DialogTriggerBase({
   triggerProps = {},
   overlay,
   trigger,
-}: ShelleyDialogTriggerBase) {
+}: DialogTriggerBase) {
   const context = {
     type,
     onClose: () => state.close(),

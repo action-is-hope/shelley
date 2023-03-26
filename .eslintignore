@@ -7,5 +7,6 @@ dist
 *.st.css.d.ts
 *.st.css.d.ts.map
 #Files
+cypress.d.ts
 cypress/support/commands.ts
 src/stories/*

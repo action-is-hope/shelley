@@ -6,7 +6,8 @@
 .root {
   -st-states:
     orientation(enum(horizontal, vertical)),
-    fullWidth;
+    fullWidth,
+    splitButton;
   --seperator-color: initial;
   --seperator-width: 1px
 }
@@ -15,57 +16,59 @@
   display: inline-flex;
 }
 
+
+
 .root > Button:focus {
   z-index: 1;
 }
 
 /* Styles if `orientation="horizontal"`. */
-.root:orientation(horizontal) > Button:not(:first-child),
-.root:orientation(horizontal) > Button:not(:first-child)::after {
+.root:splitButton:orientation(horizontal) > Button:not(:first-child),
+.root:splitButton:orientation(horizontal) > Button:not(:first-child)::after {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.root:orientation(horizontal) > Button:not(:last-child),
-.root:orientation(horizontal) > Button:not(:last-child)::after {
+.root:splitButton:orientation(horizontal) > Button:not(:last-child),
+.root:splitButton:orientation(horizontal) > Button:not(:last-child)::after {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.root:orientation(horizontal) > Button:not(:first-child) {
+.root:splitButton:orientation(horizontal) > Button:not(:first-child) {
   border-left-width: 0;
 }
 
 /* Styles if `orientation="vertical"`. */
 
-.root:orientation(vertical) {
+.root:splitButton:orientation(vertical) {
   flex-direction: column;
 }
 
-.root:orientation(vertical) > Button:not(:first-child),
-.root:orientation(vertical) > Button:not(:first-child)::after {
+.root:splitButton:orientation(vertical) > Button:not(:first-child),
+.root:splitButton:orientation(vertical) > Button:not(:first-child)::after {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
-.root:orientation(vertical) > Button:not(:last-child),
-.root:orientation(vertical) > Button:not(:last-child)::after {
+.root:splitButton:orientation(vertical) > Button:not(:last-child),
+.root:splitButton:orientation(vertical) > Button:not(:last-child)::after {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.root:orientation(vertical) > Button:not(:first-child) {
+.root:splitButton:orientation(vertical) > Button:not(:first-child) {
   border-top-width: 0;
 }
 
 /* = We need to set a border button when in a group. */
 
 /* = horizontal - border-left */
-.root:orientation(horizontal) Button:not(:first-child) {
+.root:splitButton:orientation(horizontal) Button:not(:first-child) {
   border-left: var(--seperator-width) solid var(--seperator-color)
 }
 
 /* = vertical - border-top */
-.root:orientation(vertical) Button:not(:first-child) {
+.root:splitButton:orientation(vertical) Button:not(:first-child) {
   border-top: var(--seperator-width) solid var(--seperator-color)
 }

@@ -6,6 +6,7 @@
 export * from "./components/types";
 
 /** Default components in alphabetical order */
+export * from "./components/ActionButton/ActionButton";
 
 export { default as Blockquote } from "./components/Blockquote/Blockquote";
 export * from "./components/Blockquote/Blockquote";

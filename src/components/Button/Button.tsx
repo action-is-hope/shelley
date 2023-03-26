@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 /* Adobe libs */
 // Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
 import { useButton } from "react-aria";
@@ -8,6 +8,7 @@ import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
 import type { MergeElementProps } from "../utils";
 /* Style API */
 import { st, classes } from "./button.st.css";
+import { mergeRefs } from "@react-aria/utils";
 
 /**
  * Leveraging Adobes 'useButton' to enable use with their hooks.
@@ -79,6 +80,8 @@ function ButtonBase<T extends React.ElementType = "button">(
   }: ButtonProps<T>,
   ref: React.Ref<HTMLElement>
 ) {
+  const localRef = useRef(null);
+
   const { buttonProps, isPressed } = useButton(
     {
       isDisabled,
@@ -110,7 +113,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       // ...rest,
       elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
     },
-    ref as React.RefObject<HTMLElement>
+    localRef as React.RefObject<HTMLElement>
   );
 
   const className = st(
@@ -140,7 +143,7 @@ function ButtonBase<T extends React.ElementType = "button">(
   return React.createElement(
     As || "button",
     {
-      ref,
+      ref: mergeRefs(localRef, ref),
       ...buttonProps,
       className,
       ...rest,

@@ -2,15 +2,36 @@
 
 .root {
   -st-states:
-    variant(number),
+    variant(string),
     transition(enum(up, zoom));
 }
 
-.backdrop {}
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root:variant(fixed) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .content {}
 
-.transition {}
+/* .transition {} */
 
 .blurBackground [data-focus-on-hidden] {
   opacity: .5;
@@ -92,10 +113,6 @@
 }
 
 /* = Zoom */
-
-.root:transition(zoom)::content {
-  background: #333 !important
-}
 
 .root:transition(zoom).enter .content {
   transform: scale(0);

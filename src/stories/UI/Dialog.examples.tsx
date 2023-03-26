@@ -1,95 +1,148 @@
-import { useRef, useState } from "react";
 import {
   Button,
   ButtonGroup,
-  ModalProps,
+  DialogTriggerProps,
   DialogTrigger,
   Dialog,
-  ShelleyDialogProps,
+  DialogProps,
   P,
   H2,
   Text,
+  ActionButton,
 } from "../../indexLib";
 
 import { classes as dialog } from "../../components/Dialog/dialog.st.css";
+import { classes as dialogExample } from "./dialogExample.st.css";
 
-export const BasicDialog = (args: ShelleyDialogProps) => {
+export const BasicDialog = (args: DialogProps) => {
   return (
-    <Dialog {...args}>
-      <H2 className={dialog.title}>Internet Speed Test</H2>
-      <Text className={dialog.header} as="header" vol={2}>
-        Connection status: Connected
-      </Text>
-      <P className={dialog.content}>Content area.</P>
-      <ButtonGroup className={dialog.buttonGroup}>
-        <Button variant="secondary" onPress={close}>
-          Cancel
-        </Button>
-        <Button variant="primary" onPress={close} data-autofocus>
-          Confirm
-        </Button>
-      </ButtonGroup>
-    </Dialog>
-  );
-};
-
-export const GridAreas = (args: ShelleyDialogProps) => {
-  return (
-    <Dialog {...args}>
-      <span className={dialog.title}>title</span>
-      <span className={dialog.header}>header</span>
-      <span className={dialog.divider}>divider</span>
-      {/* <span className={dialog.typeIcon}>typeIcon</span> */}
-      <span className={dialog.content}>content</span>
-      <span className={dialog.footer}>footer</span>
-      <span className={dialog.buttonGroup}>buttonGroup</span>
-    </Dialog>
-  );
-};
-
-export const BasicDialogTrigger = (args: ModalProps) => {
-  const butttonRef = useRef(null);
-  return (
-    <DialogTrigger
-      type="popover"
-      placement="right"
-      {...args}
-      portalSelector="#portal"
-    >
-      <Button ref={butttonRef}>Disk Status</Button>
-      <Dialog>
-        <H2 vol={4} style={{ gridArea: "header" }}>
-          C://
+    <div style={{ backgroundColor: "#000", width: "fit-content" }}>
+      <Dialog {...args}>
+        <H2 className={dialog.title} vol={4} data-title>
+          Internet Speed Test
         </H2>
-        <hr
-          style={{
-            gridArea: "divider",
-            width: "100%",
-            borderColor: "darkgrey",
-          }}
-        />
-        <div style={{ gridArea: "content" }}>
-          <P vol={2}>50% disk space remaining.</P>
-        </div>
+        <hr className={dialog.divider} />
+        <Text className={dialog.header} as="header" vol={2}>
+          Connection status: Connected
+        </Text>
+        <P className={dialog.content}>Content area.</P>
+        <ButtonGroup className={dialog.buttonGroup}>
+          <Button variant="secondary" onPress={close}>
+            Cancel
+          </Button>
+          <Button variant="primary" onPress={close} data-autofocus>
+            Confirm
+          </Button>
+        </ButtonGroup>
+      </Dialog>
+    </div>
+  );
+};
+
+export const GridAreas = (args: DialogProps) => {
+  return (
+    <div style={{ backgroundColor: "#000", width: "fit-content" }}>
+      <Dialog {...args} className={dialogExample.gridAreaExample}>
+        <span className={dialog.hero}>hero</span>
+        <span className={dialog.title} data-title>
+          title
+        </span>
+        <span className={dialog.header}>header</span>
+        <span className={dialog.divider}>divider</span>
+        {/* <span className={dialog.typeIcon}>typeIcon</span> */}
+        <span className={dialog.content}>content</span>
+        <span className={dialog.footer}>footer</span>
+        <span className={dialog.buttonGroup}>buttonGroup</span>
+      </Dialog>
+    </div>
+  );
+};
+
+export const ModalAndPopup = (args: DialogTriggerProps) => {
+  return (
+    <>
+      {/* Popup Example */}
+      <DialogTrigger
+        type="popup"
+        placement="bottom"
+        {...args}
+        portalSelector="#portal"
+      >
+        <ActionButton>Disk Status</ActionButton>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            C://
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content}>50% disk space remaining</P>
+        </Dialog>
+      </DialogTrigger>
+
+      {/* Modal Example */}
+      <DialogTrigger
+        {...args}
+        portalSelector="#portal"
+        modalProps={{ transition: "up" }}
+        // isDismissable={true}
+      >
+        <Button>Publish</Button>
+        {(close) => (
+          <Dialog className={"custom-class"}>
+            <H2 vol={4} className={dialog.title} data-title>
+              Publish 3 pages
+            </H2>
+            <hr className={dialog.divider} />
+            <P className={dialog.content}>Confirm publish?</P>
+            <ButtonGroup className={dialog.buttonGroup}>
+              <Button variant="secondary" onPress={close}>
+                Cancel
+              </Button>
+              <Button variant="primary" onPress={close} data-autofocus>
+                Confirm
+              </Button>
+            </ButtonGroup>
+          </Dialog>
+        )}
+      </DialogTrigger>
+    </>
+  );
+};
+
+export const DismissableDialog = (args: DialogTriggerProps) => {
+  return (
+    <DialogTrigger {...args} portalSelector="#portal" isDismissable>
+      <ActionButton>Status</ActionButton>
+      <Dialog dismissLabel="Close status dialog">
+        <H2 vol={4} className={dialog.title} data-title>
+          Status
+        </H2>
+        <hr className={dialog.divider} />
+        <P className={dialog.content}>Printer Status: Connected</P>
       </Dialog>
     </DialogTrigger>
   );
 };
 
-export const TypicalDialog = (args: ModalProps) => {
+export const HeroDialog = (args: DialogTriggerProps) => {
   return (
-    <DialogTrigger
-      {...args}
-      portalSelector="#portal"
-      modalProps={{ transition: "zoom" }}
-      // isDismissable={true}
-    >
-      <Button>Publish</Button>
+    <DialogTrigger {...args} portalSelector="#portal">
+      <Button>Upload</Button>
       {(close) => (
         <Dialog>
-          <H2 className={dialog.title}>Publish 3 pages</H2>
+          <div className={dialog.hero}>
+            <img
+              src="https://climatevisuals.org/wp-content/uploads/2022/10/4478-2048x1365.jpg"
+              alt=""
+            />
+          </div>
+
+          <H2 vol={4} className={dialog.title} data-title>
+            Upload file
+          </H2>
           <hr className={dialog.divider} />
-          <P className={dialog.content}>Confirm publish?</P>
+          <P className={dialog.content}>
+            Are you sure you want to upload this file?
+          </P>
           <ButtonGroup className={dialog.buttonGroup}>
             <Button variant="secondary" onPress={close}>
               Cancel

@@ -106,7 +106,7 @@ const Field = ({
       });
     } else return;
   });
-
+  // @todo empty labelStringProp should not render label
   const label = (
     <Label
       className={classes.inputLabel}

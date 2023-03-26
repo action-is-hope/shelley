@@ -32,15 +32,19 @@ import { ModalCustomTransition } from "./Modal.examples";
   `}
 />
 
-Modal provides the structure for a Modal including `backdrop` and `content` containers, transitions and focus locks required to keep a user focused inside active dialogs/areas without being able to 'wonder about' behind the backdrop etc.
+Modal provides the structure for a Modal including `backdrop` and `content` containers,
+transitions and focus locks required to keep a user focused inside active dialogs/areas
+without being able to 'wonder about' behind the backdrop etc.
 
-For partial screen takeovers where you might be splitting the screen and you want things outside of the modal to remain accessible and part of the focus lock; provide `shards` (an array of refs) as part of `focusOnProps`. This will keep those areas inside of the focusable area.
+If you want a Modal with a Trigger then checkout [DialogTrigger](?path=/docs/overlays-dialogtrigger--a-basic-dialog-trigger) first. Modal is used internally by DialogTrigger, Modal props are exposed via `modalProps`. You might need your own Trigger at some point in which case you can use Modal as part of that if you wish.
+
+For partial screen takeovers where you might be splitting the screen and want things outside of the modal to remain accessible; use `shards` (an array of refs) from `focusOnProps` which will keep those elements inside the focus-lock. See [focus-on](#focus-on)
 
 ## Content
 
 Modal will take any child to render inside an internal `content` container which sits adjacent to `backdrop`.
 
-Regular DOM attributes (`aria-LabelledBy` etc) set on Modal will be spread to the `content` container and are required to make accessible dialogs.
+Regular DOM attributes (`aria-LabelledBy`, `aria-ControlledBy` etc) set on Modal will be spread to the `content` container and are required to make accessible dialogs.
 
 ## Accessibility
 

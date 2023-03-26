@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { DialogTrigger, Button, Modal, P } from "../../indexLib";
-import { StoryGrid } from "../StoryLayout";
+import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
 import {
   BasicDialogTrigger,
   ContentExample,
@@ -21,9 +21,9 @@ import {
   component={DialogTrigger}
   decorators={[
     (Story) => (
-      <StoryGrid minWidth="150px" gap="8px">
+      <StoryCenteredInline>
         <Story />
-      </StoryGrid>
+      </StoryCenteredInline>
     ),
   ]}
 />
@@ -117,6 +117,8 @@ The example below demonstrates how to pass the DialogTrigger's close function to
 
 By providing a type prop, you can specify the type of Dialog that is rendered by your DialogTrigger. Note that pressing the Esc key will close the Dialog regardless of its type.
 
+Modal and Popup us react-focus-on internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Setting `scrollLock` to false is more useful on a Popup for instance; `shards` can be useful if working with partial screen takeovers and such.
+
 ### Modal
 
 Modal Dialogs create an backdrop that blocks access to the underlying user interface until the Dialog is closed. Focus is trapped inside the Modal as per the accessibility guidelines laid out by W3C.
@@ -125,7 +127,7 @@ Modal Dialogs create an backdrop that blocks access to the underlying user inter
 
 ### Popup
 
-If a Dialog without an underlay is needed, consider using a Popover Dialog. See Dialog placement for how you can customise the positioning.
+If a Dialog without an underlay is needed, consider using a Popup Dialog. See Dialog placement for how you can customise the positioning.
 
 {/_ Note that popups are automatically rendered as modals on mobile by default. See the mobile type option for more information. _/}
 
@@ -148,7 +150,7 @@ If a Dialog without an underlay is needed, consider using a Popover Dialog. See 
       </DialogTrigger>\n
       <div style={{ marginTop: 80 }}>
         <P vol={1}>
-          <span ref={targetRef}>Popover appears over here</span>
+          <span ref={targetRef}>Popup appears over here</span>
         </P>
       </div>
     </>
@@ -172,13 +174,13 @@ The popup's placement with respect to its anchor element can be adjusted using t
 
 ### Offset and cross offset
 
-The Popover Dialog's offset with respect to its anchor element can be adjusted using the offset and crossOffset props. The offset prop controls the spacing applied along the main axis between the element and its anchor element whereas the crossOffset prop handles the spacing applied along the cross axis.
+The Popup Dialog's offset with respect to its anchor element can be adjusted using the offset and crossOffset props. The offset prop controls the spacing applied along the main axis between the element and its anchor element whereas the crossOffset prop handles the spacing applied along the cross axis.
 
-Below is a popover offset by an additional 50px above the trigger.
+Below is a popup offset by an additional 50px above the trigger.
 
 {/_ Example _/}
 
-Below is a popover cross offset by an additional 100px to the right of the trigger.
+Below is a popup cross offset by an additional 100px to the right of the trigger.
 
 {/_ Example _/}
 

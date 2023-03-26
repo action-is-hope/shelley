@@ -1,0 +1,18 @@
+/* popup.st.css */
+
+@st-import Default from "./project.st.css";
+@st-import Popup from "../../components/Popup/popup.st.css";
+
+@st-scope Default {
+  Popup {
+    /* Breaks tests... figure out more robust tests... */
+    /* border: 1px solid grey; */
+    background-color: #000;
+  }
+
+  Popup::arrow {
+    fill: black;
+    stroke-width: 1px;
+    stroke: grey;
+  }
+}

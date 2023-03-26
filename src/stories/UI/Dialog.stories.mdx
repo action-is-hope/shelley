@@ -5,18 +5,14 @@ import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
 import {
   BasicDialog,
   GridAreas,
-  BasicDialogTrigger,
-  TypicalDialog,
+  DismissableDialog,
+  ModalAndPopup,
+  HeroDialog,
 } from "./Dialog.examples";
 
 <Meta
   title="Overlays/Dialog"
   argTypes={{
-    inputPosition: {
-      options: ["start", "end", "top", "bottom"],
-      control: { type: "inline-radio" },
-      defaultValue: "over",
-    },
     placement: {
       control: {
         type: "select",
@@ -47,7 +43,7 @@ import {
       },
     },
   }}
-  component={DialogTrigger}
+  component={Dialog}
 />
 
 # Dialog
@@ -61,7 +57,9 @@ import {
 
 Dialogs are windows containing contextual information, tasks, or workflows that appear over the user interface. Depending on the kind of Dialog, further interactions may be blocked until the Dialog is acknowledged.
 
-When building up a Dialog it is useful just to render the Dialog in a stand-alone fashion.
+When building up a Dialog it is useful just to render the Dialog stand-alone, i.e without the trigger.
+
+The background is in our example is transparent, when used with Modal or Popup it will render with those backgrounds.
 
 <Story
   name="a) Basic Dialog"
@@ -79,7 +77,7 @@ When building up a Dialog it is useful just to render the Dialog in a stand-alon
 /* Helper classes from dialog stylesheet to assign content to the dialog's grid areas. */
 import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
   <Dialog>
-    <H2 className={dialog.title}>Internet Speed Test</H2>
+    <H2 className={dialog.title} data-title>Internet Speed Test</H2>
     <Text className={dialog.header} as="header" vol={2}>
       Connection status: Connected
     </Text>
@@ -103,16 +101,26 @@ import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialo
 
 <Source language="tsx" id="overlays-dialog--a-basic-dialog" />
 
+## Accessibility
+
+Dialogs will usually be controlled with a trigger. You will likely use DialogTrigger but it you need to do this manually then ensure the Trigger has the `aria-expanded` and `aria-contols` attributes and associate it with the an `id`.
+
 ## Content
+
+### Grid
 
 Dialog provides the grid from the [Adobe Spectrum Dialog](https://react-spectrum.adobe.com/react-spectrum/Dialog.html) by default but use whatever grid best suits your design system.
 
 We have provided grid area classes with some basic alignment, you can import these from the component stylesheet or define your own.
 
-<Source language="tsx" id="overlays-dialog--b-content" />
+<Source language="tsx" id="overlays-dialog--b-content-grid" />
+
+`data-title` assigns the id, that id is set as the Dialog's `aria-labelled` associating them.
+
+You will likely want to create some internal Dialog components within your component library, e.g DialogHeader, DialogContent that will include all your specifics for whatever workflows you have. Apply the classes or define grid-area in your component styles to get them in the right position or define your own grid altogether, whatever you need!
 
 <Story
-  name="b) Content"
+  name="b) Content: Grid"
   decorators={[
     (Story) => (
       <StoryGrid>
@@ -126,7 +134,7 @@ We have provided grid area classes with some basic alignment, you can import the
         code: dedent`
 import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
   <Dialog>
-    <span className={dialog.title}>title</span>
+    <span className={dialog.title} data-title>title</span>
     <span className={dialog.header}>header</span>
     <span className={dialog.content}>content</span>
     <span className={dialog.buttonGroup}>buttonGroup</span>
@@ -139,12 +147,14 @@ import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialo
   {GridAreas.bind()}
 </Story>
 
-### Example
+The provided grid changes slightly when `isDismissable` is set in order to cater for the close button.
 
-A typical Dialog with a title, contents, and action buttons can be created like so:
+#### Hero example
+
+The example below illustrates how a Dialog with a hero image could be rendered via the `hero` area.
 
 <Story
-  name="Example: Typical Dialog"
+  name="b) Content: Hero"
   decorators={[
     (Story) => (
       <StoryCenteredInline>
@@ -156,13 +166,23 @@ A typical Dialog with a title, contents, and action buttons can be created like 
     docs: {
       source: {
         code: dedent`
-<DialogTrigger modalProps={{ transition: "zoom" }}>
-  <Button>Publish</Button>
+<DialogTrigger>
+  <Button>Upload</Button>
   {(close) => (
     <Dialog>
-      <H2 className={dialog.title}>Publish 3 pages</H2>
+      <div className={dialog.hero}>
+        <img
+          src="https://climatevisuals.org/wp-content/uploads/2022/10/4478-2048x1365.jpg"
+          alt=""
+        />
+      </div>
+      <H2 vol={4} className={dialog.title} data-title>
+        Upload file
+      </H2>
       <hr className={dialog.divider} />
-      <P className={dialog.content}>Confirm publish?</P>
+      <P className={dialog.content}>
+        Are you sure you want to upload this file?
+      </P>
       <ButtonGroup className={dialog.buttonGroup}>
         <Button variant="secondary" onPress={close}>
           Cancel
@@ -179,13 +199,29 @@ A typical Dialog with a title, contents, and action buttons can be created like 
     },
   }}
 >
-  {TypicalDialog.bind()}
+  {HeroDialog.bind()}
 </Story>
 
-<Source language="tsx" id="overlays-dialog--example-typical-dialog" />
+<Source language="tsx" id="overlays-dialog--b-content-hero" />
+
+### Accessibility
+
+Keep in mind when creating your Dialog that the tab order within the Dialog follows the order of the children provided. You are also responsible for determining what component, if any, should be automatically focused when the Dialog opens.
+
+The dialog will auto focus the first item by default, to override this place `data-autofocus` on the element that should be initially focused (`autoFocus` will work but will lose the return focus).
+
+By default, the Dialog sets its aria-labelledby to match a title id. You can assign the id by adding `data-title` to the element. If a visible label isn't specified, an aria-label must be provided instead.
+
+## Dismissable Dialog
+
+A dismissable Dialog forgoes its ButtonGroup in favor of rendering a close button at the top right of the Dialog.
+
+a close icon can be provided a `closeIcon` so you can use the icon from your preferred library.
+
+To internationalise the content be sure to provide correct string values for the label of the lose button via `dismissLabel`.
 
 <Story
-  name="c) Dialog Trigger"
+  name="d) Dismissable Dialog"
   decorators={[
     (Story) => (
       <StoryCenteredInline>
@@ -197,33 +233,95 @@ A typical Dialog with a title, contents, and action buttons can be created like 
     docs: {
       source: {
         code: dedent`
-const butttonRef = useRef(null);
-return (
-  <DialogTrigger type="popup">
-    <Button ref={butttonRef}>Disk Status</Button>
-    <div className="content">
-      <H2>50% disk space remaining.</H2>
-      <P>50% disk space remaining.</P>
-    </div>
+  <DialogTrigger isDismissable>
+    <ActionButton>Status</ActionButton>
+    <Dialog dismissLabel="Close status dialog">
+      <H2 vol={4} className={dialog.title} data-title>
+        Status
+      </H2>
+      <hr className={dialog.divider} />
+      <P className={dialog.content}>Printer Status: Connected</P>
+    </Dialog>
   </DialogTrigger>
-  );
 `,
       },
     },
   }}
 >
-  {BasicDialogTrigger.bind()}
+  {DismissableDialog.bind()}
 </Story>
 
-<Source language="tsx" id="overlays-dialogtrigger--d-events" />
+<Source language="tsx" id="overlays-dialog--d-dismissable-dialog" />
 
-## Accessibility
+### Internationalisation
 
-Keep in mind when creating your Dialog that the tab order within the Dialog follows the order of the children provided. You are also responsible for determining what component, if any, should be automatically focused when the Dialog opens.
+To internationalise a Dialog, a localised `dismissLabel` should be provided. For languages that are read right-to-left (e.g. Hebrew and Arabic), the layout of the grid is automatically flipped.
 
-The dialog will auto focus the first item by default, to override this place `autoFocus` or `data-autofocus` on the element that should be initially focused.
+## Modal vs Popup
 
-{/_ The title of a Dialog is typically provided via its heading. By default, the Dialog sets its aria-labelledby to match the heading id, but this can be overridden by providing an aria-labelledby prop to the Dialog directly. If a visible label isn't specified, an aria-label must be provided instea _/}
+Dialog can be used as part of Modal or Popup use cases. Think of them as Modal Dialogs and Popup Dialogs.
+
+<Story
+  name="c: Modal & Popup"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+      {/* popup Example */}
+      <DialogTrigger
+        type="popup"
+        placement="bottom"
+      >
+        <ActionButton>Disk Status</ActionButton>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            C://
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content}>50% disk space remaining</P>
+        </Dialog>
+      </DialogTrigger>\n
+      {/* Modal Example */}
+      <DialogTrigger
+        modalProps={{ transition: "up" }}
+      >
+        <Button>Publish</Button>
+        {(close) => (
+          <Dialog className={"custom-class"}>
+            <H2 vol={4} className={dialog.title} data-title>
+              Publish 3 pages
+            </H2>
+            <hr className={dialog.divider} />
+            <P className={dialog.content}>Confirm publish?</P>
+            <ButtonGroup className={dialog.buttonGroup}>
+              <Button variant="secondary" onPress={close}>
+                Cancel
+              </Button>
+              <Button variant="primary" onPress={close} data-autofocus>
+                Confirm
+              </Button>
+            </ButtonGroup>
+          </Dialog>
+        )}
+      </DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  {ModalAndPopup.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialog--c-modal-popup" />
+
+## Size
 
 ## Dialog Props
 

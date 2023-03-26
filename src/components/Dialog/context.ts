@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 
 export interface DialogContextValue extends HTMLAttributes<HTMLElement> {
-  type: "modal" | "popover" | "tray" | "fullscreen" | "fullscreenTakeover";
+  type: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
   isDismissable?: boolean;
   onClose: () => void;
 }

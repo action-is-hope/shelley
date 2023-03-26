@@ -1,139 +1,115 @@
-import Button from "../Button/Button";
-
-// import CrossLarge from '@spectrum-icons/ui/CrossLarge';
+import { ActionButton } from "../ActionButton/ActionButton";
 import { DialogContext, DialogContextValue } from "./context";
-// import { DOMRef } from "@react-types/shared";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
-// import {Grid} from '@react-spectrum/layout';
-// @ts-ignore
+
 // import intlMessages from "../intl/*.json";
-// import { mergeProps } from "@react-aria/utils";
 import React, {
-  RefObject,
+  // RefObject,
   useContext,
-  useMemo,
+  // useMemo,
   useRef,
   ReactNode,
+  Children,
 } from "react";
 import type { AriaDialogProps } from "@react-types/dialog";
-// import styles from '@adobe/spectrum-css-temp/components/dialog/vars.css';
 import { useDialog } from "@react-aria/dialog";
 // import { useLocalizedStringFormatter } from "@react-aria/i18n";
 
 import { st, classes } from "./dialog.st.css";
+import Close from "../icons/Close";
 
-let sizeMap = {
-  S: "small",
-  M: "medium",
-  L: "large",
-  fullscreen: "fullscreen",
-  fullscreenTakeover: "fullscreenTakeover",
-};
+// let sizeMap = {
+//   S: "small",
+//   M: "medium",
+//   L: "large",
+//   fullscreen: "fullscreen",
+//   fullscreenTakeover: "fullscreenTakeover",
+// };
 
-interface DialogProps extends AriaDialogProps {
+export interface DialogProps
+  extends AriaDialogProps,
+    Omit<React.HTMLProps<HTMLElement>, "role" | "size" | "type" | "ref"> {
   /** The contents of the Dialog. */
   children: ReactNode;
   /** The size of the Dialog. Only applies to "modal" type Dialogs. */
-  size?: "S" | "M" | "L";
+  size?: "small" | "medium" | "large";
   /** Whether the Dialog is dismissable. See the [examples](#examples) for more details. */
   isDismissable?: boolean;
   /** Handler that is called when the 'x' button of a dismissable Dialog is clicked. */
   onDismiss?: () => void;
+  /** An icon to use as your close icon. */
+  closeIcon?: ReactNode;
+  /** A aria-label for the close button. */
+  dismissLabel?: string;
+  /** Add predefined data-id to ease testing or analytics. */
+  includeDataIds?: boolean;
 }
 
 function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
-  let { type = "modal", ...contextProps } =
+  const { type = "modal", ...contextProps } =
     useContext(DialogContext) || ({} as DialogContextValue);
-  console.log("contextProps", contextProps);
-  let {
+  const {
     children,
+    className: classNameProp,
     isDismissable = contextProps.isDismissable,
     onDismiss = contextProps.onClose,
-    size,
-    ...otherProps
+    size: sizeProp,
+    closeIcon,
+    dismissLabel = "Close dialog",
+    includeDataIds,
+    ...rest
   } = props;
-  // let stringFormatter = useLocalizedStringFormatter(intlMessages);
-  // let {styleProps} = useStyleProps(otherProps);
 
-  size = type === "popover" ? size || "S" : size || "L";
+  // const stringFormatter = useLocalizedStringFormatter(intlMessages);
 
-  // let domRef = useDOMRef(ref);
-  // let domRef = ref;
-  // let gridRef = useRef();
-  // let sizeVariant = sizeMap[type] || sizeMap[size];
+  const size = type === "popup" ? sizeProp || "small" : sizeProp || "large";
   const localRef = useRef(null);
 
-  // let domRef = mergeRefs(ref, localRef);
-
-  let { dialogProps, titleProps } = useDialog(
+  const { dialogProps, titleProps } = useDialog(
     mergeProps(contextProps, props),
     localRef
   );
 
-  // let hasHeader = useHasChild(`.${styles['spectrum-Dialog-header']}`, unwrapDOMRef(gridRef));
-  // let hasHeading = useHasChild(`.${styles['spectrum-Dialog-heading']}`, unwrapDOMRef(gridRef));
-  // let hasFooter = useHasChild(`.${styles['spectrum-Dialog-footer']}`, unwrapDOMRef(gridRef));
-  // let hasTypeIcon = useHasChild(`.${styles['spectrum-Dialog-typeIcon']}`, unwrapDOMRef(gridRef));
-
-  // let slots = useMemo(() => ({
-  //   hero: {UNSAFE_className: styles['spectrum-Dialog-hero']},
-  //   heading: {UNSAFE_className: classNames(styles, 'spectrum-Dialog-heading', {'spectrum-Dialog-heading--noHeader': !hasHeader, 'spectrum-Dialog-heading--noTypeIcon': !hasTypeIcon}), level: 2, ...titleProps},
-  //   header: {UNSAFE_className: classNames(styles, 'spectrum-Dialog-header', {'spectrum-Dialog-header--noHeading': !hasHeading, 'spectrum-Dialog-header--noTypeIcon': !hasTypeIcon})},
-  //   typeIcon: {UNSAFE_className: styles['spectrum-Dialog-typeIcon']},
-  //   divider: {UNSAFE_className: styles['spectrum-Dialog-divider'], size: 'M'},
-  //   content: {UNSAFE_className: styles['spectrum-Dialog-content']},
-  //   footer: {UNSAFE_className: styles['spectrum-Dialog-footer']},
-  //   buttonGroup: {UNSAFE_className: classNames(styles, 'spectrum-Dialog-buttonGroup', {'spectrum-Dialog-buttonGroup--noFooter': !hasFooter}), align: 'end'}
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }), [hasFooter, hasHeader, titleProps]);
-
   return (
     <section
-      // {...styleProps}
       {...dialogProps}
-      // className={classNames(
-      //   styles,
-      //   'spectrum-Dialog',
-      //   {
-      //     [`spectrum-Dialog--${sizeVariant}`]: sizeVariant,
-      //     'spectrum-Dialog--dismissable': isDismissable
-      //   },
-      //   styleProps.className
-      // )}
-      className={st(classes.root, { size })}
+      className={st(classes.root, { size, isDismissable }, classNameProp)}
       ref={mergeRefs(ref, localRef)}
+      data-id={includeDataIds ? "dialog" : undefined}
       // TabIndex is set to -1 by useDialog, this interferes
-      // with react-focus-on. Adobe's FocusScope likely supports this.
+      // with react-focus-on auto-focusing. Adobe's FocusScope
+      // likely supports this.
       tabIndex={undefined}
+      // Adobe libs don't add set aria-modal="true" they use aria-hidden as do we.
+      // Docs suggest if close mechanisum exists inside the dialog then set to true which would depend on not using shards.
+      {...rest}
     >
       <div className={classes.dialogGrid}>
-        {children}
+        {Children.map(Children.toArray(children), (child) => {
+          // We could do more here, add internal classes for the grid areas perhaps?
+          if (React.isValidElement(child)) {
+            return "data-title" in child.props
+              ? React.cloneElement(child, {
+                  ...titleProps,
+                })
+              : child;
+          } else {
+            return child;
+          }
+        })}
         {isDismissable && (
-          <Button
-            // UNSAFE_className={styles['spectrum-Dialog-closeButton']}
-            // isQuiet
+          <ActionButton
+            isQuiet
             // aria-label={stringFormatter.format("dismiss")}
-            aria-label={"dismiss - PROP!"}
+            className={classes.closeButton}
+            aria-label={dismissLabel}
             onPress={onDismiss}
+            data-id={includeDataIds ? "modal--closeButton" : undefined}
           >
-            {/* <CrossLarge /> */}X
-          </Button>
+            {closeIcon || <Close />}
+          </ActionButton>
         )}
       </div>
-      {/* <Grid ref={gridRef} UNSAFE_className={styles['spectrum-Dialog-grid']}>
-        <SlotProvider slots={slots}>
-          {children}
-        </SlotProvider>
-        {isDismissable &&
-          <ActionButton
-            UNSAFE_className={styles['spectrum-Dialog-closeButton']}
-            isQuiet
-            aria-label={stringFormatter.format('dismiss')}
-            onPress={onDismiss}>
-            <CrossLarge />
-          </ActionButton>
-        }
-      </Grid> */}
     </section>
   );
 }
@@ -142,5 +118,5 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
  * Dialogs are windows containing contextual information, tasks, or workflows that appear over the user interface.
  * Depending on the kind of Dialog, further interactions may be blocked until the Dialog is acknowledged.
  */
-let _Dialog = React.forwardRef(Dialog);
+const _Dialog = React.forwardRef(Dialog);
 export { _Dialog as Dialog };

@@ -6,7 +6,7 @@ export const ModalCustomTransition = (args: ModalProps) => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   return (
     <>
-      <Button onPress={() => setOverlayOpen(!overlayOpen)}>Toggle</Button>
+      <Button onPress={() => setOverlayOpen(!overlayOpen)}>Toggle1</Button>
       <Modal
         {...args}
         isOpen={overlayOpen !== false}
@@ -15,7 +15,7 @@ export const ModalCustomTransition = (args: ModalProps) => {
         // theme="HI"
         // initialFocusRef={inputRef}
         transition={false}
-        variant={1}
+        // variant={1}
         // portalSelector={false}
         // focusOnProps={{ shards: shards }}
         // disableBackgroundClick
@@ -23,6 +23,10 @@ export const ModalCustomTransition = (args: ModalProps) => {
         // disableFocusLock
         data-testid="modal-window"
         className={modalClasses.myTransition}
+        focusOnProps={{
+          onEscapeKey: () => console.log("hello!"),
+          onClickOutside: () => console.log("onClickOutside"),
+        }}
         transitionProps={{
           // classNames: modalClasses.myTransition,
           // className: modalClasses.myTransition,
