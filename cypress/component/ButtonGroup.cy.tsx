@@ -21,6 +21,7 @@ describe("ButtonGroup", () => {
       );
       cy.get(button).should("exist").and("have.length", 2);
       cy.get(`${button}:first-child`).should("exist").and("have.text", "One");
+      cy.get(`${button}:last-child`).should("exist").and("have.text", "Two");
     });
 
     it("renders with custom class name", () => {
@@ -33,6 +34,18 @@ describe("ButtonGroup", () => {
       cy.get(buttonGroup)
         .should("have.attr", "class")
         .and("to.have.string", "custom-class");
+    });
+
+    it("renders with splitButton class name", () => {
+      cy.mount(
+        <ButtonGroupBasic splitButton>
+          <Button data-button>One</Button>
+          <Button data-button>Two</Button>
+        </ButtonGroupBasic>
+      );
+      cy.get(buttonGroup)
+        .should("have.attr", "class")
+        .and("to.have.string", "splitButton");
     });
 
     it("orientation is horizontal by default", () => {
