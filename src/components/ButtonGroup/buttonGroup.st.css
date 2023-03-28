@@ -7,7 +7,8 @@
   -st-states:
     orientation(enum(horizontal, vertical)),
     fullWidth,
-    splitButton;
+    splitButton,
+    isDisabled;
   --seperator-color: initial;
   --seperator-width: 1px
 }
@@ -15,8 +16,6 @@
 .root {
   display: inline-flex;
 }
-
-
 
 .root > Button:focus {
   z-index: 1;

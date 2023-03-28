@@ -121,7 +121,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     {
       iconPos: icon ? iconPos : undefined,
       fullWidth,
-      tone,
+      tone: tone !== false ? tone : undefined,
       variant: variant !== false ? variant : undefined,
       vol: vol !== false ? vol : undefined,
       isPressed,
@@ -158,6 +158,6 @@ function ButtonBase<T extends React.ElementType = "button">(
 // const Button = React.forwardRef(ButtonBase);
 const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
 
-// Button.displayName = "Button";
+Button.toString = () => "ShelleyButton";
 
 export default Button;
