@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal, ModalProps } from "../../src/indexLib";
 
 const modal = '[data-id="modal"]';
-const backdrop = '[data-id="modal--backdrop"]';
-const content = '[data-id="modal--content"]';
+const backdrop = '[data-id="modal-backdrop"]';
+const content = '[data-id="modal-content"]';
 const trigger = '[data-id="trigger"]';
 const close = '[data-id="close"]';
 const portal = '[data-id="portal"]';
@@ -19,7 +19,7 @@ export const ModalExample = (args: ModalProps) => {
         isOpen={overlayOpen !== false}
         onDismiss={() => setOverlayOpen(false)}
         {...args}
-        includeDataIds
+        data-id="modal"
       >
         <div>
           <span>Content</span>
@@ -38,7 +38,8 @@ describe("Basic Modal", () => {
   it("renders working modal, isOpen and onDismiss working as expected.", () => {
     cy.mount(<ModalExample />);
     cy.get(content).should("not.exist");
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
+    cy.get(backdrop).should("exist");
     cy.get(content).should("contain.text", "Content");
   });
 });
@@ -55,7 +56,7 @@ describe("Isolation mode", () => {
         transitionProps={{ timeout: 190 }}
       />
     );
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get("[data-cy-root]").should("have.attr", "aria-hidden");
   });
 
@@ -67,7 +68,7 @@ describe("Isolation mode", () => {
         transitionProps={{ timeout: 190 }}
       />
     );
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(trigger).should("not.have.attr", "aria-hidden");
     cy.get("[data-cy-root]").should("not.have.attr", "aria-hidden");
   });
@@ -89,7 +90,7 @@ describe("Isolation mode", () => {
 describe("Render placement", () => {
   it("portals into body by default", () => {
     cy.mount(<ModalExample />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     /**
      * We have a portal container ready as the last thing
      * in the DOM so it should render directly adjacent
@@ -102,13 +103,13 @@ describe("Render placement", () => {
 
   it("portals into defined #portal container", () => {
     cy.mount(<ModalExample portalSelector="#portal" />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get("#portal").should("exist").and("contain.text", "Content");
   });
 
   it("renders adjacent to trigger if portalSelector is false", () => {
     cy.mount(<ModalExample portalSelector={false} />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(`${trigger} + ${modal}`)
       .should("exist")
       .and("contain.text", "Content");
@@ -118,43 +119,33 @@ describe("Render placement", () => {
 describe("Dismissing the Modal", () => {
   it("Clicking the backdrop closes by default", () => {
     cy.mount(<ModalExample />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(modal).click("topRight");
     cy.get(content).should("not.exist");
   });
-
   it("disableBackdropClick", () => {
     cy.mount(<ModalExample disableBackdropClick />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(modal).click("topRight");
     cy.get(content).should("exist");
   });
-
   it("onBackdropClickSpy do something.", () => {
     const onBackdropClickSpy = cy.spy().as("onBackdropClickSpy");
     cy.mount(<ModalExample onBackdropClick={onBackdropClickSpy} />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(modal).click("topRight");
     cy.get("@onBackdropClickSpy").should("have.been.called");
   });
-
   it("escape key closes by default", () => {
     cy.mount(<ModalExample />);
-    cy.get(trigger).click();
-    cy.get("body").trigger("keydown", {
-      eventConstructor: "KeyboardEvent",
-      keyCode: 27,
-    });
+    cy.get(trigger).realClick();
+    cy.realPress("Escape");
     cy.get(content).should("not.exist");
   });
-
   it("disableEscapeKey", () => {
     cy.mount(<ModalExample disableEscapeKey />);
-    cy.get(trigger).click();
-    cy.get("body").trigger("keydown", {
-      eventConstructor: "KeyboardEvent",
-      keyCode: 27,
-    });
+    cy.get(trigger).realClick();
+    cy.realPress("Escape");
     cy.get(content).should("exist");
   });
 });
@@ -162,12 +153,9 @@ describe("Dismissing the Modal", () => {
 describe("Focusing", () => {
   it("first item focused by default & focus returns to trigger", () => {
     cy.mount(<ModalExample />);
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(close).should("be.focused");
-    cy.get("body").trigger("keydown", {
-      eventConstructor: "KeyboardEvent",
-      keyCode: 27,
-    });
+    cy.realPress("Escape");
     cy.get(trigger).should("be.focused");
   });
 });

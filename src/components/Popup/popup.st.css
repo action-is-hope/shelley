@@ -1,4 +1,6 @@
 /* popup.st.css CSS API */
+@namespace "Popup";
+
 .root {}
 
 .list {}

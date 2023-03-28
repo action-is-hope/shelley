@@ -21,6 +21,7 @@ describe("Button", () => {
 
     cy.get(":button")
       .should("have.attr", "class")
+      .and("to.have.string", "Button")
       .and("to.have.string", "cypress-test");
   });
 

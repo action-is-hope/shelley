@@ -71,6 +71,7 @@ export const MultipleSelectionMenuTrigger = () => {
       onOpenChange={(isOpen) => console.log("isOpen:", isOpen)}
       // Automatic if the menus selection type is multiple it will be false but you can override.
       // closeOnSelect={false}
+      hideArrow
     >
       <Button
         tone={10}
@@ -100,10 +101,10 @@ export const MultipleSelectionMenuTrigger = () => {
 
 export const ButtonGroupTriggerMenu = () => {
   return (
-    <ButtonGroup vol={3} tone={2} variant="primary">
+    <ButtonGroup vol={3} tone={2} variant="primary" splitButton>
       {/* // fullWidth */}
       <Button fullWidth>Publish</Button>
-      <MenuTrigger portalSelector="#portal">
+      <MenuTrigger portalSelector="#portal" className="TEST">
         <Button
           tone={2}
           variant="primary"

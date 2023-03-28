@@ -93,14 +93,13 @@ export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
    * Props specific to the modal, for focusOnProps use the shared
    * prop at the top level of DialogTrigger.
    */
-
+  /** Add predefined data-id to ease testing or analytics. */
+  "data-id"?: string;
   /**
    * Props for the internal `FocusOn` component
    * see - https://github.com/theKashey/react-focus-on#api
    */
   focusOnProps?: TriggerFocusOnProps;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
   // Transition for Modal
   transition?: TransitionType;
   // transitionProps?: Pick<ModalProps, "transitionProps">;
@@ -128,7 +127,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     crossOffset,
     shouldFlip,
     shouldCloseOnBlur,
-    includeDataIds,
+    "data-id": dataId,
     transition,
     transitionProps: transitionPropsFromProps,
     disableModalBackdropBlur = false,
@@ -212,7 +211,7 @@ function DialogTrigger(props: DialogTriggerProps) {
           overlayProps,
           isDismissable,
           isKeyboardDismissDisabled,
-          includeDataIds,
+          dataId,
           portalSelector,
         }}
         focusOnProps={focusOnProps}
@@ -256,8 +255,8 @@ function DialogTrigger(props: DialogTriggerProps) {
               portalSelector,
               transition,
               focusOnProps,
-              includeDataIds,
             }}
+            data-id={dataId ? `${dataId}--modal` : undefined}
           >
             {typeof content === "function"
               ? content(() => state.close())
@@ -309,7 +308,7 @@ interface PopupTriggerProps
   overlayProps: any;
   /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
   focusOnProps?: TriggerFocusOnProps;
-  includeDataIds?: boolean;
+  dataId?: string;
   portalSelector?: string | false;
 }
 
@@ -322,7 +321,7 @@ function PopupTrigger({
   triggerProps,
   overlayProps,
   isDismissable,
-  includeDataIds,
+  dataId,
   focusOnProps,
   portalSelector,
   // hideArrow,
@@ -343,7 +342,7 @@ function PopupTrigger({
       isOpen={state.isOpen}
       onClose={() => state.close()}
       focusOnProps={focusOnProps}
-      includeDataIds={includeDataIds}
+      data-id={`${dataId}--popup`}
     >
       {typeof content === "function" ? content(() => state.close()) : content}
     </Popup>

@@ -15,7 +15,7 @@ export const SimplePopup = (args: PopupProps) => {
     state,
     triggerRef
   );
-  console.log("ref", triggerRef);
+
   return (
     <>
       {/* Whatever you use as a trigger will need an onPress prop... */}
@@ -27,18 +27,16 @@ export const SimplePopup = (args: PopupProps) => {
       >
         Click me
       </Button>
-      {state.isOpen && (
-        <Popup
-          {...overlayProps}
-          {...args}
-          isOpen={state.isOpen}
-          onClose={() => state.close()}
-          ref={overlayRef}
-          triggerRef={triggerRef}
-        >
-          Children
-        </Popup>
-      )}
+      <Popup
+        {...overlayProps}
+        // {...args}
+        isOpen={state.isOpen}
+        onClose={() => state.close()}
+        ref={overlayRef}
+        triggerRef={triggerRef}
+      >
+        Children
+      </Popup>
     </>
   );
 };

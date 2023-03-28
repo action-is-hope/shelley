@@ -27,11 +27,6 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   /** Add a class to the content div. */
   contentClassName?: string;
-  /**
-   * Set the initial focused element via a ref. By default the
-   * 'first focusable element' will receive focus when the dialog
-   * opens.
-   */
   /** Disables the backdrop click dismiss */
   disableBackdropClick?: boolean;
   /** Disables the EscapeKey dismiss */
@@ -43,6 +38,11 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
     ReactFocusOnProps,
     Exclude<keyof ReactFocusOnProps, "children">
   >;
+  /**
+   * Set the initial focused element via a ref. By default the
+   * 'first focusable element' will receive focus when the dialog
+   * opens.
+   */
   initialFocusRef?:
     | React.RefObject<HTMLButtonElement>
     | React.RefObject<HTMLInputElement>;
@@ -75,7 +75,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   transitionProps?: Omit<TransitionProps, "addEndListener">;
   variant?: "fixed" | string;
   /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
+  "data-id"?: string;
   // @todo allowPinchZoom?: boolean;
 }
 
@@ -90,22 +90,19 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     isOpen,
     onBackdropClick = () => null,
     onDismiss = () => null,
-    // onKeyDown,
     onMouseDown = () => null,
-    // theme,
     transitionProps: transitionPropsInput,
     variant = "fixed",
     transition = "zoom",
     disableFocusLock,
     disableEscapeKey,
     disableBackdropClick,
-    includeDataIds,
+    "data-id": dataId,
     // state,
     ...rest
   } = props;
   const mouseDownTarget = useRef<EventTarget | null>(null);
 
-  console.log(transitionPropsInput);
   const activateFocusLock = React.useCallback(() => {
     if (initialFocusRef && initialFocusRef.current) {
       initialFocusRef.current.focus();
@@ -128,9 +125,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     unmountOnExit: true,
     ...transitionPropsInput,
   };
-  console.log(transitionProps);
 
-  /* FocusOn props */
   const focusOnProps = {
     focusLock: !disableFocusLock,
     /**
@@ -149,7 +144,6 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     // onClickOutside: () => console.log("works - yes"),
   };
 
-  // let { modalProps, underlayProps } = useModalOverlay(props, state, ref);
   const nodeRef = useRef(null);
   const modal = (
     <CSSTransition
@@ -169,20 +163,20 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
             classNameProp
           )}
           ref={nodeRef}
-          data-id={includeDataIds ? "modal" : undefined}
+          data-id={dataId}
         >
           <FocusOn {...focusOnProps}>
             <div
               aria-hidden="true"
               className={classes.backdrop}
-              data-id={includeDataIds ? "modal--backdrop" : undefined}
+              data-id={dataId ? `${dataId}-backdrop` : undefined}
               onClick={composeEventHandlers(
                 onBackdropClick,
                 handleBackdropClick
               )}
             ></div>
             <div
-              data-id={includeDataIds ? "modal--content" : undefined}
+              data-id={dataId ? `${dataId}-content` : undefined}
               className={st(classes.content, contentClassName)}
               onMouseDown={composeEventHandlers(onMouseDown, handleMouseDown)}
               ref={ref}

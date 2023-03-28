@@ -62,6 +62,8 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default 0
    */
   crossOffset?: number;
+  /** hide the Popup arrow */
+  hideArrow?: boolean;
 }
 
 export function MenuTrigger({
@@ -71,7 +73,7 @@ export function MenuTrigger({
   defaultOpen,
   disabled,
   isOpen,
-  offset,
+  offset = 12,
   onOpenChange,
   placement = "bottom start",
   portalSelector = "body",

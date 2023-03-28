@@ -23,36 +23,40 @@ export interface PopupProps
    */
   triggerRef: Ref<HTMLElement>;
   /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
+  "data-id"?: string;
   /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
   focusOnProps?: Pick<
     ReactFocusOnProps,
     Exclude<keyof ReactFocusOnProps, "children">
   >;
+  /** Hide the arrow */
+  hideArrow?: boolean;
 }
 
 export const Popup = forwardRef(
   (props: PopupProps, ref?: Ref<HTMLDivElement>) => {
     const {
+      className: classNameProp,
       triggerRef,
-      // AriaOverlayProps:
+      // aria-overlay props.
+      hideArrow,
       isOpen,
       isDismissable = true,
       isKeyboardDismissDisabled,
       onClose,
       shouldCloseOnBlur,
-      // PositionProps:
+      // Position props
       placement: placementProp,
       containerPadding,
       offset,
       crossOffset,
       shouldFlip,
       focusOnProps,
-      includeDataIds,
+      "data-id": dataId,
       ...rest
     } = props;
+
     const localRef = useRef(null);
-    // Aria hook
     const { overlayProps } = useOverlay(
       {
         onClose,
@@ -89,22 +93,23 @@ export const Popup = forwardRef(
         {...focusOnProps}
       >
         <div
-          className={st(classes.root)}
-          // @todo below would overwrite className prop if set?
+          className={st(classes.root, classNameProp)}
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
-          data-id={includeDataIds ? "popup" : undefined}
+          data-id={dataId}
         >
-          <svg
-            {...arrowProps}
-            className={st(classes.arrow, {
-              placement,
-            })}
-            data-id={includeDataIds ? "popup--arrow" : undefined}
-            data-placement={placement}
-          >
-            <path d="M0 0,L6 6,L12 0" />
-          </svg>
+          {!hideArrow && (
+            <svg
+              {...arrowProps}
+              className={st(classes.arrow, {
+                placement,
+              })}
+              data-id={dataId ? `${dataId}-arrow` : undefined}
+              data-placement={placement}
+            >
+              <path d="M0 0,L6 6,L12 0" />
+            </svg>
+          )}
 
           <DismissButton onDismiss={props.onClose} />
           {props.children}

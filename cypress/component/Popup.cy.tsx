@@ -5,19 +5,21 @@ import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
 const popup = '[data-id="popup"]';
-const popupArrow = '[data-id="popup--arrow"]';
-
-const modal = '[data-id="modal"]';
-const backdrop = '[data-id="modal--backdrop"]';
-const content = '[data-id="modal--content"]';
+const popupArrow = '[data-id="popup-arrow"]';
 const trigger = '[data-id="trigger"]';
-const close = '[data-id="close"]';
-const portal = '[data-id="portal"]';
 
-// @todo:
-// shouldFlip
+// @todo: shouldFlip
+export const BasicTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+  const triggerRef = useRef(null);
+  return (
+    <Popup data-id="popup" {...args} triggerRef={triggerRef}>
+      <div>Content</div>
+    </Popup>
+  );
+};
 
-export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
+export const PositionTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+  // Setup a basic Trigger component.
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
 
@@ -27,21 +29,17 @@ export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
     triggerRef
   );
 
-  console.log(triggerProps, overlayProps);
   return (
     <div style={{ padding: "120px" }}>
       {/* Whatever you use as a trigger will need an onPress prop... */}
       <Button
         {...triggerProps}
-        // id="buttonTrigger"
         data-id="trigger"
         ref={triggerRef}
-        // disabled={state.isOpen}
         style={{ width: "40px", height: "40px" }}
       >
         40px
       </Button>
-      {/* {state.isOpen && ( */}
       <Popup
         // Focus
         {...overlayProps}
@@ -49,126 +47,181 @@ export const SimplePopup = (args: Omit<PopupProps, "triggerRef">) => {
         onClose={() => state.close()}
         {...args}
         triggerRef={triggerRef}
-        includeDataIds
+        data-id="popup"
+      >
+        <div style={{ height: "80px", width: "80px", background: "grey" }}>
+          80px
+        </div>
+      </Popup>
+    </div>
+  );
+};
+
+export const FocusPopupTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+  const triggerRef = useRef(null);
+  const state = useOverlayTriggerState({});
+
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    state,
+    triggerRef
+  );
+
+  return (
+    <div style={{ padding: "120px" }}>
+      {/* Whatever you use as a trigger will need an onPress prop... */}
+      <Button
+        {...triggerProps}
+        data-id="trigger"
+        ref={triggerRef}
+        style={{ width: "40px", height: "40px" }}
+      >
+        40px
+      </Button>
+      <Popup
+        // Focus
+        {...overlayProps}
+        isOpen={state.isOpen}
+        onClose={() => state.close()}
+        {...args}
+        triggerRef={triggerRef}
+        data-id="popup"
       >
         <div style={{ height: "80px", width: "80px", background: "grey" }}>
           80px <Button data-focus-test>Focusable button</Button>
         </div>
       </Popup>
-      {/* )} */}
       <a id="focusLink" href="#">
         Focus me
       </a>
     </div>
   );
 };
-// hideArrow
-// classname
-// data-id
-describe("Focusing", () => {
-  it("first item focused by default & focus returns to trigger", () => {
-    cy.mount(<SimplePopup />);
-    cy.get(trigger).click();
-    cy.get("[data-focus-test]").should("be.focused");
-    cy.get(popup).trigger("keydown", {
-      eventConstructor: "KeyboardEvent",
-      keyCode: 27,
-    });
-    cy.get(trigger).should("be.focused");
+
+describe("Basic Popup", () => {
+  it("Renders hidden by default", () => {
+    cy.mount(<BasicTemplate />);
+    cy.get(popup).should("not.exist");
+  });
+  it("isOpen renders Popup with arrow", () => {
+    cy.mount(<BasicTemplate isOpen />);
+    cy.get(popup).should("exist").and("include.text", "Content");
+    cy.get(popupArrow).should("exist");
+  });
+  it("isOpen renders Popup without arrow", () => {
+    cy.mount(<BasicTemplate isOpen hideArrow />);
+    cy.get(popup).should("exist").and("include.text", "Content");
+    cy.get(popupArrow).should("not.exist");
+  });
+  it("Applies classname correctly to the popup div", () => {
+    cy.mount(<BasicTemplate isOpen className={"test-class"} />);
+    cy.get(popup)
+      .should("have.attr", "class")
+      .and("to.have.string", "Popup")
+      .and("to.have.string", "test-class");
+  });
+  it("Spreads #a11y html attributes to pop up - id, data-* etc", () => {
+    cy.mount(<BasicTemplate id="test" data-random isOpen />);
+    cy.get(popup)
+      .should("be.visible")
+      .should("have.attr", "id")
+      .and("equal", "test");
+    cy.get(popup).should("be.visible").should("have.attr", "data-random");
   });
 });
 
-describe("Basic Popup", () => {
-  it("Renders required aria attributes.", () => {
-    cy.mount(<SimplePopup />);
-    cy.get(popup).should("not.exist");
-    cy.get(trigger).click();
-    cy.get(popup).should("be.visible").should("have.attr", "id");
-  });
-
-  it("is dismissable by default.", () => {
-    cy.mount(<SimplePopup />);
-    cy.get(trigger).click();
-    cy.get(popup).should("be.visible");
-    cy.get("body").click();
-    cy.get(popup).should("not.exist");
-    cy.get("#focusLink").click();
+describe("Focusing and Dismissing", () => {
+  it("AutoFocus first item and Escape returns focus to trigger", () => {
+    cy.mount(<FocusPopupTemplate />);
+    cy.get(trigger).realClick();
+    cy.get("[data-focus-test]").should("be.focused");
+    cy.realPress("Escape");
+    cy.get(trigger).should("be.focused");
   });
 
   it("does not close onBlur by default.", () => {
-    cy.mount(<SimplePopup />);
-    cy.get(trigger).click();
+    cy.mount(<FocusPopupTemplate />);
+    cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get("#focusLink").focus();
     cy.get(popup).should("be.visible");
   });
 
   it("closes on blur when specified.", () => {
-    cy.mount(<SimplePopup shouldCloseOnBlur />);
-    cy.get(trigger).click();
+    cy.mount(<FocusPopupTemplate shouldCloseOnBlur />);
+    cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get("#focusLink").focus();
     cy.get(popup).should("not.exist");
   });
 
-  it("is keyboard dismissable by default.", () => {
-    cy.mount(<SimplePopup />);
-    cy.get(trigger).click();
+  it("is dismissable by default.", () => {
+    cy.mount(<FocusPopupTemplate />);
+    cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
-    // keyboard dismiss
-    cy.get(popup).trigger("keydown", { keyCode: 27 });
+    cy.get("body").realClick();
+    cy.get(popup).should("not.exist");
+    cy.get("#focusLink").realClick();
+  });
+
+  it("is keyboard dismissable by default.", () => {
+    cy.mount(<FocusPopupTemplate />);
+    cy.get(trigger).realClick();
+    cy.get(popup).should("be.visible");
+    cy.get(popup).realPress("Escape");
     cy.get(popup).should("not.exist");
   });
 
   it("is not dismissable but is keyboard dismissable", () => {
-    cy.mount(<SimplePopup isDismissable={false} />);
-    cy.get(trigger).click();
+    cy.mount(<FocusPopupTemplate isDismissable={false} />);
+    cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
-    // dismiss - .type('{esc}') not working, using tigger() instead.
-    cy.get(popup).trigger("keydown", { keyCode: 27 });
+    cy.get(popup).realPress("Escape");
     cy.get(popup).should("not.exist");
   });
 
   it("is not dismissable or keyboard dismissable", () => {
     cy.mount(
-      <SimplePopup isDismissable={false} isKeyboardDismissDisabled={true} />
+      <FocusPopupTemplate
+        isDismissable={false}
+        isKeyboardDismissDisabled={true}
+      />
     );
-    cy.get(trigger).click();
+    cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
-    // dismiss - .type('{esc}') not working, using tigger() instead.
-    cy.get(popup).trigger("keydown", { keyCode: 27 });
+    cy.get(popup).realPress("Escape");
     cy.get(popup).should("exist");
   });
 });
 
 describe("Popup offsets", () => {
   it("offset is set for positive numbers", () => {
-    cy.mount(<SimplePopup offset={10} />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate offset={10} />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "170px");
   });
 
   it("offset is set for negative numbers", () => {
-    cy.mount(<SimplePopup offset={-10} />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate offset={-10} />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "150px");
   });
 
   it("crossOffset is set for positive numbers", () => {
-    cy.mount(<SimplePopup crossOffset={10} />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate crossOffset={10} />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "left", "110px");
   });
 
   it("crossoffset is set for negative numbers", () => {
-    cy.mount(<SimplePopup crossOffset={-10} />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate crossOffset={-10} />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "left", "90px");
@@ -178,8 +231,8 @@ describe("Popup offsets", () => {
 describe("Popup placement", () => {
   /* 'bottom' */
   it("'bottom' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="bottom" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="bottom" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "160px")
@@ -187,8 +240,8 @@ describe("Popup placement", () => {
   });
 
   it("'bottom left' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="bottom left" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="bottom left" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "160px")
@@ -196,8 +249,8 @@ describe("Popup placement", () => {
   });
 
   it("'bottom right' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="bottom right" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="bottom right" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "160px")
@@ -205,8 +258,8 @@ describe("Popup placement", () => {
   });
 
   it("'bottom start' is positioned as expected (as 'bottom left' in ltr)", () => {
-    cy.mount(<SimplePopup placement="bottom start" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="bottom start" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "160px")
@@ -214,8 +267,8 @@ describe("Popup placement", () => {
   });
 
   it("'bottom end' is positioned as expected (as 'bottom right' in ltr)", () => {
-    cy.mount(<SimplePopup placement="bottom end" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="bottom end" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "160px")
@@ -224,8 +277,8 @@ describe("Popup placement", () => {
 
   /* 'top' */
   it("'top' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="top" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="top" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "40px")
@@ -233,8 +286,8 @@ describe("Popup placement", () => {
   });
 
   it("'top left' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="top left" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="top left" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "40px")
@@ -242,8 +295,8 @@ describe("Popup placement", () => {
   });
 
   it("'top right' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="top right" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="top right" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "40px")
@@ -251,8 +304,8 @@ describe("Popup placement", () => {
   });
 
   it("'top start' is positioned as expected (as 'top left' in ltr)", () => {
-    cy.mount(<SimplePopup placement="top start" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="top start" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "40px")
@@ -260,8 +313,8 @@ describe("Popup placement", () => {
   });
 
   it("'top end' is positioned as expected (as 'top right' in ltr)", () => {
-    cy.mount(<SimplePopup placement="top end" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="top end" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "40px")
@@ -270,8 +323,8 @@ describe("Popup placement", () => {
 
   /* 'left' */
   it("'left' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="left" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="left" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "100px")
@@ -279,8 +332,8 @@ describe("Popup placement", () => {
   });
 
   it("'left top' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="left top" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="left top" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "120px")
@@ -288,8 +341,8 @@ describe("Popup placement", () => {
   });
 
   it("'left bottom' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="left bottom" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="left bottom" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "80px")
@@ -298,8 +351,8 @@ describe("Popup placement", () => {
 
   /* 'start' (same as 'left' in ltr) */
   it("'start' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="start" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="start" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "100px")
@@ -307,8 +360,8 @@ describe("Popup placement", () => {
   });
 
   it("'start top' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="start top" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="start top" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "120px")
@@ -316,8 +369,8 @@ describe("Popup placement", () => {
   });
 
   it("'start bottom' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="start bottom" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="start bottom" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "80px")
@@ -326,8 +379,8 @@ describe("Popup placement", () => {
 
   /* 'right' */
   it("'right' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="right" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="right" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "100px")
@@ -335,8 +388,8 @@ describe("Popup placement", () => {
   });
 
   it("'right top' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="right top" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="right top" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "120px")
@@ -344,8 +397,8 @@ describe("Popup placement", () => {
   });
 
   it("'right bottom' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="right bottom" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="right bottom" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "80px")
@@ -354,8 +407,8 @@ describe("Popup placement", () => {
 
   /* 'end' (same as 'right' in ltr) */
   it("'end' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="end" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="end" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "100px")
@@ -363,8 +416,8 @@ describe("Popup placement", () => {
   });
 
   it("'end top' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="end top" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="end top" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "120px")
@@ -372,8 +425,8 @@ describe("Popup placement", () => {
   });
 
   it("'end bottom' is positioned as expected", () => {
-    cy.mount(<SimplePopup placement="end bottom" />);
-    cy.get(trigger).click();
+    cy.mount(<PositionTemplate placement="end bottom" />);
+    cy.get(trigger).realClick();
     cy.get(popup)
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "80px")

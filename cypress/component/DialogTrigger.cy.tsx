@@ -19,12 +19,12 @@ const title = "[data-title";
 const dialog = '[data-id="dialog"]';
 const closeButton = '[data-id="modal--closeButton"';
 
-const popup = '[data-id="popup"]';
-const popupArrow = '[data-id="popup--arrow"]';
+const popup = '[data-id="dialogTiggerTest--popup"]';
+const popupArrow = '[data-id="dialogTiggerTest--popup-arrow"]';
 
-const modal = '[data-id="modal"]';
-const modalBackdrop = '[data-id="modal--backdrop"]';
-const modalContent = '[data-id="modal--content"]';
+const modal = '[data-id="dialogTiggerTest--modal"]';
+const modalBackdrop = '[data-id="dialogTiggerTest--modal-backdrop"]';
+
 const trigger = '[data-id="trigger"]';
 const close = '[data-id="close"]';
 const portal = '[data-id="portal"]';
@@ -46,7 +46,7 @@ interface DialogTriggerTest extends Omit<DialogTriggerProps, "children"> {
 
 const BasicContentTrigger = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
-    <DialogTrigger {...args} includeDataIds>
+    <DialogTrigger {...args} data-id="dialogTiggerTest">
       <ActionButton data-id="trigger">Simple Content</ActionButton>
       <Dialog includeDataIds>
         <H2 vol={4} className={dialogClasses.title} data-title>
@@ -56,7 +56,6 @@ const BasicContentTrigger = (args: DialogTriggerTest) => (
         <P data-content className={dialogClasses.content}>
           Content
         </P>
-        {/* <Button data-focus-button>Focus button</Button> */}
       </Dialog>
     </DialogTrigger>
   </div>
@@ -64,7 +63,11 @@ const BasicContentTrigger = (args: DialogTriggerTest) => (
 
 const DialogWithFocusableContent = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
-    <DialogTrigger {...args} portalSelector="#portal" includeDataIds>
+    <DialogTrigger
+      {...args}
+      portalSelector="#portal"
+      data-id="dialogTiggerTest"
+    >
       <ActionButton data-id="trigger">Focusable Content</ActionButton>
       <Dialog includeDataIds>
         <H2 vol={4} className={dialogClasses.title} data-title>
