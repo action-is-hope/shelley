@@ -26,6 +26,13 @@ import { classes as modalClasses } from "../Modal/modal.st.css";
 
 export type DialogClose = (close: () => void) => ReactElement;
 
+export type OverlayType =
+  | "modal"
+  | "popup"
+  | "tray"
+  | "fullscreen"
+  | "fullscreenTakeover";
+
 /**
  * We cannot support onClickOutside and onEscapeKey as these
  * are surpressed by react-aria. However we have access to
@@ -56,12 +63,12 @@ export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
    * The type of Dialog that should be rendered.
    * @default 'modal'
    */
-  type?: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
+  type?: OverlayType;
   /**
    * The type of Dialog that should be rendered when on a
    * mobile device.
    */
-  mobileType?: "modal" | "tray" | "fullscreen" | "fullscreenTakeover";
+  // mobileType?: "modal" | "tray" | "fullscreen" | "fullscreenTakeover";
   /**
    * The selector of the element that the Dialog should render inside of.
    * @default 'body'
@@ -118,9 +125,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     isDismissable = false,
     portalSelector = "body",
     isKeyboardDismissDisabled = false,
-    // modalProps,
     focusOnProps,
-    // ...positionProps
     placement,
     containerPadding,
     offset,
@@ -150,13 +155,12 @@ function DialogTrigger(props: DialogTriggerProps) {
   const [trigger, content] = children as [ReactElement, DialogClose];
 
   // On small devices, show a modal or tray instead of a popup.
+  // handle cases where desktop popups need a close button for the mobile modal view
   // const isMobile = useIsMobileDevice();
   // if (isMobile) {
-  //   // handle cases where desktop popups need a close button for the mobile modal view
   //   if (type !== 'modal' && mobileType === 'modal') {
   //     isDismissable = true;
   //   }
-
   //   type = mobileType;
   // }
 
@@ -305,7 +309,7 @@ interface PopupTriggerProps
   targetRef?: React.RefObject<HTMLElement>;
   triggerRef: React.RefObject<HTMLElement>;
   isKeyboardDismissDisabled?: boolean;
-  overlayProps: any;
+  overlayProps: React.HtmlHTMLAttributes<HTMLDivElement>;
   /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
   focusOnProps?: TriggerFocusOnProps;
   dataId?: string;
@@ -342,7 +346,7 @@ function PopupTrigger({
       isOpen={state.isOpen}
       onClose={() => state.close()}
       focusOnProps={focusOnProps}
-      data-id={`${dataId}--popup`}
+      data-id={dataId ? `${dataId}--popup` : undefined}
     >
       {typeof content === "function" ? content(() => state.close()) : content}
     </Popup>
@@ -376,7 +380,7 @@ function PopupTrigger({
  */
 
 export interface DialogTriggerBase {
-  type: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
+  type: OverlayType;
   state: OverlayTriggerState;
   isDismissable?: boolean;
   dialogProps?: DialogProps;

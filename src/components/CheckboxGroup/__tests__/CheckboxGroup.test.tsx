@@ -28,10 +28,14 @@ describe("Checkbox", () => {
       .create(
         <SSRProvider>
           <CheckboxGroup id="cbg1" label="Field Label">
-            <label htmlFor="cb1">Label1</label>
-            <Checkbox id="cb1" value="cb1" />
-            <label htmlFor="cb2">Label2</label>
-            <Checkbox id="cb2" value="cb2" />
+            <label htmlFor="cb1" id="lb1">
+              Label1
+            </label>
+            <Checkbox id="cb1" value="cb1" aria-labelledby="lb1" />
+            <label htmlFor="cb2" id="lb2">
+              Label2
+            </label>
+            <Checkbox id="cb2" value="cb2" aria-labelledby="lb2" />
           </CheckboxGroup>
         </SSRProvider>
       )

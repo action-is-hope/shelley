@@ -11,8 +11,10 @@ describe("Checkbox", () => {
     const tree = renderer
       .create(
         <>
-          <label htmlFor="test123"></label>
-          <Checkbox id="test123" />
+          <label id="test456" htmlFor="test123">
+            Label
+          </label>
+          <Checkbox id="test123" aria-labelledby="test456" />
         </>
       )
       .toJSON();

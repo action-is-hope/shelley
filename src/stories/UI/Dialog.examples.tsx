@@ -82,7 +82,7 @@ export const ModalAndPopup = (args: DialogTriggerProps) => {
       <DialogTrigger
         {...args}
         portalSelector="#portal"
-        modalProps={{ transition: "up" }}
+        transition="up"
         // isDismissable={true}
       >
         <Button>Publish</Button>

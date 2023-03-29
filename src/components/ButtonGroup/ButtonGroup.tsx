@@ -8,6 +8,7 @@ import React, {
   Ref,
 } from "react";
 import { mergeProps } from "react-aria";
+import type { ButtonProps } from "../Button/Button";
 import type { Accent, Volume, ButtonVariants } from "../types";
 /* = Style API. */
 import { st, classes } from "./buttonGroup.st.css";
@@ -63,7 +64,7 @@ const ButtonGroup = forwardRef(
           ? cloneElement(child, {
               ...mergeProps(
                 { isDisabled, tone, variant, vol },
-                { ...child.props }
+                { ...(child.props as ButtonProps) }
               ),
             })
           : child;

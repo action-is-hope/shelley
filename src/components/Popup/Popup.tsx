@@ -38,14 +38,12 @@ export const Popup = forwardRef(
     const {
       className: classNameProp,
       triggerRef,
-      // aria-overlay props.
       hideArrow,
       isOpen,
       isDismissable = true,
       isKeyboardDismissDisabled,
       onClose,
       shouldCloseOnBlur,
-      // Position props
       placement: placementProp,
       containerPadding,
       offset,

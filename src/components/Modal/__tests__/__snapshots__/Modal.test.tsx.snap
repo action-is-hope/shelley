@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly with classname 1`] = `
+<div
+  className="modal__Test__root modal__Test---variant-5-fixed modal-classname-test"
+  data-id="modal-test"
+>
+  <div
+    data-focus-guard={true}
+    style={
+      {
+        "height": "0px",
+        "left": "1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "fixed",
+        "top": "1px",
+        "width": "1px",
+      }
+    }
+    tabIndex={-1}
+  />
+  <div
+    data-focus-lock-disabled="disabled"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onScrollCapture={[Function]}
+    onTouchMoveCapture={[Function]}
+    onWheelCapture={[Function]}
+  >
+    <div
+      aria-hidden="true"
+      className="modal__Test__backdrop"
+      data-id="modal-test-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="modal__Test__content"
+      data-id="modal-test-content"
+      onMouseDown={[Function]}
+    >
+      <div>
+        Content
+      </div>
+    </div>
+  </div>
+  <div
+    data-focus-guard={true}
+    style={
+      {
+        "height": "0px",
+        "left": "1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "fixed",
+        "top": "1px",
+        "width": "1px",
+      }
+    }
+    tabIndex={-1}
+  />
+</div>
+`;

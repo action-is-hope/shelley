@@ -59,8 +59,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
    * may want to alert the user they need to a make a choice on dismiss instead
    * of closing the dialog.
    */
-  onDismiss?: (arg: any) => void;
-  // onDismiss?(event: React.MouseEvent | React.KeyboardEvent): void;
+  onDismiss?: () => void;
   /**
    * The selector of the element that the menu should render inside of.
    * @default 'body'
@@ -110,10 +109,10 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
   }, [initialFocusRef]);
 
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    !disableBackdropClick && onDismiss(event);
+    !disableBackdropClick && onDismiss();
     if (mouseDownTarget.current === event.target) {
       event.stopPropagation();
-      !disableBackdropClick && onDismiss(event);
+      !disableBackdropClick && onDismiss();
     }
   };
 
@@ -137,7 +136,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     noIsolation: !transitionProps.unmountOnExit,
     ...focusOnPropsInput,
     onEscapeKey: (event: Event) => {
-      !disableEscapeKey && onDismiss(event);
+      !disableEscapeKey && onDismiss();
       focusOnPropsInput?.onEscapeKey && focusOnPropsInput?.onEscapeKey(event);
     },
     onActivation: activateFocusLock,

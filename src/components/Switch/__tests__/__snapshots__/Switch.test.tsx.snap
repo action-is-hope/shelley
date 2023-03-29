@@ -4,6 +4,7 @@ exports[`Switch renders correctly with custom label 1`] = `
 [
   <label
     htmlFor="test123"
+    id="labelId"
   />,
   <span
     className="Switch__Test__root Switch__Test---vol-1-1"
@@ -12,6 +13,7 @@ exports[`Switch renders correctly with custom label 1`] = `
       className="Switch__Test__inputContainer"
     >
       <input
+        aria-labelledby="labelId"
         checked={false}
         className="Switch__Test__input"
         disabled={false}

@@ -2,7 +2,7 @@ import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { Modal } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
-import { ModalCustomTransition } from "./Modal.examples";
+import { ModalCustomTransition, BasicModal } from "./Modal.examples";
 
 <Meta
   title="Overlays/Modal"
@@ -39,6 +39,23 @@ without being able to 'wonder about' behind the backdrop etc.
 If you want a Modal with a Trigger then checkout [DialogTrigger](?path=/docs/overlays-dialogtrigger--a-basic-dialog-trigger) first. Modal is used internally by DialogTrigger, Modal props are exposed via `modalProps`. You might need your own Trigger at some point in which case you can use Modal as part of that if you wish.
 
 For partial screen takeovers where you might be splitting the screen and want things outside of the modal to remain accessible; use `shards` (an array of refs) from `focusOnProps` which will keep those elements inside the focus-lock. See [focus-on](#focus-on)
+
+<Story
+  name="Basic Modal"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  <Label inputControl={<input type="checkbox" />}>
+    Clicking me will prove the association
+  </Label>
+`,
+      },
+    },
+  }}
+>
+  {BasicModal.bind()}
+</Story>
 
 ## Content
 

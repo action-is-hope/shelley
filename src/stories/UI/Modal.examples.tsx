@@ -1,6 +1,47 @@
-import { Button, H2, ModalProps, Modal, TextField } from "../../indexLib";
+import {
+  Button,
+  H2,
+  ModalProps,
+  Modal,
+  TextField,
+  ActionButton,
+} from "../../indexLib";
 import { useState } from "react";
 import { classes as modalClasses } from "./modalExample.st.css";
+
+export const BasicModal = () => {
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  return (
+    <>
+      <ActionButton onPress={() => setOverlayOpen(!overlayOpen)}>
+        Toggle1
+      </ActionButton>
+      <Modal
+        isOpen={overlayOpen}
+        onDismiss={() => setOverlayOpen(false)}
+        transition={false}
+        data-id="modal-test"
+        className={"modal-classname-test"}
+        portalSelector="#portal"
+      >
+        <div
+          // aria-hidden={!overlayOpen}
+          style={{
+            transition: "transform 190ms",
+            // We need this in the DOM for the Modal transitions to work.
+            transform: overlayOpen ? `scale(1)` : `scale(1)`,
+          }}
+        >
+          <H2 vol={2} uppercase>
+            Block settings
+          </H2>
+          <TextField label="Modal field" />
+          <Button onPress={() => setOverlayOpen(false)}>Close</Button>
+        </div>
+      </Modal>
+    </>
+  );
+};
 
 export const ModalCustomTransition = (args: ModalProps) => {
   const [overlayOpen, setOverlayOpen] = useState(false);

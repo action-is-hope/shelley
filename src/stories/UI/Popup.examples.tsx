@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import { Popup, PopupProps, Button } from "../../indexLib";
+import { Popup, Button } from "../../indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
-export const SimplePopup = (args: PopupProps) => {
+export const SimplePopup = () => {
   const triggerRef = useRef(null);
   const overlayRef = useRef(null);
   const state = useOverlayTriggerState({});

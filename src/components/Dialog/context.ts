@@ -1,7 +1,8 @@
 import React, { HTMLAttributes } from "react";
+import type { OverlayType } from "./DialogTrigger";
 
 export interface DialogContextValue extends HTMLAttributes<HTMLElement> {
-  type: "modal" | "popup" | "tray" | "fullscreen" | "fullscreenTakeover";
+  type: OverlayType;
   isDismissable?: boolean;
   onClose: () => void;
 }
