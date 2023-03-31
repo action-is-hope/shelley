@@ -13,10 +13,9 @@ import {
 import { classes as dialog } from "../../components/Dialog/dialog.st.css";
 
 export const BasicDialogTrigger = (args: ModalProps) => {
-  const butttonRef = useRef(null);
   return (
     <DialogTrigger type="popup" {...args} portalSelector="#portal">
-      <ActionButton ref={butttonRef}>Disk Status</ActionButton>
+      <ActionButton>Disk Status</ActionButton>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
           c://
@@ -51,6 +50,43 @@ export const ContentExample = (args: ModalProps) => {
           <hr className={dialog.divider} />
           <P className={dialog.content} vol={2}>
             You have 5 items in your cart. Proceed to checkout?
+          </P>
+          <ButtonGroup className={dialog.buttonGroup}>
+            <Button variant="secondary" onPress={close}>
+              Cancel
+            </Button>
+            <Button variant="primary" onPress={close} data-autofocus>
+              Confirm
+            </Button>
+          </ButtonGroup>
+        </Dialog>
+      )}
+    </DialogTrigger>
+  );
+};
+
+export const ModalExample = () => {
+  return (
+    <DialogTrigger
+      type="modal"
+      // Defaults to body, set to false to render inline
+      portalSelector="#portal"
+      // react-focus-on props
+      focusOnProps={{}}
+      // Transition props from Modal
+      transition="up"
+      transitionProps={{}}
+    >
+      <ActionButton>Unlink</ActionButton>
+      {(close) => (
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            Unlinking email
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content} vol={2}>
+            This will unlink your email from your profile "TestUser". Are you
+            sure?
           </P>
           <ButtonGroup className={dialog.buttonGroup}>
             <Button variant="secondary" onPress={close}>
@@ -112,8 +148,8 @@ export const EventExample = (args: DialogTriggerProps) => {
       <DialogTrigger
         type="popup"
         placement="top"
-        onOpenChange={(isOpen) => setState(isOpen)}
         {...args}
+        onOpenChange={(isOpen) => setState(isOpen)}
       >
         <Button ref={targetRef}>Whispers</Button>
         <>

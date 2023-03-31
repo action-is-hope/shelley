@@ -84,6 +84,28 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
 );
 
 describe("Dialog Trigger", () => {
+  it("onOpenChange - popup", () => {
+    const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
+    cy.mount(
+      <BasicContentTrigger onOpenChange={onOpenChangeSpy} type="popup" />
+    );
+    cy.get(trigger).realClick();
+    cy.get("@onOpenChangeSpy").should("have.been.called");
+    cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
+    cy.realPress("Escape");
+    cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
+  });
+
+  it("onOpenChange - modal", () => {
+    const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
+    cy.mount(<BasicContentTrigger onOpenChange={onOpenChangeSpy} />);
+    cy.get(trigger).realClick();
+    cy.get("@onOpenChangeSpy").should("have.been.called");
+    cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
+    cy.realPress("Escape");
+    cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
+  });
+
   describe("Type", () => {
     describe("Popup", () => {
       it("renders type: popup - opens on trigger press, renders content", () => {
@@ -302,6 +324,15 @@ describe("Dialog Trigger", () => {
         cy.realPress("PageDown");
         cy.get(popup).should("not.exist");
       });
+    });
+
+    describe("Modal", () => {
+      // shards
+      // cy.mount(
+      //   <>
+      //     <DialogWithFocusableContent focusOnProps={{ scrollLock: false }} />
+      //   </>
+      // );
     });
 
     // popup isKeyboardDismissDisabled={true} - working isDismissable always on

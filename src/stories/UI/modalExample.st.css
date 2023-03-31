@@ -1,57 +1,85 @@
 @st-import Modal, [enter, enterActive, enterDone, exit, exitActive, content, backdrop] from "../../components/Modal/modal.st.css";
+@st-import Shelley from "../../styles/shelley/project.st.css";
 
-.myTransition {}
 
-.blurBackground [data-focus-on-hidden] {
-  opacity: .5;
-  filter: blur(2px);
-}
 
-/* Backdrop */
-Modal.myTransition.enter .backdrop {
-  background-color: violet;
-}
 
-Modal.myTransition.enterActive .backdrop {
-  background-color: yellow;
-}
 
-Modal.myTransition.enterDone .backdrop {
-  background-color: blue;
-}
 
-Modal.myTransition.exit .backdrop {
-  background-color: yellow;
-}
+@st-scope Shelley {
 
-Modal.myTransition.exitActive .backdrop {
-  background-color: violet;
-}
+  /* Backdrop - Any backdrop styles*/
+  Modal:transition(myTransition) .backdrop {}
 
-/* Content */
-Modal.myTransition.enter .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-}
+  /* Targeting the content container for the dialog transition. */
+  Modal:transition(myTransition).enter .content {
+    background-color: violet;
+    /* Initial start state styles */
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+  }
 
-Modal.myTransition.enterActive .content {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
+  Modal:transition(myTransition).enterActive .content {
+    background-color: yellow;
+    /* Transitioning to done state styles  */
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
 
-Modal.myTransition.enterDone .content {
-  transform: translateY(0);
-  opacity: 1;
-}
+  Modal:transition(myTransition).enterDone .content {
+    background-color: blue;
+    /* Done */
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-Modal.myTransition.exit .content {
-  transform: translateY(0);
-  opacity: 1;
-}
+  Modal:transition(myTransition).exit .content {
+    background-color: yellow;
+    /* Reverse direction - exit transiton start style */
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-Modal.myTransition.exitActive .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
+  Modal:transition(myTransition).exitActive .content {
+    background-color: violet;
+    /* Finishing state before removed from DOM. */
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  .shardExample {
+    height: 50vh;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40px 1fr 40px;
+    grid-template-areas:
+      "header header"
+        "content preview"
+        "content actions";
+  }
+
+  .shardExample > div {
+    padding: 0 30px
+  }
+
+  .shardExample > div:nth-child(2) {
+    padding: 30px
+  }
+
+  .modalExample {
+    -st-extends: Modal;
+    position: absolute;
+  }
+
+  .modalExample::backdrop {
+    background-color: #e12a8366;
+  }
+
+  .modalExample::content {
+    margin: 0
+  }
+
 }

@@ -3,22 +3,23 @@
 .root {
   -st-states:
     variant(string),
-    transition(enum(up, zoom));
+    transition(string);
 }
 
 .root {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.root:variant(fixed) {
-  position: fixed;
+  /*  */
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 2000;
+}
+
+.root:variant(fixed) {
+  position: fixed;
 }
 
 .backdrop {
@@ -59,6 +60,11 @@
 
 .exitActive {
   -st-global: '.exit-active'
+}
+
+.exitDone {
+  -st-global: '.exit-done';
+  display: none;
 }
 
 /* Background transition. */

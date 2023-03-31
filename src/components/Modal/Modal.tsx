@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import { FocusOn } from "react-focus-on";
 import { st, classes } from "./modal.st.css";
+import { mergeProps } from "react-aria";
 
 export function composeEventHandlers(
   theirHandler: React.MouseEventHandler<HTMLDivElement>,
@@ -18,7 +19,7 @@ export function composeEventHandlers(
   };
 }
 
-export type TransitionType = "up" | "zoom" | false;
+export type TransitionType = "up" | "zoom" | string | false;
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Controls whether the dialog is open or not. */
@@ -31,7 +32,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   disableBackdropClick?: boolean;
   /** Disables the EscapeKey dismiss */
   disableEscapeKey?: boolean;
-  /** Disables the FocusLock */
+  /** Disables the FocusLock - shortcut to focusOnProps */
   disableFocusLock?: boolean;
   /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
   focusOnProps?: Pick<
@@ -72,10 +73,10 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   transition?: TransitionType;
   /** Props for the internal `CSSTransition` component see - https://reactcommunity.org/react-transition-group/css-transition */
   transitionProps?: Omit<TransitionProps, "addEndListener">;
-  variant?: "fixed" | string;
+  variant?: "fixed" | string | false;
+  disableModalBackdropBlur?: boolean;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
-  // @todo allowPinchZoom?: boolean;
 }
 
 function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
@@ -90,12 +91,13 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     onBackdropClick = () => null,
     onDismiss = () => null,
     onMouseDown = () => null,
-    transitionProps: transitionPropsInput,
+    transitionProps: transitionPropsFromProps,
     variant = "fixed",
     transition = "zoom",
     disableFocusLock,
     disableEscapeKey,
     disableBackdropClick,
+    disableModalBackdropBlur,
     "data-id": dataId,
     // state,
     ...rest
@@ -120,10 +122,26 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     mouseDownTarget.current = event.target;
   };
 
-  const transitionProps = {
+  const transitionPropsDefault = {
     unmountOnExit: true,
-    ...transitionPropsInput,
+    ...transitionPropsFromProps,
+    onEntering: () => {
+      transitionPropsFromProps?.onEntering &&
+        transitionPropsFromProps?.onEntering();
+      !disableModalBackdropBlur &&
+        document.body.classList.add(classes.blurBackground);
+    },
+    onExiting: () => {
+      transitionPropsFromProps?.onExiting &&
+        transitionPropsFromProps?.onExiting();
+      !disableModalBackdropBlur &&
+        document.body.classList.remove(classes.blurBackground);
+    },
   };
+
+  const transitionProps = transitionPropsFromProps
+    ? mergeProps(transitionPropsDefault, transitionPropsFromProps)
+    : transitionPropsDefault;
 
   const focusOnProps = {
     focusLock: !disableFocusLock,
@@ -156,7 +174,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
           className={st(
             classes.root,
             {
-              variant,
+              variant: variant || undefined,
               transition: transition || undefined,
             },
             classNameProp
@@ -189,6 +207,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     </CSSTransition>
   );
   // If portalSelector then render inside portal elso render inline.
+  // @todo check element exists.
   return portalSelector
     ? createPortal(modal, document.querySelector(portalSelector) as HTMLElement)
     : modal;

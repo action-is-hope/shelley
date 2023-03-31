@@ -17,11 +17,11 @@
     z-index: 2000;
   } */
 
-  Modal:variant(fixed)::backdrop {
+  Modal::backdrop {
     background-color: var(--modal-backdrop);
   }
 
-  Modal:variant(fixed)::content {
+  Modal::content {
     margin: 5vh 8px 16px 8px;
     padding-bottom: 1px;
     /* Kicks in the inclusion of margin-bottom of the last item in the container. */

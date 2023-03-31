@@ -22,7 +22,6 @@ import { DialogContext } from "./context";
 import { useOverlayTrigger } from "@react-aria/overlays";
 import { Modal, TransitionType } from "../Modal/Modal";
 import { Popup } from "../Popup/Popup";
-import { classes as modalClasses } from "../Modal/modal.st.css";
 
 export type DialogClose = (close: () => void) => ReactElement;
 
@@ -113,6 +112,7 @@ export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
   transitionProps?: TriggerTransitionProps;
   // contentClassName & variant
   disableModalBackdropBlur?: boolean;
+  modalClassName?: string;
 }
 
 function DialogTrigger(props: DialogTriggerProps) {
@@ -136,6 +136,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     transition,
     transitionProps: transitionPropsFromProps,
     disableModalBackdropBlur = false,
+    modalClassName,
   } = props;
 
   const popupSpecificProps = {
@@ -206,6 +207,7 @@ function DialogTrigger(props: DialogTriggerProps) {
       <PopupTrigger
         {...popupSpecificProps}
         {...{
+          hideArrow,
           state,
           targetRef,
           triggerRef,
@@ -219,22 +221,12 @@ function DialogTrigger(props: DialogTriggerProps) {
           portalSelector,
         }}
         focusOnProps={focusOnProps}
-        // hideArrow={hideArrow}
       />
     );
   }
 
   const transitionPropsDefault = {
-    timeout: 190,
-    onEntering: () => {
-      !disableModalBackdropBlur &&
-        document.body.classList.add(modalClasses.blurBackground);
-    },
-    onExiting: () => {
-      !disableModalBackdropBlur &&
-        document.body.classList.remove(modalClasses.blurBackground);
-      onExiting();
-    },
+    onExiting: () => onExiting(),
     onExited: () => onExited(),
   };
 
@@ -249,6 +241,8 @@ function DialogTrigger(props: DialogTriggerProps) {
             onDismiss={() => state.close()}
             disableBackdropClick={!isDismissable}
             disableEscapeKey={isKeyboardDismissDisabled}
+            className={modalClassName}
+            variant={portalSelector ? "fixed" : false}
             transitionProps={
               transitionPropsFromProps
                 ? mergeProps(transitionPropsDefault, transitionPropsFromProps)
@@ -259,6 +253,7 @@ function DialogTrigger(props: DialogTriggerProps) {
               portalSelector,
               transition,
               focusOnProps,
+              disableModalBackdropBlur,
             }}
             data-id={dataId ? `${dataId}--modal` : undefined}
           >
@@ -314,6 +309,7 @@ interface PopupTriggerProps
   focusOnProps?: TriggerFocusOnProps;
   dataId?: string;
   portalSelector?: string | false;
+  hideArrow?: boolean;
 }
 
 function PopupTrigger({
@@ -328,7 +324,7 @@ function PopupTrigger({
   dataId,
   focusOnProps,
   portalSelector,
-  // hideArrow,
+  hideArrow,
   ...props
 }: PopupTriggerProps) {
   const triggerPropsWithRef = {
@@ -339,7 +335,7 @@ function PopupTrigger({
   const popup = (
     <Popup
       {...props}
-      // hideArrow={hideArrow}
+      hideArrow={hideArrow}
       triggerRef={targetRef || triggerRef}
       offset={20}
       {...overlayProps}
