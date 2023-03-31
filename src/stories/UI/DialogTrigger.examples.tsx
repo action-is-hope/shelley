@@ -111,13 +111,6 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
         {...args}
         portalSelector="#portal"
         targetRef={targetRef}
-        // offset={200}
-        // placement: "bottom start"
-        // placement={"bottom start"}
-        // isDismissable
-        // isKeyboardDismissDisabled={true}
-        // focusOnProps={{ onEscapeKey: () => console.log("HELLO") }}
-        // focusOnProps={{ autoFocus: false }}
       >
         <ActionButton>Trigger</ActionButton>
         <Dialog>
@@ -192,22 +185,26 @@ export const DialogTriggerCrossOffset = () => {
   );
 };
 
-export const EventExample = (args: DialogTriggerProps) => {
-  const targetRef = useRef(null);
+export const EventExample = () => {
   const [state, setState] = useState(false);
   return (
     <>
       <DialogTrigger
         type="popup"
         placement="top"
-        {...args}
         onOpenChange={(isOpen) => setState(isOpen)}
+        portalSelector="#portal"
       >
-        <Button ref={targetRef}>Whispers</Button>
-        <>
-          <H2>Whispers and DMs</H2>
-          <P>You have 0 new messages.</P>
-        </>
+        <Button>Whispers</Button>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            Whispers and DMs
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content} vol={2}>
+            You have 0 new messages.
+          </P>
+        </Dialog>
       </DialogTrigger>
 
       <P vol={1}>Current open state: {state.toString()}</P>

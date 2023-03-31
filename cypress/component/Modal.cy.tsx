@@ -45,9 +45,11 @@ describe("Basic Modal", () => {
 });
 
 // CSS Transitions
-// transition added and transition classes
-// timeout...
-//
+/**
+ * @todo:
+ * timeout, transition and transition classes
+ * onClickOutside
+ */
 describe("Isolation mode", () => {
   it("isolation is enabled", () => {
     cy.mount(

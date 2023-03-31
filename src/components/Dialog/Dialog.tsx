@@ -32,7 +32,7 @@ export interface DialogProps
   /** The contents of the Dialog. */
   children: ReactNode;
   /** The size of the Dialog. Only applies to "modal" type Dialogs. */
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "fullscreen";
   /** Whether the Dialog is dismissable. See the [examples](#examples) for more details. */
   isDismissable?: boolean;
   /** Handler that is called when the 'x' button of a dismissable Dialog is clicked. */
@@ -60,8 +60,6 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
     ...rest
   } = props;
 
-  // const stringFormatter = useLocalizedStringFormatter(intlMessages);
-
   const size = type === "popup" ? sizeProp || "small" : sizeProp || "large";
   const localRef = useRef(null);
 
@@ -76,12 +74,13 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
       className={st(classes.root, { size, isDismissable }, classNameProp)}
       ref={mergeRefs(ref, localRef)}
       data-id={includeDataIds ? "dialog" : undefined}
-      // TabIndex is set to -1 by useDialog, this interferes
-      // with react-focus-on auto-focusing. Adobe's FocusScope
-      // likely supports this.
+      /**
+       * TabIndex is set to -1 by useDialog, this interferes
+       * with react-focus-on auto-focusing. Adobe's FocusScope
+       * likely supports this.
+       */
       tabIndex={undefined}
       // Adobe libs don't add set aria-modal="true" they use aria-hidden as do we.
-      // Docs suggest if close mechanisum exists inside the dialog then set to true which would depend on not using shards.
       {...rest}
     >
       <div className={classes.dialogGrid}>
@@ -100,7 +99,6 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
         {isDismissable && (
           <ActionButton
             isQuiet
-            // aria-label={stringFormatter.format("dismiss")}
             className={classes.closeButton}
             aria-label={dismissLabel}
             onPress={onDismiss}

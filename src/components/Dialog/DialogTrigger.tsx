@@ -28,7 +28,6 @@ export type DialogClose = (close: () => void) => ReactElement;
 export type OverlayType =
   | "modal"
   | "popup"
-  | "tray"
   | "fullscreen"
   | "fullscreenTakeover";
 
@@ -192,11 +191,7 @@ function DialogTrigger(props: DialogTriggerProps) {
   // eslint-disable-next-line arrow-body-style
   useEffect(() => {
     return () => {
-      if (
-        (wasOpen.current || isExiting.current) &&
-        type !== "popup" &&
-        type !== "tray"
-      ) {
+      if ((wasOpen.current || isExiting.current) && type !== "popup") {
         console.warn(
           "A DialogTrigger unmounted while open. This is likely due to being placed within a trigger that unmounts or inside a conditional. Consider using a DialogContainer instead."
         );
@@ -210,7 +205,6 @@ function DialogTrigger(props: DialogTriggerProps) {
       <PopupTrigger
         {...popupSpecificProps}
         {...{
-          // hideArrow,
           state,
           targetRef,
           triggerRef,

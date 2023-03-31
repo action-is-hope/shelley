@@ -1,4 +1,4 @@
-/* button.st.css */
+/* actionButton.st.css */
 
 /* = Default project and vars */
 @st-import Default from "./project.st.css";
@@ -29,7 +29,7 @@
     uppercase land. */
     /* letter-spacing: .034em; */
     /* = Weight choice will likely factor the font-smoothing used. */
-    font-weight: 500;
+    font-weight: 400;
     /* Using em values allowing the button to 'grow' insync with font-size. */
     padding: 0 1em;
     /* = Caters postioned children, e.g focus pseudo element. Also 
@@ -37,15 +37,11 @@
     position: relative;
     /* = Effects - 'all' --maybe-- IS too much... project var perhaps. */
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    /* = Material defo popularised uppercase buttons, we like it but readability 
-    takes a hit and be careful in some langauges such as Greek. */
-    /* text-transform: uppercase; */
-
-    background-color: transparent;
-    border-width: 1px;
-    border-style: solid;
-    border-color: grey;
-    color: inherit
+    /* = Opininated: Some disagree with setting cursor: pointer (the hand) on 
+    interactive elements arguing system controls don't do this. Meh, for 
+    us it offers an additional cue to interaction which we feel asserts 
+    confidence. Many sites do this so perhaps it's expected by many users. */
+    cursor: pointer;
   }
 
   ActionButton:isQuiet {
@@ -86,11 +82,11 @@
 
   /* = ActionButton CSS STATES PSEUDO */
   /* = Disabled */
-  ActionButton:disabled,
-  ActionButton:disabled:hover,
-  ActionButton:disabled:focus,
-  ActionButton:disabled:active,
-  ActionButton:disabled:active:hover {
+  ActionButton:isDisabled,
+  ActionButton:isDisabled:hover,
+  ActionButton:isDisabled:focus,
+  ActionButton:isDisabled:active,
+  ActionButton:isDisabled:active:hover {
     opacity: 0.5
   }
 
@@ -115,8 +111,6 @@
         max 0.71em, lineHeight 1);
     padding-top: 0.15em;
     padding-bottom: 0.15em;
-
-
   }
 
   /* = Volume 3 */

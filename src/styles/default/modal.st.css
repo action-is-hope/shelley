@@ -1,39 +1,23 @@
 /* modal.st.css */
-@st-import Default, [--modal-background, --modal-backdrop] from "./project.st.css";
+@st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
 @st-import Modal, [enterDone] from "../../components/Modal/modal.st.css";
 
 @st-scope Default {
 
-  Modal::backdrop {}
-
-  Modal {}
-
-  /* 
-  Modal:variant(1) {
-    // Invokes some extra resources to handle rendering this over other transformed items, in this case the board.
-    transform: translateZ(0);
-    bottom: initial;
-    height: 100%;
-    z-index: 2000;
-  } */
-
   Modal::backdrop {
-    background-color: var(--modal-backdrop);
+    background-color: var(--background-color-modal-backdrop);
   }
 
-  Modal::content {
-    margin: 5vh 8px 16px 8px;
-    padding-bottom: 1px;
-    /* Kicks in the inclusion of margin-bottom of the last item in the container. */
-    max-height: 85vh;
-    background-color: var(--modal-background);
-  }
+  /* Modal::content {} */
 
   /* Add your own variants */
-
+  /* Modal:transition(myTransition) {} */
 
   /** 
-   * Overriding transiton
+   * Add your own variants. See docs.
+   * Modal:transition(myTransition) {}
+
+   * Overriding a transiton:
    * Targeting a phase of the transiton can be done by importing
    * the phases (enterDone etc) from modal.st.css
    * Modal:transition(up).enterDone {}

@@ -2,7 +2,7 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
-  -st-named: --color-background-item-hover;
+  -st-named: --background-color-item-hover;
 }
 
 /* = Root Component */
@@ -17,6 +17,6 @@
 
   ListBoxOption:isFocused,
   ListBoxOption:isHovered {
-    background-color: var(--color-background-item-hover);
+    background-color: var(--background-color-item-hover);
   }
 }

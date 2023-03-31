@@ -8,6 +8,7 @@
     tone(number),
     variant(string),
     vol(number),
+    isFocusVisible,
     isPressed,
     isDisabled;
 }
@@ -20,6 +21,12 @@
 
 .root,
 .root:visited {
+  /* = Local vars. */
+  --bg-color: transparent;
+  --border-color: transparent;
+  --text-color: inherit;
+  --border-width: 1px;
+  --border-radius: 4px;
   display: inline-flex;
   justify-content: space-between;
   /* = Explicitly set font-family else it will default to system style. */
@@ -29,8 +36,11 @@
   /* = Persist border to maintain alignment should you be using borders as 
     part of additonal visual states. */
   border-style: solid;
-  border-width: 1px;
-  border-radius: 4px;
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  border-color: var(--border-color);
+  color: var(--text-color);
+  background-color: var(--bg-color);
   /**
    * = Opininated: Some disagree with setting cursor: pointer (the hand) on 
    * interactive elements arguing system controls don't do this. Meh, for 
@@ -40,18 +50,6 @@
   cursor: pointer;
   /* = Horizontal alignment. */
   justify-content: center;
-
-  /* = Colour variables and associated properties. */
-  --bg-color: transparent;
-  --border-color: transparent;
-  --text-color: inherit;
-
-  /* = Set the like for like variable but -accent is special as we use 
-    it to assign the colour index to the properties as we have used them
-    in our variants. */
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  border-color: var(--border-color);
   /* = Safari spacing issue with button groups MacOs and IOS. */
   margin: 0;
   text-decoration: none;

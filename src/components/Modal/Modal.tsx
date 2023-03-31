@@ -99,7 +99,6 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     disableBackdropClick,
     disableModalBackdropBlur,
     "data-id": dataId,
-    // state,
     ...rest
   } = props;
   const mouseDownTarget = useRef<EventTarget | null>(null);
@@ -160,7 +159,6 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
       focusOnPropsInput?.onEscapeKey && focusOnPropsInput?.onEscapeKey(event);
     },
     onActivation: activateFocusLock,
-    // onClickOutside: () => console.log("works - yes"),
   };
 
   const nodeRef = useRef(null);

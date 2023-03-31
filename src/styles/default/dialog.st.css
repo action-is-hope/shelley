@@ -1,29 +1,20 @@
 /* = Project and vars */
-@st-import Default, [--color-error] from "./project.st.css";
+@st-import Default, [
+  --spacing-unit,
+  --background-color-dialog,
+  --color-dialog] from "./project.st.css";
 /* = Component API */
 @st-import Dialog from "../../components/Dialog/dialog.st.css";
-
-@st-import Popup from "../../components/Popup/popup.st.css";
-
 
 @st-scope Default {
 
   Dialog {
-    transition: color 0.2s;
-
-    /* Popup */
-    /* background-color: modal; */
-    /* border: 1px solid grey; */
-    /* background: #111; */
-    /* color: #fff; */
+    background-color: var(--background-color-dialog);
+    color: var(--color-dialog);
   }
 
   Dialog::content {
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin-top: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 2);
   }
-
-
-  Popup {}
-
 }

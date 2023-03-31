@@ -7,7 +7,7 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
-  -st-named: --color-background-1;
+  -st-named: --background-color-main;
 }
 
 /* = Components */
@@ -20,6 +20,6 @@
 @st-scope Shelley {
 
   ListBox {
-    background: var(--color-background-1);
+    background: var(--background-color-main);
   }
 }

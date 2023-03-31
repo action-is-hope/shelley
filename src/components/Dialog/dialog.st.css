@@ -2,7 +2,7 @@
 
 .root {
   -st-states:
-    size(enum(small, medium, large)),
+    size(enum(small, medium, large, fullscreen)),
     isDismissable;
   --dialog-mobile-margin-x: 36px;
   --dialog-padding-x: 40px;
@@ -11,6 +11,7 @@
   --dialog-small-width: 400px;
   --dialog-medium-width: 480px;
   --dialog-large-width: 640px;
+  --dialog-fullscreen-width: 100%;
 }
 
 .dialogGrid {}
@@ -28,6 +29,10 @@
   width: calc(100vw - var(--dialog-mobile-margin-x));
 }
 
+.root:size(fullscreen) {
+  height: calc(100vh - var(--dialog-mobile-margin-x));
+}
+
 @media screen and (min-width: 701px) {
   .root:size(small) {
     width: var(--dialog-small-width);
@@ -40,6 +45,7 @@
   .root:size(large) {
     width: var(--dialog-large-width);
   }
+
 }
 
 
@@ -127,7 +133,6 @@
 
 .closeButton {
   grid-area: closeButton;
-  /* align-self: center; */
   /* place-self: flex-start end; */
   place-self: center center;
 }
@@ -157,24 +162,7 @@ hr.divider {
   grid-area: buttonGroup;
 }
 
-
-/* .popup {
-  background-color;
-  tip
-} */
-
-/* popup.isOpen {
-    visibility: visible;
-    opacity: .9999;
-    pointer-events: auto;
-    transition-delay: 0s;
-  } 
-*/
-
 .hero {
-  height: var(--spectrum-global-dimension-size-1600);
-  border-top-left-radius: var(--spectrum-dialog-border-radius, var(--spectrum-global-dimension-size-50));
-  border-top-right-radius: var(--spectrum-dialog-border-radius, var(--spectrum-global-dimension-size-50));
   background-position: 50%;
   background-size: cover;
   grid-area: hero;

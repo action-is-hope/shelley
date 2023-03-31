@@ -40,6 +40,11 @@
     /* = Material defo popularised uppercase buttons, we like it but readability 
     takes a hit and be careful in some langauges such as Greek. */
     text-transform: uppercase;
+    /* = Opininated: Some disagree with setting cursor: pointer (the hand) on 
+    interactive elements arguing system controls don't do this. Meh, for 
+    us it offers an additional cue to interaction which we feel asserts 
+    confidence. Many sites do this so perhaps it's expected by many users. */
+    cursor: pointer;
   }
 
   /* = Inner <span> */
@@ -73,21 +78,13 @@
     border-radius: 4px;
   }
 
-  Button:focus::after {
+  Button:isFocusVisible::after {
     -st-mixin: pseudoFocusVisible;
   }
 
 
   /* = Button CSS STATES PSEUDO */
   /* = Disabled */
-  Button:disabled,
-  Button:disabled:hover,
-  Button:disabled:focus,
-  Button:disabled:active,
-  Button:disabled:active:hover {
-    opacity: 0.5
-  }
-
   Button:isDisabled,
   Button:isDisabled:hover,
   Button:isDisabled:focus,

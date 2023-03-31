@@ -1,18 +1,22 @@
 /* popup.st.css */
 
-@st-import Default from "./project.st.css";
+@st-import Default, [
+  --color-popup,
+  --background-color-popup,
+  --border-width-popup,
+  --border-color-popup] from "./project.st.css";
 @st-import Popup from "../../components/Popup/popup.st.css";
 
 @st-scope Default {
   Popup {
-    /* Breaks tests... figure out more robust tests... */
-    /* border: 1px solid grey; */
-    background-color: #000;
+    border: var(--border-width-popup) solid var(--border-color-popup);
+    background-color: var(--background-color-popup);
+    color: var(--color-popup);
   }
 
   Popup::arrow {
-    fill: black;
-    stroke-width: 1px;
-    stroke: grey;
+    fill: var(--background-color-popup);
+    stroke-width: var(--border-width-popup);
+    stroke: var(--border-color-popup);
   }
 }

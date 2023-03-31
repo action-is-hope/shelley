@@ -1,4 +1,4 @@
-/* popup.st.css CSS API */
+/* popup.st.css */
 @namespace "Popup";
 
 .root {}
@@ -6,7 +6,6 @@
 .list {}
 
 .arrow {
-  /* -st-states: placement(enum(top, bottom, left, right)); */
   -st-states: placement(string);
   position: absolute;
 
@@ -36,8 +35,3 @@
   rotate: 270deg;
   margin-top: -6px;
 }
-
-/* .spectrum-popup--bottom_6115b8 .spectrum-popup-tip_6115b8 {
-  bottom: 100%;
-  transform: scaleY(-1);
-} */

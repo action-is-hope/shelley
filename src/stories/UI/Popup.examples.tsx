@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Popup, Button } from "../../indexLib";
+import { Popup, ActionButton, Dialog } from "../../indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
@@ -17,26 +17,27 @@ export const SimplePopup = () => {
   );
 
   return (
-    <>
+    <div>
       {/* Whatever you use as a trigger will need an onPress prop... */}
-      <Button
+      <ActionButton
         id="test"
         {...triggerProps}
         ref={triggerRef}
-        disabled={state.isOpen}
+        isDisabled={state.isOpen}
       >
         Click me
-      </Button>
+      </ActionButton>
+
       <Popup
         {...overlayProps}
-        // {...args}
         isOpen={state.isOpen}
         onClose={() => state.close()}
+        offset={8}
         ref={overlayRef}
         triggerRef={triggerRef}
       >
-        Children
+        <Dialog size="small">Children</Dialog>
       </Popup>
-    </>
+    </div>
   );
 };

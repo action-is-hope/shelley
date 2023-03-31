@@ -6,9 +6,10 @@ import type { AriaButtonProps } from "@react-types/button";
 /* Internal */
 import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
 import type { MergeElementProps } from "../utils";
+import { useFocusRing } from "react-aria";
+import { mergeRefs, mergeProps } from "@react-aria/utils";
 /* Style API */
 import { st, classes } from "./button.st.css";
-import { mergeRefs } from "@react-aria/utils";
 
 /**
  * Leveraging Adobes 'useButton' to enable use with their hooks.
@@ -115,6 +116,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     },
     localRef as React.RefObject<HTMLElement>
   );
+  const { isFocusVisible, focusProps } = useFocusRing();
 
   const className = st(
     classes.root,
@@ -124,6 +126,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       tone: tone !== false ? tone : undefined,
       variant: variant !== false ? variant : undefined,
       vol: vol !== false ? vol : undefined,
+      isFocusVisible,
       isPressed,
       isDisabled,
     },
@@ -144,7 +147,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     As || "button",
     {
       ref: mergeRefs(localRef, ref),
-      ...buttonProps,
+      ...mergeProps(buttonProps, focusProps),
       className,
       ...rest,
     },
