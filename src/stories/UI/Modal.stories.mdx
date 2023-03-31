@@ -33,7 +33,7 @@ Modal provides the structure for a Modal including `backdrop` and `content` cont
 transitions and focus locks required to keep a user focused inside active dialogs/areas
 without being able to 'wonder about' behind the backdrop with the keyboard.
 
-Modal is used and rendered internally by [DialogTrigger](?path=/docs/overlays-dialogtrigger--a-basic-dialog-trigger); so check that out if you haven't already, some of the api is exposed which is described more below.
+Modal is used and rendered internally by [DialogTrigger](?path=/docs/overlays-dialogtrigger--a-dialog-trigger); so check that out if you haven't already, some of the api is exposed which is described more below.
 
 ## Example
 
@@ -292,7 +292,7 @@ return (
       <DialogTrigger
         // Renders inline and internally turns off position: fixed
         portalSelector={false}
-        // Add a modal class so you can position it.
+        // Add a modal class so we can position it.
         modalClassName={modalClasses.modalExample}
         // Set the shards
         focusOnProps={{ shards: shards ? [preview] : [] }}

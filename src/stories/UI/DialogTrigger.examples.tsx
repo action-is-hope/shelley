@@ -109,13 +109,9 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
       <DialogTrigger
         type="popup"
         {...args}
-        // portalSelector="#portal"
-        portalSelector={false}
-        // targetRef={targetRef}
-        // targ
-        // popupProps={{
-        //   placement: "bottom start"
-        // }}
+        portalSelector="#portal"
+        targetRef={targetRef}
+        // offset={200}
         // placement: "bottom start"
         // placement={"bottom start"}
         // isDismissable
@@ -123,12 +119,16 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
         // focusOnProps={{ onEscapeKey: () => console.log("HELLO") }}
         // focusOnProps={{ autoFocus: false }}
       >
-        <Button>Trigger</Button>
-        <div className="content">
-          <P>This is a popup anchored to the span.</P>
-          {/* <Button data-autofocus>Hi1</Button>
-          <Button>Hi</Button> */}
-        </div>
+        <ActionButton>Trigger</ActionButton>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            Anchor
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content} vol={2}>
+            This is a popup anchored to the span.
+          </P>
+        </Dialog>
       </DialogTrigger>
 
       <div style={{ marginTop: 80 }}>
@@ -137,6 +137,58 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
         </P>
       </div>
     </>
+  );
+};
+
+export const DialogTriggerPlacement = () => {
+  return (
+    <DialogTrigger placement="right top" type="popup" portalSelector="#portal">
+      <ActionButton>Trigger</ActionButton>
+      <Dialog>
+        <H2 vol={4} className={dialog.title} data-title>
+          Placement
+        </H2>
+        <hr className={dialog.divider} />
+        <P className={dialog.content} vol={2}>
+          This is a popover placed to the right of its trigger and offset so the
+          arrow is at the top of the dialog.
+        </P>
+      </Dialog>
+    </DialogTrigger>
+  );
+};
+
+export const DialogTriggerOffset = () => {
+  return (
+    <DialogTrigger offset={50} type="popup" portalSelector="#portal">
+      <ActionButton>Trigger</ActionButton>
+      <Dialog>
+        <H2 vol={4} className={dialog.title} data-title>
+          Offset
+        </H2>
+        <hr className={dialog.divider} />
+        <P className={dialog.content} vol={2}>
+          Offset by 50px, 16px is default.
+        </P>
+      </Dialog>
+    </DialogTrigger>
+  );
+};
+
+export const DialogTriggerCrossOffset = () => {
+  return (
+    <DialogTrigger crossOffset={100} type="popup" portalSelector="#portal">
+      <ActionButton>Trigger</ActionButton>
+      <Dialog>
+        <H2 vol={4} className={dialog.title} data-title>
+          Cross offset
+        </H2>
+        <hr className={dialog.divider} />
+        <P className={dialog.content} vol={2}>
+          Cross offset by 100px.
+        </P>
+      </Dialog>
+    </DialogTrigger>
   );
 };
 

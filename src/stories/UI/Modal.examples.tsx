@@ -8,7 +8,6 @@ import {
   TextField,
   ActionButton,
   DialogTrigger,
-  DialogTriggerProps,
   Switch,
 } from "../../indexLib";
 import { useState, useRef } from "react";
@@ -128,7 +127,7 @@ export const ShardExample = () => {
         <DialogTrigger
           // Renders inline and internally turns off position: fixed
           portalSelector={false}
-          // Add a modal class so you can position it.
+          // Add a modal class so we can position it.
           modalClassName={modalClasses.modalExample}
           // Set the shards
           focusOnProps={{ shards: shards ? [preview] : [] }}

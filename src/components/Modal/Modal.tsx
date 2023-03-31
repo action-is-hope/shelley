@@ -126,13 +126,15 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     unmountOnExit: true,
     ...transitionPropsFromProps,
     onEntering: () => {
-      transitionPropsFromProps?.onEntering &&
+      /* eslint-disable  @typescript-eslint/no-unsafe-call */
+      typeof transitionPropsFromProps?.onEntering === "function" &&
         transitionPropsFromProps?.onEntering();
       !disableModalBackdropBlur &&
         document.body.classList.add(classes.blurBackground);
     },
     onExiting: () => {
-      transitionPropsFromProps?.onExiting &&
+      /* eslint-disable  @typescript-eslint/no-unsafe-call */
+      typeof transitionPropsFromProps?.onExiting === "function" &&
         transitionPropsFromProps?.onExiting();
       !disableModalBackdropBlur &&
         document.body.classList.remove(classes.blurBackground);

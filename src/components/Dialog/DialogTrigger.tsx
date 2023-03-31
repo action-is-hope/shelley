@@ -128,7 +128,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     focusOnProps,
     placement,
     containerPadding,
-    offset,
+    offset = 16,
     crossOffset,
     shouldFlip,
     shouldCloseOnBlur,
@@ -157,6 +157,9 @@ function DialogTrigger(props: DialogTriggerProps) {
 
   // On small devices, show a modal or tray instead of a popup.
   // handle cases where desktop popups need a close button for the mobile modal view
+
+  // Note that popups are automatically rendered as modals on mobile by default. See the mobile type option for more information.
+
   // const isMobile = useIsMobileDevice();
   // if (isMobile) {
   //   if (type !== 'modal' && mobileType === 'modal') {
@@ -207,7 +210,7 @@ function DialogTrigger(props: DialogTriggerProps) {
       <PopupTrigger
         {...popupSpecificProps}
         {...{
-          hideArrow,
+          // hideArrow,
           state,
           targetRef,
           triggerRef,
@@ -324,7 +327,6 @@ function PopupTrigger({
   dataId,
   focusOnProps,
   portalSelector,
-  hideArrow,
   ...props
 }: PopupTriggerProps) {
   const triggerPropsWithRef = {
@@ -335,9 +337,7 @@ function PopupTrigger({
   const popup = (
     <Popup
       {...props}
-      hideArrow={hideArrow}
       triggerRef={targetRef || triggerRef}
-      offset={20}
       {...overlayProps}
       isOpen={state.isOpen}
       onClose={() => state.close()}

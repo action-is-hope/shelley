@@ -5,9 +5,12 @@ import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
 import {
   BasicDialogTrigger,
   ContentExample,
-  DialogTriggerTargetRef,
-  EventExample,
   ModalExample,
+  DialogTriggerTargetRef,
+  DialogTriggerPlacement,
+  DialogTriggerOffset,
+  DialogTriggerCrossOffset,
+  EventExample,
 } from "./DialogTrigger.examples";
 
 <Meta
@@ -37,7 +40,7 @@ DialogTrigger serves as a wrapper around a Dialog and its associated trigger, li
 ## Example
 
 <Story
-  name="a) Basic DialogTrigger"
+  name="a) DialogTrigger"
   parameters={{
     docs: {
       source: {
@@ -68,7 +71,7 @@ import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialo
   {BasicDialogTrigger.bind()}
 </Story>
 
-<Source language="tsx" id="overlays-dialogtrigger--a-basic-dialog-trigger" />
+<Source language="tsx" id="overlays-dialogtrigger--a-dialog-trigger" />
 
 ## Content
 
@@ -136,11 +139,7 @@ By providing a type prop, you can specify the type of Dialog that is rendered by
 
 Internally DialogExample will either render a Modal or a Popup.
 
-### Focus On
-
-Modal and Popup use [react-focus-on](https://github.com/theKashey/react-focus-on) internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Setting `scrollLock` to false is more useful on a Popup for instance; `shards` can be useful if working with partial screen takeovers and such.
-
-## Modal
+### Modal
 
 Modal Dialogs create an backdrop that blocks access to the underlying user interface until the Dialog is closed. Focus is trapped inside the Modal as per the accessibility guidelines laid out by W3C.
 
@@ -204,70 +203,98 @@ Sizing options can be found on the Dialog page.
 
 <Source language="tsx" id="overlays-dialogtrigger--c-modal" />
 
-### Transitions
+#### Transitions
 
-Transition props are available from Modal and can be overridden in the same way. Use `transition` to choose the style of transition. To create a custom one set `transition` to `false`, provide a `modalClassName` and add your styles for the transition to that, see [Modal transition docs](?path=/docs/overlays-modal--transtions#transitions).
+Use `transition` to choose the style of transition e.g `zoom`. To add custom transitions to your theme see [Modal transition docs](?path=/docs/overlays-modal--transtions#transitions).
 
-### Focus-on: Shards
+#### Focus-on
 
-A focus-on feature useful for certain usecases where perhaps you want to partially lock the screen whilst allowing users access certan areas OUTSIDE of the dialog.
+Modal and Popup use [react-focus-on](https://github.com/theKashey/react-focus-on) internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Setting `scrollLock` to false is more useful on a Popup for instance; `shards` can be useful if working with partial screen takeovers and such.
 
-Take the following example; we have a CMS editor page, the left hand panel is for editing the content blocks and the right hand panel is a preview complete with controls to change viewport size etc and general 'scrollyness' to see if the content looks sweet.
-//link to shard example?
+See [Modal > Focus-on: shards](?path=/docs/overlays-modal--c-focus-on-shards#shards) for a shard example.
 
 ### Popup
 
-If a Dialog without an underlay is needed, consider using a Popup Dialog. See Dialog placement for how you can customise the positioning.
+If a Dialog without an underlay is needed, consider using a Popup Dialog. Since they do not take over the user interface like Modal Dialogs a variety of placement options are supported:
 
-{/_ Note that popups are automatically rendered as modals on mobile by default. See the mobile type option for more information. _/}
+#### Positioning - Anchor
 
-## Positioning
+By default, popups anchor themselves to their associated trigger. This can be overridden by providing a separate ref to the `targetRef` prop.
 
 <Story
-  name="c) Positioning"
+  name="c) Positioning - anchor"
   parameters={{
     docs: {
       source: {
         code: dedent`
-  const targetRef = useRef(null);
+  const targetRef = useRef(null);\n
   return (
     <>
       <DialogTrigger type="popup" targetRef={targetRef}>
-        <Button>Trigger</Button>
-        <div className="content">
-          <P>This is a popup anchored to the span.</P>
-        </div>
+        <ActionButton>Trigger</ActionButton>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            Heading
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content} vol={2}>
+            This is a popup anchored to the span.
+          </P>
+        </Dialog>
       </DialogTrigger>\n
       <div style={{ marginTop: 80 }}>
         <P vol={1}>
-          <span ref={targetRef}>Popup appears over here</span>
+          <span ref={targetRef}>popup appears over here</span>
         </P>
       </div>
     </>
   );
-};
 `,
       },
     },
   }}
-  decorators={[
-    (Story) => (
-      <StoryCenteredInline>
-        <Story />
-      </StoryCenteredInline>
-    ),
-  ]}
 >
-  {DialogTriggerTargetRef.bind()}
+  <StoryCenteredInline>
+    <DialogTriggerTargetRef />
+  </StoryCenteredInline>
 </Story>
 
-<Source language="tsx" id="overlays-dialogtrigger--c-positioning" />
+<Source language="tsx" id="overlays-dialogtrigger--c-positioning-anchor" />
 
-### Placement
+#### Positioning - Placement
 
 The popup's placement with respect to its anchor element can be adjusted using the placement prop. See the props table below for a full list of available placement combinations.
 
-{/_ Example _/}
+<Story
+  name="d) Positioning - placement"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger placement="right top" type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Heading
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      This is a popover placed to the right of its trigger and offset so the
+      arrow is at the top of the dialog.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerPlacement />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--d-positioning-placement" />
 
 ### Offset and cross offset
 
@@ -275,11 +302,76 @@ The Popup Dialog's offset with respect to its anchor element can be adjusted usi
 
 Below is a popup offset by an additional 50px above the trigger.
 
-{/_ Example _/}
+<Story
+  name="e) Positioning - offset"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger offset={50} type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Offset
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      Offset by 50px, 16px is default.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerOffset />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--e-positioning-offset" />
 
 Below is a popup cross offset by an additional 100px to the right of the trigger.
 
-{/_ Example _/}
+<Story
+  name="f) Positioning - cross-offset"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger crossOffset={100} type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Cross offset
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      Cross offset by 100px.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerCrossOffset />
+  </StoryCenteredInline>
+</Story>
+
+<Source
+  language="tsx"
+  id="overlays-dialogtrigger--f-positioning-cross-offset"
+/>
+
+### Focus-on
+
+Modal and Popup use [react-focus-on](https://github.com/theKashey/react-focus-on) internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Changing `scrollLock` is more useful on a Popup for instance.
+
+{/_ See [Modal > Focus-on: shards](?path=/docs/overlays-modal--c-focus-on-shards#shards) for a shard example. _/}
 
 ## Events
 

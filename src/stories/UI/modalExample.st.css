@@ -57,8 +57,8 @@
     grid-template-rows: 40px 1fr 40px;
     grid-template-areas:
       "header header"
-        "content preview"
-        "content actions";
+      "content preview"
+      "content actions";
   }
 
   .shardExample > div {

@@ -1,23 +1,16 @@
-import React, { useRef, useState, createRef } from "react";
+import React, { createRef } from "react";
 import {
   ActionButton,
   DialogTrigger,
   DialogTriggerProps,
   Dialog,
-  DialogProps,
   Button,
   H2,
-  Text,
-  ButtonGroup,
   P,
 } from "../../src/indexLib";
 
 // @ts-ignore
 import { classes as dialogClasses } from "../../src/components/Dialog/dialog.st.css";
-
-const title = "[data-title";
-const dialog = '[data-id="dialog"]';
-const closeButton = '[data-id="modal--closeButton"';
 
 const popup = '[data-id="dialogTiggerTest--popup"]';
 const popupArrow = '[data-id="dialogTiggerTest--popup-arrow"]';
@@ -26,20 +19,15 @@ const modal = '[data-id="dialogTiggerTest--modal"]';
 const modalBackdrop = '[data-id="dialogTiggerTest--modal-backdrop"]';
 
 const trigger = '[data-id="trigger"]';
-const close = '[data-id="close"]';
 const portal = '[data-id="portal"]';
 
 interface DialogTriggerTest extends Omit<DialogTriggerProps, "children"> {
   refTest?: React.RefObject<HTMLElement>;
 }
 
-// throws error if incorrect number of children
-// type renders correct type of Dialog
-// protal selector
+// incorrect number of children
 
 // modal
-// hideArrow works
-
 // transition
 // transitionProps
 // disableModalBackdropBlur
@@ -84,26 +72,28 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
 );
 
 describe("Dialog Trigger", () => {
-  it("onOpenChange - popup", () => {
-    const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
-    cy.mount(
-      <BasicContentTrigger onOpenChange={onOpenChangeSpy} type="popup" />
-    );
-    cy.get(trigger).realClick();
-    cy.get("@onOpenChangeSpy").should("have.been.called");
-    cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
-    cy.realPress("Escape");
-    cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
-  });
+  describe("Events", () => {
+    it("onOpenChange - popup", () => {
+      const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
+      cy.mount(
+        <BasicContentTrigger onOpenChange={onOpenChangeSpy} type="popup" />
+      );
+      cy.get(trigger).realClick();
+      cy.get("@onOpenChangeSpy").should("have.been.called");
+      cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
+      cy.realPress("Escape");
+      cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
+    });
 
-  it("onOpenChange - modal", () => {
-    const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
-    cy.mount(<BasicContentTrigger onOpenChange={onOpenChangeSpy} />);
-    cy.get(trigger).realClick();
-    cy.get("@onOpenChangeSpy").should("have.been.called");
-    cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
-    cy.realPress("Escape");
-    cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
+    it("onOpenChange - modal", () => {
+      const onOpenChangeSpy = cy.spy().as("onOpenChangeSpy");
+      cy.mount(<BasicContentTrigger onOpenChange={onOpenChangeSpy} />);
+      cy.get(trigger).realClick();
+      cy.get("@onOpenChangeSpy").should("have.been.called");
+      cy.get("@onOpenChangeSpy").should("have.been.calledWith", true);
+      cy.realPress("Escape");
+      cy.get("@onOpenChangeSpy").should("have.been.calledWith", false);
+    });
   });
 
   describe("Type", () => {
@@ -115,8 +105,6 @@ describe("Dialog Trigger", () => {
         cy.get(popup).should("exist");
         cy.get("[data-content]").should("contain.text", "Content");
       });
-      // targetRef
-      // hideArrow
     });
     describe("Modal", () => {
       it("renders type: modal - opens on trigger press, renders content", () => {
@@ -188,8 +176,6 @@ describe("Dialog Trigger", () => {
   });
 
   describe("Dismissing", () => {
-    // popup shouldCloseOnBlur
-
     describe("Popup", () => {
       it("Closes (via escape) by default", () => {
         cy.mount(<BasicContentTrigger type="popup" />);
@@ -327,46 +313,60 @@ describe("Dialog Trigger", () => {
     });
 
     describe("Modal", () => {
-      // shards
-      // cy.mount(
-      //   <>
-      //     <DialogWithFocusableContent focusOnProps={{ scrollLock: false }} />
-      //   </>
-      // );
+      it("shards", () => {
+        const preview = createRef<HTMLDivElement>();
+        cy.mount(
+          <div>
+            <DialogTrigger
+              data-id="dialogTiggerTest"
+              focusOnProps={{ shards: [preview] }}
+            >
+              <ActionButton data-id="trigger">Triger</ActionButton>
+              <Dialog>
+                <ActionButton data-action-button-dialog>
+                  Dialog button
+                </ActionButton>
+              </Dialog>
+            </DialogTrigger>
+
+            <div ref={preview}>
+              <ActionButton data-action-button-inside>
+                Inside shard
+              </ActionButton>
+            </div>
+            <ActionButton data-action-button-outside>
+              Outside shard
+            </ActionButton>
+          </div>
+        );
+        cy.get(trigger).realClick();
+        cy.realPress("Tab");
+        // First tab to button inside the modal
+        cy.get("[data-action-button-dialog]").should("be.focused");
+        cy.realPress("Tab");
+        // Second tab to button out the modal but inside the shard
+        cy.get("[data-action-button-inside]").should("be.focused");
+        cy.realPress("Tab");
+        // Thrid tab to button out the modal AND outside the shard
+        cy.get("[data-action-button-outside]").should("not.be.focused");
+        cy.get("[data-action-button-dialog]").should("be.focused");
+      });
     });
+  });
 
-    // popup isKeyboardDismissDisabled={true} - working isDismissable always on
-    // popup shouldCloseOnBlur
+  describe("Popup specific", () => {
+    // shouldCloseOnBlur
+    // targetRef
 
-    //modalprops
-
-    // DialogWithFocusableContent
-    // modal isKeyboardDismissDisabled={true} - working - requires isDismissable
-
-    // Modal does work but it doesn't dismiss
-    // it("modal: onEscapeKey", () => {
-    //   const onEscapeSpy = cy.spy().as("onEscapeSpy");
-    //   cy.mount(<BasicContentTrigger focusOnProps={{ onEscapeKey: onEscapeSpy }} />);
-    //   cy.get(trigger).realClick();
-    //   cy.realPress("Escape");
-    //   cy.get("@onEscapeSpy").should("have.been.called");
-    // });
-    /**
-     * onClickOutside & onEscapeKey unsupported as it seems
-     * preventDefault is enacted by react-aria.
-     * Use Modal directly if this is required. Tests for Popup and Modal... */
-    // Unsupported for popup
-    // it("popup onEscapeKey", () => {
-    //   const onEscapeSpy = cy.spy().as("onEscapeSpy");
-    //   cy.mount(
-    //     <BasicContentTrigger
-    //       type="popup"
-    //       focusOnProps={{ onEscapeKey: onEscapeSpy }}
-    //     />
-    //   );
-    //   cy.get(trigger).realClick();
-    //   cy.realPress("Escape");
-    //   cy.get("@onEscapeSpy").should("have.been.called");
-    // });
+    it("isOpen renders Popup with arrow", () => {
+      cy.mount(<BasicContentTrigger type="popup" isOpen />);
+      cy.get(popup).should("exist").and("include.text", "Content");
+      cy.get(popupArrow).should("exist");
+    });
+    it("isOpen renders Popup without arrow", () => {
+      cy.mount(<BasicContentTrigger type="popup" isOpen hideArrow />);
+      cy.get(popup).should("exist").and("include.text", "Content");
+      cy.get(popupArrow).should("not.exist");
+    });
   });
 });
