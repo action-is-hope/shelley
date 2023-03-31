@@ -29,6 +29,6 @@ Cypress.Commands.add("mount", mount);
 // Example use:
 // cy.mount(<MyComponent />)
 
-const ShelleyDark = `${Default}`;
+const ShelleyDark = `${Default} ${Shelley}`;
 // const ShelleyLight = `${Default} ${Shelley} ${Light}`;
 document.body.className = ShelleyDark;

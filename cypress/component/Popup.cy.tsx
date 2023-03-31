@@ -49,8 +49,8 @@ export const PositionTemplate = (args: Omit<PopupProps, "triggerRef">) => {
         triggerRef={triggerRef}
         data-id="popup"
       >
-        <div style={{ height: "80px", width: "80px", background: "grey" }}>
-          80px
+        <div style={{ height: "78px", width: "78px", background: "grey" }}>
+          80px (78px + 2px border)
         </div>
       </Popup>
     </div>
@@ -87,8 +87,8 @@ export const FocusPopupTemplate = (args: Omit<PopupProps, "triggerRef">) => {
         triggerRef={triggerRef}
         data-id="popup"
       >
-        <div style={{ height: "80px", width: "80px", background: "grey" }}>
-          80px <Button data-focus-test>Focusable button</Button>
+        <div>
+          <Button data-focus-test>Focusable button</Button>
         </div>
       </Popup>
       <a id="focusLink" href="#">

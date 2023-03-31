@@ -4,9 +4,10 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 <button
   className="Button__Test__root Button__Test---iconPos-5-start Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
   data-testid="button-data-testid"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}
@@ -45,9 +46,10 @@ exports[`Button includes #icon, no children, visually hidden label text provided
   aria-label="Button text"
   className="Button__Test__root Button__Test---iconPos-3-end Button__Test---tone-1-1 Button__Test---variant-9-secondary Button__Test---vol-1-3"
   data-testid="button-data-testid"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}
@@ -78,9 +80,10 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
   className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
   data-testid="button-data-testid"
   href="http://shelley.earth"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}
@@ -106,9 +109,10 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 <button
   className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 for-which-nobody-can-deny"
   data-testid="button-data-testid"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}
@@ -134,9 +138,10 @@ exports[`Button renders as third party (react-router) anchor provided via #as an
   className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
   data-testid="button-data-testid"
   href="/internal-link"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}
@@ -162,9 +167,10 @@ exports[`Button renders with stylable state prop classes, #tone, #variant, #vol 
 <button
   className="Button__Test__root Button__Test--fullWidth Button__Test---tone-1-6 Button__Test---variant-7-primary Button__Test---vol-1-6"
   data-testid="button-data-testid"
-  onBlur={null}
+  onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
   onMouseDown={[Function]}

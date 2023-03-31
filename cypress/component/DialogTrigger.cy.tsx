@@ -16,8 +16,7 @@ const popup = '[data-id="dialogTiggerTest--popup"]';
 const popupArrow = '[data-id="dialogTiggerTest--popup-arrow"]';
 
 const modal = '[data-id="dialogTiggerTest--modal"]';
-const modalBackdrop =
-  '[data-id="dialogTiggerTest--background-color-modal-backdrop"]';
+const modalBackdrop = '[data-id="dialogTiggerTest--modal-backdrop"]';
 
 const trigger = '[data-id="trigger"]';
 const portal = '[data-id="portal"]';

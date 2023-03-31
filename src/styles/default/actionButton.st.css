@@ -8,8 +8,6 @@
 @st-import Icon from "../../components/Icon/icon.st.css";
 /* = Formatters */
 @st-import [respScale] from "../formatters/common";
-/* = Default Mixins */
-@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
 /* = Shelley Mixins */
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/text.st.css";
@@ -22,16 +20,6 @@
   ActionButton {
     /* = Removes system styles. */
     -st-mixin: hideWebkitAppearance;
-    /* = Really really opinionated, only do this if you are willing to provide 
-    a suitable replacement. We are control freaks. */
-    outline: none;
-    /* = Spaced out the characters a little as they are a little squashed in 
-    uppercase land. */
-    /* letter-spacing: .034em; */
-    /* = Weight choice will likely factor the font-smoothing used. */
-    font-weight: 400;
-    /* Using em values allowing the button to 'grow' insync with font-size. */
-    padding: 0 1em;
     /* = Caters postioned children, e.g focus pseudo element. Also 
     'activates' z-index should you need it. */
     position: relative;
@@ -42,6 +30,20 @@
     us it offers an additional cue to interaction which we feel asserts 
     confidence. Many sites do this so perhaps it's expected by many users. */
     cursor: pointer;
+    /* = Really really opinionated, only do this if you are willing to provide 
+    a suitable replacement. We are control freaks. */
+    outline: none;
+    /* = Weight choice will likely factor the font-smoothing used. */
+    font-weight: 400;
+    /* Using em values allowing the button to 'grow' insync with font-size. */
+    padding: 0 .6em;
+    height: 32px;
+  }
+
+  ActionButton {
+    -st-mixin:
+      textVol(scale respScale(0.85em, .88em),
+        max .875em, lineHeight 1.1);
   }
 
   ActionButton:isQuiet {
@@ -50,16 +52,13 @@
 
   /* = Inner <span> */
   ActionButton::inner {
-    /*= Put the padding on top so an icon can grow a little without affecting 
-    the height.*/
-    padding-top: 0.58em;
-    padding-bottom: 0.55em;
+    padding-top: 0.1em;
   }
 
   /* = Divider - <span> rendered with Icon only, rename perhaps?*/
   ActionButton::divider {
     display: inline-block;
-    width: 1em;
+    width: .5em;
     line-height: 0;
   }
 
@@ -79,7 +78,6 @@
     -st-mixin: pseudoFocusVisible;
   }
 
-
   /* = ActionButton CSS STATES PSEUDO */
   /* = Disabled */
   ActionButton:isDisabled,
@@ -89,57 +87,5 @@
   ActionButton:isDisabled:active:hover {
     opacity: 0.5
   }
-
-  /* = ACTIVE */
-  ActionButton:active,
-  ActionButton:active:hover {}
-
-  /*==== VOLUMES ====*/
-
-  /* = Volume 1 */
-  ActionButton:vol(1) {
-    -st-mixin:
-      textVol(scale respScale(0.67em, 0.675em),
-        max 0.675em, lineHeight 1);
-    padding-top: 0.15em;
-    padding-bottom: 0.15em;
-  }
-
-  ActionButton:vol(2) {
-    -st-mixin:
-      textVol(scale respScale(0.75em, 0.71em),
-        max 0.71em, lineHeight 1);
-    padding-top: 0.15em;
-    padding-bottom: 0.15em;
-  }
-
-  /* = Volume 3 */
-  ActionButton:vol(2) {
-    -st-mixin:
-      textVol(scale respScale(0.8em, 0.78em),
-        max 0.78em, lineHeight 1.1);
-  }
-
-  /* = Volume 4 */
-  ActionButton {
-    -st-mixin:
-      textVol(scale respScale(0.85em, .88em),
-        max .875em, lineHeight 1.1);
-  }
-
-  /* = Volume 5 */
-  ActionButton:vol(5) {
-    -st-mixin:
-      textVol(scale respScale(1em, 1em),
-        max 1em, lineHeight 1.15);
-  }
-
-  /* = Volume 6 */
-  ActionButton:vol(6) {
-    -st-mixin:
-      textVol(scale respScale(1.15em, 1.125em),
-        max 1.125em, lineHeight 1.15);
-  }
-
 
 }

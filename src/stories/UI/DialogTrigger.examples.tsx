@@ -5,7 +5,6 @@ import {
   ButtonGroup,
   ModalProps,
   DialogTrigger,
-  DialogTriggerProps,
   Dialog,
   P,
   H2,

@@ -1,14 +1,23 @@
 import { mergeProps, mergeRefs } from "@react-aria/utils";
-import React, { useRef, RefObject } from "react";
+import React, { useRef, RefObject, forwardRef } from "react";
 import { useButton } from "@react-aria/button";
 import { useFocusRing } from "react-aria";
-import type { ButtonCustomProps } from "../Button/Button";
-
+// import type { ButtonCustomProps } from "../Button/Button";
+import type { AriaButtonProps } from "@react-types/button";
+import type { AlignPos } from "../types";
 import { st, classes } from "./actionButton.st.css";
-interface ActionButtonProps extends ButtonCustomProps {
+
+export interface ActionButtonProps
+  extends Omit<AriaButtonProps, "elementType"> {
+  /** Classname  */
   className?: string;
+  /** Define an Icon node, postion via #iconPos. */
+  icon?: React.ReactNode;
+  /** The position of the icon relative to the label. */
+  iconPos?: AlignPos;
   isQuiet?: boolean;
 }
+
 function ActionButton(
   props: ActionButtonProps,
   ref: React.Ref<HTMLButtonElement>
@@ -41,7 +50,6 @@ function ActionButton(
         classes.root,
         {
           iconPos: icon ? iconPos : undefined,
-          // vol: vol !== false ? vol : undefined,
           isQuiet,
           isFocusVisible,
           isPressed,
@@ -65,5 +73,5 @@ function ActionButton(
  * ActionButtons allow users to perform an action.
  * They’re used for similar, task-based options within a workflow, and are ideal for interfaces where buttons aren’t meant to draw a lot of attention.
  */
-const _ActionButton = React.forwardRef(ActionButton);
+const _ActionButton = forwardRef(ActionButton);
 export { _ActionButton as ActionButton };
