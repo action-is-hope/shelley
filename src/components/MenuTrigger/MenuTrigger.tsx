@@ -1,6 +1,6 @@
 /** MenuTrigger.tsx */
 import React, { cloneElement, ReactElement } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import { useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
@@ -62,6 +62,8 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default 0
    */
   crossOffset?: number;
+  /** hide the Popup arrow */
+  hideArrow?: boolean;
 }
 
 export function MenuTrigger({
@@ -71,7 +73,7 @@ export function MenuTrigger({
   defaultOpen,
   disabled,
   isOpen,
-  offset,
+  offset = 12,
   onOpenChange,
   placement = "bottom start",
   portalSelector = "body",
@@ -112,7 +114,7 @@ export function MenuTrigger({
     <>
       {menuTrigger}
       {state.isOpen &&
-        ReactDOM.createPortal(
+        createPortal(
           <Popup
             isOpen={state.isOpen}
             onClose={() => state.close()}

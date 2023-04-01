@@ -1,6 +1,13 @@
-import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs";
+import dedent from "ts-dedent";
 import { Button, ButtonGroup, Icon } from "../../indexLib";
-import { ArgsTable } from "@storybook/addon-docs";
 import { StoryCenteredInline } from "../StoryLayout";
 
 export const BasicButton = (args) => (
@@ -30,6 +37,13 @@ export const BasicButton = (args) => (
 />
 
 # Button
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Button } from "@actionishope/shelley";
+  `}
+/>
 
 Buttons allow users to take actions, and make choices, with a single tap.
 
@@ -336,4 +350,4 @@ Icons are also appropriate for toggle buttons that allow a single choice to be s
 
 ## Button Props
 
-<Props of={ButtonGroup} />
+<ArgsTable of={Button} />

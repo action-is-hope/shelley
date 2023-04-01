@@ -4,7 +4,10 @@ exports[`Checkbox renders correctly with custom label 1`] = `
 [
   <label
     htmlFor="test123"
-  />,
+    id="test456"
+  >
+    Label
+  </label>,
   <span
     className="Checkbox__Test__root Checkbox__Test---vol-1-1"
   >
@@ -12,6 +15,7 @@ exports[`Checkbox renders correctly with custom label 1`] = `
       className="Checkbox__Test__inputContainer"
     >
       <input
+        aria-labelledby="test456"
         checked={false}
         className="Checkbox__Test__input"
         disabled={false}

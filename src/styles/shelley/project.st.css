@@ -92,13 +92,8 @@
   --color-accent-4: #f7e1b9;
 
   /* = Background colours */
-  --color-background-1: rgb(23, 26, 35);
-  --color-background-2: rgba(0, 0, 0, 0.4);
-  --color-background-3: rgba(160, 160, 160, 0.06);
-  --color-background-4: rgba(11, 13, 18, 0.34);
-  --color-background-modal: rgba(23, 26, 35, 0.98);
-  --color-background-menu: rgb(23, 26, 35);
-  --color-background-item-hover: rgba(var(--light-01-raw), 0.1);
+  --background-color-main: rgb(23, 26, 35);
+  --background-color-item-hover: rgba(var(--light-01-raw), 0.1);
 
   /* = Text colours */
   --color-text-1: var(--light-01);
@@ -108,30 +103,14 @@
 
   --color-text-help: rgba(var(--light-01-raw), 0.6);
 
-  /* = Status colours */
-  /* --color-error: #b66b6e; */
-
-  /* = Indicator colours */
-  /* --color-focus: #09b1f1; */
-
   /* = Form colours */
-  /* --color-form-base-border: rgba(119, 140, 157, 0.7); */
-  /* --color-form-selection-border: rgba(119, 140, 157, 1); */
-  --color-form-selection-notch: var(--color-accent-2);
-  /* --color-switch-notch:  */
-
-  /* = Gradiants */
-  --grad-1: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(35, 38, 49, 0.14) 100px, rgba(35, 38, 49, 0.8) 500px, rgba(35, 38, 49, 1) 100%);
+  --color-form-switch-notch: var(--color-accent-2);
 
   /* = Misc */
   /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
   /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
   --status-background: #692e2e;
   --support-background: #2e5b69;
-
-
-  /* --grid-v1-cols-md: 1fr; */
-  /* --text-vol-10-scale: 18px; */
 }
 
 /*=== Root Level CSS ===*/
@@ -143,5 +122,5 @@
 .root {
   font-family: value(font-plain);
   color: var(--color-ui);
-  background-color: var(--color-background-1);
+  background-color: var(--background-color-main);
 }

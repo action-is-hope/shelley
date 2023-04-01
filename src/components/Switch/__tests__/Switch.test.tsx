@@ -11,8 +11,8 @@ describe("Switch", () => {
     const tree = renderer
       .create(
         <>
-          <label htmlFor="test123"></label>
-          <Switch id="test123" />
+          <label htmlFor="test123" id="labelId"></label>
+          <Switch id="test123" aria-labelledby="labelId" />
         </>
       )
       .toJSON();

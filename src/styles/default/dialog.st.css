@@ -1,0 +1,20 @@
+/* = Project and vars */
+@st-import Default, [
+  --spacing-unit,
+  --background-color-dialog,
+  --color-dialog] from "./project.st.css";
+/* = Component API */
+@st-import Dialog from "../../components/Dialog/dialog.st.css";
+
+@st-scope Default {
+
+  Dialog {
+    background-color: var(--background-color-dialog);
+    color: var(--color-dialog);
+  }
+
+  Dialog::content {
+    margin-top: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+}

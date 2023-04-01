@@ -1,0 +1,14 @@
+@st-import Dialog, [dialogGrid, content] from "../../components/Dialog/dialog.st.css";
+
+@st-import Modal from "../../components/Modal/modal.st.css";
+
+.gridAreaExample {}
+
+Dialog.gridAreaExample .dialogGrid {
+  gap: 10px
+}
+
+Dialog.gridAreaExample .dialogGrid > span {
+  border: 1px dashed #6d6d6d;
+  padding: 7px;
+}

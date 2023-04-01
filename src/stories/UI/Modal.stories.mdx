@@ -1,0 +1,355 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Modal } from "../../indexLib";
+import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
+import {
+  ModalCustomTransitionDialogTrigger,
+  BasicModal,
+  ShardExample,
+} from "./Modal.examples";
+
+<Meta
+  title="Overlays/Modal"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={Modal}
+/>
+
+# Modal
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Modal } from "@actionishope/shelley";
+  `}
+/>
+
+Modal provides the structure for a Modal including `backdrop` and `content` containers,
+transitions and focus locks required to keep a user focused inside active dialogs/areas
+without being able to 'wonder about' behind the backdrop with the keyboard.
+
+Modal is used and rendered internally by [DialogTrigger](?path=/docs/overlays-dialogtrigger--a-dialog-trigger); so check that out if you haven't already, some of the api is exposed which is described more below.
+
+## Example
+
+You might need your own Trigger at some point in which case you can use Modal directly if you wish but it is expected that you will mostly use it via DialogTrigger.
+
+### Accessibility
+
+This is a raw modal so requires some additional stuff when used in the wild with a trigger. The example below uses the react-aria an react-stately libs that we use internally to give use that stuff. Note also that `role="dialog"` has been added to the main dialog container.
+
+<Story
+  name="a) Modal"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { useOverlayTrigger } from "react-aria";
+import { useOverlayTriggerState } from "react-stately";\n
+  const triggerRef = useRef(null);
+  const state = useOverlayTriggerState({});
+  // Get props for the trigger and overlay.
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    state,
+    triggerRef
+  );
+  return (
+    <>
+      <ActionButton ref={triggerRef} {...triggerProps}>
+        Toggle Modal
+      </ActionButton>
+      <Modal
+        isOpen={state.isOpen}
+        onDismiss={state.close}
+        portalSelector="#portal"
+        {...overlayProps}
+      >
+        <div role="dialog">
+          <H2 vol={2} uppercase>
+            Custom Dialog
+          </H2>
+          <TextField label="Text field" />
+          <ActionButton onPress={() => state.close()}>Close</ActionButton>
+        </div>
+      </Modal>
+    </>
+  );
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  {BasicModal.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-modal--a-modal" />
+
+## Content
+
+Modal will take any child which it will render inside an internal `content` container which sits adjacent to the `backdrop` element.
+
+### Accessibility
+
+Standard DOM attributes (`aria-LabelledBy`, `aria-ControlledBy` etc) set on Modal are spread to the `content` container and are required to make accessible dialogs.
+
+If you are not using the react-aria libs then you will need to manually add the correct aria props to the trigger and the modal.
+
+If not using Dialog you will want to ensure that the content is inside of a `role="dialog"` and that it has a `aria-LabelledBy` attribute pointing to the `id` of the dialog title element.
+
+## Transitions
+
+Modal provides some transitions out of the box to get you started: `transition="up"` and `transition="zoom"` but you can define as many as you like in your themes.
+
+Let's see how we might do that using Modal via DialogTrigger. We are going to add it as an option via our theme stylable file so that we can use it like this with DialogTrigger.
+
+<Source language="tsx" id="overlays-modal--b-transtions" />
+
+<Story
+  name="b) Transtions"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger
+  transition="myTransition"
+  isDismissable
+>
+  <ActionButton>myTransition</ActionButton>
+  {(close) => (
+    <div>
+      <div role="dialog">
+        <H2 vol={2}>Custom Dialog</H2>
+        <TextField label="Modal field" />
+        <Button onPress={close}>Close</Button>
+      </div>
+    </div>
+  )}
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  {ModalCustomTransitionDialogTrigger.bind()}
+</Story>
+
+Internally Modal uses [CSSTransition](http://reactcommunity.org/react-transition-group/css-transition) from [React Transition Group](http://reactcommunity.org/react-transition-group/)
+which exposes transition stages for transition styling.
+
+We simply import the stages from Shelley and define the new transtion called `myTransition` in our modal.st.css theme file like so:
+
+```css
+/* your modal.st.css */
+
+/* Import your theme scope. */
+@st-import MyTheme from "<path-to-theme>/project.st.css";\n
+/* Import the root Modal class name (Modal), state classes and the children: backdrop and content from Shelley. */
+@st-import Modal, [
+  enter,
+  enterActive,
+  enterDone,
+  exit,
+  exitActive,
+  exitDone,
+  content,
+  backdrop] from "@actionishope/shelley/components/Modal/modal.st.css/modal.st.css";
+@st-scope MyTheme {
+  /* ... your generic Modal styles */
+
+  /* = myTransition = */
+  /* Backdrop: Any backdrop styles, for stages use as below. */
+  Modal:transition(myTransition) .backdrop {}
+
+  /* Content */
+  Modal:transition(myTransition).enter .content {
+    background-color: violet;
+    /* Initial start state styles */
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+  }
+  Modal:transition(myTransition).enterActive .content {
+    background-color: yellow;
+    /* Transitioning to done state styles  */
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
+  Modal:transition(myTransition).enterDone .content {
+    background-color: blue;
+    /* Done */
+    transform: translateY(0);
+    opacity: 1;
+  }
+  Modal:transition(myTransition).exit .content {
+    background-color: yellow;
+    /* Reverse direction - exit transiton start style */
+    transform: translateY(0);
+    opacity: 1;
+  }
+  Modal:transition(myTransition).exitActive .content {
+    background-color: violet;
+    /* Finishing state before removed from DOM. */
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+}
+```
+
+**Note:** `timeout` is set to `190` by default so be sure to take this into account and set it accordingly for your transitions.
+
+The imported state styles do not behave as stylable states because they are generated by CSS Transition Group. The imports resolve to the CSS transition group classes `enter-active` etc.
+
+We cannot use the stylable pseudo syntax to target content (`Modal::content`) so we get around it by importing `content` directly from Shelley.
+
+### CSS Transition group
+
+When using Modal directly most of the CSS TransitionGroup option are available via `transitionProps`, however if using DialogTrigger the following options are available:
+
+```ts
+<DialogTrigger
+  portalSelector="#portal"
+  transition="myTransition"
+  transitionProps={{
+    // timeout set to 190 by default
+    timeout: 300,
+    onEnter: () => console.log("onEnter"),
+    onEntering: () => console.log("onEntering"),
+    onEntered: () => console.log("onEntered"),
+    onExit: () => console.log("onExit"),
+    onExiting: () => console.log("onExiting"),
+    onExited: () => console.log("onExited"),
+    // mountOnEnter: true,
+    // unmountOnExit on by default
+    // unmountOnExit: false,
+  }}
+  isDismissable
+>
+  ...
+</DialogTrigger>
+```
+
+## Focus on
+
+Internally Modal uses [react-focus-on](https://github.com/theKashey/react-focus-on) which helps with WAI ARIA compliance for modals or any full-screen tasks:
+
+- locks **focus** inside using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
+- disables page **scroll** and user interactions using [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+- hides rest of a page from screen-readers using [aria-hidden](https://github.com/theKashey/aria-hidden)
+
+All the options are available via `focusOnProps`.
+
+### Shards
+
+For partial screen takeovers where you might be splitting the screen and want things outside of the modal to remain accessible; use `shards` (an array of refs) via `focusOnProps` which will keep those elements inside the focus-lock. See [focus-on](#focus-on)
+
+Example: We have a two column editor, the left hand panel is for editing content and the right is a preview complete with controls to change viewport size etc.
+
+The content has visual settings tucked away in a modal dialog convering the left panel. Focus is locked into that modal... BUT we still want users to be able to access the preview controls.
+
+For this we shall use `shards` - "An array of ref pointing to the nodes, which focus lock should consider to be a a part."
+
+<Story
+  name="c) Focus-on: shards"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+const preview = useRef(null);
+const [shards, setShards] = useState(true);\n
+return (
+  <div className={modalClasses.shardExample}>
+    <div style={{ gridArea: "header", background: "#333" }}>
+      <ActionButton>Log in/out</ActionButton>
+    </div>
+    <div style={{ position: "relative", gridArea: "content" }}>
+      <P vol={2}>Content blocks</P>
+      <br />
+      <Switch vol={1} onChange={() => setShards(!shards)} defaultSelected>
+        shards
+      </Switch>
+      <br />
+      <DialogTrigger
+        // Renders inline and internally turns off position: fixed
+        portalSelector={false}
+        // Add a modal class so we can position it.
+        modalClassName={modalClasses.modalExample}
+        // Set the shards
+        focusOnProps={{ shards: shards ? [preview] : [] }}
+        isDismissable
+      >
+        <ActionButton>Initialise Overlay</ActionButton>
+        <Dialog size="small">
+          <H2 vol={4} style={{ gridArea: "title" }} data-title>
+            Settings
+          </H2>
+          <div style={{ gridArea: "content" }}>
+            <ActionButton>Control 1</ActionButton>
+            <ActionButton>Control 2</ActionButton>
+          </div>
+        </Dialog>
+      </DialogTrigger>
+    </div>
+    <div ref={preview} style={{ gridArea: "preview" }}>
+      <ActionButton>Mobile</ActionButton>
+      <ActionButton>Tablet</ActionButton>
+      <ActionButton>Laptop</ActionButton>
+      <P vol={4}>Preview Area</P>
+      <P vol={1}>
+        This area is {!shards && "not "} accessible and {!shards && "is not"}{" "}
+        inside the focus lock when overlay is active
+      </P>
+    </div>
+    <div style={{ gridArea: "actions" }}>
+      <Button>Publish</Button>
+    </div>
+  </div>
+);
+`,
+      },
+    },
+  }}
+>
+  {ShardExample.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-modal--c-focus-on-shards" />
+
+## Modal Props
+
+Check the table below for a full list of props.
+
+<ArgsTable of={Modal} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

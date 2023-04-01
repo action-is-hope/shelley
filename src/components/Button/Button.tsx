@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 /* Adobe libs */
 // Version dependancy issue: https://github.com/adobe/react-spectrum/issues/1388#issuecomment-781094658
 import { useButton } from "react-aria";
@@ -6,6 +6,8 @@ import type { AriaButtonProps } from "@react-types/button";
 /* Internal */
 import type { Accent, AlignPos, Volume, ButtonVariants } from "../types";
 import type { MergeElementProps } from "../utils";
+import { useFocusRing } from "react-aria";
+import { mergeRefs, mergeProps } from "@react-aria/utils";
 /* Style API */
 import { st, classes } from "./button.st.css";
 
@@ -56,7 +58,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     onPressEnd,
     onPressChange,
     onPressUp,
-    autoFocus,
+    // autoFocus,
     onFocus,
     onBlur,
     onFocusChange,
@@ -79,6 +81,8 @@ function ButtonBase<T extends React.ElementType = "button">(
   }: ButtonProps<T>,
   ref: React.Ref<HTMLElement>
 ) {
+  const localRef = useRef(null);
+
   const { buttonProps, isPressed } = useButton(
     {
       isDisabled,
@@ -87,7 +91,7 @@ function ButtonBase<T extends React.ElementType = "button">(
       onPressEnd,
       onPressChange,
       onPressUp,
-      autoFocus,
+      // autoFocus,
       onFocus,
       onBlur,
       onFocusChange,
@@ -110,17 +114,19 @@ function ButtonBase<T extends React.ElementType = "button">(
       // ...rest,
       elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
     },
-    ref as React.RefObject<HTMLElement>
+    localRef as React.RefObject<HTMLElement>
   );
+  const { isFocusVisible, focusProps } = useFocusRing();
 
   const className = st(
     classes.root,
     {
       iconPos: icon ? iconPos : undefined,
       fullWidth,
-      tone,
+      tone: tone !== false ? tone : undefined,
       variant: variant !== false ? variant : undefined,
       vol: vol !== false ? vol : undefined,
+      isFocusVisible,
       isPressed,
       isDisabled,
     },
@@ -140,8 +146,8 @@ function ButtonBase<T extends React.ElementType = "button">(
   return React.createElement(
     As || "button",
     {
-      ref,
-      ...buttonProps,
+      ref: mergeRefs(localRef, ref),
+      ...mergeProps(buttonProps, focusProps),
       className,
       ...rest,
     },
@@ -155,6 +161,6 @@ function ButtonBase<T extends React.ElementType = "button">(
 // const Button = React.forwardRef(ButtonBase);
 const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
 
-// Button.displayName = "Button";
+Button.toString = () => "ShelleyButton";
 
 export default Button;

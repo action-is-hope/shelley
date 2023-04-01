@@ -118,6 +118,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
   >
     <label
       htmlFor="cb1"
+      id="lb1"
     >
       Label1
     </label>
@@ -128,6 +129,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
         className="Checkbox__Test__inputContainer"
       >
         <input
+          aria-labelledby="lb1"
           checked={false}
           className="Checkbox__Test__input"
           disabled={false}
@@ -154,6 +156,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
     </span>
     <label
       htmlFor="cb2"
+      id="lb2"
     >
       Label2
     </label>
@@ -164,6 +167,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
         className="Checkbox__Test__inputContainer"
       >
         <input
+          aria-labelledby="lb2"
           checked={false}
           className="Checkbox__Test__input"
           disabled={false}

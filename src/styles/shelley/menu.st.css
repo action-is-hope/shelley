@@ -7,7 +7,6 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
-  -st-named: --color-background-1;
 }
 
 /* = Components */
@@ -19,7 +18,5 @@
 
 @st-scope Shelley {
 
-  Menu {
-    background: var(--color-background-1);
-  }
+  Menu {}
 }
