@@ -1,22 +1,23 @@
 import React from "react";
 import { Radio, RadioGroup } from "../../src/indexLib";
 
-const fieldLabel = '[data-id="field--label"]';
-const inputEl = '[data-id="radio--input"]';
-const fieldDesc = '[data-id="help--description"]';
-const fieldError = '[data-id="help--error"]';
+const fieldPropsTest = {
+  "data-id": "radioGroup",
+  label: "Field Label",
+};
+
+const fieldLabel = '[data-id="radioGroup--label"]';
+const inputEl = '[data-id="radioGroup"] input';
+const fieldDesc = '[data-id="radioGroup--helpText--description"]';
+const fieldError = '[data-id="radioGroup--helpText--error"]';
 const fieldGroup = '[role="radiogroup"]';
 
 describe("RadioGroup", () => {
   it("renders childen, unchecked by default", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label">
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest}>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(inputEl).should("not.be.checked");
@@ -24,13 +25,9 @@ describe("RadioGroup", () => {
 
   it("renders label and input #a11y related attributes correctly.", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label">
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest}>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(fieldLabel)
@@ -44,13 +41,9 @@ describe("RadioGroup", () => {
   it("fires onChange.", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <RadioGroup label="Field Label" onChange={onChangeSpy} includeDataIds>
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest} onChange={onChangeSpy}>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get("input[value='rad1']").click();
@@ -62,16 +55,10 @@ describe("RadioGroup", () => {
 
   it("defaultValue works as expected - uncontrolled", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label" defaultValue={"rad2"}>
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
-        <Radio value="rad3" includeDataIds>
-          Radio label 3
-        </Radio>
+      <RadioGroup {...fieldPropsTest} defaultValue={"rad2"}>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
+        <Radio value="rad3">Radio label 3</Radio>
       </RadioGroup>
     );
     cy.get("input[value='rad1']").should("not.be.checked");
@@ -81,16 +68,10 @@ describe("RadioGroup", () => {
 
   it("value works as expected - controlled", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label" value="rad2">
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
-        <Radio value="rad3" includeDataIds>
-          Radio label 3
-        </Radio>
+      <RadioGroup {...fieldPropsTest} value="rad2">
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
+        <Radio value="rad3">Radio label 3</Radio>
       </RadioGroup>
     );
     cy.get("input[value='rad1']").should("not.be.checked");
@@ -102,13 +83,9 @@ describe("RadioGroup", () => {
 describe("RadioGroup isDisabled and isReadOnly", () => {
   it("isDisabled - entire group", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label" isDisabled>
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest} isDisabled>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(inputEl).should("be.disabled");
@@ -116,13 +93,11 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
 
   it("isDisabled - single item", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label">
-        <Radio value="rad1" isDisabled includeDataIds>
+      <RadioGroup {...fieldPropsTest}>
+        <Radio value="rad1" isDisabled>
           Radio label 1
         </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get("input[value='rad1']").should("be.disabled");
@@ -132,18 +107,9 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
   it("isReadOnly - entire group", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <RadioGroup
-        includeDataIds
-        label="Field Label"
-        onChange={onChangeSpy}
-        isReadOnly
-      >
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest} onChange={onChangeSpy} isReadOnly>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get("input[value='rad1']").click().and("not.be.checked");
@@ -155,17 +121,9 @@ describe("RadioGroup isDisabled and isReadOnly", () => {
 describe("RadioGroup Help", () => {
   it("renders description correctly.", () => {
     cy.mount(
-      <RadioGroup
-        includeDataIds
-        label="Field Label"
-        description="Number 5 likes input."
-      >
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest} description="Number 5 likes input.">
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(fieldDesc)
@@ -179,17 +137,12 @@ describe("RadioGroup Help", () => {
   it("renders errorMessage correctly.", () => {
     cy.mount(
       <RadioGroup
-        includeDataIds
-        label="Field Label"
+        {...fieldPropsTest}
         errorMessage="No input!"
         validationState="invalid"
       >
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(fieldError)
@@ -203,15 +156,12 @@ describe("RadioGroup Help", () => {
   it("renders errorMessage instead of description.", () => {
     cy.mount(
       <RadioGroup
-        includeDataIds
-        label="Field Label"
+        {...fieldPropsTest}
         description="Number 5 likes input."
         errorMessage="No input!"
         validationState="invalid"
       >
-        <Radio value="cb1" includeDataIds>
-          Radio label 1
-        </Radio>
+        <Radio value="cb1">Radio label 1</Radio>
       </RadioGroup>
     );
     cy.get(fieldDesc).should("not.exist");
@@ -227,13 +177,9 @@ describe("RadioGroup Help", () => {
 describe("Radio", () => {
   it("renders childen, unchecked by default", () => {
     cy.mount(
-      <RadioGroup includeDataIds label="Field Label">
-        <Radio value="rad1" includeDataIds>
-          Radio label 1
-        </Radio>
-        <Radio value="rad2" includeDataIds>
-          Radio label 2
-        </Radio>
+      <RadioGroup {...fieldPropsTest}>
+        <Radio value="rad1">Radio label 1</Radio>
+        <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
     );
     cy.get(inputEl).should("not.be.checked");

@@ -2,19 +2,19 @@ import React from "react";
 import { Checkbox } from "../../src/indexLib";
 
 const checkboxWithLabel = '[data-id="checkbox--label"]';
-const checkboxWithoutLabel = '[data-id="checkbox--no-label"]';
+const checkboxWithoutLabel = '[data-id="checkbox--noLabel"]';
 const inputEl = '[data-id="checkbox--input"]';
 
 describe("Checkbox", () => {
   it("renders child as label, unchecked by default", () => {
-    cy.mount(<Checkbox includeDataIds>Subscribe</Checkbox>);
+    cy.mount(<Checkbox data-id="checkbox">Subscribe</Checkbox>);
     cy.get(checkboxWithLabel).contains("Subscribe");
     cy.get(inputEl).should("not.be.checked");
   });
 
   it("defaultSelected", () => {
     cy.mount(
-      <Checkbox defaultSelected includeDataIds>
+      <Checkbox defaultSelected data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -24,7 +24,7 @@ describe("Checkbox", () => {
   it("fires onChange when clicking label", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <Checkbox onChange={onChangeSpy} includeDataIds>
+      <Checkbox onChange={onChangeSpy} data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -35,7 +35,7 @@ describe("Checkbox", () => {
   it("isDisabled", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <Checkbox onChange={onChangeSpy} isDisabled includeDataIds>
+      <Checkbox onChange={onChangeSpy} isDisabled data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -48,7 +48,7 @@ describe("Checkbox", () => {
   it("isReadOnly", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <Checkbox onChange={onChangeSpy} isReadOnly includeDataIds>
+      <Checkbox onChange={onChangeSpy} isReadOnly data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -59,7 +59,7 @@ describe("Checkbox", () => {
   it("isIndeterminate has class and fires onChange", () => {
     const onChangeSpy = cy.spy().as("onChangeSpy");
     cy.mount(
-      <Checkbox onChange={onChangeSpy} isIndeterminate includeDataIds>
+      <Checkbox onChange={onChangeSpy} isIndeterminate data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -71,7 +71,7 @@ describe("Checkbox", () => {
   });
 
   it("focus class added", () => {
-    cy.mount(<Checkbox includeDataIds>Subscribe</Checkbox>);
+    cy.mount(<Checkbox data-id="checkbox">Subscribe</Checkbox>);
     cy.get(inputEl).focus();
     cy.get(checkboxWithLabel)
       .should("have.attr", "class")
@@ -80,7 +80,7 @@ describe("Checkbox", () => {
 
   it("renders with custom class name", () => {
     cy.mount(
-      <Checkbox className="cypress-test" includeDataIds>
+      <Checkbox className="cypress-test" data-id="checkbox">
         Subscribe
       </Checkbox>
     );
@@ -94,7 +94,7 @@ describe("Checkbox", () => {
     cy.mount(
       <>
         <label htmlFor="test123">Custom label</label>
-        <Checkbox id="test123" includeDataIds />
+        <Checkbox id="test123" data-id="checkbox" />
       </>
     );
     cy.get(checkboxWithoutLabel).should("exist");

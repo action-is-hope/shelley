@@ -50,7 +50,7 @@ function Select<T extends object>(
   // Create state based on the incoming props
   const state = useSelectState(props);
 
-  const localRef = useRef(null);
+  const localRef = useRef<HTMLButtonElement>(null);
 
   const {
     labelProps,
@@ -117,6 +117,14 @@ function Select<T extends object>(
               onClose={() => state.close()}
               triggerRef={localRef}
               placement="bottom start"
+              shouldCloseOnBlur
+              focusOnProps={{
+                onDeactivation: () => {
+                  // Manually setting focus back as return focus only works once. @todo Investigate.
+                  localRef?.current && localRef.current.focus();
+                },
+                returnFocus: false,
+              }}
             >
               <ListBox
                 {...menuProps}

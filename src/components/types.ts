@@ -1,5 +1,9 @@
 /** types.ts */
 
+export interface ComponentBase {
+  /** Add predefined data-id to ease testing or analytics. */
+  "data-id"?: string;
+}
 // "top" "right" "bottom" "left" but using right to left aware langauge.
 export declare type AlignPos = "top" | "end" | "bottom" | "start" | undefined;
 

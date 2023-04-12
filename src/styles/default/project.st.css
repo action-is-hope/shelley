@@ -175,6 +175,7 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   /* Dialog */
   --background-color-dialog: #000;
   --color-dialog: #ededed;
+  /* --color-dialog-border: #ededed; */
 
   /* Popup */
   --background-color-popup: #000;

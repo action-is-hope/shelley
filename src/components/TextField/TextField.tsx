@@ -1,7 +1,7 @@
 import type React from "react";
 import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
 import type { MergeElementProps } from "../utils";
-import type { TextInputType } from "../types";
+import type { ComponentBase, TextInputType } from "../types";
 import Field, { FieldProps } from "../Field/Field";
 import { useTextField } from "react-aria";
 import type { AriaTextFieldProps } from "@react-types/textfield";
@@ -10,10 +10,9 @@ import type { AriaTextFieldProps } from "@react-types/textfield";
 import { st, classes } from "./textField.st.css";
 interface ITextCustomProps
   extends FieldProps,
-    Omit<AriaTextFieldProps, "label"> {
+    Omit<AriaTextFieldProps, "label">,
+    ComponentBase {
   rows?: number;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
 }
 export interface TextareaProps extends ITextCustomProps {
   /** Defines the type of input. */
@@ -52,7 +51,7 @@ function TextField(
     type = "text",
     value,
     defaultValue,
-    includeDataIds,
+    "data-id": dataId,
   } = props;
   /**
    * textValue stores the value to be used to format multiline and stylews for hasValue:
@@ -98,9 +97,8 @@ function TextField(
         disableLabelTransition,
         descriptionProps,
         errorMessageProps,
-        includeDataIds,
-        "data-id": includeDataIds ? "textfield" : undefined,
       }}
+      data-id={dataId ? `${dataId}` : undefined}
       className={st(classes.root, classNameProp)}
     >
       {/* span > textarea is valid mark up -as we want to mimic an inline input. */}
@@ -110,14 +108,14 @@ function TextField(
             className={classes.textareaInput}
             rows={rows}
             {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
-            data-id={includeDataIds ? "textfield--textarea" : undefined}
+            data-id={dataId ? `${dataId}--textarea` : undefined}
             ref={textareaRef}
           />
         </div>
       ) : (
         <input
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
-          data-id={includeDataIds ? "textfield--input" : undefined}
+          data-id={dataId ? `${dataId}--input` : undefined}
           ref={inputRef}
         />
       )}

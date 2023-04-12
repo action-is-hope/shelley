@@ -97,6 +97,7 @@
     "eslint-plugin-stylable": "^5.7.1",
     "jest": "^29.4.3",
     "jest-environment-jsdom": "^29.4.3",
+    "lodash.last": "^3.0.0",
     "match-sorter": "^6.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

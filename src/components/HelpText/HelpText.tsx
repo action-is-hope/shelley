@@ -4,8 +4,12 @@ import { ReactNode, HTMLAttributes, forwardRef } from "react";
 import type { Validation } from "../../typings/shared-types";
 import Warning from "../icons/Warning";
 import { st, classes } from "./helpText.st.css";
+import type { ComponentBase } from "../types";
 
-interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
+interface HelpTextProps
+  extends Validation,
+    React.HTMLProps<HTMLDivElement>,
+    ComponentBase {
   /** Whether the description is displayed with lighter text. */
   isDisabled?: boolean;
   /** Whether an error icon is rendered. */
@@ -18,8 +22,6 @@ interface HelpTextProps extends Validation, React.HTMLProps<HTMLDivElement> {
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLAttributes<HTMLElement>;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
 }
 
 function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
@@ -32,7 +34,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     descriptionProps,
     errorMessageProps,
     className: classNameProp,
-    includeDataIds = false,
+    "data-id": dataId,
   } = props;
   const isErrorMessage =
     (errorMessage && validationState === "invalid") || false;
@@ -46,6 +48,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
             classNameProp
           )}
           ref={ref}
+          data-id={dataId}
         >
           {isErrorMessage ? (
             <>
@@ -53,7 +56,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
               <div
                 {...errorMessageProps}
                 className={st(classes.helpText)}
-                data-id={includeDataIds ? "help--error" : undefined}
+                data-id={dataId ? `${dataId}--error` : undefined}
               >
                 {errorMessage}
               </div>
@@ -62,7 +65,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
             <div
               {...descriptionProps}
               className={st(classes.helpText)}
-              data-id={includeDataIds ? "help--description" : undefined}
+              data-id={dataId ? `${dataId}--description` : undefined}
             >
               {description}
             </div>

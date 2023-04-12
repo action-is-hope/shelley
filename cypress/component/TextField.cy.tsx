@@ -1,18 +1,17 @@
 import React from "react";
 import { TextField } from "../../src/indexLib";
 
-const textField = `[data-id="textfield"]`;
-const fieldLabel = '[data-id="field--label"]';
-const fieldInput = `[data-id="textfield--input"]`;
-const fieldTextArea = `[data-id="textfield--textarea"]`;
-const fieldDesc = '[data-id="help--description"]';
-const fieldError = '[data-id="help--error"]';
-
 const fieldPropsTest = {
   "data-id": "textfield",
   label: "My field",
-  includeDataIds: true,
 };
+// data-id's are based on above data-id.
+const textField = `[data-id="textfield"]`;
+const fieldLabel = '[data-id="textfield--label"]';
+const fieldInput = `[data-id="textfield--input"]`;
+const fieldTextArea = `[data-id="textfield--textarea"]`;
+const fieldDesc = '[data-id="textfield--helpText--description"]';
+const fieldError = '[data-id="textfield--helpText--error"]';
 
 describe("Basic TextField", () => {
   it("renders input correctly.", () => {

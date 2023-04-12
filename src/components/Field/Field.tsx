@@ -7,7 +7,7 @@ import {
   Children,
   HTMLAttributes,
 } from "react";
-import type { Volume, FieldVariants } from "../types";
+import type { Volume, FieldVariants, ComponentBase } from "../types";
 import type { Validation } from "../../typings/shared-types";
 import Label from "../Label/Label";
 import { HelpText } from "../HelpText/HelpText";
@@ -16,7 +16,7 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./field.st.css";
 
-export interface FieldProps extends Validation {
+export interface FieldProps extends Validation, ComponentBase {
   /** Provide an error message that triggers the stylable error state. */
   errorMessage?: ReactNode;
   /** Provide some description or hint text to the field. */
@@ -51,8 +51,6 @@ export interface FieldProps extends Validation {
   vol?: Volume;
   /** Does the containing input have a value. */
   hasValue?: boolean;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
   /** Props for the help text description element. */
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
@@ -61,6 +59,7 @@ export interface FieldProps extends Validation {
   fieldContainerProps?: HTMLAttributes<HTMLElement>;
   /** Enable disabled state. */
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 }
 
 interface FieldInternalProps
@@ -83,13 +82,14 @@ const Field = ({
   descriptionProps,
   errorMessageProps,
   disableLabelTransition = false,
-  includeDataIds = false,
   variant = "outlined",
   hasValue: hasValueProp,
   fieldContainerProps,
+  isReadOnly,
   isRequired,
   isDisabled,
   vol = 1,
+  "data-id": dataId,
   ...rest
 }: FieldInternalProps) => {
   const hasValue =
@@ -110,7 +110,7 @@ const Field = ({
   const label = (
     <Label
       className={classes.inputLabel}
-      data-id={includeDataIds ? "field--label" : undefined}
+      data-id={dataId ? `${dataId}--label` : undefined}
       {...labelProps}
     >
       {labelStringProp}
@@ -126,12 +126,14 @@ const Field = ({
           error,
           isDisabled,
           isRequired,
+          isReadOnly,
           variant: variant || undefined,
           vol: vol !== false ? vol : undefined,
           labelPosition,
         },
         classNameProp
       )}
+      data-id={dataId}
       {...rest}
     >
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
@@ -142,7 +144,7 @@ const Field = ({
       >
         {startAdornment && (
           <InputAdornment
-            data-id={includeDataIds ? "field--start-adornment" : undefined}
+            data-id={dataId ? `${dataId}--start-adornment` : undefined}
           >
             {startAdornment}
           </InputAdornment>
@@ -150,7 +152,7 @@ const Field = ({
         {childrenWithProps}
         {endAdornment && (
           <InputAdornment
-            data-id={includeDataIds ? "field--end-adornment" : undefined}
+            data-id={dataId ? `${dataId}--end-adornment` : undefined}
           >
             {endAdornment}
           </InputAdornment>
@@ -174,7 +176,7 @@ const Field = ({
           errorMessageProps,
           validationState,
         }}
-        includeDataIds={includeDataIds}
+        data-id={dataId ? `${dataId}--helpText` : undefined}
       />
     </div>
   );
