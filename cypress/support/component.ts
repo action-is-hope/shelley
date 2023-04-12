@@ -19,13 +19,9 @@ import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import { mount } from "cypress/react";
-
 import { Project as Default } from "../../src/styles/default";
 import { Project as Shelley, Light, Dark } from "../../src/styles/shelley";
 
-// Add Mount
-Cypress.Commands.add("mount", mount);
 // Example use:
 // cy.mount(<MyComponent />)
 
