@@ -24,24 +24,11 @@ import { mount } from "cypress/react";
 import { Project as Default } from "../../src/styles/default";
 import { Project as Shelley, Light, Dark } from "../../src/styles/shelley";
 
-const ShelleyDark = `${Default} ${Shelley} ${Dark}`;
-// const ShelleyLight = `${Default} ${Shelley} ${Light}`;
-
-// Augment the Cypress namespace to include type definitions for
-// your custom command.
-// Alternatively, can be defined in cypress/support/component.d.ts
-// with a <reference path="./component" /> at the top of your spec.
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Cypress {
-    interface Chainable {
-      mount: typeof mount;
-    }
-  }
-}
-
-document.body.className = ShelleyDark;
+// Add Mount
 Cypress.Commands.add("mount", mount);
-
 // Example use:
 // cy.mount(<MyComponent />)
+
+const ShelleyDark = `${Default} ${Shelley}`;
+// const ShelleyLight = `${Default} ${Shelley} ${Light}`;
+document.body.className = ShelleyDark;

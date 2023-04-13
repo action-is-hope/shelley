@@ -1,0 +1,34 @@
+/* button.st.css */
+
+/* = Shelley project scope and vars */
+@st-import Shelley, [
+    --color-ui,
+    --color-ui-inverse,
+    --color-ui-raw,
+    --color-ui-raw-inverse,
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4
+  ] from "./project.st.css";
+/* Component API */
+@st-import ActionButton, [
+  --bg-color,
+  --border-color,
+  --text-color] from "../../components/ActionButton/actionButton.st.css";
+
+/* = This is how we can scope the styles in Stylable. */
+@st-scope Shelley {
+
+  ActionButton {}
+
+  ActionButton:not(:isQuiet) {
+    --border-color: grey;
+  }
+
+  ActionButton:hover,
+  ActionButton:isFocusVisible {
+    background-color: #000;
+  }
+
+}

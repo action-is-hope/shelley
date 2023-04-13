@@ -7,7 +7,7 @@ describe("Button", () => {
     const onPressSpy = cy.spy().as("onPressSpy");
 
     cy.mount(<Button onPress={onPressSpy}>Save changes</Button>);
-    cy.get(":button").click();
+    cy.get(":button").realClick();
     cy.get("@onPressSpy").should("have.been.called");
   });
 
@@ -21,6 +21,7 @@ describe("Button", () => {
 
     cy.get(":button")
       .should("have.attr", "class")
+      .and("to.have.string", "Button")
       .and("to.have.string", "cypress-test");
   });
 
@@ -39,7 +40,7 @@ describe("Button", () => {
         </Button>
       </>
     );
-    cy.get(`[data-id="cy-button-trigger"]`).click();
+    cy.get(`[data-id="cy-button-trigger"]`).realClick();
     cy.get(`[data-id="cy-button"]`).should("be.focused");
   });
 

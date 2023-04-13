@@ -21,8 +21,6 @@
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
-  -st-named:
-    --color-background-3;
 }
 
 
@@ -33,24 +31,4 @@
 }
 
 
-@st-scope Shelley {
-
-  /* = Example targeting the root. */
-  /* Field {} */
-
-  /*==== VARIANTS ====*/
-
-  /* = Variant 1 - "Body" */
-  Field:variant(1) {
-    -webkit-font-smoothing: antialiased;
-  }
-
-
-  /* = Variant 2 - "Data" */
-
-  Field:variant(2) {
-    background-color: var(--color-background-3);
-    -webkit-font-smoothing: antialiased;
-  }
-
-}
+@st-scope Shelley {}

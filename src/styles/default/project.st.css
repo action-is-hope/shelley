@@ -158,18 +158,29 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
    * like, defining naming patterns that suit your app / website / thingy.
    */
 
-  /* = Indicator colours */
+  /* = Indicators */
   --color-focus: #09b1f1;
   --color-error: #b66b6e;
 
-  /* = Form colours */
+  /* = Forms */
   --color-form-base-border: rgba(119, 140, 157, 0.7);
   --color-form-selection-border: rgba(119, 140, 157, 1);
   --color-form-selection-notch: #333;
   --color-switch-notch: #fff;
-
-  /* = Misc */
   --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+
+  /* Modal */
+  --background-color-modal-backdrop: rgba(0, 0, 1, 0.88);
+
+  /* Dialog */
+  --background-color-dialog: #000;
+  --color-dialog: #ededed;
+
+  /* Popup */
+  --background-color-popup: #000;
+  --color-popup: #ededed;
+  --border-width-popup: 1px;
+  --border-color-popup: grey;
 
   /* = Grid */
   --grid-gap: 3vw;
@@ -184,8 +195,6 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --grid-v1-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
   --grid-v1-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
   --grid-v1-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
-
-
 
   /* 
    * = 'Subgrids'

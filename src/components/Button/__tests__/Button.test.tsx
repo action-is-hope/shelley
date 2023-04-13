@@ -8,7 +8,7 @@ import { createMemoryHistory } from "history";
 const buttonRef = React.createRef<HTMLButtonElement>();
 
 const buttonRefAnchor = React.createRef<HTMLAnchorElement>();
-const btnText = "I love big buttons and I cannot lie...";
+const btnText = "Button text";
 const iconPath = <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>;
 
 describe("Button", () => {
@@ -18,8 +18,6 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           className="for-which-nobody-can-deny"
-          onClick={() => console.log("onClick")}
-          onMouseEnter={() => console.log("onMouseEnter")}
           ref={buttonRef}
         >
           {btnText}
@@ -34,8 +32,6 @@ describe("Button", () => {
       .create(
         <Button
           data-testid="button-data-testid"
-          onClick={() => console.log("onClick")}
-          onMouseEnter={() => console.log("onMouseEnter")}
           ref={buttonRef}
           tone={6}
           variant="primary"
@@ -113,9 +109,9 @@ describe("Button", () => {
           data-testid="button-data-testid"
           ref={buttonRef}
           variant="secondary"
+          aria-label={btnText}
           icon={
             <Icon
-              alt={btnText}
               // https://github.com/svg/svgo/issues/1011 Still best practice?
               focusable="false"
             >

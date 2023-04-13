@@ -1,7 +1,15 @@
 /* buttonGroup.st.css */
 
-/* = Default project scope and vars */
-@st-import Default from "./project.st.css";
+/* = buttonGroup.st.css */
+@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import ButtonGroup from "../../components/ButtonGroup/buttonGroup.st.css";
 
-/* This is how we can scope the styles in Stylable. */
-@st-scope Default {}
+@st-scope Default {
+  ButtonGroup {
+    gap: var(--spacing-unit);
+  }
+
+  ButtonGroup:splitButton {
+    gap: 0;
+  }
+}

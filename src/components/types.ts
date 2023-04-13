@@ -11,7 +11,7 @@ export declare type TextAlign =
   | "end";
 
 /** Accent color indexes */
-export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | undefined;
+export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | false;
 
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
