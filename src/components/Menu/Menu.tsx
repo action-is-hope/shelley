@@ -4,9 +4,9 @@ import type { AriaMenuProps } from "@react-types/menu";
 import { useMenu } from "react-aria";
 import { useTreeState } from "@react-stately/tree";
 import MenuItem from "../MenuItem/MenuItem";
+import type { ComponentBase } from "../types";
 /* = Style API. */
 import { st, classes } from "./menu.st.css";
-import type { ComponentBase } from "../types";
 
 export interface MenuProps<T> extends AriaMenuProps<T>, ComponentBase {
   /** ClassName if you need/want a style hook. */

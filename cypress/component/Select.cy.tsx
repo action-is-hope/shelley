@@ -88,12 +88,17 @@ describe("Basic Select", () => {
     cy.get(itemOne).should("be.focused");
   });
 
-  it("Focus is returned to trigger", () => {
+  it("Focus is returned to trigger more than once", () => {
     cy.mount(<BasicSelect />);
     cy.get(trigger).focus();
     cy.get(trigger).realPress("Enter");
     cy.get(itemOne).should("be.focused");
     cy.realPress("Escape");
+    // Once
+    cy.get(trigger).should("be.focused");
+    cy.get(trigger).realPress("{downarrow}");
+    cy.realPress("Escape");
+    // Twice
     cy.get(trigger).should("be.focused");
   });
 

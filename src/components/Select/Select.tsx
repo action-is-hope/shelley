@@ -45,7 +45,7 @@ function Select<T extends object>(
     labelPosition,
     disableLabelTransition,
     vol,
-    children,
+    // children,
     placeholder = "Select an option",
     shouldFocusOnHover = true,
     "data-id": dataId,
@@ -138,8 +138,6 @@ function Select<T extends object>(
                 {...menuProps}
                 data-id={dataId ? `${dataId}--listBox` : undefined}
                 {...{
-                  items: props?.items,
-                  children,
                   shouldFocusOnHover,
                   state,
                 }}
