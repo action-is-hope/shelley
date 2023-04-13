@@ -1,4 +1,6 @@
 /* menu.st.css CSS API */
+@namespace "Menu";
+
 .root {}
 
 .item {}

@@ -2,6 +2,7 @@ import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
 import { createPortal } from "react-dom";
 import Field from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
+import type { CollectionChildren } from "@react-types/shared/src/collections";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
@@ -25,6 +26,7 @@ export interface SelectProps<T>
    * Useful for scrolled lists to stop a jump on hover when reselecting.
    */
   shouldFocusOnHover?: boolean;
+  children?: CollectionChildren<T>;
 }
 
 function Select<T extends object>(
@@ -46,6 +48,7 @@ function Select<T extends object>(
     children,
     placeholder = "Select an option",
     shouldFocusOnHover = true,
+    "data-id": dataId,
   } = props;
   // Create state based on the incoming props
   const state = useSelectState(props);
@@ -84,6 +87,7 @@ function Select<T extends object>(
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,
         vol,
+        "data-id": dataId,
       }}
       className={st(classes.root, classNameProp)}
     >
@@ -94,6 +98,7 @@ function Select<T extends object>(
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           variant={false}
           className={classes.trigger}
+          data-id={dataId ? `${dataId}--trigger` : undefined}
         >
           <span {...valueProps}>
             {/* {state.selectedItem ? state.selectedItem.rendered : placeholder} */}
@@ -109,6 +114,7 @@ function Select<T extends object>(
           triggerRef={localRef as RefObject<HTMLButtonElement>}
           label={props.label}
           name={props.name}
+          data-id={dataId ? `${dataId}--hiddenSelect` : undefined}
         />
         {state.isOpen &&
           createPortal(
@@ -116,6 +122,7 @@ function Select<T extends object>(
               isOpen={state.isOpen}
               onClose={() => state.close()}
               triggerRef={localRef}
+              // @todo placement/popup props
               placement="bottom start"
               shouldCloseOnBlur
               focusOnProps={{
@@ -125,9 +132,11 @@ function Select<T extends object>(
                 },
                 returnFocus: false,
               }}
+              data-id={dataId ? `${dataId}--popup` : undefined}
             >
               <ListBox
                 {...menuProps}
+                data-id={dataId ? `${dataId}--listBox` : undefined}
                 {...{
                   items: props?.items,
                   children,

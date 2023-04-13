@@ -1,7 +1,7 @@
-import { SetStateAction, useState, useMemo } from "react";
+import { SetStateAction, useState, useMemo, Key } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { Select, SelectProps, TextField, ComboBox } from "../../indexLib";
+import { Select, SelectProps, TextField, ComboBox, P } from "../../indexLib";
 import { useTreeData } from "react-stately";
 import last from "lodash/last";
 type ItemsType = { [key: string]: string | number };
@@ -13,7 +13,7 @@ export function SelectType(props: SelectPropsDocs) {
 
 export const BasicSelect = (args: ItemsType) => {
   return (
-    <ComboBox label="Favorite Animal" portalSelector="#portal">
+    <ComboBox label="Favorite Animal" portalSelector="#portal" shouldFocusWrap>
       <Item key="red panda">Red Panda</Item>
       <Item key="cat">Cat</Item>
       <Item key="dog">Dog</Item>
@@ -75,7 +75,7 @@ export const SelectEvents = (args: ItemsType) => {
 };
 
 export const DynamicCollection = (args: SelectProps<ItemsType>) => {
-  let options = [
+  const options = [
     { id: 1, name: "Aerospace" },
     { id: 2, name: "Mechanical" },
     { id: 3, name: "Civil" },
@@ -85,18 +85,8 @@ export const DynamicCollection = (args: SelectProps<ItemsType>) => {
     { id: 7, name: "Chemical" },
     { id: 8, name: "Agricultural" },
     { id: 9, name: "Electrical" },
-    { id: 10, name: "Meh" },
-    { id: 11, name: "MAerospace" },
-    { id: 12, name: ">Mechanical" },
-    { id: 13, name: "sdCivil" },
-    { id: 14, name: "Bidomedical" },
-    { id: 15, name: "Nucdddlear" },
-    { id: 16, name: "Industridddal" },
-    { id: 17, name: "Chemicdddal" },
-    { id: 18, name: "Agricultudddral" },
-    { id: 19, name: "Electricdddal" },
   ];
-  let [majorId, setMajorId] = useState<string | null>(null);
+  const [majorId, setMajorId] = useState<Key>();
 
   return (
     <>
@@ -105,14 +95,12 @@ export const DynamicCollection = (args: SelectProps<ItemsType>) => {
         defaultItems={options}
         // items={options}
         // onSelectionChange={(i) => setMajorId(i ) }
-        onSelectionChange={(selected) =>
-          setMajorId(selected as SetStateAction<string | null>)
-        }
+        // onSelectionChange={(selected) => setMajorId(selected)}
         portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
-      <p>Selected topic id: {majorId}</p>
+      <P vol={1}>Selected topic id: {majorId}</P>
     </>
   );
 };
@@ -372,7 +360,8 @@ export const FullyControlled = () => {
         }
         disabledKeys={selectedItems}
         portalSelector="#portal"
-        onKeyDown={(event: KeyboardEvent) => {
+        // : React.KeyboardEvent
+        onKeyDown={(event) => {
           // console.log("HIYU", fieldState.selectedKey);
           if (event.key === "Backspace" && !fieldState.inputValue) {
             const lastItem = last(selectedItems);

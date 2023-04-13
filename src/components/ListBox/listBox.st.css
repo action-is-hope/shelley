@@ -1,4 +1,6 @@
-/* menu.st.css CSS API */
+/* listBox.st.css CSS API */
+@namespace "ListBox";
+
 .root {
   max-height: 40vh;
   overflow: scroll;

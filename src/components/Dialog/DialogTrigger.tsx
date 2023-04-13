@@ -345,7 +345,7 @@ function PopupTrigger({
   const overlay = (
     <>
       {state.isOpen && portalSelector
-        ? // If portalSelector render inside; elso render inline.
+        ? // If no portalSelector render inline.
           createPortal(
             popup,
             document.querySelector(portalSelector) as HTMLElement

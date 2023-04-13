@@ -14,10 +14,10 @@ export const BasicSelect = (args: ItemsType) => {
   return (
     <Select
       label="Choose frequency"
+      {...args}
       onSelectionChange={(key) => console.log(key)}
       vol={1}
       portalSelector="#portal"
-      {...args}
     >
       <Item key="rarely">Rarely</Item>
       <Item key="sometimes">Sometimes</Item>
@@ -64,9 +64,10 @@ export const SelectEvents = (args: ItemsType) => {
         label="Choose frequency"
         portalSelector="#portal"
         selectedKey={animal}
-        onSelectionChange={(selected) =>
-          setAnimal(selected as SetStateAction<string>)
-        }
+        onSelectionChange={(selected) => {
+          setAnimal(selected as SetStateAction<string>);
+          console.log(selected);
+        }}
         items={options}
         {...args}
       >

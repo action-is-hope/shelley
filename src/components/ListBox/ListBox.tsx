@@ -8,22 +8,21 @@ import ListBoxOption from "../ListBoxOption/ListBoxOption";
 /* = Style API. */
 import { st, classes } from "./listBox.st.css";
 import { mergeRefs } from "@react-aria/utils";
+import type { ComponentBase } from "../types";
 
-export interface ListBoxProps<T> extends AriaListBoxOptions<T> {
+export interface ListBoxProps<T> extends AriaListBoxOptions<T>, ComponentBase {
   /** ClassName if you need/want a style hook. */
   className?: string;
   state?: ListState<T>;
-  children: CollectionChildren<T>;
+  children?: CollectionChildren<T>;
   listBoxRef?: Ref<any>;
 }
 
 export function ListBox<T extends object>(props: ListBoxProps<T>) {
-  const { className, listBoxRef } = props;
+  const { className, listBoxRef, "data-id": dataId } = props;
   const ref = useRef(null);
 
   // let ref = React.useRef(null);
-  // let { listBoxRef = ref, state } = props;
-  // let { listBoxProps } = useListBox(props, state, listBoxRef);
   console.log("LISTBOX state", props);
   // Create state based on the incoming props, if state is provided use that.
   let state = useListState({ ...props });
@@ -38,6 +37,7 @@ export function ListBox<T extends object>(props: ListBoxProps<T>) {
       <ul
         className={st(classes.root, className)}
         {...listBoxProps}
+        data-id={dataId}
         ref={listBoxRef ? mergeRefs(listBoxRef, ref) : ref}
       >
         {[...state.collection].map((item) => (

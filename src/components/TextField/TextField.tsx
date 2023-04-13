@@ -98,7 +98,7 @@ function TextField(
         descriptionProps,
         errorMessageProps,
       }}
-      data-id={dataId ? `${dataId}` : undefined}
+      data-id={dataId}
       className={st(classes.root, classNameProp)}
     >
       {/* span > textarea is valid mark up -as we want to mimic an inline input. */}

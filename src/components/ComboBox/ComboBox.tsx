@@ -2,15 +2,15 @@ import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
 import { createPortal } from "react-dom";
 import Field from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
-
-import type { HiddenSelect, useSelect, AriaComboBoxOptions } from "react-aria";
+import type { AriaComboBoxProps } from "@react-types/combobox";
+// import type { AriaComboBoxOptions } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import Popup from "../Popup/Popup";
 import Button from "../Button/Button";
 import ListBox from "../ListBox/ListBox";
 
-import { useButton, useComboBox, useFilter } from "react-aria";
-import { Item, useComboBoxState } from "react-stately";
+import { useComboBox, useFilter } from "react-aria";
+import { useComboBoxState } from "react-stately";
 
 /* = Style API. */
 import { st, classes } from "./comboBox.st.css";
@@ -20,7 +20,7 @@ import { classes as fieldClasses } from "../Field/field.st.css";
 // ComboBoxAria
 
 export interface ComboBoxProps<T>
-  extends AriaComboBoxOptions<T>,
+  extends AriaComboBoxProps<T>,
     Omit<FieldProps, "label" | "endAdornment"> {
   className?: string;
   /**
@@ -35,7 +35,7 @@ export interface ComboBoxProps<T>
   shouldFocusOnHover?: boolean;
 
   // selectionMode="multiple",
-  startAdornment?: any;
+  // startAdornment?: any;
 }
 
 function ComboBox<T extends object>(
@@ -55,10 +55,10 @@ function ComboBox<T extends object>(
     disableLabelTransition,
     vol,
     children,
-    placeholder = "ComboBox an option",
     shouldFocusOnHover = true,
     //
     startAdornment,
+    "data-id": dataId,
   } = props;
   // Setup filter function and state.
   const { contains } = useFilter({ sensitivity: "base" });
@@ -109,6 +109,35 @@ function ComboBox<T extends object>(
   const inputPropsLocal: React.HTMLProps<HTMLInputElement> = {
     // onKeyDown: (key) => console.log("HEY2", key),
   };
+
+  const popup = (
+    <Popup
+      isOpen={state.isOpen}
+      onClose={() => state.close()}
+      triggerRef={inputRef}
+      // @todo placement/popup props
+      placement="bottom start"
+      ref={popoverRef}
+      focusOnProps={{
+        enabled: false,
+      }}
+      data-id={dataId ? `${dataId}--popup` : undefined}
+    >
+      <ListBox
+        listBoxRef={listBoxRef}
+        {...{
+          // The example states you don't need these but it seems I had to manaully add this...
+          // items: props?.defaultItems || props?.items,
+          // children,
+          shouldFocusOnHover,
+          state,
+        }}
+        {...listBoxProps}
+        data-id={dataId ? `${dataId}--listBox` : undefined}
+      />
+    </Popup>
+  );
+
   return (
     <Field
       {...{
@@ -121,26 +150,20 @@ function ComboBox<T extends object>(
         label,
         labelPosition,
         startAdornment,
-        labelProps: {
-          ...labelProps,
-          // onClick: () => {
-          //   // Manually trigger a click on the button if clicking the label text.
-          //   !state.isOpen &&
-          //     (localRef as RefObject<HTMLInputElement>)?.current?.click();
-          // },
-        },
+        labelProps,
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,
         vol,
+        "data-id": dataId,
       }}
       className={st(classes.root, classNameProp)}
     >
+      {/* Fragment required. */}
       <>
         <input
           onKeyDown={(key) => console.log("HEY1", key)}
           {...mergeProps(inputPropsLocal, inputProps)}
-          // {...inputProps}
           // This is where we put the forwardedRef and the local one.
           // ref={ref ? mergeRefs(ref, localRef) : localRef}
           ref={inputRef}
@@ -148,6 +171,7 @@ function ComboBox<T extends object>(
           style={{
             background: "transparent",
           }}
+          data-id={dataId ? `${dataId}--input` : undefined}
         />
 
         <Button
@@ -155,39 +179,19 @@ function ComboBox<T extends object>(
           ref={buttonRef}
           variant={false}
           className={classes.trigger}
+          data-id={dataId ? `${dataId}--trigger` : undefined}
         >
           <span aria-hidden="true" style={{ padding: "0 2px" }}>
             ▼
           </span>
         </Button>
-
-        {createPortal(
-          <Popup
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
-            triggerRef={inputRef}
-            placement="bottom start"
-            ref={popoverRef}
-            focusOnProps={{
-              returnFocus: false,
-              autoFocus: false,
-              enabled: false,
-            }}
-          >
-            <ListBox
-              listBoxRef={listBoxRef}
-              {...{
-                // The example states you don't need these but it seems I had to manaully add this...
-                items: props?.defaultItems || props?.items,
-                children,
-                shouldFocusOnHover,
-                state,
-              }}
-              {...listBoxProps}
-            />
-          </Popup>,
-          document.querySelector(portalSelector) as HTMLElement
-        )}
+        {state.isOpen && portalSelector
+          ? // If no portalSelector render inline.
+            createPortal(
+              popup,
+              document.querySelector(portalSelector) as HTMLElement
+            )
+          : popup}
       </>
     </Field>
   );

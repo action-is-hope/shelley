@@ -83,7 +83,9 @@ import dedent from "ts-dedent";
   `}
 />
 
-TBC
+ComboBoxes combine a text entry with a popup listbox, allowing users to filter a list of options to items matching a query.
+
+## Example
 
 <Story
   name="a) ComboBox"
@@ -91,14 +93,14 @@ TBC
     docs: {
       source: {
         code: dedent`
-    <Select
-      label="Choose frequency"
-      onSelectionChange={(key) => console.log(key)}
-    >
-      <Item key="rarely">Rarely</Item>
-      <Item key="sometimes">Sometimes</Item>
-      <Item key="always">Always</Item>
-    </Select>`,
+<ComboBox label="Favorite Animal">
+  <Item key="red panda">Red Panda</Item>
+  <Item key="cat">Cat</Item>
+  <Item key="dog">Dog</Item>
+  <Item key="aardvark">Aardvark</Item>
+  <Item key="kangaroo">Kangaroo</Item>
+  <Item key="snake">Snake</Item>
+</ComboBox>`,
       },
     },
   }}
@@ -106,7 +108,13 @@ TBC
   {BasicSelect.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-combobox--a-combobox" />
+<Source language="tsx" id="inputs-combobox--a-combo-box" />
+
+## Content
+
+ComboBox follows the [Collection Components API](https://react-spectrum.adobe.com/react-stately/collections.html), accepting both static and dynamic collections. Similar to [Select](?path=/docs/inputs-select--a-select), ComboBox accepts `<Item>` elements as children, each with a key prop. Basic usage of ComboBox, seen in the example above, shows multiple options populated with a string. Static collections, as in this example, can be used when the full list of options is known ahead of time.
+
+Dynamic collections, as shown below, can be used when the options come from an external data source such as an API call, or update over time.
 
 ## Dynamic collections
 
@@ -120,26 +128,33 @@ As seen below, an iterable list of options is passed to the Select using the ite
     docs: {
       source: {
         code: dedent`
-export const DynamicCollection = () => {
-  const options = [
-    { id: 1, name: "Aerospace" },
-    { id: 2, name: "Mechanical" },
-    { id: 3, name: "Civil" },
-    { id: 4, name: "Biomedical" },
-    { id: 5, name: "Nuclear" },
-    { id: 6, name: "Industrial" },
-    { id: 7, name: "Chemical" },
-    { id: 8, name: "Agricultural" },
-    { id: 9, name: "Electrical" },
-  ];\n
-  return (
-    <>
-      <Select label="Pick an engineering major" items={options}>
-        {(item) => <Item>{item.name}</Item>}
-      </Select>
-    </>
-  );
-};`,
+const options = [
+  { id: 1, name: "Aerospace" },
+  { id: 2, name: "Mechanical" },
+  { id: 3, name: "Civil" },
+  { id: 4, name: "Biomedical" },
+  { id: 5, name: "Nuclear" },
+  { id: 6, name: "Industrial" },
+  { id: 7, name: "Chemical" },
+  { id: 8, name: "Agricultural" },
+  { id: 9, name: "Electrical" },
+];
+const [majorId, setMajorId] = useState<string | null>(null);\n
+return (
+  <>
+    <ComboBox
+      label="Pick a engineering major"
+      defaultItems={options}
+      onSelectionChange={(selected) =>
+        setMajorId(selected as SetStateAction<string | null>)
+      }
+      portalSelector="#portal"
+    >
+      {(item) => <Item>{item.name}</Item>}
+    </ComboBox>
+    <p>Selected topic id: {majorId}</p>
+  </>
+);`,
       },
     },
   }}
@@ -147,7 +162,7 @@ export const DynamicCollection = () => {
   {DynamicCollection.bind({})}
 </Story>
 
-<Source language="tsx" id="inputs-select--b-dynamic-collections" />
+<Source language="tsx" id="inputs-combobox--b-dynamic-collections" />
 
 ## Controlled selection
 
