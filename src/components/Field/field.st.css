@@ -1,14 +1,6 @@
 /** field.st.css */
-
-:import {
-  -st-from: "../HelpText/helpText.st.css";
-  -st-default: HelpText;
-}
-
-:import {
-  -st-from: "../Label/label.st.css";
-  -st-default: InputLabel;
-}
+@st-import HelpText from "../HelpText/helpText.st.css";
+@st-import InputLabel from "../Label/label.st.css";
 
 @namespace "Field";
 
@@ -93,8 +85,6 @@
   font-size: 0.75em;
   visibility: hidden;
   max-width: 0.01px;
-  /* -webkit-transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-  transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; */
   white-space: nowrap;
   font-weight: 400;
 }
@@ -137,10 +127,7 @@
 .root:labelPosition(over):focus-within::inputLabel::labelText,
 .root:labelPosition(over):hasValue::inputLabel::labelText {
   transform: scale(0.75);
-  /* Makes the label wider to avoid truncation of the zommed out element. */
-  /* width: 120%; */
 }
-
 
 .root:labelPosition(over)::fieldInput::placeholder,
 .root:labelPosition(over)::fieldInput textarea::placeholder {

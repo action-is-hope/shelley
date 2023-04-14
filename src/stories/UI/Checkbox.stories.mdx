@@ -2,7 +2,7 @@ import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { Checkbox } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
-import { ValueExample, EventExample } from "./Checkbox.examples";
+import { ValueExample, EventExample, CustomLabel } from "./Checkbox.examples";
 
 export const BasicCheckbox = (args) => <Checkbox {...args} />;
 
@@ -22,7 +22,10 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
     isDisabled: {
       control: { type: "boolean" },
     },
-    readOnly: {
+    isIndeterminate: {
+      control: { type: "boolean" },
+    },
+    isReadOnly: {
       control: { type: "boolean" },
     },
     validationState: {
@@ -77,7 +80,7 @@ Checkboxes accept `children`, which are rendered as the label.
 
 ### Accessibility
 
-In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+In certain cases a visible label isn't needed. For example, a checkbox used to select a table row. If a visible label isn't required, a label must be provided for accessibility anyway. You can either use `visuallyHideLabel` which will use `VisuallyHidden` internally to hide the label text or provide an `aria-label`. If the field is labeled by a separate element, see [custom label](#custom-label).
 
 ### Internationalization
 
@@ -85,11 +88,12 @@ To internationalize a Checkbox, a localized label should be passed to the childr
 
 ## Value
 
-Checkboxes are not selected by default. The `defaultSelected` prop can be used to set the default state (uncontrolled). Alternatively, the `isSelected` prop can be used to make the selected state controlled. See React's documentation on [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html) for more info.
+Checkboxes are not selected by default. The `defaultSelected` prop can be used to set the default state (uncontrolled).
+
+Alternatively, the `isSelected` prop can be used to make the selected state controlled. See React's documentation on [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html) for more info.
 
 <Story
   name="b) Value"
-  args={{ label: "Email", value: "me@earth.com" }}
   parameters={{
     docs: {
       source: {
@@ -237,6 +241,29 @@ The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Chec
 </Story>
 
 <Source language="tsx" id="inputs-checkbox--g-read-only" />
+
+## Custom label
+
+All checkboxes must provide a label and it must be marked up properly. Either the checkbox should sit inside the label, in which case the label is implicitly associated with the checkbox. If the label is outside then it much be explicitly associated via `for` and `id` attributes.
+
+If you choose to provide your own label you will need to do the latter. _Tip_: Clicking the label should toggle the checkbox, if it doesn't then check the `for` and `id` are the same and unique.
+
+<Story
+  name="h) Custom label"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+      <Checkbox id="123" />
+      <label htmlFor="123">Custom label</label>`,
+      },
+    },
+  }}
+>
+  {CustomLabel.bind()}
+</Story>
+
+<Source language="tsx" id="inputs-checkbox--h-custom-label" />
 
 ## Checkbox Props
 

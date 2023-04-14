@@ -52,7 +52,7 @@ describe("ButtonGroup", () => {
   it("renders button group with all buttons disabled", () => {
     const tree = renderer
       .create(
-        <ButtonGroup disabled>
+        <ButtonGroup isDisabled>
           <Button>One</Button>
           <Button>Two</Button>
           <Button>Three</Button>

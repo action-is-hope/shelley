@@ -14,6 +14,7 @@ export interface MenuProps<T> extends TreeProps<T>, AriaMenuProps<T> {
   className?: string;
   /** Handler that is called when the menu should close after selecting an item. */
   onClose?: () => void;
+  // @todo support data-id
 }
 
 export function Menu<T extends object>(props: MenuProps<T>) {

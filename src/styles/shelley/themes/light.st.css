@@ -16,7 +16,7 @@
     --color-form-base-border,
     --color-form-selection-border,
     --color-form-selection-notch,
-    --color-toggle-notch,
+    --color-switch-notch,
     --select-icon;
 }
 
@@ -39,11 +39,7 @@
     --color-accent-3,
     --color-accent-4,
     /* = Background colours */
-    --color-background-1,
-    --color-background-2,
-    --color-background-3,
-    --color-background-4,
-    --color-background-modal,
+    --background-color-main,
     /* = Text colours */
     --color-text-1,
     --color-text-2,
@@ -55,10 +51,6 @@
     /* --color-focus, */
     /* = Form colours */
     /* --color-form-mark,
-    --color-form-selection-track,
-    --color-form-selection-mark, */
-    /* = Gradiants */
-    --grad-1,
     /* = Misc */
     /* --select-icon, */
     /* = Misc - CSS var only, fix?? */
@@ -87,11 +79,7 @@
   --color-accent-4: rgb(134, 102, 30);
 
   /* = Background colours */
-  --color-background-1: rgba(239, 239, 239, 1) !important;
-  --color-background-2: rgb(255, 255, 255);
-  --color-background-3: rgb(255, 255, 255);
-  --color-background-4: rgb(255, 255, 255, 0.8);
-  --color-background-modal: rgba(249, 249, 249, 0.98);
+  --background-color-main: rgba(239, 239, 239, 1) !important;
 
   /* = Text colours */
   --color-text-1: var(--dark-01);
@@ -109,7 +97,7 @@
   --color-form-base-border: rgba(121, 170, 216, 0.5);
   --color-form-selection-border: rgba(121, 170, 216, 1);
   --color-form-selection-notch: #20af68;
-  --color-toggle-notch: #a5a5a5;
+  --color-switch-notch: #a5a5a5;
 
   /* = Gradiants */
   --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);

@@ -50,16 +50,11 @@
 @st-scope Default {
 
   Checkbox {
-    /* display: inline-flex;
-    flex-direction: column-reverse; */
-  }
-
-  Checkbox::inputLabel {
     gap: calc(var(--spacing-unit) / 2);
     cursor: pointer;
   }
 
-  Checkbox:disabled::inputLabel {
+  Checkbox:isDisabled {
     cursor: not-allowed;
     opacity: 0.7;
   }

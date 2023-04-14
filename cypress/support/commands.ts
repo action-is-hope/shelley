@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 /// <reference path="../index.d.ts" />
+import "cypress-real-events";
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite

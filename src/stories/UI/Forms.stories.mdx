@@ -1,0 +1,73 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import {
+  RadioGroup,
+  TextField,
+  Radio,
+  Select,
+  Item,
+  Checkbox,
+  CheckboxGroup,
+} from "../../indexLib";
+import { StoryCenteredInline } from "../StoryLayout";
+import dedent from "ts-dedent";
+
+<Meta
+  title="Examples/Forms"
+  argTypes={{
+    descVol: {
+      options: [1, 2, 3, 4],
+      control: { type: "inline-radio" },
+      description: "volume of the description",
+    },
+    variant: {
+      options: [1, 2],
+      control: { type: "inline-radio" },
+    },
+    desc: {
+      control: { type: "text" },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+/>
+
+# Form examples
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Blockquote } from "@actionishope/shelley";
+  `}
+/>
+
+<Canvas withSource="closed">
+  <Story name="a) Form elements">
+    <div style={{ display: "grid", gap: "16px" }}>
+      <TextField label="Name" description="Help me" />
+      <TextField label="Something" labelPosition="top" />
+      <Select
+        label="Choose frequency"
+        labelPosition="top"
+        portalSelector="#portal"
+      >
+        <Item key="rarely">Rarely</Item>
+        <Item key="sometimes">Sometimes</Item>
+        <Item key="always">Always</Item>
+      </Select>
+      <RadioGroup label="Radio group" description="Help me">
+        <Radio value="val1">Radio one</Radio>
+        <Radio value="val2">Radio two</Radio>
+      </RadioGroup>
+      <CheckboxGroup label="Checkbox group">
+        <Checkbox value="val1">Checkbox one</Checkbox>
+        <Checkbox value="val2">Checkbox two</Checkbox>
+      </CheckboxGroup>
+      <Checkbox>I'm a checkbox</Checkbox>
+    </div>
+  </Story>
+</Canvas>

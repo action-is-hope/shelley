@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.6",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
@@ -26,6 +26,7 @@
   "files": [
     "**/*.ts",
     "components/**/*.js",
+    "styles/**/*.js",
     "indexLib.js",
     "**/*.map",
     "**/*.st.css"
@@ -53,7 +54,9 @@
     "@react-types/menu": "^3.7.3",
     "@react-types/overlays": "^3.6.5",
     "react-aria": "^3.22.0",
-    "react-stately": "^3.20.0"
+    "react-focus-on": "^3.7.0",
+    "react-stately": "^3.21.0",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.5.15",
@@ -79,11 +82,13 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/react-test-renderer": "^17.0.2",
+    "@types/react-transition-group": "^4.4.5",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "@wixc3/react-board": "^2.1.3",
     "copyfiles": "^2.4.1",
     "cypress": "^12.6.0",
+    "cypress-real-events": "^1.7.6",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-formatter-codeframe": "^7.32.1",

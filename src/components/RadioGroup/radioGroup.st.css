@@ -1,0 +1,20 @@
+@namespace "RadioGroup";
+
+@st-import Field from "../Field/field.st.css";
+
+.root {
+  -st-extends: Field;
+  -st-states: orientation(enum(vertical, horizontal));
+}
+
+.group {
+  display: flex;
+}
+
+.root:orientation(vertical) .group {
+  flex-direction: column;
+}
+
+.root:orientation(horizontal) .group {
+  flex-flow: wrap;
+}

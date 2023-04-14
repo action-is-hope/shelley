@@ -1,0 +1,439 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { DialogTrigger, Button, Modal, P } from "../../indexLib";
+import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
+import {
+  BasicDialogTrigger,
+  ContentExample,
+  ModalExample,
+  DialogTriggerTargetRef,
+  DialogTriggerPlacement,
+  DialogTriggerOffset,
+  DialogTriggerCrossOffset,
+  EventExample,
+} from "./DialogTrigger.examples";
+
+<Meta
+  title="Overlays/DialogTrigger"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={DialogTrigger}
+  decorators={[(Story) => <Story />]}
+/>
+
+# Dialog Trigger
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { DialogTrigger, Dialog } from "@actionishope/shelley";
+  `}
+/>
+
+DialogTrigger serves as a wrapper around a Dialog and its associated trigger, linking the Dialog's open state with the trigger's press state. Additionally, it allows you to customise the `type` (popup, modal etc) of Dialog as well as its positioning.
+
+## Example
+
+<Story
+  name="a) DialogTrigger"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+<DialogTrigger type="popup">
+  <ActionButton>Disk Status</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      c://
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content}>50% disk space remaining.</P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  {BasicDialogTrigger.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--a-dialog-trigger" />
+
+## Content
+
+The DialogTrigger accepts exactly two children: the element which triggers opening of the Dialog and the Dialog itself. The trigger must be the first child passed into the DialogTrigger and _should be an element that supports press events_.
+
+If your Dialog has buttons within it that should close the Dialog when pressed, you must wrap the Dialog in a function in order to propagate the DialogTrigger's close function to the Dialog's children.
+
+Dialogs that do not contain such interactive elements can simply provide the Dialog component as is to the DialogTrigger as its second child.
+
+The example below demonstrates how to pass the DialogTrigger's close function to the Dialog's buttons.
+
+<Story
+  name="b) Content"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+<DialogTrigger>
+  <Button>Checkout</Button>
+  {(close) => (
+    <Dialog>
+      <H2 vol={4} className={dialog.title} data-title>
+        Confirm checkout?
+      </H2>
+      <hr className={dialog.divider} />
+      <P className={dialog.content} vol={2}>
+        You have 5 items in your cart. Proceed to checkout?
+      </P>
+      <ButtonGroup className={dialog.buttonGroup}>
+        <Button variant="secondary" onPress={close}>
+          Cancel
+        </Button>
+        <Button variant="primary" onPress={close} data-autofocus>
+          Confirm
+        </Button>
+      </ButtonGroup>
+    </Dialog>
+  )}
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  {ContentExample.bind()}
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--b-content" />
+
+### Customising
+
+You don't need to use Dialog, you can of course create your own and have it as the second child, you can use the Dialog context should you need and [useDialog](https://react-spectrum.adobe.com/react-aria/useDialog.html) to set the aria properties.
+
+## Dialog types
+
+By providing a type prop, you can specify the type of Dialog that is rendered by your DialogTrigger. Note that pressing the Esc key will close the Dialog regardless of its type.
+
+Internally DialogExample will either render a Modal or a Popup.
+
+### Modal
+
+Modal Dialogs create an backdrop that blocks access to the underlying user interface until the Dialog is closed. Focus is trapped inside the Modal as per the accessibility guidelines laid out by W3C.
+
+Sizing options can be found on the Dialog page.
+
+<Story
+  name="c) Modal"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger
+  type="modal"
+  // Defaults to body, set to false to render inline
+  portalSelector="#portal"
+  // react-focus-on props
+  // focusOnProps={{}}
+  // Props from Modal
+  transition="up"
+  // modalClassName=""
+  // transitionProps={{}}
+  // Disable the backround blur
+  // disableModalBackdropBlur
+>
+  <ActionButton>Unlink</ActionButton>
+  {(close) => (
+    <Dialog>
+      <H2 vol={4} className={dialog.title} data-title>
+        Unlinking email
+      </H2>
+      <hr className={dialog.divider} />
+      <P className={dialog.content} vol={2}>
+        This will unlink your email from your profile "TestUser". Are you
+        sure?
+      </P>
+      <ButtonGroup className={dialog.buttonGroup}>
+        <Button variant="secondary" onPress={close}>
+          Cancel
+        </Button>
+        <Button variant="primary" onPress={close} data-autofocus>
+          Confirm
+        </Button>
+      </ButtonGroup>
+    </Dialog>
+  )}
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ModalExample />
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--c-modal" />
+
+#### Transitions
+
+Use `transition` to choose the style of transition e.g `zoom`. To add custom transitions to your theme see [Modal transition docs](?path=/docs/overlays-modal--transtions#transitions).
+
+#### Focus-on
+
+Modal and Popup use [react-focus-on](https://github.com/theKashey/react-focus-on) internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Setting `scrollLock` to false is more useful on a Popup for instance; `shards` can be useful if working with partial screen takeovers and such.
+
+See [Modal > Focus-on: shards](?path=/docs/overlays-modal--c-focus-on-shards#shards) for a shard example.
+
+### Popup
+
+If a Dialog without an underlay is needed, consider using a Popup Dialog. Since they do not take over the user interface like Modal Dialogs a variety of placement options are supported:
+
+#### Positioning - Anchor
+
+By default, popups anchor themselves to their associated trigger. This can be overridden by providing a separate ref to the `targetRef` prop.
+
+<Story
+  name="c) Positioning - anchor"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const targetRef = useRef(null);\n
+  return (
+    <>
+      <DialogTrigger type="popup" targetRef={targetRef}>
+        <ActionButton>Trigger</ActionButton>
+        <Dialog>
+          <H2 vol={4} className={dialog.title} data-title>
+            Heading
+          </H2>
+          <hr className={dialog.divider} />
+          <P className={dialog.content} vol={2}>
+            This is a popup anchored to the span.
+          </P>
+        </Dialog>
+      </DialogTrigger>\n
+      <div style={{ marginTop: 80 }}>
+        <P vol={1}>
+          <span ref={targetRef}>popup appears over here</span>
+        </P>
+      </div>
+    </>
+  );
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerTargetRef />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--c-positioning-anchor" />
+
+#### Positioning - Placement
+
+The popup's placement with respect to its anchor element can be adjusted using the placement prop. See the props table below for a full list of available placement combinations.
+
+<Story
+  name="d) Positioning - placement"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger placement="right top" type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Heading
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      This is a popover placed to the right of its trigger and offset so the
+      arrow is at the top of the dialog.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerPlacement />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--d-positioning-placement" />
+
+### Offset and cross offset
+
+The Popup Dialog's offset with respect to its anchor element can be adjusted using the offset and crossOffset props. The offset prop controls the spacing applied along the main axis between the element and its anchor element whereas the crossOffset prop handles the spacing applied along the cross axis.
+
+Below is a popup offset by an additional 50px above the trigger.
+
+<Story
+  name="e) Positioning - offset"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger offset={50} type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Offset
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      Offset by 50px, 16px is default.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerOffset />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--e-positioning-offset" />
+
+Below is a popup cross offset by an additional 100px to the right of the trigger.
+
+<Story
+  name="f) Positioning - cross-offset"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<DialogTrigger crossOffset={100} type="popup">
+  <ActionButton>Trigger</ActionButton>
+  <Dialog>
+    <H2 vol={4} className={dialog.title} data-title>
+      Cross offset
+    </H2>
+    <hr className={dialog.divider} />
+    <P className={dialog.content} vol={2}>
+      Cross offset by 100px.
+    </P>
+  </Dialog>
+</DialogTrigger>
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <DialogTriggerCrossOffset />
+  </StoryCenteredInline>
+</Story>
+
+<Source
+  language="tsx"
+  id="overlays-dialogtrigger--f-positioning-cross-offset"
+/>
+
+#### Flipping
+
+By default, DialogTrigger attempts to flip popovers on the main axis in situations where the original placement would cause it to render out of view. This can be overridden by setting `shouldFlip={false}`.
+
+#### Container padding
+
+You can control the minimum padding required between the Popover Dialog and the surrounding container via the containerPadding prop. This affects the positioning breakpoints that determine when the Dialog will attempt to flip.
+
+## Focus-on
+
+Modal and Popup use [react-focus-on](https://github.com/theKashey/react-focus-on) internally and you have access to that api via `focusOnProps`. Some options are more relavant than others depending on the type. Changing `scrollLock` is more useful on a Popup for instance.
+
+## Events
+
+DialogTrigger accepts an `onOpenChange` handler which is triggered whenever the Dialog is opened or closed.
+
+The example below uses `onOpenChange` to update a separate element with the current open state of the Dialog.
+
+<Story
+  name="d) Events"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+  const targetRef = useRef(null);
+  const [state, setState] = useState(false);
+  return (
+    <>
+      <DialogTrigger
+        type="popup"
+        placement="top"
+        onOpenChange={(isOpen) => setState(isOpen)}
+      >
+        <Button ref={targetRef}>Whispers</Button>
+        <>
+          <H2>Whispers and DMs</H2>
+          <P>You have 0 new messages.</P>
+        </>
+      </DialogTrigger>\n
+      <P>Current open state: {state.toString()}</P>
+    </>
+  );
+`,
+      },
+    },
+  }}
+>
+  <StoryCenteredInline>
+    <EventExample />
+  </StoryCenteredInline>
+</Story>
+
+<Source language="tsx" id="overlays-dialogtrigger--d-events" />
+
+## Dialog Trigger Props
+
+<ArgsTable of={DialogTrigger} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

@@ -1,27 +1,20 @@
-/** checkboxGroup.st.css */
 @namespace "CheckboxGroup";
 
-:import {
-  -st-from: '../Field/field.st.css';
-  -st-default: Field
-}
-
-:import {
-  -st-from: '../Button/button.st.css';
-  -st-default: Button
-}
+@st-import Field from "../Field/field.st.css";
 
 .root {
   -st-extends: Field;
+  -st-states: orientation(enum(vertical, horizontal));
 }
 
-.trigger {
-  -st-extends: Button;
+.group {
+  display: flex;
 }
 
-.placeholder {
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.root:orientation(vertical) .group {
+  flex-direction: column;
+}
+
+.root:orientation(horizontal) .group {
+  flex-flow: wrap;
 }

@@ -26,18 +26,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
-  plugins: [
-    new StylableWebpackPlugin({
-      optimize: {
-        // removeUnusedComponents: true,
-        // removeComments: true,
-        // removeStylableDirectives: true,
-        // classNameOptimizations: false,
-        // Required until https://github.com/wix/stylable/issues/1870
-        shortNamespaces: false,
-        // minify: true
-      },
-    }),
-  ],
+  plugins: [new StylableWebpackPlugin({ stcConfig: true })],
   cache: { type: "filesystem" },
 };

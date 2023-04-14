@@ -8,12 +8,25 @@
     tone(number),
     variant(string),
     vol(number),
+    isFocusVisible,
     isPressed,
     isDisabled;
 }
 
+/* The 'inner' button. */
+.inner {}
+
+/* The divider which is rendered with an icon only. */
+.divider {}
+
 .root,
 .root:visited {
+  /* = Local vars. */
+  --bg-color: transparent;
+  --border-color: transparent;
+  --text-color: inherit;
+  --border-width: 1px;
+  --border-radius: 4px;
   display: inline-flex;
   justify-content: space-between;
   /* = Explicitly set font-family else it will default to system style. */
@@ -23,35 +36,19 @@
   /* = Persist border to maintain alignment should you be using borders as 
     part of additonal visual states. */
   border-style: solid;
-  border-width: 1px;
-  border-radius: 4px;
-  /**
-   * = Opininated: Some disagree with setting cursor: pointer (the hand) on 
-   * interactive elements arguing system controls don't do this. Meh, for 
-   * us it offers an additional cue to interaction which we feel asserts 
-   * confidence. Many sites do this so perhaps it's expected by many users. 
-   */
-  cursor: pointer;
-  /* = Horizontal alignment. */
-  justify-content: center;
-
-  /* = Colour variables and associated properties. */
-  --bg-color: transparent;
-  --border-color: transparent;
-  --text-color: inherit;
-
-  /* = Set the like for like variable but -accent is special as we use 
-    it to assign the colour index to the properties as we have used them
-    in our variants. */
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  border-color: var(--border-color);
   color: var(--text-color);
   background-color: var(--bg-color);
-  border-color: var(--border-color);
+  /* = Horizontal alignment. */
+  justify-content: center;
   /* = Safari spacing issue with button groups MacOs and IOS. */
   margin: 0;
   text-decoration: none;
 }
 
-/*==== Input Positions ====*/
+/*==== Icon Positions ====*/
 
 /* top */
 .root:iconPos(top) {
@@ -72,15 +69,6 @@
 .root:iconPos(start) {
   flex-direction: row;
 }
-
-/* The 'inner' button. */
-.inner {}
-
-/* The divider which is rendered with an icon only. */
-.divider {}
-
-/* The infotip element for inline tooltip style on focus/hover. */
-.tip {}
 
 .root:fullWidth {
   width: 100%;

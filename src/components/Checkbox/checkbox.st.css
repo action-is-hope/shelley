@@ -1,17 +1,13 @@
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
+@namespace "Checkbox";
+
+@st-import InputLabel from "../../components/Label/label.st.css";
 
 .root {
   -st-states:
-    disabled,
-    error,
+    isDisabled,
     isFocusVisible,
     isIndeterminate,
-    isSelected,
     validationState(enum(valid, invalid)),
-    variant(number),
     vol(number);
 }
 

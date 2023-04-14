@@ -1,0 +1,26 @@
+/* modal.st.css */
+@st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
+@st-import Modal, [enterDone] from "../../components/Modal/modal.st.css";
+
+@st-scope Default {
+
+  Modal::backdrop {
+    background-color: var(--background-color-modal-backdrop);
+  }
+
+  /* Modal::content {} */
+
+  /* Add your own variants */
+  /* Modal:transition(myTransition) {} */
+
+  /** 
+   * Add your own variants. See docs.
+   * Modal:transition(myTransition) {}
+
+   * Overriding a transiton:
+   * Targeting a phase of the transiton can be done by importing
+   * the phases (enterDone etc) from modal.st.css
+   * Modal:transition(up).enterDone {}
+   */
+
+}

@@ -1,6 +1,5 @@
 import React, {
   Children,
-  ReactElement,
   cloneElement,
   forwardRef,
   // Importing from via React. stops EVERYTHING from being dumped out by doc gen.
@@ -8,6 +7,7 @@ import React, {
   isValidElement,
   Ref,
 } from "react";
+import { mergeProps } from "react-aria";
 import type { ButtonProps } from "../Button/Button";
 import type { Accent, Volume, ButtonVariants } from "../types";
 /* = Style API. */
@@ -17,7 +17,7 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
-  disabled?: boolean;
+  isDisabled?: boolean;
   /** Tone index. */
   tone?: Accent;
   /** Variant index. */
@@ -26,6 +26,8 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   vol?: Volume;
   /** Orient around vertical or horizontal. */
   orientation?: "vertical" | "horizontal";
+  /** Use a split button style. */
+  splitButton?: boolean;
 }
 
 const ButtonGroup = forwardRef(
@@ -34,17 +36,22 @@ const ButtonGroup = forwardRef(
       buttonClassName,
       children,
       className: classNameProp,
-      disabled,
+      isDisabled,
       tone = 1,
       variant = "quiet",
       orientation = "horizontal",
       vol = 3,
+      splitButton,
       ...rest
     }: ButtonGroupProps,
     ref?: Ref<HTMLDivElement>
   ) => (
     <div
-      className={st(classes.root, { orientation }, classNameProp)}
+      className={st(
+        classes.root,
+        { orientation, splitButton, isDisabled },
+        classNameProp
+      )}
       {...rest}
       ref={ref}
     >
@@ -52,18 +59,15 @@ const ButtonGroup = forwardRef(
         if (!isValidElement(child)) {
           return null;
         }
-
-        return cloneElement(child as ReactElement, {
-          className: st(
-            buttonClassName,
-            (child.props as ButtonProps)?.className
-          ),
-          disabled: (child.props as ButtonProps)?.disabled || disabled,
-          tone: (child.props as ButtonProps)?.tone || tone,
-          vol: (child.props as ButtonProps)?.vol || vol,
-          variant: (child.props as ButtonProps)?.variant || variant,
-          icon: (child.props as ButtonProps)?.icon,
-        });
+        // Check if Child is a Shelley Button
+        return child.type?.toString() === "ShelleyButton"
+          ? cloneElement(child, {
+              ...mergeProps(
+                { isDisabled, tone, variant, vol },
+                { ...(child.props as ButtonProps) }
+              ),
+            })
+          : child;
       })}
     </div>
   )

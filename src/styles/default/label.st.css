@@ -31,52 +31,10 @@
     pointer-events: auto;
   }
 
-  /*==== Has Input  ====*/
-  Label:hasInput {
-    display: inline-flex;
-    /* = Reverse the direction as we provide the label first as per logical source order. I must read before I know what to do.*/
-    flex-direction: row-reverse;
-    /* = Vertically align the items. */
-    align-items: center;
-    /* = Justify to the end which as we have reversed the direction is now left in ltr languages.*/
-    justify-content: flex-end;
-  }
-
   Label::labelText {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
-
-  /*==== Input Positions ====*/
-
-  /* = top */
-  Label:inputPosition(top):hasInput {
-    flex-direction: column-reverse;
-  }
-
-  Label:inputPosition(top)::labelText {
-    justify-content: center;
-  }
-
-  /* = end / right */
-  Label:inputPosition(end):hasInput {
-    flex-direction: row;
-  }
-
-  Label:inputPosition(end)::labelText {
-    justify-content: flex-end;
-  }
-
-  /* = bottom */
-  Label:inputPosition(bottom):hasInput {
-    flex-direction: column;
-  }
-
-  Label:inputPosition(bottom)::labelText {
-    justify-content: center;
-  }
-
-  /* = start / left */
 
   /*==== Icon ====*/
   Label Icon {

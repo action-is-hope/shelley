@@ -57,6 +57,8 @@ export interface FieldProps extends Validation {
   descriptionProps?: HTMLAttributes<HTMLElement>;
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLAttributes<HTMLElement>;
+  /** Props for the field container. */
+  fieldContainerProps?: HTMLAttributes<HTMLElement>;
   /** Enable disabled state. */
   isDisabled?: boolean;
 }
@@ -84,6 +86,7 @@ const Field = ({
   includeDataIds = false,
   variant = "outlined",
   hasValue: hasValueProp,
+  fieldContainerProps,
   isRequired,
   isDisabled,
   vol = 1,
@@ -103,7 +106,7 @@ const Field = ({
       });
     } else return;
   });
-
+  // @todo empty labelStringProp should not render label
   const label = (
     <Label
       className={classes.inputLabel}
@@ -133,7 +136,10 @@ const Field = ({
     >
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
-      <div className={classes.fieldContainer}>
+      <div
+        {...fieldContainerProps}
+        className={st(classes.fieldContainer, fieldContainerProps?.className)}
+      >
         {startAdornment && (
           <InputAdornment
             data-id={includeDataIds ? "field--start-adornment" : undefined}

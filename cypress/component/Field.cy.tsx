@@ -1,9 +1,10 @@
 import React from "react";
 import { Field } from "../../src/indexLib";
 
-const labelTest = '[data-id="field--label"]';
-const descriptionTest = '[data-id="help--description"]';
-const errorTest = '[data-id="help--error"]';
+const field = '[data-id="field"]';
+const fieldLabel = '[data-id="field--label"]';
+const fieldDescription = '[data-id="help--description"]';
+const fieldError = '[data-id="help--error"]';
 
 const fieldPropsTest = {
   "data-id": "field",
@@ -15,8 +16,6 @@ const fieldPropsTest = {
   },
   includeDataIds: true,
 };
-
-// Add Fieldset test
 
 describe("Basic Field", () => {
   it("renders with children, child renders correctly.", () => {
@@ -38,11 +37,22 @@ describe("Basic Field", () => {
         <input id="testField" type="text" aria-labelledby="label-id" />
       </Field>
     );
-    cy.get(labelTest)
+    cy.get(fieldLabel)
       .should("have.attr", "id", "label-id")
       .and("have.attr", "for", "testField")
       .and("have.attr", "data", "random")
       .and("have.text", "My field");
+  });
+
+  it("renders isDisabled class.", () => {
+    cy.mount(
+      <Field {...fieldPropsTest} isDisabled>
+        <input id="testField" type="text" aria-labelledby="label-id" disabled />
+      </Field>
+    );
+    cy.get(field)
+      .should("have.attr", "class")
+      .and("to.have.string", "isDisabled");
   });
 });
 
@@ -62,7 +72,7 @@ describe("Field Help", () => {
         />
       </Field>
     );
-    cy.get(descriptionTest)
+    cy.get(fieldDescription)
       .should("have.attr", "id", "description-id")
       .and("have.text", "Chocolate teapot");
   });
@@ -84,7 +94,7 @@ describe("Field Help", () => {
         />
       </Field>
     );
-    cy.get(errorTest)
+    cy.get(fieldError)
       .should("have.attr", "id", "error-id")
       .and("have.text", "Teapot fail!");
   });
@@ -108,8 +118,8 @@ describe("Field Help", () => {
         />
       </Field>
     );
-    cy.get(descriptionTest).should("not.exist");
-    cy.get(errorTest).should("be.visible");
+    cy.get(fieldDescription).should("not.exist");
+    cy.get(fieldError).should("be.visible");
   });
 });
 

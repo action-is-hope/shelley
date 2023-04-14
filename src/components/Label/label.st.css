@@ -5,8 +5,47 @@
   -st-states:
     hasInput,
     inputPosition(enum(top, end, bottom, start));
+
+  justify-self: baseline;
 }
 
 .textContainer {}
 
 .labelText {}
+
+.root:hasInput {
+  display: inline-flex;
+  /* = Reverse the direction as we provide the label first as per logical source order. */
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/*==== Input Positions ====*/
+
+/* = top */
+.root:inputPosition(top):hasInput {
+  flex-direction: column-reverse;
+}
+
+.root:inputPosition(top)::labelText {
+  justify-content: center;
+}
+
+/* = end / right */
+.root:inputPosition(end):hasInput {
+  flex-direction: row;
+}
+
+.root:inputPosition(end)::labelText {
+  justify-content: flex-end;
+}
+
+/* = bottom */
+.root:inputPosition(bottom):hasInput {
+  flex-direction: column;
+}
+
+.root:inputPosition(bottom)::labelText {
+  justify-content: center;
+}
