@@ -20,7 +20,6 @@
 
 .popup {
   -st-extends: Popup;
-  overflow: hidden scroll;
 }
 
 .placeholder {

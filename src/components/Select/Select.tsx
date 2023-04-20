@@ -1,7 +1,16 @@
-import React, { Ref, forwardRef, ReactElement, useRef, ReactNode } from "react";
+import React, {
+  Ref,
+  ReactElement,
+  ReactNode,
+  forwardRef,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import { createPortal } from "react-dom";
 import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
+import type { PositionProps } from "@react-types/overlays";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
@@ -12,10 +21,13 @@ import { ListBox } from "../ListBox/ListBox";
 import AngleDown from "../icons/AngleDown";
 /* = Style API. */
 import { st, classes } from "./select.st.css";
+import type { LoadMoreProps } from "../types";
 
 export interface SelectProps<T>
   extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
-    Omit<FieldProps, "label" | "startAdornment" | "endAdornment"> {
+    Omit<FieldProps, "label" | "startAdornment" | "endAdornment">,
+    Pick<PositionProps, "offset" | "shouldFlip">,
+    LoadMoreProps {
   className?: string;
   /**
    * The selector of the element that the menu should render inside of.
@@ -27,7 +39,13 @@ export interface SelectProps<T>
    * Useful for scrolled lists to stop a jump on hover when reselecting.
    */
   shouldFocusOnHover?: boolean;
+  /**
+   * Disable the label transition.
+   * @default bottom
+   */
+  placement?: "top" | "bottom";
   children?: CollectionChildren<T>;
+  /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
 }
 
@@ -47,6 +65,11 @@ function Select<T extends object>(
     labelPosition,
     disableLabelTransition,
     vol,
+    placement = "bottom",
+    offset = 6,
+    shouldFlip,
+    loadingState,
+    onLoadMore,
     placeholder = "Select an option",
     shouldFocusOnHover = true,
     triggerIcon = <AngleDown />,
@@ -56,6 +79,7 @@ function Select<T extends object>(
   const state = useSelectState(props);
 
   const localRef = useRef<HTMLButtonElement>(null);
+  const fieldContainerRef = useRef<HTMLDivElement>(null);
 
   const {
     labelProps,
@@ -65,6 +89,13 @@ function Select<T extends object>(
     errorMessageProps,
     descriptionProps,
   } = useSelect(props, state, localRef);
+
+  const [popUpWidth, setPopUpWidth] = useState(0);
+
+  useEffect(() => {
+    fieldContainerRef?.current?.clientWidth &&
+      setPopUpWidth(fieldContainerRef?.current?.clientWidth);
+  }, [state.isOpen]);
 
   return (
     <Field
@@ -84,6 +115,9 @@ function Select<T extends object>(
             !state.isOpen && localRef?.current?.click();
           },
         },
+        fieldContainerProps: {
+          ref: fieldContainerRef,
+        },
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,
@@ -97,7 +131,6 @@ function Select<T extends object>(
           {...triggerProps}
           icon={triggerIcon}
           iconPos="end"
-          // This is where we put the forwardedRef and the local one.
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           variant={false}
           className={classes.trigger}
@@ -119,39 +152,42 @@ function Select<T extends object>(
           name={props.name}
           data-id={dataId ? `${dataId}--hiddenSelect` : undefined}
         />
-        {state.isOpen &&
-          createPortal(
-            <Popup
-              isOpen={state.isOpen}
-              onClose={() => state.close()}
-              triggerRef={localRef}
-              // @todo placement/popup props
-              placement="bottom start"
-              hideArrow
-              offset={6}
-              shouldCloseOnBlur
-              focusOnProps={{
+        {createPortal(
+          <Popup
+            isOpen={state.isOpen}
+            onClose={() => state.close()}
+            triggerRef={localRef}
+            hideArrow
+            width={popUpWidth}
+            shouldCloseOnBlur
+            {...{
+              onLoadMore,
+              loadingState,
+              shouldFlip,
+              offset,
+              placement: placement === "top" ? "top start" : "bottom start",
+              focusOnProps: {
                 onDeactivation: () => {
                   // Manually setting focus back as return focus only works once. @todo Investigate.
                   localRef?.current && localRef.current.focus();
                 },
                 returnFocus: false,
+              },
+              "data-id": dataId ? `${dataId}--popup` : undefined,
+            }}
+          >
+            <ListBox
+              {...{
+                ...menuProps,
+                loadingState,
+                shouldFocusOnHover,
+                state,
+                "data-id": dataId ? `${dataId}--listBox` : undefined,
               }}
-              data-id={dataId ? `${dataId}--popup` : undefined}
-            >
-              <ListBox
-                // {...menuProps}
-                // data-id={dataId ? `${dataId}--listBox` : undefined}
-                {...{
-                  ...menuProps,
-                  shouldFocusOnHover,
-                  state,
-                  "data-id": dataId ? `${dataId}--listBox` : undefined,
-                }}
-              />
-            </Popup>,
-            document.querySelector(portalSelector) as HTMLElement
-          )}
+            />
+          </Popup>,
+          document.querySelector(portalSelector) as HTMLElement
+        )}
       </>
     </Field>
   );

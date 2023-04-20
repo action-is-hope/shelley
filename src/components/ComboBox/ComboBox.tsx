@@ -56,6 +56,7 @@ export interface ComboBoxProps<T>
    * @default false
    */
   scrollLock?: boolean;
+  /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
 }
 

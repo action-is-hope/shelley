@@ -132,24 +132,50 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
 };
 
 export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
-  const list: { items: ItemsType[] } = useAsyncList({
-    async load({ signal }) {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
+  // const list: { items: ItemsType[] } = useAsyncList({
+  //   async load({ signal }) {
+  //     const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
+  //     const json = await res.json();
+
+  //     return {
+  //       items: json.results,
+  //     };
+  //   },
+  // });
+
+  const list = useAsyncList<ItemsType>({
+    async load({ signal, cursor, filterText }) {
+      if (cursor) {
+        cursor = cursor.replace(/^http:\/\//i, "https://");
+      }
+
+      // If no cursor is available, then we're loading the first page,
+      // filtering the results returned via a query string that
+      // mirrors the ComboBox input text.
+      // Otherwise, the cursor is the next URL to load,
+      // as returned from the previous page.
+      const res = await fetch(
+        cursor || `https://swapi.py4e.com/api/people/?search=${filterText}`,
+        { signal }
+      );
       const json = await res.json();
 
       return {
         items: json.results,
+        cursor: json.next,
       };
     },
   });
 
   return (
     <Select
-      label="Pick a Pokemon"
+      label="Star Wars Characters"
       items={list.items}
       portalSelector="#portal"
       shouldFocusOnHover={false}
-      {...args}
+      loadingState={list.loadingState}
+      onLoadMore={list.loadMore}
+      // {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </Select>
