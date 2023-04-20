@@ -85,14 +85,16 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           ref={buttonRef}
+          icon={
+            <Icon
+              // https://github.com/svg/svgo/issues/1011 Still best practice for buttons?
+              focusable="false"
+            >
+              {iconPath}
+            </Icon>
+          }
           iconPos="start"
         >
-          <Icon
-            // https://github.com/svg/svgo/issues/1011 Still best practice for buttons?
-            focusable="false"
-          >
-            {iconPath}
-          </Icon>
           {btnText}
         </Button>
       )

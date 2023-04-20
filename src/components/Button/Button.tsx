@@ -143,11 +143,6 @@ function ButtonBase<T extends React.ElementType = "button">(
           {children && <span className={classes.divider}></span>}
         </>
       )}
-      {/* {typeof children === "string" ? (
-        <span className={classes.inner}>{children}</span>
-      ) : (
-        children
-      )} */}
       {children && <span className={classes.inner}>{children}</span>}
     </>
   );

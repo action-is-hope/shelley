@@ -31,8 +31,6 @@ import { mount } from "cypress/react";
 //
 
 // Add Mount
-// Cypress.Commands.add("mount", mount);
-
 Cypress.Commands.add("mount", (component, options) => {
   // Wrap any parent components needed
   // ie: return mount(<MyProvider>{component}</MyProvider>, options)
