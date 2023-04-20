@@ -10,5 +10,4 @@ const AngleDown: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-AngleDown.toString = () => "Icon";
 export default AngleDown;

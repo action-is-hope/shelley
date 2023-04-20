@@ -14,5 +14,4 @@ const MoreHor: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-MoreHor.toString = () => "Icon";
 export default MoreHor;

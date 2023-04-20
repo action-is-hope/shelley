@@ -11,5 +11,4 @@ const Eye: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Eye.toString = () => "Icon";
 export default Eye;

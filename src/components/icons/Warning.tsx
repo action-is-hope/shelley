@@ -10,5 +10,4 @@ const Warning: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Warning.toString = () => "Icon";
 export default Warning;

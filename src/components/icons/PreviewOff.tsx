@@ -14,5 +14,4 @@ const PreviewOffIcon: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-PreviewOffIcon.toString = () => "Icon";
 export default PreviewOffIcon;

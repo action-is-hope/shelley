@@ -14,5 +14,4 @@ const ExpandScreenIcon: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-ExpandScreenIcon.toString = () => "Icon";
 export default ExpandScreenIcon;

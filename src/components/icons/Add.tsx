@@ -11,5 +11,4 @@ const Add: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Add.toString = () => "Icon";
 export default Add;

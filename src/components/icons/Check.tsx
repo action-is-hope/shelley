@@ -10,5 +10,4 @@ const Check: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Check.toString = () => "Icon";
 export default Check;

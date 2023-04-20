@@ -14,5 +14,4 @@ const EyeDisabled: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-EyeDisabled.toString = () => "Icon";
 export default EyeDisabled;

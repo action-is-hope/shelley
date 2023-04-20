@@ -14,5 +14,4 @@ const CompressScreenIcon: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-CompressScreenIcon.toString = () => "Icon";
 export default CompressScreenIcon;

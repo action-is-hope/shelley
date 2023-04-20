@@ -11,5 +11,4 @@ const AddToBoard: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-AddToBoard.toString = () => "Icon";
 export default AddToBoard;

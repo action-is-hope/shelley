@@ -10,5 +10,4 @@ const Close: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Close.toString = () => "Icon";
 export default Close;

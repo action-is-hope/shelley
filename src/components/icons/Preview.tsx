@@ -11,5 +11,4 @@ const Preview: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-Preview.toString = () => "Icon";
 export default Preview;

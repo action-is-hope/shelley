@@ -10,5 +10,4 @@ const AngleRight: React.VFC<IconProps> = (props) => {
     </Icon>
   );
 };
-AngleRight.toString = () => "Icon";
 export default AngleRight;
