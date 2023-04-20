@@ -2,7 +2,7 @@ import type React from "react";
 import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
 import type { MergeElementProps } from "../utils";
 import type { ComponentBase, TextInputType } from "../types";
-import Field, { FieldProps } from "../Field/Field";
+import { Field, FieldProps } from "../Field/Field";
 import { useTextField } from "react-aria";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 

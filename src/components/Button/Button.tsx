@@ -46,12 +46,13 @@ function ButtonBase<T extends React.ElementType = "button">(
     children,
     className: classNameProp,
     icon,
-    iconPos = "end",
+    iconPos,
     fullWidth = false,
     tone = 1,
     variant = "primary",
     vol = 3,
     // Pull off known inputs for @react-aria -> useButton minus 'elementType'
+    excludeFromTabOrder,
     isDisabled,
     onPress,
     onPressStart,
@@ -85,6 +86,7 @@ function ButtonBase<T extends React.ElementType = "button">(
 
   const { buttonProps, isPressed } = useButton(
     {
+      excludeFromTabOrder,
       isDisabled,
       onPress,
       onPressStart,
@@ -132,6 +134,7 @@ function ButtonBase<T extends React.ElementType = "button">(
     },
     classNameProp
   );
+
   const internal = (
     <>
       {icon && (
@@ -140,6 +143,11 @@ function ButtonBase<T extends React.ElementType = "button">(
           {children && <span className={classes.divider}></span>}
         </>
       )}
+      {/* {typeof children === "string" ? (
+        <span className={classes.inner}>{children}</span>
+      ) : (
+        children
+      )} */}
       {children && <span className={classes.inner}>{children}</span>}
     </>
   );

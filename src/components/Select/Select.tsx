@@ -1,6 +1,6 @@
-import React, { Ref, forwardRef, RefObject, ReactElement, useRef } from "react";
+import React, { Ref, forwardRef, ReactElement, useRef, ReactNode } from "react";
 import { createPortal } from "react-dom";
-import Field from "../Field/Field";
+import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
 import { useSelectState } from "react-stately";
@@ -8,7 +8,8 @@ import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
 import Popup from "../Popup/Popup";
 import Button from "../Button/Button";
-import ListBox from "../ListBox/ListBox";
+import { ListBox } from "../ListBox/ListBox";
+import AngleDown from "../icons/AngleDown";
 /* = Style API. */
 import { st, classes } from "./select.st.css";
 
@@ -27,6 +28,7 @@ export interface SelectProps<T>
    */
   shouldFocusOnHover?: boolean;
   children?: CollectionChildren<T>;
+  triggerIcon?: ReactNode;
 }
 
 function Select<T extends object>(
@@ -45,9 +47,9 @@ function Select<T extends object>(
     labelPosition,
     disableLabelTransition,
     vol,
-    // children,
     placeholder = "Select an option",
     shouldFocusOnHover = true,
+    triggerIcon = <AngleDown />,
     "data-id": dataId,
   } = props;
   // Create state based on the incoming props
@@ -62,7 +64,7 @@ function Select<T extends object>(
     menuProps,
     errorMessageProps,
     descriptionProps,
-  } = useSelect(props, state, localRef as RefObject<HTMLButtonElement>);
+  } = useSelect(props, state, localRef);
 
   return (
     <Field
@@ -79,8 +81,7 @@ function Select<T extends object>(
           ...labelProps,
           onClick: () => {
             // Manually trigger a click on the button if clicking the label text.
-            !state.isOpen &&
-              (localRef as RefObject<HTMLButtonElement>)?.current?.click();
+            !state.isOpen && localRef?.current?.click();
           },
         },
         disableLabelTransition:
@@ -94,6 +95,8 @@ function Select<T extends object>(
       <>
         <Button
           {...triggerProps}
+          icon={triggerIcon}
+          iconPos="end"
           // This is where we put the forwardedRef and the local one.
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           variant={false}
@@ -111,7 +114,7 @@ function Select<T extends object>(
         </Button>
         <HiddenSelect
           state={state}
-          triggerRef={localRef as RefObject<HTMLButtonElement>}
+          triggerRef={localRef}
           label={props.label}
           name={props.name}
           data-id={dataId ? `${dataId}--hiddenSelect` : undefined}
@@ -124,6 +127,8 @@ function Select<T extends object>(
               triggerRef={localRef}
               // @todo placement/popup props
               placement="bottom start"
+              hideArrow
+              offset={6}
               shouldCloseOnBlur
               focusOnProps={{
                 onDeactivation: () => {
@@ -135,11 +140,13 @@ function Select<T extends object>(
               data-id={dataId ? `${dataId}--popup` : undefined}
             >
               <ListBox
-                {...menuProps}
-                data-id={dataId ? `${dataId}--listBox` : undefined}
+                // {...menuProps}
+                // data-id={dataId ? `${dataId}--listBox` : undefined}
                 {...{
+                  ...menuProps,
                   shouldFocusOnHover,
                   state,
+                  "data-id": dataId ? `${dataId}--listBox` : undefined,
                 }}
               />
             </Popup>,

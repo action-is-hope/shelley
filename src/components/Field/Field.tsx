@@ -5,9 +5,15 @@ import {
   cloneElement,
   isValidElement,
   Children,
-  HTMLAttributes,
+  forwardRef,
+  HTMLProps,
 } from "react";
-import type { Volume, FieldVariants, ComponentBase } from "../types";
+import type {
+  Volume,
+  FieldVariants,
+  ComponentBase,
+  LabelPosition,
+} from "../types";
 import type { Validation } from "../../typings/shared-types";
 import Label from "../Label/Label";
 import { HelpText } from "../HelpText/HelpText";
@@ -31,7 +37,7 @@ export interface FieldProps extends Validation, ComponentBase {
    * Position of the label.
    * @default "over"
    */
-  labelPosition?: "top" | "side" | "over" | "hidden";
+  labelPosition?: LabelPosition;
   /**
    * Disable the label transition.
    * @default false
@@ -52,11 +58,11 @@ export interface FieldProps extends Validation, ComponentBase {
   /** Does the containing input have a value. */
   hasValue?: boolean;
   /** Props for the help text description element. */
-  descriptionProps?: HTMLAttributes<HTMLElement>;
+  descriptionProps?: HTMLProps<HTMLDivElement>;
   /** Props for the help text error message element. */
-  errorMessageProps?: HTMLAttributes<HTMLElement>;
+  errorMessageProps?: HTMLProps<HTMLDivElement>;
   /** Props for the field container. */
-  fieldContainerProps?: HTMLAttributes<HTMLElement>;
+  fieldContainerProps?: HTMLProps<HTMLDivElement>;
   /** Enable disabled state. */
   isDisabled?: boolean;
   isReadOnly?: boolean;
@@ -68,30 +74,33 @@ interface FieldInternalProps
       Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">
     >,
     FieldProps {}
-const Field = ({
-  className: classNameProp,
-  children,
-  errorMessage,
-  validationState,
-  startAdornment,
-  endAdornment,
-  description,
-  label: labelStringProp,
-  labelProps,
-  labelPosition = "over",
-  descriptionProps,
-  errorMessageProps,
-  disableLabelTransition = false,
-  variant = "outlined",
-  hasValue: hasValueProp,
-  fieldContainerProps,
-  isReadOnly,
-  isRequired,
-  isDisabled,
-  vol = 1,
-  "data-id": dataId,
-  ...rest
-}: FieldInternalProps) => {
+
+function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
+  const {
+    className: classNameProp,
+    children,
+    errorMessage,
+    validationState,
+    startAdornment,
+    endAdornment,
+    description,
+    label: labelStringProp,
+    labelProps,
+    labelPosition = "over",
+    descriptionProps,
+    errorMessageProps,
+    disableLabelTransition = false,
+    variant = "outlined",
+    hasValue: hasValueProp,
+    fieldContainerProps,
+    isReadOnly,
+    isRequired,
+    isDisabled,
+    vol = 1,
+    "data-id": dataId,
+    ...rest
+  } = props;
+
   const hasValue =
     disableLabelTransition || startAdornment ? true : hasValueProp;
 
@@ -134,6 +143,7 @@ const Field = ({
         classNameProp
       )}
       data-id={dataId}
+      ref={ref}
       {...rest}
     >
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
@@ -144,6 +154,7 @@ const Field = ({
       >
         {startAdornment && (
           <InputAdornment
+            className={classes.startAdornment}
             data-id={dataId ? `${dataId}--start-adornment` : undefined}
           >
             {startAdornment}
@@ -152,6 +163,7 @@ const Field = ({
         {childrenWithProps}
         {endAdornment && (
           <InputAdornment
+            className={classes.endAdornment}
             data-id={dataId ? `${dataId}--end-adornment` : undefined}
           >
             {endAdornment}
@@ -180,6 +192,7 @@ const Field = ({
       />
     </div>
   );
-};
+}
 
-export default Field;
+const _Field = forwardRef(Field);
+export { _Field as Field };

@@ -3,14 +3,7 @@ import { DialogContext, DialogContextValue } from "./context";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 
 // import intlMessages from "../intl/*.json";
-import React, {
-  // RefObject,
-  useContext,
-  // useMemo,
-  useRef,
-  ReactNode,
-  Children,
-} from "react";
+import React, { useContext, useRef, ReactNode, Children } from "react";
 import type { AriaDialogProps } from "@react-types/dialog";
 import { useDialog } from "@react-aria/dialog";
 // import { useLocalizedStringFormatter } from "@react-aria/i18n";
@@ -18,14 +11,6 @@ import { useDialog } from "@react-aria/dialog";
 import { st, classes } from "./dialog.st.css";
 import Close from "../icons/Close";
 import type { ComponentBase } from "../types";
-
-// let sizeMap = {
-//   S: "small",
-//   M: "medium",
-//   L: "large",
-//   fullscreen: "fullscreen",
-//   fullscreenTakeover: "fullscreenTakeover",
-// };
 
 export interface DialogProps
   extends AriaDialogProps,

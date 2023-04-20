@@ -7,6 +7,8 @@ export interface ComponentBase {
 // "top" "right" "bottom" "left" but using right to left aware langauge.
 export declare type AlignPos = "top" | "end" | "bottom" | "start" | undefined;
 
+export declare type LabelPosition = "top" | "side" | "over" | "hidden";
+
 export declare type TextAlign =
   | "center"
   | "inherit"
@@ -26,8 +28,6 @@ export declare type ButtonVariants =
   | "quiet"
   | "fab"
   | false;
-// | string
-// | undefined;
 
 export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
 
@@ -67,3 +67,30 @@ export declare type SelectionControlType =
   | "radio"
   | "switch" // Internally map to checkbox.
   | "toggle"; // Internally map to checkbox.
+
+export declare type LoadingState =
+  | "loading"
+  | "sorting"
+  | "loadingMore"
+  | "error"
+  | "idle"
+  | "filtering";
+
+export declare type LoadMore = () => any;
+
+export interface LoadMoreProps {
+  /**
+   * Handler that is called when more items should be loaded,
+   * e.g. while scrolling near the bottom.
+   */
+  onLoadMore?: LoadMore;
+  /**
+   * The current loading state of the ComboBox. Determines whether or
+   * not the progress circle should be shown.
+   */
+  loadingState?: LoadingState;
+  /** 'Loading' string for progress loader */
+  loadingString?: "Loading...";
+  /** 'Loading more' string for progress loader */
+  loadingMoreString?: "Loading more...";
+}

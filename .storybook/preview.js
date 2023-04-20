@@ -100,6 +100,10 @@ export const globalTypes = {
           value: themes["shelley"],
           title: "Shelley",
         },
+        {
+          value: themes["shelleyLight"],
+          title: "ShelleyLight",
+        },
       ],
     },
   },

@@ -129,6 +129,7 @@
 .textualFieldContainer {
   position: relative;
   display: inline-flex;
+  align-items: center;
   line-height: 1.5;
 }
 
@@ -220,19 +221,14 @@
 /* = Apply the --select-icon (see project vars) and associated icon styles. */
 .selectFieldInput {
   border-radius: 0;
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
-  background-position: right 18px top 50%;
   /* padding: calc(0.2rem + 0.2em) var(--spacing-unit); */
   padding: calc(0.2rem + 0.2em) var(--spacing-unit);
-  padding-right: calc(3.5 * var(--spacing-unit));
-  background-image: var(--select-icon);
   text-transform: inherit;
   font-size: 1em;
   line-height: 1.5;
   width: 100%;
   /* text-align: start; */
-  justify-content: stretch;
+  justify-content: space-between;
   font-weight: 400;
   border-width: 0;
 }

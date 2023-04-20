@@ -1,0 +1,91 @@
+/* button.st.css */
+
+/* = Default project and vars */
+@st-import Default from "./project.st.css";
+/* Component API */
+@st-import IconButton, [--bg-color, --text-color] from "../../components/IconButton/iconButton.st.css";
+/* = Child components */
+@st-import Icon from "../../components/Icon/icon.st.css";
+/* = Formatters */
+@st-import [respScale] from "../formatters/common";
+/* = Default Mixins */
+@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
+/* = Shelley Mixins */
+@st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
+@st-import [textVol] from "./mixins/text.st.css";
+
+/* This is how we can scope the styles in Stylable. */
+@st-scope Default {
+
+  /* = The base <button> element. */
+  IconButton {
+    padding: 6px;
+    --bg-color: transparent;
+    --text-color: inherit;
+  }
+
+  IconButton Icon {
+    font-size: calc(1em + 6px);
+  }
+
+
+  IconButton:hover {
+    opacity: 0.7;
+  }
+
+  IconButton::after {
+    border-radius: 4px;
+  }
+
+
+  /* = Button CSS STATES PSEUDO */
+  /* = Disabled */
+  IconButton:isDisabled,
+  IconButton:isDisabled:hover,
+  IconButton:isDisabled:focus,
+  IconButton:isDisabled:active,
+  IconButton:isDisabled:active:hover {
+    /* opacity: 0.5 */
+  }
+
+  /* = ACTIVE */
+  IconButton:active,
+  IconButton:active:hover {}
+
+
+  IconButton::after {
+    border-radius: 999px;
+  }
+
+  /*==== VOLUMES ====*/
+
+
+  IconButton:vol(1) Icon {
+    font-size: 16px;
+  }
+
+  /*= FAB - Volume 2 */
+  IconButton:vol(2) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 3 */
+  IconButton:vol(3) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 4 */
+  IconButton:vol(4) Icon {
+    font-size: 20px;
+  }
+
+  /*= FAB - Volume 5 */
+  IconButton:vol(5) Icon {
+    font-size: 22px;
+  }
+
+  /*= FAB - Volume 6 */
+  IconButton:vol(6) Icon {
+    font-size: 24px;
+  }
+}

@@ -167,7 +167,10 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --color-form-selection-border: rgba(119, 140, 157, 1);
   --color-form-selection-notch: #333;
   --color-switch-notch: #fff;
-  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
+  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
+
+  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>");
+
 
   /* Modal */
   --background-color-modal-backdrop: rgba(0, 0, 1, 0.88);
@@ -408,15 +411,14 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
    * as a responsive scale to help us with things like responsive margins as an 
    * attempt to get fluid vertical rythum.
    * 
-   * The downside to that, if we want to adjust down a Text components size
+   * The downside to that, if we want to scale down a Text components size
    * by making it's container say font-size: 0.8em then that would be 0.8 of 
-   * 1rem as it trickles all the way up to first set item, the root element. 
+   * 1rem as it trickles up to the first set parent, the root element. 
    * This is an issue as we have a custom responsive scale for our text and this 
    * essentially doubles us up on responsiveness.
    * 
-   * We set the body to initial so that as it trickles up it will until it sees
-   * body is set body and be sized relative to that, initial which is our base of 
-   * 16px.
+   * We set the body to initial so that as it trickles up it will encounter it
+   * and be sized relative to it; initial being the same as our base of 16px.
    *
    * This way we can use a responsive rem value when we want to but also 
    * leverage ems as described above.

@@ -26,6 +26,8 @@ export * from "./components/ComboBox/ComboBox";
 export { CheckboxGroup } from "./components/CheckboxGroup/CheckboxGroup";
 export * from "./components/CheckboxGroup/CheckboxGroup";
 
+export * from "./components/IconButton/IconButton";
+
 export * from "./components/Modal/Modal";
 export * from "./components/Dialog/Dialog";
 export * from "./components/Dialog/DialogTrigger";
@@ -41,7 +43,6 @@ export * from "./components/Icon/Icon";
 export { default as InputAdornment } from "./components/InputAdornment/InputAdornment";
 export * from "./components/InputAdornment/InputAdornment";
 
-export { default as Field } from "./components/Field/Field";
 export * from "./components/Field/Field";
 
 export { Select } from "./components/Select/Select";
@@ -50,7 +51,6 @@ export * from "./components/Select/Select";
 export { TextField } from "./components/TextField/TextField";
 export * from "./components/TextField/TextField";
 
-export { default as ListBox } from "./components/ListBox/ListBox";
 export * from "./components/ListBox/ListBox";
 
 export { default as Label } from "./components/Label/Label";
@@ -67,6 +67,8 @@ export * from "./components/MenuItem/MenuItem";
 
 export { default as Popup } from "./components/Popup/Popup";
 export * from "./components/Popup/Popup";
+
+export * from "./components/ProgressCircle/ProgressCircle";
 
 export { default as Item } from "./components/Item/Item";
 

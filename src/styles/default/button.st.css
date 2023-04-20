@@ -37,14 +37,6 @@
     position: relative;
     /* = Effects - 'all' --maybe-- IS too much... project var perhaps. */
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    /* = Material defo popularised uppercase buttons, we like it but readability 
-    takes a hit and be careful in some langauges such as Greek. */
-    text-transform: uppercase;
-    /* = Opininated: Some disagree with setting cursor: pointer (the hand) on 
-    interactive elements arguing system controls don't do this. Meh, for 
-    us it offers an additional cue to interaction which we feel asserts 
-    confidence. Many sites do this so perhaps it's expected by many users. */
-    cursor: pointer;
   }
 
   /* = Inner <span> */
@@ -68,6 +60,10 @@
     due to the respScale. */
     font-size: calc(1em + 2px);
   }
+
+  /* Button:iconButton Icon {
+    font-size: calc(1em + 6px);
+  } */
 
   Button:hover {
     opacity: 0.7;

@@ -1,15 +1,10 @@
 /** combobox.st.css */
-@namespace "Combobox";
+@namespace "ComboBox";
 
-:import {
-  -st-from: '../Field/field.st.css';
-  -st-default: Field
-}
-
-:import {
-  -st-from: '../Button/button.st.css';
-  -st-default: Button
-}
+@st-import Field from "../Field/field.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import Popup from "../Popup/popup.st.css";
+@st-import ProgressCircle from "../ProgressCircle/progressCircle.st.css";
 
 .root {
   -st-extends: Field;
@@ -17,6 +12,15 @@
 
 .trigger {
   -st-extends: Button;
+}
+
+.loader {
+  -st-extends: ProgressCircle;
+}
+
+.popup {
+  -st-extends: Popup;
+  overflow: hidden scroll;
 }
 
 .placeholder {

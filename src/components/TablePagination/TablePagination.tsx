@@ -172,18 +172,18 @@ const TablePagination = React.forwardRef(
             tone={10}
             variant="fab"
             vol={3}
-            icon={iconPrev}
             iconPos={"end"}
             onClick={handlePrevButtonClick}
             disabled={currentPage === 0}
             {...prevIconButtonProps}
-          />
+          >
+            {iconPrev}
+          </Button>
           <Button
             data-testid={dataTestId && `${dataTestId}NextButton`}
             tone={10}
             variant="fab"
             vol={3}
-            icon={iconNext}
             iconPos={"end"}
             onClick={handleNextButtonClick}
             disabled={
@@ -192,7 +192,9 @@ const TablePagination = React.forwardRef(
                 : false
             }
             {...nextIconButtonProps}
-          />
+          >
+            {iconNext}
+          </Button>
           {/* {showLastButton && ()} */}
         </Toolbar>
       </div>

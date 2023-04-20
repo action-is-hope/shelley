@@ -1,5 +1,5 @@
 import { Ref, forwardRef, ReactElement } from "react";
-import Field from "../Field/Field";
+import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
 
 import { useRadioGroupState } from "react-stately";
