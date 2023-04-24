@@ -196,26 +196,35 @@ We will be adding loading indicator and virtualisation support as we come to do 
     docs: {
       source: {
         code: dedent`
-  const list: { items: ItemsType[] } = useAsyncList({
-    async load({ signal, filterText }) {
-      let res = await fetch(\`https://pokeapi.co/api/v2/pokemon\`, { signal });
-      let json = await res.json();
-      return {
-        items: json.results,
-      };
-    },
-  });\n
-  return (
-    <Select
-      label="Pick a Pokemon"
-      items={list.items}
-      portalSelector="#portal"
-      shouldFocusOnHover={false}
-      {...args}
-    >
-      {(item) => <Item key={item.name}>{item.name}</Item>}
-    </Select>
-  );`,
+import { useAsyncList } from "react-stately";
+...
+type ItemsType = { [key: string]: string | number };\n
+...
+const list = useAsyncList<ItemsType>({
+  async load({ signal, cursor }) {
+    // If no cursor is available, then we're loading the first page.
+    // Otherwise, the cursor is the next URL to load, as returned from the previous page.
+    const res = await fetch(cursor || "https://pokeapi.co/api/v2/pokemon", {
+      signal,
+    });
+    const json = await res.json();
+    return {
+      items: json.results,
+      cursor: json.next,
+    };
+  },
+});\n
+return (
+  <Select
+    label="Pick a Pokemon"
+    items={list.items}
+    portalSelector="#portal"
+    shouldFocusOnHover={false}
+    {...args}
+  >
+    {(item) => <Item key={item.name}>{item.name}</Item>}
+  </Select>
+);`,
       },
     },
   }}
