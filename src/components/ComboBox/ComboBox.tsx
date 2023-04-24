@@ -129,7 +129,7 @@ function ComboBox<T extends object>(
     } else {
       fieldContainerWidth && setPopUpWidth(fieldContainerWidth);
     }
-  }, [state.isOpen]);
+  }, [startAdornment, state.isOpen]);
 
   const popup = (
     <Popup
