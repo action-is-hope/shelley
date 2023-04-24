@@ -1,14 +1,15 @@
 import React, {
   Ref,
-  ReactElement,
   ReactNode,
   forwardRef,
+  ReactElement,
   useRef,
   useState,
   useEffect,
 } from "react";
 import { createPortal } from "react-dom";
 import { Field } from "../Field/Field";
+import type { LoadMoreProps } from "../types";
 import type { FieldProps } from "../Field/Field";
 import type { PositionProps } from "@react-types/overlays";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
@@ -21,11 +22,13 @@ import { ListBox } from "../ListBox/ListBox";
 import AngleDown from "../icons/AngleDown";
 /* = Style API. */
 import { st, classes } from "./select.st.css";
-import type { LoadMoreProps } from "../types";
 
 export interface SelectProps<T>
   extends Omit<AriaSelectOptions<T>, "excludeFromTabOrder" | "isDisabled">,
-    Omit<FieldProps, "label" | "startAdornment" | "endAdornment">,
+    Omit<
+      FieldProps,
+      "label" | "startAdornment" | "endAdornment" | "isReadOnly"
+    >,
     Pick<PositionProps, "offset" | "shouldFlip">,
     LoadMoreProps {
   className?: string;
@@ -39,14 +42,13 @@ export interface SelectProps<T>
    * Useful for scrolled lists to stop a jump on hover when reselecting.
    */
   shouldFocusOnHover?: boolean;
+  children?: CollectionChildren<T>;
+  triggerIcon?: ReactNode;
   /**
    * Disable the label transition.
    * @default bottom
    */
   placement?: "top" | "bottom";
-  children?: CollectionChildren<T>;
-  /** Provide your own icon for the Trigger */
-  triggerIcon?: ReactNode;
 }
 
 function Select<T extends object>(
@@ -136,7 +138,10 @@ function Select<T extends object>(
           className={classes.trigger}
           data-id={dataId ? `${dataId}--trigger` : undefined}
         >
-          <span {...valueProps}>
+          <span
+            {...valueProps}
+            data-id={dataId ? `${dataId}--value` : undefined}
+          >
             {/* {state.selectedItem ? state.selectedItem.rendered : placeholder} */}
             {state.selectedItem ? (
               state.selectedItem.rendered
@@ -150,44 +155,44 @@ function Select<T extends object>(
           triggerRef={localRef}
           label={props.label}
           name={props.name}
-          data-id={dataId ? `${dataId}--hiddenSelect` : undefined}
         />
-        {createPortal(
-          <Popup
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
-            triggerRef={localRef}
-            hideArrow
-            width={popUpWidth}
-            shouldCloseOnBlur
-            {...{
-              onLoadMore,
-              loadingState,
-              shouldFlip,
-              offset,
-              placement: placement === "top" ? "top start" : "bottom start",
-              focusOnProps: {
-                onDeactivation: () => {
-                  // Manually setting focus back as return focus only works once. @todo Investigate.
-                  localRef?.current && localRef.current.focus();
-                },
-                returnFocus: false,
-              },
-              "data-id": dataId ? `${dataId}--popup` : undefined,
-            }}
-          >
-            <ListBox
+        {state.isOpen &&
+          createPortal(
+            <Popup
+              isOpen={state.isOpen}
+              onClose={() => state.close()}
+              triggerRef={localRef}
+              hideArrow
+              width={popUpWidth}
+              shouldCloseOnBlur
               {...{
-                ...menuProps,
+                onLoadMore,
                 loadingState,
-                shouldFocusOnHover,
-                state,
-                "data-id": dataId ? `${dataId}--listBox` : undefined,
+                shouldFlip,
+                offset,
+                placement: placement === "top" ? "top start" : "bottom start",
+                focusOnProps: {
+                  onDeactivation: () => {
+                    // Manually setting focus back as return focus only works once. @todo Investigate.
+                    localRef?.current && localRef.current.focus();
+                  },
+                  returnFocus: false,
+                },
+                "data-id": dataId ? `${dataId}--popup` : undefined,
               }}
-            />
-          </Popup>,
-          document.querySelector(portalSelector) as HTMLElement
-        )}
+            >
+              <ListBox
+                {...{
+                  ...menuProps,
+                  shouldFocusOnHover,
+                  loadingState,
+                  state,
+                  "data-id": dataId ? `${dataId}--listBox` : undefined,
+                }}
+              />
+            </Popup>,
+            document.querySelector(portalSelector) as HTMLElement
+          )}
       </>
     </Field>
   );

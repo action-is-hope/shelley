@@ -42,7 +42,11 @@ function ListBox<T extends object>(
 
   return (
     <>
-      {props.label && <div {...labelProps}>{props.label}</div>}
+      {props.label && (
+        <div {...labelProps} data-id={dataId ? `${dataId}--label` : undefined}>
+          {props.label}
+        </div>
+      )}
       <ul
         className={st(classes.root, className)}
         {...listBoxProps}
@@ -71,6 +75,7 @@ function ListBox<T extends object>(
           <li role="option" className={classes.loadingMore}>
             <ProgressCircle
               isIndeterminate
+              data-id={dataId ? `${dataId}--progressCircle` : undefined}
               size="small"
               aria-label={
                 state.collection.size > 0 ? loadingMoreString : loadingString

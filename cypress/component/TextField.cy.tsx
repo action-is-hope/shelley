@@ -20,6 +20,15 @@ describe("Basic TextField", () => {
     cy.get(fieldInput).should("be.visible");
   });
 
+  it("renders with custom class name", () => {
+    cy.mount(<TextField {...fieldPropsTest} className="cypress-test" />);
+
+    cy.get(textField)
+      .should("have.attr", "class")
+      .and("to.have.string", "TextField")
+      .and("to.have.string", "cypress-test");
+  });
+
   it("renders label and input #a11y related attributes correctly.", () => {
     cy.mount(<TextField {...fieldPropsTest} />);
     cy.get(fieldInput)
@@ -50,6 +59,9 @@ describe("Basic TextField", () => {
     cy.mount(
       <TextField {...fieldPropsTest} value="Delete me if you can!" isReadOnly />
     );
+    cy.get(textField)
+      .should("have.attr", "class")
+      .and("to.have.string", "isReadOnly");
     cy.get(fieldInput)
       .should("have.value", "Delete me if you can!")
       .and("have.attr", "readonly");

@@ -28,7 +28,7 @@ import { classes as fieldClasses } from "../Field/field.st.css";
 export interface ComboBoxProps<T>
   extends AriaComboBoxProps<T>,
     Omit<FieldProps, "label" | "endAdornment">,
-    Pick<PositionProps, "offset" | "shouldFlip">,
+    Pick<PositionProps, "offset" | "shouldFlip" | "crossOffset">,
     LoadMoreProps {
   className?: string;
   /**
@@ -68,6 +68,7 @@ function ComboBox<T extends object>(
     className: classNameProp,
     description,
     isDisabled,
+    isReadOnly,
     errorMessage,
     validationState,
     portalSelector = "body",
@@ -78,6 +79,7 @@ function ComboBox<T extends object>(
     vol,
     placement = "bottom",
     offset = 6,
+    crossOffset,
     shouldFlip,
     removeTrigger,
     shouldFocusOnHover = true,
@@ -95,7 +97,7 @@ function ComboBox<T extends object>(
   const state = useComboBoxState({ ...props, defaultFilter: contains });
 
   const buttonRef = useRef(null);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const fieldContainerRef = useRef<HTMLDivElement>(null);
@@ -119,10 +121,14 @@ function ComboBox<T extends object>(
     },
     state
   );
-
   useEffect(() => {
-    fieldContainerRef?.current?.clientWidth &&
-      setPopUpWidth(fieldContainerRef?.current?.clientWidth);
+    const inputWidth = inputRef?.current?.clientWidth;
+    const fieldContainerWidth = fieldContainerRef?.current?.clientWidth;
+    if (startAdornment) {
+      inputWidth && setPopUpWidth(inputWidth);
+    } else {
+      fieldContainerWidth && setPopUpWidth(fieldContainerWidth);
+    }
   }, [state.isOpen]);
 
   const popup = (
@@ -138,6 +144,7 @@ function ComboBox<T extends object>(
         onLoadMore,
         loadingState,
         shouldFlip,
+        crossOffset,
         offset,
         placement: placement === "top" ? "top start" : "bottom start",
         focusOnProps: {
@@ -164,6 +171,7 @@ function ComboBox<T extends object>(
     <Field
       {...{
         isDisabled,
+        isReadOnly,
         errorMessage,
         errorMessageProps,
         validationState,

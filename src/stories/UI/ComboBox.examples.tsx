@@ -1,4 +1,4 @@
-import { useState, Key, useRef, KeyboardEvent } from "react";
+import { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
 import { SelectProps, ComboBox, P, Grid } from "../../indexLib";
@@ -25,12 +25,6 @@ export const BasicComboBox = () => {
         <Item key="aardvark">Aardvark</Item>
         <Item key="kangaroo">Kangaroo</Item>
         <Item key="snake">Snake</Item>
-        <Item key="1red panda">Red Panda</Item>
-        <Item key="1cat">Cat</Item>
-        <Item key="d1og">Dog</Item>
-        <Item key="a1ardvark">Aardvark</Item>
-        <Item key="k1angaroo">Kangaroo</Item>
-        <Item key="sn1ake">Snake</Item>
       </ComboBox>
     </>
   );
@@ -393,6 +387,24 @@ export const MultiSelect = () => {
     });
   };
 
+  const selectedTags = (
+    <>
+      {selectedItems.map((id) => (
+        <span
+          key={id}
+          style={{
+            background: "#444",
+            display: "inline-block",
+            padding: "0 4px",
+            margin: "0 4px",
+            borderRadius: "4px",
+          }}
+        >
+          {list.getItem(id).value.name}
+        </span>
+      ))}
+    </>
+  );
   return (
     <>
       <P vol={1}>Current selected major id: {fieldState.selectedKey}</P>
@@ -407,24 +419,7 @@ export const MultiSelect = () => {
       <ComboBox
         label="Pick a engineering major"
         defaultItems={list.items}
-        startAdornment={
-          <>
-            {selectedItems.map((id) => (
-              <span
-                key={id}
-                style={{
-                  background: "#444",
-                  display: "inline-block",
-                  padding: "0 4px",
-                  margin: "0 4px",
-                  borderRadius: "4px",
-                }}
-              >
-                {list.getItem(id).value.name}
-              </span>
-            ))}
-          </>
-        }
+        startAdornment={selectedItems.length > 0 && selectedTags}
         disabledKeys={selectedItems}
         portalSelector="#portal"
         onKeyDown={onKeyDown}
@@ -565,5 +560,80 @@ export const AsyncLoadingExample2 = () => {
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </ComboBox>
+  );
+};
+
+export const HelpTextExample = () => {
+  const [animalId, setAnimalId] = useState<Key>();
+  const options = [
+    { id: 1, name: "Aardvark" },
+    { id: 2, name: "Cat" },
+    { id: 3, name: "Dog" },
+    { id: 4, name: "Kangaroo" },
+    { id: 5, name: "Koala" },
+    { id: 6, name: "Penguin" },
+    { id: 7, name: "Snake" },
+    { id: 8, name: "Turtle" },
+    { id: 9, name: "Wombat" },
+  ];
+  const isValid = useMemo(() => animalId !== 2 && animalId !== 7, [animalId]);
+
+  return (
+    <ComboBox
+      validationState={!animalId ? undefined : isValid ? "valid" : "invalid"}
+      label="Favorite animal"
+      description="Pick your favorite animal, you will be judged."
+      errorMessage={
+        animalId === 2
+          ? "The author of this example is a dog person."
+          : "Oh no it's a snake! Choose anything else."
+      }
+      items={options}
+      selectedKey={animalId}
+      onSelectionChange={(selected) => setAnimalId(selected)}
+    >
+      {(item) => <Item>{item.name}</Item>}
+    </ComboBox>
+  );
+};
+
+export const DisabledExample = () => {
+  return (
+    <>
+      <ComboBox
+        label="Favorite Animal"
+        portalSelector="#portal"
+        shouldFocusWrap
+        isDisabled
+      >
+        <Item key="red panda">Red Panda</Item>
+        <Item key="cat">Cat</Item>
+        <Item key="dog">Dog</Item>
+        <Item key="aardvark">Aardvark</Item>
+        <Item key="kangaroo">Kangaroo</Item>
+        <Item key="snake">Snake</Item>
+      </ComboBox>
+    </>
+  );
+};
+
+export const ReadOnlyExample = () => {
+  return (
+    <>
+      <ComboBox
+        label="Favorite Animal"
+        selectedKey="red panda"
+        portalSelector="#portal"
+        shouldFocusWrap
+        isReadOnly
+      >
+        <Item key="red panda">Red Panda</Item>
+        <Item key="cat">Cat</Item>
+        <Item key="dog">Dog</Item>
+        <Item key="aardvark">Aardvark</Item>
+        <Item key="kangaroo">Kangaroo</Item>
+        <Item key="snake">Snake</Item>
+      </ComboBox>
+    </>
   );
 };

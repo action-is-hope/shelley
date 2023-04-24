@@ -128,7 +128,7 @@ export const Popup = forwardRef(
         }
     }, [loadingState, maxHeight, onLoadMore]);
 
-    // Wrap in <FocusScope> so that focus is restored back to the
+    // Wrap in <FocusOn> so that focus is restored back to the
     // trigger when the menu is closed. In addition, add hidden
     // <DismissButton> components at the start and end of the list
     // to allow screen reader users to dismiss the popup easily.
@@ -141,7 +141,7 @@ export const Popup = forwardRef(
         <div
           className={st(classes.root, classNameProp)}
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
-          style={{ ...overlayPositionProps?.style, width }}
+          style={{ ...overlayPositionProps?.style, minWidth: width }}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           onScroll={handleScroll}
           data-id={dataId}

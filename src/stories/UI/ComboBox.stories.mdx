@@ -21,6 +21,9 @@ import {
   FullyControlled,
   MultiSelect,
   AsyncLoadingExample,
+  HelpTextExample,
+  ReadOnlyExample,
+  DisabledExample,
 } from "./ComboBox.examples";
 import dedent from "ts-dedent";
 
@@ -668,6 +671,97 @@ return (
 </Story>
 
 <Source language="tsx" id="inputs-combobox--h-multi-select" />
+
+## Disabled
+
+<Story
+  name="g) Disabled"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<ComboBox label="Favorite Animal" isDisabled>
+  <Item key="red panda">Red Panda</Item>
+  <Item key="cat">Cat</Item>
+  <Item key="dog">Dog</Item>
+  <Item key="aardvark">Aardvark</Item>
+  <Item key="kangaroo">Kangaroo</Item>
+  <Item key="snake">Snake</Item>
+</ComboBox>`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <DisabledExample />
+</Story>
+
+<Source language="tsx" id="inputs-combobox-g-disabled" />
+
+## Read only
+
+<Story
+  name="g) Read only"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<ComboBox label="Favorite Animal" isReadOnly selectedKey="red panda">
+  <Item key="red panda">Red Panda</Item>
+  <Item key="cat">Cat</Item>
+  <Item key="dog">Dog</Item>
+  <Item key="aardvark">Aardvark</Item>
+  <Item key="kangaroo">Kangaroo</Item>
+  <Item key="snake">Snake</Item>
+</ComboBox>`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <ReadOnlyExample />
+</Story>
+
+<Source language="tsx" id="inputs-combobox-g-read-only" />
+
+## Help text
+
+Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `validationState` is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
+
+<Story
+  name="h) Help"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <HelpTextExample />
+</Story>
+
+<Source language="tsx" id="inputs-combobox--h-help" />
 
 ## ComboBox Props
 

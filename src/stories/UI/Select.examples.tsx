@@ -131,7 +131,7 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
   );
 };
 
-export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
+export const AsyncLoadingExample = () => {
   // const list: { items: ItemsType[] } = useAsyncList({
   //   async load({ signal }) {
   //     const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
@@ -175,7 +175,6 @@ export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
       shouldFocusOnHover={false}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
-      // {...args}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </Select>
