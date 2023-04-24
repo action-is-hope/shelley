@@ -143,7 +143,6 @@ export const Popup = forwardRef(
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
           style={{ ...overlayPositionProps?.style, minWidth: width }}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
-          onScroll={handleScroll}
           data-id={dataId}
         >
           {!hideArrow && (
@@ -160,7 +159,15 @@ export const Popup = forwardRef(
           )}
 
           <DismissButton onDismiss={props.onClose} />
-          {props.children}
+          {/* Seperate scroll div to keep the arrow visible. */}
+          <div
+            className={classes.scroller}
+            style={{ maxHeight: overlayPositionProps?.style?.maxHeight }}
+            onScroll={handleScroll}
+            data-id={dataId ? `${dataId}-scroller` : undefined}
+          >
+            {props.children}
+          </div>
           <DismissButton onDismiss={props.onClose} />
         </div>
       </FocusOn>

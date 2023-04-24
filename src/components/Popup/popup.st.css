@@ -1,7 +1,9 @@
 /* popup.st.css */
 @namespace "Popup";
 
-.root {
+.root {}
+
+.scroller {
   overflow: hidden scroll;
 }
 
