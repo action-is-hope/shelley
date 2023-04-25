@@ -140,7 +140,7 @@ function ButtonBase<T extends React.ElementType = "button">(
           {children && <span className={classes.divider}></span>}
         </>
       )}
-      {children && <span className={classes.inner}>{children}</span>}
+      {children && <span className={classes.test}>{children}</span>}
     </>
   );
   return React.createElement(
