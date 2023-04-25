@@ -4,7 +4,7 @@
 .root {}
 
 .scroller {
-  overflow: hidden scroll;
+  overflow: hidden auto;
 }
 
 .list {}

@@ -43,7 +43,7 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run typecheck && npm run lint && npm run unit-tests && npm run cypress",
     "unit-tests": "jest --runInBand",
-    "cypress": "cypress run --component",
+    "cypress": "cypress run --component --spec cypress/component/Popup.cy.tsx --browser chrome",
     "start": "npm run build-stylable-types && npm run storybook",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
@@ -87,7 +87,7 @@
     "@typescript-eslint/parser": "^5.20.0",
     "@wixc3/react-board": "^2.1.3",
     "copyfiles": "^2.4.1",
-    "cypress": "^12.6.0",
+    "cypress": "^12.10.0",
     "cypress-real-events": "^1.7.6",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",

@@ -101,7 +101,7 @@
   --color-text-3: rgba(var(--light-01-raw), 0.8);
   --color-text-4: #f7e1b9;
 
-  --color-text-help: rgba(var(--light-01-raw), 0.6);
+  --color-text-help: rgba(var(--color-ui-raw), 0.6);
 
   /* = Form colours */
   --color-form-switch-notch: var(--color-accent-2);
