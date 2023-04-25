@@ -7,13 +7,15 @@ import {
   useFocusRing,
   mergeProps,
 } from "react-aria";
+import { st, classes } from "./tabs.st.css";
 
-type TabProps = {
-  item: string;
+interface TabProps {
+  item: any;
   state: any;
-};
+  children: any;
+}
 
-function Tab({ item, state }) {
+function Tab({ item, state }: TabProps) {
   const ref = useRef();
   const { tabProps } = useTab(item, state, ref);
 
@@ -24,7 +26,12 @@ function Tab({ item, state }) {
   );
 }
 
-function TabPanel({ state, ...props }) {
+interface TabPanelProps {
+  state: any;
+  [key: string]: any;
+}
+
+function TabPanel({ state, ...props }: TabPanelProps) {
   const ref = useRef();
   const { tabPanelProps } = useTabPanel(props, state, ref);
 
@@ -35,7 +42,11 @@ function TabPanel({ state, ...props }) {
   );
 }
 
-export function Tabs(props) {
+export interface TabsProps {
+  [key: string]: any;
+}
+
+export function Tabs(props: TabProps) {
   const state = useTabListState(props);
   const ref = useRef();
   const { tabListProps } = useTabList(props, state, ref);
@@ -60,10 +71,10 @@ export function Tabs(props) {
   });
 
   return (
-    <div className="tabs">
-      <div className="tablist-container">
+    <div className={st(classes.root, { isFocusVisible })}>
+      <div className={classes.tabListContainer}>
         <div
-          className={`tab-selection ${isFocusVisible ? "focused" : ""}`}
+          className={(classes.tabSelection, isFocusVisible ? "focused" : "")}
           style={{ zIndex: -1, ...activeTabStyle }}
         />
         <div {...mergeProps(tabListProps, focusProps)} ref={ref}>

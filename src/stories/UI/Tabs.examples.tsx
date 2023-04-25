@@ -19,9 +19,9 @@ const tabsData = [
 export const Example1 = () => {
   return (
     <Tabs>
-      <Item title="Recent">Recent</Item>
-      <Item title="Favorites">Favorites</Item>
-      <Item title="All">All</Item>
+      <Item title="Tab title 1">Tab description 1</Item>
+      <Item title="Tab title 2">Tab description 2</Item>
+      <Item title="Tab title 3">Tab description 3</Item>
     </Tabs>
   );
 };

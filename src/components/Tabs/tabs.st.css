@@ -1,2 +1,12 @@
 /* tabs.st.css CSS API */
 .root {}
+
+.tabListContainer {
+  display: inline-block;
+  position: relative;
+  border: 2px solid #c0c0c0;
+  padding: 4px 2px;
+  z-index: 0;
+}
+
+.tabSelection {}
