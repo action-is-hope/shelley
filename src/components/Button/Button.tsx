@@ -140,7 +140,7 @@ function ButtonBase<T extends React.ElementType = "button">(
           {children && <span className={classes.divider}></span>}
         </>
       )}
-      {children && <span className={classes.test}>{children}</span>}
+      {children && <span className={classes.inner}>{children}</span>}
     </>
   );
   return React.createElement(
@@ -158,7 +158,6 @@ function ButtonBase<T extends React.ElementType = "button">(
 // See:
 // https://github.com/adobe/react-spectrum/blob/main/packages/%40react-spectrum/listbox/src/ListBox.tsx
 
-// const Button = React.forwardRef(ButtonBase);
 const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
 
 Button.toString = () => "ShelleyButton";
