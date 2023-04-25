@@ -7,7 +7,11 @@ import {
   useFocusRing,
   mergeProps,
 } from "react-aria";
-import { st, classes } from "./tabs.st.css";
+
+type TabProps = {
+  item: string;
+  state: any;
+};
 
 function Tab({ item, state }) {
   const ref = useRef();
@@ -72,3 +76,7 @@ export function Tabs(props) {
     </div>
   );
 }
+
+Tabs.displayName = "Tabs";
+
+export default Tabs;
