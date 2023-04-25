@@ -41,9 +41,18 @@ export interface PopupProps
   /** Hide the arrow */
   hideArrow?: boolean;
 
-  //
+  /**
+   * Loadmore callback for when the scroller hits the bottom
+   * OR when 'filling' up the available space.
+   */
   onLoadMore?: LoadMore;
+  /**
+   * If set to 'idle' an attempt to call onLoadMore on opening
+   * will be made until all available height is taken up and a
+   * scrollbar is present.
+   */
   loadingState?: LoadingState;
+  /** Specify a width for the popup as in ComboBox.*/
   width?: number;
 }
 
