@@ -2,7 +2,7 @@
 
 exports[`Modal renders correctly with classname 1`] = `
 <div
-  className="modal__Test__root modal__Test---variant-5-fixed modal-classname-test"
+  className="Modal__Test__root Modal__Test---variant-5-fixed modal-classname-test"
   data-id="modal-test"
 >
   <div
@@ -30,12 +30,12 @@ exports[`Modal renders correctly with classname 1`] = `
   >
     <div
       aria-hidden="true"
-      className="modal__Test__backdrop"
+      className="Modal__Test__backdrop"
       data-id="modal-test-backdrop"
       onClick={[Function]}
     />
     <div
-      className="modal__Test__content"
+      className="Modal__Test__content"
       data-id="modal-test-content"
       onMouseDown={[Function]}
     >

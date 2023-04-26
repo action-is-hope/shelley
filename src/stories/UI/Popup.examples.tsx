@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { createPortal } from "react-dom";
 import { Popup, ActionButton, Dialog } from "../../indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
@@ -27,17 +28,19 @@ export const SimplePopup = () => {
       >
         Click me
       </ActionButton>
-
-      <Popup
-        {...overlayProps}
-        isOpen={state.isOpen}
-        onClose={() => state.close()}
-        offset={8}
-        ref={overlayRef}
-        triggerRef={triggerRef}
-      >
-        <Dialog size="small">Children</Dialog>
-      </Popup>
+      {createPortal(
+        <Popup
+          {...overlayProps}
+          isOpen={state.isOpen}
+          onClose={() => state.close()}
+          offset={8}
+          ref={overlayRef}
+          triggerRef={triggerRef}
+        >
+          <Dialog size="small">Children</Dialog>
+        </Popup>,
+        document.querySelector("#portal") as HTMLElement
+      )}
     </div>
   );
 };

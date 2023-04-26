@@ -1,4 +1,5 @@
 /* modal.st.css */
+@namespace "Modal";
 
 .root {
   -st-states:

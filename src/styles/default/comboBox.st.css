@@ -1,0 +1,39 @@
+/* = Project and vars */
+@st-import Default from "./project.st.css";
+/* = Component API */
+@st-import ComboBox from "../../components/ComboBox/comboBox.st.css";
+
+@st-scope Default {
+
+  ComboBox::trigger {
+    margin-right: -6px;
+    margin-left: 2px;
+    font-size: 1em;
+    padding: 0
+  }
+
+  ComboBox::endAdornment {
+    /* Reset the font-size for the Button icon */
+    font-size: 1em;
+    opacity: 1;
+  }
+
+  ComboBox::loader {
+    margin-left: 2px;
+  }
+
+}
+
+@st-scope [dir=rtl] Default {
+
+  ComboBox::trigger {
+    margin-left: -8px;
+    margin-right: 2px;
+  }
+
+  ComboBox::loader {
+    margin-left: 0;
+    margin-right: 2px;
+  }
+
+}

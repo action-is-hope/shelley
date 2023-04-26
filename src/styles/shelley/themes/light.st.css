@@ -13,6 +13,7 @@
   -st-named:
     --color-focus,
     --color-error,
+    --color-text-help,
     --color-form-base-border,
     --color-form-selection-border,
     --color-form-selection-notch,
@@ -86,6 +87,8 @@
   --color-text-2: rgba(var(--dark-01-raw), 0.9);
   --color-text-3: rgba(var(--dark-01-raw), 0.8);
   --color-text-4: rgb(134, 102, 30);
+
+  --color-text-help: rgba(var(--color-ui-raw), 0.9);
 
   /* = Status colours - TBC */
   --color-error: red;

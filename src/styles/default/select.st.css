@@ -2,6 +2,7 @@
 
 @st-import Default from "./project.st.css";
 @st-import Select from "../../components/Select/select.st.css";
+@st-import Icon from "../../components/Icon/icon.st.css";
 /* = Mixins */
 @st-import [selectFieldContainer, selectFieldInput] from "./mixins/formElements.st.css";
 
@@ -25,6 +26,10 @@
   Select::trigger {
     -st-mixin: selectFieldInput;
     letter-spacing: 0;
+  }
+
+  Select::trigger Icon {
+    margin-right: -5px;
   }
 
   Select::trigger::inner {

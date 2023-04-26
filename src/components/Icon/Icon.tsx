@@ -2,11 +2,14 @@ import React, { forwardRef } from "react";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 /* = Style API. */
 import { st, classes } from "./icon.st.css";
+import type { ComponentBase } from "../types";
 
 /**
  * Icon props extending those of an svg element.
  */
-export interface IconProps extends React.SVGProps<SVGSVGElement> {
+export interface IconProps
+  extends React.SVGProps<SVGSVGElement>,
+    ComponentBase {
   /** Alternative text via VisuallyHidden */
   alt?: string;
   /** Set to match icon set; e.g. for Material UI icons use "0 0 24 24". */
@@ -48,5 +51,6 @@ export const Icon = forwardRef(
 );
 
 Icon.displayName = "Icon";
+Icon.toString = () => "Icon";
 
 export default Icon;

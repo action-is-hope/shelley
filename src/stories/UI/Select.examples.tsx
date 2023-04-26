@@ -5,6 +5,11 @@ import { Select, SelectProps, TextField } from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
+/**
+ * TypeDoc is not liking finding types when forward ref and generic
+ * type params. The following is used in the story file defining the
+ * prop table.
+ */
 export type SelectPropsDocs = SelectProps<object>;
 export function SelectType(props: SelectPropsDocs) {
   <>{props}</>;
@@ -14,10 +19,10 @@ export const BasicSelect = (args: ItemsType) => {
   return (
     <Select
       label="Choose frequency"
+      {...args}
       onSelectionChange={(key) => console.log(key)}
       vol={1}
       portalSelector="#portal"
-      {...args}
     >
       <Item key="rarely">Rarely</Item>
       <Item key="sometimes">Sometimes</Item>
@@ -64,9 +69,10 @@ export const SelectEvents = (args: ItemsType) => {
         label="Choose frequency"
         portalSelector="#portal"
         selectedKey={animal}
-        onSelectionChange={(selected) =>
-          setAnimal(selected as SetStateAction<string>)
-        }
+        onSelectionChange={(selected) => {
+          setAnimal(selected as SetStateAction<string>);
+          console.log(selected);
+        }}
         items={options}
         {...args}
       >
@@ -130,14 +136,18 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
   );
 };
 
-export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
-  const list: { items: ItemsType[] } = useAsyncList({
-    async load({ signal }) {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon`, { signal });
+export const AsyncLoadingExample = () => {
+  const list = useAsyncList<ItemsType>({
+    async load({ signal, cursor }) {
+      // If no cursor is available, then we're loading the first page.
+      // Otherwise, the cursor is the next URL to load, as returned from the previous page.
+      const res = await fetch(cursor || "https://pokeapi.co/api/v2/pokemon", {
+        signal,
+      });
       const json = await res.json();
-
       return {
         items: json.results,
+        cursor: json.next,
       };
     },
   });
@@ -148,7 +158,8 @@ export const AsyncLoadingExample = (args: SelectProps<ItemsType>) => {
       items={list.items}
       portalSelector="#portal"
       shouldFocusOnHover={false}
-      {...args}
+      loadingState={list.loadingState}
+      onLoadMore={list.loadMore}
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </Select>

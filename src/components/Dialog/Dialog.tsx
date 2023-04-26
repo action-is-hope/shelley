@@ -3,32 +3,19 @@ import { DialogContext, DialogContextValue } from "./context";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 
 // import intlMessages from "../intl/*.json";
-import React, {
-  // RefObject,
-  useContext,
-  // useMemo,
-  useRef,
-  ReactNode,
-  Children,
-} from "react";
+import React, { useContext, useRef, ReactNode, Children } from "react";
 import type { AriaDialogProps } from "@react-types/dialog";
 import { useDialog } from "@react-aria/dialog";
 // import { useLocalizedStringFormatter } from "@react-aria/i18n";
 
 import { st, classes } from "./dialog.st.css";
 import Close from "../icons/Close";
-
-// let sizeMap = {
-//   S: "small",
-//   M: "medium",
-//   L: "large",
-//   fullscreen: "fullscreen",
-//   fullscreenTakeover: "fullscreenTakeover",
-// };
+import type { ComponentBase } from "../types";
 
 export interface DialogProps
   extends AriaDialogProps,
-    Omit<React.HTMLProps<HTMLElement>, "role" | "size" | "type" | "ref"> {
+    Omit<React.HTMLProps<HTMLElement>, "role" | "size" | "type" | "ref">,
+    ComponentBase {
   /** The contents of the Dialog. */
   children: ReactNode;
   /** The size of the Dialog. Only applies to "modal" type Dialogs. */
@@ -41,8 +28,6 @@ export interface DialogProps
   closeIcon?: ReactNode;
   /** A aria-label for the close button. */
   dismissLabel?: string;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
 }
 
 function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
@@ -56,7 +41,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
     size: sizeProp,
     closeIcon,
     dismissLabel = "Close dialog",
-    includeDataIds,
+    "data-id": dataId,
     ...rest
   } = props;
 
@@ -73,7 +58,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
       {...dialogProps}
       className={st(classes.root, { size, isDismissable }, classNameProp)}
       ref={mergeRefs(ref, localRef)}
-      data-id={includeDataIds ? "dialog" : undefined}
+      data-id={dataId}
       /**
        * TabIndex is set to -1 by useDialog, this interferes
        * with react-focus-on auto-focusing. Adobe's FocusScope
@@ -102,7 +87,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
             className={classes.closeButton}
             aria-label={dismissLabel}
             onPress={onDismiss}
-            data-id={includeDataIds ? "modal--closeButton" : undefined}
+            data-id={dataId ? `${dataId}--closeButton` : undefined}
           >
             {closeIcon || <Close />}
           </ActionButton>

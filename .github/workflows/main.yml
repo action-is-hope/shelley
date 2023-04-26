@@ -1,80 +1,154 @@
 name: Main
 
 on:
-  # push:
-  #   branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  typecheck:
-
+  install:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [16.x, 17.x, 18.x]
-
+        node-version: [14.x, 16.x, 18.15.0]
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
       - run: npm ci
+      - uses: actions/cache/save@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+
+  build-types:
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.15.0]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
       - run: npm run build-stylable-types
-      - run: npm run typecheck
+      - uses: actions/cache/save@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ github.ref }}-${{ hashFiles('st-types') }}
 
   lint:
-
     runs-on: ubuntu-latest
-
+    needs: build-types
     strategy:
       matrix:
-        node-version: [16.x, 17.x, 18.x]
-
+        node-version: [14.x, 16.x, 18.15.0]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build-stylable-types
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ github.ref }}-${{ hashFiles('st-types') }}
       - run: npm run lint
 
+  typecheck:
+    runs-on: ubuntu-latest
+    needs: build-types
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.15.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ github.ref }}-${{ hashFiles('st-types') }}
+      - run: npm run typecheck
+
   unit-tests:
-
-      runs-on: ubuntu-latest
-
-      strategy:
-        matrix:
-          node-version: [16.x, 17.x, 18.x]
-
-      steps:
-        - uses: actions/checkout@v3
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-        - run: npm ci
-        - run: npm run build-stylable-types
-        - run: npm run unit-tests
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.15.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ github.ref }}-${{ hashFiles('st-types') }}
+      - run: npm run unit-tests
 
   cypress-component-tests:
-
-      runs-on: ubuntu-latest
-
-      strategy:
-        matrix:
-          node-version: [16.x, 17.x, 18.x]
-
-      steps:
-        - uses: actions/checkout@v3
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-        - run: npm ci
-        - run: npm run build-stylable-types
-        - run: npm run cypress run --component
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.15.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache/restore@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+            /home/runner/.npm
+          key: ${{ matrix.node-version }}-npm-cache-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache/restore@v3
+        id: types-artefact
+        with:
+          path: st-types
+          key: ${{ matrix.node-version }}-types-artefact-${{ github.ref }}-${{ hashFiles('st-types') }}
+      - run: npm run cypress run --component

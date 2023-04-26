@@ -3,8 +3,8 @@ import { Field } from "../../src/indexLib";
 
 const field = '[data-id="field"]';
 const fieldLabel = '[data-id="field--label"]';
-const fieldDescription = '[data-id="help--description"]';
-const fieldError = '[data-id="help--error"]';
+const fieldDescription = '[data-id="field--helpText--description"]';
+const fieldError = '[data-id="field--helpText--error"]';
 
 const fieldPropsTest = {
   "data-id": "field",
@@ -14,7 +14,6 @@ const fieldPropsTest = {
     htmlFor: "testField",
     data: "random",
   },
-  includeDataIds: true,
 };
 
 describe("Basic Field", () => {

@@ -162,6 +162,7 @@
 
   Field:labelPosition(side)::inputLabel {
     justify-self: flex-end;
+    text-align: end;
   }
 
   /* Top */

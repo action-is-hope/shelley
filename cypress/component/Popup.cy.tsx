@@ -1,24 +1,27 @@
 import React, { useRef } from "react";
 
-import { Popup, PopupProps, Button } from "../../src/indexLib";
+import { Popup, PopupProps, Button, DialogTrigger } from "../../src/indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
 const popup = '[data-id="popup"]';
 const popupArrow = '[data-id="popup-arrow"]';
+const popupScroller = '[data-id="popup-scroller"]';
 const trigger = '[data-id="trigger"]';
 
 // @todo: shouldFlip
-export const BasicTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+export const BasicTemplate = (props: Omit<PopupProps, "triggerRef">) => {
+  // Setup a basic Trigger component.
   const triggerRef = useRef(null);
+
   return (
-    <Popup data-id="popup" {...args} triggerRef={triggerRef}>
+    <Popup data-id="popup" {...props} triggerRef={triggerRef}>
       <div>Content</div>
     </Popup>
   );
 };
 
-export const PositionTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   // Setup a basic Trigger component.
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
@@ -45,7 +48,7 @@ export const PositionTemplate = (args: Omit<PopupProps, "triggerRef">) => {
         {...overlayProps}
         isOpen={state.isOpen}
         onClose={() => state.close()}
-        {...args}
+        {...props}
         triggerRef={triggerRef}
         data-id="popup"
       >
@@ -57,7 +60,7 @@ export const PositionTemplate = (args: Omit<PopupProps, "triggerRef">) => {
   );
 };
 
-export const FocusPopupTemplate = (args: Omit<PopupProps, "triggerRef">) => {
+export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
 
@@ -83,7 +86,7 @@ export const FocusPopupTemplate = (args: Omit<PopupProps, "triggerRef">) => {
         {...overlayProps}
         isOpen={state.isOpen}
         onClose={() => state.close()}
-        {...args}
+        {...props}
         triggerRef={triggerRef}
         data-id="popup"
       >
@@ -95,6 +98,35 @@ export const FocusPopupTemplate = (args: Omit<PopupProps, "triggerRef">) => {
         Focus me
       </a>
     </div>
+  );
+};
+
+export const TriggerCustomContent = (props: Omit<PopupProps, "triggerRef">) => {
+  // Setup a basic Trigger component.
+  const triggerRef = useRef(null);
+  const state = useOverlayTriggerState({});
+
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    state,
+    triggerRef
+  );
+  return (
+    <>
+      <Button {...triggerProps} data-id="trigger" ref={triggerRef}>
+        Trigger
+      </Button>
+      <Popup
+        data-id="popup"
+        {...overlayProps}
+        isOpen={state.isOpen}
+        onClose={() => state.close()}
+        {...props}
+        triggerRef={triggerRef}
+      >
+        {props.children || <div>Content</div>}
+      </Popup>
+    </>
   );
 };
 
@@ -431,5 +463,44 @@ describe("Popup placement", () => {
       .should("have.css", "position", "absolute")
       .and("have.css", "top", "80px")
       .and("have.css", "left", "160px");
+  });
+});
+
+describe("LoadMore", () => {
+  it("Loadmore event fires if not enough content to fit space", () => {
+    const onLoadMore = cy.spy().as("onLoadMore");
+    cy.mount(
+      <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
+        <div>Content</div>
+      </TriggerCustomContent>
+    );
+    cy.get(trigger).realClick();
+    cy.get(popup).should("exist");
+    cy.get("@onLoadMore").should("have.been.calledOnce");
+  });
+
+  it("Loadmore does not fire if enough content exists to force a scroll", () => {
+    const onLoadMore = cy.spy().as("onLoadMore");
+    cy.mount(
+      <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
+        <div style={{ height: "110vh" }}>Content</div>
+      </TriggerCustomContent>
+    );
+    cy.get(trigger).realClick();
+    cy.get(popup).should("exist");
+    cy.get("@onLoadMore").should("not.have.been.called");
+  });
+
+  it("Loadmore event fires on scroll to bottom of the scroller", () => {
+    const onLoadMore = cy.spy().as("onLoadMore");
+    cy.mount(
+      <TriggerCustomContent loadingState="idle" onLoadMore={onLoadMore}>
+        <div style={{ height: "110vh" }}>Content</div>
+      </TriggerCustomContent>
+    );
+    cy.get(trigger).realClick();
+    cy.get(popup).should("exist");
+    cy.get(popupScroller).scrollTo("bottom");
+    cy.get("@onLoadMore").should("have.been.calledOnce");
   });
 });

@@ -2,7 +2,7 @@
 
 exports[`ButtonGroup renders as a basic primary button group 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-10-horizontal"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
@@ -81,7 +81,7 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
 
 exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-10-horizontal buttonGroup__Test--isDisabled"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal ButtonGroup__Test--isDisabled"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-5-quiet Button__Test---vol-1-3 Button__Test--isDisabled"
@@ -163,7 +163,7 @@ exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
 
 exports[`ButtonGroup renders buttons with additional class name 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-10-horizontal"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-5-quiet Button__Test---vol-1-4"
@@ -242,7 +242,7 @@ exports[`ButtonGroup renders buttons with additional class name 1`] = `
 
 exports[`ButtonGroup renders buttons with correct style class if overridden 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-10-horizontal"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-2 Button__Test---variant-5-quiet Button__Test---vol-1-4"
@@ -321,7 +321,7 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
 
 exports[`ButtonGroup renders child buttons with style classes for #tone, #variant, #vol and #buttonClassName 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-10-horizontal"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-6 Button__Test---variant-9-secondary Button__Test---vol-1-6"
@@ -400,7 +400,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
 
 exports[`ButtonGroup renders vertical button group 1`] = `
 <div
-  className="buttonGroup__Test__root buttonGroup__Test---orientation-8-vertical"
+  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-8-vertical"
 >
   <button
     className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-5-quiet Button__Test---vol-1-1"

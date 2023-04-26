@@ -16,7 +16,7 @@ export const FieldExample = (args: FieldProps) => {
 
 interface InputTextProps
   extends FieldProps,
-    Omit<React.HTMLProps<HTMLInputElement>, "label"> {}
+    Omit<React.HTMLProps<HTMLInputElement>, "label" | "ref"> {}
 
 export const TextFieldExample = (props: InputTextProps) => {
   const { value, onChange } = props;
