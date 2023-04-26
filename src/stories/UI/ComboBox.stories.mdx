@@ -1,16 +1,8 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import {
-  P,
-  Blockquote,
-  TextField,
-  Select,
-  Field,
-  ComboBox,
-} from "../../indexLib";
-import { Item } from "@react-stately/collections";
+import { ComboBox } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
 import {
-  SelectType,
+  ComboBoxType,
   BasicComboBox,
   ValueExample,
   CustomValueExample,
@@ -69,7 +61,7 @@ import dedent from "ts-dedent";
       control: { type: "inline-radio" },
     },
   }}
-  component={SelectType}
+  component={ComboBox}
 />
 
 # ComboBox
@@ -788,9 +780,7 @@ TBC`,
 
 <Source language="tsx" id="inputs-combobox--f-events" />
 
-<ArgsTable of={ComboBox} />
-
-argTypes: { label: { control: { type: 'text'} } }
+<ArgsTable of={ComboBoxType} />
 
 ## Stying
 
