@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
-/// <reference path="../index.d.ts" />
+/// <reference path="../../cypress.d.ts" />
 import "cypress-real-events";
+import { mount } from "cypress/react";
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -28,10 +30,9 @@ import "cypress-real-events";
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
 
-Cypress.Commands.add("getDataCy", (selector, ...args) => {
-  return cy.get(`[data-cy=${selector}]`, ...args);
-});
-
-Cypress.Commands.add("getDataCyLike", (selector, ...args) => {
-  return cy.get(`[data-cy*=${selector}]`, ...args);
+// Add Mount
+Cypress.Commands.add("mount", (component, options) => {
+  // Wrap any parent components needed
+  // ie: return mount(<MyProvider>{component}</MyProvider>, options)
+  return mount(component, options);
 });

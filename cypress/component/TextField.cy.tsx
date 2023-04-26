@@ -1,24 +1,32 @@
 import React from "react";
 import { TextField } from "../../src/indexLib";
 
-const textField = `[data-id="textfield"]`;
-const fieldLabel = '[data-id="field--label"]';
-const fieldInput = `[data-id="textfield--input"]`;
-const fieldTextArea = `[data-id="textfield--textarea"]`;
-const fieldDesc = '[data-id="help--description"]';
-const fieldError = '[data-id="help--error"]';
-
 const fieldPropsTest = {
   "data-id": "textfield",
   label: "My field",
-  includeDataIds: true,
 };
+// data-id's are based on above data-id.
+const textField = `[data-id="textfield"]`;
+const fieldLabel = '[data-id="textfield--label"]';
+const fieldInput = `[data-id="textfield--input"]`;
+const fieldTextArea = `[data-id="textfield--textarea"]`;
+const fieldDesc = '[data-id="textfield--helpText--description"]';
+const fieldError = '[data-id="textfield--helpText--error"]';
 
 describe("Basic TextField", () => {
   it("renders input correctly.", () => {
     cy.mount(<TextField {...fieldPropsTest} />);
     cy.get(fieldLabel).should("be.visible");
     cy.get(fieldInput).should("be.visible");
+  });
+
+  it("renders with custom class name", () => {
+    cy.mount(<TextField {...fieldPropsTest} className="cypress-test" />);
+
+    cy.get(textField)
+      .should("have.attr", "class")
+      .and("to.have.string", "TextField")
+      .and("to.have.string", "cypress-test");
   });
 
   it("renders label and input #a11y related attributes correctly.", () => {
@@ -51,6 +59,9 @@ describe("Basic TextField", () => {
     cy.mount(
       <TextField {...fieldPropsTest} value="Delete me if you can!" isReadOnly />
     );
+    cy.get(textField)
+      .should("have.attr", "class")
+      .and("to.have.string", "isReadOnly");
     cy.get(fieldInput)
       .should("have.value", "Delete me if you can!")
       .and("have.attr", "readonly");

@@ -1,2 +1,4 @@
-/* MenuTrigger.st.css CSS API */
+/* MenuTrigger.st.css */
+@namespace "MenuTrigger";
+
 .root {}

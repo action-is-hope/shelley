@@ -44,7 +44,7 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 exports[`Button includes #icon, no children, visually hidden label text provided via Icon alt prop 1`] = `
 <button
   aria-label="Button text"
-  className="Button__Test__root Button__Test---iconPos-3-end Button__Test---tone-1-1 Button__Test---variant-9-secondary Button__Test---vol-1-3"
+  className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-9-secondary Button__Test---vol-1-3"
   data-testid="button-data-testid"
   onBlur={[Function]}
   onClick={[Function]}

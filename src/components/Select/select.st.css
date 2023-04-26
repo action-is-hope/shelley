@@ -1,15 +1,10 @@
 /** select.st.css */
 @namespace "Select";
 
-:import {
-  -st-from: '../Field/field.st.css';
-  -st-default: Field
-}
+@st-import Field from "../Field/field.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import Popup from "../Popup/popup.st.css";
 
-:import {
-  -st-from: '../Button/button.st.css';
-  -st-default: Button
-}
 
 .root {
   -st-extends: Field;
@@ -17,6 +12,11 @@
 
 .trigger {
   -st-extends: Button;
+}
+
+.popup {
+  -st-extends: Popup;
+  overflow: hidden scroll;
 }
 
 .placeholder {

@@ -1,0 +1,9 @@
+@namespace "IconButton";
+@st-import Button, [
+  --bg-color,
+  --text-color,
+  --border-radius] from "../Button/button.st.css";
+
+.root {
+  -st-extends: Button
+}

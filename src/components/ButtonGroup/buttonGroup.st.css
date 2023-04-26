@@ -1,5 +1,5 @@
 /* buttonGroup.st.css */
-
+@namespace "ButtonGroup";
 /* = import Button component to style as child. */
 @st-import Button from "../Button/button.st.css";
 

@@ -14,14 +14,14 @@ import { classes as dialogClasses } from "../../src/components/Dialog/dialog.st.
 
 const title = "[data-title";
 const dialog = '[data-id="dialog"]';
-const closeButton = '[data-id="modal--closeButton"';
+const closeButton = '[data-id="dialog--closeButton"';
 interface DialogTest extends Omit<DialogProps, "children"> {
   refTest?: React.RefObject<HTMLElement>;
 }
 export const StandaloneDialog = (args: DialogTest) => {
   const { refTest, ...rest } = args;
   return (
-    <Dialog includeDataIds {...rest} ref={refTest}>
+    <Dialog data-id="dialog" {...rest} ref={refTest}>
       <H2 vol={4} className={dialogClasses.title} data-title>
         Title
       </H2>

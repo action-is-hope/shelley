@@ -8,4 +8,6 @@ module.exports = defineConfig({
       bundler: "webpack",
     },
   },
+  viewportWidth: 500,
+  viewportHeight: 500,
 });

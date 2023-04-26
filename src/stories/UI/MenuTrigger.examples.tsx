@@ -46,13 +46,10 @@ export const IconTriggerMenu = (args: MenuTriggerProps) => {
       // trigger="longPress"
       {...args}
     >
-      <Button
-        icon={
-          <Icon alt="Block settings">
-            <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
-          </Icon>
-        }
-      >
+      <Button>
+        <Icon alt="Block settings">
+          <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+        </Icon>
         Actions
       </Button>
       <Menu onAction={(i) => console.log("Menu onAction", i)}>
@@ -73,20 +70,15 @@ export const MultipleSelectionMenuTrigger = () => {
       // closeOnSelect={false}
       hideArrow
     >
-      <Button
-        tone={10}
-        variant="fab"
-        vol={1}
-        icon={
-          <Icon alt="Block settings">
-            <g id="ellipsis-dots-h">
-              <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-              <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-              <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-            </g>
-          </Icon>
-        }
-      />
+      <Button tone={10} variant="fab" vol={1}>
+        <Icon alt="Block settings">
+          <g id="ellipsis-dots-h">
+            <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+            <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+            <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+          </g>
+        </Icon>
+      </Button>
       <Menu
         selectionMode="multiple"
         onSelectionChange={(keys) => console.log("selection change", keys)}
@@ -105,16 +97,11 @@ export const ButtonGroupTriggerMenu = () => {
       {/* // fullWidth */}
       <Button fullWidth>Publish</Button>
       <MenuTrigger portalSelector="#portal" className="TEST">
-        <Button
-          tone={2}
-          variant="primary"
-          vol={2}
-          icon={
-            <Icon alt="Change status">
-              <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
-            </Icon>
-          }
-        />
+        <Button tone={2} variant="primary" vol={2}>
+          <Icon alt="Change status">
+            <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+          </Icon>
+        </Button>
         <Menu onAction={(key) => console.log("onAcion change", key)}>
           <Item key="publish">Publish</Item>
           <Item key="archive">Archive</Item>

@@ -5,11 +5,11 @@ import { useToggleState } from "@react-stately/toggle";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import type { AriaSwitchProps } from "@react-types/switch";
-import type { Volume, AlignPos } from "../types";
+import type { Volume, AlignPos, ComponentBase } from "../types";
 /* = Style API. */
 import { st, classes } from "./switch.st.css";
 
-export interface SwitchProps extends AriaSwitchProps {
+export interface SwitchProps extends AriaSwitchProps, ComponentBase {
   className?: string;
   /** The position of the label relative to the label. */
   inputPosition?: AlignPos;
@@ -17,8 +17,6 @@ export interface SwitchProps extends AriaSwitchProps {
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
 }
 
 function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
@@ -29,7 +27,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
     inputPosition,
     vol = 1,
     isDisabled,
-    includeDataIds,
+    "data-id": dataId,
   } = props;
 
   const localRef = useRef(null);
@@ -55,7 +53,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
         className={classes.input}
         {...mergeProps(inputProps, focusProps)}
         ref={ref ? mergeRefs(ref, localRef) : localRef}
-        data-id={includeDataIds ? "switch--input" : undefined}
+        data-id={dataId ? `${dataId}--input` : undefined}
       />
     </span>
   );
@@ -67,14 +65,14 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
           className={classNames}
           {...{ inputControl, inputPosition }}
           visuallyHidden={visuallyHideLabel}
-          data-id={includeDataIds ? "switch--label" : undefined}
+          data-id={dataId ? `${dataId}--label` : undefined}
         >
           {children}
         </Label>
       ) : (
         <span
           className={classNames}
-          data-id={includeDataIds ? "switch--no-label" : undefined}
+          data-id={dataId ? `${dataId}--noLabel` : undefined}
         >
           {inputControl}
         </span>

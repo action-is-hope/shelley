@@ -1,9 +1,11 @@
 import type React from "react";
+import type { Ref } from "react";
 import Icon, { IconProps } from "../Icon/Icon";
 
-const CompressScreenIcon: React.VFC<IconProps> = ({ className, alt }) => {
+const CompressScreenIcon: React.VFC<IconProps> = (props) => {
+  const { ref, ...rest } = props;
   return (
-    <Icon alt={alt} className={className}>
+    <Icon {...rest} ref={ref as Ref<SVGSVGElement>}>
       {/* compress-square */}
       <path d="M12 0h-12v12l1-1v-10h10z"></path>
       <path d="M4 16h12v-12l-1 1v10h-10z"></path>
@@ -12,5 +14,4 @@ const CompressScreenIcon: React.VFC<IconProps> = ({ className, alt }) => {
     </Icon>
   );
 };
-
 export default CompressScreenIcon;

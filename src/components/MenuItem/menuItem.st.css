@@ -1,4 +1,5 @@
 /* menuItem.st.css CSS API */
+@namespace "MenuItem";
 
 .root {
   -st-states:

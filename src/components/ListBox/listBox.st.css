@@ -1,7 +1,13 @@
-/* menu.st.css CSS API */
-.root {
-  max-height: 40vh;
-  overflow: scroll;
-}
+/* listBox.st.css CSS API */
+@namespace "ListBox";
+
+.root {}
 
 .item {}
+
+.loadingMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

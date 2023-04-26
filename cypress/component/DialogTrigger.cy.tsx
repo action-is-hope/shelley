@@ -36,7 +36,7 @@ const BasicContentTrigger = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
     <DialogTrigger {...args} data-id="dialogTiggerTest">
       <ActionButton data-id="trigger">Simple Content</ActionButton>
-      <Dialog includeDataIds>
+      <Dialog>
         <H2 vol={4} className={dialogClasses.title} data-title>
           Title
         </H2>
@@ -57,7 +57,7 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
       data-id="dialogTiggerTest"
     >
       <ActionButton data-id="trigger">Focusable Content</ActionButton>
-      <Dialog includeDataIds>
+      <Dialog>
         <H2 vol={4} className={dialogClasses.title} data-title>
           Title
         </H2>
