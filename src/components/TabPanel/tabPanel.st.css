@@ -1,2 +1,4 @@
 /* tabPanel.st.css CSS API */
-.root {}
+.root {
+  padding: 10px;
+}

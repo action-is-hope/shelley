@@ -38,10 +38,18 @@ const Tabs = (props: TabsProps) => {
     <div className={st(classes.root, { isFocusVisible })}>
       <div className={classes.tabListContainer}>
         <div
-          className={(classes.tabSelection, isFocusVisible ? "focused" : "")}
+          className={st(
+            classes.tabSelection,
+            { activeTabStyle },
+            isFocusVisible ? "focused" : ""
+          )}
           style={{ zIndex: -1, ...activeTabStyle }}
         />
-        <div {...mergeProps(tabListProps, focusProps)} ref={ref}>
+        <div
+          className={classes.tabList}
+          {...mergeProps(tabListProps, focusProps)}
+          ref={ref}
+        >
           {[...state.collection].map((item) => (
             <Tab key={item.key} item={item} state={state} />
           ))}
