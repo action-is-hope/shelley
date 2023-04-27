@@ -1,13 +1,9 @@
 /* tabs.st.css CSS API */
-.root {
-  -st-states: isFocusVisible;
-}
+.root {}
 
 .tabListContainer {}
 
-.tabSelection {
-  -st-states: isActive;
-}
+.tabSelection {}
 
 .tabList {
   display: flex;

@@ -12,39 +12,17 @@ export interface TabsProps {
 
 const Tabs = (props: TabsProps) => {
   const state = useTabListState(props);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
 
-  const [activeTabStyle, setActiveTabStyle] = useState({
-    width: 0,
-    transform: "translateX(0)",
-  });
-
-  useEffect(() => {
-    const activeTab = ref.current.querySelector(
-      '[role="tab"][aria-selected="true"]'
-    );
-    setActiveTabStyle({
-      width: activeTab?.offsetWidth,
-      transform: `translateX(${activeTab?.offsetLeft}px)`,
-    });
-  }, [state.selectedKey]);
-
-  const { focusProps, isFocusVisible } = useFocusRing({
+  const { focusProps } = useFocusRing({
     within: true,
   });
 
   return (
-    <div className={st(classes.root, { isFocusVisible })}>
+    <div className={st(classes.root)}>
       <div className={classes.tabListContainer}>
-        <div
-          className={st(
-            classes.tabSelection,
-            { activeTabStyle },
-            isFocusVisible ? "focused" : ""
-          )}
-          style={{ zIndex: -1, ...activeTabStyle }}
-        />
+        <div className={classes.tabSelection} />
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
