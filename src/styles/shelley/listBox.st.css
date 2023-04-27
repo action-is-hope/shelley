@@ -20,6 +20,6 @@
 @st-scope Shelley {
 
   ListBox {
-    background: var(--background-color-main);
+    /* background: var(--background-color-main); */
   }
 }

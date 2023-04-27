@@ -1,5 +1,5 @@
 import { Ref, forwardRef, ReactElement } from "react";
-import Field from "../Field/Field";
+import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
 
 import { useRadioGroupState } from "react-stately";
@@ -53,7 +53,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     orientation = "vertical",
     vol,
     children,
-    includeDataIds,
+    "data-id": dataId,
   } = props;
 
   const state = useRadioGroupState(props);
@@ -76,8 +76,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
         vol,
         variant: false,
         ref,
-        "data-id": includeDataIds ? "radioGroup--field" : undefined,
-        includeDataIds,
+        "data-id": dataId,
       }}
       className={st(classes.root, { orientation }, classNameProp)}
     >

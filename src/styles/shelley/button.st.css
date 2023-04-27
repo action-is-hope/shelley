@@ -23,6 +23,14 @@
   Button {
     /* We'll assign this via our variants but set it with our tones. */
     --accent: initial;
+    /* = Material defo popularised uppercase buttons, we like it but readability 
+    takes a hit and be careful in some langauges such as Greek. */
+    text-transform: uppercase;
+    /* = Opininated: Some disagree with setting cursor: pointer (the hand) on 
+    interactive elements arguing system controls don't do this. Meh, for 
+    us it offers an additional cue to interaction which we feel asserts 
+    confidence. Many sites do this so perhaps it's expected by many users. */
+    cursor: pointer;
   }
 
   /* = Variants - Using the accent to assign the colors to reduce code. */
@@ -71,7 +79,6 @@
   ButtonGroup Button:variant(fab) {
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
-
 
   /* = Tones/Colours */
   Button:tone(1) {

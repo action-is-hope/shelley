@@ -4,13 +4,13 @@ import { useCheckbox, useCheckboxGroupItem } from "react-aria";
 import type { AriaCheckboxProps } from "@react-types/checkbox";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
-import type { Volume, AlignPos } from "../types";
+import type { Volume, AlignPos, ComponentBase } from "../types";
 import Label from "../Label/Label";
 import { CheckboxGroupContext } from "../CheckboxGroup/context";
 /* = Style API. */
 import { st, classes } from "./checkbox.st.css";
 
-export interface CheckboxProps extends AriaCheckboxProps {
+export interface CheckboxProps extends AriaCheckboxProps, ComponentBase {
   className?: string;
   /** The position of the label relative to the label. */
   inputPosition?: AlignPos;
@@ -18,8 +18,6 @@ export interface CheckboxProps extends AriaCheckboxProps {
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
   vol?: Volume;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
 }
 
 const Checkbox = forwardRef(
@@ -33,7 +31,7 @@ const Checkbox = forwardRef(
       isIndeterminate,
       vol = 1,
       isDisabled,
-      includeDataIds,
+      "data-id": dataId,
     } = props;
     const localRef = useRef(null);
     const groupState = useContext(CheckboxGroupContext);
@@ -76,7 +74,7 @@ const Checkbox = forwardRef(
           className={classes.input}
           {...mergeProps(inputProps, focusProps)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
-          data-id={includeDataIds ? "checkbox--input" : undefined}
+          data-id={dataId ? `${dataId}--input` : undefined}
         />
       </span>
     );
@@ -96,14 +94,14 @@ const Checkbox = forwardRef(
             className={classNames}
             {...{ inputControl, inputPosition }}
             visuallyHidden={visuallyHideLabel}
-            data-id={includeDataIds ? "checkbox--label" : undefined}
+            data-id={dataId ? `${dataId}--label` : undefined}
           >
             {children}
           </Label>
         ) : (
           <span
             className={classNames}
-            data-id={includeDataIds ? "checkbox--no-label" : undefined}
+            data-id={dataId ? `${dataId}--noLabel` : undefined}
           >
             {inputControl}
           </span>

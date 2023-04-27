@@ -119,7 +119,6 @@ function DialogTrigger(props: DialogTriggerProps) {
     children,
     type = "modal",
     // mobileType = type === "popup" ? "modal" : type,
-    hideArrow,
     targetRef,
     isDismissable = false,
     portalSelector = "body",
@@ -131,6 +130,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     crossOffset,
     shouldFlip,
     shouldCloseOnBlur,
+    hideArrow,
     "data-id": dataId,
     transition,
     transitionProps: transitionPropsFromProps,
@@ -345,7 +345,7 @@ function PopupTrigger({
   const overlay = (
     <>
       {state.isOpen && portalSelector
-        ? // If portalSelector render inside; elso render inline.
+        ? // If no portalSelector render inline.
           createPortal(
             popup,
             document.querySelector(portalSelector) as HTMLElement
@@ -360,7 +360,6 @@ function PopupTrigger({
       triggerProps={triggerPropsWithRef}
       trigger={trigger}
       overlay={overlay}
-      // isDismissable={isDismissable}
     />
   );
 }

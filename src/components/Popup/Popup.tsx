@@ -1,5 +1,13 @@
 /** Popup.tsx */
-import React, { Ref, forwardRef, RefObject, useRef } from "react";
+import React, {
+  Ref,
+  forwardRef,
+  RefObject,
+  useRef,
+  useEffect,
+  useState,
+  UIEvent,
+} from "react";
 import type { ReactFocusOnProps } from "react-focus-on/dist/es5/types";
 import type { PositionProps } from "@react-types/overlays";
 import { mergeProps, mergeRefs } from "@react-aria/utils";
@@ -13,6 +21,7 @@ import {
 /* = Style API. */
 import { st, classes } from "./popup.st.css";
 import { FocusOn } from "react-focus-on";
+import type { LoadMore, LoadingState } from "../types";
 
 export interface PopupProps
   extends AriaOverlayProps,
@@ -31,6 +40,20 @@ export interface PopupProps
   >;
   /** Hide the arrow */
   hideArrow?: boolean;
+
+  /**
+   * Loadmore callback for when the scroller hits the bottom
+   * OR when 'filling' up the available space.
+   */
+  onLoadMore?: LoadMore;
+  /**
+   * If set to 'idle' an attempt to call onLoadMore on opening
+   * will be made until all available height is taken up and a
+   * scrollbar is present.
+   */
+  loadingState?: LoadingState;
+  /** Specify a width for the popup as in ComboBox.*/
+  width?: number;
 }
 
 export const Popup = forwardRef(
@@ -50,11 +73,14 @@ export const Popup = forwardRef(
       crossOffset,
       shouldFlip,
       focusOnProps,
+      onLoadMore,
+      loadingState,
       "data-id": dataId,
+      width,
       ...rest
     } = props;
 
-    const localRef = useRef(null);
+    const localRef = useRef<HTMLDivElement>(null);
     const { overlayProps } = useOverlay(
       {
         onClose,
@@ -63,7 +89,7 @@ export const Popup = forwardRef(
         isKeyboardDismissDisabled,
         shouldCloseOnBlur,
       },
-      localRef as RefObject<HTMLElement>
+      localRef
     );
 
     // Get MenuPopup positioning props relative to the trigger
@@ -80,7 +106,38 @@ export const Popup = forwardRef(
       crossOffset,
       shouldFlip,
     });
-    // Wrap in <FocusScope> so that focus is restored back to the
+
+    const [maxHeight, setMaxHeight] = useState<number>(0);
+
+    /** Basic 'if we get close to bottom then loadMore' */
+    const handleScroll = (e: UIEvent<HTMLDivElement>) => {
+      const target = e.target as HTMLDivElement;
+      const nearBottom =
+        target.scrollHeight - target.scrollTop + 50 > target.clientHeight;
+      if (nearBottom) onLoadMore && onLoadMore();
+      props.onScroll && props.onScroll(e);
+    };
+
+    useEffect(() => {
+      const cssValue = overlayPositionProps?.style?.maxHeight;
+      typeof cssValue === "number" && setMaxHeight(cssValue);
+    }, [overlayPositionProps]);
+
+    /**
+     * Ensure enough is loaded to fill up all available space
+     * offered by Popup's max-height otherwise users won't be
+     * able to 'scroll to the bottom' stopping loadMore from
+     * firing onScroll.
+     */
+    useEffect(() => {
+      const scrollHeight = localRef?.current?.scrollHeight;
+      if (scrollHeight && maxHeight)
+        if (scrollHeight < maxHeight && loadingState === "idle") {
+          onLoadMore && onLoadMore();
+        }
+    }, [loadingState, maxHeight, onLoadMore]);
+
+    // Wrap in <FocusOn> so that focus is restored back to the
     // trigger when the menu is closed. In addition, add hidden
     // <DismissButton> components at the start and end of the list
     // to allow screen reader users to dismiss the popup easily.
@@ -93,6 +150,7 @@ export const Popup = forwardRef(
         <div
           className={st(classes.root, classNameProp)}
           {...mergeProps(overlayProps, overlayPositionProps, rest)}
+          style={{ ...overlayPositionProps?.style, minWidth: width }}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           data-id={dataId}
         >
@@ -110,7 +168,15 @@ export const Popup = forwardRef(
           )}
 
           <DismissButton onDismiss={props.onClose} />
-          {props.children}
+          {/* Seperate scroll div to keep the arrow visible. */}
+          <div
+            className={classes.scroller}
+            style={{ maxHeight: overlayPositionProps?.style?.maxHeight }}
+            onScroll={handleScroll}
+            data-id={dataId ? `${dataId}-scroller` : undefined}
+          >
+            {props.children}
+          </div>
           <DismissButton onDismiss={props.onClose} />
         </div>
       </FocusOn>

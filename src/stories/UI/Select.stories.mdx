@@ -148,12 +148,6 @@ export const DynamicCollection = () => {
 
 Setting a selected option can be done by using the defaultSelectedKey or selectedKey prop. The selected key corresponds to the key of an item. When Select is used with a dynamic collection as described above, the key of each item is derived from the data. See the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html) for more details.
 
-TextField accepts an `onChange` prop which is triggered whenever the value is edited by the user.
-
-TextField is intrincically either an input or a textarea so all usual events are supported if not documented in the props tables.
-
-The example below uses onChange to update a separate pre element with the same text entered into the TextField.
-
 <Story
   name="c) Controlled"
   parameters={{
@@ -202,26 +196,35 @@ We will be adding loading indicator and virtualisation support as we come to do 
     docs: {
       source: {
         code: dedent`
-  const list: { items: ItemsType[] } = useAsyncList({
-    async load({ signal, filterText }) {
-      let res = await fetch(\`https://pokeapi.co/api/v2/pokemon\`, { signal });
-      let json = await res.json();
-      return {
-        items: json.results,
-      };
-    },
-  });\n
-  return (
-    <Select
-      label="Pick a Pokemon"
-      items={list.items}
-      portalSelector="#portal"
-      shouldFocusOnHover={false}
-      {...args}
-    >
-      {(item) => <Item key={item.name}>{item.name}</Item>}
-    </Select>
-  );`,
+import { useAsyncList } from "react-stately";
+...
+type ItemsType = { [key: string]: string | number };\n
+...
+const list = useAsyncList<ItemsType>({
+  async load({ signal, cursor }) {
+    // If no cursor is available, then we're loading the first page.
+    // Otherwise, the cursor is the next URL to load, as returned from the previous page.
+    const res = await fetch(cursor || "https://pokeapi.co/api/v2/pokemon", {
+      signal,
+    });
+    const json = await res.json();
+    return {
+      items: json.results,
+      cursor: json.next,
+    };
+  },
+});\n
+return (
+  <Select
+    label="Pick a Pokemon"
+    items={list.items}
+    portalSelector="#portal"
+    shouldFocusOnHover={false}
+    {...args}
+  >
+    {(item) => <Item key={item.name}>{item.name}</Item>}
+  </Select>
+);`,
       },
     },
   }}
@@ -379,8 +382,6 @@ Both a description and an error message can be supplied to a TextField. The desc
 ## Select Props
 
 <ArgsTable of={SelectType} />
-
-argTypes: { label: { control: { type: 'text'} } }
 
 ## Stying
 

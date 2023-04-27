@@ -2,23 +2,19 @@
 import { useRef } from "react";
 import type { AriaMenuProps } from "@react-types/menu";
 import { useMenu } from "react-aria";
-// import { mergeProps } from "@react-aria/utils";
 import { useTreeState } from "@react-stately/tree";
-import type { TreeProps } from "@react-stately/tree/dist/types";
 import MenuItem from "../MenuItem/MenuItem";
+import type { ComponentBase } from "../types";
 /* = Style API. */
 import { st, classes } from "./menu.st.css";
 
-export interface MenuProps<T> extends TreeProps<T>, AriaMenuProps<T> {
+export interface MenuProps<T> extends AriaMenuProps<T>, ComponentBase {
   /** ClassName if you need/want a style hook. */
   className?: string;
-  /** Handler that is called when the menu should close after selecting an item. */
-  onClose?: () => void;
-  // @todo support data-id
 }
 
 export function Menu<T extends object>(props: MenuProps<T>) {
-  const { className } = props;
+  const { className, "data-id": dataId } = props;
   // Create menu state based on the incoming props.
   const state = useTreeState({ ...props });
   const menuRef = useRef(null);
@@ -31,7 +27,12 @@ export function Menu<T extends object>(props: MenuProps<T>) {
   );
 
   return (
-    <ul className={st(classes.root, className)} {...menuProps} ref={menuRef}>
+    <ul
+      className={st(classes.root, className)}
+      {...menuProps}
+      ref={menuRef}
+      data-id={dataId}
+    >
       {[...state.collection].map((item) => (
         <MenuItem
           key={item.key}

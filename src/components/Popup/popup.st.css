@@ -3,12 +3,15 @@
 
 .root {}
 
+.scroller {
+  overflow: hidden auto;
+}
+
 .list {}
 
 .arrow {
   -st-states: placement(string);
   position: absolute;
-
   height: 12px;
   width: 12px;
 }

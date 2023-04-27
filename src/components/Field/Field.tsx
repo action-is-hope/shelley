@@ -5,9 +5,15 @@ import {
   cloneElement,
   isValidElement,
   Children,
-  HTMLAttributes,
+  forwardRef,
+  HTMLProps,
 } from "react";
-import type { Volume, FieldVariants } from "../types";
+import type {
+  Volume,
+  FieldVariants,
+  ComponentBase,
+  LabelPosition,
+} from "../types";
 import type { Validation } from "../../typings/shared-types";
 import Label from "../Label/Label";
 import { HelpText } from "../HelpText/HelpText";
@@ -16,7 +22,7 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./field.st.css";
 
-export interface FieldProps extends Validation {
+export interface FieldProps extends Validation, ComponentBase {
   /** Provide an error message that triggers the stylable error state. */
   errorMessage?: ReactNode;
   /** Provide some description or hint text to the field. */
@@ -31,7 +37,7 @@ export interface FieldProps extends Validation {
    * Position of the label.
    * @default "over"
    */
-  labelPosition?: "top" | "side" | "over" | "hidden";
+  labelPosition?: LabelPosition;
   /**
    * Disable the label transition.
    * @default false
@@ -51,16 +57,15 @@ export interface FieldProps extends Validation {
   vol?: Volume;
   /** Does the containing input have a value. */
   hasValue?: boolean;
-  /** Add predefined data-id to ease testing or analytics. */
-  includeDataIds?: boolean;
   /** Props for the help text description element. */
-  descriptionProps?: HTMLAttributes<HTMLElement>;
+  descriptionProps?: HTMLProps<HTMLDivElement>;
   /** Props for the help text error message element. */
-  errorMessageProps?: HTMLAttributes<HTMLElement>;
+  errorMessageProps?: HTMLProps<HTMLDivElement>;
   /** Props for the field container. */
-  fieldContainerProps?: HTMLAttributes<HTMLElement>;
+  fieldContainerProps?: HTMLProps<HTMLDivElement>;
   /** Enable disabled state. */
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 }
 
 interface FieldInternalProps
@@ -69,29 +74,33 @@ interface FieldInternalProps
       Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">
     >,
     FieldProps {}
-const Field = ({
-  className: classNameProp,
-  children,
-  errorMessage,
-  validationState,
-  startAdornment,
-  endAdornment,
-  description,
-  label: labelStringProp,
-  labelProps,
-  labelPosition = "over",
-  descriptionProps,
-  errorMessageProps,
-  disableLabelTransition = false,
-  includeDataIds = false,
-  variant = "outlined",
-  hasValue: hasValueProp,
-  fieldContainerProps,
-  isRequired,
-  isDisabled,
-  vol = 1,
-  ...rest
-}: FieldInternalProps) => {
+
+function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
+  const {
+    className: classNameProp,
+    children,
+    errorMessage,
+    validationState,
+    startAdornment,
+    endAdornment,
+    description,
+    label: labelStringProp,
+    labelProps,
+    labelPosition = "over",
+    descriptionProps,
+    errorMessageProps,
+    disableLabelTransition = false,
+    variant = "outlined",
+    hasValue: hasValueProp,
+    fieldContainerProps,
+    isReadOnly,
+    isRequired,
+    isDisabled,
+    vol = 1,
+    "data-id": dataId,
+    ...rest
+  } = props;
+
   const hasValue =
     disableLabelTransition || startAdornment ? true : hasValueProp;
 
@@ -110,7 +119,7 @@ const Field = ({
   const label = (
     <Label
       className={classes.inputLabel}
-      data-id={includeDataIds ? "field--label" : undefined}
+      data-id={dataId ? `${dataId}--label` : undefined}
       {...labelProps}
     >
       {labelStringProp}
@@ -126,12 +135,15 @@ const Field = ({
           error,
           isDisabled,
           isRequired,
+          isReadOnly,
           variant: variant || undefined,
           vol: vol !== false ? vol : undefined,
           labelPosition,
         },
         classNameProp
       )}
+      data-id={dataId}
+      ref={ref}
       {...rest}
     >
       {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
@@ -142,7 +154,8 @@ const Field = ({
       >
         {startAdornment && (
           <InputAdornment
-            data-id={includeDataIds ? "field--start-adornment" : undefined}
+            className={classes.startAdornment}
+            data-id={dataId ? `${dataId}--start-adornment` : undefined}
           >
             {startAdornment}
           </InputAdornment>
@@ -150,7 +163,8 @@ const Field = ({
         {childrenWithProps}
         {endAdornment && (
           <InputAdornment
-            data-id={includeDataIds ? "field--end-adornment" : undefined}
+            className={classes.endAdornment}
+            data-id={dataId ? `${dataId}--end-adornment` : undefined}
           >
             {endAdornment}
           </InputAdornment>
@@ -174,10 +188,11 @@ const Field = ({
           errorMessageProps,
           validationState,
         }}
-        includeDataIds={includeDataIds}
+        data-id={dataId ? `${dataId}--helpText` : undefined}
       />
     </div>
   );
-};
+}
 
-export default Field;
+const _Field = forwardRef(Field);
+export { _Field as Field };
