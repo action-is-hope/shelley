@@ -1,6 +1,6 @@
 import * as React from "react";
 import Item from "../../components/Item/Item";
-import { Tabs } from "../../components/Tabs/Tabs";
+import Tabs from "../../components/Tabs/Tabs";
 
 const tabsData = [
   {
