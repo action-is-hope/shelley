@@ -1,16 +1,16 @@
+import { Ref, useRef, ReactElement, forwardRef } from "react";
 import { useTabListState } from "react-stately";
-import React, { useEffect, useRef, useState } from "react";
 import { useTabList, useFocusRing, mergeProps } from "react-aria";
+import { TabListProps } from "react-stately";
 import Tab from "../Tab/Tab";
 import TabPanel from "../TabPanel/TabPanel";
 import { st, classes } from "./tabs.st.css";
 
-export interface TabsProps {
-  [key: string]: any;
+export interface TabsProps<T> extends TabListProps<T> {
   className?: string;
 }
 
-const Tabs = (props: TabsProps) => {
+function Tabs<T extends object>(props: TabsProps<T>) {
   const state = useTabListState(props);
   const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
@@ -36,8 +36,15 @@ const Tabs = (props: TabsProps) => {
       <TabPanel key={state.selectedItem?.key} state={state} />
     </div>
   );
-};
+}
 
 Tabs.displayName = "Tabs";
 
 export default Tabs;
+
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _Tabs = forwardRef(Tabs) as <T>(
+  props: TabsProps<T> & { ref?: Ref<HTMLElement> }
+) => ReactElement;
+export { _Tabs as Tabs };
