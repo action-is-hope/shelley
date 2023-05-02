@@ -53,6 +53,7 @@
     "@react-stately/tree": "^3.6.0",
     "@react-types/menu": "^3.9.0",
     "@react-types/overlays": "^3.7.1",
+    "@react-types/shared": "^3.18.0",
     "react-aria": "^3.24.0",
     "react-focus-on": "^3.7.0",
     "react-stately": "^3.22.0",
