@@ -1,10 +1,8 @@
 import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
-
-import { Example1 } from "./Tabs.examples";
-
 import { Tabs } from "../../indexLib";
-
-import { ArgsTable } from "@storybook/addon-docs";
+import { ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Example1 } from "./Tabs.examples";
 
 export const BasicTabs = () => {
   return <Example1 />;
@@ -14,7 +12,24 @@ export const BasicTabs = () => {
 
 # Tabs
 
-Bla Bla
+<Source
+  language="tsx"
+  code={dedent`
+    import { Tabs } from "@actionishope/shelley";
+  `}
+/>
+
+Provides the behavior and accessibility implementation for a tab list. Tabs organize content into multiple sections and allow users to navigate between them.
+
+Tabs provide a list of tabs that a user can select from to switch between multiple tab panels. useTabList, useTab, and useTabPanel can be used to implement these in an accessible way.
+
+- Support for mouse, touch, and keyboard interactions on tabs
+- Support for LTR and RTL keyboard navigation
+- Support for disabled tabs
+- Follows the tabs ARIA pattern, semantically linking tabs and their associated tab panels
+- Focus management for tab panels without any focusable children
+
+Tabs consist of a tab list with one or more visually separated tabs. Each tab has associated content, and only the selected tab's content is shown. Each tab can be clicked, tapped, or navigated to via arrow keys. Depending on the keyboardActivation prop, the tab can be selected by receiving keyboard focus, or it can be selected with the Enter key.
 
 <Preview>
   <Story name="a) Basic Tabs" args={{}}>
