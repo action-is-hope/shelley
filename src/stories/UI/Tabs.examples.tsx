@@ -20,7 +20,7 @@ const tabs = [
 
 export const Example2 = () => {
   return (
-    <Tabs aria-label="Dynamic tabs" items={tabs}>
+    <Tabs aria-label="Dynamic tabs" items={tabs} data-id="tabs">
       {(item) => <Item title={item.title}>{item.content}</Item>}
     </Tabs>
   );
@@ -28,7 +28,7 @@ export const Example2 = () => {
 
 export const Example3 = () => {
   return (
-    <Tabs aria-label="Dynamic tabs" items={tabs} isDisabled>
+    <Tabs aria-label="Dynamic tabs" items={tabs} isDisabled data-id="tabs">
       {(item) => <Item title={item.title}>{item.content}</Item>}
     </Tabs>
   );

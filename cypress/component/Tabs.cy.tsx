@@ -1,25 +1,21 @@
 import React, { useState } from "react";
-import { Tabs, Item } from "../../src/indexLib";
+import { Tabs, Item, TabsProps } from "../../src/indexLib";
 
 const tabs = '[data-id="tabs"]';
 const tabPanel = '[data-id="tabs-tab-panel"]';
 const tabItem = '[data-id="tabs-tab-item"]';
 
-const tabData = [
-  { id: 1, title: "Tab 1", content: "Tab body 1" },
-  { id: 2, title: "Tab 2", content: "Tab body 2" },
-  { id: 3, title: "Tab 3", content: "Tab body 3" },
-];
-
-export const TabsExample = () => {
+export const TabsExample = (args) => {
   return (
-    <Tabs aria-label="Dynamic tabs" items={tabData} data-id="tabs">
-      {(item) => <Item title={item.title}>{item.content}</Item>}
+    <Tabs aria-label="Dynamic tabs" data-id="tabs" {...args}>
+      <Item title="Tab title 1">Tab description 1</Item>
+      <Item title="Tab title 2">Tab description 2</Item>
+      <Item title="Tab title 3">Tab description 3</Item>
     </Tabs>
   );
 };
 
-// Test
+// Basic test to see if tabs render correctly
 
 describe("Basic Tabs", () => {
   it("renders working tabs, tabPanel and tabItem.", () => {
@@ -28,4 +24,19 @@ describe("Basic Tabs", () => {
     cy.get(tabPanel).should("exist");
     cy.get(tabItem).should("exist");
   });
+});
+
+// Disabled tabs
+
+it("tabs are disabled", () => {
+  cy.mount(<TabsExample isDisabled />);
+  cy.get(tabItem).should("have.attr", "aria-disabled");
+});
+
+// Click check
+
+it("tab can be selected", () => {
+  cy.mount(<TabsExample />);
+  cy.get(tabItem).realClick();
+  cy.get(tabItem).should("have.attr", "aria-selected");
 });

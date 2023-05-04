@@ -9,6 +9,7 @@ export interface TabProps<T> {
   /** Add a class to the content div. */
   className?: string;
   id?: string;
+  /** Tab item */
   item: Node<T>;
   state: TabListState<T>;
   /** Add predefined data-id to ease testing or analytics. */
