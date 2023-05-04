@@ -2,10 +2,18 @@ import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { Tabs } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { Example1 } from "./Tabs.examples";
+import { Example1, Example2, Example3 } from "./Tabs.examples";
 
 export const BasicTabs = () => {
   return <Example1 />;
+};
+
+export const DynamicTabs = () => {
+  return <Example2 />;
+};
+
+export const DisabledTabs = () => {
+  return <Example3 />;
 };
 
 <Meta title="Data/Tabs" component={Tabs} />
@@ -31,8 +39,47 @@ Tabs provide a list of tabs that a user can select from to switch between multip
 
 Tabs consist of a tab list with one or more visually separated tabs. Each tab has associated content, and only the selected tab's content is shown. Each tab can be clicked, tapped, or navigated to via arrow keys. Depending on the keyboardActivation prop, the tab can be selected by receiving keyboard focus, or it can be selected with the Enter key.
 
+Keyboard Activation
+
+By default, pressing the arrow keys while focus is on a Tab will switch selection to the adjacent Tab in that direction, updating the content displayed accordingly.
+
 <Preview>
   <Story name="a) Basic Tabs" args={{}}>
     {BasicTabs.bind({})}
+  </Story>
+</Preview>
+
+# Usage
+
+This example displays a basic list of tabs. The currently selected tab receives a tabIndex of 0 while the rest are set to -1 ensuring that the whole tablist is a single tab stop. The selected tab has a different style so it's obvious which one is currently selected. useTab and useTabPanel handle associating the tabs and tab panels for assistive technology. The currently selected tab panel is rendered below the list of tabs.
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Tabs aria-label="Tabs aria label description">
+      <Item title="Tab title 1">Tab description 1</Item>
+      <Item title="Tab title 2">Tab description 2</Item>
+      <Item title="Tab title 3">Tab description 3</Item>
+    </Tabs>
+  `}
+/>
+
+## Dynamic Tabs
+
+This example displays a dynamically created basic list of tabs.
+
+<Preview>
+  <Story name="a) Dynamic Tabs" args={{}}>
+    {DynamicTabs.bind({})}
+  </Story>
+</Preview>
+
+## Disabled
+
+All tabs can be disabled using the isDisabled prop.
+
+<Preview>
+  <Story name="a) Disabled Tabs" args={{}}>
+    {DisabledTabs.bind({})}
   </Story>
 </Preview>
