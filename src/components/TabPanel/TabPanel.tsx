@@ -4,15 +4,29 @@ import { TabListState } from "react-stately";
 import { st, classes } from "./tabPanel.st.css";
 
 export interface TabPanelProps<T> {
+  /** Add a class to the content div. */
+  className?: string;
   state: TabListState<T>;
+  /** Add predefined data-id to ease testing or analytics. */
+  dataId?: string;
 }
 
-function TabPanel<T extends object>({ state, ...props }: TabPanelProps<T>) {
+function TabPanel<T extends object>({
+  dataId,
+  className,
+  state,
+  ...props
+}: TabPanelProps<T>) {
   const ref = useRef<HTMLDivElement>(null);
   const { tabPanelProps } = useTabPanel(props, state, ref);
 
   return (
-    <div className={st(classes.root)} {...tabPanelProps} ref={ref}>
+    <div
+      className={st(classes.root, className)}
+      {...tabPanelProps}
+      ref={ref}
+      data-id={dataId}
+    >
       {state.selectedItem?.props.children}
     </div>
   );

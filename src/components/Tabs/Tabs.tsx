@@ -7,10 +7,14 @@ import TabPanel from "../TabPanel/TabPanel";
 import { st, classes } from "./tabs.st.css";
 
 export interface TabsProps<T> extends TabListProps<T> {
+  /** Add a class to the content div. */
   className?: string;
+  /** Add predefined data-id to ease testing or analytics. */
+  "data-id"?: string;
 }
 
 function Tabs<T extends object>(props: TabsProps<T>) {
+  const { className: classNameProp, "data-id": dataId } = props;
   const state = useTabListState(props);
   const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
@@ -20,20 +24,30 @@ function Tabs<T extends object>(props: TabsProps<T>) {
   });
 
   return (
-    <div className={st(classes.root)}>
+    <div className={st(classes.root, classNameProp)} data-id={dataId}>
       <div className={classes.tabListContainer}>
         <div className={classes.tabSelection} />
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
           ref={ref}
+          data-id={dataId ? `${dataId}-tab-list` : undefined}
         >
           {[...state.collection].map((item) => (
-            <Tab key={item.key} item={item} state={state} />
+            <Tab
+              key={item.key}
+              item={item}
+              state={state}
+              dataId={dataId ? `${dataId}-tab-item` : undefined}
+            />
           ))}
         </div>
       </div>
-      <TabPanel key={state.selectedItem?.key} state={state} />
+      <TabPanel
+        key={state.selectedItem?.key}
+        state={state}
+        dataId={dataId ? `${dataId}-tab-panel` : undefined}
+      />
     </div>
   );
 }

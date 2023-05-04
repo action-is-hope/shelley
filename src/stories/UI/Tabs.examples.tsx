@@ -4,7 +4,7 @@ import Tabs from "../../components/Tabs/Tabs";
 
 export const Example1 = () => {
   return (
-    <Tabs>
+    <Tabs data-id="tabs">
       <Item title="Tab title 1">Tab description 1</Item>
       <Item title="Tab title 2">Tab description 2</Item>
       <Item title="Tab title 3">Tab description 3</Item>

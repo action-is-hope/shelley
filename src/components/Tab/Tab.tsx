@@ -6,18 +6,32 @@ import { TabListState } from "react-stately";
 import { st, classes } from "./tab.st.css";
 
 export interface TabProps<T> {
+  /** Add a class to the content div. */
+  className?: string;
   id?: string;
   item: Node<T>;
   state: TabListState<T>;
+  /** Add predefined data-id to ease testing or analytics. */
+  dataId?: string;
 }
 
-function Tab<T extends object>({ item, state }: TabProps<T>) {
+function Tab<T extends object>({
+  item,
+  state,
+  className,
+  dataId,
+}: TabProps<T>) {
   const { key, rendered } = item;
   const ref = useRef<HTMLDivElement>(null);
   const { tabProps } = useTab({ key }, state, ref);
 
   return (
-    <div className={st(classes.root)} {...tabProps} ref={ref}>
+    <div
+      className={st(classes.root, className)}
+      {...tabProps}
+      ref={ref}
+      data-id={dataId}
+    >
       {rendered}
     </div>
   );
