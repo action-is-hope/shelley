@@ -41,6 +41,7 @@
     --color-accent-4,
     /* = Background colours */
     --background-color-main,
+    --background-color-contrast-1,
     /* = Text colours */
     --color-text-1,
     --color-text-2,
@@ -80,7 +81,8 @@
   --color-accent-4: rgb(134, 102, 30);
 
   /* = Background colours */
-  --background-color-main: rgba(239, 239, 239, 1) !important;
+  --background-color-main: rgba(239, 239, 239, 1);
+  --background-color-contrast-1: #fff;
 
   /* = Text colours */
   --color-text-1: var(--dark-01);

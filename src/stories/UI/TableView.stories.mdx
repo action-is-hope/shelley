@@ -1,0 +1,183 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { TableView } from "../../components/TableView/TableView";
+import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
+import {
+  TableViewExample,
+  ContentExample,
+  LayoutExample,
+  BasicTableView,
+  SelectionTableView,
+} from "./TableView.examples";
+
+<Meta title="Data/TableView" component={TableView} />
+
+# TableView
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Cell, Column, Row, TableView, TableBody, TableHeader } from "@actionishope/shelley";
+  `}
+/>
+
+Tables are containers for displaying information. They allow users to quickly scan, sort, compare, and take action on large amounts of data.
+
+<Preview>
+  <Story
+    name="a) TableView"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<TableView
+  aria-label="Example table with static contents"
+  selectionMode="multiple"
+>
+  <TableHeader>
+    <Column>Name</Column>
+    <Column>Type</Column>
+    <Column align="end">Date Modified</Column>
+  </TableHeader>
+  <TableBody>
+    <Row>
+      <Cell>Games</Cell>
+      <Cell>File folder</Cell>
+      <Cell>6/7/2020</Cell>
+    </Row>
+    <Row>
+      <Cell>Program Files</Cell>
+      <Cell>File folder</Cell>
+      <Cell>4/7/2021</Cell>
+    </Row>
+    <Row>
+      <Cell>bootmgr</Cell>
+      <Cell>System file</Cell>
+      <Cell>11/20/2010</Cell>
+    </Row>
+    <Row>
+      <Cell>log.txt</Cell>
+      <Cell>Text Document</Cell>
+      <Cell>1/18/2016</Cell>
+    </Row>
+  </TableBody>
+</TableView>`,
+        },
+      },
+    }}
+  >
+    <TableViewExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--a-table-view" />
+
+## Content
+
+TableView is a complex collection component that is built up from many child elements including columns, rows, and cells. Columns are defined within a TableHeader element and rows are defined within a TableBody element. Rows contain Cell elements that correspond to each column. Cells can contain any element, allowing you to have focusable children within the TableView.
+
+Basic usage of TableView, seen in the example above, shows the use of a static collection where the contents of the TableView is hard coded. Dynamic collections, as shown below, can be used when the options come from an external data source such as an API, or update over time. Providing the data in this way allows TableView to automatically cache the rendering of each item, which dramatically improves performance.
+
+Columns and rows can be statically defined as children, or generated dynamically using a function based on the data passed to the columns or items prop respectively. Cells can also be statically defined as children, or generated dynamically based on the columns defined in the TableHeader.
+
+Each column and row has a unique key defined by the data. In the example below, the uid property of the column object is used as the key for the Column element within the TableHeader. The key of each row element is implicitly defined by the id property of the row object. See collections to learn more keys in dynamic collections.
+
+<Preview>
+  <Story
+    name="b) Content"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+  interface RowData {
+    id: number;
+    name: string;
+    date: string;
+    type: string;
+  }\n
+  const columns = [
+    { name: "Name", uid: "name" },
+    { name: "Type", uid: "type" },
+    { name: "Date Modified", uid: "date" },
+  ];\n
+  const rows: RowData[] = [
+    { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
+    { id: 2, name: "Program Files", date: "4/7/2021", type: "File folder" },
+    { id: 3, name: "bootmgr", date: "11/20/2010", type: "System file" },
+    { id: 4, name: "log.txt", date: "1/18/2016", type: "Text Document" },
+  ];\n
+  <TableView aria-label="Example table with dynamic content">
+    <TableHeader columns={columns}>
+      {(column) => (
+        <Column
+          key={column.uid}
+          align={column.uid === "date" ? "end" : "start"}
+        >
+          {column.name}
+        </Column>
+      )}
+    </TableHeader>
+    <TableBody items={rows}>
+      {(item) => (
+        <Row>
+          {(columnKey) => <Cell>{item[columnKey as keyof RowData]}</Cell>}
+        </Row>
+      )}
+    </TableBody>
+  </TableView>`,
+        },
+      },
+    }}
+  >
+    <ContentExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--b-content" />
+
+## Layout
+
+TableViews are often contained within a page layout that defines the size of the table. For example, a page might have a header or toolbar with a TableView below that fills the remaining vertical space. TableView is designed to scroll internally while the column headers remain fixed. Because of this, TableViews should not be placed within a scrollable container.
+
+<Preview>
+  <Story
+    name="c) Layout"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <LayoutExample />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story
+    name="b) TableView selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SelectionTableView />
+  </Story>
+</Preview>
+
+## TableView props
+
+<ArgsTable of={TableView} />

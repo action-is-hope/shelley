@@ -5,6 +5,11 @@ import { Select, SelectProps, TextField } from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
+/**
+ * TypeDoc is not liking finding types when forward ref and generic
+ * type params. The following is used in the story file defining the
+ * prop table.
+ */
 export type SelectPropsDocs = SelectProps<object>;
 export function SelectType(props: SelectPropsDocs) {
   <>{props}</>;

@@ -1,0 +1,124 @@
+/* tableView.st.css */
+
+/* = Default project and vars */
+@st-import Default, [
+  --spacing-unit,
+  --color-focus,
+  --text-vol-1-scale,
+  --text-vol-1-max,
+  --text-vol-1-line-height
+] from "./project.st.css";
+/* Component API */
+@st-import TableView from "../../components/TableView/tableView.st.css";
+
+/* = Mixins & Utils */
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
+}
+
+@st-scope Default {
+  TableView {
+    --color-background-row: white;
+    --color-text-row: grey;
+    --color-background-row-isPressed: lightgrey;
+    --color-text-row-isPressed: black;
+    --color-background-row-isSelected: blueviolet;
+    --color-text-row-isSelected: white;
+    --color-border-tbody: #d5d5d5;
+    /* --color-border-tbody: grey; */
+    border-bottom: 1px solid var(--color-border-tbody);
+    border-radius: 4px;
+
+  }
+
+  TableView::table {
+    border-collapse: collapse;
+    /* font-size: var(--text-vol-1-scale); */
+    -st-mixin:
+      textVol(scale var(--text-vol-1-scale),
+        max var(--text-vol-1-max),
+        lineHeight var(--text-vol-1-line-height));
+  }
+
+  TableView::thead {
+    /* keep the tbody aligned with transparent border. */
+    /* border-left: 1px solid transparent;
+    border-right: 1px solid transparent; */
+  }
+
+  TableView::headerRow {
+    font-weight: 500;
+  }
+
+  TableView::column:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::sorter {
+    padding: 0 2px
+  }
+
+  TableView::tbody {
+    /* border: 1px solid var(--color-border-tbody); */
+    border-radius: 4px;
+  }
+
+  TableView::row {
+    border-bottom: 1px solid var(--color-border-tbody);
+    border-left: 1px solid var(--color-border-tbody);
+    border-right: 1px solid var(--color-border-tbody);
+  }
+
+  TableView::row:last-child {
+    border-bottom: none;
+  }
+
+  TableView::row {
+    outline: none;
+    transition: background-color 20ms, color 20ms;
+    background-color: var(--color-background-row);
+    color: var(--color-text-row);
+  }
+
+  TableView::row:isPressed {
+    background-color: var(--color-background-row-isPressed);
+    color: var(--color-text-row-isPressed);
+  }
+
+  TableView::row:isSelected {
+    background-color: var(--color-background-row-isSelected);
+    color: var(--color-text-row-isSelected);
+  }
+
+  TableView::row:isFocusVisible {
+    box-shadow: inset 0 0 0 1px var(--color-focus);
+  }
+
+  TableView::column,
+  TableView::cell {
+    padding: calc(var(--spacing-unit) / 1.5) var(--spacing-unit);
+    outline: none;
+    cursor: default;
+    vertical-align: middle;
+  }
+
+  TableView::cell:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::columnCheckbox,
+  TableView::cellCheckbox {
+    padding: 0;
+    display: flex;
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    padding-right: calc(var(--spacing-unit) * 0.5);
+  }
+
+  TableView::column:hasCheckbox,
+  TableView::cell:hasCheckbox {
+    width: 44px;
+    padding: 0
+  }
+}

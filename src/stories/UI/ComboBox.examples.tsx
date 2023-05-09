@@ -1,12 +1,17 @@
-import { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
+import React, { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { SelectProps, ComboBox, P, Grid } from "../../indexLib";
+import { ComboBoxProps, ComboBox, P, Grid } from "../../indexLib";
 import { useTreeData } from "react-stately";
-
 import { classes as sr } from "../../styles/mixins/visuallyHidden.st.css";
-export type SelectPropsDocs = SelectProps<object>;
-export function SelectType(props: SelectPropsDocs) {
+
+/**
+ * TypeDoc is not liking finding types when forward ref and generic
+ * type params. The following is used in the story file defining the
+ * prop table.
+ */
+export type ComboBoxPropsDocs = ComboBoxProps<object>;
+export function ComboBoxType(props: ComboBoxPropsDocs) {
   <>{props}</>;
 }
 
@@ -17,7 +22,6 @@ export const BasicComboBox = () => {
         label="Favorite Animal"
         portalSelector="#portal"
         shouldFocusWrap
-        loadingState="sorting"
       >
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
