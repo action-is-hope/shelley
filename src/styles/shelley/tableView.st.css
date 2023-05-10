@@ -1,6 +1,7 @@
 /* tableView.st.css */
 /* = Shelley project scope and vars */
 @st-import Shelley, [
+    --background-color-main,
     --color-background-row as --project-color-background-row,
     --color-text-row as --project-color-text-row,
     --color-background-row-isPressed as --project-color-background-row-isPressed,
