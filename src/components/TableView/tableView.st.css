@@ -2,7 +2,10 @@
 @st-import Checkbox from "../Checkbox/checkbox.st.css";
 
 .root {
-  -st-states: isHeaderSticky;
+  -st-states:
+    isHeaderSticky,
+    vol(number),
+    density(enum(compact, spacious));
   overflow: auto;
 }
 
@@ -27,8 +30,7 @@
 }
 
 .column {
-  -st-states:
-    hasCheckbox,
+  -st-states: hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
   display: table-cell;
@@ -45,8 +47,7 @@
 }
 
 .row {
-  -st-states:
-    isFocusVisible,
+  -st-states: isFocusVisible,
     isPressed,
     isHovered,
     isSelected,
@@ -55,8 +56,7 @@
 }
 
 .cell {
-  -st-states:
-    hasCheckbox,
+  -st-states: hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
   display: table-cell;

@@ -45,6 +45,8 @@ export interface TableViewProps<T>
     Omit<TableStateProps<T>, "showDragButtons">,
     ComponentBase {
   className?: string;
+  vol?: 1 | 2 | 3 | false;
+  density?: "compact" | "spacious";
 }
 
 function TableView<T extends object>(
@@ -56,6 +58,8 @@ function TableView<T extends object>(
     selectionBehavior = "toggle",
     className: classNameProp,
     onRowAction: onAction,
+    vol = 2,
+    density,
   } = props;
   const state = useTableState({
     ...props,
@@ -69,7 +73,13 @@ function TableView<T extends object>(
   const { gridProps } = useTable(props, state, localRef);
 
   return (
-    <div className={st(classes.root, { isHeaderSticky: true }, classNameProp)}>
+    <div
+      className={st(
+        classes.root,
+        { isHeaderSticky: true, vol: vol || undefined, density },
+        classNameProp
+      )}
+    >
       <div
         className={st(classes.table)}
         {...gridProps}

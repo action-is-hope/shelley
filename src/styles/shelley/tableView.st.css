@@ -41,7 +41,7 @@
     --color-text-row-isHovered: var(--project-color-text-row-isHovered);
     --color-background-row-isHoveredSelected: var(--project-color-background-row-isHoveredSelected);
     --color-text-row-isHoveredSelected: var(--project-color-text-row-isHoveredSelected);
-    --color-border-tbody: var(--project-color-border-tbod);
+    --color-border-tbody: var(--project-color-border-tbody);
   }
 
   TableView::column {
