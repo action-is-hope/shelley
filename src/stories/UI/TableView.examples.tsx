@@ -8,6 +8,7 @@ import {
   TableHeader,
 } from "../../indexLib";
 import { MultipleSelectionManager, useAsyncList } from "react-stately";
+import { useCollator } from "react-aria";
 
 import React from "react";
 import { classes } from "./tableView.st.css";
@@ -296,20 +297,21 @@ export const AsyncExample = () => {
   );
 };
 
-export const SelectionExample = () => {
+export const SelectionExample = (props: Partial<MultipleSelectionManager>) => {
   return (
     <TableView
       aria-label="Example table with multiple selection"
       selectionMode="multiple"
       // onRowAction={}
-      onRowAction={(key) => alert(`Opening item ${key}...`)}
+      // onRowAction={(key) => alert(`Opening item ${key}...`)}
       // onCellAction={(key) => alert(`s item ${key}...`)}
       defaultSelectedKeys={["2", "4"]}
+      {...props}
     >
       <TableHeader>
         <Column>Name</Column>
         <Column>Type</Column>
-        <Column align="end">Levellllllll</Column>
+        <Column align="end">Level</Column>
       </TableHeader>
       <TableBody>
         <Row key="1">
@@ -361,7 +363,7 @@ export const ControlledSelectionExample = (
   ];
 
   const [selectedKeys, setSelectedKeys] = React.useState<Iterable<React.Key>>(
-    new Set([2])
+    new Set([2, 4])
   );
 
   return (
@@ -369,7 +371,6 @@ export const ControlledSelectionExample = (
       aria-label="Table with controlled selection"
       selectedKeys={selectedKeys}
       onSelectionChange={(selected) => setSelectedKeys(selected)}
-      onRowAction={(key) => alert(`Opening item ${key}...`)}
       {...props}
     >
       <TableHeader columns={columns}>
@@ -388,6 +389,66 @@ export const ControlledSelectionExample = (
             {(columnKey) => (
               <Cell>{item[columnKey as keyof PokeCharacter]}</Cell>
             )}
+          </Row>
+        )}
+      </TableBody>
+    </TableView>
+  );
+};
+
+export const AsyncSortExample = () => {
+  const collator = useCollator({ numeric: true });
+
+  const list = useAsyncList<Character>({
+    async load({ signal }) {
+      const res = await fetch(`https://swapi.py4e.com/api/people/?search`, {
+        signal,
+      });
+      const json = await res.json();
+      return {
+        items: json.results,
+      };
+    },
+    async sort({ items, sortDescriptor }) {
+      return {
+        items: items.sort((a, b) => {
+          const first = a[sortDescriptor.column as keyof Character];
+          const second = b[sortDescriptor.column as keyof Character];
+          let cmp = collator.compare(first as string, second as string);
+          if (sortDescriptor.direction === "descending") {
+            cmp *= -1;
+          }
+          return cmp;
+        }),
+      };
+    },
+  });
+
+  return (
+    <TableView
+      aria-label="Example table with client side sorting"
+      sortDescriptor={list.sortDescriptor}
+      onSortChange={list.sort}
+      // height="size-3000"
+    >
+      <TableHeader>
+        <Column key="name" allowsSorting>
+          Name
+        </Column>
+        <Column key="height" allowsSorting>
+          Height
+        </Column>
+        <Column key="mass" allowsSorting>
+          Mass
+        </Column>
+        <Column key="birth_year" allowsSorting>
+          Birth Year
+        </Column>
+      </TableHeader>
+      <TableBody items={list.items} loadingState={list.loadingState}>
+        {(item) => (
+          <Row key={item.name}>
+            {(columnKey) => <Cell>{item[columnKey as keyof Character]}</Cell>}
           </Row>
         )}
       </TableBody>

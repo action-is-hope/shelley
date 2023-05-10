@@ -18,6 +18,7 @@ import {
   SelectionExample,
   ControlledSelectionExample,
   SingleSelectionExample,
+  AsyncSortExample,
   BasicTableView,
 } from "./TableView.examples";
 
@@ -223,7 +224,7 @@ TBC`,
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tableview--e-asynchronous loading" />
+<Source language="tsx" id="data-tableview--e-asynchronous-loading" />
 
 ## Selection
 
@@ -247,7 +248,7 @@ TBC`,
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tableview--f-selection" />
+<Source language="tsx" id="data-tableview--f-table-view-selection" />
 
 ### Controlled selection
 
@@ -284,12 +285,13 @@ To limit users to selecting only a single item at a time, `selectionMode` can be
       docs: {
         source: {
           code: dedent`
-TBC`,
+// Using table as above
+<TableView selectionMode="single" ... />`,
         },
       },
     }}
   >
-    <ControlledSelectionExample selectionMode={"single"} />
+    <SelectionExample selectionMode="single" defaultSelectedKeys={["2"]} />
   </Story>
 </Preview>
 
@@ -306,18 +308,21 @@ TableView also supports a `disallowEmptySelection` prop which forces the user to
       docs: {
         source: {
           code: dedent`
-TBC`,
+// Using table as above
+<TableView disallowEmptySelection ... />`,
         },
       },
     }}
   >
-    <ControlledSelectionExample disallowEmptySelection />
+    <SelectionExample selectionMode="multiple" disallowEmptySelection />
   </Story>
 </Preview>
 
 <Source language="tsx" id="data-tableview--i-disallow-empty-selection" />
 
 ### Disabled rows
+
+You can disable specific rows by providing an array of keys to TableView via the `disabledKeys` prop. This will prevent rows from being selectable as shown in the example below.
 
 <Preview>
   <Story
@@ -326,22 +331,25 @@ TBC`,
       docs: {
         source: {
           code: dedent`
-TBC`,
+// Using table as above
+<TableView selectionMode="multiple" disabledKeys={["3"]} ... />`,
         },
       },
     }}
   >
-    <ControlledSelectionExample selectionMode="multiple" disabledKeys={[3]} />
+    <SelectionExample selectionMode="multiple" disabledKeys={["3"]} />
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tableview--i-disallow-empty-selection" />
+<Source language="tsx" id="data-tableview--j-disabled-rows-selection" />
 
 ### Highlight selection
 
+TBC
+
 <Preview>
   <Story
-    name="k) Highlight selection selection"
+    name="k) Highlight selection"
     parameters={{
       docs: {
         source: {
@@ -351,13 +359,15 @@ TBC`,
       },
     }}
   >
-    <ControlledSelectionExample selectionMode="highlight" />
+    <SelectionExample selectionMode="hightligh??" defaultSelectedKeys={["1"]} />
   </Story>
 </Preview>
 
 <Source language="tsx" id="data-tableview--k-highlight-selection" />
 
 ## Row actions
+
+TableView supports row actions via the `onRowAction` prop, which is useful for functionality such as navigation. When nothing is selected, the TableView performs actions by default when clicking or tapping a row. Items may be selected using the checkbox, or by long pressing on touch devices. When at least one item is selected, the TableView is in selection mode, and clicking or tapping a row toggles the selection. Actions may also be triggered via the Enter key, and selection using the Space key.
 
 <Preview>
   <Story
@@ -371,10 +381,33 @@ TBC`,
       },
     }}
   >
-    <ControlledSelectionExample
+    <SelectionExample
       selectionMode="multiple"
       onRowAction={(key) => alert(`onRowAction: Opening item ${key}...`)}
+      defaultSelectedKeys={[]}
     />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
+
+## Sorting
+
+TableView supports sorting its data when a column header is pressed. To designate that a Column should support sorting, provide it with the `allowsSorting` prop. The TableView accepts a `sortDescriptor` prop that defines the current column key to sort by and the sort direction (ascending/descending). When the user presses a sortable column header, the column's key and sort direction is passed into the `onSortChange` callback, allowing you to update the `sortDescriptor` appropriately.
+
+<Preview>
+  <Story
+    name="m) Sorting"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <AsyncSortExample />
   </Story>
 </Preview>
 

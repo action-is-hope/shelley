@@ -1,18 +1,17 @@
 /* tableView.st.css */
 /* = Shelley project scope and vars */
 @st-import Shelley, [
-    --color-ui,
-    --color-ui-inverse,
-    --color-ui-raw,
-
-    --color-text-3,
-    --color-focus,
-    --color-ui-raw-inverse,
-    --background-color-main,
-    --background-color-contrast-1,
-    --color-accent-2,
-    --color-accent-3,
-    --color-accent-4
+    --color-background-row as --project-color-background-row,
+    --color-text-row as --project-color-text-row,
+    --color-background-row-isPressed as --project-color-background-row-isPressed,
+    --color-text-row-isPressed as --project-color-text-row-isPressed,
+    --color-background-row-isSelected as --project-color-background-row-isSelected,
+    --color-text-row-isSelected as --project-color-text-row-isSelected,
+    --color-background-row-isHovered as --project-color-background-row-isHovered,
+    --color-text-row-isHovered as --project-color-text-row-isHovered,
+    --color-background-row-isHoveredSelected as --project-color-background-row-isHoveredSelected,
+    --color-text-row-isHoveredSelected as --project-color-text-row-isHoveredSelected,
+    --color-border-tbody as --project-color-border-tbody
   ] from "./project.st.css";
 /* Component API */
 @st-import TableView, [row] from "../../components/TableView/tableView.st.css";
@@ -23,6 +22,8 @@
   --color-text-row-isPressed,
   --color-background-row-isSelected,
   --color-text-row-isSelected,
+  --color-background-row-isHovered,
+  --color-text-row-isHovered,
   --color-background-row-isHoveredSelected,
   --color-text-row-isHoveredSelected,
   --color-border-tbody
@@ -30,15 +31,17 @@
 
 @st-scope Shelley {
   TableView {
-    --color-background-row: var(--background-color-contrast-1);
-    --color-text-row: var(--color-text-3);
-    --color-background-row-isPressed: #f3f3f3;
-    --color-text-row-isPressed: black;
-    --color-background-row-isSelected: #e9f0fc;
-    --color-text-row-isSelected: var(--color-text-3);
-    --color-border-tbody: rgba(var(--color-ui-raw), .15);
-    --color-background-row-isHoveredSelected: #dfedff;
-    --color-text-row-isHoveredSelected: var(--color-text-3);
+    --color-background-row: var(--project-color-background-row);
+    --color-text-row: var(--project-color-text-row);
+    --color-background-row-isPressed: var(--project-color-background-row-isPressed);
+    --color-text-row-isPressed: var(--project-color-text-row-isPressed);
+    --color-background-row-isSelected: var(--project-color-background-row-isSelected);
+    --color-text-row-isSelected: var(--project-color-text-row-isSelected);
+    --color-background-row-isHovered: var(--project-color-background-row-isHovered);
+    --color-text-row-isHovered: var(--project-color-text-row-isHovered);
+    --color-background-row-isHoveredSelected: var(--project-color-background-row-isHoveredSelected);
+    --color-text-row-isHoveredSelected: var(--project-color-text-row-isHoveredSelected);
+    --color-border-tbody: var(--project-color-border-tbod);
   }
 
   TableView::column {
