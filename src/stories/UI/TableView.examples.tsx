@@ -149,7 +149,7 @@ export const BasicTableView = () => {
   return (
     <TableView
       aria-label="Example static collection table"
-      style={{ height: "210px", maxWidth: "400px" }}
+      // style={{ height: "210px", maxWidth: "400px" }}
     >
       <TableHeader>
         <Column data-id="Test">Name</Column>
