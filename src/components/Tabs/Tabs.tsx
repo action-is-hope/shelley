@@ -1,4 +1,11 @@
-import { Ref, useRef, ReactElement, forwardRef } from "react";
+import {
+  Ref,
+  useRef,
+  ReactElement,
+  useState,
+  useEffect,
+  forwardRef,
+} from "react";
 import { useTabListState } from "react-stately";
 import { useTabList, useFocusRing, mergeProps } from "react-aria";
 import { TabListProps } from "react-stately";
@@ -19,14 +26,28 @@ function Tabs<T extends object>(props: TabsProps<T>) {
   const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
 
-  const { focusProps } = useFocusRing({
+  const { focusProps, isFocusVisible } = useFocusRing({
     within: true,
   });
+
+  const [activeTabStyle, setActiveTabStyle] = useState({
+    width: 0,
+    transform: "translateX(0)",
+  });
+
+  useEffect(() => {
+    const activeTab = ref?.current?.querySelector(
+      '[role="tab"][aria-selected="true"]'
+    );
+    setActiveTabStyle({
+      width: (activeTab as HTMLElement)?.offsetWidth,
+      transform: `translateX(${(activeTab as HTMLElement)?.offsetLeft}px)`,
+    });
+  }, [state.selectedKey]);
 
   return (
     <div className={st(classes.root, classNameProp)} data-id={dataId}>
       <div className={classes.tabListContainer}>
-        <div className={classes.tabSelection} />
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
@@ -42,6 +63,12 @@ function Tabs<T extends object>(props: TabsProps<T>) {
             />
           ))}
         </div>
+        <div
+          className={st(classes.tabSelection, {
+            isFocusVisible,
+          })}
+          style={{ ...activeTabStyle }}
+        />
       </div>
       <TabPanel
         key={state.selectedItem?.key}

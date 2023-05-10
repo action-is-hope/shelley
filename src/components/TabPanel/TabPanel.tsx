@@ -27,7 +27,7 @@ function TabPanel<T extends object>({
       ref={ref}
       data-id={dataId}
     >
-      {state.selectedItem?.props.children}
+      {(state.selectedItem?.props as { children: ReactElement }).children}
     </div>
   );
 }

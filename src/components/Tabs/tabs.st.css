@@ -3,7 +3,15 @@
 
 .tabListContainer {}
 
-.tabSelection {}
+.tabSelection {
+  -st-states: isFocusVisible;
+  position: absolute;
+  background-color: blue;
+  height: 2px;
+  left: 0;
+  will-change: transform, width;
+  transition: transform 150ms, width 100ms;
+}
 
 .tabList {
   display: flex;
