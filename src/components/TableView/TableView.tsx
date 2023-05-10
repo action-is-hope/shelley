@@ -45,7 +45,9 @@ export interface TableViewProps<T>
     Omit<TableStateProps<T>, "showDragButtons">,
     ComponentBase {
   className?: string;
+  /** Vols of the table */
   vol?: 1 | 2 | 3 | false;
+  /** Density */
   density?: "compact" | "spacious";
 }
 

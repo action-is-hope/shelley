@@ -17,6 +17,7 @@ export const TableViewExample = () => {
     <TableView
       aria-label="Example table with static contents"
       selectionMode="multiple"
+      vol={1}
     >
       <TableHeader>
         <Column>Name</Column>
