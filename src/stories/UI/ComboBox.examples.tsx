@@ -1,4 +1,4 @@
-import React, { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
+import { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
 import { ComboBoxProps, ComboBox, P, Grid } from "../../indexLib";

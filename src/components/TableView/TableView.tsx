@@ -29,11 +29,23 @@ import type { ComponentBase } from "../types";
 import type { Node } from "@react-types/shared";
 import { mergeRefs } from "@react-aria/utils";
 
+type CellAlignTypes = "start" | "center" | "end" | "justify";
+
+type CellProps = {
+  align: CellAlignTypes;
+  className: string;
+  "data-id": string;
+  "data-column-value": string;
+  allowsSorting: boolean;
+  isSelectionCell: boolean;
+};
+
 export interface TableViewProps<T>
-  extends AriaTableProps<T>,
-    TableStateProps<T>,
-    Omit<React.HTMLProps<HTMLTableElement>, "children">,
-    ComponentBase {}
+  extends Omit<AriaTableProps<T>, "layout" | "isVirtualized">,
+    Omit<TableStateProps<T>, "showDragButtons">,
+    ComponentBase {
+  className?: string;
+}
 
 function TableView<T extends object>(
   props: TableViewProps<T>,
@@ -48,7 +60,8 @@ function TableView<T extends object>(
   const state = useTableState({
     ...props,
     showSelectionCheckboxes:
-      selectionMode === "multiple" && selectionBehavior !== "replace",
+      selectionMode === "multiple" ||
+      (selectionMode === "single" && selectionBehavior !== "replace"),
   });
 
   const localRef = useRef(null);
@@ -67,7 +80,7 @@ function TableView<T extends object>(
             <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
               {/* https://github.com/adobe/react-spectrum/discussions/4348 */}
               {[...headerRow.childNodes].map((column) =>
-                column.props.isSelectionCell ? (
+                (column?.props as CellProps)?.isSelectionCell ? (
                   <TableSelectAllCell
                     key={column.key}
                     column={column}
@@ -94,7 +107,7 @@ function TableView<T extends object>(
               hasActions={onAction}
             >
               {[...row.childNodes].map((cell) =>
-                cell.props.isSelectionCell ? (
+                (cell.props as CellProps).isSelectionCell ? (
                   <TableCheckboxCell key={cell.key} cell={cell} state={state} />
                 ) : (
                   <TableCell key={cell.key} cell={cell} state={state} />
@@ -177,7 +190,10 @@ function TableColumnHeader<T extends object>({
   const { isFocusVisible, focusProps } = useFocusRing();
 
   const arrowIcon = state.sortDescriptor?.direction === "ascending" ? "▲" : "▼";
-  const align = column?.props?.align || "start";
+
+  const columnProps = column.props as Partial<CellProps> | undefined;
+
+  const align = columnProps?.align || "start";
 
   return (
     <div
@@ -193,13 +209,13 @@ function TableColumnHeader<T extends object>({
               : align
             : align,
         },
-        column?.props?.className
+        columnProps?.className
       )}
-      data-id={column?.props?.["data-id"]}
+      data-id={columnProps?.["data-id"]}
       ref={ref}
     >
       {column?.rendered}
-      {column?.props.allowsSorting && (
+      {(column?.props as CellProps).allowsSorting && (
         <span
           aria-hidden="true"
           className={classes.sorter}
@@ -260,6 +276,9 @@ function TableRow<T extends object>({
         isSelected,
         isPressed,
         isHovered,
+        isDisabled: allowsInteraction
+          ? state.disabledKeys.has(item.key)
+          : undefined,
       })}
       {...mergeProps(rowProps, focusProps, hoverProps)}
       ref={ref}
@@ -281,7 +300,10 @@ function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
   const ref = useRef(null);
   const { gridCellProps } = useTableCell({ node: cell }, state, ref);
   const { isFocusVisible, focusProps } = useFocusRing();
-  console.log("cell", cell?.column?.props?.align);
+
+  const cellProps = cell.props as CellProps | undefined;
+  const columnAlign =
+    (cell?.column?.props as Partial<CellProps>)?.align || undefined;
   return (
     <div
       {...mergeProps(gridCellProps, focusProps)}
@@ -289,13 +311,12 @@ function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
         classes.cell,
         {
           isFocusVisible,
-          // align: cell?.props?.align,
-          align: cell?.props?.align || cell?.column?.props?.align,
+          align: cellProps?.align || columnAlign,
         },
-        cell?.props?.className
+        cellProps?.className
       )}
-      data-id={cell?.props?.["data-id"]}
-      data-column-value={cell.props?.["data-column-value"]}
+      data-id={cellProps?.["data-id"]}
+      data-column-value={cellProps?.["data-column-value"]}
       ref={ref}
     >
       {cell.rendered}

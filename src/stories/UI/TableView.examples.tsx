@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogTrigger } from "../../indexLib";
+// import { Button, Dialog, DialogTrigger, TableViewProps } from "../../indexLib";
 import {
   TableView,
   Cell,
@@ -7,8 +7,10 @@ import {
   TableBody,
   TableHeader,
 } from "../../indexLib";
+import { MultipleSelectionManager, useAsyncList } from "react-stately";
 
-import { st, classes } from "./tableView.st.css";
+import React from "react";
+import { classes } from "./tableView.st.css";
 export const TableViewExample = () => {
   return (
     <TableView
@@ -94,21 +96,27 @@ export const LayoutExample = () => {
   interface RowData {
     id: number;
     name: string;
-    date: string;
-    type: string;
+    lastName: string;
+    city: string;
   }
 
   const columns = [
-    { name: "Name", uid: "name" },
-    { name: "Type", uid: "type" },
-    { name: "Date Modified", uid: "date" },
+    { name: "First Name", uid: "name" },
+    { name: "Last Name", uid: "lastName" },
+    { name: "City", uid: "city" },
   ];
 
   const rows: RowData[] = [
-    { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
-    { id: 2, name: "Program Files", date: "4/7/2021", type: "File folder" },
-    { id: 3, name: "bootmgr", date: "11/20/2010", type: "System file" },
-    { id: 4, name: "log.txt", date: "1/18/2016", type: "Text Document" },
+    { id: 1, name: "Gary", lastName: "Ford", city: "London" },
+    { id: 2, name: "Mark", lastName: "Lexus", city: "Bristol" },
+    { id: 3, name: "Tamas", lastName: "Bentley", city: "London" },
+    { id: 4, name: "Cristina", lastName: "Yaris", city: "Unknown" },
+    { id: 5, name: "Simon", lastName: "PeopleCarrier", city: "Remote" },
+    { id: 6, name: "Robin", lastName: "BatMobile", city: "BeachTown" },
+    { id: 7, name: "Lucja", lastName: "Pendolino", city: "London" },
+    { id: 8, name: "Andrea", lastName: "Rayleigh", city: "London" },
+    { id: 9, name: "Tu", lastName: "Creative", city: "London" },
+    { id: 10, name: "Phil", lastName: "Aston", city: "London" },
   ];
 
   return (
@@ -120,7 +128,7 @@ export const LayoutExample = () => {
         {(column) => (
           <Column
             key={column.uid}
-            align={column.uid === "date" ? "end" : "start"}
+            align={column.uid === "city" ? "end" : "start"}
           >
             {column.name}
           </Column>
@@ -198,17 +206,110 @@ export const BasicTableView = () => {
   );
 };
 
-export const SelectionTableView = () => {
+export const RowHeaderExample = () => {
+  return (
+    <TableView aria-label="Example table with static contents">
+      <TableHeader>
+        <Column isRowHeader>First Name</Column>
+        <Column isRowHeader>Last Name</Column>
+        <Column align="end">Age</Column>
+      </TableHeader>
+      <TableBody>
+        <Row>
+          <Cell>John</Cell>
+          <Cell>Doe</Cell>
+          <Cell>45</Cell>
+        </Row>
+        <Row>
+          <Cell>Jane</Cell>
+          <Cell>Doe</Cell>
+          <Cell>37</Cell>
+        </Row>
+        <Row>
+          <Cell>Joe</Cell>
+          <Cell>Schmoe</Cell>
+          <Cell>67</Cell>
+        </Row>
+      </TableBody>
+    </TableView>
+  );
+};
+
+interface Character {
+  name: string;
+  height: number;
+  mass: number;
+  birth_year: number;
+}
+
+export const AsyncExample = () => {
+  const columns = [
+    { name: "Name", key: "name" },
+    { name: "Height", key: "height" },
+    { name: "Mass", key: "mass" },
+    { name: "Birth Year", key: "birth_year" },
+  ];
+
+  const list = useAsyncList<Character>({
+    async load({ signal, cursor }) {
+      if (cursor) {
+        cursor = cursor.replace(/^http:\/\//i, "https://");
+      }
+
+      const res = await fetch(
+        cursor || `https://swapi.py4e.com/api/people/?search=`,
+        { signal }
+      );
+      const json = await res.json();
+
+      return {
+        items: json.results,
+        cursor: json.next,
+      };
+    },
+  });
+
   return (
     <TableView
-      aria-label="Table with selection"
+      aria-label="example async loading table"
+      className={classes.layoutExample}
+    >
+      <TableHeader columns={columns}>
+        {(column) => (
+          <Column align={column.key !== "name" ? "end" : "start"}>
+            {column.name}
+          </Column>
+        )}
+      </TableHeader>
+      <TableBody
+        items={list.items}
+        loadingState={list.loadingState}
+        onLoadMore={list.loadMore}
+      >
+        {(item) => (
+          <Row key={item.name}>
+            {(key) => <Cell>{item[key as keyof Character]}</Cell>}
+          </Row>
+        )}
+      </TableBody>
+    </TableView>
+  );
+};
+
+export const SelectionExample = () => {
+  return (
+    <TableView
+      aria-label="Example table with multiple selection"
       selectionMode="multiple"
+      // onRowAction={}
       onRowAction={(key) => alert(`Opening item ${key}...`)}
+      // onCellAction={(key) => alert(`s item ${key}...`)}
+      defaultSelectedKeys={["2", "4"]}
     >
       <TableHeader>
         <Column>Name</Column>
         <Column>Type</Column>
-        <Column align="end">Level</Column>
+        <Column align="end">Levellllllll</Column>
       </TableHeader>
       <TableBody>
         <Row key="1">
@@ -229,13 +330,66 @@ export const SelectionTableView = () => {
         <Row key="4">
           <Cell>Pikachu</Cell>
           <Cell>Electric</Cell>
-          <Cell>
-            <DialogTrigger>
-              <Button>HI</Button>
-              <Dialog>CONTENT</Dialog>
-            </DialogTrigger>
-          </Cell>
+          <Cell>100</Cell>
         </Row>
+      </TableBody>
+    </TableView>
+  );
+};
+
+interface PokeCharacter {
+  id: number;
+  name: string;
+  type: string;
+  level: string;
+}
+
+export const ControlledSelectionExample = (
+  props: Partial<MultipleSelectionManager>
+) => {
+  const columns = [
+    { name: "Name", uid: "name" },
+    { name: "Type", uid: "type" },
+    { name: "Level", uid: "level" },
+  ];
+
+  const rows: PokeCharacter[] = [
+    { id: 1, name: "Charizard", type: "Fire, Flying", level: "67" },
+    { id: 2, name: "Blastoise", type: "Water", level: "56" },
+    { id: 3, name: "Venusaur", type: "Grass, Poison", level: "83" },
+    { id: 4, name: "Pikachu", type: "Electric", level: "100" },
+  ];
+
+  const [selectedKeys, setSelectedKeys] = React.useState<Iterable<React.Key>>(
+    new Set([2])
+  );
+
+  return (
+    <TableView
+      aria-label="Table with controlled selection"
+      selectedKeys={selectedKeys}
+      onSelectionChange={(selected) => setSelectedKeys(selected)}
+      onRowAction={(key) => alert(`Opening item ${key}...`)}
+      {...props}
+    >
+      <TableHeader columns={columns}>
+        {(column) => (
+          <Column
+            key={column.uid}
+            align={column.uid === "level" ? "end" : "start"}
+          >
+            {column.name}
+          </Column>
+        )}
+      </TableHeader>
+      <TableBody items={rows}>
+        {(item) => (
+          <Row>
+            {(columnKey) => (
+              <Cell>{item[columnKey as keyof PokeCharacter]}</Cell>
+            )}
+          </Row>
+        )}
       </TableBody>
     </TableView>
   );

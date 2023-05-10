@@ -23,6 +23,8 @@
   --color-text-row-isPressed,
   --color-background-row-isSelected,
   --color-text-row-isSelected,
+  --color-background-row-isHoveredSelected,
+  --color-text-row-isHoveredSelected,
   --color-border-tbody
 ] from "../default/tableView.st.css";
 
@@ -35,36 +37,12 @@
     --color-background-row-isSelected: #e9f0fc;
     --color-text-row-isSelected: var(--color-text-3);
     --color-border-tbody: rgba(var(--color-ui-raw), .15);
+    --color-background-row-isHoveredSelected: #dfedff;
+    --color-text-row-isHoveredSelected: var(--color-text-3);
   }
 
-  TableView::headerRow {
+  TableView::column {
     background-color: var(--background-color-main);
-    box-shadow: 0px 1px 1px var(--color-border-tbody);
-  }
-
-  TableView::thead {
-    border-color: var(--background-color-main)
-  }
-
-  TableView::row:isSelected {
-    /* border: 1px solid var(--color-focus);
-    border-collapse: collapse;
-    box-shadow: inset 0 0 0 1px var(--color-focus); */
-    /* box-shadow: inset 2px 0 0 0 var(--color-focus); */
-    /* position: relative;
-    top: -1px */
-  }
-
-  TableView::row:isSelected:isFocusVisible {}
-
-  TableView::row:isSelected:isFocusVisible {
-    /* box-shadow: inset 0 0 0 1px var(--color-focus); */
-  }
-
-  TableView::row:isSelected + .row:isSelected {
-    /* background-color: green !important; */
-    /* box-shadow: none; */
-    /* border: 1px solid var(--color-focus); */
   }
 
 }

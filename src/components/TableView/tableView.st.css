@@ -17,15 +17,13 @@
   display: table-header-group;
 }
 
-.root:isHeaderSticky::headerRow {
+.root:isHeaderSticky::column {
   position: sticky;
   top: 0;
 }
 
 .headerRow {
   display: table-row;
-  /* display: flex; */
-  /* width: fit-content; */
 }
 
 .column {
@@ -51,10 +49,9 @@
     isFocusVisible,
     isPressed,
     isHovered,
-    isSelected;
+    isSelected,
+    isDisabled;
   display: table-row;
-  /* display: flex;
-  width: fit-content; */
 }
 
 .cell {

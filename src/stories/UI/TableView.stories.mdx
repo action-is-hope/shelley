@@ -13,8 +13,12 @@ import {
   TableViewExample,
   ContentExample,
   LayoutExample,
+  RowHeaderExample,
+  AsyncExample,
+  SelectionExample,
+  ControlledSelectionExample,
+  SingleSelectionExample,
   BasicTableView,
-  SelectionTableView,
 } from "./TableView.examples";
 
 <Meta title="Data/TableView" component={TableView} />
@@ -29,6 +33,11 @@ import {
 />
 
 Tables are containers for displaying information. They allow users to quickly scan, sort, compare, and take action on large amounts of data.
+
+### Backlog:
+
+- Add native asyn loader features
+- Add virtualization support
 
 <Preview>
   <Story
@@ -146,6 +155,8 @@ Each column and row has a unique key defined by the data. In the example below, 
 
 TableViews are often contained within a page layout that defines the size of the table. For example, a page might have a header or toolbar with a TableView below that fills the remaining vertical space. TableView is designed to scroll internally while the column headers remain fixed. Because of this, TableViews should not be placed within a scrollable container.
 
+Apply a class to the Table and set the height to fit your layout requirements. E.g TBC
+
 <Preview>
   <Story
     name="c) Layout"
@@ -162,9 +173,21 @@ TBC`,
   </Story>
 </Preview>
 
+<Source language="tsx" id="data-tableview--c-layout" />
+
+## Labeling
+
+### Accessibility
+
+An `aria-label` must be provided to the TableView for accessibility. If the TableView is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+
+By default, the first column of the TableView is used as the [row header](https://www.w3.org/TR/wai-aria-1.1/#rowheader) and is announced by assistive technology when navigating through the rows. You can override this behavior by providing the `isRowHeader` prop to one or more Columns, allowing you to customize which columns should label the rows of the TableView.
+
+The example below applies isRowHeader to the "First Name" and "Last Name" columns so that each row is announced with the person's full name (e.g. "John Doe").
+
 <Preview>
   <Story
-    name="b) TableView selection"
+    name="d) RowHeader"
     parameters={{
       docs: {
         source: {
@@ -174,9 +197,188 @@ TBC`,
       },
     }}
   >
-    <SelectionTableView />
+    <RowHeaderExample />
   </Story>
 </Preview>
+
+<Source language="tsx" id="data-tableview--d-row-header" />
+
+## Asynchronous loading
+
+TBC
+
+<Preview>
+  <Story
+    name="e) Asynchronous loading"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <AsyncExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--e-asynchronous loading" />
+
+## Selection
+
+By default, TableView doesn't allow row selection but this can be enabled using the `selectionMode` prop. Use `defaultSelectedKeys` to provide a default set of selected rows. Note that the value of the selected keys must match the key prop of the Row.
+
+The example below enables multiple selection mode, and uses `defaultSelectedKeys` to select the rows with keys "2" and "4".
+
+<Preview>
+  <Story
+    name="f) TableView selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SelectionExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--f-selection" />
+
+### Controlled selection
+
+To programmatically control row selection, use the `selectedKeys` prop paired with the `onSelectionChange` callback. The key prop from the selected rows will be passed into the callback when the row is pressed, allowing you to update state accordingly.
+
+Here is how you would control selection for the above example.
+
+<Preview>
+  <Story
+    name="g) Controlled selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample selectionMode="multiple" />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--g-controlled-selection" />
+
+### Single selection
+
+To limit users to selecting only a single item at a time, `selectionMode` can be set to single.
+
+<Preview>
+  <Story
+    name="h) Single selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample selectionMode={"single"} />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--h-single-selection" />
+
+### Disallow empty selection
+
+TableView also supports a `disallowEmptySelection` prop which forces the user to have at least one row in the TableView selected at all times. In this mode, if a single row is selected and the user presses it, it will not be deselected.
+
+<Preview>
+  <Story
+    name="i) Disallow empty selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample disallowEmptySelection />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--i-disallow-empty-selection" />
+
+### Disabled rows
+
+<Preview>
+  <Story
+    name="j) Disabled rows selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample selectionMode="multiple" disabledKeys={[3]} />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--i-disallow-empty-selection" />
+
+### Highlight selection
+
+<Preview>
+  <Story
+    name="k) Highlight selection selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample selectionMode="highlight" />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
+
+## Row actions
+
+<Preview>
+  <Story
+    name="l) Row actions"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample
+      selectionMode="multiple"
+      onRowAction={(key) => alert(`onRowAction: Opening item ${key}...`)}
+    />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
 
 ## TableView props
 
