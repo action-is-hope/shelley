@@ -22,7 +22,7 @@ import {
   useTableState,
   TableStateProps,
 } from "@react-stately/table";
-import { Key, useRef, forwardRef, HTMLProps } from "react";
+import { Key, useRef, forwardRef, HTMLProps, ElementType } from "react";
 import { st, classes } from "./tableView.st.css";
 import type { ComponentBase } from "../types";
 
@@ -82,7 +82,7 @@ function TableView<T extends object>(
         classNameProp
       )}
     >
-      <div
+      <table
         className={st(classes.table)}
         {...gridProps}
         ref={ref ? mergeRefs(ref, localRef) : localRef}
@@ -128,7 +128,7 @@ function TableView<T extends object>(
             </TableRow>
           ))}
         </TableRowGroup>
-      </div>
+      </table>
     </div>
   );
 }
@@ -143,14 +143,22 @@ export { _TableView as TableView };
 /**
  * TableRowGroup
  */
-interface TableRowGroupProps extends ComponentBase, HTMLProps<HTMLElement> {}
+interface TableRowGroupProps
+  extends ComponentBase,
+    Omit<HTMLProps<HTMLElement>, "type"> {
+  type: ElementType;
+}
 
-function TableRowGroup({ children, className }: TableRowGroupProps) {
+function TableRowGroup({
+  type: Element,
+  children,
+  className,
+}: TableRowGroupProps) {
   const { rowGroupProps } = useTableRowGroup();
   return (
-    <div {...rowGroupProps} className={className}>
+    <Element {...rowGroupProps} className={className}>
       {children}
-    </div>
+    </Element>
   );
 }
 
@@ -173,9 +181,9 @@ function TableHeaderRow<T extends object>({
   const ref = useRef(null);
   const { rowProps } = useTableHeaderRow({ node: item }, state, ref);
   return (
-    <div {...rowProps} className={classes.headerRow} ref={ref}>
+    <tr {...rowProps} className={classes.headerRow} ref={ref}>
       {children}
-    </div>
+    </tr>
   );
 }
 
@@ -208,7 +216,7 @@ function TableColumnHeader<T extends object>({
   const align = columnProps?.align || "start";
 
   return (
-    <div
+    <th
       {...mergeProps(columnHeaderProps, focusProps)}
       // colSpan={column?.colspan}
       className={st(
@@ -241,7 +249,7 @@ function TableColumnHeader<T extends object>({
           {arrowIcon}
         </span>
       )}
-    </div>
+    </th>
   );
 }
 
@@ -282,7 +290,7 @@ function TableRow<T extends object>({
   const { hoverProps, isHovered } = useHover({ isDisabled });
 
   return (
-    <div
+    <tr
       className={st(classes.row, {
         isFocusVisible,
         isSelected,
@@ -296,7 +304,7 @@ function TableRow<T extends object>({
       ref={ref}
     >
       {children}
-    </div>
+    </tr>
   );
 }
 
@@ -317,7 +325,7 @@ function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
   const columnAlign =
     (cell?.column?.props as Partial<CellProps>)?.align || undefined;
   return (
-    <div
+    <td
       {...mergeProps(gridCellProps, focusProps)}
       className={st(
         classes.cell,
@@ -332,7 +340,7 @@ function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
       ref={ref}
     >
       {cell.rendered}
-    </div>
+    </td>
   );
 }
 
@@ -359,7 +367,7 @@ function TableCheckboxCell<T extends object>({
   );
 
   return (
-    <div
+    <td
       {...gridCellProps}
       className={st(classes.cell, {
         hasCheckbox: true,
@@ -367,7 +375,7 @@ function TableCheckboxCell<T extends object>({
       ref={ref}
     >
       <Checkbox {...checkboxProps} className={classes.cellCheckbox} />
-    </div>
+    </td>
   );
 }
 
@@ -394,7 +402,7 @@ function TableSelectAllCell<T extends object>({
   const { checkboxProps } = useTableSelectAllCheckbox(state);
 
   return (
-    <div
+    <th
       {...columnHeaderProps}
       className={st(classes.column, {
         hasCheckbox: true,
@@ -406,6 +414,6 @@ function TableSelectAllCell<T extends object>({
       ) : (
         <Checkbox {...checkboxProps} className={classes.columnCheckbox} />
       )}
-    </div>
+    </th>
   );
 }
