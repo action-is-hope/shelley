@@ -13,6 +13,25 @@
   transition: transform 150ms, width 100ms;
 }
 
+.tabSelection:isFocusVisible {
+  box-shadow: 2px 2px 2px pink;
+}
+
+.tab {
+  -st-states:
+    isFocusVisible,
+    isDisabled,
+    isPressed,
+    isSelected;
+  margin-right: 10px;
+  padding: 10px;
+  outline: none;
+}
+
+.tabPanel {
+  padding: 10px;
+}
+
 .tabList {
   display: flex;
   border-bottom: 1px solid white;

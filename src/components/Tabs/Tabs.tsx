@@ -9,8 +9,8 @@ import {
 import { useTabListState } from "react-stately";
 import { useTabList, useFocusRing, mergeProps } from "react-aria";
 import { TabListProps } from "react-stately";
-import Tab from "../Tab/Tab";
-import TabPanel from "../TabPanel/TabPanel";
+import { Tab } from "./Tab";
+import { TabPanel } from "./TabPanel";
 import { st, classes } from "./tabs.st.css";
 
 export interface TabsProps<T> extends TabListProps<T> {
@@ -72,6 +72,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
       </div>
       <TabPanel
         key={state.selectedItem?.key}
+        className={classes.tabPanel}
         state={state}
         dataId={dataId ? `${dataId}-tab-panel` : undefined}
       />
