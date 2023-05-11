@@ -2,6 +2,7 @@
 /* = Shelley project scope and vars */
 @st-import Shelley, [
     --color-ui-inverse,
+    --color-ui-raw,
     --color-accent-1
   ] from "./project.st.css";
 /* Component API */
@@ -27,6 +28,11 @@
     outline: none;
     margin-right: 10px;
     cursor: pointer;
+  }
+
+  Tabs::tab:isDisabled {
+    color: rgba(var(--color-ui-raw), 0.5);
+    cursor: not-allowed;
   }
 
   Tabs::tabList {
