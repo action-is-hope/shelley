@@ -1,0 +1,40 @@
+/* tabs.st.css */
+/* = Shelley project scope and vars */
+@st-import Shelley, [
+    --color-ui,
+    --color-ui-inverse,
+    --color-ui-raw,
+    --color-ui-raw-inverse,
+    --color-accent-1,
+    --color-accent-2,
+    --color-accent-3,
+    --color-accent-4
+  ] from "./project.st.css";
+/* Component API */
+@st-import Tabs from "../../components/Tabs/tabs.st.css";
+
+/* = This is how we can scope the styles in Stylable. */
+@st-scope Shelley {
+  Tabs::tabSelection {
+    position: absolute;
+    height: 2px;
+    left: 0;
+    will-change: transform, width;
+    transition: transform 150ms, width 100ms;
+    background-color: var(--color-accent-1);
+  }
+
+  /* isFocusVisible when using right left arrow keys  */
+  Tabs::tabSelection:isFocusVisible {
+    box-shadow: 2px 2px 2px pink;
+  }
+
+  Tabs::tab {
+    outline: none;
+    margin-right: 10px;
+  }
+
+  Tabs::tabList {
+    border-bottom: 1px solid var(--color-ui-inverse);
+  }
+}

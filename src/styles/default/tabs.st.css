@@ -1,0 +1,25 @@
+/* tabs.st.css */
+/* = Project and vars */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Default;
+  -st-named:
+    --spacing-unit
+}
+
+/* = Root style API. */
+:import {
+  -st-from: "../../components/Tabs/tabs.st.css";
+  -st-default: Tabs;
+}
+
+@st-scope Default {
+  Tabs::tab {
+    padding: var(--spacing-unit);
+    margin-right: 10px;
+  }
+
+  Tabs::tabPanel {
+    padding: var(--spacing-unit);
+  }
+}
