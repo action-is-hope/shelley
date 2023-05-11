@@ -1,4 +1,6 @@
 /* toolbar.st.css CSS API */
+@namespace "ToolBar";
+
 .root {
   -st-states:
     variant(number),

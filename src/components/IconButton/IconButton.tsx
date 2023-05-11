@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import type { AriaButtonProps } from "@react-types/button";
 import type { AlignPos } from "../types";
-import { classes } from "./iconButton.st.css";
+import { st, classes } from "./iconButton.st.css";
 import Button from "../Button/Button";
 
 export interface IconButtonProps extends Omit<AriaButtonProps, "elementType"> {
@@ -18,14 +18,14 @@ export interface IconButtonProps extends Omit<AriaButtonProps, "elementType"> {
 function IconButton(props: IconButtonProps, ref: React.Ref<HTMLButtonElement>) {
   const {
     children,
-    className,
+    className: classNameProp,
     ...rest
     // ...otherProps
   } = props;
 
   return (
     <Button
-      className={classes.root}
+      className={st(classes.root, classNameProp)}
       ref={ref}
       icon={children}
       variant={false}
