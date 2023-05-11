@@ -456,12 +456,13 @@
 /* = The 'mark' of the field, radio and checkboxes both have one. */
 .RadioCheckboxCommon::before {
   content: "";
-  transition: opacity 120ms;
+  transition: opacity 120ms, height 120ms;
   width: 0.5em;
   height: 0.5em;
   opacity: 0;
   display: block;
   background-color: var(--color-form-selection-notch);
+  position: absolute;
 }
 
 /**

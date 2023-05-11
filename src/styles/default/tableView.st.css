@@ -1,0 +1,154 @@
+/* tableView.st.css */
+
+/* = Default project and vars */
+@st-import Default, [
+  --spacing-unit,
+  --color-focus,
+  --text-vol-1-scale,
+  --text-vol-1-max,
+  --text-vol-1-line-height
+] from "./project.st.css";
+/* Component API */
+@st-import TableView, [cell] from "../../components/TableView/tableView.st.css";
+
+/* = Mixins & Utils */
+:import {
+  -st-from: './mixins/text.st.css';
+  -st-named:
+    textVol;
+}
+
+/* = Formatters */
+@st-import [respScale] from "../formatters/common";
+
+
+@st-scope Default {
+  TableView {
+    --color-background-row: white;
+    --color-text-row: grey;
+    --color-background-row-isPressed: lightgrey;
+    --color-text-row-isPressed: black;
+    --color-background-row-isSelected: blueviolet;
+    --color-text-row-isSelected: white;
+    --color-background-row-isHovered: GhostWhite;
+    --color-text-row-isHovered: grey;
+    --color-background-row-isHoveredSelected: #a14eef;
+    --color-text-row-isHoveredSelected: white;
+    --color-border-tbody: grey;
+    border-bottom: 1px solid var(--color-border-tbody);
+  }
+
+  TableView::table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* 1 */
+  TableView:vol(1)::table {
+    -st-mixin:
+      textVol(scale respScale(0.8em, 0.88em),
+        max 0.88em, lineHeight 1.3);
+  }
+
+  /* 2 */
+  TableView:vol(2)::table {
+    -st-mixin:
+      textVol(scale var(--text-vol-1-scale),
+        max var(--text-vol-1-max),
+        lineHeight var(--text-vol-1-line-height));
+  }
+
+  TableView::thead {}
+
+  TableView::headerRow {
+    font-weight: 500;
+  }
+
+  TableView::column:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::sorter {
+    padding: 0 2px
+  }
+
+  TableView::tbody {}
+
+  TableView::column,
+  TableView::cell {
+    border-bottom: 1px solid var(--color-border-tbody);
+  }
+
+  TableView::cell:first-child {
+    border-left: 1px solid var(--color-border-tbody);
+  }
+
+  TableView::cell:last-child {
+    border-right: 1px solid var(--color-border-tbody);
+  }
+
+  TableView::row:last-child .cell {
+    border-bottom: none;
+  }
+
+  TableView::row {
+    outline: none;
+    transition: background-color 20ms, color 20ms;
+    background-color: var(--color-background-row);
+    color: var(--color-text-row);
+  }
+
+  TableView::row:isHovered {
+    background-color: var(--color-background-row-isHovered);
+    color: var(--color-text-row-isHovered);
+  }
+
+  TableView::row:isPressed {
+    background-color: var(--color-background-row-isPressed);
+    color: var(--color-text-row-isPressed);
+  }
+
+  TableView::row:isSelected {
+    background-color: var(--color-background-row-isSelected);
+    color: var(--color-text-row-isSelected);
+  }
+
+  TableView::row:isSelected:isHovered {
+    background-color: var(--color-background-row-isHoveredSelected);
+    color: var(--color-text-row-isHoveredSelected);
+  }
+
+  TableView::row:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::row:isDisabled {
+    opacity: .6;
+  }
+
+  TableView::column,
+  TableView::cell {
+    padding: calc(var(--spacing-unit) / 1.5) var(--spacing-unit);
+    outline: none;
+    cursor: default;
+    vertical-align: middle;
+  }
+
+  TableView::cell:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::columnCheckbox,
+  TableView::cellCheckbox {
+    padding: 0;
+    display: flex;
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    padding-right: calc(var(--spacing-unit) * 0.5);
+  }
+
+  TableView::column:hasCheckbox,
+  TableView::cell:hasCheckbox {
+    width: 44px;
+    padding: 0
+  }
+}

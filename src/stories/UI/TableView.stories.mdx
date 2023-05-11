@@ -1,0 +1,419 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { TableView } from "../../components/TableView/TableView";
+import { StoryCenteredInline, StoryCenteredColumn } from "../StoryLayout";
+import {
+  TableViewExample,
+  ContentExample,
+  LayoutExample,
+  RowHeaderExample,
+  AsyncExample,
+  SelectionExample,
+  ControlledSelectionExample,
+  SingleSelectionExample,
+  AsyncSortExample,
+  BasicTableView,
+} from "./TableView.examples";
+
+<Meta title="Data/TableView" component={TableView} />
+
+# TableView
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Cell, Column, Row, TableView, TableBody, TableHeader } from "@actionishope/shelley";
+  `}
+/>
+
+Tables are containers for displaying information. They allow users to quickly scan, sort, compare, and take action on large amounts of data.
+
+### Backlog:
+
+- Add native asyn loader features
+- Add virtualization support
+
+<Preview>
+  <Story
+    name="a) TableView"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<TableView
+  aria-label="Example table with static contents"
+  selectionMode="multiple"
+  vol={1}
+>
+  <TableHeader>
+    <Column>Name</Column>
+    <Column>Type</Column>
+    <Column align="end">Date Modified</Column>
+  </TableHeader>
+  <TableBody>
+    <Row>
+      <Cell>Games</Cell>
+      <Cell>File folder</Cell>
+      <Cell>6/7/2020</Cell>
+    </Row>
+    <Row>
+      <Cell>Program Files</Cell>
+      <Cell>File folder</Cell>
+      <Cell>4/7/2021</Cell>
+    </Row>
+    <Row>
+      <Cell>bootmgr</Cell>
+      <Cell>System file</Cell>
+      <Cell>11/20/2010</Cell>
+    </Row>
+    <Row>
+      <Cell>log.txt</Cell>
+      <Cell>Text Document</Cell>
+      <Cell>1/18/2016</Cell>
+    </Row>
+  </TableBody>
+</TableView>`,
+        },
+      },
+    }}
+  >
+    <TableViewExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--a-table-view" />
+
+## Content
+
+TableView is a complex collection component that is built up from many child elements including columns, rows, and cells. Columns are defined within a TableHeader element and rows are defined within a TableBody element. Rows contain Cell elements that correspond to each column. Cells can contain any element, allowing you to have focusable children within the TableView.
+
+Basic usage of TableView, seen in the example above, shows the use of a static collection where the contents of the TableView is hard coded. Dynamic collections, as shown below, can be used when the options come from an external data source such as an API, or update over time. Providing the data in this way allows TableView to automatically cache the rendering of each item, which dramatically improves performance.
+
+Columns and rows can be statically defined as children, or generated dynamically using a function based on the data passed to the columns or items prop respectively. Cells can also be statically defined as children, or generated dynamically based on the columns defined in the TableHeader.
+
+Each column and row has a unique key defined by the data. In the example below, the uid property of the column object is used as the key for the Column element within the TableHeader. The key of each row element is implicitly defined by the id property of the row object. See collections to learn more keys in dynamic collections.
+
+<Preview>
+  <Story
+    name="b) Content"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+  interface RowData {
+    id: number;
+    name: string;
+    date: string;
+    type: string;
+  }\n
+  const columns = [
+    { name: "Name", uid: "name" },
+    { name: "Type", uid: "type" },
+    { name: "Date Modified", uid: "date" },
+  ];\n
+  const rows: RowData[] = [
+    { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
+    { id: 2, name: "Program Files", date: "4/7/2021", type: "File folder" },
+    { id: 3, name: "bootmgr", date: "11/20/2010", type: "System file" },
+    { id: 4, name: "log.txt", date: "1/18/2016", type: "Text Document" },
+  ];\n
+  <TableView aria-label="Example table with dynamic content">
+    <TableHeader columns={columns}>
+      {(column) => (
+        <Column
+          key={column.uid}
+          align={column.uid === "date" ? "end" : "start"}
+        >
+          {column.name}
+        </Column>
+      )}
+    </TableHeader>
+    <TableBody items={rows}>
+      {(item) => (
+        <Row>
+          {(columnKey) => <Cell>{item[columnKey as keyof RowData]}</Cell>}
+        </Row>
+      )}
+    </TableBody>
+  </TableView>`,
+        },
+      },
+    }}
+  >
+    <ContentExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--b-content" />
+
+## Layout
+
+TableViews are often contained within a page layout that defines the size of the table. For example, a page might have a header or toolbar with a TableView below that fills the remaining vertical space. TableView is designed to scroll internally while the column headers remain fixed. Because of this, TableViews should not be placed within a scrollable container.
+
+Apply a class to the Table and set the height to fit your layout requirements. E.g TBC
+
+<Preview>
+  <Story
+    name="c) Layout"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <LayoutExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--c-layout" />
+
+## Labeling
+
+### Accessibility
+
+An `aria-label` must be provided to the TableView for accessibility. If the TableView is labeled by a separate element, an `aria-labelledby` prop must be provided using the id of the labeling element instead.
+
+By default, the first column of the TableView is used as the [row header](https://www.w3.org/TR/wai-aria-1.1/#rowheader) and is announced by assistive technology when navigating through the rows. You can override this behavior by providing the `isRowHeader` prop to one or more Columns, allowing you to customize which columns should label the rows of the TableView.
+
+The example below applies isRowHeader to the "First Name" and "Last Name" columns so that each row is announced with the person's full name (e.g. "John Doe").
+
+<Preview>
+  <Story
+    name="d) RowHeader"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <RowHeaderExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--d-row-header" />
+
+## Asynchronous loading
+
+TBC
+
+<Preview>
+  <Story
+    name="e) Asynchronous loading"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <AsyncExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--e-asynchronous-loading" />
+
+## Selection
+
+By default, TableView doesn't allow row selection but this can be enabled using the `selectionMode` prop. Use `defaultSelectedKeys` to provide a default set of selected rows. Note that the value of the selected keys must match the key prop of the Row.
+
+The example below enables multiple selection mode, and uses `defaultSelectedKeys` to select the rows with keys "2" and "4".
+
+<Preview>
+  <Story
+    name="f) TableView selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SelectionExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--f-table-view-selection" />
+
+### Controlled selection
+
+To programmatically control row selection, use the `selectedKeys` prop paired with the `onSelectionChange` callback. The key prop from the selected rows will be passed into the callback when the row is pressed, allowing you to update state accordingly.
+
+Here is how you would control selection for the above example.
+
+<Preview>
+  <Story
+    name="g) Controlled selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample selectionMode="multiple" />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--g-controlled-selection" />
+
+### Single selection
+
+To limit users to selecting only a single item at a time, `selectionMode` can be set to single.
+
+<Preview>
+  <Story
+    name="h) Single selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+// Using table as above
+<TableView selectionMode="single" ... />`,
+        },
+      },
+    }}
+  >
+    <SelectionExample selectionMode="single" defaultSelectedKeys={["2"]} />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--h-single-selection" />
+
+### Disallow empty selection
+
+TableView also supports a `disallowEmptySelection` prop which forces the user to have at least one row in the TableView selected at all times. In this mode, if a single row is selected and the user presses it, it will not be deselected.
+
+<Preview>
+  <Story
+    name="i) Disallow empty selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+// Using table as above
+<TableView disallowEmptySelection ... />`,
+        },
+      },
+    }}
+  >
+    <SelectionExample selectionMode="multiple" disallowEmptySelection />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--i-disallow-empty-selection" />
+
+### Disabled rows
+
+You can disable specific rows by providing an array of keys to TableView via the `disabledKeys` prop. This will prevent rows from being selectable as shown in the example below.
+
+<Preview>
+  <Story
+    name="j) Disabled rows selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+// Using table as above
+<TableView selectionMode="multiple" disabledKeys={["3"]} ... />`,
+        },
+      },
+    }}
+  >
+    <SelectionExample selectionMode="multiple" disabledKeys={["3"]} />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--j-disabled-rows-selection" />
+
+### Highlight selection
+
+TBC
+
+<Preview>
+  <Story
+    name="k) Highlight selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SelectionExample selectionMode="hightligh??" defaultSelectedKeys={["1"]} />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
+
+## Row actions
+
+TableView supports row actions via the `onRowAction` prop, which is useful for functionality such as navigation. When nothing is selected, the TableView performs actions by default when clicking or tapping a row. Items may be selected using the checkbox, or by long pressing on touch devices. When at least one item is selected, the TableView is in selection mode, and clicking or tapping a row toggles the selection. Actions may also be triggered via the Enter key, and selection using the Space key.
+
+<Preview>
+  <Story
+    name="l) Row actions"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SelectionExample
+      selectionMode="multiple"
+      onRowAction={(key) => alert(`onRowAction: Opening item ${key}...`)}
+      defaultSelectedKeys={[]}
+    />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
+
+## Sorting
+
+TableView supports sorting its data when a column header is pressed. To designate that a Column should support sorting, provide it with the `allowsSorting` prop. The TableView accepts a `sortDescriptor` prop that defines the current column key to sort by and the sort direction (ascending/descending). When the user presses a sortable column header, the column's key and sort direction is passed into the `onSortChange` callback, allowing you to update the `sortDescriptor` appropriately.
+
+<Preview>
+  <Story
+    name="m) Sorting"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <AsyncSortExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tableview--k-highlight-selection" />
+
+## TableView props
+
+<ArgsTable of={TableView} />
