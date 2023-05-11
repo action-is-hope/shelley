@@ -11,29 +11,23 @@
 
 .table {
   width: 100%;
-  display: table;
 }
 
 .caption {}
 
-.thead {
-  display: table-header-group;
-}
+.thead {}
 
 .root:isHeaderSticky::column {
   position: sticky;
   top: 0;
 }
 
-.headerRow {
-  display: table-row;
-}
+.headerRow {}
 
 .column {
   -st-states: hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
-  display: table-cell;
 }
 
 .sorter {}
@@ -42,9 +36,7 @@
   -st-extends: Checkbox;
 }
 
-.tbody {
-  display: table-row-group;
-}
+.tbody {}
 
 .row {
   -st-states: isFocusVisible,
@@ -52,14 +44,12 @@
     isHovered,
     isSelected,
     isDisabled;
-  display: table-row;
 }
 
 .cell {
   -st-states: hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
-  display: table-cell;
 }
 
 .cellCheckbox {
