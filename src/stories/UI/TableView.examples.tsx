@@ -18,6 +18,7 @@ export const TableViewExample = () => {
       aria-label="Example table with static contents"
       selectionMode="multiple"
       vol={1}
+      isResponsive
     >
       <TableHeader>
         <Column>Name</Column>

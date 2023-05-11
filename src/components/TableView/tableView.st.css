@@ -4,6 +4,7 @@
 .root {
   -st-states:
     isHeaderSticky,
+    isResponsive,
     vol(number),
     density(enum(compact, spacious));
   overflow: auto;

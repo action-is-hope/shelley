@@ -49,6 +49,8 @@ export interface TableViewProps<T>
   vol?: 1 | 2 | 3 | false;
   /** Density */
   density?: "compact" | "spacious";
+  /** Add responsive data-column-value attributes for mobile rendering. */
+  isResponsive?: boolean;
 }
 
 function TableView<T extends object>(
@@ -62,6 +64,7 @@ function TableView<T extends object>(
     onRowAction: onAction,
     vol = 2,
     density,
+    isResponsive,
   } = props;
   const state = useTableState({
     ...props,
@@ -78,7 +81,7 @@ function TableView<T extends object>(
     <div
       className={st(
         classes.root,
-        { isHeaderSticky: true, vol: vol || undefined, density },
+        { isHeaderSticky: true, vol: vol || undefined, density, isResponsive },
         classNameProp
       )}
     >
@@ -122,7 +125,12 @@ function TableView<T extends object>(
                 (cell.props as CellProps).isSelectionCell ? (
                   <TableCheckboxCell key={cell.key} cell={cell} state={state} />
                 ) : (
-                  <TableCell key={cell.key} cell={cell} state={state} />
+                  <TableCell
+                    key={cell.key}
+                    cell={cell}
+                    state={state}
+                    isResponsive
+                  />
                 )
               )}
             </TableRow>
@@ -315,8 +323,13 @@ function TableRow<T extends object>({
 interface TableCellProps<T> extends ComponentBase {
   state: TableState<T>;
   cell: GridNode<T>;
+  isResponsive?: boolean;
 }
-function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
+function TableCell<T extends object>({
+  cell,
+  state,
+  isResponsive,
+}: TableCellProps<T>) {
   const ref = useRef(null);
   const { gridCellProps } = useTableCell({ node: cell }, state, ref);
   const { isFocusVisible, focusProps } = useFocusRing();
@@ -336,7 +349,11 @@ function TableCell<T extends object>({ cell, state }: TableCellProps<T>) {
         cellProps?.className
       )}
       data-id={cellProps?.["data-id"]}
-      data-column-value={cellProps?.["data-column-value"]}
+      data-column-value={
+        isResponsive
+          ? cellProps?.["data-column-value"] || cell?.column?.textValue
+          : undefined
+      }
       ref={ref}
     >
       {cell.rendered}
