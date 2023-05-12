@@ -15,20 +15,26 @@ import {
 } from "react-aria";
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
-import { Orientation } from "@react-types/shared";
 import { st, classes } from "./tabs.st.css";
+import { ComponentBase } from "../types";
 
-export interface TabsProps<T> extends AriaTabListProps<T> {
+export interface TabsProps<T> extends AriaTabListProps<T>, ComponentBase {
   /** Add a class to the content div. */
   className?: string;
-  /** Add predefined data-id to ease testing or analytics. */
-  "data-id"?: string;
-  /** Display tabs horizontal or vertical */
-  orientation?: Orientation;
+  /**
+   * Sets the volume of the tabs, use `false` to unset
+   * @default 1
+   */
+  vol?: 1 | 2 | 3 | false;
 }
 
 function Tabs<T extends object>(props: TabsProps<T>) {
-  const { className: classNameProp, "data-id": dataId } = props;
+  const {
+    className: classNameProp,
+    orientation = "horizontal",
+    vol = 1,
+    "data-id": dataId,
+  } = props;
   const state = useTabListState(props);
   const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
@@ -36,8 +42,6 @@ function Tabs<T extends object>(props: TabsProps<T>) {
   const { focusProps, isFocusVisible } = useFocusRing({
     within: true,
   });
-
-  const orientation = props.orientation || "horizontal";
 
   const [activeTabStyle, setActiveTabStyle] = useState(
     props.orientation === "vertical"
@@ -73,7 +77,11 @@ function Tabs<T extends object>(props: TabsProps<T>) {
 
   return (
     <div
-      className={st(classes.root, { orientation }, classNameProp)}
+      className={st(
+        classes.root,
+        { orientation, vol: vol || undefined },
+        classNameProp
+      )}
       data-id={dataId}
     >
       <div className={classes.tabListContainer}>

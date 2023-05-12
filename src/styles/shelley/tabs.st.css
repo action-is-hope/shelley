@@ -36,13 +36,18 @@
   }
 
   Tabs::tabList {
-    border-bottom: 1px solid var(--color-ui-inverse);
+    border-bottom: 2px solid var(--color-ui-inverse);
+  }
+
+  Tabs:orientation(horizontal)::tabSelection {
+    /* Pull up on top of tabList border. */
+    margin-top: -2px;
   }
 
   /* Vertical tabs */
   Tabs:orientation(vertical)::tabList {
     border-bottom: none;
-    border-right: 1px solid var(--color-ui-inverse);
+    border-right: 2px solid var(--color-ui-inverse);
   }
 
   /* Vertical tabs selection underline displayed on the right */

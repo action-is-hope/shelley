@@ -3,53 +3,24 @@ import Item from "../../components/Item/Item";
 import Tabs from "../../components/Tabs/Tabs";
 import { Button, P } from "../../indexLib";
 
-export const Example1 = () => {
+export const BasicTabs = () => {
   return (
-    <Tabs data-id="Tabs" aria-label="History of Ancient Rome">
+    <Tabs data-id="Tabs" vol={1} aria-label="History of Ancient Rome">
       <Item key="FoR" title="Founding of Rome">
-        Arma virumque cano, Troiae qui primus ab oris.
+        <>
+          <P vol={2}>Arma virumque cano, Troiae qui primus ab oris.</P>
+        </>
       </Item>
       <Item key="MaR" title="Monarchy and Republic">
-        Senatus Populusque Romanus.
+        <>
+          <P vol={2}>Senatus Populusque Romanus.</P>
+        </>
       </Item>
       <Item key="Emp" title="Empire">
-        Alea jacta est.
+        <>
+          <P vol={2}>Alea jacta est.</P>
+        </>
       </Item>
-    </Tabs>
-  );
-};
-
-const tabs = [
-  { id: 1, title: "Tab 1", content: "Tab body 1" },
-  { id: 2, title: "Tab 2", content: "Tab body 2" },
-  { id: 3, title: "Tab 3", content: "Tab body 3" },
-];
-
-export const Example2 = () => {
-  return (
-    <Tabs aria-label="Dynamic tabs" items={tabs} data-id="tabs">
-      {(item) => <Item title={item.title}>{item.content}</Item>}
-    </Tabs>
-  );
-};
-
-export const Example3 = () => {
-  return (
-    <Tabs aria-label="Disabled tabs" items={tabs} isDisabled data-id="tabs">
-      {(item) => <Item title={item.title}>{item.content}</Item>}
-    </Tabs>
-  );
-};
-
-export const Example4 = () => {
-  return (
-    <Tabs
-      aria-label="Vertical tabs"
-      items={tabs}
-      orientation="vertical"
-      data-id="tabs"
-    >
-      {(item) => <Item title={item.title}>{item.content}</Item>}
     </Tabs>
   );
 };
@@ -166,5 +137,49 @@ export const OrientationExample = () => {
         There is no prior chat history with Joe Bloggs.
       </Item>
     </Tabs>
+  );
+};
+
+export const DisabledExample = () => {
+  return (
+    <Tabs aria-label="Input settings" isDisabled>
+      <Item key="mouse">Mouse Settings</Item>
+      <Item key="keyboard">Keyboard Settings</Item>
+      <Item key="gamepad">Gamepad Settings</Item>
+    </Tabs>
+  );
+};
+
+export const DisabledItemsExample = () => {
+  return (
+    <Tabs aria-label="Input settings" disabledKeys={["gamepad"]}>
+      <Item key="mouse">Mouse Settings</Item>
+      <Item key="keyboard">Keyboard Settings</Item>
+      <Item key="gamepad">Gamepad Settings</Item>
+    </Tabs>
+  );
+};
+
+export const VolumeExample = () => {
+  return (
+    <>
+      <Tabs aria-label="Input settings" vol={1}>
+        <Item key="mouse">Mouse Settings</Item>
+        <Item key="keyboard">Keyboard Settings</Item>
+        <Item key="gamepad">Gamepad Settings *vol=1</Item>
+      </Tabs>
+      <br />
+      <Tabs aria-label="Input settings" vol={2}>
+        <Item key="mouse">Mouse Settings</Item>
+        <Item key="keyboard">Keyboard Settings</Item>
+        <Item key="gamepad">Gamepad Settings *vol=2</Item>
+      </Tabs>
+      <br />
+      <Tabs aria-label="Input settings" vol={3}>
+        <Item key="mouse">Mouse Settings</Item>
+        <Item key="keyboard">Keyboard Settings</Item>
+        <Item key="gamepad">Gamepad Settings *vol=3</Item>
+      </Tabs>
+    </>
   );
 };

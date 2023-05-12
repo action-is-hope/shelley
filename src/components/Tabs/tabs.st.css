@@ -1,6 +1,8 @@
 /* tabs.st.css CSS API */
 .root {
-  -st-states: orientation(enum(horizontal, vertical));
+  -st-states:
+    orientation(enum(horizontal, vertical)),
+    vol(number);
   display: flex;
   flex-direction: column;
 }
