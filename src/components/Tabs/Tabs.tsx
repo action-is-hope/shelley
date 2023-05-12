@@ -37,6 +37,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     within: true,
   });
 
+  // set the tab styling properties depending on vertical or horizontal type
   const [activeTabStyle, setActiveTabStyle] = useState(
     orientation === "vertical"
       ? {
@@ -53,6 +54,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     const activeTab = ref?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
+    // Active tab width or height calculation.
     setActiveTabStyle(
       orientation === "vertical"
         ? {

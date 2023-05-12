@@ -10,6 +10,8 @@
 
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {
+
+  /* Underline width or height is calculated in the component level */
   Tabs::tabSelection {
     position: absolute;
     will-change: transform, width;
@@ -17,6 +19,7 @@
     background-color: var(--color-accent-1);
   }
 
+  /* Horizontal tabs underline */
   Tabs:orientation(horizontal)::tabSelection {
     left: 0;
     height: 2px;
@@ -42,17 +45,13 @@
     border-bottom: 1px solid var(--color-ui-inverse);
   }
 
-  Tabs:orientation(vertical) {
-    display: flex;
-    flex-direction: row;
-  }
-
+  /* Vertical tabs */
   Tabs:orientation(vertical)::tabList {
     border-bottom: none;
     border-right: 1px solid var(--color-ui-inverse);
-    flex-direction: column;
   }
 
+  /* Vertical tabs selection underline displayed on the right */
   Tabs:orientation(vertical)::tabSelection {
     right: 0;
     top: 0;
