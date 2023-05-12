@@ -23,6 +23,7 @@ export const BasicSelect = (args: ItemsType) => {
       onSelectionChange={(key) => console.log(key)}
       vol={1}
       portalSelector="#portal"
+      isDisabled
     >
       <Item key="rarely">Rarely</Item>
       <Item key="sometimes">Sometimes</Item>
