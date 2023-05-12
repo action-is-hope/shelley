@@ -35,7 +35,20 @@ export const Example2 = () => {
 
 export const Example3 = () => {
   return (
-    <Tabs aria-label="Dynamic tabs" items={tabs} isDisabled data-id="tabs">
+    <Tabs aria-label="Disabled tabs" items={tabs} isDisabled data-id="tabs">
+      {(item) => <Item title={item.title}>{item.content}</Item>}
+    </Tabs>
+  );
+};
+
+export const Example4 = () => {
+  return (
+    <Tabs
+      aria-label="Vertical tabs"
+      items={tabs}
+      orientation="vertical"
+      data-id="tabs"
+    >
       {(item) => <Item title={item.title}>{item.content}</Item>}
     </Tabs>
   );

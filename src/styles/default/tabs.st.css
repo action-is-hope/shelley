@@ -39,4 +39,14 @@
   Tabs::tabPanel {
     padding: var(--spacing-unit);
   }
+
+  /* Vertical tabs */
+  Tabs:orientation(vertical) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  Tabs:orientation(vertical)::tabList {
+    flex-direction: column;
+  }
 }

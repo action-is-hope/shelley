@@ -15,6 +15,7 @@ import {
 } from "react-aria";
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { Orientation } from "@react-types/shared";
 import { st, classes } from "./tabs.st.css";
 
 export interface TabsProps<T> extends AriaTabListProps<T> {
@@ -22,6 +23,8 @@ export interface TabsProps<T> extends AriaTabListProps<T> {
   className?: string;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
+  /** Display tabs horizontal or vertical */
+  orientation?: Orientation;
 }
 
 function Tabs<T extends object>(props: TabsProps<T>) {
@@ -52,6 +55,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     const activeTab = ref?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
+    // Active tab width or height calculation.
     setActiveTabStyle(
       orientation === "vertical"
         ? {
