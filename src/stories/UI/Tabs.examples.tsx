@@ -3,7 +3,7 @@ import Tabs from "../../components/Tabs/Tabs";
 
 export const Example1 = () => {
   return (
-    <Tabs data-id="tabs">
+    <Tabs aria-label="Basic tabs" data-id="tabs">
       <Item title="Tab title 1">Tab description 1</Item>
       <Item title="Tab title 2">Tab description 2</Item>
       <Item title="Tab title 3">Tab description 3</Item>
@@ -27,7 +27,20 @@ export const Example2 = () => {
 
 export const Example3 = () => {
   return (
-    <Tabs aria-label="Dynamic tabs" items={tabs} isDisabled data-id="tabs">
+    <Tabs aria-label="Disabled tabs" items={tabs} isDisabled data-id="tabs">
+      {(item) => <Item title={item.title}>{item.content}</Item>}
+    </Tabs>
+  );
+};
+
+export const Example4 = () => {
+  return (
+    <Tabs
+      aria-label="Vertical tabs"
+      items={tabs}
+      orientation="vertical"
+      data-id="tabs"
+    >
       {(item) => <Item title={item.title}>{item.content}</Item>}
     </Tabs>
   );

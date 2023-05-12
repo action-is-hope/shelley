@@ -11,6 +11,7 @@ import { useTabList, useFocusRing, mergeProps } from "react-aria";
 import { TabListProps } from "react-stately";
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { Orientation } from "@react-types/shared";
 import { st, classes } from "./tabs.st.css";
 
 export interface TabsProps<T> extends TabListProps<T> {
@@ -18,10 +19,16 @@ export interface TabsProps<T> extends TabListProps<T> {
   className?: string;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
+  /** Display tabs horizontal or vertical */
+  orientation?: Orientation;
 }
 
 function Tabs<T extends object>(props: TabsProps<T>) {
-  const { className: classNameProp, "data-id": dataId } = props;
+  const {
+    className: classNameProp,
+    "data-id": dataId,
+    orientation = "horizontal",
+  } = props;
   const state = useTabListState(props);
   const ref = useRef<HTMLDivElement>(null);
   const { tabListProps } = useTabList(props, state, ref);
@@ -30,23 +37,42 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     within: true,
   });
 
-  const [activeTabStyle, setActiveTabStyle] = useState({
-    width: 0,
-    transform: "translateX(0)",
-  });
+  const [activeTabStyle, setActiveTabStyle] = useState(
+    orientation === "vertical"
+      ? {
+          height: 0,
+          transform: "translateY(0)",
+        }
+      : {
+          width: 0,
+          transform: "translateX(0)",
+        }
+  );
 
   useEffect(() => {
     const activeTab = ref?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
-    setActiveTabStyle({
-      width: (activeTab as HTMLElement)?.offsetWidth,
-      transform: `translateX(${(activeTab as HTMLElement)?.offsetLeft}px)`,
-    });
-  }, [state.selectedKey]);
+    setActiveTabStyle(
+      orientation === "vertical"
+        ? {
+            height: (activeTab as HTMLElement)?.offsetHeight,
+            transform: `translateY(${(activeTab as HTMLElement)?.offsetTop}px)`,
+          }
+        : {
+            width: (activeTab as HTMLElement)?.offsetWidth,
+            transform: `translateX(${
+              (activeTab as HTMLElement)?.offsetLeft
+            }px)`,
+          }
+    );
+  }, [state.selectedKey, orientation]);
 
   return (
-    <div className={st(classes.root, classNameProp)} data-id={dataId}>
+    <div
+      className={st(classes.root, { orientation }, classNameProp)}
+      data-id={dataId}
+    >
       <div className={classes.tabListContainer}>
         <div
           className={classes.tabList}

@@ -12,11 +12,14 @@
 @st-scope Shelley {
   Tabs::tabSelection {
     position: absolute;
-    height: 2px;
-    left: 0;
     will-change: transform, width;
     transition: transform 150ms, width 100ms;
     background-color: var(--color-accent-1);
+  }
+
+  Tabs:orientation(horizontal)::tabSelection {
+    left: 0;
+    height: 2px;
   }
 
   /* isFocusVisible when using right left arrow keys  */
@@ -37,5 +40,23 @@
 
   Tabs::tabList {
     border-bottom: 1px solid var(--color-ui-inverse);
+  }
+
+  Tabs:orientation(vertical) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  Tabs:orientation(vertical)::tabList {
+    border-bottom: none;
+    border-right: 1px solid var(--color-ui-inverse);
+    flex-direction: column;
+  }
+
+  Tabs:orientation(vertical)::tabSelection {
+    right: 0;
+    top: 0;
+    width: 2px;
+    will-change: transform, height;
   }
 }

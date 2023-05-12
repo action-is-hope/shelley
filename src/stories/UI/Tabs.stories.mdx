@@ -2,7 +2,7 @@ import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { Tabs } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { Example1, Example2, Example3 } from "./Tabs.examples";
+import { Example1, Example2, Example3, Example4 } from "./Tabs.examples";
 
 export const BasicTabs = () => {
   return <Example1 />;
@@ -14,6 +14,10 @@ export const DynamicTabs = () => {
 
 export const DisabledTabs = () => {
   return <Example3 />;
+};
+
+export const VerticlalTabs = () => {
+  return <Example4 />;
 };
 
 <Meta title="Data/Tabs" component={Tabs} />
@@ -81,5 +85,26 @@ All tabs can be disabled using the isDisabled prop.
 <Preview>
   <Story name="c) Disabled Tabs" args={{}}>
     {DisabledTabs.bind({})}
+  </Story>
+</Preview>
+
+## Orientation
+
+By default, tabs are horizontally oriented. The orientation prop can be set to vertical to change this. This affects keyboard navigation.
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Tabs orientation="vertical">
+      <Item title="Tab title 1">Tab description 1</Item>
+      <Item title="Tab title 2">Tab description 2</Item>
+      <Item title="Tab title 3">Tab description 3</Item>
+    </Tabs>
+  `}
+/>
+
+<Preview>
+  <Story name="d) Vertical Tabs" args={{}}>
+    {VerticlalTabs.bind({})}
   </Story>
 </Preview>

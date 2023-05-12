@@ -1,5 +1,7 @@
 /* tabs.st.css CSS API */
-.root {}
+.root {
+  -st-states: orientation(enum(vertical, horizontal));
+}
 
 .tabListContainer {}
 
