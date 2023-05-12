@@ -13,10 +13,27 @@
   -st-default: Tabs;
 }
 
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
 @st-scope Default {
   Tabs::tab {
     padding: var(--spacing-unit);
     margin-right: 10px;
+    outline: none;
+    /* required for the pseudoFocus. */
+    position: relative;
+  }
+
+  Tabs::tab::after {
+    -st-mixin: pseudoFocus;
+    top: 9px;
+    left: 4px;
+    bottom: 9px;
+    right: 4px;
+  }
+
+  Tabs::tab:isFocusVisible::after {
+    -st-mixin: pseudoFocusVisible;
   }
 
   Tabs::tabPanel {

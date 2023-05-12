@@ -2,7 +2,17 @@ import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { Tabs } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { Example1, Example2, Example3 } from "./Tabs.examples";
+import {
+  Example1,
+  Example2,
+  Example3,
+  DefaultSelectedExample,
+  ControlledSelectionExample,
+  FocusableContentExample,
+  DynamicItemsExample,
+  KeyboardActivationExample,
+  OrientationExample,
+} from "./Tabs.examples";
 
 export const BasicTabs = () => {
   return <Example1 />;
@@ -27,59 +37,220 @@ export const DisabledTabs = () => {
   `}
 />
 
-Provides the behavior and accessibility implementation for a tab list. Tabs organize content into multiple sections and allow users to navigate between them.
+Tabs organise content into multiple sections and allow users to navigate between them.
 
-Tabs provide a list of tabs that a user can select from to switch between multiple tab panels. useTabList, useTab, and useTabPanel can be used to implement these in an accessible way.
+## Example
 
-- Support for mouse, touch, and keyboard interactions on tabs
-- Support for LTR and RTL keyboard navigation
-- Support for disabled tabs
-- Follows the tabs ARIA pattern, semantically linking tabs and their associated tab panels
-- Focus management for tab panels without any focusable children
-
-Tabs consist of a tab list with one or more visually separated tabs. Each tab has associated content, and only the selected tab's content is shown. Each tab can be clicked, tapped, or navigated to via arrow keys. Depending on the keyboardActivation prop, the tab can be selected by receiving keyboard focus, or it can be selected with the Enter key.
-
-Keyboard Activation
-
-By default, pressing the arrow keys while focus is on a Tab will switch selection to the adjacent Tab in that direction, updating the content displayed accordingly.
+This example displays a basic list of tabs. The currently selected tab receives a tabIndex of 0 while the rest are set to -1 ensuring that the whole tablist is a single tab stop. The selected tab has a different style so it's obvious which one is currently selected. useTab and useTabPanel handle associating the tabs and tab panels for assistive technology. The currently selected tab panel is rendered below the list of tabs.
 
 <Preview>
-  <Story name="a) Basic Tabs" args={{}}>
+  <Story
+    name="a) Basic Tabs"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Tabs aria-label="History of Ancient Rome">
+  <Item key="FoR" title="Founding of Rome">
+    Arma virumque cano, Troiae qui primus ab oris.
+  </Item>
+  <Item key="MaR" title="Monarchy and Republic">
+    Senatus Populusque Romanus.
+  </Item>
+  <Item key="Emp" title="Empire">
+    Alea jacta est.
+  </Item>
+</Tabs>`,
+        },
+      },
+    }}
+  >
     {BasicTabs.bind({})}
   </Story>
 </Preview>
 
-# Usage
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
 
-This example displays a basic list of tabs. The currently selected tab receives a tabIndex of 0 while the rest are set to -1 ensuring that the whole tablist is a single tab stop. The selected tab has a different style so it's obvious which one is currently selected. useTab and useTabPanel handle associating the tabs and tab panels for assistive technology. The currently selected tab panel is rendered below the list of tabs.
+### Features
 
-<Source
-  language="tsx"
-  code={dedent`
-    <Tabs aria-label="Tabs aria label description">
-      <Item title="Tab title 1">Tab description 1</Item>
-      <Item title="Tab title 2">Tab description 2</Item>
-      <Item title="Tab title 3">Tab description 3</Item>
-    </Tabs>
-  `}
-/>
+Tabs provide a list of tabs that a user can select from to switch between multiple tab panels. Tabs can be used to implement these in an accessible way.
 
-## Dynamic Tabs
+- Flexible – Support for both horizontal and vertical orientations, disabled tabs, customisable layout, and multiple keyboard activation modes.
+- Accessible – Follows the [ARIA tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/), automatically linking tabs and their associated tab panels semantically. The arrow keys can be used to navigate between tabs, and tab panels automatically become focusable when they don't contain any focusable children.
+- International – Keyboard navigation is automatically mirrored in right-to-left languages.
+- Styleable – Hover, press, keyboard focus, and selection states are provided for easy styling. These states only apply when interacting with an appropriate input device, unlike CSS pseudo classes.
 
-This example displays a dynamically created basic list of tabs.
+## Usage
+
+The following examples show how to use the Tabs component created in the above example.
+
+### Default selection
+
+A default selected tab can be provided using the `defaultSelectedKey` prop, which should correspond to the key prop provided to each item. When Tabs is used with dynamic items as described below, the key of each item is derived from the data. See the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html) for more details.
 
 <Preview>
-  <Story name="b) Dynamic Tabs" args={{}}>
-    {DynamicTabs.bind({})}
+  <Story
+    name="b) Default selected"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+tbc`,
+        },
+      },
+    }}
+  >
+    <DefaultSelectedExample />
   </Story>
 </Preview>
+
+<Source language="tsx" id="data-tabs--b-default-selected" />
+
+### Controlled selection
+
+Selection can be controlled using the `selectedKey` prop, paired with the `onSelectionChange` event. The key prop from the selected tab will be passed into the callback when the tab is selected, allowing you to update state accordingly.
+
+<Preview>
+  <Story
+    name="c) Controlled selection"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+const [timePeriod, setTimePeriod] = useState("triassic");
+...`,
+        },
+      },
+    }}
+  >
+    <ControlledSelectionExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--c-controlled-selection" />
+
+### Focusable content
+
+When the tab panel doesn't contain any focusable content, the entire panel is given a `tabIndex=0` so that the content can be navigated to with the keyboard. When the tab panel contains focusable content, such as a textfield, then the tabIndex is omitted because the content itself can receive focus.
+
+This example uses the same Tabs component from above. Try navigating from the tabs to the content for each panel using the keyboard.
+
+<Preview>
+  <Story
+    name="d) Focusable content"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Tabs aria-label="Notes app">
+  <Item key="item1" title="Jane Doe">
+    <label>
+      Leave a note for Jane: <input type="text" />
+    </label>
+  </Item>
+  <Item key="item2" title="John Doe">
+    Senatus Populusque Romanus.
+  </Item>
+  <Item key="item3" title="Joe Bloggs">
+    Alea jacta est.
+  </Item>
+</Tabs>`,
+        },
+      },
+    }}
+  >
+    <FocusableContentExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--d-focusable-content" />
+
+### Dynamic items
+
+The above examples have shown tabs with static items. The items prop can be used when creating tabs from a dynamic collection, for example when the user can add and remove tabs, or the tabs come from an external data source. The function passed as the children of the Tabs component is called for each item in the list, and returns an `<Item>` representing the tab.
+
+Each item accepts a key prop, which is passed to the `onSelectionChange` handler to identify the selected item. Alternatively, if the item objects contain an `id` property, as shown in the example below, then this is used automatically and a key prop is not required. See [Collection Components](https://react-spectrum.adobe.com/react-stately/collections.html) for more details.
+
+<Preview>
+  <Story
+    name="e) Dynamic items"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+tbc
+`,
+        },
+      },
+    }}
+  >
+    <DynamicItemsExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--e-dynamic-items" />
+
+### Keyboard Activation
+
+By default, pressing the arrow keys while focus is on a Tab will switch selection to the adjacent Tab in that direction, updating the content displayed accordingly. If you would like to prevent selection change from happening automatically you can set the `keyboardActivation` prop to "manual". This will prevent tab selection from changing on arrow key press, requiring a subsequent `Enter` or `Space` key press to confirm tab selection.
+
+<Preview>
+  <Story
+    name="e) Keyboard activation"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+...`,
+        },
+      },
+    }}
+  >
+    <KeyboardActivationExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--e-keyboard-activation" />
+
+### Orientation
+
+<Preview>
+  <Story
+    name="f) Orientation"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+...`,
+        },
+      },
+    }}
+  >
+    <OrientationExample />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--f-Orientation" />
 
 ## Disabled
 
 All tabs can be disabled using the isDisabled prop.
 
 <Preview>
-  <Story name="c) Disabled Tabs" args={{}}>
+  <Story
+    name="g) Disabled Tabs"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+tbc`,
+        },
+      },
+    }}
+  >
     {DisabledTabs.bind({})}
   </Story>
 </Preview>
+
+<Source language="tsx" id="data-tabs--g-disabled" />

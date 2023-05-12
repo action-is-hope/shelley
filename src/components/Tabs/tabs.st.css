@@ -1,10 +1,14 @@
 /* tabs.st.css CSS API */
-.root {}
-
-.tabListContainer {}
+.root {
+  -st-states: orientation(enum(horizontal, vertical));
+  display: flex;
+  flex-direction: column;
+}
 
 .tabSelection {
   -st-states: isFocusVisible;
+  position: absolute;
+  transition: transform 150ms, width 100ms, height 100ms;
 }
 
 .tab {
@@ -15,8 +19,35 @@
     isSelected;
 }
 
-.tabPanel {}
+.tabListContainer {
+  position: relative;
+}
 
 .tabList {
   display: flex;
+}
+
+.tabPanel {
+  flex-grow: 1;
+}
+
+.root:orientation(vertical) {
+  flex-direction: row;
+}
+
+.root:orientation(vertical)::tabList {
+  flex-direction: column;
+}
+
+.root:orientation(vertical)::tabSelection {
+  right: 0;
+  top: 0;
+  width: 2px;
+  will-change: transform, height;
+}
+
+.root:orientation(horizontal)::tabSelection {
+  left: 0;
+  height: 2px;
+  will-change: transform, width;
 }

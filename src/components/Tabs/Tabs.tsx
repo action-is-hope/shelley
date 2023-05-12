@@ -7,13 +7,17 @@ import {
   forwardRef,
 } from "react";
 import { useTabListState } from "react-stately";
-import { useTabList, useFocusRing, mergeProps } from "react-aria";
-import { TabListProps } from "react-stately";
+import {
+  useTabList,
+  useFocusRing,
+  mergeProps,
+  AriaTabListProps,
+} from "react-aria";
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
 import { st, classes } from "./tabs.st.css";
 
-export interface TabsProps<T> extends TabListProps<T> {
+export interface TabsProps<T> extends AriaTabListProps<T> {
   /** Add a class to the content div. */
   className?: string;
   /** Add predefined data-id to ease testing or analytics. */
@@ -30,23 +34,44 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     within: true,
   });
 
-  const [activeTabStyle, setActiveTabStyle] = useState({
-    width: 0,
-    transform: "translateX(0)",
-  });
+  const orientation = props.orientation || "horizontal";
+
+  const [activeTabStyle, setActiveTabStyle] = useState(
+    props.orientation === "vertical"
+      ? {
+          height: 0,
+          transform: "translateY(0)",
+        }
+      : {
+          width: 0,
+          transform: "translateX(0)",
+        }
+  );
 
   useEffect(() => {
     const activeTab = ref?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
-    setActiveTabStyle({
-      width: (activeTab as HTMLElement)?.offsetWidth,
-      transform: `translateX(${(activeTab as HTMLElement)?.offsetLeft}px)`,
-    });
-  }, [state.selectedKey]);
+    setActiveTabStyle(
+      orientation === "vertical"
+        ? {
+            height: (activeTab as HTMLElement)?.offsetHeight,
+            transform: `translateY(${(activeTab as HTMLElement)?.offsetTop}px)`,
+          }
+        : {
+            width: (activeTab as HTMLElement)?.offsetWidth,
+            transform: `translateX(${
+              (activeTab as HTMLElement)?.offsetLeft
+            }px)`,
+          }
+    );
+  }, [state.selectedKey, orientation]);
 
   return (
-    <div className={st(classes.root, classNameProp)} data-id={dataId}>
+    <div
+      className={st(classes.root, { orientation }, classNameProp)}
+      data-id={dataId}
+    >
       <div className={classes.tabListContainer}>
         <div
           className={classes.tabList}
