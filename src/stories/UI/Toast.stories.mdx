@@ -1,0 +1,59 @@
+import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import { Toast } from "../../indexLib";
+import { ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { ToastSuccess } from "./Toast.examples";
+
+<Meta title="Navigation/Toast" component={Toast} />
+
+# Toast
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Toast } from "@actionishope/shelley";
+  `}
+/>
+
+Toast is used for displaying a short message to the user. It is a non-modal, time-based notification that appears in the bottom right corner or bottom center of the screen. Toasts are used to provide feedback on an action that the user has taken, such as saving a file or sending a message.
+
+## Example
+
+This example displays a toast.
+
+<Preview>
+  <Story
+    name="a) Toast success"
+    args={{ type: "success" }}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Toast type="success">
+  
+</Toast>`,
+        },
+      },
+    }}
+  >
+    <ToastSuccess />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
+
+### Features
+
+- Toasts are non-modal, meaning that they do not block the user from interacting with the rest of the page.
+
+## Usage
+
+The following examples show how to use the Toast component created in the above example.
+
+### Toast success
+
+Toast is amazing. Find out more: https://spectrum.adobe.com/page/toast/
+
+### Keyboard Activation
+
+Space, Tab, ESC
