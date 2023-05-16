@@ -17,7 +17,7 @@
 
 ## Docs
 
-To read the documentation, please visit our [Documentation]](DOCUMENTATION.md)
+To read the documentation, please visit our [Documentation](DOCUMENTATION.md)
 
 ## Contributing
 
