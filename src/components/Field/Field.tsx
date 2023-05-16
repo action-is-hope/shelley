@@ -22,6 +22,9 @@ import InputAdornment from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./field.st.css";
 
+export interface FieldContainerProps
+  extends HTMLProps<HTMLDivElement>,
+    ComponentBase {}
 export interface FieldProps extends Validation, ComponentBase {
   /** Provide an error message that triggers the stylable error state. */
   errorMessage?: ReactNode;
@@ -62,7 +65,7 @@ export interface FieldProps extends Validation, ComponentBase {
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLProps<HTMLDivElement>;
   /** Props for the field container. */
-  fieldContainerProps?: HTMLProps<HTMLDivElement>;
+  fieldContainerProps?: FieldContainerProps;
   /** Enable disabled state. */
   isDisabled?: boolean;
   isReadOnly?: boolean;

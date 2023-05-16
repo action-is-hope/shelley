@@ -18,7 +18,20 @@
     --color-form-selection-border,
     --color-form-selection-notch,
     --color-switch-notch,
-    --select-icon;
+    --select-icon,
+
+    --color-background-row,
+    --color-text-row,
+    --color-background-row-isPressed,
+    --color-text-row-isPressed,
+    --color-background-row-isSelected,
+    --color-text-row-isSelected,
+    --color-background-row-isHovered,
+    --color-text-row-isHovered,
+    --color-background-row-isHoveredSelected,
+    --color-text-row-isHoveredSelected,
+    --color-border-tbody;
+
 }
 
 :import {
@@ -41,23 +54,12 @@
     --color-accent-4,
     /* = Background colours */
     --background-color-main,
+    --background-color-contrast-1,
     /* = Text colours */
     --color-text-1,
     --color-text-2,
     --color-text-3,
-    --color-text-4,
-    /* = Status colours */
-    /* --color-error, */
-    /* = Indicator colours */
-    /* --color-focus, */
-    /* = Form colours */
-    /* --color-form-mark,
-    /* = Misc */
-    /* --select-icon, */
-    /* = Misc - CSS var only, fix?? */
-    /* --color-toggle-mark, */
-    --status-background,
-    --support-background;
+    --color-text-4;
 }
 
 /* 
@@ -80,7 +82,9 @@
   --color-accent-4: rgb(134, 102, 30);
 
   /* = Background colours */
-  --background-color-main: rgba(239, 239, 239, 1) !important;
+  --background-color-main: rgba(239, 239, 239, 1);
+  --background-color-contrast-1: #fff;
+
 
   /* = Text colours */
   --color-text-1: var(--dark-01);
@@ -91,10 +95,8 @@
   --color-text-help: rgba(var(--color-ui-raw), 0.9);
 
   /* = Status colours - TBC */
-  --color-error: red;
 
   /* = Indicator colours */
-  /* --color-focus: pink; */
 
   /* = Form colours */
   --color-form-base-border: rgba(121, 170, 216, 0.5);
@@ -105,9 +107,19 @@
   /* = Gradiants */
   --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);
 
+
+  /* = Table colours */
+  --color-background-row: var(--background-color-contrast-1);
+  --color-text-row: var(--color-text-3);
+  --color-background-row-isPressed: #f3f3f3;
+  --color-text-row-isPressed: var(--color-text-3);
+  --color-background-row-isSelected: #e9f0fc;
+  --color-text-row-isSelected: var(--color-text-3);
+  --color-background-row-isHovered: GhostWhite;
+  --color-text-row-isHovered: var(--color-text-3);
+  --color-background-row-isHoveredSelected: #dfedff;
+  --color-text-row-isHoveredSelected: var(--color-text-3);
+  --color-border-tbody: rgba(var(--color-ui-raw), .15);
+
   /* = Misc */
-  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='333333' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>"); */
-  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='333333' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>");
-  --status-background: #ebbbbb;
-  --support-background: #cee1e7;
 }
