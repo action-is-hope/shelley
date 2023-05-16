@@ -40,3 +40,18 @@ it("tab can be selected", () => {
   cy.get(tabItem).realClick();
   cy.get(tabItem).should("have.attr", "aria-selected");
 });
+
+// Tab selection and tab description match
+
+it("tab description should render correctly", () => {
+  cy.mount(<TabsExample />);
+  cy.get(`${tabItem}:first-child`).realClick();
+  cy.get(tabPanel).should("exist").and("have.text", "Tab description 1");
+  cy.get(`${tabItem}:last-child`).realClick();
+  cy.get(tabPanel).should("exist").and("have.text", "Tab description 3");
+});
+
+// Orientation
+// it("", () => {
+
+// })
