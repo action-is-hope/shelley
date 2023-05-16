@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`H H uppercase 1`] = `
+<h1
+  className="Text__Test__root Text__Test--uppercase Text__Test---vol-1-8"
+>
+  I AM GROOT!
+</h1>
+`;
+
 exports[`H H1 1`] = `
 <h1
   className="Text__Test__root Text__Test---vol-1-8"
@@ -64,19 +72,27 @@ exports[`P P 1`] = `
 </p>
 `;
 
+exports[`P P truncate 1`] = `
+<p
+  className="Text__Test__root Text__Test--truncate Text__Test---vol-1-3 Text__Test---lineClamp-1-2"
+>
+  The cryosphere refers to frozen components of the Earth system. Around 10% of Earth’s land area is covered by glaciers or ice sheets. The ocean and cryosphere support unique habitats, and are interconnected with other components of the climate system through global exchange of water, energy and carbon.
+</p>
+`;
+
+exports[`P P vol weight 1`] = `
+<p
+  className="Text__Test__root Text__Test---weight-1-2 Text__Test---vol-1-8"
+>
+  vol 8 Text
+</p>
+`;
+
 exports[`P P volume 1`] = `
 <p
   className="Text__Test__root Text__Test---vol-1-5"
 >
   I am Groot!
-</p>
-`;
-
-exports[`Text P truncate 1`] = `
-<p
-  className="Text__Test__root Text__Test--truncate Text__Test---vol-1-3 Text__Test---lineClamp-1-2"
->
-  The cryosphere refers to frozen components of the Earth system. Around 10% of Earth’s land area is covered by glaciers or ice sheets. The ocean and cryosphere support unique habitats, and are interconnected with other components of the climate system through global exchange of water, energy and carbon.
 </p>
 `;
 
@@ -86,6 +102,23 @@ exports[`Text Text 1`] = `
 >
   I Am Groot!
 </h1>
+`;
+
+exports[`Text Text as truncate vol 1`] = `
+<div
+  className="Text__Test__root Text__Test--truncate Text__Test---lineClamp-1-6"
+>
+  <p
+    className="Text__Test__root Text__Test---vol-1-3"
+  >
+    All people on Earth depend directly or indirectly on the ocean and cryosphere. The global ocean covers 71% of the Earth surface and contains about 97% of the Earth’s water.
+  </p>
+  <p
+    className="Text__Test__root Text__Test---vol-1-3"
+  >
+    The cryosphere refers to frozen components of the Earth system. Around 10% of Earth’s land area is covered by glaciers or ice sheets. The ocean and cryosphere support unique habitats, and are interconnected with other components of the climate system through global exchange of water, energy and carbon.
+  </p>
+</div>
 `;
 
 exports[`Text Text volume 1`] = `
