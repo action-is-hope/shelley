@@ -66,18 +66,18 @@
 
 /* Local buildtime vars. */
 :vars {
-  inputVol1Label: "0.95em";
-  inputVol1SelectionControl: "16px";
-  inputVol2Label: "0.9em";
-  inputVol2SelectionControl: "20px";
-  inputVol3Label: "0.85em";
-  inputVol3SelectionControl: "24px";
-  inputVol4Label: "0.8em";
-  inputVol4SelectionControl: "28px";
-  inputVol5Label: "0.75em";
-  inputVol5SelectionControl: "32px";
-  inputVol6Label: "0.7em";
-  inputVol6SelectionControl: "36px";
+  inputVol1LabelRelative: "0.95em";
+  inputVol2LabelRelative: "0.9em";
+  inputVol3LabelRelative: "0.85em";
+  inputVol4LabelRelative: "0.8em";
+  inputVol5LabelRelative: "0.75em";
+  inputVol6LabelRelative: "0.7em";
+  SelectionControlSize1: "16px";
+  SelectionControlSize2: "20px";
+  SelectionControlSize3: "24px";
+  SelectionControlSize4: "28px";
+  SelectionControlSize5: "32px";
+  SelectionControlSize6: "36px";
 }
 
 /**
@@ -106,101 +106,6 @@
 .hideWebkitAppearance:-webkit-autofill:active {
   transition-delay: 99999s;
   -webkit-transition-delay: 99999s;
-}
-
-
-
-/**
- * = BASE - TEXTUAL FIELD
- *
- * Text, Number, Select, Combo style fields are all examples of what we mean by
- * 'textual', they are text orientaed I guess. Naming things is a nightmare!
- *
- * ------------------------------------------------------------------------- */
-
-/* = The 'root' element - <div> */
-.textualFieldRoot {
-  align-items: center;
-  /*top aligns the labels - prop?*/
-}
-
-
-/* = Field container - <div> */
-.textualFieldContainer {
-  position: relative;
-  display: inline-flex;
-  line-height: 1.5;
-}
-
-/* = The actual field <input> */
-.textualFieldInput {
-  -st-mixin: hideWebkitAppearance;
-  background: none;
-  color: currentColor;
-  resize: none;
-  outline: none;
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: calc(0.2rem + 0.2em) var(--spacing-unit);
-  border: none;
-  font: inherit;
-  line-height: 1.5;
-}
-
-
-.label {
-  font-weight: 400;
-  font-size: 1em;
-  line-height: 1.4em;
-  padding: 0;
-  /* transform: translate(7px, 9px) scale(1); */
-  transform: translateZ(0);
-}
-
-
-/* Quiet */
-
-/* = Field indicator, via pseudo. */
-.startFieldIndicator::before,
-.startFieldIndicator::after {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  content: "";
-  width: 1px;
-  transition: background-color 0.3s;
-  background-color: var(--color-form-base-border);
-}
-
-.startFieldIndicator::before {
-  display: block;
-  left: 0;
-}
-
-.startFieldIndicator::after {
-  right: 0;
-  /* = Choosing only to show the first edge indicator by default. */
-  display: none;
-}
-
-/* = Focus - custom */
-.startFieldIndicator:focus-within::before,
-.startFieldIndicator:focus-within::after {
-  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
-  opacity: 1;
-  /* = The glow from the box-shadow means we don't want the width, too chunky. */
-  width: 0;
-  /* = Give us that 'glow' effect for the focused state.*/
-  box-shadow: 0 0 1px 1px var(--color-focus);
-}
-
-/* = Error */
-.startFieldIndicatorHasError::before,
-.startFieldIndicatorHasError::after {
-  /* = Adjust the pseudo feild indicators to cater for custom focus style. */
-  /* display: block; */
-  background-color: var(--color-error);
 }
 
 
@@ -276,27 +181,28 @@
   font-size: 1em;
 }
 
-.inputVol1 > InputLabel {
-  font-size: value(inputVol1Label);
+.inputVol1 > InputLabel,
+.labelVol1 {
+  font-size: value(inputVol1LabelRelative);
 }
 
-.selectionControlVol1 {
-  font-size: value(inputVol1SelectionControl);
+.selectionControlSize1 {
+  font-size: value(SelectionControlSize1);
 }
 
 /* = Volume 2 */
 .inputVol2 {
   /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
-  -st-mixin:
-    textVol;
+  -st-mixin: textVol;
 }
 
-.inputVol2 > InputLabel {
-  font-size: value(inputVol2Label);
+.inputVol2 > InputLabel,
+.labelVol2 {
+  font-size: value(inputVol2LabelRelative);
 }
 
-.selectionControlVol2 {
-  font-size: value(inputVol2SelectionControl);
+.selectionControlSize2 {
+  font-size: value(SelectionControlSize2);
 }
 
 /* = Volume 3 */
@@ -306,12 +212,13 @@
       max var(--text-vol-3-max));
 }
 
-.inputVol3 > InputLabel {
-  font-size: value(inputVol3Label);
+.inputVol3 > InputLabel,
+.labelVol3 {
+  font-size: value(inputVol3LabelRelative);
 }
 
-.selectionControlVol3 {
-  font-size: value(inputVol3SelectionControl);
+.selectionControlSize3 {
+  font-size: value(SelectionControlSize3);
 }
 
 /* = Volume 4 */
@@ -321,12 +228,13 @@
       max var(--text-vol-4-max));
 }
 
-.inputVol4 > InputLabel {
-  font-size: value(inputVol4Label);
+.inputVol4 > InputLabel,
+.labelVol4 {
+  font-size: value(inputVol4LabelRelative);
 }
 
-.selectionControlVol4 {
-  font-size: value(inputVol4SelectionControl);
+.selectionControlSize4 {
+  font-size: value(SelectionControlSize4);
 }
 
 /* = Volume 5 */
@@ -340,12 +248,13 @@
       max calc(var(--text-vol-5-max) - 0.15rem));
 }
 
-.inputVol5 > InputLabel {
-  font-size: value(inputVol5Label);
+.inputVol5 > InputLabel,
+.labelVol5 {
+  font-size: value(inputVol5LabelRelative);
 }
 
-.selectionControlVol5 {
-  font-size: value(inputVol5SelectionControl);
+.selectionControlSize5 {
+  font-size: value(SelectionControlSize5);
 }
 
 /* = Volume 6 */
@@ -359,13 +268,14 @@
       max calc(var(--text-vol-6-max) - 0.15rem));
 }
 
-.inputVol6 > InputLabel {
-  font-size: value(inputVol6Label);
+.inputVol6 > InputLabel,
+.labelVol6 {
+  font-size: value(inputVol6LabelRelative);
 }
 
-.selectionControlVol6 {
+.selectionControlSize6 {
   font-size: 36px;
-  font-size: value(inputVol6SelectionControl);
+  font-size: value(SelectionControlSize6);
 }
 
 
@@ -379,14 +289,13 @@
  * ------------------------------------------------------------------------- */
 
 
-/* = 'Root' of the control - <span> */
-.SelectionControlRoot {
+/* = 'Root' of the control */
+.SelectionControlInputContainer {
   /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
   display: flex;
-  /* = Force hardware acceleration on... Why did I do this...? Commenting for now. */
-  /* transform: translateZ(0); */
   /* = A default, maybe we should remove it... */
   font-size: 20px;
+  line-height: 1.5;
 }
 
 
@@ -404,33 +313,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* = See below for replacement focus state, I know, I know "if we must". We must! ;-) */
-  outline: none;
   border-style: solid;
   border-width: 2px;
   border-color: #333;
   border-color: var(--color-form-selection-border);
+  /* = See below for replacement focus state replacing outline. */
+  outline: none;
 }
 
 /* = Field focus indicator, via pseudo element. */
 .SelectionControlFieldInput::after {
   -st-mixin: pseudoFocus;
 }
-
-/* = Set: Both active and focus to avoid the vanishing of the focus style when active. */
-/* .SelectionControlFieldInput:focus::after,
-.SelectionControlFieldInput:active::after {
-  -st-mixin: pseudoFocusVisible
-} */
-
-@-moz-document url-prefix() {
-  /* = See inputSelectionControl.st.css for FF issue. @stylable not picking up. */
-}
-
-/* = For future: 
- * https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/ 
- */
-
 
 /**
  * = DISABLED - COMMON

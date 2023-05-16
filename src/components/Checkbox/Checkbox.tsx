@@ -17,7 +17,7 @@ export interface CheckboxProps extends AriaCheckboxProps, ComponentBase {
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
   /** How 'loud' should this input be? */
-  vol?: Volume;
+  size?: Volume;
 }
 
 const Checkbox = forwardRef(
@@ -29,7 +29,7 @@ const Checkbox = forwardRef(
       visuallyHideLabel,
       inputPosition,
       isIndeterminate,
-      vol = 1,
+      size = 1,
       isDisabled,
       "data-id": dataId,
     } = props;
@@ -63,7 +63,7 @@ const Checkbox = forwardRef(
         isFocusVisible,
         isIndeterminate,
         validationState,
-        vol: vol ? vol : undefined,
+        size: size ? size : undefined,
       },
       classNameProp
     );
@@ -88,25 +88,14 @@ const Checkbox = forwardRef(
     }
 
     return (
-      <>
-        {children ? (
-          <Label
-            className={classNames}
-            {...{ inputControl, inputPosition }}
-            visuallyHidden={visuallyHideLabel}
-            data-id={dataId ? `${dataId}--label` : undefined}
-          >
-            {children}
-          </Label>
-        ) : (
-          <span
-            className={classNames}
-            data-id={dataId ? `${dataId}--noLabel` : undefined}
-          >
-            {inputControl}
-          </span>
-        )}
-      </>
+      <Label
+        className={classNames}
+        {...{ inputControl, inputPosition }}
+        visuallyHidden={visuallyHideLabel}
+        data-id={dataId ? `${dataId}--label` : undefined}
+      >
+        {children}
+      </Label>
     );
   }
 );

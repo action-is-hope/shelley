@@ -21,7 +21,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
     <>
       <TextField
         {...{
-          label: "Name",
+          label: "Name Name Name  Name NameName Name Name Name Name",
           vol: 1,
           placeholder: "volume 1",
         }}

@@ -155,23 +155,27 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         {...fieldContainerProps}
         className={st(classes.fieldContainer, fieldContainerProps?.className)}
       >
-        {startAdornment && (
+        {typeof startAdornment === "string" ? (
           <InputAdornment
             className={classes.startAdornment}
             data-id={dataId ? `${dataId}--start-adornment` : undefined}
           >
             {startAdornment}
           </InputAdornment>
+        ) : (
+          startAdornment
         )}
         {childrenWithProps}
-        {endAdornment && (
-          <InputAdornment
-            className={classes.endAdornment}
-            data-id={dataId ? `${dataId}--end-adornment` : undefined}
-          >
-            {endAdornment}
-          </InputAdornment>
-        )}
+        {typeof endAdornment === "string"
+          ? endAdornment && (
+              <InputAdornment
+                className={classes.endAdornment}
+                data-id={dataId ? `${dataId}--end-adornment` : undefined}
+              >
+                {endAdornment}
+              </InputAdornment>
+            )
+          : endAdornment}
         {/*  */}
         {variant && (
           <fieldset aria-hidden="true" className={classes.fieldset}>

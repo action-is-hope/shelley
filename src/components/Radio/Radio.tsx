@@ -15,8 +15,8 @@ export interface RadioProps extends AriaRadioProps, ComponentBase {
   inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
-  /** How 'loud' should this input be? */
-  vol?: Volume;
+  /** Size of the Radio input */
+  size?: Volume;
 }
 
 const Radio = forwardRef(
@@ -27,7 +27,7 @@ const Radio = forwardRef(
       // validationState,
       visuallyHideLabel,
       inputPosition,
-      vol = 1,
+      size = 1,
       isDisabled,
       "data-id": dataId,
     } = props;
@@ -56,7 +56,7 @@ const Radio = forwardRef(
         isDisabled,
         isFocusVisible,
         validationState,
-        vol: vol ? vol : undefined,
+        size: size ? size : undefined,
       },
       classNameProp
     );
@@ -73,25 +73,14 @@ const Radio = forwardRef(
     );
 
     return (
-      <>
-        {children ? (
-          <Label
-            className={classNames}
-            {...{ inputControl, inputPosition }}
-            visuallyHidden={visuallyHideLabel}
-            data-id={dataId ? `${dataId}--label` : undefined}
-          >
-            {children}
-          </Label>
-        ) : (
-          <span
-            className={classNames}
-            data-id={dataId ? `${dataId}--noLabel` : undefined}
-          >
-            {inputControl}
-          </span>
-        )}
-      </>
+      <Label
+        className={classNames}
+        {...{ inputControl, inputPosition }}
+        visuallyHidden={visuallyHideLabel}
+        data-id={dataId ? `${dataId}--label` : undefined}
+      >
+        {children}
+      </Label>
     );
   }
 );

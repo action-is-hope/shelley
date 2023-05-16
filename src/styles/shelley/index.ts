@@ -6,7 +6,6 @@ import "./helpText.st.css";
 import "./field.st.css";
 import "./grid.st.css";
 import "./textField.st.css";
-import "./label.st.css";
 import "./listBox.st.css";
 import "./listBoxOption.st.css";
 import "./menu.st.css";

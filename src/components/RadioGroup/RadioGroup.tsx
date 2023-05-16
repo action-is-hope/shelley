@@ -51,7 +51,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     label,
     labelPosition = "top",
     orientation = "vertical",
-    vol,
+    vol = 1,
     children,
     "data-id": dataId,
   } = props;

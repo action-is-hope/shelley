@@ -244,9 +244,7 @@ The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Chec
 
 ## Custom label
 
-All checkboxes must provide a label and it must be marked up properly. Either the checkbox should sit inside the label, in which case the label is implicitly associated with the checkbox. If the label is outside then it much be explicitly associated via `for` and `id` attributes.
-
-If you choose to provide your own label you will need to do the latter. _Tip_: Clicking the label should toggle the checkbox, if it doesn't then check the `for` and `id` are the same and unique.
+To customise you use any children with a custom `className`. Extending the className in your stylable file, `-st-extends: Checkbox` will give you access to the states.
 
 <Story
   name="h) Custom label"
@@ -254,8 +252,7 @@ If you choose to provide your own label you will need to do the latter. _Tip_: C
     docs: {
       source: {
         code: dedent`
-      <Checkbox id="123" />
-      <label htmlFor="123">Custom label</label>`,
+Example TBC`,
       },
     },
   }}

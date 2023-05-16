@@ -2,10 +2,7 @@
  * = Field - field.st.css
  *
  * This file applies the base styles to our form components such as 
- * inputs, textareas and selects, combo boxes, checkbox / radio groups etc.
- *
- * Most of the base styles live in the mixins so they can be shared but the 
- * variants are styled here as they are more specific to our markup.
+ * inputs, textareas and selects, comboboxes, checkbox / radio groups etc.
  * 
  * ========================================================================= */
 
@@ -15,6 +12,10 @@
   -st-default: Default;
   -st-named:
     --spacing-unit,
+    --text-vol-3-scale, --text-vol-3-max,
+    --text-vol-4-scale, --text-vol-4-max,
+    --text-vol-5-scale, --text-vol-5-max,
+    --text-vol-6-scale, --text-vol-6-max,
     --color-error,
     --color-focus,
     --color-form-base-border;
@@ -24,53 +25,84 @@
 :import {
   -st-from: "../../components/Field/field.st.css";
   -st-default: Field;
-  -st-named: fieldInput
-}
-
-:import {
-  -st-from: "../../components/InputAdornment/inputAdornment.st.css";
-  -st-default: Adornment;
 }
 
 /* = Mixins */
 :import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
-    textualFieldRoot,
-    textualFieldContainer,
-    startFieldIndicatorHasError,
-    startFieldIndicator,
-    textualFieldInput,
+    hideWebkitAppearance,
     disabledField,
     inputVol1,
     inputVol2,
     inputVol3,
     inputVol4,
     inputVol5,
-    inputVol6,
-    label;
+    inputVol6;
+}
+
+/* = Mixins & Utils */
+
+:import {
+  -st-from: "../formatters/common";
+  -st-named: respScale;
 }
 
 @st-scope Default {
 
   /*==== BASE ====*/
 
+  /* 
+  * Field ships with some minimal styles to get some of the 
+  * prop values working to a point, including some of the stuff 
+  * enabling labelPosition(over). 
+  * 
+  * By default a grid layout is provided for all labelPosition's,
+  * you could deviate from grid but just know to adjust the default 
+  * values mentioned aove. 
+  * 
+  * Default styles can be found via inspector or direct link:
+  * https://github.com/action-is-hope/shelley/blob/main/src/components/Field/field.st.css
+  *
+  */
+
   Field {
-    -st-mixin: textualFieldRoot;
+    /* defaults to display->grid, align->center. */
   }
 
   Field::fieldContainer {
-    -st-mixin: textualFieldContainer;
+    /* defaults to display->inline-flex, position->relative. */
   }
 
-  /* = Native input field. */
+  Field::inputLabel {
+    font-weight: 400;
+    font-size: 1em;
+  }
+
+  /* = Native input field - just resets and genenics, padding etc. */
   Field::fieldInput {
-    -st-mixin: textualFieldInput;
+    -st-mixin: hideWebkitAppearance;
+    background: none;
+    color: currentColor;
+    resize: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: calc(0.2rem + 0.2em) var(--spacing-unit);
+    border: none;
+    font: inherit;
+    line-height: 1.5;
   }
 
-  /* = Use a named import as a class to get the adjacent selectors working. */
-  Field Adornment + .fieldInput,
-  Field::fieldInput + Adornment {
+  /* = Pulls the input towards the adornments cancelling out the input padding. */
+  Field::startAdornment {
+    /*rtl*/
+    margin-right: calc(-.2rem - var(--spacing-unit));
+  }
+
+  Field::endAdornment {
+    /*rtl*/
     margin-left: calc(-.2rem - var(--spacing-unit));
   }
 
@@ -137,11 +169,36 @@
 
   /*==== VARIANTS ====*/
 
-  /* Over */
+  /* = labelPosition */
+
+  /* = Over */
+  /* Setting this up is fiddly expecially with scaling fonts, be patient :-) */
   Field:labelPosition(over)::inputLabel {
-    -st-mixin: label;
-    transform: translate(0.7rem, 8px) scale(1);
+    /* Ensure the label->over to be the same size as the input text - 1em. */
+    font-size: 1em;
+    /* This should match the form fields. */
+    line-height: 1.5em;
+    /* 
+    * This isn't scientific in the slightest! I just fiddled with the 
+    * variable values until I found a universal vertical movement that 
+    * aligned with the placeholder for all the volume sizes we have set,
+    * that way we don't have to set one for each volume. 
+    */
+    transform: translate(0.7rem, calc(50% - .5em + 3.5px)) scale(1);
   }
+
+  /*
+  * If you change the font-sizes you will likely need to tweak the above 
+  * transform(X, Y) Y value. To help you out it is helful to set the
+  * placeholder to be visible whilst you hone in the value, like so:
+  */
+  /* 
+    Field:labelPosition(over)::inputLabel,
+    Field:labelPosition(over)::inputLabel {
+      opacity: 1;
+      color: blueviolet;
+    } 
+  */
 
   Field:labelPosition(over)::helpText {
     padding: 0 var(--spacing-unit);
@@ -149,13 +206,13 @@
 
   Field:labelPosition(over):focus-within::inputLabel,
   Field:labelPosition(over):hasValue::inputLabel {
-    transform: translate(0.7rem, -0.73em);
+    transform: translate(0.7rem, -0.6em) scale(0.75);
   }
 
   Field:labelPosition(over)::legend {}
 
 
-  /* Side */
+  /* = Side */
   Field:labelPosition(side) {
     column-gap: var(--spacing-unit);
   }
@@ -165,7 +222,7 @@
     text-align: end;
   }
 
-  /* Top */
+  /* = Top */
 
   Field:labelPosition(top)::inputLabel {
     margin-bottom: calc(var(--spacing-unit) / 2);
@@ -174,24 +231,53 @@
 
   /*==== VARIANTS ====*/
 
-  /* = Variant - "quiet" */
-  /* Field:variant(quiet) + Field:variant(quiet) {
-    margin-top: calc(var(--spacing-unit) * 1)
-  } */
+  /* = Quiet */
 
-  Field:variant(quiet)::fieldContainer {
-    -st-mixin: startFieldIndicator;
+  /**
+   * 'quiet' is a dulled down field so we are creating indicator 
+   * bars for the sides. */
+  Field:variant(quiet)::fieldContainer::before,
+  Field:variant(quiet)::fieldContainer::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    content: "";
+    width: 1px;
+    transition: background-color 0.3s;
+    background-color: var(--color-form-base-border);
   }
 
-  Field:variant(quiet):error::fieldContainer {
-    -st-mixin: startFieldIndicatorHasError
+  Field:variant(quiet)::fieldContainer::before {
+    display: block;
+    left: 0;
+  }
+
+  Field:variant(quiet)::fieldContainer::after {
+    right: 0;
+    /* = Only to show the first edge indicator by default - host components may apply . */
+    display: none;
+  }
+
+  Field:variant(quiet)::fieldContainer:focus-within::before,
+  Field:variant(quiet)::fieldContainer:focus-within::after {
+    /* = Adjust the pseudo feild indicators to cater for custom focus style. */
+    opacity: 1;
+    /* = The glow from the box-shadow means we don't want the width to be too 'chunky'. */
+    width: 0;
+    /* = Give us that 'glow' effect for the focused state.*/
+    box-shadow: 0 0 1px 1px var(--color-focus);
+  }
+
+  Field:variant(quiet):error::fieldContainer::before,
+  Field:variant(quiet):error::fieldContainer::after {
+    background-color: var(--color-error);
   }
 
   Field:variant(quiet)::fieldset {
     border-color: transparent;
   }
 
-  /* = Variant - "Outlined" */
+  /* = Outlined */
 
   Field:variant(outlined)::fieldset {
     border-color: var(--color-form-base-border);
@@ -203,20 +289,14 @@
   }
 
   Field:variant(outlined):error::fieldset {
-    border-left-color: transparent;
-    box-shadow: -1px 0 0px 0px var(--color-error);
+    border-color: var(--color-error);
   }
 
   Field:variant(outlined):focus-within::fieldset {
-    border-left-color: transparent;
-    box-shadow: -1px 0 0px 0px var(--color-focus);
+    border-color: var(--color-focus);
   }
 
-  Field:variant(outlined):focus-within::fieldContainer {
-    box-shadow: 1px 0 0px 0px var(--color-focus);
-  }
-
-  /* = Variant - "Filled" */
+  /* = Filled */
 
   Field:variant(filled)::fieldset {
     border-color: transparent;
@@ -232,17 +312,10 @@
   }
 
   Field:variant(filled):error::fieldset {
-    border-left-color: transparent;
-    box-shadow: -1px 0 0px 0px var(--color-error);
+    border-color: var(--color-error);
   }
 
   Field:variant(filled):focus-within::fieldset {
-    border-left-color: transparent;
-    box-shadow: -1px 0 0px 0px var(--color-focus);
+    border-color: var(--color-focus);
   }
-
-  Field:variant(filled):focus-within::fieldContainer {
-    box-shadow: 1px 0 0px 0px var(--color-focus);
-  }
-
 }

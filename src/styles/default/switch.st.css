@@ -9,7 +9,7 @@
 :import {
   -st-from: './mixins/formElements.st.css';
   -st-named:
-    SelectionControlRoot,
+    SelectionControlInputContainer,
     SelectionControlFieldInput,
     SwitchFieldInput,
     inputVol1,
@@ -18,12 +18,12 @@
     inputVol4,
     inputVol5,
     inputVol6,
-    selectionControlVol1,
-    selectionControlVol2,
-    selectionControlVol3,
-    selectionControlVol4,
-    selectionControlVol5,
-    selectionControlVol6;
+    selectionControlSize1,
+    selectionControlSize2,
+    selectionControlSize3,
+    selectionControlSize4,
+    selectionControlSize5,
+    selectionControlSize6;
 }
 
 @st-scope Default {
@@ -39,7 +39,7 @@
   }
 
   Switch::inputContainer {
-    -st-mixin: SelectionControlRoot;
+    -st-mixin: SelectionControlInputContainer;
   }
 
   Switch::input {
@@ -62,7 +62,7 @@
   }
 
   Switch:vol(1)::inputContainer {
-    -st-mixin: selectionControlVol1
+    -st-mixin: selectionControlSize1
   }
 
   /* = Volume 2 */
@@ -71,7 +71,7 @@
   }
 
   Switch:vol(2)::inputContainer {
-    -st-mixin: selectionControlVol2;
+    -st-mixin: selectionControlSize2;
   }
 
   /* = Volume 3 */
@@ -80,7 +80,7 @@
   }
 
   Switch:vol(3)::inputContainer {
-    -st-mixin: selectionControlVol3
+    -st-mixin: selectionControlSize3
   }
 
   /* = Volume 4 */
@@ -89,7 +89,7 @@
   }
 
   Switch:vol(4)::inputContainer {
-    -st-mixin: selectionControlVol4
+    -st-mixin: selectionControlSize4
   }
 
   /* = Volume 5 */
@@ -98,7 +98,7 @@
   }
 
   Switch:vol(5)::inputContainer {
-    -st-mixin: selectionControlVol5
+    -st-mixin: selectionControlSize5
   }
 
   /* = Volume 6 */
@@ -107,7 +107,7 @@
   }
 
   Switch:vol(6)::inputContainer {
-    -st-mixin: selectionControlVol6
+    -st-mixin: selectionControlSize6
   }
 
   Checkbox Icon {
