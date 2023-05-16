@@ -136,11 +136,7 @@ describe("Text", () => {
           </P>
 
           <P>
-            The cryosphere refers to frozen components of the Earth system. Around 10%
-            of Earth's land area is covered by glaciers or ice sheets. The ocean and
-            cryosphere support unique habitats, and are interconnected with other
-            components of the climate system through global exchange of water, energy
-            and carbon.
+            The cryosphere refers to frozen components of the Earth system. Around 10% of Earth&apos;s land area is covered by glaciers or ice sheets. The ocean and cryosphere support unique habitats, and are interconnected with other components of the climate system through global exchange of water, energy and carbon.
           </P>
         </Text>
       )
