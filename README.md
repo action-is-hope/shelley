@@ -1,6 +1,27 @@
-# Shelley
+<p align="center">
+  <a href="https://www.shelley.earth">
+    <img width="250px" src="">
+  </a>
+</p>
 
-[![Main workflow](https://github.com/action-is-hope/shelley/actions/workflows/main.yml/badge.svg)](https://github.com/action-is-hope/shelley)
+<h1 align="center">S H E L L E Y</h1>
+
+[![Known Vulnerabilities](https://snyk.io/test/github/action-is-hope/shelley/badge.svg)](https://snyk.io/test/github/action-is-hope/shelley)
+[![Build Status](https://github.com/action-is-hope/shelley/actions/workflows/main.yml/badge.svg)](https://github.com/action-is-hope/shelley)
+[![codecov](https://codecov.io/gh/action-is-hope/shelley/branch/main/graph/badge.svg?token=xxxx)](https://codecov.io/gh/action-is-hope/shelley)
+[![Contributions Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+
+## Overview
+
+## Usage
+
+## Docs
+
+To read the documentation, please visit our [Documentation]](DOCUMENTATION.md)
+
+## Contributing
+
+[Contributing](CONTRIBUTING.md)
 
 ## Development
 
