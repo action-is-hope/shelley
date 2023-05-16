@@ -151,7 +151,5 @@ describe("Text", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-
 });
 
