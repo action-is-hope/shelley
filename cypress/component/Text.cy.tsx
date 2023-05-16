@@ -1,7 +1,7 @@
 import React from "react";
-import { P } from "../../src/indexLib";
+import { P, Text } from "../../src/indexLib";
 
-describe("Basic Text", () => {
+describe("P", () => {
   it("P Uppercase.", () => {
     cy.mount(<P uppercase>I am Groot</P>);
     cy.get('p')
@@ -10,4 +10,70 @@ describe("Basic Text", () => {
       .should("have.attr", "class")
       .and("to.have.string", "uppercase");
   });
+  it("P truncate", () => {
+    cy.mount(
+    <P truncate>
+      All people on Earth depend directly or indirectly on the ocean and
+      cryosphere. The global ocean covers 71% of the Earth surface and contains
+      about 97% of the Earth's water.
+    </P>
+    );
+    cy.get('p')
+      .contains('All people on Earth depend directly or indirectly on the ocean and cryosphere. The global ocean covers 71% of the Earth surface and contains about 97% of the Earth\'s water.')
+      .should('have.css', 'overflow', 'hidden')
+      .and('have.css', '-webkit-line-clamp', '1')
+      .should("have.attr", "class")
+      .and("to.have.string", "truncate");
+  });
+});
+
+describe("Text", () => {
+  it("Text Uppercase.", () => {
+    cy.mount(<Text as="div" uppercase>I am Groot</Text>);
+    cy.get('div')
+      .contains('I am Groot')
+      .should('have.css', 'text-transform', 'uppercase')
+      .should("have.attr", "class")
+      .and("to.have.string", "uppercase");
+  });
+  it("Text truncate", () => {
+    cy.mount(
+    <Text as="div" truncate>
+      All people on Earth depend directly or indirectly on the ocean and
+      cryosphere. The global ocean covers 71% of the Earth surface and contains
+      about 97% of the Earth's water.
+    </Text>
+    );
+    cy.get('div')
+      .contains('All people on Earth depend directly or indirectly on the ocean and cryosphere. The global ocean covers 71% of the Earth surface and contains about 97% of the Earth\'s water.')
+      .should('have.css', 'overflow', 'hidden')
+      .and('have.css', '-webkit-line-clamp', '1')
+      .should("have.attr", "class")
+      .and("to.have.string", "truncate");
+  });
+
+  it("Text truncate", () => {
+    cy.mount(
+      <Text as="div" truncate={6} vol={false}>
+        <P>
+          All people on Earth depend directly or indirectly on the ocean and
+          cryosphere. The global ocean covers 71% of the Earth surface and contains
+          about 97% of the Earth's water.
+        </P>
+
+        <P>
+          The cryosphere refers to frozen components of the Earth system. Around 10%
+          of Earth's land area is covered by glaciers or ice sheets. The ocean and
+          cryosphere support unique habitats, and are interconnected with other
+          components of the climate system through global exchange of water, energy
+          and carbon.
+        </P>
+      </Text>
+    );
+    cy.get('div')
+      .contains('All people on Earth depend directly or indirectly on the ocean and cryosphere. The global ocean covers 71% of the Earth surface and contains about 97% of the Earth\'s water.')
+      .parents().should('have.css', '-webkit-line-clamp', '6')
+      .should("have.attr", "class").and("to.have.string", "truncate");
+  });
+
 });
