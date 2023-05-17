@@ -51,7 +51,22 @@ it("tab description should render correctly", () => {
   cy.get(tabPanel).should("exist").and("have.text", "Tab description 3");
 });
 
-// Orientation
-// it("", () => {
+// Orientation check
 
-// })
+it("renders orientation correctly", () => {
+  cy.mount(<TabsExample orientation="vertical" />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "vertical");
+  cy.mount(<TabsExample orientation="horizontal" />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "horizontal");
+});
+
+// Class name checks
+
+it("renders with correct class names", () => {
+  cy.mount(<TabsExample />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "tabs");
+  cy.get(tabPanel)
+    .should("have.attr", "class")
+    .and("to.have.string", "tabPanel");
+  cy.get(tabItem).should("have.attr", "class").and("to.have.string", "tab");
+});
