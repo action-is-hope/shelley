@@ -1,20 +1,42 @@
-import type React from "react";
-import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
-import type { MergeElementProps } from "../utils";
-import type { ComponentBase, TextInputType } from "../types";
-import { Field, FieldProps } from "../Field/Field";
-import { useTextField } from "react-aria";
-import type { AriaTextFieldProps } from "@react-types/textfield";
+import { forwardRef, useRef } from "react";
+import type { AriaToastProps } from "@react-aria/toast";
+import type { ToastState } from "@react-stately/toast";
+import { useToast } from "@react-aria/toast";
 
-import { st, classes } from "./toast.st.css";
+import Button from "../Button/Button";
+import { classes } from "./toast.st.css";
 
-interface ToastProps {
-  type: "success" | "error" | "warning" | "info";
+// interface ToastProps {
+//   type: "success" | "error" | "warning" | "info";
+// }
+
+// const Toast = (props: ToastProps, ref?: Ref<HTMLDivElement>) => {
+//   return <div ref={ref}>{`Toast - type: ${props.type} `}</div>;
+// };
+
+interface ToastProps<T> extends AriaToastProps<T> {
+  state: ToastState<T>;
+  toast: {
+    content: T;
+    key: string;
+  };
 }
 
-const Toast = (props: ToastProps, ref?: Ref<HTMLDivElement>) => {
-  return <div ref={ref}>{`Toast - type: ${props.type} `}</div>;
-};
+function Toast<T>({ state, ...props }: ToastProps<T>) {
+  const ref = useRef(null);
+  const { toastProps, titleProps, closeButtonProps } = useToast(
+    props,
+    state,
+    ref
+  );
 
-const _ToastWithForwardRef = forwardRef<HTMLDivElement, ToastProps>(Toast);
-export { _ToastWithForwardRef as Toast };
+  return (
+    <div {...toastProps} ref={ref} className={classes.toast}>
+      <div {...titleProps}>{props.toast.content}</div>
+      <Button {...closeButtonProps}>X</Button>
+    </div>
+  );
+}
+
+const _Toast = forwardRef<HTMLDivElement, ToastProps<any>>(Toast);
+export { _Toast as Toast };

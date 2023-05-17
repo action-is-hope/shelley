@@ -2,7 +2,7 @@ import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { Toast } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { ToastSuccess } from "./Toast.examples";
+import { ToastProviderExample } from "./Toast.examples";
 
 <Meta title="Navigation/Toast" component={Toast} />
 
@@ -23,20 +23,22 @@ This example displays a toast.
 
 <Preview>
   <Story
-    name="a) Toast success"
-    args={{ type: "success" }}
+    name="a) Toast Provider"
+    args={{}}
     parameters={{
       docs: {
         source: {
           code: dedent`
-<Toast type="success">
-  
-</Toast>`,
+    <ToastProvider>
+      {(state) => (
+        <button onClick={() => state.add("Toast is done!")}>Show toast</button>
+      )}
+    </ToastProvider>`,
         },
       },
     }}
   >
-    <ToastSuccess />
+    <ToastProviderExample />
   </Story>
 </Preview>
 

@@ -60,6 +60,10 @@ export { default as TablePagination } from "./components/TablePagination/TablePa
 export * from "./components/TablePagination/TablePagination";
 export { Toast } from "./components/Toast/Toast";
 export * from "./components/Toast/Toast";
+export { ToastProvider } from "./components/Toast/ToastProvider";
+export * from "./components/Toast/ToastProvider";
+export { ToastRegion } from "./components/Toast/ToastRegion";
+export * from "./components/Toast/ToastRegion";
 export { default as Toolbar } from "./components/Toolbar/Toolbar";
 export * from "./components/Toolbar/Toolbar";
 export { default as VisuallyHidden } from "./components/VisuallyHidden/VisuallyHidden";

@@ -50,6 +50,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@react-aria/toast": "^3.0.0-beta.0",
     "@react-aria/utils": "^3.16.0",
     "@react-stately/tree": "^3.6.0",
     "@react-types/menu": "^3.9.0",

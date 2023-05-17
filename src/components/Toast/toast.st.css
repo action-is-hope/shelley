@@ -1,0 +1,40 @@
+.toast-region {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: slateblue;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.toast button {
+  background: none;
+  border: none;
+  appearance: none;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  font-size: 16px;
+  border: 1px solid white;
+  color: white;
+  padding: 0;
+}
+
+.toast button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px slateblue, 0 0 0 4px white;
+}
+
+.toast button:active {
+  background: rgba(255, 255, 255, 0.2);
+}
