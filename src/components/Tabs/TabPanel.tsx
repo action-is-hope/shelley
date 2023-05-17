@@ -26,8 +26,6 @@ function TabPanel<T extends object>({
   );
 }
 
-// export default TabPanel;
-
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 const _TabPanel = forwardRef(TabPanel) as <T>(
