@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Item, TabsProps } from "../../src/indexLib";
+import { Tabs, Item } from "../../src/indexLib";
 
 const tabs = '[data-id="tabs"]';
 const tabPanel = '[data-id="tabs-tab-panel"]';
@@ -31,17 +31,31 @@ describe("Basic Tabs", () => {
 it("tabs are disabled", () => {
   cy.mount(<TabsExample isDisabled />);
   cy.get(tabItem).should("have.attr", "aria-disabled");
+  cy.get(tabItem)
+    .should("have.attr", "class")
+    .and("to.have.string", "isDisabled");
 });
 
-// Click check
+// Selected tab
 
-it("tab can be selected", () => {
+it("selected tab renders aria-selected and isSelected class", () => {
   cy.mount(<TabsExample />);
   cy.get(tabItem).realClick();
   cy.get(tabItem).should("have.attr", "aria-selected");
+  cy.get(tabItem)
+    .should("have.attr", "class")
+    .and("to.have.string", "isSelected");
 });
 
-// Tab selection and tab description match
+// it("selected tab renders isPressed class while pressed", () => {
+//   cy.mount(<TabsExample />);
+//   cy.get(`${tabItem}:first-child`).click({ release: false });
+//   cy.get(`${tabItem}:first-child`)
+//     .should("have.attr", "class")
+//     .and("to.have.string", "isPressed");
+// });
+
+// Selected tab title and description match
 
 it("tab description should render correctly", () => {
   cy.mount(<TabsExample />);
@@ -49,6 +63,13 @@ it("tab description should render correctly", () => {
   cy.get(tabPanel).should("exist").and("have.text", "Tab description 1");
   cy.get(`${tabItem}:last-child`).realClick();
   cy.get(tabPanel).should("exist").and("have.text", "Tab description 3");
+});
+
+// Orientation horizontal by default
+
+it("orientation is horizontal by default", () => {
+  cy.mount(<TabsExample />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "horizontal");
 });
 
 // Orientation check
@@ -69,4 +90,18 @@ it("renders with correct class names", () => {
     .should("have.attr", "class")
     .and("to.have.string", "tabPanel");
   cy.get(tabItem).should("have.attr", "class").and("to.have.string", "tab");
+});
+
+// Volume check
+
+it("renders volume 1 class by default", () => {
+  cy.mount(<TabsExample />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "vol-1-1");
+});
+
+it("renders correct volume class", () => {
+  cy.mount(<TabsExample vol={2} />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "vol-1-2");
+  cy.mount(<TabsExample vol={3} />);
+  cy.get(tabs).should("have.attr", "class").and("to.have.string", "vol-1-3");
 });
