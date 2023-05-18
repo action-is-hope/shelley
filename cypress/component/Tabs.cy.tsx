@@ -9,9 +9,15 @@ const tabItem = '[data-id="tabs-tab-item"]';
 export const TabsExample = (args) => {
   return (
     <Tabs aria-label="Dynamic tabs" data-id="tabs" {...args}>
-      <Item title="Tab title 1">Tab description 1</Item>
-      <Item title="Tab title 2">Tab description 2</Item>
-      <Item title="Tab title 3">Tab description 3</Item>
+      <Item key="tab1" title="Tab title 1">
+        Tab description 1
+      </Item>
+      <Item key="tab2" title="Tab title 2">
+        Tab description 2
+      </Item>
+      <Item key="tab3" title="Tab title 3">
+        Tab description 3
+      </Item>
     </Tabs>
   );
 };
@@ -19,33 +25,66 @@ export const TabsExample = (args) => {
 // Basic test to see if tabs render correctly
 
 describe("Basic Tabs", () => {
-  it("renders working tabs, tabPanel and tabItem.", () => {
+  it("renders working tabs, tabPanel, tabList and tabItem.", () => {
     cy.mount(<TabsExample />);
     cy.get(tabs).should("exist");
     cy.get(tabPanel).should("exist");
+    cy.get(tabList).should("exist");
     cy.get(tabItem).should("exist");
   });
 });
 
+// Role check
+
+it("renders correct role attributes", () => {
+  cy.mount(<TabsExample />);
+  cy.get(tabItem).should("have.attr", "role").and("to.have.string", "tab");
+  cy.get(tabList).should("have.attr", "role").and("to.have.string", "tablist");
+  cy.get(tabPanel)
+    .should("have.attr", "role")
+    .and("to.have.string", "tabpanel");
+});
+
 // Disabled tabs
 
-it("tabs are disabled", () => {
+it("renders disabled tabs", () => {
   cy.mount(<TabsExample isDisabled />);
-  cy.get(tabItem).should("have.attr", "aria-disabled");
   cy.get(tabItem)
+    .should("have.attr", "aria-disabled")
+    .and("to.have.string", "true");
+  cy.get(tabItem)
+    .should("have.attr", "class")
+    .and("to.have.string", "isDisabled");
+});
+
+it("renders disabled item", () => {
+  cy.mount(<TabsExample disabledKeys={["tab2"]} />);
+  cy.get('[data-key="tab2"]')
+    .should("have.attr", "aria-disabled")
+    .and("to.have.string", "true");
+  cy.get('[data-key="tab2"]')
+    .should("have.attr", "aria-selected")
+    .and("to.have.string", "false");
+  cy.get('[data-key="tab2"]')
     .should("have.attr", "class")
     .and("to.have.string", "isDisabled");
 });
 
 // Selected tab
 
-it("selected tab renders aria-selected and isSelected class", () => {
+it("selected tab renders aria-selected, isSelected class and tabindex 0", () => {
   cy.mount(<TabsExample />);
   cy.get(tabItem).realClick();
-  cy.get(tabItem).should("have.attr", "aria-selected");
+  cy.get(tabItem)
+    .should("have.attr", "aria-selected")
+    .and("to.have.string", "true");
   cy.get(tabItem)
     .should("have.attr", "class")
     .and("to.have.string", "isSelected");
+  cy.get(tabItem).should("have.attr", "tabindex").and("to.have.string", "0");
+  cy.get(`${tabItem}:nth-child(2)`)
+    .should("have.attr", "tabindex")
+    .and("to.have.string", "-1");
 });
 
 // it("selected tab renders isPressed class while pressed", () => {
