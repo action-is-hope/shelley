@@ -89,18 +89,17 @@ describe("Basic Tabs", () => {
       .and("to.have.string", "-1");
   });
 
+  //  I can't find a solution for this
+
   // it("selected tab renders isPressed class while pressed", () => {
   //   cy.mount(<TabsExample />);
   //   cy.get(tabItem)
   //     .eq(1)
-  //     // .click({ force: true, release: false })
-  //     .trigger("mousedown");
-  //   cy.wait(5000);
-  //   cy.get(tabItem)
-  //     .eq(1)
+  //     .trigger("mousedown", {
+  //       button: 0,
+  //     })
   //     .should("have.attr", "class")
-  //     .and("to.have.string", "isPressed")
-  //     .trigger("mouseup");
+  //     .and("to.have.string", "isPressed");
   // });
 
   // Selected tab title and description match
@@ -108,13 +107,13 @@ describe("Basic Tabs", () => {
   it("tab description should render correctly", () => {
     cy.mount(<TabsExample />);
     // Tab 1
-    cy.get(tabItem).eq(0).click();
+    cy.get(tabItem).eq(0).realClick();
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
     // Tab 2
-    cy.get(tabItem).eq(1).click();
+    cy.get(tabItem).eq(1).realClick();
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
     // Tab 3
-    cy.get(tabItem).eq(2).click();
+    cy.get(tabItem).eq(2).realClick();
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 3");
   });
 
@@ -256,19 +255,19 @@ describe("Dynamically Added Tabs", () => {
     // Mount the Dynamic Tabs this time
     cy.mount(<DynamicTabs />);
     // Check the first two tabs exist
-    cy.get(tabItem).eq(0).click();
+    cy.get(tabItem).eq(0).realClick();
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
-    cy.get(tabItem).eq(1).click();
+    cy.get(tabItem).eq(1).realClick();
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
     // Add new tabs
-    cy.get(addTabButton).click();
+    cy.get(addTabButton).realClick();
     // Select dynamically added tab
-    cy.get(tabItem).eq(2).click();
+    cy.get(tabItem).eq(2).realClick();
     // Tab description 3 added dynamically
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 3");
     // Add one more tab
-    cy.get(addTabButton).click();
-    cy.get(tabItem).eq(3).click();
+    cy.get(addTabButton).realClick();
+    cy.get(tabItem).eq(3).realClick();
     // Tab description 4 added dynamically
     cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 4");
     // Remove tabs
