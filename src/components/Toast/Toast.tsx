@@ -32,8 +32,7 @@ function Toast<T>({ state, ...props }: ToastProps<T>) {
     <div
       {...toastProps}
       ref={ref}
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      className={`${classes.toast} ${priorityClassName}`}
+      className={`${classes.toast} ${priorityClassName || ""}`}
     >
       <div {...titleProps}>{props.toast.content}</div>
       <Button {...closeButtonProps}>X</Button>
