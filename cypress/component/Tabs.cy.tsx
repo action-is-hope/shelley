@@ -58,14 +58,15 @@ it("renders disabled tabs", () => {
 });
 
 it("renders disabled item", () => {
+  const disabledItem = '[data-key="tab2"]';
   cy.mount(<TabsExample disabledKeys={["tab2"]} />);
-  cy.get('[data-key="tab2"]')
+  cy.get(disabledItem)
     .should("have.attr", "aria-disabled")
     .and("to.have.string", "true");
-  cy.get('[data-key="tab2"]')
+  cy.get(disabledItem)
     .should("have.attr", "aria-selected")
     .and("to.have.string", "false");
-  cy.get('[data-key="tab2"]')
+  cy.get(disabledItem)
     .should("have.attr", "class")
     .and("to.have.string", "isDisabled");
 });
@@ -89,20 +90,31 @@ it("selected tab renders aria-selected, isSelected class and tabindex 0", () => 
 
 // it("selected tab renders isPressed class while pressed", () => {
 //   cy.mount(<TabsExample />);
-//   cy.get(`${tabItem}:first-child`).click({ release: false });
-//   cy.get(`${tabItem}:first-child`)
+//   cy.get(tabItem)
+//     .eq(1)
+//     // .click({ force: true, release: false })
+//     .trigger("mousedown");
+//   cy.wait(5000);
+//   cy.get(tabItem)
+//     .eq(1)
 //     .should("have.attr", "class")
-//     .and("to.have.string", "isPressed");
+//     .and("to.have.string", "isPressed")
+//     .trigger("mouseup");
 // });
 
 // Selected tab title and description match
 
 it("tab description should render correctly", () => {
   cy.mount(<TabsExample />);
-  cy.get(`${tabItem}:first-child`).realClick();
-  cy.get(tabPanel).should("exist").and("have.text", "Tab description 1");
-  cy.get(`${tabItem}:last-child`).realClick();
-  cy.get(tabPanel).should("exist").and("have.text", "Tab description 3");
+  // Tab 1
+  cy.get(tabItem).eq(0).click();
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
+  // Tab 2
+  cy.get(tabItem).eq(1).click();
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
+  // Tab 3
+  cy.get(tabItem).eq(2).click();
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 3");
 });
 
 // Orientation horizontal by default
@@ -154,4 +166,22 @@ it("renders correct volume class", () => {
   cy.get(tabs).should("have.attr", "class").and("to.have.string", "vol-1-2");
   cy.mount(<TabsExample vol={3} />);
   cy.get(tabs).should("have.attr", "class").and("to.have.string", "vol-1-3");
+});
+
+// Keyboard and focus check
+
+it("user can navigate with arrow keys", () => {
+  cy.mount(<TabsExample />);
+
+  cy.get(tabItem).eq(0).focus().type("{rightarrow}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
+
+  cy.get(tabItem).eq(1).focus().type("{rightarrow}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 3");
+
+  cy.get(tabItem).eq(2).focus().type("{leftarrow}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
+
+  cy.get(tabItem).eq(1).focus().type("{leftarrow}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
 });
