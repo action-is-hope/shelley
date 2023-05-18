@@ -2,7 +2,11 @@ import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { Toast } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
-import { ToastProviderExample } from "./Toast.examples";
+import {
+  ToastProviderBasic,
+  ToastProviderPriority,
+  ToastProviderAutoDismiss,
+} from "./Toast.examples";
 
 <Meta title="Navigation/Toast" component={Toast} />
 
@@ -23,7 +27,7 @@ This example displays a toast.
 
 <Preview>
   <Story
-    name="a) Toast Provider"
+    name="a) Toast Basic"
     args={{}}
     parameters={{
       docs: {
@@ -31,14 +35,99 @@ This example displays a toast.
           code: dedent`
     <ToastProvider>
       {(state) => (
-        <button onClick={() => state.add("Toast is done!")}>Show toast</button>
+        <>
+          <Button
+            onClick={() => state.add("New toast")}
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
       )}
     </ToastProvider>`,
         },
       },
     }}
   >
-    <ToastProviderExample />
+    <ToastProviderBasic />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
+
+## Example
+
+This example displays a toast.
+
+<Preview>
+  <Story
+    name="b) Toast Priority"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() => state.add("Toasting...! (1)", { priority: 1 })}
+            style={{ margin: "16px" }}
+          >
+            Low priority(1) - info or success
+          </Button>
+          <Button
+            onClick={() => state.add("Toast is done! (2)", { priority: 2 })}
+            style={{ margin: "16px" }}
+          >
+            Medium priority(2) - warning
+          </Button>
+          <Button
+            onClick={() => state.add("Toast is burnt! (3)", { priority: 3 })}
+            style={{ margin: "16px" }}
+          >
+            High priority(3) - error
+          </Button>
+        </>
+      )}
+    </ToastProvider>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderPriority />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
+
+This example displays a toast.
+
+<Preview>
+  <Story
+    name="c) Auto Dismiss"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() => state.add("New toast", { timeout: 5000 })}
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
+      )}
+    </ToastProvider>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderAutoDismiss />
   </Story>
 </Preview>
 
