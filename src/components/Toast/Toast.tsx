@@ -26,7 +26,7 @@ function Toast<T>({ state, ...props }: ToastProps<T>) {
     classes.error,
   ];
 
-  const priorityClassName = priorityClassNames[props.toast.priority as number];
+  const priorityClassName = priorityClassNames[props.toast.priority || 0];
 
   return (
     <div
