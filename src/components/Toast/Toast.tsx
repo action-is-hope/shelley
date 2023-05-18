@@ -9,13 +9,6 @@ import { classes } from "./toast.st.css";
 interface ToastProps<T> extends AriaToastProps<T> {
   state: ToastState<T>;
   toast: QueuedToast<T>;
-  // toast: {
-  //   animation?: "entering" | "queued" | "exiting" | undefined;
-  //   content: T;
-  //   key: string;
-  //   priority: number | undefined;
-  //   timer: Timer | undefined;
-  // };
 }
 
 function Toast<T>({ state, ...props }: ToastProps<T>) {
