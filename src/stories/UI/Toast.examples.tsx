@@ -26,10 +26,16 @@ export const ToastProviderPriority = () => {
         return (
           <>
             <Button
+              onClick={() => state.add("Bread can be toasted.")}
+              style={{ margin: "16px" }}
+            >
+              No priority - info
+            </Button>
+            <Button
               onClick={() => state.add("Toasting...! (1)", { priority: 1 })}
               style={{ margin: "16px" }}
             >
-              Low priority(1) - info or success
+              Low priority(1) - success
             </Button>
             <Button
               onClick={() => state.add("Toast is done! (2)", { priority: 2 })}
