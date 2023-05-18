@@ -3,6 +3,7 @@ import { Tabs, Item } from "../../src/indexLib";
 
 const tabs = '[data-id="tabs"]';
 const tabPanel = '[data-id="tabs-tab-panel"]';
+const tabList = '[data-id="tabs-tab-list"]';
 const tabItem = '[data-id="tabs-tab-item"]';
 
 export const TabsExample = (args) => {
@@ -70,6 +71,9 @@ it("tab description should render correctly", () => {
 it("orientation is horizontal by default", () => {
   cy.mount(<TabsExample />);
   cy.get(tabs).should("have.attr", "class").and("to.have.string", "horizontal");
+  cy.get(tabList)
+    .should("have.attr", "aria-orientation")
+    .and("to.have.string", "horizontal");
 });
 
 // Orientation check
@@ -77,8 +81,14 @@ it("orientation is horizontal by default", () => {
 it("renders orientation correctly", () => {
   cy.mount(<TabsExample orientation="vertical" />);
   cy.get(tabs).should("have.attr", "class").and("to.have.string", "vertical");
+  cy.get(tabList)
+    .should("have.attr", "aria-orientation")
+    .and("to.have.string", "vertical");
   cy.mount(<TabsExample orientation="horizontal" />);
   cy.get(tabs).should("have.attr", "class").and("to.have.string", "horizontal");
+  cy.get(tabList)
+    .should("have.attr", "aria-orientation")
+    .and("to.have.string", "horizontal");
 });
 
 // Class name checks
@@ -89,6 +99,7 @@ it("renders with correct class names", () => {
   cy.get(tabPanel)
     .should("have.attr", "class")
     .and("to.have.string", "tabPanel");
+  cy.get(tabList).should("have.attr", "class").and("to.have.string", "tabList");
   cy.get(tabItem).should("have.attr", "class").and("to.have.string", "tab");
 });
 
