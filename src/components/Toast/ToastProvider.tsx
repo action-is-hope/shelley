@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import type { ReactNode } from "react";
 import { useToastState } from "@react-stately/toast";
 import { ToastRegion } from "./ToastRegion";
