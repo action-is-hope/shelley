@@ -185,3 +185,18 @@ it("user can navigate with arrow keys", () => {
   cy.get(tabItem).eq(1).focus().type("{leftarrow}");
   cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
 });
+
+// Keyboard activation, enter key press required for tabPanel to work
+
+it("user can navigate with arrow keys and tab selection only on enter", () => {
+  cy.mount(<TabsExample keyboardActivation="manual" />);
+
+  cy.get(tabItem).eq(0).focus().type("{rightarrow}{enter}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 2");
+
+  cy.get(tabItem).eq(0).focus().type("{rightarrow}{rightarrow}{enter}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 3");
+
+  cy.get(tabItem).eq(2).focus().type("{leftarrow}{leftarrow}{enter}");
+  cy.get(tabPanel).should("be.visible").and("have.text", "Tab description 1");
+});
