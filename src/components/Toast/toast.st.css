@@ -38,3 +38,19 @@
 .toast button:active {
   background: rgba(255, 255, 255, 0.2);
 }
+
+.info {
+  background: grey;
+}
+
+.success {
+  background: green;
+}
+
+.warning {
+  background: orange;
+}
+
+.error {
+  background: red;
+}

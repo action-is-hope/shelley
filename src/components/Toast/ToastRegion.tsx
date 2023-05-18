@@ -15,9 +15,9 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
 
   return (
     <div {...regionProps} ref={ref} className={classes["toast-region"]}>
-      {state.visibleToasts.map((toast) => (
-        <Toast key={toast.key} toast={toast} state={state} />
-      ))}
+      {state.visibleToasts.map((toast) => {
+        return <Toast key={toast.key} toast={toast} state={state} />;
+      })}
     </div>
   );
 }
