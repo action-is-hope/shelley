@@ -96,7 +96,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
               key={item.key}
               item={item}
               state={state}
-              dataId={dataId ? `${dataId}-tab-item` : undefined}
+              data-id={dataId ? `${dataId}-tab-item` : undefined}
             />
           ))}
         </div>

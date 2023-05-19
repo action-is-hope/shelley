@@ -4,22 +4,18 @@ import type { Node } from "@react-types/shared";
 import type { TabListState } from "react-stately";
 import { mergeProps } from "@react-aria/utils";
 import { st, classes } from "./tabs.st.css";
-export interface TabProps<T> {
-  /** Add a class to the content div. */
-  className?: string;
-  id?: string;
-  /** Tab item */
+import type { ComponentBase } from "../types";
+export interface TabProps<T> extends ComponentBase {
+  /** An item from a react-stately collection. */
   item: Node<T>;
+  /** Selection state from react-stately */
   state: TabListState<T>;
-  /** Add predefined data-id to ease testing or analytics. */
-  dataId?: string;
 }
 
 function Tab<T extends object>({
   item,
   state,
-  className,
-  dataId,
+  "data-id": dataId,
 }: TabProps<T>) {
   const { key, rendered } = item;
   const ref = useRef<HTMLDivElement>(null);
@@ -33,16 +29,12 @@ function Tab<T extends object>({
 
   return (
     <div
-      className={st(
-        classes.tab,
-        {
-          isSelected,
-          isDisabled,
-          isPressed,
-          isFocusVisible,
-        },
-        className
-      )}
+      className={st(classes.tab, {
+        isSelected,
+        isDisabled,
+        isPressed,
+        isFocusVisible,
+      })}
       {...mergeProps(tabProps, focusProps)}
       ref={ref}
       data-id={dataId}
