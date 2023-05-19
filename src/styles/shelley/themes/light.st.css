@@ -18,7 +18,7 @@
     --color-form-selection-border,
     --color-form-selection-notch,
     --color-switch-notch,
-    --select-icon,
+    --color-background-textField-filled,
 
     --color-background-row,
     --color-text-row,
@@ -82,8 +82,8 @@
   --color-accent-4: rgb(134, 102, 30);
 
   /* = Background colours */
-  --background-color-main: rgba(239, 239, 239, 1);
-  --background-color-contrast-1: #fff;
+  --background-color-main: #fff;
+  --background-color-contrast-1: rgba(239, 239, 239, 1);
 
 
   /* = Text colours */
@@ -103,6 +103,7 @@
   --color-form-selection-border: rgba(121, 170, 216, 1);
   --color-form-selection-notch: #20af68;
   --color-switch-notch: #a5a5a5;
+  --color-background-textField-filled: var(--background-color-contrast-1);
 
   /* = Gradiants */
   --grad-1: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 200px, rgba(255, 255, 255, 0.5) 500px, rgba(255, 255, 255, 0.8) 100%);

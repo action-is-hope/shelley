@@ -12,13 +12,15 @@
   -st-default: Default;
   -st-named:
     --spacing-unit,
+    --border-radius-field,
     --text-vol-3-scale, --text-vol-3-max,
     --text-vol-4-scale, --text-vol-4-max,
     --text-vol-5-scale, --text-vol-5-max,
     --text-vol-6-scale, --text-vol-6-max,
     --color-error,
     --color-focus,
-    --color-form-base-border;
+    --color-form-base-border,
+    --color-background-textField-filled;
 }
 
 /* = Root Component */
@@ -47,6 +49,7 @@
   -st-from: "../formatters/common";
   -st-named: respScale;
 }
+
 
 @st-scope Default {
 
@@ -285,7 +288,7 @@
 
   Field:variant(outlined)::fieldset,
   Field:variant(outlined)::fieldContainer {
-    border-radius: 8px;
+    border-radius: var(--border-radius-field);
   }
 
   Field:variant(outlined):error::fieldset {
@@ -304,11 +307,11 @@
 
   Field:variant(filled)::fieldset,
   Field:variant(filled)::fieldContainer {
-    border-radius: 8px;
+    border-radius: var(--border-radius-field);
   }
 
   Field:variant(filled)::fieldContainer {
-    background-color: #1e212c
+    background-color: var(--color-background-textField-filled)
   }
 
   Field:variant(filled):error::fieldset {

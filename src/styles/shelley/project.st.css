@@ -31,8 +31,8 @@
     --color-form-selection-border,
     --color-form-selection-notch,
     --color-switch-notch,
+    --color-background-textField-filled,
 
-    --select-icon,
     --grid-gap,
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,
@@ -107,6 +107,7 @@
   /* = Form colours */
   --color-form-switch-notch: var(--color-accent-2);
   --color-form-selection-notch: var(--color-accent-2);
+  --color-background-textField-filled: var(--background-color-contrast-1);
 
   /* = Table colours */
   --color-background-row: var(--background-color-contrast-1);

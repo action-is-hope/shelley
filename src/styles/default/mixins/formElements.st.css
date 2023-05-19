@@ -32,8 +32,7 @@
     --color-form-base-border,
     --color-form-selection-border,
     --color-form-selection-notch,
-    --color-switch-notch,
-    --select-icon;
+    --color-switch-notch;
 
 }
 
@@ -122,7 +121,6 @@
   /* filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5); */
 }
 
-/* = Apply the --select-icon (see project vars) and associated icon styles. */
 .selectFieldInput {
   border-radius: 0;
   /* padding: calc(0.2rem + 0.2em) var(--spacing-unit); */
