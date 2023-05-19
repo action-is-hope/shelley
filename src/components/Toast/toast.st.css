@@ -7,6 +7,40 @@
   gap: 8px;
 }
 
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .toast {
   display: flex;
   align-items: center;
@@ -15,6 +49,7 @@
   color: white;
   padding: 12px 16px;
   border-radius: 8px;
+  position: relative;
 }
 
 .toast button {
@@ -53,4 +88,16 @@
 
 .error {
   background: red;
+}
+
+.toast[data-animation=entering] {
+  animation: slide-in 1s forwards;
+}
+
+.toast[data-animation=queued] {
+  animation: fade-in 1s forwards;
+}
+
+.toast[data-animation=exiting] {
+  animation: slide-out 1s forwards;
 }

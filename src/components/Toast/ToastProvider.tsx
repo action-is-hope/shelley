@@ -9,6 +9,7 @@ interface ToastProviderProps {
 function ToastProvider({ children, ...props }: ToastProviderProps) {
   const state = useToastState({
     maxVisibleToasts: 5,
+    hasExitAnimation: true,
   });
 
   return (

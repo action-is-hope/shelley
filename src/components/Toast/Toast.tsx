@@ -33,6 +33,12 @@ function Toast<T>({ state, ...props }: ToastProps<T>) {
       {...toastProps}
       ref={ref}
       className={`${classes.toast} ${priorityClassName || ""}`}
+      data-animation={props.toast.animation}
+      onAnimationEnd={() => {
+        if (props.toast.animation === "exiting") {
+          state.remove(props.toast.key);
+        }
+      }}
     >
       <div {...titleProps}>{props.toast.content}</div>
       <Button {...closeButtonProps}>X</Button>
