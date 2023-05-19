@@ -1,31 +1,16 @@
 /* tabs.st.css */
-/* = Shelley project scope and vars */
 @st-import Shelley, [
     --color-ui-inverse,
     --color-ui-raw,
     --color-accent-1
   ] from "./project.st.css";
-/* Component API */
 @st-import Tabs from "../../components/Tabs/tabs.st.css";
 
 @st-scope Shelley {
 
   Tabs::indicator {
-    /* 'indicator' is the bar which moves left-right, up-down dependant on orientation. 
-     * The animations for width (orientation=horizontal) and height (orientation=vertical) 
-     * are calculated by the component and applied inline. We will need to set the thickness 
-     * of the indicator for both orientations. */
     background-color: var(--color-accent-1);
   }
-
-  Tabs:orientation(horizontal)::indicator {
-    left: 0;
-    /* thickness of indicator when horizontal. */
-    height: 2px;
-  }
-
-  /* isFocusVisible applied when right left arrow keys used */
-  Tabs::indicator:isFocusVisible {}
 
   Tabs::tab {
     margin-right: 10px;
@@ -41,23 +26,9 @@
     border-bottom: 2px solid var(--color-ui-inverse);
   }
 
-  Tabs:orientation(horizontal)::indicator {
-    /* Pull up on top of tabList border. */
-    margin-top: -2px;
-  }
-
-  /* Vertical tabs */
   Tabs:orientation(vertical)::tabList {
     border-bottom: none;
     border-right: 2px solid var(--color-ui-inverse);
   }
 
-  /* Vertical tabs selection underline displayed on the right */
-  Tabs:orientation(vertical)::indicator {
-    right: 0;
-    top: 0;
-    /* thickness of indicator when vertical. */
-    width: 2px;
-    will-change: transform, height;
-  }
 }
