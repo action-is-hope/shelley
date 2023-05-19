@@ -16,7 +16,7 @@ import {
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
 import { st, classes } from "./tabs.st.css";
-import { ComponentBase } from "../types";
+import type { ComponentBase } from "../types";
 
 export interface TabsProps<T> extends AriaTabListProps<T>, ComponentBase {
   /** Add a class to the content div. */
@@ -101,7 +101,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
           ))}
         </div>
         <div
-          className={st(classes.tabSelection, {
+          className={st(classes.indicator, {
             isFocusVisible,
           })}
           style={{ ...activeTabStyle }}

@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.tabSelection {
+.indicator {
   -st-states: isFocusVisible;
   position: absolute;
   transition: transform 150ms, width 100ms, height 100ms;
@@ -41,14 +41,14 @@
   flex-direction: column;
 }
 
-.root:orientation(vertical)::tabSelection {
+.root:orientation(vertical)::indicator {
   right: 0;
   top: 0;
   width: 2px;
   will-change: transform, height;
 }
 
-.root:orientation(horizontal)::tabSelection {
+.root:orientation(horizontal)::indicator {
   left: 0;
   height: 2px;
   will-change: transform, width;

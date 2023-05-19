@@ -1,6 +1,6 @@
 import { Ref, useRef, ReactElement, forwardRef } from "react";
 import { useTabPanel } from "react-aria";
-import { TabListState } from "react-stately";
+import type { TabListState } from "react-stately";
 
 export interface TabPanelProps<T> {
   /** Add a class to the content div. */

@@ -1,7 +1,7 @@
 import { Ref, useRef, ReactElement, forwardRef } from "react";
 import { useTab, useFocusRing } from "react-aria";
-import { Node } from "@react-types/shared";
-import { TabListState } from "react-stately";
+import type { Node } from "@react-types/shared";
+import type { TabListState } from "react-stately";
 import { mergeProps } from "@react-aria/utils";
 import { st, classes } from "./tabs.st.css";
 export interface TabProps<T> {
