@@ -8,10 +8,9 @@
 /* Component API */
 @st-import Tabs from "../../components/Tabs/tabs.st.css";
 
-/* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {
 
-  /* Underline width or height is calculated in the component level */
+  /* Underline width or height is calculated in the component level, see Tabs.tsx */
   Tabs::tabSelection {
     background-color: var(--color-accent-1);
   }
@@ -22,7 +21,7 @@
     height: 2px;
   }
 
-  /* isFocusVisible when using right left arrow keys  */
+  /* isFocusVisible applied when right left arrow keys used */
   Tabs::tabSelection:isFocusVisible {}
 
   Tabs::tab {

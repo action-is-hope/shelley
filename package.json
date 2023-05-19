@@ -44,6 +44,7 @@
     "test": "npm run typecheck && npm run lint && npm run unit-tests && npm run cypress",
     "unit-tests": "jest --runInBand",
     "cypress": "cypress run --component --browser chrome",
+    "cypress:ui": "cypress open",
     "start": "npm run build-stylable-types && npm run storybook",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
