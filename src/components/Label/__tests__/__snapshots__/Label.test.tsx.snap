@@ -6,7 +6,7 @@ exports[`Label renders an input correctly 1`] = `
   htmlFor="field-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text with input
   </span>
@@ -23,7 +23,7 @@ exports[`Label renders as a basic label with custom #className 1`] = `
   data-id="label-data-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text
   </span>
@@ -38,11 +38,7 @@ exports[`Label renders hidden label 1`] = `
   <span
     className="visuallyHidden__Test__root"
   >
-    <span
-      className="Label__Test__labelText"
-    >
-      Label text - hidden
-    </span>
+    Label text - hidden
   </span>
   <input
     id="field-id"
@@ -57,7 +53,7 @@ exports[`Label renders label position class 'bottom' 1`] = `
   htmlFor="field-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text - bottom
   </span>
@@ -74,7 +70,7 @@ exports[`Label renders label position class 'end' 1`] = `
   htmlFor="field-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text - end
   </span>
@@ -91,7 +87,7 @@ exports[`Label renders label position class 'start' 1`] = `
   htmlFor="field-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text - start
   </span>
@@ -108,7 +104,7 @@ exports[`Label renders label position class 'top' 1`] = `
   htmlFor="field-id"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label text - top
   </span>
