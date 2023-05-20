@@ -155,6 +155,7 @@ function Select<T extends object>(
           triggerRef={localRef}
           label={props.label}
           name={props.name}
+          isDisabled={isDisabled}
         />
         {state.isOpen &&
           createPortal(
