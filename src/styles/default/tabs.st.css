@@ -1,0 +1,70 @@
+/* tabs.st.css */
+@st-import Default, [
+    --spacing-unit,
+    --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
+    --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
+    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height
+  ] from "./project.st.css";
+@st-import Tabs from "../../components/Tabs/tabs.st.css";
+@st-import [textVol] from "./mixins/text.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
+@st-scope Default {
+
+  Tabs::tabList {
+    gap: calc(var(--spacing-unit) / 2)
+  }
+
+  Tabs::tab {
+    padding: var(--spacing-unit);
+    outline: none;
+    /* required for the pseudoFocus. */
+    position: relative;
+  }
+
+  Tabs::tab::after {
+    -st-mixin: pseudoFocus;
+    top: 9px;
+    left: 4px;
+    bottom: 9px;
+    right: 4px;
+  }
+
+  Tabs::tab:isFocusVisible::after {
+    -st-mixin: pseudoFocusVisible;
+  }
+
+  Tabs::tabPanel {
+    padding: var(--spacing-unit);
+  }
+
+  Tabs:orientation(vertical) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  Tabs:orientation(vertical)::tabList {
+    flex-direction: column;
+  }
+
+  Tabs:vol(1)::tab {
+    -st-mixin:
+      textVol(scale var(--text-vol-1-scale),
+        max var(--text-vol-1-max),
+        lineHeight 1.2);
+  }
+
+  Tabs:vol(2)::tab {
+    -st-mixin:
+      textVol(scale var(--text-vol-2-scale),
+        max var(--text-vol-2-max),
+        lineHeight 1.2);
+  }
+
+  Tabs:vol(3)::tab {
+    -st-mixin:
+      textVol(scale var(--text-vol-3-scale),
+        max var(--text-vol-3-max),
+        lineHeight 1.2);
+  }
+}

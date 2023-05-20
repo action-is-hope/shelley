@@ -58,6 +58,7 @@ export { default as Text } from "./components/Text/Text";
 export * from "./components/Text/Text";
 export { default as TablePagination } from "./components/TablePagination/TablePagination";
 export * from "./components/TablePagination/TablePagination";
+export { default as Tabs } from "./components/Tabs/Tabs";
 export { default as Toolbar } from "./components/Toolbar/Toolbar";
 export * from "./components/Toolbar/Toolbar";
 export { default as VisuallyHidden } from "./components/VisuallyHidden/VisuallyHidden";

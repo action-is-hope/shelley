@@ -25,6 +25,7 @@ import "./popup.st.css";
 import "./radio.st.css";
 import "./switch.st.css";
 import "./tableView.st.css";
+import "./tabs.st.css";
 import "./text.st.css";
 
 // = Project
