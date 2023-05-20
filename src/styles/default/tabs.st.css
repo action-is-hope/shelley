@@ -1,28 +1,12 @@
 /* tabs.st.css */
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
+@st-import Default, [
     --spacing-unit,
     --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
     --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
-    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height;
-}
-
-/* = Root style API. */
-:import {
-  -st-from: "../../components/Tabs/tabs.st.css";
-  -st-default: Tabs;
-}
-
-/* = Mixins & Utils */
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
-
+    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height
+  ] from "./project.st.css";
+@st-import Tabs from "../../components/Tabs/tabs.st.css";
+@st-import [textVol] from "./mixins/text.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 @st-scope Default {
@@ -54,7 +38,6 @@
     padding: var(--spacing-unit);
   }
 
-  /* Vertical tabs */
   Tabs:orientation(vertical) {
     display: flex;
     flex-direction: row;

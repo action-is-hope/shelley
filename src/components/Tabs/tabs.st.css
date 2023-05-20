@@ -1,4 +1,4 @@
-/* tabs.st.css CSS API */
+/* tabs.st.css */
 .root {
   -st-states:
     orientation(enum(horizontal, vertical)),
@@ -7,7 +7,11 @@
   flex-direction: column;
 }
 
-.tabSelection {
+.indicator {
+  /* 'indicator' is the bar which moves left-right, up-down dependant on orientation. 
+   * The animations for width (orientation=horizontal) and height (orientation=vertical) 
+   * are calculated by the component and applied inline. We will need to set the thickness 
+   * of the indicator for both orientations. */
   -st-states: isFocusVisible;
   position: absolute;
   transition: transform 150ms, width 100ms, height 100ms;
@@ -41,15 +45,19 @@
   flex-direction: column;
 }
 
-.root:orientation(vertical)::tabSelection {
+.root:orientation(vertical)::indicator {
   right: 0;
   top: 0;
+  /* thickness of indicator when vertical. */
   width: 2px;
   will-change: transform, height;
 }
 
-.root:orientation(horizontal)::tabSelection {
+.root:orientation(horizontal)::indicator {
   left: 0;
+  /* thickness of indicator when horizontal. */
   height: 2px;
+  /* Pull up on top of tabList border. */
+  margin-top: -2px;
   will-change: transform, width;
 }

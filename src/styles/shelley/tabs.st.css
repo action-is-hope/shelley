@@ -1,29 +1,16 @@
 /* tabs.st.css */
-/* = Shelley project scope and vars */
 @st-import Shelley, [
     --color-ui-inverse,
     --color-ui-raw,
     --color-accent-1
   ] from "./project.st.css";
-/* Component API */
 @st-import Tabs from "../../components/Tabs/tabs.st.css";
 
-/* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {
 
-  /* Underline width or height is calculated in the component level */
-  Tabs::tabSelection {
+  Tabs::indicator {
     background-color: var(--color-accent-1);
   }
-
-  /* Horizontal tabs underline */
-  Tabs:orientation(horizontal)::tabSelection {
-    left: 0;
-    height: 2px;
-  }
-
-  /* isFocusVisible when using right left arrow keys  */
-  Tabs::tabSelection:isFocusVisible {}
 
   Tabs::tab {
     margin-right: 10px;
@@ -39,22 +26,9 @@
     border-bottom: 2px solid var(--color-ui-inverse);
   }
 
-  Tabs:orientation(horizontal)::tabSelection {
-    /* Pull up on top of tabList border. */
-    margin-top: -2px;
-  }
-
-  /* Vertical tabs */
   Tabs:orientation(vertical)::tabList {
     border-bottom: none;
     border-right: 2px solid var(--color-ui-inverse);
   }
 
-  /* Vertical tabs selection underline displayed on the right */
-  Tabs:orientation(vertical)::tabSelection {
-    right: 0;
-    top: 0;
-    width: 2px;
-    will-change: transform, height;
-  }
 }

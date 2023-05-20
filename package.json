@@ -44,6 +44,7 @@
     "test": "npm run typecheck && npm run lint && npm run unit-tests && npm run cypress",
     "unit-tests": "jest --runInBand",
     "cypress": "cypress run --component --browser chrome",
+    "cypress:ui": "cypress open",
     "start": "npm run build-stylable-types && npm run storybook",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
@@ -55,7 +56,7 @@
     "@react-types/overlays": "^3.7.1",
     "@react-types/shared": "^3.18.0",
     "react-aria": "^3.24.0",
-    "react-focus-on": "^3.7.0",
+    "react-focus-on": "^3.8.0",
     "react-stately": "^3.22.0",
     "react-transition-group": "^4.4.5"
   },
