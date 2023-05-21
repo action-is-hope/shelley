@@ -5,7 +5,7 @@ import { useToggleState } from "@react-stately/toggle";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import type { AriaSwitchProps } from "@react-types/switch";
-import type { Volume, AlignPos, ComponentBase } from "../types";
+import type { Size, AlignPos, ComponentBase } from "../types";
 /* = Style API. */
 import { st, classes } from "./switch.st.css";
 
@@ -15,8 +15,8 @@ export interface SwitchProps extends AriaSwitchProps, ComponentBase {
   inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
-  /** How 'loud' should this input be? */
-  vol?: Volume;
+  /** Size of the actual input. */
+  size?: Size;
 }
 
 function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
@@ -25,7 +25,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
     children,
     visuallyHideLabel,
     inputPosition,
-    vol = 1,
+    size = 1,
     isDisabled,
     "data-id": dataId,
   } = props;
@@ -42,7 +42,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
     {
       isDisabled,
       isFocusVisible,
-      vol: vol ? vol : undefined,
+      size: size ? size : undefined,
     },
     classNameProp
   );
@@ -59,25 +59,14 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
   );
 
   return (
-    <>
-      {children ? (
-        <Label
-          className={classNames}
-          {...{ inputControl, inputPosition }}
-          visuallyHidden={visuallyHideLabel}
-          data-id={dataId ? `${dataId}--label` : undefined}
-        >
-          {children}
-        </Label>
-      ) : (
-        <span
-          className={classNames}
-          data-id={dataId ? `${dataId}--noLabel` : undefined}
-        >
-          {inputControl}
-        </span>
-      )}
-    </>
+    <Label
+      className={classNames}
+      {...{ inputControl, inputPosition }}
+      visuallyHidden={visuallyHideLabel}
+      data-id={dataId ? `${dataId}--label` : undefined}
+    >
+      {children}
+    </Label>
   );
 }
 

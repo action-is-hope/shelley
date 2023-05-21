@@ -3,7 +3,7 @@ import type { AriaRadioProps } from "@react-types/radio";
 import { useRadio } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
-import type { Volume, AlignPos, ComponentBase } from "../types";
+import type { Size, AlignPos, ComponentBase } from "../types";
 import { useRadioGroupProvider } from "../RadioGroup/context";
 import Label from "../Label/Label";
 /* = Style API. */
@@ -15,8 +15,8 @@ export interface RadioProps extends AriaRadioProps, ComponentBase {
   inputPosition?: AlignPos;
   /** Visually hide the label so it is still accessible to assistive technologies. */
   visuallyHideLabel?: boolean;
-  /** Size of the Radio input */
-  size?: Volume;
+  /** Size of the actual input */
+  size?: Size;
 }
 
 const Radio = forwardRef(

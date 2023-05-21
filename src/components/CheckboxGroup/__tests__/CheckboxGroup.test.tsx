@@ -1,5 +1,5 @@
 import { CheckboxGroup } from "../CheckboxGroup";
-import Checkbox from "../../Checkbox/Checkbox";
+import { Checkbox } from "../../Checkbox/Checkbox";
 import renderer from "react-test-renderer";
 // useID breaks snapshots so using the SSrProvider.
 import { SSRProvider } from "react-aria";

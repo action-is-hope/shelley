@@ -34,6 +34,9 @@ export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
 /** Generic volume levels */
 export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | false;
 
+/** Generic size levels */
+export declare type Size = 1 | 2 | 3 | 4 | 5 | 6 | false;
+
 /** Text volume levels */
 export declare type TextVolume =
   | 1

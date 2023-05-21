@@ -6,8 +6,8 @@ exports[`Switch renders correctly with custom label 1`] = `
     htmlFor="test123"
     id="labelId"
   />,
-  <span
-    className="Switch__Test__root Switch__Test---vol-1-1"
+  <label
+    className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
   >
     <span
       className="Switch__Test__inputContainer"
@@ -37,13 +37,13 @@ exports[`Switch renders correctly with custom label 1`] = `
         type="checkbox"
       />
     </span>
-  </span>,
+  </label>,
 ]
 `;
 
 exports[`Switch renders correctly with label 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---vol-1-1"
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
 >
   <span
     className="Label__Test__text"
