@@ -1,69 +1,26 @@
 /**
  * = FORM ELEMENTS - formElements.st.css
  *
- * 
- * Whilst it's nice to always use our form items usually we will have to style 
- * forms that are not within our control. We might need to integrate a 
- * newsletter widget or perhaps a media selection widget, etc.
- *
- * Here you will find the base styles for form input elements which are mixin'd
- * to our form .st.css styles. You can use reuse them in the same way to when 
- * styling for 3rd party form elements.
- *
- * Maybe the file is too long, we just like these all togther. Lots of comments 
- * but much longer and we'll consider splitting them.. but most everyting else 
- * should be variant overrides in situ.
+ * Shared styles for form related elements.
  * 
  * ========================================================================= */
 
-
-/* = Project and vars. */
-:import {
-  -st-from: "../project.st.css";
-  -st-named:
+@st-import Default, [
     --spacing-unit,
     --text-vol-3-scale, --text-vol-3-max,
     --text-vol-4-scale, --text-vol-4-max,
     --text-vol-5-scale, --text-vol-5-max,
-    --text-vol-6-scale, --text-vol-6-max,
-    /* = CSS3 Vars. */
-    --color-focus,
-    --color-error,
-    --color-form-base-border,
+    --text-vol-6-scale, --text-vol-6-max,,
     --color-form-selection-border,
     --color-form-selection-notch,
-    --color-switch-notch;
+    --color-switch-notch
+  ] from "../project.st.css";
+@st-import InputLabel from "../../../components/Label/label.st.css";
+@st-import [textVol] from "./text.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
 
-}
 
-/* = Root Component */
-:import {
-  -st-from: './text.st.css';
-  -st-named:
-    textVol;
-}
-
-/* = Child components */
-:import {
-  -st-from: "../../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
-
-/* = Mixins & Utils */
-
-:import {
-  -st-from: "../../formatters/common";
-  -st-named: respScale;
-}
-
-:import {
-  -st-from: '../mixins/focus.st.css';
-  -st-named:
-    pseudoFocus,
-    pseudoFocusVisible;
-}
-
-/* Local buildtime vars. */
+/* Local vars. */
 :vars {
   inputVol1LabelRelative: "0.95em";
   inputVol2LabelRelative: "0.9em";
@@ -79,13 +36,6 @@
   SelectionControlSize6: "36px";
 }
 
-/**
- * = Helper mixins
- *
- * Some resued bits, they can be used externally.
- *
- * ------------------------------------------------------------------------- */
-
 /* = Hide the default 'appearance'. */
 .hideWebkitAppearance {
   -webkit-appearance: none;
@@ -96,7 +46,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* = Hack to get rid of the bloody autofill bg 
+/* = Hack to get rid of the autofill bg 
  * - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs 
  */
 .hideWebkitAppearance:-webkit-autofill,
@@ -107,48 +57,6 @@
   -webkit-transition-delay: 99999s;
 }
 
-
-/**
- * = SELECT - TEXTUAL FIELD 
- *
- * Uses all of the about textual base styles but a <select> has a little 
- * extra styling over that of our <input>'s.
- *
- * ------------------------------------------------------------------------- */
-
-
-.selectFieldContainer {
-  /* filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5); */
-}
-
-.selectFieldInput {
-  border-radius: 0;
-  /* padding: calc(0.2rem + 0.2em) var(--spacing-unit); */
-  padding: calc(0.2rem + 0.2em) var(--spacing-unit);
-  text-transform: inherit;
-  font-size: 1em;
-  line-height: 1.5;
-  width: 100%;
-  /* text-align: start; */
-  justify-content: space-between;
-  font-weight: 400;
-  border-width: 0;
-}
-
-.selectFieldInput:focus::after {
-  opacity: 0;
-}
-
-/**
- * = STATES - TEXTUAL FIELD
- *
- * Input focus, error and disabled state being the main areas of concern for 
- * our text orientated fields.
- *
- * ------------------------------------------------------------------------- */
-
-
-/* = Disabled */
 .disabledField {
   /* = Dim the whole lot... */
   filter: saturate(15%) brightness(70%);
@@ -156,11 +64,11 @@
 
 
 /**
- * = INPUT VOLUMES - COMMON
+ * = INPUT VOLUMES
  *
  * When it comes to our input volumes we want to make sure that they are never
  * below 16px on device else we will get some auto 'form zoom' happening which 
- * can catch you off guard. "Why is is zooming, FFS!" ;-)
+ * can catch you off guard, especially in a demo.
  *
  * To this end our volume levels take a slight detour from those we use for Text
  * but we are leveraging them where possible.
@@ -237,9 +145,9 @@
 
 /* = Volume 5 */
 .inputVol5 {
-  /* We love calc!! Here we can shave off a little from our larger sizes, our 
-   * our rem value is on a scale so has greater impact at larger
-   * resoultions. What fun!
+  /* Here we can shave off a little from our larger sizes, our 
+   * rem value is on a scale so has greater impact at larger
+   * resoultions.
    */
   -st-mixin:
     textVol(scale calc(var(--text-vol-5-scale) - 0.15rem),
@@ -257,10 +165,6 @@
 
 /* = Volume 6 */
 .inputVol6 {
-  /* We love calc!! Here we can shave off a little from our larger sizes, our 
-   * our rem value is on a scale so this has greated impact at larges 
-   * resoultions. What fun!
-   */
   -st-mixin:
     textVol(scale calc(var(--text-vol-6-scale) - 0.15rem),
       max calc(var(--text-vol-6-max) - 0.15rem));
@@ -277,8 +181,6 @@
 }
 
 
-
-
 /**
  * = INPUT SELECTION CONTROLS
  *
@@ -289,11 +191,7 @@
 
 /* = 'Root' of the control */
 .SelectionControlInputContainer {
-  /* = flex is a more solid base that inline-flex. It should always be inside a label which can give it 'inline' qualities as a component. */
   display: flex;
-  /* = A default, maybe we should remove it... */
-  font-size: 20px;
-  line-height: 1.5;
 }
 
 
@@ -315,28 +213,17 @@
   border-width: 2px;
   border-color: #333;
   border-color: var(--color-form-selection-border);
-  /* = See below for replacement focus state replacing outline. */
+  /* = pseudoFocus mixin replaces the default outline. */
   outline: none;
 }
 
-/* = Field focus indicator, via pseudo element. */
 .SelectionControlFieldInput::after {
+  /* = Field focus indicator, via pseudo element. */
   -st-mixin: pseudoFocus;
 }
 
-/**
- * = DISABLED - COMMON
- */
-
-/* = Hide the pesudo focus style when field is disabled. */
-.SelectionControlFieldInput:disabled::after {
-  opacity: 0;
-}
-
-/* = Dull out the field and apply suitable cursor. */
 .SelectionControlFieldInput:disabled {
-  cursor: not-allowed;
-  filter: saturate(15%) brightness(70%);
+  -st-mixin: disabledField;
 }
 
 
@@ -385,7 +272,7 @@
 
 
 /**
- * = Switch
+ * = SWITCH
  *
  * Which is really just a checkbox in disguise...
  */

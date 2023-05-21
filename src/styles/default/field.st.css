@@ -1,17 +1,16 @@
 /**
  * = Field - field.st.css
  *
- * This file applies the base styles to our form components such as 
+ * Used internally; field applies the base styles to our form components such as 
  * inputs, textareas and selects, comboboxes, checkbox / radio groups etc.
  * 
- * ========================================================================= */
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Radio/radio.st.css
+ *
+ */
 
-
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
+@st-import Default, [
     --spacing-unit,
+    --field-padding,
     --border-radius-field,
     --text-vol-3-scale, --text-vol-3-max,
     --text-vol-4-scale, --text-vol-4-max,
@@ -20,19 +19,11 @@
     --color-error,
     --color-focus,
     --color-form-base-border,
-    --color-background-textField-filled;
-}
-
-/* = Root Component */
-:import {
-  -st-from: "../../components/Field/field.st.css";
-  -st-default: Field;
-}
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
+    --color-background-textField-filled
+  ] from "./project.st.css";
+@st-import Field from "../../components/Field/field.st.css";
+@st-import [respScale] from "../formatters/common";
+@st-import [
     hideWebkitAppearance,
     disabledField,
     inputVol1,
@@ -40,20 +31,11 @@
     inputVol3,
     inputVol4,
     inputVol5,
-    inputVol6;
-}
-
-/* = Mixins & Utils */
-
-:import {
-  -st-from: "../formatters/common";
-  -st-named: respScale;
-}
+    inputVol6
+] from "./mixins/formElements.st.css";
 
 
 @st-scope Default {
-
-  /*==== BASE ====*/
 
   /* 
   * Field ships with some minimal styles to get some of the 
@@ -92,7 +74,7 @@
     display: block;
     width: 100%;
     margin: 0;
-    padding: calc(0.2rem + 0.2em) var(--spacing-unit);
+    padding: var(--field-padding);
     border: none;
     font: inherit;
     line-height: 1.5;
@@ -263,7 +245,7 @@
 
   Field:variant(quiet)::fieldContainer:focus-within::before,
   Field:variant(quiet)::fieldContainer:focus-within::after {
-    /* = Adjust the pseudo feild indicators to cater for custom focus style. */
+    /* = Adjust the pseudo field indicators to cater for custom focus style. */
     opacity: 1;
     /* = The glow from the box-shadow means we don't want the width to be too 'chunky'. */
     width: 0;

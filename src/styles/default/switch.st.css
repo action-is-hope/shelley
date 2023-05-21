@@ -1,14 +1,7 @@
-/* = Project and vars */
 @st-import Default, [--spacing-unit] from "./project.st.css";
-/* = Root style API. */
 @st-import Switch from "../../components/Switch/switch.st.css";
-/* = Child components. */
 @st-import Icon from "../../components/Icon/icon.st.css";
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
+@st-import [
     SelectionControlInputContainer,
     SelectionControlFieldInput,
     SwitchFieldInput,
@@ -23,8 +16,8 @@
     selectionControlSize3,
     selectionControlSize4,
     selectionControlSize5,
-    selectionControlSize6;
-}
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
 

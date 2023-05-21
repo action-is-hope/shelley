@@ -1,19 +1,20 @@
-/* = Project and vars */
+/**
+ * = Checkbox - checkbox.st.css
+ *
+ * Base theme styles for a Shelley Checkbox.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Checkbox/checkbox.st.css
+ * 
+ */
 @st-import Default, [
     --spacing-unit,
     --color-form-base-border,
     --color-error
   ] from "./project.st.css";
-/* = Root style API. */
 @st-import Checkbox from "../../components/Checkbox/checkbox.st.css";
 @st-import CheckboxGroup from "../../components/CheckboxGroup/checkboxGroup.st.css";
-/* = Child components. */
 @st-import Icon from "../../components/Icon/icon.st.css";
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
+@st-import [
     SelectionControlInputContainer,
     SelectionControlFieldInput,
     RadioCheckboxCommon,
@@ -30,12 +31,10 @@
     selectionControlSize3,
     selectionControlSize4,
     selectionControlSize5,
-    selectionControlSize6;
-}
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
-
-  Checkbox {}
 
   Checkbox {
     gap: calc(var(--spacing-unit) / 2);

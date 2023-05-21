@@ -168,6 +168,7 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --color-form-selection-notch: #333;
   --color-switch-notch: #fff;
   --color-background-textField-filled: #000;
+  --field-padding: calc(0.2rem + 0.2em) var(--spacing-unit);
   /* Modal */
   --background-color-modal-backdrop: rgba(0, 0, 1, 0.88);
 

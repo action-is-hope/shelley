@@ -1,18 +1,20 @@
-/* = Project and vars */
+/**
+ * = Radio - radio.st.css
+ *
+ * Base theme styles for a Shelley Radio.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Radio/radio.st.css
+ * 
+ */
+
 @st-import Default, [
     --spacing-unit,
     --color-error
   ] from "./project.st.css";
-/* = Root style API. */
 @st-import Radio from "../../components/Radio/radio.st.css";
 @st-import RadioGroup from "../../components/RadioGroup/radioGroup.st.css";
-/* = Child components. */
 @st-import Icon from "../../components/Icon/icon.st.css";
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
+@st-import [
     SelectionControlInputContainer,
     SelectionControlFieldInput,
     RadioCheckboxCommon,
@@ -28,12 +30,10 @@
     selectionControlSize3,
     selectionControlSize4,
     selectionControlSize5,
-    selectionControlSize6;
-}
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
-
-  Radio {}
 
   Radio {
     gap: calc(var(--spacing-unit) / 2);
