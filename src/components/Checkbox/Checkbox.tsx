@@ -7,7 +7,6 @@ import { useFocusRing } from "react-aria";
 import type { Size, AlignPos, ComponentBase } from "../types";
 import Label from "../Label/Label";
 import { CheckboxGroupContext } from "../CheckboxGroup/context";
-/* = Style API. */
 import { st, classes } from "./checkbox.st.css";
 
 export interface CheckboxProps extends AriaCheckboxProps, ComponentBase {

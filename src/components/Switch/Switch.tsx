@@ -6,7 +6,6 @@ import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import type { AriaSwitchProps } from "@react-types/switch";
 import type { Size, AlignPos, ComponentBase } from "../types";
-/* = Style API. */
 import { st, classes } from "./switch.st.css";
 
 export interface SwitchProps extends AriaSwitchProps, ComponentBase {

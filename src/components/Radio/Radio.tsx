@@ -6,7 +6,6 @@ import { useFocusRing } from "react-aria";
 import type { Size, AlignPos, ComponentBase } from "../types";
 import { useRadioGroupProvider } from "../RadioGroup/context";
 import Label from "../Label/Label";
-/* = Style API. */
 import { st, classes } from "./radio.st.css";
 
 export interface RadioProps extends AriaRadioProps, ComponentBase {
@@ -19,72 +18,66 @@ export interface RadioProps extends AriaRadioProps, ComponentBase {
   size?: Size;
 }
 
-const Radio = forwardRef(
-  (props: RadioProps, ref?: React.Ref<HTMLInputElement>) => {
-    const {
-      className: classNameProp,
-      children,
-      // validationState,
-      visuallyHideLabel,
-      inputPosition,
-      size = 1,
+function Radio(props: RadioProps, ref: React.Ref<HTMLInputElement>) {
+  const {
+    className: classNameProp,
+    children,
+    visuallyHideLabel,
+    inputPosition,
+    size = 1,
+    isDisabled,
+    "data-id": dataId,
+  } = props;
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const radioGroupProps = useRadioGroupProvider();
+  const { validationState, state } = radioGroupProps;
+
+  const { inputProps } = useRadio(
+    {
+      ...props,
+      ...radioGroupProps,
       isDisabled,
-      "data-id": dataId,
-    } = props;
-    // const localRef = useRef(null);
-    const inputRef = useRef<HTMLInputElement>(null);
-    // const groupState = useContext(RadioGroupContext);
-    // const { inputProps } = useRadio(props, groupState, ref);
-    const radioGroupProps = useRadioGroupProvider();
-    const { validationState, state } = radioGroupProps;
+    },
+    state,
+    inputRef
+  );
 
-    const { inputProps } = useRadio(
-      {
-        ...props,
-        ...radioGroupProps,
-        isDisabled,
-      },
-      state,
-      inputRef
-    );
+  const { isFocusVisible, focusProps } = useFocusRing();
 
-    const { isFocusVisible, focusProps } = useFocusRing();
+  const classNames = st(
+    classes.root,
+    {
+      isDisabled,
+      isFocusVisible,
+      validationState,
+      size: size ? size : undefined,
+    },
+    classNameProp
+  );
 
-    const classNames = st(
-      classes.root,
-      {
-        isDisabled,
-        isFocusVisible,
-        validationState,
-        size: size ? size : undefined,
-      },
-      classNameProp
-    );
+  const inputControl = (
+    <span className={classes.inputContainer}>
+      <input
+        className={classes.input}
+        {...mergeProps(inputProps, focusProps)}
+        ref={ref ? mergeRefs(ref, inputRef) : inputRef}
+        data-id={dataId ? `${dataId}--input` : undefined}
+      />
+    </span>
+  );
 
-    const inputControl = (
-      <span className={classes.inputContainer}>
-        <input
-          className={classes.input}
-          {...mergeProps(inputProps, focusProps)}
-          ref={ref ? mergeRefs(ref, inputRef) : inputRef}
-          data-id={dataId ? `${dataId}--input` : undefined}
-        />
-      </span>
-    );
+  return (
+    <Label
+      className={classNames}
+      {...{ inputControl, inputPosition }}
+      visuallyHidden={visuallyHideLabel}
+      data-id={dataId ? `${dataId}--label` : undefined}
+    >
+      {children}
+    </Label>
+  );
+}
 
-    return (
-      <Label
-        className={classNames}
-        {...{ inputControl, inputPosition }}
-        visuallyHidden={visuallyHideLabel}
-        data-id={dataId ? `${dataId}--label` : undefined}
-      >
-        {children}
-      </Label>
-    );
-  }
-);
-
-export default Radio;
-
-Radio.displayName = "Radio";
+const _Radio = forwardRef(Radio);
+export { _Radio as Radio };
