@@ -1,18 +1,17 @@
-/** InputAdornment.tsx */
-import type React from "react";
-/* = Style API. */
+import React, { forwardRef } from "react";
 import { st, classes } from "./inputAdornment.st.css";
 
-const InputAdornment: React.VFC<React.HTMLAttributes<HTMLSpanElement>> = ({
-  children,
-  className: classNameProp,
-  ...rest
-}) => {
+function InputAdornment(
+  props: React.HTMLAttributes<HTMLSpanElement>,
+  ref?: React.Ref<HTMLDivElement>
+) {
+  const { children, className: classNameProp, ...rest } = props;
+
   return (
-    <span className={st(classes.root, classNameProp)} {...rest}>
+    <span className={st(classes.root, classNameProp)} ref={ref} {...rest}>
       {children}
     </span>
   );
-};
-
-export default InputAdornment;
+}
+const _InputAdornment = forwardRef(InputAdornment);
+export { _InputAdornment as InputAdornment };

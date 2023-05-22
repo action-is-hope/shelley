@@ -7,7 +7,7 @@ import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import { st, classes } from "./label.st.css";
 
 export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
-  children: ReactNode;
+  children?: ReactNode;
   /** The position of the label relative to the input. */
   inputPosition?: AlignPos;
   /** Wraps the label text in VisuallyHidden container. */

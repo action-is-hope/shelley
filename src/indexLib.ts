@@ -25,7 +25,6 @@ export { default as Grid } from "./components/Grid/Grid";
 export * from "./components/Grid/Grid";
 export { default as Icon } from "./components/Icon/Icon";
 export * from "./components/Icon/Icon";
-export { default as InputAdornment } from "./components/InputAdornment/InputAdornment";
 export * from "./components/InputAdornment/InputAdornment";
 export * from "./components/Field/Field";
 export * from "./components/Select/Select";
