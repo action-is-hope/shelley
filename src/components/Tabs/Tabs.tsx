@@ -109,7 +109,6 @@ function Tabs<T extends object>(props: TabsProps<T>) {
       </div>
       <TabPanel
         key={state.selectedItem?.key}
-        className={classes.tabPanel}
         state={state}
         dataId={dataId ? `${dataId}-tab-panel` : undefined}
       />

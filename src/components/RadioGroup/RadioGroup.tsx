@@ -1,16 +1,13 @@
 import { Ref, forwardRef, ReactElement } from "react";
 import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
-
-import { useRadioGroupState } from "react-stately";
-import { useRadioGroup } from "react-aria";
-
+import type { Orientation } from "src/typings/shared-types";
 import type { AriaRadioGroupProps } from "@react-types/radio";
 import type { RadioProps } from "../Radio/Radio";
+import { useRadioGroupState } from "react-stately";
+import { useRadioGroup } from "react-aria";
 import { RadioGroupContext } from "./context";
-/* = Style API. */
 import { st, classes } from "./radioGroup.st.css";
-import type { Orientation } from "src/typings/shared-types";
 
 export interface RadioGroupProps
   extends Omit<AriaRadioGroupProps, "excludeFromTabOrder">,
@@ -51,7 +48,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     label,
     labelPosition = "top",
     orientation = "vertical",
-    vol,
+    vol = 1,
     children,
     "data-id": dataId,
   } = props;

@@ -46,10 +46,12 @@ export const EventExample = () => {
 export const CustomLabel = (args: RadioGroupProps) => {
   return (
     <RadioGroup>
-      <Radio {...args} id="123" value="123" />
-      <label htmlFor="123">Custom label</label>
-      <Radio {...args} id="456" value="456" />
-      <label htmlFor="456">Custom label2</label>
+      <Radio {...args} className="customRadio" value="123">
+        Label 123
+      </Radio>
+      <Radio {...args} className="customRadio" id="456" value="456">
+        Label 456
+      </Radio>
     </RadioGroup>
   );
 };

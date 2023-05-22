@@ -1,18 +1,14 @@
 import { Ref, useRef, ReactElement, forwardRef } from "react";
 import { useTabPanel } from "react-aria";
 import type { TabListState } from "react-stately";
-
+import { classes } from "./tabs.st.css";
 export interface TabPanelProps<T> {
-  /** Add a class to the content div. */
-  className?: string;
   state: TabListState<T>;
-  /** Add predefined data-id to ease testing or analytics. */
   dataId?: string;
 }
 
 function TabPanel<T extends object>({
   dataId,
-  className,
   state,
   ...props
 }: TabPanelProps<T>) {
@@ -20,7 +16,12 @@ function TabPanel<T extends object>({
   const { tabPanelProps } = useTabPanel(props, state, ref);
 
   return (
-    <div className={className} {...tabPanelProps} ref={ref} data-id={dataId}>
+    <div
+      className={classes.tabPanel}
+      {...tabPanelProps}
+      ref={ref}
+      data-id={dataId}
+    >
       {(state.selectedItem?.props as { children: ReactElement }).children}
     </div>
   );

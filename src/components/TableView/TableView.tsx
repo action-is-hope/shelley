@@ -14,7 +14,7 @@ import {
   useTableSelectAllCheckbox,
 } from "react-aria";
 import type { GridNode } from "@react-types/grid";
-import Checkbox from "../Checkbox/Checkbox";
+import { Checkbox } from "../Checkbox/Checkbox";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 import {
@@ -76,7 +76,7 @@ function TableView<T extends object>(
   const localRef = useRef(null);
   const { collection } = state;
   const { gridProps } = useTable(props, state, localRef);
-
+  // @todo add a scrollerRef
   return (
     <div
       className={st(

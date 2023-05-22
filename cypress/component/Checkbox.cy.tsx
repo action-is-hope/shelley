@@ -1,8 +1,6 @@
-import React from "react";
 import { Checkbox } from "../../src/indexLib";
 
 const checkboxWithLabel = '[data-id="checkbox--label"]';
-const checkboxWithoutLabel = '[data-id="checkbox--noLabel"]';
 const inputEl = '[data-id="checkbox--input"]';
 
 describe("Checkbox", () => {
@@ -88,16 +86,5 @@ describe("Checkbox", () => {
     cy.get(checkboxWithLabel)
       .should("have.attr", "class")
       .and("to.have.string", "cypress-test");
-  });
-
-  it("custom label", () => {
-    cy.mount(
-      <>
-        <label htmlFor="test123">Custom label</label>
-        <Checkbox id="test123" data-id="checkbox" />
-      </>
-    );
-    cy.get(checkboxWithoutLabel).should("exist");
-    cy.get(inputEl).should("have.attr", "id").and("equal", "test123");
   });
 });

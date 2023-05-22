@@ -1,4 +1,4 @@
-import Checkbox from "../Checkbox";
+import { Checkbox } from "../Checkbox";
 import renderer from "react-test-renderer";
 
 describe("Checkbox", () => {
@@ -7,16 +7,33 @@ describe("Checkbox", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders correctly with custom label", () => {
+  it("Renders with size '1'", () => {
     const tree = renderer
-      .create(
-        <>
-          <label id="test456" htmlFor="test123">
-            Label
-          </label>
-          <Checkbox id="test123" aria-labelledby="test456" />
-        </>
-      )
+      .create(<Checkbox size={1}>Subscribe</Checkbox>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '2'", () => {
+    const tree = renderer
+      .create(<Checkbox size={2}>Subscribe</Checkbox>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '3'", () => {
+    const tree = renderer
+      .create(<Checkbox size={3}>Subscribe</Checkbox>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '4'", () => {
+    const tree = renderer
+      .create(<Checkbox size={4}>Subscribe</Checkbox>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '5'", () => {
+    const tree = renderer
+      .create(<Checkbox size={6}>Subscribe</Checkbox>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

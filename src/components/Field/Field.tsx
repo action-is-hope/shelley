@@ -18,7 +18,7 @@ import type { Validation } from "../../typings/shared-types";
 import Label from "../Label/Label";
 import { HelpText } from "../HelpText/HelpText";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
-import InputAdornment from "../InputAdornment/InputAdornment";
+import { InputAdornment } from "../InputAdornment/InputAdornment";
 /* = Style API. */
 import { st, classes } from "./field.st.css";
 
@@ -118,8 +118,8 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
       });
     } else return;
   });
-  // @todo empty labelStringProp should not render label
-  const label = (
+
+  const label = labelStringProp && (
     <Label
       className={classes.inputLabel}
       data-id={dataId ? `${dataId}--label` : undefined}
@@ -149,29 +149,33 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
       ref={ref}
       {...rest}
     >
-      {hideLabel ? <VisuallyHidden>{label}</VisuallyHidden> : label}
+      {hideLabel && label ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
       <div
         {...fieldContainerProps}
         className={st(classes.fieldContainer, fieldContainerProps?.className)}
       >
-        {startAdornment && (
+        {typeof startAdornment === "string" ? (
           <InputAdornment
             className={classes.startAdornment}
             data-id={dataId ? `${dataId}--start-adornment` : undefined}
           >
             {startAdornment}
           </InputAdornment>
+        ) : (
+          startAdornment
         )}
         {childrenWithProps}
-        {endAdornment && (
-          <InputAdornment
-            className={classes.endAdornment}
-            data-id={dataId ? `${dataId}--end-adornment` : undefined}
-          >
-            {endAdornment}
-          </InputAdornment>
-        )}
+        {typeof endAdornment === "string"
+          ? endAdornment && (
+              <InputAdornment
+                className={classes.endAdornment}
+                data-id={dataId ? `${dataId}--end-adornment` : undefined}
+              >
+                {endAdornment}
+              </InputAdornment>
+            )
+          : endAdornment}
         {/*  */}
         {variant && (
           <fieldset aria-hidden="true" className={classes.fieldset}>

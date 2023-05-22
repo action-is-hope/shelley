@@ -13,7 +13,7 @@ exports[`Field Renderd as variant 'filled' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -54,7 +54,7 @@ exports[`Field Renderd as variant 'outlined' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -95,7 +95,7 @@ exports[`Field Renders as variant 'quiet' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -136,7 +136,7 @@ exports[`Field Renders default field as variant 'outlined', labelPosition 'over'
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -180,7 +180,7 @@ exports[`Field Renders with labelPosition 'hidden' 1`] = `
       id="label-id"
     >
       <span
-        className="Label__Test__labelText"
+        className="Label__Test__text"
       >
         My field
       </span>
@@ -220,7 +220,7 @@ exports[`Field Renders with labelPosition 'over' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -261,7 +261,7 @@ exports[`Field Renders with labelPosition 'side' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -302,7 +302,7 @@ exports[`Field Renders with labelPosition 'top' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -343,7 +343,7 @@ exports[`Field Renders with no variant 'false' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -374,7 +374,7 @@ exports[`Field Renders with no volume 'undefined' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -415,7 +415,7 @@ exports[`Field Renders with volume '1' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -456,7 +456,7 @@ exports[`Field Renders with volume '2' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -497,7 +497,7 @@ exports[`Field Renders with volume '3' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -538,7 +538,7 @@ exports[`Field Renders with volume '4' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -579,7 +579,7 @@ exports[`Field Renders with volume '5' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>
@@ -620,7 +620,7 @@ exports[`Field Renders with volume '6' 1`] = `
     id="label-id"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       My field
     </span>

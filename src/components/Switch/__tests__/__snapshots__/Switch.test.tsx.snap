@@ -1,52 +1,201 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch renders correctly with custom label 1`] = `
-[
-  <label
-    htmlFor="test123"
-    id="labelId"
-  />,
+exports[`Switch Renders with size '1' 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
+>
   <span
-    className="Switch__Test__root Switch__Test---vol-1-1"
+    className="Label__Test__text"
   >
-    <span
-      className="Switch__Test__inputContainer"
-    >
-      <input
-        aria-labelledby="labelId"
-        checked={false}
-        className="Switch__Test__input"
-        disabled={false}
-        id="test123"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onDragStart={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchCancel={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="switch"
-        type="checkbox"
-      />
-    </span>
-  </span>,
-]
+    Switch label
+  </span>
+  <span
+    className="Switch__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Switch__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+  </span>
+</label>
+`;
+
+exports[`Switch Renders with size '2' 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-2"
+>
+  <span
+    className="Label__Test__text"
+  >
+    Switch label
+  </span>
+  <span
+    className="Switch__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Switch__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+  </span>
+</label>
+`;
+
+exports[`Switch Renders with size '3' 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-3"
+>
+  <span
+    className="Label__Test__text"
+  >
+    Switch label
+  </span>
+  <span
+    className="Switch__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Switch__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+  </span>
+</label>
+`;
+
+exports[`Switch Renders with size '4' 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-4"
+>
+  <span
+    className="Label__Test__text"
+  >
+    Switch label
+  </span>
+  <span
+    className="Switch__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Switch__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+  </span>
+</label>
+`;
+
+exports[`Switch Renders with size '5' 1`] = `
+<label
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-6"
+>
+  <span
+    className="Label__Test__text"
+  >
+    Switch label
+  </span>
+  <span
+    className="Switch__Test__inputContainer"
+  >
+    <input
+      checked={false}
+      className="Switch__Test__input"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+  </span>
+</label>
 `;
 
 exports[`Switch renders correctly with label 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---vol-1-1"
+  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
 >
   <span
-    className="Label__Test__labelText"
+    className="Label__Test__text"
   >
     Label
   </span>

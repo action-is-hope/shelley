@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Tabs, Item, Button } from "../../src/indexLib";
+import { useState } from "react";
+import { Tabs, TabsProps, Item, Button } from "../../src/indexLib";
 
 const tabs = '[data-id="tabs"]';
 const tabPanel = '[data-id="tabs-tab-panel"]';
 const tabList = '[data-id="tabs-tab-list"]';
 const tabItem = '[data-id="tabs-tab-item"]';
 
-export const TabsExample = (args) => {
+const TabsExample = function <T extends object>(props: Partial<TabsProps<T>>) {
   return (
-    <Tabs aria-label="Dynamic tabs" data-id="tabs" {...args}>
+    <Tabs aria-label="Dynamic tabs" data-id="tabs" {...props}>
       <Item key="tab1" title="Tab title 1">
         Tab description 1
       </Item>

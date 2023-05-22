@@ -5,13 +5,12 @@
   -st-states:
     hasInput,
     inputPosition(enum(top, end, bottom, start));
-
+  /* = Flex enables our positional styles, grid could work too. */
+  display: flex;
   justify-self: baseline;
 }
 
-.textContainer {}
-
-.labelText {}
+.text {}
 
 .root:hasInput {
   display: inline-flex;
@@ -28,7 +27,7 @@
   flex-direction: column-reverse;
 }
 
-.root:inputPosition(top)::labelText {
+.root:inputPosition(top)::text {
   justify-content: center;
 }
 
@@ -37,7 +36,7 @@
   flex-direction: row;
 }
 
-.root:inputPosition(end)::labelText {
+.root:inputPosition(end)::text {
   justify-content: flex-end;
 }
 
@@ -46,6 +45,6 @@
   flex-direction: column;
 }
 
-.root:inputPosition(bottom)::labelText {
+.root:inputPosition(bottom)::text {
   justify-content: center;
 }
