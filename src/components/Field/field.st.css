@@ -136,8 +136,7 @@
 .root:labelPosition(over)::fieldInput::placeholder,
 .root:labelPosition(over)::fieldInput textarea::placeholder {
   transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  /* opacity: 0; */
-  color: blueviolet;
+  opacity: 0;
 }
 
 .root:labelPosition(over)::fieldInput:focus::placeholder,
