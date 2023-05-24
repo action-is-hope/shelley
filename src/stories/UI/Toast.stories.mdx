@@ -23,13 +23,13 @@ import {
 
 Toast is used for displaying a short message to the user. It is a non-modal, time-based notification that appears in the bottom right corner or bottom center of the screen. Toasts are used to provide feedback on an action that the user has taken, such as saving a file or sending a message.
 
-## Example
+## Default Toast
 
-This example displays the most basic toast with no priority or auto-dismissal.
+This example displays the most basic/default toast with no priority or auto-dismissal or action button.
 
 <Preview>
   <Story
-    name="a) Toast Default"
+    name="a) Default Toast"
     args={{}}
     parameters={{
       docs: {
@@ -55,11 +55,15 @@ This example displays the most basic toast with no priority or auto-dismissal.
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tabs--a-basic-tabs" />
+<Source language="tsx" id="data-toast--a-default-toast" />
 
-## Example
+## Toasts with Priority
 
 This example displays adding toasts with different priorities.
+An error might be a high priority, a warning a medium priority and success a low priority.
+The default priority is 0 and can be 0, 1, 2 or 3.
+The higher the number the higher the priority.
+Toasts with higher priority will be displayed first.
 
 <Preview>
   <Story
@@ -101,15 +105,18 @@ This example displays adding toasts with different priorities.
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tabs--a-basic-tabs" />
+<Source language="tsx" id="data-toast--b-toast-priority" />
 
-## Example
+## Toast with Action Button
 
 This example displays adding toasts with action buttons.
+Action buttons can be used to provide the user with a way to interact with the toast.
+For example, if the toast is displaying an error, the action button could be used to provide a way to fix the error.
+The action button has the option to close the toast when clicked besides performing the action.
 
 <Preview>
   <Story
-    name="c) Toast Action buttons"
+    name="c) Toast Action Buttons"
     args={{}}
     parameters={{
       docs: {
@@ -195,9 +202,12 @@ This example displays adding toasts with action buttons.
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tabs--a-basic-tabs" />
+<Source language="tsx" id="data-toast--c-toast-action-button" />
+
+## Toast with Auto Dismissal
 
 This example displays adding toasts with auto-dismissal.
+Auto-dismissal is used to automatically close the toast after a certain amount of time.
 
 <Preview>
   <Story
@@ -211,7 +221,12 @@ This example displays adding toasts with auto-dismissal.
       {(state) => (
         <>
           <Button
-            onClick={() => state.add("New toast", { timeout: 5000 })}
+            onClick={() =>
+              state.add(
+                { title: "Disappears in 3.5 seconds" },
+                { timeout: 3500 }
+              )
+            }
             style={{ margin: "16px" }}
           >
             Add toast!
@@ -227,13 +242,16 @@ This example displays adding toasts with auto-dismissal.
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tabs--a-basic-tabs" />
+<Source language="tsx" id="data-toast--d--toast-auto-dismissal" />
+
+## Toast with Action button that closes the toast
 
 This example displays a toast which closes when the action button is clicked.
+The action button has the option to close the toast when clicked besides performing the action.
 
 <Preview>
   <Story
-    name="e) Close on action"
+    name="e) Close on Action"
     args={{}}
     parameters={{
       docs: {
@@ -266,7 +284,7 @@ This example displays a toast which closes when the action button is clicked.
   </Story>
 </Preview>
 
-<Source language="tsx" id="data-tabs--a-basic-tabs" />
+<Source language="tsx" id="data-toast--e-toast-close-on-action" />
 
 ### Features
 
