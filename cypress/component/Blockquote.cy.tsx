@@ -68,4 +68,14 @@ describe("Blockquote Component", () => {
       .should("have.attr", "class")
       .and("to.have.string", "academic");
   });
+
+  // Renders the component with correct description volume class.
+
+  it("applies the 'descVolume' class correctly", () => {
+    cy.mount(<BlockquoteBasic children={childrenText} descVol={5} />);
+    cy.get(blockquote)
+      .find("footer")
+      .should("have.attr", "class")
+      .and("to.have.string", "vol-1-5");
+  });
 });
