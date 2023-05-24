@@ -41,7 +41,9 @@
   }
 }
 
-.toast {
+.root {
+  -st-states: priority(enum(info, success, warning, error));
+
   display: flex;
   align-items: center;
   gap: 16px;
@@ -52,7 +54,7 @@
   position: relative;
 }
 
-.toast button {
+.root button {
   background: none;
   border: none;
   appearance: none;
@@ -65,39 +67,23 @@
   padding: 0;
 }
 
-.toast button:focus-visible {
+.root button:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px slateblue, 0 0 0 4px white;
 }
 
-.toast button:active {
+.root button:active {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.info {
-  background: grey;
-}
-
-.success {
-  background: green;
-}
-
-.warning {
-  background: orange;
-}
-
-.error {
-  background: red;
-}
-
-.toast[data-animation=entering] {
+.root[data-animation=entering] {
   animation: slide-in 1s forwards;
 }
 
-.toast[data-animation=queued] {
+.root[data-animation=queued] {
   animation: fade-in 1s forwards;
 }
 
-.toast[data-animation=exiting] {
+.root[data-animation=exiting] {
   animation: slide-out 1s forwards;
 }

@@ -1,0 +1,21 @@
+@st-import Default, [--background-color-info, --background-color-success, --background-color-warning, --background-color-error] from "./project.st.css";
+
+@st-import Toast from "../../components/Toast/toast.st.css";
+
+@st-scope Default {
+  Toast:priority(info) {
+    background: var(--background-color-info)
+  }
+
+  Toast:priority(success) {
+    background: var(--background-color-success)
+  }
+
+  Toast:priority(warning) {
+    background: var(--background-color-warning)
+  }
+
+  Toast:priority(error) {
+    background: var(--background-color-error)
+  }
+}
