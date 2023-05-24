@@ -1,7 +1,7 @@
 import { ToastProvider } from "../../components/Toast/ToastProvider";
 import Button from "../../components/Button/Button";
 
-export const ToastProviderBasic = () => {
+export const ToastProviderDefault = () => {
   return (
     <ToastProvider>
       {(state) => (
@@ -22,7 +22,6 @@ export const ToastProviderPriority = () => {
   return (
     <ToastProvider>
       {(state) => {
-        console.log({ state });
         return (
           <>
             <Button
@@ -68,7 +67,6 @@ export const ToastProviderActionLabel = () => {
   return (
     <ToastProvider>
       {(state) => {
-        console.log({ state });
         return (
           <>
             <Button

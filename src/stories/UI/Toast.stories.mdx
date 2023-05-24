@@ -3,7 +3,7 @@ import { Toast } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import {
-  ToastProviderBasic,
+  ToastProviderDefault,
   ToastProviderPriority,
   ToastProviderActionLabel,
   ToastProviderAutoDismiss,
@@ -29,7 +29,7 @@ This example displays the most basic toast with no priority or auto-dismissal.
 
 <Preview>
   <Story
-    name="a) Toast Basic"
+    name="a) Toast Default"
     args={{}}
     parameters={{
       docs: {
@@ -51,7 +51,7 @@ This example displays the most basic toast with no priority or auto-dismissal.
       },
     }}
   >
-    <ToastProviderBasic />
+    <ToastProviderDefault />
   </Story>
 </Preview>
 
@@ -117,14 +117,18 @@ This example displays adding toasts with action buttons.
           code: dedent`
     <ToastProvider>
       {(state) => {
-        console.log({ state });
         return (
           <>
             <Button
               onClick={() =>
                 state.add(
-                  { title: "Bread can be toasted.", actionLabel: "Got it" },
-                  { priority: 1 }
+                  {
+                    title: "Bread can be toasted.",
+                    actionLabel: "Got it",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
+                  { priority: 0 }
                 )
               }
               style={{ margin: "16px" }}
@@ -134,7 +138,12 @@ This example displays adding toasts with action buttons.
             <Button
               onClick={() =>
                 state.add(
-                  { title: "Toasting...! (1)", actionLabel: "Thanks" },
+                  {
+                    title: "Toasting...! (1)",
+                    actionLabel: "Thanks",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
                   { priority: 1 }
                 )
               }
@@ -145,7 +154,12 @@ This example displays adding toasts with action buttons.
             <Button
               onClick={() =>
                 state.add(
-                  { title: "Toast is done! (2)", actionLabel: "Check" },
+                  {
+                    title: "Toast is done! (2)",
+                    actionLabel: "Check",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
                   { priority: 2 }
                 )
               }
@@ -156,7 +170,12 @@ This example displays adding toasts with action buttons.
             <Button
               onClick={() =>
                 state.add(
-                  { title: "Toast is burnt! (3)", actionLabel: "Fix" },
+                  {
+                    title: "Toast is burnt! (3)",
+                    actionLabel: "Fix",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
                   { priority: 3 }
                 )
               }
