@@ -11,6 +11,7 @@ export interface CustomToastContent {
   actionLabel?: string;
   onAction?: (e: SyntheticEvent, state: ToastState<CustomToastContent>) => void;
   shouldCloseOnAction?: boolean;
+  shouldShowIcon?: boolean;
 }
 
 function ToastProvider({ children, ...props }: ToastProviderProps) {

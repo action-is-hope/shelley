@@ -11,6 +11,7 @@ interface ToastProps<T> extends AriaToastProps<T> {
   className?: string;
   state: ToastState<T>;
   toast: QueuedToast<T>;
+  icon: React.ReactNode;
 }
 
 function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
@@ -22,8 +23,16 @@ function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
     ref
   );
 
+  const { icon } = props;
+
   const {
-    content: { title, actionLabel = "", shouldCloseOnAction = false, onAction },
+    content: {
+      title,
+      actionLabel = "",
+      shouldCloseOnAction = false,
+      onAction,
+      shouldShowIcon = true,
+    },
     priority = 0,
     animation,
     key,
@@ -64,7 +73,10 @@ function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
         }
       }}
     >
-      <div {...titleProps}>{title}</div>
+      <div className={classes.iconAndTitleWrapper}>
+        {shouldShowIcon && icon && <>{icon}</>}
+        <div {...titleProps}>{title}</div>
+      </div>
       <div className={classes.actionAndCloseWrapper}>
         {actionLabel && onAction && (
           <Button

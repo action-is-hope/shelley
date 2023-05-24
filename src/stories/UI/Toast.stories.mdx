@@ -8,6 +8,7 @@ import {
   ToastProviderActionLabel,
   ToastProviderAutoDismiss,
   ToastProviderCloseOnAction,
+  ToastProviderWithoutIcon,
 } from "./Toast.examples";
 
 <Meta title="Navigation/Toast" component={Toast} />
@@ -285,6 +286,45 @@ The action button has the option to close the toast when clicked besides perform
 </Preview>
 
 <Source language="tsx" id="data-toast--e-toast-close-on-action" />
+
+## Toast without icon
+
+This example displays a toast which has no icon.
+
+<Preview>
+  <Story
+    name="f) No icon"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() =>
+              state.add({
+                title: "No icon",
+                shouldShowIcon: false,
+              })
+            }
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
+      )}
+    </ToastProvider>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderWithoutIcon />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-toast--f-toast-no-icon" />
 
 ### Features
 

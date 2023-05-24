@@ -185,3 +185,25 @@ export const ToastProviderCloseOnAction = () => {
     </ToastProvider>
   );
 };
+
+export const ToastProviderWithoutIcon = () => {
+  return (
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() =>
+              state.add({
+                title: "No icon",
+                shouldShowIcon: false,
+              })
+            }
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
+      )}
+    </ToastProvider>
+  );
+};
