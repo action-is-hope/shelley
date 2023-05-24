@@ -7,14 +7,33 @@ describe("Switch", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders correctly with custom label", () => {
+  it("Renders with size '1'", () => {
     const tree = renderer
-      .create(
-        <>
-          <label htmlFor="test123" id="labelId"></label>
-          <Switch id="test123" aria-labelledby="labelId" />
-        </>
-      )
+      .create(<Switch size={1}>Switch label</Switch>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '2'", () => {
+    const tree = renderer
+      .create(<Switch size={2}>Switch label</Switch>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '3'", () => {
+    const tree = renderer
+      .create(<Switch size={3}>Switch label</Switch>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '4'", () => {
+    const tree = renderer
+      .create(<Switch size={4}>Switch label</Switch>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it("Renders with size '5'", () => {
+    const tree = renderer
+      .create(<Switch size={6}>Switch label</Switch>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

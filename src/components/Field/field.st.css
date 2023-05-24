@@ -19,6 +19,7 @@
 
 .root {
   display: grid;
+  align-items: center;
   position: relative;
 }
 
@@ -27,8 +28,9 @@
 }
 
 .fieldContainer {
-  position: relative;
   display: inline-flex;
+  /* Contains the fieldContainer into it's grid cell. */
+  position: relative;
 }
 
 .startAdornment {}
@@ -105,22 +107,15 @@
   position: absolute;
   left: 0;
   top: 0;
-
-  /* @todo variable... for transition */
-  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  z-index: 1;
-
-  cursor: text;
-  max-width: calc(100% - 3em);
-}
-
-.root:labelPosition(over)::inputLabel::labelText {
-  display: block;
-  transform-origin: 0;
-  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  /* truncation */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* @todo variable... for transition */
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  z-index: 1;
+  cursor: text;
+  max-width: calc(100% - 3em);
 }
 
 .root:labelPosition(over):focus-within::inputLabel,
@@ -128,8 +123,13 @@
   transform: translate(0, -10px);
 }
 
-.root:labelPosition(over):focus-within::inputLabel::labelText,
-.root:labelPosition(over):hasValue::inputLabel::labelText {
+.root:labelPosition(over):focus-within::inputLabel,
+.root:labelPosition(over):hasValue::inputLabel {
+  transform: scale(0.75);
+}
+
+.root:labelPosition(over):focus-within::legend,
+.root:labelPosition(over):hasValue::legend {
   transform: scale(0.75);
 }
 

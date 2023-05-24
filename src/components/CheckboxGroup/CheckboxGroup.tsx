@@ -7,7 +7,6 @@ import { useCheckboxGroupState } from "react-stately";
 import { useCheckboxGroup } from "react-aria";
 import { CheckboxGroupContext } from "./context";
 import { Field } from "../Field/Field";
-/* = Style API. */
 import { st, classes } from "./checkboxGroup.st.css";
 
 export interface CheckboxGroupProps

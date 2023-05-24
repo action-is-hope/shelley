@@ -1,3 +1,4 @@
+// import React from "react";
 import {
   Button,
   H2,
@@ -120,7 +121,7 @@ export const ShardExample = () => {
       <div style={{ position: "relative", gridArea: "content" }}>
         <P vol={2}>Content blocks</P>
         <br />
-        <Switch vol={1} onChange={() => setShards(!shards)} defaultSelected>
+        <Switch size={1} onChange={() => setShards(!shards)} defaultSelected>
           shards
         </Switch>
         <br />

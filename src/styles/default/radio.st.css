@@ -1,47 +1,69 @@
-/* = Project and vars */
-@st-import Default, [--spacing-unit, --color-error] from "./project.st.css";
-/* = Root style API. */
-@st-import Radio from "../../components/Radio/radio.st.css";
-/* = Child components. */
-@st-import Icon from "../../components/Icon/icon.st.css";
+/**
+ * = Radio - radio.st.css
+ *
+ * Base theme styles for a Shelley Radio.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Radio/radio.st.css
+ * 
+ */
 
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    SelectionControlRoot,
+@st-import Default, [
+    --spacing-unit,
+    --color-error
+  ] from "./project.st.css";
+@st-import Radio from "../../components/Radio/radio.st.css";
+@st-import RadioGroup from "../../components/RadioGroup/radioGroup.st.css";
+@st-import Icon from "../../components/Icon/icon.st.css";
+@st-import [
+    SelectionControlInputContainer,
     SelectionControlFieldInput,
     RadioCheckboxCommon,
     RadioFieldInput,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6,
-    selectionControlVol1,
-    selectionControlVol2,
-    selectionControlVol3,
-    selectionControlVol4,
-    selectionControlVol5,
-    selectionControlVol6;
-}
+    labelVol1,
+    labelVol2,
+    labelVol3,
+    labelVol4,
+    labelVol5,
+    labelVol6,
+    selectionControlSize1,
+    selectionControlSize2,
+    selectionControlSize3,
+    selectionControlSize4,
+    selectionControlSize5,
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
-
-  Radio {}
 
   Radio {
     gap: calc(var(--spacing-unit) / 2);
     cursor: pointer;
+    line-height: 1.4;
   }
 
-  Radio:disabled {
+  Radio:isDisabled {
     cursor: not-allowed;
     opacity: 0.7;
   }
 
-  Radio:validationState(invalid)::inputLabel::labelText {
+  Radio::inputContainer {
+    -st-mixin: SelectionControlInputContainer;
+  }
+
+  Radio::input {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  Radio::input {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  Radio::input {
+    -st-mixin: RadioFieldInput;
+  }
+
+  /* = States */
+  Radio:validationState(invalid)::text {
     color: var(--color-error);
   }
 
@@ -53,84 +75,73 @@
     background-color: var(--color-error);
   }
 
-  Radio::inputContainer {
-    -st-mixin: SelectionControlRoot;
-  }
-
-  Radio::input {
-    -st-mixin: SelectionControlFieldInput;
-  }
-
-  /* = Radio common styles. */
-  Radio::input {
-    -st-mixin: RadioCheckboxCommon;
-  }
-
-  Radio::input {
-    -st-mixin: RadioFieldInput;
-  }
-
   Radio:isFocusVisible::input::after {
     opacity: 1;
   }
 
-  /* ==== VOLUMES ====*/
-
-  /* = Volume 1 */
-  Radio:vol(1) {
-    -st-mixin: inputVol1
-  }
-
-  Radio:vol(1)::inputContainer {
-    -st-mixin: selectionControlVol1
-  }
-
-  /* = Volume 2 */
-  Radio:vol(2) {
-    -st-mixin: inputVol2;
-  }
-
-  Radio:vol(2)::inputContainer {
-    -st-mixin: selectionControlVol2;
-  }
-
-  /* = Volume 3 */
-  Radio:vol(3) {
-    -st-mixin: inputVol3
-  }
-
-  Radio:vol(3)::inputContainer {
-    -st-mixin: selectionControlVol3
-  }
-
-  /* = Volume 4 */
-  Radio:vol(4) {
-    -st-mixin: inputVol4
-  }
-
-  Radio:vol(4)::inputContainer {
-    -st-mixin: selectionControlVol4
-  }
-
-  /* = Volume 5 */
-  Radio:vol(5) {
-    -st-mixin: inputVol5
-  }
-
-  Radio:vol(5)::inputContainer {
-    -st-mixin: selectionControlVol5
-  }
-
-  /* = Volume 6 */
-  Radio:vol(6) {
-    -st-mixin: inputVol6
-  }
-
-  Radio:vol(6)::inputContainer {
-    -st-mixin: selectionControlVol6
-  }
-
   Radio Icon {
     font-size: 2em;
+  }
+
+  /* === Radio: sizes ===*/
+
+  Radio:size(1)::inputContainer {
+    -st-mixin: selectionControlSize1
+  }
+
+  Radio:size(2)::inputContainer {
+    -st-mixin: selectionControlSize2
+  }
+
+  Radio:size(3)::inputContainer {
+    -st-mixin: selectionControlSize3
+  }
+
+  Radio:size(4)::inputContainer {
+    -st-mixin: selectionControlSize4
+  }
+
+  Radio:size(5)::inputContainer {
+    -st-mixin: selectionControlSize5
+  }
+
+  Radio:size(6)::inputContainer {
+    -st-mixin: selectionControlSize6
+  }
+
+
+  /* ==== RADIOGROUP ====*/
+
+  RadioGroup {}
+
+  RadioGroup::group {
+    gap: 0.2em;
+  }
+
+  /* ==== RadioGroup: volume ====*/
+
+  /* When in a RadioGroup the Radios use the same relative volume used for Field->label.*/
+  RadioGroup:vol(1) Radio::text {
+    -st-mixin: labelVol1
+  }
+
+  RadioGroup:vol(2) Radio::text {
+    -st-mixin: labelVol2
+  }
+
+  RadioGroup:vol(3) Radio::text {
+    -st-mixin: labelVol3
+  }
+
+  RadioGroup:vol(4) Radio::text {
+    -st-mixin: labelVol4
+  }
+
+  RadioGroup:vol(5) Radio::text {
+    -st-mixin: labelVol5
+  }
+
+  RadioGroup:vol(6) Radio::text {
+    -st-mixin: labelVol6
   }
 }

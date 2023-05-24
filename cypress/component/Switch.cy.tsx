@@ -60,15 +60,4 @@ describe("Switch", () => {
       .should("have.attr", "class")
       .and("to.have.string", "cypress-test");
   });
-
-  it("custom label", () => {
-    cy.mount(
-      <>
-        <label htmlFor="test123">Custom label</label>
-        <Switch id="test123" data-id={fieldPropsTest["data-id"]} />
-      </>
-    );
-    cy.get(switchWithoutLabel).should("exist");
-    cy.get(inputEl).should("have.attr", "id").and("equal", "test123");
-  });
 });

@@ -1,8 +1,9 @@
-import React from "react";
 import { Select, SelectProps, Item } from "../../src/indexLib";
 const selectField = '[data-id="select"]';
 const fieldLabel = '[data-id="select--label"]';
 const trigger = '[data-id="select--trigger"]';
+const hiddenInput = '[data-id="select"] input';
+const hiddenSelect = '[data-id="select"] select';
 const FieldValue = '[data-id="select--value"]';
 const popup = '[data-id="select--popup"]';
 const listBox = '[data-id="select--listBox"]';
@@ -129,6 +130,8 @@ describe("Basic Select", () => {
       .should("have.attr", "class")
       .and("to.have.string", "isDisabled");
     cy.get(trigger).should("be.disabled");
+    cy.get(hiddenInput).should("be.disabled");
+    cy.get(hiddenSelect).should("be.disabled");
   });
 });
 
@@ -204,14 +207,6 @@ describe("Opening and closing", () => {
     cy.window().then(($window) => {
       expect($window.scrollY).to.be.eq(0);
     });
-  });
-
-  it("isDisabled.", () => {
-    cy.mount(<BasicSelect isDisabled />);
-    cy.get(selectField)
-      .should("have.attr", "class")
-      .and("to.have.string", "isDisabled");
-    cy.get(trigger).should("be.disabled");
   });
 });
 

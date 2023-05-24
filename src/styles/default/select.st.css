@@ -1,34 +1,38 @@
-/** select.st.css */
-
-@st-import Default from "./project.st.css";
+/**
+ * = Select - select.st.css
+ *
+ * The base styles are provided by Field, here we are just adding 
+ * Select specifics.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Select/select.st.css
+ * 
+ */
+@st-import Default, [--field-padding] from "./project.st.css";
 @st-import Select from "../../components/Select/select.st.css";
 @st-import Icon from "../../components/Icon/icon.st.css";
-/* = Mixins */
-@st-import [selectFieldContainer, selectFieldInput] from "./mixins/formElements.st.css";
 
 @st-scope Default {
-  /**
-   * The base styles taken care of by Field, here we are just adding the 
-   * that we want for our <select> element.
-   */
 
-  /* = Apply selectFieldContainer to the base fieldContainer. */
-  Select::fieldContainer {
-    -st-mixin: selectFieldContainer;
-  }
-
-  /* = Display the right hand indicator on <select>'s to encase the arrow icon. */
-  Select::fieldContainer::after {
-    display: block;
-  }
-
-  /*= Applies the down arrow, aka --select-icon and associated styles. */
   Select::trigger {
-    -st-mixin: selectFieldInput;
+    border-radius: 0;
+    padding: var(--field-padding);
+    text-transform: inherit;
+    font-size: 1em;
+    line-height: 1.5;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 400;
+    border-width: 0;
     letter-spacing: 0;
   }
 
+  /* Hide trigger focus. Focus indicator is provided by field. */
+  Select::trigger:focus::after {
+    opacity: 0;
+  }
+
   Select::trigger Icon {
+    /* rtl */
     margin-right: -5px;
   }
 
@@ -36,12 +40,17 @@
     padding: 0;
   }
 
+  Select::placeholder {
+    opacity: .8;
+    letter-spacing: 0.2px;
+  }
+
   Select:labelPosition(over)::placeholder {
     visibility: hidden;
   }
 
-  Select::placeholder {
-    opacity: .8;
-    letter-spacing: 0.2px;
+  /* = Display the 'quiet' right hand field indicator on Select to visually encase the down arrow. */
+  Select:variant(quiet)::fieldContainer::after {
+    display: block;
   }
 }

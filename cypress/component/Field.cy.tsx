@@ -123,7 +123,7 @@ describe("Field Help", () => {
 });
 
 describe("Adornments", () => {
-  it("renders start adornment", () => {
+  it("renders start adornment with text value", () => {
     cy.mount(
       <Field {...fieldPropsTest} startAdornment="£">
         <input id="testField" type="text" aria-labelledby="label-id" />
@@ -134,7 +134,7 @@ describe("Adornments", () => {
       .and("have.text", "£");
   });
 
-  it("renders end adornment", () => {
+  it("renders end adornment with text value", () => {
     cy.mount(
       <Field {...fieldPropsTest} endAdornment=".00">
         <input id="testField" type="text" aria-labelledby="label-id" />
@@ -143,5 +143,21 @@ describe("Adornments", () => {
     cy.get('[data-id="field--end-adornment"]')
       .should("exist")
       .and("have.text", ".00");
+  });
+
+  it("custom elements are NOT wrapped in adornment component, rendered as provided.", () => {
+    cy.mount(
+      <Field
+        {...fieldPropsTest}
+        startAdornment={<div id="startAdornmentElement">start adornment</div>}
+        endAdornment={<div id="endAdornmentElement">end adornment</div>}
+      >
+        <input id="testField" type="text" aria-labelledby="label-id" />
+      </Field>
+    );
+    cy.get('[data-id="field--start-adornment"]').should("not.exist");
+    cy.get('[data-id="field--end-adornment"]').should("not.exist");
+    cy.get("#startAdornmentElement").should("have.text", "start adornment");
+    cy.get("#endAdornmentElement").should("have.text", "end adornment");
   });
 });

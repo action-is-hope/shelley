@@ -257,6 +257,8 @@ The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Radi
 
 ## Custom label
 
+To customise you use any children with a custom `className`. Extending the className in your stylable file, `-st-extends: Radio` will give you access to the states.
+
 <Story
   name="g) Custom label"
   args={{
@@ -268,17 +270,15 @@ The `isReadOnly` prop makes the selection immutable. Unlike isDisabled, the Radi
     docs: {
       source: {
         code: dedent`
-  <RadioGroup label="Favorite sport" defaultValue="baseball">
-    <Radio value="football">Football</Radio>
-    <Radio value="baseball">Baseball</Radio>
-    <Radio value="basketball">Basketball</Radio>
-  </RadioGroup>`,
+Example TBC`,
       },
     },
   }}
 >
   {CustomLabel.bind({})}
 </Story>
+
+<Source language="tsx" id="inputs-radiogroup--g-custom-label" />
 
 ## RadioGroup Props
 

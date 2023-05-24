@@ -24,14 +24,16 @@
 
 @st-scope Default {
   Label {
-    /* = Flex enables our positional styles, grid could work too. */
-    display: flex;
     /* = Stops the text from getting selecting when clicking on labels. */
     user-select: none;
     pointer-events: auto;
+    /* Ideally no positional stuff here like padding, margin as 
+     * this will effect the feild labelposition="over". If you do 
+     * need/want to set these here then ensure rests are in place
+     * where needed.*/
   }
 
-  Label::labelText {
+  Label::text {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }

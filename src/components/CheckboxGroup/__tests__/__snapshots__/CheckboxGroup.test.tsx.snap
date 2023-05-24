@@ -9,7 +9,7 @@ exports[`Checkbox renders correctly 1`] = `
     id="react-aria-1"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       Field Label
     </span>
@@ -21,10 +21,10 @@ exports[`Checkbox renders correctly 1`] = `
     role="group"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---size-1-1"
     >
       <span
-        className="Label__Test__labelText"
+        className="Label__Test__text"
       >
         Label1
       </span>
@@ -57,10 +57,10 @@ exports[`Checkbox renders correctly 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---vol-1-1"
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---size-1-1"
     >
       <span
-        className="Label__Test__labelText"
+        className="Label__Test__text"
       >
         Label2
       </span>
@@ -105,7 +105,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
     id="react-aria-1"
   >
     <span
-      className="Label__Test__labelText"
+      className="Label__Test__text"
     >
       Field Label
     </span>
@@ -122,8 +122,8 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
     >
       Label1
     </label>
-    <span
-      className="Checkbox__Test__root Checkbox__Test---vol-1-1"
+    <label
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---size-1-1"
     >
       <span
         className="Checkbox__Test__inputContainer"
@@ -153,15 +153,15 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
           value="cb1"
         />
       </span>
-    </span>
+    </label>
     <label
       htmlFor="cb2"
       id="lb2"
     >
       Label2
     </label>
-    <span
-      className="Checkbox__Test__root Checkbox__Test---vol-1-1"
+    <label
+      className="Label__Test__root Label__Test--hasInput Checkbox__Test__root Checkbox__Test---size-1-1"
     >
       <span
         className="Checkbox__Test__inputContainer"
@@ -191,7 +191,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
           value="cb2"
         />
       </span>
-    </span>
+    </label>
   </div>
 </div>
 `;
