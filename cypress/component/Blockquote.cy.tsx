@@ -39,34 +39,35 @@ describe("Blockquote Component", () => {
       .and("not.to.have.string", "academic");
   });
 
-  // Check that the component renders with the correct description.
+  // Check that the component renders with the correct children text.
 
   it("renders the children correctly", () => {
     cy.mount(<BlockquoteBasic children={childrenText} />);
-    cy.get(blockquote).contains(childrenText);
+    cy.get(blockquote)
+      .contains(childrenText)
+      .should("have.attr", "class")
+      .and("to.have.string", "content");
   });
 
-  // Check that the component renders with the correct description.
+  // Check that the component renders with the correct description text.
 
   it("renders the description correctly", () => {
     cy.mount(<BlockquoteBasic children={childrenText} />);
-    cy.get(blockquote).contains(descriptionText);
+    cy.get(blockquote).find("footer").and("have.text", descriptionText);
   });
 
   // Renders the component with the correct variant.
 
-  it("applies the 'variant informal' class correctly", () => {
-    cy.mount(<BlockquoteBasic children={childrenText} variant="informal" />);
-    cy.get(blockquote)
-      .should("have.attr", "class")
-      .and("to.have.string", "informal");
-  });
+  it("applies variant classes correctly", () => {
+    const variants: ("informal" | "academic")[] = ["informal", "academic"];
 
-  it("applies the 'variant academic' class correctly", () => {
-    cy.mount(<BlockquoteBasic children={childrenText} variant="academic" />);
-    cy.get(blockquote)
-      .should("have.attr", "class")
-      .and("to.have.string", "academic");
+    variants.map((variant) => {
+      cy.mount(<BlockquoteBasic children={childrenText} variant={variant} />);
+
+      cy.get(blockquote)
+        .should("have.attr", "class")
+        .and("to.have.string", variant);
+    });
   });
 
   // Renders the component with correct description volume class.
