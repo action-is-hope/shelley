@@ -1,6 +1,32 @@
 import { ToastProvider } from "../../components/Toast/ToastProvider";
 import Button from "../../components/Button/Button";
 
+const wordList = {
+  info: [
+    "added",
+    "changed",
+    "continued",
+    "proceeded",
+    "started",
+    "restarted",
+  ] as const,
+  success: [
+    "succeeded",
+    "completed",
+    "installed",
+    "downloaded",
+    "uploaded",
+    "finished",
+  ] as const,
+  warning: ["warned", "paused", "retried"] as const,
+  error: ["errored", "failed", "cancelled", "removed"] as const,
+} as const;
+
+type WordListKeys = keyof typeof wordList;
+
+const getRandomWordFromCategory = (category: WordListKeys): string =>
+  wordList[category][Math.floor(Math.random() * wordList[category].length)]!;
+
 export const ToastProviderBasic = () => {
   return (
     <ToastProvider>
@@ -26,6 +52,42 @@ export const ToastProviderPriority = () => {
         return (
           <>
             <Button
+              onClick={() => state.add(getRandomWordFromCategory("info"))}
+              style={{ margin: "16px" }}
+            >
+              No priority - info
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(getRandomWordFromCategory("success"), {
+                  priority: 1,
+                })
+              }
+              style={{ margin: "16px" }}
+            >
+              Low priority(1) - success
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(getRandomWordFromCategory("warning"), {
+                  priority: 2,
+                })
+              }
+              style={{ margin: "16px" }}
+            >
+              Medium priority(2) - warning
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(getRandomWordFromCategory("error"), {
+                  priority: 3,
+                })
+              }
+              style={{ margin: "16px" }}
+            >
+              High priority(3) - error
+            </Button>
+            {/* <Button
               onClick={() => state.add("Bread can be toasted.")}
               style={{ margin: "16px" }}
             >
@@ -48,7 +110,7 @@ export const ToastProviderPriority = () => {
               style={{ margin: "16px" }}
             >
               High priority(3) - error
-            </Button>
+            </Button> */}
           </>
         );
       }}
