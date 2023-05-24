@@ -59,7 +59,7 @@ describe("Blockquote Component", () => {
   // Renders the component with the correct variant.
 
   it("applies variant classes correctly", () => {
-    const variants: ("informal" | "academic")[] = ["informal", "academic"];
+    const variants = ["informal", "academic"] as const;
 
     variants.map((variant) => {
       cy.mount(<BlockquoteBasic children={childrenText} variant={variant} />);
