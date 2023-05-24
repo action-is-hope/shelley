@@ -1,13 +1,20 @@
-import type { ReactNode } from "react";
-import { useToastState } from "@react-stately/toast";
+import type { ReactNode, SyntheticEvent } from "react";
+import { useToastState, ToastState } from "@react-stately/toast";
 import { ToastRegion } from "./ToastRegion";
 
 interface ToastProviderProps {
   children: (state: ReturnType<typeof useToastState>) => ReactNode;
 }
 
+export interface CustomToastContent {
+  title: string;
+  actionLabel?: string;
+  onAction?: (e: SyntheticEvent, state: ToastState<CustomToastContent>) => void;
+  shouldCloseOnAction?: boolean;
+}
+
 function ToastProvider({ children, ...props }: ToastProviderProps) {
-  const state = useToastState({
+  const state = useToastState<CustomToastContent>({
     maxVisibleToasts: 5,
     hasExitAnimation: true,
   });

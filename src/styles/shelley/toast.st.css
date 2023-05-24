@@ -1,0 +1,11 @@
+@st-import Shelley from "./project.st.css";
+
+@st-import Toast from "../../components/Toast/toast.st.css";
+
+@st-scope Shelley {
+
+  Toast::actionButton {
+    border: 1px solid white;
+  }
+
+}

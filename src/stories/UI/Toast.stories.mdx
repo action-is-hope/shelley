@@ -5,7 +5,9 @@ import dedent from "ts-dedent";
 import {
   ToastProviderBasic,
   ToastProviderPriority,
+  ToastProviderActionLabel,
   ToastProviderAutoDismiss,
+  ToastProviderCloseOnAction,
 } from "./Toast.examples";
 
 <Meta title="Navigation/Toast" component={Toast} />
@@ -101,11 +103,86 @@ This example displays adding toasts with different priorities.
 
 <Source language="tsx" id="data-tabs--a-basic-tabs" />
 
+## Example
+
+This example displays adding toasts with action buttons.
+
+<Preview>
+  <Story
+    name="c) Toast Action buttons"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+    <ToastProvider>
+      {(state) => {
+        console.log({ state });
+        return (
+          <>
+            <Button
+              onClick={() =>
+                state.add(
+                  { title: "Bread can be toasted.", actionLabel: "Got it" },
+                  { priority: 1 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              No priority - info
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  { title: "Toasting...! (1)", actionLabel: "Thanks" },
+                  { priority: 1 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              Low priority(1) - success
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  { title: "Toast is done! (2)", actionLabel: "Check" },
+                  { priority: 2 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              Medium priority(2) - warning
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  { title: "Toast is burnt! (3)", actionLabel: "Fix" },
+                  { priority: 3 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              High priority(3) - error
+            </Button>
+          </>
+        );
+      }}
+    </ToastProvider>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderActionLabel />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
+
 This example displays adding toasts with auto-dismissal.
 
 <Preview>
   <Story
-    name="c) Auto Dismiss"
+    name="d) Auto Dismiss"
     args={{}}
     parameters={{
       docs: {
@@ -128,6 +205,45 @@ This example displays adding toasts with auto-dismissal.
     }}
   >
     <ToastProviderAutoDismiss />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-tabs--a-basic-tabs" />
+
+This example displays a toast which closes when the action button is clicked.
+
+<Preview>
+  <Story
+    name="e) Close on action"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() =>
+              state.add({
+                title: "Should close on action",
+                actionLabel: "Action",
+                shouldCloseOnAction: true,
+                onAction: () => console.log("Action was clicked!"),
+              })
+            }
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
+      )}
+    </ToastProvider>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderCloseOnAction />
   </Story>
 </Preview>
 

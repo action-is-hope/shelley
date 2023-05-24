@@ -7,7 +7,7 @@ export const ToastProviderBasic = () => {
       {(state) => (
         <>
           <Button
-            onClick={() => state.add("New toast")}
+            onClick={() => state.add({ title: "New toast" })}
             style={{ margin: "16px" }}
           >
             Add toast!
@@ -26,25 +26,111 @@ export const ToastProviderPriority = () => {
         return (
           <>
             <Button
-              onClick={() => state.add("Bread can be toasted.")}
+              onClick={() =>
+                state.add({ title: "Bread can be toasted." }, { priority: 0 })
+              }
               style={{ margin: "16px" }}
             >
               No priority - info
             </Button>
             <Button
-              onClick={() => state.add("Toasting...! (1)", { priority: 1 })}
+              onClick={() =>
+                state.add({ title: "Toasting...! (1)" }, { priority: 1 })
+              }
               style={{ margin: "16px" }}
             >
               Low priority(1) - success
             </Button>
             <Button
-              onClick={() => state.add("Toast is done! (2)", { priority: 2 })}
+              onClick={() =>
+                state.add({ title: "Toast is done! (2)" }, { priority: 2 })
+              }
               style={{ margin: "16px" }}
             >
               Medium priority(2) - warning
             </Button>
             <Button
-              onClick={() => state.add("Toast is burnt! (3)", { priority: 3 })}
+              onClick={() =>
+                state.add({ title: "Toast is burnt! (3)" }, { priority: 3 })
+              }
+              style={{ margin: "16px" }}
+            >
+              High priority(3) - error
+            </Button>
+          </>
+        );
+      }}
+    </ToastProvider>
+  );
+};
+
+export const ToastProviderActionLabel = () => {
+  return (
+    <ToastProvider>
+      {(state) => {
+        console.log({ state });
+        return (
+          <>
+            <Button
+              onClick={() =>
+                state.add(
+                  {
+                    title: "Bread can be toasted.",
+                    actionLabel: "Got it",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
+                  { priority: 0 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              No priority - info
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  {
+                    title: "Toasting...! (1)",
+                    actionLabel: "Thanks",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
+                  { priority: 1 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              Low priority(1) - success
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  {
+                    title: "Toast is done! (2)",
+                    actionLabel: "Check",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
+                  { priority: 2 }
+                )
+              }
+              style={{ margin: "16px" }}
+            >
+              Medium priority(2) - warning
+            </Button>
+            <Button
+              onClick={() =>
+                state.add(
+                  {
+                    title: "Toast is burnt! (3)",
+                    actionLabel: "Fix",
+                    shouldCloseOnAction: true,
+                    onAction: () => console.log("Action was clicked!"),
+                  },
+                  { priority: 3 }
+                )
+              }
               style={{ margin: "16px" }}
             >
               High priority(3) - error
@@ -62,7 +148,36 @@ export const ToastProviderAutoDismiss = () => {
       {(state) => (
         <>
           <Button
-            onClick={() => state.add("New toast", { timeout: 5000 })}
+            onClick={() =>
+              state.add(
+                { title: "Disappears in 3.5 seconds" },
+                { timeout: 3500 }
+              )
+            }
+            style={{ margin: "16px" }}
+          >
+            Add toast!
+          </Button>
+        </>
+      )}
+    </ToastProvider>
+  );
+};
+
+export const ToastProviderCloseOnAction = () => {
+  return (
+    <ToastProvider>
+      {(state) => (
+        <>
+          <Button
+            onClick={() =>
+              state.add({
+                title: "Should close on action",
+                actionLabel: "Action",
+                shouldCloseOnAction: true,
+                onAction: () => console.log("Action was clicked!"),
+              })
+            }
             style={{ margin: "16px" }}
           >
             Add toast!

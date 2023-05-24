@@ -1,7 +1,8 @@
-import { forwardRef, useRef } from "react";
+import { SyntheticEvent, forwardRef, useRef } from "react";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { ToastState, QueuedToast } from "@react-stately/toast";
 import { useToast } from "@react-aria/toast";
+import type { CustomToastContent } from "./ToastProvider";
 
 import Button from "../Button/Button";
 import { st, classes } from "./toast.st.css";
@@ -12,32 +13,77 @@ interface ToastProps<T> extends AriaToastProps<T> {
   toast: QueuedToast<T>;
 }
 
-function Toast<T>({ state, ...props }: ToastProps<T>) {
+function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
   const ref = useRef(null);
+
   const { toastProps, titleProps, closeButtonProps } = useToast(
     props,
     state,
     ref
   );
 
+  const {
+    content: { title, actionLabel = "", shouldCloseOnAction = false, onAction },
+    priority = 0,
+    animation,
+    key,
+  } = props.toast;
+
   const priorities = ["info", "success", "warning", "error"] as const;
 
-  const priority = priorities[props.toast.priority || 0];
+  const priorityName = priorities[priority || 0];
+
+  const withOrWithoutCloseButtonProps = shouldCloseOnAction
+    ? closeButtonProps
+    : {};
+
+  if ((actionLabel && !onAction) || (!actionLabel && onAction)) {
+    throw new Error(
+      "Toast: actionLabel and onAction must be both present or both absent."
+    );
+  }
+
+  const onActionHandler = (
+    e: SyntheticEvent,
+    state: ToastState<CustomToastContent>
+  ) => {
+    if (onAction) {
+      onAction(e, state);
+    }
+  };
 
   return (
     <div
       {...toastProps}
       ref={ref}
-      className={st(classes.root, { priority }, props.className)}
-      data-animation={props.toast.animation}
+      className={st(classes.root, { priority: priorityName }, props.className)}
+      data-animation={animation}
       onAnimationEnd={() => {
-        if (props.toast.animation === "exiting") {
-          state.remove(props.toast.key);
+        if (animation === "exiting") {
+          state.remove(key);
         }
       }}
     >
-      <div {...titleProps}>{props.toast.content}</div>
-      <Button {...closeButtonProps}>X</Button>
+      <div {...titleProps}>{title}</div>
+      <div className={classes.actionAndCloseWrapper}>
+        {actionLabel && onAction && (
+          <Button
+            tone={false}
+            className={classes.actionButton}
+            onClick={(e: SyntheticEvent) => {
+              onActionHandler(e, state);
+            }}
+            {...withOrWithoutCloseButtonProps}
+          >
+            {actionLabel}
+          </Button>
+        )}
+        <div className={classes.closeButtonWrapper}>
+          <Button {...closeButtonProps} className={classes.closeButton}>
+            X
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

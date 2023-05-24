@@ -46,6 +46,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   background: slateblue;
   color: white;
@@ -54,7 +55,7 @@
   position: relative;
 }
 
-.root button {
+.closeButton {
   background: none;
   border: none;
   appearance: none;
@@ -65,6 +66,8 @@
   border: 1px solid white;
   color: white;
   padding: 0;
+
+  margin-left: 8px;
 }
 
 .root button:focus-visible {
@@ -86,4 +89,18 @@
 
 .root[data-animation=exiting] {
   animation: slide-out 1s forwards;
+}
+
+.actionButton {
+  color: inherit;
+}
+
+.actionAndCloseWrapper {
+  display: flex;
+}
+
+.closeButtonWrapper {
+  border-left: 1px solid white;
+  margin-right: 8px;
+  margin-left: 8px;
 }
