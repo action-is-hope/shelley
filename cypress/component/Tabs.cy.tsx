@@ -150,7 +150,7 @@ describe("Basic Tabs", () => {
 
   it("renders with correct class names", () => {
     cy.mount(<TabsExample />);
-    cy.get(tabs).should("have.attr", "class").and("to.have.string", "tabs");
+    cy.get(tabs).should("have.attr", "class").and("to.have.string", "Tabs");
     cy.get(tabPanel)
       .should("have.attr", "class")
       .and("to.have.string", "tabPanel");

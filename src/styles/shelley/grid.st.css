@@ -25,7 +25,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/Grid/grid.st.css";
+  -st-from: "../../Grid/grid.st.css";
   -st-default: Grid;
 }
 

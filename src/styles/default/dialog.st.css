@@ -4,7 +4,7 @@
   --background-color-dialog,
   --color-dialog] from "./project.st.css";
 /* = Component API */
-@st-import Dialog from "../../components/Dialog/dialog.st.css";
+@st-import Dialog from "../../Dialog/dialog.st.css";
 
 @st-scope Default {
 

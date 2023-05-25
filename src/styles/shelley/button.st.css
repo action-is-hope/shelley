@@ -12,9 +12,9 @@
     --color-accent-4
   ] from "./project.st.css";
 /* Component API */
-@st-import Button, [--bg-color, --border-color, --text-color] from "../../components/Button/button.st.css";
+@st-import Button, [--bg-color, --border-color, --text-color] from "../../Button/button.st.css";
 /* = Parent components */
-@st-import ButtonGroup, [--seperator-color] from "../../components/ButtonGroup/buttonGroup.st.css";
+@st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
 
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {

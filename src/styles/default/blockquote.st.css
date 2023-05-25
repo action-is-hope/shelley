@@ -3,18 +3,14 @@
  * 
  * ========================================================================= */
 
-
-/* Default project scope and vars. */
-@st-import Default,
-[--spacing-unit] from "./project.st.css";
-/* Component API. */
-@st-import Blockquote from "../../components/Blockquote/blockquote.st.css";
+@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import Blockquote from "../../Blockquote/blockquote.st.css";
 
 @st-scope Default {
-
-    /* Base styles. */
     Blockquote {
-        background-image: radial-gradient(circle at 50% 50%, #000000 0%, rgba(255, 255, 255, 0) 100%);
+        background-image: radial-gradient(circle at 50% 50%,
+                #000000 0%,
+                rgba(255, 255, 255, 0) 100%);
         background-color: transparent;
         background-position: 50% 50%;
         background-size: 100% 100%;
@@ -32,6 +28,6 @@
 
     Blockquote::desc {
         font-style: normal;
-        margin-top: var(--spacing-unit)
+        margin-top: var(--spacing-unit);
     }
 }

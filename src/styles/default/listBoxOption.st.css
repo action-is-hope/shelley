@@ -9,7 +9,7 @@
 
 /* = Component CSS API */
 :import {
-  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
+  -st-from: "../../ListBoxOption/listBoxOption.st.css";
   -st-default: ListBoxOption;
 }
 

@@ -24,7 +24,7 @@
 
 /* = Root Component. */
 :import {
-  -st-from: "../../components/Text/text.st.css";
+  -st-from: "../../Text/text.st.css";
   -st-default: Text;
 }
 

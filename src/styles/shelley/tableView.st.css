@@ -15,7 +15,7 @@
     --color-border-tbody as --project-color-border-tbody
   ] from "./project.st.css";
 /* Component API */
-@st-import TableView, [row] from "../../components/TableView/tableView.st.css";
+@st-import TableView, [row] from "../../TableView/tableView.st.css";
 @st-import [
   --color-background-row,
   --color-text-row,

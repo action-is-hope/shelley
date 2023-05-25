@@ -1,0 +1,14 @@
+@namespace "Blockquote";
+
+@st-import Text from "../Text/text.st.css";
+
+.root {
+  -st-states:
+    variant(enum(informal, academic));
+}
+
+.content {}
+
+.desc {
+  -st-extends: Text;
+}

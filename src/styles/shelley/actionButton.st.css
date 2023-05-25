@@ -15,7 +15,7 @@
 @st-import ActionButton, [
   --bg-color,
   --border-color,
-  --text-color] from "../../components/ActionButton/actionButton.st.css";
+  --text-color] from "../../ActionButton/actionButton.st.css";
 
 /* = This is how we can scope the styles in Stylable. */
 @st-scope Shelley {

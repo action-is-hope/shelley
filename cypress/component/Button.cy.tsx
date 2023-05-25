@@ -1,6 +1,5 @@
-import React from "react";
 import { createRef } from "react";
-import Button from "../../src/components/Button/Button";
+import { Button } from "../../src/indexLib";
 
 describe("Button", () => {
   it("renders as button with onPress called via click", () => {

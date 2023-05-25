@@ -9,7 +9,7 @@
   --text-vol-1-line-height
 ] from "./project.st.css";
 /* Component API */
-@st-import TableView, [cell] from "../../components/TableView/tableView.st.css";
+@st-import TableView, [cell] from "../../TableView/tableView.st.css";
 
 /* = Mixins & Utils */
 :import {

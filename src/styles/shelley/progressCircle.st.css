@@ -11,7 +11,7 @@
 @st-import ProgressCircle, [
     --loader-circle-track-color,
     --loader-circle-track-fill-color
-  ] from "../../components/ProgressCircle/progressCircle.st.css";
+  ] from "../../ProgressCircle/progressCircle.st.css";
 
 @st-scope Shelley {
   ProgressCircle {

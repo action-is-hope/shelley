@@ -1,4 +1,4 @@
-import React, { useRef, useState, createRef } from "react";
+import React, { createRef } from "react";
 import {
   Dialog,
   DialogProps,
@@ -10,7 +10,7 @@ import {
 } from "../../src/indexLib";
 
 // @ts-ignore
-import { classes as dialogClasses } from "../../src/components/Dialog/dialog.st.css";
+import { classes as dialogClasses } from "../../src/Dialog/dialog.st.css";
 
 const title = "[data-title";
 const dialog = '[data-id="dialog"]';

@@ -1,6 +1,5 @@
 import React from "react";
-import { createRef } from "react";
-import { ProgressCircle } from "../../src/components/ProgressCircle/ProgressCircle";
+import { ProgressCircle } from "../../src/ProgressCircle/ProgressCircle";
 
 const testProps = {
   "aria-label": "Loading…",

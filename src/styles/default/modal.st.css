@@ -1,6 +1,6 @@
 /* modal.st.css */
 @st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
-@st-import Modal, [enterDone] from "../../components/Modal/modal.st.css";
+@st-import Modal, [enterDone] from "../../Modal/modal.st.css";
 
 @st-scope Default {
 

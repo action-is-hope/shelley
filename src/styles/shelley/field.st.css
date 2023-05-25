@@ -26,7 +26,7 @@
 
 /* = Root Component. */
 :import {
-  -st-from: "../../components/Field/field.st.css";
+  -st-from: "../../Field/field.st.css";
   -st-default: Field;
 }
 

@@ -1,14 +1,8 @@
 /* actionButton.st.css */
-
-/* = Default project and vars */
 @st-import Default from "./project.st.css";
-/* Component API */
-@st-import ActionButton from "../../components/ActionButton/actionButton.st.css";
-/* = Child components */
-@st-import Icon from "../../components/Icon/icon.st.css";
-/* = Formatters */
+@st-import ActionButton from "../../ActionButton/actionButton.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 @st-import [respScale] from "../formatters/common";
-/* = Shelley Mixins */
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/text.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";

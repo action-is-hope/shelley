@@ -12,7 +12,7 @@
 /* = Components */
 
 :import {
-  -st-from: "../../components/Menu/menu.st.css";
+  -st-from: "../../Menu/menu.st.css";
   -st-default: Menu;
 }
 

@@ -19,7 +19,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/TextField/textField.st.css";
+  -st-from: "../../TextField/textField.st.css";
   -st-default: TextField;
 }
 

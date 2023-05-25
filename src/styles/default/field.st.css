@@ -4,7 +4,7 @@
  * Used internally; field applies the base styles to our form components such as 
  * inputs, textareas and selects, comboboxes, checkbox / radio groups etc.
  * 
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Radio/radio.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Radio/radio.st.css
  *
  */
 
@@ -21,7 +21,7 @@
     --color-form-base-border,
     --color-background-textField-filled
   ] from "./project.st.css";
-@st-import Field from "../../components/Field/field.st.css";
+@st-import Field from "../../Field/field.st.css";
 @st-import [respScale] from "../formatters/common";
 @st-import [
     hideWebkitAppearance,
@@ -47,7 +47,7 @@
   * values mentioned aove. 
   * 
   * Default styles can be found via inspector or direct link:
-  * https://github.com/action-is-hope/shelley/blob/main/src/components/Field/field.st.css
+  * https://github.com/action-is-hope/shelley/blob/main/src/Field/field.st.css
   *
   */
 

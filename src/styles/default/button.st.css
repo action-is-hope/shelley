@@ -3,9 +3,9 @@
 /* = Default project and vars */
 @st-import Default from "./project.st.css";
 /* Component API */
-@st-import Button from "../../components/Button/button.st.css";
+@st-import Button from "../../Button/button.st.css";
 /* = Child components */
-@st-import Icon from "../../components/Icon/icon.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 /* = Formatters */
 @st-import [respScale] from "../formatters/common";
 /* = Default Mixins */

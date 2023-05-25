@@ -6,12 +6,12 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/TextField/textField.st.css";
+  -st-from: "../../TextField/textField.st.css";
   -st-default: TextField;
 }
 
 :import {
-  -st-from: "../../components/Label/label.st.css";
+  -st-from: "../../Label/label.st.css";
   -st-default: InputLabel;
 }
 

@@ -13,7 +13,7 @@
 /* = Components */
 
 :import {
-  -st-from: "../../components/ListBox/listBox.st.css";
+  -st-from: "../../ListBox/listBox.st.css";
   -st-default: ListBox;
 }
 

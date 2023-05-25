@@ -5,7 +5,7 @@
   --background-color-popup,
   --border-width-popup,
   --border-color-popup] from "./project.st.css";
-@st-import Popup from "../../components/Popup/popup.st.css";
+@st-import Popup from "../../Popup/popup.st.css";
 
 @st-scope Default {
   Popup {

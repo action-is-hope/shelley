@@ -75,7 +75,7 @@ The background is in our example is transparent, when used with Modal or Popup i
       source: {
         code: dedent`
 /* Helper classes from dialog stylesheet to assign content to the dialog's grid areas. */
-import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+import { classes as dialog } from "@actionishope/shelley/Dialog/dialog.st.css";\n
   <Dialog>
     <H2 className={dialog.title} data-title>Internet Speed Test</H2>
     <Text className={dialog.header} as="header" vol={2}>
@@ -132,7 +132,7 @@ You will likely want to create some internal Dialog components within your compo
     docs: {
       source: {
         code: dedent`
-import { classes as dialog } from "@actionishope/shelley/components/Dialog/dialog.st.css";\n
+import { classes as dialog } from "@actionishope/shelley/Dialog/dialog.st.css";\n
   <Dialog>
     <span className={dialog.title} data-title>title</span>
     <span className={dialog.header}>header</span>

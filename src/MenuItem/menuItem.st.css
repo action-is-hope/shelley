@@ -1,0 +1,13 @@
+@namespace "MenuItem";
+
+.root {
+  -st-states:
+    isDisabled,
+    isFocused,
+    isSelected,
+    isFocusVisible;
+}
+
+.selectedIcon {}
+
+.text {}

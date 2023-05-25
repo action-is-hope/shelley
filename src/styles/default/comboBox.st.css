@@ -1,7 +1,7 @@
 /* = Project and vars */
 @st-import Default from "./project.st.css";
 /* = Component API */
-@st-import ComboBox from "../../components/ComboBox/comboBox.st.css";
+@st-import ComboBox from "../../ComboBox/comboBox.st.css";
 
 @st-scope Default {
 

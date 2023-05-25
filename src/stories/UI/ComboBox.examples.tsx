@@ -49,7 +49,7 @@ export const ValueExample = () => {
   const [value, setValue] = useState("Adobe XD");
 
   return (
-    <Grid variant={2} style={{ padding: "60px" }}>
+    <Grid variant={"two-col"} style={{ padding: "60px" }}>
       <ComboBox
         label="Adobe product (Uncontrolled)"
         defaultItems={options}
@@ -155,7 +155,7 @@ export const SelectionExample = () => {
   const [productId, setProductId] = useState<Key>(9);
 
   return (
-    <Grid variant={2} style={{ padding: "60px" }}>
+    <Grid variant={"two-col"} style={{ padding: "60px" }}>
       <ComboBox
         label="Adobe product (Uncontrolled)"
         defaultItems={options}

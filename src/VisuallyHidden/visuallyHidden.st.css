@@ -1,0 +1,8 @@
+@namespace "VisuallyHidden";
+
+@st-import [visuallyHidden] from "../styles/mixins/visuallyHidden.st.css";
+
+.root {
+	-st-mixin: visuallyHidden;
+	-st-states: focusable;
+}

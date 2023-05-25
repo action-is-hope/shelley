@@ -13,12 +13,12 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/Label/label.st.css";
+  -st-from: "../../Label/label.st.css";
   -st-default: Label;
 }
 
 :import {
-  -st-from: "../../components/Icon/icon.st.css";
+  -st-from: "../../Icon/icon.st.css";
   -st-default: Icon;
 }
 

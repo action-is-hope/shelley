@@ -1,7 +1,5 @@
-import React from "react";
 import { createRef } from "react";
-import Button from "../../src/components/Button/Button";
-import { ButtonGroup, ButtonGroupProps } from "../../src/indexLib";
+import { Button, ButtonGroup, ButtonGroupProps } from "../../src/indexLib";
 
 const buttonGroup = '[data-id="buttonGroup"]';
 const button = "[data-button]";
