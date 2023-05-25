@@ -19,7 +19,6 @@ module.exports = {
   testPathIgnorePatterns: ["node_modules", ".cache", "dist"],
   globals: {
     __PATH_PREFIX__: "",
-    window: {},
     // document: {},
   },
   testEnvironment: "jest-environment-jsdom",
