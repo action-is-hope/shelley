@@ -26,7 +26,7 @@ export const ToastProviderPriority = () => {
           <>
             <Button
               onClick={() =>
-                state.add({ title: "Bread can be toasted." }, { priority: 0 })
+                state.add({ title: "Bread can be toasted" }, { priority: 0 })
               }
               style={{ margin: "16px" }}
             >
@@ -34,7 +34,7 @@ export const ToastProviderPriority = () => {
             </Button>
             <Button
               onClick={() =>
-                state.add({ title: "Toasting...! (1)" }, { priority: 1 })
+                state.add({ title: "Toasting... (1)" }, { priority: 1 })
               }
               style={{ margin: "16px" }}
             >
@@ -42,7 +42,7 @@ export const ToastProviderPriority = () => {
             </Button>
             <Button
               onClick={() =>
-                state.add({ title: "Toast is done! (2)" }, { priority: 2 })
+                state.add({ title: "Toast is done (2)" }, { priority: 2 })
               }
               style={{ margin: "16px" }}
             >
@@ -50,7 +50,7 @@ export const ToastProviderPriority = () => {
             </Button>
             <Button
               onClick={() =>
-                state.add({ title: "Toast is burnt! (3)" }, { priority: 3 })
+                state.add({ title: "Toast is burnt (3)" }, { priority: 3 })
               }
               style={{ margin: "16px" }}
             >
@@ -73,10 +73,12 @@ export const ToastProviderActionLabel = () => {
               onClick={() =>
                 state.add(
                   {
-                    title: "Bread can be toasted.",
-                    actionLabel: "Got it",
+                    title: "Bread can be toasted",
                     shouldCloseOnAction: true,
-                    onAction: () => console.log("Action was clicked!"),
+                    action: {
+                      actionLabel: "Got it",
+                      onAction: () => console.log("Action was clicked!"),
+                    },
                   },
                   { priority: 0 }
                 )
@@ -89,10 +91,12 @@ export const ToastProviderActionLabel = () => {
               onClick={() =>
                 state.add(
                   {
-                    title: "Toasting...! (1)",
-                    actionLabel: "Thanks",
+                    title: "Toasting... (1)",
                     shouldCloseOnAction: true,
-                    onAction: () => console.log("Action was clicked!"),
+                    action: {
+                      actionLabel: "Thanks",
+                      onAction: () => console.log("Action was clicked!"),
+                    },
                   },
                   { priority: 1 }
                 )
@@ -105,10 +109,12 @@ export const ToastProviderActionLabel = () => {
               onClick={() =>
                 state.add(
                   {
-                    title: "Toast is done! (2)",
-                    actionLabel: "Check",
+                    title: "Toast is done (2)",
                     shouldCloseOnAction: true,
-                    onAction: () => console.log("Action was clicked!"),
+                    action: {
+                      actionLabel: "Check",
+                      onAction: () => console.log("Action was clicked!"),
+                    },
                   },
                   { priority: 2 }
                 )
@@ -121,10 +127,12 @@ export const ToastProviderActionLabel = () => {
               onClick={() =>
                 state.add(
                   {
-                    title: "Toast is burnt! (3)",
-                    actionLabel: "Fix",
+                    title: "Toast is burnt (3)",
                     shouldCloseOnAction: true,
-                    onAction: () => console.log("Action was clicked!"),
+                    action: {
+                      actionLabel: "Fix",
+                      onAction: () => console.log("Action was clicked!"),
+                    },
                   },
                   { priority: 3 }
                 )
@@ -171,9 +179,11 @@ export const ToastProviderCloseOnAction = () => {
             onClick={() =>
               state.add({
                 title: "Should close on action",
-                actionLabel: "Action",
                 shouldCloseOnAction: true,
-                onAction: () => console.log("Action was clicked!"),
+                action: {
+                  actionLabel: "Action",
+                  onAction: () => console.log("Action was clicked!"),
+                },
               })
             }
             style={{ margin: "16px" }}

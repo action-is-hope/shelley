@@ -34,9 +34,8 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
   const {
     content: {
       title,
-      actionLabel = "",
       shouldCloseOnAction = false,
-      onAction,
+      action: { actionLabel, onAction },
       shouldShowIcon = true,
     },
     animation,
