@@ -57,12 +57,6 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     ? closeButtonProps
     : {};
 
-  if ((actionLabel && !onAction) || (!actionLabel && onAction)) {
-    throw new Error(
-      "Toast: actionLabel and onAction must be both present or both absent."
-    );
-  }
-
   const onActionHandler = (
     e: SyntheticEvent,
     state: ToastState<CustomToastContent>
