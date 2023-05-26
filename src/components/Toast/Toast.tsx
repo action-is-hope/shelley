@@ -8,6 +8,10 @@ import Button from "../Button/Button";
 import { st, classes } from "./toast.st.css";
 import { mergeRefs } from "@react-aria/utils";
 
+const getDataTestIdAsProp = (name: string) => {
+  return { "data-testid": `${name}-data-testid` };
+};
+
 interface ToastProps<T> extends AriaToastProps<T> {
   className?: string;
   state: ToastState<T>;
@@ -35,14 +39,19 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
       onAction,
       shouldShowIcon = true,
     },
-    priority = 0,
     animation,
     key,
   } = props.toast;
 
+  let { priority } = props.toast;
+
   const priorities = ["info", "success", "warning", "error"] as const;
 
-  const priorityName = priorities[priority || 0];
+  if (typeof priority !== "number" || priority < 0 || priority > 3) {
+    priority = 0;
+  }
+
+  const priorityName = priorities[priority as 0 | 1 | 2 | 3];
 
   const withOrWithoutCloseButtonProps = shouldCloseOnAction
     ? closeButtonProps
@@ -74,10 +83,21 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
           state.remove(key);
         }
       }}
+      {...getDataTestIdAsProp(`toast-${priorityName}-${title}`)}
     >
-      <div className={classes.iconAndTitleWrapper}>
+      <div
+        className={classes.iconAndTitleWrapper}
+        {...getDataTestIdAsProp(
+          `toast-icon-and-title-wrapper-${priorityName}-${title}`
+        )}
+      >
         {shouldShowIcon && icon && <>{icon}</>}
-        <div {...titleProps}>{title}</div>
+        <div
+          {...titleProps}
+          {...getDataTestIdAsProp(`toast-title-${priorityName}-${title}`)}
+        >
+          {title}
+        </div>
       </div>
       <div className={classes.actionAndCloseWrapper}>
         {actionLabel && onAction && (
@@ -88,12 +108,21 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
               onActionHandler(e, state);
             }}
             {...withOrWithoutCloseButtonProps}
+            {...getDataTestIdAsProp(
+              `toast-action-button-${priorityName}-${title}`
+            )}
           >
             {actionLabel}
           </Button>
         )}
         <div className={classes.closeButtonWrapper}>
-          <Button {...closeButtonProps} className={classes.closeButton}>
+          <Button
+            {...closeButtonProps}
+            className={classes.closeButton}
+            {...getDataTestIdAsProp(
+              `toast-close-button-${priorityName}-${title}`
+            )}
+          >
             X
           </Button>
         </div>
