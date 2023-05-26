@@ -1,4 +1,4 @@
-import { SyntheticEvent, forwardRef, useRef } from "react";
+import { RefObject, SyntheticEvent, forwardRef, useRef } from "react";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { ToastState, QueuedToast } from "@react-stately/toast";
 import { useToast } from "@react-aria/toast";
@@ -6,21 +6,23 @@ import type { CustomToastContent } from "./ToastProvider";
 
 import Button from "../Button/Button";
 import { st, classes } from "./toast.st.css";
+import { mergeRefs } from "@react-aria/utils";
 
 interface ToastProps<T> extends AriaToastProps<T> {
   className?: string;
   state: ToastState<T>;
   toast: QueuedToast<T>;
   icon: React.ReactNode;
+  ref: RefObject<HTMLDivElement>;
 }
 
-function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
-  const ref = useRef(null);
+function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
+  const localRef = useRef<HTMLDivElement>(null);
 
   const { toastProps, titleProps, closeButtonProps } = useToast(
     props,
     state,
-    ref
+    localRef
   );
 
   const { icon } = props;
@@ -64,7 +66,7 @@ function Toast({ state, ...props }: ToastProps<CustomToastContent>) {
   return (
     <div
       {...toastProps}
-      ref={ref}
+      ref={mergeRefs(localRef, ref)}
       className={st(classes.root, { priority: priorityName }, props.className)}
       data-animation={animation}
       onAnimationEnd={() => {
