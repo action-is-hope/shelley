@@ -1,6 +1,4 @@
 /* tableView.st.css */
-
-/* = Default project and vars */
 @st-import Default, [
   --spacing-unit,
   --color-focus,
@@ -8,17 +6,8 @@
   --text-vol-1-max,
   --text-vol-1-line-height
 ] from "./project.st.css";
-/* Component API */
 @st-import TableView, [cell] from "../../TableView/tableView.st.css";
-
-/* = Mixins & Utils */
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
-
-/* = Formatters */
+@st-import [textVol] from "./mixins/text.st.css";
 @st-import [respScale] from "../formatters/common";
 
 

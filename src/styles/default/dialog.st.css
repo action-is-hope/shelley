@@ -1,9 +1,7 @@
-/* = Project and vars */
 @st-import Default, [
   --spacing-unit,
   --background-color-dialog,
   --color-dialog] from "./project.st.css";
-/* = Component API */
 @st-import Dialog from "../../Dialog/dialog.st.css";
 
 @st-scope Default {

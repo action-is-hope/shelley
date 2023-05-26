@@ -1,6 +1,4 @@
-/* = Project and vars */
 @st-import Default, [--color-error] from "./project.st.css";
-/* = Component API */
 @st-import HelpText from "../../HelpText/helpText.st.css";
 
 @st-scope Default {
