@@ -23,8 +23,9 @@ interface BothActionProps {
 }
 
 interface NoActionProps {
-  actionLabel?: never;
-  onAction?: never;
+  actionLabel?: `Custom TS error: "onAction" method is missing. Add it or remove "actionLabel". Either provide both "onAction" and "actionLabel" or neither.`;
+
+  onAction?: `Custom TS error: "actionLabel" is missing. Add it or remove "onAction" method. Either provide both "onAction" and "actionLabel" or neither.`;
 }
 
 type ActionProps = BothActionProps | NoActionProps;
@@ -35,20 +36,11 @@ function ToastProvider({ children, ...props }: ToastProviderProps) {
     hasExitAnimation: true,
   });
 
-  type EnhancedState = typeof state;
-
-  const enhancedState: EnhancedState = {
-    ...state,
-    add: (content, options) => {
-      return state.add(content, options);
-    },
-  };
-
   return (
     <>
-      {children(enhancedState)}
+      {children(state)}
       {state.visibleToasts.length > 0 && (
-        <ToastRegion {...props} state={enhancedState} />
+        <ToastRegion {...props} state={state} />
       )}
     </>
   );
