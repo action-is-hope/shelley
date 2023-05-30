@@ -1,10 +1,18 @@
 .toast-region {
   position: fixed;
   bottom: 16px;
-  right: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+:import {
+  -st-from: "../../styles/default/project.st.css";
+  -st-default: Default;
+  -st-named:
+    breakpoint-sm
 }
 
 @keyframes slide-out {
@@ -114,4 +122,14 @@
 .root svg {
   color: white;
   font-size: 22px;
+}
+
+@media value(breakpoint-sm) {
+  @st-scope Default {
+    .toast-region {
+      right: 16px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
 }
