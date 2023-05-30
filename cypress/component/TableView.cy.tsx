@@ -120,4 +120,88 @@ describe("TableView", () => {
     cy.get(table).get("thead").get("tr").get(th).should("have.length", thCount);
     cy.get(table).get("tbody").get("tr").get(td).should("have.length", tdCount);
   });
+
+  // Should render correct content
+
+  it("should render correct content", () => {
+    cy.mount(<DynamicTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get(th)
+      .eq(0)
+      .should("have.text", "First Name");
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get(th)
+      .eq(1)
+      .should("have.text", "Last Name");
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get(th)
+      .eq(2)
+      .should("have.text", "City");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(0)
+      .should("have.text", "Gary");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(1)
+      .should("have.text", "Ford");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(2)
+      .should("have.text", "London");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(3)
+      .should("have.text", "Mark");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(4)
+      .should("have.text", "Lexus");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get(td)
+      .eq(5)
+      .should("have.text", "Bristol");
+  });
+
+  // Should render correct aria-label
+
+  it("should render correct aria-label", () => {
+    cy.mount(<DynamicTable data-id="table" />);
+    cy.get(table).should(
+      "have.attr",
+      "aria-label",
+      "Example table with dynamic content"
+    );
+    cy.get(table).should("have.attr", "role", "grid");
+    cy.get(table).get("thead").should("have.attr", "role", "rowgroup");
+    cy.get(table).get("tbody").should("have.attr", "role", "rowgroup");
+    cy.get(table).get("tr").should("have.attr", "role", "row");
+    cy.get(th).should("have.attr", "role", "columnheader");
+    cy.get(table)
+      .get("tbody")
+      .get("td:first-child")
+      .should("have.attr", "role", "rowheader");
+    cy.get(table)
+      .get("tbody")
+      .get("td:not(:first-child)")
+      .should("have.attr", "role", "gridcell");
+  });
 });
