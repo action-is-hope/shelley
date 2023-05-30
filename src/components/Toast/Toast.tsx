@@ -1,4 +1,11 @@
-import { RefObject, SyntheticEvent, forwardRef, useRef } from "react";
+import {
+  ReactElement,
+  Ref,
+  RefObject,
+  SyntheticEvent,
+  forwardRef,
+  useRef,
+} from "react";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { ToastState, QueuedToast } from "@react-stately/toast";
 import { useToast } from "@react-aria/toast";
@@ -124,5 +131,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
   );
 }
 
-const _Toast = forwardRef<HTMLDivElement, ToastProps<any>>(Toast);
+const _Toast = forwardRef(Toast) as <T>(
+  props: ToastProps<T> & { ref?: Ref<HTMLDivElement> }
+) => ReactElement;
 export { _Toast as Toast };
