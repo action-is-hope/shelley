@@ -65,6 +65,7 @@ function TableView<T extends object>(
     vol = 2,
     density,
     isResponsive,
+    "data-id": dataId,
   } = props;
   const state = useTableState({
     ...props,
@@ -89,6 +90,7 @@ function TableView<T extends object>(
         className={st(classes.table)}
         {...gridProps}
         ref={ref ? mergeRefs(ref, localRef) : localRef}
+        data-id={dataId}
       >
         <TableRowGroup type="thead" className={classes.thead}>
           {collection.headerRows.map((headerRow) => (
@@ -280,7 +282,7 @@ function TableRow<T extends object>({
   state,
   hasActions,
 }: TableRowProps<T>) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLTableRowElement>(null);
   const isSelected = state.selectionManager.isSelected(item.key);
   const { rowProps, isPressed } = useTableRow(
     {
