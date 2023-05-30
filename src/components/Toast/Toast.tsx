@@ -42,7 +42,12 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     content: {
       title,
       shouldCloseOnAction = false,
-      action: { actionLabel, onAction },
+      action: { actionLabel, onAction } = {
+        actionLabel: "",
+        onAction: () => {
+          /* noop */
+        },
+      },
       shouldShowIcon = true,
     },
     animation,
@@ -67,7 +72,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     e: SyntheticEvent,
     state: ToastState<CustomToastContent>
   ) => {
-    if (onAction) {
+    if (onAction && typeof onAction === "function") {
       onAction(e, state);
     }
   };

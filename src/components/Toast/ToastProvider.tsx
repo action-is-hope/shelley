@@ -17,7 +17,7 @@ interface ToastProviderProps {
   children: (state: EnhancedToastState) => ReactNode;
 }
 
-interface BothActionProps {
+export interface BothActionProps {
   actionLabel: string;
   onAction: (e: SyntheticEvent, state: ToastState<CustomToastContent>) => void;
 }
@@ -28,7 +28,7 @@ interface NoActionProps {
   onAction?: `Custom TS error: "actionLabel" is missing. Add it or remove "onAction" method. Either provide both "onAction" and "actionLabel" or neither.`;
 }
 
-type ActionProps = BothActionProps | NoActionProps;
+export type ActionProps = BothActionProps | NoActionProps;
 
 function ToastProvider({ children, ...props }: ToastProviderProps) {
   const state = useToastState<CustomToastContent>({

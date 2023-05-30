@@ -20,6 +20,7 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
         const { priority = 0 } = toast;
         return (
           <Toast
+            ref={ref}
             key={toast.key}
             toast={toast}
             state={state}
