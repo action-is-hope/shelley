@@ -68,6 +68,7 @@ const td = '[data-id="table-cell"]';
 
 describe("TableView", () => {
   // Should render the table
+
   it("should render the table", () => {
     cy.mount(<DynamicTable data-id="table" />);
     cy.get(table).should("exist");
@@ -203,5 +204,92 @@ describe("TableView", () => {
       .get("tbody")
       .get("td:not(:first-child)")
       .should("have.attr", "role", "gridcell");
+  });
+
+  // should be scrollable
+
+  it("should be scrollable", () => {
+    cy.mount(<DynamicTable data-id="table" />);
+    cy.get(table).parent().should("have.css", "overflow", "auto");
+  });
+});
+
+const SelectionTable = function <T extends object>(props: TableViewProps<T>) {
+  return (
+    <TableView
+      data-id="table"
+      aria-label="Example table with multiple selection"
+      selectionMode="multiple"
+      defaultSelectedKeys={["2", "4"]}
+      {...props}
+    >
+      <TableHeader columns={columns}>
+        {(column) => (
+          <Column key={column.uid} data-id="table-column">
+            {column.name}
+          </Column>
+        )}
+      </TableHeader>
+      <TableBody items={rows}>
+        {(item) => (
+          <Row>
+            {(columnKey) => (
+              <Cell data-id="table-cell">
+                {item[columnKey as keyof RowData]}
+              </Cell>
+            )}
+          </Row>
+        )}
+      </TableBody>
+    </TableView>
+  );
+};
+
+describe("Selection table", () => {
+  // Should render label
+
+  it("should render checkbox in header", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child")
+      .get("label")
+      .should("have.attr", "class")
+      .and("to.have.string", "root")
+      .and("to.have.string", "hasInput")
+      .and("to.have.string", "size-1-1")
+      .and("to.have.string", "columnCheckbox");
+  });
+
+  // Should render span inside label
+
+  it("should render span in header", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child")
+      .get("label")
+      .get("span")
+      .should("have.attr", "class")
+      .and("to.have.string", "inputContainer");
+  });
+
+  // Should render checkbox inside span
+
+  it("should render checkbox in header", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("have.attr", "type", "checkbox")
+      .should("have.attr", "aria-label", "Select All")
+      .should("have.attr", "class")
+      .and("to.have.string", "input");
   });
 });
