@@ -260,6 +260,16 @@ describe("Selection table", () => {
       .and("to.have.string", "hasInput")
       .and("to.have.string", "size-1-1")
       .and("to.have.string", "columnCheckbox");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get("td:first-child")
+      .get("label")
+      .should("have.attr", "class")
+      .and("to.have.string", "root")
+      .and("to.have.string", "hasInput")
+      .and("to.have.string", "size-1-1")
+      .and("to.have.string", "columnCheckbox");
   });
 
   // Should render span inside label
@@ -270,6 +280,14 @@ describe("Selection table", () => {
       .get("thead")
       .get("tr")
       .get("th:first-child")
+      .get("label")
+      .get("span")
+      .should("have.attr", "class")
+      .and("to.have.string", "inputContainer");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get("td:first-child")
       .get("label")
       .get("span")
       .should("have.attr", "class")
@@ -291,5 +309,147 @@ describe("Selection table", () => {
       .should("have.attr", "aria-label", "Select All")
       .should("have.attr", "class")
       .and("to.have.string", "input");
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("have.attr", "type", "checkbox")
+      .should("have.attr", "aria-label", "Select All")
+      .should("have.attr", "class")
+      .and("to.have.string", "input");
+  });
+
+  // Should select all rows when header checkbox is checked
+
+  it("should select all rows when header checkbox is checked", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .check();
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("be.checked");
+  });
+
+  // Should unselect all rows when header checkbox is unchecked
+
+  it("should unselect all rows when header checkbox is unchecked", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .uncheck();
+    cy.get(table)
+      .get("tbody")
+      .get("tr")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("not.be.checked");
+  });
+
+  // Should select a row when checkbox is checked
+
+  it("should select a row when checkbox is checked", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(3)")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .check();
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(3)")
+      .should("have.attr", "aria-selected", "true")
+      .should("have.attr", "class")
+      .and("to.have.string", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("be.checked");
+  });
+
+  // Should unselect a row when checkbox is unchecked
+
+  it("should unselect a row when checkbox is unchecked", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("tbody")
+      .get("tr:first-child")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .uncheck();
+    cy.get(table)
+      .get("tbody")
+      .get("tr:first-child")
+      .should("not.have.attr", "aria-selected", "true")
+      .should("not.have.attr", "class", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("not.be.checked");
+  });
+
+  // Should select a row when row is clicked
+
+  it("should select a row when row is clicked", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table).get("tbody").get("tr:nth-child(5)").click({ multiple: true });
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(5)")
+      .should("have.attr", "aria-selected", "true")
+      .should("have.attr", "class")
+      .and("to.have.string", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("be.checked");
+  });
+
+  // Should unselect a row when row is clicked twice
+
+  it("should unselect a row when row is clicked twice", () => {
+    cy.mount(<SelectionTable data-id="table" />);
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(6)")
+      .dblclick({ multiple: true });
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(6)")
+      .should("not.have.attr", "aria-selected", "true")
+      .should("not.have.attr", "class", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("not.be.checked");
   });
 });
