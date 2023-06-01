@@ -104,6 +104,10 @@ describe("TableView", () => {
       .and("to.have.string", "headerRow");
     cy.get(th).should("have.attr", "class").and("to.have.string", "column");
     cy.get(td).should("have.attr", "class").and("to.have.string", "cell");
+    cy.get(table)
+      .parent()
+      .should("have.attr", "class")
+      .and("to.have.string", "isHeaderSticky");
   });
 
   // Should render correct number of rows and columns
@@ -186,12 +190,10 @@ describe("TableView", () => {
 
   it("should render correct aria-label", () => {
     cy.mount(<DynamicTable data-id="table" />);
-    cy.get(table).should(
-      "have.attr",
-      "aria-label",
-      "Example table with dynamic content"
-    );
-    cy.get(table).should("have.attr", "role", "grid");
+    cy.get(table)
+      .should("have.attr", "aria-label", "Example table with dynamic content")
+      .should("have.attr", "role", "grid")
+      .should("have.attr", "aria-describedby");
     cy.get(table).get("thead").should("have.attr", "role", "rowgroup");
     cy.get(table).get("tbody").should("have.attr", "role", "rowgroup");
     cy.get(table).get("tr").should("have.attr", "role", "row");
@@ -211,6 +213,41 @@ describe("TableView", () => {
   it("should be scrollable", () => {
     cy.mount(<DynamicTable data-id="table" />);
     cy.get(table).parent().should("have.css", "overflow", "auto");
+  });
+
+  // Should render correct volume classes
+
+  it("should render correct volume classes", () => {
+    cy.mount(<DynamicTable vol={2} data-id="table" />);
+    cy.get(table)
+      .parent()
+      .should("have.attr", "class")
+      .and("to.have.string", "vol-1-2");
+  });
+
+  // Should render correct density classes
+
+  it("should render correct density classes", () => {
+    cy.mount(<DynamicTable density="compact" data-id="table" />);
+    cy.get(table)
+      .parent()
+      .should("have.attr", "class")
+      .and("to.have.string", "density-7-compact");
+    cy.mount(<DynamicTable density="spacious" data-id="table" />);
+    cy.get(table)
+      .parent()
+      .should("have.attr", "class")
+      .and("to.have.string", "density-8-spacious");
+  });
+
+  // Should render responsive table
+
+  it("should render responsive table", () => {
+    cy.mount(<DynamicTable isResponsive data-id="table" />);
+    cy.get(table)
+      .parent()
+      .should("have.attr", "class")
+      .and("to.contain", "isResponsive");
   });
 });
 
@@ -510,3 +547,5 @@ describe("Selection table", () => {
       .should("be.disabled");
   });
 });
+
+// @Todo: Sortable Table
