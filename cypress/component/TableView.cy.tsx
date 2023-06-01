@@ -220,7 +220,6 @@ const SelectionTable = function <T extends object>(props: TableViewProps<T>) {
       data-id="table"
       aria-label="Example table with multiple selection"
       selectionMode="multiple"
-      defaultSelectedKeys={["2", "4"]}
       {...props}
     >
       <TableHeader columns={columns}>
@@ -232,7 +231,7 @@ const SelectionTable = function <T extends object>(props: TableViewProps<T>) {
       </TableHeader>
       <TableBody items={rows}>
         {(item) => (
-          <Row>
+          <Row key={item.id}>
             {(columnKey) => (
               <Cell data-id="table-cell">
                 {item[columnKey as keyof RowData]}
@@ -451,5 +450,63 @@ describe("Selection table", () => {
       .get("span")
       .get("input")
       .should("not.be.checked");
+  });
+
+  // Row 2 and 4 should be selected by default
+
+  it("row 2 and 4 should be selected by default", () => {
+    cy.mount(
+      <SelectionTable
+        selectionMode="multiple"
+        defaultSelectedKeys={["2", "4"]}
+        data-id="table"
+      />
+    );
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(2)")
+      .should("have.attr", "aria-selected", "true")
+      .should("have.attr", "class")
+      .and("to.have.string", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("be.checked");
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(4)")
+      .should("have.attr", "aria-selected", "true")
+      .should("have.attr", "class")
+      .and("to.have.string", "isSelected")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("be.checked");
+  });
+
+  // Disabled rows should not be selectable
+
+  it("disabled rows should not be selectable", () => {
+    cy.mount(
+      <SelectionTable
+        selectionMode="multiple"
+        data-id="table"
+        disabledKeys={["2"]}
+      />
+    );
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(2)")
+      .should("not.have.attr", "aria-selected", "true")
+      .should("have.attr", "class")
+      .and("to.have.string", "isDisabled")
+      .get("td:first-child")
+      .get("label")
+      .get("span")
+      .get("input")
+      .should("have.attr", "type", "checkbox")
+      .should("be.disabled");
   });
 });
