@@ -15,6 +15,7 @@ type EnhancedToastState = Omit<ReturnType<typeof useToastState>, "add"> & {
 
 interface ToastProviderProps {
   children: (state: EnhancedToastState) => ReactNode;
+  closeIcon?: ReactNode;
 }
 
 export interface BothActionProps {

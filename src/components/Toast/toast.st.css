@@ -67,14 +67,8 @@
   background: none;
   border: none;
   appearance: none;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  font-size: 16px;
-  border: 1px solid white;
   color: white;
   padding: 0;
-
   margin-left: 8px;
 }
 
@@ -109,7 +103,6 @@
 
 .closeButtonWrapper {
   border-left: 1px solid white;
-  margin-right: 8px;
   margin-left: 8px;
 }
 

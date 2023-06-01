@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, ReactNode } from "react";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import { useToastRegion } from "@react-aria/toast";
@@ -8,11 +8,13 @@ import Icon from "../Icon/Icon";
 
 interface ToastRegionProps<T> extends AriaToastRegionProps {
   state: ToastState<T>;
+  closeIcon?: ReactNode;
 }
 
 function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
   const ref = useRef(null);
   const { regionProps } = useToastRegion(props, state, ref);
+  const { closeIcon } = props;
 
   return (
     <div {...regionProps} ref={ref} className={classes["toast-region"]}>
@@ -24,6 +26,7 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
             key={toast.key}
             toast={toast}
             state={state}
+            closeIcon={closeIcon}
             icon={
               <>
                 {/* info */}

@@ -1,5 +1,6 @@
 import {
   ReactElement,
+  ReactNode,
   Ref,
   RefObject,
   SyntheticEvent,
@@ -14,6 +15,7 @@ import type { CustomToastContent } from "./ToastProvider";
 import Button from "../Button/Button";
 import { st, classes } from "./toast.st.css";
 import { mergeRefs } from "@react-aria/utils";
+import CloseIcon from "../icons/Close";
 
 const getDataTestIdAsProp = (name: string) => {
   return { "data-testid": `${name}-data-testid` };
@@ -23,8 +25,9 @@ interface ToastProps<T> extends AriaToastProps<T> {
   className?: string;
   state: ToastState<T>;
   toast: QueuedToast<T>;
-  icon: React.ReactNode;
+  icon: ReactNode;
   ref: RefObject<HTMLDivElement>;
+  closeIcon?: ReactNode;
 }
 
 function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
@@ -36,7 +39,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     localRef
   );
 
-  const { icon } = props;
+  const { icon, closeIcon = <CloseIcon /> } = props;
 
   const {
     content: {
@@ -128,7 +131,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
               `toast-close-button-${priorityName}-${title}`
             )}
           >
-            X
+            {closeIcon}
           </Button>
         </div>
       </div>
