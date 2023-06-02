@@ -1,4 +1,5 @@
 import type { ReactNode, SyntheticEvent } from "react";
+import { createContext, useContext } from "react";
 import { useToastState, ToastState, ToastOptions } from "@react-stately/toast";
 import { ToastRegion } from "./ToastRegion";
 
@@ -9,12 +10,15 @@ export interface CustomToastContent {
   shouldShowIcon?: boolean;
 }
 
-type EnhancedToastState = Omit<ReturnType<typeof useToastState>, "add"> & {
+export type EnhancedToastState = Omit<
+  ReturnType<typeof useToastState>,
+  "add"
+> & {
   add: (content: CustomToastContent, options?: ToastOptions) => string;
 };
 
 interface ToastProviderProps {
-  children: (state: EnhancedToastState) => ReactNode;
+  children: ReactNode;
   closeIcon?: ReactNode;
   infoIcon?: ReactNode;
   successIcon?: ReactNode;
@@ -35,6 +39,12 @@ interface NoActionProps {
 
 export type ActionProps = BothActionProps | NoActionProps;
 
+const ToastContext = createContext({});
+
+export function useToast(): EnhancedToastState {
+  return useContext(ToastContext) as EnhancedToastState;
+}
+
 function ToastProvider({ children, ...props }: ToastProviderProps) {
   const state = useToastState<CustomToastContent>({
     maxVisibleToasts: 5,
@@ -42,12 +52,12 @@ function ToastProvider({ children, ...props }: ToastProviderProps) {
   });
 
   return (
-    <>
-      {children(state)}
+    <ToastContext.Provider value={state}>
+      {children}
       {state.visibleToasts.length > 0 && (
         <ToastRegion {...props} state={state} />
       )}
-    </>
+    </ToastContext.Provider>
   );
 }
 

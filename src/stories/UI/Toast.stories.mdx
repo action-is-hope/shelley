@@ -18,7 +18,7 @@ import {
 <Source
   language="tsx"
   code={dedent`
-    import { ToastProvider, ToastRegion, Toast } from "@actionishope/shelley";
+    import { ToastProvider } from "@actionishope/shelley";
   `}
 />
 
@@ -36,18 +36,26 @@ This example displays the most basic/default toast with no priority or auto-dism
       docs: {
         source: {
           code: dedent`
+          import { ToastProvider, useToast } from "../../components/Toast/ToastProvider";
+import Button from "../../components/Button/Button";\n
+const ToastTriggersForDefaultExample = () => {
+  const state = useToast();\n
+  return (
+    <Button
+      onClick={() => state.add({ title: "New toast" })}
+      style={{ margin: "16px" }}
+    >
+      Add toast!
+    </Button>
+  );
+};\n
+export const ToastProviderDefault = () => {
+  return (
     <ToastProvider>
-      {(state) => (
-        <>
-          <Button
-            onClick={() => state.add("New toast")}
-            style={{ margin: "16px" }}
-          >
-            Add toast!
-          </Button>
-        </>
-      )}
-    </ToastProvider>`,
+      <ToastTriggersForDefaultExample />
+    </ToastProvider>
+  );
+};`,
         },
       },
     }}
@@ -328,16 +336,48 @@ This example displays a toast which has no icon.
 
 ### Features
 
-- Toasts are non-modal, meaning that they do not block the user from interacting with the rest of the page.
+- **Accessible** – Toasts follow the ARIA alert pattern. They are rendered in a landmark region, which keyboard and screen reader users can easily jump to when an alert is announced.
+- **Focus management** – When a toast unmounts, focus is moved to the next toast if any. Otherwise, focus is restored to where it was before navigating to the toast region.
+- **Priority queue** – Toasts are displayed according to a priority queue, displaying a configurable number of toasts at a time. The queue can either be owned by a provider component, or global.
+- **Animations** – Toasts support optional entry and exit animations.
 
-## Usage
+### Anatomy
 
-The following examples show how to use the Toast component created in the above example.
+A toast region is an ARIA landmark region labeled "Notifications" by default. A toast region contains one or more visible toasts, in priority order. When the limit is reached, additional toasts are queued until the user dismisses one. Each toast is an ARIA alert element, containing the content of the notification and a close button.
 
-### Toast success
-
-Toast is amazing. Find out more: https://spectrum.adobe.com/page/toast/
+Landmark regions including the toast container can be navigated using the keyboard by pressing the <kbd>F6</kbd> key to move forward, and the <kbd>Shift</kbd> + <kbd>F6</kbd> key to move backward. This provides an easy way for keyboard users to jump to the toasts from anywhere in the app. When the last toast is closed, keyboard focus is restored.
 
 ### Keyboard Activation
 
-Space, Tab, ESC
+| Key            | Interaction                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------ |
+| Tab            | Places the focus on the next interactive element, which is either a button or a close button.                |
+| Shift + Tab    | Places the focus on the previous interactive element, which is either a button or a close button.            |
+| Space or Enter | If focus is on the close button, dismisses the toast. If focus is on the button, executes the button action. |
+| F6             | Places the focus on to the toast region.                                                                     |
+
+## Usage
+
+The following examples show how to use create Toasts / Notifications using the ToastProvider.
+
+First, wrap your app component in a `<ToastProvider/>`. This component is responsible for rendering the toast region and in turn the toasts and managing the toast queue.
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ToastProvider, useToast } from "@actionishope/shelley";
+  `}
+/>
+
+Then use the `useToast` hook to add toasts to the queue.
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Button
+      onClick={() => state.add({ title: "New toast" })}
+    >
+      Add toast!
+    </Button>
+  `}
+/>
