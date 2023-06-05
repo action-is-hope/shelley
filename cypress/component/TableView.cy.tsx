@@ -473,10 +473,7 @@ describe("Selection table", () => {
       .should("have.attr", "aria-selected", "true")
       .should("have.attr", "class")
       .and("to.have.string", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("be.checked");
     cy.get(table)
       .get("tbody")
@@ -484,10 +481,7 @@ describe("Selection table", () => {
       .should("have.attr", "aria-selected", "true")
       .should("have.attr", "class")
       .and("to.have.string", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("be.checked");
   });
 
