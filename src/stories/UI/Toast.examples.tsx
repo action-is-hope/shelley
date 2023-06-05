@@ -89,7 +89,7 @@ const ToastTriggersForActionLabelExample = () => {
         }
         style={{ margin: "16px" }}
       >
-        No priority - info
+        Info with action
       </Button>
       <Button
         onClick={() =>
@@ -107,7 +107,7 @@ const ToastTriggersForActionLabelExample = () => {
         }
         style={{ margin: "16px" }}
       >
-        Low priority(1) - success
+        Success with action
       </Button>
       <Button
         onClick={() =>
@@ -125,7 +125,7 @@ const ToastTriggersForActionLabelExample = () => {
         }
         style={{ margin: "16px" }}
       >
-        Medium priority(2) - warning
+        Warning with action
       </Button>
       <Button
         onClick={() =>
@@ -143,7 +143,7 @@ const ToastTriggersForActionLabelExample = () => {
         }
         style={{ margin: "16px" }}
       >
-        High priority(3) - error
+        Error with Action
       </Button>
     </>
   );
