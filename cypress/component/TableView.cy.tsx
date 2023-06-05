@@ -289,8 +289,7 @@ describe("Selection table", () => {
     cy.get(table)
       .get("thead")
       .get("tr")
-      .get("th:first-child")
-      .get("label")
+      .get("th:first-child > label")
       .should("have.attr", "class")
       .and("to.have.string", "root")
       .and("to.have.string", "hasInput")
@@ -299,13 +298,12 @@ describe("Selection table", () => {
     cy.get(table)
       .get("tbody")
       .get("tr")
-      .get("td:first-child")
-      .get("label")
+      .get("td:first-child > label")
       .should("have.attr", "class")
       .and("to.have.string", "root")
       .and("to.have.string", "hasInput")
       .and("to.have.string", "size-1-1")
-      .and("to.have.string", "columnCheckbox");
+      .and("to.have.string", "cellCheckbox");
   });
 
   // Should render span inside label
@@ -315,17 +313,13 @@ describe("Selection table", () => {
     cy.get(table)
       .get("thead")
       .get("tr")
-      .get("th:first-child")
-      .get("label")
-      .get("span")
+      .get("th:first-child > label > span")
       .should("have.attr", "class")
       .and("to.have.string", "inputContainer");
     cy.get(table)
       .get("tbody")
       .get("tr")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
+      .get("td:first-child > label > span")
       .should("have.attr", "class")
       .and("to.have.string", "inputContainer");
   });
@@ -337,10 +331,7 @@ describe("Selection table", () => {
     cy.get(table)
       .get("thead")
       .get("tr")
-      .get("th:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("th:first-child > label > span > input")
       .should("have.attr", "type", "checkbox")
       .should("have.attr", "aria-label", "Select All")
       .should("have.attr", "class")
@@ -348,12 +339,9 @@ describe("Selection table", () => {
     cy.get(table)
       .get("tbody")
       .get("tr")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("have.attr", "type", "checkbox")
-      .should("have.attr", "aria-label", "Select All")
+      .should("have.attr", "aria-label", "Select")
       .should("have.attr", "class")
       .and("to.have.string", "input");
   });
@@ -365,18 +353,12 @@ describe("Selection table", () => {
     cy.get(table)
       .get("thead")
       .get("tr")
-      .get("th:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("th:first-child > label > span > input")
       .check();
     cy.get(table)
       .get("tbody")
       .get("tr")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("be.checked");
   });
 
@@ -387,18 +369,17 @@ describe("Selection table", () => {
     cy.get(table)
       .get("thead")
       .get("tr")
-      .get("th:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("th:first-child > label > span > input")
+      .check();
+    cy.get(table)
+      .get("thead")
+      .get("tr")
+      .get("th:first-child > label > span > input")
       .uncheck();
     cy.get(table)
       .get("tbody")
       .get("tr")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("not.be.checked");
   });
 
@@ -408,11 +389,7 @@ describe("Selection table", () => {
     cy.mount(<SelectionTable data-id="table" />);
     cy.get(table)
       .get("tbody")
-      .get("tr:nth-child(3)")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("tr:nth-child(3) > td:first-child > label > span > input")
       .check();
     cy.get(table)
       .get("tbody")
@@ -420,11 +397,15 @@ describe("Selection table", () => {
       .should("have.attr", "aria-selected", "true")
       .should("have.attr", "class")
       .and("to.have.string", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("tr:nth-child(3) > td:first-child > label > span > input")
       .should("be.checked");
+    cy.get(table)
+      .get("tbody")
+      .get("tr:nth-child(5)")
+      .should("have.attr", "aria-selected", "false")
+      .should("not.have.attr", "class", "isSelected")
+      .get("tr:nth-child(5) > td:first-child > label > span > input")
+      .should("not.be.checked");
   });
 
   // Should unselect a row when checkbox is unchecked
@@ -433,21 +414,14 @@ describe("Selection table", () => {
     cy.mount(<SelectionTable data-id="table" />);
     cy.get(table)
       .get("tbody")
-      .get("tr:first-child")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("tr:first-child > td:first-child > label > span > input")
       .uncheck();
     cy.get(table)
       .get("tbody")
       .get("tr:first-child")
       .should("not.have.attr", "aria-selected", "true")
       .should("not.have.attr", "class", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("not.be.checked");
   });
 
@@ -462,10 +436,7 @@ describe("Selection table", () => {
       .should("have.attr", "aria-selected", "true")
       .should("have.attr", "class")
       .and("to.have.string", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("be.checked");
   });
 
@@ -482,10 +453,7 @@ describe("Selection table", () => {
       .get("tr:nth-child(6)")
       .should("not.have.attr", "aria-selected", "true")
       .should("not.have.attr", "class", "isSelected")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("not.be.checked");
   });
 
@@ -539,13 +507,10 @@ describe("Selection table", () => {
       .should("not.have.attr", "aria-selected", "true")
       .should("have.attr", "class")
       .and("to.have.string", "isDisabled")
-      .get("td:first-child")
-      .get("label")
-      .get("span")
-      .get("input")
+      .get("td:first-child > label > span > input")
       .should("have.attr", "type", "checkbox")
       .should("be.disabled");
   });
 });
 
-// @Todo: Sortable Table
+// @TODO: Sortable Table
