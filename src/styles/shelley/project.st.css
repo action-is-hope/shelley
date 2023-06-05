@@ -121,6 +121,12 @@
   --color-background-row-isHoveredSelected: #252835;
   --color-text-row-isHoveredSelected: var(--color-text-3);
   --color-border-tbody: rgba(var(--color-ui-raw), .15);
+
+  /* = Toast colours */
+  --background-color-info: rgb(2, 101, 220);
+  --background-color-success: rgb(0, 122, 77);
+  --background-color-warning: rgb(255, 102, 0);
+  --background-color-error: rgb(211, 21, 16);
 }
 
 

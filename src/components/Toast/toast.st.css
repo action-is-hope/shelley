@@ -1,30 +1,12 @@
 .root {
-  position: fixed;
-  bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
-  z-index: 9999;
-}
-
-:import {
-  -st-from: "../../styles/default/project.st.css";
-  -st-default: Default;
-  -st-named:
-    breakpoint-sm
-}
-
-.toast {
   -st-states: priority(enum(info, success, warning, error));
 }
 
 .closeButton {}
 
-.toast button:focus-visible {}
+.root button:focus-visible {}
 
-.toast button:active {}
+.root button:active {}
 
 .actionButton {}
 
@@ -34,14 +16,4 @@
 
 .iconAndTitleWrapper {}
 
-.toast svg {}
-
-@media value(breakpoint-sm) {
-  @st-scope Default {
-    .root {
-      right: 16px;
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
-}
+.root svg {}

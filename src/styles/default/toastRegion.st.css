@@ -1,0 +1,26 @@
+@st-import Default, [breakpoint-sm] from "./project.st.css";
+
+@st-import ToastRegion from "../../components/Toast/toastRegion.st.css";
+
+@st-scope Default {
+  ToastRegion {
+    position: fixed;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    z-index: 9999;
+  }
+}
+
+@media value(breakpoint-sm) {
+  @st-scope Default {
+    ToastRegion {
+      right: 16px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}

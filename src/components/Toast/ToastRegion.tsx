@@ -3,7 +3,7 @@ import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import { useToastRegion } from "@react-aria/toast";
 import { Toast } from "./Toast";
-import { classes } from "./toast.st.css";
+import { classes } from "./toastRegion.st.css";
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
 import WarningIcon from "../icons/Warning";
