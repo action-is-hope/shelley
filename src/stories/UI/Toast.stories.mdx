@@ -504,3 +504,70 @@ Toasts are displayed in a priority queue. The default priority is 0. The higher 
     </Button>
   `}
 />
+
+### Toasts with actions
+
+Toasts can have actions. Actions are rendered as buttons. When an action is clicked, the toast is dismissed ( if `shouldCloseOnAction` is `true`) and the action callback is executed.
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Button
+        onClick={() =>
+          state.add(
+            {
+              title: "Toast is burnt (3)",
+              shouldCloseOnAction: true,
+              action: {
+                actionLabel: "Fix",
+                onAction: () => console.log("Let's fix it!"),
+              },
+            },
+            { priority: 3 }
+          )
+        }
+      >
+        Error with Action
+      </Button>
+  `}
+/>
+
+### Toasts with no icon
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Button
+        onClick={() =>
+          state.add(
+            {
+              title: "No icon",
+              shouldShowIcon: false,
+            }
+          )
+        }
+      >
+        No icon
+      </Button>
+  `}
+/>
+
+### Toasts with custom close button
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Button
+        onClick={() =>
+          state.add(
+            {
+              title: "Custom close button",
+              closeButton: <CloseButton>Close</CloseButton>,
+            }
+          )
+        }
+      >
+        Custom close button
+      </Button>
+  `}
+/>
