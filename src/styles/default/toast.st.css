@@ -3,19 +3,19 @@
 @st-import Toast from "../../components/Toast/toast.st.css";
 
 @st-scope Default {
-  Toast:priority(info) {
+  Toast::toast:priority(info) {
     background: var(--background-color-info)
   }
 
-  Toast:priority(success) {
+  Toast::toast:priority(success) {
     background: var(--background-color-success)
   }
 
-  Toast:priority(warning) {
+  Toast::toast:priority(warning) {
     background: var(--background-color-warning)
   }
 
-  Toast:priority(error) {
+  Toast::toast:priority(error) {
     background: var(--background-color-error)
   }
 }

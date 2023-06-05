@@ -44,19 +44,19 @@
 
 @st-scope Shelley {
 
-  Toast[data-animation=entering] {
+  Toast::toast[data-animation=entering] {
     animation: slide-in 1s forwards;
   }
 
-  Toast[data-animation=queued] {
+  Toast::toast[data-animation=queued] {
     animation: fade-in 1s forwards;
   }
 
-  Toast[data-animation=exiting] {
+  Toast::toast[data-animation=exiting] {
     animation: slide-out 1s forwards;
   }
 
-  Toast {
+  Toast::toast {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -82,12 +82,12 @@
     margin-right: 4px;
   }
 
-  Toast button:focus-visible {
+  Toast::toast button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px slateblue, 0 0 0 4px white;
   }
 
-  Toast button:active {
+  Toast::toast button:active {
     background: rgba(255, 255, 255, 0.2);
   }
 
@@ -111,7 +111,7 @@
     gap: 8px;
   }
 
-  Toast svg {
+  Toast::toast svg {
     color: white;
     font-size: 22px;
   }

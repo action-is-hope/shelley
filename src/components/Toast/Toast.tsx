@@ -84,7 +84,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     <div
       {...toastProps}
       ref={mergeRefs(localRef, ref)}
-      className={st(classes.root, { priority: priorityName }, props.className)}
+      className={st(classes.toast, { priority: priorityName }, props.className)}
       data-animation={animation}
       onAnimationEnd={() => {
         if (animation === "exiting") {

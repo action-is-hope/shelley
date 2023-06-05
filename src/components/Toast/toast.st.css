@@ -1,4 +1,4 @@
-.toastRegion {
+.root {
   position: fixed;
   bottom: 16px;
   display: flex;
@@ -16,15 +16,15 @@
     breakpoint-sm
 }
 
-.root {
+.toast {
   -st-states: priority(enum(info, success, warning, error));
 }
 
 .closeButton {}
 
-.root button:focus-visible {}
+.toast button:focus-visible {}
 
-.root button:active {}
+.toast button:active {}
 
 .actionButton {}
 
@@ -34,11 +34,11 @@
 
 .iconAndTitleWrapper {}
 
-.root svg {}
+.toast svg {}
 
 @media value(breakpoint-sm) {
   @st-scope Default {
-    .toastRegion {
+    .root {
       right: 16px;
       margin-right: 0;
       margin-left: 0;
