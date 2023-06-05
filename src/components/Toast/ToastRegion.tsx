@@ -6,7 +6,7 @@ import { Toast } from "./Toast";
 import { classes } from "./toast.st.css";
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
-import WarningIcon from "../icons/Close";
+import WarningIcon from "../icons/Warning";
 import ErrorIcon from "../icons/Error";
 
 interface ToastRegionProps<T> extends AriaToastRegionProps {
