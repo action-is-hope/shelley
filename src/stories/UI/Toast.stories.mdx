@@ -441,6 +441,7 @@ Then use the `useToast` hook to add toasts to the queue.
 <Source
   language="tsx"
   code={dedent`
+    const state = useToast();\n
     <Button
       onClick={() => state.add({ title: "New toast" })}
     >
