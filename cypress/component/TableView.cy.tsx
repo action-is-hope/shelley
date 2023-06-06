@@ -78,10 +78,10 @@ describe("TableView", () => {
 
   it("should render the table elements", () => {
     cy.mount(<DynamicTable data-id="table" />);
-    cy.get(table).get("thead").should("exist");
-    cy.get(table).get("tr").should("exist");
+    cy.get(table + " thead").should("exist");
+    cy.get(table + " tr").should("exist");
     cy.get(th).should("exist");
-    cy.get(table).get("tbody").should("exist");
+    cy.get(table + " tbody").should("exist");
     cy.get(td).should("exist");
   });
 
@@ -90,16 +90,13 @@ describe("TableView", () => {
   it("should render correct class names", () => {
     cy.mount(<DynamicTable data-id="table" />);
     cy.get(table).should("have.attr", "class").and("to.have.string", "table");
-    cy.get(table)
-      .get("thead")
+    cy.get(table + " thead")
       .should("have.attr", "class")
       .and("to.have.string", "thead");
-    cy.get(table)
-      .get("tbody")
+    cy.get(table + " tbody")
       .should("have.attr", "class")
       .and("to.have.string", "tbody");
-    cy.get(table)
-      .get("tr")
+    cy.get(table + " tr")
       .should("have.attr", "class")
       .and("to.have.string", "headerRow");
     cy.get(th).should("have.attr", "class").and("to.have.string", "column");
@@ -119,11 +116,11 @@ describe("TableView", () => {
     const tbodyCount = 1;
     const theadCount = 1;
     cy.mount(<DynamicTable data-id="table" />);
-    cy.get(table).get("thead").should("have.length", theadCount);
-    cy.get(table).get("tbody").should("have.length", tbodyCount);
-    cy.get(table).get("tr").should("have.length", trCount);
-    cy.get(table).get("thead").get("tr").get(th).should("have.length", thCount);
-    cy.get(table).get("tbody").get("tr").get(td).should("have.length", tdCount);
+    cy.get(table + " thead").should("have.length", theadCount);
+    cy.get(table + " tbody").should("have.length", tbodyCount);
+    cy.get(table + " tr").should("have.length", trCount);
+    cy.get(table + " thead tr " + th).should("have.length", thCount);
+    cy.get(table + " tbody tr " + td).should("have.length", tdCount);
   });
 
   // Should render correct content
