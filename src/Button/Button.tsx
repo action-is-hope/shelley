@@ -8,7 +8,7 @@ import type {
   Volume,
   ButtonVariants,
 } from "../typings/shared-types";
-import type { MergeElementProps } from "../utils";
+import type { MergeElementProps } from "../typings/utils";
 import { useFocusRing } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { st, classes } from "./button.st.css";

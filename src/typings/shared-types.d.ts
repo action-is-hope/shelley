@@ -111,3 +111,7 @@ export interface LoadMoreProps {
   /** 'Loading more' string for progress loader */
   loadingMoreString?: "Loading more...";
 }
+
+type DataIdDOMAttribute = {
+  "data-id"?: { value: string };
+};

@@ -1,7 +1,7 @@
 "use client";
 import type React from "react";
 import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
-import type { MergeElementProps } from "../utils";
+import type { MergeElementProps } from "../typings/utils";
 import type { ComponentBase, TextInputType } from "../typings/shared-types";
 import { Field, FieldProps } from "../Field";
 import { useTextField } from "react-aria";
