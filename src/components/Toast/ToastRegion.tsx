@@ -18,6 +18,10 @@ interface ToastRegionProps<T> extends AriaToastRegionProps {
   errorIcon?: ReactNode;
 }
 
+const getDataTestIdAsProp = (name: string) => {
+  return { "data-testid": `${name}-data-testid` };
+};
+
 function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
   const ref = useRef(null);
   const { regionProps } = useToastRegion(props, state, ref);
@@ -30,7 +34,12 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
   } = props;
 
   return (
-    <div {...regionProps} ref={ref} className={classes.root}>
+    <div
+      {...regionProps}
+      ref={ref}
+      className={classes.root}
+      {...getDataTestIdAsProp("toast-region")}
+    >
       {state.visibleToasts.map((toast) => {
         const { priority = 0 } = toast;
         return (
