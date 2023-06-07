@@ -1,29 +1,25 @@
-@st-import Default, [breakpoint-sm] from "./project.st.css";
-
+@st-import Default, [breakpoint-md-max, --border-radius-button] from "./project.st.css";
 @st-import ToastRegion from "../../components/Toast/toastRegion.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
 
 @st-scope Default {
-  ToastRegion {
-    position: fixed;
-    bottom: 16px;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    z-index: 9999;
+
+  ToastRegion > :first-child::before {
+    -st-mixin: pseudoFocus;
+  }
+
+  ToastRegion:isFocusVisible > :first-child::before {
+    -st-mixin: pseudoFocusVisible;
+    border-radius: var(--border-radius-button);
   }
 }
 
-@media value(breakpoint-sm) {
+
+@media value(breakpoint-md-max) {
   @st-scope Default {
     ToastRegion {
-      width: unset;
-      right: 16px;
-      padding-right: 0;
-      padding-left: 0;
+      align-items: center;
     }
   }
 }

@@ -3,11 +3,13 @@ import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import { useToastRegion } from "@react-aria/toast";
 import { Toast } from "./Toast";
-import { classes } from "./toastRegion.st.css";
+import { st, classes } from "./toastRegion.st.css";
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
 import WarningIcon from "../icons/Warning";
 import ErrorIcon from "../icons/Error";
+import { mergeProps } from "@react-aria/utils";
+import { useFocusRing } from "react-aria";
 
 interface ToastRegionProps<T> extends AriaToastRegionProps {
   state: ToastState<T>;
@@ -19,7 +21,7 @@ interface ToastRegionProps<T> extends AriaToastRegionProps {
 }
 
 const getDataTestIdAsProp = (name: string) => {
-  return { "data-testid": `${name}-data-testid` };
+  return { "data-id": `${name}-data-id` };
 };
 
 function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
@@ -33,11 +35,15 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
     errorIcon = <ErrorIcon />,
   } = props;
 
+  const { isFocusVisible, focusProps } = useFocusRing();
+
   return (
     <div
-      {...regionProps}
+      {...mergeProps(regionProps, focusProps)}
       ref={ref}
-      className={classes.root}
+      className={st(classes.root, {
+        isFocusVisible,
+      })}
       {...getDataTestIdAsProp("toast-region")}
     >
       {state.visibleToasts.map((toast) => {

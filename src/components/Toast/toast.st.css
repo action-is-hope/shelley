@@ -1,19 +1,76 @@
+@st-import Button from "../Button/Button.st.css";
+@st-import IconButton from "../IconButton/IconButton.st.css";
+
 .root {
   -st-states: priority(enum(info, success, warning, error));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
 }
 
-.closeButton {}
+.closeButton {
+  -st-extends: IconButton;
+}
 
-.root button:focus-visible {}
+.actionButton {
+  /* @todo: Figure out why stylable is complaining here. */
+  /* -st-extends: Button; */
+}
 
-.root button:active {}
+.actionAndCloseWrapper {
+  display: flex;
+}
 
-.actionButton {}
+.closeButtonWrapper {
+  display: flex;
+}
 
-.actionAndCloseWrapper {}
+.iconAndTitleWrapper {
+  display: flex;
+  align-items: center;
+}
 
-.closeButtonWrapper {}
+.root[data-animation=entering] {
+  animation: slide-in .3s forwards;
+}
 
-.iconAndTitleWrapper {}
+.root[data-animation=queued] {
+  animation: fade-in .3s forwards;
+}
 
-.root svg {}
+.root[data-animation=exiting] {
+  animation: fade-out .3s forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}

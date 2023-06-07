@@ -1,15 +1,12 @@
 import { ToastProvider, useToast } from "../../components/Toast/ToastProvider";
-import Button from "../../components/Button/Button";
+import { ActionButton, Button, ButtonGroup } from "../../indexLib";
 
 const ToastTriggersForDefaultExample = () => {
-  const state = useToast();
+  const toastQueue = useToast();
   return (
-    <Button
-      onClick={() => state.add({ title: "New toast" })}
-      style={{ margin: "16px" }}
-    >
-      Add toast!
-    </Button>
+    <ActionButton onPress={() => toastQueue.add({ title: "New toast" })}>
+      Add toast
+    </ActionButton>
   );
 };
 
@@ -22,41 +19,39 @@ export const ToastProviderDefault = () => {
 };
 
 const ToastTriggersForPriorityExample = () => {
-  const state = useToast();
+  const toastQueue = useToast();
 
   return (
-    <>
+    <ButtonGroup variant="secondary">
       <Button
-        onClick={() =>
-          state.add({ title: "Bread can be toasted" }, { priority: 0 })
+        onPress={() =>
+          toastQueue.add({ title: "Bread can be toasted" }, { priority: 0 })
         }
-        style={{ margin: "16px" }}
       >
-        No priority - info
+        Neutral
       </Button>
       <Button
-        onClick={() => state.add({ title: "Toasting... (1)" }, { priority: 1 })}
-        style={{ margin: "16px" }}
-      >
-        Low priority(1) - success
-      </Button>
-      <Button
-        onClick={() =>
-          state.add({ title: "Toast is done (2)" }, { priority: 2 })
+        onPress={() =>
+          toastQueue.add({ title: "Toasting... (1)" }, { priority: 1 })
         }
-        style={{ margin: "16px" }}
       >
-        Medium priority(2) - warning
+        Low priority
       </Button>
       <Button
-        onClick={() =>
-          state.add({ title: "Toast is burnt (3)" }, { priority: 3 })
+        onPress={() =>
+          toastQueue.add({ title: "Toast is done (2)" }, { priority: 2 })
         }
-        style={{ margin: "16px" }}
       >
-        High priority(3) - error
+        Medium priority
       </Button>
-    </>
+      <Button
+        onPress={() =>
+          toastQueue.add({ title: "Toast is burnt (3)" }, { priority: 3 })
+        }
+      >
+        High priority
+      </Button>
+    </ButtonGroup>
   );
 };
 
@@ -69,83 +64,26 @@ export const ToastProviderPriority = () => {
 };
 
 const ToastTriggersForActionLabelExample = () => {
-  const state = useToast();
+  const toastQueue = useToast();
 
   return (
-    <>
-      <Button
-        onClick={() =>
-          state.add(
-            {
-              title: "Bread can be toasted",
-              shouldCloseOnAction: true,
-              action: {
-                actionLabel: "Got it",
-                onAction: () => console.log("Action was clicked!"),
-              },
+    <ActionButton
+      onPress={() =>
+        toastQueue.add(
+          {
+            title: "Item deleted",
+            shouldCloseOnAction: true,
+            action: {
+              actionLabel: "Undo",
+              onAction: () => console.log("Action was clicked!"),
             },
-            { priority: 0 }
-          )
-        }
-        style={{ margin: "16px" }}
-      >
-        Info with action
-      </Button>
-      <Button
-        onClick={() =>
-          state.add(
-            {
-              title: "Toasting... (1)",
-              shouldCloseOnAction: true,
-              action: {
-                actionLabel: "Thanks",
-                onAction: () => console.log("Action was clicked!"),
-              },
-            },
-            { priority: 1 }
-          )
-        }
-        style={{ margin: "16px" }}
-      >
-        Success with action
-      </Button>
-      <Button
-        onClick={() =>
-          state.add(
-            {
-              title: "Toast is done (2)",
-              shouldCloseOnAction: true,
-              action: {
-                actionLabel: "Check",
-                onAction: () => console.log("Action was clicked!"),
-              },
-            },
-            { priority: 2 }
-          )
-        }
-        style={{ margin: "16px" }}
-      >
-        Warning with action
-      </Button>
-      <Button
-        onClick={() =>
-          state.add(
-            {
-              title: "Toast is burnt (3)",
-              shouldCloseOnAction: true,
-              action: {
-                actionLabel: "Fix",
-                onAction: () => console.log("Action was clicked!"),
-              },
-            },
-            { priority: 3 }
-          )
-        }
-        style={{ margin: "16px" }}
-      >
-        Error with Action
-      </Button>
-    </>
+          },
+          { priority: 1 }
+        )
+      }
+    >
+      Toast with action
+    </ActionButton>
   );
 };
 
@@ -158,19 +96,16 @@ export const ToastProviderActionLabel = () => {
 };
 
 const ToastTriggersForAutoDismissExample = () => {
-  const state = useToast();
+  const toastQueue = useToast();
 
   return (
-    <>
-      <Button
-        onClick={() =>
-          state.add({ title: "Disappears in 3.5 seconds" }, { timeout: 3500 })
-        }
-        style={{ margin: "16px" }}
-      >
-        Add toast!
-      </Button>
-    </>
+    <ActionButton
+      onPress={() =>
+        toastQueue.add({ title: "Disappears in 5 seconds" }, { timeout: 5000 })
+      }
+    >
+      Timeout toast
+    </ActionButton>
   );
 };
 
@@ -182,55 +117,20 @@ export const ToastProviderAutoDismiss = () => {
   );
 };
 
-const ToastTriggersForCloseOnActionExample = () => {
-  const state = useToast();
-
-  return (
-    <>
-      <Button
-        onClick={() =>
-          state.add({
-            title: "Should close on action",
-            shouldCloseOnAction: true,
-            action: {
-              actionLabel: "Action",
-              onAction: () => console.log("Action was clicked!"),
-            },
-          })
-        }
-        style={{ margin: "16px" }}
-      >
-        Add toast!
-      </Button>
-    </>
-  );
-};
-
-export const ToastProviderCloseOnAction = () => {
-  return (
-    <ToastProvider>
-      <ToastTriggersForCloseOnActionExample />
-    </ToastProvider>
-  );
-};
-
 const ToastTriggersForWithoutIcon = () => {
-  const state = useToast();
+  const toastQueue = useToast();
 
   return (
-    <>
-      <Button
-        onClick={() =>
-          state.add({
-            title: "No icon",
-            shouldShowIcon: false,
-          })
-        }
-        style={{ margin: "16px" }}
-      >
-        Add toast!
-      </Button>
-    </>
+    <ActionButton
+      onPress={() =>
+        toastQueue.add({
+          title: "No icon",
+          shouldShowIcon: false,
+        })
+      }
+    >
+      Toast without icon
+    </ActionButton>
   );
 };
 
@@ -238,6 +138,31 @@ export const ToastProviderWithoutIcon = () => {
   return (
     <ToastProvider>
       <ToastTriggersForWithoutIcon />
+    </ToastProvider>
+  );
+};
+
+const ToastTriggersForCustomIcon = () => {
+  const toastQueue = useToast();
+
+  return (
+    <ActionButton
+      onPress={() =>
+        toastQueue.add({
+          title: "No icon",
+          shouldShowIcon: false,
+        })
+      }
+    >
+      Toast without icon
+    </ActionButton>
+  );
+};
+
+export const ToastProviderCustomIcon = () => {
+  return (
+    <ToastProvider>
+      <ToastTriggersForCustomIcon />
     </ToastProvider>
   );
 };

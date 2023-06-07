@@ -3,7 +3,6 @@ import {
   ReactNode,
   Ref,
   RefObject,
-  SyntheticEvent,
   forwardRef,
   useRef,
 } from "react";
@@ -11,14 +10,16 @@ import type { AriaToastProps } from "@react-aria/toast";
 import type { ToastState, QueuedToast } from "@react-stately/toast";
 import { useToast } from "@react-aria/toast";
 import type { CustomToastContent } from "./ToastProvider";
-
 import Button from "../Button/Button";
+import Text from "../Text/Text";
 import { st, classes } from "./toast.st.css";
 import { mergeRefs } from "@react-aria/utils";
 import CloseIcon from "../icons/Close";
+import type { PressEvent } from "@react-types/shared";
+import { IconButton } from "../IconButton/IconButton";
 
-const getDataTestIdAsProp = (name: string) => {
-  return { "data-testid": `${name}-data-testid` };
+const getDataIdAsProp = (name: string) => {
+  return { "data-id": `${name}-data-id` };
 };
 
 interface ToastProps<T> extends AriaToastProps<T> {
@@ -72,7 +73,7 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     : {};
 
   const onActionHandler = (
-    e: SyntheticEvent,
+    e: PressEvent,
     state: ToastState<CustomToastContent>
   ) => {
     if (onAction && typeof onAction === "function") {
@@ -91,48 +92,46 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
           state.remove(key);
         }
       }}
-      {...getDataTestIdAsProp(`toast-${priorityName}-${title}`)}
+      {...getDataIdAsProp(`toast-${priorityName}-${title}`)}
     >
       <div
         className={classes.iconAndTitleWrapper}
-        {...getDataTestIdAsProp(
+        {...getDataIdAsProp(
           `toast-icon-and-title-wrapper-${priorityName}-${title}`
         )}
       >
         {shouldShowIcon && icon && <>{icon}</>}
-        <div
+        <Text
+          as="span"
+          vol={1}
           {...titleProps}
-          {...getDataTestIdAsProp(`toast-title-${priorityName}-${title}`)}
+          {...getDataIdAsProp(`toast-title-${priorityName}-${title}`)}
         >
           {title}
-        </div>
+        </Text>
       </div>
       <div className={classes.actionAndCloseWrapper}>
         {actionLabel && onAction && (
           <Button
             tone={false}
             className={classes.actionButton}
-            onClick={(e: SyntheticEvent) => {
+            onPress={(e) => {
               onActionHandler(e, state);
             }}
             {...withOrWithoutCloseButtonProps}
-            {...getDataTestIdAsProp(
-              `toast-action-button-${priorityName}-${title}`
-            )}
+            {...getDataIdAsProp(`toast-action-button-${priorityName}-${title}`)}
           >
             {actionLabel}
           </Button>
         )}
         <div className={classes.closeButtonWrapper}>
-          <Button
+          <IconButton
             {...closeButtonProps}
             className={classes.closeButton}
-            {...getDataTestIdAsProp(
-              `toast-close-button-${priorityName}-${title}`
-            )}
+            {...getDataIdAsProp(`toast-close-button-${priorityName}-${title}`)}
           >
             {closeIcon}
-          </Button>
+          </IconButton>
         </div>
       </div>
     </div>
