@@ -1,4 +1,11 @@
-/* actionButton.st.css */
+/**
+ * = ActionButton - actionButton.st.css
+ *
+ * Base theme styles for a Shelley ActionButton.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ActionButton/actionButton.st.css
+ * 
+ */
 @st-import Default from "./project.st.css";
 @st-import ActionButton from "../../ActionButton/actionButton.st.css";
 @st-import Icon from "../../Icon/icon.st.css";

@@ -1,26 +1,23 @@
-/* button.st.css */
-
-/* = Default project and vars */
+/**
+ * = Button - button.st.css
+ *
+ * Base theme styles for a Shelley Button.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/button.st.css
+ * 
+ */
 @st-import Default from "./project.st.css";
-/* Component API */
 @st-import Button from "../../Button/button.st.css";
-/* = Child components */
 @st-import Icon from "../../Icon/icon.st.css";
-/* = Formatters */
 @st-import [respScale] from "../formatters/common";
-/* = Default Mixins */
 @st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
-/* = Shelley Mixins */
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/text.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
-/* This is how we can scope the styles in Stylable. */
 @st-scope Default {
 
-  /* = The base <button> element. */
   Button {
-    /* = Removes system styles. */
     -st-mixin: hideWebkitAppearance;
     /* = Really really opinionated, only do this if you are willing to provide 
     a suitable replacement. We are control freaks. */
@@ -35,7 +32,6 @@
     /* = Caters postioned children, e.g focus pseudo element. Also 
     'activates' z-index should you need it. */
     position: relative;
-    /* = Effects - 'all' --maybe-- IS too much... project var perhaps. */
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -61,10 +57,6 @@
     font-size: calc(1em + 2px);
   }
 
-  /* Button:iconButton Icon {
-    font-size: calc(1em + 6px);
-  } */
-
   Button:hover {
     opacity: 0.7;
   }
@@ -78,8 +70,6 @@
     -st-mixin: pseudoFocusVisible;
   }
 
-
-  /* = Button CSS STATES PSEUDO */
   /* = Disabled */
   Button:isDisabled,
   Button:isDisabled:hover,
@@ -89,13 +79,6 @@
     opacity: 0.5
   }
 
-  /* = ACTIVE */
-  Button:active,
-  Button:active:hover {}
-
-  /*==== VOLUMES ====*/
-
-  /* = Volume 1 */
   Button:vol(1) {
     -st-mixin:
       textVol(scale respScale(0.67em, 0.675em),
@@ -112,28 +95,24 @@
     padding-bottom: 0.15em;
   }
 
-  /* = Volume 3 */
   Button:vol(3) {
     -st-mixin:
       textVol(scale respScale(0.8em, 0.78em),
         max 0.78em, lineHeight 1.1);
   }
 
-  /* = Volume 4 */
   Button:vol(4) {
     -st-mixin:
       textVol(scale respScale(0.85em, .83em),
         max .875em, lineHeight 1.1);
   }
 
-  /* = Volume 5 */
   Button:vol(5) {
     -st-mixin:
       textVol(scale respScale(1em, 1em),
         max 1em, lineHeight 1.15);
   }
 
-  /* = Volume 6 */
   Button:vol(6) {
     -st-mixin:
       textVol(scale respScale(1.15em, 1.125em),
@@ -141,16 +120,12 @@
   }
 
 
-  /* = 'Primary' */
   Button:variant(primary) {}
 
-  /* = 'Secondary' */
   Button:variant(secondary) {}
 
-  /* = 'Quiet' */
   Button:variant(quiet) {}
 
-  /* = 'FAB - Floating Action Button' - Thank you Material! */
   Button:variant(fab) {
     padding: 0;
     border-radius: 999px;

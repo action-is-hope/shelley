@@ -1,3 +1,11 @@
+/**
+ * = HelpText - helpText.st.css
+ *
+ * Base theme styles for a Shelley HelpText.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/HelpText/helpText.st.css
+ * 
+ */
 @st-import Default, [--color-error] from "./project.st.css";
 @st-import HelpText from "../../HelpText/helpText.st.css";
 

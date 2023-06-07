@@ -1,4 +1,11 @@
-/* tabs.st.css */
+/**
+ * = Tabs - tabs.st.css
+ *
+ * Base theme styles for a Shelley Tabs.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Tabs/tabs.st.css
+ * 
+ */
 @st-import Default, [
     --spacing-unit,
     --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import type { AriaButtonProps } from "@react-types/button";
-import type { AlignPos } from "../typings/shared-types";
+import type { AlignPos, Volume } from "../typings/shared-types";
 import { st, classes } from "./iconButton.st.css";
 import { Button } from "../Button";
 
@@ -11,17 +11,13 @@ export interface IconButtonProps extends Omit<AriaButtonProps, "elementType"> {
   icon?: React.ReactNode;
   /** The position of the icon relative to the label. */
   iconPos?: AlignPos;
-  isQuiet?: boolean;
+  /** Defines how 'loud' the Button should be in term of it's size. */
+  vol?: Volume;
 }
 
 // @todo: Refactor Button into a ButtonBase and have all buttons use it.
 function IconButton(props: IconButtonProps, ref: React.Ref<HTMLButtonElement>) {
-  const {
-    children,
-    className: classNameProp,
-    ...rest
-    // ...otherProps
-  } = props;
+  const { children, className: classNameProp, ...rest } = props;
 
   return (
     <Button

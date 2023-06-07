@@ -1,33 +1,34 @@
 /**
  * = Blockquote - blockquote.st.css
+ *
+ * Base theme styles for a Shelley Blockquote.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Blockquote/blockquote.st.css
  * 
- * ========================================================================= */
-
+ */
 @st-import Default, [--spacing-unit] from "./project.st.css";
 @st-import Blockquote from "../../Blockquote/blockquote.st.css";
 
 @st-scope Default {
-    Blockquote {
-        background-image: radial-gradient(circle at 50% 50%,
-                #000000 0%,
-                rgba(255, 255, 255, 0) 100%);
-        background-color: transparent;
-        background-position: 50% 50%;
-        background-size: 100% 100%;
-        background-repeat: repeat;
-        background-attachment: scroll;
-        background-origin: padding-box;
-        background-clip: border-box;
-    }
+  Blockquote {
+    background-image: radial-gradient(circle at 50% 50%, #000000 0%, rgba(255, 255, 255, 0) 100%);
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+  }
 
-    Blockquote::content {
-        display: grid;
-        grid-row-gap: 0.8rem;
-        font-style: italic;
-    }
+  Blockquote::content {
+    display: grid;
+    grid-row-gap: 0.8rem;
+    font-style: italic;
+  }
 
-    Blockquote::desc {
-        font-style: normal;
-        margin-top: var(--spacing-unit);
-    }
+  Blockquote::desc {
+    font-style: normal;
+    margin-top: var(--spacing-unit);
+  }
 }

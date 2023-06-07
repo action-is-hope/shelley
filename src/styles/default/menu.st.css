@@ -1,25 +1,17 @@
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-}
-
-/* = Component CSS API */
-:import {
-  -st-from: "../../Menu/menu.st.css";
-  -st-default: Menu;
-}
-
-:import {
-  -st-from: "./mixins/menu.st.css";
-  -st-default: MenuMixin;
-  -st-named: menuList;
-}
+/**
+ * = Menu - menu.st.css
+ *
+ * Base theme styles for a Shelley Menu.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Menu/menu.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import Menu from "../../Menu/menu.st.css";
+@st-import [menuList] from "./mixins/menu.st.css";
 
 @st-scope Default {
   Menu {
     -st-mixin: menuList;
   }
-
-  Menu::item {}
 }

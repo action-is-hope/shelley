@@ -1,3 +1,11 @@
+/**
+ * = ComboBox - comboBox.st.css
+ *
+ * Base theme styles for a Shelley ComboBox.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ComboBox/comboBox.st.css
+ * 
+ */
 @st-import Default from "./project.st.css";
 @st-import ComboBox from "../../ComboBox/comboBox.st.css";
 

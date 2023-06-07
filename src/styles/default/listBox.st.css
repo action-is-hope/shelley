@@ -1,25 +1,17 @@
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-}
-
-/* = Component CSS API */
-:import {
-  -st-from: "../../ListBox/listBox.st.css";
-  -st-default: ListBox;
-}
-
-:import {
-  -st-from: "./mixins/menu.st.css";
-  -st-default: MenuMixin;
-  -st-named: menuList;
-}
+/**
+ * = Listbox - listBox.st.css
+ *
+ * Base theme styles for a Shelley ListBox.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBox/listBox.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import ListBox from "../../ListBox/listBox.st.css";
+@st-import [menuList] from "./mixins/menu.st.css";
 
 @st-scope Default {
   ListBox {
     -st-mixin: menuList;
   }
-
-  ListBox::item {}
 }

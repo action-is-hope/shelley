@@ -1,4 +1,11 @@
-/* modal.st.css */
+/**
+ * = Modal - modal.st.css
+ *
+ * Base theme styles for a Shelley Modal.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Modal/modal.st.css
+ * 
+ */
 @st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
 @st-import Modal, [enterDone] from "../../Modal/modal.st.css";
 

@@ -1,13 +1,12 @@
 /**
- * = TEXT - text.st.css
+ * = Text - text.st.css
+ *
+ * Base theme styles for a Shelley Text.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Text/text.st.css
  * 
- * ========================================================================= */
-
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
+ */
+@st-import Default, [
     --spacing-unit,
     --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
     --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
@@ -19,26 +18,15 @@
     --text-vol-8-max, --text-vol-8-scale, --text-vol-8-line-height,
     --text-vol-9-max, --text-vol-9-scale, --text-vol-9-line-height,
     --text-vol-10-max, --text-vol-10-scale, --text-vol-10-line-height,
-    --text-vol-11-max, --text-vol-11-scale, --text-vol-11-line-height;
-}
+    --text-vol-11-max, --text-vol-11-scale, --text-vol-11-line-height
+  ] from "./project.st.css";
 
-/* = Root Component. */
-:import {
-  -st-from: "../../Text/text.st.css";
-  -st-default: Text;
-}
-
-/* = Mixins & Utils */
-:import {
-  -st-from: './mixins/text.st.css';
-  -st-named:
-    textVol;
-}
+@st-import Text from "../../Text/text.st.css";
+@st-import [ textVol ] from "./mixins/text.st.css";
 
 @st-scope Default {
-  Text {}
 
-  /* = Volume 1 */
+  /* = Volumes */
 
   Text:vol(1) {
     -st-mixin:
@@ -47,7 +35,6 @@
         lineHeight var(--text-vol-1-line-height));
   }
 
-  /* = Volume 2 */
   Text:vol(2) {
     -st-mixin:
       textVol(scale var(--text-vol-2-scale),
@@ -55,7 +42,6 @@
         lineHeight var(--text-vol-2-line-height));
   }
 
-  /* = Volume 3 */
   Text:vol(3) {
     -st-mixin:
       textVol(scale var(--text-vol-3-scale),
@@ -64,7 +50,6 @@
   }
 
 
-  /* = Volume 4 */
   Text:vol(4) {
     -st-mixin:
       textVol(scale var(--text-vol-4-scale),
@@ -72,7 +57,6 @@
         lineHeight var(--text-vol-4-line-height));
   }
 
-  /* = Volume 5 */
   Text:vol(5) {
     -st-mixin:
       textVol(scale var(--text-vol-5-scale),
@@ -80,7 +64,6 @@
         lineHeight var(--text-vol-5-line-height));
   }
 
-  /* = Volume 6 */
   Text:vol(6) {
     -st-mixin:
       textVol(scale var(--text-vol-6-scale),
@@ -88,7 +71,6 @@
         lineHeight var(--text-vol-6-line-height));
   }
 
-  /* = Volume 7 */
   Text:vol(7) {
     -st-mixin:
       textVol(scale var(--text-vol-7-scale),
@@ -96,7 +78,6 @@
         lineHeight var(--text-vol-7-line-height));
   }
 
-  /* = Volume 8 */
   Text:vol(8) {
     -st-mixin:
       textVol(scale var(--text-vol-8-scale),
@@ -104,7 +85,6 @@
         lineHeight var(--text-vol-8-line-height));
   }
 
-  /* = Volume 9 */
   Text:vol(9) {
     -st-mixin:
       textVol(scale var(--text-vol-9-scale),
@@ -112,7 +92,6 @@
         lineHeight var(--text-vol-9-line-height));
   }
 
-  /* = Volume 10 */
   Text:vol(10) {
     -st-mixin:
       textVol(scale var(--text-vol-10-scale),
@@ -121,7 +100,6 @@
     font-weight: 300;
   }
 
-  /* = Volume 11 */
   Text:vol(11) {
     -st-mixin:
       textVol(scale var(--text-vol-11-scale),
