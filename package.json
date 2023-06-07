@@ -36,7 +36,7 @@
     "copy": "copyfiles package.json \"./package.json\" \"./README.md\" dist",
     "prebuild": "npm run clean",
     "build-stylable-types": "stc",
-    "build": "npm run clean && npm run copy && npm run build-components-stcss && npm run build-components-styles-stcss && tsc --project tsconfig-npm.json",
+    "build": "npm run clean && npm run copy && npm run build-stylable-types && npm run build-components-stcss && npm run build-components-styles-stcss && tsc --project tsconfig-npm.json",
     "build-components-stcss": "stc --srcDir=\"./src\" --outDir=\"./dist\" --stcss",
     "build-components-styles-stcss": "stc --srcDir=\"./src/styles\" --outDir=\"./dist/styles\" --stcss",
     "lint": "eslint . -f codeframe",
