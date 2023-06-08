@@ -20,6 +20,7 @@ export * from "./components/IconButton/IconButton";
 export * from "./components/Modal/Modal";
 export * from "./components/Dialog/Dialog";
 export * from "./components/Dialog/DialogTrigger";
+export { default as DisclosureGroup } from "./components/DisclosureGroup/DisclosureGroup";
 export * from "./components/HelpText/HelpText";
 export { default as Grid } from "./components/Grid/Grid";
 export * from "./components/Grid/Grid";

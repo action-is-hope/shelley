@@ -1,8 +1,8 @@
 /** Disclosure.tsx */
 import React, { useEffect, useRef } from "react";
-import { st, classes } from "./disclosure.st.css";
+import { st, classes } from "./disclosureGroup.st.css";
 import Text from "../Text/Text";
-import Icon from "../Icon/Icon";
+// import Icon from "../Icon/Icon";
 import { useId } from "@react-aria/utils";
 
 import useDisclosure from "./useDisclosure";
@@ -41,7 +41,7 @@ const Disclosure: React.VFC<DisclosureProps> = ({
   return (
     <article
       className={st(
-        classes.root,
+        classes.disclosure,
         { isExpanded: triggerProps["aria-expanded"] },
         className
       )}

@@ -70,6 +70,7 @@ const useDisclosure = ({
     "aria-expanded": isExpanded,
     "aria-controls": `${id}` + "-content",
   };
+
   const contentProps: ContentProps = {
     id: `${id}` + "-content",
     "aria-hidden": !isExpanded,
@@ -80,6 +81,7 @@ const useDisclosure = ({
       height: isExpanded ? (height !== 0 ? `${height}px` : "auto") : "0px",
     },
   };
+
   return { triggerProps, contentProps, isExpanded, trigger };
 };
 export default useDisclosure;

@@ -1,11 +1,9 @@
 /** DisclosureGroup.tsx */
 import { st, classes } from "./disclosure.st.css";
 import Disclosure, { DisclosureProps } from "./Disclosure";
-import ContentContainer, {
-  ContentContainerProps,
-} from "../ContentContainer/ContentContainer";
 
-export interface DisclosureGroupProps extends ContentContainerProps {
+export interface DisclosureGroupProps
+  extends React.HTMLAttributes<HTMLElement> {
   /** Disclosure array of items */
   items: DisclosureProps[];
 }
@@ -15,11 +13,7 @@ const DisclosureGroup: React.VFC<DisclosureGroupProps> = ({
   items,
   ...rest
 }) => (
-  <ContentContainer
-    className={st(classes.root, className)}
-    size="inset"
-    {...rest}
-  >
+  <div className={st(classes.root, className)} {...rest}>
     {/* DisclosureGroup - collection of disclosures */}
     <ul className={classes.accordion}>
       {items.map((item: DisclosureProps, index: number) => (
@@ -30,7 +24,7 @@ const DisclosureGroup: React.VFC<DisclosureGroupProps> = ({
         </li>
       ))}
     </ul>
-  </ContentContainer>
+  </div>
 );
 
 export default DisclosureGroup;

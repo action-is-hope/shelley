@@ -1,0 +1,42 @@
+/* disclosureGroup.st.css */
+@namespace "DisclosureGroup";
+
+:import {
+  -st-from: "../text/text.st.css";
+  -st-default: Text;
+}
+
+/* DisclosureGroup */
+.root {}
+
+.accordion {}
+
+/* .wrapper {} */
+
+.accordionItem {}
+
+/* Disclossure */
+
+.disclosure {
+  -st-states: isExpanded;
+}
+
+.title {
+  -st-extends: Text;
+}
+
+.trigger {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.trigger:hover {
+  cursor: pointer;
+}
+
+.triggerIcon {}
+
+.hiddenContent {}
+
+.content {}
