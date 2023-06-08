@@ -1,5 +1,5 @@
 /** DisclosureGroup.tsx */
-import { st, classes } from "./disclosure.st.css";
+import { st, classes } from "./disclosureGroup.st.css";
 import Disclosure, { DisclosureProps } from "./Disclosure";
 
 export interface DisclosureGroupProps
