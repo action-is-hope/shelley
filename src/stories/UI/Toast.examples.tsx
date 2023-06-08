@@ -54,7 +54,6 @@ const ToastTriggersForPriorityExample = () => {
       >
         Warning (P3)
       </Button>
-
       <Button
         onPress={() =>
           toastQueue.add({ title: "Toast is on fire (P4)" }, { priority: 4 })
