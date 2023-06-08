@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import { createContext, useContext } from "react";
 import { useToastState, ToastState, ToastOptions } from "@react-stately/toast";
 import { ToastRegion } from "./ToastRegion";
@@ -59,7 +59,10 @@ export function useToast(): ToastQueue {
   return useContext(ToastContext) as ToastQueue;
 }
 
-function ToastProvider(props: ToastProviderProps) {
+function ToastProvider(
+  props: ToastProviderProps,
+  ref?: React.Ref<HTMLDivElement>
+) {
   const {
     children,
     maxVisibleToasts = 1,
@@ -76,10 +79,14 @@ function ToastProvider(props: ToastProviderProps) {
     <ToastContext.Provider value={state}>
       {children}
       {state.visibleToasts.length > 0 && (
-        <ToastRegion {...rest} state={state} />
+        <ToastRegion {...rest} state={state} ref={ref} />
       )}
     </ToastContext.Provider>
   );
 }
 
-export { ToastProvider };
+/**
+ * ToastProvider is responsible for rendering the toast region and in turn the toasts and managing the toast queue
+ */
+const _ToastProvider = forwardRef(ToastProvider);
+export { _ToastProvider as ToastProvider };

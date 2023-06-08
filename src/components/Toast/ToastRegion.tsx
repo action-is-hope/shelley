@@ -1,9 +1,9 @@
-import { useRef, ReactNode } from "react";
+import { useRef, forwardRef, ReactNode, ReactElement, Ref } from "react";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import type { ComponentBase } from "../types";
 import { useToastRegion } from "@react-aria/toast";
-import { mergeProps } from "@react-aria/utils";
+import { mergeProps, mergeRefs } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import { Toast } from "./Toast";
 import InfoIcon from "../icons/Info";
@@ -23,10 +23,13 @@ export interface ToastRegionProps<T>
   errorIcon?: ReactNode;
 }
 
-function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
-  const ref = useRef(null);
-  const { regionProps } = useToastRegion(props, state, ref);
+function ToastRegion<T>(
+  props: ToastRegionProps<T>,
+  ref?: React.Ref<HTMLDivElement>
+) {
+  const localRef = useRef(null);
   const {
+    state,
     closeIcon,
     infoIcon = <InfoIcon />,
     successIcon = <SuccessIcon />,
@@ -34,13 +37,13 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
     errorIcon = <ErrorIcon />,
     "data-id": dataId,
   } = props;
-
+  const { regionProps } = useToastRegion(props, state, localRef);
   const { isFocusVisible, focusProps } = useFocusRing();
 
   return (
     <div
       {...mergeProps(regionProps, focusProps)}
-      ref={ref}
+      ref={ref ? mergeRefs(ref, localRef) : localRef}
       className={st(classes.root, {
         isFocusVisible,
       })}
@@ -70,4 +73,9 @@ function ToastRegion<T>({ state, ...props }: ToastRegionProps<T>) {
   );
 }
 
-export { ToastRegion };
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _ToastRegion = forwardRef(ToastRegion) as <T>(
+  props: ToastRegionProps<T> & { ref?: Ref<HTMLDivElement> }
+) => ReactElement;
+export { _ToastRegion as ToastRegion };
