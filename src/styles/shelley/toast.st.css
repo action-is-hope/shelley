@@ -1,8 +1,18 @@
-@st-import Shelley, [--background-color-info, --background-color-success, --background-color-warning, --background-color-error] from "./project.st.css";
+@st-import Shelley, [
+  --background-color-neutral,
+  --background-color-info,
+  --background-color-success,
+  --background-color-warning,
+  --background-color-error] from "./project.st.css";
 
 @st-import Toast from "../../components/Toast/toast.st.css";
 
 @st-scope Shelley {
+
+  Toast:priority(neutral) {
+    background: var(--background-color-neutral)
+  }
+
   Toast:priority(info) {
     background: var(--background-color-info)
   }

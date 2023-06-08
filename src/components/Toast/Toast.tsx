@@ -57,13 +57,19 @@ function Toast(
 
   let { priority } = props.toast;
 
-  const priorities = ["info", "success", "warning", "error"] as const;
+  const priorities = [
+    "neutral",
+    "info",
+    "success",
+    "warning",
+    "error",
+  ] as const;
 
-  if (typeof priority !== "number" || priority < 0 || priority > 3) {
+  if (typeof priority !== "number" || priority < 0 || priority > 4) {
     priority = 0;
   }
 
-  const priorityName = priorities[priority as 0 | 1 | 2 | 3];
+  const priorityName = priorities[priority as 0 | 1 | 2 | 3 | 4];
 
   const withOrWithoutCloseButtonProps = shouldCloseOnAction
     ? closeButtonProps

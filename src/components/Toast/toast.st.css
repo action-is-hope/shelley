@@ -2,7 +2,7 @@
 @st-import IconButton from "../IconButton/iconButton.st.css";
 
 .root {
-  -st-states: priority(enum(info, success, warning, error));
+  -st-states: priority(enum(neutral, info, success, warning, error));
   display: flex;
   align-items: center;
   justify-content: space-between;

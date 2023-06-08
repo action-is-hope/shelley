@@ -1,6 +1,7 @@
 @st-import Default, [
   --spacing-unit,
   --border-radius-button,
+  --background-color-neutral,
   --background-color-info,
   --background-color-success,
   --background-color-warning,
@@ -9,6 +10,10 @@
 @st-import Toast from "../../components/Toast/toast.st.css";
 
 @st-scope Default {
+  Toast:priority(neutral) {
+    background: var(--background-color-neutral)
+  }
+
   Toast:priority(info) {
     background: var(--background-color-info)
   }

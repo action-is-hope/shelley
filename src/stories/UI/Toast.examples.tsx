@@ -25,31 +25,42 @@ const ToastTriggersForPriorityExample = () => {
     <ButtonGroup variant="secondary">
       <Button
         onPress={() =>
-          toastQueue.add({ title: "Bread can be toasted" }, { priority: 0 })
+          toastQueue.add(
+            { title: "Bread can be toasted (P0)" },
+            { priority: 0 }
+          )
         }
       >
-        Neutral
+        Neutral (P0)
       </Button>
       <Button
         onPress={() =>
-          toastQueue.add({ title: "Toasting... (1)" }, { priority: 1 })
+          toastQueue.add({ title: "Toasting... (P1)" }, { priority: 1 })
         }
       >
-        Low priority
+        Info (P1)
       </Button>
       <Button
         onPress={() =>
-          toastQueue.add({ title: "Toast is done (2)" }, { priority: 2 })
+          toastQueue.add({ title: "Toast is done (P2)" }, { priority: 2 })
         }
       >
-        Medium priority
+        Success (P2)
       </Button>
       <Button
         onPress={() =>
-          toastQueue.add({ title: "Toast is burnt (3)" }, { priority: 3 })
+          toastQueue.add({ title: "Toast is burning (P3)" }, { priority: 3 })
         }
       >
-        High priority
+        Warning (P3)
+      </Button>
+
+      <Button
+        onPress={() =>
+          toastQueue.add({ title: "Toast is on fire (P4)" }, { priority: 4 })
+        }
+      >
+        Error (P4)
       </Button>
     </ButtonGroup>
   );
@@ -123,10 +134,15 @@ const ToastTriggersForWithoutIcon = () => {
   return (
     <ActionButton
       onPress={() =>
-        toastQueue.add({
-          title: "No icon",
-          shouldShowIcon: false,
-        })
+        toastQueue.add(
+          {
+            title: "No icon",
+            shouldShowIcon: false,
+          },
+          {
+            priority: 1,
+          }
+        )
       }
     >
       Toast without icon

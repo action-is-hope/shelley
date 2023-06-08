@@ -162,7 +162,8 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --color-focus: #09b1f1;
   --color-error: #b66b6e;
 
-  --background-color-info: grey;
+  --background-color-neutral: grey;
+  --background-color-info: blue;
   --background-color-success: green;
   --background-color-warning: orange;
   --background-color-error: red;

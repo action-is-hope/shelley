@@ -59,10 +59,10 @@ function ToastRegion<T>(
             closeIcon={closeIcon}
             icon={
               <>
-                {priority === 0 && infoIcon}
-                {priority === 1 && successIcon}
-                {priority === 2 && warningIcon}
-                {priority === 3 && errorIcon}
+                {priority === 1 && infoIcon}
+                {priority === 2 && successIcon}
+                {priority === 3 && warningIcon}
+                {priority === 4 && errorIcon}
               </>
             }
             data-id={dataId ? `${dataId}--toast` : undefined}
