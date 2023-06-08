@@ -1,5 +1,5 @@
-@st-import Button from "../Button/Button.st.css";
-@st-import IconButton from "../IconButton/IconButton.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import IconButton from "../IconButton/iconButton.st.css";
 
 .root {
   -st-states: priority(enum(info, success, warning, error));

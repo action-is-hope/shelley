@@ -1,37 +1,36 @@
-import {
-  ReactElement,
-  ReactNode,
-  Ref,
-  RefObject,
-  forwardRef,
-  useRef,
-} from "react";
+import { ReactElement, ReactNode, Ref, forwardRef, useRef } from "react";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { ToastState, QueuedToast } from "@react-stately/toast";
-import { useToast } from "@react-aria/toast";
 import type { CustomToastContent } from "./ToastProvider";
+import type { PressEvent } from "@react-types/shared";
+import type { ComponentBase } from "../types";
+import { useToast } from "@react-aria/toast";
+import { mergeRefs } from "@react-aria/utils";
 import Button from "../Button/Button";
 import Text from "../Text/Text";
-import { st, classes } from "./toast.st.css";
-import { mergeRefs } from "@react-aria/utils";
-import CloseIcon from "../icons/Close";
-import type { PressEvent } from "@react-types/shared";
 import { IconButton } from "../IconButton/IconButton";
+import CloseIcon from "../icons/Close";
+import { st, classes } from "./toast.st.css";
 
-const getDataIdAsProp = (name: string) => {
-  return { "data-id": `${name}-data-id` };
-};
-
-interface ToastProps<T> extends AriaToastProps<T> {
+export interface ToastProps<T> extends AriaToastProps<T>, ComponentBase {
   className?: string;
   state: ToastState<T>;
   toast: QueuedToast<T>;
   icon: ReactNode;
-  ref: RefObject<HTMLDivElement>;
   closeIcon?: ReactNode;
 }
 
-function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
+function Toast(
+  props: ToastProps<CustomToastContent>,
+  ref?: Ref<HTMLDivElement>
+) {
+  const {
+    state,
+    icon,
+    closeIcon = <CloseIcon />,
+    className: classNameProp,
+    "data-id": dataId,
+  } = props;
   const localRef = useRef<HTMLDivElement>(null);
 
   const { toastProps, titleProps, closeButtonProps } = useToast(
@@ -39,8 +38,6 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
     state,
     localRef
   );
-
-  const { icon, closeIcon = <CloseIcon /> } = props;
 
   const {
     content: {
@@ -84,28 +81,23 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
   return (
     <div
       {...toastProps}
-      ref={mergeRefs(localRef, ref)}
-      className={st(classes.root, { priority: priorityName }, props.className)}
+      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      className={st(classes.root, { priority: priorityName }, classNameProp)}
       data-animation={animation}
       onAnimationEnd={() => {
         if (animation === "exiting") {
           state.remove(key);
         }
       }}
-      {...getDataIdAsProp(`toast-${priorityName}-${title}`)}
+      data-id={dataId ? `${dataId}-${priorityName}` : undefined}
     >
-      <div
-        className={classes.iconAndTitleWrapper}
-        {...getDataIdAsProp(
-          `toast-icon-and-title-wrapper-${priorityName}-${title}`
-        )}
-      >
+      <div className={classes.iconAndTitleWrapper}>
         {shouldShowIcon && icon && <>{icon}</>}
         <Text
           as="span"
           vol={1}
           {...titleProps}
-          {...getDataIdAsProp(`toast-title-${priorityName}-${title}`)}
+          data-id={dataId ? `${dataId}-${priorityName}--title` : undefined}
         >
           {title}
         </Text>
@@ -119,7 +111,9 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
               onActionHandler(e, state);
             }}
             {...withOrWithoutCloseButtonProps}
-            {...getDataIdAsProp(`toast-action-button-${priorityName}-${title}`)}
+            data-id={
+              dataId ? `${dataId}-${priorityName}--actionButton` : undefined
+            }
           >
             {actionLabel}
           </Button>
@@ -128,7 +122,9 @@ function Toast({ state, ref, ...props }: ToastProps<CustomToastContent>) {
           <IconButton
             {...closeButtonProps}
             className={classes.closeButton}
-            {...getDataIdAsProp(`toast-close-button-${priorityName}-${title}`)}
+            data-id={
+              dataId ? `${dataId}-${priorityName}--closeButton` : undefined
+            }
           >
             {closeIcon}
           </IconButton>

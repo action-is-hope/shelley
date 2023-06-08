@@ -12,7 +12,7 @@ const ToastTriggersForDefaultExample = () => {
 
 export const ToastProviderDefault = () => {
   return (
-    <ToastProvider>
+    <ToastProvider data-id="testing">
       <ToastTriggersForDefaultExample />
     </ToastProvider>
   );

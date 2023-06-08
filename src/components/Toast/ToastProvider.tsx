@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 import { useToastState, ToastState, ToastOptions } from "@react-stately/toast";
 import { ToastRegion } from "./ToastRegion";
 import type { PressEvent } from "@react-types/shared";
+import type { ComponentBase } from "../types";
 
 export interface CustomToastContent {
   title: string;
@@ -15,17 +16,29 @@ export type ToastQueue = Omit<ReturnType<typeof useToastState>, "add"> & {
   add: (content: CustomToastContent, options?: ToastOptions) => string;
 };
 
-interface ToastProviderProps {
+export interface ToastProviderProps extends ComponentBase {
   children: ReactNode;
+  /** Override the close icon. */
   closeIcon?: ReactNode;
+  /** Override the info icon. */
   infoIcon?: ReactNode;
+  /** Override the success icon. */
   successIcon?: ReactNode;
+  /** Override the warning icon. */
   warningIcon?: ReactNode;
+  /** Override the error icon. */
   errorIcon?: ReactNode;
   /**
-   * Be mindful of how often you trigger toasts. Even though they're not as disruptive as dialogs, they still interrupt a user’s attention. Frequent interruptions interfere with usability, especially for people with visual and cognitive disabilities (see WCAG Success Criterion 2.2.4 Interruptions).
+   * Be mindful of how often you trigger toasts. Frequent
+   * interruptions interfere with usability, especially for
+   * people with visual and cognitive disabilities
+   * (see WCAG Success Criterion 2.2.4 Interruptions).
+   * Multiple toasts will required different CSS and is not
+   * recommended.
    */
   maxVisibleToasts?: number;
+  /** Turn off exit transitions. */
+  hasExitAnimation?: boolean;
 }
 
 export interface BothActionProps {
@@ -46,17 +59,24 @@ export function useToast(): ToastQueue {
   return useContext(ToastContext) as ToastQueue;
 }
 
-function ToastProvider({ children, ...props }: ToastProviderProps) {
+function ToastProvider(props: ToastProviderProps) {
+  const {
+    children,
+    maxVisibleToasts = 1,
+    hasExitAnimation = true,
+    ...rest
+  } = props;
+
   const state = useToastState<CustomToastContent>({
-    maxVisibleToasts: props.maxVisibleToasts || 1,
-    hasExitAnimation: true,
+    maxVisibleToasts,
+    hasExitAnimation,
   });
 
   return (
     <ToastContext.Provider value={state}>
       {children}
       {state.visibleToasts.length > 0 && (
-        <ToastRegion {...props} state={state} />
+        <ToastRegion {...rest} state={state} />
       )}
     </ToastContext.Provider>
   );
