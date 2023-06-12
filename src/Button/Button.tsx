@@ -1,5 +1,11 @@
 "use client";
-import React, { useRef, forwardRef } from "react";
+import React, {
+  Ref,
+  ReactElement,
+  useRef,
+  forwardRef,
+  ElementType,
+} from "react";
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 import type {
@@ -36,13 +42,13 @@ export interface ButtonCustomProps
   fullWidth?: boolean;
 }
 
-export type ButtonProps<P extends React.ElementType = "button"> = {
+export type ButtonProps<P extends React.ElementType = "a" | "button" | any> = {
   /** Custom element to render such as an anchor "a" or a router "Link" component. */
   as?: P;
   // Dynamically apply element props types based on the input (P).
 } & MergeElementProps<P, Omit<ButtonCustomProps, "as">>;
 
-function Button<T extends React.ElementType = "button">(
+function Button<P extends React.ElementType = "button">(
   {
     as: As,
     children,
@@ -81,7 +87,7 @@ function Button<T extends React.ElementType = "button">(
     ariaDescribedby,
     ariaDetails,
     ...rest
-  }: ButtonProps<T>,
+  }: ButtonProps<P>,
   ref: React.Ref<HTMLElement>
 ) {
   const localRef = useRef(null);
@@ -115,7 +121,6 @@ function Button<T extends React.ElementType = "button">(
       "aria-describedby": ariaDescribedby,
       "aria-details": ariaDetails,
       // Map 'as' to elementType for adobe-aria...
-      // ...rest,
       elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
     },
     localRef as React.RefObject<HTMLElement>
@@ -163,6 +168,11 @@ function Button<T extends React.ElementType = "button">(
 /**
  * Buttons allow users to perform an action.
  */
-const _Button = forwardRef(Button);
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _Button = forwardRef(Button) as <P extends ElementType>(
+  props: ButtonProps<P> & { ref?: Ref<HTMLElement> }
+) => ReactElement;
+/** required - see ButtonGroup */
 _Button.toString = () => "ShelleyButton";
 export { _Button as Button };

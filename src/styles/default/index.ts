@@ -27,6 +27,8 @@ import "./switch.st.css";
 import "./tableView.st.css";
 import "./tabs.st.css";
 import "./text.st.css";
+import "./toastRegion.st.css";
+import "./toast.st.css";
 
 // = Project
 import { classes as ShelleyDefaultProject } from "./project.st.css";

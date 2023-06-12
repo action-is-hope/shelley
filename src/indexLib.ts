@@ -37,5 +37,6 @@ export * from "./TableView";
 export * from "./Tabs";
 export * from "./Text";
 export * from "./TextField";
+export * from "./Toast";
 export * from "./Toolbar";
 export * from "./VisuallyHidden";
