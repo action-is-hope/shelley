@@ -95,7 +95,7 @@ function Toast(
           state.remove(key);
         }
       }}
-      data-id={dataId ? `${dataId}-${priorityName}` : undefined}
+      data-id={dataId ? `${dataId}` : undefined}
     >
       <div className={classes.iconAndTitleWrapper}>
         {shouldShowIcon && icon && <>{icon}</>}
@@ -103,7 +103,7 @@ function Toast(
           as="span"
           vol={1}
           {...titleProps}
-          data-id={dataId ? `${dataId}-${priorityName}--title` : undefined}
+          data-id={dataId ? `${dataId}--title` : undefined}
         >
           {title}
         </Text>
@@ -117,9 +117,7 @@ function Toast(
               onActionHandler(e, state);
             }}
             {...withOrWithoutCloseButtonProps}
-            data-id={
-              dataId ? `${dataId}-${priorityName}--actionButton` : undefined
-            }
+            data-id={dataId ? `${dataId}--actionButton` : undefined}
           >
             {actionLabel}
           </Button>
@@ -128,9 +126,7 @@ function Toast(
           <IconButton
             {...closeButtonProps}
             className={classes.closeButton}
-            data-id={
-              dataId ? `${dataId}-${priorityName}--closeButton` : undefined
-            }
+            data-id={dataId ? `${dataId}--closeButton` : undefined}
           >
             {closeIcon}
           </IconButton>

@@ -1,3 +1,4 @@
+@namespace "Toast";
 @st-import Button from "../Button/button.st.css";
 @st-import IconButton from "../IconButton/iconButton.st.css";
 

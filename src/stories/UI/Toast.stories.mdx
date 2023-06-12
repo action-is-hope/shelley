@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
-import { Toast } from "../../indexLib";
+import { ToastProvider, Toast } from "../../indexLib";
 import { ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import {
@@ -17,7 +17,7 @@ import {
 
 <Meta
   title="Status/Toast"
-  component={Toast}
+  component={ToastProvider}
   decorators={[
     (Story) => (
       <StoryCenteredColumn>
@@ -79,9 +79,8 @@ The example above displays the most basic/default toast with no priority, auto-d
 
 Toasts are shown according to a priority queue, toasts with higher priority will be displayed first.
 
-An error might be a high priority, a warning a medium priority and success a low priority.
-The default priority is 0 with 1, 2 or 3 also available.
-The higher the number, the higher the priority.
+An error might be a high priority, warning a medium priority, success a low priority with neutral being the lowest priority.
+The default priority is 0 with 1, 2, 3 or 4 also available, the higher the number, the higher the priority.
 
 <Story
   name="b) Priority"
@@ -278,3 +277,9 @@ The neutral toasts will render without an icon but if you need the semantic ones
       </Button>
   `}
 />
+
+## ToastProvider Props
+
+<ArgsTable of={ToastProvider} />
+
+@todo ToastContent...ToastQueue prop tables
