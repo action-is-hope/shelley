@@ -41,6 +41,7 @@ export * from "./components/MenuItem/MenuItem";
 export { default as Popup } from "./components/Popup/Popup";
 export * from "./components/Popup/Popup";
 export * from "./components/ProgressCircle/ProgressCircle";
+export * from "./components/ProgressBar/ProgressBar";
 export { default as Item } from "./components/Item/Item";
 export * from "./components/Radio/Radio";
 export * from "./components/RadioGroup/RadioGroup";

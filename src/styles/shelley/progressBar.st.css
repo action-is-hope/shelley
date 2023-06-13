@@ -1,0 +1,28 @@
+/* = Default project vars. */
+:import {
+  -st-from: "../default/project.st.css";
+  -st-named:
+    --spacing-unit;
+}
+
+/* = Shelley project scope and vars. */
+:import {
+  -st-from: "./project.st.css";
+  -st-default: Shelley;
+  -st-named: --background-color-item-hover;
+}
+
+/* = Root Component */
+:import {
+  -st-from: "../../components/MenuItem/menuItem.st.css";
+  -st-default: MenuItem;
+}
+
+@st-scope Shelley {
+
+  MenuItem {}
+
+  MenuItem:isFocused {
+    background-color: var(--background-color-item-hover);
+  }
+}

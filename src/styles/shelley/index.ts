@@ -11,6 +11,7 @@ import "./listBoxOption.st.css";
 import "./menu.st.css";
 import "./menuItem.st.css";
 import "./progressCircle.st.css";
+import "./progressBar.st.css";
 import "./tableView.st.css";
 import "./tabs.st.css";
 import "./text.st.css";

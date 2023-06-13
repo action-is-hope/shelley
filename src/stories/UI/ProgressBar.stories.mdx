@@ -1,0 +1,66 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Modal, ProgressBar } from "../../indexLib";
+import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
+
+<Meta
+  title="Status/ProgressBar"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={Modal}
+/>
+
+# ProgressBar
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ProgressBar } from "@actionishope/shelley";
+  `}
+/>
+
+
+ProgressCircles show the progression of a system operation such as downloading, uploading, or processing, in a visual way. They can represent determinate or indeterminate progress.
+
+## Example
+
+<Story
+  name="a) ProgressBar"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" value={90} />
+</Story>
+
+<Source language="tsx" id="status-progressbar--a-progress-bar" />
+
+
+
+## Value
+
+ProgressBars are controlled with the `value` prop. By default, the `value` prop represents the current percentage of progress, as the minimum and maxiumum values default to 0 and 100, respectively.
+
+<Story
+  name="b) Value"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" value={25} />
+</Story>
+
+<Source language="tsx" id="status-progressbarss--b-value" />

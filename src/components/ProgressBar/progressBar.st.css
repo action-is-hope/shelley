@@ -1,0 +1,25 @@
+/** progressBar.st.css */
+@namespace "ProgressBar";
+
+/* ProgressBar */
+.root {
+  /* -st-states:
+    size(enum(small, medium, large)); */
+}
+
+.wrapper {
+  display: flex;
+  background-color: lightblue;
+  justify-content: space-between;
+}
+
+.track {
+  height: 10px;
+  background: lightgray;
+}
+
+.fill {
+
+  height: 10px;
+  background: orange;
+}
