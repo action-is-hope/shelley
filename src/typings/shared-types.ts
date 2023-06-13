@@ -112,6 +112,6 @@ export interface LoadMoreProps {
   loadingMoreString?: "Loading more...";
 }
 
-type DataIdDOMAttribute = {
+export type DataIdDOMAttribute = {
   "data-id"?: { value: string };
 };

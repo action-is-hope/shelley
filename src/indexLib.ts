@@ -1,8 +1,3 @@
-/*
-  This is the main export point of the component library.
-  It's what will get exposed to other packages when added as a dependency.
-*/
-
 export * from "./ActionButton";
 export * from "./Blockquote";
 export * from "./Button";
@@ -40,3 +35,5 @@ export * from "./TextField";
 export * from "./Toast";
 export * from "./Toolbar";
 export * from "./VisuallyHidden";
+
+export * from "./typings/shared-types";
