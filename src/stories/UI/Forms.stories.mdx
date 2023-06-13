@@ -48,9 +48,10 @@ import dedent from "ts-dedent";
 <Canvas withSource="closed">
   <Story name="a) Form elements">
     <div style={{ display: "grid", gap: "16px" }}>
-      <TextField label="Name" description="Help me" />
-      <TextField label="Something" labelPosition="top" />
+      <TextField vol={1} label="Name" description="Help me" />
+      <TextField vol={1} label="Something" labelPosition="top" />
       <Select
+        vol={1}
         label="Choose frequency"
         labelPosition="top"
         portalSelector="#portal"
@@ -59,15 +60,15 @@ import dedent from "ts-dedent";
         <Item key="sometimes">Sometimes</Item>
         <Item key="always">Always</Item>
       </Select>
-      <RadioGroup label="Radio group" description="Help me">
+      <RadioGroup vol={1} label="Radio group" description="Help me">
         <Radio value="val1">Radio one</Radio>
         <Radio value="val2">Radio two</Radio>
       </RadioGroup>
-      <CheckboxGroup label="Checkbox group">
+      <CheckboxGroup vol={1} label="Checkbox group">
         <Checkbox value="val1">Checkbox one</Checkbox>
         <Checkbox value="val2">Checkbox two</Checkbox>
       </CheckboxGroup>
-      <Checkbox>I'm a checkbox</Checkbox>
+      <Checkbox vol={2}>I'm a checkbox</Checkbox>
     </div>
   </Story>
 </Canvas>

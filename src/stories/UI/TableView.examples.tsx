@@ -124,6 +124,7 @@ export const LayoutExample = () => {
 
   return (
     <TableView
+      data-id="table"
       aria-label="Example table with dynamic content"
       className={classes.layoutExample}
     >

@@ -9,7 +9,7 @@ import {
   P,
   H2,
 } from "../../indexLib";
-import { classes as dialog } from "../../components/Dialog/dialog.st.css";
+import { classes as dialog } from "../../Dialog/dialog.st.css";
 
 export const BasicDialogTrigger = (args: ModalProps) => {
   return (

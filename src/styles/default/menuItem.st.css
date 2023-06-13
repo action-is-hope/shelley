@@ -1,28 +1,20 @@
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
-    --color-focus,
-    --spacing-unit;
-}
-
-/* = Component CSS API */
-:import {
-  -st-from: "../../components/MenuItem/menuItem.st.css";
-  -st-default: MenuItem;
-}
-
-:import {
-  -st-from: "./mixins/menu.st.css";
-  -st-default: MenuMixin;
-  -st-named:
+/**
+ * = MenuItem - menuItem.st.css
+ *
+ * Base theme styles for a Shelley MenuItem.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/MenuItem/menuItem.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import MenuItem from "../../MenuItem/menuItem.st.css";
+@st-import [
     menuItem,
     menuItemDisabled,
     menuItemFocusVisible,
     menuItemText,
-    menuItemSelectedIcon;
-}
+    menuItemSelectedIcon
+] from "./mixins/menu.st.css";
 
 @st-scope Default {
   MenuItem {

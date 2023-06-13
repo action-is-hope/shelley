@@ -5,7 +5,7 @@ import {
   Button,
   TextInputProps,
 } from "../../indexLib";
-import Eye from "../../components/icons/Eye";
+import Eye from "../../icons/Eye";
 import { useState, useMemo, useRef } from "react";
 
 export interface InputTextPropsDocs extends FieldProps {

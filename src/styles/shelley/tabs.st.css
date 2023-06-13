@@ -4,7 +4,7 @@
     --color-ui-raw,
     --color-accent-1
   ] from "./project.st.css";
-@st-import Tabs from "../../components/Tabs/tabs.st.css";
+@st-import Tabs from "../../Tabs/tabs.st.css";
 
 @st-scope Shelley {
 

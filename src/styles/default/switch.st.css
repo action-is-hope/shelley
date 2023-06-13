@@ -1,30 +1,31 @@
-/* = Project and vars */
+/**
+ * = Switch - switch.st.css
+ *
+ * Base theme styles for a Shelley Switch.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Switch/switch.st.css
+ * 
+ */
 @st-import Default, [--spacing-unit] from "./project.st.css";
-/* = Root style API. */
-@st-import Switch from "../../components/Switch/switch.st.css";
-/* = Child components. */
-@st-import Icon from "../../components/Icon/icon.st.css";
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    SelectionControlRoot,
+@st-import Switch from "../../Switch/switch.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
+@st-import [
+    SelectionControlInputContainer,
     SelectionControlFieldInput,
     SwitchFieldInput,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6,
-    selectionControlVol1,
-    selectionControlVol2,
-    selectionControlVol3,
-    selectionControlVol4,
-    selectionControlVol5,
-    selectionControlVol6;
-}
+    labelVol1,
+    labelVol2,
+    labelVol3,
+    labelVol4,
+    labelVol5,
+    labelVol6,
+    selectionControlSize1,
+    selectionControlSize2,
+    selectionControlSize3,
+    selectionControlSize4,
+    selectionControlSize5,
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
 
@@ -39,7 +40,7 @@
   }
 
   Switch::inputContainer {
-    -st-mixin: SelectionControlRoot;
+    -st-mixin: SelectionControlInputContainer;
   }
 
   Switch::input {
@@ -54,63 +55,33 @@
     opacity: 1;
   }
 
-  /* ==== VOLUMES ====*/
-
-  /* = Volume 1 */
-  Switch:vol(1) {
-    -st-mixin: inputVol1
-  }
-
-  Switch:vol(1)::inputContainer {
-    -st-mixin: selectionControlVol1
-  }
-
-  /* = Volume 2 */
-  Switch:vol(2) {
-    -st-mixin: inputVol2;
-  }
-
-  Switch:vol(2)::inputContainer {
-    -st-mixin: selectionControlVol2;
-  }
-
-  /* = Volume 3 */
-  Switch:vol(3) {
-    -st-mixin: inputVol3
-  }
-
-  Switch:vol(3)::inputContainer {
-    -st-mixin: selectionControlVol3
-  }
-
-  /* = Volume 4 */
-  Switch:vol(4) {
-    -st-mixin: inputVol4
-  }
-
-  Switch:vol(4)::inputContainer {
-    -st-mixin: selectionControlVol4
-  }
-
-  /* = Volume 5 */
-  Switch:vol(5) {
-    -st-mixin: inputVol5
-  }
-
-  Switch:vol(5)::inputContainer {
-    -st-mixin: selectionControlVol5
-  }
-
-  /* = Volume 6 */
-  Switch:vol(6) {
-    -st-mixin: inputVol6
-  }
-
-  Switch:vol(6)::inputContainer {
-    -st-mixin: selectionControlVol6
-  }
-
-  Checkbox Icon {
+  Switch Icon {
     font-size: 2em;
+  }
+
+  /* ==== Switch: sizes ====*/
+
+  Switch:size(1)::inputContainer {
+    -st-mixin: selectionControlSize1
+  }
+
+  Switch:size(2)::inputContainer {
+    -st-mixin: selectionControlSize2
+  }
+
+  Switch:size(3)::inputContainer {
+    -st-mixin: selectionControlSize3
+  }
+
+  Switch:size(4)::inputContainer {
+    -st-mixin: selectionControlSize4
+  }
+
+  Switch:size(5)::inputContainer {
+    -st-mixin: selectionControlSize5
+  }
+
+  Switch:size(6)::inputContainer {
+    -st-mixin: selectionControlSize6
   }
 }

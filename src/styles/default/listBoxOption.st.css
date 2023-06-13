@@ -1,28 +1,20 @@
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
-    --color-focus,
-    --spacing-unit;
-}
-
-/* = Component CSS API */
-:import {
-  -st-from: "../../components/ListBoxOption/listBoxOption.st.css";
-  -st-default: ListBoxOption;
-}
-
-:import {
-  -st-from: "./mixins/menu.st.css";
-  -st-default: MenuMixin;
-  -st-named:
+/**
+ * = ListBoxOption - listBoxOption.st.css
+ *
+ * Base theme styles for a Shelley ListBoxOption.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBoxOption/listBoxOption.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import ListBoxOption from "../../ListBoxOption/listBoxOption.st.css";
+@st-import [
     menuItem,
     menuItemDisabled,
     menuItemFocusVisible,
     menuItemText,
-    menuItemSelectedIcon;
-}
+    menuItemSelectedIcon
+] from "./mixins/menu.st.css";
 
 @st-scope Default {
   ListBoxOption {

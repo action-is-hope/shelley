@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { Popup, PopupProps, Button, DialogTrigger } from "../../src/indexLib";
+import { Popup, PopupProps, Button } from "../../src/indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 

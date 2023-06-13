@@ -1,57 +1,45 @@
-/* = Project and vars */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-  -st-named:
+/**
+ * = Checkbox - checkbox.st.css
+ *
+ * Base theme styles for a Shelley Checkbox.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Checkbox/checkbox.st.css
+ * 
+ */
+@st-import Default, [
     --spacing-unit,
     --color-form-base-border,
-    --color-error;
-}
-
-/* = Root style API. */
-:import {
-  -st-from: "../../components/Checkbox/checkbox.st.css";
-  -st-default: Checkbox;
-}
-
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
-
-:import {
-  -st-from: "../../components/Icon/icon.st.css";
-  -st-default: Icon;
-}
-
-/* = Mixins */
-:import {
-  -st-from: './mixins/formElements.st.css';
-  -st-named:
-    SelectionControlRoot,
+    --color-error
+  ] from "./project.st.css";
+@st-import Checkbox from "../../Checkbox/checkbox.st.css";
+@st-import CheckboxGroup from "../../CheckboxGroup/checkboxGroup.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
+@st-import [
+    SelectionControlInputContainer,
     SelectionControlFieldInput,
     RadioCheckboxCommon,
     CheckboxFieldInput,
     CheckboxIsIndeterminate,
-    inputVol1,
-    inputVol2,
-    inputVol3,
-    inputVol4,
-    inputVol5,
-    inputVol6,
-    selectionControlVol1,
-    selectionControlVol2,
-    selectionControlVol3,
-    selectionControlVol4,
-    selectionControlVol5,
-    selectionControlVol6;
-}
+    labelVol1,
+    labelVol2,
+    labelVol3,
+    labelVol4,
+    labelVol5,
+    labelVol6,
+    selectionControlSize1,
+    selectionControlSize2,
+    selectionControlSize3,
+    selectionControlSize4,
+    selectionControlSize5,
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
 
 @st-scope Default {
 
   Checkbox {
     gap: calc(var(--spacing-unit) / 2);
     cursor: pointer;
+    line-height: 1.5;
   }
 
   Checkbox:isDisabled {
@@ -59,7 +47,28 @@
     opacity: 0.7;
   }
 
-  Checkbox:validationState(invalid)::inputLabel::labelText {
+  Checkbox::inputContainer {
+    -st-mixin: SelectionControlInputContainer;
+  }
+
+  Checkbox::input {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  Checkbox::input {
+    -st-mixin: RadioCheckboxCommon;
+  }
+
+  Checkbox::input {
+    -st-mixin: CheckboxFieldInput;
+  }
+
+  /* = States */
+  Checkbox:isIndeterminate::input {
+    -st-mixin: CheckboxIsIndeterminate;
+  }
+
+  Checkbox:validationState(invalid)::text {
     color: var(--color-error);
   }
 
@@ -71,88 +80,72 @@
     background-color: var(--color-error);
   }
 
-  Checkbox::inputContainer {
-    -st-mixin: SelectionControlRoot;
-  }
-
-  Checkbox::input {
-    -st-mixin: SelectionControlFieldInput;
-  }
-
-  /* = Checkbox common styles. */
-  Checkbox::input {
-    -st-mixin: RadioCheckboxCommon;
-  }
-
-  Checkbox::input {
-    -st-mixin: CheckboxFieldInput;
-  }
-
-  Checkbox:isIndeterminate::input {
-    -st-mixin: CheckboxIsIndeterminate;
-  }
-
   Checkbox:isFocusVisible::input::after {
     opacity: 1;
   }
 
-  /* ==== VOLUMES ====*/
-
-  /* = Volume 1 */
-  Checkbox:vol(1) {
-    -st-mixin: inputVol1
-  }
-
-  Checkbox:vol(1)::inputContainer {
-    -st-mixin: selectionControlVol1
-  }
-
-  /* = Volume 2 */
-  Checkbox:vol(2) {
-    -st-mixin: inputVol2;
-  }
-
-  Checkbox:vol(2)::inputContainer {
-    -st-mixin: selectionControlVol2;
-  }
-
-  /* = Volume 3 */
-  Checkbox:vol(3) {
-    -st-mixin: inputVol3
-  }
-
-  Checkbox:vol(3)::inputContainer {
-    -st-mixin: selectionControlVol3
-  }
-
-  /* = Volume 4 */
-  Checkbox:vol(4) {
-    -st-mixin: inputVol4
-  }
-
-  Checkbox:vol(4)::inputContainer {
-    -st-mixin: selectionControlVol4
-  }
-
-  /* = Volume 5 */
-  Checkbox:vol(5) {
-    -st-mixin: inputVol5
-  }
-
-  Checkbox:vol(5)::inputContainer {
-    -st-mixin: selectionControlVol5
-  }
-
-  /* = Volume 6 */
-  Checkbox:vol(6) {
-    -st-mixin: inputVol6
-  }
-
-  Checkbox:vol(6)::inputContainer {
-    -st-mixin: selectionControlVol6
-  }
-
   Checkbox Icon {
     font-size: 2em;
+  }
+
+  /* ==== Checkbox: sizes ====*/
+
+  Checkbox:size(1)::inputContainer {
+    -st-mixin: selectionControlSize1
+  }
+
+  Checkbox:size(2)::inputContainer {
+    -st-mixin: selectionControlSize2
+  }
+
+  Checkbox:size(3)::inputContainer {
+    -st-mixin: selectionControlSize3
+  }
+
+  Checkbox:size(4)::inputContainer {
+    -st-mixin: selectionControlSize4
+  }
+
+  Checkbox:size(5)::inputContainer {
+    -st-mixin: selectionControlSize5
+  }
+
+  Checkbox:size(6)::inputContainer {
+    -st-mixin: selectionControlSize6
+  }
+
+  /* ==== CHECKBOXGROUP ====*/
+
+  CheckboxGroup {}
+
+  CheckboxGroup::group {
+    gap: 0.2em;
+  }
+
+  /* ==== CheckboxGroup: volume ====*/
+
+  /* When in a CheckboxGroup Checkboxes labels use the same relative volume used for Field->label.*/
+  CheckboxGroup:vol(1) Checkbox::text {
+    -st-mixin: labelVol1
+  }
+
+  CheckboxGroup:vol(2) Checkbox::text {
+    -st-mixin: labelVol2
+  }
+
+  CheckboxGroup:vol(3) Checkbox::text {
+    -st-mixin: labelVol3
+  }
+
+  CheckboxGroup:vol(4) Checkbox::text {
+    -st-mixin: labelVol4
+  }
+
+  CheckboxGroup:vol(5) Checkbox::text {
+    -st-mixin: labelVol5
+  }
+
+  CheckboxGroup:vol(6) Checkbox::text {
+    -st-mixin: labelVol6
   }
 }

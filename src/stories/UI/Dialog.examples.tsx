@@ -11,7 +11,7 @@ import {
   ActionButton,
 } from "../../indexLib";
 
-import { classes as dialog } from "../../components/Dialog/dialog.st.css";
+import { classes as dialog } from "../../Dialog/dialog.st.css";
 import { classes as dialogExample } from "./dialogExample.st.css";
 
 export const BasicDialog = (args: DialogProps) => {

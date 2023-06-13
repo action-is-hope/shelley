@@ -1,15 +1,10 @@
 /**
- * = GLOBALS - allGlobal.st.css
+ * = Globals - allGlobal.st.css
  *
- * Some globals, mostly resets.
+ * Lightweight resets and a spinkle of globals.
  * 
- * ========================================================================= */
-
-
-
-/**
- * = General purpose CSS reset
  */
+
 :global(html),
 :global(body) {
   margin: 0;

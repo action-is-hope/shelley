@@ -162,16 +162,19 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --color-focus: #09b1f1;
   --color-error: #b66b6e;
 
+  --background-color-neutral: grey;
+  --background-color-info: blue;
+  --background-color-success: green;
+  --background-color-warning: orange;
+  --background-color-error: red;
+
   /* = Forms */
   --color-form-base-border: rgba(119, 140, 157, 0.7);
   --color-form-selection-border: rgba(119, 140, 157, 1);
   --color-form-selection-notch: #333;
   --color-switch-notch: #fff;
-  /* --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M3 2v2l5 5 5-5v-2l-5 5z'></path><path d='M3 7v2l5 5 5-5v-2l-5 5z'></path></svg>"); */
-
-  --select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white' xml:space='preserve'><path d='M13 4v2l-5 5-5-5v-2l5 5z'></path></svg>");
-
-
+  --color-background-textField-filled: #000;
+  --field-padding: calc(0.2rem + 0.2em) var(--spacing-unit);
   /* Modal */
   --background-color-modal-backdrop: rgba(0, 0, 1, 0.88);
 
@@ -185,6 +188,10 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --color-popup: #ededed;
   --border-width-popup: 1px;
   --border-color-popup: grey;
+
+  /* Generic */
+  --border-radius-button: 8px;
+  --border-radius-field: 8px;
 
   /* = Grid */
   --grid-gap: 3vw;
