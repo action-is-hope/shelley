@@ -1,8 +1,13 @@
-/* buttonGroup.st.css */
-
-/* = buttonGroup.st.css */
+/**
+ * = ButtonGroup - buttonGroup.st.css
+ *
+ * Base theme styles for a Shelley ButtonGroup.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ButtonGroup/buttonGroup.st.css
+ * 
+ */
 @st-import Default, [--spacing-unit] from "./project.st.css";
-@st-import ButtonGroup from "../../components/ButtonGroup/buttonGroup.st.css";
+@st-import ButtonGroup from "../../ButtonGroup/buttonGroup.st.css";
 
 @st-scope Default {
   ButtonGroup {

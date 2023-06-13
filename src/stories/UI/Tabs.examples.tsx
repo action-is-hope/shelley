@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Item from "../../components/Item/Item";
-import Tabs from "../../components/Tabs/Tabs";
+import { Item } from "../../Item";
+import Tabs from "../../Tabs/Tabs";
 import { Button, P } from "../../indexLib";
 
 export const BasicTabs = () => {

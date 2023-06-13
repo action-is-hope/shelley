@@ -1,9 +1,10 @@
-/* = Default project vars. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-named:
-    --spacing-unit;
-}
+/**
+ * = spacing.st.css
+ *
+ * Helper with some spacing helper classes.
+ * 
+ */
+@st-import Default, [--spacing-unit] from "./project.st.css";
 
 /**
  * = Margins
@@ -21,7 +22,7 @@
 }
 
 .mbAuto {
-  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .mt1 {

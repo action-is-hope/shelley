@@ -1,7 +1,6 @@
-import React from "react";
 import { createRef } from "react";
-import Button from "../../src/components/Button/Button";
-import { ButtonGroup, ButtonGroupProps } from "../../src/indexLib";
+import { Button, ButtonGroup, ButtonGroupProps } from "../../src/indexLib";
+import type { DataIdDOMAttribute } from "src/typings/shared-types";
 
 const buttonGroup = '[data-id="buttonGroup"]';
 const button = "[data-button]";
@@ -81,7 +80,9 @@ describe("ButtonGroup", () => {
             data-id="cy-button-trigger"
             onPress={() =>
               onPressSpy(
-                buttonGroupRef?.current?.attributes?.["data-id"]?.value
+                (buttonGroupRef?.current?.attributes as DataIdDOMAttribute)?.[
+                  "data-id"
+                ]?.value
               )
             }
           >

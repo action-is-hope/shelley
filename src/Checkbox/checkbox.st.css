@@ -1,0 +1,16 @@
+@namespace "Checkbox";
+@st-import InputLabel from "../Label/label.st.css";
+
+.root {
+  -st-states:
+    isDisabled,
+    isFocusVisible,
+    isIndeterminate,
+    validationState(enum(valid, invalid)),
+    size(number);
+  -st-extends: InputLabel;
+}
+
+.inputContainer {}
+
+.input {}

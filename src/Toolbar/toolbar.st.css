@@ -1,0 +1,19 @@
+@namespace "ToolBar";
+
+.root {
+  -st-states:
+    variant(number),
+    align(enum(center, inherit, justify, start, end));
+
+  display: flex;
+  position: relative;
+  align-items: center;
+
+
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.root:align(end) {
+  justify-content: flex-end;
+}

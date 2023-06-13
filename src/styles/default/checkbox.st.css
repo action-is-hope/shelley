@@ -3,7 +3,7 @@
  *
  * Base theme styles for a Shelley Checkbox.
  *
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Checkbox/checkbox.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Checkbox/checkbox.st.css
  * 
  */
 @st-import Default, [
@@ -11,9 +11,9 @@
     --color-form-base-border,
     --color-error
   ] from "./project.st.css";
-@st-import Checkbox from "../../components/Checkbox/checkbox.st.css";
-@st-import CheckboxGroup from "../../components/CheckboxGroup/checkboxGroup.st.css";
-@st-import Icon from "../../components/Icon/icon.st.css";
+@st-import Checkbox from "../../Checkbox/checkbox.st.css";
+@st-import CheckboxGroup from "../../CheckboxGroup/checkboxGroup.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 @st-import [
     SelectionControlInputContainer,
     SelectionControlFieldInput,
