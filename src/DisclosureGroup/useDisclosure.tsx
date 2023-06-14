@@ -33,6 +33,13 @@ type useDisclosureReturn = {
 };
 
 /* useDisclosure hook :
+
+This code defines a hook that manages the state of a disclosure used to hide and show content.
+It needs to know the id of the disclosure, whether it is expanded, and a ref to the content that
+is to be hidden and shown. The hook returns an object containing triggerProps and contentProps
+that are to be spread onto the trigger and content respectively as well as isExpanded and a
+trigger function that can be used to toggle the disclosure state.
+
 1. We create a function useDisclosure which takes an object as the argument. The object has the following properties:
    - id: A string to uniquely identify the disclosure.
    - isExpanded: A boolean to set the initial state of the disclosure. Optional.

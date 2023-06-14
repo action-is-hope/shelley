@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
 import { DisclosureGroup } from "../../indexLib";
 import dedent from "ts-dedent";
-import { BasicDisclosureGroup } from "./DisclosureGroup.examples";
+import { DynamicDisclosureGroup } from "./DisclosureGroup.examples";
 
 <Meta title="Data/DisclosureGroup" component={DisclosureGroup} />
 
@@ -14,15 +14,17 @@ import { BasicDisclosureGroup } from "./DisclosureGroup.examples";
   `}
 />
 
-Some text about the component
+Disclosures are used to show and hide content. They are useful for showing and
+hiding content that is not immediately relevant to the user.
 
 ## Example
 
-This example displays a
+This example displays a disclosure group with an optional title and a list of items.
+Items are passed as an array of objects with a title and content property.
 
 <Preview>
   <Story
-    name="a) Disclosure Group"
+    name="Disclosure Group"
     args={{}}
     parameters={{
       docs: {
@@ -30,14 +32,12 @@ This example displays a
           code: dedent`
             <DisclosureGroup
               title="Disclosure Group"
-              description="This is a disclosure group"
-            >
-              <p>Content</p>
-            </DisclosureGroup>`,
+              items={items}"
+            />`,
         },
       },
     }}
   >
-    <BasicDisclosureGroup />
+    <DynamicDisclosureGroup />
   </Story>
 </Preview>

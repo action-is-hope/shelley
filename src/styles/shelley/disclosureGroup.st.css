@@ -1,8 +1,6 @@
 /* disclosureGroup.st.css */
 @st-import Shelley, [
-    --color-ui-inverse,
-    --color-ui-raw,
-    --color-accent-1
+    --color-ui-inverse
   ] from "./project.st.css";
 
 @st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
