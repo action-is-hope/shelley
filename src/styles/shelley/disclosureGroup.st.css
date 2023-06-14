@@ -5,6 +5,6 @@
     --color-accent-1
   ] from "./project.st.css";
 
-@st-import DisclosureGroup from "../../components/DisclosureGroup/disclosureGroup.st.css"
+@st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css"
 
 @st-scope Shelley {}

@@ -1,7 +1,7 @@
 /** Disclosure.tsx */
 import React, { useEffect, useRef } from "react";
 import { st, classes } from "./disclosureGroup.st.css";
-import Text from "../Text/Text";
+import { Text } from "../Text/Text";
 // import Icon from "../Icon/Icon";
 import { useId } from "@react-aria/utils";
 

@@ -1,5 +1,5 @@
-import DisclosureGroup from "../../components/DisclosureGroup/DisclosureGroup";
-import Item from "../../components/Item/Item";
+import DisclosureGroup from "../../DisclosureGroup/DisclosureGroup";
+import Item from "../../Item/Item";
 
 const items = [
   {
