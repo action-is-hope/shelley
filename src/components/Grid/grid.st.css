@@ -1,8 +1,0 @@
-/** grid.st.css */
-@namespace "Grid";
-
-.root {
-  -st-states:
-    formatted,
-    variant(number);
-}

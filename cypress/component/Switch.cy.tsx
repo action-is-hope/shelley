@@ -7,7 +7,6 @@ const fieldPropsTest = {
 };
 
 const switchWithLabel = '[data-id="switch--label"]';
-const switchWithoutLabel = '[data-id="switch--noLabel"]';
 const inputEl = '[data-id="switch--input"]';
 
 describe("Switch", () => {

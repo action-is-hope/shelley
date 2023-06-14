@@ -5,7 +5,7 @@ const listbox = '[role="listbox"]';
 const itemOne = '[data-key="item-one"]';
 const itemTwo = '[data-key="item-two"]';
 const itemThree = '[data-key="item-three"]';
-const loader = '[data-id="listBox--progressCircle"]';
+// const loader = '[data-id="listBox--progressCircle"]';
 
 const BasicListBox = function <T extends object>(
   props: Omit<ListBoxProps<T>, "children">

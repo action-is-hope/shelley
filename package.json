@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "3.0.0-alpha.1",
+  "version": "4.0.0-alpha.1",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
@@ -25,7 +25,7 @@
   },
   "files": [
     "**/*.ts",
-    "components/**/*.js",
+    "**/*.js",
     "styles/**/*.js",
     "indexLib.js",
     "**/*.map",
@@ -37,7 +37,7 @@
     "prebuild": "npm run clean",
     "build-stylable-types": "stc",
     "build": "npm run clean && npm run copy && npm run build-stylable-types && npm run build-components-stcss && npm run build-components-styles-stcss && tsc --project tsconfig-npm.json",
-    "build-components-stcss": "stc --srcDir=\"./src/components\" --outDir=\"./dist/components\" --stcss",
+    "build-components-stcss": "stc --srcDir=\"./src\" --outDir=\"./dist\" --stcss",
     "build-components-styles-stcss": "stc --srcDir=\"./src/styles\" --outDir=\"./dist/styles\" --stcss",
     "lint": "eslint . -f codeframe",
     "typecheck": "tsc --noEmit",

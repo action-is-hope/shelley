@@ -3,7 +3,7 @@
  *
  * Base theme styles for a Shelley Radio.
  *
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Radio/radio.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Radio/radio.st.css
  * 
  */
 
@@ -11,9 +11,9 @@
     --spacing-unit,
     --color-error
   ] from "./project.st.css";
-@st-import Radio from "../../components/Radio/radio.st.css";
-@st-import RadioGroup from "../../components/RadioGroup/radioGroup.st.css";
-@st-import Icon from "../../components/Icon/icon.st.css";
+@st-import Radio from "../../Radio/radio.st.css";
+@st-import RadioGroup from "../../RadioGroup/radioGroup.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 @st-import [
     SelectionControlInputContainer,
     SelectionControlFieldInput,

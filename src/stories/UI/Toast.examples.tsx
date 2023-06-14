@@ -1,5 +1,10 @@
-import { ToastProvider, useToast } from "../../components/Toast/ToastProvider";
-import { ActionButton, Button, ButtonGroup } from "../../indexLib";
+import {
+  ActionButton,
+  Button,
+  ButtonGroup,
+  ToastProvider,
+  useToast,
+} from "../../indexLib";
 
 const ToastTriggersForDefaultExample = () => {
   const toastQueue = useToast();

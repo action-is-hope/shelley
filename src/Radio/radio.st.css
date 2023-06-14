@@ -1,0 +1,15 @@
+@namespace "Radio";
+@st-import InputLabel from "../Label/label.st.css";
+
+.root {
+  -st-states:
+    isDisabled,
+    isFocusVisible,
+    validationState(enum(valid, invalid)),
+    size(number);
+  -st-extends: InputLabel;
+}
+
+.inputContainer {}
+
+.input {}

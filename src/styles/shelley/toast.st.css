@@ -5,7 +5,7 @@
   --background-color-warning,
   --background-color-error] from "./project.st.css";
 
-@st-import Toast from "../../components/Toast/toast.st.css";
+@st-import Toast from "../../Toast/toast.st.css";
 
 @st-scope Shelley {
 

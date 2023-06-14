@@ -1,6 +1,6 @@
 import React from "react";
-import { createRef } from "react";
-import { ProgressCircle } from "../../src/components/ProgressCircle/ProgressCircle";
+import { ProgressCircle } from "../../src/ProgressCircle/ProgressCircle";
+import type { DataIdDOMAttribute } from "src/typings/shared-types";
 
 const testProps = {
   "aria-label": "Loading…",
@@ -36,7 +36,10 @@ describe("ProgressCircle", () => {
       <>
         <button
           onClick={() =>
-            onPressSpy(ref?.current?.attributes?.["data-id"]?.value)
+            onPressSpy(
+              (ref?.current?.attributes as DataIdDOMAttribute)?.["data-id"]
+                ?.value
+            )
           }
         >
           Click

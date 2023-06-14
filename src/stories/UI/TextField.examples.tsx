@@ -5,7 +5,7 @@ import {
   Button,
   TextInputProps,
 } from "../../indexLib";
-import Eye from "../../components/icons/Eye";
+import Eye from "../../icons/Eye";
 import { useState, useMemo, useRef } from "react";
 
 export interface InputTextPropsDocs extends FieldProps {
@@ -21,7 +21,7 @@ export const TextFieldSizes = (args: TextInputProps) => {
     <>
       <TextField
         {...{
-          label: "Name Name Name  Name NameName Name Name Name Name",
+          label: "Name",
           vol: 1,
           placeholder: "volume 1",
         }}

@@ -1,6 +1,5 @@
-import React from "react";
 import { createRef } from "react";
-import Button from "../../src/components/Button/Button";
+import { Button } from "../../src/indexLib";
 
 describe("Button", () => {
   it("renders as button with onPress called via click", () => {
@@ -12,7 +11,7 @@ describe("Button", () => {
   });
 
   it("renders as disabled button", () => {
-    cy.mount(<Button disabled>Save changes</Button>);
+    cy.mount(<Button isDisabled>Save changes</Button>);
     cy.get(":button").should("be.disabled");
   });
 
@@ -46,7 +45,7 @@ describe("Button", () => {
 
   it("renders as anchor with href and the link works as expected", () => {
     cy.mount(
-      <Button as={"a"} href="https://google.com">
+      <Button as="a" href="https://google.com">
         Link to Google
       </Button>
     );

@@ -1,0 +1,18 @@
+@namespace "Switch";
+
+@st-import InputLabel from "../Label/label.st.css";
+
+.root {
+  -st-states:
+    isDisabled,
+    isFocusVisible,
+    size(number);
+}
+
+.inputLabel {
+  -st-extends: InputLabel;
+}
+
+.inputContainer {}
+
+.input {}

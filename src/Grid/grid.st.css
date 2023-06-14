@@ -1,0 +1,7 @@
+@namespace "Grid";
+
+.root {
+  -st-states:
+    formatted,
+    variant(string);
+}

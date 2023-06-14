@@ -10,7 +10,7 @@ import {
 } from "../../src/indexLib";
 
 // @ts-ignore
-import { classes as dialogClasses } from "../../src/components/Dialog/dialog.st.css";
+import { classes as dialogClasses } from "../../src/Dialog/dialog.st.css";
 
 const popup = '[data-id="dialogTiggerTest--popup"]';
 const popupArrow = '[data-id="dialogTiggerTest--popup-arrow"]';
