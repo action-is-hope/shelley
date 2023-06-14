@@ -9,10 +9,6 @@
 
 @st-scope Shelley {
 
-  DisclosureGroup::trigger {
-    color: var(--color-ui-raw);
-  }
-
   DisclosureGroup::accordionItem {
     border-bottom: 2px solid var(--color-ui-inverse);
   }
