@@ -71,6 +71,7 @@ const Disclosure: React.VFC<DisclosureProps> = ({
         tone={false}
         {...triggerProps}
         onClick={() => triggerProps.onClick()}
+        onPress={() => triggerProps.onClick()}
         data-id={dataId ? `${dataId}--trigger` : undefined}
       >
         <Text
