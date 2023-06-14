@@ -52,17 +52,22 @@ const Disclosure: React.VFC<DisclosureProps> = ({
         {...triggerProps}
         onClick={() => triggerProps.onClick()}
       >
-        <Text as="span" className={classes.title}>
+        <Text as="span" vol={3} className={classes.title}>
           {title}
         </Text>
         {/* <Icon icon="chevronDown" className={classes.triggerIcon} /> */}
       </button>
 
-      <div className={classes.hiddenContent} {...contentProps}>
+      <Text
+        as="div"
+        vol={2}
+        className={classes.hiddenContent}
+        {...contentProps}
+      >
         <div ref={hiddenContentRef} className={classes.content}>
           {children}
         </div>
-      </div>
+      </Text>
     </article>
   );
 };

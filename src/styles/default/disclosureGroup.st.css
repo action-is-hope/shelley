@@ -18,5 +18,13 @@
     opacity: 1;
   }
 
+  DisclosureGroup::content {
+    padding-top: var(--spacing-unit);
+  }
+
+  DisclosureGroup::accordionItem {
+    padding: var(--spacing-unit);
+  }
+
 
 }
