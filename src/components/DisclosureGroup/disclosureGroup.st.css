@@ -9,7 +9,10 @@
 /* DisclosureGroup */
 .root {}
 
-.accordion {}
+.accordion {
+  list-style-type: none;
+  padding: 0;
+}
 
 /* .wrapper {} */
 
@@ -39,4 +42,7 @@
 
 .hiddenContent {}
 
-.content {}
+.content {
+  list-style-type: none;
+  padding: 0;
+}

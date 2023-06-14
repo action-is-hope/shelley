@@ -9,6 +9,7 @@ import "./blockquote.st.css";
 import "./checkbox.st.css";
 import "./comboBox.st.css";
 import "./dialog.st.css";
+import "./disclosureGroup.st.css";
 import "./helpText.st.css";
 import "./iconButton.st.css";
 import "./grid.st.css";

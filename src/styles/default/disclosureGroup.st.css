@@ -1,0 +1,22 @@
+/* disclosureGroup.st.css */
+@st-import Default, [
+    --spacing-unit,
+  ] from "./project.st.css";
+
+@st-import DisclosureGroup, [hiddenContent] from "../../components/DisclosureGroup/disclosureGroup.st.css";
+
+@st-scope Default {
+
+  DisclosureGroup::hiddenContent {
+    transition: opacity 250ms, margin-top 250ms, height 250ms;
+    overflow: hidden;
+    display: block;
+    opacity: 0;
+  }
+
+  DisclosureGroup::disclosure:isExpanded .hiddenContent {
+    opacity: 1;
+  }
+
+
+}
