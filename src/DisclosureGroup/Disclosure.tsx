@@ -8,6 +8,14 @@ import { useId } from "@react-aria/utils";
 
 import useDisclosure from "./useDisclosure";
 
+/* Disclosure is a component that allows users to toggle the visibility of content.:
+1. The `useDisclosure` hook is used to manage the state of the disclosure.
+2. The `triggerProps` and `contentProps` are spread onto the elements to manage the aria attributes.
+3. The `contentProps` are spread onto the hidden content element to manage the aria-hidden attribute.
+4. The `hiddenContentRef` is used to query the hidden content for focusable elements and manage the tabindex attribute.
+5. The `triggerProps` are spread onto the trigger element to manage the aria-expanded attribute.
+6. The `useId` hook is used to generate an id for the disclosure. */
+
 export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   /** ID, required for accessibility aria assignment. */
   id?: string;
@@ -40,8 +48,9 @@ const Disclosure: React.VFC<DisclosureProps> = ({
     /* https://bcdigital.atlassian.net/browse/BEACON-2193 hide focusable links inside of aria-hidden. */
     const links = hiddenContentRef?.current?.querySelectorAll("a");
     for (const key in links) {
-      if (Object.prototype.hasOwnProperty.call(links, key))
+      if (Object.prototype.hasOwnProperty.call(links, key)) {
         (links[key] as HTMLElement).tabIndex = isExpanded ? 0 : -1;
+      }
     }
   }, [isExpanded]);
 
