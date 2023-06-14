@@ -71,7 +71,11 @@ const Disclosure: React.VFC<DisclosureProps> = ({
         tone={false}
         {...triggerProps}
         onClick={() => triggerProps.onClick()}
-        onPress={() => triggerProps.onClick()}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            triggerProps.onClick();
+          }
+        }}
         data-id={dataId ? `${dataId}--trigger` : undefined}
       >
         <Text
