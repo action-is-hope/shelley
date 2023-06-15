@@ -24,7 +24,7 @@ export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
   /** Data attribute for Cypress tests. */
-  "data-id"?: string;
+  dataId?: string;
 }
 
 const Disclosure: React.VFC<DisclosureProps> = ({
@@ -33,7 +33,7 @@ const Disclosure: React.VFC<DisclosureProps> = ({
   children,
   title,
   triggerIcon = <AngleDown />,
-  "data-id": dataId,
+  dataId,
   ...rest
 }) => {
   const id = useId(idProp);

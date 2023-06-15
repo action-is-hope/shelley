@@ -1,4 +1,6 @@
-import DisclosureGroup from "../../DisclosureGroup/DisclosureGroup";
+// Cypress component tests for DisclosureGroup:
+
+import { DisclosureGroup } from "../../src/indexLib";
 
 const items = [
   {
@@ -72,12 +74,30 @@ const items = [
   },
 ];
 
-export const DynamicDisclosureGroup = () => {
+const disclosureGroup = '[data-id="disclosure-group"]';
+const accordion = '[data-id="disclosure-group--accordion"]';
+const accordionItem = '[data-id="disclosure-group--accordionItem"]';
+const disclosure = '[data-id="disclosure-group--disclosure"]';
+const trigger = '[data-id="disclosure-group--trigger"]';
+const hiddenContent = '[data-id="disclosure-group--hidden-content"]';
+const content = '[data-id="disclosure-group--content"]';
+
+const DynamicDisclosureGroup = function () {
   return (
-    <DisclosureGroup
-      title="Disclosure Group"
-      items={items}
-      data-id="disclosure-group"
-    />
+    <div>
+      <DisclosureGroup
+        title="Disclosure Group"
+        data-id="disclosure-group"
+        items={items}
+      />
+    </div>
   );
 };
+
+describe("DisclosureGroup", () => {
+  // Should render DisclosureGroup
+  it("should render DisclosureGroup", () => {
+    cy.mount(<DynamicDisclosureGroup />);
+    cy.get(disclosureGroup).should("exist");
+  });
+});
