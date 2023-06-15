@@ -1,4 +1,4 @@
-@st-import Modal, [enter, enterActive, enterDone, exit, exitActive, content, backdrop] from "../../components/Modal/modal.st.css";
+@st-import Modal, [enter, enterActive, enterDone, exit, exitActive, content, backdrop] from "../../Modal/modal.st.css";
 @st-import Shelley from "../../styles/shelley/project.st.css";
 
 

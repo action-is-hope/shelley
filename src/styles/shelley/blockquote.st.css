@@ -1,9 +1,5 @@
-/** blockquote.st.css */
-
-/* = Shelley project scope and vars. */
 @st-import Shelley, [--color-accent-1] from "./project.st.css";
-/* Component API. */
-@st-import Blockquote from "../../components/Blockquote/blockquote.st.css";
+@st-import Blockquote from "../../Blockquote/blockquote.st.css";
 
 @st-scope Shelley {
 

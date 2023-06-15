@@ -1,18 +1,12 @@
-/* = Default project vars. */
 @st-import [--spacing-unit] from "../default/project.st.css";
-/* = Shelley project scope and vars. */
 @st-import Shelley, [--color-text-help] from "./project.st.css";
-/* = Component API */
-@st-import HelpText from "../../components/HelpText/helpText.st.css";
+@st-import HelpText from "../../HelpText/helpText.st.css";
 
 @st-scope Shelley {
-
-  /* = Root */
   HelpText {
     color: var(--color-text-help);
     font-size: 0.8rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
-
 }

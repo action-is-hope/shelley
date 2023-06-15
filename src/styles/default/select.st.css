@@ -4,12 +4,12 @@
  * The base styles are provided by Field, here we are just adding 
  * Select specifics.
  *
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/components/Select/select.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Select/select.st.css
  * 
  */
 @st-import Default, [--field-padding] from "./project.st.css";
-@st-import Select from "../../components/Select/select.st.css";
-@st-import Icon from "../../components/Icon/icon.st.css";
+@st-import Select from "../../Select/select.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 
 @st-scope Default {
 

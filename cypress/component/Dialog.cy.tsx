@@ -1,4 +1,4 @@
-import React, { useRef, useState, createRef } from "react";
+import React, { createRef } from "react";
 import {
   Dialog,
   DialogProps,
@@ -8,9 +8,8 @@ import {
   ButtonGroup,
   P,
 } from "../../src/indexLib";
-
-// @ts-ignore
-import { classes as dialogClasses } from "../../src/components/Dialog/dialog.st.css";
+import { classes as dialogClasses } from "../../src/Dialog/dialog.st.css";
+import type { DataIdDOMAttribute } from "src/typings/shared-types";
 
 const title = "[data-title";
 const dialog = '[data-id="dialog"]';
@@ -76,7 +75,11 @@ describe("Basic Dialog", () => {
         <Button
           data-ref-test
           onPress={() =>
-            onPressSpy(dialogRef?.current?.attributes?.["data-id"]?.value)
+            onPressSpy(
+              (dialogRef?.current?.attributes as DataIdDOMAttribute)?.[
+                "data-id"
+              ]?.value
+            )
           }
         />
       </>

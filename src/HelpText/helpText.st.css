@@ -1,0 +1,7 @@
+@namespace "HelpText";
+
+.root {
+  -st-states: isDisabled, isErrorMessage;
+}
+
+.helpText {}

@@ -1,0 +1,11 @@
+@namespace "TablePagination";
+
+@st-import Toolbar from "../Toolbar/toolbar.st.css";
+
+.root {}
+
+.root Toolbar {
+  padding-top: 6px;
+  padding-right: 4px;
+  padding-bottom: 6px;
+}

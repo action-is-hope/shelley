@@ -14,7 +14,7 @@
 
 /* = Root Component */
 :import {
-  -st-from: "../../components/MenuItem/menuItem.st.css";
+  -st-from: "../../MenuItem/menuItem.st.css";
   -st-default: MenuItem;
 }
 

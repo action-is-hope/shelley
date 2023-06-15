@@ -1,23 +1,18 @@
-/* = textField.st.css */
-:import {
-  -st-from: "./project.st.css";
-  -st-default: Default;
-}
-
-/* = Root Component */
-:import {
-  -st-from: "../../components/TextField/textField.st.css";
-  -st-default: TextField;
-}
-
-:import {
-  -st-from: "../../components/Label/label.st.css";
-  -st-default: InputLabel;
-}
+/**
+ * = TextField - textField.st.css
+ *
+ * The base styles are provided by Field, here we are just adding 
+ * TextField specifics.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TextField/textField.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import TextField from "../../TextField/textField.st.css";
+@st-import InputLabel from "../../Label/label.st.css";
 
 @st-scope Default {
 
-  /* = Base styles taken care of by Field. */
   TextField {}
 
   TextField InputLabel {}
