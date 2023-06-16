@@ -55,13 +55,13 @@
     "@react-stately/tree": "^3.6.0",
     "@react-types/menu": "^3.9.0",
     "@react-types/overlays": "^3.7.1",
-    "@react-types/shared": "^3.18.0",
     "react-aria": "^3.24.0",
     "react-focus-on": "^3.8.1",
     "react-stately": "^3.22.0",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
+    "@react-types/shared": "^3.18.1",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-docs": "^6.5.15",
