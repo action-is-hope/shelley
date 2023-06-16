@@ -38,7 +38,7 @@ ProgressBars show the progression of a system operation such as downloading, upl
     ),
   ]}
 >
-  <ProgressBar aria-label="Loading…" value={90} />
+  <ProgressBar aria-label="Loading…" label="Loading…"value={90} minValue={0} totalSteps={1} maxValue={100}/>
 </Story>
 
 <Source language="tsx" id="status-progressbar--a-progress-bar" />
@@ -180,8 +180,6 @@ Check the table below for a full list of props.
 
 
 ## Multi-step ProgressBars
- {/* const totalSteps = 5; // Total number of steps in the multi-step process
-  const currentStep = 3; // Current step in the multi-step process */}
 
 <Story
   name="a) Multi-step ProgressBars"

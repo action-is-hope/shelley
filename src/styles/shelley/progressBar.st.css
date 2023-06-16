@@ -15,8 +15,6 @@
     --loader-circle-track-color: rgba(var(--color-ui-raw), 0.2)
   }
 
-
-
   ProgressBar:variant(overBackground) {
     --loader-circle-track-fill-color: var(--color-accent-1);
     --loader-circle-track-color: rgba(var(--color-ui-raw), 0.2)

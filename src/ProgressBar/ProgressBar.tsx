@@ -71,7 +71,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       {...progressBarProps}
       {...rest}
       ref={ref}
-      style={{ width: 200 }}
+      style={{ width: 500 }}
     >
       <div className={st(classes.label)} style={{ display: 'flex', justifyContent: 'space-between' }}>
         {label && (
@@ -81,17 +81,28 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
         )}
       </div>
       <div style={{ height: 10, background: 'lightgray' }} className={st(classes.track)}>
-        {/* <div style={{ width: barWidth, height: 10, background: 'orange' }} className={st(classes.fill)} /> */}
-        <div className={st(classes.stepContainer)}>
-          {[...Array(totalSteps)].map((_, index) => (
-            <div
-              key={index}
-              className={st(classes.stepIndicator, {
-                active: index < Math.floor(percentage * totalSteps)
-              })}
-            />
-          ))}
-        </div>
+
+
+        {totalSteps && totalSteps > 1 ? (
+          <div className={st(classes.stepContainer)}>
+            {[...Array(totalSteps)].map((_, index) => (
+              <div
+                key={index}
+                className={
+                  st(classes.stepIndicator,
+                    {
+                      active: index < Math.floor(percentage * totalSteps)
+                    })
+                }
+              />
+            ))}
+          </div>
+
+        ) :
+          <div style={{ width: barWidth, height: 10, background: 'orange' }} className={st(classes.fill)} />
+
+        }
+
       </div>
     </div>
   );

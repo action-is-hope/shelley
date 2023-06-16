@@ -75,6 +75,6 @@
   border-radius: 50px;
 }
 
-.stepIndicator.active {
-  background-color: #007a4d;
+.active {
+  background-color: orange
 }
