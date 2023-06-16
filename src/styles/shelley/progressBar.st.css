@@ -1,0 +1,24 @@
+/* progressBar.st.css */
+@st-import Shelley, [
+    --light-01-raw,
+    --color-ui-raw,
+    --color-accent-1,
+  ] from "./project.st.css";
+@st-import ProgressBar, [
+    --loader-circle-track-color,
+    --loader-circle-track-fill-color
+  ] from "../../ProgressBar/progressBar.st.css";
+
+@st-scope Shelley {
+  ProgressBar {
+    --loader-circle-track-fill-color: var(--color-accent-1);
+    --loader-circle-track-color: rgba(var(--color-ui-raw), 0.2)
+  }
+
+
+
+  ProgressBar:variant(overBackground) {
+    --loader-circle-track-fill-color: var(--color-accent-1);
+    --loader-circle-track-color: rgba(var(--color-ui-raw), 0.2)
+  }
+}
