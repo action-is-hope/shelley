@@ -181,4 +181,24 @@ describe("DisclosureGroup", () => {
       .should("have.attr", "class")
       .and("to.have.string", "isExpanded");
   });
+
+  // Should render correct aria attributes
+
+  it("should render correct aria attributes", () => {
+    cy.mount(<DynamicDisclosureGroup />);
+    cy.get(trigger).eq(0).should("have.attr", "aria-expanded", "false");
+    cy.get(trigger).eq(0).click().should("have.attr", "aria-expanded", "true");
+    cy.get(trigger).eq(0).click().should("have.attr", "aria-expanded", "false");
+
+    cy.get(trigger)
+      .eq(0)
+      .click()
+      .invoke("attr", "aria-controls")
+      .then((id) => {
+        cy.get(accordionItem)
+          .eq(0)
+          .find(hiddenContent)
+          .should("have.attr", "id", id);
+      });
+  });
 });
