@@ -33,7 +33,7 @@
 
   width: 100%;
   height: 8px;
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
   border-radius: 4px;
   overflow: hidden;
 
@@ -54,27 +54,58 @@
   transition: width 0.2s ease-in-out;
 }
 
-.track {}
+.trackWrapper {
+  height: 10px;
+}
 
-.fill {}
+.track {
+  /* background-color: #e6e6e6; */
+}
 
-.label {}
+.fill {
+  background-color: #007a4d;
+}
+
+.label {
+  color: #6a6a6a;
+}
 
 .stepContainer {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  background-color: transparent;
+  /* background-color: transparent; */
+  /* height: 10px; */
 }
 
 .stepIndicator {
   flex-grow: 1;
-  height: 4px;
+  height: 10px;
   margin: 0 2px;
-  background-color: #6a6a6a;
-  border-radius: 50px;
+  background-color: #e6e6e6;
 }
 
-.active {
-  background-color: orange
+.stepIndicatorFill {
+  -st-states: isActive;
+}
+
+.stepIndicatorFill:isActive {
+  background-color: #007a4d;
+}
+
+
+
+.root:isIndeterminate .fill {
+
+  animation: indeterminateAnimation 2s linear infinite;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }

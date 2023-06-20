@@ -1,13 +1,10 @@
-'use client';
-
 import { clamp } from "@react-aria/utils";
+import { CSSProperties, forwardRef, Ref } from "react";
 
-import { CSSProperties, Ref, forwardRef } from "react";
 import type { AriaProgressBarProps } from "@react-types/progress";
 import { st, classes } from "./progressBar.st.css";
 import { useProgressBar } from "@react-aria/progress";
 import type { ComponentBase } from "../typings/shared-types";
-
 
 export interface ProgressBarProps
   extends AriaProgressBarProps,
@@ -21,12 +18,15 @@ export interface ProgressBarProps
   variant?: "overBackground";
   className?: string;
   totalSteps: number;
-
+  currentStep: number;
+  stepProgress: number;
 }
 
-
-function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
-  let {
+function ProgressBar(
+  props: ProgressBarProps,
+  ref: Ref<HTMLDivElement>
+) {
+  const {
     label,
     className: classNameProp,
     value = 0,
@@ -35,19 +35,27 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
     size = "medium",
     variant,
     totalSteps = 1,
+    currentStep = 1,
+    stepProgress = 0,
     isIndeterminate = false,
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledby,
     ...rest
   } = props;
-  let {
+
+  const {
     progressBarProps,
     labelProps
   } = useProgressBar({ ...props, value });
 
+  let barWidth = '50%';
+  let percentage = 50;
   // Calculate the width of the progress bar as a percentage
-  const percentage = clamp((value - minValue) / (maxValue - minValue), 0, 1);
-  const barWidth = `${Math.round(percentage * 100)}%`;
+  if (!isIndeterminate) {
+    percentage = clamp((value - minValue) / (maxValue - minValue), 0, 1);
+    barWidth = `${Math.round(percentage * 100)}%`;
+  }
+
 
 
   if (!ariaLabel && !ariaLabelledby) {
@@ -55,7 +63,6 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       "ProgressCircle requires an aria-label or aria-labelledby attribute for accessibility"
     );
   }
-
 
   return (
     <div
@@ -71,44 +78,49 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       {...progressBarProps}
       {...rest}
       ref={ref}
-      style={{ width: 500 }}
     >
-      <div className={st(classes.label)} style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {label && (
-          <span {...labelProps}>
-            {label}
-          </span>
-        )}
+      <div
+        className={st(classes.label)}
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        {label && <span {...labelProps}>{label}</span>}
       </div>
-      <div style={{ height: 10, background: 'lightgray' }} className={st(classes.track)}>
-
-
+      <div
+        className={st(classes.track)}
+      >
         {totalSteps && totalSteps > 1 ? (
           <div className={st(classes.stepContainer)}>
-            {[...Array(totalSteps)].map((_, index) => (
-              <div
-                key={index}
-                className={
-                  st(classes.stepIndicator,
-                    {
-                      active: index < Math.floor(percentage * totalSteps)
-                    })
-                }
-              />
-            ))}
+            {[...Array(totalSteps)].map((_, index) => {
+              const stepClassName = st(classes.stepIndicator, {
+                active: index < currentStep ? true : false
+              });
+              const fillStyle: CSSProperties = {
+                width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
+                height: "100%",
+                // background: index < currentStep ? "orange" : "lightgray"
+              };
+              const currentStepClassName = st(classes.stepIndicatorFill, {
+                isActive: index < currentStep ? true : false
+              });
+              return (
+                <div key={index} className={stepClassName}>
+                  <div style={fillStyle} className={currentStepClassName} />
+                </div>
+              );
+            })}
           </div>
-
-        ) :
-          <div style={{ width: barWidth, height: 10, background: 'orange' }} className={st(classes.fill)} />
-
-        }
-
+        ) : (
+          <div className={st(classes.stepIndicator)}>
+              <div
+                style={{ width: barWidth, height: 10 }}
+                className={st(classes.fill)}
+              />
+          </div>
+        )}
       </div>
     </div>
   );
-
 }
-
 
 /**
  * ProgressBars show the progression of a system operation such as downloading, uploading, or processing, in a visual way.

@@ -1,7 +1,8 @@
-import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import { ArgsTable, Canvas, Meta, Source, Story } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
+
 import { Modal, ProgressBar } from "../../indexLib";
-import { StoryGrid, StoryCenteredInline } from "../StoryLayout";
+import { StoryCenteredInline, StoryGrid } from "../StoryLayout";
 
 <Meta
   title="Status/ProgressBar"
@@ -141,22 +142,6 @@ For languages that are read right-to-left (e.g. Hebrew and Arabic), the fill of 
 
 <Source language="tsx" id="status-ProgressBar--e-size" />
 
-### Variant
-
-<Story
-  name="f) Over background"
-  decorators={[
-    (Story) => (
-      <StoryCenteredInline>
-        <Story />
-      </StoryCenteredInline>
-    ),
-  ]}
->
-  <ProgressBar aria-label="Loading…" isIndeterminate />
-</Story>
-
-<Source language="tsx" id="status-ProgressBar--f-over-background" />
 
 ## ProgressBar Props
 
@@ -192,12 +177,11 @@ Check the table below for a full list of props.
   ]}
 >
  <ProgressBar
-        totalSteps={5}
-        value={3}
-        minValue={0}
-        maxValue={5}
-        label="Step 3 of 5"
-      />
+    totalSteps={5}
+    currentStep={2}
+    stepProgress={30}
+    label="Step 2 of 5"
+    />
 </Story>
 
 <Source language="tsx" id="status-progressbar--a-progress-multi-step" />
