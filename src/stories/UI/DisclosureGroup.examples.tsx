@@ -10,9 +10,9 @@ const items = [
           __html: `<p><em>"The All is Mind; the Universe is Mental." —The Kybalion</em></p>
           <p>The principle of mentalism states that the universe is akin to a mental projection. 
           The is like manifestation 101, which is all about using your thoughts to shape your reality. 
-          For anything to be, a thought must precede it. Through this principle, 
+          For anything to be, a thought must precede it. <a href="#">Through this principle, 
           it's believed that God is consciousness, or thought, and the universe is a manifestation of the mind of God. 
-          Using this law, we, too, can harness the power of our minds to create the life we want.
+          Using this law, we, too, can harness the power of our minds to create the life we want.</a>
         </p>`,
         }}
       />

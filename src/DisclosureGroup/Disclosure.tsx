@@ -49,9 +49,10 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
   useEffect(() => {
     /* https://bcdigital.atlassian.net/browse/BEACON-2193 hide focusable links inside of aria-hidden. */
     const links = hiddenContentRef?.current?.querySelectorAll("a");
-    for (const key in links) {
-      if (Object.prototype.hasOwnProperty.call(links, key)) {
-        (links[key] as HTMLElement).tabIndex = isExpanded ? 0 : -1;
+    if (links) {
+      const linkArray = Array.from(links) as HTMLElement[];
+      for (const link of linkArray) {
+        link.tabIndex = isExpanded ? 0 : -1;
       }
     }
   }, [isExpanded]);
