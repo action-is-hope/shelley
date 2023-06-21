@@ -30,9 +30,9 @@
   right: 0;
 }
 
-.content {}
-
-/* .transition {} */
+.content {
+  position: relative;
+}
 
 .blurBackground [data-focus-on-hidden] {
   opacity: .5;
@@ -41,7 +41,7 @@
 
 /* = Content Transitions */
 
-/* Map transition liftcycle classes to global CSSTransistionGroup classes. */
+/* Map transition lifecycle classes to global CSSTransitionGroslideUp classes. */
 .enter {
   -st-global: '.enter'
 }
@@ -90,34 +90,6 @@
   transition: opacity 300ms;
 }
 
-/* = up */
-.root:transition(up).enter .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-}
-
-.root:transition(up).enterActive .content {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
-
-.root:transition(up).enterDone .content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.root:transition(up).exit .content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.root:transition(up).exitActive .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
-}
-
 /* = Zoom */
 
 .root:transition(zoom).enter .content {
@@ -143,6 +115,95 @@
 
 .root:transition(zoom).exitActive .content {
   transform: scale(0);
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}
+
+
+/* = slideUp */
+
+.root:transition(slideUp).enter .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+}
+
+.root:transition(slideUp).enterActive .content {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+.root:transition(slideUp).enterDone .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.root:transition(slideUp).exit .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.root:transition(slideUp).exitActive .content {
+  transform: translateY(calc(100vh / 2 + 100%));
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}
+
+/* = slideFromStart = */
+
+.root:transition(slideFromStart).enter .content {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.root:transition(slideFromStart).enterActive .content {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+.root:transition(slideFromStart).enterDone .content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.root:transition(slideFromStart).exit .content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.root:transition(slideFromStart).exitActive .content {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 190ms, opacity 190ms;
+}
+
+
+/* = slideFromEnd = */
+
+.root:transition(slideFromEnd).enter .content {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.root:transition(slideFromEnd).enterActive .content {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 190ms, opacity 190ms;
+}
+
+.root:transition(slideFromEnd).enterDone .content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.root:transition(slideFromEnd).exit .content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.root:transition(slideFromEnd).exitActive .content {
+  transform: translateX(100%);
   opacity: 0;
   transition: transform 190ms, opacity 190ms;
 }

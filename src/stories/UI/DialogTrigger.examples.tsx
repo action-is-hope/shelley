@@ -73,7 +73,9 @@ export const ModalExample = () => {
       // react-focus-on props
       focusOnProps={{}}
       // Transition props from Modal
-      transition="up"
+      // transition="slideUp"
+      // transition="slideFromStart"
+      transition="slideUp"
       transitionProps={{}}
     >
       <ActionButton>Unlink</ActionButton>
