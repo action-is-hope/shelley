@@ -1,5 +1,5 @@
 /** Disclosure.tsx */
-import React, { useEffect, useRef, ReactNode } from "react";
+import React, { useEffect, useRef, ReactNode, forwardRef } from "react";
 import { st, classes } from "./disclosureGroup.st.css";
 import { Text } from "../Text/Text";
 import { Button } from "../Button";
@@ -27,15 +27,17 @@ export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   dataId?: string;
 }
 
-const Disclosure: React.VFC<DisclosureProps> = ({
-  id: idProp,
-  className,
-  children,
-  title,
-  triggerIcon = <AngleDown />,
-  dataId,
-  ...rest
-}) => {
+function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
+  const {
+    id: idProp,
+    className,
+    children,
+    title,
+    triggerIcon = <AngleDown />,
+    dataId,
+    ...rest
+  } = props;
+
   const id = useId(idProp);
   const hiddenContentRef = useRef<HTMLDivElement>(null);
   const { triggerProps, contentProps, isExpanded } = useDisclosure({
@@ -61,8 +63,9 @@ const Disclosure: React.VFC<DisclosureProps> = ({
         { isExpanded: triggerProps["aria-expanded"] },
         className
       )}
-      {...rest}
       data-id={dataId ? `${dataId}--disclosure` : undefined}
+      ref={ref}
+      {...rest}
     >
       <Button
         className={classes.trigger}
@@ -105,6 +108,7 @@ const Disclosure: React.VFC<DisclosureProps> = ({
       </Text>
     </article>
   );
-};
+}
 
-export default Disclosure;
+const _Disclosure = forwardRef(Disclosure);
+export { _Disclosure as Disclosure };

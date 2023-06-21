@@ -1,4 +1,4 @@
-import DisclosureGroup from "../../DisclosureGroup/DisclosureGroup";
+import { DisclosureGroup } from "../../DisclosureGroup/DisclosureGroup";
 
 const items = [
   {
