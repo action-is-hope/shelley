@@ -1,4 +1,11 @@
-import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Props,
+} from "@storybook/addon-docs";
 import { DisclosureGroup } from "../../indexLib";
 import dedent from "ts-dedent";
 import { DynamicDisclosureGroup } from "./DisclosureGroup.examples";
@@ -23,7 +30,7 @@ This component is useful for creating collapsible sections or accordion-style in
 ## Example
 
 This example displays a disclosure group with an optional title and a list of items.
-Items are passed as an array of objects with a title and content property.
+Items are passed as an array of objects with a title and items property.
 
 <Preview>
   <Story
@@ -44,24 +51,6 @@ Items are passed as an array of objects with a title and content property.
     <DynamicDisclosureGroup />
   </Story>
 </Preview>
-
-### Props
-
-The `DisclosureGroup` component accepts the following props:
-
-- `className` (string, optional): Additional CSS class name(s) to be applied to the root `<div>` element of the component.
-- `items` (array of DisclosureProps): An array of objects representing the individual
-  disclosure items to be rendered within the group.
-- `"data-id"` (string, optional): A custom data attribute to be added to the root `<div>`
-  element and all child elements within the component. This can be used for testing or other custom purposes.
-
-### DisclosureProps
-
-Each object in the `items` array represents a disclosure item and should have the following properties:
-
-- `id` (string): A unique identifier for the disclosure item.
-- `title` (string): The title or heading of the disclosure item.
-- `children` (ReactNode): The content to be displayed when the disclosure item is expanded.
 
 ### Example Usage
 
@@ -88,7 +77,8 @@ Each object in the `items` array represents a disclosure item and should have th
 ### How it Works
 
 The `DisclosureGroup` component renders a `<div>` element as the root container for
-the disclosure group. It applies CSS classes to the root element and attaches the custom data attribute if provided.
+the disclosure group. It applies CSS classes to the root element and attaches the
+custom data-id attribute if provided.
 
 Inside the root `<div>`, an `<ul>` element is rendered with a CSS class indicating that
 it represents an accordion-style interface. The `items` array is mapped over to render
@@ -96,7 +86,7 @@ each individual disclosure item as an `<li>` element within the `<ul>`.
 Each disclosure item is wrapped in a `Disclosure` component.
 
 The `Disclosure` component handles the state and behavior of each disclosure item.
-It consists of a trigger element (usually a button) and the hidden content that gets
+It consists of a trigger element (button) and the hidden content that gets
 revealed when the trigger is activated. The `Disclosure` component receives the `id`,
 `title`, and `children` from each item in the `items` array.
 
@@ -106,7 +96,8 @@ is expanded or collapsed) and `height` (the height of the hidden content).
 
 The `useDisclosure` hook provides the necessary props and state variables for the `Disclosure`
 component. It sets up event listeners for resizing the window and toggling the disclosure item.
-It also calculates the height of the hidden content and manages the accessibility attributes of the disclosure item.
+It also calculates the height of the hidden content and manages the accessibility
+attributes of the disclosure item.
 
 The disclosure item's trigger element is rendered as a `<Button>` component, which receives
 props such as `onClick`, `onKeyDown`, and `data-id`. The trigger element is responsible
@@ -116,28 +107,13 @@ The hidden content is rendered within a `<Text>` component, which handles the ac
 attributes and styling of the hidden content. The content is initially hidden and its height
 is set dynamically based on the `isExpanded` state.
 
-### Styling
-
-To style the `DisclosureGroup` component, you can pass a `className` prop with additional CSS classes to the
-component. The root `<div>` element of the component will have these classes applied,
-allowing you to customize the appearance of the disclosure group.
-
-Additionally, you can target the individual elements within the `DisclosureGroup`
-component using CSS selectors and styling rules based on their class names.
-The specific class names used in the component's rendering can be found in the code you provided,
-such as `classes.root`, `classes.accordion`, `classes.accordionItem`, `classes.disclosure`,
-`classes.trigger`, `classes.title`, `classes.hiddenContent`, and `classes.content`.
-
-Remember to import any necessary CSS or SCSS files and include them in your project
-to apply the desired styles to the disclosure group.
-
 ### Accessibility
 
 The `DisclosureGroup` component is designed with accessibility in mind. It uses semantic
 HTML elements and applies appropriate ARIA attributes to ensure screen readers and
 assistive technologies can properly interpret and interact with the disclosure items.
 
-Each disclosure item's trigger element (usually a button) has `aria-expanded` and
+Each disclosure item's trigger element (button) has `aria-expanded` and
 `aria-controls` attributes that indicate the expanded/collapsed state and the corresponding
 hidden content element. The hidden content element has `aria-hidden` and `aria-labelledby`
 attributes to convey its visibility and association with the trigger element.
@@ -151,7 +127,8 @@ You can use the `"data-id"` prop to add custom data attributes to the `Disclosur
 This can be helpful for selecting and interacting with the component during testing.
 The value of `"data-id"` is appended with specific identifiers to create unique data attribute values for each element within the component.
 
-For example, if you set `data-id="my-disclosure-group"`, the root `<div>` element will have `data-id="my-disclosure-group--disclosureGroup"`,
+For example, if you set `data-id="my-disclosure-group"`, the root `<div>` element will
+have `data-id="my-disclosure-group"`,
 the `<ul>` element will have `data-id="my-disclosure-group--accordion"`, and so on.
 This allows you to target specific elements during testing by their data attributes.
 
@@ -160,4 +137,37 @@ to write tests for the `DisclosureGroup` component and verify its behavior and r
 
 That covers the detailed documentation for the `DisclosureGroup` component, including its usage,
 behavior, styling, accessibility considerations, and testing recommendations.
-Feel free to adapt and expand upon this documentation based on your project's specific requirements and guidelines.
+Feel free to adapt and expand upon this documentation based on your project's specific
+requirements and guidelines.
+
+### DisclosureGroup Props
+
+<ArgsTable of={DisclosureGroup} />
+
+The `DisclosureGroup` component accepts the following props:
+
+- `className` (string, optional): Additional CSS class name(s) to be applied to the root `<div>` element of the component.
+- `items` (array of DisclosureProps): An array of objects representing the individual
+  disclosure items to be rendered within the group.
+- `"data-id"` (string, optional): A custom data attribute to be added to the root `<div>`
+  element and all child elements within the component. This can be used for testing or other custom purposes.
+
+### Disclosure Props
+
+Each object in the `items` array represents a disclosure item and should have the following properties:
+
+- `id` (string): A unique identifier for the disclosure item.
+- `title` (string): The title or heading of the disclosure item.
+- `children` (ReactNode): The content to be displayed when the disclosure item is expanded.
+
+### Styling
+
+To style the `DisclosureGroup` component, you can pass a `className` prop with additional CSS classes to the
+component. The root `<div>` element of the component will have these classes applied,
+allowing you to customize the appearance of the disclosure group.
+
+Additionally, you can target the individual elements within the `DisclosureGroup`
+component using CSS selectors and styling rules based on their class names.
+The specific class names used in the component's rendering can be found in the code,
+such as `classes.root`, `classes.accordion`, `classes.accordionItem`, `classes.disclosure`,
+`classes.trigger`, `classes.title`, `classes.hiddenContent`, and `classes.content`.
