@@ -7,17 +7,6 @@
 
 @st-scope Default {
 
-  DisclosureGroup::hiddenContent {
-    transition: opacity 250ms, margin-top 250ms, height 250ms;
-    overflow: hidden;
-    display: block;
-    opacity: 0;
-  }
-
-  DisclosureGroup::disclosure:isExpanded .hiddenContent {
-    opacity: 1;
-  }
-
   DisclosureGroup::content {
     padding-top: var(--spacing-unit);
   }
