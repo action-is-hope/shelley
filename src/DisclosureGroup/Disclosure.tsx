@@ -18,7 +18,7 @@ import useDisclosure from "./useDisclosure";
 
 export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   /** ID, required for accessibility aria assignment. */
-  id?: string;
+  id: string;
   /** Disclosure title */
   title: string;
   /** Provide your own icon for the Trigger */
@@ -46,8 +46,12 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     children,
   });
 
+  /**
+   * Hides focusable links inside of aria-hidden.
+   * @param {HTMLElement} hiddenContentRef - The hidden content ref.
+   * @param {boolean} isExpanded - The isExpanded value.
+   */
   useEffect(() => {
-    /* https://bcdigital.atlassian.net/browse/BEACON-2193 hide focusable links inside of aria-hidden. */
     const links = hiddenContentRef?.current?.querySelectorAll("a");
     if (links) {
       const linkArray = Array.from(links) as HTMLElement[];
