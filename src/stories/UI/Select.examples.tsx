@@ -19,7 +19,7 @@ export const BasicSelect = (args: ItemsType) => {
   return (
     <Select
       label="Choose frequency"
-      // {...args}
+      {...args}
       onSelectionChange={(key) => console.log(key)}
       vol={1}
       portalSelector="#portal"

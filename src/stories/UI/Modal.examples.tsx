@@ -10,12 +10,10 @@ import {
   ActionButton,
   DialogTrigger,
   Switch,
-  Item,
-  Select,
   RadioGroup,
   Radio,
 } from "../../indexLib";
-import { useState, useRef, SetStateAction } from "react";
+import { useState, useRef } from "react";
 
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
