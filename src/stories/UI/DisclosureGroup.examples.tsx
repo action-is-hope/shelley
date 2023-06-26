@@ -1,4 +1,4 @@
-import { DisclosureGroup } from "../../DisclosureGroup/DisclosureGroup";
+import { Disclosure, DisclosureGroup, Radio, RadioGroup } from "../../indexLib";
 
 const items = [
   {
@@ -79,5 +79,16 @@ export const DynamicDisclosureGroup = () => {
       items={items}
       data-id="disclosure-group"
     />
+  );
+};
+
+export const SingleDisclosure = () => {
+  return (
+    <Disclosure id="itemId" title="Single Disclosure" data-id="disclosure">
+      <RadioGroup label="Are you a wizard?" defaultValue="yes">
+        <Radio value="yes">Yes</Radio>
+        <Radio value="no">No</Radio>
+      </RadioGroup>
+    </Disclosure>
   );
 };

@@ -8,7 +8,10 @@ import {
 } from "@storybook/addon-docs";
 import { DisclosureGroup } from "../../indexLib";
 import dedent from "ts-dedent";
-import { DynamicDisclosureGroup } from "./DisclosureGroup.examples";
+import {
+  SingleDisclosure,
+  DynamicDisclosureGroup,
+} from "./DisclosureGroup.examples";
 
 <Meta title="Data/DisclosureGroup" component={DisclosureGroup} />
 
@@ -34,7 +37,7 @@ Items are passed as an array of objects with a title and items property.
 
 <Preview>
   <Story
-    name="Disclosure Group"
+    name="a) Disclosure Group"
     args={{}}
     parameters={{
       docs: {
@@ -171,3 +174,30 @@ component using CSS selectors and styling rules based on their class names.
 The specific class names used in the component's rendering can be found in the code,
 such as `classes.root`, `classes.accordion`, `classes.accordionItem`, `classes.disclosure`,
 `classes.trigger`, `classes.title`, `classes.hiddenContent`, and `classes.content`.
+
+## Single Disclosure
+
+This example displays a single disclosure usage with an optional title and a
+list of radio buttons. Items are passed as children.
+
+<Preview>
+  <Story
+    name="b) Disclosure"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+            <Disclosure id="itemId" title="Single Disclosure" data-id="disclosure">
+              <RadioGroup label="Are you a wizard?" defaultValue="yes">
+                <Radio value="yes">Yes</Radio>
+                <Radio value="no">No</Radio>
+              </RadioGroup>
+            </Disclosure>`,
+        },
+      },
+    }}
+  >
+    <SingleDisclosure />
+  </Story>
+</Preview>

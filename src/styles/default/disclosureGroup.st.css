@@ -3,17 +3,16 @@
     --spacing-unit,
   ] from "./project.st.css";
 
-@st-import DisclosureGroup, [hiddenContent] from "../../DisclosureGroup/disclosureGroup.st.css";
+@st-import DisclosureGroup, [content] from "../../DisclosureGroup/disclosureGroup.st.css";
 
 @st-scope Default {
 
   DisclosureGroup::content {
-    padding-top: var(--spacing-unit);
+    padding: var(--spacing-unit);
   }
 
   DisclosureGroup::accordionItem {
     padding: var(--spacing-unit);
   }
-
 
 }

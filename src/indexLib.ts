@@ -6,7 +6,6 @@ export * from "./Checkbox";
 export * from "./ComboBox";
 export * from "./CheckboxGroup";
 export * from "./Dialog";
-export * from "./Dialog";
 export * from "./DisclosureGroup";
 export * from "./Grid";
 export * from "./HelpText";
