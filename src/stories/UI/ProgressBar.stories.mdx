@@ -39,14 +39,15 @@ ProgressBars show the progression of a system operation such as downloading, upl
     ),
   ]}
 >
-  <ProgressBar aria-label="Loading…" label="Loading…"value={90} minValue={0} totalSteps={1} maxValue={100}/>
+  <ProgressBar aria-label="Loading…" value={90} minValue={0} totalSteps={1} maxValue={100}/>
 </Story>
 
 <Source language="tsx" id="status-progressbar--a-progress-bar" />
 
 ## Value
 
-ProgressBars are controlled with the `value` prop. By default, the `value` prop represents the current percentage of progress, as the minimum and maxiumum values default to 0 and 100, respectively.
+ProgressBars are controlled with the `value` prop. By default, the `value` prop represents the current percentage of progress, as the minimum (minValue) and maxiumum (maxValue) values default to 0 and 100, respectively.
+
 
 <Story
   name="b) Value"
@@ -63,10 +64,12 @@ ProgressBars are controlled with the `value` prop. By default, the `value` prop 
 
 <Source language="tsx" id="status-ProgressBar--b-value" />
 
-Alternatively, a different scale can be used by setting the `minValue` and `maxValue` props.
+### Label
+
+Label can be added to the ProgressBar to provide more context to the user. You can use the `label` prop to provide more context to the user.
 
 <Story
-  name="c) Scale"
+  name="a) Label"
   decorators={[
     (Story) => (
       <StoryCenteredInline>
@@ -75,20 +78,16 @@ Alternatively, a different scale can be used by setting the `minValue` and `maxV
     ),
   ]}
 >
-  <ProgressBar
-    aria-label="Loading…"
-    minValue={50}
-    maxValue={150}
-    value={100}
-  />
+  <ProgressBar aria-label="Loading…" label="Loading…"value={90} minValue={0} totalSteps={1} maxValue={100}/>
 </Story>
 
-<Source language="tsx" id="status-ProgressBar--c-scale" />
+<Source language="tsx" id="status-progressbar--a-label" />
+
 
 ### Indeterminate
 
 By default, ProgressBars are determinate. Use a determinate ProgressBar when progress can be calculated against a specific goal. Use an indeterminate ProgressBar when progress is happening but the time or effort to completion can't be determined.
-
+In this case set the `isIndeterminate` prop to `true`.
 <Story
   name="d) Indeterminate"
   decorators={[
@@ -120,6 +119,7 @@ For languages that are read right-to-left (e.g. Hebrew and Arabic), the fill of 
 
 ### Size
 
+You can specify the size of the ProgressBar using the `size` prop. The default size is `medium`. The `small` size is recommended for use in tables and the `large` size is recommended for use in modals.
 <Story
   name="e) Size"
   decorators={[
@@ -134,37 +134,20 @@ For languages that are read right-to-left (e.g. Hebrew and Arabic), the fill of 
     aria-label="Loading…"
     marginEnd="size-300"
     size="small"
-    value={15}
+    value={30}
   />
   <ProgressBar aria-label="Loading…" marginEnd="size-300" value={30} />
-  <ProgressBar aria-label="Loading…" size="large" value={60} />
+  <ProgressBar aria-label="Loading…" size="large" value={30} />
 </Story>
 
 <Source language="tsx" id="status-ProgressBar--e-size" />
 
 
-## ProgressBar Props
-
-Check the table below for a full list of props.
-
-<ArgsTable of={ProgressBar} />
-
-## Stying
-
-<Source
-  language="css"
-  dark
-  format={false}
-  code={dedent`
-    #docs {
-      write-some: style-docs;
-    }
-  `}
-/>
 
 
+### Multi-step ProgressBars
 
-## Multi-step ProgressBars
+ProgressBars can be used to show the progression of a multi-step process. In this case, the `totalSteps` and `currentStep` props should be used to indicate the current step and the total number of steps in the process. The `stepProgress` prop can be used to indicate the progress of the current step.
 
 <Story
   name="a) Multi-step ProgressBars"
@@ -185,3 +168,26 @@ Check the table below for a full list of props.
 </Story>
 
 <Source language="tsx" id="status-progressbar--a-progress-multi-step" />
+
+
+
+
+
+## ProgressBar Props
+
+Check the table below for a full list of props.
+
+<ArgsTable of={ProgressBar} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

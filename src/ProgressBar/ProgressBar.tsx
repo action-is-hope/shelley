@@ -48,8 +48,8 @@ function ProgressBar(
     labelProps
   } = useProgressBar({ ...props, value });
 
-  let barWidth = '50%';
-  let percentage = 50;
+  let barWidth = '100%';
+  let percentage = 100;
   // Calculate the width of the progress bar as a percentage
   if (!isIndeterminate) {
     percentage = clamp((value - minValue) / (maxValue - minValue), 0, 1);
