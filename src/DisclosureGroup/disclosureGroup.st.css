@@ -1,10 +1,6 @@
 /* disclosureGroup.st.css */
 @namespace "DisclosureGroup";
 
-:import {
-  -st-from: "../Text/text.st.css";
-  -st-default: Text;
-}
 
 /* DisclosureGroup */
 .root {}
@@ -17,38 +13,3 @@
 /* .wrapper {} */
 
 .accordionItem {}
-
-/* Disclossure */
-
-.disclosure {
-  -st-states: isExpanded;
-}
-
-.title {
-  -st-extends: Text;
-}
-
-.trigger {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.trigger:hover {
-  cursor: pointer;
-}
-
-.triggerIcon {}
-
-.hiddenContent {
-  transition: opacity 250ms, margin-top 250ms, height 250ms;
-  overflow: hidden;
-  display: block;
-  opacity: 0;
-}
-
-.disclosure:isExpanded .hiddenContent {
-  opacity: 1;
-}
-
-.content {}

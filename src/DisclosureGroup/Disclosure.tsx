@@ -1,6 +1,6 @@
 /** Disclosure.tsx */
 import React, { useEffect, useRef, ReactNode, forwardRef } from "react";
-import { st, classes } from "./disclosureGroup.st.css";
+import { st, classes } from "./disclosure.st.css";
 import { Text } from "../Text/Text";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
@@ -64,7 +64,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
   return (
     <article
       className={st(
-        classes.disclosure,
+        classes.root,
         { isExpanded: triggerProps["aria-expanded"] },
         className
       )}

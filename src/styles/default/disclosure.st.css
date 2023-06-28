@@ -1,0 +1,14 @@
+/* disclosure.st.css */
+@st-import Default, [
+    --spacing-unit,
+  ] from "./project.st.css";
+
+@st-import Disclosure from "../../DisclosureGroup/disclosure.st.css";
+
+@st-scope Default {
+
+  Disclosure::content {
+    padding: var(--spacing-unit);
+  }
+
+}
