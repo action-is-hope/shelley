@@ -1,18 +1,17 @@
 @st-import Shelley, [
-    --color-ui,
-    --color-ui-inverse,
-    --color-ui-raw,
-    --color-ui-raw-inverse,
-    --color-accent-1,
-    --color-accent-2,
-    --color-accent-3,
-    --color-accent-4
-  ] from "./project.st.css";
+  --color-ui,
+  --color-ui-inverse,
+  --color-ui-raw,
+  --color-ui-raw-inverse,
+  --color-accent-1,
+  --color-accent-2,
+  --color-accent-3,
+  --color-accent-4
+] from "./project.st.css";
 @st-import Button, [--bg-color, --border-color, --text-color] from "../../Button/button.st.css";
 @st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
 
 @st-scope Shelley {
-
   /* = = The base <button> element. */
   Button {
     /* We'll assign this via our variants but set it with our tones. */
@@ -40,13 +39,11 @@
     --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
   }
 
-
   /* = Variant 2: 'Secondary' */
   Button:variant(secondary) {
     --border-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
-
 
   /* = Variant 3: 'Quiet' */
   Button:variant(quiet) {

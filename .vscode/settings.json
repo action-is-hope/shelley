@@ -43,5 +43,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "explorer.sortOrderLexicographicOptions": "upper"
+  "explorer.sortOrderLexicographicOptions": "upper",
+  "stylable.formatting.experimental": true
 }

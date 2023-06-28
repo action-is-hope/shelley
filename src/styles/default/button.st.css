@@ -16,7 +16,6 @@
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 @st-scope Default {
-
   Button {
     -st-mixin: hideWebkitAppearance;
     /* = Really really opinionated, only do this if you are willing to provide 
@@ -76,49 +75,42 @@
   Button:isDisabled:focus,
   Button:isDisabled:active,
   Button:isDisabled:active:hover {
-    opacity: 0.5
+    opacity: 0.5;
   }
 
   Button:vol(1) {
     -st-mixin:
-      textVol(scale respScale(0.67em, 0.675em),
-        max 0.675em, lineHeight 1);
+      textVol(scale respScale(0.67em, 0.675em), max 0.675em, lineHeight 1);
     padding-top: 0.15em;
     padding-bottom: 0.15em;
   }
 
   Button:vol(2) {
     -st-mixin:
-      textVol(scale respScale(0.75em, 0.71em),
-        max 0.71em, lineHeight 1);
+      textVol(scale respScale(0.75em, 0.71em), max 0.71em, lineHeight 1);
     padding-top: 0.15em;
     padding-bottom: 0.15em;
   }
 
   Button:vol(3) {
     -st-mixin:
-      textVol(scale respScale(0.8em, 0.78em),
-        max 0.78em, lineHeight 1.1);
+      textVol(scale respScale(0.8em, 0.78em), max 0.78em, lineHeight 1.1);
   }
 
   Button:vol(4) {
     -st-mixin:
-      textVol(scale respScale(0.85em, .83em),
-        max .875em, lineHeight 1.1);
+      textVol(scale respScale(0.85em, .83em), max .875em, lineHeight 1.1);
   }
 
   Button:vol(5) {
     -st-mixin:
-      textVol(scale respScale(1em, 1em),
-        max 1em, lineHeight 1.15);
+      textVol(scale respScale(1em, 1em), max 1em, lineHeight 1.15);
   }
 
   Button:vol(6) {
     -st-mixin:
-      textVol(scale respScale(1.15em, 1.125em),
-        max 1.125em, lineHeight 1.15);
+      textVol(scale respScale(1.15em, 1.125em), max 1.125em, lineHeight 1.15);
   }
-
 
   Button:variant(primary) {}
 

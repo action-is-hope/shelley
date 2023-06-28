@@ -13,7 +13,12 @@ import { classes as dialog } from "../../Dialog/dialog.st.css";
 
 export const BasicDialogTrigger = (args: ModalProps) => {
   return (
-    <DialogTrigger type="popup" {...args} portalSelector="#portal">
+    <DialogTrigger
+      type="popup"
+      {...args}
+      portalSelector="#portal"
+      popupClassName="test"
+    >
       <ActionButton>Disk Status</ActionButton>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
