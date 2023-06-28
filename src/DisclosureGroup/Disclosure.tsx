@@ -1,12 +1,12 @@
 /** Disclosure.tsx */
 import React, { useEffect, useRef, ReactNode, forwardRef } from "react";
-import { st, classes } from "./disclosure.st.css";
 import { Text } from "../Text/Text";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
 import { useId } from "@react-aria/utils";
-
+import type { AlignPos } from "../typings/shared-types";
 import useDisclosure from "./useDisclosure";
+import { st, classes } from "./disclosure.st.css";
 
 /* Disclosure is a component that allows users to toggle the visibility of content.:
 1. The `useDisclosure` hook is used to manage the state of the disclosure.
@@ -25,6 +25,10 @@ export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   triggerIcon?: ReactNode;
   /** Data attribute for Cypress tests. */
   dataId?: string;
+  /** Icon position "top" | "end" | "bottom" | "start" */
+  iconPos?: AlignPos;
+  /** Complimentary text for the icon */
+  iconText?: string;
 }
 
 function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
@@ -35,6 +39,8 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     title,
     triggerIcon = <AngleDown />,
     dataId,
+    iconPos,
+    iconText,
     ...rest
   } = props;
 
@@ -75,6 +81,8 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
       <Button
         className={classes.trigger}
         icon={triggerIcon}
+        iconPos={iconPos}
+        iconText={iconText}
         variant={false}
         tone={false}
         {...triggerProps}

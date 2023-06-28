@@ -48,6 +48,8 @@
 
 /*==== Icon Positions ====*/
 
+.iconText {}
+
 /* top */
 .root:iconPos(top) {
   flex-direction: column;

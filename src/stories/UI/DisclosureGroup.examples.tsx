@@ -84,7 +84,13 @@ export const DynamicDisclosureGroup = () => {
 
 export const SingleDisclosure = () => {
   return (
-    <Disclosure id="itemId" title="Single Disclosure" data-id="disclosure">
+    <Disclosure
+      iconPos="end"
+      iconText="Show more"
+      id="itemId"
+      title="Single Disclosure"
+      data-id="disclosure"
+    >
       <RadioGroup label="Are you a wizard?" defaultValue="yes">
         <Radio value="yes">Yes</Radio>
         <Radio value="no">No</Radio>

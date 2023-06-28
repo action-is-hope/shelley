@@ -1,7 +1,8 @@
 /** DisclosureGroup.tsx */
-import { st, classes } from "./disclosureGroup.st.css";
 import { Disclosure, DisclosureProps } from "./Disclosure";
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
+import type { AlignPos } from "../typings/shared-types";
+import { st, classes } from "./disclosureGroup.st.css";
 
 export interface DisclosureGroupProps
   extends React.HTMLAttributes<HTMLElement> {
@@ -9,13 +10,27 @@ export interface DisclosureGroupProps
   items: DisclosureProps[];
   /** Data attribute for Cypress tests. */
   "data-id"?: string;
+  /** Provide your own icon for the Trigger */
+  triggerIcon?: ReactNode;
+  /** Icon position "top" | "end" | "bottom" | "start" */
+  iconPos?: AlignPos;
+  /** Complimentary text for the icon */
+  iconText?: string;
 }
 
 function DisclosureGroup(
   props: DisclosureGroupProps,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const { className, items, "data-id": dataId, ...rest } = props;
+  const {
+    className,
+    items,
+    "data-id": dataId,
+    triggerIcon,
+    iconPos,
+    iconText,
+    ...rest
+  } = props;
   return (
     <div
       className={st(classes.root, className)}
@@ -37,6 +52,9 @@ function DisclosureGroup(
             <Disclosure
               id={item.id}
               title={item.title}
+              triggerIcon={triggerIcon}
+              iconPos={iconPos}
+              iconText={iconText}
               dataId={dataId ? dataId : undefined}
             >
               {item.children}
