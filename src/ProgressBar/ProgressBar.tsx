@@ -16,9 +16,26 @@ export interface ProgressBarProps
   size?: "small" | "medium" | "large";
   /** The [visual style](https://spectrum.adobe.com/page/progress-circle/#Over-background-variant) of the ProgressCircle. */
   variant?: "overBackground";
+  /**
+   * The class name for the root element.
+   */
   className?: string;
+  /**
+   * The total number of steps in the progress bar.
+   * @default 1
+   */
   totalSteps: number;
+  /**
+   * The current step in the progress bar.
+   * This should be a number between 1 and totalSteps.
+   * @default 1
+   */
   currentStep: number;
+  /**
+   * The progress of the current step in the progress bar.
+   * This should be a number between 0 and 100.
+   * @default 0
+   * */
   stepProgress: number;
 }
 
@@ -43,20 +60,14 @@ function ProgressBar(
     ...rest
   } = props;
 
-  const {
-    progressBarProps,
-    labelProps
-  } = useProgressBar({ ...props, value });
+  const { progressBarProps, labelProps } = useProgressBar({ ...props, value });
 
-  let barWidth = '100%';
-  let percentage = 100;
-  // Calculate the width of the progress bar as a percentage
-  if (!isIndeterminate) {
-    percentage = clamp((value - minValue) / (maxValue - minValue), 0, 1);
-    barWidth = `${Math.round(percentage * 100)}%`;
-  }
-
-
+  const percentage = isIndeterminate
+    ? 1
+    : clamp((value - minValue) / (maxValue - minValue), 0, 1);
+  const barWidth = isIndeterminate
+    ? "100%"
+    : `${Math.round(percentage * 100)}%`;
 
   if (!ariaLabel && !ariaLabelledby) {
     console.warn(
@@ -64,50 +75,54 @@ function ProgressBar(
     );
   }
 
+  const StepIndicator = ({
+    index,
+    currentStep,
+    stepProgress,
+  }: {
+    index: number;
+    currentStep: number;
+    stepProgress: number;
+  }) => {
+    const stepClassName = st(classes.stepIndicator, {
+      active: index < currentStep ? true : false,
+    });
+    const fillStyle: CSSProperties = {
+      width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
+      height: "100%",
+    };
+    const currentStepClassName = st(classes.stepIndicatorFill, {
+      isActive: index < currentStep ? true : false,
+    });
+
+    return (
+      <div key={index} className={stepClassName}>
+        <div style={fillStyle} className={currentStepClassName} />
+      </div>
+    );
+  };
+
   return (
     <div
-      className={st(
-        classes.root,
-        {
-          isIndeterminate,
-          size,
-          variant,
-        },
-        classNameProp
-      )}
+      className={st(classes.root, { isIndeterminate, size, variant }, classNameProp)}
       {...progressBarProps}
       {...rest}
       ref={ref}
     >
-      <div
-        className={st(classes.label)}
-        style={{ display: "flex", justifyContent: "space-between" }}
-      >
+      <div className={st(classes.label)}>
         {label && <span {...labelProps}>{label}</span>}
       </div>
-      <div
-        className={st(classes.track)}
-      >
+      <div className={st(classes.track)}>
         {totalSteps && totalSteps > 1 ? (
           <div className={st(classes.stepContainer)}>
-            {[...Array(totalSteps)].map((_, index) => {
-              const stepClassName = st(classes.stepIndicator, {
-                active: index < currentStep ? true : false
-              });
-              const fillStyle: CSSProperties = {
-                width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
-                height: "100%",
-                // background: index < currentStep ? "orange" : "lightgray"
-              };
-              const currentStepClassName = st(classes.stepIndicatorFill, {
-                isActive: index < currentStep ? true : false
-              });
-              return (
-                <div key={index} className={stepClassName}>
-                  <div style={fillStyle} className={currentStepClassName} />
-                </div>
-              );
-            })}
+            {[...Array(totalSteps)].map((_, index) => (
+              <StepIndicator
+                key={index}
+                index={index}
+                currentStep={currentStep}
+                stepProgress={stepProgress}
+              />
+            ))}
           </div>
         ) : (
           <div className={st(classes.stepIndicator)}>
@@ -126,5 +141,5 @@ function ProgressBar(
  * ProgressBars show the progression of a system operation such as downloading, uploading, or processing, in a visual way.
  * They can represent determinate or indeterminate progress.
  */
-const _ProgressBar = forwardRef(ProgressBar);
-export { _ProgressBar as ProgressBar };
+const ForwardedProgressBar = forwardRef(ProgressBar);
+export { ForwardedProgressBar as ProgressBar };
