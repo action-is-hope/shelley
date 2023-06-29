@@ -9,7 +9,10 @@ import {
 import dedent from "ts-dedent";
 import { Notification } from "../../indexLib";
 
-import { InlineNotification } from "./Notification.examples";
+import {
+  InlineNotification,
+  InlineNotificationWithChildren,
+} from "./Notification.examples";
 
 <Meta
   title="Overlays/Notification"
@@ -73,5 +76,23 @@ Notification component for displaying a notification.
     }}
   >
     <InlineNotification />
+  </Story>
+</Preview>
+
+## Example
+
+<Preview>
+  <Story
+    name="a) Inline notification with children"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineNotificationWithChildren />
   </Story>
 </Preview>
