@@ -7,51 +7,69 @@
     overBackground,
     variant(enum(overBackground));
 
+  --loader-bar-small-width: 60px;
+  --loader-bar-small-height: 60px;
+  --loader-bar-small-border-size: 2px;
 
-  --loader-circle-small-width: 60px;
-  --loader-circle-small-height: 60px;
-  --loader-circle-small-border-size: 2px;
+  --loader-bar-medium-width: 150px;
+  --loader-bar-medium-height: 150px;
+  --loader-bar-medium-border-size: 3px;
 
-  --loader-circle-medium-width: 150px;
-  --loader-circle-medium-height: 150px;
-  --loader-circle-medium-border-size: 3px;
+  --loader-bar-large-width: 300px;
+  --loader-bar-large-height: 300px;
+  --loader-bar-large-border-size: 4px;
 
-  --loader-circle-large-width: 300px;
-  --loader-circle-large-height: 300px;
-  --loader-circle-large-border-size: 4px;
-
-  --loader-circle-track-color: lightgrey;
-  --loader-circle-track-fill-color: grey;
+  --loader-bar-track-color: lightgrey;
+  --loader-bar-track-fill-color: grey;
 
   /* Defaults to medium */
-  --loader-circle-width: var(--loader-circle-medium-width);
-  --loader-circle-height: var(--loader-circle-medium-height);
-  --loader-circle-border-size: var(--loader-circle-medium-border-size);
+  --loader-bar-width: var(--loader-bar-medium-width);
+  --loader-bar-height: var(--loader-bar-medium-height);
+  --loader-bar-border-size: var(--loader-bar-medium-border-size);
 }
 
 .root:size(small) {
-  --loader-circle-width: var(--loader-circle-small-width);
-  --loader-circle-height: var(--loader-circle-small-height);
-  --loader-circle-border-size: var(--loader-circle-small-border-size);
+  --loader-bar-width: var(--loader-bar-small-width);
+  --loader-bar-height: var(--loader-bar-small-height);
+  --loader-bar-border-size: var(--loader-bar-small-border-size);
 }
 
 .root:size(large) {
-  --loader-circle-width: var(--loader-circle-large-width);
-  --loader-circle-height: var(--loader-circle-large-height);
-  --loader-circle-border-size: var(--loader-circle-large-border-size);
+  --loader-bar-width: var(--loader-bar-large-width);
+  --loader-bar-height: var(--loader-bar-large-height);
+  --loader-bar-border-size: var(--loader-bar-large-border-size);
 }
+.root {}
+
+.stepActive {}
+
+.trackWrapper {}
+
+.track {}
+
+.fill {}
+
+.label {}
+
+.stepContainer {}
+
+.stepIndicator {}
+
+.stepIndicatorFill {}
+
 .root {
 
   width: 100%;
   height: 8px;
   border-radius: 4px;
   overflow: hidden;
+  width: var(--loader-bar-width);
+  height: var(--loader-bar-height);
+}
 
-  /* provisional */
-  width: 80vh;
-  height: 50px;
-width: var(--loader-circle-width);
-height: var(--loader-circle-height);
+.root:isIndeterminate .fill {
+
+  animation: indeterminateAnimation 2s linear infinite;
 }
 
 .step {
@@ -70,10 +88,6 @@ height: var(--loader-circle-height);
   height: 10px;
 }
 
-.track {
-  /* background-color: #e6e6e6; */
-}
-
 .fill {
   background-color: #007a4d;
 }
@@ -86,8 +100,6 @@ height: var(--loader-circle-height);
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  /* background-color: transparent; */
-  /* height: 10px; */
 }
 
 .stepIndicator {
@@ -105,18 +117,10 @@ height: var(--loader-circle-height);
   background-color: #007a4d;
 }
 
-
-
-.root:isIndeterminate .fill {
-
-  animation: indeterminateAnimation 2s linear infinite;
-}
-
 @keyframes indeterminateAnimation {
   0% {
     transform: translateX(-100%);
   }
-
   100% {
     transform: translateX(200%);
   }
