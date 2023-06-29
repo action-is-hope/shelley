@@ -1,0 +1,77 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import { Notification } from "../../indexLib";
+
+import { InlineNotification } from "./Notification.examples";
+
+<Meta
+  title="Overlays/Notification"
+  argTypes={{
+    placement: {
+      control: {
+        type: "select",
+        options: [
+          "bottom",
+          "bottom left",
+          "bottom right",
+          "bottom start",
+          "bottom end",
+          "top",
+          "top left",
+          "top right",
+          "top start",
+          "top end",
+          "left",
+          "left top",
+          "left bottom",
+          "start",
+          "start top",
+          "start bottom",
+          "right",
+          "right top",
+          "right bottom",
+          "end",
+          "end top",
+          "end bottom",
+        ],
+      },
+    },
+  }}
+  component={Notification}
+/>
+
+# Notification
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { Notification } from "@actionishope/shelley";
+  `}
+/>
+
+Notification component for displaying a notification.
+
+## Example
+
+<Preview>
+  <Story
+    name="a) Inline notification"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineNotification />
+  </Story>
+</Preview>

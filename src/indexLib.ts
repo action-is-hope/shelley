@@ -21,6 +21,7 @@ export * from "./MenuTrigger";
 export * from "./Menu";
 export * from "./MenuItem";
 export * from "./Modal";
+export * from "./Notification";
 export * from "./Popup";
 export * from "./ProgressCircle";
 export * from "./Radio";

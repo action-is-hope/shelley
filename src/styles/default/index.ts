@@ -21,6 +21,7 @@ import "./listBoxOption.st.css";
 import "./menu.st.css";
 import "./menuItem.st.css";
 import "./modal.st.css";
+import "./notification.st.css";
 import "./popup.st.css";
 import "./radio.st.css";
 import "./switch.st.css";
