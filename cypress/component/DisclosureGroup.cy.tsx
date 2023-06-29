@@ -158,7 +158,7 @@ describe("DisclosureGroup", () => {
       .and("to.have.string", "accordionItem");
     cy.get(disclosure)
       .should("have.attr", "class")
-      .and("to.have.string", "disclosure");
+      .and("to.have.string", "root");
     cy.get(trigger)
       .should("have.attr", "class")
       .and("to.have.string", "trigger");
