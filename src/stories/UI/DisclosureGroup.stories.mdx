@@ -9,18 +9,19 @@ import {
 import { DisclosureGroup } from "../../indexLib";
 import dedent from "ts-dedent";
 import {
-  SingleDisclosure,
   DynamicDisclosureGroup,
+  SingleDisclosure,
+  SingleDisclosure2,
 } from "./DisclosureGroup.examples";
 
 <Meta title="Data/DisclosureGroup" component={DisclosureGroup} />
 
-# DisclosureGroup Component
+# DisclosureGroup
 
 <Source
   language="tsx"
   code={dedent`
-    import { DisclosureGroup } from "@actionishope/shelley";
+    import { DisclosureGroup } from "@actionishope/shelley/Disclosure";
   `}
 />
 
@@ -34,6 +35,23 @@ This component is useful for creating collapsible sections or accordion-style in
 
 This example displays a disclosure group with an optional title and a list of items.
 Items are passed as an array of objects with a title and items property.
+
+<Preview>
+  <Story
+    name="SingleDisclosure2"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <SingleDisclosure2 />
+  </Story>
+</Preview>
 
 <Preview>
   <Story
@@ -94,7 +112,7 @@ revealed when the trigger is activated. The `Disclosure` component receives the 
 `title`, and `children` from each item in the `items` array.
 
 The `Disclosure` component is responsible for managing the disclosure state using the `useDisclosure`
-custom hook. It initializes the state variables for `isExpanded` (whether the disclosure item
+custom hook. It initializes the state variables for `isOpen` (whether the disclosure item
 is expanded or collapsed) and `height` (the height of the hidden content).
 
 The `useDisclosure` hook provides the necessary props and state variables for the `Disclosure`
@@ -108,7 +126,7 @@ for toggling the disclosure state when activated.
 
 The hidden content is rendered within a `<Text>` component, which handles the accessibility
 attributes and styling of the hidden content. The content is initially hidden and its height
-is set dynamically based on the `isExpanded` state.
+is set dynamically based on the `isOpen` state.
 
 ### Accessibility
 

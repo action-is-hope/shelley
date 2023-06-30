@@ -1,4 +1,11 @@
-import { Disclosure, DisclosureGroup, Radio, RadioGroup } from "../../indexLib";
+import { useState } from "react";
+import {
+  Button,
+  Disclosure,
+  DisclosureGroup,
+  Radio,
+  RadioGroup,
+} from "../../indexLib";
 
 const items = [
   {
@@ -96,5 +103,29 @@ export const SingleDisclosure = () => {
         <Radio value="no">No</Radio>
       </RadioGroup>
     </Disclosure>
+  );
+};
+
+export const SingleDisclosure2 = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  return (
+    <>
+      <Button onPress={() => setIsOpen(!isOpen)}>Test</Button>
+      <Disclosure
+        iconPos="end"
+        iconText="Show more"
+        // id="itemId"
+        title="Single Disclosure"
+        data-id="disclosure"
+        isOpen={isOpen}
+        onOpenChange={() => setIsOpen((v) => !v)}
+        // defaultOpen
+      >
+        <RadioGroup label="Are you a wizard?" defaultValue="yes">
+          <Radio value="yes">Yes</Radio>
+          <Radio value="no">No</Radio>
+        </RadioGroup>
+      </Disclosure>
+    </>
   );
 };

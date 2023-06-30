@@ -7,7 +7,7 @@
 }
 
 .root {
-  -st-states: isExpanded;
+  -st-states: isOpen;
 }
 
 .title {
@@ -33,7 +33,7 @@
   opacity: 0;
 }
 
-.root:isExpanded::hiddenContent {
+.root:isOpen::hiddenContent {
   opacity: 1;
 }
 

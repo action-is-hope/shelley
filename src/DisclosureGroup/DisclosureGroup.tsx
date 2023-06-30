@@ -1,15 +1,16 @@
+"use-client";
 /** DisclosureGroup.tsx */
+import type React from "react";
 import { Disclosure, DisclosureProps } from "./Disclosure";
 import { forwardRef, ReactNode } from "react";
-import type { AlignPos } from "../typings/shared-types";
+import type { AlignPos, ComponentBase } from "../typings/shared-types";
 import { st, classes } from "./disclosureGroup.st.css";
 
 export interface DisclosureGroupProps
-  extends React.HTMLAttributes<HTMLElement> {
+  extends React.HTMLAttributes<HTMLElement>,
+    ComponentBase {
   /** Disclosure array of items */
   items: DisclosureProps[];
-  /** Data attribute for Cypress tests. */
-  "data-id"?: string;
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
   /** Icon position "top" | "end" | "bottom" | "start" */

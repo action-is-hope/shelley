@@ -179,7 +179,7 @@ describe("DisclosureGroup", () => {
       .click()
       .parent()
       .should("have.attr", "class")
-      .and("to.have.string", "isExpanded");
+      .and("to.have.string", "isOpen");
   });
 
   // Should render correct aria attributes

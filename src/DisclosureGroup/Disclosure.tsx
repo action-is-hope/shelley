@@ -1,9 +1,9 @@
+"use-client";
 /** Disclosure.tsx */
 import React, { useEffect, useRef, ReactNode, forwardRef } from "react";
 import { Text } from "../Text/Text";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
-import { useId } from "@react-aria/utils";
 import type { AlignPos } from "../typings/shared-types";
 import useDisclosure from "./useDisclosure";
 import { st, classes } from "./disclosure.st.css";
@@ -17,8 +17,6 @@ import { st, classes } from "./disclosure.st.css";
 6. The `useId` hook is used to generate an id for the disclosure. */
 
 export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
-  /** ID, required for accessibility aria assignment. */
-  id: string;
   /** Disclosure title */
   title: string;
   /** Provide your own icon for the Trigger */
@@ -29,11 +27,15 @@ export interface DisclosureProps extends React.HTMLAttributes<HTMLElement> {
   iconPos?: AlignPos;
   /** Complimentary text for the icon */
   iconText?: string;
+  /** defaultOpen */
+  defaultOpen?: boolean;
+  /** isOpen */
+  isOpen?: boolean;
+  onOpenChange?: () => void;
 }
 
 function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
   const {
-    id: idProp,
     className,
     children,
     title,
@@ -41,13 +43,18 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     dataId,
     iconPos,
     iconText,
+    isOpen: isOpenProp,
+    defaultOpen,
+    onOpenChange,
     ...rest
   } = props;
 
-  const id = useId(idProp);
   const hiddenContentRef = useRef<HTMLDivElement>(null);
-  const { triggerProps, contentProps, isExpanded } = useDisclosure({
-    id,
+  const { triggerProps, contentProps, isOpen } = useDisclosure({
+    id: props.id,
+    isOpen: isOpenProp,
+    onOpenChange,
+    defaultOpen,
     hiddenContentRef,
     children,
   });
@@ -55,23 +62,23 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
   /**
    * Hides focusable links inside of aria-hidden.
    * @param {HTMLElement} hiddenContentRef - The hidden content ref.
-   * @param {boolean} isExpanded - The isExpanded value.
+   * @param {boolean} isOpen - The isOpen value.
    */
   useEffect(() => {
     const links = hiddenContentRef?.current?.querySelectorAll("a");
     if (links) {
       const linkArray = Array.from(links) as HTMLElement[];
       for (const link of linkArray) {
-        link.tabIndex = isExpanded ? 0 : -1;
+        link.tabIndex = isOpen ? 0 : -1;
       }
     }
-  }, [isExpanded]);
+  }, [isOpen]);
 
   return (
     <article
       className={st(
         classes.root,
-        { isExpanded: triggerProps["aria-expanded"] },
+        { isOpen: triggerProps["aria-expanded"] },
         className
       )}
       data-id={dataId ? `${dataId}--disclosure` : undefined}
@@ -86,12 +93,6 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
         variant={false}
         tone={false}
         {...triggerProps}
-        onClick={() => triggerProps.onClick()}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            triggerProps.onClick();
-          }
-        }}
         data-id={dataId ? `${dataId}--trigger` : undefined}
       >
         <Text
