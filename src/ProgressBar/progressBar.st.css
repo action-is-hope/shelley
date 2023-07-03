@@ -42,9 +42,7 @@
 }
 .root {}
 
-.stepActive {
-  -st-states: active;
-}
+.stepActive {}
 
 .trackWrapper {}
 
@@ -76,12 +74,6 @@
 }
 
 .step {
-  height: 100%;
-  background-color: #007a4d;
-  transition: width 0.2s ease-in-out;
-}
-
-.stepActive {
   height: 100%;
   background-color: #007a4d;
   transition: width 0.2s ease-in-out;

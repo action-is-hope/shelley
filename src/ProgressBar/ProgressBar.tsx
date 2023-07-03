@@ -85,10 +85,6 @@ function ProgressBar(
     stepProgress: number;
   }) => {
 
-    const stepClassName = st(classes.stepIndicator, {
-      active: index < currentStep ? true : false
-    });
-
     const fillStyle: CSSProperties = {
       width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
       height: "100%",
