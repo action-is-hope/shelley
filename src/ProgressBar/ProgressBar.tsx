@@ -115,7 +115,7 @@ function ProgressBar(
       <div className={st(classes.track)}>
         {totalSteps && totalSteps > 1 ? (
           <div className={st(classes.stepContainer)}>
-            {[...Array(totalSteps)].map((_, index) => (
+            {Array.from({ length: totalSteps }).map((_, index) => (
               <StepIndicator
                 key={index}
                 index={index}
