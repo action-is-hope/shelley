@@ -3,38 +3,150 @@ import {
   Canvas,
   Story,
   Preview,
+  Source,
   ArgsTable,
   Props,
 } from "@storybook/addon-docs";
 import { DisclosureGroup } from "../../indexLib";
 import dedent from "ts-dedent";
 import {
-  DynamicDisclosureGroup,
+  DisclosureGroupPropsTable,
   SingleDisclosure,
+  SingleDisclosureCustomIcon,
+  DisclosureControlledExample,
+  DynamicDisclosureGroup,
   SingleDisclosure2,
+  Example3,
 } from "./DisclosureGroup.examples";
 
 <Meta title="Data/DisclosureGroup" component={DisclosureGroup} />
 
-# DisclosureGroup
+# Disclosures
 
 <Source
   language="tsx"
   code={dedent`
-    import { DisclosureGroup } from "@actionishope/shelley/Disclosure";
+    import { Disclosure, DisclosureGroup } from "@actionishope/shelley/Disclosure";
   `}
 />
 
-Disclosures are used to show and hide content. They are useful for showing and
-hiding content that is not immediately relevant to the user.
-The `DisclosureGroup` component is a React component that displays a collection of disclosure items.
-Each disclosure item can be expanded or collapsed to reveal or hide its content.
-This component is useful for creating collapsible sections or accordion-style interfaces.
+A Disclosure component allows users to toggle the visibility of additional content by clicking on a title or trigger. It offers a convenient way to expand or collapse sections of information, providing a more organised and user-friendly presentation of content.
+
+## Single Disclosure
+
+Disclosure can be used directly or indirectly via DiaclosureGroup, the example below demonstrates a single Disclosure with the icon position set to `end`.
+
+<Story
+  name="a) Disclosure"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Disclosure
+  title="Single Disclosure"
+  triggerProps={{ iconPos: "end", vol: 5 }}
+>
+  <>
+    <H2 vol={3}>Disclosure title</H2>
+    <P vol={2}>Some content inside of the Disclosure.</P>
+  </>
+</Disclosure>`,
+      },
+    },
+  }}
+>
+  {SingleDisclosure.bind({})}
+</Story>
+
+<Source language="tsx" id="data-disclosuregroup--a-disclosure" />
+
+We are leveraging the `triggerProps` here which allows you to use any of the visual props associated with the Button component (Disclosure uses Button for the Trigger). All of the visual props are set to `false` by default so you can choose to apply your own styling rather than use that of the Button.
+
+**Note:** `iconPos` can be provided directly or as part of the `triggerProps` (as above) where it will take precedence.
+
+## Custom Icon
+
+It is possible to override the default icon but it must be wrapped in an Icon component in order for it to work properly.
+
+<Story
+  name="b) Disclosure Icon"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { Icon, IconProps } from "@actionishope/shelley/Icon";\n
+const CustomIcon: React.VFC<IconProps> = () => (
+  /* This is a Material UI icon so we set the viewBox accordingly. */
+  <Icon viewBox="0 0 24 24">
+    <path d="m20 12-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
+  </Icon>
+);\n
+<Disclosure
+  title="Single Disclosure"
+  triggerIcon={CustomIcon}
+  iconPos="end"
+>
+  <>
+    <H2 vol={3}>Disclosure title</H2>
+    <P vol={2}>Some content inside of the Disclosure.</P>
+  </>
+</Disclosure>
+`,
+      },
+    },
+  }}
+>
+  {SingleDisclosureCustomIcon.bind({})}
+</Story>
+
+<Source language="tsx" id="data-disclosuregroup--b-disclosure-icon" />
+
+### Events
+
+Setting a selected option can be done by using the defaultSelectedKey or selectedKey prop. The selected key corresponds to the key of an item. When Select is used with a dynamic collection as described above, the key of each item is derived from the data. See the react-stately Selection docs for more details.
+
+<Story
+  name="b) Events"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<Disclosure title="Single Disclosure" iconPos="end" >
+  <>
+    <H2 vol={4}>Disclosure title</H2>
+    <P>Some content inside of the Disclosure.</P>
+  </>
+</Disclosure>`,
+      },
+    },
+  }}
+>
+  {DisclosureControlledExample.bind({})}
+</Story>
+
+<Source language="tsx" id="data-disclosuregroup--a-disclosure" />
 
 ## Example
 
 This example displays a disclosure group with an optional title and a list of items.
 Items are passed as an array of objects with a title and items property.
+
+<Preview>
+  <Story
+    name="Example3"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+TBC`,
+        },
+      },
+    }}
+  >
+    <Example3 />
+  </Story>
+</Preview>
 
 <Preview>
   <Story
@@ -97,37 +209,6 @@ TBC`,
 
 ### How it Works
 
-The `DisclosureGroup` component renders a `<div>` element as the root container for
-the disclosure group. It applies CSS classes to the root element and attaches the
-custom data-id attribute if provided.
-
-Inside the root `<div>`, an `<ul>` element is rendered with a CSS class indicating that
-it represents an accordion-style interface. The `items` array is mapped over to render
-each individual disclosure item as an `<li>` element within the `<ul>`.
-Each disclosure item is wrapped in a `Disclosure` component.
-
-The `Disclosure` component handles the state and behavior of each disclosure item.
-It consists of a trigger element (button) and the hidden content that gets
-revealed when the trigger is activated. The `Disclosure` component receives the `id`,
-`title`, and `children` from each item in the `items` array.
-
-The `Disclosure` component is responsible for managing the disclosure state using the `useDisclosure`
-custom hook. It initializes the state variables for `isOpen` (whether the disclosure item
-is expanded or collapsed) and `height` (the height of the hidden content).
-
-The `useDisclosure` hook provides the necessary props and state variables for the `Disclosure`
-component. It sets up event listeners for resizing the window and toggling the disclosure item.
-It also calculates the height of the hidden content and manages the accessibility
-attributes of the disclosure item.
-
-The disclosure item's trigger element is rendered as a `<Button>` component, which receives
-props such as `onClick`, `onKeyDown`, and `data-id`. The trigger element is responsible
-for toggling the disclosure state when activated.
-
-The hidden content is rendered within a `<Text>` component, which handles the accessibility
-attributes and styling of the hidden content. The content is initially hidden and its height
-is set dynamically based on the `isOpen` state.
-
 ### Accessibility
 
 The `DisclosureGroup` component is designed with accessibility in mind. It uses semantic
@@ -163,7 +244,7 @@ requirements and guidelines.
 
 ### DisclosureGroup Props
 
-<ArgsTable of={DisclosureGroup} />
+<ArgsTable of={DisclosureGroupPropsTable} />
 
 The `DisclosureGroup` component accepts the following props:
 
@@ -190,8 +271,8 @@ allowing you to customize the appearance of the disclosure group.
 Additionally, you can target the individual elements within the `DisclosureGroup`
 component using CSS selectors and styling rules based on their class names.
 The specific class names used in the component's rendering can be found in the code,
-such as `classes.root`, `classes.accordion`, `classes.accordionItem`, `classes.disclosure`,
-`classes.trigger`, `classes.title`, `classes.hiddenContent`, and `classes.content`.
+such as `classes.root`, `classes.disclosure`,
+`classes.trigger`, `classes.title`, `classes.transition`, and `classes.content`.
 
 ## Single Disclosure
 

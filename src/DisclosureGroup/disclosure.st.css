@@ -1,23 +1,19 @@
 /* disclosure.st.css */
 @namespace "Disclosure";
-
-:import {
-  -st-from: "../Text/text.st.css";
-  -st-default: Text;
-}
+@st-import Button from "../Button/button.st.css";
 
 .root {
   -st-states: isOpen;
 }
 
-.title {
-  -st-extends: Text;
-}
-
 .trigger {
-  background: none;
+  -st-extends: Button;
+  -st-states: isOpen;
+  /* background: none;
   border: none;
   padding: 0;
+  width: 100%; */
+  width: 100%;
 }
 
 .trigger:hover {
@@ -26,15 +22,15 @@
 
 .triggerIcon {}
 
-.hiddenContent {
+.transition {
   transition: opacity 250ms, margin-top 250ms, height 250ms;
   overflow: hidden;
   display: block;
   opacity: 0;
 }
 
-.root:isOpen::hiddenContent {
+.root:isOpen::transition {
   opacity: 1;
 }
 
-.content {}
+.transition .content {}

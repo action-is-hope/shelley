@@ -1,13 +1,11 @@
 /* disclosureGroup.st.css */
 @st-import Shelley, [
-    --color-ui-inverse
-  ] from "./project.st.css";
-
+  --color-ui-inverse
+] from "./project.st.css";
 @st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
 
 @st-scope Shelley {
-
-  DisclosureGroup::accordionItem {
+  /* DisclosureGroup::accordionItem {
     border-bottom: 2px solid var(--color-ui-inverse);
-  }
+  } */
 }

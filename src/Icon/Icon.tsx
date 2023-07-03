@@ -11,12 +11,14 @@ export interface IconProps
     ComponentBase {
   /** Alternative text via VisuallyHidden */
   alt?: string;
+  altVisible?: boolean;
   /** Set to match icon set; e.g. for Material UI icons use "0 0 24 24". */
   viewBox?: string;
 }
 
 function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
   const {
+    altVisible,
     children,
     className: classNameProp,
     alt,
@@ -24,6 +26,11 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
     ...rest
   } = props;
 
+  const altText = altVisible ? (
+    <span className={classes.altVisible}>{alt}</span>
+  ) : (
+    <VisuallyHidden>{alt}</VisuallyHidden>
+  );
   if (alt && props["aria-label"])
     console.warn(
       "An <Icon> element has been given both an alt an aria-label. The aria-label will take precedence."
@@ -43,7 +50,7 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
             on a non-focusable element. The is a very reliable method. 
             - https://simplyaccessible.com/article/7-solutions-svgs/. 
         */}
-      {alt && !props["aria-label"] && <VisuallyHidden>{alt}</VisuallyHidden>}
+      {alt && !props["aria-label"] && altText}
     </>
   );
 }

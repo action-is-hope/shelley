@@ -7,10 +7,9 @@
  * 
  */
 @st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
-@st-import Modal, [enterDone] from "../../Modal/modal.st.css";
+@st-import Modal, [enterDone, blurBackground] from "../../Modal/modal.st.css";
 
 @st-scope Default {
-
   Modal::backdrop {
     background-color: var(--background-color-modal-backdrop);
   }
@@ -29,5 +28,4 @@
    * the phases (enterDone etc) from modal.st.css
    * Modal:transition(up).enterDone {}
    */
-
 }

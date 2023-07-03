@@ -1,18 +1,35 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Disclosure,
+  DisclosureProps,
   DisclosureGroup,
+  DisclosureGroupProps,
+  Switch,
   Radio,
   RadioGroup,
+  Text,
+  H2,
+  P,
+  Icon,
+  IconProps,
 } from "../../indexLib";
+import Warning from "../../icons/Warning";
+
+function _DisclosureGroupPropsTable<T extends object>(
+  props: DisclosureGroupProps<T>
+) {
+  return <DisclosureGroup {...props} />;
+}
+export const DisclosureGroupPropsTable = _DisclosureGroupPropsTable;
 
 const items = [
   {
-    id: `1-storybook-showHide`,
     title: "The principle of mentalism",
     children: (
-      <div
+      <Text
+        as="div"
+        vol={2}
         dangerouslySetInnerHTML={{
           __html: `<p><em>"The All is Mind; the Universe is Mental." —The Kybalion</em></p>
           <p>The principle of mentalism states that the universe is akin to a mental projection. 
@@ -26,10 +43,11 @@ const items = [
     ),
   },
   {
-    id: `2-storybook-showHide`,
     title: "The principle of correspondence",
     children: (
-      <div
+      <Text
+        as="div"
+        vol={2}
         dangerouslySetInnerHTML={{
           __html: `
         <p><em>"As above, so below; as below, so above." —The Kybalion</em></p>
@@ -42,10 +60,11 @@ const items = [
     ),
   },
   {
-    id: `3-storybook-showHide`,
     title: "The principle of vibration",
     children: (
-      <div
+      <Text
+        as="div"
+        vol={2}
         dangerouslySetInnerHTML={{
           __html: `<p><em>"Nothing rests; everything moves; everything vibrates." —The Kybalion</em></p>
           <p>Yes, believe it or not, the idea of "vibes" has been around a long, long time. 
@@ -59,10 +78,11 @@ const items = [
     ),
   },
   {
-    id: `4-storybook-showHide`,
     title: "The principle of polarity",
     children: (
-      <div
+      <Text
+        as="div"
+        vol={2}
         dangerouslySetInnerHTML={{
           __html: `<p><em>"Everything is dual; everything has poles; everything has its pair of opposites; 
           like and unlike are the same; opposites are identical in nature but different in degree; 
@@ -80,22 +100,57 @@ const items = [
 ];
 
 export const DynamicDisclosureGroup = () => {
-  return (
-    <DisclosureGroup
-      title="Disclosure Group"
-      items={items}
-      data-id="disclosure-group"
-    />
-  );
+  return <DisclosureGroup title="Disclosure Group" items={items} singleView />;
 };
 
 export const SingleDisclosure = () => {
   return (
     <Disclosure
+      title="Single Disclosure"
+      triggerProps={{ iconPos: "end", vol: 5 }}
+    >
+      <>
+        <H2 vol={3}>Disclosure title</H2>
+        <P vol={2}>Some content inside of the Disclosure.</P>
+      </>
+    </Disclosure>
+  );
+};
+
+export const SingleDisclosureCustomIcon = () => {
+  const CustomIcon: React.VFC<IconProps> = () => (
+    /* This is a Material UI icon so we set the viewBox accordingly. */
+    <Icon viewBox="0 0 24 24">
+      <path d="m20 12-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
+    </Icon>
+  );
+
+  return (
+    <Disclosure
+      title="Single Disclosure"
+      triggerIcon={CustomIcon}
+      iconPos="end"
+    >
+      <>
+        <H2 vol={3}>Disclosure title</H2>
+        <P vol={2}>Some content inside of the Disclosure.</P>
+      </>
+    </Disclosure>
+  );
+};
+
+export const SingleDisclosureOLD = () => {
+  return (
+    <Disclosure
       iconPos="end"
       iconText="Show more"
       id="itemId"
-      title="Single Disclosure"
+      // title="Single Disclosure"
+      title={
+        <>
+          Single Disclosure <span>Show more</span>
+        </>
+      }
       data-id="disclosure"
     >
       <RadioGroup label="Are you a wizard?" defaultValue="yes">
@@ -106,26 +161,76 @@ export const SingleDisclosure = () => {
   );
 };
 
+const items2 = [
+  {
+    title: "Mark",
+    contentItemOne: "Something",
+    contentItemTwo: "Something else",
+  },
+  {
+    title: "Paul",
+    contentItemOne: "Something",
+    contentItemTwo: "Something else",
+  },
+];
+
+export const Example3: React.FC = () => (
+  <DisclosureGroup items={items2}>
+    {(item) => (
+      <>
+        <P>{item.contentItemOne}</P>
+        <P>{item.contentItemTwo}</P>
+      </>
+    )}
+  </DisclosureGroup>
+);
+
 export const SingleDisclosure2 = () => {
-  const [isOpen, setIsOpen] = useState(true);
   return (
-    <>
-      <Button onPress={() => setIsOpen(!isOpen)}>Test</Button>
+    <DisclosureGroup>
       <Disclosure
         iconPos="end"
+        iconAltVisible
         iconText="Show more"
-        // id="itemId"
-        title="Single Disclosure"
-        data-id="disclosure"
-        isOpen={isOpen}
-        onOpenChange={() => setIsOpen((v) => !v)}
-        // defaultOpen
+        title="Double Disclosure"
       >
         <RadioGroup label="Are you a wizard?" defaultValue="yes">
           <Radio value="yes">Yes</Radio>
           <Radio value="no">No</Radio>
         </RadioGroup>
       </Disclosure>
-    </>
+      <Disclosure iconPos="end" iconText="Show more" title="Double Disclosure">
+        <RadioGroup label="Are you a wizard?" defaultValue="yes">
+          <Radio value="yes">Yes</Radio>
+          <Radio value="no">No</Radio>
+        </RadioGroup>
+      </Disclosure>
+    </DisclosureGroup>
+  );
+};
+
+export const DisclosureControlledExample = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  return (
+    <div style={{ padding: 10 }}>
+      <Switch isSelected={isOpen} onChange={() => setIsOpen((v) => !v)}>
+        Toggle open/close
+      </Switch>
+      <Disclosure
+        iconPos="end"
+        iconText="Show more"
+        //optional id
+        // id="itemId"
+        title="Single Disclosure"
+        isOpen={isOpen}
+        onOpenChange={() => setIsOpen((v) => !v)}
+        // defaultOpen
+      >
+        <>
+          <H2 vol={3}>Disclosure title</H2>
+          <P vol={2}>Some content inside of the Disclosure.</P>
+        </>
+      </Disclosure>
+    </div>
   );
 };

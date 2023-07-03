@@ -7,7 +7,7 @@ interface UseDisclosureProps {
   isOpen?: boolean;
   onOpenChange?: () => void;
   defaultOpen?: boolean;
-  hiddenContentRef?: React.RefObject<HTMLDivElement>;
+  contentRef?: React.RefObject<HTMLDivElement>;
   children?: any;
 }
 
@@ -46,7 +46,7 @@ trigger function that can be used to toggle the disclosure state.
 1. We create a function useDisclosure which takes an object as the argument. The object has the following properties:
    - id: A string to uniquely identify the disclosure.
    - isOpen: A boolean to set the initial state of the disclosure. Optional.
-   - hiddenContentRef: A React ref to the hidden content of the disclosure. Optional.
+   - contentRef: A React ref to the hidden content of the disclosure. Optional.
 2. We then create the useDisclosureReturn object which has the following properties:
    - triggerProps: An object with the props that should be applied to the trigger element (the button).
    - contentProps: An object with the props that should be applied to the content (the hidden element).
@@ -71,18 +71,18 @@ const useDisclosure = ({
   isOpen: isOpenProp,
   defaultOpen = false,
   onOpenChange,
-  hiddenContentRef,
+  contentRef,
 }: UseDisclosureProps): useDisclosureReturn => {
   const id = useId(idProp);
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
   const [height, setHeight] = useState<number>(0);
 
   const setHiddenContentHeight = useCallback(() => {
-    if (hiddenContentRef && hiddenContentRef.current) {
-      setHeight(hiddenContentRef.current.scrollHeight);
+    if (contentRef && contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
     }
-    // }, [hiddenContentRef, isOpenProp]);
-  }, [hiddenContentRef]);
+    // }, [contentRef]);
+  }, [contentRef, isOpenProp]);
 
   useEffect(() => {
     if (isOpenProp !== undefined) {
@@ -94,29 +94,35 @@ const useDisclosure = ({
     setHiddenContentHeight();
     // Fire when we resize (else text be overlapping!).
     window.addEventListener("resize", setHiddenContentHeight);
-    return () => {
-      // Tidy up
-      window.removeEventListener("resize", setHiddenContentHeight);
-    };
+    return () => window.removeEventListener("resize", setHiddenContentHeight);
   }, [setHiddenContentHeight]);
 
-  // useEffect(() => {
-  //   if (isOpenProp !== undefined) {
-  //     setIsOpen(isOpenProp);
-  //   }
-  // }, [isOpenProp]);
-
-  // const trigger = useCallback(() => {
-  //   setHiddenContentHeight();
-  //   console.log("HI", isOpen);
-  //   // setIsOpen(!isOpen);
-  //   setIsOpen((v) => !v);
-  //   onOpenChange && onOpenChange(!isOpen);
-  // }, [setHiddenContentHeight]);
+  /**
+   * Hides focusable links inside of aria-hidden.
+   * @param {HTMLElement} contentRef - The hidden content ref.
+   * @param {boolean} isOpen - The isOpen value.
+   */
+  useEffect(() => {
+    const links = contentRef?.current?.querySelectorAll("a");
+    if (links) {
+      const linkArray = Array.from(links) as HTMLElement[];
+      for (const link of linkArray) {
+        link.tabIndex = isOpen ? 0 : -1;
+      }
+    }
+    const formElements = contentRef?.current?.querySelectorAll(
+      "input, button, select"
+    );
+    if (formElements) {
+      const formElementsArray = Array.from(formElements) as HTMLInputElement[];
+      for (const formElment of formElementsArray) {
+        formElment.disabled = isOpen ? false : true;
+      }
+    }
+  }, [isOpen]);
 
   const trigger = useCallback(() => {
     setHiddenContentHeight();
-    // setIsOpen((v) => !v);
     onOpenChange ? onOpenChange() : setIsOpen((v) => !v);
   }, [setHiddenContentHeight]);
 

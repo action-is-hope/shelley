@@ -33,8 +33,7 @@
 .content {}
 
 /* .transition {} */
-
-.blurBackground [data-focus-on-hidden] {
+.blurBackground [data-focus-on-hidden]:not(.root) {
   opacity: .5;
   filter: blur(2px);
 }
@@ -43,23 +42,23 @@
 
 /* Map transition liftcycle classes to global CSSTransistionGroup classes. */
 .enter {
-  -st-global: '.enter'
+  -st-global: '.enter';
 }
 
 .enterActive {
-  -st-global: '.enter-active'
+  -st-global: '.enter-active';
 }
 
 .enterDone {
-  -st-global: '.enter-done'
+  -st-global: '.enter-done';
 }
 
 .exit {
-  -st-global: '.exit'
+  -st-global: '.exit';
 }
 
 .exitActive {
-  -st-global: '.exit-active'
+  -st-global: '.exit-active';
 }
 
 .exitDone {
@@ -119,7 +118,6 @@
 }
 
 /* = Zoom */
-
 .root:transition(zoom).enter .content {
   transform: scale(0);
   opacity: 0;

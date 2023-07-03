@@ -1,14 +1,26 @@
 /* disclosureGroup.st.css */
 @st-import Default, [
-    --spacing-unit,
-  ] from "./project.st.css";
-
+  --spacing-unit,
+] from "./project.st.css";
 @st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
 
 @st-scope Default {
-
-  DisclosureGroup::accordionItem {
-    padding: var(--spacing-unit);
+  DisclosureGroup {
+    display: grid;
+    gap: 7px;
+    padding: 20px;
   }
 
+  /* DisclosureGroup::accordionItem {
+    padding: var(--spacing-unit);
+  } */
+  DisclosureGroup::disclosure::trigger::inner {
+    /* background-color: pink; */
+  }
+
+  DisclosureGroup::disclosure::trigger:isOpen {}
+
+  DisclosureGroup::disclosure::content {
+    /* background-color: green; */
+  }
 }

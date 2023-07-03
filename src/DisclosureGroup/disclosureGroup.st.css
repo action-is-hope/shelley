@@ -1,15 +1,10 @@
-/* disclosureGroup.st.css */
 @namespace "DisclosureGroup";
 
-
 /* DisclosureGroup */
+@st-import Disclosure from "./disclosure.st.css";
+
 .root {}
 
-.accordion {
-  list-style-type: none;
-  padding: 0;
+.disclosure {
+  -st-extends: Disclosure;
 }
-
-/* .wrapper {} */
-
-.accordionItem {}

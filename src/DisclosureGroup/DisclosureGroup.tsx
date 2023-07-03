@@ -1,37 +1,52 @@
 "use-client";
 /** DisclosureGroup.tsx */
 import type React from "react";
+import type { ReactElement, Ref } from "react";
 import { Disclosure, DisclosureProps } from "./Disclosure";
-import { forwardRef, ReactNode } from "react";
+import { useState, forwardRef, ReactNode } from "react";
 import type { AlignPos, ComponentBase } from "../typings/shared-types";
 import { st, classes } from "./disclosureGroup.st.css";
+import { useId } from "react-aria";
 
-export interface DisclosureGroupProps
-  extends React.HTMLAttributes<HTMLElement>,
+export type DisclosureChildren<T> =
+  | ReactElement<T>
+  | ReactElement<T>[]
+  | ((item: T, index: number) => ReactElement<T>);
+
+export interface DisclosureGroupProps<T>
+  extends Omit<DisclosureProps, "onOpenChange" | "children">,
     ComponentBase {
   /** Disclosure array of items */
-  items: DisclosureProps[];
+  items?: T[];
   /** Provide your own icon for the Trigger */
-  triggerIcon?: ReactNode;
+  // triggerIcon?: ReactNode;
   /** Icon position "top" | "end" | "bottom" | "start" */
-  iconPos?: AlignPos;
+  // iconPos?: AlignPos;
   /** Complimentary text for the icon */
-  iconText?: string;
+  // iconText?: string;
+  /** Childen or function if using items. */
+  children?: DisclosureChildren<T>;
+  /** Only one Disclosure will open at a time (accordian). */
+  singleView?: boolean;
 }
 
-function DisclosureGroup(
-  props: DisclosureGroupProps,
+function DisclosureGroup<T extends DisclosureProps>(
+  props: DisclosureGroupProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
   const {
     className,
     items,
-    "data-id": dataId,
     triggerIcon,
     iconPos,
     iconText,
+    children,
+    singleView,
+    "data-id": dataId,
     ...rest
   } = props;
+  const [openId, setOpenId] = useState<string | false>();
+
   return (
     <div
       className={st(classes.root, className)}
@@ -40,29 +55,36 @@ function DisclosureGroup(
       {...rest}
     >
       {/* DisclosureGroup - collection of disclosures */}
-      <ul
-        className={classes.accordion}
-        data-id={dataId ? `${dataId}--accordion` : undefined}
-      >
-        {items.map((item: DisclosureProps, index: number) => (
-          <li
-            key={index.toString()}
-            className={classes.accordionItem}
-            data-id={dataId ? `${dataId}--accordionItem` : undefined}
-          >
-            <Disclosure
-              id={item.id}
-              title={item.title}
-              triggerIcon={triggerIcon}
-              iconPos={iconPos}
-              iconText={iconText}
-              dataId={dataId ? dataId : undefined}
-            >
-              {item.children}
-            </Disclosure>
-          </li>
-        ))}
-      </ul>
+      {items
+        ? items.map((item, index) => {
+            const id = useId(item?.id);
+            const singleViewprops = singleView
+              ? {
+                  isOpen: openId === id,
+                  onOpenChange: () => setOpenId((v) => (v === id ? false : id)),
+                }
+              : {};
+            return (
+              <Disclosure
+                {...{
+                  id,
+                  triggerIcon,
+                  iconPos,
+                  iconText,
+                  "data-id": dataId ? `${dataId}--disclosure` : undefined,
+                }}
+                {...singleViewprops}
+                className={classes.disclosure}
+                title={item?.title}
+                key={id}
+              >
+                {typeof children === "function"
+                  ? children(item, index)
+                  : item?.children}
+              </Disclosure>
+            );
+          })
+        : children}
     </div>
   );
 }
@@ -70,5 +92,9 @@ function DisclosureGroup(
 /**
  * DisclosureGroup is responsible for rendering a collection of disclosures
  */
-const _DisclosureGroup = forwardRef(DisclosureGroup);
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _DisclosureGroup = forwardRef(DisclosureGroup) as <T>(
+  props: DisclosureGroupProps<T> & { ref?: Ref<HTMLElement> }
+) => ReactElement;
 export { _DisclosureGroup as DisclosureGroup };

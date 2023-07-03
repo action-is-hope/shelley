@@ -6,7 +6,6 @@ import React, {
   forwardRef,
   ElementType,
 } from "react";
-import { Text } from "../Text/Text";
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 import type {
@@ -41,8 +40,6 @@ export interface ButtonCustomProps
   vol?: Volume;
   /** Applies width of 100%. */
   fullWidth?: boolean;
-  /** Icon text, this can be a complimentary text beside the icon */
-  iconText?: string;
 }
 
 export type ButtonProps<P extends React.ElementType = "a" | "button" | any> = {
@@ -151,11 +148,6 @@ function Button<P extends React.ElementType = "button">(
       {icon && (
         <>
           {icon}
-          {iconText && (
-            <Text as="span" vol={2} className={classes.iconText}>
-              {iconText}
-            </Text>
-          )}
           {children && <span className={classes.divider}></span>}
         </>
       )}
