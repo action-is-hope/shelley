@@ -98,15 +98,15 @@ function ProgressBar(
     });
 
     return (
-      <div key={index} className={stepClassName}>
-        <div style={fillStyle} className={currentStepClassName} />
+      <div key={index} className={st(classes.stepIndicator)} data-id={"stepIndicator"} >
+        <div style={fillStyle} className={currentStepClassName} data-id={"stepIndicatorFill"} />
       </div>
     );
   };
 
   return (
     <div
-      className={st(classes.root, { isIndeterminate, size, variant }, classNameProp)}
+      className={st(classes.root, { isIndeterminate, size, variant, multistep: totalSteps > 1 ? true : false }, classNameProp)}
       {...progressBarProps}
       {...rest}
       ref={ref}

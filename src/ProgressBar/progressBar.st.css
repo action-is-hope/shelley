@@ -5,6 +5,7 @@
   -st-states: isIndeterminate,
     size(enum(small, medium, large)),
     overBackground,
+    multistep(boolean),
     variant(enum(overBackground));
 
   --loader-bar-small-width: 60px;
@@ -105,7 +106,7 @@
 }
 
 .stepIndicator {
-     -st-states: active;
+  -st-states: active;
   flex-grow: 1;
   height: 10px;
   margin: 0 2px;
