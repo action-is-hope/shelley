@@ -12,4 +12,6 @@
   grid-area: icon;
 }
 
-.altVisible {}
+.altVisible {
+  display: inline-flex;
+}

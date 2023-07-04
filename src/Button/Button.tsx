@@ -145,13 +145,13 @@ function Button<P extends React.ElementType = "button">(
 
   const internal = (
     <>
+      {children && <span className={classes.inner}>{children}</span>}
       {icon && (
         <>
-          {icon}
           {children && <span className={classes.divider}></span>}
+          {icon}
         </>
       )}
-      {children && <span className={classes.inner}>{children}</span>}
     </>
   );
   return React.createElement(

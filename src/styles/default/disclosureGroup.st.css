@@ -7,8 +7,9 @@
 @st-scope Default {
   DisclosureGroup {
     display: grid;
-    gap: 7px;
-    padding: 20px;
+    gap: var(--spacing-unit);
+    /* gap: 7px;
+    padding: 20px; */
   }
 
   /* DisclosureGroup::accordionItem {
@@ -18,7 +19,7 @@
     /* background-color: pink; */
   }
 
-  DisclosureGroup::disclosure::trigger:isOpen {}
+  DisclosureGroup::disclosure:isExpanded::trigger {}
 
   DisclosureGroup::disclosure::content {
     /* background-color: green; */

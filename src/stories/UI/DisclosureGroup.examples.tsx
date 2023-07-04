@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import {
-  Button,
   Disclosure,
   DisclosureProps,
   DisclosureGroup,
   DisclosureGroupProps,
-  Switch,
-  Radio,
-  RadioGroup,
   Text,
   H2,
   P,
   Icon,
   IconProps,
 } from "../../indexLib";
-import Warning from "../../icons/Warning";
+import { classes as spacing } from "../../styles/default/spacing.st.css";
+
+export const DisclosurePropsTable = (props: DisclosureProps) => {
+  <Disclosure {...props} />;
+};
 
 function _DisclosureGroupPropsTable<T extends object>(
   props: DisclosureGroupProps<T>
@@ -23,91 +23,11 @@ function _DisclosureGroupPropsTable<T extends object>(
 }
 export const DisclosureGroupPropsTable = _DisclosureGroupPropsTable;
 
-const items = [
-  {
-    title: "The principle of mentalism",
-    children: (
-      <Text
-        as="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `<p><em>"The All is Mind; the Universe is Mental." —The Kybalion</em></p>
-          <p>The principle of mentalism states that the universe is akin to a mental projection. 
-          The is like manifestation 101, which is all about using your thoughts to shape your reality. 
-          For anything to be, a thought must precede it. <a href="#">Through this principle, 
-          it's believed that God is consciousness, or thought, and the universe is a manifestation of the mind of God. 
-          Using this law, we, too, can harness the power of our minds to create the life we want.</a>
-        </p>`,
-        }}
-      />
-    ),
-  },
-  {
-    title: "The principle of correspondence",
-    children: (
-      <Text
-        as="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `
-        <p><em>"As above, so below; as below, so above." —The Kybalion</em></p>
-        <p>We've all heard this quote before, but maybe you never knew it was Hermes who first coined it. 
-        It's closely related to the first principle of mentalism and states that what we hold in our thoughts 
-        and mind will become our reality. It explains the many planes of existence, 
-        including those of lower and higher vibrational frequencies and how they're connected.</p>`,
-        }}
-      />
-    ),
-  },
-  {
-    title: "The principle of vibration",
-    children: (
-      <Text
-        as="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `<p><em>"Nothing rests; everything moves; everything vibrates." —The Kybalion</em></p>
-          <p>Yes, believe it or not, the idea of "vibes" has been around a long, long time. 
-          The principle of vibration states that all things, both physical matter and spiritual energy, 
-          hold a certain vibration. Basic science tells us atoms are in constant motion, 
-          as is the universe itself. Even our hearts, as they beat, give off different vibrations 
-          depending on our emotional state. And when we're "vibing high," we're able to avoid low-level 
-          frequencies that don't serve us.</p>`,
-        }}
-      />
-    ),
-  },
-  {
-    title: "The principle of polarity",
-    children: (
-      <Text
-        as="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `<p><em>"Everything is dual; everything has poles; everything has its pair of opposites; 
-          like and unlike are the same; opposites are identical in nature but different in degree; 
-          extremes meet; all truths are but half-truths; all paradoxes may be reconciled." —The Kybalion</em></p>
-          <p>The principle of polarity explains that seemingly opposite things are actually one and the same at 
-          varying degrees. A simple example of this is hot and cold. Cold is just the absence of heat, 
-          and they're both one thing: temperature. Physical matter and spiritual energy are the same thing, 
-          with spiritual energy vibrating at a much higher level, such that it can't be perceived by our senses. 
-          Love and hate are two ways of experiencing the same thing, a relationship toward something. 
-          This is the foundation of alchemy, or the ability to "transmute" your experiences at will.</p>`,
-        }}
-      />
-    ),
-  },
-];
-
-export const DynamicDisclosureGroup = () => {
-  return <DisclosureGroup title="Disclosure Group" items={items} singleView />;
-};
-
-export const SingleDisclosure = () => {
+export const SingleDisclosure: React.FC = () => {
   return (
     <Disclosure
       title="Single Disclosure"
-      triggerProps={{ iconPos: "end", vol: 5 }}
+      triggerProps={{ iconPos: "start", vol: 5 }}
     >
       <>
         <H2 vol={3}>Disclosure title</H2>
@@ -117,7 +37,26 @@ export const SingleDisclosure = () => {
   );
 };
 
-export const SingleDisclosureCustomIcon = () => {
+export const SingleDisclosureExpanded: React.FC = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+  return (
+    <>
+      <Disclosure title="Single Disclosure (uncontrolled)" defaultExpanded>
+        <P vol={2}>Uncontrolled Disclosure content.</P>
+      </Disclosure>
+
+      <Disclosure
+        title="Single Disclosure (controlled)"
+        isExpanded={isExpanded}
+        onExpandedChange={() => setIsExpanded((v) => !v)}
+      >
+        <P vol={2}>Controlled Disclosure content.</P>
+      </Disclosure>
+    </>
+  );
+};
+
+export const SingleDisclosureCustomIcon: React.FC = () => {
   const CustomIcon: React.VFC<IconProps> = () => (
     /* This is a Material UI icon so we set the viewBox accordingly. */
     <Icon viewBox="0 0 24 24">
@@ -126,10 +65,22 @@ export const SingleDisclosureCustomIcon = () => {
   );
 
   return (
+    <Disclosure title="Single Disclosure" triggerIcon={CustomIcon}>
+      <>
+        <H2 vol={3}>Disclosure title</H2>
+        <P vol={2}>Some content inside of the Disclosure.</P>
+      </>
+    </Disclosure>
+  );
+};
+
+export const SingleDisclosureIconAlt: React.FC = () => {
+  return (
     <Disclosure
       title="Single Disclosure"
-      triggerIcon={CustomIcon}
-      iconPos="end"
+      expandString="Show more"
+      collapseString="Show less"
+      iconAltVisible
     >
       <>
         <H2 vol={3}>Disclosure title</H2>
@@ -139,98 +90,133 @@ export const SingleDisclosureCustomIcon = () => {
   );
 };
 
-export const SingleDisclosureOLD = () => {
-  return (
-    <Disclosure
-      iconPos="end"
-      iconText="Show more"
-      id="itemId"
-      // title="Single Disclosure"
-      title={
-        <>
-          Single Disclosure <span>Show more</span>
-        </>
-      }
-      data-id="disclosure"
-    >
-      <RadioGroup label="Are you a wizard?" defaultValue="yes">
-        <Radio value="yes">Yes</Radio>
-        <Radio value="no">No</Radio>
-      </RadioGroup>
-    </Disclosure>
-  );
-};
-
 const items2 = [
   {
-    title: "Mark",
-    contentItemOne: "Something",
-    contentItemTwo: "Something else",
+    id: "ex1-1",
+    title: "Afforestation",
+    content:
+      "Planting of new forests on lands that historically have not contained forests. For a discussion of the term forest and related terms such as afforestation, reforestation and deforestation, see the IPCC Special Report on Land Use, Land-Use Change, and Forestry (IPCC, 2000), information provided by the United Nations Framework Convention on Climate Change (UNFCCC, 2013) and the report on Definitions and Methodological Options to Inventory Emissions from Direct Human-induced Degradation of Forests and Devegetation of Other Vegetation Types (IPCC, 2003).",
+    related:
+      "Reforestation, Deforestation, and Reducing Emissions from Deforestation and Forest Degradation (REDD+).",
   },
   {
-    title: "Paul",
-    contentItemOne: "Something",
-    contentItemTwo: "Something else",
+    id: "ex1-2",
+    title: "Air pollution",
+    content:
+      "Degradation of air quality with negative effects on human health or the natural or built environment due to the introduction, by natural processes or human activity, into the atmosphere of substances (gases, aerosols) which have a direct (primary pollutants) or indirect (secondary pollutants) harmful effect.",
+    related: "Aerosol and Short-lived climate forcers (SLCF).",
+  },
+  {
+    id: "ex1-3",
+    title: "Albedo",
+    content:
+      "The fraction of solar radiation reflected by a surface or object, often expressed as a percentage. Snow-covered surfaces have a high albedo, the surface albedo of soils ranges from high to low, and vegetation-covered surfaces and the oceans have a low albedo. The Earth’s planetary albedo changes mainly through varying cloudiness and changes in snow, ice, leaf area and land cover.",
+  },
+  {
+    id: "ex1-4",
+    title: "Anthropogenic emissions",
+    content:
+      "Emissions of greenhouse gases (GHGs), precursors of GHGs and aerosols caused by human activities. These activities include the burning of fossil fuels, deforestation, land use and land-use changes (LULUC), livestock production, fertilisation, waste management and industrial processes.",
+    related: "Anthropogenic and Anthropogenic removals.",
   },
 ];
 
-export const Example3: React.FC = () => (
-  <DisclosureGroup items={items2}>
+export const DynamicDisclosureGroup: React.FC = () => (
+  <DisclosureGroup items={items2} triggerProps={{ vol: 4 }}>
     {(item) => (
       <>
-        <P>{item.contentItemOne}</P>
-        <P>{item.contentItemTwo}</P>
+        <P vol={2}>{item.content}</P>
+        {item?.related && (
+          <P vol={2} className={spacing.mt1}>
+            <strong>See also:</strong> {item.related}
+          </P>
+        )}
       </>
     )}
   </DisclosureGroup>
 );
 
-export const SingleDisclosure2 = () => {
-  return (
-    <DisclosureGroup>
-      <Disclosure
-        iconPos="end"
-        iconAltVisible
-        iconText="Show more"
-        title="Double Disclosure"
-      >
-        <RadioGroup label="Are you a wizard?" defaultValue="yes">
-          <Radio value="yes">Yes</Radio>
-          <Radio value="no">No</Radio>
-        </RadioGroup>
-      </Disclosure>
-      <Disclosure iconPos="end" iconText="Show more" title="Double Disclosure">
-        <RadioGroup label="Are you a wizard?" defaultValue="yes">
-          <Radio value="yes">Yes</Radio>
-          <Radio value="no">No</Radio>
-        </RadioGroup>
-      </Disclosure>
-    </DisclosureGroup>
-  );
+const items = [
+  {
+    id: "ex2-1",
+    title: "Mangrove planting in Marotaola, Madagascar",
+    children: (
+      <Text
+        as="div"
+        vol={2}
+        dangerouslySetInnerHTML={{
+          __html: `<p>
+          Madagascar is an island country in the Indian Ocean, approximately 400 kilometres off the coast of East Africa. It is the world’s second largest island country, after Indonesia, and the island of Madagascar itself is the fourth largest island in the world. The country is considered a <em>biodiversity hotspot</em>, and over 90% of its wildlife is found nowhere else on Earth. <a href="https://ecologi.com/projects/mangrove-planting-in-madagascar">Ecologi - Mangrove planting in Marotaola, Madagascar.</a>
+        </p>`,
+        }}
+      />
+    ),
+  },
+  {
+    id: "ex2-2",
+    title: "Planting trees and supporting water security in Kenyan forests",
+    children: (
+      <Text
+        as="div"
+        vol={2}
+        dangerouslySetInnerHTML={{
+          __html: `
+        <p>Kenya is renowned for its magnificent wildlife and iconic landscapes, teeming with biodiversity due to its wide array of ecosystems ranging from deserts and wetlands to mountain and forest regions. <em>However</em>, Kenya is losing species of plants and animals at an alarming rate as a result of ongoing environmental degradation, poor land-use practices, and unsustainable natural resource management. These issues are all exacerbated by extreme weather events due to climate change, which negatively impact the country’s nature-based tourism revenue and, ultimately, the livelihoods of its <strong>people</strong>. <a href="https://ecologi.com/projects/restoring-forests-in-kenya">Ecologi - Planting trees and supporting water security in Kenyan forests.</a></p>`,
+        }}
+      />
+    ),
+  },
+  {
+    id: "ex2-3",
+    title: "Restoring degraded land in Senegal",
+    children: (
+      <Text
+        as="div"
+        vol={2}
+        dangerouslySetInnerHTML={{
+          __html: `The Sahel region, spanning 5,400km from the Atlantic Ocean in the West to the Red Sea in the East, is a climatic region in Africa located between the Sahara desert to the North and the Sudanian savanna to the South. Its tropical, semi-arid climate means that months often pass without rainfall. In recent years droughts have become common, with the most severe in recent times occurring between June and August 2010, when extremely high temperatures combined with a lack of rainfall to cause famine and illness across the Sahel. Such devastating weather patterns have been worsened by climate change – people in the Sahel are currently some of the most affected by climate change in the world, with their livelihoods becoming increasingly precarious. <a href="https://ecologi.com/projects/restoring-degraded-land-senegal">Ecologi - Restoring degraded land in Senegal</a></p>`,
+        }}
+      />
+    ),
+  },
+  {
+    id: "ex2-4",
+    title: "Planting forest gardens in Tanzania",
+    children: (
+      <Text
+        as="div"
+        vol={2}
+        dangerouslySetInnerHTML={{
+          __html: `<p>Tanzania is an East African country, situated just south of the Equator, which is home to around 60 million people. Its climate is varied due to the nature of its typography, with hot and humid low plains on the east, and generally cool highlands in the north and south. Tanzania is well recognised for its renowned tourism destinations including Mount Kilimanjaro, Africa’s highest mountain, and the Serengeti’s annual wildebeest migration. <a href="https://ecologi.com/projects/planting-forest-gardens-in-tanzania">Ecologi - Planting forest gardens in Tanzania</a></p>`,
+        }}
+      />
+    ),
+  },
+];
+
+export const DynamicDisclosureGroupChildren: React.FC = () => {
+  return <DisclosureGroup title="Disclosure Group" items={items} />;
 };
 
-export const DisclosureControlledExample = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  return (
-    <div style={{ padding: 10 }}>
-      <Switch isSelected={isOpen} onChange={() => setIsOpen((v) => !v)}>
-        Toggle open/close
-      </Switch>
-      <Disclosure
-        iconPos="end"
-        iconText="Show more"
-        //optional id
-        // id="itemId"
-        title="Single Disclosure"
-        isOpen={isOpen}
-        onOpenChange={() => setIsOpen((v) => !v)}
-        // defaultOpen
-      >
-        <>
-          <H2 vol={3}>Disclosure title</H2>
-          <P vol={2}>Some content inside of the Disclosure.</P>
-        </>
-      </Disclosure>
-    </div>
-  );
+export const DisclosureGroupSingleView: React.FC = () => {
+  return <DisclosureGroup title="Disclosure Group" items={items} singleView />;
 };
+
+// export const SingleDisclosure2: React.FC = () => {
+//   return (
+//     <DisclosureGroup>
+//       <Disclosure iconPos="end" iconAltVisible title="Double Disclosure">
+//         <RadioGroup label="Are you a wizard?" defaultValue="yes">
+//           <Radio value="yes">Yes</Radio>
+//           <Radio value="no">No</Radio>
+//         </RadioGroup>
+//       </Disclosure>
+//       <Disclosure iconPos="end" title="Double Disclosure">
+//         <RadioGroup label="Are you a wizard?" defaultValue="yes">
+//           <Radio value="yes">Yes</Radio>
+//           <Radio value="no">No</Radio>
+//         </RadioGroup>
+//       </Disclosure>
+//     </DisclosureGroup>
+//   );
+// };

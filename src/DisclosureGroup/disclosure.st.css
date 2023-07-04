@@ -3,12 +3,11 @@
 @st-import Button from "../Button/button.st.css";
 
 .root {
-  -st-states: isOpen;
+  -st-states: isExpanded;
 }
 
 .trigger {
   -st-extends: Button;
-  -st-states: isOpen;
   /* background: none;
   border: none;
   padding: 0;
@@ -29,7 +28,7 @@
   opacity: 0;
 }
 
-.root:isOpen::transition {
+.root:isExpanded::transition {
   opacity: 1;
 }
 

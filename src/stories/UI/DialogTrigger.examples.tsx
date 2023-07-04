@@ -8,8 +8,6 @@ import {
   Dialog,
   P,
   H2,
-  Select,
-  Item,
 } from "../../indexLib";
 import { classes as dialog } from "../../Dialog/dialog.st.css";
 
@@ -49,10 +47,9 @@ export const ContentExample = (args: ModalProps) => {
             Confirm checkout?
           </H2>
           <hr className={dialog.divider} />
-          <div className={dialog.content}>
-            <P vol={2}>You have 5 items in your cart. Proceed to checkout?</P>
-          </div>
-
+          <P className={dialog.content} vol={2}>
+            You have 5 items in your cart. Proceed to checkout?
+          </P>
           <ButtonGroup className={dialog.buttonGroup}>
             <Button variant="secondary" onPress={close}>
               Cancel

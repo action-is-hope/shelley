@@ -11,6 +11,7 @@ export interface IconProps
     ComponentBase {
   /** Alternative text via VisuallyHidden */
   alt?: string;
+  /** Visually render the alt text provided. */
   altVisible?: boolean;
   /** Set to match icon set; e.g. for Material UI icons use "0 0 24 24". */
   viewBox?: string;
@@ -37,6 +38,11 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
     );
   return (
     <>
+      {/* We use a VisuallyHidden label in pace of a svg title or aria-label 
+            on a non-focusable element. The is a very reliable method. 
+            - https://simplyaccessible.com/article/7-solutions-svgs/. 
+        */}
+      {alt && !props["aria-label"] && altText}
       <svg
         className={st(classes.root, classNameProp)}
         viewBox={viewBox}
@@ -46,11 +52,6 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
       >
         {children}
       </svg>
-      {/* We use a VisuallyHidden label in pace of a svg title or aria-label 
-            on a non-focusable element. The is a very reliable method. 
-            - https://simplyaccessible.com/article/7-solutions-svgs/. 
-        */}
-      {alt && !props["aria-label"] && altText}
     </>
   );
 }

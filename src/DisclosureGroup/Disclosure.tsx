@@ -1,6 +1,6 @@
 "use-client";
 /** Disclosure.tsx */
-import React, { useRef, ReactNode, forwardRef } from "react";
+import React, { VFC, useRef, ReactNode, forwardRef } from "react";
 import { Button, ButtonCustomProps } from "../Button";
 import AngleDown from "../icons/AngleDown";
 import type { AlignPos, ComponentBase } from "../typings/shared-types";
@@ -10,8 +10,8 @@ import type { IconProps } from "../Icon";
 
 /* Disclosure is a component that allows users to toggle the visibility of content.:
 1. The `useDisclosure` hook is used to manage the state of the disclosure.
-2. The `triggerProps` and `contentProps` are spread onto the elements to manage the aria attributes.
-3. The `contentProps` are spread onto the hidden content element to manage the aria-hidden attribute.
+2. The `triggerProps` and `transitionProps` are spread onto the elements to manage the aria attributes.
+3. The `transitionProps` are spread onto the transition element to manage the aria-hidden attribute.
 4. The `contentRef` is used by useDisclosure to query the hidden content for focusable elements and manage the tabindex/disabled attribute where appropriate.
 5. The `triggerProps` are spread onto the trigger element to manage the aria-expanded attribute.
 6. The `useId` hook is used to generate an id for the disclosure if one is not provided. this is done inside useDisclosure */
@@ -22,24 +22,23 @@ export interface DisclosureProps
   /** Disclosure title */
   title: string | ReactNode;
   /** Provide your own icon for the Trigger */
-  triggerIcon?: React.VFC<IconProps>;
-  /** Icon position "top" | "end" | "bottom" | "start" */
+  triggerIcon?: VFC<IconProps>;
+  /** Icon position "top" | "end" | "bottom" | "start" @default 'end' */
   iconPos?: AlignPos;
-  /** Complimentary text for the icon */
-  iconText?: string;
-  /** defaultOpen */
-  defaultOpen?: boolean;
-  /** isOpen */
-  isOpen?: boolean;
-  onOpenChange?: () => void;
-  /** Button props */
-  triggerProps?: Partial<ButtonCustomProps>;
+  /** defaultExpanded */
+  defaultExpanded?: boolean;
+  /** isExpanded */
+  isExpanded?: boolean;
+  /** Callback fired when trigger is selected. */
+  onExpandedChange?: () => void;
+  /** Button props, for icoon use triggerIcon. */
+  triggerProps?: Omit<ButtonCustomProps, "icon">;
   /** Visually render the icon alt text. */
   iconAltVisible?: boolean;
-  /** Icon alt text in a collapsed state. */
-  moreString?: string;
-  /** Icon alt text in an expanded state. */
-  lessString?: string;
+  /** Icon alt text in a collapsed state. @default 'Expand' */
+  expandString?: string;
+  /** Icon alt text in an expanded state. @default 'Collapse' */
+  collapseString?: string;
 }
 
 function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
@@ -48,31 +47,31 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     children,
     title,
     iconAltVisible,
-    moreString = "Show more",
-    lessString = "Show less",
+    expandString = "Expand",
+    collapseString = "Collapse",
     triggerIcon: TriggerIcon = AngleDown,
-    iconPos,
-    isOpen: isOpenProp,
-    defaultOpen,
-    onOpenChange,
+    iconPos = "end",
+    isExpanded: isExpandedProp,
+    defaultExpanded,
+    onExpandedChange,
     triggerProps: triggerPropsFromProps,
     "data-id": dataId,
     ...rest
   } = props;
 
   const contentRef = useRef<HTMLDivElement>(null);
-  const { triggerProps, contentProps, isOpen } = useDisclosure({
+  const { triggerProps, transitionProps, isExpanded } = useDisclosure({
     id: props?.id,
-    isOpen: isOpenProp,
-    onOpenChange,
-    defaultOpen,
+    isExpanded: isExpandedProp,
+    onExpandedChange,
+    defaultExpanded,
     contentRef,
     children,
   });
 
   return (
     <article
-      className={st(classes.root, { isOpen }, className)}
+      className={st(classes.root, { isExpanded }, className)}
       data-id={dataId}
       ref={ref}
       {...rest}
@@ -81,7 +80,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
         icon={
           <TriggerIcon
             altVisible={iconAltVisible}
-            alt={isOpen ? moreString : lessString}
+            alt={isExpanded ? expandString : collapseString}
           />
         }
         iconPos={iconPos}
@@ -98,7 +97,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
 
       <div
         className={st(classes.transition)}
-        {...contentProps}
+        {...transitionProps}
         data-id={dataId ? `${dataId}--transition` : undefined}
       >
         <div
