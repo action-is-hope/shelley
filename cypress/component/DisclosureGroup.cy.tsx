@@ -2,6 +2,12 @@
 
 import { DisclosureGroup } from "../../src/indexLib";
 
+const disclosureGroup = '[data-id="disclosure-group"]';
+const disclosure = '[data-id="disclosure-group--disclosure"]';
+const trigger = '[data-id="disclosure-group--disclosure--trigger"]';
+const transition = '[data-id="disclosure-group--disclosure--transition"]';
+const content = '[data-id="disclosure-group--disclosure--content"]';
+
 const items = [
   {
     id: `1-storybook-showHide`,
@@ -49,63 +55,52 @@ const items = [
   },
 ];
 
-const disclosureGroup = '[data-id="disclosure-group"]';
-// const disclosure = '[data-id="disclosure-group--disclosure"]';
-const trigger = '[data-id="disclosure-group--disclosure--trigger"]';
-const transition = '[data-id="disclosure-group--disclosure--transition"]';
-const content = '[data-id="disclosure-group--disclosure--content"]';
+const DynamicDisclosureGroup = () => (
+  <DisclosureGroup
+    title="Disclosure Group"
+    data-id="disclosure-group"
+    items={items}
+  />
+);
 
-const DynamicDisclosureGroup = function () {
-  return (
-    <div>
-      <DisclosureGroup
-        title="Disclosure Group"
-        data-id="disclosure-group"
-        items={items}
-      />
-    </div>
-  );
-};
+const DynamicSingleView = () => (
+  <DisclosureGroup
+    title="Disclosure Group"
+    data-id="disclosure-group"
+    singleView
+    items={items}
+  />
+);
 
 describe("DisclosureGroup", () => {
-  // Should render all DisclosureGroup elements
-
   it("should render all DisclosureGroup elements", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(disclosureGroup).should("exist");
-    // cy.get(disclosure).should("exist");
+    cy.get(disclosure).should("exist");
     cy.get(trigger).should("exist");
     cy.get(transition).should("exist");
     cy.get(content).should("exist");
   });
 
-  // Should render DisclosureGroup title
-
-  it("should render DisclosureGroup title", () => {
+  it("should render title", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(disclosureGroup).should("have.attr", "title", "Disclosure Group");
   });
 
-  // Should render DisclosureGroup items
-
-  it("should render DisclosureGroup items", () => {
+  it("should render items", () => {
     cy.mount(<DynamicDisclosureGroup />);
-    //cy.get(accordionItem).should("have.length", 4);
+    cy.get(disclosure).should("have.length", 4);
   });
 
-  // Should render correct item titles
-
-  it("should render DisclosureGroup item titles", () => {
+  it("should render item titles", () => {
     cy.mount(<DynamicDisclosureGroup />);
-    cy.get(trigger).eq(0).should("have.text", "Disclosure title 1");
-    cy.get(trigger).eq(1).should("have.text", "Disclosure title 2");
-    cy.get(trigger).eq(2).should("have.text", "Disclosure title 3");
-    cy.get(trigger).eq(3).should("have.text", "Disclosure title 4");
+    cy.get(trigger).eq(0).should("have.text", "Disclosure title 1 expand");
+    cy.get(trigger).eq(1).should("have.text", "Disclosure title 2 expand");
+    cy.get(trigger).eq(2).should("have.text", "Disclosure title 3 expand");
+    cy.get(trigger).eq(3).should("have.text", "Disclosure title 4 expand");
   });
 
-  // Should render correct item content
-
-  it("should render DisclosureGroup item content", () => {
+  it("should render item content", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(content).eq(0).should("have.text", "Disclosure content 1");
     cy.get(content).eq(1).should("have.text", "Disclosure content 2");
@@ -113,42 +108,62 @@ describe("DisclosureGroup", () => {
     cy.get(content).eq(3).should("have.text", "Disclosure content 4");
   });
 
-  // Should render correct item content when clicked
-
-  it("should render DisclosureGroup item content when clicked", () => {
+  it("should render item content when clicked as a multi-view (items stay open)", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(trigger).eq(0).click();
+    cy.wait(200);
     cy.get(content)
       .eq(0)
       .should("be.visible")
       .and("have.text", "Disclosure content 1");
     cy.get(trigger).eq(1).click();
+    cy.wait(200);
     cy.get(content)
       .eq(1)
       .should("be.visible")
       .and("have.text", "Disclosure content 2");
     cy.get(trigger).eq(2).click();
+    cy.wait(200);
     cy.get(content)
       .eq(2)
       .should("be.visible")
       .and("have.text", "Disclosure content 3");
-    cy.get(trigger).eq(3).click();
-    cy.get(content)
-      .eq(3)
-      .should("be.visible")
-      .and("have.text", "Disclosure content 4");
+
+    cy.get(content).eq(0).should("be.visible");
+    cy.get(content).eq(1).should("be.visible");
+    cy.get(content).eq(2).should("be.visible");
   });
 
-  // Should render correct classnames
+  it("singleView - only one should open at a time ", () => {
+    cy.mount(<DynamicSingleView />);
+    cy.get(trigger).eq(0).click();
+    cy.wait(200);
+    cy.get(content).eq(0).should("be.visible");
+    cy.get(trigger).eq(1).click();
+    cy.wait(200);
+    cy.get(content).eq(1).should("be.visible");
+    cy.get(trigger).eq(2).click();
+    cy.wait(200);
+    cy.get(content).eq(2).should("be.visible");
+
+    cy.get(content).eq(0).should("not.be.visible");
+    cy.get(content).eq(1).should("not.be.visible");
+    cy.get(content).eq(2).should("be.visible");
+
+    cy.get(trigger).eq(0).click();
+    cy.wait(200);
+    cy.get(content).eq(2).should("not.be.visible");
+    cy.get(content).eq(0).should("be.visible");
+  });
 
   it("should render correct classnames", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(disclosureGroup)
       .should("have.attr", "class")
       .and("to.have.string", "root");
-    // cy.get(disclosure)
-    //   .should("have.attr", "class")
-    //   .and("to.have.string", "root");
+    cy.get(disclosure)
+      .should("have.attr", "class")
+      .and("to.have.string", "root");
     cy.get(trigger)
       .should("have.attr", "class")
       .and("to.have.string", "trigger");
@@ -160,18 +175,18 @@ describe("DisclosureGroup", () => {
       .and("to.have.string", "content");
   });
 
-  // Should render correct classnames when clicked
-
   it("should render correct classnames when clicked", () => {
     cy.mount(<DynamicDisclosureGroup />);
     cy.get(trigger)
       .eq(0)
       .click()
-      .should("have.attr", "class")
-      .and("to.have.string", "isOpen");
+      .then(() => {
+        cy.get(disclosure)
+          .eq(0)
+          .should("have.attr", "class")
+          .and("to.have.string", "isExpanded");
+      });
   });
-
-  // Should render correct aria attributes
 
   it("should render correct aria attributes", () => {
     cy.mount(<DynamicDisclosureGroup />);
@@ -184,10 +199,7 @@ describe("DisclosureGroup", () => {
       .click()
       .invoke("attr", "aria-controls")
       .then((id) => {
-        // cy.get(accordionItem)
-        //   .eq(0)
-        //   .find(transition)
-        //   .should("have.attr", "id", id);
+        cy.get(disclosure).eq(0).find(transition).should("have.attr", "id", id);
       });
   });
 });

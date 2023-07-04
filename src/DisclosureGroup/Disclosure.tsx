@@ -39,6 +39,8 @@ export interface DisclosureProps
   expandString?: string;
   /** Icon alt text in an expanded state. @default 'Collapse' */
   collapseString?: string;
+  /** disable role=region useful when using large numbers that might create landmark region proliferation. @see https://www.w3.org/WAI/ARIA/apg/patterns/accordion/ */
+  disableRegion?: boolean;
 }
 
 function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
@@ -47,14 +49,15 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     children,
     title,
     iconAltVisible,
-    expandString = "Expand",
-    collapseString = "Collapse",
+    expandString = "expand",
+    collapseString = "collapse",
     triggerIcon: TriggerIcon = AngleDown,
     iconPos = "end",
     isExpanded: isExpandedProp,
     defaultExpanded,
     onExpandedChange,
     triggerProps: triggerPropsFromProps,
+    disableRegion,
     "data-id": dataId,
     ...rest
   } = props;
@@ -80,7 +83,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
         icon={
           <TriggerIcon
             altVisible={iconAltVisible}
-            alt={isExpanded ? expandString : collapseString}
+            alt={isExpanded ? collapseString : expandString}
           />
         }
         iconPos={iconPos}
@@ -98,6 +101,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
       <div
         className={st(classes.transition)}
         {...transitionProps}
+        role={!disableRegion ? "region" : undefined}
         data-id={dataId ? `${dataId}--transition` : undefined}
       >
         <div

@@ -13,7 +13,10 @@ export type DisclosureChildren<T> =
   | ((item: T, index: number) => ReactElement<T>);
 
 export interface DisclosureGroupProps<T>
-  extends Pick<DisclosureProps, "triggerIcon" | "iconPos" | "triggerProps">,
+  extends Pick<
+      DisclosureProps,
+      "triggerIcon" | "iconPos" | "triggerProps" | "disableRegion"
+    >,
     React.HTMLAttributes<HTMLDivElement>,
     ComponentBase {
   /** Disclosure array of items */
@@ -42,6 +45,7 @@ function DisclosureGroup<T extends Item>(
     children,
     singleView,
     triggerProps,
+    disableRegion,
     "data-id": dataId,
     ...rest
   } = props;
@@ -75,6 +79,7 @@ function DisclosureGroup<T extends Item>(
                   triggerIcon,
                   iconPos,
                   triggerProps,
+                  disableRegion,
                   "data-id": dataId ? `${dataId}--disclosure` : undefined,
                 }}
                 {...singleViewprops}

@@ -148,8 +148,7 @@ function Button<P extends React.ElementType = "button">(
       {children && <span className={classes.inner}>{children}</span>}
       {icon && (
         <>
-          {children && <span className={classes.divider}></span>}
-          {icon}
+          {children && <span className={classes.divider}></span>} {icon}
         </>
       )}
     </>
