@@ -8,20 +8,5 @@
   DisclosureGroup {
     display: grid;
     gap: var(--spacing-unit);
-    /* gap: 7px;
-    padding: 20px; */
-  }
-
-  /* DisclosureGroup::accordionItem {
-    padding: var(--spacing-unit);
-  } */
-  DisclosureGroup::disclosure::trigger::inner {
-    /* background-color: pink; */
-  }
-
-  DisclosureGroup::disclosure:isExpanded::trigger {}
-
-  DisclosureGroup::disclosure::content {
-    /* background-color: green; */
   }
 }

@@ -7,7 +7,7 @@
  * 
  */
 @st-import Default, [--background-color-modal-backdrop] from "./project.st.css";
-@st-import Modal, [enterDone, blurBackground] from "../../Modal/modal.st.css";
+@st-import Modal, [enterDone] from "../../Modal/modal.st.css";
 
 @st-scope Default {
   Modal::backdrop {

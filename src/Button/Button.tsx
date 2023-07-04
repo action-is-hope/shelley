@@ -55,7 +55,6 @@ function Button<P extends React.ElementType = "button">(
     className: classNameProp,
     icon,
     iconPos,
-    iconText,
     fullWidth = false,
     tone = 1,
     variant = "primary",

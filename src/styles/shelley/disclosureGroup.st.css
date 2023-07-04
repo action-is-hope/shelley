@@ -4,8 +4,4 @@
 ] from "./project.st.css";
 @st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
 
-@st-scope Shelley {
-  /* DisclosureGroup::accordionItem {
-    border-bottom: 2px solid var(--color-ui-inverse);
-  } */
-}
+@st-scope Shelley {}
