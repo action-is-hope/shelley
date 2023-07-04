@@ -201,22 +201,3 @@ export const DynamicDisclosureGroupChildren: React.FC = () => {
 export const DisclosureGroupSingleView: React.FC = () => {
   return <DisclosureGroup title="Disclosure Group" items={items} singleView />;
 };
-
-// export const SingleDisclosure2: React.FC = () => {
-//   return (
-//     <DisclosureGroup>
-//       <Disclosure iconPos="end" iconAltVisible title="Double Disclosure">
-//         <RadioGroup label="Are you a wizard?" defaultValue="yes">
-//           <Radio value="yes">Yes</Radio>
-//           <Radio value="no">No</Radio>
-//         </RadioGroup>
-//       </Disclosure>
-//       <Disclosure iconPos="end" title="Double Disclosure">
-//         <RadioGroup label="Are you a wizard?" defaultValue="yes">
-//           <Radio value="yes">Yes</Radio>
-//           <Radio value="no">No</Radio>
-//         </RadioGroup>
-//       </Disclosure>
-//     </DisclosureGroup>
-//   );
-// };
