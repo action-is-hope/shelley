@@ -28,6 +28,7 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
   <span
     className="Button__Test__divider"
   />
+   
   <svg
     aria-hidden={true}
     className="Icon__Test__root"
@@ -62,6 +63,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
   onTouchStart={[Function]}
   type="button"
 >
+   
   <svg
     aria-hidden={true}
     className="Icon__Test__root"
