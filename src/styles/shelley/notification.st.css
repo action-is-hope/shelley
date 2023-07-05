@@ -1,0 +1,15 @@
+/**
+ * = Notification - notification.st.css
+ *
+ * Shelley theme styles for Notification.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Notification/notification.st.css
+ * 
+ */
+@st-import Shelley from "./project.st.css";
+@st-import Notification from "../../Notification/notification.st.css";
+
+@st-scope Shelley {
+  Notification {}
+
+}

@@ -12,6 +12,15 @@
 @st-import Notification from "../../Notification/notification.st.css";
 
 @st-scope Default {
-  Notification {}
+  Notification {
+    border-color: grey;
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 3rem;
+  }
 
 }

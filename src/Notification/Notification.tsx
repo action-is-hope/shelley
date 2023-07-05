@@ -1,6 +1,7 @@
 import React, { useRef, RefObject, forwardRef, ReactNode } from "react";
 import { Text } from "../Text";
-import { Button } from "../Button";
+import { IconButton } from "../IconButton/IconButton";
+import CloseIcon from "../icons/Close";
 
 import { st, classes } from "./notification.st.css";
 
@@ -16,6 +17,8 @@ export interface NotificationProps
   title?: string;
   /** Optional subtitle  */
   subtitle?: string;
+  /** Optional close icon  */
+  closeIcon?: ReactNode;
   /**
    * By default, this value is "status". You can also provide an alternate
    * role if it makes sense from the accessibility-side.
@@ -29,6 +32,7 @@ function Notification({
   subtitle,
   role,
   hideCloseButton,
+  closeIcon = <CloseIcon />,
   ...rest
 }: NotificationProps) {
   const ref: RefObject<HTMLDivElement> = useRef(null);
@@ -51,7 +55,9 @@ function Notification({
           {children}
         </div>
       </div>
-      {!hideCloseButton && <Button />}
+      {!hideCloseButton && (
+        <IconButton className={classes.closeButton}>{closeIcon}</IconButton>
+      )}
     </div>
   );
 }
