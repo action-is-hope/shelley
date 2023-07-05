@@ -24,19 +24,19 @@ export interface ProgressBarProps
    * The total number of steps in the progress bar.
    * @default 1
    */
-  totalSteps: number;
+  totalSteps?: number;
   /**
    * The current step in the progress bar.
    * This should be a number between 1 and totalSteps.
    * @default 1
    */
-  currentStep: number;
+  currentStep?: number;
   /**
    * The progress of the current step in the progress bar.
    * This should be a number between 0 and 100.
    * @default 0
    * */
-  stepProgress: number;
+  stepProgress?: number;
 }
 
 function ProgressBar(
@@ -89,6 +89,7 @@ function ProgressBar(
       width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
       height: "100%",
     };
+
     const currentStepClassName = st(classes.stepIndicatorFill, {
       isActive: index < currentStep ? true : false,
     });
@@ -125,7 +126,7 @@ function ProgressBar(
         ) : (
           <div className={st(classes.stepIndicator)}>
               <div
-                style={{ width: barWidth, height: 10 }}
+                style={{ width: barWidth }}
                 className={st(classes.fill)}
               />
           </div>

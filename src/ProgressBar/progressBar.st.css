@@ -69,7 +69,6 @@
 }
 
 .root:isIndeterminate .fill {
-
   animation: indeterminateAnimation 2s linear infinite;
 }
 
@@ -85,6 +84,7 @@
 
 .fill {
   background-color: #007a4d;
+  height: 10px;
 }
 
 .label {
@@ -94,13 +94,11 @@
 .stepContainer {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
 }
 
 .stepIndicator {
   -st-states: active;
   flex-grow: 1;
-  height: 10px;
   margin: 0 2px;
   background-color: #e6e6e6;
 }

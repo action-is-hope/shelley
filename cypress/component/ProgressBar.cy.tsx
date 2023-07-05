@@ -9,6 +9,8 @@ const testProps = {
   "aria-valuenow": "50"
 };
 const progressBar = '[data-id="progressBar"]';
+const stepIndicator = '[data-id="stepIndicator"]';
+const stepIndicatorFill = '[data-id="stepIndicatorFill"]';
 
 describe("ProgressBar", () => {
   it("renders  with value and accesibility label", () => {
@@ -60,7 +62,6 @@ describe("ProgressBar", () => {
   it("renders with custom size", () => {
     const size = "large";
     cy.mount(<ProgressBar size={size} {...testProps} />)
-
   });
 
   it("renders as indeterminate", () => {
@@ -77,7 +78,7 @@ describe("ProgressBar", () => {
       "aria-valuenow": "50",
       "totalSteps": 5,
       "currentStep": 3,
-      "stepProgress": "50",
+      "stepProgress": 50,
       "data-id": "progressBar",
     };
 
@@ -88,13 +89,18 @@ describe("ProgressBar", () => {
       .and("to.have.string", "ProgressBar")
       .should("to.have.string", "multistep")
 
-    cy.get('[data-id="stepIndicator"]').should("have.length", multiSteProps["totalSteps"]);
-    // cy.get('[data-id="stepIndicatorFill"]').eq(multiSteProps["currentStep"]).should("have.attr", "class")
-    //   .and("to.have.string", "isActive")
-    // cy.get('[data-id="stepIndicatorFill"]').eq(multiSteProps["currentStep"]).should("have.css", "width", `${multiSteProps["stepProgress"]}%`);
+    cy.get(stepIndicator)
+      .should("have.length", multiSteProps["totalSteps"]);
+
+    cy.get(stepIndicatorFill)
+      .eq(multiSteProps["currentStep"] - 1)
+      .should("have.attr", "class")
+      .and("to.have.string", "ProgressBar")
+      .and("to.have.string", "isActive");
+
+    cy.get(stepIndicatorFill)
+      .eq(multiSteProps["currentStep"] - 1)
+      .should('have.attr', 'style').and('include', `width: ${multiSteProps["stepProgress"]}%`)
   });
-
-
-
 
 });
