@@ -26,29 +26,50 @@ export interface NotificationProps
   role: "alert" | "log" | "status";
 }
 
-function Notification({
-  children,
-  title,
-  subtitle,
-  role,
-  hideCloseButton,
-  closeIcon = <CloseIcon />,
-  ...rest
-}: NotificationProps) {
-  const ref: RefObject<HTMLDivElement> = useRef(null);
+function Notification(
+  props: NotificationProps,
+  ref?: React.Ref<HTMLDivElement>
+) {
+  const {
+    children,
+    title,
+    subtitle,
+    role,
+    hideCloseButton,
+    closeIcon = <CloseIcon />,
+    "data-id": dataId,
+    ...rest
+  } = props;
+  // const ref: RefObject<HTMLDivElement> = useRef(null);
   const contentRef: RefObject<HTMLDivElement> = useRef(null);
   return (
-    <div ref={ref} className={st(classes.root)} role={role} {...rest}>
+    <div
+      ref={ref}
+      className={st(classes.root)}
+      role={role}
+      data-id={dataId}
+      {...rest}
+    >
       <div className={st(classes.details)}>
         <div className={st(classes.icon)}></div>
         <div ref={contentRef} className={st(classes.textWrapper)}>
           {title && (
-            <Text as="span" vol={2} className={st(classes.title)}>
+            <Text
+              as="span"
+              vol={2}
+              className={st(classes.title)}
+              data-id={dataId ? `${dataId}--title` : undefined}
+            >
               {title}
             </Text>
           )}
           {subtitle && (
-            <Text as="span" vol={1} className={st(classes.subtitle)}>
+            <Text
+              as="span"
+              vol={1}
+              className={st(classes.subtitle)}
+              data-id={dataId ? `${dataId}--subTitle` : undefined}
+            >
               {subtitle}
             </Text>
           )}
@@ -56,7 +77,12 @@ function Notification({
         </div>
       </div>
       {!hideCloseButton && (
-        <IconButton className={classes.closeButton}>{closeIcon}</IconButton>
+        <IconButton
+          data-id={dataId ? `${dataId}--closeButton` : undefined}
+          className={classes.closeButton}
+        >
+          {closeIcon}
+        </IconButton>
       )}
     </div>
   );
