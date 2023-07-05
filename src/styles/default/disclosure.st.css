@@ -1,0 +1,53 @@
+/* disclosure.st.css */
+@st-import Default, [
+  --spacing-unit,
+] from "./project.st.css";
+@st-import Disclosure from "../../DisclosureGroup/disclosure.st.css";
+@st-import Icon, [altVisible] from "../../Icon/icon.st.css";
+
+@st-scope Default {
+  Disclosure {
+    --rotate-start: rotate(-180deg);
+    --rotate-end: rotate(180deg);
+  }
+
+  Disclosure::content {
+    padding: var(--spacing-unit);
+  }
+
+  Disclosure::trigger {
+    justify-content: start;
+    font-weight: 400;
+  }
+
+  Disclosure::trigger > Icon {
+    transition: transform 190ms;
+    transform-origin: 50% 50%;
+  }
+
+  Disclosure::trigger .altVisible {
+    font-size: .9em;
+    padding: 0 calc(var(--spacing-unit) / 2);
+  }
+
+  Disclosure:isExpanded::trigger > Icon {
+    transform: var(--rotate-start);
+  }
+
+  /* Rotate the icon the other way when at the end. */
+  Disclosure:isExpanded::trigger:iconPos(end) > Icon {
+    transform: var(--rotate-end);
+  }
+
+  Disclosure::trigger::inner {
+    flex-grow: 1;
+    text-align: start;
+  }
+}
+
+@st-scope [dir=rtl] Default {
+  Disclosure {
+    --rotate-start: rotate(180deg);
+    --rotate-end: rotate(-180deg);
+  }
+}

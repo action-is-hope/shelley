@@ -11,3 +11,7 @@
   flex-shrink: 0;
   grid-area: icon;
 }
+
+.altVisible {
+  display: inline-flex;
+}
