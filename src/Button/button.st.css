@@ -55,7 +55,7 @@
 
 /* end / right */
 .root:iconPos(end) {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 /* bottom */
@@ -65,7 +65,7 @@
 
 /* start / left */
 .root:iconPos(start) {
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 
 .root:fullWidth {
