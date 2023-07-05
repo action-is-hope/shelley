@@ -112,7 +112,10 @@ export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
   transitionProps?: TriggerTransitionProps;
   // contentClassName & variant
   disableModalBackdropBlur?: boolean;
+  /** Add a custom class to the Modal. */
   modalClassName?: string;
+  /** Add a custom class to the Popup. */
+  popupClassName?: string;
 }
 
 function DialogTrigger(props: DialogTriggerProps) {
@@ -137,6 +140,7 @@ function DialogTrigger(props: DialogTriggerProps) {
     transitionProps: transitionPropsFromProps,
     disableModalBackdropBlur = false,
     modalClassName,
+    popupClassName,
   } = props;
 
   const popupSpecificProps = {
@@ -217,6 +221,7 @@ function DialogTrigger(props: DialogTriggerProps) {
           isKeyboardDismissDisabled,
           dataId,
           portalSelector,
+          popupClassName,
         }}
         focusOnProps={focusOnProps}
       />
@@ -308,6 +313,7 @@ interface PopupTriggerProps
   dataId?: string;
   portalSelector?: string | false;
   hideArrow?: boolean;
+  popupClassName?: string;
 }
 
 function PopupTrigger({
@@ -322,6 +328,7 @@ function PopupTrigger({
   dataId,
   focusOnProps,
   portalSelector,
+  popupClassName,
   ...props
 }: PopupTriggerProps) {
   const triggerPropsWithRef = {
@@ -334,6 +341,7 @@ function PopupTrigger({
       {...props}
       triggerRef={targetRef || triggerRef}
       {...overlayProps}
+      className={popupClassName}
       isOpen={state.isOpen}
       onClose={() => state.close()}
       focusOnProps={focusOnProps}
