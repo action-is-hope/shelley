@@ -49,5 +49,6 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "explorer.sortOrderLexicographicOptions": "upper"
 }
