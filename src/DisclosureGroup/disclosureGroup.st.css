@@ -1,0 +1,10 @@
+@namespace "DisclosureGroup";
+
+/* DisclosureGroup */
+@st-import Disclosure from "./disclosure.st.css";
+
+.root {}
+
+.disclosure {
+  -st-extends: Disclosure;
+}

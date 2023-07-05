@@ -41,7 +41,7 @@
   position: relative;
 }
 
-.blurBackground [data-focus-on-hidden] {
+.blurBackground [data-focus-on-hidden]:not(.root) {
   opacity: .5;
   filter: blur(2px);
 }

@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.1",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
@@ -51,10 +51,10 @@
   },
   "dependencies": {
     "@react-aria/toast": "^3.0.0-beta.0",
-    "@react-aria/utils": "^3.16.0",
-    "@react-stately/tree": "^3.6.0",
-    "@react-types/menu": "^3.9.0",
-    "@react-types/overlays": "^3.7.1",
+    "@react-aria/utils": "^3.17.0",
+    "@react-stately/tree": "^3.6.1",
+    "@react-types/menu": "^3.9.1",
+    "@react-types/overlays": "^3.7.2",
     "@react-types/shared": "^3.18.0",
     "react-aria": "^3.24.0",
     "react-focus-on": "^3.8.1",

@@ -14,6 +14,7 @@ import {
   mergeProps,
   AriaTabListProps,
 } from "react-aria";
+import { mergeRefs } from "@react-aria/utils";
 import { Tab } from "./Tab";
 import { TabPanel } from "./TabPanel";
 import { st, classes } from "./tabs.st.css";
@@ -29,7 +30,11 @@ export interface TabsProps<T> extends AriaTabListProps<T>, ComponentBase {
   vol?: 1 | 2 | 3 | false;
 }
 
-function Tabs<T extends object>(props: TabsProps<T>) {
+function Tabs<T extends object>(
+  props: TabsProps<T>,
+  ref?: React.Ref<HTMLDivElement>
+) {
+  const localRef = useRef<HTMLDivElement>(null);
   const {
     className: classNameProp,
     orientation = "horizontal",
@@ -37,8 +42,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
     "data-id": dataId,
   } = props;
   const state = useTabListState(props);
-  const ref = useRef<HTMLDivElement>(null);
-  const { tabListProps } = useTabList(props, state, ref);
+  const { tabListProps } = useTabList(props, state, localRef);
 
   const { focusProps, isFocusVisible } = useFocusRing({
     within: true,
@@ -57,7 +61,7 @@ function Tabs<T extends object>(props: TabsProps<T>) {
   );
 
   useEffect(() => {
-    const activeTab = ref?.current?.querySelector(
+    const activeTab = localRef?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
     // Active tab width or height calculation.
@@ -89,7 +93,8 @@ function Tabs<T extends object>(props: TabsProps<T>) {
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
-          ref={ref}
+          ref={ref ? mergeRefs(ref, localRef) : localRef}
+          // ref={ref}
           data-id={dataId ? `${dataId}-tab-list` : undefined}
         >
           {[...state.collection].map((item) => (
