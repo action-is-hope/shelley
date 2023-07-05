@@ -1,11 +1,17 @@
-/* popup.st.css */
-
+/**
+ * = Popup - popup.st.css
+ *
+ * Base theme styles for a Shelley Popup.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Popup/blockquote.st.css
+ * 
+ */
 @st-import Default, [
   --color-popup,
   --background-color-popup,
   --border-width-popup,
   --border-color-popup] from "./project.st.css";
-@st-import Popup from "../../components/Popup/popup.st.css";
+@st-import Popup from "../../Popup/popup.st.css";
 
 @st-scope Default {
   Popup {

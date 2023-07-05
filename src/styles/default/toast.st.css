@@ -1,0 +1,83 @@
+@st-import Default, [
+  --spacing-unit,
+  --border-radius-button,
+  --background-color-neutral,
+  --background-color-info,
+  --background-color-success,
+  --background-color-warning,
+  --background-color-error
+] from "./project.st.css";
+@st-import Toast from "../../Toast/toast.st.css";
+
+@st-scope Default {
+  Toast:priority(neutral) {
+    background: var(--background-color-neutral)
+  }
+
+  Toast:priority(info) {
+    background: var(--background-color-info)
+  }
+
+  Toast:priority(success) {
+    background: var(--background-color-success)
+  }
+
+  Toast:priority(warning) {
+    background: var(--background-color-warning)
+  }
+
+  Toast:priority(error) {
+    background: var(--background-color-error)
+  }
+
+  Toast {
+    gap: var(--spacing-unit);
+    color: white;
+    padding: calc(var(--spacing-unit) / 1.5);
+    /* rtl */
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--border-radius-button);
+    margin: var(--spacing-unit)
+  }
+
+  Toast::actionButton {
+    border: 1px solid rgba(255, 255, 255, .6);
+  }
+
+  Toast::closeButton {
+    background: none;
+    border: none;
+    appearance: none;
+    color: white;
+    padding: 8px;
+    align-self: center;
+    /* rtl */
+    margin-left: calc(var(--spacing-unit) /2);
+  }
+
+  Toast::closeButton:vol(3) svg {
+    padding: 2px
+  }
+
+  Toast::actionButton {
+    color: inherit;
+  }
+
+  Toast::actionAndCloseWrapper {
+    gap: var(--spacing-unit);
+  }
+
+  Toast::closeButtonWrapper {
+    /* rtl */
+    border-left: 1px solid rgba(255, 255, 255, .3);
+  }
+
+  Toast::iconAndTitleWrapper {
+    gap: var(--spacing-unit)
+  }
+
+  Toast svg {
+    color: white;
+    font-size: 20px;
+  }
+}

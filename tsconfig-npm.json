@@ -1,5 +1,10 @@
 {
-  "extends": "./tsconfig.json",  
-  "include": ["src/components/**/*", "src/styles/**/*", "src/indexLib.ts"],
-  "exclude": ["node_modules", "src/**/__tests__/*"],
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "src/stories/**/*",
+    "src/_codux/**/*",
+    "src/**/__tests__/*"
+  ]
 }

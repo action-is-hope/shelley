@@ -1,0 +1,285 @@
+import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import { ToastProvider, Toast } from "../../indexLib";
+import { ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import {
+  StoryCentered,
+  StoryCenteredInline,
+  StoryCenteredColumn,
+} from "../StoryLayout";
+import {
+  ToastProviderDefault,
+  ToastProviderPriority,
+  ToastProviderActionLabel,
+  ToastProviderAutoDismiss,
+  ToastProviderWithoutIcon,
+} from "./Toast.examples";
+
+<Meta
+  title="Status/Toast"
+  component={ToastProvider}
+  decorators={[
+    (Story) => (
+      <StoryCenteredColumn>
+        <Story />
+      </StoryCenteredColumn>
+    ),
+  ]}
+/>
+
+# Toast
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ToastProvider, useToast } from "@actionishope/shelley";
+  `}
+/>
+
+Toast is used for displaying a short message to the user. It is a non-modal, time-based notification that appears in the bottom right corner or bottom center of the screen. Toasts are used to provide feedback on an action that the user has taken, such as saving a file or sending a message.
+
+## Example
+
+First, render a `<ToastProvider>` at the root of your app, this is responsible for rendering the toast region and in turn the toasts and managing the toast queue:
+
+<Source
+  language="tsx"
+  code={dedent`
+<ToastProvider>
+  {/* Application code */}
+</ToastProvider>
+  `}
+/>
+
+<Story
+  name="a) Basic Toast"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+const toastQueue = useToast();\n
+<ActionButton onPress={() => toastQueue.add({ title: "New toast" })}>
+  Add toast
+</ActionButton>`,
+      },
+    },
+  }}
+>
+  <ToastProviderDefault />
+</Story>
+
+Then, initialise a toast queue and add a toast from anywhere:
+
+<Source language="tsx" id="status-toast--a-basic-toast" />
+
+The example above displays the most basic/default toast with no priority, auto-dismissal or internal action button.
+
+## Content
+
+Toasts are shown according to a priority queue, toasts with higher priority will be displayed first.
+
+An error might be a high priority, warning a medium priority, success a low priority with neutral being the lowest priority.
+The default priority is 0 with 1, 2, 3 or 4 also available, the higher the number, the higher the priority.
+
+<Story
+  name="b) Priority"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<ButtonGroup variant="secondary">
+  <Button
+    onPress={() =>
+      toastQueue.add(
+        { title: "Bread can be toasted (P0)" },
+        { priority: 0 }
+      )
+    }
+  >
+    Neutral (P0)
+  </Button>
+  <Button
+    onPress={() =>
+      toastQueue.add({ title: "Toasting... (P1)" }, { priority: 1 })
+    }
+  >
+    Info (P1)
+  </Button>
+  <Button
+    onPress={() =>
+      toastQueue.add({ title: "Toast is done (P2)" }, { priority: 2 })
+    }
+  >
+    Success (P2)
+  </Button>
+  <Button
+    onPress={() =>
+      toastQueue.add({ title: "Toast is burning (P3)" }, { priority: 3 })
+    }
+  >
+    Warning (P3)
+  </Button>
+  <Button
+    onPress={() =>
+      toastQueue.add({ title: "Toast is on fire (P4)" }, { priority: 4 })
+    }
+  >
+    Error (P4)
+  </Button>
+</ButtonGroup>`,
+      },
+    },
+  }}
+>
+  <ToastProviderPriority />
+</Story>
+
+<Source language="tsx" id="status-toast--b-priority" />
+
+### Accessibility
+
+A toast region is an ARIA landmark region labeled "Notifications" by default. A toast region contains one or more visible toasts, in priority order. When the limit is reached, additional toasts are queued until the user dismisses one. Each toast is an ARIA alert element, containing the content of the notification and a close button.
+
+Landmark regions including the toast container can be navigated using the keyboard by pressing the <kbd>F6</kbd> key to move forward, and the <kbd>Shift</kbd> + <kbd>F6</kbd> key to move backward. This provides an easy way for keyboard users to jump to the toasts from anywhere in the app. When the last toast is closed, keyboard focus is restored.
+
+### Keyboard Activation
+
+| Key            | Interaction                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------ |
+| Tab            | Places the focus on the next interactive element, which is either a button or a close button.                |
+| Shift + Tab    | Places the focus on the previous interactive element, which is either a button or a close button.            |
+| Space or Enter | If focus is on the close button, dismisses the toast. If focus is on the button, executes the button action. |
+| F6             | Places the focus on to the toast region.                                                                     |
+
+## Events
+
+Toasts can include an optional action by specifying the `actionLabel` and `onAction` options when queueing a toast. In addition, the `onClose` event is triggered when the toast is dismissed. The `shouldCloseOnAction` option automatically closes the toast when an action is performed.
+
+Action buttons can be used to provide the user with a way to interact with the toast. For example, if the toast is displaying an error, the action button could be used to provide a way to fix the error.
+
+<Story
+  name="c) Events"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<ActionButton
+  onPress={() =>
+    toastQueue.add(
+      {
+        title: "Item deleted",
+        shouldCloseOnAction: true,
+        action: {
+          actionLabel: "Undo",
+          onAction: () => console.log("Action was clicked!"),
+        },
+      },
+      { priority: 1 }
+    )
+  }
+>
+  Toast with action
+</ActionButton>`,
+      },
+    },
+  }}
+>
+  <ToastProviderActionLabel />
+</Story>
+
+<Source language="tsx" id="status-toast--c-events" />
+
+## Auto-dismiss
+
+Toasts support a `timeout` option to automatically hide them after a certain amount of time. For accessibility, toasts should have a minimum timeout of 5 seconds. In addition, timers will pause when the user focuses or hovers over a toast.
+
+Be sure only to automatically dismiss toasts when the information is not important, or may be found elsewhere. Some users may require additional time to read a toast message, and screen zoom users may miss toasts entirely.
+
+<Story
+  name="d) Auto-dismiss"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<ActionButton
+  onPress={() =>
+    toastQueue.add({ title: "Disappears in 5 seconds" }, { timeout: 5000 })
+  }
+>
+  Timeout toast
+</ActionButton>`,
+      },
+    },
+  }}
+>
+  <ToastProviderAutoDismiss />
+</Story>
+
+<Source language="tsx" id="status-toast--d-auto-dismiss" />
+
+## Toast without icon
+
+The neutral toasts will render without an icon but if you need the semantic ones without icon you can disable it like so:
+
+<Preview>
+  <Story
+    name="f) No icon"
+    args={{}}
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<ActionButton
+  onPress={() =>
+    toastQueue.add(
+      {
+        title: "No icon",
+        shouldShowIcon: false,
+      },
+      {
+        priority: 1,
+      }
+    )
+  }
+>
+  Toast without icon
+</ActionButton>`,
+        },
+      },
+    }}
+  >
+    <ToastProviderWithoutIcon />
+  </Story>
+</Preview>
+
+<Source language="tsx" id="data-toast--f-toast-no-icon" />
+
+### Toasts with custom close button
+
+<Source
+  language="tsx"
+  code={dedent`
+    <Button
+        onClick={() =>
+          state.add(
+            {
+              title: "Custom close button",
+              closeButton: <CloseButton>Close</CloseButton>,
+            }
+          )
+        }
+      >
+        Custom close button
+      </Button>
+  `}
+/>
+
+## ToastProvider Props
+
+<ArgsTable of={ToastProvider} />
+
+@todo ToastContent...ToastQueue prop tables

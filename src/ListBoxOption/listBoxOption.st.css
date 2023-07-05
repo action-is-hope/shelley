@@ -1,0 +1,14 @@
+@namespace "ListBoxOption";
+
+.root {
+  -st-states:
+    isDisabled,
+    isFocused,
+    isHovered,
+    isSelected,
+    isFocusVisible;
+}
+
+.selectedIcon {}
+
+.text {}
