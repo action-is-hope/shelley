@@ -1,6 +1,4 @@
 // Cypress component tests for DisclosureGroup:
-
-// import { expect } from "chai";
 import { Disclosure, DisclosureProps } from "../../src/indexLib";
 
 const disclosure = '[data-id="disclosure"]';
@@ -64,14 +62,22 @@ describe("Disclosure", () => {
       .should("have.attr", "class")
       .and("to.have.string", "isExpanded");
     cy.get(transition).should("have.css", "height");
+  });
+
+  it("height is set correctly", () => {
+    cy.mount(<BasicDisclosure />);
+    cy.get(trigger).click();
+    cy.wait(200);
+    cy.get(content).should("be.visible");
     cy.get(transition)
       .invoke("attr", "style")
       .then((styles) => {
         const height = styles ? styles.split(":") : false;
         expect(height).to.not.be.false;
-        height && expect(height[0] === "height");
+        height && expect(height[0] === "height").to.be.true;
         /* height can be a few px out this is purposely fuzzy, we most care that it is not 0 or "auto". */
-        height && expect(parseInt(height[1] as string) > 40);
+        height && expect(parseInt(height[1] as string)).to.be.greaterThan(41);
+        height && expect(parseInt(height[1] as string)).to.be.lessThan(44);
       });
   });
 
