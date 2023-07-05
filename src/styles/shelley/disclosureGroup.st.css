@@ -1,0 +1,7 @@
+/* disclosureGroup.st.css */
+@st-import Shelley, [
+  --color-ui-inverse
+] from "./project.st.css";
+@st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
+
+@st-scope Shelley {}

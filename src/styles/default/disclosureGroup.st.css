@@ -1,0 +1,12 @@
+/* disclosureGroup.st.css */
+@st-import Default, [
+  --spacing-unit,
+] from "./project.st.css";
+@st-import DisclosureGroup from "../../DisclosureGroup/disclosureGroup.st.css";
+
+@st-scope Default {
+  DisclosureGroup {
+    display: grid;
+    gap: var(--spacing-unit);
+  }
+}
