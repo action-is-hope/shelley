@@ -23,7 +23,7 @@ export interface NotificationProps
    * By default, this value is "status". You can also provide an alternate
    * role if it makes sense from the accessibility-side.
    */
-  role: "alert" | "log" | "status";
+  role: "alert" | "info" | "success" | "warning" | "error";
 }
 
 function Notification(
@@ -31,6 +31,7 @@ function Notification(
   ref?: React.Ref<HTMLDivElement>
 ) {
   const {
+    className,
     children,
     title,
     subtitle,
@@ -45,7 +46,7 @@ function Notification(
   return (
     <div
       ref={ref}
-      className={st(classes.root)}
+      className={st(classes.root, { role }, className)}
       role={role}
       data-id={dataId}
       {...rest}
@@ -56,7 +57,7 @@ function Notification(
           {title && (
             <Text
               as="span"
-              vol={2}
+              vol={3}
               className={st(classes.title)}
               data-id={dataId ? `${dataId}--title` : undefined}
             >
@@ -66,7 +67,7 @@ function Notification(
           {subtitle && (
             <Text
               as="span"
-              vol={1}
+              vol={2}
               className={st(classes.subtitle)}
               data-id={dataId ? `${dataId}--subTitle` : undefined}
             >
