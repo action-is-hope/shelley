@@ -48,25 +48,25 @@
 
 /* = Content Transitions */
 
-/* Map transition lifecycle classes to global CSSTransitionGroslideUp classes. */
+/* Map transition lifecycle classes to global CSSTransitionGroup classes. */
 .enter {
-  -st-global: '.enter'
+  -st-global: '.enter';
 }
 
 .enterActive {
-  -st-global: '.enter-active'
+  -st-global: '.enter-active';
 }
 
 .enterDone {
-  -st-global: '.enter-done'
+  -st-global: '.enter-done';
 }
 
 .exit {
-  -st-global: '.exit'
+  -st-global: '.exit';
 }
 
 .exitActive {
-  -st-global: '.exit-active'
+  -st-global: '.exit-active';
 }
 
 .exitDone {
@@ -98,7 +98,6 @@
 }
 
 /* = Zoom */
-
 .root:transition(zoom).enter .content {
   transform: scale(0);
   opacity: 0;
@@ -126,9 +125,7 @@
   transition: transform 190ms, opacity 190ms;
 }
 
-
 /* = slideUp */
-
 .root:transition(slideUp).enter .content {
   transform: translateY(calc(100vh / 2 + 100%));
   opacity: 0;
@@ -157,7 +154,6 @@
 }
 
 /* = slideFromStart = */
-
 .root:transition(slideFromStart).enter .content {
   transform: var(--transiton-slide-from-start);
   opacity: 0;
@@ -185,9 +181,7 @@
   transition: transform 190ms, opacity 190ms;
 }
 
-
 /* = slideFromEnd = */
-
 .root:transition(slideFromEnd).enter .content {
   transform: var(--transiton-slide-from-end);
   opacity: 0;
