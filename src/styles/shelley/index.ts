@@ -8,6 +8,8 @@ import { classes as light } from "./themes/light.st.css";
 import "./actionButton.st.css";
 import "./blockquote.st.css";
 import "./button.st.css";
+import "./disclosureGroup.st.css";
+import "./helpText.st.css";
 import "./grid.st.css";
 import "./helpText.st.css";
 import "./listBoxOption.st.css";

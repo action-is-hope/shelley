@@ -20,6 +20,15 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
   onTouchStart={[Function]}
   type="button"
 >
+  <span
+    className="Button__Test__inner"
+  >
+    Button text
+  </span>
+  <span
+    className="Button__Test__divider"
+  />
+   
   <svg
     aria-hidden={true}
     className="Icon__Test__root"
@@ -30,14 +39,6 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
       d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"
     />
   </svg>
-  <span
-    className="Button__Test__divider"
-  />
-  <span
-    className="Button__Test__inner"
-  >
-    Button text
-  </span>
 </button>
 `;
 
@@ -62,6 +63,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
   onTouchStart={[Function]}
   type="button"
 >
+   
   <svg
     aria-hidden={true}
     className="Icon__Test__root"
