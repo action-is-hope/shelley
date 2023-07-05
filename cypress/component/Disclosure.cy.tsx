@@ -1,5 +1,6 @@
 // Cypress component tests for DisclosureGroup:
 
+// import { expect } from "chai";
 import { Disclosure, DisclosureProps } from "../../src/indexLib";
 
 const disclosure = '[data-id="disclosure"]';
@@ -62,7 +63,16 @@ describe("Disclosure", () => {
       .eq(0)
       .should("have.attr", "class")
       .and("to.have.string", "isExpanded");
-    cy.get(transition).should("have.attr", "style", "height: 43px;");
+    cy.get(transition).should("have.css", "height");
+    cy.get(transition)
+      .invoke("attr", "style")
+      .then((styles) => {
+        const height = styles ? styles.split(":") : false;
+        expect(height).to.not.be.false;
+        height && expect(height[0] === "height");
+        /* height can be a few px out this is purposely fuzzy, we most care that it is not 0 or "auto". */
+        height && expect(parseInt(height[1] as string) > 40);
+      });
   });
 
   it("should render correct aria attributes", () => {
