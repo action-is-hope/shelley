@@ -32,11 +32,8 @@ export interface NotificationProps
   closeIcon?: ReactNode;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
-  /**
-   * By default, this value is "status". You can also provide an alternate
-   * role if it makes sense from the accessibility-side.
-   */
-  role: "alert" | "info" | "success" | "warning";
+  /** By default, this value is "info". You can also provide an alternate */
+  role?: "info" | "alert" | "success" | "warning";
   /** Icons */
   infoIcon?: ReactNode;
   successIcon?: ReactNode;
@@ -53,7 +50,7 @@ function Notification(
     children,
     title,
     subtitle,
-    role,
+    role = "info",
     hideCloseButton,
     closeIcon = <CloseIcon />,
     infoIcon = <InfoIcon />,

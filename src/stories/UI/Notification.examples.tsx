@@ -47,7 +47,6 @@ export const InlineWarningNotification = () => {
 export const InlineNotificationWithChildren = () => {
   return (
     <Notification
-      role="alert"
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="notification-with-children"
