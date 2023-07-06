@@ -1,8 +1,16 @@
 {
   "$schema": "https://wixplosives.github.io/codux-config-schema/codux.config.schema.json",
+  "formattingFile": {
+    "type": "editorconfig",
+    "filePath": ".editorconfig"
+  },
+  "formatSettings": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
   "boardGlobalSetup": "./src/_codux/board-global-setup.ts",
   "componentsDiscovery": {
     "include": ["./src/**/*"],
-    "exclude": ["./src/**/__tests__/*"]
+    "exclude": ["./src/**/__tests__/*", "./src/stories/**/*", "./src/icons/**/*"]
   }
 }
