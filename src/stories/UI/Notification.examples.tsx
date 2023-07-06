@@ -1,12 +1,45 @@
 import { Notification } from "../../indexLib";
 
-export const InlineNotification = () => {
+export const InlineAlertNotification = () => {
   return (
     <Notification
       role="alert"
-      title="Notification title"
-      subtitle="subtitle goes here"
-      data-id="inline-notification"
+      title="Alert notification title"
+      subtitle="Subtitle goes here"
+      data-id="inline-alert-notification"
+    />
+  );
+};
+
+export const InlineInfoNotification = () => {
+  return (
+    <Notification
+      role="info"
+      title="Info notification title"
+      subtitle="Subtitle goes here"
+      data-id="inline-info-notification"
+    />
+  );
+};
+
+export const InlineSuccessNotification = () => {
+  return (
+    <Notification
+      role="success"
+      title="Success otification title"
+      subtitle="Subtitle goes here"
+      data-id="inline-success-notification"
+    />
+  );
+};
+
+export const InlineWarningNotification = () => {
+  return (
+    <Notification
+      role="warning"
+      title="Warning notification title"
+      subtitle="Subtitle goes here"
+      data-id="inline-warning-notification"
     />
   );
 };
@@ -16,7 +49,7 @@ export const InlineNotificationWithChildren = () => {
     <Notification
       role="alert"
       title="Notification title"
-      subtitle="subtitle goes here"
+      subtitle="Subtitle goes here"
       data-id="notification-with-children"
     >
       <p>Notification content goes here</p>

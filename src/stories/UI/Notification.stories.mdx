@@ -10,7 +10,10 @@ import dedent from "ts-dedent";
 import { Notification } from "../../indexLib";
 
 import {
-  InlineNotification,
+  InlineAlertNotification,
+  InlineInfoNotification,
+  InlineSuccessNotification,
+  InlineWarningNotification,
   InlineNotificationWithChildren,
 } from "./Notification.examples";
 
@@ -59,13 +62,14 @@ import {
   `}
 />
 
-Notification component for displaying a notification.
+Notification component for displaying various notifications.
+Such as alert, warning, success and info.
 
-## Example
+## Alert Notification Example
 
 <Preview>
   <Story
-    name="a) Inline notification"
+    name="a) Inline alert notification"
     parameters={{
       docs: {
         source: {
@@ -75,15 +79,69 @@ Notification component for displaying a notification.
       },
     }}
   >
-    <InlineNotification />
+    <InlineAlertNotification />
   </Story>
 </Preview>
 
-## Example
+## Info Notification Example
 
 <Preview>
   <Story
-    name="a) Inline notification with children"
+    name="b) Inline info notification"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineInfoNotification />
+  </Story>
+</Preview>
+
+## Success Notification Example
+
+<Preview>
+  <Story
+    name="c) Inline success notification"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineSuccessNotification />
+  </Story>
+</Preview>
+
+## Warning Notification Example
+
+<Preview>
+  <Story
+    name="d) Inline warning notification"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineWarningNotification />
+  </Story>
+</Preview>
+
+## Inline Notification With Children Example
+
+<Preview>
+  <Story
+    name="e) Inline notification with children"
     parameters={{
       docs: {
         source: {

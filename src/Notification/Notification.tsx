@@ -36,7 +36,12 @@ export interface NotificationProps
    * By default, this value is "status". You can also provide an alternate
    * role if it makes sense from the accessibility-side.
    */
-  role: "alert" | "info" | "success" | "warning" | "error";
+  role: "alert" | "info" | "success" | "warning";
+  /** Icons */
+  infoIcon?: ReactNode;
+  successIcon?: ReactNode;
+  warningIcon?: ReactNode;
+  errorIcon?: ReactNode;
 }
 
 function Notification(
@@ -51,6 +56,10 @@ function Notification(
     role,
     hideCloseButton,
     closeIcon = <CloseIcon />,
+    infoIcon = <InfoIcon />,
+    successIcon = <SuccessIcon />,
+    warningIcon = <WarningIcon />,
+    errorIcon = <ErrorIcon />,
     "data-id": dataId,
     ...rest
   } = props;
@@ -77,7 +86,13 @@ function Notification(
       {...rest}
     >
       <div className={st(classes.details)}>
-        <div className={st(classes.icon)}></div>
+        <div className={st(classes.icon)}>
+          {role === "info" && infoIcon}
+          {role === "success" && successIcon}
+          {role === "warning" && warningIcon}
+          {role === "alert" && errorIcon}
+        </div>
+
         <div ref={contentRef} className={st(classes.textWrapper)}>
           {title && (
             <Text
