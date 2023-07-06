@@ -12,38 +12,12 @@
   "editor.rulers": [80],
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-
-  "eslint.autoFixOnSave": true,
-  "eslint.validate": [
-    {
-      "language": "javascript",
-      "autoFix": true
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true
-    },
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
-  "tslint.enable": false,
+  "editor.detectIndentation": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "debug.node.autoAttach": "on",
-
-  "beautify.language": {
-    "css": ["css", "less", "scss", "stylable"],
-    "html": ["htm", "html"]
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "files.insertFinalNewline": true,
-  "explorer.sortOrderLexicographicOptions": "upper"
-  "stylable.formatting.experimental": true
+  "explorer.sortOrderLexicographicOptions": "upper",
+  "stylable.formatting.experimental": false
 }
