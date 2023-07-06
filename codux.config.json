@@ -6,7 +6,8 @@
   },
   "formatSettings": {
     "indentSize": 2,
-    "tabSize": 2
+    "tabSize": 2,
+    "trimTrailingWhitespace": false
   },
   "boardGlobalSetup": "./src/_codux/board-global-setup.ts",
   "componentsDiscovery": {

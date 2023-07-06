@@ -32,6 +32,7 @@
     'activates' z-index should you need it. */
     position: relative;
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    background-color: rgba(101, 191, 255, 0.8);
   }
 
   /* = Inner <span> */
