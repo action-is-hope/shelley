@@ -1,7 +1,18 @@
-import React, { useRef, RefObject, forwardRef, ReactNode } from "react";
+import React, {
+  useRef,
+  RefObject,
+  forwardRef,
+  ReactNode,
+  useState,
+} from "react";
 import { Text } from "../Text";
 import { IconButton } from "../IconButton/IconButton";
 import CloseIcon from "../icons/Close";
+
+import InfoIcon from "../icons/Info";
+import SuccessIcon from "../icons/Success";
+import WarningIcon from "../icons/Warning";
+import ErrorIcon from "../icons/Error";
 
 import { st, classes } from "./notification.st.css";
 
@@ -19,6 +30,8 @@ export interface NotificationProps
   subtitle?: string;
   /** Optional close icon  */
   closeIcon?: ReactNode;
+  /** Add predefined data-id to ease testing or analytics. */
+  "data-id"?: string;
   /**
    * By default, this value is "status". You can also provide an alternate
    * role if it makes sense from the accessibility-side.
@@ -43,6 +56,18 @@ function Notification(
   } = props;
   // const ref: RefObject<HTMLDivElement> = useRef(null);
   const contentRef: RefObject<HTMLDivElement> = useRef(null);
+
+  // on press close button - set is open to false and hide the notification
+  const [isOpen, setIsOpen] = useState(true);
+
+  function handleCloseButtonClick() {
+    setIsOpen(false);
+  }
+
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div
       ref={ref}
@@ -79,8 +104,9 @@ function Notification(
       </div>
       {!hideCloseButton && (
         <IconButton
-          data-id={dataId ? `${dataId}--closeButton` : undefined}
           className={classes.closeButton}
+          data-id={dataId ? `${dataId}--closeButton` : undefined}
+          onPress={handleCloseButtonClick}
         >
           {closeIcon}
         </IconButton>
