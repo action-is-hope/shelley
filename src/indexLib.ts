@@ -23,6 +23,7 @@ export * from "./MenuItem";
 export * from "./Modal";
 export * from "./Popup";
 export * from "./ProgressCircle";
+export * from "./ProgressBar";
 export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./Select";

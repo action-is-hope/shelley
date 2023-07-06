@@ -62,6 +62,7 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
+    "@react-types/shared": "^3.18.1",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-docs": "^6.5.15",
