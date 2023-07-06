@@ -14,6 +14,11 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
       control: { type: "number" },
       description: "volume of the description",
     },
+    size: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "size of the input",
+    },
     inputPosition: {
       options: ["start", "end", "top", "bottom"],
       control: { type: "inline-radio" },

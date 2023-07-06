@@ -9,18 +9,98 @@
 @st-import Default, [
   --spacing-unit,
   --background-color-dialog,
-  --color-dialog] from "./project.st.css";
-@st-import Dialog from "../../Dialog/dialog.st.css";
+  --color-dialog
+] from "./project.st.css";
+@st-import Dialog, [divider] from "../../Dialog/dialog.st.css";
 
 @st-scope Default {
-
   Dialog {
+    --dialog-padding-x: calc(var(--spacing-unit) * 2);
+    --dialog-padding-y: calc(var(--spacing-unit) * 2);
+    --dialog-border-radius: 4px;
+    --dialog-small-width: 400px;
+    --dialog-medium-width: 480px;
+    --dialog-large-width: 640px;
+    --dialog-fullscreen-width: 100%;
+    /* styles */
     background-color: var(--background-color-dialog);
     color: var(--color-dialog);
+    border-radius: var(--dialog-border-radius);
+    width: calc(100vw - var(--dialog-padding-x));
   }
+
+  Dialog:size(fullscreen) {
+    height: calc(100vh - var(--dialog-padding-x));
+  }
+
+  Dialog::grid {
+    grid-template-columns: var(--dialog-padding-x) auto 1fr auto minmax(0, auto)
+                           var(--dialog-padding-x);
+    grid-template-rows: auto var(--dialog-padding-y) auto auto 1fr auto
+                        var(--dialog-padding-y);
+  }
+
+  Dialog:isDismissable::grid {
+    grid-template-columns: var(--dialog-padding-x) auto 1fr auto minmax(0, auto)
+                           minmax(0, 32px)var(--dialog-padding-x);
+  }
+}
+
+@media screen and (min-width: 701px) {
+  @st-scope Default {
+    Dialog:size(small) {
+      width: var(--dialog-small-width);
+    }
+
+    Dialog:size(medium) {
+      width: var(--dialog-medium-width);
+    }
+
+    Dialog:size(large) {
+      width: var(--dialog-large-width);
+    }
+  }
+}
+
+@st-scope Default {
+  Dialog::closeButton {}
+
+  Dialog::hero {
+    background-position: 50%;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  Dialog::hero img {
+    height: 40vh;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  Dialog::header {}
 
   Dialog::content {
     margin-top: var(--spacing-unit);
     margin-bottom: calc(var(--spacing-unit) * 2);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  Dialog :global(hr).divider {
+    background-color: grey;
+  }
+
+  Dialog::header {
+    grid-area: header-start / header-start / typeIcon-end / typeIcon-end;
+    align-items: inherit;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+  }
+
+  .typeIcon {
+    grid-area: typeIcon;
   }
 }

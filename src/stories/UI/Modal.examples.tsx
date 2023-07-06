@@ -10,6 +10,8 @@ import {
   ActionButton,
   DialogTrigger,
   Switch,
+  RadioGroup,
+  Radio,
 } from "../../indexLib";
 import { useState, useRef } from "react";
 
@@ -76,36 +78,51 @@ export const ModalCustomTransition = (args: ModalProps) => {
 };
 
 export const ModalCustomTransitionDialogTrigger = () => {
+  const [transiton, setTransition] = useState("myTransition");
   return (
-    <DialogTrigger
-      portalSelector="#portal"
-      transition="myTransition"
-      transitionProps={{
-        // timeout set to 190 by default
-        timeout: 300,
-        onEnter: () => console.log("onEnter"),
-        onEntering: () => console.log("onEntering"),
-        onEntered: () => console.log("onEntered"),
-        onExit: () => console.log("onExit"),
-        onExiting: () => console.log("onExiting"),
-        onExited: () => console.log("onExited"),
-        // mountOnEnter: true,
-        // unmountOnExit on by default
-        // unmountOnExit: false,
-      }}
-      isDismissable
-    >
-      <ActionButton>myTransition</ActionButton>
-      {(close) => (
-        <div>
-          <div role="dialog">
-            <H2 vol={2}>Custom Dialog</H2>
-            <TextField label="Modal field" />
-            <Button onPress={close}>Close</Button>
+    <>
+      <RadioGroup
+        label="Select transition"
+        value={transiton}
+        onChange={(key) => setTransition(key)}
+      >
+        <Radio value="myTransition">myTransition</Radio>
+        <Radio value="slideUp">slideUp</Radio>
+        <Radio value="slideFromStart">slideFromStart</Radio>
+        <Radio value="slideFromEnd">slideFromEnd</Radio>
+        <Radio value="zoom">zoom</Radio>
+      </RadioGroup>
+
+      <DialogTrigger
+        portalSelector="#portal"
+        transition={transiton}
+        transitionProps={{
+          // timeout set to 190 by default
+          timeout: 300,
+          onEnter: () => console.log("onEnter"),
+          onEntering: () => console.log("onEntering"),
+          onEntered: () => console.log("onEntered"),
+          onExit: () => console.log("onExit"),
+          onExiting: () => console.log("onExiting"),
+          onExited: () => console.log("onExited"),
+          // mountOnEnter: true,
+          // unmountOnExit on by default
+          // unmountOnExit: false,
+        }}
+        isDismissable
+      >
+        <ActionButton>View Transition</ActionButton>
+        {(close) => (
+          <div>
+            <div role="dialog">
+              <H2 vol={2}>Custom Dialog</H2>
+              <TextField label="Modal field" />
+              <Button onPress={close}>Close</Button>
+            </div>
           </div>
-        </div>
-      )}
-    </DialogTrigger>
+        )}
+      </DialogTrigger>
+    </>
   );
 };
 
@@ -114,7 +131,7 @@ export const ShardExample = () => {
   const [shards, setShards] = useState(true);
   return (
     <div className={modalClasses.shardExample}>
-      <div style={{ gridArea: "header", background: "#333" }}>
+      <div style={{ gridArea: "header" }}>
         <ActionButton>Log in/out</ActionButton>
       </div>
 
