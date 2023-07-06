@@ -18,23 +18,22 @@
     border-style: solid;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     width: 100%;
     height: auto;
     min-height: 3rem;
+    padding: var(--spacing-unit);
   }
 
   Notification::details {
     display: flex;
-    align-items: center;
   }
 
   Notification::icon {
-    margin: 0 0.50rem 0 0;
+    margin: 7px var(--spacing-unit) 0 0
   }
 
   Notification::title {
-    margin: 0 0.50rem 0 0;
+    margin: 0 var(--spacing-unit) 0 0;
   }
 
   Notification::before {
@@ -47,7 +46,7 @@
 
   Notification::closeButton {
     position: absolute;
-    right: 0;
+    right: var(--spacing-unit);
   }
 
 }
