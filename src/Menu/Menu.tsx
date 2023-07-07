@@ -51,7 +51,10 @@ function Menu<T extends object>(
 // export default Menu;
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _Menu = forwardRef(Menu) as <T>(
-  props: MenuProps<T> & { ref?: Ref<HTMLUListElement> }
-) => ReactElement;
+// const _Menu = forwardRef(Menu) as <T>(
+//   props: MenuProps<T> & { ref?: Ref<HTMLUListElement> }
+// ) => ReactElement;
+// export { _Menu as Menu };
+
+const _Menu = forwardRef(Menu);
 export { _Menu as Menu };

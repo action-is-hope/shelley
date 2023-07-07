@@ -22,6 +22,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
    * @default 3
    */
   vol?: TextVolume;
+  displayName?: string;
 }
 
 export const Text = forwardRef(

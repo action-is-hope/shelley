@@ -169,9 +169,12 @@ function Button<P extends React.ElementType = "button">(
  */
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _Button = forwardRef(Button) as <P extends ElementType>(
-  props: ButtonProps<P> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
-/** required - see ButtonGroup */
-_Button.toString = () => "ShelleyButton";
+// const _Button = forwardRef(Button) as <P extends ElementType>(
+//   props: ButtonProps<P> & { ref?: Ref<HTMLElement> }
+// ) => ReactElement;
+// /** required - see ButtonGroup */
+// _Button.toString = () => "ShelleyButton";
+// export { _Button as Button };
+
+const _Button = forwardRef(Button);
 export { _Button as Button };
