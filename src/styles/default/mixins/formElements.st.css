@@ -16,7 +16,7 @@
     --color-switch-notch
   ] from "../project.st.css";
 @st-import InputLabel from "../../../Label/label.st.css";
-@st-import [textVol] from "./text.st.css";
+@st-import [textVol] from "./textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
 
 

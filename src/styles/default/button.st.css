@@ -12,11 +12,12 @@
 @st-import [respScale] from "../formatters/common";
 @st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
-@st-import [textVol] from "./mixins/text.st.css";
+@st-import [textVol] from "./mixins/textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 @st-scope Default {
   Button {
+
     -st-mixin: hideWebkitAppearance;
     /* = Really really opinionated, only do this if you are willing to provide 
     a suitable replacement. We are control freaks. */
