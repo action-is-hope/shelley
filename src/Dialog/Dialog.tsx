@@ -93,6 +93,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
     </section>
   );
 }
+Dialog.displayName = "Dialog";
 
 /**
  * Dialogs are windows containing contextual information, tasks, or workflows that appear over the user interface.

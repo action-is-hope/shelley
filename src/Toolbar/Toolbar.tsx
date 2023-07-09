@@ -38,6 +38,7 @@ function Toolbar(props: ToolbarProps, ref: React.Ref<HTMLDivElement>) {
     </Component>
   );
 }
+Toolbar.displayName = "Toolbar";
 
 /**
  * Toolbar housing buttons and slogans for use in headers and footers.

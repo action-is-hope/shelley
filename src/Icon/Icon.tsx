@@ -55,6 +55,7 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
     </>
   );
 }
+Icon.displayName = "Icon";
 Icon.toString = () => "Icon";
 /**
  * Icon allows you to share common grids and allows for formatted content areas.

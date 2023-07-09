@@ -32,6 +32,7 @@ function Grid(props: GridProps, ref: React.Ref<HTMLBaseElement>) {
 
   return GridRoot;
 }
+Grid.displayName = "Grid";
 
 /**
  * Grid allows you to share common grids and allows for formatted content areas.

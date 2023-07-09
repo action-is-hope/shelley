@@ -1,10 +1,10 @@
 "use client";
 import React, {
-  Ref,
-  ReactElement,
+  // Ref,
+  // ReactElement,
   useRef,
   forwardRef,
-  ElementType,
+  // ElementType,
 } from "react";
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
@@ -163,18 +163,12 @@ function Button<P extends React.ElementType = "button">(
     internal
   );
 }
+Button.displayName = "Button";
 
 /**
  * Buttons allow users to perform an action.
  */
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-// const _Button = forwardRef(Button) as <P extends ElementType>(
-//   props: ButtonProps<P> & { ref?: Ref<HTMLElement> }
-// ) => ReactElement;
-// /** required - see ButtonGroup */
-// _Button.toString = () => "ShelleyButton";
-// export { _Button as Button };
 
 const _Button = forwardRef(Button);
+_Button.toString = () => "ShelleyButton";
 export { _Button as Button };

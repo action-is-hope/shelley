@@ -74,6 +74,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     </>
   );
 }
+HelpText.displayName = "HelpText";
 
 const _HelpText = forwardRef(HelpText);
 export { _HelpText as HelpText };

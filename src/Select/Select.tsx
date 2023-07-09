@@ -1,9 +1,7 @@
 "use client";
 import React, {
-  Ref,
   ReactNode,
   forwardRef,
-  ReactElement,
   useRef,
   useState,
   useEffect,
@@ -198,10 +196,7 @@ function Select<T extends object>(
     </Field>
   );
 }
+Select.displayName = "Select";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _Select = forwardRef(Select) as <T>(
-  props: SelectProps<T> & { ref?: Ref<HTMLButtonElement> }
-) => ReactElement;
+const _Select = forwardRef(Select);
 export { _Select as Select };

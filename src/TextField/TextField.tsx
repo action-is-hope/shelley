@@ -122,6 +122,7 @@ function TextField(
     </Field>
   );
 }
+TextField.displayName = "TextField";
 
 const _InputText = forwardRef(TextField);
 export { _InputText as TextField };

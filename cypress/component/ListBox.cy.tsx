@@ -50,7 +50,7 @@ describe("Basic ListBox", () => {
     cy.get(listbox).and(
       "have.attr",
       "aria-labelledby",
-      "labelled-by-id example2"
+      "example2 labelled-by-id"
     );
   });
 

@@ -21,6 +21,7 @@ function VisuallyHidden(
     />
   );
 }
+VisuallyHidden.displayName = "VisuallyHidden";
 
 /**
  * VisuallyHidden provides text for screen readers that is visually hidden.

@@ -3,7 +3,6 @@ import {
   Disclosure,
   DisclosureProps,
   DisclosureGroup,
-  DisclosureGroupProps,
   Text,
   H2,
   P,
@@ -15,13 +14,6 @@ import { classes as spacing } from "../../styles/default/spacing.st.css";
 export const DisclosurePropsTable = (props: DisclosureProps) => {
   <Disclosure {...props} />;
 };
-
-function _DisclosureGroupPropsTable<T extends object>(
-  props: DisclosureGroupProps<T>
-) {
-  return <DisclosureGroup {...props} />;
-}
-export const DisclosureGroupPropsTable = _DisclosureGroupPropsTable;
 
 export const SingleDisclosure: React.FC = () => {
   return (

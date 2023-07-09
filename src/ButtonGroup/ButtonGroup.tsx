@@ -67,6 +67,7 @@ function ButtonGroup(props: ButtonGroupProps, ref: React.Ref<HTMLDivElement>) {
     </div>
   );
 }
+ButtonGroup.displayName = "ButtonGroup";
 
 /**
  * ButtonGroup can be used to group related buttons in various orientations.

@@ -281,13 +281,13 @@ function DialogTrigger(props: DialogTriggerProps) {
     />
   );
 }
+DialogTrigger.displayName = "DialogTrigger";
 
 /**
  * DialogTrigger serves as a wrapper around a Dialog and its associated trigger, linking the Dialog's
  * open state with the trigger's press state. Additionally, it allows you to customize the type of Dialog.
  */
 
-// We don't want getCollectionNode to show up in the type definition??
 export const _DialogTrigger = DialogTrigger as (
   props: DialogTriggerProps
 ) => JSX.Element;

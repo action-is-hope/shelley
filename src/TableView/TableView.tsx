@@ -141,6 +141,7 @@ function TableView<T extends object>(
     </div>
   );
 }
+TableView.displayName = "TableView";
 
 /**
  * Tables are containers for displaying information. They allow users to quickly

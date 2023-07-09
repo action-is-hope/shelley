@@ -1,12 +1,5 @@
 "use client";
-import {
-  Ref,
-  useRef,
-  ReactElement,
-  useState,
-  useEffect,
-  forwardRef,
-} from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import { useTabListState } from "react-stately";
 import {
   useTabList,
@@ -121,14 +114,7 @@ function Tabs<T extends object>(
     </div>
   );
 }
-
 Tabs.displayName = "Tabs";
 
-export default Tabs;
-
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _Tabs = forwardRef(Tabs) as <T>(
-  props: TabsProps<T> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
+const _Tabs = forwardRef(Tabs);
 export { _Tabs as Tabs };

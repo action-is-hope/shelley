@@ -13,5 +13,7 @@ function InputAdornment(
     </span>
   );
 }
+InputAdornment.displayName = "InputAdornment";
+
 const _InputAdornment = forwardRef(InputAdornment);
 export { _InputAdornment as InputAdornment };

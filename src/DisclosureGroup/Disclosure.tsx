@@ -115,6 +115,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     </article>
   );
 }
+Disclosure.displayName = "Disclosure";
 
 const _Disclosure = forwardRef(Disclosure);
 export { _Disclosure as Disclosure };

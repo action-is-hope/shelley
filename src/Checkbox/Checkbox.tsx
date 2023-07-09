@@ -98,6 +98,7 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
     </Label>
   );
 }
+Checkbox.displayName = "Checkbox";
 
 const _Checkbox = forwardRef(Checkbox);
 export { _Checkbox as Checkbox };

@@ -1,4 +1,4 @@
-import { useRef, forwardRef, ReactNode, ReactElement, Ref } from "react";
+import { useRef, forwardRef, ReactNode } from "react";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import type { ComponentBase } from "../typings/shared-types";
@@ -72,10 +72,7 @@ function ToastRegion<T>(
     </div>
   );
 }
+ToastRegion.displayName = "ToastRegion";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _ToastRegion = forwardRef(ToastRegion) as <T>(
-  props: ToastRegionProps<T> & { ref?: Ref<HTMLDivElement> }
-) => ReactElement;
+const _ToastRegion = forwardRef(ToastRegion);
 export { _ToastRegion as ToastRegion };

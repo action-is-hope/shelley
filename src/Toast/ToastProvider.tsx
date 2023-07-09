@@ -85,6 +85,7 @@ function ToastProvider(
     </ToastContext.Provider>
   );
 }
+ToastProvider.displayName = "ToastProvider";
 
 /**
  * ToastProvider is responsible for rendering the toast region and in turn the toasts and managing the toast queue

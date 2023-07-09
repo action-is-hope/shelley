@@ -93,6 +93,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     </Field>
   );
 }
+RadioGroup.displayName = "RadioGroup";
 
 const _RadioGroup = forwardRef(RadioGroup);
 export { _RadioGroup as RadioGroup };

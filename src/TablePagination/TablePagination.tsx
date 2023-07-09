@@ -201,6 +201,7 @@ function TablePagination(
     </div>
   );
 }
+TablePagination.displayName = "TablePagination";
 
 /**
  * @todo TablePaginations - needs refactor.

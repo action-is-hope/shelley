@@ -1,11 +1,9 @@
 "use client";
 import React, {
-  Ref,
   useRef,
   forwardRef,
   useEffect,
   useState,
-  ReactElement,
   ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
@@ -236,10 +234,10 @@ function ComboBox<T extends object>(
     </Field>
   );
 }
+ComboBox.displayName = "ComboBox";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _ComboBox = forwardRef(ComboBox) as <T>(
-  props: ComboBoxProps<T> & { ref?: Ref<HTMLInputElement> }
-) => ReactElement;
+/**
+ * ComboBoxes combine a text entry with a picker menu, allowing users to filter longer lists to only the selections matching a query.
+ */
+const _ComboBox = forwardRef(ComboBox);
 export { _ComboBox as ComboBox };

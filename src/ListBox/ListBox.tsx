@@ -1,5 +1,5 @@
 "use client";
-import { Ref, ReactElement, useRef, forwardRef } from "react";
+import { useRef, forwardRef } from "react";
 import { useListState, ListState } from "react-stately";
 import { useListBox } from "react-aria";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
@@ -86,10 +86,7 @@ function ListBox<T extends object>(
     </>
   );
 }
+ListBox.displayName = "ListBox";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _ListBox = forwardRef(ListBox) as <T>(
-  props: ListBoxProps<T> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
+const _ListBox = forwardRef(ListBox);
 export { _ListBox as ListBox };

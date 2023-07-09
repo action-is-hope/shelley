@@ -69,6 +69,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
     </Label>
   );
 }
+Switch.displayName = "Switch";
 
 const _Switch = forwardRef(Switch);
 export { _Switch as Switch };

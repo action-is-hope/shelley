@@ -181,6 +181,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
     <></>
   );
 }
+Popup.displayName = "Popup";
 
 /**
  * A Popup can be used to display some content on top of another; used internally in components like MenuTrigger and DialogTrigger.

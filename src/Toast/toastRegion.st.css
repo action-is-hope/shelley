@@ -1,3 +1,5 @@
+@namespace "ToastRegion";
+
 .root {
   -st-states: isFocusVisible;
   position: fixed;

@@ -6,9 +6,7 @@ import { st, classes } from "./progressBar.st.css";
 import { useProgressBar } from "@react-aria/progress";
 import type { ComponentBase } from "../typings/shared-types";
 
-export interface ProgressBarProps
-  extends AriaProgressBarProps,
-  ComponentBase {
+export interface ProgressBarProps extends AriaProgressBarProps, ComponentBase {
   /**
    * What the ProgressCircle's diameter should be.
    * @default 'medium'
@@ -39,10 +37,7 @@ export interface ProgressBarProps
   stepProgress?: number;
 }
 
-function ProgressBar(
-  props: ProgressBarProps,
-  ref: Ref<HTMLDivElement>
-) {
+function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
   const {
     label,
     className: classNameProp,
@@ -84,7 +79,6 @@ function ProgressBar(
     currentStep: number;
     stepProgress: number;
   }) => {
-
     const fillStyle: CSSProperties = {
       width: index === currentStep - 1 ? `${stepProgress}%` : "100%",
       height: "100%",
@@ -95,15 +89,32 @@ function ProgressBar(
     });
 
     return (
-      <div key={index} className={st(classes.stepIndicator)} data-id={"stepIndicator"} >
-        <div style={fillStyle} className={currentStepClassName} data-id={"stepIndicatorFill"} />
+      <div
+        key={index}
+        className={st(classes.stepIndicator)}
+        data-id={"stepIndicator"}
+      >
+        <div
+          style={fillStyle}
+          className={currentStepClassName}
+          data-id={"stepIndicatorFill"}
+        />
       </div>
     );
   };
 
   return (
     <div
-      className={st(classes.root, { isIndeterminate, size, variant, multistep: totalSteps > 1 ? true : false }, classNameProp)}
+      className={st(
+        classes.root,
+        {
+          isIndeterminate,
+          size,
+          variant,
+          multistep: totalSteps > 1 ? true : false,
+        },
+        classNameProp
+      )}
       {...progressBarProps}
       {...rest}
       ref={ref}
@@ -125,16 +136,14 @@ function ProgressBar(
           </div>
         ) : (
           <div className={st(classes.stepIndicator)}>
-              <div
-                style={{ width: barWidth }}
-                className={st(classes.fill)}
-              />
+            <div style={{ width: barWidth }} className={st(classes.fill)} />
           </div>
         )}
       </div>
     </div>
   );
 }
+ProgressBar.displayName = "ProgressBar";
 
 /**
  * ProgressBars show the progression of a system operation such as downloading, uploading, or processing, in a visual way.

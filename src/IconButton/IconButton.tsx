@@ -29,6 +29,7 @@ function IconButton(props: IconButtonProps, ref: React.Ref<HTMLButtonElement>) {
     />
   );
 }
+IconButton.displayName = "IconButton";
 
 const _IconButton = forwardRef(IconButton);
 export { _IconButton as IconButton };

@@ -67,6 +67,7 @@ function ActionButton(
     </button>
   );
 }
+ActionButton.displayName = "ActionButton";
 
 /**
  * ActionButtons allow users to perform an action.

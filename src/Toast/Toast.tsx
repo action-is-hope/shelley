@@ -135,6 +135,7 @@ function Toast(
     </div>
   );
 }
+Toast.displayName = "Toast";
 
 const _Toast = forwardRef(Toast) as <T>(
   props: ToastProps<T> & { ref?: Ref<HTMLDivElement> }

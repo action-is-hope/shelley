@@ -1,7 +1,12 @@
+/**
+ * WIP: Investigate reactDocgenTypescript for docs support.
+ * Outputs a json object containing type information so we can use it outside of storybook.
+ * const obj = (arr as any[]).find((o) => o.displayName === "_ActionButton");
+ */
+
 const fs = require("fs");
 const reactDocgenTypescript = require("react-docgen-typescript");
 
-const parser = reactDocgenTypescript.withDefaultConfig();
 const tsConfigParser = reactDocgenTypescript.withCustomConfig(
   "./tsconfig.json",
   {
@@ -9,29 +14,9 @@ const tsConfigParser = reactDocgenTypescript.withCustomConfig(
   }
 );
 
-const componentInfo = tsConfigParser.parse("./src/Menu/Menu.tsx");
-
-console.log(componentInfo);
+const componentInfo = tsConfigParser.parse("./src/indexLib.ts");
 
 fs.writeFileSync(
   "./componentInfo.json",
   JSON.stringify(componentInfo, null, 2)
 );
-
-// const docgen = require("react-docgen-typescript");
-
-// Create a parser with the default typescript config and custom docgen options
-// const customParser = docgen.withDefaultConfig(options);
-
-// const docs = customParser.parse("./path/to/component");
-
-// // Create a parser with the custom typescript and custom docgen options
-// const customCompilerOptionsParser = docgen.withCompilerOptions(
-//   { esModuleInterop: true },
-//   options
-// );
-
-// // Create a parser with using your typescript config
-// const tsConfigParser = docgen.withCustomConfig("../tsconfig.json", {
-//   savePropValueAsString: true,
-// });
