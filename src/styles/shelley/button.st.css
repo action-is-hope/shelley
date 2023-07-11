@@ -1,3 +1,4 @@
+@namespace "ShelleyButton";
 @st-import Shelley, [
   --color-ui,
   --color-ui-inverse,
@@ -12,6 +13,7 @@
 @st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
 
 @st-scope Shelley {
+
   /* = = The base <button> element. */
   Button {
     /* We'll assign this via our variants but set it with our tones. */
