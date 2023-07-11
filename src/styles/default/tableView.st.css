@@ -14,7 +14,7 @@
   --text-vol-1-line-height
 ] from "./project.st.css";
 @st-import TableView, [cell] from "../../TableView/tableView.st.css";
-@st-import [textVol] from "./mixins/text.st.css";
+@st-import [textVol] from "./mixins/textVol.st.css";
 @st-import [respScale] from "../formatters/common";
 
 
