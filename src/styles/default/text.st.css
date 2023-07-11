@@ -22,7 +22,7 @@
   ] from "./project.st.css";
 
 @st-import Text from "../../Text/text.st.css";
-@st-import [ textVol ] from "./mixins/text.st.css";
+@st-import [ textVol ] from "./mixins/textVol.st.css";
 
 @st-scope Default {
 

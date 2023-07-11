@@ -14,7 +14,7 @@
     menuItemFocusVisible,
     menuItemText,
     menuItemSelectedIcon
-] from "./mixins/menu.st.css";
+] from "./mixins/menuList.st.css";
 
 @st-scope Default {
   ListBoxOption {
