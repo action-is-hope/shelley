@@ -1,3 +1,4 @@
+@namespace "ShelleyToast";
 @st-import Shelley, [
   --background-color-neutral,
   --background-color-info,

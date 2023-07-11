@@ -1,3 +1,12 @@
+@namespace "DefaultToastRegion";
+/**
+ * = ToastRegion - toastRegion.st.css
+ *
+ * Base theme styles for a Shelley ToastRegion.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toastRegion.st.css
+ * 
+ */
 @st-import Default, [breakpoint-md-max, --border-radius-button] from "./project.st.css";
 @st-import ToastRegion from "../../Toast/toastRegion.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";

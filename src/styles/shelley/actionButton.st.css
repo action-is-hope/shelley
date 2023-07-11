@@ -1,3 +1,4 @@
+@namespace "ShelleyActionButton";
 @st-import Shelley, [
     --color-ui,
     --color-ui-inverse,
