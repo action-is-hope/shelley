@@ -1,3 +1,4 @@
+@namespace "DefaultMenu";
 /**
  * = Menu - menu.st.css
  *
@@ -8,7 +9,7 @@
  */
 @st-import Default from "./project.st.css";
 @st-import Menu from "../../Menu/menu.st.css";
-@st-import [menuList] from "./mixins/menu.st.css";
+@st-import [menuList] from "./mixins/menuList.st.css";
 
 @st-scope Default {
   Menu {

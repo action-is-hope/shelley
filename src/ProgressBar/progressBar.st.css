@@ -1,0 +1,121 @@
+@namespace "ProgressBar";
+
+.root {
+
+  -st-states: isIndeterminate,
+    size(enum(small, medium, large)),
+    overBackground,
+    multistep(boolean),
+    variant(enum(overBackground));
+
+  --loader-bar-small-width: 60px;
+  --loader-bar-small-height: 60px;
+  --loader-bar-small-border-size: 2px;
+
+  --loader-bar-medium-width: 150px;
+  --loader-bar-medium-height: 150px;
+  --loader-bar-medium-border-size: 3px;
+
+  --loader-bar-large-width: 300px;
+  --loader-bar-large-height: 300px;
+  --loader-bar-large-border-size: 4px;
+
+  --loader-bar-track-color: lightgrey;
+  --loader-bar-track-fill-color: grey;
+
+  /* Defaults to medium */
+  --loader-bar-width: var(--loader-bar-medium-width);
+  --loader-bar-height: var(--loader-bar-medium-height);
+  --loader-bar-border-size: var(--loader-bar-medium-border-size);
+}
+
+.root:size(small) {
+  --loader-bar-width: var(--loader-bar-small-width);
+  --loader-bar-height: var(--loader-bar-small-height);
+  --loader-bar-border-size: var(--loader-bar-small-border-size);
+}
+
+.root:size(large) {
+  --loader-bar-width: var(--loader-bar-large-width);
+  --loader-bar-height: var(--loader-bar-large-height);
+  --loader-bar-border-size: var(--loader-bar-large-border-size);
+}
+.root {}
+
+.stepActive {}
+
+.trackWrapper {}
+
+.track {}
+
+.fill {}
+
+.label {}
+
+.stepContainer {}
+
+.stepIndicator {}
+
+.stepIndicatorFill {}
+
+.root {
+
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: var(--loader-bar-width);
+  height: var(--loader-bar-height);
+}
+
+.root:isIndeterminate .fill {
+  animation: indeterminateAnimation 2s linear infinite;
+}
+
+.step {
+  height: 100%;
+  background-color: #007a4d;
+  transition: width 0.2s ease-in-out;
+}
+
+.trackWrapper {
+  height: 10px;
+}
+
+.fill {
+  background-color: #007a4d;
+  height: 10px;
+}
+
+.label {
+  color: #6a6a6a;
+}
+
+.stepContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepIndicator {
+  -st-states: active;
+  flex-grow: 1;
+  margin: 0 2px;
+  background-color: #e6e6e6;
+}
+
+.stepIndicatorFill {
+  -st-states: isActive;
+}
+
+.stepIndicatorFill:isActive {
+  background-color: #007a4d;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}

@@ -1,0 +1,186 @@
+import { ArgsTable, Canvas, Meta, Source, Story } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+
+import { Modal, ProgressBar } from "../../indexLib";
+import { StoryCenteredInline, StoryGrid } from "../StoryLayout";
+
+<Meta
+  title="Status/ProgressBar"
+  argTypes={{
+    inputPosition: {
+      options: ["start", "end", "top", "bottom"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+  }}
+  component={Modal}
+/>
+
+# ProgressBar
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ProgressBar } from "@actionishope/shelley/ProgressBar";
+  `}
+/>
+
+ProgressBars show the progression of a system operation such as downloading, uploading, or processing, in a visual way. They can represent determinate or indeterminate progress.
+
+## Example
+
+<Story
+  name="a) ProgressBars"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" value={90} />
+</Story>
+
+<Source language="tsx" id="status-progressbar--a-progress-bars" />
+
+## Value
+
+ProgressBars are controlled with the `value` prop. By default, the `value` prop represents the current percentage of progress, as the minimum (minValue) and maxiumum (maxValue) values default to 0 and 100, respectively.
+
+<Story
+  name="b) Value"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" value={25} />
+</Story>
+
+<Source language="tsx" id="status-progressbar--b-value" />
+
+### Label
+
+Label can be added to the ProgressBar to provide more context to the user. You can use the `label` prop to provide more context to the user.
+
+<Story
+  name="c) Label"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" label="Loading…" value={90} />
+</Story>
+
+<Source language="tsx" id="status-progressbar--c-label" />
+
+### Indeterminate
+
+By default, ProgressBars are determinate. Use a determinate ProgressBar when progress can be calculated against a specific goal. Use an indeterminate ProgressBar when progress is happening but the time or effort to completion can't be determined.
+In this case set the `isIndeterminate` prop to `true`.
+
+<Story
+  name="d) Indeterminate"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar aria-label="Loading…" isIndeterminate />
+</Story>
+
+<Source language="tsx" id="status-progressbar--d-indeterminate" />
+
+### Accessibility
+
+An `aria-label` must be provided for accessibility. If the ProgressBar is labeled by a separate element, an `aria-labelledby` prop must be provided using the `id` of the labeling element instead.
+
+If using the `overBackground` variant, ensure the background offers enough contrast for the ProgressBar to be legible and meets color contrast guidelines.
+
+### Internationalisation
+
+To internationalise a ProgressBar, a localized string should be passed to the `aria-label` prop (or value of the associated `aria-labelledby` element).
+
+For languages that are read right-to-left (e.g. Hebrew and Arabic), the fill of both determinate and indeterminate ProgressBars continues to spin clockwise.
+
+## Visual options
+
+### Size
+
+You can specify the size of the ProgressBar using the `size` prop. The default size is `medium`. The `small` size is recommended for use in tables and the `large` size is recommended for use in modals.
+
+<Story
+  name="e) Size"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar
+    aria-label="Loading…"
+    marginEnd="size-300"
+    size="small"
+    value={30}
+  />
+  <ProgressBar aria-label="Loading…" marginEnd="size-300" value={30} />
+  <ProgressBar aria-label="Loading…" size="large" value={30} />
+</Story>
+
+<Source language="tsx" id="status-progressbar--e-size" />
+
+### Multi-step ProgressBars
+
+ProgressBars can be used to show the progression of a multi-step process. In this case, the `totalSteps` and `currentStep` props should be used to indicate the current step and the total number of steps in the process. The `stepProgress` prop can be used to indicate the progress of the current step.
+
+<Story
+  name="f) Multi-step ProgressBars"
+  decorators={[
+    (Story) => (
+      <StoryCenteredInline>
+        <Story />
+      </StoryCenteredInline>
+    ),
+  ]}
+>
+  <ProgressBar
+    totalSteps={5}
+    currentStep={2}
+    stepProgress={30}
+    label="Step 2 of 5"
+  />
+</Story>
+
+<Source language="tsx" id="status-progressbar--f-multi-step-progress-bars" />
+
+## ProgressBar Props
+
+Check the table below for a full list of props.
+
+<ArgsTable of={ProgressBar} />
+
+## Stying
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

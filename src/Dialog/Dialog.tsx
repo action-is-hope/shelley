@@ -65,7 +65,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
       // Adobe libs don't add set aria-modal="true" they use aria-hidden as do we.
       {...rest}
     >
-      <div className={classes.dialogGrid}>
+      <div className={classes.grid}>
         {Children.map(Children.toArray(children), (child) => {
           // We could do more here, add internal classes for the grid areas perhaps?
           if (React.isValidElement(child)) {

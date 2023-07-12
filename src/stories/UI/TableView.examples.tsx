@@ -19,6 +19,7 @@ export const TableViewExample = () => {
       selectionMode="multiple"
       vol={1}
       isResponsive
+      data-id="table"
     >
       <TableHeader>
         <Column>Name</Column>

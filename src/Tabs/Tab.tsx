@@ -3,7 +3,7 @@ import { Ref, useRef, ReactElement, forwardRef } from "react";
 import { useTab, useFocusRing } from "react-aria";
 import type { Node } from "@react-types/shared";
 import type { TabListState } from "react-stately";
-import { mergeProps } from "@react-aria/utils";
+import { mergeProps, mergeRefs } from "@react-aria/utils";
 import { st, classes } from "./tabs.st.css";
 import type { ComponentBase } from "../typings/shared-types";
 export interface TabProps<T> extends ComponentBase {
@@ -13,17 +13,16 @@ export interface TabProps<T> extends ComponentBase {
   state: TabListState<T>;
 }
 
-function Tab<T extends object>({
-  item,
-  state,
-  "data-id": dataId,
-}: TabProps<T>) {
+function Tab<T extends object>(
+  { item, state, "data-id": dataId }: TabProps<T>,
+  ref?: React.Ref<HTMLDivElement>
+) {
   const { key, rendered } = item;
-  const ref = useRef<HTMLDivElement>(null);
+  const localRef = useRef<HTMLDivElement>(null);
   const { tabProps, isSelected, isDisabled, isPressed } = useTab(
     { key },
     state,
-    ref
+    localRef
   );
 
   const { isFocusVisible, focusProps } = useFocusRing();
@@ -37,7 +36,7 @@ function Tab<T extends object>({
         isFocusVisible,
       })}
       {...mergeProps(tabProps, focusProps)}
-      ref={ref}
+      ref={ref ? mergeRefs(ref, localRef) : localRef}
       data-id={dataId}
     >
       {rendered}

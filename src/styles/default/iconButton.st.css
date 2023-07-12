@@ -1,3 +1,4 @@
+@namespace "DefaultIconButton";
 /**
  * = IconButton - iconButton.st.css
  *
@@ -13,7 +14,7 @@
 @st-import [respScale] from "../formatters/common";
 @st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
-@st-import [textVol] from "./mixins/text.st.css";
+@st-import [textVol] from "./mixins/textVol.st.css";
 
 @st-scope Default {
 

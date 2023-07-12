@@ -1,4 +1,4 @@
-/* tableView.st.css */
+@namespace "ShelleyTableView";
 @st-import Shelley, [
     --background-color-main,
     --color-background-row as --project-color-background-row,

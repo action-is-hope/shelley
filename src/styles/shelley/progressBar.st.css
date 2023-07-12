@@ -1,0 +1,22 @@
+/* progressBar.st.css */
+@st-import Shelley, [
+  --light-01-raw,
+  --color-ui-raw,
+  --color-accent-1,
+] from "./project.st.css";
+@st-import ProgressBar, [
+  --loader-bar-track-color,
+  --loader-bar-track-fill-color
+] from "../../ProgressBar/progressBar.st.css";
+
+@st-scope Shelley {
+  ProgressBar {
+    --loader-bar-track-fill-color: var(--color-accent-1);
+    --loader-bar-track-color: rgba(var(--color-ui-raw), 0.2);
+  }
+
+  ProgressBar:variant(overBackground) {
+    --loader-bar-track-fill-color: var(--color-accent-1);
+    --loader-bar-track-color: rgba(var(--color-ui-raw), 0.2);
+  }
+}
