@@ -31,6 +31,14 @@ export interface ComboBoxProps<T>
     LoadMoreProps {
   className?: string;
   /**
+   * ClassName for the listbox, import directly due to portals.
+   */
+  listBoxClassName?: string;
+  /**
+   * ClassName for the popup, import directly due to portals.
+   */
+  popupClassName?: string;
+  /**
    * The selector of the element that the menu should render inside of.
    * @default 'body'
    */
@@ -65,6 +73,8 @@ function ComboBox<T extends object>(
 ) {
   const {
     className: classNameProp,
+    listBoxClassName,
+    popupClassName,
     description,
     isDisabled,
     isReadOnly,
@@ -132,8 +142,9 @@ function ComboBox<T extends object>(
 
   const popup = (
     <Popup
-      className={classes.popup}
+      className={st(classes.popup, popupClassName)}
       isOpen={state.isOpen}
+      // isOpen={true}
       onClose={() => state.close()}
       hideArrow
       ref={popoverRef}
@@ -155,11 +166,12 @@ function ComboBox<T extends object>(
     >
       <ListBox
         ref={listBoxRef}
+        className={st(classes.listBox, listBoxClassName)}
         {...{
           loadingState,
-          shouldFocusOnHover,
           state,
           ...listBoxProps,
+          shouldFocusOnHover,
           "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       />

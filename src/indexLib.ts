@@ -15,7 +15,6 @@ export * from "./Item";
 export * from "./InputAdornment";
 export * from "./Field";
 export * from "./ListBox";
-export * from "./ListBoxOption";
 export * from "./Label/Label";
 export * from "./MenuTrigger";
 export * from "./Menu";

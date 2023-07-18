@@ -9,7 +9,14 @@
  */
 @st-import Default from "./project.st.css";
 @st-import ListBox from "../../ListBox/listBox.st.css";
-@st-import [menuList] from "./mixins/menuList.st.css";
+@st-import [
+    menuList,
+    menuItem,
+    menuItemDisabled,
+    menuItemFocusVisible,
+    menuItemText,
+    menuItemSelectedIcon
+] from "./mixins/menuList.st.css";
 
 @st-scope Default {
   ListBox {
