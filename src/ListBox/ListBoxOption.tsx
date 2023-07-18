@@ -6,7 +6,7 @@ import { useOption } from "@react-aria/listbox";
 import { mergeProps } from "@react-aria/utils";
 import type { Node } from "@react-types/shared/src/collections";
 import CheckIcon from "../icons/Check";
-import { st, classes as optionClasses } from "./listBoxOption.st.css";
+import { st, classes } from "./listBoxOption.st.css";
 interface OptionProps<T> {
   state: ListState<T>;
   item: Node<T>;
@@ -56,7 +56,7 @@ export function ListBoxOption<T>(props: OptionProps<T>) {
   });
 
   const icon = selectedIcon || (
-    <CheckIcon data-id="selected-icon" className={optionClasses.selectedIcon} />
+    <CheckIcon data-id="selected-icon" className={classes.selectedIcon} />
   );
   return (
     <li
@@ -66,7 +66,7 @@ export function ListBoxOption<T>(props: OptionProps<T>) {
         focusProps
       )}
       ref={ref}
-      className={st(optionClasses.root, {
+      className={st(classes.root, {
         isFocused,
         isFocusVisible,
         isSelected,
@@ -74,7 +74,7 @@ export function ListBoxOption<T>(props: OptionProps<T>) {
         isHovered,
       })}
     >
-      <span className={optionClasses.text}>{item.rendered}</span>
+      <span className={classes.text}>{item.rendered}</span>
       {isSelected && icon}
     </li>
   );
