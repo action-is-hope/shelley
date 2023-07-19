@@ -1,19 +1,13 @@
-import {
-  CSSProperties,
-  forwardRef,
-  ReactNode,
-  Ref,
-  useEffect,
-  useState,
-} from "react";
-
+import { CSSProperties, forwardRef, Ref, useEffect, useState } from "react";
 import type { AriaProgressBarProps } from "@react-types/progress";
 import { st, classes } from "./progressBar.st.css";
 import { useProgressBar } from "@react-aria/progress";
 import type { ComponentBase, Volume } from "../typings/shared-types";
 import { Text } from "../Text";
 
-export interface ProgressBarProps extends AriaProgressBarProps, ComponentBase {
+export interface ProgressBarProps
+  extends Omit<AriaProgressBarProps, "formatOptions">,
+    ComponentBase {
   /**
    * What the ProgressCircle's diameter should be.
    * @default 'medium'
@@ -30,7 +24,9 @@ export interface ProgressBarProps extends AriaProgressBarProps, ComponentBase {
    * @default 1
    */
   totalSteps?: number;
-  children?: ReactNode;
+  /**
+   * The volume of the labels.
+   */
   vol?: Volume;
 }
 
@@ -61,6 +57,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledby,
     valueLabel,
+    "data-id": dataId,
     ...rest
   } = props;
 
@@ -82,7 +79,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
     );
     setCurrentStep(currentStep);
     setStepProgress(stepPercentage);
-  }, [value, totalSteps]);
+  }, [value, totalSteps, maxValue]);
 
   const Segment = ({
     index,
@@ -102,13 +99,17 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
     };
 
     return (
-      <div key={index} className={st(classes.track)} data-id={"stepIndicator"}>
+      <div
+        key={index}
+        className={st(classes.track)}
+        data-id={dataId ? `${dataId}-track` : undefined}
+      >
         <div
           style={fillStyle}
           className={st(classes.fill, {
             isActive: index < currentStep ? true : false,
           })}
-          data-id={"stepIndicatorFill"}
+          data-id={dataId ? `${dataId}-fill` : undefined}
         />
       </div>
     );
@@ -128,12 +129,25 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       )}
       {...progressBarProps}
       {...rest}
+      data-id={dataId}
       ref={ref}
     >
       <Text as="div" vol={vol} className={st(classes.text)} {...labelProps}>
-        {label && <span className={st(classes.label)}>{label}</span>}
+        {label && (
+          <span
+            className={st(classes.label)}
+            data-id={dataId ? `${dataId}-label` : undefined}
+          >
+            {label}
+          </span>
+        )}
         {valueLabel && (
-          <span className={st(classes.valueLabel)}>{valueLabel}</span>
+          <span
+            className={st(classes.valueLabel)}
+            data-id={dataId ? `${dataId}-valueLabel` : undefined}
+          >
+            {valueLabel}
+          </span>
         )}
       </Text>
       <div className={st(classes.bar)}>
