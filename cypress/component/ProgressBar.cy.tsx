@@ -91,21 +91,21 @@ describe("ProgressBar", () => {
   });
 
   it("renders multi-step ProgressBar", () => {
-    const multiSteProps = {
+    const multiStepProps = {
       "aria-label": "Loading…",
       totalSteps: 5,
       value: 50,
       "data-id": "progressBar",
     };
 
-    cy.mount(<ProgressBar {...multiSteProps} />);
+    cy.mount(<ProgressBar {...multiStepProps} />);
 
     cy.get(progressBar)
       .should("have.attr", "class")
       .and("to.have.string", "ProgressBar")
       .should("to.have.string", "multistep");
 
-    cy.get(track).should("have.length", multiSteProps["totalSteps"]);
+    cy.get(track).should("have.length", multiStepProps["totalSteps"]);
 
     cy.get(fill)
       .eq(2)
@@ -116,11 +116,11 @@ describe("ProgressBar", () => {
     cy.get(fill)
       .eq(2)
       .should("have.attr", "style")
-      .and("include", `width: ${multiSteProps["value"]}%`);
+      .and("include", `width: ${multiStepProps["value"]}%`);
   });
 
   it("renders multi-step with custom scale", () => {
-    const multiSteProps = {
+    const multiStepProps = {
       "aria-label": "Loading…",
       totalSteps: 5,
       value: 2.5,
@@ -128,14 +128,14 @@ describe("ProgressBar", () => {
       "data-id": "progressBar",
     };
 
-    cy.mount(<ProgressBar {...multiSteProps} />);
+    cy.mount(<ProgressBar {...multiStepProps} />);
 
     cy.get(progressBar)
       .should("have.attr", "class")
       .and("to.have.string", "ProgressBar")
       .should("to.have.string", "multistep");
 
-    cy.get(track).should("have.length", multiSteProps["totalSteps"]);
+    cy.get(track).should("have.length", multiStepProps["totalSteps"]);
 
     cy.get(fill)
       .eq(2)

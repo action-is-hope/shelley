@@ -81,7 +81,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
     setStepProgress(stepPercentage);
   }, [value, totalSteps, maxValue]);
 
-  const Segment = ({
+  const Step = ({
     index,
     currentStep,
     stepProgress,
@@ -152,7 +152,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       </Text>
       <div className={st(classes.bar)}>
         {Array.from({ length: totalSteps }).map((_, index) => (
-          <Segment
+          <Step
             key={index}
             index={index}
             currentStep={currentStep}
