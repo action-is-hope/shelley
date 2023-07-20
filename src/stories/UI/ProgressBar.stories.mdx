@@ -108,7 +108,13 @@ You can specify the size of the ProgressBar using the `size` prop. The default s
 ProgressBars can be used to show the progression of a multi-step process, it is possible to provide your own scale via the `maxValue` prop.
 
 <Story name="f) Multi-step ProgressBars">
-  <ProgressBar totalSteps={5} value={2.5} maxValue={5} label="Step 2 of 5" />
+  <ProgressBar
+    totalSteps={5}
+    value={2.5}
+    maxValue={5}
+    label="Step 2 of 5"
+    aria-label="Progress steps"
+  />
   <br />
   <ProgressBar
     totalSteps={6}
@@ -117,6 +123,7 @@ ProgressBars can be used to show the progression of a multi-step process, it is 
     maxValue={1800}
     vol={2}
     valueLabel="25 mins remaining"
+    aria-label="Progress steps"
   />
 </Story>
 
