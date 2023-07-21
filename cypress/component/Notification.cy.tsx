@@ -26,11 +26,35 @@ describe("Inline Notification", () => {
   });
 
   // Role check
-
   it("renders correct role attributes", () => {
     cy.mount(<InlineNotification role="info" />);
     cy.get(notification)
       .should("have.attr", "role")
       .and("to.have.string", "info");
+    cy.mount(<InlineNotification role="success" />);
+    cy.get(notification)
+      .should("have.attr", "role")
+      .and("to.have.string", "success");
+    cy.mount(<InlineNotification role="warning" />);
+    cy.get(notification)
+      .should("have.attr", "role")
+      .and("to.have.string", "warning");
+    cy.mount(<InlineNotification role="alert" />);
+    cy.get(notification)
+      .should("have.attr", "role")
+      .and("to.have.string", "alert");
+  });
+
+  // Close button
+  it("renders close button", () => {
+    cy.mount(<InlineNotification role="info" />);
+    cy.get(notificationCloseButton).should("exist");
+  });
+
+  // Close button click
+  it("closes notification on close button click", () => {
+    cy.mount(<InlineNotification role="info" />);
+    cy.get(notificationCloseButton).click();
+    cy.get(notification).should("not.exist");
   });
 });
