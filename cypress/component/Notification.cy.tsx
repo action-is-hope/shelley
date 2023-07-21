@@ -23,14 +23,34 @@ const notification = '[data-id="inline-notification"]';
 const notificationTitle = '[data-id="inline-notification--title"]';
 const notificationSubTitle = '[data-id="inline-notification--subTitle"]';
 const notificationCloseButton = '[data-id="inline-notification--closeButton"]';
+const notificationIcon = '[data-id="inline-notification--icon"]';
 
 // Basic tests to see if notification renders correctly
 describe("Inline Notification", () => {
-  it("renders working notification, title, subtitle and children.", () => {
+  it("renders working notification, title, subtitle.", () => {
     cy.mount(<InlineNotification role="info" />);
     cy.get(notification).should("exist");
     cy.get(notificationTitle).should("contain.text", "Notification title");
     cy.get(notificationSubTitle).should("contain.text", "Subtitle goes here");
+  });
+
+  // Children check
+  it("renders children", () => {
+    cy.mount(
+      <InlineNotification role="info">
+        <p data-id="inline-notification--children">Children</p>
+      </InlineNotification>
+    );
+    cy.get('[data-id="inline-notification--children"]').should(
+      "contain.text",
+      "Children"
+    );
+  });
+
+  // Icon check
+  it("renders icon", () => {
+    cy.mount(<InlineNotification role="info" />);
+    cy.get(notificationIcon).should("exist");
   });
 
   // Role check
@@ -72,16 +92,20 @@ describe("Inline Notification", () => {
     cy.get(notificationCloseButton).should("not.exist");
   });
 
-  // Children check
-  it("renders children", () => {
-    cy.mount(
-      <InlineNotification role="info">
-        <p data-id="inline-notification--children">Children</p>
-      </InlineNotification>
-    );
-    cy.get('[data-id="inline-notification--children"]').should(
-      "contain.text",
-      "Children"
-    );
+  // Classname check
+  it("renders correct classnames", () => {
+    cy.mount(<InlineNotification role="info" />);
+    cy.get(notification)
+      .should("have.attr", "class")
+      .and("to.have.string", "root");
+    cy.get(notificationTitle)
+      .should("have.attr", "class")
+      .and("to.have.string", "title");
+    cy.get(notificationSubTitle)
+      .should("have.attr", "class")
+      .and("to.have.string", "subtitle");
+    cy.get(notificationCloseButton)
+      .should("have.attr", "class")
+      .and("to.have.string", "closeButton");
   });
 });

@@ -83,7 +83,10 @@ function Notification(
       {...rest}
     >
       <div className={st(classes.details)}>
-        <div className={st(classes.icon)}>
+        <div
+          className={st(classes.icon)}
+          data-id={dataId ? `${dataId}--icon` : undefined}
+        >
           {role === "info" && infoIcon}
           {role === "success" && successIcon}
           {role === "warning" && warningIcon}
