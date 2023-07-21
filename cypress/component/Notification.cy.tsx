@@ -1,13 +1,21 @@
+// Notification.cy.tsx Notification component tests
 import { Notification, NotificationProps } from "../../src/indexLib";
 
-export const InlineNotification = ({ role }: NotificationProps) => {
+export const InlineNotification = ({
+  role,
+  hideCloseButton,
+  children,
+}: NotificationProps) => {
   return (
     <Notification
       role={role}
+      hideCloseButton={hideCloseButton}
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
-    />
+    >
+      {children}
+    </Notification>
   );
 };
 
@@ -60,7 +68,20 @@ describe("Inline Notification", () => {
 
   // Hide close button
   it("hides close button", () => {
-    cy.mount(<InlineNotification role="info" hideCloseButton />);
+    cy.mount(<InlineNotification hideCloseButton />);
     cy.get(notificationCloseButton).should("not.exist");
+  });
+
+  // Children check
+  it("renders children", () => {
+    cy.mount(
+      <InlineNotification role="info">
+        <p data-id="inline-notification--children">Children</p>
+      </InlineNotification>
+    );
+    cy.get('[data-id="inline-notification--children"]').should(
+      "contain.text",
+      "Children"
+    );
   });
 });
