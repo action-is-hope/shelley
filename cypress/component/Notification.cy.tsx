@@ -57,4 +57,10 @@ describe("Inline Notification", () => {
     cy.get(notificationCloseButton).click();
     cy.get(notification).should("not.exist");
   });
+
+  // Hide close button
+  it("hides close button", () => {
+    cy.mount(<InlineNotification role="info" hideCloseButton />);
+    cy.get(notificationCloseButton).should("not.exist");
+  });
 });

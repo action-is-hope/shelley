@@ -15,6 +15,7 @@ import {
   InlineSuccessNotification,
   InlineWarningNotification,
   InlineNotificationWithChildren,
+  InlineNotificationHideCloseButton,
 } from "./Notification.examples";
 
 <Meta
@@ -152,5 +153,23 @@ Such as alert, warning, success and info.
     }}
   >
     <InlineNotificationWithChildren />
+  </Story>
+</Preview>
+
+## Inline Notification Without Close Button Example
+
+<Preview>
+  <Story
+    name="f) Inline notification without close button"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification />`,
+        },
+      },
+    }}
+  >
+    <InlineNotificationHideCloseButton />
   </Story>
 </Preview>
