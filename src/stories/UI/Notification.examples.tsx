@@ -61,6 +61,7 @@ export const InlineNotificationWithChildren = () => {
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="notification-with-children"
+      aria-label="Close button"
     >
       <p>Notification content goes here</p>
     </Notification>

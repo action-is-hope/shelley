@@ -13,6 +13,7 @@ export const InlineNotification = ({
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
+      aria-label="Close"
     >
       {children}
     </Notification>
@@ -107,5 +108,13 @@ describe("Inline Notification", () => {
     cy.get(notificationCloseButton)
       .should("have.attr", "class")
       .and("to.have.string", "closeButton");
+  });
+
+  // Aria attribute for close button
+  it("renders correct aria attributes", () => {
+    cy.mount(<InlineNotification role="info" aria-label="Close" />);
+    cy.get(notificationCloseButton)
+      .should("have.attr", "aria-label")
+      .and("to.have.string", "Close");
   });
 });

@@ -32,6 +32,8 @@ export interface NotificationProps
   closeIcon?: ReactNode;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
+  /** Provide a description for "close" icon button that can be read by screen readers */
+  "aria-label"?: string;
   /** By default, this value is "info". You can also provide an alternate */
   role?: "info" | "alert" | "success" | "warning";
   /** Icons */
@@ -58,6 +60,7 @@ function Notification(
     warningIcon = <WarningIcon />,
     errorIcon = <ErrorIcon />,
     "data-id": dataId,
+    "aria-label": ariaLabel,
     ...rest
   } = props;
   // const ref: RefObject<HTMLDivElement> = useRef(null);
@@ -122,6 +125,7 @@ function Notification(
           className={classes.closeButton}
           data-id={dataId ? `${dataId}--closeButton` : undefined}
           onPress={handleCloseButtonClick}
+          aria-label={ariaLabel}
         >
           {closeIcon}
         </IconButton>
