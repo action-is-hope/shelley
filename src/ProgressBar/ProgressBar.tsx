@@ -9,11 +9,11 @@ export interface ProgressBarProps
   extends Omit<AriaProgressBarProps, "formatOptions">,
     ComponentBase {
   /**
-   * What the ProgressCircle's diameter should be.
+   * What the ProgressBar's size should be.
    * @default 'medium'
    */
   size?: "small" | "medium" | "large";
-  /** The [visual style](https://spectrum.adobe.com/page/progress-circle/#Over-background-variant) of the ProgressCircle. */
+  /** The [visual style](https://spectrum.adobe.com/page/progress-bar/#Over-background-variant) of the ProgressBar. */
   variant?: "overBackground";
   /**
    * The class name for the root element.
@@ -65,7 +65,7 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
 
   if (!ariaLabel && !ariaLabelledby) {
     console.warn(
-      "ProgressCircle requires an aria-label or aria-labelledby attribute for accessibility"
+      "ProgressBar requires an aria-label or aria-labelledby attribute for accessibility"
     );
   }
   const [currentStep, setCurrentStep] = useState(1);
