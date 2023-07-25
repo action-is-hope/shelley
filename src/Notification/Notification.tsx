@@ -113,7 +113,7 @@ function Notification(
               {subtitle}
             </Text>
           )}
-          {children}
+          <div className={st(classes.children)}>{children}</div>
         </div>
       </div>
       {!hideCloseButton && (

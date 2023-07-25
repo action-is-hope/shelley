@@ -28,12 +28,23 @@
     display: flex;
   }
 
+  Notification::textWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   Notification::icon {
     margin: 7px var(--spacing-unit) 0 0
   }
 
-  Notification::title {
+  Notification::title,
+  Notification::subtitle {
     margin: 0 var(--spacing-unit) 0 0;
+  }
+
+  Notification::children {
+    flex-basis: 100%;
   }
 
   Notification::before {
@@ -55,6 +66,12 @@
 
   Notification::icon {
     margin-right: 0;
+    margin-left: var(--spacing-unit);
+  }
+
+  Notification::title,
+  Notification::subtitle {
+    margin-right: unset;
     margin-left: var(--spacing-unit);
   }
 
