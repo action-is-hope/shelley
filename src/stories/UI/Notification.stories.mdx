@@ -5,11 +5,13 @@ import {
   Preview,
   ArgsTable,
   Source,
+  Props,
 } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { Notification } from "../../indexLib";
 
 import {
+  NotificationPropsTable,
   InlineAlertNotification,
   InlineInfoNotification,
   InlineSuccessNotification,
@@ -173,3 +175,7 @@ Such as alert, warning, success and info.
     <InlineNotificationWithChildren />
   </Story>
 </Preview>
+
+### Notification Props
+
+<ArgsTable of={NotificationPropsTable} />

@@ -1,4 +1,8 @@
-import { Notification } from "../../indexLib";
+import { Notification, NotificationProps } from "../../indexLib";
+
+export const NotificationPropsTable = (props: NotificationProps) => {
+  <Notification {...props} />;
+};
 
 export const InlineAlertNotification = () => {
   return (

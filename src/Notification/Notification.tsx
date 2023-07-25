@@ -1,10 +1,6 @@
-import React, {
-  useRef,
-  RefObject,
-  forwardRef,
-  ReactNode,
-  useState,
-} from "react";
+/** Notification.tsx */
+import type React from "react";
+import { useRef, RefObject, forwardRef, ReactNode, useState } from "react";
 import { Text } from "../Text";
 import { IconButton } from "../IconButton/IconButton";
 import CloseIcon from "../icons/Close";
