@@ -50,3 +50,16 @@
   }
 
 }
+
+@st-scope [dir=rtl] Default {
+
+  Notification::icon {
+    margin-right: 0;
+    margin-left: var(--spacing-unit);
+  }
+
+  Notification::closeButton {
+    right: unset;
+    left: var(--spacing-unit);
+  }
+}
