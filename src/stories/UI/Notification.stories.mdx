@@ -65,10 +65,21 @@ import {
   `}
 />
 
-Notification component for displaying various notifications.
-Such as alert, warning, success and info.
+The Notification component allows you to display various types of notifications to users.
+It can be used to show information, success messages, warnings, and alerts,
+each with its respective icon and styling. The component can be closed by the
+user if a close button is enabled. It also provides accessibility features
+such as screen reader support.
+
+### Custom Icon
+
+It is possible to override the default icon but it must be wrapped in an Icon component
+in order for it to work properly. Icon props can be passed to the Notification component and
+they are infoIcon, successIcon, warningIcon, and alertIcon.
 
 ## Alert Notification Example
+
+Displays an alert icon with the role of alert.
 
 <Preview>
   <Story
@@ -88,6 +99,8 @@ Such as alert, warning, success and info.
 
 ## Info Notification Example
 
+Displays an info icon with the role of info.
+
 <Preview>
   <Story
     name="b) Inline info notification"
@@ -105,6 +118,8 @@ Such as alert, warning, success and info.
 </Preview>
 
 ## Success Notification Example
+
+Displays a success icon with the role of success.
 
 <Preview>
   <Story
@@ -124,6 +139,8 @@ Such as alert, warning, success and info.
 
 ## Warning Notification Example
 
+Displays a warning icon with the role of warning.
+
 <Preview>
   <Story
     name="d) Inline warning notification"
@@ -142,6 +159,8 @@ Such as alert, warning, success and info.
 
 ## Inline Notification Without Close Button Example
 
+Displays a notification without a close button.
+
 <Preview>
   <Story
     name="e) Inline notification without close button"
@@ -159,6 +178,8 @@ Such as alert, warning, success and info.
 </Preview>
 
 ## Inline Notification With Children Example
+
+Displays a notification with children. It can take any valid HTML or React component.
 
 <Preview>
   <Story
