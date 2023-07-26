@@ -30,7 +30,7 @@ export const InlineSuccessNotification = () => {
   return (
     <Notification
       role="success"
-      title="Success otification title"
+      title="Success notification title"
       subtitle="Subtitle goes here"
       data-id="inline-success-notification"
     />
