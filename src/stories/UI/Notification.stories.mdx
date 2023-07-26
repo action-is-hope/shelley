@@ -88,7 +88,12 @@ Displays an alert icon with the role of alert.
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  role="alert"
+  title="Alert notification title"
+  subtitle="Subtitle goes here"
+  data-id="inline-alert-notification"
+/>`,
         },
       },
     }}
@@ -108,7 +113,12 @@ Displays an info icon with the role of info.
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  role="info"
+  title="Info notification title"
+  subtitle="Subtitle goes here"
+  data-id="inline-info-notification"
+/>`,
         },
       },
     }}
@@ -128,7 +138,12 @@ Displays a success icon with the role of success.
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  role="success"
+  title="Success notification title"
+  subtitle="Subtitle goes here"
+  data-id="inline-success-notification"
+/>`,
         },
       },
     }}
@@ -148,7 +163,12 @@ Displays a warning icon with the role of warning.
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  role="warning"
+  title="Warning notification title"
+  subtitle="Subtitle goes here"
+  data-id="inline-warning-notification"
+/>`,
         },
       },
     }}
@@ -168,7 +188,12 @@ Displays a notification without a close button.
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  hideCloseButton
+  title="Notification title"
+  subtitle="Subtitle goes here"
+  data-id="inline-notification"
+/>`,
         },
       },
     }}
@@ -188,7 +213,14 @@ Displays a notification with children. It can take any valid HTML or React compo
       docs: {
         source: {
           code: dedent`
-<Notification />`,
+<Notification
+  title="Notification title"
+  subtitle="Subtitle goes here"
+  data-id="notification-with-children"
+  aria-label="Close button"
+>
+  <p>Notification content goes here</p>
+</Notification>`,
         },
       },
     }}
