@@ -35,7 +35,8 @@
   }
 
   Notification::icon {
-    margin: 7px var(--spacing-unit) 0 0
+    margin: 7px var(--spacing-unit) 0 0;
+    font-size: 20px;
   }
 
   Notification::title,
