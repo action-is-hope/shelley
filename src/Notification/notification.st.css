@@ -1,0 +1,20 @@
+@namespace "Notification";
+
+.root {
+  -st-states: role(enum(alert, info, success, warning, error));
+  position: relative;
+}
+
+.details {}
+
+.icon {}
+
+.closeButton {}
+
+.textWrapper {}
+
+.title {}
+
+.subtitle {}
+
+.children {}

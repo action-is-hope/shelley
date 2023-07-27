@@ -1,0 +1,83 @@
+/**
+ * = Notification - notification.st.css
+ *
+ * Base theme styles for a Shelley Notification.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Notification/notification.st.css
+ * 
+ */
+@st-import Default, [
+   --spacing-unit,
+  ] from "./project.st.css";
+@st-import Notification from "../../Notification/notification.st.css";
+
+@st-scope Default {
+  Notification {
+    border-color: grey;
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    min-height: 3rem;
+    padding: var(--spacing-unit);
+  }
+
+  Notification::details {
+    display: flex;
+  }
+
+  Notification::textWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  Notification::icon {
+    margin: 7px var(--spacing-unit) 0 0;
+    font-size: 20px;
+  }
+
+  Notification::title,
+  Notification::subtitle {
+    margin: 0 var(--spacing-unit) 0 0;
+  }
+
+  Notification::children {
+    flex-basis: 100%;
+  }
+
+  Notification::before {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 100%;
+    background-color: grey;
+  }
+
+  Notification::closeButton {
+    position: absolute;
+    right: var(--spacing-unit);
+  }
+
+}
+
+@st-scope [dir=rtl] Default {
+
+  Notification::icon {
+    margin-right: 0;
+    margin-left: var(--spacing-unit);
+  }
+
+  Notification::title,
+  Notification::subtitle {
+    margin-right: unset;
+    margin-left: var(--spacing-unit);
+  }
+
+  Notification::closeButton {
+    right: unset;
+    left: var(--spacing-unit);
+  }
+}
