@@ -10,8 +10,7 @@ function _BasicListBox<T extends object>(args: ListBoxProps<T>) {
       onSelectionChange={(key) => console.log(key)}
       label="Label"
       // shouldFocusWrap={true}
-      // shouldFocusOnHover={false}
-
+      // shouldFocusOnHover={true}
       {...args}
     >
       <Item key="publish">Publish</Item>

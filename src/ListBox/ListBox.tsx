@@ -1,14 +1,14 @@
 "use client";
-import { Ref, ReactElement, useRef, forwardRef } from "react";
+import { Ref, ReactElement, useRef, forwardRef, ReactNode } from "react";
 import { useListState, ListState } from "react-stately";
-import { useListBox } from "react-aria";
+import { mergeRefs } from "@react-aria/utils";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
 import type { AriaListBoxOptions } from "@react-aria/listbox";
-import { ListBoxOption } from "../ListBoxOption";
-import { st, classes } from "./listBox.st.css";
-import { mergeRefs } from "@react-aria/utils";
+import { useListBox } from "@react-aria/listbox";
 import type { ComponentBase, LoadMoreProps } from "../typings/shared-types";
 import { ProgressCircle } from "../ProgressCircle";
+import { st, classes } from "./listBox.st.css";
+import { ListBoxOption } from "./ListBoxOption";
 
 export interface ListBoxProps<T>
   extends AriaListBoxOptions<T>,
@@ -18,6 +18,7 @@ export interface ListBoxProps<T>
   className?: string;
   state?: ListState<T>;
   children?: CollectionChildren<T>;
+  optionSelectedIcon?: ReactNode;
 }
 
 function ListBox<T extends object>(
@@ -30,6 +31,7 @@ function ListBox<T extends object>(
     loadingState,
     loadingMoreString,
     loadingString,
+    optionSelectedIcon,
   } = props;
   const localRef = useRef<HTMLUListElement>(null);
   // Create state based on the incoming props, if state is provided use that.
@@ -47,17 +49,19 @@ function ListBox<T extends object>(
         </div>
       )}
       <ul
-        className={st(classes.root, className)}
         {...listBoxProps}
+        className={st(classes.root, className)}
         data-id={dataId}
         ref={ref ? mergeRefs(ref, localRef) : localRef}
       >
         {[...state.collection].map((item) => (
           <ListBoxOption
             key={item.key}
+            className={classes.option}
             {...{
               item,
               state,
+              optionSelectedIcon,
               ...props,
             }}
           />

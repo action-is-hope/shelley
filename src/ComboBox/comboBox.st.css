@@ -1,6 +1,7 @@
 @namespace "ComboBox";
 @st-import Field from "../Field/field.st.css";
 @st-import Button from "../Button/button.st.css";
+@st-import ListBox from "../ListBox/listBox.st.css";
 @st-import Popup from "../Popup/popup.st.css";
 @st-import ProgressCircle from "../ProgressCircle/progressCircle.st.css";
 
@@ -18,6 +19,10 @@
 
 .popup {
   -st-extends: Popup;
+}
+
+.listBox {
+  -st-extends: ListBox;
 }
 
 .placeholder {

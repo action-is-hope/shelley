@@ -1,16 +1,28 @@
 "use client";
-import React, { useRef } from "react";
-import CheckIcon from "../icons/Check";
-import type { Node } from "@react-types/shared/src/collections";
+import { useRef, ReactNode } from "react";
 import type { ListState } from "react-stately";
-import { mergeProps, useFocusRing, useHover, useOption } from "react-aria";
+import { useFocusRing, useHover } from "react-aria";
+import { useOption } from "@react-aria/listbox";
+import { mergeProps } from "@react-aria/utils";
+import type { Node } from "@react-types/shared/src/collections";
+import CheckIcon from "../icons/Check";
 import { st, classes } from "./listBoxOption.st.css";
+interface OptionProps<T> {
+  state: ListState<T>;
+  item: Node<T>;
+  /** Override the default selected Icon. */
+  selectedIcon?: ReactNode;
+  /** Whether selection should occur on press up instead of press down. */
+  shouldSelectOnPressUp?: boolean;
+  /** Whether options should be focused when the user hovers over them. */
+  shouldFocusOnHover?: boolean;
+}
 
 interface OptionProps<T> {
   state: ListState<T>;
   item: Node<T>;
-  className?: string;
-  selectedIcon?: React.ReactNode;
+  /** Override the default selected Icon. */
+  selectedIcon?: ReactNode;
   /** Whether selection should occur on press up instead of press down. */
   shouldSelectOnPressUp?: boolean;
   /** Whether options should be focused when the user hovers over them. */
@@ -19,7 +31,6 @@ interface OptionProps<T> {
 
 export function ListBoxOption<T>(props: OptionProps<T>) {
   const {
-    className: classNameProp,
     item,
     state,
     selectedIcon,
@@ -55,17 +66,13 @@ export function ListBoxOption<T>(props: OptionProps<T>) {
         focusProps
       )}
       ref={ref}
-      className={st(
-        classes.root,
-        {
-          isFocused,
-          isFocusVisible,
-          isSelected,
-          isDisabled,
-          isHovered,
-        },
-        classNameProp
-      )}
+      className={st(classes.root, {
+        isFocused,
+        isFocusVisible,
+        isSelected,
+        isDisabled,
+        isHovered,
+      })}
     >
       <span className={classes.text}>{item.rendered}</span>
       {isSelected && icon}

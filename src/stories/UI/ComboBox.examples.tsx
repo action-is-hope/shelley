@@ -22,6 +22,7 @@ export const BasicComboBox = () => {
         label="Favorite Animal"
         portalSelector="#portal"
         shouldFocusWrap
+        // shouldFocusOnHover={false}
       >
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
@@ -398,10 +399,12 @@ export const MultiSelect = () => {
           key={id}
           style={{
             background: "#444",
+            color: "white",
             display: "inline-block",
             padding: "0 4px",
             margin: "0 4px",
             borderRadius: "4px",
+            alignSelf: "center",
           }}
         >
           {list.getItem(id).value.name}

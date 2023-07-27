@@ -1,8 +1,11 @@
 @namespace "ListBox";
+@st-import ListBoxOption from "../ListBox/listBoxOption.st.css";
 
 .root {}
 
-.item {}
+.option {
+  -st-extends: ListBoxOption;
+}
 
 .loadingMore {
   display: flex;

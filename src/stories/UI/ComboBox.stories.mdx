@@ -227,7 +227,7 @@ A ComboBox's value is empty by default, but an initial, uncontrolled, value can 
 By default on blur, a ComboBox will either reset its input value to match the selected option's text or clear its input value if an option has not been selected yet. If you would like to allow the end user to provide a custom input value to the ComboBox, the allowsCustomValue prop can be used to override the above behavior.
 
 <Story
-  name="c) Custom value"
+  name="d) Custom value"
   parameters={{
     docs: {
       source: {
@@ -269,14 +269,14 @@ return (
   <CustomValueExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--c-custom-value" />
+<Source language="tsx" id="inputs-combobox--d-custom-value" />
 
 ## Labeling
 
 ComboBox can be labeled using the `label` prop and positioned with `labelPosition`.
 
 <Story
-  name="d) Labeling"
+  name="e) Labeling"
   parameters={{
     docs: {
       source: {
@@ -316,7 +316,7 @@ ComboBox can be labeled using the `label` prop and positioned with `labelPositio
   <LabelingExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--d-labeling" />
+<Source language="tsx" id="inputs-combobox--e-labeling" />
 
 ### Accessibility
 
@@ -331,7 +331,7 @@ In order to internationalise a ComboBox, a localized string should be passed to 
 Setting a selected option can be done by using the `defaultSelectedKey` or `selectedKey` prop. The selected key corresponds to the key of an item. See Events for more details on selection events. Additionally see the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html#selected-key-data-type) for caveats regarding selection prop typing.
 
 <Story
-  name="e) Selection"
+  name="f) Selection"
   parameters={{
     docs: {
       source: {
@@ -374,7 +374,7 @@ Setting a selected option can be done by using the `defaultSelectedKey` or `sele
   <SelectionExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--e-selection" />
+<Source language="tsx" id="inputs-combobox--f-selection" />
 
 ## Events
 
@@ -383,7 +383,7 @@ ComboBox supports selection via mouse, keyboard, and touch. You can handle all o
 The example below uses `onSelectionChange` and `onInputChange` to update the selection and input value stored in React state.
 
 <Story
-  name="f) Events"
+  name="g) Events"
   parameters={{
     docs: {
       source: {
@@ -436,7 +436,7 @@ The example below uses `onSelectionChange` and `onInputChange` to update the sel
   <EventsExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--f-events" />
+<Source language="tsx" id="inputs-combobox--g-events" />
 
 ### Fully Controlled
 
@@ -445,7 +445,7 @@ When a ComboBox has multiple controlled properties (e.g.`inputValue`, `selectedK
 The below example demonstrates how you would construct the same example above in a completely controlled fashion.
 
 <Story
-  name="g) Fully controlled"
+  name="h) Fully controlled"
   parameters={{
     docs: {
       source: {
@@ -514,7 +514,7 @@ return (
   <FullyControlled />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--g-fully-controlled" />
+<Source language="tsx" id="inputs-combobox--h-fully-controlled" />
 
 ### Multi-select
 
@@ -525,7 +525,7 @@ That's not to say something isn't possible that mimics it quite nicely (as the t
 It might be that you actually remove the selected keys from the options rather than just disabling them as in the example, especially if the next selection is conditional on the selection, like perhaps a 'URL part selector' within a CMS application. In that configuration multi-select is irrelavant as each choice is more like a step where we are recording the choices made along the way; so more 'multi-step' over 'muti-select' where we repurpose the same ComboBox for each step.
 
 <Story
-  name="h) Multi-select"
+  name="i) Multi-select"
   parameters={{
     docs: {
       source: {
@@ -662,12 +662,12 @@ return (
   <MultiSelect />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--h-multi-select" />
+<Source language="tsx" id="inputs-combobox--i-multi-select" />
 
 ## Disabled
 
 <Story
-  name="g) Disabled"
+  name="j) Disabled"
   parameters={{
     docs: {
       source: {
@@ -694,12 +694,12 @@ return (
   <DisabledExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox-g-disabled" />
+<Source language="tsx" id="inputs-combobox--j-disabled" />
 
 ## Read only
 
 <Story
-  name="g) Read only"
+  name="k) Read only"
   parameters={{
     docs: {
       source: {
@@ -726,14 +726,14 @@ return (
   <ReadOnlyExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox-g-read-only" />
+<Source language="tsx" id="inputs-combobox--k-read-only" />
 
 ## Help text
 
 Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `validationState` is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
 
 <Story
-  name="h) Help"
+  name="l) Help"
   parameters={{
     docs: {
       source: {
@@ -753,12 +753,12 @@ TBC`,
   <HelpTextExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--h-help" />
+<Source language="tsx" id="inputs-combobox--l-help" />
 
 ## ComboBox Props
 
 <Story
-  name="i) Asynchronous loading"
+  name="m) Asynchronous loading"
   parameters={{
     docs: {
       source: {
@@ -778,9 +778,9 @@ TBC`,
   <AsyncLoadingExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--f-events" />
+<Source language="tsx" id="inputs-combobox--m-asynchronous-loading" />
 
-<ArgsTable of={ComboBox} />
+<ArgsTable of={ComboBoxType} />
 
 ## Styling
 
