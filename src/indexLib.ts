@@ -29,6 +29,8 @@ export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./Select";
 export * from "./Switch/Switch";
+export * from "./SpeedDial/SpeedDial";
+export * from "./SpeedDialAction/SpeedDialAction";
 export * from "./TablePagination";
 export * from "./TableView";
 export * from "./Tabs";

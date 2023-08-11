@@ -1,0 +1,67 @@
+@st-import [--spacing-unit] from "../styles/default/project.st.css";
+@namespace "SpeedDial";
+
+.root {
+  -st-states:
+    direction(string),
+    speedDialOpen(boolean);
+  display: inline-block;
+}
+
+.root:direction("left") > .buttonGroup {
+  float: left;
+  margin-right: var(--spacing-unit);
+}
+
+.root:direction("right") > .buttonGroup {
+  float: right;
+  margin-left: var(--spacing-unit);
+}
+
+.root:direction("bottom"), 
+.root:direction("bottom") > .addButton,  
+.root:direction("bottom") > .buttonGroup, 
+.root:direction("top"),
+.root:direction("top") > .addButton,  
+.root:direction("top") > .buttonGroup 
+{
+  display: block;
+}
+
+.root:direction("bottom") > .addButton {
+  margin-bottom: var(--spacing-unit);
+}
+
+.root:direction("top") {
+  position: relative;
+}
+
+.root:direction("top") > .addButton {
+  margin-top: var(--spacing-unit);
+}
+
+.addButton {
+  display: inline-block;
+}
+
+.buttonGroup {
+  display: inline-block;
+  visibility: hidden;
+  /* animation: slide-in .3s forwards; */
+}
+
+.root:speedDialOpen(true) > .buttonGroup {
+  visibility: visible;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}

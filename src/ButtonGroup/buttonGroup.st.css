@@ -38,6 +38,10 @@
 
 /* Styles if `orientation="vertical"`. */
 
+.root:orientation(vertical) {
+  flex-direction: column;
+}
+
 .root:splitButton:orientation(vertical) {
   flex-direction: column;
 }

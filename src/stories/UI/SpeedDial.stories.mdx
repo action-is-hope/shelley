@@ -1,0 +1,41 @@
+import { SpeedDial, SpeedDialAction } from "../../indexLib";
+import CheckIcon from "../../icons/Check";
+import EyeIcon from "../../icons/Eye";
+
+<Meta title="Examples/Speed Dial" component={SpeedDial} />
+
+# Speed Dial
+
+<Source
+  code={dedent`
+    import { SpeedDial } from "@actionishope/shelley";
+  `}
+/>
+
+<Story name="a) Speed Dial left">
+  <SpeedDial direction="left">
+    <SpeedDialAction icon={<CheckIcon />} onMouseDown={() => {}} />
+    <SpeedDialAction icon={<EyeIcon />} onMouseDown={() => {}} />
+  </SpeedDial>
+</Story>
+
+<Story name="b) Speed Dial top">
+  <SpeedDial direction="top">
+    <SpeedDialAction icon={<CheckIcon />} onMouseDown={() => {}} />
+    <SpeedDialAction icon={<EyeIcon />} onMouseDown={() => {}} />
+  </SpeedDial>
+</Story>
+
+<Story name="c) Speed Dial right">
+  <SpeedDial direction="right">
+    <SpeedDialAction icon={<CheckIcon />} onMouseDown={() => {}} />
+    <SpeedDialAction icon={<EyeIcon />} onMouseDown={() => {}} />
+  </SpeedDial>
+</Story>
+
+<Story name="d) Speed Dial bottom">
+  <SpeedDial direction="bottom">
+    <SpeedDialAction icon={<CheckIcon />} onMouseDown={() => {}} />
+    <SpeedDialAction icon={<EyeIcon />} onMouseDown={() => {}} />
+  </SpeedDial>
+</Story>
