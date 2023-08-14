@@ -10,12 +10,11 @@ import { useTooltipTriggerState } from "react-stately";
 
 interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
   children: any;
-  direction: string;
 }
 
 function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
   const [speedDialOpen, triggerSpeedDial] = useState(false);
-  const { children, direction } = props;
+  const { children } = props;
   let tooltipState = useTooltipTriggerState();
   let buttonRef = React.useRef(null);
   let { triggerProps, tooltipProps } = useTooltipTrigger(
@@ -37,33 +36,14 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
 
   const buttonGroup = (
     <div className={classes.buttonGroup}>
-      <ButtonGroup
-        orientation={
-          direction === "left" || direction === "right"
-            ? "horizontal"
-            : "vertical"
-        }
-        ref={ref}
-      >
-        {children}
-      </ButtonGroup>
+      <ButtonGroup ref={ref}>{children}</ButtonGroup>
     </div>
   );
 
   return (
-    <div className={st(classes.root, { direction, speedDialOpen })}>
-      {direction === "top" && (
-        <>
-          {buttonGroup}
-          {addButton}
-        </>
-      )}
-      {direction !== "top" && (
-        <>
-          {addButton}
-          {buttonGroup}
-        </>
-      )}
+    <div className={st(classes.root, { speedDialOpen })}>
+      {addButton}
+      {buttonGroup}
     </div>
   );
 }

@@ -3,41 +3,13 @@
 
 .root {
   -st-states:
-    direction(string),
     speedDialOpen(boolean);
   display: inline-block;
 }
 
-.root:direction("left") > .buttonGroup {
-  float: left;
-  margin-right: var(--spacing-unit);
-}
-
-.root:direction("right") > .buttonGroup {
+.root > .buttonGroup {
   float: right;
   margin-left: var(--spacing-unit);
-}
-
-.root:direction("bottom"), 
-.root:direction("bottom") > .addButton,  
-.root:direction("bottom") > .buttonGroup, 
-.root:direction("top"),
-.root:direction("top") > .addButton,  
-.root:direction("top") > .buttonGroup 
-{
-  display: block;
-}
-
-.root:direction("bottom") > .addButton {
-  margin-bottom: var(--spacing-unit);
-}
-
-.root:direction("top") {
-  position: relative;
-}
-
-.root:direction("top") > .addButton {
-  margin-top: var(--spacing-unit);
 }
 
 .addButton {
