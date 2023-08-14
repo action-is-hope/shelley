@@ -33,30 +33,3 @@ function Tooltip(props: TooltipProps, ref: React.Ref<HTMLDivElement>) {
 
 const _Tooltip = forwardRef(Tooltip);
 export { _Tooltip as Tooltip };
-
-// function TooltipButton(props) {
-//   let state = useTooltipTriggerState(props);
-//   let ref = React.useRef(null);
-
-//   // Get props for the trigger and its tooltip
-//   let { triggerProps, tooltipProps } = useTooltipTrigger(props, state, ref);
-
-//   return (
-//     <span style={{ position: 'relative' }}>
-//       <button
-//         ref={ref}
-//         {...triggerProps}
-//         style={{ fontSize: 18 }}
-//         onClick={() => alert('Pressed button')}
-//       >
-//         {props.children}
-//       </button>
-//       {state.isOpen && (
-//         <Tooltip state={state} {...tooltipProps}>{props.tooltip}</Tooltip>
-//       )}
-//     </span>
-//   );
-// }
-
-// <TooltipButton tooltip="Edit">✏️</TooltipButton>
-// <TooltipButton tooltip="Delete">🚮</TooltipButton>
