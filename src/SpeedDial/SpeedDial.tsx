@@ -1,37 +1,29 @@
 import React, { forwardRef, useState } from "react";
 import Add from "../icons/Add";
-import Close from "../icons/Close";
-import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speeddial.st.css";
-import { useTooltipTrigger } from "react-aria";
-import { Tooltip } from "../Tooltip";
-import { useTooltipTriggerState } from "react-stately";
+import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
   children: any;
+  tooltipTitle: string;
 }
 
 function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
   const [speedDialOpen, triggerSpeedDial] = useState("false");
-  const { children } = props;
-  let tooltipState = useTooltipTriggerState();
-  let buttonRef = React.useRef(null);
-  let { triggerProps, tooltipProps } = useTooltipTrigger(
-    {},
-    tooltipState,
-    buttonRef
-  );
+  const { children, tooltipTitle } = props;
 
   const addButton = (
     <div className={classes.addButton}>
-      <Button
-        // onBlur={() => triggerSpeedDial(false)}
-        onClick={() =>
-          triggerSpeedDial(speedDialOpen === "false" ? "true" : "false")
-        }
-        variant="round"
-        icon={<Add />}
+      <TooltipButton
+        buttonProps={{
+          onBlur: () => triggerSpeedDial("false"),
+          onClick: () =>
+            triggerSpeedDial(speedDialOpen === "false" ? "true" : "false"),
+          variant: "round",
+          icon: <Add />,
+        }}
+        tooltip={tooltipTitle}
       />
     </div>
   );

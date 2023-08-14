@@ -1,6 +1,5 @@
-import React, { forwardRef, useState } from "react";
-import { useTooltipTriggerState } from "react-stately";
-import { mergeProps, useTooltip, useTooltipTrigger } from "react-aria";
+import React, { forwardRef } from "react";
+import { mergeProps, useTooltip } from "react-aria";
 
 interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   children: any;

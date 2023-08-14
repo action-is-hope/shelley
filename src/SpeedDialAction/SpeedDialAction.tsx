@@ -1,13 +1,9 @@
-import React, { forwardRef, useState } from "react";
-import Add from "../icons/Add";
-import Close from "../icons/Close";
-import { Button } from "../Button";
-import { ButtonGroup } from "../ButtonGroup";
+import React, { forwardRef } from "react";
+import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialActionProps extends React.HTMLAttributes<HTMLDivElement> {
   tooltipTitle: string;
   icon: any;
-  tooltipPlacement: string;
   onMouseDown: () => void;
 }
 
@@ -15,9 +11,18 @@ function SpeedDialAction(
   props: SpeedDialActionProps,
   ref: React.Ref<HTMLDivElement>
 ) {
-  const { tooltipTitle, tooltipPlacement, icon, onMouseDown } = props;
+  const { tooltipTitle, icon, onMouseDown } = props;
 
-  return <Button onClick={onMouseDown} variant="round" icon={icon} />;
+  return (
+    <TooltipButton
+      buttonProps={{
+        onClick: onMouseDown,
+        variant: "round",
+        icon,
+      }}
+      tooltip={tooltipTitle}
+    />
+  );
 }
 
 const _SpeedDialAction = forwardRef(SpeedDialAction);

@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import { useTooltipTriggerState } from "react-stately";
 import { useTooltipTrigger } from "react-aria";
 import { Tooltip } from "../Tooltip";
+import { Button } from "../Button";
 
 function TooltipButton(props: any, ref: React.Ref<HTMLDivElement>) {
   let state = useTooltipTriggerState(props);
@@ -15,9 +16,9 @@ function TooltipButton(props: any, ref: React.Ref<HTMLDivElement>) {
 
   return (
     <span ref={ref} style={{ position: "relative" }}>
-      <button ref={buttonRef} {...triggerProps} style={{ fontSize: 18 }}>
+      <Button ref={buttonRef} {...triggerProps} {...props.buttonProps}>
         {props.children}
-      </button>
+      </Button>
       {state.isOpen && (
         <Tooltip state={state} {...tooltipProps}>
           {props.tooltip}

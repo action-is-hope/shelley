@@ -22,25 +22,29 @@
 }
 
 .root:speedDialOpen(false) > .buttonGroup {
+  visibility: hidden;
   opacity: 0;
-  animation: slide-out 1s backwards;
+  animation: slide-out .5s backwards;
   animation-fill-mode: backwards; 
 }
 
 .root:speedDialOpen(true) > .buttonGroup {
+  visibility: visible;
   opacity: 1;
-  animation: slide-in 1s forwards; 
+  animation: slide-in .5s forwards; 
 }
 
 @keyframes slide-in {
   0% {
     transform: translateX(-100%);
     opacity: 0;
+    visibility: hidden;
   }
 
   100% {
     transform: translateX(0);
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -48,10 +52,12 @@
   0% {
     transform: translateX(0);
     opacity: 1;
+    visibility: visible;
   }
   
   100% {
     transform: translateX(-100%);
     opacity: 0;
+    visibility: hidden;
   }
 }
