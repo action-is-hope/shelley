@@ -38,6 +38,7 @@ export * from "./Text";
 export * from "./TextField";
 export * from "./Toast";
 export * from "./Toolbar";
+export * from "./Tooltip";
 export * from "./VisuallyHidden";
 
 export * from "./typings/shared-types";

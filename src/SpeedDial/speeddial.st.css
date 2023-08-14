@@ -41,17 +41,47 @@
 }
 
 .addButton {
+  /* position: relative; */
   display: inline-block;
+  transition: transform 0.3s ease;
 }
 
 .buttonGroup {
   display: inline-block;
   visibility: hidden;
-  /* animation: slide-in .3s forwards; */
+  /* animation: slide-in .3s forwards;  */
+}
+
+.root:speedDialOpen(true) > .addButton > button {
+  /* transform: rotate(0); */
+}
+
+.root:speedDialOpen(false) > .addButton > button {
+  /* transform: rotate(45deg); */
 }
 
 .root:speedDialOpen(true) > .buttonGroup {
   visibility: visible;
+}
+
+@keyframes rotation-1 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes rotation-2 {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
 }
 
 @keyframes slide-in {

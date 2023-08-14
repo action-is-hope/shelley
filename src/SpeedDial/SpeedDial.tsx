@@ -4,6 +4,9 @@ import Close from "../icons/Close";
 import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speeddial.st.css";
+import { useTooltipTrigger } from "react-aria";
+import { Tooltip } from "../Tooltip";
+import { useTooltipTriggerState } from "react-stately";
 
 interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
   children: any;
@@ -13,6 +16,13 @@ interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
 function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
   const [speedDialOpen, triggerSpeedDial] = useState(false);
   const { children, direction } = props;
+  let tooltipState = useTooltipTriggerState();
+  let buttonRef = React.useRef(null);
+  let { triggerProps, tooltipProps } = useTooltipTrigger(
+    {},
+    tooltipState,
+    buttonRef
+  );
 
   const addButton = (
     <div className={classes.addButton}>

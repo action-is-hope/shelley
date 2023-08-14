@@ -14,8 +14,16 @@ import EyeIcon from "../../icons/Eye";
 
 <Story name="a) Speed Dial left">
   <SpeedDial direction="left">
-    <SpeedDialAction icon={<CheckIcon />} onMouseDown={() => {}} />
-    <SpeedDialAction icon={<EyeIcon />} onMouseDown={() => {}} />
+    <SpeedDialAction
+      icon={<CheckIcon />}
+      onMouseDown={() => {}}
+      tooltipTitle="check"
+    />
+    <SpeedDialAction
+      icon={<EyeIcon />}
+      onMouseDown={() => {}}
+      tooltipTitle="eye"
+    />
   </SpeedDial>
 </Story>
 
