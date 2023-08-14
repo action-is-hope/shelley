@@ -13,7 +13,7 @@ interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
-  const [speedDialOpen, triggerSpeedDial] = useState(false);
+  const [speedDialOpen, triggerSpeedDial] = useState("false");
   const { children } = props;
   let tooltipState = useTooltipTriggerState();
   let buttonRef = React.useRef(null);
@@ -27,9 +27,11 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
     <div className={classes.addButton}>
       <Button
         // onBlur={() => triggerSpeedDial(false)}
-        onClick={() => triggerSpeedDial(!speedDialOpen)}
+        onClick={() =>
+          triggerSpeedDial(speedDialOpen === "false" ? "true" : "false")
+        }
         variant="round"
-        icon={speedDialOpen ? <Close /> : <Add />}
+        icon={<Add />}
       />
     </div>
   );

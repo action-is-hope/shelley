@@ -3,67 +3,55 @@
 
 .root {
   -st-states:
-    speedDialOpen(boolean);
-  display: inline-block;
+    speedDialOpen(string);
+  display: flex;
 }
 
 .root > .buttonGroup {
-  float: right;
   margin-left: var(--spacing-unit);
 }
 
-.addButton {
-  /* position: relative; */
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.buttonGroup {
-  display: inline-block;
-  visibility: hidden;
-  /* animation: slide-in .3s forwards;  */
+.root:speedDialOpen(false) > .addButton > button {
+  transform: rotate(0);
+  transition: transform 0.5s ease;
 }
 
 .root:speedDialOpen(true) > .addButton > button {
-  /* transform: rotate(0); */
+  transform: rotate(45deg);
+  transition: transform 0.5s ease;
 }
 
-.root:speedDialOpen(false) > .addButton > button {
-  /* transform: rotate(45deg); */
+.root:speedDialOpen(false) > .buttonGroup {
+  opacity: 0;
+  animation: slide-out 1s backwards;
+  animation-fill-mode: backwards; 
 }
 
 .root:speedDialOpen(true) > .buttonGroup {
-  visibility: visible;
-}
-
-@keyframes rotation-1 {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(45deg);
-  }
-}
-
-@keyframes rotation-2 {
-  0% {
-    transform: rotate(45deg);
-  }
-
-  100% {
-    transform: rotate(0);
-  }
+  opacity: 1;
+  animation: slide-in 1s forwards; 
 }
 
 @keyframes slide-in {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100%);
     opacity: 0;
   }
 
   100% {
-    transform: translateX(100%);
+    transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 }
