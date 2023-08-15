@@ -13,7 +13,6 @@ function SpeedDialAction(props: SpeedDialActionProps) {
     <TooltipButton
       buttonProps={{
         onClick: onMouseDown,
-        variant: "round",
         icon,
       }}
       tooltip={tooltipTitle}

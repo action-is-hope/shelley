@@ -19,7 +19,6 @@ function SpeedDial(props: SpeedDialProps) {
         onBlur: () => triggerSpeedDial("false"),
         onClick: () =>
           triggerSpeedDial(speedDialOpen === "false" ? "true" : "false"),
-        variant: "round",
         icon: <Add />,
         className: classes.addButton,
       }}

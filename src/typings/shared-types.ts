@@ -41,7 +41,6 @@ export declare type ButtonVariants =
   | "secondary"
   | "quiet"
   | "fab"
-  | "round"
   | false;
 
 export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
