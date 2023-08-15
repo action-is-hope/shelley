@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { useState } from "react";
 import Add from "../icons/Add";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speeddial.st.css";
@@ -9,7 +9,7 @@ interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
   tooltipTitle: string;
 }
 
-function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
+function SpeedDial(props: SpeedDialProps) {
   const [speedDialOpen, triggerSpeedDial] = useState("false");
   const { children, tooltipTitle } = props;
 
@@ -30,7 +30,7 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
 
   const buttonGroup = (
     <div className={classes.buttonGroup}>
-      <ButtonGroup ref={ref}>{children}</ButtonGroup>
+      <ButtonGroup>{children}</ButtonGroup>
     </div>
   );
 
@@ -42,8 +42,4 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLDivElement>) {
   );
 }
 
-/**
- * SpeedDial housing buttons and slogans for use in headers and footers.
- */
-const _SpeedDial = forwardRef(SpeedDial);
-export { _SpeedDial as SpeedDial };
+export { SpeedDial };

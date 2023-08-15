@@ -11,12 +11,12 @@
   margin-left: var(--spacing-unit);
 }
 
-.root:speedDialOpen(false) > .addButton > button {
+.root:speedDialOpen(false) > .addButton > span > button {
   transform: rotate(0);
   transition: transform 0.5s ease;
 }
 
-.root:speedDialOpen(true) > .addButton > button {
+.root:speedDialOpen(true) > .addButton > span > button {
   transform: rotate(45deg);
   transition: transform 0.5s ease;
 }
