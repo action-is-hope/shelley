@@ -14,24 +14,21 @@ function SpeedDial(props: SpeedDialProps) {
   const { children, tooltipTitle } = props;
 
   const addButton = (
-    <div className={classes.addButton}>
-      <TooltipButton
-        buttonProps={{
-          onBlur: () => triggerSpeedDial("false"),
-          onClick: () =>
-            triggerSpeedDial(speedDialOpen === "false" ? "true" : "false"),
-          variant: "round",
-          icon: <Add />,
-        }}
-        tooltip={tooltipTitle}
-      />
-    </div>
+    <TooltipButton
+      buttonProps={{
+        onBlur: () => triggerSpeedDial("false"),
+        onClick: () =>
+          triggerSpeedDial(speedDialOpen === "false" ? "true" : "false"),
+        variant: "round",
+        icon: <Add />,
+        className: classes.addButton,
+      }}
+      tooltip={tooltipTitle}
+    />
   );
 
   const buttonGroup = (
-    <div className={classes.buttonGroup}>
-      <ButtonGroup>{children}</ButtonGroup>
-    </div>
+    <ButtonGroup className={classes.buttonGroup}>{children}</ButtonGroup>
   );
 
   return (
