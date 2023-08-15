@@ -1,6 +1,6 @@
 import { TooltipButton } from "../TooltipButton";
 
-interface SpeedDialActionProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SpeedDialActionProps {
   tooltipTitle: string;
   icon: any;
   onMouseDown: () => void;

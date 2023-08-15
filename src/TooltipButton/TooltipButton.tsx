@@ -1,10 +1,16 @@
-import React, { forwardRef } from "react";
+import React, { ReactElement } from "react";
 import { useTooltipTriggerState } from "react-stately";
-import { useTooltipTrigger } from "react-aria";
+import { TooltipTriggerProps, useTooltipTrigger } from "react-aria";
 import { Tooltip } from "../Tooltip";
 import { Button } from "../Button";
 
-function TooltipButton(props: any, ref: React.Ref<HTMLDivElement>) {
+interface TooltipButtonProps extends TooltipTriggerProps {
+  buttonProps: any;
+  children: ReactElement;
+  tooltip: string;
+}
+
+function TooltipButton(props: TooltipButtonProps) {
   let state = useTooltipTriggerState(props);
   let buttonRef = React.useRef(null);
 
@@ -15,7 +21,7 @@ function TooltipButton(props: any, ref: React.Ref<HTMLDivElement>) {
   );
 
   return (
-    <span ref={ref} style={{ position: "relative" }}>
+    <span style={{ position: "relative" }}>
       <Button ref={buttonRef} {...triggerProps} {...props.buttonProps}>
         {props.children}
       </Button>
@@ -28,5 +34,4 @@ function TooltipButton(props: any, ref: React.Ref<HTMLDivElement>) {
   );
 }
 
-const _TooltipButton = forwardRef(TooltipButton);
-export { _TooltipButton as TooltipButton };
+export { TooltipButton };

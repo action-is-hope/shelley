@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Add from "../icons/Add";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speeddial.st.css";
 import { TooltipButton } from "../TooltipButton";
 
-interface SpeedDialProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SpeedDialProps {
   children: any;
   tooltipTitle: string;
 }

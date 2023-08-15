@@ -1,12 +1,16 @@
-import React, { forwardRef } from "react";
 import { mergeProps, useTooltip } from "react-aria";
 
-interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: any;
-  state: any;
+interface TooltipProps {
+  children: string;
+  state: {
+    isOpen: boolean;
+    close: () => void;
+    open: () => void;
+  };
+  id?: string;
 }
 
-function Tooltip(props: TooltipProps, ref: React.Ref<HTMLDivElement>) {
+function Tooltip(props: TooltipProps) {
   let { tooltipProps } = useTooltip(props, props.state);
 
   return (
@@ -22,13 +26,10 @@ function Tooltip(props: TooltipProps, ref: React.Ref<HTMLDivElement>) {
         padding: "5px",
         border: "1px solid gray",
       }}
-      ref={ref}
       {...mergeProps(props, tooltipProps)}
     >
       {props.children}
     </span>
   );
 }
-
-const _Tooltip = forwardRef(Tooltip);
-export { _Tooltip as Tooltip };
+export { Tooltip };
