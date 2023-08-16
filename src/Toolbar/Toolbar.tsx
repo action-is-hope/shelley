@@ -11,7 +11,7 @@ interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: Variant;
 }
 
-function Toolbar(props: ToolbarProps) {
+function Toolbar(props: ToolbarProps, ref: React.Ref<HTMLDivElement>) {
   const {
     align = "end",
     as: Component = "div",
@@ -32,10 +32,15 @@ function Toolbar(props: ToolbarProps) {
         classNameProp
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </Component>
   );
 }
 
-export { Toolbar };
+/**
+ * Toolbar housing buttons and slogans for use in headers and footers.
+ */
+const _Toolbar = forwardRef(Toolbar);
+export { _Toolbar as Toolbar };

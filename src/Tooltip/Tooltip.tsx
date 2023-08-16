@@ -11,7 +11,7 @@ interface TooltipProps {
 }
 
 function Tooltip(props: TooltipProps) {
-  let { tooltipProps } = useTooltip(props, props.state);
+  const { tooltipProps } = useTooltip(props, props.state);
 
   return (
     <span

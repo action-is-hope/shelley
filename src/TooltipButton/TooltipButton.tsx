@@ -6,15 +6,15 @@ import { Button } from "../Button";
 import { classes } from "./tooltipButton.st.css";
 
 interface TooltipButtonProps extends TooltipTriggerProps {
-  buttonProps: any;
+  buttonProps: object;
   tooltip: string;
 }
 
 function TooltipButton(props: TooltipButtonProps) {
-  let state = useTooltipTriggerState(props);
-  let buttonRef = React.useRef(null);
+  const state = useTooltipTriggerState(props);
+  const buttonRef = React.useRef(null);
 
-  let { triggerProps, tooltipProps } = useTooltipTrigger(
+  const { triggerProps, tooltipProps } = useTooltipTrigger(
     props,
     state,
     buttonRef

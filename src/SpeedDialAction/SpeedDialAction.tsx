@@ -1,8 +1,9 @@
+import type { ReactElement } from "react";
 import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialActionProps {
   tooltipTitle: string;
-  icon: any;
+  icon: ReactElement;
   onMouseDown: () => void;
 }
 
