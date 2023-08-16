@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Add from "../icons/Add";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speeddial.st.css";
 import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialProps {
-  children: any;
+  children: ReactNode;
   tooltipTitle: string;
 }
 
