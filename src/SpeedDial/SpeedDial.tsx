@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode, useState } from "react";
 import Add from "../icons/Add";
 import { ButtonGroup } from "../ButtonGroup";
-import { st, classes } from "./speeddial.st.css";
+import { st, classes } from "./speedDial.st.css";
 import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialProps {
@@ -19,7 +19,7 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLInputElement>) {
         data-id="tooltip-button"
         buttonProps={{
           onBlur: () => triggerSpeedDial("false"),
-          onPress: () =>
+          onClick: () =>
             triggerSpeedDial(speedDialOpen === "false" ? "true" : "false"),
           icon: <Add />,
           className: classes.addButton,

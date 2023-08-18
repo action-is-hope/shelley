@@ -7,16 +7,18 @@
   display: flex;
 }
 
+.addButton {}
+
 .root > .buttonGroup {
   margin-left: var(--spacing-unit);
 }
 
-.root:speedDialOpen(false) > div > .addButton > svg {
+.root:speedDialOpen(false)::addButton > svg {
   transform: rotate(0);
   transition: transform 0.5s ease;
 }
 
-.root:speedDialOpen(true) > div > .addButton > svg {
+.root:speedDialOpen(true)::addButton > svg {
   transform: rotate(45deg);
   transition: transform 0.5s ease;
 }

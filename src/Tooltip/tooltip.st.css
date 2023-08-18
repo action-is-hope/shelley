@@ -1,0 +1,13 @@
+@namespace "Tooltip";
+
+.root {
+  position: absolute;
+  left: 5px;
+  top: 100%;
+  max-width: 150;
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border: 1px solid gray;
+}

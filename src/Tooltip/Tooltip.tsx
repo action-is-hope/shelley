@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { mergeProps, useTooltip } from "react-aria";
+import { classes } from "./tooltip.st.css";
 
 interface TooltipProps {
   children: string;
@@ -17,17 +18,7 @@ function Tooltip(props: TooltipProps, ref: React.Ref<HTMLInputElement>) {
   return (
     <span
       ref={ref}
-      style={{
-        position: "absolute",
-        left: "5px",
-        top: "100%",
-        maxWidth: 150,
-        marginTop: "10px",
-        backgroundColor: "white",
-        color: "black",
-        padding: "5px",
-        border: "1px solid gray",
-      }}
+      className={classes.root}
       {...mergeProps(props, tooltipProps)}
     >
       {props.children}
