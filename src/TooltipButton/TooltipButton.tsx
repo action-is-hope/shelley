@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useTooltipTriggerState } from "react-stately";
 import { TooltipTriggerProps, useTooltipTrigger } from "react-aria";
 import { Tooltip } from "../Tooltip";
@@ -10,7 +10,10 @@ interface TooltipButtonProps extends TooltipTriggerProps {
   tooltip: string;
 }
 
-function TooltipButton(props: TooltipButtonProps) {
+function TooltipButton(
+  props: TooltipButtonProps,
+  ref: React.Ref<HTMLInputElement>
+) {
   const state = useTooltipTriggerState(props);
   const buttonRef = React.useRef(null);
 
@@ -21,7 +24,7 @@ function TooltipButton(props: TooltipButtonProps) {
   );
 
   return (
-    <div className={classes.root}>
+    <div ref={ref} className={classes.root}>
       <Button ref={buttonRef} {...triggerProps} {...props.buttonProps} />
       {state.isOpen && (
         <Tooltip state={state} {...tooltipProps}>
@@ -32,4 +35,5 @@ function TooltipButton(props: TooltipButtonProps) {
   );
 }
 
-export { TooltipButton };
+const _TooltipButton = forwardRef(TooltipButton);
+export { _TooltipButton as TooltipButton };

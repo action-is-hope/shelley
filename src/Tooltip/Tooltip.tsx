@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { mergeProps, useTooltip } from "react-aria";
 
 interface TooltipProps {
@@ -10,11 +11,12 @@ interface TooltipProps {
   id?: string;
 }
 
-function Tooltip(props: TooltipProps) {
+function Tooltip(props: TooltipProps, ref: React.Ref<HTMLInputElement>) {
   const { tooltipProps } = useTooltip(props, props.state);
 
   return (
     <span
+      ref={ref}
       style={{
         position: "absolute",
         left: "5px",
@@ -32,4 +34,6 @@ function Tooltip(props: TooltipProps) {
     </span>
   );
 }
-export { Tooltip };
+
+const _Tooltip = forwardRef(Tooltip);
+export { _Tooltip as Tooltip };

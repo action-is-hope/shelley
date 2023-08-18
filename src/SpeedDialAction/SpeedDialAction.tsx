@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { forwardRef, ReactElement } from "react";
 import { TooltipButton } from "../TooltipButton";
 
 interface SpeedDialActionProps {
@@ -7,18 +7,24 @@ interface SpeedDialActionProps {
   onMouseDown: () => void;
 }
 
-function SpeedDialAction(props: SpeedDialActionProps) {
+function SpeedDialAction(
+  props: SpeedDialActionProps,
+  ref: React.Ref<HTMLInputElement>
+) {
   const { tooltipTitle, icon, onMouseDown } = props;
 
   return (
-    <TooltipButton
-      buttonProps={{
-        onClick: onMouseDown,
-        icon,
-      }}
-      tooltip={tooltipTitle}
-    />
+    <div ref={ref}>
+      <TooltipButton
+        buttonProps={{
+          onClick: onMouseDown,
+          icon,
+        }}
+        tooltip={tooltipTitle}
+      />
+    </div>
   );
 }
 
-export { SpeedDialAction };
+const _SpeedDialAction = forwardRef(SpeedDialAction);
+export { _SpeedDialAction as SpeedDialAction };
