@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpeedDialAction renders correctly 1`] = `
+<div
+  data-id="speed-dial-action"
+>
+  <div
+    className="tooltipButton__Test__root"
+    data-id="tooltip-button"
+  >
+    <button
+      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      type="button"
+    >
+       
+      <span>
+        Test Icon
+      </span>
+    </button>
+  </div>
+</div>
+`;

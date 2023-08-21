@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders with custom state 1`] = `
+<span
+  className="Tooltip__Test__root"
+  id="test-tooltip-open"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onTouchStart={[Function]}
+  role="tooltip"
+  state={
+    {
+      "close": [MockFunction],
+      "isOpen": true,
+      "open": [MockFunction],
+    }
+  }
+>
+  Tooltip text
+</span>
+`;
+
+exports[`Tooltip renders with given text 1`] = `
+<span
+  className="Tooltip__Test__root"
+  id="test-tooltip"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onTouchStart={[Function]}
+  role="tooltip"
+  state={
+    {
+      "close": [MockFunction],
+      "isOpen": false,
+      "open": [MockFunction],
+    }
+  }
+>
+  Tooltip text
+</span>
+`;

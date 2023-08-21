@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpeedDial renders correctly when closed 1`] = `
+<div
+  className="SpeedDial__Test__root SpeedDial__Test---speedDialOpen-5-false"
+  data-id="speed-dial"
+>
+  <div
+    className="tooltipButton__Test__root"
+    data-id="tooltip-button"
+  >
+    <button
+      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 SpeedDial__Test__addButton"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragStart={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      type="button"
+    >
+       
+      <svg
+        aria-hidden={true}
+        className="Icon__Test__root"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </button>
+  </div>
+  <div
+    className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal SpeedDial__Test__buttonGroup"
+    data-id="button-group"
+  >
+    <span>
+      Child Content
+    </span>
+  </div>
+</div>
+`;
