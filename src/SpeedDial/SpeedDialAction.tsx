@@ -1,5 +1,5 @@
 import { forwardRef, ReactElement } from "react";
-import { TooltipButton } from "../TooltipButton";
+import { TooltipButton } from "../Tooltip/TooltipButton";
 
 interface SpeedDialActionProps {
   tooltipTitle: string;

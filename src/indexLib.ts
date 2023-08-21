@@ -29,8 +29,7 @@ export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./Select";
 export * from "./Switch/Switch";
-export * from "./SpeedDial/SpeedDial";
-export * from "./SpeedDialAction/SpeedDialAction";
+export * from "./SpeedDial";
 export * from "./TablePagination";
 export * from "./TableView";
 export * from "./Tabs";
@@ -39,7 +38,6 @@ export * from "./TextField";
 export * from "./Toast";
 export * from "./Toolbar";
 export * from "./Tooltip";
-export * from "./TooltipButton";
 export * from "./VisuallyHidden";
 
 export * from "./typings/shared-types";

@@ -2,7 +2,7 @@ import { forwardRef, ReactNode, useState } from "react";
 import Add from "../icons/Add";
 import { ButtonGroup } from "../ButtonGroup";
 import { st, classes } from "./speedDial.st.css";
-import { TooltipButton } from "../TooltipButton";
+import { TooltipButton } from "../Tooltip/TooltipButton";
 
 interface SpeedDialProps {
   children: ReactNode;

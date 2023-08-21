@@ -6,7 +6,7 @@ exports[`SpeedDial renders correctly when closed 1`] = `
   data-id="speed-dial"
 >
   <div
-    className="tooltipButton__Test__root"
+    className="tooltipButton2659786477__root"
     data-id="tooltip-button"
   >
     <button

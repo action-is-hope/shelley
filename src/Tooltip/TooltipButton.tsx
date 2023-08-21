@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { useTooltipTriggerState } from "react-stately";
 import { TooltipTriggerProps, useTooltipTrigger } from "react-aria";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from ".";
 import { Button } from "../Button";
 import { classes } from "./tooltipButton.st.css";
 

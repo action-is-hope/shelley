@@ -5,7 +5,7 @@ exports[`SpeedDialAction renders correctly 1`] = `
   data-id="speed-dial-action"
 >
   <div
-    className="tooltipButton__Test__root"
+    className="tooltipButton2659786477__root"
     data-id="tooltip-button"
   >
     <button
