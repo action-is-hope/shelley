@@ -1,4 +1,4 @@
-import { Tooltip } from "./Tooltip";
+import { Tooltip } from "../Tooltip";
 import renderer from "react-test-renderer";
 
 const tooltipText = "Tooltip text";

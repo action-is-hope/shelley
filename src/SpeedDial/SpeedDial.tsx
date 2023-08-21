@@ -14,9 +14,12 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLInputElement>) {
   const { children, tooltipTitle } = props;
 
   return (
-    <div ref={ref} className={st(classes.root, { speedDialOpen })}>
+    <div
+      data-id="speed-dial"
+      ref={ref}
+      className={st(classes.root, { speedDialOpen })}
+    >
       <TooltipButton
-        data-id="tooltip-button"
         buttonProps={{
           onBlur: () => triggerSpeedDial("false"),
           onClick: () =>

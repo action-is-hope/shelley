@@ -22,8 +22,8 @@ describe("TooltipButton", () => {
     const MockedTooltipButton = (props: any) => {
       const mockState = {
         isOpen: true,
-        close: () => {},
-        open: () => {},
+        close: jest.fn(),
+        open: jest.fn(),
       };
 
       return <TooltipButton {...props} state={mockState} />;

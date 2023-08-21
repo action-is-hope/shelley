@@ -42,6 +42,7 @@ function ButtonGroup(props: ButtonGroupProps, ref: React.Ref<HTMLDivElement>) {
   } = props;
   return (
     <div
+      data-id="button-group"
       className={st(
         classes.root,
         { orientation, splitButton, isDisabled },

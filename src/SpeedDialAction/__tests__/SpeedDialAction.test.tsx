@@ -10,7 +10,7 @@ describe("SpeedDialAction", () => {
         <SpeedDialAction
           tooltipTitle={tooltipTitleMock}
           icon={iconMock}
-          onMouseDown={() => {}}
+          onMouseDown={jest.fn()}
         />
       )
       .toJSON();
