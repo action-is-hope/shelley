@@ -2,8 +2,7 @@
 @namespace "SpeedDial";
 
 .root {
-  -st-states:
-    speedDialOpen(string);
+  -st-states: speedDialOpen;
   display: flex;
 }
 
@@ -13,24 +12,24 @@
   margin-left: var(--spacing-unit);
 }
 
-.root:speedDialOpen(false)::addButton > svg {
+.root::addButton > svg {
   transform: rotate(0);
   transition: transform 0.5s ease;
 }
 
-.root:speedDialOpen(true)::addButton > svg {
+.root:speedDialOpen::addButton > svg {
   transform: rotate(45deg);
   transition: transform 0.5s ease;
 }
 
-.root:speedDialOpen(false) > .buttonGroup {
+.root > .buttonGroup {
   visibility: hidden;
   opacity: 0;
   animation: slide-out .5s backwards;
   animation-fill-mode: backwards; 
 }
 
-.root:speedDialOpen(true) > .buttonGroup {
+.root:speedDialOpen > .buttonGroup {
   visibility: visible;
   opacity: 1;
   animation: slide-in .5s forwards; 
