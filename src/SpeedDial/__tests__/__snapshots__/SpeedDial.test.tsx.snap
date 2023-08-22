@@ -2,7 +2,7 @@
 
 exports[`SpeedDial renders correctly when closed 1`] = `
 <div
-  className="SpeedDial1414287531__root"
+  className="speedDial___mock"
   data-id="speed-dial"
 >
   <div
