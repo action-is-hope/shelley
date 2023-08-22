@@ -2,7 +2,7 @@
 
 exports[`TooltipButton renders with tooltip showing 1`] = `
 <div
-  className="tooltipButton2659786477__root"
+  className="tooltipButton__Test__root"
   data-id="tooltip-button"
 >
   <button
@@ -34,7 +34,7 @@ exports[`TooltipButton renders with tooltip showing 1`] = `
 
 exports[`TooltipButton renders without tooltip showing 1`] = `
 <div
-  className="tooltipButton2659786477__root"
+  className="tooltipButton__Test__root"
   data-id="tooltip-button"
 >
   <button

@@ -6,11 +6,11 @@ exports[`SpeedDial renders correctly when closed 1`] = `
   data-id="speed-dial"
 >
   <div
-    className="tooltipButton2659786477__root"
+    className="tooltipButton__Test__root"
     data-id="tooltip-button"
   >
     <button
-      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 SpeedDial1414287531__addButton"
+      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 SpeedDial__Test__addButton"
       onBlur={[Function]}
       onClick={[Function]}
       onDragStart={[Function]}
