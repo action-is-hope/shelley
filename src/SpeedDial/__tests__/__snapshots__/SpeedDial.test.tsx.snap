@@ -44,7 +44,7 @@ exports[`SpeedDial renders correctly when closed 1`] = `
     </button>
   </div>
   <div
-    className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal SpeedDial1414287531__buttonGroup"
+    className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal SpeedDial__Test__buttonGroup"
     data-id="button-group"
   >
     <span>
