@@ -2,7 +2,7 @@
 
 exports[`SpeedDial renders correctly when closed 1`] = `
 <div
-  className="speedDial__Test__root"
+  className="SpeedDial__Test__root"
   data-id="speed-dial"
 >
   <div
