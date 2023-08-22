@@ -2,7 +2,7 @@
 
 exports[`SpeedDial renders correctly when closed 1`] = `
 <div
-  className="SpeedDial__Test__root SpeedDial__Test---speedDialOpen-5-false"
+  className="SpeedDial1414287531__root"
   data-id="speed-dial"
 >
   <div
@@ -10,7 +10,7 @@ exports[`SpeedDial renders correctly when closed 1`] = `
     data-id="tooltip-button"
   >
     <button
-      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 SpeedDial__Test__addButton"
+      className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3 SpeedDial1414287531__addButton"
       onBlur={[Function]}
       onClick={[Function]}
       onDragStart={[Function]}
@@ -44,7 +44,7 @@ exports[`SpeedDial renders correctly when closed 1`] = `
     </button>
   </div>
   <div
-    className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal SpeedDial__Test__buttonGroup"
+    className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal SpeedDial1414287531__buttonGroup"
     data-id="button-group"
   >
     <span>
