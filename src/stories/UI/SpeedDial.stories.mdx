@@ -1,12 +1,26 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import { StoryGrid } from "../StoryLayout";
 import { SpeedDial, SpeedDialAction } from "../../indexLib";
 import CheckIcon from "../../icons/Check";
 import EyeIcon from "../../icons/Eye";
+import dedent from "ts-dedent";
 
-<Meta title="Examples/Speed Dial" component={SpeedDial} />
+<Meta
+  title="Selection/Speed Dial"
+  component={SpeedDial}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+/>
 
 # Speed Dial
 
 <Source
+  language="tsx"
   code={dedent`
     import { SpeedDial } from "@actionishope/shelley";
   `}

@@ -17,7 +17,7 @@ function SpeedDialAction(
     <div data-id="speed-dial-action" ref={ref}>
       <TooltipButton
         buttonProps={{
-          onClick: onMouseDown,
+          // onPress: onMouseDown,
           icon,
         }}
         tooltip={tooltipTitle}
