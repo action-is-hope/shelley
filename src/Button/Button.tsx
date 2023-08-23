@@ -2,6 +2,7 @@
 import React, {
   Ref,
   ReactElement,
+  ReactNode,
   useRef,
   forwardRef,
   ElementType,
@@ -29,7 +30,7 @@ import { st, classes } from "./button.st.css";
 export interface ButtonCustomProps
   extends Omit<AriaButtonProps, "elementType"> {
   /** Define an Icon node, postion via #iconPos. */
-  icon?: React.ReactNode;
+  icon?: ReactElement;
   /** The position of the icon relative to the label. */
   iconPos?: AlignPos;
   /** Tone index, defines the color palette. */
@@ -142,14 +143,12 @@ function Button<P extends React.ElementType = "button">(
     classNameProp
   );
 
+  const clonedIcon =
+    icon && React.cloneElement(icon, { className: classes.icon });
   const internal = (
     <>
       {children && <span className={classes.inner}>{children}</span>}
-      {icon && (
-        <>
-          {children && <span className={classes.divider}></span>} {icon}
-        </>
-      )}
+      {clonedIcon}
     </>
   );
   return React.createElement(

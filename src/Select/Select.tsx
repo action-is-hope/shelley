@@ -43,7 +43,7 @@ export interface SelectProps<T>
    */
   shouldFocusOnHover?: boolean;
   children?: CollectionChildren<T>;
-  triggerIcon?: ReactNode;
+  triggerIcon?: ReactElement;
   /**
    * Disable the label transition.
    * @default bottom
@@ -135,6 +135,8 @@ function Select<T extends object>(
           iconPos="end"
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           variant={false}
+          vol={false}
+          tone={false}
           className={classes.trigger}
           data-id={dataId ? `${dataId}--trigger` : undefined}
         >

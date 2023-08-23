@@ -33,6 +33,8 @@
     'activates' z-index should you need it. */
     position: relative;
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    /* = Only visible with an icon and children, the gap is the seperator. */
+    gap: 1em;
   }
 
   /* = Inner <span> */
@@ -41,13 +43,6 @@
     the height.*/
     padding-top: 0.58em;
     padding-bottom: 0.55em;
-  }
-
-  /* = Divider - <span> rendered with Icon only, rename perhaps?*/
-  Button::divider {
-    display: inline-block;
-    width: 1em;
-    line-height: 0;
   }
 
   /* = Targets an Icon component if present. */

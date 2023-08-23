@@ -14,8 +14,8 @@
 
 .inner {}
 
-/* The divider which is rendered with an icon only. */
-.divider {}
+/* No point to -st-extend: Icon as it limits what icon components can be used.*/
+.icon {}
 
 .root,
 .root:visited {
