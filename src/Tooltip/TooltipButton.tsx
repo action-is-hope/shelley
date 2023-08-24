@@ -25,7 +25,11 @@ function TooltipButton(
 
   return (
     <div data-id="tooltip-button" ref={ref} className={classes.root}>
-      <Button ref={buttonRef} {...triggerProps} {...props.buttonProps} />
+      <Button
+        ref={buttonRef}
+        // {...triggerProps}
+        {...props.buttonProps}
+      />
       {state.isOpen && (
         <Tooltip state={state} {...tooltipProps}>
           {props.tooltip}

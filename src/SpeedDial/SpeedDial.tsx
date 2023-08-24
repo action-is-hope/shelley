@@ -22,7 +22,8 @@ function SpeedDial(props: SpeedDialProps, ref: React.Ref<HTMLInputElement>) {
       <TooltipButton
         buttonProps={{
           onBlur: () => setSpeedDial(false),
-          onClick: () => setSpeedDial(!speedDialOpen),
+          onPress: () => setSpeedDial(!speedDialOpen),
+          onFocus: () => setSpeedDial(!speedDialOpen),
           icon: <Add />,
           className: classes.addButton,
         }}
