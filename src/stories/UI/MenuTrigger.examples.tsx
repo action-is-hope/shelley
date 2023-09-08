@@ -8,6 +8,13 @@ import {
   MenuTriggerProps,
   Icon,
 } from "../../indexLib";
+import { default as AddIcon } from "../../icons/Add";
+import { default as AddImageIcon } from "../../icons/AddImage";
+import { default as AddPDFIcon } from "../../icons/PictureAsPdf";
+import { default as AddVideoIcon } from "../../icons/PermMedia";
+import { default as AddSocialIcon } from "../../icons/Share";
+
+import { classes as triggerExample } from "./menuTriggerExample.st.css";
 
 export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
@@ -70,15 +77,20 @@ export const MultipleSelectionMenuTrigger = () => {
       // closeOnSelect={false}
       hideArrow
     >
-      <Button tone={10} variant="fab" vol={1}>
-        <Icon alt="Block settings">
-          <g id="ellipsis-dots-h">
-            <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-            <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-            <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
-          </g>
-        </Icon>
-      </Button>
+      <Button
+        tone={10}
+        variant="fab"
+        vol={1}
+        icon={
+          <Icon alt="Block settings">
+            <g id="ellipsis-dots-h">
+              <path d="M4 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+              <path d="M10 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+              <path d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+            </g>
+          </Icon>
+        }
+      />
       <Menu
         selectionMode="multiple"
         onSelectionChange={(keys) => console.log("selection change", keys)}
@@ -130,5 +142,44 @@ export const MultipleControlled = () => {
       </Menu>
       <p>Current selection (controlled): {[...selected].join(", ")}</p>
     </>
+  );
+};
+
+export const CustomInlineMenu = () => {
+  return (
+    <MenuTrigger
+      portalSelector="#portal"
+      onOpenChange={(isOpen) => console.log("isOpen:", isOpen)}
+      // isOpen
+      hideArrow
+      placement="right"
+      offset={20}
+      popupClassName={triggerExample.inlineMenuPopup}
+    >
+      <Button
+        tone={2}
+        variant="fab"
+        vol={2}
+        icon={<AddIcon alt="Add item" />}
+      />
+      <Menu
+        selectionMode="none"
+        onAction={(value) => console.log(value)}
+        className={triggerExample.inlineMenu}
+      >
+        <Item key="addImage">
+          <AddImageIcon alt="Add image" />
+        </Item>
+        <Item key="addVideo">
+          <AddVideoIcon alt="Add video" />
+        </Item>
+        <Item key="addDocument">
+          <AddPDFIcon alt="Add Document" />
+        </Item>
+        <Item key="addSocial">
+          <AddSocialIcon alt="Add Social" />
+        </Item>
+      </Menu>
+    </MenuTrigger>
   );
 };

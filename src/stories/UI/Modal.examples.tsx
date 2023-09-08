@@ -18,7 +18,6 @@ import { useState, useRef } from "react";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 
-// import "./modalExample.st.css";
 import { classes as modalClasses } from "./modalExample.st.css";
 
 export const BasicModal = () => {
