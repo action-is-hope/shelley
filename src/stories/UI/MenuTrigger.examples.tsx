@@ -14,7 +14,8 @@ import { default as AddPDFIcon } from "../../icons/PictureAsPdf";
 import { default as AddVideoIcon } from "../../icons/PermMedia";
 import { default as AddSocialIcon } from "../../icons/Share";
 
-import { classes } from "./menuTriggerExample.st.css";
+import { classes as triggerExample } from "./menuTriggerExample.st.css";
+
 export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
     <MenuTrigger portalSelector="#portal" {...args}>
@@ -149,13 +150,11 @@ export const CustomInlineMenu = () => {
     <MenuTrigger
       portalSelector="#portal"
       onOpenChange={(isOpen) => console.log("isOpen:", isOpen)}
-      // Automatic if the menus selection type is multiple it will be false but you can override.
-      // closeOnSelect={false}
       // isOpen
       hideArrow
       placement="right"
       offset={20}
-      popupClassName={classes.inlineMenuPopup}
+      popupClassName={triggerExample.inlineMenuPopup}
     >
       <Button
         tone={2}
@@ -166,7 +165,7 @@ export const CustomInlineMenu = () => {
       <Menu
         selectionMode="none"
         onAction={(value) => console.log(value)}
-        className={classes.inlineMenu}
+        className={triggerExample.inlineMenu}
       >
         <Item key="addImage">
           <AddImageIcon alt="Add image" />

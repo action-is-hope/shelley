@@ -32,7 +32,7 @@ Menu.inlineMenu MenuItem::text {
 }
 
 Menu.inlineMenu MenuItem:isFocused {
-  /* background-color: transparent; */
+  /* background-color: whatever-you-like; */
 }
 
 Menu.inlineMenu svg {
