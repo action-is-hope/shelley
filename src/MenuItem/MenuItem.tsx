@@ -4,6 +4,7 @@ import { useMenuItem, AriaMenuItemProps } from "react-aria";
 import CheckIcon from "../icons/Check";
 import type { TreeState } from "@react-stately/tree";
 import type { Node } from "@react-types/shared/src/collections";
+import type { SelectionMode } from "@react-types/shared/src/selection";
 import { mergeProps, useFocusRing } from "react-aria";
 import { st, classes } from "./menuItem.st.css";
 
@@ -13,11 +14,18 @@ export interface MenuItemProps<T> extends AriaMenuItemProps {
   item: Node<T>;
   className?: string;
   selectedIcon?: React.ReactNode;
+  selectionMode?: SelectionMode;
 }
 
 export function MenuItem<T extends object>(props: MenuItemProps<T>) {
   const ref = useRef(null);
-  const { className: classNameProp, item, state, selectedIcon } = props;
+  const {
+    className: classNameProp,
+    item,
+    state,
+    selectedIcon,
+    selectionMode,
+  } = props;
   // Get props for the menu item element
   const { isFocusVisible, focusProps } = useFocusRing();
   const { menuItemProps, isFocused, isSelected, isDisabled } = useMenuItem(
@@ -40,6 +48,7 @@ export function MenuItem<T extends object>(props: MenuItemProps<T>) {
           isFocusVisible,
           isSelected,
           isDisabled,
+          selectionMode,
         },
         classNameProp
       )}

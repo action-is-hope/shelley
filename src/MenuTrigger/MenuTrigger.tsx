@@ -64,6 +64,8 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
   crossOffset?: number;
   /** hide the Popup arrow */
   hideArrow?: boolean;
+  /** Override the Popup style via this classname */
+  popupClassName?: string;
 }
 
 export function MenuTrigger({
@@ -79,6 +81,7 @@ export function MenuTrigger({
   portalSelector = "body",
   shouldFlip,
   trigger,
+  popupClassName,
   ...rest
 }: MenuTriggerProps) {
   const triggerRef = React.useRef(null);
@@ -118,6 +121,7 @@ export function MenuTrigger({
           <Popup
             isOpen={state.isOpen}
             onClose={() => state.close()}
+            className={popupClassName}
             {...{
               shouldFlip,
               triggerRef,
