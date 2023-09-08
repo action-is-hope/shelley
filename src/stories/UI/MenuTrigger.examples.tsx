@@ -173,8 +173,8 @@ export const CustomInlineMenu = () => {
         <Item key="addVideo">
           <AddVideoIcon alt="Add video" />
         </Item>
-        <Item key="addPDF">
-          <AddPDFIcon alt="Add PDF" />
+        <Item key="addDocument">
+          <AddPDFIcon alt="Add Document" />
         </Item>
         <Item key="addSocial">
           <AddSocialIcon alt="Add Social" />
