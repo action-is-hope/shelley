@@ -4,6 +4,7 @@ export * from "./Button";
 export * from "./ButtonGroup";
 export * from "./Checkbox";
 export * from "./ComboBox";
+export * from "./ComboBoxMultiSelect";
 export * from "./CheckboxGroup";
 export * from "./Dialog";
 export * from "./DisclosureGroup";

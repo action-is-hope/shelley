@@ -1,7 +1,13 @@
 import { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { ComboBoxProps, ComboBox, P, Grid } from "../../indexLib";
+import {
+  ComboBoxProps,
+  ComboBox,
+  P,
+  Grid,
+  ComboBoxMultiSelect,
+} from "../../indexLib";
 import { useTreeData } from "react-stately";
 import { classes as sr } from "../../styles/mixins/visuallyHidden.st.css";
 
@@ -15,24 +21,56 @@ export function ComboBoxType(props: ComboBoxPropsDocs) {
   <>{props}</>;
 }
 
+const books = [
+  { id: "book-1", author: "Harper Lee", title: "To Kill a Mockingbird" },
+  { id: "book-2", author: "Lev Tolstoy", title: "War and Peace" },
+  { id: "book-3", author: "Fyodor Dostoyevsy", title: "The Idiot" },
+  { id: "book-4", author: "Oscar Wilde", title: "A Picture of Dorian Gray" },
+  { id: "book-5", author: "George Orwell", title: "1984" },
+  { id: "book-6", author: "Jane Austen", title: "Pride and Prejudice" },
+  { id: "book-7", author: "Marcus Aurelius", title: "Meditations" },
+  {
+    id: "book-8",
+    author: "Fyodor Dostoevsky",
+    title: "The Brothers Karamazov",
+  },
+  { id: "book-9", author: "Lev Tolstoy", title: "Anna Karenina" },
+  { id: "book-10", author: "Fyodor Dostoevsky", title: "Crime and Punishment" },
+];
+
 export const BasicComboBox = () => {
   return (
     <>
-      <ComboBox
+      <ComboBoxMultiSelect
         label="Favorite Animal"
         portalSelector="#portal"
-        shouldFocusWrap
-      >
-        <Item key="red panda">Red Panda</Item>
-        <Item key="cat">Cat</Item>
-        <Item key="dog">Dog</Item>
-        <Item key="aardvark">Aardvark</Item>
-        <Item key="kangaroo">Kangaroo</Item>
-        <Item key="snake">Snake</Item>
-      </ComboBox>
+        items={books}
+        initialSelectedItems={[]}
+        keepSelectedInOptions
+        // shouldFocusWrap
+      />
     </>
   );
 };
+
+// export const BasicComboBox = () => {
+//   return (
+//     <>
+//       <ComboBox
+//         label="Favorite Animal"
+//         portalSelector="#portal"
+//         shouldFocusWrap
+//       >
+//         <Item key="red panda">Red Panda</Item>
+//         <Item key="cat">Cat</Item>
+//         <Item key="dog">Dog</Item>
+//         <Item key="aardvark">Aardvark</Item>
+//         <Item key="kangaroo">Kangaroo</Item>
+//         <Item key="snake">Snake</Item>
+//       </ComboBox>
+//     </>
+//   );
+// };
 
 export const ValueExample = () => {
   const options = [
@@ -54,7 +92,7 @@ export const ValueExample = () => {
         label="Adobe product (Uncontrolled)"
         defaultItems={options}
         defaultInputValue={"Adobe XD"}
-        portalSelector="#portal"
+        // portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
