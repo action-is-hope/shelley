@@ -47,8 +47,19 @@ export const BasicComboBox = () => {
         items={books}
         initialSelectedItems={[]}
         keepSelectedInOptions
-        // shouldFocusWrap
-      />
+        onSelectedItemsChange={(selectedItems) => {
+          console.log("Selected Items:", selectedItems);
+        }}
+      >
+        {(item, selectedItems) => (
+          <div>
+            {item.title}
+            {selectedItems?.includes(item) && (
+              <span className="text-sm text-gray-700">&#10003;</span>
+            )}
+          </div>
+        )}
+      </ComboBoxMultiSelect>
     </>
   );
 };

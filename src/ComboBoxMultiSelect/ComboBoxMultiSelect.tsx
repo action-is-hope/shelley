@@ -59,6 +59,8 @@ interface AriaComboBoxMultiSelectProps<T> {
   name?: string;
 }
 
+type RenderItemFunction<T> = (item: T, selectedItems?: T[]) => React.ReactNode;
+
 export interface ComboBoxMultiSelectProps<T>
   extends AriaComboBoxMultiSelectProps<T>,
     Omit<FieldProps, "endAdornment">,
@@ -96,6 +98,9 @@ export interface ComboBoxMultiSelectProps<T>
   /** */
   initialSelectedItems?: T[];
   keepSelectedInOptions?: boolean;
+  children: RenderItemFunction<T>;
+  filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
+  onSelectedItemsChange?: (selectedItems: T[]) => void;
 }
 
 function ComboBoxMultiSelect<T extends { title: string; value: string }>(
@@ -128,7 +133,10 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     triggerIcon = <AngleDown />,
     initialSelectedItems,
     keepSelectedInOptions,
+    filterFunction,
+    children,
     items,
+    onSelectedItemsChange,
     "data-id": dataId,
   } = props;
 
@@ -143,14 +151,28 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
       selectedItems: ComboBoxMultiSelectProps<T>["initialSelectedItems"],
       inputValue: string
     ) => {
-      return items?.filter(
-        (item) =>
-          ((keepSelectedInOptions || !selectedItems?.includes(item)) &&
-            contains(item.title, inputValue)) ||
-          contains(item.author, inputValue)
-      );
+      if (filterFunction) {
+        return items?.filter(
+          (item) =>
+            (keepSelectedInOptions || !selectedItems?.includes(item)) &&
+            filterFunction(item, inputValue, selectedItems || [])
+        );
+      } else {
+        return items?.filter(
+          (item) =>
+            ((keepSelectedInOptions || !selectedItems?.includes(item)) &&
+              contains(item.title, inputValue)) ||
+            contains(item.author, inputValue)
+        );
+      }
+      // return items?.filter(
+      //   (item) =>
+      //     ((keepSelectedInOptions || !selectedItems?.includes(item)) &&
+      //       contains(item.title, inputValue)) ||
+      //     contains(item.author, inputValue)
+      // );
     },
-    [contains, items, keepSelectedInOptions]
+    [contains, filterFunction, items, keepSelectedInOptions]
   );
 
   const filteredItems =
@@ -162,7 +184,12 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
   const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
     useMultipleSelection({
       selectedItems,
+      // onStateChange({ selectedItems: newSelectedItems, type }) {
+      //   console.log("Not HERE");
+      //   setSelectedItems(newSelectedItems);
+      // },uu
       onStateChange({ selectedItems: newSelectedItems, type }) {
+        console.log("Type", type);
         if (
           type ===
             useMultipleSelection.stateChangeTypes
@@ -175,6 +202,9 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
             useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
         ) {
           setSelectedItems(newSelectedItems);
+          if (props.onSelectedItemsChange) {
+            props.onSelectedItemsChange(newSelectedItems);
+          }
         }
       },
     });
@@ -196,7 +226,7 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     inputValue,
     stateReducer(state, actionAndChanges) {
       const { changes, type } = actionAndChanges;
-
+      console.log("state", state);
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
@@ -225,12 +255,17 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
               selectedItems &&
               selectedItems.includes(newSelectedItem)
             ) {
-              setSelectedItems(
-                selectedItems.filter((item) => item !== newSelectedItem)
+              const newSelectedItems = selectedItems.filter(
+                (item) => item !== newSelectedItem
               );
+              setSelectedItems(newSelectedItems);
+              onSelectedItemsChange && onSelectedItemsChange(newSelectedItems);
             } else {
-              selectedItems &&
-                setSelectedItems([...selectedItems, newSelectedItem]);
+              const newSelectedItems = selectedItems
+                ? [...selectedItems, newSelectedItem]
+                : [newSelectedItem];
+              setSelectedItems(newSelectedItems);
+              onSelectedItemsChange && onSelectedItemsChange(newSelectedItems);
             }
             setInputValue("");
           }
@@ -317,11 +352,8 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
               key={`${item.value}${index}`}
               {...getItemProps({ item, index })}
             >
-              <span>{item.title}</span>
-              {selectedItems?.includes(item) && (
-                <span className="text-sm text-gray-700">&#10003;</span>
-              )}
-              <span className="text-sm text-gray-700">{item.author}</span>
+              {/* Render the children via the children render prop. */}
+              {children(item, selectedItems)}
             </li>
           ))}
       </ul>
