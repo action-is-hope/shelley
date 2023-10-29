@@ -121,7 +121,7 @@ function ComboBox<T extends object>(
     state
   );
   useEffect(() => {
-    console.log("inputRef", inputRef);
+    // console.log("inputRef", inputRef);
     const inputWidth = inputRef?.current?.clientWidth;
     const fieldContainerWidth = fieldContainerRef?.current?.clientWidth;
     if (startAdornment) {

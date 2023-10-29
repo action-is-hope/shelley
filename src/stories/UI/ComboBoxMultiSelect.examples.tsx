@@ -1,9 +1,24 @@
-import { useState, Key, useRef, KeyboardEvent, useMemo } from "react";
+import {
+  useState,
+  useEffect,
+  Key,
+  useRef,
+  KeyboardEvent,
+  useMemo,
+} from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { ComboBoxProps, ComboBox, P, Grid } from "../../indexLib";
+import {
+  ComboBoxProps,
+  ComboBox,
+  P,
+  Grid,
+  ComboBoxMultiSelect,
+  ComboBoxMultiSelectRef,
+} from "../../indexLib";
 import { useTreeData } from "react-stately";
 import { classes as sr } from "../../styles/mixins/visuallyHidden.st.css";
+import { useFilter } from "react-aria";
 
 /**
  * TypeDoc is not liking finding types when forward ref and generic
@@ -15,21 +30,74 @@ export function ComboBoxType(props: ComboBoxPropsDocs) {
   <>{props}</>;
 }
 
+type Book = { id: string; author: string; title: string } | undefined;
+const books: Book[] | undefined = [
+  { id: "book-1", author: "Harper Lee", title: "To Kill a Mockingbird" },
+  { id: "book-2", author: "Lev Tolstoy", title: "War and Peace" },
+  { id: "book-3", author: "Fyodor Dostoyevsy", title: "The Idiot" },
+  { id: "book-4", author: "Oscar Wilde", title: "A Picture of Dorian Gray" },
+  { id: "book-5", author: "George Orwell", title: "1984" },
+  { id: "book-6", author: "Jane Austen", title: "Pride and Prejudice" },
+  { id: "book-7", author: "Marcus Aurelius", title: "Meditations" },
+  {
+    id: "book-8",
+    author: "Fyodor Dostoevsky",
+    title: "The Brothers Karamazov",
+  },
+  { id: "book-9", author: "Lev Tolstoy", title: "Anna Karenina" },
+  { id: "book-10", author: "Fyodor Dostoevsky", title: "Crime and Punishment" },
+];
+const initialSelectedItems = [books[0], books[1]];
+
 export const BasicComboBox = () => {
+  const comboBoxRef = useRef<ComboBoxMultiSelectRef<Book>>(null);
+
+  useEffect(() => {
+    // Example: Remove a selected item after 3 seconds
+    const timeoutId = setTimeout(() => {
+      // books[1] && comboBoxRef?.current?.removeSelectedItem(books[1]);
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const { contains } = useFilter({ sensitivity: "base" });
+
   return (
     <>
-      <ComboBox
+      <ComboBoxMultiSelect
+        ref={comboBoxRef}
         label="Favorite Animal"
         portalSelector="#portal"
-        shouldFocusWrap
+        items={books}
+        initialSelectedItems={initialSelectedItems}
+        keepSelectedInOptions
+        loadingState={"loading"}
+        // inputValue="Lee"
+        // scrollLock
+        // removeTrigger
+        onInputChange={(value) => console.log(value)}
+        filterFunction={(item, inputValue) => {
+          return item
+            ? contains(item.title, inputValue) ||
+                contains(item.author, inputValue)
+            : false;
+        }}
+        onSelectionChange={(selectedItems) => {
+          console.log("Selected Items:", selectedItems);
+        }}
       >
-        <Item key="red panda">Red Panda</Item>
-        <Item key="cat">Cat</Item>
-        <Item key="dog">Dog</Item>
-        <Item key="aardvark">Aardvark</Item>
-        <Item key="kangaroo">Kangaroo</Item>
-        <Item key="snake">Snake</Item>
-      </ComboBox>
+        {(item, isSelected) => {
+          return (
+            <div>
+              {item?.title}, {item?.author}
+              {/* {isSelected && (
+                <span className="text-sm text-gray-700">&#10003;</span>
+              )} */}
+            </div>
+          );
+        }}
+      </ComboBoxMultiSelect>
     </>
   );
 };
@@ -54,7 +122,7 @@ export const ValueExample = () => {
         label="Adobe product (Uncontrolled)"
         defaultItems={options}
         defaultInputValue={"Adobe XD"}
-        portalSelector="#portal"
+        // portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -464,7 +532,7 @@ export const AsyncLoadingExample = () => {
         { signal }
       );
       const json = await res.json();
-
+      console.log("HE");
       return {
         items: json.results,
         cursor: json.next,
@@ -472,18 +540,20 @@ export const AsyncLoadingExample = () => {
     },
   });
 
+  console.log("list", list);
   return (
-    <ComboBox
+    <ComboBoxMultiSelect
       label="Star Wars Character Lookup"
       items={list.items}
-      inputValue={list.filterText}
+      // filteredItems={list.items}
+      defaultInputValue={list.filterText}
       onInputChange={list.setFilterText}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
       portalSelector="#portal"
     >
-      {(item) => <Item key={item.name}>{item.name}</Item>}
-    </ComboBox>
+      {(item) => <div key={item.name}>{item.name}</div>}
+    </ComboBoxMultiSelect>
   );
 };
 

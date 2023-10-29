@@ -20,6 +20,8 @@
   -st-extends: Popup;
 }
 
+.list {}
+
 .placeholder {
   font-style: italic;
   white-space: nowrap;

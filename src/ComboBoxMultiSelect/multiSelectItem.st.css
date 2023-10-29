@@ -1,0 +1,26 @@
+@namespace "MultiSelectItem";
+
+.root {
+  -st-states:
+    selectionMode(enum(none, single, multiple)),
+    isDisabled,
+    isFocused,
+    isSelected,
+    isFocusVisible;
+}
+
+.selectedIcon {}
+
+.text {}
+
+/* .root:isFocused {
+  background-color: yellow;
+} */
+
+.root:isFocused {
+  /* background-color: yellow; */
+}
+
+.root:isFocusVisible {
+  background-color: green;
+}

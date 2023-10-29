@@ -1,0 +1,49 @@
+@namespace "DefaultMultiSelectItem";
+/**
+ * = MultiSelectItem - multiSelectItem.st.css
+ *
+ * Base theme styles for a Shelley MultiSelectItem.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/MultiSelectItem/menuItem.st.css
+ * ComboBoxMultiSelect
+ */
+@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import MultiSelectItem from "../../ComboBoxMultiSelect/multiSelectItem.st.css";
+@st-import [
+    menuItem,
+    menuItemDisabled,
+    menuItemFocusVisible,
+    menuItemText,
+    menuItemSelectedIcon
+] from "./mixins/menuList.st.css";
+
+@st-scope Default {
+  MultiSelectItem {
+    -st-mixin: menuItem;
+  }
+
+  MultiSelectItem:selectionMode(none) {
+    grid-template-columns: calc(var(--spacing-unit) / 2) auto 1fr auto auto calc(var(--spacing-unit) / 2);
+    grid-template-areas:
+      ". . . . . ."
+      ".icon text end keyboard."
+      ".icon description end keyboard."
+      ". . . . . .";
+  }
+
+  MultiSelectItem:isDisabled {
+    -st-mixin: menuItemDisabled;
+  }
+
+  MultiSelectItem:isFocused {
+    -st-mixin: menuItemFocusVisible;
+  }
+
+  MultiSelectItem::text {
+    -st-mixin: menuItemText;
+  }
+
+  MultiSelectItem::selectedIcon {
+    -st-mixin: menuItemSelectedIcon;
+  }
+}

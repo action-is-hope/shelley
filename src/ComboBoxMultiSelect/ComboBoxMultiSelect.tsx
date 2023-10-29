@@ -10,56 +10,43 @@ import React, {
   useMemo,
   useCallback,
   MouseEvent,
+  useImperativeHandle,
 } from "react";
 import { createPortal } from "react-dom";
 import { useFilter } from "react-aria";
+import type { PressEvent } from "@react-types/shared";
 import type { PositionProps } from "@react-types/overlays";
 import type { LoadMoreProps } from "../typings/shared-types";
 import { mergeRefs } from "@react-aria/utils";
 import { Field, FieldProps } from "../Field";
 import { Popup } from "../Popup";
 import { Button } from "../Button";
-// import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../ProgressCircle";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
-
 import { useMultipleSelection, useCombobox } from "downshift";
-import type { PressEvent } from "@react-types/shared";
+import { MultiSelectItem } from "./MultiSelectItem";
 
 interface AriaComboBoxMultiSelectProps<T> {
-  /** The list of ComboBox items (uncontrolled). */
-  defaultItems?: T[];
-  /** The list of ComboBox items (controlled). */
+  /** The list of items. */
   items?: T[];
-  /** Method that is called when the open state of the menu changes. Returns the new open state and the action that caused the opening of the menu. */
-  // onOpenChange?: (isOpen: boolean, menuTrigger?: MenuTriggerAction) => void,
-  /** The value of the ComboBox input (controlled). */
-  inputValue?: string;
-  /** The default value of the ComboBox input (uncontrolled). */
+  /** The default value of the MultiSelectComboBox input (adjusts selection). */
   defaultInputValue?: string;
-  /** Handler that is called when the ComboBox input value changes. */
+  /** Handler that is called when the MultiSelectComboBox input value changes. */
   onInputChange?: (value: string) => void;
-  /** Whether the ComboBox allows a non-item matching input value to be set. */
-  allowsCustomValue?: boolean;
-  // /**
-  //  * Whether the Combobox should only suggest matching options or autocomplete the field with the nearest matching option.
-  //  * @default 'suggest'
-  //  */
-  // completionMode?: 'suggest' | 'complete',
-  /**
-   * The interaction required to display the ComboBox menu.
-   * @default 'input'
-   */
-  // menuTrigger?: MenuTriggerAction,
   /**
    * The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
    */
   name?: string;
 }
 
-type RenderItemFunction<T> = (item: T, selectedItems?: T[]) => React.ReactNode;
+type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
+
+// Define the interface for the ComboBoxMultiSelectRef
+export interface ComboBoxMultiSelectRef<T> {
+  removeSelectedItem: (selectedItem: T) => void;
+}
 
 export interface ComboBoxMultiSelectProps<T>
   extends AriaComboBoxMultiSelectProps<T>,
@@ -73,11 +60,6 @@ export interface ComboBoxMultiSelectProps<T>
    * @default 'body'
    */
   portalSelector?: string;
-  /**
-   * Should the ListBox items be focused on hover.
-   * Useful for scrolled lists to stop a jump on hover when reselecting.
-   */
-  shouldFocusOnHover?: boolean;
   /**
    * Disable the label transition.
    * @default bottom
@@ -100,7 +82,7 @@ export interface ComboBoxMultiSelectProps<T>
   keepSelectedInOptions?: boolean;
   children: RenderItemFunction<T>;
   filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
-  onSelectedItemsChange?: (selectedItems: T[]) => void;
+  onSelectionChange?: (selectedItems: T[]) => void;
 }
 
 function ComboBoxMultiSelect<T extends { title: string; value: string }>(
@@ -125,7 +107,6 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     crossOffset,
     shouldFlip,
     removeTrigger,
-    shouldFocusOnHover = true,
     loadingState,
     onLoadMore,
     startAdornment,
@@ -136,14 +117,16 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     filterFunction,
     children,
     items,
-    onSelectedItemsChange,
+    onSelectionChange,
+    onInputChange,
+    defaultInputValue,
     "data-id": dataId,
   } = props;
 
   // Setup filter function and state.
   /* eslint-disable @typescript-eslint/unbound-method*/
   const { contains } = useFilter({ sensitivity: "base" });
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(defaultInputValue || "");
   const [selectedItems, setSelectedItems] = useState(initialSelectedItems);
 
   const getFilteredItems = useCallback(
@@ -151,26 +134,14 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
       selectedItems: ComboBoxMultiSelectProps<T>["initialSelectedItems"],
       inputValue: string
     ) => {
-      if (filterFunction) {
-        return items?.filter(
-          (item) =>
-            (keepSelectedInOptions || !selectedItems?.includes(item)) &&
-            filterFunction(item, inputValue, selectedItems || [])
-        );
-      } else {
-        return items?.filter(
-          (item) =>
-            ((keepSelectedInOptions || !selectedItems?.includes(item)) &&
-              contains(item.title, inputValue)) ||
-            contains(item.author, inputValue)
-        );
-      }
-      // return items?.filter(
-      //   (item) =>
-      //     ((keepSelectedInOptions || !selectedItems?.includes(item)) &&
-      //       contains(item.title, inputValue)) ||
-      //     contains(item.author, inputValue)
-      // );
+      const shouldInclude = (item: T) =>
+        (keepSelectedInOptions || !selectedItems?.includes(item)) &&
+        filterFunction
+          ? filterFunction(item, inputValue, selectedItems || [])
+          : contains(item.title, inputValue);
+
+      return items?.filter(shouldInclude);
+      // return items;
     },
     [contains, filterFunction, items, keepSelectedInOptions]
   );
@@ -184,12 +155,7 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
   const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
     useMultipleSelection({
       selectedItems,
-      // onStateChange({ selectedItems: newSelectedItems, type }) {
-      //   console.log("Not HERE");
-      //   setSelectedItems(newSelectedItems);
-      // },uu
       onStateChange({ selectedItems: newSelectedItems, type }) {
-        console.log("Type", type);
         if (
           type ===
             useMultipleSelection.stateChangeTypes
@@ -202,8 +168,8 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
             useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
         ) {
           setSelectedItems(newSelectedItems);
-          if (props.onSelectedItemsChange) {
-            props.onSelectedItemsChange(newSelectedItems);
+          if (props.onSelectionChange && newSelectedItems) {
+            props.onSelectionChange(newSelectedItems);
           }
         }
       },
@@ -218,15 +184,15 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     getInputProps,
     highlightedIndex,
     getItemProps,
+    selectedItem,
   } = useCombobox({
     items: filteredItems,
     itemToString: (item) => (item ? item.title : ""),
     defaultHighlightedIndex: 0,
     selectedItem: null,
     inputValue,
-    stateReducer(state, actionAndChanges) {
+    stateReducer(_, actionAndChanges) {
       const { changes, type } = actionAndChanges;
-      console.log("state", state);
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
@@ -259,13 +225,13 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
                 (item) => item !== newSelectedItem
               );
               setSelectedItems(newSelectedItems);
-              onSelectedItemsChange && onSelectedItemsChange(newSelectedItems);
+              onSelectionChange && onSelectionChange(newSelectedItems);
             } else {
               const newSelectedItems = selectedItems
                 ? [...selectedItems, newSelectedItem]
                 : [newSelectedItem];
               setSelectedItems(newSelectedItems);
-              onSelectedItemsChange && onSelectedItemsChange(newSelectedItems);
+              onSelectionChange && onSelectionChange(newSelectedItems);
             }
             setInputValue("");
           }
@@ -315,10 +281,23 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     }
   }, [startAdornment, isOpen, inputRef]);
 
+  useEffect(() => {
+    onInputChange && onInputChange(inputValue);
+  }, [inputValue]);
+
+  // Expose the remove selected item function.
+  useImperativeHandle(ref as React.Ref<ComboBoxMultiSelectRef<T>>, () => ({
+    removeSelectedItem: (selectedItem: T) => {
+      removeSelectedItem(selectedItem);
+    },
+  }));
+
   const popup = (
     <Popup
       className={classes.popup}
       isOpen={isOpen && Boolean(filteredItems?.length)}
+      onClose={closeMenu}
+      isDismissable
       hideArrow
       ref={popoverRef}
       triggerRef={fieldContainerRef}
@@ -338,6 +317,7 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
       }}
     >
       <ul
+        className={classes.list}
         {...{
           ...menuProps,
           "data-id": dataId ? `${dataId}--menuList` : undefined,
@@ -345,47 +325,21 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
       >
         {isOpen &&
           filteredItems?.map((item, index) => (
-            <li
-              className={`py-2 px-3 shadow-sm flex flex-col ${
-                highlightedIndex === index ? "bg-blue-300" : ""
-              } ${selectedItems?.includes(item) ? "font-bold" : ""}`}
+            <MultiSelectItem
               key={`${item.value}${index}`}
+              isSelected={selectedItems?.includes(item)}
               {...getItemProps({ item, index })}
+              isFocused={highlightedIndex === index}
+              isFocusVisible={selectedItem === item}
             >
               {/* Render the children via the children render prop. */}
-              {children(item, selectedItems)}
-            </li>
+              {children(item, selectedItems?.includes(item))}
+            </MultiSelectItem>
           ))}
       </ul>
     </Popup>
   );
 
-  const selectedItemsUI = (
-    <>
-      {selectedItems &&
-        selectedItems.map((selectedItem, index) => (
-          <span
-            className="bg-gray-100 rounded-md px-1 focus:bg-red-400"
-            key={`selected-item-${index}`}
-            {...getSelectedItemProps({
-              selectedItem,
-              index,
-            })}
-          >
-            {selectedItem.title}
-            <span
-              className="px-1 cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                removeSelectedItem(selectedItem);
-              }}
-            >
-              &#10005;
-            </span>
-          </span>
-        ))}
-    </>
-  );
   return (
     <>
       <Field
@@ -454,7 +408,28 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
             : popup}
         </>
       </Field>
-      {selectedItemsUI}
+      {selectedItems &&
+        selectedItems.map((selectedItem, index) => (
+          <span
+            className="bg-gray-100 rounded-md px-1 focus:bg-red-400"
+            key={`selected-item-${index}`}
+            {...getSelectedItemProps({
+              selectedItem,
+              index,
+            })}
+          >
+            {selectedItem.name}
+            <span
+              className="px-1 cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                removeSelectedItem(selectedItem);
+              }}
+            >
+              &#10005;
+            </span>
+          </span>
+        ))}
     </>
   );
 }
@@ -462,6 +437,8 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 const _ComboBoxMultiSelect = forwardRef(ComboBoxMultiSelect) as <T>(
-  props: ComboBoxMultiSelectProps<T> & { ref?: Ref<HTMLInputElement> }
+  props: ComboBoxMultiSelectProps<T> & {
+    ref?: Ref<HTMLInputElement & ComboBoxMultiSelectRef<T>>;
+  }
 ) => ReactElement;
 export { _ComboBoxMultiSelect as ComboBoxMultiSelect };
