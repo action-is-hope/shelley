@@ -23,14 +23,13 @@ import { Popup } from "../Popup";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../ProgressCircle";
-import { st, classes } from "./comboBoxMultiSelect.st.css";
-import { classes as fieldClasses } from "../Field/field.st.css";
 import { useMultipleSelection, useCombobox } from "downshift";
 import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
+import { st, classes } from "./comboBoxMultiSelect.st.css";
+import { classes as fieldClasses } from "../Field/field.st.css";
 
 type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
 
-// Define the interface for the ComboBoxMultiSelectRef
 export interface ComboBoxMultiSelectRef<T> {
   removeSelectedItem: (selectedItem: T) => void;
 }
@@ -127,7 +126,6 @@ function ComboBoxMultiSelect<
   // @todo: make this optiional
   const keepSelectedInOptions = true;
 
-  // Setup filter function and state.
   /* eslint-disable @typescript-eslint/unbound-method*/
   const { contains } = useFilter({ sensitivity: "base" });
   const [inputValue, setInputValue] = useState(defaultInputValue || "");
@@ -168,28 +166,26 @@ function ComboBoxMultiSelect<
       [selectedItems, inputValue, getFilteredItems]
     ) ?? [];
 
-  const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
-    useMultipleSelection({
-      selectedItems,
-      onStateChange({ selectedItems: newSelectedItems, type }) {
-        if (
-          type ===
-            useMultipleSelection.stateChangeTypes
-              .SelectedItemKeyDownBackspace ||
-          type ===
-            useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
-          type ===
-            useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
-          type ===
-            useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
-        ) {
-          !isReadOnly && newSelectedItems && setSelectedItems(newSelectedItems);
-          if (props.onSelectionChange && newSelectedItems && !isReadOnly) {
-            props.onSelectionChange(newSelectedItems);
-          }
+  const { getDropdownProps, removeSelectedItem } = useMultipleSelection({
+    selectedItems,
+    onStateChange({ selectedItems: newSelectedItems, type }) {
+      if (
+        type ===
+          useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace ||
+        type ===
+          useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
+        type ===
+          useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
+        type ===
+          useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
+      ) {
+        !isReadOnly && newSelectedItems && setSelectedItems(newSelectedItems);
+        if (props.onSelectionChange && newSelectedItems && !isReadOnly) {
+          props.onSelectionChange(newSelectedItems);
         }
-      },
-    });
+      }
+    },
+  });
 
   const {
     isOpen,
@@ -456,7 +452,7 @@ function ComboBoxMultiSelect<
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 const _ComboBoxMultiSelect = forwardRef(ComboBoxMultiSelect) as <T>(
   props: ComboBoxMultiSelectProps<T> & {
-    ref?: Ref<HTMLInputElement & ComboBoxMultiSelectRef<T>>;
+    ref?: Ref<HTMLInputElement | ComboBoxMultiSelectRef<T>>;
   }
 ) => ReactElement;
 export { _ComboBoxMultiSelect as ComboBoxMultiSelect };

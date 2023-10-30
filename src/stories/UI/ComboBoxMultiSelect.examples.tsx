@@ -65,7 +65,6 @@ export const BasicComboBox = () => {
         // inputValue="Lee"
         // scrollLock
         // removeTrigger
-        adornmentContent={(item) => <>{item?.title}</>}
         resetHighlightedIndexOnSelect
         onInputChange={(value) => console.log(value)}
         filterFunction={(item, inputValue) => {

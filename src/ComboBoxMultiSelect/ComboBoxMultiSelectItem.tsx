@@ -1,7 +1,6 @@
 "use client";
 import React, { ReactNode, forwardRef } from "react";
 import CheckIcon from "../icons/Check";
-import { useId } from "react-aria";
 import { st, classes } from "./comboBoxMultiSelectItem.st.css";
 
 export interface ComboBoxMultiSelectItemProps {
