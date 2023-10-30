@@ -26,6 +26,7 @@
 
   ComboBox::loader {
     margin-left: 2px;
+    align-self: center;
   }
 
 }

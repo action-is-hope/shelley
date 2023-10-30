@@ -16,8 +16,6 @@ export interface ComboBoxMultiSelectItemProps {
   isFocused?: boolean;
   /** A screen reader only label for the menu item. */
   "aria-label"?: string;
-  /** The unique key for the menu item. */
-  // key?: string;
   children?: ReactNode;
 }
 
@@ -45,8 +43,6 @@ function ComboBoxMultiSelectItem(
     <li
       {...rest}
       ref={ref}
-      // key={key}
-      // key={useId(key)}
       className={st(
         classes.root,
         {
@@ -64,7 +60,7 @@ function ComboBoxMultiSelectItem(
 }
 
 /**
- * ComboBoxMultiSelectItem can be used to group related buttons in various orientations.
+ * ComboBoxMultiSelectItem is used in conjuntion with ComboBoxMultiSelect.
  */
 const _ComboBoxMultiSelectItem = forwardRef(ComboBoxMultiSelectItem);
 export { _ComboBoxMultiSelectItem as ComboBoxMultiSelectItem };

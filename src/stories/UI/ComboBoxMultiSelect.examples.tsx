@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useAsyncList } from "react-stately";
 import {
   Button,
@@ -7,6 +7,7 @@ import {
   ComboBoxMultiSelect,
   ComboBoxMultiSelectRef,
 } from "../../indexLib";
+import Close from "../../icons/Close";
 import { useFilter } from "react-aria";
 
 /**
@@ -38,34 +39,21 @@ const books: Book[] | undefined = [
 ];
 
 export const BasicComboBox = () => {
-  const comboBoxRef = useRef<ComboBoxMultiSelectRef<Book>>(null);
-
-  useEffect(() => {
-    // Example: Remove a selected item after 3 seconds
-    const timeoutId = setTimeout(() => {
-      books[1] && comboBoxRef?.current?.removeSelectedItem(books[1]);
-    }, 3000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
-
   const { contains } = useFilter({ sensitivity: "base" });
   const initialSelectedItems = [books[0], books[1]];
   return (
     <>
       <ComboBoxMultiSelect
-        // ref={comboBoxRef}
         label="Favorite Book"
         portalSelector="#portal"
         items={books}
         defaultValue={initialSelectedItems}
         // value={initialSelectedItems}
-        // keepSelectedInOptions
         // loadingState={"loading"}
         // inputValue="Lee"
         // scrollLock
         // removeTrigger
-        resetHighlightedIndexOnSelect
+        // resetHighlightedIndexOnSelect
         onInputChange={(value) => console.log(value)}
         filterFunction={(item, inputValue) => {
           return item
@@ -187,19 +175,17 @@ export const SelectionExample = () => {
       >
         {(item) => <>{item?.name}</>}
       </ComboBoxMultiSelect>
-      <div style={{}}>
+      <div>
         {selectedProducts?.map((item) => {
           return (
             <span key={item.id} className={"test"}>
               {item.name}
               <Button
                 onPress={() => comboBoxRef?.current?.removeSelectedItem(item)}
-                // icon={triggerIcon}
+                icon={<Close alt="Remove item" />}
                 variant={false}
                 tone={false}
-              >
-                HI
-              </Button>
+              />
             </span>
           );
         })}
