@@ -12,15 +12,3 @@
 .selectedIcon {}
 
 .text {}
-
-/* .root:isFocused {
-  background-color: yellow;
-} */
-
-.root:isFocused {
-  /* background-color: yellow; */
-}
-
-.root:isFocusVisible {
-  background-color: green;
-}

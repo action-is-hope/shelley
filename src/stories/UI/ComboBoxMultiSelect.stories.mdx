@@ -1,17 +1,11 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
-import { ComboBox } from "../../indexLib";
+import { ComboBoxMultiSelect } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
 import {
-  ComboBoxType,
+  ComboBoxMultiSelectType,
   BasicComboBox,
-  ValueExample,
-  CustomValueExample,
   LabelingExample,
   SelectionExample,
-  EventsExample,
-  DynamicCollection,
-  FullyControlled,
-  MultiSelect,
   AsyncLoadingExample,
   HelpTextExample,
   ReadOnlyExample,
@@ -61,7 +55,7 @@ import dedent from "ts-dedent";
       control: { type: "inline-radio" },
     },
   }}
-  component={ComboBox}
+  component={ComboBoxMultiSelect}
 />
 
 # ComboBox MultiSelect
@@ -72,6 +66,8 @@ import dedent from "ts-dedent";
     import { ComboBoxMultiSelect, ComboBoxMultiSelectItem } from "@actionishope/shelley";
   `}
 />
+
+Currently in alpha stages.
 
 ComboBoxMultiSelect combines a text entry with a popup listbox, allowing users to filter a list of options to items matching a query and select more than one.
 
@@ -85,7 +81,32 @@ We felt the need to add a multiselect as it is a common usecase but it also serv
     docs: {
       source: {
         code: dedent`
-TBC`,
+      import { useFilter } from "react-aria";\n
+      const { contains } = useFilter({ sensitivity: "base" });\n
+      <ComboBoxMultiSelect
+        label="Favorite Animal"
+        portalSelector="#portal"
+        items={books}
+        defaultValue={initialSelectedItems}
+        onInputChange={(value) => console.log(value)}
+        filterFunction={(item, inputValue) => {
+          return item
+            ? contains(item.title, inputValue) ||
+                contains(item.author, inputValue)
+            : false;
+        }}
+        onSelectionChange={(selectedItems) => {
+          console.log("Selected Items:", selectedItems);
+        }}
+      >
+        {(item) => {
+          return (
+            <div>
+              {item?.title}, {item?.author}
+            </div>
+          );
+        }}
+      </ComboBoxMultiSelect>`,
       },
     },
   }}
@@ -107,169 +128,11 @@ TBC`,
 
 ## Content
 
-ComboBoxMultiSelect requires a render function that returns the JSX to render. The render function includes `item` and `isSelected` as arguments.
+ComboBoxMultiSelect requires a render function as `children` that returns the JSX to render. The render function includes `item` and `isSelected` as arguments and is rendered via `ComboBoxMultiSelectItem`.
 
 ### Internationalisation
 
 To internationalise a ComboBox, a localized string should be passed to the children of each Item. For languages that are read right-to-left (e.g. Hebrew and Arabic), the layout of the ComboBox is automatically flipped.
-
-## Dynamic collections
-
-Dynamic collections can be used when the options come from an external data source such as an API call, or update over time.
-
-As seen below, an iterable list of options is passed to the ComboBox using the defaultItems prop. Each item accepts a key prop, which is passed to the `onSelectionChange` handler to identify the selected item. Alternatively, if the item objects contain an id property, as shown in the example below, then this is used automatically and a key prop is not required. See the Events section for more detail on selection.
-
-<Story
-  name="b) Dynamic collections"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-const options = [
-  { id: 1, name: "Aerospace" },
-  { id: 2, name: "Mechanical" },
-  { id: 3, name: "Civil" },
-  { id: 4, name: "Biomedical" },
-  { id: 5, name: "Nuclear" },
-  { id: 6, name: "Industrial" },
-  { id: 7, name: "Chemical" },
-  { id: 8, name: "Agricultural" },
-  { id: 9, name: "Electrical" },
-];
-const [majorId, setMajorId] = useState<string | null>(null);\n
-return (
-  <>
-    <ComboBox
-      label="Pick a engineering major"
-      defaultItems={options}
-      onSelectionChange={(selected) =>
-        setMajorId(selected as SetStateAction<string | null>)
-      }
-      portalSelector="#portal"
-    >
-      {(item) => <Item>{item.name}</Item>}
-    </ComboBox>
-    <p>Selected topic id: {majorId}</p>
-  </>
-);`,
-      },
-    },
-  }}
-  decorators={[
-    (Story) => (
-      <StoryGrid maxWidth={250}>
-        <Story />
-      </StoryGrid>
-    ),
-  ]}
->
-  <DynamicCollection />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--b-dynamic-collections" />
-
-Alternatively, passing your list of options to ComboBox's items prop will cause the list of items to be controlled, useful for when you want to provide your own filtering logic. See the Custom Filtering section for more detail.
-
-## Value
-
-A ComboBox's value is empty by default, but an initial, uncontrolled, value can be provided using the defaultInputValue prop. Alternatively, a controlled value can be provided using the inputValue prop. Note that the input value of the ComboBox does not affect the ComboBox's selected option. See Events for more details on input change events.
-
-<Story
-  name="c) Value"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-  const options = [
-    { id: 1, name: "Adobe Photoshop" },
-    { id: 2, name: "Adobe XD" },
-    { id: 3, name: "Adobe InDesign" },
-    { id: 4, name: "Adobe AfterEffects" },
-    { id: 5, name: "Adobe Illustrator" },
-    { id: 6, name: "Adobe Lightroom" },
-    { id: 7, name: "Adobe Premiere Pro" },
-    { id: 8, name: "Adobe Fresco" },
-    { id: 9, name: "Adobe Dreamweaver" },
-  ];
-  const [value, setValue] = useState("Adobe XD");\n
-  return (
-    <div>
-      <ComboBox
-        label="Adobe product (Uncontrolled)"
-        defaultItems={options}
-        defaultInputValue={"Adobe XD"}
-        portalSelector="#portal"
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </ComboBox>\n
-      <ComboBox
-        label="Pick an Adobe product (Controlled)"
-        defaultItems={options}
-        inputValue={value}
-        onInputChange={setValue}
-        portalSelector="#portal"
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </ComboBox>
-    </div>
-  );`,
-      },
-    },
-  }}
->
-  <ValueExample />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--c-value" />
-
-### Custom Value
-
-By default on blur, a ComboBox will either reset its input value to match the selected option's text or clear its input value if an option has not been selected yet. If you would like to allow the end user to provide a custom input value to the ComboBox, the allowsCustomValue prop can be used to override the above behavior.
-
-<Story
-  name="c) Custom value"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-const options = [
-  { name: "Apple" },
-  { name: "Banana" },
-  { name: "Orange" },
-  { name: "Honeydew" },
-  { name: "Grapes" },
-  { name: "Watermelon" },
-  { name: "Cantaloupe" },
-  { name: "Pear" },
-];\n
-return (
-  <>
-    <P vol={1}>Choose from the list of preferred fruit or add your own.</P>
-    <ComboBox
-      label="Preferred fruit"
-      defaultItems={options}
-      portalSelector="#portal"
-      allowsCustomValue
-    >
-      {(item) => <Item key={item.name}>{item.name}</Item>}
-    </ComboBox>
-  </>
-);`,
-      },
-    },
-  }}
-  decorators={[
-    (Story) => (
-      <StoryGrid maxWidth={250}>
-        <Story />
-      </StoryGrid>
-    ),
-  ]}
->
-  <CustomValueExample />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--c-custom-value" />
 
 ## Labeling
 
@@ -281,26 +144,7 @@ ComboBox can be labeled using the `label` prop and positioned with `labelPositio
     docs: {
       source: {
         code: dedent`
-<ComboBox label="Label 'side'" labelPosition="side">
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-</ComboBox>
-<ComboBox label="Label 'top'" labelPosition="top">
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-</ComboBox>
-<ComboBox label="Label 'over'" labelPosition="over">
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-</ComboBox>
-<ComboBox 
-  label="Label 'hidden'"
-  labelPosition="hidden" 
-  placeholder="Label 'hidden' - this is the placeholder"
->
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-</ComboBox>
+TBC
 `,
       },
     },
@@ -316,7 +160,7 @@ ComboBox can be labeled using the `label` prop and positioned with `labelPositio
   <LabelingExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--d-labeling" />
+<Source language="tsx" id="inputs-comboboxmultiselect--d-labeling" />
 
 ### Accessibility
 
@@ -328,45 +172,13 @@ In order to internationalise a ComboBox, a localized string should be passed to 
 
 ## Selection
 
-Setting a selected option can be done by using the `defaultSelectedKey` or `selectedKey` prop. The selected key corresponds to the key of an item. See Events for more details on selection events. Additionally see the react-stately [Selection docs](https://react-spectrum.adobe.com/react-stately/selection.html#selected-key-data-type) for caveats regarding selection prop typing.
-
 <Story
   name="e) Selection"
   parameters={{
     docs: {
       source: {
         code: dedent`
-  const options = [
-    { id: 1, name: "Adobe Photoshop" },
-    { id: 2, name: "Adobe XD" },
-    { id: 3, name: "Adobe InDesign" },
-    { id: 4, name: "Adobe AfterEffects" },
-    { id: 5, name: "Adobe Illustrator" },
-    { id: 6, name: "Adobe Lightroom" },
-    { id: 7, name: "Adobe Premiere Pro" },
-    { id: 8, name: "Adobe Fresco" },
-    { id: 9, name: "Adobe Dreamweaver" },
-  ];
-  const [productId, setProductId] = useState<Key>(9);\n
-  return (
-    <div>
-      <ComboBox
-        label="Adobe product (Uncontrolled)"
-        defaultItems={options}
-        defaultSelectedKey={9}
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </ComboBox>\n
-      <ComboBox
-        label="Pick an Adobe product (Controlled)"
-        defaultItems={options}
-        selectedKey={productId}
-        onSelectionChange={(selected) => setProductId(selected)}
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </ComboBox>
-    </div>
-  );`,
+TBC`,
       },
     },
   }}
@@ -374,295 +186,7 @@ Setting a selected option can be done by using the `defaultSelectedKey` or `sele
   <SelectionExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--e-selection" />
-
-## Events
-
-ComboBox supports selection via mouse, keyboard, and touch. You can handle all of these via the `onSelectionChange` prop. ComboBox will pass the selected key to the `onSelectionChange` handler. Additionally, ComboBox accepts an `onInputChange` prop which is triggered whenever the value is edited by the user, whether through typing or option selection.
-
-The example below uses `onSelectionChange` and `onInputChange` to update the selection and input value stored in React state.
-
-<Story
-  name="f) Events"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-  const options = [
-    { id: 1, name: "Aerospace" },
-    { id: 2, name: "Mechanical" },
-    { id: 3, name: "Civil" },
-    { id: 4, name: "Biomedical" },
-    { id: 5, name: "Nuclear" },
-    { id: 6, name: "Industrial" },
-    { id: 7, name: "Chemical" },
-    { id: 8, name: "Agricultural" },
-    { id: 9, name: "Electrical" },
-  ];\n
-  const [value, setValue] = useState("");
-  const [majorId, setMajorId] = useState<Key>("");\n
-  const onSelectionChange = (id: Key) => {
-    setMajorId(id);
-  };\n
-  const onInputChange = (value: string) => {
-    setValue(value);
-  };\n
-  return (
-    <>
-      <p>Current selected major id: {majorId}</p>
-      <p>Current input text: {value}</p>
-      <ComboBox
-        label="Pick a engineering major"
-        defaultItems={options}
-        selectedKey={majorId}
-        onSelectionChange={onSelectionChange}
-        onInputChange={onInputChange}
-      >
-        {(item) => <Item>{item.name}</Item>}
-      </ComboBox>
-    </>
-  );`,
-      },
-    },
-  }}
-  decorators={[
-    (Story) => (
-      <StoryGrid maxWidth={250}>
-        <Story />
-      </StoryGrid>
-    ),
-  ]}
->
-  <EventsExample />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--f-events" />
-
-### Fully Controlled
-
-When a ComboBox has multiple controlled properties (e.g.`inputValue`, `selectedKey`, `items`), it is important to note that an update to one of these properties will not automatically update the others. Each interaction done in the ComboBox will only trigger its associated event handler. For example, typing in the field will only trigger `onInputChange` whereas selecting an item from the ComboBox menu will only trigger `onSelectionChange` so it is your responsibility to update the other controlled properties accordingly. Note that you should provide an `onSelectionChange` handler for a ComboBox with controlled input value and open state. This way, you can properly control the menu's open state when the user selects an option or blurs from the field.
-
-The below example demonstrates how you would construct the same example above in a completely controlled fashion.
-
-<Story
-  name="g) Fully controlled"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-import { useTreeData } from "react-stately";\n
-const options = [
-  { id: 1, name: "Aerospace" },
-  { id: 2, name: "Mechanical" },
-  { id: 3, name: "Civil" },
-  { id: 4, name: "Biomedical" },
-  { id: 5, name: "Nuclear" },
-  { id: 6, name: "Industrial" },
-  { id: 7, name: "Chemical" },
-  { id: 8, name: "Agricultural" },
-  { id: 9, name: "Electrical" },
-];\n
-const [fieldState, setFieldState] = useState<{
-  selectedKey: Key | null;
-  inputValue: string;
-}>({
-  selectedKey: "",
-  inputValue: "",
-});\n
-const list = useTreeData({
-  initialItems: options,
-});\n
-const onSelectionChange = (key: Key) => {
-  setFieldState({
-    inputValue: list.getItem(key)?.value.name ?? "",
-    selectedKey: key,
-  });
-};\n
-const onInputChange = (value: string) => {
-  setFieldState((prevState) => ({
-    inputValue: value,
-    selectedKey: value === "" ? null : prevState.selectedKey,
-  }));
-};\n
-return (
-  <>
-    <p>Current selected major id: {fieldState.selectedKey}</p>
-    <p>Current input text: {fieldState.inputValue}</p>
-    <ComboBox
-      label="Pick a engineering major"
-      defaultItems={list.items}
-      selectedKey={fieldState.selectedKey}
-      inputValue={fieldState.inputValue}
-      onSelectionChange={onSelectionChange}
-      onInputChange={onInputChange}
-    >
-      {(item) => <Item>{item.value.name}</Item>}
-    </ComboBox>
-  </>
-);`,
-      },
-    },
-  }}
-  decorators={[
-    (Story) => (
-      <StoryGrid maxWidth={"70vw"}>
-        <Story />
-      </StoryGrid>
-    ),
-  ]}
->
-  <FullyControlled />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--g-fully-controlled" />
-
-### Multi-select
-
-Multi-select via ListBox `selectionMode` is not supported by the react-aria `useComboBox` hook, nor is it going to be as far as I can make out. Especially not with any sort of TagGroup support like we see in Material UI. See [ComboBox multi-select feature request](https://github.com/adobe/react-spectrum/issues/2140#issuecomment-1470823263) for more details.
-
-That's not to say something isn't possible that mimics it quite nicely (as the thread alludes to). We can help the screen readers out a bit on removal of items via some `aria-live` action. To be fair Material's autocomplete doesn't seem to annonce this but it seemed much better with this addition when testing with VoiceOver Mac.
-
-It might be that you actually remove the selected keys from the options rather than just disabling them as in the example, especially if the next selection is conditional on the selection, like perhaps a 'URL part selector' within a CMS application. In that configuration multi-select is irrelavant as each choice is more like a step where we are recording the choices made along the way; so more 'multi-step' over 'muti-select' where we repurpose the same ComboBox for each step.
-
-<Story
-  name="h) Multi-select"
-  parameters={{
-    docs: {
-      source: {
-        code: dedent`
-const options = [
-  { id: 1, name: "Aerospace" },
-  { id: 2, name: "Mechanical" },
-  { id: 3, name: "Civil" },
-  { id: 4, name: "Biomedical" },
-  { id: 5, name: "Nuclear" },
-  { id: 6, name: "Industrial" },
-  { id: 7, name: "Chemical" },
-  { id: 8, name: "Agricultural" },
-  { id: 9, name: "Electrical" },
-];\n
-const list = useTreeData({
-  initialItems: options,
-});
-const [selectedItems, setSelectedItems] = useState<Key[]>([]);
-const [isOpen, setIsOpen] = useState(false);
-const [screenReaderMessage, setScreenReaderMessage] = useState("");
-const [fieldState, setFieldState] = useState<{
-  selectedKey: Key | null;
-  inputValue: string;
-}>({
-  selectedKey: "",
-  inputValue: "",
-});\n
-const onSelectionChange = (key: Key) => {
-  // Reset input and set current selected key for a moment.
-  setFieldState({
-    inputValue: "",
-    selectedKey: key,
-  });
-  // Add selected item to selelcted state.
-  if (list.getItem(key) && !selectedItems.includes(key)) {
-    const newArray = [...selectedItems, list.getItem(key)?.value.id];
-    setSelectedItems(newArray);
-  }
-  // Remove selected key almost instantly after selection.
-  setTimeout(() => {
-    setFieldState({
-      inputValue: "",
-      selectedKey: "",
-    });
-  }, 1);
-};\n
-const onInputChange = (value: string) => {
-  setFieldState((prevState) => ({
-    inputValue: value,
-    selectedKey: value === "" ? "" : prevState.selectedKey,
-  }));
-};\n
-const onKeyDown = (event: KeyboardEvent) => {
-  // Remove selected item on delete when input is empty and menu is closed.
-  // FYI: If the menu is open and we remove the item, the aria-live update is not announced
-  if (event.key === "Backspace" && !fieldState.inputValue && !isOpen) {
-    const lastItem = selectedItems.slice(-1)[0];
-    lastItem && removeSelectedItem(lastItem);
-  }
-};\n
-const removeSelectedItem = (id: Key) => {
-  // Remove item from selelctedItems
-  setSelectedItems((prevValues) => prevValues.filter((item) => item !== id));
-  // Inform the screen reader we have removed an item.
-  const itemDeselectedString = \`\${list.getItem(id).value.name} deselected.\`;
-  setScreenReaderMessage(
-    selectedItems.length > 1
-      ? itemDeselectedString
-      : \`\${itemDeselectedString} Nothing selected.\`
-  );
-  // Reset input and set current selected.
-  setFieldState({
-    inputValue: "",
-    selectedKey: "",
-  });
-};\n
-return (
-  <>
-    <p>Current selected major id: {fieldState.selectedKey}</p>
-    <p>Current input text: {fieldState.inputValue}</p>
-    <p>selectedItems: {selectedItems}</p>
-    {/* We want to interupt the screen reader with a message so we are 'assertive'. */}
-    <span className={sr.visuallyHidden} aria-live="assertive">
-      {screenReaderMessage}
-    </span>
-    <ComboBox
-      label="Pick a engineering major"
-      defaultItems={list.items}
-      startAdornment={
-        <>
-          {selectedItems.map((id) => (
-            <span
-              key={id}
-              style={{
-                background: "#444",
-                display: "inline-block",
-                padding: "0 4px",
-                margin: "0 4px",
-                borderRadius: "4px",
-              }}
-            >
-              {list.getItem(id).value.name}
-            </span>
-          ))}
-        </>
-      }
-      disabledKeys={selectedItems}
-      portalSelector="#portal"
-      onKeyDown={onKeyDown}
-      selectedKey={fieldState.selectedKey}
-      inputValue={fieldState.inputValue}
-      onSelectionChange={(id) => onSelectionChange(id)}
-      onInputChange={onInputChange}
-      onOpenChange={(isOpen, triggerAction) => {
-        setIsOpen(isOpen);
-      }}
-    >
-      {(item) => <Item>{item.value.name}</Item>}
-    </ComboBox>
-  </>
-);`,
-      },
-    },
-  }}
-  decorators={[
-    (Story) => (
-      <StoryGrid maxWidth={"70vw"}>
-        <Story />
-      </StoryGrid>
-    ),
-  ]}
->
-  <MultiSelect />
-</Story>
-
-<Source language="tsx" id="inputs-combobox--h-multi-select" />
+<Source language="tsx" id="inputs-comboboxmultiselect--e-selection" />
 
 ## Disabled
 
@@ -672,14 +196,7 @@ return (
     docs: {
       source: {
         code: dedent`
-<ComboBox label="Favorite Animal" isDisabled>
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-  <Item key="dog">Dog</Item>
-  <Item key="aardvark">Aardvark</Item>
-  <Item key="kangaroo">Kangaroo</Item>
-  <Item key="snake">Snake</Item>
-</ComboBox>`,
+TBC`,
       },
     },
   }}
@@ -694,7 +211,7 @@ return (
   <DisabledExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--g-disabled" />
+<Source language="tsx" id="inputs-comboboxmultiselect--g-disabled" />
 
 ## Read only
 
@@ -704,14 +221,7 @@ return (
     docs: {
       source: {
         code: dedent`
-<ComboBox label="Favorite Animal" isReadOnly selectedKey="red panda">
-  <Item key="red panda">Red Panda</Item>
-  <Item key="cat">Cat</Item>
-  <Item key="dog">Dog</Item>
-  <Item key="aardvark">Aardvark</Item>
-  <Item key="kangaroo">Kangaroo</Item>
-  <Item key="snake">Snake</Item>
-</ComboBox>`,
+TBC`,
       },
     },
   }}
@@ -726,7 +236,7 @@ return (
   <ReadOnlyExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--g-read-only" />
+<Source language="tsx" id="inputs-comboboxmultiselect--g-read-only" />
 
 ## Help text
 
@@ -753,7 +263,7 @@ TBC`,
   <HelpTextExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--h-help" />
+<Source language="tsx" id="inputs-comboboxmultiselect--h-help" />
 
 ## ComboBox Props
 
@@ -778,9 +288,12 @@ TBC`,
   <AsyncLoadingExample />
 </Story>
 
-<Source language="tsx" id="inputs-combobox--f-events" />
+<Source
+  language="tsx"
+  id="inputs-comboboxmultiselect--i-asynchronous-loading"
+/>
 
-<ArgsTable of={ComboBox} />
+<ArgsTable of={ComboBoxMultiSelectType} />
 
 ## Styling
 

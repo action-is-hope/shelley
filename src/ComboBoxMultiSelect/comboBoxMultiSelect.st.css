@@ -28,3 +28,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+.chip {
+  white-space: nowrap;
+}

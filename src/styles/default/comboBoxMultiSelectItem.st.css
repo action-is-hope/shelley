@@ -1,14 +1,14 @@
-@namespace "DefaultMultiSelectItem";
+@namespace "DefaultComboBoxMultiSelectItem";
 /**
- * = MultiSelectItem - multiSelectItem.st.css
+ * = ComboBoxMultiSelectItem - comboBoxMultiSelectItem.st.css
  *
- * Base theme styles for a Shelley MultiSelectItem.
+ * Base theme styles for a Shelley ComboBoxMultiSelectItem.
  *
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/MultiSelectItem/menuItem.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ComboBoxMultiSelect/comboBoxMultiSelectItem.st.css
  * ComboBoxMultiSelect
  */
 @st-import Default, [--spacing-unit] from "./project.st.css";
-@st-import MultiSelectItem from "../../ComboBoxMultiSelect/multiSelectItem.st.css";
+@st-import ComboBoxMultiSelectItem from "../../ComboBoxMultiSelect/comboBoxMultiSelectItem.st.css";
 @st-import [
     menuItem,
     menuItemDisabled,
@@ -18,11 +18,11 @@
 ] from "./mixins/menuList.st.css";
 
 @st-scope Default {
-  MultiSelectItem {
+  ComboBoxMultiSelectItem {
     -st-mixin: menuItem;
   }
 
-  MultiSelectItem:selectionMode(none) {
+  ComboBoxMultiSelectItem:selectionMode(none) {
     grid-template-columns: calc(var(--spacing-unit) / 2) auto 1fr auto auto calc(var(--spacing-unit) / 2);
     grid-template-areas:
       ". . . . . ."
@@ -31,19 +31,19 @@
       ". . . . . .";
   }
 
-  MultiSelectItem:isDisabled {
+  ComboBoxMultiSelectItem:isDisabled {
     -st-mixin: menuItemDisabled;
   }
 
-  MultiSelectItem:isFocused {
+  ComboBoxMultiSelectItem:isFocused {
     -st-mixin: menuItemFocusVisible;
   }
 
-  MultiSelectItem::text {
+  ComboBoxMultiSelectItem::text {
     -st-mixin: menuItemText;
   }
 
-  MultiSelectItem::selectedIcon {
+  ComboBoxMultiSelectItem::selectedIcon {
     -st-mixin: menuItemSelectedIcon;
   }
 }

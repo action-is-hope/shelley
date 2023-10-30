@@ -26,20 +26,7 @@ import { ProgressCircle } from "../ProgressCircle";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
 import { useMultipleSelection, useCombobox } from "downshift";
-import { MultiSelectItem } from "./MultiSelectItem";
-
-interface AriaComboBoxMultiSelectProps<T> {
-  /** The list of items. */
-  items?: T[];
-  /** The default value of the MultiSelectComboBox input (adjusts selection). */
-  defaultInputValue?: string;
-  /** Handler that is called when the MultiSelectComboBox input value changes. */
-  onInputChange?: (value: string) => void;
-  /**
-   * The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
-   */
-  name?: string;
-}
+import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 
 type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
 
@@ -49,12 +36,10 @@ export interface ComboBoxMultiSelectRef<T> {
 }
 
 export interface ComboBoxMultiSelectProps<T>
-  extends AriaComboBoxMultiSelectProps<T>,
-    Omit<FieldProps, "endAdornment">,
+  extends Omit<FieldProps, "endAdornment">,
     Pick<PositionProps, "offset" | "shouldFlip" | "crossOffset">,
     LoadMoreProps {
   className?: string;
-
   /**
    * The selector of the element that the menu should render inside of.
    * @default 'body'
@@ -77,18 +62,31 @@ export interface ComboBoxMultiSelectProps<T>
   scrollLock?: boolean;
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
-  /** */
-  initialSelectedItems?: T[];
-  keepSelectedInOptions?: boolean;
+  /** Controlled value */
+  value?: T[];
+  /** Uncontrolled default value */
+  defaultValue?: T[];
+  /** On Selection change the highlighted index to 0 */
+  resetHighlightedIndexOnSelect?: boolean;
+  /** children as a render props where item and isSelected are parsed. */
   children: RenderItemFunction<T>;
+  /** Provide a custom filter function. */
   filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
+  /** Callback fired when a selection is made. */
   onSelectionChange?: (selectedItems: T[]) => void;
+  /** The list of items. */
+  items?: T[];
+  /** The default value of the MultiSelectComboBox input (adjusts selection). */
+  defaultInputValue?: string;
+  /** Handler that is called when the MultiSelectComboBox input value changes. */
+  onInputChange?: (value: string) => void;
+  /** A placeholder for the input. */
+  placeholder?: string;
 }
 
-function ComboBoxMultiSelect<T extends { title: string; value: string }>(
-  props: ComboBoxMultiSelectProps<T>,
-  ref?: React.Ref<HTMLInputElement>
-) {
+function ComboBoxMultiSelect<
+  T extends { title: string; id?: string; key?: string }
+>(props: ComboBoxMultiSelectProps<T>, ref?: React.Ref<HTMLInputElement>) {
   const {
     className: classNameProp,
     description,
@@ -112,36 +110,54 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     startAdornment,
     scrollLock = false,
     triggerIcon = <AngleDown />,
-    initialSelectedItems,
-    keepSelectedInOptions,
     filterFunction,
     children,
+    resetHighlightedIndexOnSelect,
     items,
     onSelectionChange,
     onInputChange,
     defaultInputValue,
+    value,
+    defaultValue,
+    placeholder,
     "data-id": dataId,
+    // keepSelectedInOptions,
   } = props;
+
+  // @todo: make this optiional
+  const keepSelectedInOptions = true;
 
   // Setup filter function and state.
   /* eslint-disable @typescript-eslint/unbound-method*/
   const { contains } = useFilter({ sensitivity: "base" });
   const [inputValue, setInputValue] = useState(defaultInputValue || "");
+
+  // Determine the initial selected items based on controlled or uncontrolled state
+  const initialSelectedItems: ComboBoxMultiSelectProps<T>["value"] =
+    value !== undefined ? value : defaultValue || [];
+
   const [selectedItems, setSelectedItems] = useState(initialSelectedItems);
+
+  function areObjectsEqual(obj1: T, obj2: T) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
 
   const getFilteredItems = useCallback(
     (
-      selectedItems: ComboBoxMultiSelectProps<T>["initialSelectedItems"],
+      selectedItems: ComboBoxMultiSelectProps<T>["defaultValue"],
       inputValue: string
     ) => {
       const shouldInclude = (item: T) =>
         (keepSelectedInOptions || !selectedItems?.includes(item)) &&
         filterFunction
           ? filterFunction(item, inputValue, selectedItems || [])
-          : contains(item.title, inputValue);
-
+          : item?.title
+          ? contains(item.title, inputValue)
+          : // eslint-disable-next-line no-console
+            console.warn(
+              "title does not exist on item; provide your own filterFunction"
+            );
       return items?.filter(shouldInclude);
-      // return items;
     },
     [contains, filterFunction, items, keepSelectedInOptions]
   );
@@ -167,8 +183,8 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
           type ===
             useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
         ) {
-          setSelectedItems(newSelectedItems);
-          if (props.onSelectionChange && newSelectedItems) {
+          !isReadOnly && newSelectedItems && setSelectedItems(newSelectedItems);
+          if (props.onSelectionChange && newSelectedItems && !isReadOnly) {
             props.onSelectionChange(newSelectedItems);
           }
         }
@@ -184,14 +200,14 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
     getInputProps,
     highlightedIndex,
     getItemProps,
-    selectedItem,
+    // selectedItem,
   } = useCombobox({
     items: filteredItems,
     itemToString: (item) => (item ? item.title : ""),
     defaultHighlightedIndex: 0,
     selectedItem: null,
     inputValue,
-    stateReducer(_, actionAndChanges) {
+    stateReducer(state, actionAndChanges) {
       const { changes, type } = actionAndChanges;
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -199,7 +215,11 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
           return {
             ...changes,
             isOpen: true,
-            highlightedIndex: 0,
+            highlightedIndex: keepSelectedInOptions
+              ? resetHighlightedIndexOnSelect
+                ? 0
+                : state.highlightedIndex
+              : 0,
           };
         default:
           return changes;
@@ -217,12 +237,15 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
           if (newSelectedItem) {
             // Toggle selected state for items when keepSelectedInOptions is enabled
             if (
+              !isReadOnly &&
               keepSelectedInOptions &&
               selectedItems &&
-              selectedItems.includes(newSelectedItem)
+              selectedItems.some((item) => {
+                return areObjectsEqual(item, newSelectedItem);
+              })
             ) {
               const newSelectedItems = selectedItems.filter(
-                (item) => item !== newSelectedItem
+                (item) => !areObjectsEqual(item, newSelectedItem)
               );
               setSelectedItems(newSelectedItems);
               onSelectionChange && onSelectionChange(newSelectedItems);
@@ -230,13 +253,14 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
               const newSelectedItems = selectedItems
                 ? [...selectedItems, newSelectedItem]
                 : [newSelectedItem];
-              setSelectedItems(newSelectedItems);
-              onSelectionChange && onSelectionChange(newSelectedItems);
+              !isReadOnly && setSelectedItems(newSelectedItems);
+              !isReadOnly &&
+                onSelectionChange &&
+                onSelectionChange(newSelectedItems);
             }
             setInputValue("");
           }
           break;
-
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(newInputValue ?? "");
           break;
@@ -254,7 +278,12 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
 
   const inputProps = {
     ...getInputProps(
-      getDropdownProps({ preventKeyAction: isOpen, ref: inputRef })
+      getDropdownProps({
+        preventKeyAction: isOpen,
+        ref: inputRef,
+        disabled: isDisabled,
+        readOnly: isReadOnly,
+      })
     ),
     className: fieldClasses.fieldInput,
     "data-id": dataId ? `${dataId}--input` : undefined,
@@ -264,12 +293,15 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
   // Supress error which is due to us rendering in a portal.
   // Requires more investigation -> https://github.com/downshift-js/downshift/issues/1272
   const menuProps = getMenuProps({ ref: menuRef }, { suppressRefError: true });
+  const toggleProps = getToggleButtonProps({
+    disabled: isDisabled || isReadOnly,
+  });
 
-  const toggleProps = getToggleButtonProps();
   const triggerProps = {
     ...toggleProps,
+    onClick: undefined,
     onPress: (event: PressEvent | MouseEvent) =>
-      toggleProps.onPress && toggleProps.onPress(event as MouseEvent),
+      toggleProps.onClick && toggleProps.onClick(event as MouseEvent),
   };
   useEffect(() => {
     const inputWidth = inputRef?.current?.clientWidth;
@@ -283,6 +315,7 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
 
   useEffect(() => {
     onInputChange && onInputChange(inputValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
   // Expose the remove selected item function.
@@ -295,7 +328,7 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
   const popup = (
     <Popup
       className={classes.popup}
-      isOpen={isOpen && Boolean(filteredItems?.length)}
+      isOpen={isOpen && Boolean(filteredItems?.length) && !isReadOnly}
       onClose={closeMenu}
       isDismissable
       hideArrow
@@ -324,113 +357,98 @@ function ComboBoxMultiSelect<T extends { title: string; value: string }>(
         }}
       >
         {isOpen &&
-          filteredItems?.map((item, index) => (
-            <MultiSelectItem
-              key={`${item.value}${index}`}
-              isSelected={selectedItems?.includes(item)}
-              {...getItemProps({ item, index })}
-              isFocused={highlightedIndex === index}
-              isFocusVisible={selectedItem === item}
-            >
-              {/* Render the children via the children render prop. */}
-              {children(item, selectedItems?.includes(item))}
-            </MultiSelectItem>
-          ))}
+          filteredItems?.map((item, index) => {
+            const isSelected = selectedItems?.some((selectedItem) =>
+              areObjectsEqual(selectedItem, item)
+            );
+            const key: string = item?.key
+              ? item.key
+              : item?.id || `multiCombo${index}`;
+            return (
+              <ComboBoxMultiSelectItem
+                {...getItemProps({ item, index })}
+                key={key}
+                isSelected={isSelected}
+                isFocused={highlightedIndex === index}
+              >
+                {/* Render the children via the children render prop. */}
+                {children(item, isSelected)}
+              </ComboBoxMultiSelectItem>
+            );
+          })}
       </ul>
     </Popup>
   );
 
   return (
-    <>
-      <Field
-        {...{
-          isDisabled,
-          isReadOnly,
-          errorMessage,
-          // errorMessageProps,
-          validationState,
-          description,
-          // descriptionProps,
-          label,
-          labelPosition,
-          startAdornment,
-          fieldContainerProps: {
-            ref: fieldContainerRef,
-          },
-          endAdornment: (
-            <>
-              {(loadingState === "filtering" ||
-                loadingState === "loading" ||
-                loadingState === "sorting") && (
-                <ProgressCircle
-                  size="small"
-                  isIndeterminate
-                  className={classes.loader}
-                  data-id={dataId ? `${dataId}--progressCircle` : undefined}
-                />
-              )}
-              {!removeTrigger && (
-                <Button
-                  {...triggerProps}
-                  icon={triggerIcon}
-                  ref={buttonRef}
-                  variant={false}
-                  tone={false}
-                  className={classes.trigger}
-                  data-id={dataId ? `${dataId}--trigger` : undefined}
-                />
-              )}
-            </>
-          ),
-          labelProps: getLabelProps(),
-          disableLabelTransition:
-            // disableLabelTransition || isOpen || Boolean(state.selectedItem),
-            disableLabelTransition || isOpen,
-          variant,
-          vol,
-          "data-id": dataId,
-          hasValue: Boolean(inputProps.value),
-        }}
-        className={st(classes.root, classNameProp)}
-      >
-        {/* Fragment required to stop the clone inside Field. */}
-        <>
-          <input
-            {...inputProps}
-            ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
-          />
-          {isOpen && portalSelector
-            ? // If no portalSelector render inline.
-              createPortal(
-                popup,
-                document.querySelector(portalSelector) as HTMLElement
-              )
-            : popup}
-        </>
-      </Field>
-      {selectedItems &&
-        selectedItems.map((selectedItem, index) => (
-          <span
-            className="bg-gray-100 rounded-md px-1 focus:bg-red-400"
-            key={`selected-item-${index}`}
-            {...getSelectedItemProps({
-              selectedItem,
-              index,
-            })}
-          >
-            {selectedItem.name}
-            <span
-              className="px-1 cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                removeSelectedItem(selectedItem);
-              }}
-            >
-              &#10005;
-            </span>
-          </span>
-        ))}
-    </>
+    <Field
+      {...{
+        isDisabled,
+        isReadOnly,
+        disableLabelTransition: disableLabelTransition || isOpen,
+        "data-id": dataId,
+        errorMessage,
+        // errorMessageProps,
+        validationState,
+        description,
+        // descriptionProps,
+        fieldContainerProps: {
+          ref: fieldContainerRef,
+        },
+        hasValue: Boolean(inputProps.value),
+        label,
+        labelPosition,
+        labelProps: getLabelProps(),
+        variant,
+        vol,
+        startAdornment,
+        endAdornment: (
+          <>
+            {(loadingState === "filtering" ||
+              loadingState === "loading" ||
+              loadingState === "sorting") && (
+              <ProgressCircle
+                size="small"
+                isIndeterminate
+                className={classes.loader}
+                data-id={dataId ? `${dataId}--progressCircle` : undefined}
+              />
+            )}
+            {!removeTrigger && (
+              <Button
+                {...triggerProps}
+                icon={triggerIcon}
+                ref={buttonRef}
+                variant={false}
+                tone={false}
+                className={classes.trigger}
+                data-id={dataId ? `${dataId}--trigger` : undefined}
+              />
+            )}
+          </>
+        ),
+      }}
+      className={st(classes.root, classNameProp)}
+    >
+      {/* Fragment required to stop the clone inside Field. */}
+
+      <>
+        <input
+          {...inputProps}
+          placeholder={placeholder}
+          // disabled={isReadOnly && !isDisabled ? false : undefined}
+          readOnly={isReadOnly}
+          ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
+        />
+        {isOpen && portalSelector
+          ? // If no portalSelector render inline.
+            createPortal(
+              popup,
+              document.querySelector(portalSelector) as HTMLElement
+            )
+          : popup}
+      </>
+    </Field>
   );
 }
 
