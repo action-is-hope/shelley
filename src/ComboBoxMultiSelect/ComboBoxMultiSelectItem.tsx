@@ -23,7 +23,6 @@ function ComboBoxMultiSelectItem(
   props: ComboBoxMultiSelectItemProps,
   ref: React.Ref<HTMLLIElement>
 ) {
-  // const ref = useRef(null);
   const {
     className: classNameProp,
     selectedIcon,
@@ -31,7 +30,6 @@ function ComboBoxMultiSelectItem(
     isSelected,
     isDisabled,
     children,
-    // key,
     ...rest
   } = props;
 
