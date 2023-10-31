@@ -1,0 +1,35 @@
+@namespace "ComboBoxMultiSelect";
+@st-import Field from "../Field/field.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import Popup from "../Popup/popup.st.css";
+@st-import ProgressCircle from "../ProgressCircle/progressCircle.st.css";
+
+.root {
+  -st-extends: Field;
+}
+
+.trigger {
+  -st-extends: Button;
+}
+
+.loader {
+  -st-extends: ProgressCircle;
+}
+
+.popup {
+  -st-extends: Popup;
+}
+
+.list {}
+
+.placeholder {
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.chip {
+  white-space: nowrap;
+}

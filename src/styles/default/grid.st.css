@@ -163,7 +163,7 @@
 
 /* = Variant 2: Standard 2 col. */
 @st-scope Default {
-  Grid:variant(2) {
+  Grid:variant(two-col) {
     grid-column: mid;
     grid-template-columns: var(--grid-v2-cols-xs);
   }
@@ -171,7 +171,7 @@
 
 @media value(breakpoint-sm) {
   @st-scope Default {
-    Grid:variant(2) {
+    Grid:variant(two-col) {
       grid-column: goal;
       grid-template-columns: var(--grid-v2-cols-sm);
     }
@@ -180,7 +180,7 @@
 
 @media value(breakpoint-md) {
   @st-scope Default {
-    Grid:variant(2) {
+    Grid:variant(two-col) {
       grid-column: goal;
       grid-template-columns: var(--grid-v2-cols-md);
     }

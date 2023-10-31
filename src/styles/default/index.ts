@@ -8,6 +8,8 @@ import "./buttonGroup.st.css";
 import "./blockquote.st.css";
 import "./checkbox.st.css";
 import "./comboBox.st.css";
+import "./comboBoxMultiSelect.st.css";
+import "./comboBoxMultiSelectItem.st.css";
 import "./dialog.st.css";
 import "./disclosure.st.css";
 import "./disclosureGroup.st.css";
