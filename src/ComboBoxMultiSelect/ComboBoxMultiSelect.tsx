@@ -349,7 +349,7 @@ function ComboBoxMultiSelect<
         className={classes.list}
         {...{
           ...menuProps,
-          "data-id": dataId ? `${dataId}--menuList` : undefined,
+          "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       >
         {isOpen &&
@@ -413,6 +413,7 @@ function ComboBoxMultiSelect<
             {!removeTrigger && (
               <Button
                 {...triggerProps}
+                aria-haspopup="listbox"
                 icon={triggerIcon}
                 ref={buttonRef}
                 variant={false}
@@ -432,8 +433,11 @@ function ComboBoxMultiSelect<
         <input
           {...inputProps}
           placeholder={placeholder}
-          // disabled={isReadOnly && !isDisabled ? false : undefined}
           readOnly={isReadOnly}
+          aria-autocomplete="list"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
           ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
         />
         {isOpen && portalSelector
