@@ -48,6 +48,7 @@ export const BasicComboBox = () => {
         portalSelector="#portal"
         items={books}
         defaultValue={initialSelectedItems}
+        placeholder="Placeholder"
         // value={initialSelectedItems}
         // loadingState={"loading"}
         // inputValue="Lee"

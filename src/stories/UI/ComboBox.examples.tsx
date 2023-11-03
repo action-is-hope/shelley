@@ -22,6 +22,7 @@ export const BasicComboBox = () => {
         label="Favorite Animal"
         portalSelector="#portal"
         shouldFocusWrap
+        placeholder="Placeholder"
       >
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
