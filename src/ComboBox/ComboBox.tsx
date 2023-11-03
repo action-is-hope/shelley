@@ -68,6 +68,7 @@ function ComboBox<T extends object>(
     description,
     isDisabled,
     isReadOnly,
+    hasValue,
     errorMessage,
     validationState,
     portalSelector = "body",
@@ -213,7 +214,7 @@ function ComboBox<T extends object>(
         variant,
         vol,
         "data-id": dataId,
-        hasValue: Boolean(inputProps.value),
+        hasValue: hasValue ?? Boolean(inputProps.value),
       }}
       className={st(classes.root, classNameProp)}
     >

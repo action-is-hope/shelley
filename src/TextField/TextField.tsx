@@ -51,10 +51,11 @@ function TextField(
     type = "text",
     value,
     defaultValue,
+    hasValue,
     "data-id": dataId,
   } = props;
   /**
-   * textValue stores the value to be used to format multiline and stylews for hasValue:
+   * textValue stores the value to be used to format multiline and styles for hasValue:
    * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
    */
   // @todo useEffect else it won't work onload with values applied
@@ -85,7 +86,7 @@ function TextField(
         validationState,
         label,
         startAdornment,
-        hasValue: Boolean(textValue),
+        hasValue: hasValue ?? Boolean(textValue),
         isRequired,
         isReadOnly,
         endAdornment,

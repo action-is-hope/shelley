@@ -76,6 +76,7 @@ function Select<T extends object>(
     shouldFocusOnHover = true,
     triggerIcon = <AngleDown />,
     "data-id": dataId,
+    hasValue,
   } = props;
   // Create state based on the incoming props
   const state = useSelectState(props);
@@ -120,6 +121,7 @@ function Select<T extends object>(
         fieldContainerProps: {
           ref: fieldContainerRef,
         },
+        hasValue,
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,

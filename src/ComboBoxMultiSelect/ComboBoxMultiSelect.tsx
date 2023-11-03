@@ -92,6 +92,7 @@ function ComboBoxMultiSelect<
     isDisabled,
     isReadOnly,
     errorMessage,
+    hasValue,
     validationState,
     portalSelector = "body",
     variant,
@@ -391,7 +392,7 @@ function ComboBoxMultiSelect<
         fieldContainerProps: {
           ref: fieldContainerRef,
         },
-        hasValue: Boolean(inputProps.value),
+        hasValue: hasValue ?? Boolean(inputProps.value),
         label,
         labelPosition,
         labelProps: getLabelProps(),
