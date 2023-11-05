@@ -56,6 +56,9 @@ export const BasicComboBox = () => {
         // removeTrigger
         // resetHighlightedIndexOnSelect
         onInputChange={(value) => console.log(value)}
+        onOpenChange={(isOpen, triggerAction) =>
+          console.log("onOpenChange", isOpen, triggerAction)
+        }
         filterFunction={(item, inputValue) => {
           return item
             ? contains(item.title, inputValue) ||

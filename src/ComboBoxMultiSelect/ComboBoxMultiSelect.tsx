@@ -23,7 +23,11 @@ import { Popup } from "../Popup";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../ProgressCircle";
-import { useMultipleSelection, useCombobox } from "downshift";
+import {
+  useMultipleSelection,
+  useCombobox,
+  UseComboboxStateChangeTypes,
+} from "downshift";
 import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
@@ -81,10 +85,17 @@ export interface ComboBoxMultiSelectProps<T>
   onInputChange?: (value: string) => void;
   /** A placeholder for the input. */
   placeholder?: string;
+  /** Provide a function to compare items. */
+  compareItems?: (itemOne: T, itemTwo: T) => boolean;
+  /** Callback fired when the dropdown is opened or closed. */
+  onOpenChange?: (
+    isOpen: boolean,
+    triggerAction: UseComboboxStateChangeTypes
+  ) => void;
 }
 
 function ComboBoxMultiSelect<
-  T extends { title: string; id?: string; key?: string }
+  T extends { title?: string; id?: string; key?: string }
 >(props: ComboBoxMultiSelectProps<T>, ref?: React.Ref<HTMLInputElement>) {
   const {
     className: classNameProp,
@@ -120,6 +131,7 @@ function ComboBoxMultiSelect<
     value,
     defaultValue,
     placeholder,
+    compareItems: compareItemsProp,
     "data-id": dataId,
     // keepSelectedInOptions,
   } = props;
@@ -137,9 +149,12 @@ function ComboBoxMultiSelect<
 
   const [selectedItems, setSelectedItems] = useState(initialSelectedItems);
 
-  function areObjectsEqual(obj1: T, obj2: T) {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
-  }
+  const compareItems = compareItemsProp
+    ? compareItemsProp
+    : (itemOne: T, itemTwo: T) =>
+        itemOne?.id && itemTwo?.id
+          ? itemOne?.id === itemTwo?.id
+          : JSON.stringify(itemOne) === JSON.stringify(itemTwo);
 
   const getFilteredItems = useCallback(
     (
@@ -200,7 +215,7 @@ function ComboBoxMultiSelect<
     // selectedItem,
   } = useCombobox({
     items: filteredItems,
-    itemToString: (item) => (item ? item.title : ""),
+    // itemToString: (item) => (item ? item.title : ""),
     defaultHighlightedIndex: 0,
     selectedItem: null,
     inputValue,
@@ -226,6 +241,7 @@ function ComboBoxMultiSelect<
       inputValue: newInputValue,
       type,
       selectedItem: newSelectedItem,
+      isOpen: newIsOpen, // Add this line to get the new state of isOpen
     }) {
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -238,11 +254,11 @@ function ComboBoxMultiSelect<
               keepSelectedInOptions &&
               selectedItems &&
               selectedItems.some((item) => {
-                return areObjectsEqual(item, newSelectedItem);
+                return compareItems(item, newSelectedItem);
               })
             ) {
               const newSelectedItems = selectedItems.filter(
-                (item) => !areObjectsEqual(item, newSelectedItem)
+                (item) => !compareItems(item, newSelectedItem)
               );
               setSelectedItems(newSelectedItems);
               onSelectionChange && onSelectionChange(newSelectedItems);
@@ -263,6 +279,10 @@ function ComboBoxMultiSelect<
           break;
         default:
           break;
+      }
+
+      if (props.onOpenChange && newIsOpen !== undefined) {
+        props.onOpenChange(newIsOpen, type);
       }
     },
   });
@@ -356,7 +376,7 @@ function ComboBoxMultiSelect<
         {isOpen &&
           filteredItems?.map((item, index) => {
             const isSelected = selectedItems?.some((selectedItem) =>
-              areObjectsEqual(selectedItem, item)
+              compareItems(selectedItem, item)
             );
             const key: string = item?.key
               ? item.key
