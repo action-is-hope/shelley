@@ -35,7 +35,7 @@ import { classes as fieldClasses } from "../Field/field.st.css";
 type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
 
 export interface ComboBoxMultiSelectRef<T> {
-  removeSelectedItem: (selectedItem: T) => void;
+  removeSelectedItem: (selectedItem: T, callback?: () => void) => void;
 }
 
 export interface ComboBoxMultiSelectProps<T>
@@ -337,8 +337,9 @@ function ComboBoxMultiSelect<
 
   // Expose the remove selected item function.
   useImperativeHandle(ref as React.Ref<ComboBoxMultiSelectRef<T>>, () => ({
-    removeSelectedItem: (selectedItem: T) => {
+    removeSelectedItem: (selectedItem: T, callback?: () => void) => {
       removeSelectedItem(selectedItem);
+      callback && callback(); // Invoke the callback if provided
     },
   }));
 
