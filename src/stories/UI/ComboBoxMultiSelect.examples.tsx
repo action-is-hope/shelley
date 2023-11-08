@@ -174,7 +174,10 @@ export const SelectionExample = () => {
         filterFunction={(item, inputValue) => {
           return item ? contains(item.name, inputValue) : false;
         }}
-        onSelectionChange={(selected) => setselectedProducts(selected)}
+        onSelectionChange={(selected, type) => {
+          setselectedProducts(selected);
+          console.log(type);
+        }}
         portalSelector="#portal"
         enableBackspaceDelete
         onBackspaceDelete={() => {

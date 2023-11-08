@@ -27,6 +27,7 @@ import {
   useMultipleSelection,
   useCombobox,
   UseComboboxStateChangeTypes,
+  UseMultipleSelectionStateChangeTypes,
 } from "downshift";
 import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
@@ -76,7 +77,12 @@ export interface ComboBoxMultiSelectProps<T>
   /** Provide a custom filter function. */
   filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
   /** Callback fired when a selection is made. */
-  onSelectionChange?: (selectedItems: T[]) => void;
+  onSelectionChange?: (
+    selectedItems: T[],
+    triggerAction:
+      | UseComboboxStateChangeTypes
+      | UseMultipleSelectionStateChangeTypes
+  ) => void;
   /** The list of items. */
   items?: T[];
   /** The default value of the MultiSelectComboBox input (adjusts selection). */
@@ -204,7 +210,7 @@ function ComboBoxMultiSelect<
           setSelectedItems(newSelectedItems);
 
           if (onSelectionChange) {
-            onSelectionChange(newSelectedItems);
+            onSelectionChange(newSelectedItems, type);
           }
 
           // Invoke the onBackspaceDelete callback if provided
@@ -272,7 +278,7 @@ function ComboBoxMultiSelect<
                 (item) => !compareItems(item, newSelectedItem)
               );
               setSelectedItems(newSelectedItems);
-              onSelectionChange && onSelectionChange(newSelectedItems);
+              onSelectionChange && onSelectionChange(newSelectedItems, type);
             } else {
               const newSelectedItems = selectedItems
                 ? [...selectedItems, newSelectedItem]
@@ -280,7 +286,7 @@ function ComboBoxMultiSelect<
               !isReadOnly && setSelectedItems(newSelectedItems);
               !isReadOnly &&
                 onSelectionChange &&
-                onSelectionChange(newSelectedItems);
+                onSelectionChange(newSelectedItems, type);
             }
             setInputValue("");
           }
