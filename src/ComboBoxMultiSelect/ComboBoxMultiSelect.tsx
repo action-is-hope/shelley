@@ -208,7 +208,6 @@ function ComboBoxMultiSelect<
           }
 
           // Invoke the onBackspaceDelete callback if provided
-          const { onBackspaceDelete } = props;
           onBackspaceDelete && onBackspaceDelete();
         }
       }
