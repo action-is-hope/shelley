@@ -27,6 +27,7 @@ import {
   useMultipleSelection,
   useCombobox,
   UseComboboxStateChangeTypes,
+  UseMultipleSelectionStateChangeTypes,
 } from "downshift";
 import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
@@ -35,7 +36,7 @@ import { classes as fieldClasses } from "../Field/field.st.css";
 type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
 
 export interface ComboBoxMultiSelectRef<T> {
-  removeSelectedItem: (selectedItem: T) => void;
+  removeSelectedItem: (selectedItem: T, callback?: () => void) => void;
 }
 
 export interface ComboBoxMultiSelectProps<T>
@@ -76,7 +77,12 @@ export interface ComboBoxMultiSelectProps<T>
   /** Provide a custom filter function. */
   filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
   /** Callback fired when a selection is made. */
-  onSelectionChange?: (selectedItems: T[]) => void;
+  onSelectionChange?: (
+    selectedItems: T[],
+    triggerAction:
+      | UseComboboxStateChangeTypes
+      | UseMultipleSelectionStateChangeTypes
+  ) => void;
   /** The list of items. */
   items?: T[];
   /** The default value of the MultiSelectComboBox input (adjusts selection). */
@@ -92,6 +98,8 @@ export interface ComboBoxMultiSelectProps<T>
     isOpen: boolean,
     triggerAction: UseComboboxStateChangeTypes
   ) => void;
+  enableBackspaceDelete?: boolean;
+  onBackspaceDelete?: () => void;
 }
 
 function ComboBoxMultiSelect<
@@ -132,6 +140,8 @@ function ComboBoxMultiSelect<
     defaultValue,
     placeholder,
     compareItems: compareItemsProp,
+    enableBackspaceDelete,
+    onBackspaceDelete,
     "data-id": dataId,
     // keepSelectedInOptions,
   } = props;
@@ -186,18 +196,25 @@ function ComboBoxMultiSelect<
     selectedItems,
     onStateChange({ selectedItems: newSelectedItems, type }) {
       if (
-        type ===
+        enableBackspaceDelete &&
+        (type ===
           useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace ||
-        type ===
-          useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
-        type ===
-          useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
-        type ===
-          useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
+          type ===
+            useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
+          type ===
+            useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
+          type ===
+            useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem)
       ) {
-        !isReadOnly && newSelectedItems && setSelectedItems(newSelectedItems);
-        if (props.onSelectionChange && newSelectedItems && !isReadOnly) {
-          props.onSelectionChange(newSelectedItems);
+        if (!isReadOnly && newSelectedItems) {
+          setSelectedItems(newSelectedItems);
+
+          if (onSelectionChange) {
+            onSelectionChange(newSelectedItems, type);
+          }
+
+          // Invoke the onBackspaceDelete callback if provided
+          onBackspaceDelete && onBackspaceDelete();
         }
       }
     },
@@ -261,7 +278,7 @@ function ComboBoxMultiSelect<
                 (item) => !compareItems(item, newSelectedItem)
               );
               setSelectedItems(newSelectedItems);
-              onSelectionChange && onSelectionChange(newSelectedItems);
+              onSelectionChange && onSelectionChange(newSelectedItems, type);
             } else {
               const newSelectedItems = selectedItems
                 ? [...selectedItems, newSelectedItem]
@@ -269,7 +286,7 @@ function ComboBoxMultiSelect<
               !isReadOnly && setSelectedItems(newSelectedItems);
               !isReadOnly &&
                 onSelectionChange &&
-                onSelectionChange(newSelectedItems);
+                onSelectionChange(newSelectedItems, type);
             }
             setInputValue("");
           }
@@ -337,8 +354,9 @@ function ComboBoxMultiSelect<
 
   // Expose the remove selected item function.
   useImperativeHandle(ref as React.Ref<ComboBoxMultiSelectRef<T>>, () => ({
-    removeSelectedItem: (selectedItem: T) => {
+    removeSelectedItem: (selectedItem: T, callback?: () => void) => {
       removeSelectedItem(selectedItem);
+      callback && callback(); // Invoke the callback if provided
     },
   }));
 
