@@ -92,6 +92,8 @@ export interface ComboBoxMultiSelectProps<T>
     isOpen: boolean,
     triggerAction: UseComboboxStateChangeTypes
   ) => void;
+  enableBackspaceDelete?: boolean;
+  onBackspaceDelete?: () => void;
 }
 
 function ComboBoxMultiSelect<
@@ -132,6 +134,8 @@ function ComboBoxMultiSelect<
     defaultValue,
     placeholder,
     compareItems: compareItemsProp,
+    enableBackspaceDelete,
+    onBackspaceDelete,
     "data-id": dataId,
     // keepSelectedInOptions,
   } = props;
@@ -186,18 +190,26 @@ function ComboBoxMultiSelect<
     selectedItems,
     onStateChange({ selectedItems: newSelectedItems, type }) {
       if (
-        type ===
+        enableBackspaceDelete &&
+        (type ===
           useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace ||
-        type ===
-          useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
-        type ===
-          useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
-        type ===
-          useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem
+          type ===
+            useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
+          type ===
+            useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
+          type ===
+            useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem)
       ) {
-        !isReadOnly && newSelectedItems && setSelectedItems(newSelectedItems);
-        if (props.onSelectionChange && newSelectedItems && !isReadOnly) {
-          props.onSelectionChange(newSelectedItems);
+        if (!isReadOnly && newSelectedItems) {
+          setSelectedItems(newSelectedItems);
+
+          if (onSelectionChange) {
+            onSelectionChange(newSelectedItems);
+          }
+
+          // Invoke the onBackspaceDelete callback if provided
+          const { onBackspaceDelete } = props;
+          onBackspaceDelete && onBackspaceDelete();
         }
       }
     },

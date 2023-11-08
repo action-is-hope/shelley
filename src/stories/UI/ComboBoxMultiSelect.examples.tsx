@@ -176,6 +176,10 @@ export const SelectionExample = () => {
         }}
         onSelectionChange={(selected) => setselectedProducts(selected)}
         portalSelector="#portal"
+        enableBackspaceDelete
+        onBackspaceDelete={() => {
+          console.log("onBackspaceDelete");
+        }}
       >
         {(item) => <>{item?.name}</>}
       </ComboBoxMultiSelect>
