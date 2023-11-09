@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
