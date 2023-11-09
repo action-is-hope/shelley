@@ -1,4 +1,4 @@
-@namespace "ShelleyListBoxOption";
+@st-namespace "ShelleyListBoxOption";
 
 :import {
   -st-from: "./project.st.css";

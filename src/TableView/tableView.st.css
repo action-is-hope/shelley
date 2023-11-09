@@ -1,4 +1,4 @@
-@namespace "TableView";
+@st-namespace "TableView";
 @st-import Checkbox from "../Checkbox/checkbox.st.css";
 
 .root {

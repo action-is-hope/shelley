@@ -1,4 +1,4 @@
-@namespace "Notification";
+@st-namespace "Notification";
 
 .root {
   -st-states: role(enum(alert, info, success, warning, error));

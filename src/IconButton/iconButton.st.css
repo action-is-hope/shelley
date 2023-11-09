@@ -1,4 +1,4 @@
-@namespace "IconButton";
+@st-namespace "IconButton";
 @st-import Button, [
   --bg-color,
   --text-color,

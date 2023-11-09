@@ -6,7 +6,7 @@
  * Try to stay organised.
  */
 
-@namespace "light";
+@st-namespace "light";
 
 :import {
   -st-from: "../project.st.css";

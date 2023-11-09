@@ -1,4 +1,4 @@
-@namespace "Dialog";
+@st-namespace "Dialog";
 @st-import ActionButton from "../ActionButton/actionButton.st.css";
 
 .root {

@@ -1,4 +1,4 @@
-@namespace "ShelleyComboBoxMultiSelectItem";
+@st-namespace "ShelleyComboBoxMultiSelectItem";
 
 @st-import Shelley, [
     --background-color-item-hover,

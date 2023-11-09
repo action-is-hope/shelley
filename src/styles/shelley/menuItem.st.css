@@ -1,4 +1,4 @@
-@namespace "ShelleyMenuItem";
+@st-namespace "ShelleyMenuItem";
 
 :import {
   -st-from: "../default/project.st.css";

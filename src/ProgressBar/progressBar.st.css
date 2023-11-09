@@ -1,4 +1,4 @@
-@namespace "ProgressBar";
+@st-namespace "ProgressBar";
 
 .root {
   -st-states: isIndeterminate,
