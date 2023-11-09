@@ -1,4 +1,4 @@
-@namespace "ButtonGroup";
+@st-namespace "ButtonGroup";
 @st-import Button from "../Button/button.st.css";
 
 .root {

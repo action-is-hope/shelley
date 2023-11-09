@@ -1,4 +1,4 @@
-@namespace "ShelleyProgressCircle";
+@st-namespace "ShelleyProgressCircle";
 @st-import Shelley, [
     --light-01-raw,
     --color-ui-raw,

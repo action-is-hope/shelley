@@ -1,4 +1,4 @@
-@namespace "ShelleyBlockquote";
+@st-namespace "ShelleyBlockquote";
 @st-import Shelley, [--color-accent-1] from "./project.st.css";
 @st-import Blockquote from "../../Blockquote/blockquote.st.css";
 

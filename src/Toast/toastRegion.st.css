@@ -1,4 +1,4 @@
-@namespace "ToastRegion";
+@st-namespace "ToastRegion";
 
 .root {
   -st-states: isFocusVisible;

@@ -1,4 +1,4 @@
-@namespace "TablePagination";
+@st-namespace "TablePagination";
 
 @st-import Toolbar from "../Toolbar/toolbar.st.css";
 

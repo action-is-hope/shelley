@@ -1,6 +1,14 @@
 "use client";
 import type React from "react";
-import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
+import {
+  useState,
+  Ref,
+  useRef,
+  forwardRef,
+  HTMLAttributes,
+  RefObject,
+} from "react";
+import { mergeRefs } from "@react-aria/utils";
 import type { MergeElementProps } from "../typings/utils";
 import type { ComponentBase, TextInputType } from "../typings/shared-types";
 import { Field, FieldProps } from "../Field";
@@ -62,8 +70,7 @@ function TextField(
   const [textValue, setTextValue] = useState(value || defaultValue);
   const rows = props.rows || 0;
   const isTextArea = type === "textarea" || rows > 0;
-  const textareaRef = ref as RefObject<HTMLTextAreaElement>;
-  const inputRef = ref as RefObject<HTMLInputElement>;
+  const localRef = useRef(null);
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField(
@@ -75,7 +82,7 @@ function TextField(
         },
         inputElementType: isTextArea ? "textarea" : "input",
       },
-      isTextArea ? textareaRef : inputRef
+      localRef
     );
 
   return (
@@ -110,14 +117,14 @@ function TextField(
             rows={rows}
             {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
             data-id={dataId ? `${dataId}--textarea` : undefined}
-            ref={textareaRef}
+            ref={mergeRefs(localRef, ref as RefObject<HTMLTextAreaElement>)}
           />
         </div>
       ) : (
         <input
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
           data-id={dataId ? `${dataId}--input` : undefined}
-          ref={inputRef}
+          ref={mergeRefs(localRef, ref as RefObject<HTMLInputElement>)}
         />
       )}
     </Field>

@@ -1,4 +1,4 @@
-@namespace "ShelleyButton";
+@st-namespace "ShelleyButton";
 @st-import Shelley, [
   --color-ui,
   --color-ui-inverse,

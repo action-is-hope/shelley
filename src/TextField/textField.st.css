@@ -1,4 +1,4 @@
-@namespace "TextField";
+@st-namespace "TextField";
 @st-import Field from "../Field/field.st.css";
 
 .root {

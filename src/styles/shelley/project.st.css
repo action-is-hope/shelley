@@ -19,7 +19,7 @@
  * go to for your projects. Up to you.
  */
 
-@namespace "Shelley";
+@st-namespace "Shelley";
 
 /* = Default project vars to be overridden. */
 :import {
