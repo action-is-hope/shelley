@@ -20,15 +20,12 @@ import { HelpText } from "../HelpText";
 import { VisuallyHidden } from "../VisuallyHidden";
 import { InputAdornment } from "../InputAdornment";
 import { st, classes } from "./field.st.css";
+import type { HelpTextProps } from "@react-types/shared";
 
 export interface FieldContainerProps
   extends HTMLProps<HTMLDivElement>,
     ComponentBase {}
-export interface FieldProps extends Validation, ComponentBase {
-  /** Provide an error message that triggers the stylable error state. */
-  errorMessage?: ReactNode;
-  /** Provide some description or hint text to the field. */
-  description?: ReactNode;
+export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
   /** Place a component so as to appear inside the TextInput start. */
   startAdornment?: ReactNode;
   /** Place a component so as to appear inside the TextInput end. */
