@@ -99,7 +99,9 @@ export interface ComboBoxMultiSelectProps<T>
     triggerAction: UseComboboxStateChangeTypes
   ) => void;
   enableBackspaceDelete?: boolean;
-  onBackspaceDelete?: () => void;
+  onBlur?: () => void;
+  /** Default is never but you can set it to be always or only if the menu is Open. */
+  preventKeyAction?: "always" | "menuOpen";
 }
 
 function ComboBoxMultiSelect<
@@ -141,7 +143,8 @@ function ComboBoxMultiSelect<
     placeholder,
     compareItems: compareItemsProp,
     enableBackspaceDelete,
-    onBackspaceDelete,
+    onBlur,
+    preventKeyAction,
     "data-id": dataId,
     // keepSelectedInOptions,
   } = props;
@@ -195,27 +198,23 @@ function ComboBoxMultiSelect<
   const { getDropdownProps, removeSelectedItem } = useMultipleSelection({
     selectedItems,
     onStateChange({ selectedItems: newSelectedItems, type }) {
-      if (
-        enableBackspaceDelete &&
-        (type ===
-          useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace ||
-          type ===
-            useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete ||
-          type ===
-            useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace ||
-          type ===
-            useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem)
-      ) {
-        if (!isReadOnly && newSelectedItems) {
-          setSelectedItems(newSelectedItems);
-
-          if (onSelectionChange) {
-            onSelectionChange(newSelectedItems, type);
+      switch (type) {
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+          if (!isReadOnly && newSelectedItems && enableBackspaceDelete) {
+            setSelectedItems(newSelectedItems);
+            onSelectionChange && onSelectionChange(newSelectedItems, type);
           }
-
-          // Invoke the onBackspaceDelete callback if provided
-          onBackspaceDelete && onBackspaceDelete();
-        }
+          break;
+        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+          if (!isReadOnly && newSelectedItems) {
+            setSelectedItems(newSelectedItems);
+            onSelectionChange && onSelectionChange(newSelectedItems, type);
+          }
+          break;
+        default:
+          break;
       }
     },
   });
@@ -229,10 +228,8 @@ function ComboBoxMultiSelect<
     getInputProps,
     highlightedIndex,
     getItemProps,
-    // selectedItem,
   } = useCombobox({
     items: filteredItems,
-    // itemToString: (item) => (item ? item.title : ""),
     defaultHighlightedIndex: 0,
     selectedItem: null,
     inputValue,
@@ -258,7 +255,7 @@ function ComboBoxMultiSelect<
       inputValue: newInputValue,
       type,
       selectedItem: newSelectedItem,
-      isOpen: newIsOpen, // Add this line to get the new state of isOpen
+      isOpen: newIsOpen,
     }) {
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -310,10 +307,14 @@ function ComboBoxMultiSelect<
 
   const [popUpWidth, setPopUpWidth] = useState(0);
 
+  let preventKeyActionValue = false; // never
+  if (preventKeyAction === "always") preventKeyActionValue = true;
+  if (preventKeyAction === "menuOpen") preventKeyActionValue = isOpen;
+
   const inputProps = {
     ...getInputProps(
       getDropdownProps({
-        preventKeyAction: isOpen,
+        preventKeyAction: preventKeyActionValue,
         ref: inputRef,
         disabled: isDisabled,
         readOnly: isReadOnly,
@@ -478,6 +479,7 @@ function ComboBoxMultiSelect<
           autoCorrect="off"
           spellCheck="false"
           ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
+          onBlur={onBlur}
         />
         {isOpen && portalSelector
           ? // If no portalSelector render inline.
