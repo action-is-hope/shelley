@@ -355,21 +355,4 @@ describe("Backspace Deletion", () => {
     cy.get(trigger).click();
     cy.get(`${itemThree} > [data-id="selected-icon"]`).should("exist");
   });
-
-  it("Calls onBackspaceDelete callback on backspace deletion", () => {
-    const onBackspaceDeleteSpy = cy.spy().as("onBackspaceDeleteSpy");
-    cy.mount(
-      <BasicComboBox
-        enableBackspaceDelete
-        onBackspaceDelete={onBackspaceDeleteSpy}
-      />
-    );
-    cy.get(trigger).click();
-    cy.get(itemOne).click();
-    cy.get(itemTwo).click();
-    cy.get(itemThree).click();
-    cy.get(textInput).type("{esc}");
-    cy.get(textInput).type("{backspace}");
-    cy.get("@onBackspaceDeleteSpy").should("have.been.calledOnce");
-  });
 });

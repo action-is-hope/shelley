@@ -159,6 +159,11 @@ export const SelectionExample = () => {
   const [selectedProducts, setselectedProducts] = useState<Option[]>([
     { id: 2, name: "Adobe XD" },
   ]);
+
+  // const selectedProducts = [
+  //   { id: 2, name: "Adobe XD" },
+  //   { id: 3, name: "Adobe InDesign" },
+  // ];
   const comboBoxRef = useRef<ComboBoxMultiSelectRef<Option>>(null);
 
   return (
@@ -176,13 +181,11 @@ export const SelectionExample = () => {
         }}
         onSelectionChange={(selected, type) => {
           setselectedProducts(selected);
-          console.log(type);
+          console.log(selected, type);
         }}
         portalSelector="#portal"
         enableBackspaceDelete
-        onBackspaceDelete={() => {
-          console.log("onBackspaceDelete");
-        }}
+        preventKeyAction="menuOpen"
       >
         {(item) => <>{item?.name}</>}
       </ComboBoxMultiSelect>
@@ -234,6 +237,7 @@ export const AsyncLoadingExample = () => {
   });
 
   const { contains } = useFilter({ sensitivity: "base" });
+
   return (
     <ComboBoxMultiSelect
       label="Star Wars Character Lookup"
