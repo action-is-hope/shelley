@@ -41,6 +41,7 @@ const books: Book[] | undefined = [
 export const BasicComboBox = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const initialSelectedItems = [books[0], books[1]];
+
   return (
     <>
       <ComboBoxMultiSelect
@@ -133,6 +134,52 @@ export const LabelingExample = () => {
             {item?.title}, {item?.author}
           </>
         )}
+      </ComboBoxMultiSelect>
+    </>
+  );
+};
+
+export const ControlledInput = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const urlsParts: string[] = [
+    "some-url-path-path-one",
+    "some-url-path-path-two",
+    "some-url-path-path-three",
+  ];
+
+  const sanitizeSlugInput = (inputValue: string): string =>
+    inputValue
+      // Replace space with dash for usability when enthering a URL,
+      // allowing users to press the space bar.
+      .replace(" ", "-")
+      // Remove any other character than alphanumeric or dash.
+      .replace(/[^a-zA-Z0-9-]/g, "")
+      // Remove consecutive dashes.
+      .replace(/-+/g, "-")
+      // Remove dash if it is the first character.
+      .replace(/^-/, "")
+      .toLowerCase();
+
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <>
+      <ComboBoxMultiSelect
+        label="Pick a URL"
+        portalSelector="#portal"
+        items={urlsParts}
+        placeholder="Placeholder"
+        inputValue={inputValue}
+        onInputChange={(value) => setInputValue(sanitizeSlugInput(value))}
+        filterFunction={(item, inputValue) =>
+          item ? contains(item, inputValue) : false
+        }
+        onSelectionChange={(selectedItems) => {
+          console.log("Selected Items:", selectedItems);
+        }}
+      >
+        {(item) => <>{item}</>}
       </ComboBoxMultiSelect>
     </>
   );

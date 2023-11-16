@@ -85,6 +85,8 @@ export interface ComboBoxMultiSelectProps<T>
   ) => void;
   /** The list of items. */
   items?: T[];
+  /** Controlled input value. */
+  inputValue?: string;
   /** The default value of the MultiSelectComboBox input (adjusts selection). */
   defaultInputValue?: string;
   /** Handler that is called when the MultiSelectComboBox input value changes. */
@@ -98,7 +100,9 @@ export interface ComboBoxMultiSelectProps<T>
     isOpen: boolean,
     triggerAction: UseComboboxStateChangeTypes
   ) => void;
+  /** Enables deleting selected items on delete. */
   enableBackspaceDelete?: boolean;
+  /** onBlur handler */
   onBlur?: () => void;
   /** Default is never but you can set it to be always or only if the menu is Open. */
   preventKeyAction?: "always" | "menuOpen";
@@ -137,6 +141,7 @@ function ComboBoxMultiSelect<
     items,
     onSelectionChange,
     onInputChange,
+    inputValue: inputValueProp,
     defaultInputValue,
     value,
     defaultValue,
@@ -154,7 +159,10 @@ function ComboBoxMultiSelect<
 
   /* eslint-disable @typescript-eslint/unbound-method*/
   const { contains } = useFilter({ sensitivity: "base" });
-  const [inputValue, setInputValue] = useState(defaultInputValue || "");
+  // const [inputValue, setInputValue] = useState(defaultInputValue || "");
+  const [inputValue, setInputValue] = useState(
+    inputValueProp !== undefined ? inputValueProp : defaultInputValue || ""
+  );
 
   // Determine the initial selected items based on controlled or uncontrolled state
   const initialSelectedItems: ComboBoxMultiSelectProps<T>["value"] =
@@ -311,15 +319,29 @@ function ComboBoxMultiSelect<
   if (preventKeyAction === "always") preventKeyActionValue = true;
   if (preventKeyAction === "menuOpen") preventKeyActionValue = isOpen;
 
+  // const inputProps = {
+  //   ...getInputProps(
+  //     getDropdownProps({
+  //       preventKeyAction: preventKeyActionValue,
+  //       ref: inputRef,
+  //       disabled: isDisabled,
+  //       readOnly: isReadOnly,
+  //     }),
+  //   ),
+  //   className: fieldClasses.fieldInput,
+  //   "data-id": dataId ? `${dataId}--input` : undefined,
+  // };
+
   const inputProps = {
-    ...getInputProps(
-      getDropdownProps({
+    ...getInputProps({
+      ...getDropdownProps({
         preventKeyAction: preventKeyActionValue,
         ref: inputRef,
         disabled: isDisabled,
         readOnly: isReadOnly,
-      })
-    ),
+      }),
+      value: inputValueProp !== undefined ? inputValueProp : inputValue,
+    }),
     className: fieldClasses.fieldInput,
     "data-id": dataId ? `${dataId}--input` : undefined,
   };
@@ -347,6 +369,13 @@ function ComboBoxMultiSelect<
       fieldContainerWidth && setPopUpWidth(fieldContainerWidth);
     }
   }, [startAdornment, isOpen, inputRef]);
+
+  useEffect(() => {
+    // Update inputValue when inputValueProp changes for controlled scenarios
+    if (inputValueProp !== undefined) {
+      setInputValue(inputValueProp);
+    }
+  }, [inputValueProp]);
 
   useEffect(() => {
     onInputChange && onInputChange(inputValue);

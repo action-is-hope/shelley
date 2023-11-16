@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ComboBoxMultiSelectProps,
   ComboBoxMultiSelect,
@@ -36,6 +36,33 @@ const BasicComboBox = function (
         label="ComboBox label"
         portalSelector="#portal"
         items={books}
+        {...props}
+      >
+        {(item) => {
+          return (
+            <div>
+              {item?.title}, {item?.author}
+            </div>
+          );
+        }}
+      </ComboBoxMultiSelect>
+    </div>
+  );
+};
+
+const ComboBoxControlledInput = function (
+  props: Partial<ComboBoxMultiSelectProps<BookType>>
+) {
+  const [inputValue, setInputValue] = useState("");
+  return (
+    <div style={{ padding: "0 10px" }}>
+      <ComboBoxMultiSelect
+        data-id="comboBox"
+        label="ComboBox label"
+        portalSelector="#portal"
+        items={books}
+        inputValue={inputValue}
+        onInputChange={() => setInputValue("custom value")}
         {...props}
       >
         {(item) => {
@@ -354,5 +381,30 @@ describe("Backspace Deletion", () => {
     cy.get(textInput).type("{backspace}");
     cy.get(trigger).click();
     cy.get(`${itemThree} > [data-id="selected-icon"]`).should("exist");
+  });
+});
+
+describe("Controlled and Uncontrolled inputValue", () => {
+  it("Handles controlled input correctly", () => {
+    cy.mount(<ComboBoxControlledInput />);
+
+    // Type something in the input
+    cy.get(textInput).type("Item one");
+    cy.get(textInput).invoke("val").should("equal", "custom value");
+  });
+
+  it("Handles uncontrolled inputValue", () => {
+    const onInputChangeSpy = cy.spy().as("onInputChangeSpy");
+    cy.mount(<BasicComboBox onInputChange={onInputChangeSpy} />);
+
+    // Type something in the input
+    cy.get(textInput).type("NewValue");
+    // Ensure onInputChange is called with the new value
+    cy.get("@onInputChangeSpy").should("have.been.calledWith", "NewValue");
+
+    // Clear the input
+    cy.get(textInput).clear();
+    // Ensure onInputChange is called with an empty string
+    cy.get("@onInputChangeSpy").should("have.been.calledWith", "");
   });
 });

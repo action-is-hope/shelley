@@ -6,6 +6,7 @@ import {
   BasicComboBox,
   LabelingExample,
   SelectionExample,
+  ControlledInput,
   AsyncLoadingExample,
   HelpTextExample,
   ReadOnlyExample,
@@ -188,6 +189,26 @@ TBC`,
 
 <Source language="tsx" id="inputs-comboboxmultiselect--e-selection" />
 
+## Controlled Input
+
+<Story
+  name="f) Controlled Input"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+>
+  <StoryGrid maxWidth={250}>
+    <ControlledInput />
+  </StoryGrid>
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--f-controlled-input" />
+
 ## Disabled
 
 <Story
@@ -216,7 +237,7 @@ TBC`,
 ## Read only
 
 <Story
-  name="g) Read only"
+  name="h) Read only"
   parameters={{
     docs: {
       source: {
@@ -236,14 +257,14 @@ TBC`,
   <ReadOnlyExample />
 </Story>
 
-<Source language="tsx" id="inputs-comboboxmultiselect--g-read-only" />
+<Source language="tsx" id="inputs-comboboxmultiselect--h-read-only" />
 
 ## Help text
 
 Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `validationState` is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
 
 <Story
-  name="h) Help"
+  name="i) Help"
   parameters={{
     docs: {
       source: {
@@ -263,12 +284,12 @@ TBC`,
   <HelpTextExample />
 </Story>
 
-<Source language="tsx" id="inputs-comboboxmultiselect--h-help" />
+<Source language="tsx" id="inputs-comboboxmultiselect--i-help" />
 
 ## ComboBox Props
 
 <Story
-  name="i) Asynchronous loading"
+  name="j) Asynchronous loading"
   parameters={{
     docs: {
       source: {
@@ -290,7 +311,7 @@ TBC`,
 
 <Source
   language="tsx"
-  id="inputs-comboboxmultiselect--i-asynchronous-loading"
+  id="inputs-comboboxmultiselect--j-asynchronous-loading"
 />
 
 <ArgsTable of={ComboBoxMultiSelectType} />
