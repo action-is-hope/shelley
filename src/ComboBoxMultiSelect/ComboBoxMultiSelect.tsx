@@ -159,7 +159,6 @@ function ComboBoxMultiSelect<
 
   /* eslint-disable @typescript-eslint/unbound-method*/
   const { contains } = useFilter({ sensitivity: "base" });
-  // const [inputValue, setInputValue] = useState(defaultInputValue || "");
   const [inputValue, setInputValue] = useState(
     inputValueProp !== undefined ? inputValueProp : defaultInputValue || ""
   );
@@ -319,19 +318,6 @@ function ComboBoxMultiSelect<
   if (preventKeyAction === "always") preventKeyActionValue = true;
   if (preventKeyAction === "menuOpen") preventKeyActionValue = isOpen;
 
-  // const inputProps = {
-  //   ...getInputProps(
-  //     getDropdownProps({
-  //       preventKeyAction: preventKeyActionValue,
-  //       ref: inputRef,
-  //       disabled: isDisabled,
-  //       readOnly: isReadOnly,
-  //     }),
-  //   ),
-  //   className: fieldClasses.fieldInput,
-  //   "data-id": dataId ? `${dataId}--input` : undefined,
-  // };
-
   const inputProps = {
     ...getInputProps({
       ...getDropdownProps({
@@ -482,6 +468,7 @@ function ComboBoxMultiSelect<
             {!removeTrigger && (
               <Button
                 {...triggerProps}
+                aria-label="Show suggestions"
                 aria-haspopup="listbox"
                 icon={triggerIcon}
                 ref={buttonRef}
@@ -497,7 +484,6 @@ function ComboBoxMultiSelect<
       className={st(classes.root, classNameProp)}
     >
       {/* Fragment required to stop the clone inside Field. */}
-
       <>
         <input
           {...inputProps}

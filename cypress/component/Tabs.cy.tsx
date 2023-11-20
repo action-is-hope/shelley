@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Tabs, TabsProps, Item, Button } from "../../src/indexLib";
 
 const tabs = '[data-id="tabs"]';
-const tabPanel = '[data-id="tabs-tab-panel"]';
-const tabList = '[data-id="tabs-tab-list"]';
-const tabItem = '[data-id="tabs-tab-item"]';
+const tabPanel = '[data-id="tabs-tabPanel"]';
+const tabList = '[data-id="tabs-tabList"]';
+const tabItem = '[data-id="tabs-tabItem"]';
 
 const TabsExample = function <T extends object>(props: Partial<TabsProps<T>>) {
   return (
