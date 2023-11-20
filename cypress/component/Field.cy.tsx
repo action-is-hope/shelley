@@ -129,7 +129,7 @@ describe("Adornments", () => {
         <input id="testField" type="text" aria-labelledby="label-id" />
       </Field>
     );
-    cy.get('[data-id="field--start-adornment"]')
+    cy.get('[data-id="field--startAdornment"]')
       .should("exist")
       .and("have.text", "£");
   });
@@ -140,7 +140,7 @@ describe("Adornments", () => {
         <input id="testField" type="text" aria-labelledby="label-id" />
       </Field>
     );
-    cy.get('[data-id="field--end-adornment"]')
+    cy.get('[data-id="field--endAdornment"]')
       .should("exist")
       .and("have.text", ".00");
   });
@@ -155,8 +155,8 @@ describe("Adornments", () => {
         <input id="testField" type="text" aria-labelledby="label-id" />
       </Field>
     );
-    cy.get('[data-id="field--start-adornment"]').should("not.exist");
-    cy.get('[data-id="field--end-adornment"]').should("not.exist");
+    cy.get('[data-id="field--startAdornment"]').should("not.exist");
+    cy.get('[data-id="field--endAdornment"]').should("not.exist");
     cy.get("#startAdornmentElement").should("have.text", "start adornment");
     cy.get("#endAdornmentElement").should("have.text", "end adornment");
   });
