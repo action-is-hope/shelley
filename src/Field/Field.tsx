@@ -154,7 +154,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         {typeof startAdornment === "string" ? (
           <InputAdornment
             className={classes.startAdornment}
-            data-id={dataId ? `${dataId}--start-adornment` : undefined}
+            data-id={dataId ? `${dataId}--startAdornment` : undefined}
           >
             {startAdornment}
           </InputAdornment>
@@ -166,7 +166,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           ? endAdornment && (
               <InputAdornment
                 className={classes.endAdornment}
-                data-id={dataId ? `${dataId}--end-adornment` : undefined}
+                data-id={dataId ? `${dataId}--endAdornment` : undefined}
               >
                 {endAdornment}
               </InputAdornment>

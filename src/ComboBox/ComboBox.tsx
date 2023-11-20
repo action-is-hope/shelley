@@ -204,7 +204,7 @@ function ComboBox<T extends object>(
                 tone={false}
                 className={classes.trigger}
                 data-id={dataId ? `${dataId}--trigger` : undefined}
-              ></Button>
+              />
             )}
           </>
         ),

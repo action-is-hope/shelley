@@ -95,14 +95,14 @@ function Tabs<T extends object>(
           {...mergeProps(tabListProps, focusProps)}
           ref={ref ? mergeRefs(ref, localRef) : localRef}
           // ref={ref}
-          data-id={dataId ? `${dataId}-tab-list` : undefined}
+          data-id={dataId ? `${dataId}-tabList` : undefined}
         >
           {[...state.collection].map((item) => (
             <Tab
               key={item.key}
               item={item}
               state={state}
-              data-id={dataId ? `${dataId}-tab-item` : undefined}
+              data-id={dataId ? `${dataId}-tabItem` : undefined}
             />
           ))}
         </div>
@@ -116,7 +116,7 @@ function Tabs<T extends object>(
       <TabPanel
         key={state.selectedItem?.key}
         state={state}
-        dataId={dataId ? `${dataId}-tab-panel` : undefined}
+        dataId={dataId ? `${dataId}-tabPanel` : undefined}
       />
     </div>
   );
