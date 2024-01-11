@@ -52,7 +52,7 @@
   "dependencies": {
     "@react-aria/toast": "^3.0.0-beta.7",
     "@react-aria/utils": "^3.22.0",
-    "@react-stately/tree": "^3.7.4",
+    "@react-stately/tree": "^3.7.5",
     "@react-types/menu": "^3.9.6",
     "@react-types/overlays": "^3.8.4",
     "@react-types/shared": "^3.22.0",
