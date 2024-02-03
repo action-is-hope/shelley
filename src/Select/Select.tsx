@@ -180,6 +180,8 @@ function Select<T extends object>(
                     localRef?.current && localRef.current.focus();
                   },
                   returnFocus: false,
+                  // Firefox issue where within a scroll container the popup flashes open/closed.
+                  scrollLock: false,
                 },
                 "data-id": dataId ? `${dataId}--popup` : undefined,
               }}
