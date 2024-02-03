@@ -84,7 +84,7 @@ export function MenuTrigger({
   popupClassName,
   ...rest
 }: MenuTriggerProps) {
-  const triggerRef = React.useRef(null);
+  const triggerRef = React.useRef<HTMLElement>(null);
   const [menuTriggerChild, menuChild] = React.Children.toArray(children);
 
   // Create state based on the incoming props /// removed props...
@@ -128,6 +128,15 @@ export function MenuTrigger({
               placement,
               offset,
               crossOffset,
+              focusOnProps: {
+                onDeactivation: () => {
+                  // Manually setting focus back as return focus only works once. @todo Investigate.
+                  triggerRef?.current && triggerRef.current.focus();
+                },
+                returnFocus: false,
+                // Firefox issue where within a scroll container the popup flashes open/closed.
+                scrollLock: false,
+              },
               ...rest,
             }}
             shouldCloseOnBlur
