@@ -38,10 +38,7 @@
 
   /* 1 */
   TableView:vol(1)::table {
-    -st-mixin:
-      textVol(minValue 0.7,
-        maxValue 0.88,
-        lineHeight 1.3);
+    -st-mixin: textVol(minValue 0.7, maxValue 0.88, lineHeight 1.3);
   }
 
   /* 2 */
