@@ -80,6 +80,7 @@ function TextField(
           setTextValue(value);
           onChange && onChange(value);
         },
+        autoCapitalize: undefined,
         inputElementType: isTextArea ? "textarea" : "input",
       },
       localRef

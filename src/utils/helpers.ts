@@ -6,7 +6,7 @@ export interface ComponentDocs {
   filePath: string;
   methods: unknown[];
   props: PropRow[];
-  tags: unknown;
+  tags: any;
 }
 
 export interface PropRow {

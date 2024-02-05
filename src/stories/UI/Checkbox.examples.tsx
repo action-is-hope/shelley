@@ -4,15 +4,15 @@ import PropsTable from "../../utils/TableProps";
 import data from "../../../componentInfo.json";
 import {
   componentMetaDataReducer,
-  ComponentDocs,
+  // ComponentDocs,
   PropRow,
   PropRowDisplay,
 } from "../../utils/helpers";
 
-export const TestProps = (args: CheckboxProps) => {
+export const TestProps = () => {
   // const reducedData = componentMetaDataReducer(data[1].props);
 
-  const componentData: ComponentDocs[] = data as ComponentDocs[];
+  const componentData = data as any[];
   const reducedData = componentMetaDataReducer(
     componentData[1]?.props as PropRow[]
   );
