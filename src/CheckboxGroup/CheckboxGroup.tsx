@@ -10,7 +10,7 @@ import { Field, FieldProps } from "../Field";
 import { st, classes } from "./checkboxGroup.st.css";
 
 export interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, "excludeFromTabOrder">,
+  extends Omit<AriaCheckboxGroupProps, "excludeFromTabOrder" | "errorMessage">,
     Omit<
       FieldProps,
       | "label"

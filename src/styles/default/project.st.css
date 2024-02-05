@@ -5,7 +5,7 @@
  * so project seems more appropriate. 
  */
 
-@namespace "Default";
+@st-namespace "Default";
 
 :import {
   -st-from: "../formatters/common";

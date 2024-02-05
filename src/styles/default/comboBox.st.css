@@ -1,3 +1,4 @@
+@st-namespace "DefaultComboBox";
 /**
  * = ComboBox - comboBox.st.css
  *
@@ -15,7 +16,6 @@
     margin-right: -6px;
     margin-left: 2px;
     font-size: 1em;
-    padding: 0
   }
 
   ComboBox::endAdornment {
@@ -26,6 +26,7 @@
 
   ComboBox::loader {
     margin-left: 2px;
+    align-self: center;
   }
 
 }

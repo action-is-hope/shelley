@@ -1,3 +1,12 @@
+@st-namespace "DefaultToast";
+/**
+ * = Toast - toast.st.css
+ *
+ * Base theme styles for a Shelley Toast.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toast.st.css
+ * 
+ */
 @st-import Default, [
   --spacing-unit,
   --border-radius-button,

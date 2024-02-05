@@ -1,4 +1,4 @@
-@namespace "Field";
+@st-namespace "Field";
 @st-import HelpText from "../HelpText/helpText.st.css";
 @st-import InputLabel from "../Label/label.st.css";
 

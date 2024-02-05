@@ -1,6 +1,14 @@
 "use client";
 import type React from "react";
-import { useState, Ref, forwardRef, HTMLAttributes, RefObject } from "react";
+import {
+  useState,
+  Ref,
+  useRef,
+  forwardRef,
+  HTMLAttributes,
+  RefObject,
+} from "react";
+import { mergeRefs } from "@react-aria/utils";
 import type { MergeElementProps } from "../typings/utils";
 import type { ComponentBase, TextInputType } from "../typings/shared-types";
 import { Field, FieldProps } from "../Field";
@@ -51,18 +59,18 @@ function TextField(
     type = "text",
     value,
     defaultValue,
+    hasValue,
     "data-id": dataId,
   } = props;
   /**
-   * textValue stores the value to be used to format multiline and stylews for hasValue:
+   * textValue stores the value to be used to format multiline and styles for hasValue:
    * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
    */
   // @todo useEffect else it won't work onload with values applied
   const [textValue, setTextValue] = useState(value || defaultValue);
   const rows = props.rows || 0;
   const isTextArea = type === "textarea" || rows > 0;
-  const textareaRef = ref as RefObject<HTMLTextAreaElement>;
-  const inputRef = ref as RefObject<HTMLInputElement>;
+  const localRef = useRef(null);
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField(
@@ -74,7 +82,7 @@ function TextField(
         },
         inputElementType: isTextArea ? "textarea" : "input",
       },
-      isTextArea ? textareaRef : inputRef
+      localRef
     );
 
   return (
@@ -85,7 +93,7 @@ function TextField(
         validationState,
         label,
         startAdornment,
-        hasValue: Boolean(textValue),
+        hasValue: hasValue ?? Boolean(textValue),
         isRequired,
         isReadOnly,
         endAdornment,
@@ -109,14 +117,14 @@ function TextField(
             rows={rows}
             {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
             data-id={dataId ? `${dataId}--textarea` : undefined}
-            ref={textareaRef}
+            ref={mergeRefs(localRef, ref as RefObject<HTMLTextAreaElement>)}
           />
         </div>
       ) : (
         <input
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
           data-id={dataId ? `${dataId}--input` : undefined}
-          ref={inputRef}
+          ref={mergeRefs(localRef, ref as RefObject<HTMLInputElement>)}
         />
       )}
     </Field>

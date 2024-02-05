@@ -1,4 +1,4 @@
-@namespace "Radio";
+@st-namespace "Radio";
 @st-import InputLabel from "../Label/label.st.css";
 
 .root {

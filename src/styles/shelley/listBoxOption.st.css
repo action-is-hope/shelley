@@ -1,11 +1,11 @@
-/* = Shelley project scope and vars. */
+@st-namespace "ShelleyListBoxOption";
+
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named: --background-color-item-hover;
 }
 
-/* = Root Component */
 :import {
   -st-from: "../../ListBoxOption/listBoxOption.st.css";
   -st-default: ListBoxOption;

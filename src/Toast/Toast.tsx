@@ -113,10 +113,12 @@ function Toast(
           <Button
             tone={false}
             className={classes.actionButton}
+            {...withOrWithoutCloseButtonProps}
             onPress={(e) => {
               onActionHandler(e, state);
+              withOrWithoutCloseButtonProps.onPress &&
+                withOrWithoutCloseButtonProps?.onPress(e);
             }}
-            {...withOrWithoutCloseButtonProps}
             data-id={dataId ? `${dataId}--actionButton` : undefined}
           >
             {actionLabel}

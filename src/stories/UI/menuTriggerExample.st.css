@@ -1,0 +1,43 @@
+@st-import Menu from "../../Menu/menu.st.css";
+@st-import MenuItem from "../../MenuItem/menuItem.st.css";
+@st-import Popup from "../../Popup/popup.st.css";
+@st-import Shelley from "../../styles/shelley/project.st.css";
+
+.inlineMenu {
+  -st-extends: Menu;
+}
+
+@st-scope Shelley {
+  Popup.inlineMenuPopup {
+    border: none;
+    background-color: transparent;
+  }
+
+  Menu.inlineMenu {
+    display: inline-flex;
+    gap: 1em;
+    border: none
+  }
+
+  Menu.inlineMenu::item {
+    border-left: none;
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.55em;
+  }
+
+  Menu.inlineMenu MenuItem::text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  Menu.inlineMenu MenuItem:isFocused {
+    /* background-color: whatever-you-like; */
+  }
+
+  Menu.inlineMenu svg {
+    grid-area: "checkmark";
+  }
+}

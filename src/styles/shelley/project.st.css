@@ -19,7 +19,7 @@
  * go to for your projects. Up to you.
  */
 
-@namespace "Shelley";
+@st-namespace "Shelley";
 
 /* = Default project vars to be overridden. */
 :import {
@@ -32,7 +32,7 @@
     --color-form-selection-notch,
     --color-switch-notch,
     --color-background-textField-filled,
-
+    --spacing-unit,
     --grid-gap,
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,

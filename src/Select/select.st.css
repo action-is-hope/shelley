@@ -1,4 +1,4 @@
-@namespace "Select";
+@st-namespace "Select";
 @st-import Field from "../Field/field.st.css";
 @st-import Button from "../Button/button.st.css";
 @st-import Popup from "../Popup/popup.st.css";

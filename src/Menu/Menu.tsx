@@ -42,6 +42,7 @@ function Menu<T extends object>(
           className={classes.item}
           item={item}
           state={state}
+          selectionMode={props.selectionMode}
         />
       ))}
     </ul>

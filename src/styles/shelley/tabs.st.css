@@ -1,4 +1,4 @@
-/* tabs.st.css */
+@st-namespace "ShelleyTabs";
 @st-import Shelley, [
     --color-ui-inverse,
     --color-ui-raw,

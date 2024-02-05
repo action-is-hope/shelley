@@ -74,6 +74,7 @@ function Select<T extends object>(
     shouldFocusOnHover = true,
     triggerIcon = <AngleDown />,
     "data-id": dataId,
+    hasValue,
   } = props;
   // Create state based on the incoming props
   const state = useSelectState(props);
@@ -118,6 +119,7 @@ function Select<T extends object>(
         fieldContainerProps: {
           ref: fieldContainerRef,
         },
+        hasValue,
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
         variant,
@@ -176,6 +178,8 @@ function Select<T extends object>(
                     localRef?.current && localRef.current.focus();
                   },
                   returnFocus: false,
+                  // Firefox issue where within a scroll container the popup flashes open/closed.
+                  scrollLock: false,
                 },
                 "data-id": dataId ? `${dataId}--popup` : undefined,
               }}

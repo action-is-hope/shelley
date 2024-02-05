@@ -1,4 +1,4 @@
-@namespace "DisclosureGroup";
+@st-namespace "DisclosureGroup";
 
 /* DisclosureGroup */
 @st-import Disclosure from "./disclosure.st.css";

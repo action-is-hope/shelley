@@ -1,120 +1,81 @@
-@namespace "ProgressBar";
+@st-namespace "ProgressBar";
 
 .root {
-
   -st-states: isIndeterminate,
     size(enum(small, medium, large)),
     overBackground,
     multistep(boolean),
     variant(enum(overBackground));
 
-  --loader-bar-small-width: 60px;
-  --loader-bar-small-height: 60px;
-  --loader-bar-small-border-size: 2px;
-
-  --loader-bar-medium-width: 150px;
-  --loader-bar-medium-height: 150px;
-  --loader-bar-medium-border-size: 3px;
-
-  --loader-bar-large-width: 300px;
-  --loader-bar-large-height: 300px;
-  --loader-bar-large-border-size: 4px;
+  --loader-bar-size-small: 2px;
+  --loader-bar-size-medium: 8px;
+  --loader-bar-size-large: 12px;
 
   --loader-bar-track-color: lightgrey;
-  --loader-bar-track-fill-color: grey;
+  --loader-bar-track-fill-color: green;
+  --loader-border-radius: calc(var(--loader-bar-size) / 2);
 
   /* Defaults to medium */
-  --loader-bar-width: var(--loader-bar-medium-width);
-  --loader-bar-height: var(--loader-bar-medium-height);
-  --loader-bar-border-size: var(--loader-bar-medium-border-size);
+  --loader-bar-size: var(--loader-bar-size-medium);
 }
 
 .root:size(small) {
-  --loader-bar-width: var(--loader-bar-small-width);
-  --loader-bar-height: var(--loader-bar-small-height);
-  --loader-bar-border-size: var(--loader-bar-small-border-size);
+  --loader-bar-size: var(--loader-bar-size-small);
 }
 
 .root:size(large) {
-  --loader-bar-width: var(--loader-bar-large-width);
-  --loader-bar-height: var(--loader-bar-large-height);
-  --loader-bar-border-size: var(--loader-bar-large-border-size);
-}
-.root {}
-
-.stepActive {}
-
-.trackWrapper {}
-
-.track {}
-
-.fill {}
-
-.label {}
-
-.stepContainer {}
-
-.stepIndicator {}
-
-.stepIndicatorFill {}
-
-.root {
-
-  width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  width: var(--loader-bar-width);
-  height: var(--loader-bar-height);
+  --loader-bar-size: var(--loader-bar-size-large);
 }
 
-.root:isIndeterminate .fill {
-  animation: indeterminateAnimation 2s linear infinite;
-}
-
-.step {
-  height: 100%;
-  background-color: #007a4d;
-  transition: width 0.2s ease-in-out;
-}
-
-.trackWrapper {
-  height: 10px;
-}
-
-.fill {
-  background-color: #007a4d;
-  height: 10px;
+.text {
+  display: grid;
+  margin-bottom: 8px;
 }
 
 .label {
-  color: #6a6a6a;
+  grid-row: 1;
+  justify-self: start;
 }
 
-.stepContainer {
+.valueLabel {
+  grid-row: 1;
+  justify-self: end;
+}
+
+.bar {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
+  overflow: hidden;
+  border-radius: var(--loader-border-radius);
 }
 
-.stepIndicator {
+.track {
   -st-states: active;
   flex-grow: 1;
-  margin: 0 2px;
-  background-color: #e6e6e6;
+  background-color: var(--loader-bar-track-color);
+  border-radius: var(--loader-border-radius);
 }
 
-.stepIndicatorFill {
+.fill {
   -st-states: isActive;
+  height: var(--loader-bar-size);
+  border-radius: var(--loader-border-radius);
 }
 
-.stepIndicatorFill:isActive {
-  background-color: #007a4d;
+.fill:isActive {
+  background-color: var(--loader-bar-track-fill-color);
+}
+
+.root:isIndeterminate::fill {
+  animation: indeterminateAnimation 1s linear infinite;
 }
 
 @keyframes indeterminateAnimation {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(200%);
   }

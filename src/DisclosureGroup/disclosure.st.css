@@ -1,5 +1,5 @@
 /* disclosure.st.css */
-@namespace "Disclosure";
+@st-namespace "Disclosure";
 @st-import Button from "../Button/button.st.css";
 
 .root {

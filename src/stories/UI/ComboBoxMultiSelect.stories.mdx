@@ -1,0 +1,332 @@
+import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
+import { ComboBoxMultiSelect } from "../../indexLib";
+import { StoryGrid } from "../StoryLayout";
+import {
+  ComboBoxMultiSelectType,
+  BasicComboBox,
+  LabelingExample,
+  SelectionExample,
+  ControlledInput,
+  AsyncLoadingExample,
+  HelpTextExample,
+  ReadOnlyExample,
+  DisabledExample,
+} from "./ComboBoxMultiSelect.examples";
+import dedent from "ts-dedent";
+
+<Meta
+  title="Inputs/ComboBoxMultiSelect"
+  argTypes={{
+    vol: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: "number" },
+      description: "volume of the description",
+    },
+    variant: {
+      options: ["outlined", "filled", "quiet", false],
+      control: { type: "inline-radio" },
+    },
+    labelPosition: {
+      options: ["over", "top", "side", "hidden"],
+      control: { type: "inline-radio" },
+      defaultValue: "over",
+    },
+    isDisabled: {
+      control: { type: "boolean" },
+    },
+    isReadOnly: {
+      control: { type: "boolean" },
+    },
+    description: {
+      control: { type: "text" },
+    },
+    placeholder: {
+      control: { type: "text" },
+    },
+    disableLabelTransition: {
+      control: "boolean",
+      if: { arg: "labelPosition", eq: "over" },
+    },
+    errorMessage: {
+      control: { type: "text" },
+      defaultValue: "Error message...",
+    },
+    validationState: {
+      options: ["valid", "invalid"],
+      control: { type: "inline-radio" },
+    },
+  }}
+  component={ComboBoxMultiSelect}
+/>
+
+# ComboBox MultiSelect
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { ComboBoxMultiSelect, ComboBoxMultiSelectItem } from "@actionishope/shelley";
+  `}
+/>
+
+Currently in alpha stages.
+
+ComboBoxMultiSelect combines a text entry with a popup listbox, allowing users to filter a list of options to items matching a query and select more than one.
+
+This component is built using `Downshift` in conjuntion with the `Field` component; whilst it looks the same `Combobox` the API is different due to `Combobox` using the Adobe aria hooks.
+
+We felt the need to add a multiselect as it is a common usecase but it also serves as an example should you need a super custom combobox.
+
+<Story
+  name="a) ComboBoxMultiSelect"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+      import { useFilter } from "react-aria";\n
+      const { contains } = useFilter({ sensitivity: "base" });\n
+      <ComboBoxMultiSelect
+        label="Favorite Animal"
+        portalSelector="#portal"
+        items={books}
+        defaultValue={initialSelectedItems}
+        onInputChange={(value) => console.log(value)}
+        filterFunction={(item, inputValue) => {
+          return item
+            ? contains(item.title, inputValue) ||
+                contains(item.author, inputValue)
+            : false;
+        }}
+        onSelectionChange={(selectedItems) => {
+          console.log("Selected Items:", selectedItems);
+        }}
+      >
+        {(item) => {
+          return (
+            <div>
+              {item?.title}, {item?.author}
+            </div>
+          );
+        }}
+      </ComboBoxMultiSelect>`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <BasicComboBox />
+</Story>
+
+<Source
+  language="tsx"
+  id="inputs-comboboxmultiselect--a-combo-box-multi-select"
+/>
+
+## Content
+
+ComboBoxMultiSelect requires a render function as `children` that returns the JSX to render. The render function includes `item` and `isSelected` as arguments and is rendered via `ComboBoxMultiSelectItem`.
+
+### Internationalisation
+
+To internationalise a ComboBox, a localized string should be passed to the children of each Item. For languages that are read right-to-left (e.g. Hebrew and Arabic), the layout of the ComboBox is automatically flipped.
+
+## Labeling
+
+ComboBox can be labeled using the `label` prop and positioned with `labelPosition`.
+
+<Story
+  name="d) Labeling"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC
+`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={"40vw"}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <LabelingExample />
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--d-labeling" />
+
+### Accessibility
+
+If a visible label isn't specified, an aria-label must be provided to the ComboBox for accessibility. If the field is labeled by a separate element, an aria-labelledby prop must be provided using the id of the labeling element instead.
+
+### Internationalisation
+
+In order to internationalise a ComboBox, a localized string should be passed to the label or aria-label prop.
+
+## Selection
+
+<Story
+  name="e) Selection"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+>
+  <SelectionExample />
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--e-selection" />
+
+## Controlled Input
+
+<Story
+  name="f) Controlled Input"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+>
+  <StoryGrid maxWidth={250}>
+    <ControlledInput />
+  </StoryGrid>
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--f-controlled-input" />
+
+## Disabled
+
+<Story
+  name="g) Disabled"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <DisabledExample />
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--g-disabled" />
+
+## Read only
+
+<Story
+  name="h) Read only"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <ReadOnlyExample />
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--h-read-only" />
+
+## Help text
+
+Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `validationState` is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
+
+<Story
+  name="i) Help"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <HelpTextExample />
+</Story>
+
+<Source language="tsx" id="inputs-comboboxmultiselect--i-help" />
+
+## ComboBox Props
+
+<Story
+  name="j) Asynchronous loading"
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+TBC`,
+      },
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <StoryGrid maxWidth={250}>
+        <Story />
+      </StoryGrid>
+    ),
+  ]}
+>
+  <AsyncLoadingExample />
+</Story>
+
+<Source
+  language="tsx"
+  id="inputs-comboboxmultiselect--j-asynchronous-loading"
+/>
+
+<ArgsTable of={ComboBoxMultiSelectType} />
+
+## Styling
+
+{/_ Add style info _/}
+
+<Source
+  language="css"
+  dark
+  format={false}
+  code={dedent`
+    #docs {
+      write-some: style-docs;
+    }
+  `}
+/>

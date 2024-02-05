@@ -64,6 +64,8 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
   crossOffset?: number;
   /** hide the Popup arrow */
   hideArrow?: boolean;
+  /** Override the Popup style via this classname */
+  popupClassName?: string;
 }
 
 export function MenuTrigger({
@@ -79,9 +81,10 @@ export function MenuTrigger({
   portalSelector = "body",
   shouldFlip,
   trigger,
+  popupClassName,
   ...rest
 }: MenuTriggerProps) {
-  const triggerRef = React.useRef(null);
+  const triggerRef = React.useRef<HTMLElement>(null);
   const [menuTriggerChild, menuChild] = React.Children.toArray(children);
 
   // Create state based on the incoming props /// removed props...
@@ -118,12 +121,22 @@ export function MenuTrigger({
           <Popup
             isOpen={state.isOpen}
             onClose={() => state.close()}
+            className={popupClassName}
             {...{
               shouldFlip,
               triggerRef,
               placement,
               offset,
               crossOffset,
+              focusOnProps: {
+                onDeactivation: () => {
+                  // Manually setting focus back as return focus only works once. @todo Investigate.
+                  triggerRef?.current && triggerRef.current.focus();
+                },
+                returnFocus: false,
+                // Firefox issue where within a scroll container the popup flashes open/closed.
+                scrollLock: false,
+              },
               ...rest,
             }}
             shouldCloseOnBlur

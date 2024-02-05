@@ -6,7 +6,7 @@
  * defining the 'dark' specific overrides.
  */
 
-@namespace "dark";
+@st-namespace "dark";
 
 :import {
   -st-from: "../project.st.css";

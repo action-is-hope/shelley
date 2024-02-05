@@ -1,4 +1,4 @@
-@namespace "Modal";
+@st-namespace "Modal";
 
 .root {
   -st-states:
@@ -41,7 +41,7 @@
   position: relative;
 }
 
-.blurBackground [data-focus-on-hidden]:not(.root) {
+.blurBackground [data-focus-on-hidden]:not(.root, .root *) {
   opacity: .5;
   filter: blur(2px);
 }

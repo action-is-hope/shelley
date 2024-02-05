@@ -1,18 +1,17 @@
-/* = Default project vars. */
+@st-namespace "ShelleyMenuItem";
+
 :import {
   -st-from: "../default/project.st.css";
   -st-named:
     --spacing-unit;
 }
 
-/* = Shelley project scope and vars. */
 :import {
   -st-from: "./project.st.css";
   -st-default: Shelley;
   -st-named: --background-color-item-hover;
 }
 
-/* = Root Component */
 :import {
   -st-from: "../../MenuItem/menuItem.st.css";
   -st-default: MenuItem;

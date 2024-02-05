@@ -1,3 +1,4 @@
+@st-namespace "ShelleyHelpText";
 @st-import [--spacing-unit] from "../default/project.st.css";
 @st-import Shelley, [--color-text-help] from "./project.st.css";
 @st-import HelpText from "../../HelpText/helpText.st.css";

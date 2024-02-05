@@ -1,7 +1,8 @@
-@namespace "MenuItem";
+@st-namespace "MenuItem";
 
 .root {
   -st-states:
+    selectionMode(enum(none, single, multiple)),
     isDisabled,
     isFocused,
     isSelected,
