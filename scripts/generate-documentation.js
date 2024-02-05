@@ -14,6 +14,7 @@ const tsConfigParser = reactDocgenTypescript.withCustomConfig(
   }
 );
 
+// const componentInfo = tsConfigParser.parse("./src/Blockquote/Blockquote.tsx");
 const componentInfo = tsConfigParser.parse("./src/indexLib.ts");
 
 fs.writeFileSync(

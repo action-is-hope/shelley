@@ -36,11 +36,7 @@
     --grid-gap,
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,
-    --grid-v1-cols-md,
-
-    --text-vol-10-max,
-    --text-vol-10-scale,
-    --text-vol-10-line-height;
+    --grid-v1-cols-md;
 }
 
 

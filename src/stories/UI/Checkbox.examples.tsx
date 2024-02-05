@@ -1,5 +1,33 @@
 import { P, Checkbox, CheckboxProps } from "../../indexLib";
 import { useState } from "react";
+import PropsTable from "../../utils/TableProps";
+import data from "../../../componentInfo.json";
+import {
+  componentMetaDataReducer,
+  ComponentDocs,
+  PropRow,
+  PropRowDisplay,
+} from "../../utils/helpers";
+
+export const TestProps = (args: CheckboxProps) => {
+  // const reducedData = componentMetaDataReducer(data[1].props);
+
+  const componentData: ComponentDocs[] = data as ComponentDocs[];
+  const reducedData = componentMetaDataReducer(
+    componentData[1]?.props as PropRow[]
+  );
+
+  return (
+    <>
+      <P>
+        {componentData[0]?.displayName} - {componentData[1]?.filePath}
+      </P>
+      <PropsTable
+        propMetaData={reducedData?.BlockquoteProps?.props as PropRowDisplay[]}
+      />
+    </>
+  );
+};
 
 export const ValueExample = (args: CheckboxProps) => {
   const [selected, setSelected] = useState(true);

@@ -5,26 +5,119 @@
  * 
  * ========================================================================= */
 
-:import {
-  -st-from: "../project.st.css";
-  -st-default: Default;
-  -st-named:
-    breakpoint-xxl;
-}
+@st-import [
+    breakpoint-xxl,
+    text-vol-1-max, text-vol-1-min, text-vol-1-line-height,
+    text-vol-2-max, text-vol-2-min, text-vol-2-line-height,
+    text-vol-3-max, text-vol-3-min, text-vol-3-line-height,
+    text-vol-4-max, text-vol-4-min, text-vol-4-line-height,
+    text-vol-5-max, text-vol-5-min, text-vol-5-line-height,
+    text-vol-6-max, text-vol-6-min, text-vol-6-line-height,
+    text-vol-7-max, text-vol-7-min, text-vol-7-line-height,
+    text-vol-8-max, text-vol-8-min, text-vol-8-line-height,
+    text-vol-9-max, text-vol-9-min, text-vol-9-line-height,
+    text-vol-10-max, text-vol-10-min, text-vol-10-line-height,
+    text-vol-11-max, text-vol-11-min, text-vol-11-line-height
+  ] from "../project.st.css";
 
 :vars {
-  scale: calc(1em + 0.125 * ((100vw - 20em) / (92.5)));
-  max: 1.125em;
+  minValue: 1;
+  maxValue: 1.125;
+  transitionWidthUp: "112.5";
+  transitionWidthDown: "20";
+  unit: "em";
   lineHeight: normal;
 }
 
+/* Main Mixin */
 .textVol {
-  font-size: value(scale);
+  font-size: calc(value(minValue)value(unit) + (value(maxValue) - value(minValue)) * (100vw - value(transitionWidthDown)value(unit)) / (value(transitionWidthUp) - value(transitionWidthDown)));
   line-height: value(lineHeight);
 }
 
 @media value(breakpoint-xxl) {
   .textVol {
-    font-size: value(max);
+    font-size: value(maxValue);
   }
+}
+
+/* Sub mixins - Volumes */
+.textVol1 {
+  -st-mixin:
+    textVol(minValue value(text-vol-1-min),
+      maxValue value(text-vol-1-max),
+      lineHeight value(text-vol-1-line-height));
+}
+
+.textVol2 {
+  -st-mixin:
+    textVol(minValue value(text-vol-2-min),
+      maxValue value(text-vol-2-max),
+      lineHeight value(text-vol-2-line-height));
+}
+
+.textVol3 {
+  -st-mixin:
+    textVol(minValue value(text-vol-3-min),
+      maxValue value(text-vol-3-max),
+      lineHeight value(text-vol-3-line-height));
+}
+
+
+.textVol4 {
+  -st-mixin:
+    textVol(minValue value(text-vol-4-min),
+      maxValue value(text-vol-4-max),
+      lineHeight value(text-vol-4-line-height));
+}
+
+.textVol5 {
+  -st-mixin:
+    textVol(minValue value(text-vol-5-min),
+      maxValue value(text-vol-5-max),
+      lineHeight value(text-vol-5-line-height));
+}
+
+.textVol6 {
+  -st-mixin:
+    textVol(minValue value(text-vol-6-min),
+      maxValue value(text-vol-6-max),
+      lineHeight value(text-vol-6-line-height));
+}
+
+.textVol7 {
+  -st-mixin:
+    textVol(minValue value(text-vol-7-min),
+      maxValue value(text-vol-7-max),
+      lineHeight value(text-vol-7-line-height));
+}
+
+.textVol8 {
+  -st-mixin:
+    textVol(minValue value(text-vol-8-min),
+      maxValue value(text-vol-8-max),
+      lineHeight value(text-vol-8-line-height));
+}
+
+.textVol9 {
+  -st-mixin:
+    textVol(minValue value(text-vol-9-min),
+      maxValue value(text-vol-9-max),
+      lineHeight value(text-vol-9-line-height));
+}
+
+.textVol10 {
+  -st-mixin:
+    textVol(minValue value(text-vol-10-min),
+      maxValue value(text-vol-10-max),
+      lineHeight value(text-vol-10-line-height));
+  font-weight: 300;
+}
+
+.textVol11 {
+  -st-mixin:
+    textVol(minValue value(text-vol-11-min),
+      maxValue value(text-vol-11-max),
+      lineHeight value(text-vol-11-line-height));
+  font-weight: 300;
 }

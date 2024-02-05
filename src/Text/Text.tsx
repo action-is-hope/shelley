@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import type { TextVolume } from "../typings/shared-types";
-import { VisuallyHidden } from "../VisuallyHidden/VisuallyHidden";
+import { VisuallyHidden } from "../VisuallyHidden";
 import { st, classes } from "./text.st.css";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {

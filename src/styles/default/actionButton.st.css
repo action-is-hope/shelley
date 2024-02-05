@@ -19,24 +19,13 @@
 
   /* = The base <button> element. */
   ActionButton {
-    /* = Removes system styles. */
     -st-mixin: hideWebkitAppearance;
-    /* = Caters postioned children, e.g focus pseudo element. Also 
-    'activates' z-index should you need it. */
     position: relative;
-    /* = Effects - 'all' --maybe-- IS too much... project var perhaps. */
     transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    /* = Opininated: Some disagree with setting cursor: pointer (the hand) on 
-    interactive elements arguing system controls don't do this. Meh, for 
-    us it offers an additional cue to interaction which we feel asserts 
-    confidence. Many sites do this so perhaps it's expected by many users. */
-    cursor: pointer;
-    /* = Really really opinionated, only do this if you are willing to provide 
-    a suitable replacement. We are control freaks. */
+    /* = opinionated, only do if you are willing to provide replacement. */
     outline: none;
-    /* = Weight choice will likely factor the font-smoothing used. */
+    cursor: pointer;
     font-weight: 400;
-    /* Using em values allowing the button to 'grow' insync with font-size. */
     padding: 0 .6em;
     height: 32px;
     border-radius: var(--border-radius-button);
@@ -44,8 +33,9 @@
 
   ActionButton {
     -st-mixin:
-      textVol(scale respScale(0.85em, .88em),
-        max .875em, lineHeight 1.1);
+      textVol(minValue 0.85em,
+        maxValue .88em,
+        lineHeight 1.1);
   }
 
   ActionButton:isQuiet {
@@ -64,10 +54,8 @@
     line-height: 0;
   }
 
-  /* = Targets an Icon component if present. */
   ActionButton Icon {
-    /* = Not ideal as we get a little rounding issues on the svgs when they / 2 
-    due to the respScale. */
+    /* = Correct rounding issues on the svgs when they / 2 due to the respScale. */
     font-size: calc(1em + 2px);
   }
 
@@ -80,7 +68,6 @@
     -st-mixin: pseudoFocusVisible;
   }
 
-  /* = ActionButton CSS STATES PSEUDO */
   /* = Disabled */
   ActionButton:isDisabled,
   ActionButton:isDisabled:hover,
