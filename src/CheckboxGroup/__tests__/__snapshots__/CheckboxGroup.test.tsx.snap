@@ -51,6 +51,7 @@ exports[`Checkbox renders correctly 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          required={false}
           type="checkbox"
           value="cb1"
         />
@@ -87,6 +88,7 @@ exports[`Checkbox renders correctly 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          required={false}
           type="checkbox"
           value="cb2"
         />
@@ -149,6 +151,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          required={false}
           type="checkbox"
           value="cb1"
         />
@@ -187,6 +190,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          required={false}
           type="checkbox"
           value="cb2"
         />
