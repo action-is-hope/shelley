@@ -79,7 +79,7 @@
    * e.g color: rgba(var(--color-ui-raw), 0.9);
    */
 
-  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  /* = Foreground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui: var(--light-01);
   --color-ui-inverse: var(--dark-01);
   --color-ui-raw: var(--light-01-raw);
