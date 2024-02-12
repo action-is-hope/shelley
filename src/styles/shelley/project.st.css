@@ -85,11 +85,11 @@
   --color-ui-raw: var(--light-01-raw);
   --color-ui-raw-inverse: var(--dark-01-raw);
 
-  /* = Accent colours */
-  --color-accent-1: #65bfff;
-  --color-accent-2: #52fba7;
-  --color-accent-3: #ea91ff;
-  --color-accent-4: #f7e1b9;
+  /* = Tone colours */
+  --color-tone-primary: #65bfff;
+  --color-tone-secondary: #52fba7;
+  --color-tone-info: #ea91ff;
+  --color-tone-success: #f7e1b9;
 
   /* = Background colours */
   --background-color-main: rgb(23, 26, 35);
@@ -105,8 +105,8 @@
   --color-text-help: rgba(var(--color-ui-raw), 0.6);
 
   /* = Form colours */
-  --color-form-switch-notch: var(--color-accent-2);
-  --color-form-selection-notch: var(--color-accent-2);
+  --color-form-switch-notch: var(--color-tone-secondary);
+  --color-form-selection-notch: var(--color-tone-secondary);
   --color-background-textField-filled: var(--background-color-contrast-1);
 
   /* = Table colours */

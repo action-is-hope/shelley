@@ -30,8 +30,18 @@ export declare type TextAlign =
   | "start"
   | "end";
 
-/** Accent color indexes */
-export declare type Accent = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | false;
+/** Tone color indexes */
+export declare type Tone =
+  | "primary"
+  | "secondary"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger"
+  | "light"
+  | "dark"
+  | "contrast"
+  | false;
 
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
