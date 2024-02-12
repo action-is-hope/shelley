@@ -47,11 +47,11 @@
     --color-ui-raw,
     --color-ui-inverse,
     --color-ui-raw-inverse,
-    /* = Accent colours */
-    --color-accent-1,
-    --color-accent-2,
-    --color-accent-3,
-    --color-accent-4,
+    /* = Tone colours */
+    --color-tone-primary,
+    --color-tone-secondary,
+    --color-tone-info,
+    --color-tone-success,
     /* = Background colours */
     --background-color-main,
     --background-color-contrast-1,
@@ -75,11 +75,11 @@
   --color-ui-inverse: var(--light-01);
   --color-ui-raw-inverse: var(--light-01-raw);
 
-  /* = Accent colours */
-  --color-accent-1: rgb(15, 108, 189);
-  --color-accent-2: rgb(3, 123, 70);
-  --color-accent-3: rgb(171, 45, 201);
-  --color-accent-4: rgb(134, 102, 30);
+  /* = Tone colours */
+  --color-tone-primary: rgb(15, 108, 189);
+  --color-tone-secondary: rgb(3, 123, 70);
+  --color-tone-info: rgb(171, 45, 201);
+  --color-tone-success: rgb(134, 102, 30);
 
   /* = Background colours */
   --background-color-main: #fff;
