@@ -29,11 +29,12 @@ export interface DisclosureGroupProps<T>
   singleView?: boolean;
 }
 
-interface Item extends Pick<DisclosureProps, "title" | "children"> {
+export interface DisclosureItem
+  extends Pick<DisclosureProps, "title" | "children"> {
   id: string;
 }
 
-function DisclosureGroup<T extends Item>(
+function DisclosureGroup<T extends DisclosureItem>(
   props: DisclosureGroupProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {

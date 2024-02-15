@@ -1,5 +1,5 @@
-import type React from "react";
-import type { ReactNode, VFC } from "react";
+import React from "react";
+import type { ReactNode } from "react";
 import type { TextVolume } from "../typings/shared-types";
 import { Text } from "../Text";
 import { st, classes } from "./blockquote.st.css";
@@ -15,23 +15,33 @@ export interface BlockquoteProps
   variant?: "informal" | "academic";
 }
 
-export const Blockquote: VFC<BlockquoteProps> = ({
-  children,
-  className: classNameProp,
-  desc,
-  descVol = 2,
-  variant,
-  ...rest
-}) => (
-  <blockquote
-    className={st(classes.root, { variant }, classNameProp)}
-    {...rest}
-  >
-    <div className={classes.content}>{children}</div>
-    {desc && (
-      <Text as="footer" vol={descVol} className={classes.desc}>
-        {desc}
-      </Text>
-    )}
-  </blockquote>
-);
+function Blockquote(props: BlockquoteProps, ref: React.Ref<HTMLQuoteElement>) {
+  const {
+    children,
+    className: classNameProp,
+    desc,
+    descVol = 2,
+    variant,
+    ...rest
+  } = props;
+
+  return (
+    <blockquote
+      ref={ref}
+      className={st(classes.root, { variant }, classNameProp)}
+      {...rest}
+    >
+      <div className={classes.content}>{children}</div>
+      {desc && (
+        <Text as="footer" vol={descVol} className={classes.desc}>
+          {desc}
+        </Text>
+      )}
+    </blockquote>
+  );
+}
+
+/**
+ * Blockquote... */
+const _Blockquote = React.forwardRef(Blockquote);
+export { _Blockquote as Blockquote };

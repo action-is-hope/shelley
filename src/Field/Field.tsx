@@ -67,7 +67,7 @@ export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
   isReadOnly?: boolean;
 }
 
-interface FieldInternalProps
+export interface FieldInternalProps
   extends Pick<
       React.HTMLProps<HTMLDivElement>,
       Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">

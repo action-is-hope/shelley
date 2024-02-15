@@ -18,11 +18,11 @@ function Tab<T extends object>(
   ref?: React.Ref<HTMLDivElement>
 ) {
   const { key, rendered } = item;
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
   const { tabProps, isSelected, isDisabled, isPressed } = useTab(
     { key },
     state,
-    localRef
+    internalRef
   );
 
   const { isFocusVisible, focusProps } = useFocusRing();
@@ -36,7 +36,7 @@ function Tab<T extends object>(
         isFocusVisible,
       })}
       {...mergeProps(tabProps, focusProps)}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       data-id={dataId}
     >
       {rendered}

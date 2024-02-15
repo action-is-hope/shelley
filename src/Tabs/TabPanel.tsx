@@ -13,14 +13,14 @@ function TabPanel<T extends object>(
   { dataId, state, ...props }: TabPanelProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const localRef = useRef<HTMLDivElement>(null);
-  const { tabPanelProps } = useTabPanel(props, state, localRef);
+  const internalRef = useRef<HTMLDivElement>(null);
+  const { tabPanelProps } = useTabPanel(props, state, internalRef);
 
   return (
     <div
       className={classes.tabPanel}
       {...tabPanelProps}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       data-id={dataId}
     >
       {(state.selectedItem?.props as { children: ReactElement })?.children}

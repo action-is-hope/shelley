@@ -59,7 +59,7 @@ function ButtonGroup(props: ButtonGroupProps, ref: React.Ref<HTMLDivElement>) {
           ? cloneElement(child, {
               ...mergeProps(
                 { isDisabled, tone, variant, vol },
-                { ...(child.props as ButtonProps) }
+                { ...(child.props as ButtonProps<"button">) }
               ),
             })
           : child;

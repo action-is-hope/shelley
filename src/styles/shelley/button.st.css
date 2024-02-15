@@ -1,5 +1,5 @@
 @st-namespace "ShelleyButton";
-@st-import Shelley, [
+@st-import Shelley, [ 
   --color-ui,
   --color-ui-inverse,
   --color-ui-raw,
@@ -38,7 +38,7 @@
 
   /* = Seperator color for when in a group. */
   ButtonGroup Button:variant(primary) {
-    --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
+    --seperator-color: rgba(var(--color-ui-raw-inverse), 0.4);
   }
 
   /* = Variant 2: 'Secondary' */
@@ -54,7 +54,7 @@
 
   Button:variant(quiet):hover,
   Button:variant(quiet):focus {
-    background-color: rgba(var(--color-ui-raw), .02);
+    background-color: rgba(var(--color-ui-raw), 0.02);
   }
 
   /* = Seperator color for when in a group. */
@@ -70,12 +70,13 @@
 
   /* = Seperator color for when in a group. */
   ButtonGroup Button:variant(fab) {
-    --seperator-color: rgba(var(--color-ui-raw-inverse), .4);
+    --seperator-color: rgba(var(--color-ui-raw-inverse), 0.4);
   }
 
   /* = Tones/Colours */
   Button:tone(1) {
     --accent: var(--color-accent-1);
+    background-color: rgba(101, 191, 255, 0.96);
   }
 
   Button:tone(2) {

@@ -30,10 +30,10 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
     "data-id": dataId,
   } = props;
 
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
 
   const state = useToggleState(props);
-  const { inputProps } = useSwitch(props, state, localRef);
+  const { inputProps } = useSwitch(props, state, internalRef);
 
   const { isFocusVisible, focusProps } = useFocusRing();
 
@@ -52,7 +52,7 @@ function Switch(props: SwitchProps, ref: React.Ref<HTMLInputElement>) {
       <input
         className={classes.input}
         {...mergeProps(inputProps, focusProps)}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
         data-id={dataId ? `${dataId}--input` : undefined}
       />
     </span>

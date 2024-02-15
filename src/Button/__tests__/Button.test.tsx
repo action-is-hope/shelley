@@ -51,7 +51,8 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           href="http://shelley.earth"
-          as="a"
+          elementType="a"
+          className="for-which-nobody-can-deny"
         >
           {btnText}
         </Button>
@@ -66,7 +67,7 @@ describe("Button", () => {
       .create(
         <Router history={memHistory}>
           <Button
-            as={Link}
+            elementType={Link}
             data-testid="button-data-testid"
             to="internal-link"
             ref={buttonRefAnchor}

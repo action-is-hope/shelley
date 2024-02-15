@@ -73,9 +73,9 @@ function TableView<T extends object>(
       (selectionMode === "single" && selectionBehavior !== "replace"),
   });
 
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
   const { collection } = state;
-  const { gridProps } = useTable(props, state, localRef);
+  const { gridProps } = useTable(props, state, internalRef);
   // @todo add a scrollerRef
   return (
     <div
@@ -88,7 +88,7 @@ function TableView<T extends object>(
       <table
         className={st(classes.table)}
         {...gridProps}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
         data-id={dataId}
       >
         <TableRowGroup type="thead" className={classes.thead}>

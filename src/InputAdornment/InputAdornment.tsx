@@ -3,7 +3,7 @@ import { st, classes } from "./inputAdornment.st.css";
 
 function InputAdornment(
   props: React.HTMLAttributes<HTMLSpanElement>,
-  ref?: React.Ref<HTMLDivElement>
+  ref?: React.Ref<HTMLSpanElement>
 ) {
   const { children, className: classNameProp, ...rest } = props;
 

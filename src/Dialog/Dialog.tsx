@@ -43,18 +43,18 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
   } = props;
 
   const size = type === "popup" ? sizeProp || "small" : sizeProp || "large";
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
 
   const { dialogProps, titleProps } = useDialog(
     mergeProps(contextProps, props),
-    localRef
+    internalRef
   );
 
   return (
     <section
       {...dialogProps}
       className={st(classes.root, { size, isDismissable }, classNameProp)}
-      ref={mergeRefs(ref, localRef)}
+      ref={mergeRefs(ref, internalRef)}
       data-id={dataId}
       /**
        * TabIndex is set to -1 by useDialog, this interferes

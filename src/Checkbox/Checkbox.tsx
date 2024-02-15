@@ -33,7 +33,7 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
     "data-id": dataId,
   } = props;
 
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
   const groupState = useContext(CheckboxGroupContext);
 
   const { inputProps } = groupState
@@ -50,10 +50,10 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
           // validationState: originalProps.validationState
         },
         groupState,
-        localRef
+        internalRef
       )
     : // eslint-disable-next-line react-hooks/rules-of-hooks
-      useCheckbox(props, useToggleState(props), localRef);
+      useCheckbox(props, useToggleState(props), internalRef);
   const { isFocusVisible, focusProps } = useFocusRing();
 
   const classNames = st(
@@ -73,7 +73,7 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
       <input
         className={classes.input}
         {...mergeProps(inputProps, focusProps)}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
         data-id={dataId ? `${dataId}--input` : undefined}
       />
     </span>

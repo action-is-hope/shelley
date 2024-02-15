@@ -11,11 +11,12 @@ const tsConfigParser = reactDocgenTypescript.withCustomConfig(
   "./tsconfig.json",
   {
     savePropValueAsString: true,
+    shouldExtractLiteralValuesFromEnum: true,
   }
 );
 
-// const componentInfo = tsConfigParser.parse("./src/Blockquote/Blockquote.tsx");
-const componentInfo = tsConfigParser.parse("./src/indexLib.ts");
+const componentInfo = tsConfigParser.parse("./src/Button/Button.tsx");
+// const componentInfo = tsConfigParser.parse("./src/indexLib.ts");
 
 fs.writeFileSync(
   "./componentInfo.json",

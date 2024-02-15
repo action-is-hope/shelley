@@ -8,7 +8,7 @@ import { FocusOn } from "react-focus-on";
 import { st, classes } from "./modal.st.css";
 import { mergeProps } from "react-aria";
 
-export function composeEventHandlers(
+function composeEventHandlers(
   theirHandler: React.MouseEventHandler<HTMLDivElement>,
   ourHandler: React.MouseEventHandler<HTMLDivElement>
 ) {

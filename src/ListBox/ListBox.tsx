@@ -31,13 +31,13 @@ function ListBox<T extends object>(
     loadingMoreString,
     loadingString,
   } = props;
-  const localRef = useRef<HTMLUListElement>(null);
+  const internalRef = useRef<HTMLUListElement>(null);
   // Create state based on the incoming props, if state is provided use that.
   let state = useListState({ ...props });
   if (props.state) state = props.state;
 
   // Get props for the listbox element
-  const { listBoxProps, labelProps } = useListBox(props, state, localRef);
+  const { listBoxProps, labelProps } = useListBox(props, state, internalRef);
 
   return (
     <>
@@ -50,7 +50,7 @@ function ListBox<T extends object>(
         className={st(classes.root, className)}
         {...listBoxProps}
         data-id={dataId}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       >
         {[...state.collection].map((item) => (
           <ListBoxOption

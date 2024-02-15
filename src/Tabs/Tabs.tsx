@@ -27,7 +27,7 @@ function Tabs<T extends object>(
   props: TabsProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
   const {
     className: classNameProp,
     orientation = "horizontal",
@@ -35,7 +35,7 @@ function Tabs<T extends object>(
     "data-id": dataId,
   } = props;
   const state = useTabListState(props);
-  const { tabListProps } = useTabList(props, state, localRef);
+  const { tabListProps } = useTabList(props, state, internalRef);
 
   const { focusProps, isFocusVisible } = useFocusRing({
     within: true,
@@ -54,7 +54,7 @@ function Tabs<T extends object>(
   );
 
   useEffect(() => {
-    const activeTab = localRef?.current?.querySelector(
+    const activeTab = internalRef?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
     // Active tab width or height calculation.
@@ -86,7 +86,7 @@ function Tabs<T extends object>(
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
-          ref={ref ? mergeRefs(ref, localRef) : localRef}
+          ref={ref ? mergeRefs(ref, internalRef) : internalRef}
           // ref={ref}
           data-id={dataId ? `${dataId}-tabList` : undefined}
         >

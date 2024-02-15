@@ -32,11 +32,11 @@ function ActionButton(
     iconPos,
   } = props;
 
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
 
   const { buttonProps, isPressed } = useButton(
     props,
-    localRef as RefObject<HTMLButtonElement>
+    internalRef as RefObject<HTMLButtonElement>
   );
 
   const { isFocusVisible, focusProps } = useFocusRing();
@@ -44,7 +44,7 @@ function ActionButton(
   return (
     <button
       {...mergeProps(buttonProps, focusProps)}
-      ref={mergeRefs(localRef, ref)}
+      ref={mergeRefs(internalRef, ref)}
       className={st(
         classes.root,
         {

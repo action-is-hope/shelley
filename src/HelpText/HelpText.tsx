@@ -5,7 +5,7 @@ import Warning from "../icons/Warning";
 import { st, classes } from "./helpText.st.css";
 import type { ComponentBase } from "../typings/shared-types";
 
-interface HelpTextProps
+export interface HelpTextProps
   extends Validation,
     React.HTMLProps<HTMLDivElement>,
     ComponentBase {

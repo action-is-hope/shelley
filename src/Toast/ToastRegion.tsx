@@ -27,7 +27,7 @@ function ToastRegion<T>(
   props: ToastRegionProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
   const {
     state,
     closeIcon,
@@ -37,13 +37,13 @@ function ToastRegion<T>(
     errorIcon = <ErrorIcon />,
     "data-id": dataId,
   } = props;
-  const { regionProps } = useToastRegion(props, state, localRef);
+  const { regionProps } = useToastRegion(props, state, internalRef);
   const { isFocusVisible, focusProps } = useFocusRing();
 
   return (
     <div
       {...mergeProps(regionProps, focusProps)}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       className={st(classes.root, {
         isFocusVisible,
       })}

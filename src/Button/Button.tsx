@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  // Ref,
-  // ReactElement,
-  useRef,
-  forwardRef,
-  // ElementType,
-} from "react";
+import React, { useRef, forwardRef } from "react";
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 import type {
@@ -19,15 +13,14 @@ import { useFocusRing } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { st, classes } from "./button.st.css";
 
-/**
- * Leveraging Adobes 'useButton' to enable use with their hooks.
- * N.B: Omitting 'elementType' as preference is to use existing 'as'.
- *
- * Adobe docs: https://react-spectrum.adobe.com/react-aria/useButton.html
- */
+export type ExtendedButtonVariants<V> = ButtonVariants | V;
 
-export interface ButtonCustomProps
-  extends Omit<AriaButtonProps, "elementType"> {
+export interface ButtonProps<P, V>
+  extends Omit<AriaButtonProps, "elementType" | "href"> {
+  /** Custom `className`. */
+  className?: string;
+  /** Custom element to render such as an anchor "a" or a router "Link" component. */
+  elementType?: P;
   /** Define an Icon node, postion via #iconPos. */
   icon?: React.ReactNode;
   /** The position of the icon relative to the label. */
@@ -35,22 +28,20 @@ export interface ButtonCustomProps
   /** Tone index, defines the color palette. */
   tone?: Accent;
   /** Variant index, defines the 'look'. */
-  variant?: ButtonVariants;
+  // variant?: ButtonVariants;
+  variant?: ExtendedButtonVariants<V>;
   /** Defines how 'loud' the Button should be in term of it's size. */
   vol?: Volume;
   /** Applies width of 100%. */
   fullWidth?: boolean;
 }
 
-export type ButtonProps<P extends React.ElementType = "a" | "button" | any> = {
-  /** Custom element to render such as an anchor "a" or a router "Link" component. */
-  as?: P;
-  // Dynamically apply element props types based on the input (P).
-} & MergeElementProps<P, Omit<ButtonCustomProps, "as">>;
-
-function Button<P extends React.ElementType = "button">(
-  {
-    as: As,
+function Button<V extends string, P extends React.ElementType = "button">(
+  props: MergeElementProps<P, ButtonProps<P, V>>,
+  ref: React.Ref<HTMLElement>
+) {
+  const {
+    elementType: Element = "button",
     children,
     className: classNameProp,
     icon,
@@ -59,71 +50,15 @@ function Button<P extends React.ElementType = "button">(
     tone = 1,
     variant = "primary",
     vol = 3,
-    // Pull off known inputs for @react-aria -> useButton minus 'elementType'
-    excludeFromTabOrder,
     isDisabled,
-    onPress,
-    onPressStart,
-    onPressEnd,
-    onPressChange,
-    onPressUp,
-    // autoFocus,
-    onFocus,
-    onBlur,
-    onFocusChange,
-    onKeyDown,
-    onKeyUp,
-    href,
-    target,
-    rel,
-    ariaExpanded,
-    ariaHaspopup,
-    ariaControls,
-    ariaPressed,
-    type,
-    id,
-    ariaLabel,
-    ariaLabelledby,
-    ariaDescribedby,
-    ariaDetails,
     ...rest
-  }: ButtonProps<P>,
-  ref: React.Ref<HTMLElement>
-) {
-  const localRef = useRef(null);
+  } = props;
+
+  const internalRef = useRef(null);
 
   const { buttonProps, isPressed } = useButton(
-    {
-      excludeFromTabOrder,
-      isDisabled,
-      onPress,
-      onPressStart,
-      onPressEnd,
-      onPressChange,
-      onPressUp,
-      // autoFocus,
-      onFocus,
-      onBlur,
-      onFocusChange,
-      onKeyDown,
-      onKeyUp,
-      href,
-      target,
-      rel,
-      "aria-expanded": ariaExpanded,
-      "aria-haspopup": ariaHaspopup,
-      "aria-controls": ariaControls,
-      "aria-pressed": ariaPressed,
-      type,
-      id,
-      "aria-label": ariaLabel,
-      "aria-labelledby": ariaLabelledby,
-      "aria-describedby": ariaDescribedby,
-      "aria-details": ariaDetails,
-      // Map 'as' to elementType for adobe-aria...
-      elementType: (As as React.JSXElementConstructor<HTMLElement>) || "button",
-    },
-    localRef as React.RefObject<HTMLElement>
+    props,
+    internalRef as React.RefObject<HTMLElement>
   );
   const { isFocusVisible, focusProps } = useFocusRing();
 
@@ -153,9 +88,9 @@ function Button<P extends React.ElementType = "button">(
     </>
   );
   return React.createElement(
-    As || "button",
+    Element,
     {
-      ref: mergeRefs(localRef, ref),
+      ref: mergeRefs(internalRef, ref),
       ...mergeProps(buttonProps, focusProps),
       className,
       ...rest,
@@ -166,9 +101,12 @@ function Button<P extends React.ElementType = "button">(
 Button.displayName = "Button";
 
 /**
- * Buttons allow users to perform an action.
+ * Button component capable of adapting to various element types (e.g., "button", "a", or a router "Link").
+ * Utilizes `react-aria` for accessibility features. see {@link http://example.com|Example Website}
+ *
+ * @template P The element type for the component, influencing the resulting DOM element or React component.
+ * @param {ButtonProps<P>} props
  */
-
 const _Button = forwardRef(Button);
 _Button.toString = () => "ShelleyButton";
 export { _Button as Button };

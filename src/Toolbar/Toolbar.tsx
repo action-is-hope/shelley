@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { st, classes } from "./toolbar.st.css";
 import type { TextAlign, Variant } from "../typings/shared-types";
 
-interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Element type to render 'as'. */
   as?: React.ElementType;
   /** Alignment of the toolbar. */

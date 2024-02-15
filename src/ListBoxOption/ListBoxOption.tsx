@@ -6,7 +6,7 @@ import type { ListState } from "react-stately";
 import { mergeProps, useFocusRing, useHover, useOption } from "react-aria";
 import { st, classes } from "./listBoxOption.st.css";
 
-interface OptionProps<T> {
+export interface ListBoxOptionProps<T> {
   state: ListState<T>;
   item: Node<T>;
   className?: string;
@@ -17,7 +17,7 @@ interface OptionProps<T> {
   shouldFocusOnHover?: boolean;
 }
 
-export function ListBoxOption<T>(props: OptionProps<T>) {
+export function ListBoxOption<T>(props: ListBoxOptionProps<T>) {
   const {
     className: classNameProp,
     item,

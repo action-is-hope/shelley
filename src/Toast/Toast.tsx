@@ -31,12 +31,12 @@ function Toast(
     className: classNameProp,
     "data-id": dataId,
   } = props;
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
 
   const { toastProps, titleProps, closeButtonProps } = useToast(
     props,
     state,
-    localRef
+    internalRef
   );
 
   const {
@@ -87,7 +87,7 @@ function Toast(
   return (
     <div
       {...toastProps}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       className={st(classes.root, { priority: priorityName }, classNameProp)}
       data-animation={animation}
       onAnimationEnd={() => {

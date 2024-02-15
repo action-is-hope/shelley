@@ -37,12 +37,12 @@ export type OverlayType =
  * are surpressed by react-aria. However we have access to
  * onActivation and onDeactivation events.
  */
-type TriggerFocusOnProps = Omit<
+export type TriggerFocusOnProps = Omit<
   ReactFocusOnProps,
   "children" | "onClickOutside" | "onEscapeKey"
 >;
 
-type TriggerTransitionProps = Pick<
+export type TriggerTransitionProps = Pick<
   TransitionProps,
   | "onEnter"
   | "onEntering"
@@ -118,7 +118,7 @@ export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
   popupClassName?: string;
 }
 
-function DialogTrigger(props: DialogTriggerProps) {
+function _DialogTrigger(props: DialogTriggerProps) {
   const {
     children,
     type = "modal",
@@ -281,17 +281,17 @@ function DialogTrigger(props: DialogTriggerProps) {
     />
   );
 }
-DialogTrigger.displayName = "DialogTrigger";
+_DialogTrigger.displayName = "DialogTrigger";
 
 /**
  * DialogTrigger serves as a wrapper around a Dialog and its associated trigger, linking the Dialog's
  * open state with the trigger's press state. Additionally, it allows you to customize the type of Dialog.
  */
 
-export const _DialogTrigger = DialogTrigger as (
+export const DialogTrigger = _DialogTrigger as (
   props: DialogTriggerProps
 ) => JSX.Element;
-export { _DialogTrigger as DialogTrigger };
+export { DialogTrigger as _DialogTrigger };
 
 /**
  * PopupTrigger

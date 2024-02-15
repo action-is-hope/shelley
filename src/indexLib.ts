@@ -40,3 +40,4 @@ export * from "./Toolbar";
 export * from "./VisuallyHidden";
 
 export * from "./typings/shared-types";
+export * from "./typings/utils";

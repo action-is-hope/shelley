@@ -1,11 +1,14 @@
-import { createBoard } from "@wixc3/react-board";
-import { Button } from "../../../Button/Button";
+import { createBoard } from '@wixc3/react-board';
+import { Button } from '../../../Button/Button';
 
 export default createBoard({
-  name: "Button",
+  name: 'Button',
   Board: () => (
-    <Button variant="primary" onPress={() => alert("HELLO")}>
+    <Button variant='primary' onPress={() => alert('HELLO')}>
       I am a Button
     </Button>
   ),
+  environmentProps: {
+    canvasHeight: 36,
+  },
 });
