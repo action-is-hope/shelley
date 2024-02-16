@@ -33,7 +33,7 @@ describe("Button", () => {
         <Button
           data-testid="button-data-testid"
           ref={buttonRef}
-          tone={6}
+          tone="danger"
           variant="primary"
           vol={6}
           fullWidth

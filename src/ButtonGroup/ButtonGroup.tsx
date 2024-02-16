@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { mergeProps } from "react-aria";
 import type { ButtonProps } from "../Button";
-import type { Accent, Volume, ButtonVariants } from "../typings/shared-types";
+import type { Tone, Volume, ButtonVariants } from "../typings/shared-types";
 import { st, classes } from "./buttonGroup.st.css";
 
 export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,7 +16,7 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Disables all the buttons. */
   isDisabled?: boolean;
   /** Tone index. */
-  tone?: Accent;
+  tone?: Tone;
   /** Variant index. */
   variant?: ButtonVariants;
   /** Changes the volume of the buttons. */
