@@ -4,7 +4,7 @@
   --background-color-info,
   --background-color-success,
   --background-color-warning,
-  --background-color-error] from "./project.st.css";
+  --background-color-danger] from "./project.st.css";
 
 @st-import Toast from "../../Toast/toast.st.css";
 
@@ -27,6 +27,6 @@
   }
 
   Toast:priority(error) {
-    background: var(--background-color-error)
+    background: var(--background-color-danger)
   }
 }

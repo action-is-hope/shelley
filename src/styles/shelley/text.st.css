@@ -13,8 +13,8 @@
   -st-default: Shelley;
   -st-named:
     /* = CSS3 Vars. */
-    --color-accent-1,
-    --color-accent-4;
+    --color-tone-primary,
+    --color-tone-success;
 }
 
 
@@ -73,7 +73,7 @@
     text-decoration: none;
     position: relative;
     padding-bottom: 1px;
-    color: var(--color-accent-1);
+    color: var(--color-tone-primary);
     border: 0 solid rgba(110, 164, 218, 0.5);
     border-width: 0 0 0.05em 0;
     transition: border-color .15s ease-out;
@@ -107,7 +107,7 @@
     font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
     font-size: .8em;
     font-weight: 600;
-    color: var(--color-accent-4);
+    color: var(--color-tone-success);
   }
 
   /* = @todo: move this crap. */

@@ -170,7 +170,7 @@ function TablePagination(
         {/* {showFirstButton && ()} */}
         <Button
           data-testid={dataTestId && `${dataTestId}PrevButton`}
-          tone={10}
+          tone="contrast"
           variant="fab"
           vol={3}
           iconPos={"end"}
@@ -182,7 +182,7 @@ function TablePagination(
         </Button>
         <Button
           data-testid={dataTestId && `${dataTestId}NextButton`}
-          tone={10}
+          tone="contrast"
           variant="fab"
           vol={3}
           iconPos={"end"}

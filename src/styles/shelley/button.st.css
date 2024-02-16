@@ -4,10 +4,17 @@
   --color-ui-inverse,
   --color-ui-raw,
   --color-ui-raw-inverse,
-  --color-accent-1,
-  --color-accent-2,
-  --color-accent-3,
-  --color-accent-4
+  --light-01,
+  --dark-01,
+  --color-tone-primary,
+  --color-tone-secondary,
+  --color-tone-info,
+  --color-tone-success,
+  --color-tone-warning,
+  --color-tone-danger,
+  --color-tone-light,
+  --color-tone-dark,
+  --color-tone-contrast,
 ] from "./project.st.css";
 @st-import Button, [--bg-color, --border-color, --text-color] from "../../Button/button.st.css";
 @st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
@@ -17,7 +24,7 @@
   /* = = The base <button> element. */
   Button {
     /* We'll assign this via our variants but set it with our tones. */
-    --accent: initial;
+    --tone: initial;
     /* = Material defo popularised uppercase buttons, we like it but readability 
     takes a hit and be careful in some langauges such as Greek. */
     text-transform: uppercase;
@@ -28,11 +35,11 @@
     cursor: pointer;
   }
 
-  /* = Variants - Using the accent to assign the colors to reduce code. */
+  /* = Variants - Using the tone to assign the colors to reduce code. */
 
   /* = Variant 1: 'Primary' */
   Button:variant(primary) {
-    --bg-color: var(--accent);
+    --bg-color: var(--tone);
     --text-color: var(--color-ui-inverse);
   }
 
@@ -43,13 +50,13 @@
 
   /* = Variant 2: 'Secondary' */
   Button:variant(secondary) {
-    --border-color: var(--accent);
+    --border-color: var(--tone);
     -webkit-font-smoothing: antialiased;
   }
 
   /* = Variant 3: 'Quiet' */
   Button:variant(quiet) {
-    --text-color: var(--accent);
+    --text-color: var(--tone);
   }
 
   Button:variant(quiet):hover,
@@ -59,12 +66,12 @@
 
   /* = Seperator color for when in a group. */
   ButtonGroup Button:variant(quiet) {
-    --seperator-color: var(--accent);
+    --seperator-color: var(--tone);
   }
 
   /* = Variant 4: 'Floating Action Button (FAB)' - Thank you Material! */
   Button:variant(fab) {
-    --bg-color: var(--accent);
+    --bg-color: var(--tone);
     --text-color: var(--color-ui-inverse);
   }
 
@@ -74,30 +81,57 @@
   }
 
   /* = Tones/Colours */
-  Button:tone(1) {
-    --accent: var(--color-accent-1);
+  Button:tone(primary) {
+    --tone: var(--color-tone-primary);
   }
 
-  Button:tone(2) {
-    --accent: var(--color-accent-2);
+  Button:tone(primary):variant(primary) {
+    color: var(--light-01)
   }
 
-  Button:tone(3) {
-    --accent: var(--color-accent-3);
+  Button:tone(secondary) {
+    --tone: var(--color-tone-secondary);
   }
 
-  Button:tone(4) {
-    --accent: var(--color-accent-4);
+  Button:tone(info) {
+    --tone: var(--color-tone-info);
   }
 
-  Button:tone(10) {
-    --text-color: inherit;
-    --accent: rgba(var(--color-ui-raw), 0);
+  Button:tone(success) {
+    --tone: var(--color-tone-success);
   }
 
-  Button:tone(10):hover,
-  Button:tone(10):focus {
-    --accent: rgba(var(--color-ui-raw), 0.1);
+  Button:tone(warning) {
+    --tone: var(--color-tone-warning);
+  }
+
+  Button:tone(danger) {
+    --tone: var(--color-tone-danger);
+  }
+
+  Button:tone(light) {
+    --tone: var(--color-tone-light);
+  }
+
+  Button:tone(light):variant(primary) {
+    color: var(--dark-01)
+  }
+
+  Button:tone(dark) {
+    --tone: var(--color-tone-dark);
+  }
+
+  Button:tone(dark):variant(primary) {
+    color: var(--light-01)
+  }
+
+  Button:tone(contrast) {
+    --tone: var(--color-tone-contrast);
+  }
+
+  /* Button:tone(contrast):hover,
+  Button:tone(contrast):focus {
+    --tone: rgba(var(--color-ui-raw), 0.1);
     opacity: 1;
-  }
+  } */
 }

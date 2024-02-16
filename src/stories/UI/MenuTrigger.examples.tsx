@@ -78,7 +78,7 @@ export const MultipleSelectionMenuTrigger = () => {
       hideArrow
     >
       <Button
-        tone={10}
+        tone="contrast"
         variant="fab"
         vol={1}
         icon={
@@ -105,11 +105,11 @@ export const MultipleSelectionMenuTrigger = () => {
 
 export const ButtonGroupTriggerMenu = () => {
   return (
-    <ButtonGroup vol={3} tone={2} variant="primary" splitButton>
+    <ButtonGroup vol={3} tone="secondary" variant="primary" splitButton>
       {/* // fullWidth */}
       <Button fullWidth>Publish</Button>
       <MenuTrigger portalSelector="#portal" className="TEST">
-        <Button tone={2} variant="primary" vol={2}>
+        <Button tone="secondary" variant="primary" vol={2}>
           <Icon alt="Change status">
             <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
           </Icon>
@@ -157,7 +157,7 @@ export const CustomInlineMenu = () => {
       popupClassName={triggerExample.inlineMenuPopup}
     >
       <Button
-        tone={2}
+        tone="secondary"
         variant="fab"
         vol={2}
         icon={<AddIcon alt="Add item" />}

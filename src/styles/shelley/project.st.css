@@ -37,7 +37,6 @@
     --grid-v1-cols-xs,
     --grid-v1-cols-sm,
     --grid-v1-cols-md,
-
     --text-vol-10-max,
     --text-vol-10-scale,
     --text-vol-10-line-height;
@@ -61,7 +60,7 @@
 
 /*=== Root Level CSS Variables - 'run time' ===*/
 
-:root {
+.root {
 
   /*=== COLOURS - The Queens English darling... ===*/
 
@@ -79,17 +78,11 @@
    * e.g color: rgba(var(--color-ui-raw), 0.9);
    */
 
-  /* = Forground colours - main and inverted plus rgb versions as 'raw'. */
+  /* = Foreground colours - main and inverted plus rgb versions as 'raw'. */
   --color-ui: var(--light-01);
   --color-ui-inverse: var(--dark-01);
   --color-ui-raw: var(--light-01-raw);
   --color-ui-raw-inverse: var(--dark-01-raw);
-
-  /* = Accent colours */
-  --color-accent-1: #65bfff;
-  --color-accent-2: #52fba7;
-  --color-accent-3: #ea91ff;
-  --color-accent-4: #f7e1b9;
 
   /* = Background colours */
   --background-color-main: rgb(23, 26, 35);
@@ -105,8 +98,8 @@
   --color-text-help: rgba(var(--color-ui-raw), 0.6);
 
   /* = Form colours */
-  --color-form-switch-notch: var(--color-accent-2);
-  --color-form-selection-notch: var(--color-accent-2);
+  --color-form-switch-notch: var(--color-tone-secondary);
+  --color-form-selection-notch: var(--color-tone-secondary);
   --color-background-textField-filled: var(--background-color-contrast-1);
 
   /* = Table colours */
@@ -124,10 +117,21 @@
 
   /* = Toast colours */
   --background-color-neutral: rgb(106, 106, 106);
-  --background-color-info: rgb(2, 101, 220);
+  --background-color-info: rgb(125 2 220);
   --background-color-success: rgb(0, 122, 77);
   --background-color-warning: rgb(255, 102, 0);
-  --background-color-error: rgb(211, 21, 16);
+  --background-color-danger: rgb(211, 21, 16);
+
+  /* = Tone colours */
+  --color-tone-primary: #0096ff;
+  --color-tone-secondary: #75eaff;
+  --color-tone-info: #cac3ff;
+  --color-tone-success: #1cffab;
+  --color-tone-warning: #ffba8c;
+  --color-tone-danger: #ff8f8c;
+  --color-tone-light: rgb(240 240 240 / 0.9);
+  --color-tone-dark: rgb(79 79 79 / 0.9);
+  --color-tone-contrast: rgba(var(--color-ui-raw), .8);
 }
 
 

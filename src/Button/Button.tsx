@@ -9,7 +9,7 @@ import React, {
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 import type {
-  Accent,
+  Tone,
   AlignPos,
   Volume,
   ButtonVariants,
@@ -33,7 +33,7 @@ export interface ButtonCustomProps
   /** The position of the icon relative to the label. */
   iconPos?: AlignPos;
   /** Tone index, defines the color palette. */
-  tone?: Accent;
+  tone?: Tone;
   /** Variant index, defines the 'look'. */
   variant?: ButtonVariants;
   /** Defines how 'loud' the Button should be in term of it's size. */
@@ -56,7 +56,7 @@ function Button<P extends React.ElementType = "button">(
     icon,
     iconPos,
     fullWidth = false,
-    tone = 1,
+    tone = "primary",
     variant = "primary",
     vol = 3,
     // Pull off known inputs for @react-aria -> useButton minus 'elementType'
@@ -132,9 +132,9 @@ function Button<P extends React.ElementType = "button">(
     {
       iconPos: icon ? iconPos : undefined,
       fullWidth,
-      tone: tone !== false ? tone : undefined,
-      variant: variant !== false ? variant : undefined,
-      vol: vol !== false ? vol : undefined,
+      tone: tone || undefined,
+      variant: variant || undefined,
+      vol: vol || undefined,
       isFocusVisible,
       isPressed,
       isDisabled,

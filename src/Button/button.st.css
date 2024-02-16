@@ -4,7 +4,7 @@
   -st-states:
     iconPos(enum(top, end, bottom, start)),
     fullWidth,
-    tone(number),
+    tone(string),
     variant(string),
     vol(number),
     isFocusVisible,
