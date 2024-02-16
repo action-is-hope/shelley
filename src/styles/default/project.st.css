@@ -166,7 +166,7 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   --background-color-info: blue;
   --background-color-success: green;
   --background-color-warning: orange;
-  --background-color-error: red;
+  --background-color-danger: red;
 
   /* = Forms */
   --color-form-base-border: rgba(119, 140, 157, 0.7);

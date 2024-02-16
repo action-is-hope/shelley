@@ -132,9 +132,9 @@ function Button<P extends React.ElementType = "button">(
     {
       iconPos: icon ? iconPos : undefined,
       fullWidth,
-      tone: tone !== false ? tone : undefined,
-      variant: variant !== false ? variant : undefined,
-      vol: vol !== false ? vol : undefined,
+      tone: tone || undefined,
+      variant: variant || undefined,
+      vol: vol || undefined,
       isFocusVisible,
       isPressed,
       isDisabled,

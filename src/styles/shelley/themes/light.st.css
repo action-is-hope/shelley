@@ -52,6 +52,8 @@
     --color-tone-secondary,
     --color-tone-info,
     --color-tone-success,
+    --color-tone-warning,
+    --color-tone-danger,
     /* = Background colours */
     --background-color-main,
     --background-color-contrast-1,
@@ -80,6 +82,13 @@
   --color-tone-secondary: rgb(3, 123, 70);
   --color-tone-info: rgb(171, 45, 201);
   --color-tone-success: rgb(134, 102, 30);
+  /* = Tone colours */
+  --color-tone-primary: #0096ff;
+  --color-tone-secondary: #20a5bc;
+  --color-tone-info: #7c6fe0;
+  --color-tone-success: #3ac08e;
+  --color-tone-warning: #ef8f4f;
+  --color-tone-danger: #ef403b;
 
   /* = Background colours */
   --background-color-main: #fff;
