@@ -32,8 +32,8 @@ export interface TablePaginationProps
   iconPrev?: React.ReactNode;
   iconNext?: React.ReactNode;
   onPageChange: (event: PressEvent, requestedPage: number) => void;
-  prevIconButtonProps?: ButtonProps<"button">;
-  nextIconButtonProps?: ButtonProps<"button">;
+  prevIconButtonProps?: ButtonProps;
+  nextIconButtonProps?: ButtonProps;
 }
 
 const defaultLabelDisplayedRows = ({

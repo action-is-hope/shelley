@@ -5,6 +5,8 @@ import React, {
   useEffect,
   useState,
   ReactNode,
+  Ref,
+  ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
 import { useComboBox, useFilter } from "react-aria";
@@ -240,5 +242,9 @@ ComboBox.displayName = "ComboBox";
 /**
  * ComboBoxes combine a text entry with a picker menu, allowing users to filter longer lists to only the selections matching a query.
  */
-const _ComboBox = forwardRef(ComboBox);
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _ComboBox = forwardRef(ComboBox) as <T>(
+  props: ComboBoxProps<T> & { ref?: Ref<HTMLInputElement> }
+) => ReactElement;
 export { _ComboBox as ComboBox };

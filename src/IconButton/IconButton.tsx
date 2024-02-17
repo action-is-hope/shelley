@@ -4,7 +4,8 @@ import type { AlignPos, Volume } from "../typings/shared-types";
 import { st, classes } from "./iconButton.st.css";
 import { Button } from "../Button";
 
-export interface IconButtonProps extends Omit<AriaButtonProps, "elementType"> {
+export interface IconButtonProps
+  extends Omit<AriaButtonProps, "elementType | href"> {
   /** Classname  */
   className?: string;
   /** Define an Icon node, postion via #iconPos. */

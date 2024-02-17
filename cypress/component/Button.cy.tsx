@@ -45,7 +45,7 @@ describe("Button", () => {
 
   it("renders as anchor with href and the link works as expected", () => {
     cy.mount(
-      <Button as="a" href="https://google.com">
+      <Button elementType="a" href="https://google.com">
         Link to Google
       </Button>
     );

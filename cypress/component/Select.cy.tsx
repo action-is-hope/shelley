@@ -163,9 +163,10 @@ describe("Opening and closing", () => {
     cy.get(popup).should("not.exist");
   });
 
-  it("First item focused by default when opened", () => {
+  it("First item focused by default when opened via the keyboard", () => {
     cy.mount(<BasicSelect />);
-    cy.get(trigger).realClick();
+    cy.get(trigger).focus();
+    cy.realPress("Enter");
     cy.get(itemOne).should("be.focused");
   });
 
@@ -195,13 +196,14 @@ describe("Opening and closing", () => {
 
   it("Stays open onScroll", () => {
     cy.mount(
-      <div>
+      <div id="scroller" style={{ height: "50vh", overflow: "scroll" }}>
         <BasicSelect />
         <div style={{ height: "200vh" }}>Content</div>
         <div id="scrollToPoint">Scroll</div>
       </div>
     );
     cy.get(trigger).realClick();
+    cy.realPress("Tab");
     // Unable to test a realistic scroll
     cy.get("body").realPress("PageDown");
     cy.window().then(($window) => {

@@ -1,4 +1,10 @@
-import { P, Checkbox, CheckboxProps } from "../../indexLib";
+import {
+  P,
+  Checkbox,
+  CheckboxProps,
+  Button,
+  ButtonGroup,
+} from "../../indexLib";
 import { useState } from "react";
 import PropsTable from "../../utils/TableProps";
 import data from "../../../componentInfo.json";
@@ -19,6 +25,8 @@ export const TestProps = () => {
 
   return (
     <>
+      <ButtonGroup variant="rando">YO</ButtonGroup>
+      <Button variant="rando">YO</Button>
       <P>
         {componentData[0]?.displayName} - {componentData[1]?.filePath}
       </P>

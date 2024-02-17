@@ -16,8 +16,8 @@ describe("Button", () => {
     const tree = renderer
       .create(
         <Button
-          data-testid="button-data-testid"
-          className="for-which-nobody-can-deny"
+          data-id="button-data-id"
+          className="button-class"
           ref={buttonRef}
         >
           {btnText}
@@ -31,7 +31,7 @@ describe("Button", () => {
     const tree = renderer
       .create(
         <Button
-          data-testid="button-data-testid"
+          data-id="button-data-id"
           ref={buttonRef}
           tone="danger"
           variant="primary"
@@ -49,10 +49,10 @@ describe("Button", () => {
     const tree = renderer
       .create(
         <Button
-          data-testid="button-data-testid"
+          data-id="button-data-id"
           href="http://shelley.earth"
           elementType="a"
-          className="for-which-nobody-can-deny"
+          className="button-class"
         >
           {btnText}
         </Button>
@@ -68,7 +68,7 @@ describe("Button", () => {
         <Router history={memHistory}>
           <Button
             elementType={Link}
-            data-testid="button-data-testid"
+            data-id="button-data-id"
             to="internal-link"
             ref={buttonRefAnchor}
           >
@@ -84,7 +84,7 @@ describe("Button", () => {
     const tree = renderer
       .create(
         <Button
-          data-testid="button-data-testid"
+          data-id="button-data-id"
           ref={buttonRef}
           icon={
             <Icon
@@ -107,7 +107,7 @@ describe("Button", () => {
     const tree = renderer
       .create(
         <Button
-          data-testid="button-data-testid"
+          data-id="button-data-id"
           ref={buttonRef}
           variant="secondary"
           aria-label={btnText}

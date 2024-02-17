@@ -3,21 +3,19 @@ import React, { useRef, forwardRef } from "react";
 import { useButton } from "react-aria";
 import type { AriaButtonProps } from "@react-types/button";
 import type {
-  Tone,
   AlignPos,
   Volume,
-  ButtonVariants,
+  ExtendedToneVariants,
+  ExtendedButtonVariants,
 } from "../typings/shared-types";
 import type { MergeElementProps } from "../typings/utils";
 import { useFocusRing } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { st, classes } from "./button.st.css";
 
-export type ExtendedButtonVariants<V> = ButtonVariants | V;
-
-export interface ButtonProps<P, V>
+export interface ButtonProps<P = "button", V = "", T = "">
   extends Omit<AriaButtonProps, "elementType" | "href"> {
-  /** Custom `className`. */
+  /** Custom `className` for overriding styles. */
   className?: string;
   /** Custom element to render such as an anchor "a" or a router "Link" component. */
   elementType?: P;
@@ -26,9 +24,8 @@ export interface ButtonProps<P, V>
   /** The position of the icon relative to the label. */
   iconPos?: AlignPos;
   /** Tone index, defines the color palette. */
-  tone?: Tone;
-  /** Variant index, defines the 'look'. */
-  // variant?: ButtonVariants;
+  tone?: ExtendedToneVariants<T>;
+  /** Variant defines the 'look'. */
   variant?: ExtendedButtonVariants<V>;
   /** Defines how 'loud' the Button should be in term of it's size. */
   vol?: Volume;
@@ -36,8 +33,12 @@ export interface ButtonProps<P, V>
   fullWidth?: boolean;
 }
 
-function Button<V extends string, P extends React.ElementType = "button">(
-  props: MergeElementProps<P, ButtonProps<P, V>>,
+function Button<
+  V extends string,
+  T extends string,
+  P extends React.ElementType = "button"
+>(
+  props: MergeElementProps<P, ButtonProps<P, V, T>>,
   ref: React.Ref<HTMLElement>
 ) {
   const {

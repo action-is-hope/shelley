@@ -5,6 +5,8 @@ import React, {
   useRef,
   useState,
   useEffect,
+  Ref,
+  ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
 import { Field } from "../Field/Field";
@@ -202,5 +204,9 @@ function Select<T extends object>(
 }
 Select.displayName = "Select";
 
-const _Select = forwardRef(Select);
+// forwardRef doesn't support generic parameters -> cast to the correct type.
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+const _Select = forwardRef(Select) as <T>(
+  props: SelectProps<T> & { ref?: Ref<HTMLButtonElement> }
+) => ReactElement;
 export { _Select as Select };

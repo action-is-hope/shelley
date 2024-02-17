@@ -275,7 +275,9 @@
       "package": "@actionishope/shelley",
       "target": 329,
       "typeArguments": [
-        "P"
+        "P",
+        "V",
+        "T"
       ]
     },
     "params": {
@@ -460,7 +462,7 @@
         "@actionishope/@shelley": [
           {
             "name": "className",
-            "description": "Custom `className`.",
+            "description": "Custom `className` for overriding styles.",
             "type": "string",
             "required": false
           },
@@ -491,13 +493,13 @@
           {
             "name": "tone",
             "description": "Tone index, defines the color palette.",
-            "type": "Accent",
+            "type": "ExtendedToneVariants",
             "required": false
           },
           {
             "name": "variant",
-            "description": "Variant index, defines the 'look'.",
-            "type": "ButtonVariants",
+            "description": "Variant defines the 'look'.",
+            "type": "ExtendedButtonVariants",
             "required": false
           },
           {
@@ -517,7 +519,7 @@
     "interface": {
       "name": "ButtonGroupProps",
       "package": "@actionishope/shelley",
-      "target": 399,
+      "target": 403,
       "typeArguments": []
     },
     "params": {
@@ -554,7 +556,7 @@
           {
             "name": "tone",
             "description": "Tone index.",
-            "type": "Accent",
+            "type": "Tone",
             "required": false
           },
           {
@@ -579,7 +581,7 @@
     "interface": {
       "name": "ShelleyCellProps",
       "package": "@actionishope/shelley",
-      "target": 6137,
+      "target": 6157,
       "typeArguments": []
     },
     "params": {
@@ -635,7 +637,7 @@
     "interface": {
       "name": "CheckboxProps",
       "package": "@actionishope/shelley",
-      "target": 666,
+      "target": 670,
       "typeArguments": []
     },
     "params": {
@@ -877,7 +879,7 @@
     "interface": {
       "name": "CheckboxGroupProps",
       "package": "@actionishope/shelley",
-      "target": 918,
+      "target": 924,
       "typeArguments": []
     },
     "params": {
@@ -992,8 +994,26 @@
             "required": false
           },
           {
+            "name": "onBlur",
+            "description": "Handler that is called when the element loses focus.",
+            "source": "@react-types/shared",
+            "required": false
+          },
+          {
             "name": "onChange",
             "description": "Handler that is called when the value changes.",
+            "source": "@react-types/shared",
+            "required": false
+          },
+          {
+            "name": "onFocus",
+            "description": "Handler that is called when the element receives focus.",
+            "source": "@react-types/shared",
+            "required": false
+          },
+          {
+            "name": "onFocusChange",
+            "description": "Handler that is called when the element's focus status changes.",
             "source": "@react-types/shared",
             "required": false
           },
@@ -1091,7 +1111,7 @@
     "interface": {
       "name": "ShelleyColumnProps",
       "package": "@actionishope/shelley",
-      "target": 6118,
+      "target": 6138,
       "typeArguments": [
         "T"
       ]
@@ -1194,16 +1214,14 @@
     "interface": {
       "name": "ComboBoxProps",
       "package": "@actionishope/shelley",
-      "target": 724,
+      "target": 728,
       "typeArguments": [
         "T"
       ]
     },
     "params": {
       "ref": {
-        "type": "reference",
-        "name": "HTMLInputElement",
-        "package": "typescript"
+        "type": "reference"
       },
       "props": {
         "@react-types/combobox": [
@@ -1619,7 +1637,7 @@
     "interface": {
       "name": "ComboBoxMultiSelectProps",
       "package": "@actionishope/shelley",
-      "target": 838,
+      "target": 844,
       "typeArguments": [
         "T"
       ]
@@ -1639,11 +1657,11 @@
           },
           {
             "type": "reference",
-            "target": 829,
+            "target": 835,
             "typeArguments": [
               {
                 "type": "reference",
-                "target": 914,
+                "target": 920,
                 "name": "T",
                 "package": "@actionishope/shelley",
                 "refersToTypeParameter": true
@@ -1942,7 +1960,7 @@
     "interface": {
       "name": "DialogProps",
       "package": "@actionishope/shelley",
-      "target": 961,
+      "target": 979,
       "typeArguments": []
     },
     "params": {
@@ -2049,7 +2067,7 @@
     "interface": {
       "name": "DialogTriggerProps",
       "package": "@actionishope/shelley",
-      "target": 1342,
+      "target": 1360,
       "typeArguments": []
     },
     "params": {
@@ -2208,7 +2226,7 @@
     "interface": {
       "name": "DisclosureProps",
       "package": "@actionishope/shelley",
-      "target": 1381,
+      "target": 1399,
       "typeArguments": []
     },
     "params": {
@@ -2301,7 +2319,7 @@
     "interface": {
       "name": "DisclosureGroupProps",
       "package": "@actionishope/shelley",
-      "target": 1660,
+      "target": 1678,
       "typeArguments": [
         "T"
       ]
@@ -2371,7 +2389,7 @@
     "interface": {
       "name": "FieldInternalProps",
       "package": "@actionishope/shelley",
-      "target": 3511,
+      "target": 3529,
       "typeArguments": []
     },
     "params": {
@@ -2509,7 +2527,7 @@
     "interface": {
       "name": "GridProps",
       "package": "@actionishope/shelley",
-      "target": 1933,
+      "target": 1951,
       "typeArguments": []
     },
     "params": {
@@ -2549,7 +2567,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2604,7 +2622,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2659,7 +2677,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2714,7 +2732,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2769,7 +2787,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2824,7 +2842,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -2878,7 +2896,7 @@
     "interface": {
       "name": "HelpTextProps",
       "package": "@actionishope/shelley",
-      "target": 2196,
+      "target": 2214,
       "typeArguments": []
     },
     "params": {
@@ -2954,7 +2972,7 @@
     "interface": {
       "name": "IconProps",
       "package": "@actionishope/shelley",
-      "target": 2572,
+      "target": 2590,
       "typeArguments": []
     },
     "params": {
@@ -2999,7 +3017,7 @@
     "interface": {
       "name": "IconButtonProps",
       "package": "@actionishope/shelley",
-      "target": 3051,
+      "target": 3069,
       "typeArguments": []
     },
     "params": {
@@ -3266,7 +3284,7 @@
     "interface": {
       "name": "LabelProps",
       "package": "@actionishope/shelley",
-      "target": 3965,
+      "target": 3983,
       "typeArguments": []
     },
     "params": {
@@ -3310,7 +3328,7 @@
     "interface": {
       "name": "ListBoxProps",
       "package": "@actionishope/shelley",
-      "target": 3899,
+      "target": 3917,
       "typeArguments": [
         "T"
       ]
@@ -3550,7 +3568,7 @@
     "interface": {
       "name": "ListBoxOptionProps",
       "package": "@actionishope/shelley",
-      "target": 3957,
+      "target": 3975,
       "typeArguments": [
         "T"
       ]
@@ -3601,7 +3619,7 @@
     "interface": {
       "name": "MenuProps",
       "package": "@actionishope/shelley",
-      "target": 4611,
+      "target": 4629,
       "typeArguments": [
         "T"
       ]
@@ -3753,7 +3771,7 @@
     "interface": {
       "name": "MenuItemProps",
       "package": "@actionishope/shelley",
-      "target": 4648,
+      "target": 4666,
       "typeArguments": [
         "T"
       ]
@@ -3964,7 +3982,7 @@
     "interface": {
       "name": "MenuTriggerProps",
       "package": "@actionishope/shelley",
-      "target": 4338,
+      "target": 4356,
       "typeArguments": []
     },
     "params": {
@@ -4064,7 +4082,7 @@
     "interface": {
       "name": "ModalProps",
       "package": "@actionishope/shelley",
-      "target": 4726,
+      "target": 4744,
       "typeArguments": []
     },
     "params": {
@@ -4175,7 +4193,7 @@
     "interface": {
       "name": "NotificationProps",
       "package": "@actionishope/shelley",
-      "target": 5005,
+      "target": 5023,
       "typeArguments": []
     },
     "params": {
@@ -4271,7 +4289,7 @@
     "interface": {
       "name": "TextExports",
       "package": "@actionishope/shelley",
-      "target": 6258,
+      "target": 6278,
       "typeArguments": []
     },
     "params": {
@@ -4326,7 +4344,7 @@
     "interface": {
       "name": "PopupProps",
       "package": "@actionishope/shelley",
-      "target": 5273,
+      "target": 5291,
       "typeArguments": []
     },
     "params": {
@@ -4469,7 +4487,7 @@
     "interface": {
       "name": "ProgressBarProps",
       "package": "@actionishope/shelley",
-      "target": 5573,
+      "target": 5591,
       "typeArguments": []
     },
     "params": {
@@ -4606,7 +4624,7 @@
     "interface": {
       "name": "ProgressCircleProps",
       "package": "@actionishope/shelley",
-      "target": 5556,
+      "target": 5574,
       "typeArguments": []
     },
     "params": {
@@ -4715,7 +4733,7 @@
     "interface": {
       "name": "RadioProps",
       "package": "@actionishope/shelley",
-      "target": 5594,
+      "target": 5612,
       "typeArguments": []
     },
     "params": {
@@ -4862,7 +4880,7 @@
     "interface": {
       "name": "RadioGroupProps",
       "package": "@actionishope/shelley",
-      "target": 5632,
+      "target": 5650,
       "typeArguments": []
     },
     "params": {
@@ -5098,7 +5116,7 @@
     "interface": {
       "name": "RowProps",
       "package": "@react-types/table",
-      "target": 6174,
+      "target": 6194,
       "typeArguments": [
         "T"
       ]
@@ -5173,16 +5191,14 @@
     "interface": {
       "name": "SelectProps",
       "package": "@actionishope/shelley",
-      "target": 5687,
+      "target": 5705,
       "typeArguments": [
         "T"
       ]
     },
     "params": {
       "ref": {
-        "type": "reference",
-        "name": "HTMLButtonElement",
-        "package": "typescript"
+        "type": "reference"
       },
       "props": {
         "@react-types/shared": [
@@ -5544,7 +5560,7 @@
     "interface": {
       "name": "SwitchProps",
       "package": "@actionishope/shelley",
-      "target": 5774,
+      "target": 5794,
       "typeArguments": []
     },
     "params": {
@@ -5740,7 +5756,7 @@
     "interface": {
       "name": "TableBodyProps",
       "package": "@react-types/table",
-      "target": 6163,
+      "target": 6183,
       "typeArguments": [
         "T"
       ]
@@ -5788,7 +5804,7 @@
     "interface": {
       "name": "TableHeaderProps",
       "package": "@react-types/table",
-      "target": 6159,
+      "target": 6179,
       "typeArguments": [
         "T"
       ]
@@ -5820,7 +5836,7 @@
     "interface": {
       "name": "TablePaginationProps",
       "package": "@actionishope/shelley",
-      "target": 5831,
+      "target": 5851,
       "typeArguments": []
     },
     "params": {
@@ -5908,7 +5924,7 @@
     "interface": {
       "name": "TableViewProps",
       "package": "@actionishope/shelley",
-      "target": 6185,
+      "target": 6205,
       "typeArguments": [
         "T"
       ]
@@ -6132,7 +6148,7 @@
     "interface": {
       "name": "TabsProps",
       "package": "@actionishope/shelley",
-      "target": 6232,
+      "target": 6252,
       "typeArguments": [
         "T"
       ]
@@ -6271,7 +6287,7 @@
     "interface": {
       "name": "TextProps",
       "package": "@actionishope/shelley",
-      "target": 6280,
+      "target": 6300,
       "typeArguments": []
     },
     "params": {
@@ -6331,7 +6347,7 @@
     "interface": {
       "name": "InputTextProps",
       "package": "@actionishope/shelley",
-      "target": 6715,
+      "target": 6735,
       "typeArguments": [
         null
       ]
@@ -6370,7 +6386,7 @@
     "interface": {
       "name": "ToastProviderProps",
       "package": "@actionishope/shelley",
-      "target": 6734,
+      "target": 6754,
       "typeArguments": []
     },
     "params": {
@@ -6445,7 +6461,7 @@
     "interface": {
       "name": "ToolbarProps",
       "package": "@actionishope/shelley",
-      "target": 6755,
+      "target": 6775,
       "typeArguments": []
     },
     "params": {
@@ -6485,7 +6501,7 @@
     "interface": {
       "name": "VisuallyHiddenProps",
       "package": "@actionishope/shelley",
-      "target": 7018,
+      "target": 7038,
       "typeArguments": []
     },
     "params": {

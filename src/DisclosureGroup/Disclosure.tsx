@@ -32,7 +32,7 @@ export interface DisclosureProps
   /** Callback fired when trigger is selected. */
   onExpandedChange?: () => void;
   /** Button props, for icoon use triggerIcon. */
-  triggerProps?: Omit<ButtonProps<"button">, "icon">;
+  triggerProps?: Omit<ButtonProps, "icon">;
   /** Visually render the icon alt text. */
   iconAltVisible?: boolean;
   /** Icon alt text in a collapsed state. @default 'Expand' */

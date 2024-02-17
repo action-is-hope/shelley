@@ -3,13 +3,12 @@
 exports[`Button includes #icon via prop positioned via #iconPos divider and children 1`] = `
 <button
   className="Button__Test__root Button__Test---iconPos-5-start Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3"
-  data-testid="button-data-testid"
+  data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -46,13 +45,12 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 <button
   aria-label="Button text"
   className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-9-secondary Button__Test---vol-1-3"
-  data-testid="button-data-testid"
+  data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -79,15 +77,14 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 
 exports[`Button renders as a basic anchor link via #href prop 1`] = `
 <a
-  className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3"
-  data-testid="button-data-testid"
+  className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3 button-class"
+  data-id="button-data-id"
   href="http://shelley.earth"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -109,14 +106,13 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
 
 exports[`Button renders as a basic button with custom #className 1`] = `
 <button
-  className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3 for-which-nobody-can-deny"
-  data-testid="button-data-testid"
+  className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3 button-class"
+  data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -138,14 +134,13 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 exports[`Button renders as third party (react-router) anchor provided via #as and #to props 1`] = `
 <a
   className="Button__Test__root Button__Test---tone-7-primary Button__Test---variant-7-primary Button__Test---vol-1-3"
-  data-testid="button-data-testid"
+  data-id="button-data-id"
   href="/internal-link"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -168,13 +163,12 @@ exports[`Button renders as third party (react-router) anchor provided via #as an
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
   className="Button__Test__root Button__Test--fullWidth Button__Test---tone-6-danger Button__Test---variant-7-primary Button__Test---vol-1-6"
-  data-testid="button-data-testid"
+  data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
   onDragStart={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

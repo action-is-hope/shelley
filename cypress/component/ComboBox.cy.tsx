@@ -179,6 +179,8 @@ describe("Opening and closing", () => {
     cy.realPress("Enter");
     cy.get(popup).should("exist");
     cy.get(listBox).should("exist");
+    cy.get(trigger).focus();
+    cy.realPress("Tab");
     cy.realPress("Escape");
     cy.get(popup).should("not.exist");
   });
@@ -189,6 +191,7 @@ describe("Opening and closing", () => {
     cy.realPress("Space");
     cy.get(popup).should("exist");
     cy.get(listBox).should("exist");
+    cy.realPress("Tab");
     cy.realPress("Escape");
     cy.get(popup).should("not.exist");
   });

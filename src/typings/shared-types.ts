@@ -30,7 +30,7 @@ export declare type TextAlign =
   | "start"
   | "end";
 
-/** Tone color indexes */
+/** Tone colours */
 export declare type Tone =
   | "primary"
   | "secondary"
@@ -42,6 +42,7 @@ export declare type Tone =
   | "dark"
   | "contrast"
   | false;
+export type ExtendedToneVariants<T> = Tone | T;
 
 /** Variant indexes */
 export declare type Variant = 1 | 2 | 3 | 4 | 5 | 6 | undefined;
@@ -52,6 +53,7 @@ export declare type ButtonVariants =
   | "quiet"
   | "fab"
   | false;
+export type ExtendedButtonVariants<V> = ButtonVariants | V;
 
 export declare type FieldVariants = "outlined" | "filled" | "quiet" | false;
 
@@ -92,8 +94,8 @@ export declare type TextInputType =
 export declare type SelectionControlType =
   | "checkbox"
   | "radio"
-  | "switch" // Internally map to checkbox.
-  | "toggle"; // Internally map to checkbox.
+  | "switch" // Maps to checkbox.
+  | "toggle"; // Maps to checkbox.
 
 export declare type LoadingState =
   | "loading"
