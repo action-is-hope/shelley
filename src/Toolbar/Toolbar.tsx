@@ -4,7 +4,7 @@ import type { TextAlign, Variant } from "../typings/shared-types";
 
 export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Element type to render 'as'. */
-  as?: React.ElementType;
+  elementType?: React.ElementType;
   /** Alignment of the toolbar. */
   align?: TextAlign;
   /** Variant index, defines the 'look'. */
@@ -14,7 +14,7 @@ export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
 function Toolbar(props: ToolbarProps, ref: React.Ref<HTMLDivElement>) {
   const {
     align = "end",
-    as: Component = "div",
+    elementType: Component = "div",
     className: classNameProp,
     children,
     variant = undefined,
