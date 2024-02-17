@@ -95,7 +95,7 @@ function Notification(
         <div ref={contentRef} className={st(classes.textWrapper)}>
           {title && (
             <Text
-              as="span"
+              elementType="span"
               vol={3}
               className={st(classes.title)}
               data-id={dataId ? `${dataId}--title` : undefined}
@@ -105,7 +105,7 @@ function Notification(
           )}
           {subtitle && (
             <Text
-              as="span"
+              elementType="span"
               vol={2}
               className={st(classes.subtitle)}
               data-id={dataId ? `${dataId}--subTitle` : undefined}

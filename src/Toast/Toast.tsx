@@ -100,7 +100,7 @@ function Toast(
       <div className={classes.iconAndTitleWrapper}>
         {shouldShowIcon && icon && <>{icon}</>}
         <Text
-          as="span"
+          elementType="span"
           vol={1}
           {...titleProps}
           data-id={dataId ? `${dataId}--title` : undefined}

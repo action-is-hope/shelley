@@ -33,7 +33,7 @@ function Blockquote(props: BlockquoteProps, ref: React.Ref<HTMLQuoteElement>) {
     >
       <div className={classes.content}>{children}</div>
       {desc && (
-        <Text as="footer" vol={descVol} className={classes.desc}>
+        <Text elementType="footer" vol={descVol} className={classes.desc}>
           {desc}
         </Text>
       )}

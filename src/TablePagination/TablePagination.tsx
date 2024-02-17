@@ -106,7 +106,7 @@ function TablePagination(
     >
       <Toolbar align="end">
         <Text
-          as="span"
+          elementType="span"
           data-testid={dataTestId && `${dataTestId}RowsButtonLabel`}
           id={`${id}RowsButtonLabel`}
           vol={1}
@@ -149,7 +149,7 @@ function TablePagination(
             </MenuList>
           </Menu> */}
         <Text
-          as="span"
+          elementType="span"
           data-testid={dataTestId && `${dataTestId}labelDisplayedRows`}
           vol={1}
         >

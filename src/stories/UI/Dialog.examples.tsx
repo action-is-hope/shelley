@@ -22,7 +22,7 @@ export const BasicDialog = (args: DialogProps) => {
           Internet Speed Test
         </H2>
         <hr className={dialog.divider} />
-        <Text className={dialog.header} as="header" vol={2}>
+        <Text className={dialog.header} elementType="header" vol={2}>
           Connection status: Connected
         </Text>
         <P className={dialog.content}>Content area.</P>

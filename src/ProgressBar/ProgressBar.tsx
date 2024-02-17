@@ -132,7 +132,12 @@ function ProgressBar(props: ProgressBarProps, ref: Ref<HTMLDivElement>) {
       data-id={dataId}
       ref={ref}
     >
-      <Text as="div" vol={vol} className={st(classes.text)} {...labelProps}>
+      <Text
+        elementType="div"
+        vol={vol}
+        className={st(classes.text)}
+        {...labelProps}
+      >
         {label && (
           <span
             className={st(classes.label)}

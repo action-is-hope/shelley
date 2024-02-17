@@ -1,14 +1,14 @@
 import { Text, TextProps } from "./Text";
 import { forwardRef, Ref } from "react";
 
-export type TextExports = Omit<TextProps, "as">;
+export type TextExports = Omit<TextProps, "elementType">;
 
 export * from "./Text";
 
 function H1(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h1" ref={ref} vol={8} {...rest}>
+    <Text elementType="h1" ref={ref} vol={8} {...rest}>
       {children}
     </Text>
   );
@@ -23,7 +23,7 @@ export { _H1 as H1 };
 function H2(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h2" ref={ref} vol={7} {...rest}>
+    <Text elementType="h2" ref={ref} vol={7} {...rest}>
       {children}
     </Text>
   );
@@ -38,7 +38,7 @@ export { _H2 as H2 };
 function H3(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h3" ref={ref} vol={6} {...rest}>
+    <Text elementType="h3" ref={ref} vol={6} {...rest}>
       {children}
     </Text>
   );
@@ -53,7 +53,7 @@ export { _H3 as H3 };
 function H4(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h4" ref={ref} vol={5} {...rest}>
+    <Text elementType="h4" ref={ref} vol={5} {...rest}>
       {children}
     </Text>
   );
@@ -68,7 +68,7 @@ export { _H4 as H4 };
 function H5(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h5" ref={ref} vol={4} {...rest}>
+    <Text elementType="h5" ref={ref} vol={4} {...rest}>
       {children}
     </Text>
   );
@@ -83,7 +83,7 @@ export { _H5 as H5 };
 function H6(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="h6" ref={ref} vol={4} {...rest}>
+    <Text elementType="h6" ref={ref} vol={4} {...rest}>
       {children}
     </Text>
   );
@@ -98,7 +98,7 @@ export { _H6 as H6 };
 function P(props: TextExports, ref: Ref<HTMLBaseElement>) {
   const { children, ...rest } = props;
   return (
-    <Text as="p" ref={ref} {...rest}>
+    <Text elementType="p" ref={ref} {...rest}>
       {children}
     </Text>
   );

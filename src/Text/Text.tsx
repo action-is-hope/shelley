@@ -5,10 +5,10 @@ import { st, classes } from "./text.st.css";
 
 export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
   /**
-   * HTML as to render as this Text item.
+   * Element type to render as
    * @default span
    */
-  as: string;
+  elementType: string;
   /** Truncate text to specified line number. */
   truncate?: boolean | number;
   /** Toggles uppercase. */
@@ -27,7 +27,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
 
 function Text(props: TextProps, ref: React.Ref<HTMLBaseElement>) {
   const {
-    as: tagName = "span",
+    elementType = "span",
     children,
     className: classNameProp,
     truncate = false,
@@ -38,7 +38,7 @@ function Text(props: TextProps, ref: React.Ref<HTMLBaseElement>) {
     ...rest
   } = props;
   const text = React.createElement(
-    tagName,
+    elementType,
     {
       className: st(
         classes.root,
