@@ -1,0 +1,113 @@
+@st-namespace "ShelleyButtonBase";
+@st-import Shelley, [
+  --light-01,
+  --dark-01,
+  --color-ui,
+  --color-ui-inverse,
+  --color-ui-raw,
+  --color-ui-raw-inverse,
+  --color-tone-lead,
+  --color-tone-support,
+  --color-tone-info,
+  --color-tone-success,
+  --color-tone-warning,
+  --color-tone-danger,
+  --color-tone-light,
+  --color-tone-dark,
+  --color-tone-contrast,
+] from "./project.st.css";
+@st-import ButtonBase, [--bg-color, --border-color, --text-color] from "../../Button/buttonBase.st.css";
+@st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
+
+@st-scope Shelley {
+
+  ButtonBase {
+    /* We assign --tone via our :variant(x) and then set it with our :tone(x). */
+    --tone: initial;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  ButtonBase::before {
+    background-color: rgba(var(--color-ui-raw), 0.1);
+  }
+
+  /* = Variants - Using the tone to assign the colors to reduce code. */
+
+  /* = Variant: 'lead' */
+  ButtonBase:variant(primary) {
+    --bg-color: var(--tone);
+    --text-color: var(--color-ui-inverse);
+  }
+
+  /* hover override */
+  ButtonBase:variant(primary)::before {
+    background-color: rgba(var(--color-ui-raw-inverse), 0.3);
+  }
+
+  /* = Seperator color for when in a group. */
+  ButtonGroup ButtonBase:variant(primary) {
+    --seperator-color: rgba(var(--color-ui-raw-inverse), 0.4);
+  }
+
+  /* = Variant: 'secondary' */
+  ButtonBase:variant(secondary) {
+    --border-color: var(--tone);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* = Variant: 'quiet' */
+  ButtonBase:variant(quiet) {
+    --text-color: var(--tone);
+  }
+
+  /* = Seperator color for when in a group. */
+  ButtonGroup ButtonBase:variant(quiet) {
+    --seperator-color: var(--tone);
+  }
+
+  /* = Tones/Colours */
+  ButtonBase:tone(lead) {
+    --tone: var(--color-tone-lead);
+  }
+
+  ButtonBase:tone(support) {
+    --tone: var(--color-tone-support);
+  }
+
+  ButtonBase:tone(info) {
+    --tone: var(--color-tone-info);
+  }
+
+  ButtonBase:tone(success) {
+    --tone: var(--color-tone-success);
+  }
+
+  ButtonBase:tone(warning) {
+    --tone: var(--color-tone-warning);
+  }
+
+  ButtonBase:tone(danger) {
+    --tone: var(--color-tone-danger);
+  }
+
+  ButtonBase:tone(light) {
+    --tone: var(--color-tone-light);
+  }
+
+  ButtonBase:tone(light):variant(primary) {
+    color: var(--dark-01)
+  }
+
+  ButtonBase:tone(dark) {
+    --tone: var(--color-tone-dark);
+  }
+
+  ButtonBase:tone(dark):variant(primary) {
+    color: var(--light-01)
+  }
+
+  ButtonBase:tone(contrast) {
+    --tone: var(--color-tone-contrast);
+  }
+}

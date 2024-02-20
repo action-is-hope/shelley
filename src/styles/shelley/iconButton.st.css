@@ -10,7 +10,7 @@
 @st-import IconButton, [
   --bg-color,
   --text-color] from "../../IconButton/iconButton.st.css";
-@st-import [--tone] from "./button.st.css";
+@st-import [ --tone ] from "./buttonBase.st.css";
 
 @st-scope Shelley {
 

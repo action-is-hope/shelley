@@ -4,12 +4,11 @@
  *
  * Base theme styles for a Shelley Button.
  *
- * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/button.st.css
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/buttonBase.st.css
  * 
  */
 @st-import Default from "./project.st.css";
 @st-import ButtonBase from "../../Button/buttonBase.st.css";
-@st-import Button from "../../Button/button.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
