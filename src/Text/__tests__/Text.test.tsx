@@ -1,4 +1,4 @@
-import { Text, P, H1, H2, H3, H4, H5, H6 } from "../Text";
+import { Text, P, H1, H2, H3, H4, H5, H6 } from "../";
 import renderer from "react-test-renderer";
 
 const longText =
@@ -67,13 +67,15 @@ describe("P", () => {
 
 describe("Text", () => {
   test("Text", () => {
-    const tree = renderer.create(<Text as="h1">{shortText}</Text>).toJSON();
+    const tree = renderer
+      .create(<Text elementType="h1">{shortText}</Text>)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
   test("Text volume", () => {
     const tree = renderer
       .create(
-        <Text as="h3" vol={6}>
+        <Text elementType="h3" vol={6}>
           {shortText}
         </Text>
       )
@@ -83,7 +85,7 @@ describe("Text", () => {
   test("Text as truncate vol", () => {
     const tree = renderer
       .create(
-        <Text as="div" truncate={6} vol={false}>
+        <Text elementType="div" truncate={6} vol={false}>
           <P>{longText}</P>
 
           <P>

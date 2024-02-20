@@ -2,7 +2,12 @@ import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { Checkbox } from "../../indexLib";
 import { StoryGrid } from "../StoryLayout";
-import { ValueExample, EventExample, CustomLabel } from "./Checkbox.examples";
+import {
+  TestProps,
+  ValueExample,
+  EventExample,
+  CustomLabel,
+} from "./Checkbox.examples";
 
 export const BasicCheckbox = (args) => <Checkbox {...args} />;
 
@@ -56,6 +61,8 @@ export const BasicCheckbox = (args) => <Checkbox {...args} />;
     import { Checkbox } from "@actionishope/shelley";
   `}
 />
+
+<Story name="a PROPS">{TestProps.bind({})}</Story>
 
 Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected.
 

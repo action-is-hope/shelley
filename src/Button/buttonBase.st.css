@@ -1,27 +1,27 @@
-@st-namespace "ActionButton";
+@st-namespace "ButtonBase";
 
 .root {
   -st-states:
     iconPos(enum(top, end, bottom, start)),
-    isQuiet,
     fullWidth,
+    tone(string),
+    variant(string),
     vol(number),
-    isPressed,
     isFocusVisible,
+    isPressed,
     isDisabled;
 }
 
-/* The 'inner' button. */
 .inner {}
 
 /* The divider which is rendered with an icon only. */
 .divider {}
 
-
-.root {
+.root,
+.root:visited {
   /* = Local vars. */
   --bg-color: transparent;
-  --border-color: grey;
+  --border-color: transparent;
   --text-color: inherit;
   --border-width: 1px;
   --border-radius: 4px;
@@ -39,18 +39,14 @@
   border-color: var(--border-color);
   color: var(--text-color);
   background-color: var(--bg-color);
-  /**
-   * = Opininated: Some disagree with setting cursor: pointer (the hand) on 
-   * interactive elements arguing system controls don't do this. Meh, for 
-   * us it offers an additional cue to interaction which we feel asserts 
-   * confidence. Many sites do this so perhaps it's expected by many users. 
-   */
-  cursor: pointer;
   /* = Horizontal alignment. */
   justify-content: center;
   /* = Safari spacing issue with button groups MacOs and IOS. */
   margin: 0;
+  text-decoration: none;
 }
+
+/*==== Icon Positions ====*/
 
 /* top */
 .root:iconPos(top) {
@@ -59,7 +55,7 @@
 
 /* end / right */
 .root:iconPos(end) {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 /* bottom */
@@ -69,5 +65,9 @@
 
 /* start / left */
 .root:iconPos(start) {
-  flex-direction: row;
+  flex-direction: row-reverse;
+}
+
+.root:fullWidth {
+  width: 100%;
 }

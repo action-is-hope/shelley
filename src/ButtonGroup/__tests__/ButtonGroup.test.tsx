@@ -65,7 +65,7 @@ describe("ButtonGroup", () => {
   it("renders buttons with correct style class if overridden", () => {
     const tree = renderer
       .create(
-        <ButtonGroup tone="secondary" vol={4} buttonClassName="btn-group">
+        <ButtonGroup tone="support" vol={4} buttonClassName="btn-group">
           <Button>One</Button>
           <Button tone="info" vol={5} className="btn-group-btn-override">
             Two

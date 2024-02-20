@@ -98,6 +98,7 @@ function ProgressCircle(props: ProgressCircleProps, ref: Ref<HTMLDivElement>) {
     </div>
   );
 }
+ProgressCircle.displayName = "ProgressCircle";
 
 /**
  * ProgressCircles show the progression of a system operation such as downloading, uploading, or processing, in a visual way.

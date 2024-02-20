@@ -1,12 +1,12 @@
 "use client";
 import React, {
-  Ref,
   useRef,
   forwardRef,
   useEffect,
   useState,
-  ReactElement,
   ReactNode,
+  Ref,
+  ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
 import { useComboBox, useFilter } from "react-aria";
@@ -17,7 +17,7 @@ import type { LoadMoreProps } from "../typings/shared-types";
 import { mergeRefs } from "@react-aria/utils";
 import { Field, FieldProps } from "../Field";
 import { Popup } from "../Popup";
-import { Button } from "../Button";
+import { ButtonBase } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../ProgressCircle";
@@ -196,7 +196,7 @@ function ComboBox<T extends object>(
               />
             )}
             {!removeTrigger && (
-              <Button
+              <ButtonBase
                 {...buttonProps}
                 icon={triggerIcon}
                 ref={buttonRef}
@@ -237,7 +237,11 @@ function ComboBox<T extends object>(
     </Field>
   );
 }
+ComboBox.displayName = "ComboBox";
 
+/**
+ * ComboBoxes combine a text entry with a picker menu, allowing users to filter longer lists to only the selections matching a query.
+ */
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 const _ComboBox = forwardRef(ComboBox) as <T>(

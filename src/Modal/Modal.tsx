@@ -8,7 +8,7 @@ import { FocusOn } from "react-focus-on";
 import { st, classes } from "./modal.st.css";
 import { mergeProps } from "react-aria";
 
-export function composeEventHandlers(
+function composeEventHandlers(
   theirHandler: React.MouseEventHandler<HTMLDivElement>,
   ourHandler: React.MouseEventHandler<HTMLDivElement>
 ) {
@@ -213,12 +213,12 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
     ? createPortal(modal, document.querySelector(portalSelector) as HTMLElement)
     : modal;
 }
+Modal.displayName = "Modal";
 
 /**
  * Modal provides the structure for a Modal including transitions and
  * focus locks required to keep a user focused inside active dialogs without
  * being able to 'wonder about' behind the backdrop.
  */
-
 const _Modal = forwardRef(Modal);
 export { _Modal as Modal };

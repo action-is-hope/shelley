@@ -3,7 +3,6 @@ import {
   Disclosure,
   DisclosureProps,
   DisclosureGroup,
-  DisclosureGroupProps,
   Text,
   H2,
   P,
@@ -15,13 +14,6 @@ import { classes as spacing } from "../../styles/default/spacing.st.css";
 export const DisclosurePropsTable = (props: DisclosureProps) => {
   <Disclosure {...props} />;
 };
-
-function _DisclosureGroupPropsTable<T extends object>(
-  props: DisclosureGroupProps<T>
-) {
-  return <DisclosureGroup {...props} />;
-}
-export const DisclosureGroupPropsTable = _DisclosureGroupPropsTable;
 
 export const SingleDisclosure: React.FC = () => {
   return (
@@ -142,7 +134,7 @@ const items = [
     title: "Mangrove planting in Marotaola, Madagascar",
     children: (
       <Text
-        as="div"
+        elementType="div"
         vol={2}
         dangerouslySetInnerHTML={{
           __html: `<p>
@@ -157,7 +149,7 @@ const items = [
     title: "Planting trees and supporting water security in Kenyan forests",
     children: (
       <Text
-        as="div"
+        elementType="div"
         vol={2}
         dangerouslySetInnerHTML={{
           __html: `
@@ -171,7 +163,7 @@ const items = [
     title: "Restoring degraded land in Senegal",
     children: (
       <Text
-        as="div"
+        elementType="div"
         vol={2}
         dangerouslySetInnerHTML={{
           __html: `The Sahel region, spanning 5,400km from the Atlantic Ocean in the West to the Red Sea in the East, is a climatic region in Africa located between the Sahara desert to the North and the Sudanian savanna to the South. Its tropical, semi-arid climate means that months often pass without rainfall. In recent years droughts have become common, with the most severe in recent times occurring between June and August 2010, when extremely high temperatures combined with a lack of rainfall to cause famine and illness across the Sahel. Such devastating weather patterns have been worsened by climate change – people in the Sahel are currently some of the most affected by climate change in the world, with their livelihoods becoming increasingly precarious. <a href="https://ecologi.com/projects/restoring-degraded-land-senegal">Ecologi - Restoring degraded land in Senegal</a></p>`,
@@ -184,7 +176,7 @@ const items = [
     title: "Planting forest gardens in Tanzania",
     children: (
       <Text
-        as="div"
+        elementType="div"
         vol={2}
         dangerouslySetInnerHTML={{
           __html: `<p>Tanzania is an East African country, situated just south of the Equator, which is home to around 60 million people. Its climate is varied due to the nature of its typography, with hot and humid low plains on the east, and generally cool highlands in the north and south. Tanzania is well recognised for its renowned tourism destinations including Mount Kilimanjaro, Africa’s highest mountain, and the Serengeti’s annual wildebeest migration. <a href="https://ecologi.com/projects/planting-forest-gardens-in-tanzania">Ecologi - Planting forest gardens in Tanzania</a></p>`,

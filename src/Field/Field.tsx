@@ -67,7 +67,7 @@ export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
   isReadOnly?: boolean;
 }
 
-interface FieldInternalProps
+export interface FieldInternalProps
   extends Pick<
       React.HTMLProps<HTMLDivElement>,
       Exclude<keyof React.HTMLProps<HTMLDivElement>, "label">
@@ -196,6 +196,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     </div>
   );
 }
+Field.displayName = "Field";
 
 const _Field = forwardRef(Field);
 export { _Field as Field };

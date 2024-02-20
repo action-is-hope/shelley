@@ -1,12 +1,12 @@
 "use client";
 import React, {
-  Ref,
   ReactNode,
   forwardRef,
-  ReactElement,
   useRef,
   useState,
   useEffect,
+  Ref,
+  ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
 import { Field } from "../Field/Field";
@@ -18,7 +18,7 @@ import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
 import { Popup } from "../Popup";
-import { Button } from "../Button";
+import { ButtonBase } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { st, classes } from "./select.st.css";
@@ -81,7 +81,7 @@ function Select<T extends object>(
   // Create state based on the incoming props
   const state = useSelectState(props);
 
-  const localRef = useRef<HTMLButtonElement>(null);
+  const internalRef = useRef<HTMLButtonElement>(null);
   const fieldContainerRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -91,7 +91,7 @@ function Select<T extends object>(
     menuProps,
     errorMessageProps,
     descriptionProps,
-  } = useSelect(props, state, localRef);
+  } = useSelect(props, state, internalRef);
 
   const [popUpWidth, setPopUpWidth] = useState(0);
 
@@ -115,7 +115,7 @@ function Select<T extends object>(
           ...labelProps,
           onClick: () => {
             // Manually trigger a click on the button if clicking the label text.
-            !state.isOpen && localRef?.current?.click();
+            !state.isOpen && internalRef?.current?.click();
           },
         },
         fieldContainerProps: {
@@ -131,11 +131,11 @@ function Select<T extends object>(
       className={st(classes.root, classNameProp)}
     >
       <>
-        <Button
+        <ButtonBase
           {...triggerProps}
           icon={triggerIcon}
           iconPos="end"
-          ref={ref ? mergeRefs(ref, localRef) : localRef}
+          ref={ref ? mergeRefs(ref, internalRef) : internalRef}
           variant={false}
           className={classes.trigger}
           data-id={dataId ? `${dataId}--trigger` : undefined}
@@ -144,17 +144,16 @@ function Select<T extends object>(
             {...valueProps}
             data-id={dataId ? `${dataId}--value` : undefined}
           >
-            {/* {state.selectedItem ? state.selectedItem.rendered : placeholder} */}
             {state.selectedItem ? (
               state.selectedItem.rendered
             ) : (
               <span className={classes.placeholder}>{placeholder}</span>
             )}
           </span>
-        </Button>
+        </ButtonBase>
         <HiddenSelect
           state={state}
-          triggerRef={localRef}
+          triggerRef={internalRef}
           label={props.label}
           name={props.name}
           isDisabled={isDisabled}
@@ -164,7 +163,7 @@ function Select<T extends object>(
             <Popup
               isOpen={state.isOpen}
               onClose={() => state.close()}
-              triggerRef={localRef}
+              triggerRef={internalRef}
               hideArrow
               width={popUpWidth}
               shouldCloseOnBlur
@@ -177,7 +176,7 @@ function Select<T extends object>(
                 focusOnProps: {
                   onDeactivation: () => {
                     // Manually setting focus back as return focus only works once. @todo Investigate.
-                    localRef?.current && localRef.current.focus();
+                    internalRef?.current && internalRef.current.focus();
                   },
                   returnFocus: false,
                   // Firefox issue where within a scroll container the popup flashes open/closed.
@@ -202,6 +201,7 @@ function Select<T extends object>(
     </Field>
   );
 }
+Select.displayName = "Select";
 
 // forwardRef doesn't support generic parameters -> cast to the correct type.
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref

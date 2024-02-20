@@ -1,15 +1,13 @@
-@st-namespace "ToolBar";
+@st-namespace "AppBar";
 
 .root {
   -st-states:
-    variant(number),
+    variant(string),
     align(enum(center, inherit, justify, start, end));
 
   display: flex;
   position: relative;
   align-items: center;
-
-
   padding-left: 24px;
   padding-right: 24px;
 }

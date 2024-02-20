@@ -1,0 +1,12 @@
+@st-namespace "IconButton";
+@st-import ButtonBase, [
+  --bg-color,
+  --border-color,
+  --text-color,
+  --border-width,
+  --border-radius] from "./buttonBase.st.css";
+
+.root {
+  -st-extends: ButtonBase;
+  -st-states: fab;
+}

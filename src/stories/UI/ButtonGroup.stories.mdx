@@ -1,11 +1,17 @@
-import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import {
+  Meta,
+  Canvas,
+  Story,
+  Preview,
+  ArgsTable,
+  Source,
+} from "@storybook/addon-docs";
 import {
   StoryCentered,
   StoryCenteredInline,
   StoryCenteredColumn,
 } from "../StoryLayout";
 import { Button, ButtonGroup, Icon } from "../../indexLib";
-import { ArgsTable } from "@storybook/addon-docs";
 
 export const BasicButtonGroup = (args) => (
   <StoryCentered>
@@ -45,12 +51,12 @@ All the standard button variants are supported.
 <Preview>
   <Story name="b) Button variants">
     <StoryCenteredColumn>
-      <ButtonGroup variant="primary" aria-label="primary button group">
+      <ButtonGroup variant="primary" aria-label="lead button group">
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </ButtonGroup>
-      <ButtonGroup variant="secondary" aria-label="secondary button group">
+      <ButtonGroup variant="secondary" aria-label="support button group">
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
@@ -78,7 +84,7 @@ More standard props, `volume` and `tone`.
       </ButtonGroup>
       <ButtonGroup
         vol={2}
-        tone={2}
+        tone="support"
         variant="primary"
         aria-label="primary button group"
       >
@@ -86,7 +92,11 @@ More standard props, `volume` and `tone`.
         <Button>Two</Button>
         <Button>Three</Button>
       </ButtonGroup>
-      <ButtonGroup tone={3} variant="primary" aria-label="primary button group">
+      <ButtonGroup
+        tone="info"
+        variant="primary"
+        aria-label="primary button group"
+      >
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
@@ -102,7 +112,7 @@ More standard props, `volume` and `tone`.
       </ButtonGroup>
       <ButtonGroup
         vol={5}
-        tone={2}
+        tone="support"
         variant="secondary"
         aria-label="secondary button group"
       >
@@ -112,7 +122,7 @@ More standard props, `volume` and `tone`.
       </ButtonGroup>
       <ButtonGroup
         vol={6}
-        tone={3}
+        tone="info"
         variant="secondary"
         aria-label="secondary button group"
       >
@@ -171,7 +181,7 @@ The dropdown could change the button text and action or be used to immediately t
 <Preview>
   <Story name="e) Split button">
     <StoryCenteredInline>
-      <ButtonGroup vol={2} tone={2} variant="primary" splitButton>
+      <ButtonGroup vol={2} tone="support" variant="primary" splitButton>
         <Button>Publish</Button>
         <Button
           icon={

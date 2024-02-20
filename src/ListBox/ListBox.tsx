@@ -1,5 +1,5 @@
 "use client";
-import { Ref, ReactElement, useRef, forwardRef } from "react";
+import { useRef, forwardRef } from "react";
 import { useListState, ListState } from "react-stately";
 import { useListBox } from "react-aria";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
@@ -31,13 +31,13 @@ function ListBox<T extends object>(
     loadingMoreString,
     loadingString,
   } = props;
-  const localRef = useRef<HTMLUListElement>(null);
+  const internalRef = useRef<HTMLUListElement>(null);
   // Create state based on the incoming props, if state is provided use that.
   let state = useListState({ ...props });
   if (props.state) state = props.state;
 
   // Get props for the listbox element
-  const { listBoxProps, labelProps } = useListBox(props, state, localRef);
+  const { listBoxProps, labelProps } = useListBox(props, state, internalRef);
 
   return (
     <>
@@ -50,7 +50,7 @@ function ListBox<T extends object>(
         className={st(classes.root, className)}
         {...listBoxProps}
         data-id={dataId}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       >
         {[...state.collection].map((item) => (
           <ListBoxOption
@@ -86,10 +86,7 @@ function ListBox<T extends object>(
     </>
   );
 }
+ListBox.displayName = "ListBox";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _ListBox = forwardRef(ListBox) as <T>(
-  props: ListBoxProps<T> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
+const _ListBox = forwardRef(ListBox);
 export { _ListBox as ListBox };

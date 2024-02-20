@@ -1,4 +1,4 @@
-import { useRef, forwardRef, ReactNode, ReactElement, Ref } from "react";
+import { useRef, forwardRef, ReactNode } from "react";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { ToastState } from "@react-stately/toast";
 import type { ComponentBase } from "../typings/shared-types";
@@ -27,7 +27,7 @@ function ToastRegion<T>(
   props: ToastRegionProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
   const {
     state,
     closeIcon,
@@ -37,13 +37,13 @@ function ToastRegion<T>(
     errorIcon = <ErrorIcon />,
     "data-id": dataId,
   } = props;
-  const { regionProps } = useToastRegion(props, state, localRef);
+  const { regionProps } = useToastRegion(props, state, internalRef);
   const { isFocusVisible, focusProps } = useFocusRing();
 
   return (
     <div
       {...mergeProps(regionProps, focusProps)}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       className={st(classes.root, {
         isFocusVisible,
       })}
@@ -72,10 +72,7 @@ function ToastRegion<T>(
     </div>
   );
 }
+ToastRegion.displayName = "ToastRegion";
 
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _ToastRegion = forwardRef(ToastRegion) as <T>(
-  props: ToastRegionProps<T> & { ref?: Ref<HTMLDivElement> }
-) => ReactElement;
+const _ToastRegion = forwardRef(ToastRegion);
 export { _ToastRegion as ToastRegion };

@@ -77,7 +77,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
     ...rest
   } = props;
 
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
   const { overlayProps } = useOverlay(
     {
       onClose,
@@ -86,7 +86,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
       isKeyboardDismissDisabled,
       shouldCloseOnBlur,
     },
-    localRef
+    internalRef
   );
 
   // Get MenuPopup positioning props relative to the trigger
@@ -96,7 +96,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
     placement,
   } = useOverlayPosition({
     targetRef: triggerRef as RefObject<HTMLElement>,
-    overlayRef: localRef as RefObject<HTMLElement>,
+    overlayRef: internalRef as RefObject<HTMLElement>,
     placement: placementProp,
     containerPadding,
     offset,
@@ -127,7 +127,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
    * firing onScroll.
    */
   useEffect(() => {
-    const scrollHeight = localRef?.current?.scrollHeight;
+    const scrollHeight = internalRef?.current?.scrollHeight;
     if (scrollHeight && maxHeight)
       if (scrollHeight < maxHeight && loadingState === "idle") {
         onLoadMore && onLoadMore();
@@ -148,7 +148,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
         className={st(classes.root, classNameProp)}
         {...mergeProps(overlayProps, overlayPositionProps, rest)}
         style={{ ...overlayPositionProps?.style, minWidth: width }}
-        ref={ref ? mergeRefs(ref, localRef) : localRef}
+        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
         data-id={dataId}
       >
         {!hideArrow && (
@@ -181,6 +181,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
     <></>
   );
 }
+Popup.displayName = "Popup";
 
 /**
  * A Popup can be used to display some content on top of another; used internally in components like MenuTrigger and DialogTrigger.

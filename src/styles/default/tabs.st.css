@@ -8,13 +8,10 @@
  * 
  */
 @st-import Default, [
-    --spacing-unit,
-    --text-vol-1-max, --text-vol-1-scale, --text-vol-1-line-height,
-    --text-vol-2-max, --text-vol-2-scale, --text-vol-2-line-height,
-    --text-vol-3-max, --text-vol-3-scale, --text-vol-3-line-height
+    --spacing-unit
   ] from "./project.st.css";
 @st-import Tabs from "../../Tabs/tabs.st.css";
-@st-import [textVol] from "./mixins/textVol.st.css";
+@st-import [textVol1, textVol2, textVol3] from "./mixins/textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 @st-scope Default {
@@ -56,23 +53,14 @@
   }
 
   Tabs:vol(1)::tab {
-    -st-mixin:
-      textVol(scale var(--text-vol-1-scale),
-        max var(--text-vol-1-max),
-        lineHeight 1.2);
+    -st-mixin: textVol1;
   }
 
   Tabs:vol(2)::tab {
-    -st-mixin:
-      textVol(scale var(--text-vol-2-scale),
-        max var(--text-vol-2-max),
-        lineHeight 1.2);
+    -st-mixin: textVol2;
   }
 
   Tabs:vol(3)::tab {
-    -st-mixin:
-      textVol(scale var(--text-vol-3-scale),
-        max var(--text-vol-3-max),
-        lineHeight 1.2);
+    -st-mixin: textVol3;
   }
 }

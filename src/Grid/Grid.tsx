@@ -2,8 +2,8 @@ import React, { forwardRef } from "react";
 import { st, classes } from "./grid.st.css";
 
 export interface GridProps extends React.HTMLAttributes<HTMLBaseElement> {
-  /** HTML tag to render as the root for your grid. */
-  tag?: string;
+  /** Element type to render 'as'. */
+  elementType?: React.ElementType;
   /** Designed to toggle child formatting/alignment rules. */
   formatted?: boolean;
   /** Variant index. */
@@ -15,23 +15,22 @@ function Grid(props: GridProps, ref: React.Ref<HTMLBaseElement>) {
     children,
     className: classNameProp,
     variant = "main",
-    tag: tagName = "div",
+    elementType: Component = "div",
     formatted = false,
     ...rest
   } = props;
 
-  const GridRoot = React.createElement(
-    tagName,
-    {
-      className: st(classes.root, { formatted, variant }, classNameProp),
-      ref: ref,
-      ...rest,
-    },
-    children
+  return (
+    <Component
+      className={st(classes.root, { formatted, variant }, classNameProp)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </Component>
   );
-
-  return GridRoot;
 }
+Grid.displayName = "Grid";
 
 /**
  * Grid allows you to share common grids and allows for formatted content areas.

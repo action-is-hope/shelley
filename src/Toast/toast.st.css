@@ -1,6 +1,6 @@
 @st-namespace "Toast";
 @st-import Button from "../Button/button.st.css";
-@st-import IconButton from "../IconButton/iconButton.st.css";
+@st-import IconButton from "../Button/iconButton.st.css";
 
 .root {
   -st-states: priority(enum(neutral, info, success, warning, error));

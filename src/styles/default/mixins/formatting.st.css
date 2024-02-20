@@ -1,7 +1,5 @@
 /**
  * = Formatting
- *
- * Formatting - might need it's own file eventually.
  */
 
 :import {
@@ -26,12 +24,9 @@
 .formatted > blockquote {
   margin-top: calc(var(--spacing-unit) * 4);
   margin-bottom: calc(var(--spacing-unit) * 5);
-  /* margin-bottom: 0; */
 }
 
-.formatted > p + div {
-  /* margin-top: calc(var(--spacing-unit) * 2); */
-}
+.formatted > p + div {}
 
 .formatted > blockquote + Text {
   margin-top: calc(var(--spacing-unit) * 6);

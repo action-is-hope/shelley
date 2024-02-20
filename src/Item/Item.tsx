@@ -1,3 +1,2 @@
-import { Item as StatelyItem } from "@react-stately/collections";
-const Item = StatelyItem;
-export default Item;
+export type { ItemProps } from "react-stately";
+export { Item as default } from "@react-stately/collections";

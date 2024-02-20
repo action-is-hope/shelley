@@ -2,14 +2,14 @@
 @st-import Shelley, [
     --color-ui-inverse,
     --color-ui-raw,
-    --color-tone-primary
+    --color-tone-lead
   ] from "./project.st.css";
 @st-import Tabs from "../../Tabs/tabs.st.css";
 
 @st-scope Shelley {
 
   Tabs::indicator {
-    background-color: var(--color-tone-primary);
+    background-color: var(--color-tone-lead);
   }
 
   Tabs::tab {

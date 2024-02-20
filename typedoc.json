@@ -1,0 +1,10 @@
+{
+  "json": "docs/docs.json",
+  // "entryPoints": ["./src/Button/index.ts", "./src/typings/shared-types.ts"],
+  "entryPoints": ["./src/indexLib.ts"],
+  "name": "Shelley",
+  // "exclude": "**/*.test.ts",
+  // "excludeExternals": true,
+  "excludePrivate": true
+  // "includeDeclarations": true
+}

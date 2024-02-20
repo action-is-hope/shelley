@@ -24,7 +24,7 @@ export const StandaloneDialog = (args: DialogTest) => {
       <H2 vol={4} className={dialogClasses.title} data-title>
         Title
       </H2>
-      <Text className={dialogClasses.header} as="header" vol={2}>
+      <Text className={dialogClasses.header} elementType="header" vol={2}>
         Header
       </Text>
       <P className={dialogClasses.content}>Content</P>

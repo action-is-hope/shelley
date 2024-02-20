@@ -1,7 +1,7 @@
 "use-client";
 /** DisclosureGroup.tsx */
 import type React from "react";
-import type { ReactElement, Ref } from "react";
+import type { ReactElement } from "react";
 import { Disclosure, DisclosureProps } from "./Disclosure";
 import { useState, forwardRef } from "react";
 import type { AlignPos, ComponentBase } from "../typings/shared-types";
@@ -29,11 +29,12 @@ export interface DisclosureGroupProps<T>
   singleView?: boolean;
 }
 
-interface Item extends Pick<DisclosureProps, "title" | "children"> {
+export interface DisclosureItem
+  extends Pick<DisclosureProps, "title" | "children"> {
   id: string;
 }
 
-function DisclosureGroup<T extends Item>(
+function DisclosureGroup<T extends DisclosureItem>(
   props: DisclosureGroupProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
@@ -95,13 +96,10 @@ function DisclosureGroup<T extends Item>(
     </div>
   );
 }
+DisclosureGroup.displayName = "DisclosureGroup";
 
 /**
  * DisclosureGroup is responsible for rendering a collection of disclosures
  */
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _DisclosureGroup = forwardRef(DisclosureGroup) as <T>(
-  props: DisclosureGroupProps<T> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
+const _DisclosureGroup = forwardRef(DisclosureGroup);
 export { _DisclosureGroup as DisclosureGroup };

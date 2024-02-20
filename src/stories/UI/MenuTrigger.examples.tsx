@@ -19,7 +19,7 @@ import { classes as triggerExample } from "./menuTriggerExample.st.css";
 export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
     <MenuTrigger portalSelector="#portal" {...args}>
-      <Button>Edit</Button>
+      <Button variant="help">Edit</Button>
       <Menu onAction={(info) => alert(info)}>
         <Item key="cut">Cut</Item>
         <Item key="copy">Copy</Item>
@@ -78,7 +78,7 @@ export const MultipleSelectionMenuTrigger = () => {
       hideArrow
     >
       <Button
-        tone="contrast"
+        tone="light"
         variant="fab"
         vol={1}
         icon={
@@ -105,11 +105,11 @@ export const MultipleSelectionMenuTrigger = () => {
 
 export const ButtonGroupTriggerMenu = () => {
   return (
-    <ButtonGroup vol={3} tone="secondary" variant="primary" splitButton>
+    <ButtonGroup vol={3} tone="support" variant="primary" splitButton>
       {/* // fullWidth */}
       <Button fullWidth>Publish</Button>
       <MenuTrigger portalSelector="#portal" className="TEST">
-        <Button tone="secondary" variant="primary" vol={2}>
+        <Button tone="support" variant="primary" vol={2}>
           <Icon alt="Change status">
             <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
           </Icon>
@@ -157,7 +157,7 @@ export const CustomInlineMenu = () => {
       popupClassName={triggerExample.inlineMenuPopup}
     >
       <Button
-        tone="secondary"
+        tone="support"
         variant="fab"
         vol={2}
         icon={<AddIcon alt="Add item" />}

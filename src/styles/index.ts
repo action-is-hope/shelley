@@ -1,5 +1,9 @@
-import { Project as base } from "./default";
-import { Project as shelley, Light as light, Dark as dark } from "./shelley";
+import { Project as base } from "./default/index";
+import {
+  Project as shelley,
+  Light as light,
+  Dark as dark,
+} from "./shelley/index";
 
 const themes = {
   base: base,

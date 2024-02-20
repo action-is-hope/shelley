@@ -125,7 +125,7 @@ describe("ButtonGroup", () => {
     });
     it("Can override specific button variants", () => {
       cy.mount(
-        <ButtonGroupBasic variant="primary" tone={1}>
+        <ButtonGroupBasic variant="primary" tone="lead">
           <Button data-button>One</Button>
           <Button data-button-two variant="secondary" tone={3}>
             Two

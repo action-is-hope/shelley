@@ -79,6 +79,7 @@ function Radio(props: RadioProps, ref: React.Ref<HTMLInputElement>) {
     </Label>
   );
 }
+Radio.displayName = "Radio";
 
 const _Radio = forwardRef(Radio);
 export { _Radio as Radio };

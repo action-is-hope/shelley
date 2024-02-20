@@ -39,7 +39,7 @@ export const BasicTextField = (args) => (
       control: { type: "text" },
       defaultValue: "I am Groot!",
     },
-    as: {
+    elementType: {
       options: ["p", "span", "h1", "h2", "h3", "h4"],
       control: { type: "select" },
       description: "Element type to use",
@@ -147,7 +147,7 @@ If that's a real pain then you might try putting all of the text into a containe
   and carbon.
 </P>\n
 <H2 vol={4}>Using a container set to 6</H2>
-<Text as="div" truncate={6} vol={false}>
+<Text elementType="div" truncate={6} vol={false}>
   <P>
     All people on Earth depend directly or indirectly on the ocean and
     cryosphere. The global ocean covers 71% of the Earth surface and contains
@@ -183,7 +183,7 @@ If that's a real pain then you might try putting all of the text into a containe
   <br />
   <H2 vol={4}>Using a container set to 6</H2>
   <br />
-  <Text as="div" truncate={6} vol={false}>
+  <Text elementType="div" truncate={6} vol={false}>
     <P>
       All people on Earth depend directly or indirectly on the ocean and
       cryosphere. The global ocean covers 71% of the Earth surface and contains

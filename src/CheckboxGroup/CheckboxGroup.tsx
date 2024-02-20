@@ -90,6 +90,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
     </Field>
   );
 }
+CheckboxGroup.displayName = "CheckboxGroup";
 
 const _CheckboxGroup = forwardRef(CheckboxGroup);
 export { _CheckboxGroup as CheckboxGroup };

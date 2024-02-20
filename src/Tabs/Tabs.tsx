@@ -1,12 +1,5 @@
 "use client";
-import {
-  Ref,
-  useRef,
-  ReactElement,
-  useState,
-  useEffect,
-  forwardRef,
-} from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import { useTabListState } from "react-stately";
 import {
   useTabList,
@@ -34,7 +27,7 @@ function Tabs<T extends object>(
   props: TabsProps<T>,
   ref?: React.Ref<HTMLDivElement>
 ) {
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
   const {
     className: classNameProp,
     orientation = "horizontal",
@@ -42,7 +35,7 @@ function Tabs<T extends object>(
     "data-id": dataId,
   } = props;
   const state = useTabListState(props);
-  const { tabListProps } = useTabList(props, state, localRef);
+  const { tabListProps } = useTabList(props, state, internalRef);
 
   const { focusProps, isFocusVisible } = useFocusRing({
     within: true,
@@ -61,7 +54,7 @@ function Tabs<T extends object>(
   );
 
   useEffect(() => {
-    const activeTab = localRef?.current?.querySelector(
+    const activeTab = internalRef?.current?.querySelector(
       '[role="tab"][aria-selected="true"]'
     );
     // Active tab width or height calculation.
@@ -93,7 +86,7 @@ function Tabs<T extends object>(
         <div
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
-          ref={ref ? mergeRefs(ref, localRef) : localRef}
+          ref={ref ? mergeRefs(ref, internalRef) : internalRef}
           // ref={ref}
           data-id={dataId ? `${dataId}-tabList` : undefined}
         >
@@ -121,14 +114,7 @@ function Tabs<T extends object>(
     </div>
   );
 }
-
 Tabs.displayName = "Tabs";
 
-export default Tabs;
-
-// forwardRef doesn't support generic parameters -> cast to the correct type.
-// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-const _Tabs = forwardRef(Tabs) as <T>(
-  props: TabsProps<T> & { ref?: Ref<HTMLElement> }
-) => ReactElement;
+const _Tabs = forwardRef(Tabs);
 export { _Tabs as Tabs };

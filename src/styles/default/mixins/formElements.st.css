@@ -7,16 +7,12 @@
 
 @st-import Default, [
     --spacing-unit,
-    --text-vol-3-scale, --text-vol-3-max,
-    --text-vol-4-scale, --text-vol-4-max,
-    --text-vol-5-scale, --text-vol-5-max,
-    --text-vol-6-scale, --text-vol-6-max,,
     --color-form-selection-border,
     --color-form-selection-notch,
     --color-switch-notch
   ] from "../project.st.css";
 @st-import InputLabel from "../../../Label/label.st.css";
-@st-import [textVol] from "./textVol.st.css";
+@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5] from "./textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
 
 
@@ -113,9 +109,7 @@
 
 /* = Volume 3 */
 .inputVol3 {
-  -st-mixin:
-    textVol(scale var(--text-vol-3-scale),
-      max var(--text-vol-3-max));
+  -st-mixin: textVol3;
 }
 
 .inputVol3 > InputLabel,
@@ -129,9 +123,7 @@
 
 /* = Volume 4 */
 .inputVol4 {
-  -st-mixin:
-    textVol(scale var(--text-vol-4-scale),
-      max var(--text-vol-4-max));
+  -st-mixin: textVol4;
 }
 
 .inputVol4 > InputLabel,
@@ -145,13 +137,7 @@
 
 /* = Volume 5 */
 .inputVol5 {
-  /* Here we can shave off a little from our larger sizes, our 
-   * rem value is on a scale so has greater impact at larger
-   * resoultions.
-   */
-  -st-mixin:
-    textVol(scale calc(var(--text-vol-5-scale) - 0.15rem),
-      max calc(var(--text-vol-5-max) - 0.15rem));
+  -st-mixin: textVol(minValue 1.3, maxValue 1.7);
 }
 
 .inputVol5 > InputLabel,
@@ -165,9 +151,7 @@
 
 /* = Volume 6 */
 .inputVol6 {
-  -st-mixin:
-    textVol(scale calc(var(--text-vol-6-scale) - 0.15rem),
-      max calc(var(--text-vol-6-max) - 0.15rem));
+  -st-mixin: textVol(minValue 1.4, maxValue 1.85);
 }
 
 .inputVol6 > InputLabel,

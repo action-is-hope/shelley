@@ -9,54 +9,88 @@
  */
 
 @st-import Default from "./project.st.css";
-@st-import IconButton from "../../IconButton/iconButton.st.css";
+@st-import IconButton, [--border-radius] from "../../Button/iconButton.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
-@st-import [respScale] from "../formatters/common";
-@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
-@st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
-@st-import [textVol] from "./mixins/textVol.st.css";
 
-@st-scope Default {
+@st-scope body Default {
 
   IconButton {
-    padding: 6px;
+    padding: 10px;
+    --border-radius: 999em;
   }
 
-  IconButton Icon {
-    font-size: calc(1em + 6px);
-  }
-
-  IconButton:hover {
-    opacity: 0.7;
+  IconButton::after,
+  IconButton::before {
+    --border-radius: 999em;
   }
 
   IconButton::after {
     border-radius: 999px;
   }
 
-  /*= Volumes */
+  /*= 
+   * FAB are all about the icons so we don't want rounding issues on these. 
+   * Set with values that divide by 2. 
+   */
 
-  IconButton:vol(1) Icon {
+  /*= FAB - Volume 1 */
+  IconButton:fab:vol(1) {
+    width: 32px;
+    height: 32px;
+  }
+
+  IconButton:fab:vol(1) Icon {
     font-size: 16px;
   }
 
-  IconButton:vol(2) Icon {
+  /*= FAB - Volume 2 */
+  IconButton:fab:vol(2) {
+    width: 40px;
+    height: 40px;
+  }
+
+  IconButton:fab:vol(2) Icon {
     font-size: 18px;
   }
 
-  IconButton:vol(3) Icon {
+  /*= FAB - Volume 3 */
+  IconButton:fab:vol(3) {
+    width: 48px;
+    height: 48px;
+  }
+
+  IconButton:fab:vol(3) Icon {
     font-size: 18px;
   }
 
-  IconButton:vol(4) Icon {
+  /*= FAB - Volume 4 */
+  IconButton:fab:vol(4) {
+    width: 56px;
+    height: 56px;
+  }
+
+  IconButton:fab:vol(4) Icon {
     font-size: 20px;
   }
 
-  IconButton:vol(5) Icon {
+  /*= FAB - Volume 5 */
+  IconButton:fab:vol(5) {
+    width: 64px;
+    height: 64px;
+  }
+
+  IconButton:fab:vol(5) Icon {
     font-size: 22px;
   }
 
-  IconButton:vol(6) Icon {
+  /*= FAB - Volume 6 */
+  IconButton:fab:vol(6) {
+    width: 72px;
+    height: 72px;
+  }
+
+  IconButton:fab:vol(6) Icon {
     font-size: 24px;
   }
+
 }

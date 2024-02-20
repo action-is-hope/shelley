@@ -70,7 +70,7 @@ function TextField(
   const [textValue, setTextValue] = useState(value || defaultValue);
   const rows = props.rows || 0;
   const isTextArea = type === "textarea" || rows > 0;
-  const localRef = useRef(null);
+  const internalRef = useRef(null);
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } =
     useTextField(
@@ -80,9 +80,10 @@ function TextField(
           setTextValue(value);
           onChange && onChange(value);
         },
+        autoCapitalize: undefined,
         inputElementType: isTextArea ? "textarea" : "input",
       },
-      localRef
+      internalRef
     );
 
   return (
@@ -117,19 +118,20 @@ function TextField(
             rows={rows}
             {...(inputProps as HTMLAttributes<HTMLTextAreaElement>)}
             data-id={dataId ? `${dataId}--textarea` : undefined}
-            ref={mergeRefs(localRef, ref as RefObject<HTMLTextAreaElement>)}
+            ref={mergeRefs(internalRef, ref as RefObject<HTMLTextAreaElement>)}
           />
         </div>
       ) : (
         <input
           {...(inputProps as HTMLAttributes<HTMLInputElement>)}
           data-id={dataId ? `${dataId}--input` : undefined}
-          ref={mergeRefs(localRef, ref as RefObject<HTMLInputElement>)}
+          ref={mergeRefs(internalRef, ref as RefObject<HTMLInputElement>)}
         />
       )}
     </Field>
   );
 }
+TextField.displayName = "TextField";
 
 const _InputText = forwardRef(TextField);
 export { _InputText as TextField };

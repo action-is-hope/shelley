@@ -33,7 +33,10 @@ import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
 
-type RenderItemFunction<T> = (item: T, isSelected?: boolean) => React.ReactNode;
+export type ComboboxMultiSelectRenderItemFunction<T> = (
+  item: T,
+  isSelected?: boolean
+) => React.ReactNode;
 
 export interface ComboBoxMultiSelectRef<T> {
   removeSelectedItem: (selectedItem: T, callback?: () => void) => void;
@@ -73,7 +76,7 @@ export interface ComboBoxMultiSelectProps<T>
   /** On Selection change the highlighted index to 0 */
   resetHighlightedIndexOnSelect?: boolean;
   /** children as a render props where item and isSelected are parsed. */
-  children: RenderItemFunction<T>;
+  children: ComboboxMultiSelectRenderItemFunction<T>;
   /** Provide a custom filter function. */
   filterFunction?: (item: T, inputValue: string, selectedItems: T[]) => boolean;
   /** Callback fired when a selection is made. */

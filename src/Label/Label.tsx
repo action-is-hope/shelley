@@ -36,6 +36,7 @@ function Label(props: LabelProps, ref: React.Ref<HTMLLabelElement>) {
     </label>
   );
 }
+Label.displayName = "Label";
 
 /**
  * Label is for labeling form elements, mostly it should be styled by parents.

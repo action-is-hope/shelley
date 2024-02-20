@@ -5,7 +5,7 @@ import Warning from "../icons/Warning";
 import { st, classes } from "./helpText.st.css";
 import type { ComponentBase } from "../typings/shared-types";
 
-interface HelpTextProps
+export interface HelpTextProps
   extends Validation,
     React.HTMLProps<HTMLDivElement>,
     ComponentBase {
@@ -74,6 +74,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     </>
   );
 }
+HelpText.displayName = "HelpText";
 
 const _HelpText = forwardRef(HelpText);
 export { _HelpText as HelpText };

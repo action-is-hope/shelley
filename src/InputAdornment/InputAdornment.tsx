@@ -3,7 +3,7 @@ import { st, classes } from "./inputAdornment.st.css";
 
 function InputAdornment(
   props: React.HTMLAttributes<HTMLSpanElement>,
-  ref?: React.Ref<HTMLDivElement>
+  ref?: React.Ref<HTMLSpanElement>
 ) {
   const { children, className: classNameProp, ...rest } = props;
 
@@ -13,5 +13,7 @@ function InputAdornment(
     </span>
   );
 }
+InputAdornment.displayName = "InputAdornment";
+
 const _InputAdornment = forwardRef(InputAdornment);
 export { _InputAdornment as InputAdornment };

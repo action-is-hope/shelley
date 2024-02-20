@@ -10,3 +10,5 @@ dist
 cypress.d.ts
 cypress/support/commands.ts
 src/stories/*
+scripts/*
+docs/*

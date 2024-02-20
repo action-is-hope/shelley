@@ -9,13 +9,10 @@
  */
 @st-import Default, [
   --spacing-unit,
-  --color-focus,
-  --text-vol-1-scale,
-  --text-vol-1-max,
-  --text-vol-1-line-height
+  --color-focus
 ] from "./project.st.css";
 @st-import TableView, [cell] from "../../TableView/tableView.st.css";
-@st-import [textVol] from "./mixins/textVol.st.css";
+@st-import [textVol, textVol1, textVol2] from "./mixins/textVol.st.css";
 @st-import [respScale] from "../formatters/common";
 
 
@@ -42,17 +39,12 @@
 
   /* 1 */
   TableView:vol(1)::table {
-    -st-mixin:
-      textVol(scale respScale(0.8em, 0.88em),
-        max 0.88em, lineHeight 1.3);
+    -st-mixin: textVol(minValue 0.7, maxValue 0.88, lineHeight 1.3);
   }
 
   /* 2 */
   TableView:vol(2)::table {
-    -st-mixin:
-      textVol(scale var(--text-vol-1-scale),
-        max var(--text-vol-1-max),
-        lineHeight var(--text-vol-1-line-height));
+    -st-mixin: textVol1;
   }
 
   TableView::thead {}

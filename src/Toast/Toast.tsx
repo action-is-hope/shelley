@@ -6,9 +6,9 @@ import type { PressEvent } from "@react-types/shared";
 import type { ComponentBase } from "../typings/shared-types";
 import { useToast } from "@react-aria/toast";
 import { mergeRefs } from "@react-aria/utils";
-import { Button } from "../Button";
+import { ButtonBase } from "../Button";
 import { Text } from "../Text";
-import { IconButton } from "../IconButton/IconButton";
+import { IconButton } from "../Button/IconButton";
 import CloseIcon from "../icons/Close";
 import { st, classes } from "./toast.st.css";
 
@@ -31,12 +31,12 @@ function Toast(
     className: classNameProp,
     "data-id": dataId,
   } = props;
-  const localRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
 
   const { toastProps, titleProps, closeButtonProps } = useToast(
     props,
     state,
-    localRef
+    internalRef
   );
 
   const {
@@ -87,7 +87,7 @@ function Toast(
   return (
     <div
       {...toastProps}
-      ref={ref ? mergeRefs(ref, localRef) : localRef}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
       className={st(classes.root, { priority: priorityName }, classNameProp)}
       data-animation={animation}
       onAnimationEnd={() => {
@@ -100,7 +100,7 @@ function Toast(
       <div className={classes.iconAndTitleWrapper}>
         {shouldShowIcon && icon && <>{icon}</>}
         <Text
-          as="span"
+          elementType="span"
           vol={1}
           {...titleProps}
           data-id={dataId ? `${dataId}--title` : undefined}
@@ -110,7 +110,7 @@ function Toast(
       </div>
       <div className={classes.actionAndCloseWrapper}>
         {actionLabel && onAction && (
-          <Button
+          <ButtonBase
             tone={false}
             className={classes.actionButton}
             {...withOrWithoutCloseButtonProps}
@@ -122,7 +122,7 @@ function Toast(
             data-id={dataId ? `${dataId}--actionButton` : undefined}
           >
             {actionLabel}
-          </Button>
+          </ButtonBase>
         )}
         <div className={classes.closeButtonWrapper}>
           <IconButton
@@ -137,6 +137,7 @@ function Toast(
     </div>
   );
 }
+Toast.displayName = "Toast";
 
 const _Toast = forwardRef(Toast) as <T>(
   props: ToastProps<T> & { ref?: Ref<HTMLDivElement> }

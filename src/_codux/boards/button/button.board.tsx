@@ -1,5 +1,5 @@
 import { createBoard } from "@wixc3/react-board";
-import { Button } from "../../../Button/Button";
+import { Button } from "../../../Button";
 
 export default createBoard({
   name: "Button",
@@ -8,4 +8,7 @@ export default createBoard({
       I am a Button
     </Button>
   ),
+  environmentProps: {
+    canvasHeight: 36,
+  },
 });

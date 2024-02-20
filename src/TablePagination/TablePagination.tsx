@@ -1,10 +1,11 @@
 import React, { forwardRef } from "react";
 import { st, classes } from "./tablePagination.st.css";
 import { Text } from "../Text";
-import { Toolbar } from "../Toolbar";
+import { AppBar } from "../AppBar";
 import AngleLeft from "../icons/AngleLeft";
 import AngleRight from "../icons/AngleRight";
 import { Button, ButtonProps } from "../Button";
+import type { PressEvent } from "react-aria";
 
 export interface rowsPerPageOption {
   value: number;
@@ -30,10 +31,7 @@ export interface TablePaginationProps
   "data-testid"?: string;
   iconPrev?: React.ReactNode;
   iconNext?: React.ReactNode;
-  onPageChange: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    requestedPage: number
-  ) => void;
+  onPageChange: (event: PressEvent, requestedPage: number) => void;
   prevIconButtonProps?: ButtonProps;
   nextIconButtonProps?: ButtonProps;
 }
@@ -80,26 +78,22 @@ function TablePagination(
       : Math.min(count, (currentPage + 1) * rowsPerPage);
   };
 
-  // const handleFirstPageButtonClick = (
-  //   event: React.MouseEvent<HTMLButtonElement>
+  // const handleFirstPageButtonPress = (
+  //   event: PressEvent
   // ) => {
   //   onPageChange(event, 0);
   // };
 
-  const handlePrevButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handlePrevButtonPress = (event: PressEvent) => {
     onPageChange(event, currentPage - 1);
   };
 
-  const handleNextButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleNextButtonPress = (event: PressEvent) => {
     onPageChange(event, currentPage + 1);
   };
 
-  // const handleLastPageButtonClick = (
-  //   event: React.MouseEvent<HTMLButtonElement>
+  // const handleLastPageButtonPress = (
+  //   event: PressEvent
   // ) => {
   //   onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   // };
@@ -110,9 +104,9 @@ function TablePagination(
       data-testid={dataTestId}
       {...{ id, ref, ...rest }}
     >
-      <Toolbar align="end">
+      <AppBar align="end">
         <Text
-          as="span"
+          elementType="span"
           data-testid={dataTestId && `${dataTestId}RowsButtonLabel`}
           id={`${id}RowsButtonLabel`}
           vol={1}
@@ -155,7 +149,7 @@ function TablePagination(
             </MenuList>
           </Menu> */}
         <Text
-          as="span"
+          elementType="span"
           data-testid={dataTestId && `${dataTestId}labelDisplayedRows`}
           vol={1}
         >
@@ -174,7 +168,7 @@ function TablePagination(
           variant="fab"
           vol={3}
           iconPos={"end"}
-          onClick={handlePrevButtonClick}
+          onPress={handlePrevButtonPress}
           disabled={currentPage === 0}
           {...prevIconButtonProps}
         >
@@ -186,7 +180,7 @@ function TablePagination(
           variant="fab"
           vol={3}
           iconPos={"end"}
-          onClick={handleNextButtonClick}
+          onPress={handleNextButtonPress}
           disabled={
             count !== -1
               ? currentPage >= Math.ceil(count / rowsPerPage) - 1
@@ -197,10 +191,11 @@ function TablePagination(
           {iconNext}
         </Button>
         {/* {showLastButton && ()} */}
-      </Toolbar>
+      </AppBar>
     </div>
   );
 }
+TablePagination.displayName = "TablePagination";
 
 /**
  * @todo TablePaginations - needs refactor.

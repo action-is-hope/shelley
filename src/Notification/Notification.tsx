@@ -2,7 +2,7 @@
 import type React from "react";
 import { useRef, RefObject, forwardRef, ReactNode, useState } from "react";
 import { Text } from "../Text";
-import { IconButton } from "../IconButton/IconButton";
+import { IconButton } from "../Button/IconButton";
 import CloseIcon from "../icons/Close";
 
 import InfoIcon from "../icons/Info";
@@ -95,7 +95,7 @@ function Notification(
         <div ref={contentRef} className={st(classes.textWrapper)}>
           {title && (
             <Text
-              as="span"
+              elementType="span"
               vol={3}
               className={st(classes.title)}
               data-id={dataId ? `${dataId}--title` : undefined}
@@ -105,7 +105,7 @@ function Notification(
           )}
           {subtitle && (
             <Text
-              as="span"
+              elementType="span"
               vol={2}
               className={st(classes.subtitle)}
               data-id={dataId ? `${dataId}--subTitle` : undefined}

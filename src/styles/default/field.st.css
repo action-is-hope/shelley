@@ -13,15 +13,12 @@
     --spacing-unit,
     --field-padding,
     --border-radius-field,
-    --text-vol-3-scale, --text-vol-3-max,
-    --text-vol-4-scale, --text-vol-4-max,
-    --text-vol-5-scale, --text-vol-5-max,
-    --text-vol-6-scale, --text-vol-6-max,
     --color-error,
     --color-focus,
     --color-form-base-border,
     --color-background-textField-filled
   ] from "./project.st.css";
+
 @st-import Field from "../../Field/field.st.css";
 @st-import [respScale] from "../formatters/common";
 @st-import [
@@ -111,9 +108,7 @@
   /*==== STATES ====*/
 
   /* = Error */
-  Field:error::fieldContainer {
-    /* -st-mixin: startFieldIndicatorHasError */
-  }
+  Field:error::fieldContainer {}
 
   /* = Disabled */
   Field:isDisabled {

@@ -7,18 +7,23 @@ import React, {
 } from "react";
 import { mergeProps } from "react-aria";
 import type { ButtonProps } from "../Button";
-import type { Tone, Volume, ButtonVariants } from "../typings/shared-types";
+import type {
+  ExtendedToneVariants,
+  ExtendedButtonVariants,
+  Volume,
+} from "../typings/shared-types";
 import { st, classes } from "./buttonGroup.st.css";
 
-export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ButtonGroupProps<V = "", T = "">
+  extends React.HTMLAttributes<HTMLDivElement> {
   /** Adds a class to each button. */
   buttonClassName?: string;
   /** Disables all the buttons. */
   isDisabled?: boolean;
   /** Tone index. */
-  tone?: Tone;
+  tone?: ExtendedToneVariants<T>;
   /** Variant index. */
-  variant?: ButtonVariants;
+  variant?: ExtendedButtonVariants<V>;
   /** Changes the volume of the buttons. */
   vol?: Volume;
   /** Orient around vertical or horizontal. */
@@ -27,13 +32,16 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   splitButton?: boolean;
 }
 
-function ButtonGroup(props: ButtonGroupProps, ref: React.Ref<HTMLDivElement>) {
+function ButtonGroup<V extends string, T extends string>(
+  props: ButtonGroupProps<T, V>,
+  ref: React.Ref<HTMLDivElement>
+) {
   const {
     buttonClassName,
     children,
     className: classNameProp,
     isDisabled,
-    tone = 1,
+    tone = "lead",
     variant = "quiet",
     orientation = "horizontal",
     vol = 3,
@@ -67,6 +75,7 @@ function ButtonGroup(props: ButtonGroupProps, ref: React.Ref<HTMLDivElement>) {
     </div>
   );
 }
+ButtonGroup.displayName = "ButtonGroup";
 
 /**
  * ButtonGroup can be used to group related buttons in various orientations.

@@ -1,7 +1,7 @@
 "use-client";
 /** Disclosure.tsx */
 import React, { VFC, useRef, ReactNode, forwardRef } from "react";
-import { Button, ButtonCustomProps } from "../Button";
+import { Button, ButtonProps } from "../Button";
 import AngleDown from "../icons/AngleDown";
 import type { AlignPos, ComponentBase } from "../typings/shared-types";
 import useDisclosure from "./useDisclosure";
@@ -32,7 +32,7 @@ export interface DisclosureProps
   /** Callback fired when trigger is selected. */
   onExpandedChange?: () => void;
   /** Button props, for icoon use triggerIcon. */
-  triggerProps?: Omit<ButtonCustomProps, "icon">;
+  triggerProps?: Omit<ButtonProps, "icon">;
   /** Visually render the icon alt text. */
   iconAltVisible?: boolean;
   /** Icon alt text in a collapsed state. @default 'Expand' */
@@ -115,6 +115,7 @@ function Disclosure(props: DisclosureProps, ref?: React.Ref<HTMLDivElement>) {
     </article>
   );
 }
+Disclosure.displayName = "Disclosure";
 
 const _Disclosure = forwardRef(Disclosure);
 export { _Disclosure as Disclosure };

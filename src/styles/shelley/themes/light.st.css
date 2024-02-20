@@ -48,8 +48,8 @@
     --color-ui-inverse,
     --color-ui-raw-inverse,
     /* = Tone colours */
-    --color-tone-primary,
-    --color-tone-secondary,
+    --color-tone-lead,
+    --color-tone-support,
     --color-tone-info,
     --color-tone-success,
     --color-tone-warning,
@@ -78,13 +78,13 @@
   --color-ui-raw-inverse: var(--light-01-raw);
 
   /* = Tone colours */
-  --color-tone-primary: rgb(15, 108, 189);
-  --color-tone-secondary: rgb(3, 123, 70);
+  --color-tone-lead: rgb(15, 108, 189);
+  --color-tone-support: rgb(3, 123, 70);
   --color-tone-info: rgb(171, 45, 201);
   --color-tone-success: rgb(134, 102, 30);
   /* = Tone colours */
-  --color-tone-primary: #0096ff;
-  --color-tone-secondary: #20a5bc;
+  --color-tone-lead: #06b194;
+  --color-tone-support: #20a5bc;
   --color-tone-info: #7c6fe0;
   --color-tone-success: #3ac08e;
   --color-tone-warning: #ef8f4f;
