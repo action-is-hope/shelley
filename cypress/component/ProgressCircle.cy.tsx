@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressCircle } from "../../src/ProgressCircle/ProgressCircle";
+import { ProgressCircle } from "../../src/Progress/ProgressCircle";
 import type { DataIdDOMAttribute } from "src/typings/shared-types";
 
 const testProps = {

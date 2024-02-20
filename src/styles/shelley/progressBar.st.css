@@ -7,7 +7,7 @@
 @st-import ProgressBar, [
   --loader-bar-track-color,
   --loader-bar-track-fill-color
-] from "../../ProgressBar/progressBar.st.css";
+] from "../../Progress/progressBar.st.css";
 
 @st-scope Shelley {
   ProgressBar {

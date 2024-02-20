@@ -8,7 +8,7 @@ import { ListBoxOption } from ".";
 import { st, classes } from "./listBox.st.css";
 import { mergeRefs } from "@react-aria/utils";
 import type { ComponentBase, LoadMoreProps } from "../typings/shared-types";
-import { ProgressCircle } from "../ProgressCircle";
+import { ProgressCircle } from "../Progress";
 
 export interface ListBoxProps<T>
   extends AriaListBoxOptions<T>,
