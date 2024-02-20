@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonBase } from "../Button";
+import { Button, ButtonBase } from "../";
 import renderer from "react-test-renderer";
 import { Icon } from "../../Icon/Icon";
 import { Router, Link } from "react-router-dom";

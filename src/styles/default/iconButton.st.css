@@ -9,7 +9,7 @@
  */
 
 @st-import Default from "./project.st.css";
-@st-import IconButton, [--border-radius] from "../../IconButton/iconButton.st.css";
+@st-import IconButton, [--border-radius] from "../../Button/iconButton.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 
 @st-scope body Default {

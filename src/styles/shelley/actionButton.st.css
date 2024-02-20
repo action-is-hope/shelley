@@ -3,7 +3,7 @@
 @st-import ActionButton, [
   --bg-color,
   --border-color,
-  --text-color] from "../../ActionButton/actionButton.st.css";
+  --text-color] from "../../Button/actionButton.st.css";
 @st-import [ --tone ] from "./buttonBase.st.css";
 
 @st-scope Shelley {

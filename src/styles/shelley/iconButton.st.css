@@ -9,7 +9,7 @@
 ] from "./project.st.css";
 @st-import IconButton, [
   --bg-color,
-  --text-color] from "../../IconButton/iconButton.st.css";
+  --text-color] from "../../Button/iconButton.st.css";
 @st-import [ --tone ] from "./buttonBase.st.css";
 
 @st-scope Shelley {

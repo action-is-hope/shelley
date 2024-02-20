@@ -8,7 +8,7 @@
  * 
  */
 @st-import Default, [--border-radius-button] from "./project.st.css";
-@st-import ActionButton from "../../ActionButton/actionButton.st.css";
+@st-import ActionButton from "../../Button/actionButton.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [respScale] from "../formatters/common";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";

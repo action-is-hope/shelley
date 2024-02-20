@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { st, classes } from "./actionButton.st.css";
-import { ButtonBase, ButtonProps } from "../Button";
+import { ButtonBase, ButtonProps } from "./";
 
 interface ActionButtonProps
   extends Omit<ButtonProps, "elementType" | "href" | "isCta"> {

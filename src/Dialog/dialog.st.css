@@ -1,5 +1,5 @@
 @st-namespace "Dialog";
-@st-import ActionButton from "../ActionButton/actionButton.st.css";
+@st-import ActionButton from "../Button/actionButton.st.css";
 
 .root {
   -st-states:

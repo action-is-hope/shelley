@@ -8,7 +8,7 @@ import { useToast } from "@react-aria/toast";
 import { mergeRefs } from "@react-aria/utils";
 import { ButtonBase } from "../Button";
 import { Text } from "../Text";
-import { IconButton } from "../IconButton/IconButton";
+import { IconButton } from "../Button/IconButton";
 import CloseIcon from "../icons/Close";
 import { st, classes } from "./toast.st.css";
 

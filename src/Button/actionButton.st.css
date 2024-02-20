@@ -4,7 +4,7 @@
   --border-color,
   --text-color,
   --border-width,
-  --border-radius] from "../Button/buttonBase.st.css";
+  --border-radius] from "./buttonBase.st.css";
 
 .root {
   -st-extends: ButtonBase;
