@@ -1,5 +1,4 @@
-import { Radio } from "../../Radio/Radio";
-import { RadioGroup } from "../RadioGroup";
+import { Radio, RadioGroup } from "../";
 import renderer from "react-test-renderer";
 // useID breaks snapshots so using the SSrProvider.
 import { SSRProvider } from "react-aria";

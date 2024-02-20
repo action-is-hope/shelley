@@ -13,7 +13,7 @@
 }
 
 :import {
-  -st-from: "../../MenuItem/menuItem.st.css";
+  -st-from: "../../Menu/menuItem.st.css";
   -st-default: MenuItem;
 }
 

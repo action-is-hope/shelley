@@ -5,7 +5,7 @@ import { useRadio } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import type { Size, AlignPos, ComponentBase } from "../typings/shared-types";
-import { useRadioGroupProvider } from "../RadioGroup/context";
+import { useRadioGroupProvider } from "./context";
 import { Label } from "../Label";
 import { st, classes } from "./radio.st.css";
 

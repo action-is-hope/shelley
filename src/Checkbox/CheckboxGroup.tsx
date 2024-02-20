@@ -1,11 +1,11 @@
 "use client";
 import { Ref, forwardRef, ReactElement } from "react";
 import type { AriaCheckboxGroupProps } from "@react-types/checkbox";
-import type { CheckboxProps } from "../Checkbox";
+import type { CheckboxProps } from ".";
+import { CheckboxGroupContext } from ".";
 import type { Orientation } from "src/typings/shared-types";
 import { useCheckboxGroupState } from "react-stately";
 import { useCheckboxGroup } from "react-aria";
-import { CheckboxGroupContext } from "./context";
 import { Field, FieldProps } from "../Field";
 import { st, classes } from "./checkboxGroup.st.css";
 

@@ -8,7 +8,7 @@
  * 
  */
 @st-import Default from "./project.st.css";
-@st-import ListBoxOption from "../../ListBoxOption/listBoxOption.st.css";
+@st-import ListBoxOption from "../../ListBox/listBoxOption.st.css";
 @st-import [
     menuItem,
     menuItemDisabled,

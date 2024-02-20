@@ -6,7 +6,7 @@ import React, {
   isValidElement,
 } from "react";
 import { mergeProps } from "react-aria";
-import type { ButtonProps } from "../Button";
+import type { ButtonProps } from "./";
 import type {
   ExtendedToneVariants,
   ExtendedButtonVariants,

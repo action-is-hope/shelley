@@ -13,7 +13,7 @@
     --color-error
   ] from "./project.st.css";
 @st-import Checkbox from "../../Checkbox/checkbox.st.css";
-@st-import CheckboxGroup from "../../CheckboxGroup/checkboxGroup.st.css";
+@st-import CheckboxGroup from "../../Checkbox/checkboxGroup.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [
     SelectionControlInputContainer,

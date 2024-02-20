@@ -4,7 +4,7 @@ import type { AriaMenuProps } from "@react-types/menu";
 import { mergeRefs } from "@react-aria/utils";
 import { useMenu } from "react-aria";
 import { useTreeState } from "@react-stately/tree";
-import { MenuItem } from "../MenuItem/MenuItem";
+import { MenuItem } from ".";
 import type { ComponentBase } from "../typings/shared-types";
 import { st, classes } from "./menu.st.css";
 

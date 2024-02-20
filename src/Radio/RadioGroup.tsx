@@ -4,10 +4,11 @@ import { Field } from "../Field/Field";
 import type { FieldProps } from "../Field/Field";
 import type { Orientation } from "src/typings/shared-types";
 import type { AriaRadioGroupProps } from "@react-types/radio";
-import type { RadioProps } from "../Radio";
+import type { RadioProps } from ".";
+import { RadioGroupContext } from ".";
 import { useRadioGroupState } from "react-stately";
 import { useRadioGroup } from "react-aria";
-import { RadioGroupContext } from "./context";
+
 import { st, classes } from "./radioGroup.st.css";
 
 export interface RadioGroupProps

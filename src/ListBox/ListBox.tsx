@@ -4,7 +4,7 @@ import { useListState, ListState } from "react-stately";
 import { useListBox } from "react-aria";
 import type { CollectionChildren } from "@react-types/shared/src/collections";
 import type { AriaListBoxOptions } from "@react-aria/listbox";
-import { ListBoxOption } from "../ListBoxOption";
+import { ListBoxOption } from ".";
 import { st, classes } from "./listBox.st.css";
 import { mergeRefs } from "@react-aria/utils";
 import type { ComponentBase, LoadMoreProps } from "../typings/shared-types";
