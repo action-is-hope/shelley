@@ -125,7 +125,7 @@ describe("ButtonGroup", () => {
     });
     it("Can override specific button variants", () => {
       cy.mount(
-        <ButtonGroupBasic variant="primary" tone={1}>
+        <ButtonGroupBasic variant="primary" tone="lead">
           <Button data-button>One</Button>
           <Button data-button-two variant="secondary" tone={3}>
             Two
@@ -133,10 +133,12 @@ describe("ButtonGroup", () => {
           <Button data-button>Three</Button>
         </ButtonGroupBasic>
       );
-      cy.get(button).should("have.attr", "class").and("to.have.string", "lead");
+      cy.get(button)
+        .should("have.attr", "class")
+        .and("to.have.string", "primary");
       cy.get("[data-button-two]")
         .should("have.attr", "class")
-        .and("to.have.string", "support");
+        .and("to.have.string", "secondary");
     });
     it("isDisabled disables the group and applies isDisabled class", () => {
       cy.mount(

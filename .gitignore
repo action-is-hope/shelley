@@ -63,3 +63,6 @@ cypress/screenshots
 
 # Stylable types
 st-types
+
+# Generated files
+componentInfo.json
