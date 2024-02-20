@@ -15,7 +15,6 @@
 @st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5] from "./textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
 
-
 /* Local vars. */
 :vars {
   inputVol1LabelRelative: "0.95em";
@@ -219,9 +218,10 @@
 /* = The 'mark' of the field, radio and checkboxes both have one. */
 .RadioCheckboxCommon::before {
   content: "";
-  transition: opacity 120ms, height 120ms;
+  transition: opacity 120ms;
   width: 0.5em;
   height: 0.5em;
+  will-change: opacity;
   opacity: 0;
   display: block;
   background-color: var(--color-form-selection-notch);
@@ -278,6 +278,7 @@
   border-radius: 9999px;
   transition: all 0.2s;
   transform: translate(-50%);
+  will-change: translate, background-color;
   z-index: 1;
   background-color: var(--color-switch-notch);
 }
