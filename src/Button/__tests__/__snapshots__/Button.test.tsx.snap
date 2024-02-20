@@ -160,6 +160,35 @@ exports[`Button renders as third party (react-router) anchor provided via #as an
 </a>
 `;
 
+exports[`Button renders as third party (react-router) anchor provided via #elementType and #to props 1`] = `
+<a
+  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+  data-id="button-data-id"
+  href="/internal-link"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragStart={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchCancel={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <span
+    className="ButtonBase__Test__inner"
+  >
+    Button text
+  </span>
+</a>
+`;
+
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
   className="Button__Test__root Button__Test--fullWidth Button__Test---tone-6-danger Button__Test---variant-7-lead Button__Test---vol-1-6"

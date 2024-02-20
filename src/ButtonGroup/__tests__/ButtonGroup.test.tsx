@@ -5,7 +5,7 @@ import { ButtonGroup } from "../ButtonGroup";
 import renderer from "react-test-renderer";
 
 describe("ButtonGroup", () => {
-  it("renders as a basic lead button group", () => {
+  it("renders as a basic primary button group", () => {
     const tree = renderer
       .create(
         <ButtonGroup variant="primary">

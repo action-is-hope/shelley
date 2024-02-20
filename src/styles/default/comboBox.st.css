@@ -7,15 +7,18 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ComboBox/comboBox.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+@st-import Default, [--spacing-unit] from "./project.st.css";
 @st-import ComboBox from "../../ComboBox/comboBox.st.css";
 
 @st-scope Default {
 
   ComboBox::trigger {
-    margin-right: -4px;
     font-size: 1em;
-    padding: 0.2em 1em 0.2em 0.5em;
+    padding: 0.2em 1em;
+  }
+
+  ComboBox::fieldInput:focus {
+    padding-right: 0
   }
 
   ComboBox::endAdornment {
@@ -36,6 +39,11 @@
   ComboBox::trigger {
     margin-left: -8px;
     margin-right: 2px;
+  }
+
+  ComboBox::fieldInput:focus {
+    padding-right: var(--spacing-unit);
+    padding-left: 0;
   }
 
   ComboBox::loader {

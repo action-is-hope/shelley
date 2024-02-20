@@ -37,7 +37,7 @@ The buttons can be grouped by wrapping them with the `ButtonGroup` component. Th
   <Story
     name="a) Button group"
     args={{
-      variant: "lead",
+      variant: "primary",
     }}
   >
     {BasicButtonGroup.bind({})}
@@ -77,7 +77,7 @@ More standard props, `volume` and `tone`.
 <Preview>
   <Story name="c) Volume and tone">
     <StoryCenteredColumn>
-      <ButtonGroup vol={1} variant="primary" aria-label="lead button group">
+      <ButtonGroup vol={1} variant="primary" aria-label="primary button group">
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
@@ -86,13 +86,17 @@ More standard props, `volume` and `tone`.
         vol={2}
         tone="support"
         variant="primary"
-        aria-label="lead button group"
+        aria-label="primary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </ButtonGroup>
-      <ButtonGroup tone="info" variant="primary" aria-label="lead button group">
+      <ButtonGroup
+        tone="info"
+        variant="primary"
+        aria-label="primary button group"
+      >
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
@@ -100,7 +104,7 @@ More standard props, `volume` and `tone`.
       <ButtonGroup
         vol={4}
         variant="secondary"
-        aria-label="support button group"
+        aria-label="secondary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>
@@ -110,7 +114,7 @@ More standard props, `volume` and `tone`.
         vol={5}
         tone="support"
         variant="secondary"
-        aria-label="support button group"
+        aria-label="secondary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>
@@ -120,7 +124,7 @@ More standard props, `volume` and `tone`.
         vol={6}
         tone="info"
         variant="secondary"
-        aria-label="support button group"
+        aria-label="secondary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>
@@ -140,7 +144,7 @@ The button group can be displayed vertically using the `orientation` prop.
       <ButtonGroup
         variant="secondary"
         orientation="vertical"
-        aria-label="support button group"
+        aria-label="secondary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>
@@ -149,7 +153,7 @@ The button group can be displayed vertically using the `orientation` prop.
       <ButtonGroup
         variant="primary"
         orientation="vertical"
-        aria-label="lead button group"
+        aria-label="primary button group"
       >
         <Button>One</Button>
         <Button>Two</Button>

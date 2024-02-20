@@ -7,12 +7,7 @@ export interface ComponentBase {
 // "top" "right" "bottom" "left" but using right to left aware langauge.
 export declare type AlignPos = "top" | "end" | "bottom" | "start" | undefined;
 
-export declare type ButtonVariants =
-  | "lead"
-  | "support"
-  | "quiet"
-  | "fab"
-  | false;
+export declare type ButtonVariants = "primary" | "secondary" | "quiet" | false;
 
 export type ExtendedButtonVariants<V> = ButtonVariants | V;
 

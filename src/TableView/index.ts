@@ -39,8 +39,7 @@ export interface ShelleyCellProps
 const ShelleyCell = Cell as (props: ShelleyCellProps) => JSX.Element;
 export { ShelleyCell as Cell };
 
-// export { TableHeader, TableBody, Section, Row } from "@react-stately/table";
-export { TableHeader, TableBody, Row } from "@react-stately/table";
+export { TableHeader, TableBody, Row, Section } from "@react-stately/table";
 
 export type {
   TableHeaderProps,

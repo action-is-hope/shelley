@@ -118,7 +118,12 @@ describe("Disclosure", () => {
   it("tigger props are applied to trigger button", () => {
     cy.mount(
       <BasicDisclosure
-        triggerProps={{ vol: 3, tone: 1, variant: "lead", iconPos: "start" }}
+        triggerProps={{
+          vol: 3,
+          tone: "lead",
+          variant: "primary",
+          iconPos: "start",
+        }}
       />
     );
     cy.get(trigger)

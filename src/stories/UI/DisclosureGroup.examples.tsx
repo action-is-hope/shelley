@@ -95,7 +95,7 @@ const items2 = [
     id: "ex1-2",
     title: "Air pollution",
     content:
-      "Degradation of air quality with negative effects on human health or the natural or built environment due to the introduction, by natural processes or human activity, into the atmosphere of substances (gases, aerosols) which have a direct (lead pollutants) or indirect (support pollutants) harmful effect.",
+      "Degradation of air quality with negative effects on human health or the natural or built environment due to the introduction, by natural processes or human activity, into the atmosphere of substances (gases, aerosols) which have a direct (primary pollutants) or indirect (secondary pollutants) harmful effect.",
     related: "Aerosol and Short-lived climate forcers (SLCF).",
   },
   {
