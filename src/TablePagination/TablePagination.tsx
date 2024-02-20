@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { st, classes } from "./tablePagination.st.css";
 import { Text } from "../Text";
-import { Toolbar } from "../Toolbar";
+import { AppBar } from "../AppBar";
 import AngleLeft from "../icons/AngleLeft";
 import AngleRight from "../icons/AngleRight";
 import { Button, ButtonProps } from "../Button";
@@ -104,7 +104,7 @@ function TablePagination(
       data-testid={dataTestId}
       {...{ id, ref, ...rest }}
     >
-      <Toolbar align="end">
+      <AppBar align="end">
         <Text
           elementType="span"
           data-testid={dataTestId && `${dataTestId}RowsButtonLabel`}
@@ -191,7 +191,7 @@ function TablePagination(
           {iconNext}
         </Button>
         {/* {showLastButton && ()} */}
-      </Toolbar>
+      </AppBar>
     </div>
   );
 }

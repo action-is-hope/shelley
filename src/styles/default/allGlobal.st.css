@@ -47,7 +47,7 @@
 
 :global(footer),
 :global(header),
-:global(main),
+:global(primary),
 :global(nav) {
   display: block;
 }

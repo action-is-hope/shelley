@@ -34,7 +34,7 @@ The first question, are you planning to build multiple sites with one HTML struc
 
 If no then you can use the props throughout your markup to define the types of buttons and text you would like as you are working to just one design.
 
-If yes then you might set yourself up with a load of mixins and point to them instead. Think: What the design changes between theme? I.E Component A with design A has a CTA of type "primary" but Component A with design B has a cta type of "secondary". Now you would be in the position that you need to override a primary button to look like a secondary button just for that component. By turning the look and feel props off you get a raw button and you can then apply classes to your component A button which in turn can point to a mixin of primary. This way you can granula control over the styles applied to buttons on a component by component basis...
+If yes then you might set yourself up with a load of mixins and point to them instead. Think: What the design changes between theme? I.E Component A with design A has a CTA of type "lead" but Component A with design B has a cta type of "support". Now you would be in the position that you need to override a lead button to look like a support button just for that component. By turning the look and feel props off you get a raw button and you can then apply classes to your component A button which in turn can point to a mixin of lead. This way you can granula control over the styles applied to buttons on a component by component basis...
 
 Note: Add a component API stability marker aside with some info about current status etc.
 

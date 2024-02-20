@@ -41,7 +41,7 @@ function ButtonGroup<V extends string, T extends string>(
     children,
     className: classNameProp,
     isDisabled,
-    tone = 1,
+    tone = "lead",
     variant = "quiet",
     orientation = "horizontal",
     vol = 3,

@@ -1,0 +1,138 @@
+@st-namespace "DefaultButtonBase";
+/**
+ * = Button - button.st.css
+ *
+ * Base theme styles for a Shelley Button.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/button.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import ButtonBase from "../../Button/buttonBase.st.css";
+@st-import Button from "../../Button/button.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
+@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
+@st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
+@st-import [textVol] from "./mixins/textVol.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
+@st-scope Default {
+
+  ButtonBase {
+    -st-mixin: hideWebkitAppearance;
+    position: relative;
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    /* = opinionated, only do if you are willing to provide replacement. */
+    outline: none;
+    letter-spacing: .034em;
+    font-weight: 500;
+  }
+
+  /* = Inner <span> */
+  ButtonBase::inner {
+    /* padding on top of inner as opposed to the button itself 
+     * so an adjacent icon can grow a little into the space created
+     * without affecting the height of the button. */
+    padding-top: 0.58em;
+    padding-bottom: 0.55em;
+    position: relative;
+  }
+
+  /* = Divider - a <span> */
+  ButtonBase::divider {
+    display: inline-block;
+    width: 1em;
+    line-height: 0;
+  }
+
+  ButtonBase Icon {
+    /* = Correct rounding issues on the svgs when they / 2 due to the respScale. */
+    font-size: calc(1em + 2px);
+  }
+
+  /* Pesudo hover element. */
+  ButtonBase::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+    opacity: 0;
+    /* background-color: set in the lower theme file */
+  }
+
+  ButtonBase:hover::before {
+    opacity: 1;
+  }
+
+  ButtonBase::after {
+    -st-mixin: pseudoFocus;
+    border-radius: 4px;
+  }
+
+  ButtonBase:isFocusVisible::after {
+    -st-mixin: pseudoFocusVisible;
+  }
+
+  /* = Disabled */
+  ButtonBase:isDisabled,
+  ButtonBase:isDisabled:hover,
+  ButtonBase:isDisabled:focus,
+  ButtonBase:isDisabled:active,
+  ButtonBase:isDisabled:active:hover {
+    opacity: 0.5;
+  }
+
+  ButtonBase:vol(1) {
+    -st-mixin: textVol(minValue 0.67, maxValue 0.675, lineHeight 1);
+  }
+
+  ButtonBase:vol(2) {
+    -st-mixin: textVol(minValue 0.75, maxValue 0.71, lineHeight 1);
+  }
+
+  ButtonBase:vol(3) {
+    -st-mixin: textVol(minValue 0.8, maxValue 0.78, lineHeight 1.1);
+  }
+
+  ButtonBase:vol(4) {
+    -st-mixin: textVol(minValue 0.85, maxValue .875, lineHeight 1.1);
+  }
+
+  ButtonBase:vol(5) {
+    -st-mixin: textVol(minValue 1, maxValue 1, lineHeight 1.15);
+  }
+
+  ButtonBase:vol(6) {
+    -st-mixin: textVol(minValue 1.15, maxValue 1.125, lineHeight 1.15);
+  }
+
+  ButtonBase:vol(1) Icon {
+    font-size: 12px;
+  }
+
+  ButtonBase:vol(2) Icon {
+    font-size: 14px;
+  }
+
+  ButtonBase:vol(3) Icon {
+    font-size: 16px;
+  }
+
+  ButtonBase:vol(4) Icon {
+    font-size: 18px;
+  }
+
+  ButtonBase:vol(5) Icon {
+    font-size: 20px;
+  }
+
+  ButtonBase:vol(6) Icon {
+    font-size: 22px;
+  }
+}

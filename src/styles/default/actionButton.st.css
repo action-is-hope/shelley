@@ -18,29 +18,15 @@
 /* This is how we can scope the styles in Stylable. */
 @st-scope Default {
 
-  /* = The base <button> element. */
   ActionButton {
-    -st-mixin: hideWebkitAppearance;
-    position: relative;
-    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    /* = opinionated, only do if you are willing to provide replacement. */
-    outline: none;
-    cursor: pointer;
     font-weight: 400;
     padding: 0 .6em;
     height: 32px;
-    border-radius: var(--border-radius-button);
+    border-radius: 0;
   }
 
-  ActionButton {
-    -st-mixin:
-      textVol(minValue 0.85em,
-        maxValue .88em,
-        lineHeight 1.1);
-  }
-
-  ActionButton:isQuiet {
-    border-color: transparent;
+  ActionButton::after {
+    border-radius: 0;
   }
 
   /* = Inner <span> */
@@ -48,25 +34,9 @@
     padding-top: 0.1em;
   }
 
-  /* = Divider - <span> rendered with Icon only, rename perhaps?*/
+  /* = Divider - <span> ?*/
   ActionButton::divider {
-    display: inline-block;
     width: .5em;
-    line-height: 0;
-  }
-
-  ActionButton Icon {
-    /* = Correct rounding issues on the svgs when they / 2 due to the respScale. */
-    font-size: calc(1em + 2px);
-  }
-
-  ActionButton::after {
-    -st-mixin: pseudoFocus;
-    border-radius: var(--border-radius-button);
-  }
-
-  ActionButton:isFocusVisible::after {
-    -st-mixin: pseudoFocusVisible;
   }
 
   /* = Disabled */

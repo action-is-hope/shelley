@@ -1,6 +1,6 @@
 @st-namespace "Select";
 @st-import Field from "../Field/field.st.css";
-@st-import Button from "../Button/button.st.css";
+@st-import ButtonBase from "../Button/buttonBase.st.css";
 @st-import Popup from "../Popup/popup.st.css";
 
 
@@ -9,7 +9,7 @@
 }
 
 .trigger {
-  -st-extends: Button;
+  -st-extends: ButtonBase;
 }
 
 .popup {

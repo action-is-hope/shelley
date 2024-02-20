@@ -37,7 +37,7 @@
 
 @media value(breakpoint-xxl) {
   .textVol {
-    font-size: value(maxValue);
+    font-size: value(maxValue)value(unit);
   }
 }
 

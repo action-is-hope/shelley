@@ -12,6 +12,10 @@ import type { MergeElementProps } from "../typings/utils";
 import { useFocusRing } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { st, classes } from "./button.st.css";
+import {
+  st as stButtonBase,
+  classes as classesButtonBase,
+} from "./buttonBase.st.css";
 
 export interface ButtonProps<P = "button", V = "", T = "">
   extends Omit<AriaButtonProps, "elementType" | "href"> {
@@ -31,9 +35,11 @@ export interface ButtonProps<P = "button", V = "", T = "">
   vol?: Volume;
   /** Applies width of 100%. */
   fullWidth?: boolean;
+  /** Is the button a Call To Action */
+  isCta?: boolean;
 }
 
-function Button<
+function ButtonBase<
   V extends string,
   T extends string,
   P extends React.ElementType = "button"
@@ -48,8 +54,8 @@ function Button<
     icon,
     iconPos,
     fullWidth = false,
-    tone = "primary",
-    variant = "primary",
+    tone,
+    variant,
     vol = 3,
     isDisabled,
     ...rest
@@ -63,27 +69,28 @@ function Button<
   );
   const { isFocusVisible, focusProps } = useFocusRing();
 
-  const className = st(
-    classes.root,
+  const className = stButtonBase(
+    classesButtonBase.root,
     {
       iconPos: icon ? iconPos : undefined,
-      fullWidth,
-      tone: tone || undefined,
       variant: variant || undefined,
+      tone: tone || undefined,
       vol: vol || undefined,
       isFocusVisible,
       isPressed,
       isDisabled,
+      fullWidth,
     },
     classNameProp
   );
 
   const internal = (
     <>
-      {children && <span className={classes.inner}>{children}</span>}
+      {children && <span className={classesButtonBase.inner}>{children}</span>}
       {icon && (
         <>
-          {children && <span className={classes.divider}></span>} {icon}
+          {children && <span className={classesButtonBase.divider}></span>}{" "}
+          {icon}
         </>
       )}
     </>
@@ -99,7 +106,7 @@ function Button<
     internal
   );
 }
-Button.displayName = "Button";
+ButtonBase.displayName = "Button";
 
 /**
  * Button component capable of adapting to various element types (e.g., "button", "a", or a router "Link").
@@ -108,6 +115,36 @@ Button.displayName = "Button";
  * @template P The element type for the component, influencing the resulting DOM element or React component.
  * @param {ButtonProps<P>} props
  */
+const _ButtonBase = forwardRef(ButtonBase);
+_ButtonBase.toString = () => "ShelleyButton";
+export { _ButtonBase as ButtonBase };
+
+function Button<
+  V extends string,
+  T extends string,
+  P extends React.ElementType = "button"
+>(
+  props: MergeElementProps<P, ButtonProps<P, V, T>>,
+  ref: React.Ref<HTMLElement>
+) {
+  const {
+    className: classNameProp,
+    tone = "lead",
+    variant = "primary",
+    isCta,
+    ...rest
+  } = props;
+
+  return (
+    <_ButtonBase
+      className={st(classes.root, { cta: isCta }, classNameProp)}
+      ref={ref as React.Ref<HTMLButtonElement>}
+      {...{ tone, variant, ...(rest as ButtonProps) }}
+    />
+  );
+}
+Button.displayName = "Button";
+
 const _Button = forwardRef(Button);
 _Button.toString = () => "ShelleyButton";
 export { _Button as Button };

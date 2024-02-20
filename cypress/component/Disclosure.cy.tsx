@@ -118,7 +118,7 @@ describe("Disclosure", () => {
   it("tigger props are applied to trigger button", () => {
     cy.mount(
       <BasicDisclosure
-        triggerProps={{ vol: 3, tone: 1, variant: "primary", iconPos: "start" }}
+        triggerProps={{ vol: 3, tone: 1, variant: "lead", iconPos: "start" }}
       />
     );
     cy.get(trigger)
@@ -128,6 +128,6 @@ describe("Disclosure", () => {
       .and("to.have.string", "vol")
       .and("to.have.string", "tone")
       .and("to.have.string", "variant")
-      .and("to.have.string", "primary");
+      .and("to.have.string", "lead");
   });
 });

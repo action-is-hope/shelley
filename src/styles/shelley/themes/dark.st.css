@@ -12,7 +12,7 @@
   -st-from: "../project.st.css";
   -st-named:
     /* = Colours - whatever we need for this file. */
-    --color-tone-secondary,
+    --color-tone-support,
     --color-ui-raw
 }
 
@@ -33,7 +33,7 @@
 .root :global(h2)Text:uppercase,
 .root :global(h3)Text:uppercase,
 .root :global(h4)Text:uppercase {
-  color: var(--color-tone-secondary);
+  color: var(--color-tone-support);
 }
 
 /*

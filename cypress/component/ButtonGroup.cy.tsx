@@ -133,12 +133,10 @@ describe("ButtonGroup", () => {
           <Button data-button>Three</Button>
         </ButtonGroupBasic>
       );
-      cy.get(button)
-        .should("have.attr", "class")
-        .and("to.have.string", "primary");
+      cy.get(button).should("have.attr", "class").and("to.have.string", "lead");
       cy.get("[data-button-two]")
         .should("have.attr", "class")
-        .and("to.have.string", "secondary");
+        .and("to.have.string", "support");
     });
     it("isDisabled disables the group and applies isDisabled class", () => {
       cy.mount(

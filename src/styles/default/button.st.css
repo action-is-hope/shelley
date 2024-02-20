@@ -9,177 +9,20 @@
  */
 @st-import Default from "./project.st.css";
 @st-import Button from "../../Button/button.st.css";
-@st-import Icon from "../../Icon/icon.st.css";
-@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
-@st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
-@st-import [textVol] from "./mixins/textVol.st.css";
-@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 @st-scope Default {
+
   Button {
-    -st-mixin: hideWebkitAppearance;
-    position: relative;
-    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    /* = opinionated, only do if you are willing to provide replacement. */
-    outline: none;
-    letter-spacing: .034em;
-    font-weight: 500;
     padding: .2em 1em;
-
-  }
-
-  /* = Inner <span> */
-  Button::inner {
-    /*= Padding on top so an icon can grow a little without affecting the overall height. */
-    padding-top: 0.58em;
-    padding-bottom: 0.55em;
-  }
-
-  /* = Divider - a <span> */
-  Button::divider {
-    display: inline-block;
-    width: 1em;
-    line-height: 0;
-  }
-
-  Button Icon {
-    /* = Correct rounding issues on the svgs when they / 2 due to the respScale. */
-    font-size: calc(1em + 2px);
-  }
-
-  Button:hover {
-    opacity: 0.7;
-  }
-
-  Button::after {
-    -st-mixin: pseudoFocus;
-    border-radius: 4px;
-  }
-
-  Button:isFocusVisible::after {
-    -st-mixin: pseudoFocusVisible;
-  }
-
-  /* = Disabled */
-  Button:isDisabled,
-  Button:isDisabled:hover,
-  Button:isDisabled:focus,
-  Button:isDisabled:active,
-  Button:isDisabled:active:hover {
-    opacity: 0.5;
   }
 
   Button:vol(1) {
-    -st-mixin: textVol(minValue 0.67, maxValue 0.675, lineHeight 1);
     padding-top: 0.15em;
     padding-bottom: 0.15em;
   }
 
   Button:vol(2) {
-    -st-mixin: textVol(minValue 0.75, maxValue 0.71, lineHeight 1);
     padding-top: 0.15em;
     padding-bottom: 0.15em;
-  }
-
-  Button:vol(3) {
-    -st-mixin: textVol(minValue 0.8, maxValue 0.78, lineHeight 1.1);
-  }
-
-  Button:vol(4) {
-    -st-mixin: textVol(minValue 0.85, maxValue .875, lineHeight 1.1);
-  }
-
-  Button:vol(5) {
-    -st-mixin: textVol(minValue 1, maxValue 1, lineHeight 1.15);
-  }
-
-  Button:vol(6) {
-    -st-mixin: textVol(minValue 1.15, maxValue 1.125, lineHeight 1.15);
-  }
-
-  Button:variant(primary) {}
-
-  Button:variant(secondary) {}
-
-  Button:variant(quiet) {}
-
-  Button:variant(fab) {
-    padding: 0;
-    border-radius: 999px;
-    justify-content: center;
-  }
-
-  Button:variant(fab)::divider {
-    display: none;
-  }
-
-  Button:variant(fab)::inner {
-    -st-mixin: visuallyHidden;
-  }
-
-  Button:variant(fab)::after {
-    border-radius: 999px;
-  }
-
-  /*= FAB are all about the icons so we don't want rounding issues on these. Set with values that / 2. */
-
-  /*= FAB - Volume 1 */
-  Button:variant(fab):vol(1) {
-    width: 32px;
-    height: 32px;
-  }
-
-  Button:variant(fab):vol(1) Icon {
-    font-size: 16px;
-  }
-
-  /*= FAB - Volume 2 */
-  Button:variant(fab):vol(2) {
-    width: 40px;
-    height: 40px;
-  }
-
-  Button:variant(fab):vol(2) Icon {
-    font-size: 18px;
-  }
-
-  /*= FAB - Volume 3 */
-  Button:variant(fab):vol(3) {
-    width: 48px;
-    height: 48px;
-  }
-
-  Button:variant(fab):vol(3) Icon {
-    font-size: 18px;
-  }
-
-  /*= FAB - Volume 4 */
-  Button:variant(fab):vol(4) {
-    width: 56px;
-    height: 56px;
-  }
-
-  Button:variant(fab):vol(4) Icon {
-    font-size: 20px;
-  }
-
-  /*= FAB - Volume 5 */
-  Button:variant(fab):vol(5) {
-    width: 64px;
-    height: 64px;
-  }
-
-  Button:variant(fab):vol(5) Icon {
-    font-size: 22px;
-  }
-
-  /*= FAB - Volume 6 */
-  Button:variant(fab):vol(6) {
-    width: 72px;
-    height: 72px;
-  }
-
-  Button:variant(fab):vol(6) Icon {
-    font-size: 24px;
   }
 }

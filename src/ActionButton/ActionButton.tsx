@@ -1,20 +1,9 @@
-"use client";
-import { mergeProps, mergeRefs } from "@react-aria/utils";
-import React, { useRef, RefObject, forwardRef } from "react";
-import { useButton } from "@react-aria/button";
-import { useFocusRing } from "react-aria";
-import type { AriaButtonProps } from "@react-types/button";
-import type { AlignPos } from "../typings/shared-types";
+import React, { forwardRef } from "react";
 import { st, classes } from "./actionButton.st.css";
+import { ButtonBase, ButtonProps } from "../Button";
 
-export interface ActionButtonProps
-  extends Omit<AriaButtonProps, "elementType"> {
-  /** Classname  */
-  className?: string;
-  /** Define an Icon node, postion via #iconPos. */
-  icon?: React.ReactNode;
-  /** The position of the icon relative to the label. */
-  iconPos?: AlignPos;
+interface ActionButtonProps
+  extends Omit<ButtonProps, "elementType" | "href" | "isCta"> {
   isQuiet?: boolean;
 }
 
@@ -22,56 +11,23 @@ function ActionButton(
   props: ActionButtonProps,
   ref: React.Ref<HTMLButtonElement>
 ) {
-  const {
-    isQuiet,
-    isDisabled,
-    children,
-    // autoFocus,
-    className: classNameProp,
-    icon,
-    iconPos,
-  } = props;
-
-  const internalRef = useRef(null);
-
-  const { buttonProps, isPressed } = useButton(
-    props,
-    internalRef as RefObject<HTMLButtonElement>
-  );
-
-  const { isFocusVisible, focusProps } = useFocusRing();
+  const { className: classNameProp, isQuiet, ...rest } = props;
 
   return (
-    <button
-      {...mergeProps(buttonProps, focusProps)}
-      ref={mergeRefs(internalRef, ref)}
+    <ButtonBase
       className={st(
         classes.root,
         {
-          iconPos: icon ? iconPos : undefined,
           isQuiet,
-          isFocusVisible,
-          isPressed,
-          isDisabled,
         },
         classNameProp
       )}
-    >
-      {icon && (
-        <>
-          {icon}
-          {children && <span className={classes.divider}></span>}
-        </>
-      )}
-      {children && <span className={classes.inner}>{children}</span>}
-    </button>
+      ref={ref}
+      {...rest}
+    />
   );
 }
 ActionButton.displayName = "ActionButton";
 
-/**
- * ActionButtons allow users to perform an action.
- * They’re used for similar, task-based options within a workflow, and are ideal for interfaces where buttons aren’t meant to draw a lot of attention.
- */
 const _ActionButton = forwardRef(ActionButton);
 export { _ActionButton as ActionButton };

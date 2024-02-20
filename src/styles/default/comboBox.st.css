@@ -13,9 +13,9 @@
 @st-scope Default {
 
   ComboBox::trigger {
-    margin-right: -6px;
-    margin-left: 2px;
+    margin-right: -4px;
     font-size: 1em;
+    padding: 0.2em 1em 0.2em 0.5em;
   }
 
   ComboBox::endAdornment {

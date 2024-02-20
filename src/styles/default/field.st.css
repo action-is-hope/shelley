@@ -108,9 +108,7 @@
   /*==== STATES ====*/
 
   /* = Error */
-  Field:error::fieldContainer {
-    /* -st-mixin: startFieldIndicatorHasError */
-  }
+  Field:error::fieldContainer {}
 
   /* = Disabled */
   Field:isDisabled {

@@ -18,7 +18,7 @@ import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
 import { Popup } from "../Popup";
-import { Button } from "../Button";
+import { ButtonBase } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { st, classes } from "./select.st.css";
@@ -131,7 +131,7 @@ function Select<T extends object>(
       className={st(classes.root, classNameProp)}
     >
       <>
-        <Button
+        <ButtonBase
           {...triggerProps}
           icon={triggerIcon}
           iconPos="end"
@@ -144,14 +144,13 @@ function Select<T extends object>(
             {...valueProps}
             data-id={dataId ? `${dataId}--value` : undefined}
           >
-            {/* {state.selectedItem ? state.selectedItem.rendered : placeholder} */}
             {state.selectedItem ? (
               state.selectedItem.rendered
             ) : (
               <span className={classes.placeholder}>{placeholder}</span>
             )}
           </span>
-        </Button>
+        </ButtonBase>
         <HiddenSelect
           state={state}
           triggerRef={internalRef}

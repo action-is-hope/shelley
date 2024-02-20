@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ButtonGroup renders as a basic primary button group 1`] = `
+exports[`ButtonGroup renders as a basic lead button group 1`] = `
 <div
   className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
+    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-lead Button__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -28,7 +28,7 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
     </span>
   </button>
   <button
-    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
+    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-lead Button__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -51,7 +51,7 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
     </span>
   </button>
   <button
-    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-primary Button__Test---vol-1-3"
+    className="Button__Test__root Button__Test---tone-1-1 Button__Test---variant-7-lead Button__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -236,7 +236,7 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
   className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="Button__Test__root Button__Test---tone-9-secondary Button__Test---variant-5-quiet Button__Test---vol-1-4"
+    className="Button__Test__root Button__Test---tone-9-support Button__Test---variant-5-quiet Button__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -282,7 +282,7 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
     </span>
   </button>
   <button
-    className="Button__Test__root Button__Test---tone-9-secondary Button__Test---variant-5-quiet Button__Test---vol-1-4"
+    className="Button__Test__root Button__Test---tone-9-support Button__Test---variant-5-quiet Button__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -312,7 +312,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
   className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-secondary Button__Test---vol-1-6"
+    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-support Button__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -335,7 +335,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     </span>
   </button>
   <button
-    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-secondary Button__Test---vol-1-6"
+    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-support Button__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -358,7 +358,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     </span>
   </button>
   <button
-    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-secondary Button__Test---vol-1-6"
+    className="Button__Test__root Button__Test---tone-6-danger Button__Test---variant-9-support Button__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}

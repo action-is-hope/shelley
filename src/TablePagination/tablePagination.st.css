@@ -1,6 +1,6 @@
 @st-namespace "TablePagination";
 
-@st-import Toolbar from "../Toolbar/toolbar.st.css";
+@st-import Toolbar from "../AppBar/appBar.st.css";
 
 .root {}
 

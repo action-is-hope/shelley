@@ -9,44 +9,57 @@
 
 :import {
   -st-from: "../formatters/common";
-  -st-named: multiply, divide, respScale;
+  -st-named: multiply, divide;
 }
 
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
-
 :vars {
 
-  /*=== LAYOUT AND GRID ===*/
-
-  /* 
-  Review breakpoints, how true is this list, work out the what newer devices break this convention:
-320px — 480px: Mobile devices
-481px — 768px: iPads, Tablets
-769px — 1024px: Small screens, laptops
-1025px — 1200px: Desktops, large screens
-1201px and more —  Extra large screens, TV 
-src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-design/
-*/
-
-  /** = Breakpoints */
+  /** = Breakpoints - min-width  */
   breakpoint-sm: "only screen and (min-width: 568px)";
   breakpoint-md: "only screen and (min-width: 950px)";
   breakpoint-lg: "only screen and (min-width: 1200px)";
   breakpoint-xl: "only screen and (min-width: 1600px)";
   breakpoint-xxl: "only screen and (min-width: 1800px)";
 
-  /* = Using min-width vs max-width... max-width looks cleaner with less styles 
-  applied to elmements at any given time. But for development it is handy to be 
-  able to toggle off styes with the inspector and have the overriden value apply. 
-  If overriding values that exist already then we tend to use min-widths, if 
-  turning off styles across breakpoints we use max-width, e.g mobile -> desktop menu. */
-
+  /** = Breakpoints - max-width  */
   breakpoint-sm-max: "only screen and (max-width: 567px)";
   breakpoint-md-max: "only screen and (max-width: 949px)";
   breakpoint-lg-max: "only screen and (max-width: 1199px)";
   breakpoint-xl-max: "only screen and (max-width: 1599px)";
   breakpoint-xxl-max: "only screen and (max-width: 1799px)";
 
+  /** = min-width vs. max-width: Which Should You Use?
+  
+  - Min-width media queries are beneficial for development purposes, especially 
+    when it's necessary to override styles at larger breakpoints without 
+    affecting mobile styles. This approach allows developers to easily toggle 
+    off styles in browser inspectors and see the overridden values apply 
+    immediately. Ideal for scenarios where styles need to be incrementally 
+    added as the viewport widens, ensuring that the base mobile styles are not 
+    affected.
+
+  - Max-width media queries are generally cleaner, as they apply styles 
+    progressively up to a certain breakpoint. This means less style overriding 
+    for elements at any given time, resulting in a more streamlined stylesheet. 
+    Particularly useful for designing mobile-first websites where styles are 
+    added incrementally as screen size increases.
+
+  - The choice between using min-width and max-width depends on the specific 
+    needs of the project:
+    - Use min-width queries to build up styles from a mobile base, adding or 
+      overriding properties as the screen size increases. This approach is 
+      aligned with a mobile-first design strategy.
+    - Use max-width queries to apply styles down from a larger screen size, 
+      typically for desktop-first designs, allowing for easier management of 
+      styles that should be turned off or modified as the screen size decreases.
+
+  - In practice, combining both approaches allows for greater flexibility and 
+    control over responsive designs. For instance, using max-width for a 
+    mobile-to-desktop transition can simplify the management of complex 
+    navigation menus or layout shifts that are distinct between these two 
+    ranges.
+  */
 
   /*=== TYPE AND TEXT ===*/
 
@@ -89,42 +102,52 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   text-vol-1-min: divide(value(font-base-min), value(major-second), value(major-second));
   text-vol-1-max: divide(value(font-base-max), value(major-third), value(minor-second));
   text-vol-1-line-height: 1.45;
+
   /* Volume 2 */
   text-vol-2-min: divide(value(font-base-min), value(major-second));
   text-vol-2-max: divide(value(font-base-max), value(minor-third));
   text-vol-2-line-height: 1.65;
+
   /* Volume 3 - Base, from here we are either dividing or multipling with various scale ratios. */
   text-vol-3-min: value(font-base-min);
   text-vol-3-max: value(font-base-max);
   text-vol-3-line-height: 1.8;
+
   /* Volume 4 */
   text-vol-4-min: multiply(value(font-base-min), value(major-second));
   text-vol-4-max: multiply(value(font-base-max), value(major-third));
   text-vol-4-line-height: 1.45;
+
   /* Volume 5 */
   text-vol-5-min: multiply(value(font-base-min), value(major-second), value(minor-third));
   text-vol-5-max: multiply(value(font-base-max), value(major-third), value(perfect-forth));
   text-vol-5-line-height: 1.4;
+
   /* Volume 6 */
   text-vol-6-min: multiply(value(font-base-min), value(major-second), value(major-second), value(minor-third));
   text-vol-6-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth));
   text-vol-6-line-height: 1.3;
+
   /* Volume 7 */
   text-vol-7-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third));
   text-vol-7-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth));
   text-vol-7-line-height: 1.15;
+
   /* Volume 8 */
   text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
   text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
   text-vol-8-line-height: 1.1;
+
   /* Volume 9 */
   text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
   text-vol-9-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
   text-vol-9-line-height: 1.05;
+
   /* Volume 10 */
   text-vol-10-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
   text-vol-10-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
   text-vol-10-line-height: 1.05;
+
   /* Volume 11 */
   text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
   text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
@@ -193,6 +216,7 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   /* = Grid */
   --grid-gap: 3vw;
 
+  /*=== LAYOUT AND GRID ===*/
   /* 
    * = Variant 1: Core single column 
    *
@@ -274,10 +298,11 @@ src: https://www.lambdatest.com/blog/how-to-use-css-breakpoints-for-responsive-d
   /**
   * By setting the font-size of the <body> to initial, it ensures that 
   * 1em within the body context is based on the browser's default font size 
-  * (typically 16px), not the dynamically scaled font size of the <html>. 
+  * (typically 16px), not the dynamically resp-scale font size of <html>. 
   * This technique allows for more predictable and consistent use of em units 
   * within components, as it prevents the compounded scaling effect that would 
   * occur if em were based on the responsive rem scale.
   */
+
   font-size: initial;
 }

@@ -39,6 +39,7 @@ const ToastTriggersForPriorityExample = () => {
         Neutral (P0)
       </Button>
       <Button
+        tone="info"
         onPress={() =>
           toastQueue.add({ title: "Toasting... (P1)" }, { priority: 1 })
         }
@@ -46,6 +47,7 @@ const ToastTriggersForPriorityExample = () => {
         Info (P1)
       </Button>
       <Button
+        tone="success"
         onPress={() =>
           toastQueue.add({ title: "Toast is done (P2)" }, { priority: 2 })
         }
@@ -53,6 +55,7 @@ const ToastTriggersForPriorityExample = () => {
         Success (P2)
       </Button>
       <Button
+        tone="warning"
         onPress={() =>
           toastQueue.add({ title: "Toast is burning (P3)" }, { priority: 3 })
         }
@@ -60,6 +63,7 @@ const ToastTriggersForPriorityExample = () => {
         Warning (P3)
       </Button>
       <Button
+        tone="danger"
         onPress={() =>
           toastQueue.add({ title: "Toast is on fire (P4)" }, { priority: 4 })
         }

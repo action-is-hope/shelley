@@ -95,8 +95,8 @@
   --color-text-help: rgba(var(--color-ui-raw), 0.6);
 
   /* = Form colours */
-  --color-form-switch-notch: var(--color-tone-secondary);
-  --color-form-selection-notch: var(--color-tone-secondary);
+  --color-form-switch-notch: var(--color-tone-support);
+  --color-form-selection-notch: var(--color-tone-support);
   --color-background-textField-filled: var(--background-color-contrast-1);
 
   /* = Table colours */
@@ -120,8 +120,8 @@
   --background-color-danger: rgb(211, 21, 16);
 
   /* = Tone colours */
-  --color-tone-primary: #0096ff;
-  --color-tone-secondary: #75eaff;
+  --color-tone-lead: #18ffd8;
+  --color-tone-support: #75eaff;
   --color-tone-info: #cac3ff;
   --color-tone-success: #1cffab;
   --color-tone-warning: #ffba8c;

@@ -13,7 +13,7 @@
   -st-default: Shelley;
   -st-named:
     /* = CSS3 Vars. */
-    --color-tone-primary,
+    --color-tone-lead,
     --color-tone-success;
 }
 
@@ -73,7 +73,7 @@
     text-decoration: none;
     position: relative;
     padding-bottom: 1px;
-    color: var(--color-tone-primary);
+    color: var(--color-tone-lead);
     border: 0 solid rgba(110, 164, 218, 0.5);
     border-width: 0 0 0.05em 0;
     transition: border-color .15s ease-out;

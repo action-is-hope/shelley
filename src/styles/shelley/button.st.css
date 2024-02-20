@@ -6,8 +6,8 @@
   --color-ui-inverse,
   --color-ui-raw,
   --color-ui-raw-inverse,
-  --color-tone-primary,
-  --color-tone-secondary,
+  --color-tone-lead,
+  --color-tone-support,
   --color-tone-info,
   --color-tone-success,
   --color-tone-warning,
@@ -16,110 +16,110 @@
   --color-tone-dark,
   --color-tone-contrast,
 ] from "./project.st.css";
-@st-import Button, [--bg-color, --border-color, --text-color] from "../../Button/button.st.css";
+@st-import ButtonBase, [--bg-color, --border-color, --text-color] from "../../Button/buttonBase.st.css";
+@st-import Button from "../../Button/button.st.css";
 @st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
 
 @st-scope Shelley {
 
   /* = = The base <button> element. */
-  Button {
+  ButtonBase {
     /* We'll assign this via our variants but set it with our tones. */
     --tone: initial;
     text-transform: uppercase;
     cursor: pointer;
   }
 
+  ButtonBase::before {
+    background-color: rgba(var(--color-ui-raw), 0.1);
+  }
+
   /* = Variants - Using the tone to assign the colors to reduce code. */
 
-  /* = Variant 1: 'Primary' */
-  Button:variant(primary) {
+  /* = Variant: 'lead' */
+  ButtonBase:variant(primary) {
     --bg-color: var(--tone);
     --text-color: var(--color-ui-inverse);
   }
 
+  /* hover override */
+  ButtonBase:variant(primary)::before {
+    background-color: rgba(var(--color-ui-raw-inverse), 0.3);
+  }
+
   /* = Seperator color for when in a group. */
-  ButtonGroup Button:variant(primary) {
+  ButtonGroup ButtonBase:variant(primary) {
     --seperator-color: rgba(var(--color-ui-raw-inverse), 0.4);
   }
 
-  /* = Variant 2: 'Secondary' */
-  Button:variant(secondary) {
+  /* = Variant: 'secondary' */
+  ButtonBase:variant(secondary) {
     --border-color: var(--tone);
     -webkit-font-smoothing: antialiased;
   }
 
-  /* = Variant 3: 'Quiet' */
-  Button:variant(quiet) {
+  /* = Variant: 'quiet' */
+  ButtonBase:variant(quiet) {
     --text-color: var(--tone);
   }
 
-  Button:variant(quiet):hover,
-  Button:variant(quiet):focus {
-    background-color: rgba(var(--color-ui-raw), 0.02);
-  }
-
   /* = Seperator color for when in a group. */
-  ButtonGroup Button:variant(quiet) {
+  ButtonGroup ButtonBase:variant(quiet) {
     --seperator-color: var(--tone);
   }
 
-  /* = Variant 4: 'Floating Action Button (FAB)' - Thank you Material! */
-  Button:variant(fab) {
-    --bg-color: var(--tone);
-    --text-color: var(--color-ui-inverse);
-  }
-
-  /* = Seperator color for when in a group. */
-  ButtonGroup Button:variant(fab) {
-    --seperator-color: rgba(var(--color-ui-raw-inverse), 0.4);
-  }
-
   /* = Tones/Colours */
-  Button:tone(primary) {
-    --tone: var(--color-tone-primary);
+  ButtonBase:tone(lead) {
+    --tone: var(--color-tone-lead);
   }
 
-  Button:tone(primary):variant(primary) {
-    color: var(--light-01)
+  ButtonBase:tone(support) {
+    --tone: var(--color-tone-support);
   }
 
-  Button:tone(secondary) {
-    --tone: var(--color-tone-secondary);
-  }
-
-  Button:tone(info) {
+  ButtonBase:tone(info) {
     --tone: var(--color-tone-info);
   }
 
-  Button:tone(success) {
+  ButtonBase:tone(success) {
     --tone: var(--color-tone-success);
   }
 
-  Button:tone(warning) {
+  ButtonBase:tone(warning) {
     --tone: var(--color-tone-warning);
   }
 
-  Button:tone(danger) {
+  ButtonBase:tone(danger) {
     --tone: var(--color-tone-danger);
   }
 
-  Button:tone(light) {
+  ButtonBase:tone(light) {
     --tone: var(--color-tone-light);
   }
 
-  Button:tone(light):variant(primary) {
+  ButtonBase:tone(light):variant(primary) {
     color: var(--dark-01)
   }
 
-  Button:tone(dark) {
+  ButtonBase:tone(dark) {
     --tone: var(--color-tone-dark);
   }
 
-  Button:tone(dark):variant(primary) {
+  ButtonBase:tone(dark):variant(primary) {
     color: var(--light-01)
   }
 
-  Button:tone(contrast) {
+  ButtonBase:tone(contrast) {
     --tone: var(--color-tone-contrast);
+  }
+
+
+  Button:cta {
+    border-radius: 999em;
+    padding: 10px 30px;
+  }
+
+  Button:cta::after {
+    border-radius: 999em;
   }
 }

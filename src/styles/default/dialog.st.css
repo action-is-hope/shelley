@@ -64,7 +64,9 @@
 }
 
 @st-scope Default {
-  Dialog::closeButton {}
+  Dialog::closeButton {
+    padding: 10px;
+  }
 
   Dialog::hero {
     background-position: 50%;
