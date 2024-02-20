@@ -17,7 +17,7 @@
   --color-tone-contrast,
 ] from "./project.st.css";
 @st-import ButtonBase, [--bg-color, --border-color, --text-color] from "../../Button/buttonBase.st.css";
-@st-import ButtonGroup, [--seperator-color] from "../../ButtonGroup/buttonGroup.st.css";
+@st-import ButtonGroup, [--seperator-color] from "../../Button/buttonGroup.st.css";
 
 @st-scope Shelley {
 

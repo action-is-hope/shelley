@@ -514,7 +514,7 @@
   },
   {
     "name": "ButtonGroup",
-    "fileName": "src/ButtonGroup/ButtonGroup.tsx",
+    "fileName": "src/Button/ButtonGroup.tsx",
     "description": "ButtonGroup can be used to group related buttons in various orientations.",
     "interface": {
       "name": "ButtonGroupProps",

@@ -1,6 +1,5 @@
 // import React from "react";
-import { Button } from "../../Button";
-import { ButtonGroup } from "../ButtonGroup";
+import { Button, ButtonGroup } from "../";
 
 import renderer from "react-test-renderer";
 

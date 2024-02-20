@@ -20,7 +20,7 @@ import { Popup } from "../Popup";
 import { ButtonBase } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
-import { ProgressCircle } from "../ProgressCircle";
+import { ProgressCircle } from "../Progress";
 import { st, classes } from "./comboBox.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
 

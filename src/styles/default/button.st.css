@@ -16,6 +16,14 @@
     padding: .2em 1em;
   }
 
+  Button::inner {
+    /* padding on top of inner as opposed to the button itself 
+     * so an adjacent icon can grow a little into the space created
+     * without affecting the height of the button. */
+    padding-top: 0.58em;
+    padding-bottom: 0.55em;
+  }
+
   Button:vol(1) {
     padding-top: 0.15em;
     padding-bottom: 0.15em;

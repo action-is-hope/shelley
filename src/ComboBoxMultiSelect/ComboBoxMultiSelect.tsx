@@ -22,7 +22,7 @@ import { Field, FieldProps } from "../Field";
 import { Popup } from "../Popup";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
-import { ProgressCircle } from "../ProgressCircle";
+import { ProgressCircle } from "../Progress";
 import {
   useMultipleSelection,
   useCombobox,

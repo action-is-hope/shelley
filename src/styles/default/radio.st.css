@@ -13,7 +13,7 @@
     --color-error
   ] from "./project.st.css";
 @st-import Radio from "../../Radio/radio.st.css";
-@st-import RadioGroup from "../../RadioGroup/radioGroup.st.css";
+@st-import RadioGroup from "../../Radio/radioGroup.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [
     SelectionControlInputContainer,

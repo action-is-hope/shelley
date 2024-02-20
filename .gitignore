@@ -60,6 +60,7 @@ storybook-static
 # Cypress
 cypress/videos
 cypress/screenshots
+cypress/downloads
 
 # Stylable types
 st-types

@@ -7,7 +7,7 @@ import { mergeRefs, mergeProps } from "@react-aria/utils";
 import { useFocusRing } from "react-aria";
 import type { Size, AlignPos, ComponentBase } from "../typings/shared-types";
 import { Label } from "../Label";
-import { CheckboxGroupContext } from "../CheckboxGroup/context";
+import { CheckboxGroupContext } from ".";
 import { st, classes } from "./checkbox.st.css";
 
 export interface CheckboxProps extends AriaCheckboxProps, ComponentBase {

@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressBar } from "../../src/ProgressBar/ProgressBar";
+import { ProgressBar } from "../../src/Progress/ProgressBar";
 
 const testProps = {
   "aria-label": "Loading…",
