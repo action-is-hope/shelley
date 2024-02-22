@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story, ArgsTable, Source } from "@storybook/addon-docs";
 import dedent from "ts-dedent";
 import { P, H1, H2, Text } from "../../indexLib";
+import Success from "../../icons/Success";
 import { Item } from "@react-stately/collections";
 import { StoryGrid } from "../StoryLayout";
 import { TextPropTable } from "./Text.examples";
@@ -240,6 +241,29 @@ Does what it says on the tin really, applies `text-transform` to uppercase. As w
 </Story>
 
 <Source language="tsx" id="data-text--e-uppercase" />
+
+## Adornments
+
+An an Icon or some other element quickly via the `startAdornment` and `endAdornment` props. This is a good way to add some visual interest to your text without having to create a new component.
+
+<Story
+  name="e) Adornments"
+  args={{ label: "Email", defaultValue: "me@earth.com" }}
+>
+  <P vol={1} startAdornment={<Success />}>
+    vol 1. Text
+  </P>
+  <P vol={2} startAdornment={<Success />}>
+    vol 2. Text
+  </P>
+  <P startAdornment={<Success />}>vol 3. Text</P>
+  <P vol={4} startAdornment={<Success />}>
+    vol 4. Text
+  </P>
+  <P vol={5} startAdornment={<Success />}>
+    vol 5. Text
+  </P>
+</Story>
 
 ## TextField Props
 

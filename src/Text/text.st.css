@@ -6,6 +6,7 @@
     lineClamp(number),
     weight(number),
     uppercase,
+    hasAdornment,
     vol(number);
 }
 
@@ -62,4 +63,10 @@
 
 .root:lineClamp(10) {
   -webkit-line-clamp: 10;
+}
+
+.root:hasAdornment {
+  display: flex;
+  align-items: center;
+  gap: calc(1em / 2)
 }
