@@ -241,14 +241,36 @@ Displays a notification with footer. It can take any valid HTML or React compone
       docs: {
         source: {
           code: dedent`
-<Notification
-  title="Notification title"
-  subtitle="Subtitle goes here"
-  data-id="notification-with-children"
-  aria-label="Close button"
->
-  <p>Notification content goes here</p>
-</Notification>`,
+  const [isOpen, setIsOpen] = useState(true);\n
+  return isOpen ? (
+    <Notification
+      title="Notification title"
+      subtitle="Subtitle goes here"
+      hideCloseButton
+      footer={
+        <ButtonGroup>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="quiet"
+          >
+            Secondary
+          </Button>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="primary"
+          >
+            Primary
+          </Button>
+        </ButtonGroup>
+      }
+    >
+      <p>Notification content goes here</p>
+    </Notification>
+  ) : (
+    <></>
+  );`,
         },
       },
     }}
@@ -256,8 +278,6 @@ Displays a notification with footer. It can take any valid HTML or React compone
     <InlineNotificationWithFooter />
   </Story>
 </Preview>
-
-InlineNotificationWithFooter
 
 ### Notification Props
 

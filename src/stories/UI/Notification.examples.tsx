@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Button, Notification, NotificationProps } from "../../indexLib";
+import {
+  Button,
+  ButtonGroup,
+  Notification,
+  NotificationProps,
+} from "../../indexLib";
 
 export const NotificationPropsTable = (props: NotificationProps) => {
   <Notification {...props} />;
@@ -81,7 +86,24 @@ export const InlineNotificationWithFooter = () => {
       title="Notification title"
       subtitle="Subtitle goes here"
       hideCloseButton
-      // footer={<Button onClick={() => setIsOpen(false)}>Button</Button>}
+      footer={
+        <ButtonGroup>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="quiet"
+          >
+            Secondary
+          </Button>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="primary"
+          >
+            Primary
+          </Button>
+        </ButtonGroup>
+      }
     >
       <p>Notification content goes here</p>
     </Notification>

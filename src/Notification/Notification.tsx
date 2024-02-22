@@ -95,28 +95,30 @@ function Notification(
           {role === "alert" && errorIcon}
         </div>
 
-        <div ref={contentRef} className={classes.textWrapper}>
-          {title && (
-            <Text
-              elementType="span"
-              vol={3}
-              className={classes.title}
-              data-id={dataId ? `${dataId}--title` : undefined}
-            >
-              {title}
-            </Text>
-          )}
-          {subtitle && (
-            <Text
-              elementType="span"
-              vol={2}
-              className={classes.subtitle}
-              data-id={dataId ? `${dataId}--subTitle` : undefined}
-            >
-              {subtitle}
-            </Text>
-          )}
-        </div>
+        {(title || subtitle) && (
+          <div ref={contentRef} className={classes.textWrapper}>
+            {title && (
+              <Text
+                elementType="span"
+                vol={3}
+                className={classes.title}
+                data-id={dataId ? `${dataId}--title` : undefined}
+              >
+                {title}
+              </Text>
+            )}
+            {subtitle && (
+              <Text
+                elementType="span"
+                vol={2}
+                className={classes.subtitle}
+                data-id={dataId ? `${dataId}--subTitle` : undefined}
+              >
+                {subtitle}
+              </Text>
+            )}
+          </div>
+        )}
         {!hideCloseButton && (
           <IconButton
             className={classes.closeButton}

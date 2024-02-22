@@ -12,6 +12,8 @@
 @st-import Notification from "../../Notification/notification.st.css";
 
 @st-scope Default {
+
+
   Notification {
     border-color: grey;
     border-width: 1px;
@@ -51,6 +53,14 @@
   Notification::closeButton {
     position: absolute;
     right: var(--spacing-unit);
+  }
+
+  Notification::footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: calc(var(--spacing-unit) / 2);
   }
 
 }
