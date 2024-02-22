@@ -1,4 +1,10 @@
-import { Notification, NotificationProps } from "../../indexLib";
+import { useState } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Notification,
+  NotificationProps,
+} from "../../indexLib";
 
 export const NotificationPropsTable = (props: NotificationProps) => {
   <Notification {...props} />;
@@ -69,5 +75,39 @@ export const InlineNotificationWithChildren = () => {
     >
       <p>Notification content goes here</p>
     </Notification>
+  );
+};
+
+export const InlineNotificationWithFooter = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return isOpen ? (
+    <Notification
+      title="Notification title"
+      subtitle="Subtitle goes here"
+      hideCloseButton
+      footer={
+        <ButtonGroup>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="quiet"
+          >
+            Secondary
+          </Button>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="primary"
+          >
+            Primary
+          </Button>
+        </ButtonGroup>
+      }
+    >
+      <p>Notification content goes here</p>
+    </Notification>
+  ) : (
+    <></>
   );
 };

@@ -103,6 +103,39 @@ describe("Button", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("isLoading renders ProgressCircle instead of icon", () => {
+    const tree = renderer
+      .create(
+        <Button
+          data-id="button-data-id"
+          ref={buttonRef}
+          icon={<Icon>{iconPath}</Icon>}
+          iconPos="start"
+          isLoading
+        >
+          {btnText}
+        </Button>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("isLoading renders ProgressCircle", () => {
+    const tree = renderer
+      .create(
+        <Button
+          data-id="button-data-id"
+          ref={buttonRef}
+          iconPos="start"
+          isLoading
+        >
+          {btnText}
+        </Button>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it("includes #icon, no children, visually hidden label text provided via Icon alt prop", () => {
     const tree = renderer
       .create(

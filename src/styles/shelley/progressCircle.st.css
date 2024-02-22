@@ -1,9 +1,10 @@
 @st-namespace "ShelleyProgressCircle";
 @st-import Shelley, [
-    --light-01-raw,
-    --color-ui-raw,
-    --color-tone-lead,
-  ] from "./project.st.css";
+  --color-ui-raw-inverse,
+  --light-01-raw,
+  --color-ui-raw,
+  --color-tone-lead,
+] from "./project.st.css";
 @st-import ProgressCircle, [
     --loader-circle-track-color,
     --loader-circle-track-fill-color
@@ -16,7 +17,7 @@
   }
 
   ProgressCircle:variant(overBackground) {
-    --loader-circle-track-fill-color: var(--color-tone-lead);
-    --loader-circle-track-color: rgba(var(--color-ui-raw), 0.2)
+    --loader-circle-track-fill-color: rgba(var(--color-ui-raw-inverse), 0.8);
+    --loader-circle-track-color: rgba(var(--color-ui-raw-inverse), 0.3)
   }
 }

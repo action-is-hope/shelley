@@ -5,7 +5,7 @@
   position: relative;
 }
 
-.details {}
+.header {}
 
 .icon {}
 
@@ -18,3 +18,5 @@
 .subtitle {}
 
 .children {}
+
+.footer {}

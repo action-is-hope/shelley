@@ -14,6 +14,7 @@
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+/* @st-import Progress from "../../Progress/progressCircle.st.css"; */
 
 @st-scope Default {
 
@@ -60,7 +61,7 @@
     /* background-color: set in the lower theme file */
   }
 
-  ButtonBase:hover::before {
+  ButtonBase:not(ButtonBase:isDisabled):hover::before {
     opacity: 1;
   }
 

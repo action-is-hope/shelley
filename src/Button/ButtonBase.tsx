@@ -7,17 +7,17 @@ import type {
   Volume,
   ExtendedToneVariants,
   ExtendedButtonVariants,
+  ComponentBase,
 } from "../typings/shared-types";
 import type { MergeElementProps } from "../typings/utils";
 import { useFocusRing } from "react-aria";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
-import {
-  st as stButtonBase,
-  classes as classesButtonBase,
-} from "./buttonBase.st.css";
+import { st, classes } from "./buttonBase.st.css";
+import { ProgressCircle } from "../Progress";
 
 export interface ButtonProps<P = "button", V = "", T = "">
-  extends Omit<AriaButtonProps, "elementType" | "href"> {
+  extends Omit<AriaButtonProps, "elementType" | "href">,
+    ComponentBase {
   /** Custom `className` for overriding styles. */
   className?: string;
   /** Custom element to render such as an anchor "a" or a router "Link" component. */
@@ -36,6 +36,12 @@ export interface ButtonProps<P = "button", V = "", T = "">
   fullWidth?: boolean;
   /** Is the button a Call To Action */
   isCta?: boolean;
+  /** isLoading */
+  isLoading?: boolean;
+  /** Internationalised loading text */
+  loadingText?: string;
+  /** ProgressCircle props */
+  progressProps?: React.ComponentProps<typeof ProgressCircle>;
 }
 
 function ButtonBase<
@@ -57,6 +63,11 @@ function ButtonBase<
     variant,
     vol = 3,
     isDisabled,
+    isLoading = false,
+    loadingText,
+    progressProps,
+    onPress,
+    "data-id": dataId,
     ...rest
   } = props;
 
@@ -68,8 +79,8 @@ function ButtonBase<
   );
   const { isFocusVisible, focusProps } = useFocusRing();
 
-  const className = stButtonBase(
-    classesButtonBase.root,
+  const className = st(
+    classes.root,
     {
       iconPos: icon ? iconPos : undefined,
       variant: variant || undefined,
@@ -78,6 +89,7 @@ function ButtonBase<
       isFocusVisible,
       isPressed,
       isDisabled,
+      isLoading,
       fullWidth,
     },
     classNameProp
@@ -85,11 +97,24 @@ function ButtonBase<
 
   const internal = (
     <>
-      {children && <span className={classesButtonBase.inner}>{children}</span>}
-      {icon && (
+      {children && <span className={classes.inner}>{children}</span>}
+      {icon && !isLoading && (
         <>
-          {children && <span className={classesButtonBase.divider}></span>}{" "}
-          {icon}
+          {children && <span className={classes.divider}></span>} {icon}
+        </>
+      )}
+      {isLoading && (
+        <>
+          {children && <span className={classes.divider}></span>}{" "}
+          <ProgressCircle
+            size="small"
+            isIndeterminate
+            className={classes.loader}
+            aria-label={loadingText || "Loading"}
+            variant={variant === "primary" ? "overBackground" : undefined}
+            data-id={dataId ? `${dataId}--progressCircle` : undefined}
+            {...progressProps}
+          />
         </>
       )}
     </>

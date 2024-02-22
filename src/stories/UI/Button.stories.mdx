@@ -70,20 +70,22 @@ Button also supports an `isCta` prop which will add a `cta` class to the button.
   <Story name="b) Button variants">
     <>
       <StoryCenteredInline>
-        <Button variant="primary">Primary</Button>
+        <Button variant="primary" iconPos="start">
+          Primary
+        </Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="quiet">Quiet</Button>
       </StoryCenteredInline>
       <StoryCenteredInline>
         <Button variant="primary" isCta>
-          Primary
+          Primary CTA
         </Button>
         <Button variant="secondary" isCta>
-          Secondary
+          Secondary CTA
         </Button>
-        <Button variant="quiet" isCta>
-          Quiet
-        </Button>
+        {/* <Button variant="quiet" isCta>
+          Quiet CTA
+        </Button> */}
       </StoryCenteredInline>
     </>
   </Story>
@@ -91,15 +93,16 @@ Button also supports an `isCta` prop which will add a `cta` class to the button.
 
 ## Primary buttons
 
-Primary buttons are high-emphasis, distinguished by their use of obvious actionable styling like a fill. They contain actions that are primary to your app.
+Primary buttons are high-emphasis, distinguished by their use of obvious actionable styling like a fill. They contain actions that are primary to your app. A loading state is available via the `isLoading` prop.
 
 <Preview>
   <Story name="c) Primary button">
     <StoryCenteredInline>
       <Button>Primary</Button>
-      <Button disabled>Disabled</Button>
+      <Button isLoading>Primary isLoading</Button>
+      <Button isDisabled>Primary - Disabled</Button>
       <Button elementType="a" href="#text-buttons">
-        Link
+        Primary - Link
       </Button>
     </StoryCenteredInline>
   </Story>
@@ -109,17 +112,20 @@ Primary buttons are high-emphasis, distinguished by their use of obvious actiona
 
 Secondary buttons are medium-emphasis buttons. They contain actions that are important but aren't the primary action in an app.
 
-Secondary buttons are also a lower emphasis alternative to primary buttons, or a higher emphasis alternative to quiet buttons.
+Secondary buttons are also a lower emphasis alternative to primary buttons, or a higher emphasis alternative to quiet buttons. Loading states apply.
 
 <Preview>
   <Story name="d) Secondary button">
     <StoryCenteredInline>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="secondary" disabled>
-        Disabled
+      <Button variant="secondary" isLoading>
+        Secondary isLoading
+      </Button>
+      <Button variant="secondary" isDisabled>
+        Secondary- Disabled
       </Button>
       <Button variant="secondary" elementType="a" href="#text-buttons">
-        Link
+        Secondary - Link
       </Button>
     </StoryCenteredInline>
   </Story>
@@ -133,11 +139,14 @@ Quiet buttons are typically used for less-pronounced actions, including those lo
   <Story name="e) Quiet button">
     <StoryCenteredInline>
       <Button variant="quiet">Quiet</Button>
-      <Button variant="quiet" disabled>
-        Disabled
+      <Button variant="quiet" isLoading>
+        Quiet isLoading
+      </Button>
+      <Button variant="quiet" isDisabled>
+        Quiet - Disabled
       </Button>
       <Button variant="quiet" elementType="a" href="#text-buttons">
-        Link
+        Quiet - Link
       </Button>
     </StoryCenteredInline>
   </Story>
@@ -290,6 +299,7 @@ Sometimes you might want to have icons for certain buttons to enhance the UX of 
     <StoryCenteredInline>
       <Button
         variant="primary"
+        a
         iconPos="end"
         icon={
           <Icon>
@@ -325,7 +335,7 @@ Sometimes you might want to have icons for certain buttons to enhance the UX of 
   </Story>
 </Preview>
 
-## Icon button
+## IconButton
 
 Icon buttons are commonly found in appbars and toolbars.
 
@@ -373,15 +383,11 @@ Icons are also appropriate for toggle buttons that allow a single choice to be s
   </Story>
 </Preview>
 
-## Floating Action Button (FAB)
+## IconButton - FAB
 
-This is a variantion of IconButton that is available via the `isFab` prop.
+'Floating Action Button' (FAB) is a variant of `IconButton` that is available via the `isFab` prop.
 
-A floating action button (FAB) performs the primary, or most common, action on a screen.
-
-A floating action button appears in front of all screen content, typically as a circular shape with an icon in its center.
-
-Only use a FAB if it is the most suitable way to present a screen's primary action. Only one component is recommended per screen to represent the most common action.
+FAB's perform the primary, or most common, action on a screen.
 
 <Preview>
   <Story name="f) Floating action button (FAB)">

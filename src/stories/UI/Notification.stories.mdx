@@ -18,6 +18,7 @@ import {
   InlineWarningNotification,
   InlineNotificationWithChildren,
   InlineNotificationHideCloseButton,
+  InlineNotificationWithFooter,
 } from "./Notification.examples";
 
 <Meta
@@ -226,6 +227,55 @@ Displays a notification with children. It can take any valid HTML or React compo
     }}
   >
     <InlineNotificationWithChildren />
+  </Story>
+</Preview>
+
+## Inline Notification With Footer Example
+
+Displays a notification with footer. It can take any valid HTML or React component.
+
+<Preview>
+  <Story
+    name="g) Inline notification with footer"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+  const [isOpen, setIsOpen] = useState(true);\n
+  return isOpen ? (
+    <Notification
+      title="Notification title"
+      subtitle="Subtitle goes here"
+      hideCloseButton
+      footer={
+        <ButtonGroup>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="quiet"
+          >
+            Secondary
+          </Button>
+          <Button
+            onClick={() => setIsOpen(false)}
+            tone="contrast"
+            variant="primary"
+          >
+            Primary
+          </Button>
+        </ButtonGroup>
+      }
+    >
+      <p>Notification content goes here</p>
+    </Notification>
+  ) : (
+    <></>
+  );`,
+        },
+      },
+    }}
+  >
+    <InlineNotificationWithFooter />
   </Story>
 </Preview>
 

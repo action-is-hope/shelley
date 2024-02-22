@@ -32,6 +32,8 @@ export interface NotificationProps
   "aria-label"?: string;
   /** By default, this value is "info". You can also provide an alternate */
   role?: "info" | "alert" | "success" | "warning";
+  /** Footer content */
+  footer?: ReactNode;
   /** Icons */
   infoIcon?: ReactNode;
   successIcon?: ReactNode;
@@ -55,8 +57,9 @@ function Notification(
     successIcon = <SuccessIcon />,
     warningIcon = <WarningIcon />,
     errorIcon = <ErrorIcon />,
+    footer,
     "data-id": dataId,
-    "aria-label": ariaLabel,
+    "aria-label": ariaLabel = "Close",
     ...rest
   } = props;
   // const ref: RefObject<HTMLDivElement> = useRef(null);
@@ -81,9 +84,9 @@ function Notification(
       data-id={dataId}
       {...rest}
     >
-      <div className={st(classes.details)}>
+      <div className={classes.header}>
         <div
-          className={st(classes.icon)}
+          className={classes.icon}
           data-id={dataId ? `${dataId}--icon` : undefined}
         >
           {role === "info" && infoIcon}
@@ -92,40 +95,43 @@ function Notification(
           {role === "alert" && errorIcon}
         </div>
 
-        <div ref={contentRef} className={st(classes.textWrapper)}>
-          {title && (
-            <Text
-              elementType="span"
-              vol={3}
-              className={st(classes.title)}
-              data-id={dataId ? `${dataId}--title` : undefined}
-            >
-              {title}
-            </Text>
-          )}
-          {subtitle && (
-            <Text
-              elementType="span"
-              vol={2}
-              className={st(classes.subtitle)}
-              data-id={dataId ? `${dataId}--subTitle` : undefined}
-            >
-              {subtitle}
-            </Text>
-          )}
-          <div className={st(classes.children)}>{children}</div>
-        </div>
+        {(title || subtitle) && (
+          <div ref={contentRef} className={classes.textWrapper}>
+            {title && (
+              <Text
+                elementType="span"
+                vol={3}
+                className={classes.title}
+                data-id={dataId ? `${dataId}--title` : undefined}
+              >
+                {title}
+              </Text>
+            )}
+            {subtitle && (
+              <Text
+                elementType="span"
+                vol={2}
+                className={classes.subtitle}
+                data-id={dataId ? `${dataId}--subTitle` : undefined}
+              >
+                {subtitle}
+              </Text>
+            )}
+          </div>
+        )}
+        {!hideCloseButton && (
+          <IconButton
+            className={classes.closeButton}
+            data-id={dataId ? `${dataId}--closeButton` : undefined}
+            onPress={handleCloseButtonClick}
+            aria-label={ariaLabel}
+          >
+            {closeIcon}
+          </IconButton>
+        )}
       </div>
-      {!hideCloseButton && (
-        <IconButton
-          className={classes.closeButton}
-          data-id={dataId ? `${dataId}--closeButton` : undefined}
-          onPress={handleCloseButtonClick}
-          aria-label={ariaLabel}
-        >
-          {closeIcon}
-        </IconButton>
-      )}
+      <div className={classes.children}>{children}</div>
+      {footer && <div className={classes.footer}>{footer}</div>}
     </div>
   );
 }
