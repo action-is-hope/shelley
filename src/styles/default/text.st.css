@@ -10,6 +10,7 @@
 @st-import Default from "./project.st.css";
 
 @st-import Text from "../../Text/text.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
 @st-import [ 
   textVol,
   textVol1,
@@ -33,36 +34,72 @@
     -st-mixin: textVol1;
   }
 
+  Text:vol(1) Icon {
+    font-size: 14px;
+  }
+
   Text:vol(2) {
     -st-mixin: textVol2;
+  }
+
+  Text:vol(2) Icon {
+    font-size: 16px;
   }
 
   Text:vol(3) {
     -st-mixin: textVol3;
   }
 
+  Text:vol(3) Icon {
+    font-size: 18px;
+  }
+
   Text:vol(4) {
     -st-mixin: textVol4;
+  }
+
+  Text:vol(4) Icon {
+    font-size: 20px;
   }
 
   Text:vol(5) {
     -st-mixin: textVol5;
   }
 
+  Text:vol(5) Icon {
+    font-size: 22px;
+  }
+
   Text:vol(6) {
     -st-mixin: textVol6;
+  }
+
+  Text:vol(6) Icon {
+    font-size: 24px;
   }
 
   Text:vol(7) {
     -st-mixin: textVol7;
   }
 
+  Text:vol(7) Icon {
+    font-size: 28px;
+  }
+
   Text:vol(8) {
     -st-mixin: textVol8;
   }
 
+  Text:vol(8) Icon {
+    font-size: 32px;
+  }
+
   Text:vol(9) {
     -st-mixin: textVol9;
+  }
+
+  Text:vol(9) Icon {
+    font-size: 44px;
   }
 
   Text:vol(10) {
@@ -70,10 +107,19 @@
     font-weight: 300;
   }
 
+  Text:vol(10) Icon {
+    font-size: 52px;
+  }
+
   Text:vol(11) {
     -st-mixin: textVol11;
     font-weight: 300;
   }
+
+  Text:vol(11) Icon {
+    font-size: 88px;
+  }
+
 
   /* = Weights */
   /** 

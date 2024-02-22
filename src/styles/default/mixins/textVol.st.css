@@ -6,19 +6,19 @@
  * ========================================================================= */
 
 @st-import [
-    breakpoint-xxl,
-    text-vol-1-max, text-vol-1-min, text-vol-1-line-height,
-    text-vol-2-max, text-vol-2-min, text-vol-2-line-height,
-    text-vol-3-max, text-vol-3-min, text-vol-3-line-height,
-    text-vol-4-max, text-vol-4-min, text-vol-4-line-height,
-    text-vol-5-max, text-vol-5-min, text-vol-5-line-height,
-    text-vol-6-max, text-vol-6-min, text-vol-6-line-height,
-    text-vol-7-max, text-vol-7-min, text-vol-7-line-height,
-    text-vol-8-max, text-vol-8-min, text-vol-8-line-height,
-    text-vol-9-max, text-vol-9-min, text-vol-9-line-height,
-    text-vol-10-max, text-vol-10-min, text-vol-10-line-height,
-    text-vol-11-max, text-vol-11-min, text-vol-11-line-height
-  ] from "../project.st.css";
+  breakpoint-xxl,
+  text-vol-1-max, text-vol-1-min, text-vol-1-line-height,
+  text-vol-2-max, text-vol-2-min, text-vol-2-line-height,
+  text-vol-3-max, text-vol-3-min, text-vol-3-line-height,
+  text-vol-4-max, text-vol-4-min, text-vol-4-line-height,
+  text-vol-5-max, text-vol-5-min, text-vol-5-line-height,
+  text-vol-6-max, text-vol-6-min, text-vol-6-line-height,
+  text-vol-7-max, text-vol-7-min, text-vol-7-line-height,
+  text-vol-8-max, text-vol-8-min, text-vol-8-line-height,
+  text-vol-9-max, text-vol-9-min, text-vol-9-line-height,
+  text-vol-10-max, text-vol-10-min, text-vol-10-line-height,
+  text-vol-11-max, text-vol-11-min, text-vol-11-line-height
+] from "../project.st.css";
 
 :vars {
   minValue: 1;

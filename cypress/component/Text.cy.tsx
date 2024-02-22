@@ -1,5 +1,6 @@
 import React from "react";
 import { P, Text } from "../../src/indexLib";
+import Info from "../../src/icons/Info";
 
 const longText =
   "All people on Earth depend directly or indirectly on the ocean and cryosphere. The global ocean covers 71% of the Earth surface and contains about 97% of the Earth's water.";
@@ -70,5 +71,43 @@ describe("Text", () => {
       .should("have.css", "-webkit-line-clamp", "6")
       .should("have.attr", "class")
       .and("to.have.string", "truncate");
+  });
+});
+
+describe("Adornments", () => {
+  it("startAdornment", () => {
+    cy.mount(
+      <Text
+        data-id="adornmentText"
+        elementType="div"
+        startAdornment={<Info data-id="adornment" />}
+      >
+        <P>Infomation</P>
+      </Text>
+    );
+    cy.get("[data-id=adornmentText]")
+      .should("have.attr", "class")
+      .and("to.have.string", "hasAdornment");
+    cy.get("[data-id=adornment]")
+      .should("have.attr", "class")
+      .and("to.have.string", "Icon");
+  });
+
+  it("startAdornment", () => {
+    cy.mount(
+      <Text
+        data-id="adornmentText"
+        elementType="div"
+        endAdornment={<Info data-id="adornment" />}
+      >
+        <P>Infomation</P>
+      </Text>
+    );
+    cy.get("[data-id=adornmentText]")
+      .should("have.attr", "class")
+      .and("to.have.string", "hasAdornment");
+    cy.get("[data-id=adornment]")
+      .should("have.attr", "class")
+      .and("to.have.string", "Icon");
   });
 });

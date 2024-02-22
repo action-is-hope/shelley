@@ -22,7 +22,10 @@ export interface TextProps extends React.HTMLAttributes<HTMLBaseElement> {
    * @default 3
    */
   vol?: TextVolume;
-  displayName?: string;
+  /** Insert an Icon or other element before the content. */
+  startAdornment?: React.ReactNode;
+  /** Insert an Icon or other element after the content. */
+  endAdornment?: React.ReactNode;
 }
 
 function Text(props: TextProps, ref: React.Ref<HTMLBaseElement>) {
@@ -34,6 +37,8 @@ function Text(props: TextProps, ref: React.Ref<HTMLBaseElement>) {
     uppercase = false,
     visuallyHidden,
     weight = undefined,
+    startAdornment,
+    endAdornment,
     vol = 3,
     ...rest
   } = props;
@@ -48,13 +53,16 @@ function Text(props: TextProps, ref: React.Ref<HTMLBaseElement>) {
           uppercase,
           vol: vol !== false ? vol : undefined,
           lineClamp: typeof truncate === "number" ? truncate : undefined,
+          hasAdornment: Boolean(startAdornment || endAdornment),
         },
         classNameProp
       ),
       ref: ref,
       ...rest,
     },
-    children
+    startAdornment,
+    children,
+    endAdornment
   );
   return visuallyHidden ? <VisuallyHidden>{text}</VisuallyHidden> : text;
 }
