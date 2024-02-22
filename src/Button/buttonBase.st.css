@@ -1,4 +1,5 @@
 @st-namespace "ButtonBase";
+@st-import ProgressCircle from "../Progress/progressCircle.st.css";
 
 .root {
   -st-states:
@@ -8,6 +9,7 @@
     variant(string),
     vol(number),
     isFocusVisible,
+    isLoading,
     isPressed,
     isDisabled;
 }
@@ -44,6 +46,10 @@
   /* = Safari spacing issue with button groups MacOs and IOS. */
   margin: 0;
   text-decoration: none;
+}
+
+.loader {
+  -st-extends: ProgressCircle
 }
 
 /*==== Icon Positions ====*/

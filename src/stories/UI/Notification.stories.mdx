@@ -18,6 +18,7 @@ import {
   InlineWarningNotification,
   InlineNotificationWithChildren,
   InlineNotificationHideCloseButton,
+  InlineNotificationWithFooter,
 } from "./Notification.examples";
 
 <Meta
@@ -228,6 +229,35 @@ Displays a notification with children. It can take any valid HTML or React compo
     <InlineNotificationWithChildren />
   </Story>
 </Preview>
+
+## Inline Notification With Footer Example
+
+Displays a notification with footer. It can take any valid HTML or React component.
+
+<Preview>
+  <Story
+    name="g) Inline notification with footer"
+    parameters={{
+      docs: {
+        source: {
+          code: dedent`
+<Notification
+  title="Notification title"
+  subtitle="Subtitle goes here"
+  data-id="notification-with-children"
+  aria-label="Close button"
+>
+  <p>Notification content goes here</p>
+</Notification>`,
+        },
+      },
+    }}
+  >
+    <InlineNotificationWithFooter />
+  </Story>
+</Preview>
+
+InlineNotificationWithFooter
 
 ### Notification Props
 

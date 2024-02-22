@@ -70,9 +70,24 @@ Button also supports an `isCta` prop which will add a `cta` class to the button.
   <Story name="b) Button variants">
     <>
       <StoryCenteredInline>
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="quiet">Quiet</Button>
+        <Button
+          variant="primary"
+          icon={
+            <Icon>
+              <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
+            </Icon>
+          }
+          isLoading
+          iconPos="start"
+        >
+          Primary
+        </Button>
+        <Button variant="secondary" isLoading>
+          Secondary
+        </Button>
+        <Button variant="quiet" isLoading>
+          Quiet
+        </Button>
       </StoryCenteredInline>
       <StoryCenteredInline>
         <Button variant="primary" isCta>
@@ -97,7 +112,7 @@ Primary buttons are high-emphasis, distinguished by their use of obvious actiona
   <Story name="c) Primary button">
     <StoryCenteredInline>
       <Button>Primary</Button>
-      <Button disabled>Disabled</Button>
+      <Button isDisabled>Disabled</Button>
       <Button elementType="a" href="#text-buttons">
         Link
       </Button>
@@ -115,7 +130,7 @@ Secondary buttons are also a lower emphasis alternative to primary buttons, or a
   <Story name="d) Secondary button">
     <StoryCenteredInline>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="secondary" disabled>
+      <Button variant="secondary" isDisabled>
         Disabled
       </Button>
       <Button variant="secondary" elementType="a" href="#text-buttons">
@@ -133,7 +148,7 @@ Quiet buttons are typically used for less-pronounced actions, including those lo
   <Story name="e) Quiet button">
     <StoryCenteredInline>
       <Button variant="quiet">Quiet</Button>
-      <Button variant="quiet" disabled>
+      <Button variant="quiet" isDisabled>
         Disabled
       </Button>
       <Button variant="quiet" elementType="a" href="#text-buttons">
@@ -290,6 +305,7 @@ Sometimes you might want to have icons for certain buttons to enhance the UX of 
     <StoryCenteredInline>
       <Button
         variant="primary"
+        a
         iconPos="end"
         icon={
           <Icon>
