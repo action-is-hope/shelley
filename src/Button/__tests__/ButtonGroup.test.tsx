@@ -22,7 +22,7 @@ describe("ButtonGroup", () => {
       .create(
         <ButtonGroup
           variant="secondary"
-          tone="danger"
+          tone="alert"
           vol={6}
           buttonClassName="button-group-test"
         >

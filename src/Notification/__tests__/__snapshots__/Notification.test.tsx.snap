@@ -2,7 +2,7 @@
 
 exports[`Notification alert notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-5-alert"
+  className="Notification__Test__root Notification__Test---tone-5-alert"
   data-id="inline-alert-notification"
   role="alert"
 >
@@ -72,8 +72,8 @@ exports[`Notification alert notifcation 1`] = `
 
 exports[`Notification hideCloseButton 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-4-info"
-  role="info"
+  className="Notification__Test__root Notification__Test---tone-4-lead"
+  role="status"
 >
   <div
     className="Notification__Test__header"
@@ -113,9 +113,9 @@ exports[`Notification hideCloseButton 1`] = `
 
 exports[`Notification info notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-4-info"
+  className="Notification__Test__root Notification__Test---tone-4-info"
   data-id="inline-info-notification"
-  role="info"
+  role="status"
 >
   <div
     className="Notification__Test__header"
@@ -189,8 +189,8 @@ exports[`Notification info notifcation 1`] = `
 
 exports[`Notification renders with children 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-4-info"
-  role="info"
+  className="Notification__Test__root Notification__Test---tone-4-lead"
+  role="status"
 >
   <div
     className="Notification__Test__header"
@@ -261,8 +261,8 @@ exports[`Notification renders with children 1`] = `
 
 exports[`Notification renders with footer content 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-4-info"
-  role="info"
+  className="Notification__Test__root Notification__Test---tone-4-lead"
+  role="status"
 >
   <div
     className="Notification__Test__header"
@@ -333,9 +333,9 @@ exports[`Notification renders with footer content 1`] = `
 
 exports[`Notification success notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-7-success"
+  className="Notification__Test__root Notification__Test---tone-7-success"
   data-id="inline-success-notification"
-  role="success"
+  role="status"
 >
   <div
     className="Notification__Test__header"
@@ -403,9 +403,9 @@ exports[`Notification success notifcation 1`] = `
 
 exports[`Notification warning notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---role-7-warning"
+  className="Notification__Test__root Notification__Test---tone-7-warning"
   data-id="inline-warning-notification"
-  role="warning"
+  role="status"
 >
   <div
     className="Notification__Test__header"

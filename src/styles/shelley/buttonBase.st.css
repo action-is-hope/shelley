@@ -11,7 +11,7 @@
   --color-tone-info,
   --color-tone-success,
   --color-tone-warning,
-  --color-tone-danger,
+  --color-tone-alert,
   --color-tone-light,
   --color-tone-dark,
   --color-tone-contrast,
@@ -87,8 +87,8 @@
     --tone: var(--color-tone-warning);
   }
 
-  ButtonBase:tone(danger) {
-    --tone: var(--color-tone-danger);
+  ButtonBase:tone(alert) {
+    --tone: var(--color-tone-alert);
   }
 
   ButtonBase:tone(light) {

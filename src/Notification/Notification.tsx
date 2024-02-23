@@ -8,9 +8,10 @@ import CloseIcon from "../icons/Close";
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
 import WarningIcon from "../icons/Warning";
-import ErrorIcon from "../icons/Error";
+import { default as DangerIcon } from "../icons/Error";
 
 import { st, classes } from "./notification.st.css";
+import type { Tone } from "../typings/shared-types";
 
 function calculateIconButtonVol(titleVol: number): IconButtonProps["vol"] {
   // Ensure titleVol is within the expected range 1-10
@@ -40,22 +41,25 @@ export interface NotificationProps
   className?: string;
   /** Should the close button be visible */
   hideCloseButton?: boolean;
+  /** Should the Icon be visible */
+  hideIcon?: boolean;
   /** Optional title  */
   title?: string;
   /** Title Volume */
   titleVol?: TextProps["vol"];
   /** Optional subtitle  */
   subtitle?: string;
-  /** Subtitle Volume */
-  subtitleVol?: TextProps["vol"];
   /** Optional close icon  */
   closeIcon?: ReactNode;
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
   /** Provide a description for "close" icon button that can be read by screen readers */
   "aria-label"?: string;
-  /** By default, this value is "info". You can also provide an alternate */
-  role?: "info" | "alert" | "success" | "warning";
+  /** By default, this value is "status". You can also provide an alternate */
+  role?: "status" | "alert" | "alertdialog" | "log";
+  icon?: ReactNode;
+
+  tone?: Tone;
   /** Footer content */
   footer?: ReactNode;
   /** Swap out the info icon */
@@ -65,7 +69,7 @@ export interface NotificationProps
   /** Swap out the warning icon */
   warningIcon?: ReactNode;
   /** Swap out the error icon */
-  errorIcon?: ReactNode;
+  dangerIcon?: ReactNode;
 }
 
 function Notification(
@@ -81,16 +85,18 @@ function Notification(
     title,
     titleVol = 3,
     subtitle,
-    subtitleVol = 2,
-    role = "info",
+    role,
+    tone = "lead",
     hideCloseButton,
+    hideIcon = false,
     footer,
+    icon,
     "aria-label": ariaLabel = "Close",
     closeIcon = <CloseIcon data-id={iconDataId} />,
     infoIcon = <InfoIcon data-id={iconDataId} />,
     successIcon = <SuccessIcon data-id={iconDataId} />,
     warningIcon = <WarningIcon data-id={iconDataId} />,
-    errorIcon = <ErrorIcon data-id={iconDataId} />,
+    dangerIcon = <DangerIcon data-id={iconDataId} />,
     ...rest
   } = props;
   const contentRef: RefObject<HTMLDivElement> = useRef(null);
@@ -105,57 +111,72 @@ function Notification(
     return null;
   }
 
+  const toneToRoleMap: {
+    [key: string]: ReactNode;
+  } = {
+    lead: infoIcon,
+    support: infoIcon,
+    info: infoIcon,
+    success: successIcon,
+    warning: warningIcon,
+    alert: dangerIcon,
+    light: infoIcon,
+    dark: infoIcon,
+    contrast: infoIcon,
+  };
+
+  const iconToUse: ReactNode | undefined = tone
+    ? toneToRoleMap?.[tone]
+    : undefined;
+
+  const roleToUse = role || tone === "alert" ? "alert" : "status";
+
   return (
     <div
       ref={ref}
-      className={st(classes.root, { role }, className)}
-      role={role}
+      className={st(classes.root, { tone: tone || undefined }, className)}
+      role={roleToUse}
       data-id={dataId}
       {...rest}
     >
-      <div className={classes.header}>
-        {(title || subtitle) && (
-          <div ref={contentRef} className={classes.textWrapper}>
-            {title && (
-              <Text
-                elementType="span"
-                startAdornment={
-                  <>
-                    {role === "info" && infoIcon}
-                    {role === "success" && successIcon}
-                    {role === "warning" && warningIcon}
-                    {role === "alert" && errorIcon}
-                  </>
-                }
-                vol={titleVol}
-                className={classes.title}
-                data-id={dataId ? `${dataId}--title` : undefined}
-              >
-                {title}
-                {subtitle && (
-                  <span
-                    className={classes.subtitle}
-                    data-id={dataId ? `${dataId}--subTitle` : undefined}
-                  >
-                    {subtitle}
-                  </span>
-                )}
-              </Text>
-            )}
-          </div>
-        )}
-        {!hideCloseButton && (
-          <IconButton
-            className={classes.closeButton}
-            data-id={dataId ? `${dataId}--closeButton` : undefined}
-            onPress={handleCloseButtonClick}
-            aria-label={ariaLabel}
-            vol={titleVol && calculateIconButtonVol(titleVol)}
-          >
-            {closeIcon}
-          </IconButton>
-        )}
-      </div>
+      {(title || subtitle || !hideCloseButton) && (
+        <div className={classes.header}>
+          {(title || subtitle) && (
+            <div ref={contentRef} className={classes.textWrapper}>
+              {title && (
+                <Text
+                  elementType="span"
+                  startAdornment={icon || iconToUse}
+                  vol={titleVol}
+                  className={classes.title}
+                  data-id={dataId ? `${dataId}--title` : undefined}
+                >
+                  {title}
+                  {subtitle && (
+                    <span
+                      className={classes.subtitle}
+                      data-id={dataId ? `${dataId}--subTitle` : undefined}
+                    >
+                      {subtitle}
+                    </span>
+                  )}
+                </Text>
+              )}
+            </div>
+          )}
+          {!hideCloseButton && (
+            <IconButton
+              className={classes.closeButton}
+              data-id={dataId ? `${dataId}--closeButton` : undefined}
+              onPress={handleCloseButtonClick}
+              aria-label={ariaLabel}
+              vol={titleVol && calculateIconButtonVol(titleVol)}
+            >
+              {closeIcon}
+            </IconButton>
+          )}
+        </div>
+      )}
       {children && <div className={classes.children}>{children}</div>}
       {footer && <div className={classes.footer}>{footer}</div>}
     </div>

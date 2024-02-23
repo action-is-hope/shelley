@@ -53,7 +53,7 @@
     --color-tone-info,
     --color-tone-success,
     --color-tone-warning,
-    --color-tone-danger,
+    --color-tone-alert,
     /* = Background colours */
     --background-color-main,
     --background-color-contrast-1,
@@ -88,7 +88,7 @@
   --color-tone-info: #7c6fe0;
   --color-tone-success: #3ac08e;
   --color-tone-warning: #ef8f4f;
-  --color-tone-danger: #ef403b;
+  --color-tone-alert: #ef403b;
 
   /* = Background colours */
   --background-color-main: #fff;

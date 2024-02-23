@@ -2,7 +2,7 @@
 @st-import Text from "../Text/text.st.css";
 
 .root {
-  -st-states: role(enum(alert, info, success, warning, error));
+  -st-states: tone(string);
   position: relative;
 }
 

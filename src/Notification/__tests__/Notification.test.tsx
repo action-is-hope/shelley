@@ -6,7 +6,7 @@ describe("Notification", () => {
     const tree = renderer
       .create(
         <Notification
-          role="success"
+          tone="success"
           title="Success notification title"
           subtitle="Subtitle goes here"
           data-id="inline-success-notification"
@@ -20,7 +20,7 @@ describe("Notification", () => {
     const tree = renderer
       .create(
         <Notification
-          role="info"
+          tone="info"
           title="Info notification title"
           subtitle="Subtitle goes here"
           data-id="inline-info-notification"
@@ -34,7 +34,7 @@ describe("Notification", () => {
     const tree = renderer
       .create(
         <Notification
-          role="warning"
+          tone="warning"
           title="Warning notification title"
           subtitle="Subtitle goes here"
           data-id="inline-warning-notification"
@@ -48,7 +48,7 @@ describe("Notification", () => {
     const tree = renderer
       .create(
         <Notification
-          role="alert"
+          tone="alert"
           title="Alert notification title"
           subtitle="Subtitle goes here"
           data-id="inline-alert-notification"

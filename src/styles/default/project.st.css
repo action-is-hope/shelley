@@ -186,7 +186,7 @@
   --background-color-info: blue;
   --background-color-success: green;
   --background-color-warning: orange;
-  --background-color-danger: red;
+  --background-color-alert: red;
 
   /* = Forms */
   --color-form-base-border: rgba(119, 140, 157, 0.7);
