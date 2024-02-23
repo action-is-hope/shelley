@@ -10,38 +10,34 @@ exports[`Notification alert notifcation 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-      data-id="inline-alert-notification--icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
         data-id="inline-alert-notification--title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          data-d="inline-alert-notification--closeButton"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"
+          />
+        </svg>
         Alert notification title
-      </span>
-      <span
-        className="Text__Test__root Text__Test---vol-1-2 Notification__Test__subtitle"
-        data-id="inline-alert-notification--subTitle"
-      >
-        Subtitle goes here
+        <span
+          className="Notification__Test__subtitle"
+          data-id="inline-alert-notification--subTitle"
+        >
+          Subtitle goes here
+        </span>
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       data-id="inline-alert-notification--closeButton"
       onBlur={[Function]}
       onClick={[Function]}
@@ -62,6 +58,7 @@ exports[`Notification alert notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
+        data-id="inline-alert-notification--closeButton"
         viewBox="0 0 16 16"
       >
         <path
@@ -70,9 +67,6 @@ exports[`Notification alert notifcation 1`] = `
       </svg>
     </button>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
 </div>
 `;
 
@@ -85,42 +79,35 @@ exports[`Notification hideCloseButton 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
-        />
-        <path
-          d="M7 6h2v7h-2v-7z"
-        />
-        <path
-          d="M7 3h2v2h-2v-2z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
+          />
+          <path
+            d="M7 6h2v7h-2v-7z"
+          />
+          <path
+            d="M7 3h2v2h-2v-2z"
+          />
+        </svg>
         Notification title
-      </span>
-      <span
-        className="Text__Test__root Text__Test---vol-1-2 Notification__Test__subtitle"
-      >
-        Subtitle goes here
+        <span
+          className="Notification__Test__subtitle"
+        >
+          Subtitle goes here
+        </span>
       </span>
     </div>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
 </div>
 `;
 
@@ -134,44 +121,40 @@ exports[`Notification info notifcation 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-      data-id="inline-info-notification--icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
-        />
-        <path
-          d="M7 6h2v7h-2v-7z"
-        />
-        <path
-          d="M7 3h2v2h-2v-2z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
         data-id="inline-info-notification--title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          data-d="inline-info-notification--closeButton"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
+          />
+          <path
+            d="M7 6h2v7h-2v-7z"
+          />
+          <path
+            d="M7 3h2v2h-2v-2z"
+          />
+        </svg>
         Info notification title
-      </span>
-      <span
-        className="Text__Test__root Text__Test---vol-1-2 Notification__Test__subtitle"
-        data-id="inline-info-notification--subTitle"
-      >
-        Subtitle goes here
+        <span
+          className="Notification__Test__subtitle"
+          data-id="inline-info-notification--subTitle"
+        >
+          Subtitle goes here
+        </span>
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       data-id="inline-info-notification--closeButton"
       onBlur={[Function]}
       onClick={[Function]}
@@ -192,6 +175,7 @@ exports[`Notification info notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
+        data-id="inline-info-notification--closeButton"
         viewBox="0 0 16 16"
       >
         <path
@@ -200,9 +184,6 @@ exports[`Notification info notifcation 1`] = `
       </svg>
     </button>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
 </div>
 `;
 
@@ -215,36 +196,32 @@ exports[`Notification renders with children 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
-        />
-        <path
-          d="M7 6h2v7h-2v-7z"
-        />
-        <path
-          d="M7 3h2v2h-2v-2z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
+          />
+          <path
+            d="M7 6h2v7h-2v-7z"
+          />
+          <path
+            d="M7 3h2v2h-2v-2z"
+          />
+        </svg>
         Notification title
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       onBlur={[Function]}
       onClick={[Function]}
       onDragStart={[Function]}
@@ -291,36 +268,32 @@ exports[`Notification renders with footer content 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
-        />
-        <path
-          d="M7 6h2v7h-2v-7z"
-        />
-        <path
-          d="M7 3h2v2h-2v-2z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zM8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8v0z"
+          />
+          <path
+            d="M7 6h2v7h-2v-7z"
+          />
+          <path
+            d="M7 3h2v2h-2v-2z"
+          />
+        </svg>
         Notification title
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       onBlur={[Function]}
       onClick={[Function]}
       onDragStart={[Function]}
@@ -348,9 +321,6 @@ exports[`Notification renders with footer content 1`] = `
       </svg>
     </button>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
   <div
     className="Notification__Test__footer"
   >
@@ -371,38 +341,34 @@ exports[`Notification success notifcation 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-      data-id="inline-success-notification--icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM7.1 11.7l-4.2-4.1 1.4-1.4 2.7 2.7 5-4.9 1.4 1.4-6.3 6.3z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
         data-id="inline-success-notification--title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          data-d="inline-success-notification--closeButton"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM7.1 11.7l-4.2-4.1 1.4-1.4 2.7 2.7 5-4.9 1.4 1.4-6.3 6.3z"
+          />
+        </svg>
         Success notification title
-      </span>
-      <span
-        className="Text__Test__root Text__Test---vol-1-2 Notification__Test__subtitle"
-        data-id="inline-success-notification--subTitle"
-      >
-        Subtitle goes here
+        <span
+          className="Notification__Test__subtitle"
+          data-id="inline-success-notification--subTitle"
+        >
+          Subtitle goes here
+        </span>
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       data-id="inline-success-notification--closeButton"
       onBlur={[Function]}
       onClick={[Function]}
@@ -423,6 +389,7 @@ exports[`Notification success notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
+        data-id="inline-success-notification--closeButton"
         viewBox="0 0 16 16"
       >
         <path
@@ -431,9 +398,6 @@ exports[`Notification success notifcation 1`] = `
       </svg>
     </button>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
 </div>
 `;
 
@@ -447,38 +411,34 @@ exports[`Notification warning notifcation 1`] = `
     className="Notification__Test__header"
   >
     <div
-      className="Notification__Test__icon"
-      data-id="inline-warning-notification--icon"
-    >
-      <svg
-        aria-hidden={true}
-        className="Icon__Test__root"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8 1l-8 14h16l-8-14zM8 13c-0.6 0-1-0.4-1-1s0.4-1 1-1 1 0.4 1 1c0 0.6-0.4 1-1 1zM7 10v-4h2v4h-2z"
-        />
-      </svg>
-    </div>
-    <div
       className="Notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Notification__Test__title"
+        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
         data-id="inline-warning-notification--title"
       >
+        <svg
+          aria-hidden={true}
+          className="Icon__Test__root"
+          data-d="inline-warning-notification--closeButton"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1l-8 14h16l-8-14zM8 13c-0.6 0-1-0.4-1-1s0.4-1 1-1 1 0.4 1 1c0 0.6-0.4 1-1 1zM7 10v-4h2v4h-2z"
+          />
+        </svg>
         Warning notification title
-      </span>
-      <span
-        className="Text__Test__root Text__Test---vol-1-2 Notification__Test__subtitle"
-        data-id="inline-warning-notification--subTitle"
-      >
-        Subtitle goes here
+        <span
+          className="Notification__Test__subtitle"
+          data-id="inline-warning-notification--subTitle"
+        >
+          Subtitle goes here
+        </span>
       </span>
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 IconButton__Test__root Notification__Test__closeButton"
+      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
       data-id="inline-warning-notification--closeButton"
       onBlur={[Function]}
       onClick={[Function]}
@@ -499,6 +459,7 @@ exports[`Notification warning notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
+        data-id="inline-warning-notification--closeButton"
         viewBox="0 0 16 16"
       >
         <path
@@ -507,8 +468,5 @@ exports[`Notification warning notifcation 1`] = `
       </svg>
     </button>
   </div>
-  <div
-    className="Notification__Test__children"
-  />
 </div>
 `;

@@ -72,6 +72,11 @@ function Notification(
   props: NotificationProps,
   ref?: React.Ref<HTMLDivElement>
 ) {
+  const dataId = props["data-id"];
+  const iconDataId = props["data-id"]
+    ? `${props["data-id"]}--closeButton`
+    : undefined;
+
   const {
     className,
     children,
@@ -81,14 +86,13 @@ function Notification(
     subtitleVol = 2,
     role = "info",
     hideCloseButton,
-    closeIcon = <CloseIcon />,
-    infoIcon = <InfoIcon />,
-    successIcon = <SuccessIcon />,
-    warningIcon = <WarningIcon />,
-    errorIcon = <ErrorIcon />,
     footer,
-    "data-id": dataId,
     "aria-label": ariaLabel = "Close",
+    closeIcon = <CloseIcon data-id={iconDataId} />,
+    infoIcon = <InfoIcon data-d={iconDataId} />,
+    successIcon = <SuccessIcon data-d={iconDataId} />,
+    warningIcon = <WarningIcon data-d={iconDataId} />,
+    errorIcon = <ErrorIcon data-d={iconDataId} />,
     ...rest
   } = props;
   const contentRef: RefObject<HTMLDivElement> = useRef(null);
