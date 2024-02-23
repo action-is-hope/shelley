@@ -30,7 +30,7 @@ function calculateIconButtonVol(titleVol: number): IconButtonProps["vol"] {
     iconButtonVol = 6;
   }
 
-  return iconButtonVol;
+  return iconButtonVol as IconButtonProps["vol"];
 }
 export interface NotificationProps
   extends React.HTMLAttributes<HTMLDivElement> {
