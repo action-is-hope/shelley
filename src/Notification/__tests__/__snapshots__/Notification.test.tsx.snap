@@ -19,7 +19,7 @@ exports[`Notification alert notifcation 1`] = `
         <svg
           aria-hidden={true}
           className="Icon__Test__root"
-          data-d="inline-alert-notification--closeButton"
+          data-id="inline-alert-notification--icon"
           viewBox="0 0 16 16"
         >
           <path
@@ -58,7 +58,7 @@ exports[`Notification alert notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
-        data-id="inline-alert-notification--closeButton"
+        data-id="inline-alert-notification--icon"
         viewBox="0 0 16 16"
       >
         <path
@@ -130,7 +130,7 @@ exports[`Notification info notifcation 1`] = `
         <svg
           aria-hidden={true}
           className="Icon__Test__root"
-          data-d="inline-info-notification--closeButton"
+          data-id="inline-info-notification--icon"
           viewBox="0 0 16 16"
         >
           <path
@@ -175,7 +175,7 @@ exports[`Notification info notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
-        data-id="inline-info-notification--closeButton"
+        data-id="inline-info-notification--icon"
         viewBox="0 0 16 16"
       >
         <path
@@ -350,7 +350,7 @@ exports[`Notification success notifcation 1`] = `
         <svg
           aria-hidden={true}
           className="Icon__Test__root"
-          data-d="inline-success-notification--closeButton"
+          data-id="inline-success-notification--icon"
           viewBox="0 0 16 16"
         >
           <path
@@ -389,7 +389,7 @@ exports[`Notification success notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
-        data-id="inline-success-notification--closeButton"
+        data-id="inline-success-notification--icon"
         viewBox="0 0 16 16"
       >
         <path
@@ -420,7 +420,7 @@ exports[`Notification warning notifcation 1`] = `
         <svg
           aria-hidden={true}
           className="Icon__Test__root"
-          data-d="inline-warning-notification--closeButton"
+          data-id="inline-warning-notification--icon"
           viewBox="0 0 16 16"
         >
           <path
@@ -459,7 +459,7 @@ exports[`Notification warning notifcation 1`] = `
       <svg
         aria-hidden={true}
         className="Icon__Test__root"
-        data-id="inline-warning-notification--closeButton"
+        data-id="inline-warning-notification--icon"
         viewBox="0 0 16 16"
       >
         <path
