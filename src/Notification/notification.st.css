@@ -1,4 +1,5 @@
 @st-namespace "Notification";
+@st-import Text from "../Text/text.st.css";
 
 .root {
   -st-states: role(enum(alert, info, success, warning, error));
@@ -7,13 +8,13 @@
 
 .header {}
 
-.icon {}
-
 .closeButton {}
 
 .textWrapper {}
 
-.title {}
+.title {
+  -st-extends: Text;
+}
 
 .subtitle {}
 

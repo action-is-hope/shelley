@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Notification,
   NotificationProps,
+  P,
 } from "../../indexLib";
 
 export const NotificationPropsTable = (props: NotificationProps) => {
@@ -15,6 +16,8 @@ export const InlineAlertNotification = () => {
     <Notification
       role="alert"
       title="Alert notification title"
+      titleVol={3}
+      subtitleVol={2}
       subtitle="Subtitle goes here"
       data-id="inline-alert-notification"
     />
@@ -73,7 +76,7 @@ export const InlineNotificationWithChildren = () => {
       data-id="notification-with-children"
       aria-label="Close button"
     >
-      <p>Notification content goes here</p>
+      <P vol={2}>Notification content goes here</P>
     </Notification>
   );
 };
@@ -105,7 +108,7 @@ export const InlineNotificationWithFooter = () => {
         </ButtonGroup>
       }
     >
-      <p>Notification content goes here</p>
+      <P vol={2}>Notification content goes here</P>
     </Notification>
   ) : (
     <></>
