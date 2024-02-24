@@ -14,9 +14,6 @@
 @st-scope Default {
 
   Notification {
-    border-color: grey;
-    border-width: 1px;
-    border-style: solid;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -38,9 +35,9 @@
     align-self: center;
   }
 
-  Notification::title,
-  Notification::subtitle {
+  Notification::title {
     margin: 0 var(--spacing-unit) 0 0;
+    flex-flow: wrap;
   }
 
   Notification::subtitle {

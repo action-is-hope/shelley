@@ -39,8 +39,8 @@ export interface NotificationProps
   children?: ReactNode;
   /** Additional class name to be provided for the root element. */
   className?: string;
-  /** Should the close button be visible */
-  hideCloseButton?: boolean;
+  /** Whether the Dialog is dismissable. See the [examples](#examples) for more details. */
+  isDismissable?: boolean;
   /** Should the Icon be visible */
   hideIcon?: boolean;
   /** Optional title  */
@@ -55,10 +55,11 @@ export interface NotificationProps
   "data-id"?: string;
   /** Provide a description for "close" icon button that can be read by screen readers */
   "aria-label"?: string;
-  /** By default, this value is "status". You can also provide an alternate */
+  /** By default, this value is "status" unless a tone of `alert` is set. */
   role?: "status" | "alert" | "alertdialog" | "log";
+  /** Custom icon */
   icon?: ReactNode;
-
+  /** The tone, a tone of alert will yeild a role of `alert` */
   tone?: Tone;
   /** Footer content */
   footer?: ReactNode;
@@ -87,7 +88,7 @@ function Notification(
     subtitle,
     role,
     tone = "lead",
-    hideCloseButton,
+    isDismissable,
     hideIcon = false,
     footer,
     icon,
@@ -139,7 +140,7 @@ function Notification(
       data-id={dataId}
       {...rest}
     >
-      {(title || subtitle || !hideCloseButton) && (
+      {(title || subtitle || isDismissable) && (
         <div className={classes.header}>
           {(title || subtitle) && (
             <div ref={contentRef} className={classes.textWrapper}>
@@ -164,7 +165,7 @@ function Notification(
               )}
             </div>
           )}
-          {!hideCloseButton && (
+          {isDismissable && (
             <IconButton
               className={classes.closeButton}
               data-id={dataId ? `${dataId}--closeButton` : undefined}

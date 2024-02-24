@@ -133,55 +133,52 @@ const items = [
     id: "ex2-1",
     title: "Mangrove planting in Marotaola, Madagascar",
     children: (
-      <Text
-        elementType="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `<p>
-          Madagascar is an island country in the Indian Ocean, approximately 400 kilometres off the coast of East Africa. It is the world’s second largest island country, after Indonesia, and the island of Madagascar itself is the fourth largest island in the world. The country is considered a <em>biodiversity hotspot</em>, and over 90% of its wildlife is found nowhere else on Earth. <a href="https://ecologi.com/projects/mangrove-planting-in-madagascar">Ecologi - Mangrove planting in Marotaola, Madagascar.</a>
-        </p>`,
-        }}
-      />
+      <Text elementType="div" vol={2}>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: `<p>Madagascar is an island country in the Indian Ocean, approximately 400 kilometres off the coast of East Africa. It is the world’s second largest island country, after Indonesia, and the island of Madagascar itself is the fourth largest island in the world. The country is considered a <em>biodiversity hotspot</em>, and over 90% of its wildlife is found nowhere else on Earth. <a href="https://ecologi.com/projects/mangrove-planting-in-madagascar">Ecologi - Mangrove planting in Marotaola, Madagascar.</a></p>`,
+          }}
+        />
+      </Text>
     ),
   },
   {
     id: "ex2-2",
     title: "Planting trees and supporting water security in Kenyan forests",
     children: (
-      <Text
-        elementType="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `
-        <p>Kenya is renowned for its magnificent wildlife and iconic landscapes, teeming with biodiversity due to its wide array of ecosystems ranging from deserts and wetlands to mountain and forest regions. <em>However</em>, Kenya is losing species of plants and animals at an alarming rate as a result of ongoing environmental degradation, poor land-use practices, and unsustainable natural resource management. These issues are all exacerbated by extreme weather events due to climate change, which negatively impact the country’s nature-based tourism revenue and, ultimately, the livelihoods of its <strong>people</strong>. <a href="https://ecologi.com/projects/restoring-forests-in-kenya">Ecologi - Planting trees and supporting water security in Kenyan forests.</a></p>`,
-        }}
-      />
+      <Text elementType="div" vol={2}>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: `<p>Kenya is renowned for its magnificent wildlife and iconic landscapes, teeming with biodiversity due to its wide array of ecosystems ranging from deserts and wetlands to mountain and forest regions. <em>However</em>, Kenya is losing species of plants and animals at an alarming rate as a result of ongoing environmental degradation, poor land-use practices, and unsustainable natural resource management. These issues are all exacerbated by extreme weather events due to climate change, which negatively impact the country’s nature-based tourism revenue and, ultimately, the livelihoods of its <strong>people</strong>. <a href="https://ecologi.com/projects/restoring-forests-in-kenya">Ecologi - Planting trees and supporting water security in Kenyan forests.</a></p>`,
+          }}
+        />
+      </Text>
     ),
   },
   {
     id: "ex2-3",
     title: "Restoring degraded land in Senegal",
     children: (
-      <Text
-        elementType="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `The Sahel region, spanning 5,400km from the Atlantic Ocean in the West to the Red Sea in the East, is a climatic region in Africa located between the Sahara desert to the North and the Sudanian savanna to the South. Its tropical, semi-arid climate means that months often pass without rainfall. In recent years droughts have become common, with the most severe in recent times occurring between June and August 2010, when extremely high temperatures combined with a lack of rainfall to cause famine and illness across the Sahel. Such devastating weather patterns have been worsened by climate change – people in the Sahel are currently some of the most affected by climate change in the world, with their livelihoods becoming increasingly precarious. <a href="https://ecologi.com/projects/restoring-degraded-land-senegal">Ecologi - Restoring degraded land in Senegal</a></p>`,
-        }}
-      />
+      <Text elementType="div" vol={2}>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: `<p>The Sahel region, spanning 5,400km from the Atlantic Ocean in the West to the Red Sea in the East, is a climatic region in Africa located between the Sahara desert to the North and the Sudanian savanna to the South. Its tropical, semi-arid climate means that months often pass without rainfall. In recent years droughts have become common, with the most severe in recent times occurring between June and August 2010, when extremely high temperatures combined with a lack of rainfall to cause famine and illness across the Sahel. Such devastating weather patterns have been worsened by climate change – people in the Sahel are currently some of the most affected by climate change in the world, with their livelihoods becoming increasingly precarious. <a href="https://ecologi.com/projects/restoring-degraded-land-senegal">Ecologi - Restoring degraded land in Senegal</a></p></p>`,
+          }}
+        />
+      </Text>
     ),
   },
   {
     id: "ex2-4",
     title: "Planting forest gardens in Tanzania",
     children: (
-      <Text
-        elementType="div"
-        vol={2}
-        dangerouslySetInnerHTML={{
-          __html: `<p>Tanzania is an East African country, situated just south of the Equator, which is home to around 60 million people. Its climate is varied due to the nature of its typography, with hot and humid low plains on the east, and generally cool highlands in the north and south. Tanzania is well recognised for its renowned tourism destinations including Mount Kilimanjaro, Africa’s highest mountain, and the Serengeti’s annual wildebeest migration. <a href="https://ecologi.com/projects/planting-forest-gardens-in-tanzania">Ecologi - Planting forest gardens in Tanzania</a></p>`,
-        }}
-      />
+      <Text elementType="div" vol={2}>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: `<p>Tanzania is an East African country, situated just south of the Equator, which is home to around 60 million people. Its climate is varied due to the nature of its typography, with hot and humid low plains on the east, and generally cool highlands in the north and south. Tanzania is well recognised for its renowned tourism destinations including Mount Kilimanjaro, Africa’s highest mountain, and the Serengeti’s annual wildebeest migration. <a href="https://ecologi.com/projects/planting-forest-gardens-in-tanzania">Ecologi - Planting forest gardens in Tanzania</a></p>`,
+          }}
+        />
+      </Text>
     ),
   },
 ];

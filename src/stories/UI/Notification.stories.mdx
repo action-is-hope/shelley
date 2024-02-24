@@ -55,6 +55,13 @@ import {
     },
   }}
   component={Notification}
+  decorators={[
+    (Story) => (
+      <div style={{ padding: 50 }}>
+        <Story />
+      </div>
+    ),
+  ]}
 />
 
 # Notification

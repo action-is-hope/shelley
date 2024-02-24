@@ -16,6 +16,7 @@ import "./helpText.st.css";
 import "./grid.st.css";
 import "./listBoxOption.st.css";
 import "./menuItem.st.css";
+import "./notification.st.css";
 import "./progressBar.st.css";
 import "./progressCircle.st.css";
 import "./tableView.st.css";

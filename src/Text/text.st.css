@@ -69,7 +69,7 @@
 .root:hasAdornment {
   display: flex;
   align-items: baseline;
-  gap: calc(1em / 2)
+  column-gap: calc(1em / 2)
 }
 
 .root:hasAdornment Icon {
