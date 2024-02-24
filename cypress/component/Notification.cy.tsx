@@ -4,14 +4,14 @@ import { Notification, NotificationProps } from "../../src/indexLib";
 export const InlineNotification = ({
   role,
   tone,
-  hideCloseButton,
+  isDismissable,
   children,
 }: NotificationProps) => {
   return (
     <Notification
       role={role}
       tone={tone}
-      hideCloseButton={hideCloseButton}
+      isDismissable={isDismissable}
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
@@ -37,7 +37,6 @@ describe("Inline Notification", () => {
     cy.get(notificationSubTitle).should("contain.text", "Subtitle goes here");
   });
 
-  // Children check
   it("renders children", () => {
     cy.mount(
       <InlineNotification tone="info">
@@ -50,13 +49,11 @@ describe("Inline Notification", () => {
     );
   });
 
-  // Icon check
   it("renders icon", () => {
     cy.mount(<InlineNotification tone="info" />);
     cy.get(notificationIcon).should("exist");
   });
 
-  // Role check
   it("renders correct role attributes", () => {
     cy.mount(<InlineNotification tone="info" />);
     cy.get(notification)
@@ -76,26 +73,22 @@ describe("Inline Notification", () => {
       .and("to.have.string", "alert");
   });
 
-  // Close button
-  it("renders close button", () => {
-    cy.mount(<InlineNotification tone="info" />);
+  it("does not render close button by default", () => {
+    cy.mount(<InlineNotification />);
+    cy.get(notificationCloseButton).should("not.exist");
+  });
+
+  it("renders close button via isDismissable", () => {
+    cy.mount(<InlineNotification tone="info" isDismissable />);
     cy.get(notificationCloseButton).should("exist");
   });
 
-  // Close button click
   it("closes notification on close button click", () => {
     cy.mount(<InlineNotification tone="info" />);
     cy.get(notificationCloseButton).click();
     cy.get(notification).should("not.exist");
   });
 
-  // Hide close button
-  it("hides close button", () => {
-    cy.mount(<InlineNotification hideCloseButton />);
-    cy.get(notificationCloseButton).should("not.exist");
-  });
-
-  // Classname check
   it("renders correct classnames", () => {
     cy.mount(<InlineNotification tone="info" />);
     cy.get(notification)
@@ -112,7 +105,6 @@ describe("Inline Notification", () => {
       .and("to.have.string", "closeButton");
   });
 
-  // Aria attribute for close button
   it("renders correct aria attributes", () => {
     cy.mount(<InlineNotification tone="info" aria-label="Close" />);
     cy.get(notificationCloseButton)

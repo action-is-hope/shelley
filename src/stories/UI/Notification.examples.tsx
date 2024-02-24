@@ -56,10 +56,10 @@ export const InlineWarningNotification = () => {
   );
 };
 
-export const InlineNotificationHideCloseButton = () => {
+export const InlineNotificationRenderCloseButton = () => {
   return (
     <Notification
-      hideCloseButton
+      isDismissable
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
@@ -87,7 +87,7 @@ export const InlineNotificationWithFooter = () => {
     <Notification
       title="Notification title"
       subtitle="Subtitle goes here"
-      hideCloseButton
+      isDismissable
       footer={
         <ButtonGroup>
           <Button

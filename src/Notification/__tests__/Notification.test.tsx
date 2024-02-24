@@ -58,11 +58,11 @@ describe("Notification", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("hideCloseButton", () => {
+  it("isDismissable", () => {
     const tree = renderer
       .create(
         <Notification
-          hideCloseButton
+          isDismissable
           title="Notification title"
           subtitle="Subtitle goes here"
         />

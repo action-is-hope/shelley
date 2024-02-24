@@ -17,7 +17,7 @@ import {
   InlineSuccessNotification,
   InlineWarningNotification,
   InlineNotificationWithChildren,
-  InlineNotificationHideCloseButton,
+  InlineNotificationRenderCloseButton,
   InlineNotificationWithFooter,
 } from "./Notification.examples";
 
@@ -184,19 +184,19 @@ Displays an warning icon with the role of status via `tone="warning"`.
   </Story>
 </Preview>
 
-## Inline Notification Without Close Button Example
+## Inline Notification - isDismissable
 
 Displays a notification without a close button.
 
 <Preview>
   <Story
-    name="e) Inline notification without close button"
+    name="e) Inline notification isDismissable"
     parameters={{
       docs: {
         source: {
           code: dedent`
 <Notification
-  hideCloseButton
+  isDismissable
   title="Notification title"
   subtitle="Subtitle goes here"
   data-id="inline-notification"
@@ -205,7 +205,7 @@ Displays a notification without a close button.
       },
     }}
   >
-    <InlineNotificationHideCloseButton />
+    <InlineNotificationRenderCloseButton />
   </Story>
 </Preview>
 
