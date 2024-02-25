@@ -3,15 +3,13 @@ import type React from "react";
 import { useRef, RefObject, forwardRef, ReactNode, useState } from "react";
 import { Text, TextProps } from "../Text";
 import { IconButton, IconButtonProps } from "../Button/IconButton";
+import type { ComponentBase, Tone } from "../typings/shared-types";
 import CloseIcon from "../icons/Close";
-
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
 import WarningIcon from "../icons/Warning";
 import { default as DangerIcon } from "../icons/Error";
-
 import { st, classes } from "./notification.st.css";
-import type { Tone } from "../typings/shared-types";
 
 function calculateIconButtonVol(titleVol: number): IconButtonProps["vol"] {
   // Ensure titleVol is within the expected range 1-10
@@ -34,7 +32,8 @@ function calculateIconButtonVol(titleVol: number): IconButtonProps["vol"] {
   return iconButtonVol as IconButtonProps["vol"];
 }
 export interface NotificationProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends React.HTMLAttributes<HTMLDivElement>,
+    ComponentBase {
   /** Content to be rendered inside the component. */
   children?: ReactNode;
   /** Additional class name to be provided for the root element. */
@@ -49,20 +48,16 @@ export interface NotificationProps
   titleVol?: TextProps["vol"];
   /** Optional subtitle  */
   subtitle?: string;
-  /** Optional close icon  */
-  closeIcon?: ReactNode;
-  /** Add predefined data-id to ease testing or analytics. */
-  "data-id"?: string;
-  /** Provide a description for "close" icon button that can be read by screen readers */
-  "aria-label"?: string;
+  /** Override all aspects of the close button; icon, aria-label, vol etc */
+  closeButtonProps?: IconButtonProps;
   /** By default, this value is "status" unless a tone of `alert` is set. */
   role?: "status" | "alert" | "alertdialog" | "log";
-  /** Custom icon */
-  icon?: ReactNode;
   /** The tone, a tone of alert will yeild a role of `alert` */
   tone?: Tone;
   /** Footer content */
   footer?: ReactNode;
+  /** Icon to use */
+  icon?: ReactNode;
   /** Swap out the info icon */
   infoIcon?: ReactNode;
   /** Swap out the success icon */
@@ -91,9 +86,8 @@ function Notification(
     isDismissable,
     hideIcon = false,
     footer,
+    closeButtonProps,
     icon,
-    "aria-label": ariaLabel = "Close",
-    closeIcon = <CloseIcon data-id={iconDataId} />,
     infoIcon = <InfoIcon data-id={iconDataId} />,
     successIcon = <SuccessIcon data-id={iconDataId} />,
     warningIcon = <WarningIcon data-id={iconDataId} />,
@@ -131,7 +125,6 @@ function Notification(
     : undefined;
 
   const roleToUse = role || tone === "alert" ? "alert" : "status";
-  console.log("HELLO"), isDismissable;
   return (
     <div
       ref={ref}
@@ -170,11 +163,11 @@ function Notification(
               className={classes.closeButton}
               data-id={dataId ? `${dataId}--closeButton` : undefined}
               onPress={handleCloseButtonClick}
-              aria-label={ariaLabel}
+              aria-label={"Close"}
               vol={titleVol && calculateIconButtonVol(titleVol)}
-            >
-              {closeIcon}
-            </IconButton>
+              icon={<CloseIcon data-id={iconDataId} />}
+              {...closeButtonProps}
+            />
           )}
         </div>
       )}
