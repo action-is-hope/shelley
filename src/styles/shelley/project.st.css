@@ -117,7 +117,7 @@
   --background-color-info: rgb(125 2 220);
   --background-color-success: rgb(0, 122, 77);
   --background-color-warning: rgb(255, 102, 0);
-  --background-color-danger: rgb(211, 21, 16);
+  --background-color-alert: rgb(211, 21, 16);
 
   /* = Tone colours */
   --color-tone-lead: #18ffd8;
@@ -125,7 +125,7 @@
   --color-tone-info: #cac3ff;
   --color-tone-success: #1cffab;
   --color-tone-warning: #ffba8c;
-  --color-tone-danger: #ff8f8c;
+  --color-tone-alert: #ff8f8c;
   --color-tone-light: rgb(240 240 240 / 0.9);
   --color-tone-dark: rgb(79 79 79 / 0.9);
   --color-tone-contrast: rgba(var(--color-ui-raw), .8);

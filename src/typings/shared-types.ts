@@ -99,7 +99,7 @@ export declare type Tone =
   | "info"
   | "success"
   | "warning"
-  | "danger"
+  | "alert"
   | "light"
   | "dark"
   | "contrast"

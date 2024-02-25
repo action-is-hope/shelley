@@ -13,46 +13,45 @@
 
 @st-scope Default {
 
-
   Notification {
-    border-color: grey;
-    border-width: 1px;
-    border-style: solid;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: auto;
-    min-height: 3rem;
     padding: var(--spacing-unit);
   }
 
   Notification::header {
     display: flex;
     gap: 10px;
-  }
-
-  Notification::icon {
-    align-self: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   Notification::textWrapper {
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
+    flex-grow: 1;
+    align-self: center;
   }
 
-  Notification::title,
-  Notification::subtitle {
+  Notification::title {
     margin: 0 var(--spacing-unit) 0 0;
+    flex-flow: wrap;
+  }
+
+  Notification::subtitle {
+    font-size: 0.8em;
   }
 
   Notification::children {
     flex-basis: 100%;
+    margin-top: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) / 2);
   }
 
   Notification::closeButton {
-    position: absolute;
-    right: var(--spacing-unit);
+    flex-shrink: 0;
   }
 
   Notification::footer {
@@ -62,24 +61,12 @@
     width: 100%;
     gap: calc(var(--spacing-unit) / 2);
   }
-
 }
 
 @st-scope [dir=rtl] Default {
 
-  Notification::icon {
-    margin-right: 0;
-    margin-left: var(--spacing-unit);
-  }
-
-  Notification::title,
-  Notification::subtitle {
-    margin-right: unset;
-    margin-left: var(--spacing-unit);
-  }
-
   Notification::closeButton {
-    right: unset;
-    left: var(--spacing-unit);
+    margin-right: unset;
+    margin-left: calc(var(--spacing-unit) * -0.5);
   }
 }

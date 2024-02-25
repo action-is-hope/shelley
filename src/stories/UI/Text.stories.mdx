@@ -242,27 +242,23 @@ Does what it says on the tin really, applies `text-transform` to uppercase. As w
 
 <Source language="tsx" id="data-text--e-uppercase" />
 
-## Adornments
+## Adornment
 
-An an Icon or some other element quickly via the `startAdornment` and `endAdornment` props. This is a good way to add some visual interest to your text without having to create a new component.
+An an Icon or some other element quickly via the `startAdornment` prop. This is a good way to add some visual interest to your text without having to create a new component.
 
-<Story
-  name="e) Adornments"
-  args={{ label: "Email", defaultValue: "me@earth.com" }}
->
+<Story name="e) Volume" args={{ label: "Email", defaultValue: "me@earth.com" }}>
   <P vol={1} startAdornment={<Success />}>
     vol 1. Text
   </P>
-  <P vol={2} startAdornment={<Success />}>
-    vol 2. Text
-  </P>
-  <P startAdornment={<Success />}>vol 3. Text</P>
-  <P vol={4} startAdornment={<Success />}>
-    vol 4. Text
-  </P>
-  <P vol={5} startAdornment={<Success />}>
-    vol 5. Text
-  </P>
+  <P vol={2}>vol 2. Text</P>
+  <P>vol 3. Text</P>
+  <P vol={4}>vol 4. Text</P>
+  <P vol={5}>vol 5. Text</P>
+  <P vol={6}>vol 6. Text</P>
+  <P vol={7}>vol 7. Text</P>
+  <P vol={8}>vol 8. Text</P>
+  <P vol={9}>vol 9. Text</P>
+  <P vol={10}>vol 10. Text</P>
 </Story>
 
 ## TextField Props

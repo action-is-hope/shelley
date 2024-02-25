@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Notification,
   NotificationProps,
+  P,
 } from "../../indexLib";
 
 export const NotificationPropsTable = (props: NotificationProps) => {
@@ -13,8 +14,9 @@ export const NotificationPropsTable = (props: NotificationProps) => {
 export const InlineAlertNotification = () => {
   return (
     <Notification
-      role="alert"
+      tone="alert"
       title="Alert notification title"
+      titleVol={3}
       subtitle="Subtitle goes here"
       data-id="inline-alert-notification"
     />
@@ -24,7 +26,7 @@ export const InlineAlertNotification = () => {
 export const InlineInfoNotification = () => {
   return (
     <Notification
-      role="info"
+      tone="info"
       title="Info notification title"
       subtitle="Subtitle goes here"
       data-id="inline-info-notification"
@@ -35,7 +37,7 @@ export const InlineInfoNotification = () => {
 export const InlineSuccessNotification = () => {
   return (
     <Notification
-      role="success"
+      tone="success"
       title="Success notification title"
       subtitle="Subtitle goes here"
       data-id="inline-success-notification"
@@ -46,7 +48,7 @@ export const InlineSuccessNotification = () => {
 export const InlineWarningNotification = () => {
   return (
     <Notification
-      role="warning"
+      tone="warning"
       title="Warning notification title"
       subtitle="Subtitle goes here"
       data-id="inline-warning-notification"
@@ -54,10 +56,10 @@ export const InlineWarningNotification = () => {
   );
 };
 
-export const InlineNotificationHideCloseButton = () => {
+export const InlineNotificationRenderCloseButton = () => {
   return (
     <Notification
-      hideCloseButton
+      isDismissable
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
@@ -73,7 +75,7 @@ export const InlineNotificationWithChildren = () => {
       data-id="notification-with-children"
       aria-label="Close button"
     >
-      <p>Notification content goes here</p>
+      <P vol={2}>Notification content goes here</P>
     </Notification>
   );
 };
@@ -85,7 +87,7 @@ export const InlineNotificationWithFooter = () => {
     <Notification
       title="Notification title"
       subtitle="Subtitle goes here"
-      hideCloseButton
+      isDismissable
       footer={
         <ButtonGroup>
           <Button
@@ -105,7 +107,7 @@ export const InlineNotificationWithFooter = () => {
         </ButtonGroup>
       }
     >
-      <p>Notification content goes here</p>
+      <P vol={2}>Notification content goes here</P>
     </Notification>
   ) : (
     <></>

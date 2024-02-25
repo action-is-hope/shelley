@@ -1,4 +1,5 @@
 @st-namespace "Text";
+@st-import Icon from "../Icon/icon.st.css";
 
 .root {
   -st-states:
@@ -67,6 +68,10 @@
 
 .root:hasAdornment {
   display: flex;
-  align-items: center;
-  gap: calc(1em / 2)
+  align-items: baseline;
+  column-gap: calc(1em / 2)
+}
+
+.root:hasAdornment Icon {
+  align-self: center;
 }

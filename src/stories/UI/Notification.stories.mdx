@@ -17,7 +17,7 @@ import {
   InlineSuccessNotification,
   InlineWarningNotification,
   InlineNotificationWithChildren,
-  InlineNotificationHideCloseButton,
+  InlineNotificationRenderCloseButton,
   InlineNotificationWithFooter,
 } from "./Notification.examples";
 
@@ -55,6 +55,13 @@ import {
     },
   }}
   component={Notification}
+  decorators={[
+    (Story) => (
+      <div style={{ padding: 50 }}>
+        <Story />
+      </div>
+    ),
+  ]}
 />
 
 # Notification
@@ -69,8 +76,7 @@ import {
 The Notification component allows you to display various types of notifications to users.
 It can be used to show information, success messages, warnings, and alerts,
 each with its respective icon and styling. The component can be closed by the
-user if a close button is enabled. It also provides accessibility features
-such as screen reader support.
+user if a close button is enabled.
 
 ### Custom Icon
 
@@ -80,7 +86,7 @@ they are infoIcon, successIcon, warningIcon, and alertIcon.
 
 ## Alert Notification Example
 
-Displays an alert icon with the role of alert.
+Displays an alert icon with the role of alert via `tone="alert"`.
 
 <Preview>
   <Story
@@ -90,7 +96,7 @@ Displays an alert icon with the role of alert.
         source: {
           code: dedent`
 <Notification
-  role="alert"
+  tone="alert"
   title="Alert notification title"
   subtitle="Subtitle goes here"
   data-id="inline-alert-notification"
@@ -105,7 +111,7 @@ Displays an alert icon with the role of alert.
 
 ## Info Notification Example
 
-Displays an info icon with the role of info.
+Displays an info icon with the role of status via `tone="info"`.
 
 <Preview>
   <Story
@@ -115,7 +121,7 @@ Displays an info icon with the role of info.
         source: {
           code: dedent`
 <Notification
-  role="info"
+  tone="info"
   title="Info notification title"
   subtitle="Subtitle goes here"
   data-id="inline-info-notification"
@@ -130,7 +136,7 @@ Displays an info icon with the role of info.
 
 ## Success Notification Example
 
-Displays a success icon with the role of success.
+Displays an success icon with the role of status via `tone="success"`.
 
 <Preview>
   <Story
@@ -140,7 +146,7 @@ Displays a success icon with the role of success.
         source: {
           code: dedent`
 <Notification
-  role="success"
+  tone="success"
   title="Success notification title"
   subtitle="Subtitle goes here"
   data-id="inline-success-notification"
@@ -155,7 +161,7 @@ Displays a success icon with the role of success.
 
 ## Warning Notification Example
 
-Displays a warning icon with the role of warning.
+Displays an warning icon with the role of status via `tone="warning"`.
 
 <Preview>
   <Story
@@ -165,7 +171,7 @@ Displays a warning icon with the role of warning.
         source: {
           code: dedent`
 <Notification
-  role="warning"
+  tone="warning"
   title="Warning notification title"
   subtitle="Subtitle goes here"
   data-id="inline-warning-notification"
@@ -178,19 +184,19 @@ Displays a warning icon with the role of warning.
   </Story>
 </Preview>
 
-## Inline Notification Without Close Button Example
+## Inline Notification - isDismissable
 
 Displays a notification without a close button.
 
 <Preview>
   <Story
-    name="e) Inline notification without close button"
+    name="e) Inline notification isDismissable"
     parameters={{
       docs: {
         source: {
           code: dedent`
 <Notification
-  hideCloseButton
+  isDismissable
   title="Notification title"
   subtitle="Subtitle goes here"
   data-id="inline-notification"
@@ -199,7 +205,7 @@ Displays a notification without a close button.
       },
     }}
   >
-    <InlineNotificationHideCloseButton />
+    <InlineNotificationRenderCloseButton />
   </Story>
 </Preview>
 

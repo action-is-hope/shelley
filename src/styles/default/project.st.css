@@ -111,7 +111,7 @@
   /* Volume 3 - Base, from here we are either dividing or multipling with various scale ratios. */
   text-vol-3-min: value(font-base-min);
   text-vol-3-max: value(font-base-max);
-  text-vol-3-line-height: 1.8;
+  text-vol-3-line-height: 1.5;
 
   /* Volume 4 */
   text-vol-4-min: multiply(value(font-base-min), value(major-second));
@@ -186,7 +186,7 @@
   --background-color-info: blue;
   --background-color-success: green;
   --background-color-warning: orange;
-  --background-color-danger: red;
+  --background-color-alert: red;
 
   /* = Forms */
   --color-form-base-border: rgba(119, 140, 157, 0.7);

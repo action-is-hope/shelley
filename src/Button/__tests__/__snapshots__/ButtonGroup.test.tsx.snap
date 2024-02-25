@@ -312,7 +312,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
   className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-6-danger ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -335,7 +335,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-6-danger ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -358,7 +358,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-6-danger ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}

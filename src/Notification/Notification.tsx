@@ -1,71 +1,101 @@
-/** Notification.tsx */
+"use client";
 import type React from "react";
 import { useRef, RefObject, forwardRef, ReactNode, useState } from "react";
-import { Text } from "../Text";
-import { IconButton } from "../Button/IconButton";
+import { Text, TextProps } from "../Text";
+import { IconButton, IconButtonProps } from "../Button/IconButton";
+import type { ComponentBase, Tone } from "../typings/shared-types";
 import CloseIcon from "../icons/Close";
-
 import InfoIcon from "../icons/Info";
 import SuccessIcon from "../icons/Success";
 import WarningIcon from "../icons/Warning";
-import ErrorIcon from "../icons/Error";
-
+import { default as DangerIcon } from "../icons/Error";
 import { st, classes } from "./notification.st.css";
 
+function calculateIconButtonVol(titleVol: number): IconButtonProps["vol"] {
+  // Ensure titleVol is within the expected range 1-10
+  if (titleVol < 1 || titleVol > 10) {
+    throw new Error("titleVol must be between 1 and 10");
+  }
+
+  // Derived iconButtonVol is titleVol - 1
+  let iconButtonVol = titleVol - 1;
+
+  // If on the lower limit, set to 1
+  if (iconButtonVol < 1) {
+    iconButtonVol = 1;
+  }
+  // If on the upper limit or beyond, set to 6
+  else if (iconButtonVol >= 6) {
+    iconButtonVol = 6;
+  }
+
+  return iconButtonVol as IconButtonProps["vol"];
+}
 export interface NotificationProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends React.HTMLAttributes<HTMLDivElement>,
+    ComponentBase {
   /** Content to be rendered inside the component. */
   children?: ReactNode;
   /** Additional class name to be provided for the root element. */
   className?: string;
-  /** Should the close button be visible */
-  hideCloseButton?: boolean;
+  /** Whether the Dialog is dismissable. See the [examples](#examples) for more details. */
+  isDismissable?: boolean;
+  /** Should the Icon be visible */
+  hideIcon?: boolean;
   /** Optional title  */
   title?: string;
+  /** Title Volume */
+  titleVol?: TextProps["vol"];
   /** Optional subtitle  */
   subtitle?: string;
-  /** Optional close icon  */
-  closeIcon?: ReactNode;
-  /** Add predefined data-id to ease testing or analytics. */
-  "data-id"?: string;
-  /** Provide a description for "close" icon button that can be read by screen readers */
-  "aria-label"?: string;
-  /** By default, this value is "info". You can also provide an alternate */
-  role?: "info" | "alert" | "success" | "warning";
+  /** Override all aspects of the close button; icon, aria-label, vol etc */
+  closeButtonProps?: IconButtonProps;
+  /** By default, this value is "status" unless a tone of `alert` is set. */
+  role?: "status" | "alert" | "alertdialog" | "log";
+  /** The tone, a tone of alert will yeild a role of `alert` */
+  tone?: Tone;
   /** Footer content */
   footer?: ReactNode;
-  /** Icons */
+  /** Icon to use */
+  icon?: ReactNode;
+  /** Swap out the info icon */
   infoIcon?: ReactNode;
+  /** Swap out the success icon */
   successIcon?: ReactNode;
+  /** Swap out the warning icon */
   warningIcon?: ReactNode;
-  errorIcon?: ReactNode;
+  /** Swap out the error icon */
+  dangerIcon?: ReactNode;
 }
 
 function Notification(
   props: NotificationProps,
   ref?: React.Ref<HTMLDivElement>
 ) {
+  const dataId = props["data-id"];
+  const iconDataId = props["data-id"] ? `${props["data-id"]}--icon` : undefined;
+
   const {
     className,
     children,
     title,
+    titleVol = 3,
     subtitle,
-    role = "info",
-    hideCloseButton,
-    closeIcon = <CloseIcon />,
-    infoIcon = <InfoIcon />,
-    successIcon = <SuccessIcon />,
-    warningIcon = <WarningIcon />,
-    errorIcon = <ErrorIcon />,
+    role,
+    tone = "lead",
+    isDismissable,
+    hideIcon = false,
     footer,
-    "data-id": dataId,
-    "aria-label": ariaLabel = "Close",
+    closeButtonProps,
+    icon,
+    infoIcon = <InfoIcon data-id={iconDataId} />,
+    successIcon = <SuccessIcon data-id={iconDataId} />,
+    warningIcon = <WarningIcon data-id={iconDataId} />,
+    dangerIcon = <DangerIcon data-id={iconDataId} />,
     ...rest
   } = props;
-  // const ref: RefObject<HTMLDivElement> = useRef(null);
   const contentRef: RefObject<HTMLDivElement> = useRef(null);
 
-  // on press close button - set is open to false and hide the notification
   const [isOpen, setIsOpen] = useState(true);
 
   function handleCloseButtonClick() {
@@ -76,61 +106,72 @@ function Notification(
     return null;
   }
 
+  const toneToRoleMap: {
+    [key: string]: ReactNode;
+  } = {
+    lead: infoIcon,
+    support: infoIcon,
+    info: infoIcon,
+    success: successIcon,
+    warning: warningIcon,
+    alert: dangerIcon,
+    light: infoIcon,
+    dark: infoIcon,
+    contrast: infoIcon,
+  };
+
+  const iconToUse: ReactNode | undefined = tone
+    ? toneToRoleMap?.[tone]
+    : undefined;
+
+  const roleToUse = role || tone === "alert" ? "alert" : "status";
   return (
     <div
       ref={ref}
-      className={st(classes.root, { role }, className)}
-      role={role}
+      className={st(classes.root, { tone: tone || undefined }, className)}
+      role={roleToUse}
       data-id={dataId}
       {...rest}
     >
-      <div className={classes.header}>
-        <div
-          className={classes.icon}
-          data-id={dataId ? `${dataId}--icon` : undefined}
-        >
-          {role === "info" && infoIcon}
-          {role === "success" && successIcon}
-          {role === "warning" && warningIcon}
-          {role === "alert" && errorIcon}
+      {(title || subtitle || isDismissable) && (
+        <div className={classes.header}>
+          {(title || subtitle) && (
+            <div ref={contentRef} className={classes.textWrapper}>
+              {title && (
+                <Text
+                  elementType="span"
+                  startAdornment={icon || iconToUse}
+                  vol={titleVol}
+                  className={classes.title}
+                  data-id={dataId ? `${dataId}--title` : undefined}
+                >
+                  {title}
+                  {subtitle && (
+                    <span
+                      className={classes.subtitle}
+                      data-id={dataId ? `${dataId}--subTitle` : undefined}
+                    >
+                      {subtitle}
+                    </span>
+                  )}
+                </Text>
+              )}
+            </div>
+          )}
+          {isDismissable && (
+            <IconButton
+              className={classes.closeButton}
+              data-id={dataId ? `${dataId}--closeButton` : undefined}
+              onPress={handleCloseButtonClick}
+              aria-label={"Close"}
+              vol={titleVol && calculateIconButtonVol(titleVol)}
+              icon={<CloseIcon data-id={iconDataId} />}
+              {...closeButtonProps}
+            />
+          )}
         </div>
-
-        {(title || subtitle) && (
-          <div ref={contentRef} className={classes.textWrapper}>
-            {title && (
-              <Text
-                elementType="span"
-                vol={3}
-                className={classes.title}
-                data-id={dataId ? `${dataId}--title` : undefined}
-              >
-                {title}
-              </Text>
-            )}
-            {subtitle && (
-              <Text
-                elementType="span"
-                vol={2}
-                className={classes.subtitle}
-                data-id={dataId ? `${dataId}--subTitle` : undefined}
-              >
-                {subtitle}
-              </Text>
-            )}
-          </div>
-        )}
-        {!hideCloseButton && (
-          <IconButton
-            className={classes.closeButton}
-            data-id={dataId ? `${dataId}--closeButton` : undefined}
-            onPress={handleCloseButtonClick}
-            aria-label={ariaLabel}
-          >
-            {closeIcon}
-          </IconButton>
-        )}
-      </div>
-      <div className={classes.children}>{children}</div>
+      )}
+      {children && <div className={classes.children}>{children}</div>}
       {footer && <div className={classes.footer}>{footer}</div>}
     </div>
   );

@@ -310,7 +310,7 @@ exports[`Button renders as third party (react-router) anchor provided via #eleme
 
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-6-danger ButtonBase__Test---vol-1-6 ButtonBase__Test--fullWidth Button__Test__root"
+  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 ButtonBase__Test--fullWidth Button__Test__root"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
