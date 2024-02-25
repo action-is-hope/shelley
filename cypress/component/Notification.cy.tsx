@@ -4,18 +4,18 @@ import { Notification, NotificationProps } from "../../src/indexLib";
 export const InlineNotification = ({
   role,
   tone,
-  isDismissable,
   children,
+  isDismissable,
 }: NotificationProps) => {
   return (
     <Notification
       role={role}
       tone={tone}
-      isDismissable={isDismissable}
       title="Notification title"
       subtitle="Subtitle goes here"
       data-id="inline-notification"
       aria-label="Close"
+      isDismissable={isDismissable}
     >
       {children}
     </Notification>
@@ -84,13 +84,13 @@ describe("Inline Notification", () => {
   });
 
   it("closes notification on close button click", () => {
-    cy.mount(<InlineNotification tone="info" />);
+    cy.mount(<InlineNotification tone="info" isDismissable />);
     cy.get(notificationCloseButton).click();
     cy.get(notification).should("not.exist");
   });
 
   it("renders correct classnames", () => {
-    cy.mount(<InlineNotification tone="info" />);
+    cy.mount(<InlineNotification tone="info" isDismissable />);
     cy.get(notification)
       .should("have.attr", "class")
       .and("to.have.string", "root");
@@ -106,7 +106,9 @@ describe("Inline Notification", () => {
   });
 
   it("renders correct aria attributes", () => {
-    cy.mount(<InlineNotification tone="info" aria-label="Close" />);
+    cy.mount(
+      <InlineNotification tone="info" aria-label="Close" isDismissable />
+    );
     cy.get(notificationCloseButton)
       .should("have.attr", "aria-label")
       .and("to.have.string", "Close");
