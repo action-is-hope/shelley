@@ -68,6 +68,7 @@ function ButtonBase<
     progressProps,
     "data-id": dataId,
     // Pull off the onPress props to avoid passing them to the DOM element via rest.
+    excludeFromTabOrder,
     onPress,
     onPressStart,
     onPressEnd,
