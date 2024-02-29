@@ -1,5 +1,5 @@
 /** shared-types.ts */
-
+import type { Validation as AdobeValidation } from "@react-types/shared";
 export interface ComponentBase {
   /** Add predefined data-id to ease testing or analytics. */
   "data-id"?: string;
@@ -106,16 +106,10 @@ export declare type Tone =
   | false;
 export type ExtendedToneVariants<T> = Tone | T;
 
-export type ValidationState = "valid" | "invalid";
-export interface Validation {
-  /** Whether the input should display its "valid" or "invalid" visual styling. */
-  validationState?: ValidationState;
-  /**
-   * Whether user input is required on the input before form submission.
-   * Often paired with the `necessityIndicator` prop to add a visual indicator to the input.
-   */
-  isRequired?: boolean;
-}
+export type Validation = Pick<
+  AdobeValidation<string>,
+  "isInvalid" | "isRequired"
+>;
 
 /** Volume levels */
 export declare type Volume = 1 | 2 | 3 | 4 | 5 | 6 | false;

@@ -150,11 +150,7 @@ describe("CheckboxGroup Help", () => {
 
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <CheckboxGroup
-        {...fieldPropsTest}
-        errorMessage="No input!"
-        validationState="invalid"
-      >
+      <CheckboxGroup {...fieldPropsTest} errorMessage="No input!" isInvalid>
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
       </CheckboxGroup>
     );
@@ -172,7 +168,7 @@ describe("CheckboxGroup Help", () => {
         {...fieldPropsTest}
         description="Number 5 likes input."
         errorMessage="No input!"
-        validationState="invalid"
+        isInvalid
       >
         <Checkbox value="cb1">Checkbox label 1</Checkbox>
       </CheckboxGroup>

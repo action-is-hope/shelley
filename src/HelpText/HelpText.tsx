@@ -27,7 +27,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
   const {
     description,
     errorMessage,
-    validationState,
+    isInvalid,
     isDisabled,
     showErrorIcon,
     descriptionProps,
@@ -35,8 +35,7 @@ function HelpText(props: HelpTextProps, ref?: React.Ref<HTMLDivElement>) {
     className: classNameProp,
     "data-id": dataId,
   } = props;
-  const isErrorMessage =
-    (errorMessage && validationState === "invalid") || false;
+  const isErrorMessage = (errorMessage && isInvalid) || false;
   return (
     <>
       {(description || isErrorMessage) && (

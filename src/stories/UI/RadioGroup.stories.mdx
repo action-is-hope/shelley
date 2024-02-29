@@ -30,9 +30,8 @@ export const BasicRadioGroup = (args) => (
       control: { type: "inline-radio" },
       value: "over",
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
     orientation: {
       options: ["vertical", "horizontal"],
@@ -178,19 +177,19 @@ RadioGroup accepts an `onChange` prop, which is triggered when a user changes th
 
 ## Validation
 
-The `errorMessage` prop can be used to help the user fix a validation error. It should be combined with the `validationState` prop to semantically mark the radio group as invalid for assistive technologies.
+The `errorMessage` prop can be used to help the user fix a validation error. It should be combined with the `isInvalid` prop to semantically mark the radio group as invalid for assistive technologies.
 
 <Story
   name="d) Validation"
   args={{
-    validationState: "invalid",
+    isInvalid: true,
     errorMessage: "Error message",
   }}
   parameters={{
     docs: {
       source: {
         code: dedent`
-  <RadioGroup label="Favorite sport" validationState="invalid">
+  <RadioGroup label="Favorite sport" isInvalid>
     <Radio value="football">Football</Radio>
     <Radio value="baseball">Baseball</Radio>
     <Radio value="basketball">Basketball</Radio>

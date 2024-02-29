@@ -55,9 +55,8 @@ export const BasicTextField = (args) => <TextField {...args} />;
       control: { type: "text" },
       defaultValue: "Error message...",
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
   }}
   component={TextFieldType}
@@ -296,7 +295,7 @@ Each variant supports multiple label positions giving us lots of options when la
 
 ## HelpText
 
-Both a description and an error message can be supplied to a TextField. The description is always visible unless the validationState is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localized.
+Both a description and an error message can be supplied to a TextField. The description is always visible unless `isInvalid` and error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localized.
 
 <Story
   name="j) Help text"
@@ -311,7 +310,7 @@ Both a description and an error message can be supplied to a TextField. The desc
   let isValid = useMemo(() => /^\d$/.test(value), [value]);
   return (
     <TextField
-      validationState={isValid ? "valid" : "invalid"}
+      isInvalid={!isValid}
       value={value}
       onChange={setValue}
       label="Favorite number"

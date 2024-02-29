@@ -121,7 +121,7 @@ function ComboBoxMultiSelect<
     isReadOnly,
     errorMessage,
     hasValue,
-    validationState,
+    isInvalid,
     portalSelector = "body",
     variant,
     label,
@@ -443,7 +443,7 @@ function ComboBoxMultiSelect<
         "data-id": dataId,
         errorMessage,
         // errorMessageProps,
-        validationState,
+        isInvalid,
         description,
         // descriptionProps,
         fieldContainerProps: {

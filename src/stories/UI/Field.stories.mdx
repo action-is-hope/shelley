@@ -37,9 +37,8 @@ export const BasicField = (args) => (
     readOnly: {
       control: { type: "boolean" },
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
     variant: {
       options: ["outlined", "filled", "quiet", false],

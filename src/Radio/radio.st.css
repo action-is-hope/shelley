@@ -5,7 +5,7 @@
   -st-states:
     isDisabled,
     isFocusVisible,
-    validationState(enum(valid, invalid)),
+    isInvalid,
     size(number);
   -st-extends: InputLabel;
 }

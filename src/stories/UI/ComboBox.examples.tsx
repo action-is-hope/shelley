@@ -585,7 +585,7 @@ export const HelpTextExample = () => {
 
   return (
     <ComboBox
-      validationState={!animalId ? undefined : isValid ? "valid" : "invalid"}
+      isInvalid={!isValid}
       label="Favorite animal"
       description="Pick your favorite animal, you will be judged."
       errorMessage={

@@ -6,7 +6,7 @@
     isDisabled,
     isFocusVisible,
     isIndeterminate,
-    validationState(enum(valid, invalid)),
+    isInvalid,
     size(number);
   -st-extends: InputLabel;
 }

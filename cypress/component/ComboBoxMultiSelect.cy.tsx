@@ -329,9 +329,7 @@ describe("ComboBox Help", () => {
     // );
   });
   it("renders errorMessage correctly.", () => {
-    cy.mount(
-      <BasicComboBox errorMessage="No input!" validationState="invalid" />
-    );
+    cy.mount(<BasicComboBox errorMessage="No input!" isInvalid />);
     cy.get(fieldError).should("have.text", "No input!");
     // @todo
     // .invoke("attr", "id")
@@ -345,7 +343,7 @@ describe("ComboBox Help", () => {
       <BasicComboBox
         description="Number 5 likes input."
         errorMessage="No input!"
-        validationState="invalid"
+        isInvalid
       />
     );
     cy.get(fieldDesc).should("not.exist");
