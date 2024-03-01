@@ -46,7 +46,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     description,
     isDisabled,
     errorMessage,
-    validationState,
+    isInvalid,
     label,
     labelPosition = "top",
     orientation = "vertical",
@@ -64,7 +64,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
       {...{
         disabled: isDisabled,
         errorMessage,
-        validationState,
+        isInvalid,
         errorMessageProps,
         fieldContainerProps: {
           ...radioGroupProps,
@@ -85,7 +85,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     >
       <RadioGroupContext.Provider
         value={{
-          validationState,
+          isInvalid,
           state,
         }}
       >

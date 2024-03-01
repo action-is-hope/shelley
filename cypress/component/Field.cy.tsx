@@ -80,7 +80,7 @@ describe("Field Help", () => {
     cy.mount(
       <Field
         {...fieldPropsTest}
-        validationState="invalid"
+        isInvalid
         errorMessage="Teapot fail!"
         errorMessageProps={{ id: "error-id" }}
       >
@@ -104,7 +104,7 @@ describe("Field Help", () => {
         {...fieldPropsTest}
         description="Chocolate teapot"
         descriptionProps={{ id: "description-id" }}
-        validationState="invalid"
+        isInvalid
         errorMessage="Teapot fail!"
         errorMessageProps={{ id: "error-id" }}
       >

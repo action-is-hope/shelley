@@ -43,7 +43,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
     description,
     isDisabled,
     errorMessage,
-    validationState,
+    isInvalid,
     label,
     labelPosition = "top",
     orientation = "vertical",
@@ -61,7 +61,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
       {...{
         isDisabled,
         errorMessage,
-        validationState,
+        isInvalid,
         errorMessageProps,
         description,
         descriptionProps,

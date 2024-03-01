@@ -79,7 +79,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     className: classNameProp,
     children,
     errorMessage,
-    validationState,
+    isInvalid,
     startAdornment,
     endAdornment,
     description,
@@ -103,7 +103,6 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
   const hasValue =
     disableLabelTransition || startAdornment ? true : hasValueProp;
 
-  const error = validationState === "invalid";
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
       return cloneElement(child as ReactElement, {
@@ -131,7 +130,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         classes.root,
         {
           hasValue,
-          error,
+          error: isInvalid,
           isDisabled,
           isRequired,
           isReadOnly,
@@ -189,7 +188,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           descriptionProps,
           errorMessage,
           errorMessageProps,
-          validationState,
+          isInvalid,
         }}
         data-id={dataId ? `${dataId}--helpText` : undefined}
       />

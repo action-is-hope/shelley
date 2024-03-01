@@ -21,7 +21,7 @@
 
   IconButton::after,
   IconButton::before {
-    --border-radius: 999em;
+    border-radius: 999em;
   }
 
   IconButton::after {

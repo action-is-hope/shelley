@@ -268,9 +268,7 @@ describe("Select Help", () => {
       );
   });
   it("renders errorMessage correctly.", () => {
-    cy.mount(
-      <BasicSelect errorMessage="No input!" validationState="invalid" />
-    );
+    cy.mount(<BasicSelect errorMessage="No input!" isInvalid />);
     cy.get(fieldError)
       .should("have.text", "No input!")
       .invoke("attr", "id")
@@ -284,7 +282,7 @@ describe("Select Help", () => {
       <BasicSelect
         description="Number 5 likes input."
         errorMessage="No input!"
-        validationState="invalid"
+        isInvalid
       />
     );
     cy.get(fieldDesc).should("not.exist");

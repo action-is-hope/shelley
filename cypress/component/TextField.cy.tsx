@@ -82,17 +82,13 @@ describe("TextField Help", () => {
   });
 
   it("renders as invalid.", () => {
-    cy.mount(<TextField {...fieldPropsTest} validationState="invalid" />);
+    cy.mount(<TextField {...fieldPropsTest} isInvalid />);
     cy.get(fieldInput).should("have.attr", "aria-invalid", "true");
   });
 
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <TextField
-        {...fieldPropsTest}
-        errorMessage="No input!"
-        validationState="invalid"
-      />
+      <TextField {...fieldPropsTest} errorMessage="No input!" isInvalid />
     );
     cy.get(fieldError)
       .should("have.text", "No input!")
@@ -111,7 +107,7 @@ describe("TextField Help", () => {
         {...fieldPropsTest}
         description="Number 5 likes input."
         errorMessage="No input!"
-        validationState="invalid"
+        isInvalid
       />
     );
     cy.get(fieldDesc).should("not.exist");

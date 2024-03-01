@@ -24,7 +24,7 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
   const {
     className: classNameProp,
     children,
-    validationState,
+    isInvalid,
     visuallyHideLabel,
     inputPosition,
     isIndeterminate,
@@ -44,10 +44,10 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
           // Value is optional for standalone checkboxes, but required for CheckboxGroup items;
           // it's cast explicitly here to avoid typescript error.
           value: props.value as string,
-          // Only pass isRequired and validationState to react-aria if they came from
+          // Only pass isRequired and isInvalid to react-aria if they came from
           // the props for this individual checkbox, and not from the group via context.
           // isRequired: originalProps.isRequired,
-          // validationState: originalProps.validationState
+          // isInvalid: originalProps.isInvalid
         },
         groupState,
         internalRef
@@ -62,7 +62,7 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
       isDisabled,
       isFocusVisible,
       isIndeterminate,
-      validationState,
+      isInvalid,
       size: size ? size : undefined,
     },
     classNameProp

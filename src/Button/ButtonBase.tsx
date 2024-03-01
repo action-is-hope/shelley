@@ -66,8 +66,14 @@ function ButtonBase<
     isLoading = false,
     loadingText,
     progressProps,
-    onPress,
     "data-id": dataId,
+    // Pull off the onPress props to avoid passing them to the DOM element via rest.
+    excludeFromTabOrder,
+    onPress,
+    onPressStart,
+    onPressEnd,
+    onPressUp,
+    onPressChange,
     ...rest
   } = props;
 
@@ -119,12 +125,14 @@ function ButtonBase<
       )}
     </>
   );
+
   return React.createElement(
     Element,
     {
       ref: mergeRefs(internalRef, ref),
       ...mergeProps(buttonProps, focusProps),
       className,
+      // We need to spread rest only to support 3rd party elementTypes like "Link" from react-router.
       ...rest,
     },
     internal

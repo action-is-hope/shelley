@@ -136,11 +136,7 @@ describe("RadioGroup Help", () => {
 
   it("renders errorMessage correctly.", () => {
     cy.mount(
-      <RadioGroup
-        {...fieldPropsTest}
-        errorMessage="No input!"
-        validationState="invalid"
-      >
+      <RadioGroup {...fieldPropsTest} errorMessage="No input!" isInvalid>
         <Radio value="rad1">Radio label 1</Radio>
         <Radio value="rad2">Radio label 2</Radio>
       </RadioGroup>
@@ -159,7 +155,7 @@ describe("RadioGroup Help", () => {
         {...fieldPropsTest}
         description="Number 5 likes input."
         errorMessage="No input!"
-        validationState="invalid"
+        isInvalid
       >
         <Radio value="cb1">Radio label 1</Radio>
       </RadioGroup>

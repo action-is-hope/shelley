@@ -64,15 +64,15 @@
   }
 
   /* = States */
-  Radio:validationState(invalid)::text {
+  Radio:isInvalid::text {
     color: var(--color-error);
   }
 
-  Radio:validationState(invalid)::input {
+  Radio:isInvalid::input {
     border-color: var(--color-error);
   }
 
-  Radio:validationState(invalid)::input::before {
+  Radio:isInvalid::input::before {
     background-color: var(--color-error);
   }
 

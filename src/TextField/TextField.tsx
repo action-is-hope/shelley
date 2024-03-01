@@ -45,7 +45,7 @@ function TextField(
     description,
     isDisabled,
     errorMessage,
-    validationState,
+    isInvalid,
     variant,
     label,
     labelPosition,
@@ -91,7 +91,7 @@ function TextField(
       {...{
         isDisabled,
         errorMessage,
-        validationState,
+        isInvalid,
         label,
         startAdornment,
         hasValue: hasValue ?? Boolean(textValue),

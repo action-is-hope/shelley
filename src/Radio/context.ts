@@ -1,9 +1,9 @@
 import type { RadioGroupState } from "react-stately";
 import { useContext, createContext } from "react";
-
+import type { Validation } from "../typings/shared-types";
 interface RadioGroupContextValue {
   name?: string;
-  validationState?: "valid" | "invalid";
+  isInvalid?: Validation["isInvalid"];
   state: RadioGroupState;
 }
 

@@ -25,9 +25,8 @@ export const BasicCheckboxGroup = (args) => (
       control: { type: "inline-radio" },
       value: "over",
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
     orientation: {
       options: ["vertical", "horizontal"],
@@ -179,19 +178,19 @@ Checkboxes accept a user defined `onChange` prop, triggered whenever the Checkbo
 
 ## Validation
 
-Checkboxes can display a validation state to communicate to the user if the current value is invalid. Implement your own validation logic in your app and pass "invalid" to the Checkbox via the `validationState` prop.
+Checkboxes can display a validation state to communicate to the user if the current value is invalid. Implement your own validation logic in your app and pass "invalid" to the Checkbox via the `isInvalid` prop.
 
 <Story
   name="d) Validation"
   args={{
-    validationState: "invalid",
+    isInvalid: true,
     errorMessage: "Error message",
   }}
   parameters={{
     docs: {
       source: {
         code: dedent`
-  <CheckboxGroup label="Favorite sports" errorMessage="Error message" validationState="invalid">
+  <CheckboxGroup label="Favorite sports" errorMessage="Error message" isInvalid>
     <Checkbox value="football">Football</Checkbox>
     <Checkbox value="baseball">Baseball</Checkbox>
     <Checkbox value="basketball">Basketball</Checkbox>

@@ -56,9 +56,8 @@ import dedent from "ts-dedent";
       control: { type: "text" },
       defaultValue: "Error message...",
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
   }}
   component={ComboBox}
@@ -730,7 +729,7 @@ return (
 
 ## Help text
 
-Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `validationState` is “invalid” and an error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
+Both a description and an error message can be supplied to a ComboBox. The `description` is always visible unless the `isInvalid` and error message is provided. The error message can be used to help the user fix their input quickly and should be specific to the detected error. All strings should be localised.
 
 <Story
   name="h) Help"

@@ -69,15 +69,15 @@
     -st-mixin: CheckboxIsIndeterminate;
   }
 
-  Checkbox:validationState(invalid)::text {
+  Checkbox:isInvalid::text {
     color: var(--color-error);
   }
 
-  Checkbox:validationState(invalid)::input {
+  Checkbox:isInvalid::input {
     border-color: var(--color-error);
   }
 
-  Checkbox:validationState(invalid)::input::before {
+  Checkbox:isInvalid::input::before {
     background-color: var(--color-error);
   }
 

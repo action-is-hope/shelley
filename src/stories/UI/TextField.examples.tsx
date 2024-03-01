@@ -138,7 +138,7 @@ export const HelpTextExample = () => {
 
   return (
     <TextField
-      validationState={isValid ? "valid" : "invalid"}
+      isInvalid={!isValid}
       value={value}
       onChange={setValue}
       label="Favorite number"

@@ -32,7 +32,7 @@ function Radio(props: RadioProps, ref: React.Ref<HTMLInputElement>) {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const radioGroupProps = useRadioGroupProvider();
-  const { validationState, state } = radioGroupProps;
+  const { isInvalid, state } = radioGroupProps;
 
   const { inputProps } = useRadio(
     {
@@ -51,7 +51,7 @@ function Radio(props: RadioProps, ref: React.Ref<HTMLInputElement>) {
     {
       isDisabled,
       isFocusVisible,
-      validationState,
+      isInvalid,
       size: size ? size : undefined,
     },
     classNameProp

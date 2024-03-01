@@ -26,20 +26,14 @@ export const BasicField = (args) => (
       control: { type: "number" },
       description: "volume of the description",
     },
-    inputPosition: {
-      options: ["start", "end", "top", "bottom"],
-      control: { type: "inline-radio" },
-      defaultValue: "over",
-    },
     disabled: {
       control: { type: "boolean" },
     },
     readOnly: {
       control: { type: "boolean" },
     },
-    validationState: {
-      options: ["valid", "invalid"],
-      control: { type: "inline-radio" },
+    isInvalid: {
+      control: { type: "boolean" },
     },
     variant: {
       options: ["outlined", "filled", "quiet", false],

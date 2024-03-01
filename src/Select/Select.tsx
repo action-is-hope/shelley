@@ -60,7 +60,7 @@ function Select<T extends object>(
     description,
     isDisabled,
     errorMessage,
-    validationState,
+    isInvalid,
     portalSelector = "body",
     variant,
     label,
@@ -105,7 +105,7 @@ function Select<T extends object>(
       {...{
         isDisabled,
         errorMessage,
-        validationState,
+        isInvalid,
         errorMessageProps,
         description,
         descriptionProps,
