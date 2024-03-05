@@ -1,0 +1,75 @@
+@st-namespace "DefaultButtonBase";
+/**
+ * = TagGroup - tagGroup.st.css
+ *
+ * Base theme styles for a Shelley TagGroup.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TagGroup/tagGroup.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import TagGroup from "../../TagGroup/tagGroup.st.css";
+@st-import Tag from "../../TagGroup/tag.st.css";
+@st-import Icon from "../../Icon/icon.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
+@st-scope Default {
+
+  TagGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.9em;
+  }
+
+  TagGroup::list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  Tag {
+    position: relative;
+    align-items: center;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 4px;
+    line-height: 1;
+    padding: 0 0.5em;
+  }
+
+  Tag[role="gridcell"] {
+    line-height: 1;
+  }
+
+  Tag::content {
+    padding: 0.6em 3px;
+  }
+
+  Tag:hasRemoveButton {
+    padding: 0px 6px;
+    gap: 3px
+  }
+
+  Tag::removeButton {
+    padding: 4px
+  }
+
+  Tag::before {
+    -st-mixin: pseudoFocus;
+    border-radius: 4px;
+  }
+
+  Tag:isFocusVisible::before {
+    -st-mixin: pseudoFocusVisible;
+  }
+
+  Tag:isSelected {
+    background-color: grey;
+  }
+
+  /* = Disabled */
+  Tag:isDisabled {
+    opacity: 0.5;
+  }
+}

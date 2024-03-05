@@ -6,7 +6,6 @@
 @st-scope Shelley {
   HelpText {
     color: var(--color-text-help);
-    font-size: 0.8rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }

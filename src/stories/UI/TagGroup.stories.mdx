@@ -1,0 +1,259 @@
+import { Meta, Canvas, Story, Preview, Props } from "@storybook/addon-docs";
+import { TagGroup } from "../../indexLib";
+import { ArgsTable, Source } from "@storybook/addon-docs";
+import dedent from "ts-dedent";
+import {
+  StoryCentered,
+  StoryCenteredInline,
+  StoryCenteredColumn,
+} from "../StoryLayout";
+import {
+  TagGroupBasic,
+  RemoveTags,
+  SelectTags,
+  DisabledTags,
+  EmptyState,
+  TagsHelpText,
+  TagsErrorText,
+} from "./TagGroup.examples";
+
+<Meta
+  title="Selection/TagGroup"
+  component={TagGroup}
+  decorators={[
+    (Story) => (
+      <StoryCenteredColumn>
+        <Story />
+      </StoryCenteredColumn>
+    ),
+  ]}
+/>
+
+# TagGroup
+
+<Source
+  language="tsx"
+  code={dedent`
+    import { TagGroup, Item } from "@actionishope/shelley";
+  `}
+/>
+
+A tag group is a focusable list of labels, categories, keywords, filters, or other items, with support for keyboard navigation, selection, and removal.
+
+## Example
+
+<Story
+  name="a) TagGroup"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<TagGroup label="Description">
+  <Item key="news">News</Item>
+  <Item key="travel">Travel</Item>
+  <Item key="gaming">Gaming</Item>
+  <Item key="shopping">Shopping</Item>
+</TagGroup>`,
+      },
+    },
+  }}
+>
+  <TagGroupBasic />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--a-tag-group" />
+
+## Remove tags
+
+<Story
+  name="b) Remove Tags"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { useListData } from "react-stately";\n
+const list = useListData({
+  initialItems: [
+    { id: 1, name: "News" },
+    { id: 2, name: "Travel" },
+    { id: 3, name: "Gaming" },
+    { id: 4, name: "Shopping" },
+  ],
+});\n
+return (
+  <>
+    <TagGroup
+      label="Categories"
+      items={list.items}
+      onRemove={(keys) => list.remove(...keys)}
+    >
+      {(item) => <Item>{item.name}</Item>}
+    </TagGroup>
+  </>
+);`,
+      },
+    },
+  }}
+>
+  <RemoveTags />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--b-remove-tags" />
+
+## Selection
+
+Change the selection mode via the `selectionMode` prop, it can be `single`, `multiple` or `none` (default). The `selectedKeys` prop is used to control the selection state.
+
+<Story
+  name="c) Selection"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+import { useListData, Selection } from "react-stately";\n
+const [selected, setSelected] = useState<Selection>(new Set(["parking"]));\n
+return (
+  <TagGroup
+    label="Amenities"
+    selectionMode="multiple"
+    selectedKeys={selected}
+    onSelectionChange={setSelected}
+    description={
+      <>
+        Current selection (controlled):{" "}
+        {selected === "all" ? "all" : [...selected].join(", ")}
+      </>
+    }
+  >
+    <Item key="laundry">Laundry</Item>
+    <Item key="fitness">Fitness center</Item>
+    <Item key="parking">Parking</Item>
+    <Item key="pool">Swimming pool</Item>
+    <Item key="breakfast">Breakfast</Item>
+  </TagGroup>
+);`,
+      },
+    },
+  }}
+>
+  <SelectTags />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--c-selection" />
+
+## Disabled
+
+<Story
+  name="d) Disabled"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<TagGroup
+  label="Amenities"
+  selectionMode="multiple"
+  disabledKeys={["laundry"]}
+>
+  <Item key="laundry">Laundry</Item>
+  <Item key="fitness">Fitness center</Item>
+  <Item key="parking">Parking</Item>
+  <Item key="pool">Swimming pool</Item>
+  <Item key="breakfast">Breakfast</Item>
+</TagGroup>`,
+      },
+    },
+  }}
+>
+  <DisabledTags />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--d-disabled" />
+
+## Empty State
+
+<Story
+  name="e) Empty State"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<TagGroup label="Amenities" emptyState={<P vol={1}>No categories</P>}>
+  {[]}
+</TagGroup>`,
+      },
+    },
+  }}
+>
+  <EmptyState />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--e-empty-state" />
+
+## Help Text
+
+<Story
+  name="f) Help Text"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<TagGroup
+  label="Amenities"
+  selectionMode="multiple"
+  description="Select all amenities that apply to your property."
+>
+  <Item key="laundry">Laundry</Item>
+  <Item key="fitness">Fitness center</Item>
+  <Item key="parking">Parking</Item>
+  <Item key="pool">Swimming pool</Item>
+  <Item key="breakfast">Breakfast</Item>
+</TagGroup>`,
+      },
+    },
+  }}
+>
+  <TagsHelpText />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--f-help-text" />
+
+## Error Text
+
+<Story
+  name="g) Error Text"
+  args={{}}
+  parameters={{
+    docs: {
+      source: {
+        code: dedent`
+<TagGroup
+  label="Amenities"
+  selectionMode="multiple"
+  description="Select all amenities that apply to your property."
+  errorMessage="Please select at least one amenity."
+  isInvalid
+>
+  <Item key="laundry">Laundry</Item>
+  <Item key="fitness">Fitness center</Item>
+  <Item key="parking">Parking</Item>
+  <Item key="pool">Swimming pool</Item>
+  <Item key="breakfast">Breakfast</Item>
+</TagGroup>`,
+      },
+    },
+  }}
+>
+  <TagsErrorText />
+</Story>
+
+<Source language="tsx" id="selection-taggroup--g-error-text" />
+
+## TagGroup Props
+
+<ArgsTable of={TagGroup} />

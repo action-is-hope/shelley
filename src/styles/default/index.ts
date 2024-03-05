@@ -32,6 +32,7 @@ import "./radio.st.css";
 import "./switch.st.css";
 import "./tableView.st.css";
 import "./tabs.st.css";
+import "./tagGroup.st.css";
 import "./text.st.css";
 import "./toastRegion.st.css";
 import "./toast.st.css";

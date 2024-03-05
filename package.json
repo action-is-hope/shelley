@@ -58,6 +58,7 @@
     "@react-types/shared": "^3.22.1",
     "downshift": "8.2.3",
     "react-aria": "^3.32.1",
+    "react-aria-components": "^1.1.1",
     "react-focus-on": "^3.9.1",
     "react-stately": "^3.30.1",
     "react-transition-group": "^4.4.5"
