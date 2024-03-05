@@ -29,16 +29,17 @@ export function ListBoxOption<T>(props: ListBoxOptionProps<T>) {
   const ref = useRef(null);
   const { isFocusVisible, focusProps } = useFocusRing();
   // Get props for the option
-  const { optionProps, isSelected, isFocused, isDisabled } = useOption(
-    {
-      "aria-label": item["aria-label"],
-      key: item.key,
-      shouldSelectOnPressUp,
-      shouldFocusOnHover,
-    },
-    state,
-    ref
-  );
+  const { optionProps, isSelected, isFocused, isDisabled, isPressed } =
+    useOption(
+      {
+        "aria-label": item["aria-label"],
+        key: item.key,
+        shouldSelectOnPressUp,
+        shouldFocusOnHover,
+      },
+      state,
+      ref
+    );
   const { hoverProps, isHovered } = useHover({
     ...props,
     isDisabled,
@@ -58,11 +59,12 @@ export function ListBoxOption<T>(props: ListBoxOptionProps<T>) {
       className={st(
         classes.root,
         {
+          isDisabled,
           isFocused,
           isFocusVisible,
-          isSelected,
-          isDisabled,
           isHovered,
+          isPressed,
+          isSelected,
         },
         classNameProp
       )}

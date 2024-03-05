@@ -25,6 +25,7 @@ export * from "./Switch/Switch";
 export * from "./TablePagination";
 export * from "./TableView";
 export * from "./Tabs";
+export * from "./TagGroup";
 export * from "./Text";
 export * from "./TextField";
 export * from "./Toast";

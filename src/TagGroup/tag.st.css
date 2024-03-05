@@ -1,0 +1,26 @@
+@st-namespace "Tag";
+
+@st-import IconButton from "../Button/iconButton.st.css";
+
+.root {
+  -st-states:
+    hasRemoveButton,
+    isFocusVisible,
+    isFocused,
+    isDisabled,
+    isHovered,
+    isPressed,
+    isSelected;
+}
+
+.root[data-href] {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content {}
+
+.removeButton {
+  -st-extends: IconButton;
+  position: relative;
+}

@@ -1,7 +1,13 @@
 import { SetStateAction, useState, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
-import { Select, SelectProps, TextField } from "../../indexLib";
+import {
+  Select,
+  SelectProps,
+  TextField,
+  Radio,
+  RadioGroup,
+} from "../../indexLib";
 
 type ItemsType = { [key: string]: string | number };
 
@@ -17,17 +23,25 @@ export function SelectType(props: SelectPropsDocs) {
 
 export const BasicSelect = (args: ItemsType) => {
   return (
-    <Select
-      label="Choose frequency"
-      {...args}
-      onSelectionChange={(key) => console.log(key)}
-      vol={1}
-      portalSelector="#portal"
-    >
-      <Item key="rarely">Rarely</Item>
-      <Item key="sometimes">Sometimes</Item>
-      <Item key="always">Always</Item>
-    </Select>
+    <>
+      <Select
+        label="Choose frequency"
+        {...args}
+        onSelectionChange={(key) => console.log(key)}
+        vol={1}
+        portalSelector="#portal"
+      >
+        <Item key="rarely">Rarely</Item>
+        <Item key="sometimes">Sometimes</Item>
+        <Item key="always">Always</Item>
+      </Select>
+
+      <RadioGroup label="Favorite sport">
+        <Radio value="football">Football</Radio>
+        <Radio value="baseball">Baseball</Radio>
+        <Radio value="basketball">Basketball</Radio>
+      </RadioGroup>
+    </>
   );
 };
 

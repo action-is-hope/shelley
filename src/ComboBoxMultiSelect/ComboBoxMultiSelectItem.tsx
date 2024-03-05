@@ -2,6 +2,7 @@
 import React, { ReactNode, forwardRef } from "react";
 import CheckIcon from "../icons/Check";
 import { st, classes } from "./comboBoxMultiSelectItem.st.css";
+import { usePress } from "react-aria";
 
 export interface ComboBoxMultiSelectItemProps {
   /** Custom className */
@@ -33,6 +34,8 @@ function ComboBoxMultiSelectItem(
     ...rest
   } = props;
 
+  const { pressProps, isPressed } = usePress(props);
+
   const icon = selectedIcon || (
     <CheckIcon data-id="selected-icon" className={classes.selectedIcon} />
   );
@@ -40,13 +43,15 @@ function ComboBoxMultiSelectItem(
   return (
     <li
       {...rest}
+      {...pressProps}
       ref={ref}
       className={st(
         classes.root,
         {
+          isDisabled,
           isFocused,
           isSelected,
-          isDisabled,
+          isPressed,
         },
         classNameProp
       )}

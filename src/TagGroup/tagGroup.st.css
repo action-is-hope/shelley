@@ -1,0 +1,20 @@
+@st-namespace "TagGroup";
+
+@st-import Text from "../Text/text.st.css";
+@st-import HelpText from "../HelpText/helpText.st.css";
+
+.root {
+  -st-states: isInvalid;
+}
+
+.label {
+  -st-extends: Text;
+}
+
+.helpTextContainer {}
+
+.helpText {
+  -st-extends: HelpText;
+}
+
+.list {}

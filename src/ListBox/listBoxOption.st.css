@@ -4,9 +4,10 @@
   -st-states:
     isDisabled,
     isFocused,
+    isFocusVisible,
     isHovered,
-    isSelected,
-    isFocusVisible;
+    isPressed,
+    isSelected;
 }
 
 .selectedIcon {}
