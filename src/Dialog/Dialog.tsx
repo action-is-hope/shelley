@@ -1,5 +1,5 @@
 "use client";
-import { ButtonBase } from "../Button";
+import { Button } from "../Button";
 import { DialogContext, DialogContextValue } from "./context";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import React, { useContext, useRef, ReactNode, Children } from "react";
@@ -82,7 +82,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
           }
         })}
         {isDismissable && (
-          <ButtonBase
+          <Button
             vol={2}
             className={classes.closeButton}
             aria-label={dismissLabel}
@@ -91,7 +91,7 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
             icon={closeIcon || <Close />}
           >
             {closeIconText}
-          </ButtonBase>
+          </Button>
         )}
       </div>
     </section>

@@ -1,11 +1,9 @@
-/* = Default project vars. */
-:import {
-  -st-from: "../project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit,
-    --color-focus;
-}
+/* = menuList.st.css. */
+@st-import [
+  --spacing-unit,
+  --color-focus,
+  --field-focus-color
+] from "../project.st.css";
 
 .menuList {
   outline: none;

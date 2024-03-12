@@ -26,7 +26,7 @@ module.exports = {
     const [value, unit] = explodeValue(cssValue);
     const reducerMultiply = (a, b) => a * b;
     const result = args.reduce(reducerMultiply, Number(value));
-    return result + unit;
+    return result;
   },
 
   /**
@@ -39,7 +39,7 @@ module.exports = {
     const [value, unit] = explodeValue(cssValue);
     const reducerDivide = (a, b) => a / b;
     const result = args.reduce(reducerDivide, Number(value));
-    return result + unit;
+    return result;
   },
 
   /**

@@ -1,65 +1,35 @@
 /**
- * Project - Default
+ * Project - Base
  * 
- * Our main project which is essentially a theme but it itself can have themes
- * so project seems more appropriate. 
+ * The goal of the project file is to contain the CSS commons for the project, 
+ * including variables, component variants and any shared classes.
+ *
+ * Our Base theme sets up some sensible defaults for an unbranded project, these 
+ * can be overridden in branded project files.
  */
-
-@st-namespace "Default";
-
-:import {
-  -st-from: "../formatters/common";
-  -st-named: multiply, divide;
-}
+@st-namespace "Base";
+@st-import [multiply, divide, respScale] from "../formatters/common";
 
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
 :vars {
-
-  /** = Breakpoints - min-width  */
+  /** = Breakpoints */
   breakpoint-sm: "only screen and (min-width: 568px)";
   breakpoint-md: "only screen and (min-width: 950px)";
   breakpoint-lg: "only screen and (min-width: 1200px)";
   breakpoint-xl: "only screen and (min-width: 1600px)";
   breakpoint-xxl: "only screen and (min-width: 1800px)";
 
-  /** = Breakpoints - max-width  */
+  /* = Using min-width vs max-width... max-width looks cleaner with less styles 
+  applied to elements at any given time. But for development it is handy to be
+  able to toggle off styles with the inspector and have the overriden value apply.
+  If overriding values that exist already then we tend to use min-widths, if 
+  turning off styles across breakpoints we use max-width, e.g mobile -> desktop menu. */
   breakpoint-sm-max: "only screen and (max-width: 567px)";
   breakpoint-md-max: "only screen and (max-width: 949px)";
   breakpoint-lg-max: "only screen and (max-width: 1199px)";
   breakpoint-xl-max: "only screen and (max-width: 1599px)";
   breakpoint-xxl-max: "only screen and (max-width: 1799px)";
-
-  /** = min-width vs. max-width: Which Should You Use?
-  
-  - Min-width media queries are beneficial for development purposes, especially 
-    when it's necessary to override styles at larger breakpoints without 
-    affecting mobile styles. This approach allows developers to easily toggle 
-    off styles in browser inspectors and see the overridden values apply 
-    immediately. Ideal for scenarios where styles need to be incrementally 
-    added as the viewport widens, ensuring that the base mobile styles are not 
-    affected.
-
-  - Max-width media queries are generally cleaner, as they apply styles 
-    progressively up to a certain breakpoint. This means less style overriding 
-    for elements at any given time, resulting in a more streamlined stylesheet. 
-    Particularly useful for designing mobile-first websites where styles are 
-    added incrementally as screen size increases.
-
-  - The choice between using min-width and max-width depends on the specific 
-    needs of the project:
-    - Use min-width queries to build up styles from a mobile base, adding or 
-      overriding properties as the screen size increases. This approach is 
-      aligned with a mobile-first design strategy.
-    - Use max-width queries to apply styles down from a larger screen size, 
-      typically for desktop-first designs, allowing for easier management of 
-      styles that should be turned off or modified as the screen size decreases.
-
-  - In practice, combining both approaches allows for greater flexibility and 
-    control over responsive designs. For instance, using max-width for a 
-    mobile-to-desktop transition can simplify the management of complex 
-    navigation menus or layout shifts that are distinct between these two 
-    ranges.
-  */
+  breakpoint-md-min-max: "only screen and (min-width: 568px) and (max-width: 949px)";
 
   /*=== TYPE AND TEXT ===*/
 
@@ -69,23 +39,26 @@
    * We are using a fluid set up based on:
    * https://www.smashingmagazine.com/2016/05/fluid-typography/
    *
+   * This is of course option and you can simply remove everything related to 
+   * fluid text. But before you do I would add that I find that layouts look
+   * 'as designed' through the breakpoints much better than with text size 
+   * jolting up and down between breakpoints.
+   *
    * Later on in the file we will state all of our CSS variables and give you a 
    * better description off what's going on.
    */
 
   /* = Base font min is 1em (16px) and max (20px) is 1.25em */
-  font-base-min: 1;
-  font-base-max: 1.25;
+  font-base-min: 1em;
+  font-base-max: 1.25em;
 
   /**
    * = Scales multipliers - https://type-scale.com/
    *
    * We use these as ratios to bump up our text from one level to the next.
-   * Shelley likes to mix it up so we pulled in a bunch of these as musical 
-   * mulipliers to use with our base min/max so our scale sings!
-   *
+   * We pulled in a bunch of these as 'musical mulipliers' to use with our 
+   * base min/max so our scale sings!
    */
-
   minor-second: 1.067;
   major-second: 1.125;
   minor-third: 1.2;
@@ -95,181 +68,258 @@
   /**
    * = Volumes / Text sizes
    *
-   * Setting the min / max for our text volumes scaling.
+   * Here we are just setting the min and max for our text volumes as build 
+   * variables so we can use them in our formatters (see CSS variable section). 
+   *
+   * We have a base (vol-3) and then either divide or multiple with our scales to 
+   * where we wanna be.
+   *
+   * These are pretty random, they are values we arrived at after hours of fiddling
+   * with the multipliers.
    */
 
   /* Volume 1 */
+  text-vol-1-line-height: 1.45;
   text-vol-1-min: divide(value(font-base-min), value(major-second), value(major-second));
   text-vol-1-max: divide(value(font-base-max), value(major-third), value(minor-second));
-  text-vol-1-line-height: 1.45;
 
   /* Volume 2 */
+  text-vol-2-line-height: 1.65;
   text-vol-2-min: divide(value(font-base-min), value(major-second));
   text-vol-2-max: divide(value(font-base-max), value(minor-third));
-  text-vol-2-line-height: 1.65;
 
   /* Volume 3 - Base, from here we are either dividing or multipling with various scale ratios. */
-  text-vol-3-min: value(font-base-min);
-  text-vol-3-max: value(font-base-max);
-  text-vol-3-line-height: 1.5;
+  text-vol-3-line-height: 1.55;
+  text-vol-3-min: 1;
+  text-vol-3-max: 1.25;
 
   /* Volume 4 */
+  text-vol-4-line-height: 1.45;
   text-vol-4-min: multiply(value(font-base-min), value(major-second));
   text-vol-4-max: multiply(value(font-base-max), value(major-third));
-  text-vol-4-line-height: 1.45;
 
   /* Volume 5 */
+  text-vol-5-line-height: 1.4;
   text-vol-5-min: multiply(value(font-base-min), value(major-second), value(minor-third));
   text-vol-5-max: multiply(value(font-base-max), value(major-third), value(perfect-forth));
-  text-vol-5-line-height: 1.4;
 
   /* Volume 6 */
+  text-vol-6-line-height: 1.3;
   text-vol-6-min: multiply(value(font-base-min), value(major-second), value(major-second), value(minor-third));
   text-vol-6-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth));
-  text-vol-6-line-height: 1.3;
 
   /* Volume 7 */
+  text-vol-7-line-height: 1.15;
   text-vol-7-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third));
   text-vol-7-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth));
-  text-vol-7-line-height: 1.15;
 
   /* Volume 8 */
+  text-vol-8-line-height: 1.1;
   text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
   text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
-  text-vol-8-line-height: 1.1;
 
   /* Volume 9 */
+  text-vol-9-line-height: 1.05;
   text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
   text-vol-9-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
-  text-vol-9-line-height: 1.05;
 
   /* Volume 10 */
+  text-vol-10-line-height: 1.05;
   text-vol-10-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
   text-vol-10-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
-  text-vol-10-line-height: 1.05;
 
   /* Volume 11 */
+  text-vol-11-line-height: 1.05;
   text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
   text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
-  text-vol-11-line-height: 1.05;
+
+  /*=== LAYOUT AND GRID ===*/
 }
 
 /*=== ROOT LEVEL CSS VARIABLES ===*/
 
 /** 
- * = Overiding
+ * = Overriding
  * 
- * All of these variables can be inpirted into your project file and then
+ * All of these variables can be imported into your project file and then
  * overridden BUT when using them you must still import them from this file
  * which is where they of course are initially declared. These will namespaced 
- * with 'Default' if you check the root element via the inspector. 
+ * with 'Base' if you check the root element via the inspector. 
  *
  */
 :root {
-  /** 
-   * = Colours 
-   *
-   * We only declare a small number of core colours, only to keep overriding 
-   * more simplistic else you would need to import a load of mixins just to 
-   * apply them.
-   *
-   * We have tried not to apply colour so as not to lock us into any given 
-   * nomenclature. You declare all the colours you need and use them however you 
-   * like, defining naming patterns that suit your app / website / thingy.
-   */
+  /* = Core light - always light or dark regardless of theme. */
+  --light-01-rgb: 255, 255, 255;
+  --light-01: rgb(255, 255, 255);
+
+  /* = Core dark. */
+  --dark-01-rgb: 51, 51, 51;
+  --dark-01: rgb(51, 51, 51);
+  --dark-02-rgb: 0, 0, 0;
+  --dark-02: rgb(0, 0, 0);
+
+  --bg-main: white;
+  --bg-secondary: lightgrey;
+  --color-brand: black;
+
+  /* = Foreground colours - main and inverted plus rgb versions as 'rgb'. */
+  --color-ui: var(--dark-01);
+  --color-ui-inverse: var(--light-01);
+  --color-ui-rgb: var(--dark-01-rgb);
+  --color-ui-rgb-inverse: var(--light-01-rgb);
 
   /* = Indicators */
-  --color-focus: #09b1f1;
-  --color-error: #b66b6e;
+  --color-focus: dodgerblue;
+  --color-error: indianred;
 
-  --background-color-neutral: grey;
-  --background-color-info: blue;
-  --background-color-success: green;
-  --background-color-warning: orange;
-  --background-color-alert: red;
+  /* = Tones - main */
+  --tone-lead: darkslategray;
+  --tone-support: darkcyan;
+  --tone-info: steelblue;
+  --tone-success: mediumseagreen;
+  --tone-warning: darkorange;
+  --tone-danger: indianred;
+  --tone-light: white;
+  --tone-dark: black;
+  --tone-contrast: white;
+
+  /* = Tones - subtle */
+  --tone-lead-subtle: lavender;
+  --tone-support-subtle: azure;
+  --tone-info-subtle: aliceblue;
+  --tone-success-subtle: honeydew;
+  --tone-warning-subtle: bisque;
+  --tone-alert-subtle: lightpink;
+  --tone-dark-subtle: gray;
+  --tone-light-subtle: white;
+  --tone-contrast-subtle: rgba(var(--color-ui-rgb), .2);
+
+  /* = Generic Radii */
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-xxl: 32px;
+
+
+  /* = Shadows (Well::panel, filter bar, Radio/Checkbox, Tab/PushButton, Pilled radio/checkbox),  */
+  --box-shadow: 0px 1px 4px 0px rgba(84, 86, 90, 0.24);
+  /* comp based shadows */
+  --box-shadow-card: 0px 4px 16px 0px rgba(84, 86, 90, 0.24);
+  --box-shadow-drop: 0px 0px 40px 0px rgba(112, 144, 176, 0.3);
+  --box-shadow-modal: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  --box-shadow-toast: 0px 0px 16px 0px rgba(0, 0, 0, 0.34);
+  /* other - tbc wip*/
+  --box-shadow-other: 0px 1px 10px 0px rgba(84, 86, 90, 0.2);
 
   /* = Forms */
-  --color-form-base-border: rgba(119, 140, 157, 0.7);
-  --color-form-selection-border: rgba(119, 140, 157, 1);
-  --color-form-selection-notch: #333;
-  --color-switch-notch: #fff;
-  --color-background-textField-filled: #000;
+  --field-border-color: rgba(200, 200, 200, 1);
+  --field-border-color-hasValue: rgba(84, 86, 90, 1);
+  --field-border-width: 1px;
+  --field-bg: var(--bg-main);
+  --field-bg-fill: lightgrey;
+  --field-focus-color: var(--color-focus);
+  --field-help-text-color: rgba(var(--light-01-rgb), 0.6);
+  /* --field-padding: calc(0.5rem + 0.1em) var(--spacing-unit); */
   --field-padding: calc(0.2rem + 0.2em) var(--spacing-unit);
-  /* Modal */
-  --background-color-modal-backdrop: rgba(0, 0, 1, 0.88);
+  --field-placeholder-color: lightgrey;
+  --field-radius: var(--radius);
+  --field-selection-mark-color: var(--tone-lead);
+  --field-selection-font-weight: 400;
+  --switch-unchecked-color: lightgrey;
+  --switch-border-width: var(--field-border-width);
+  --label-font-weight: 700;
+  --label-color: var(--color-ui);
 
-  /* Dialog */
-  --background-color-dialog: #000;
-  --color-dialog: #ededed;
-  /* --color-dialog-border: #ededed; */
+  /* = Buttons */
+  --button-radius: var(--radius-lg);
+  --button-border-width: 1px;
 
-  /* Popup */
-  --background-color-popup: #000;
-  --color-popup: #ededed;
-  --border-width-popup: 1px;
-  --border-color-popup: grey;
+  /* = Progress */
+  --progress-fill-color: var(--tone-lead);
 
-  /* Generic */
-  --border-radius-button: 8px;
-  --border-radius-field: 8px;
+  /* = Fonts */
+  --font-family-base: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-heading: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-title: Helvetica Neue, Helvetica, Arial, sans-serif;
 
-  /* = Grid */
+  /* = Text */
+  --text-heading-color: var(--color-brand);
+
+  /* = Links */
+  --link-color: var(--tone-lead);
+
+  /* = Menus */
+  --menu-bg: rgb(23, 26, 35);
+  /* 'option-item' refers to options within Menu, Select, ListBox, ComboBox etc. */
+  --option-item-bg-hover: rgba(0, 0, 0, 0.03);
+
+  /* = Modal */
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.3);
+
+  /* = Dialog */
+  --dialog-bg: white;
+  --dialog-color: inherit;
+  --dialog-radius: var(--radius-xl);
+
+  /* = Popup */
+  --popup-bg: white;
+  --popup-color: inherit;
+  --popup-border-width: 0;
+  --popup-border-color: grey;
+  --popup-drop-shadow: drop-shadow(0 0 3px #00000075);
+  --popup-radius: var(--radius);
+
+  /* = Notification */
+  --notification-radius: var(--radius-xl);
+  --notification-header-color: var(--color-brand);
+
+  /* = Toast colours */
+  --background-color-neutral: rgb(106, 106, 106);
+  --background-color-info: rgb(125 2 220);
+  --background-color-success: rgb(0, 122, 77);
+  --background-color-warning: rgb(255, 102, 0);
+  --background-color-alert: rgb(211, 21, 16);
+
+  /* = Table colours */
+  --color-background-row: var(--background-color-contrast-1);
+  --color-text-row: var(--color-text-3);
+  --color-background-row-isPressed: #1c1c1c;
+  --color-text-row-isPressed: var(--color-text-3);
+  --color-background-row-isSelected: #2b2e3b;
+  --color-text-row-isSelected: var(--color-text-3);
+  --color-background-row-isHovered: #2c2c2c;
+  --color-text-row-isHovered: var(--color-text-3);
+  --color-background-row-isHoveredSelected: #252835;
+  --color-text-row-isHoveredSelected: var(--color-text-3);
+  --color-border-tbody: rgba(var(--color-ui-raw), .15);
+
+  /* = Grids */
   --grid-gap: 3vw;
-
-  /*=== LAYOUT AND GRID ===*/
-  /* 
-   * = Variant 1: Core single column 
-   *
-   * This is our 'go to' core layout grid with some named
-   * lines which act as a type of tetris informing the element
-   * how wide the slot is as we drop them in.
-   */
-  --grid-v1-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
-  --grid-v1-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
-  --grid-v1-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
-
-  /* 
-   * = 'Subgrids'
-   *
-   * We tend to use these in conjuction with variant 1 so xs is siply set to 
-   * initial so that items sit on the mobile grid lines set by --grid-v1-cols-xs.
-   *
-   * We liked that they just ended up matching the variant numbers but override them
-   * to whatever makes sense for you.
-   *
-   * We only set breakpoints in core up to md/lr and slots 5 onwards are completely 
-   * unstyled so you will need to set them up however you want them in grid.st.css 
-   *
-   * You can also also augment anything you need for slots 1-5 if you need something 
-   * different at wider resolutions. We haven't found the need... yet.
-   */
-
-  /* = Variant 2: Standard 2 col. */
-  --grid-v2-cols-xs: initial;
-  --grid-v2-cols-sm: 1fr 1fr;
-  /* = We want the same for md as sm so we point to that value. */
-  --grid-v2-cols-md: var(--grid-v2-cols-sm);
-
-  /* = Variant 3: Standard 3 col. */
-  --grid-v3-cols-xs: initial;
-  --grid-v3-cols-sm: 1fr 1fr;
-  --grid-v3-cols-md: 1fr 1fr 1fr;
-
-  /* = Variant 4: Standard 4 col. */
-  --grid-v4-cols-xs: initial;
-  --grid-v4-cols-sm: 1fr 1fr;
-  --grid-v4-cols-md: 1fr 1fr 1fr 1fr;
+  --grid-main-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  --grid-main-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+  --grid-main-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
 
 
   /** 
-   * Our html scale goes from 16px to 26px through our breakpoints giving us 
-   * a responsive rem unit that we can use wherever we like. */
+   * Our html has a scaled value which scale goes from 16px to 26px through our
+   * breakpoints giving us some flex in a unit that we can use via rem. 
+   *
+   * We use a slice of it as our --spacing-unit var. This really helps UI 
+   & 'hang together' for longer through the breakpoints. 
+   */
   --html-resp-scale: calc(1em + 0.625 * ((100vw - 20em) / (92.5)));
+  /** - 18px when at breakpoint-xxl */
   --html-resp-max: 1.625em;
-  /** = Set a responsive spacing-unit (18px when at breakpoint-xxl) */
+  /** = Spacing - 18px when at breakpoint-xxl */
   --spacing-unit: 0.692306rem;
+  /**
+   * 18px @breakpoint xxl because this is what we want for our vertical rhythm.
+   * Vertical rhythm is a pain but we always wanted to get it
+   * working on a project. This seems to work nicely when tested with baseliner
+   * but more tweaks required to get it more bulletproof.
+   */
 }
-
 
 /**
  * = Global CSS
@@ -278,9 +328,7 @@
  * variables. For the reset globals we set them in ./allGlobals.st.css 
  * which is pulled in within index.ts 
  */
-
-
-@supports(--css: variables) {
+@supports (--css: variables) {
   :global(html) {
     /** This is our responsive rem value, this will equal 1rem wherever we are. */
     font-size: var(--html-resp-scale);
@@ -303,6 +351,16 @@
   * within components, as it prevents the compounded scaling effect that would 
   * occur if em were based on the responsive rem scale.
   */
-
   font-size: initial;
+}
+
+:root {
+  font-family: var(--font-family-base);
+  color: var(--color-ui);
+  background-color: var(--bg-main);
+}
+
+/* apply main bg to storybook stories */
+:global(.docs-story) {
+  background-color: var(--bg-main);
 }

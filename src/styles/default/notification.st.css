@@ -6,18 +6,31 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Notification/notification.st.css
  * 
  */
-@st-import Default, [
-   --spacing-unit,
-  ] from "./project.st.css";
+@st-import [
+  --spacing-unit,
+  --tone-lead-subtle,
+  --tone-support-subtle,
+  --tone-info-subtle,
+  --tone-success-subtle,
+  --tone-warning-subtle,
+  --tone-alert-subtle,
+  --tone-light-subtle,
+  --tone-dark-subtle,
+  --tone-contrast-subtle,
+  --notification-radius,
+  --notification-header-color
+] from "./project.st.css";
 @st-import Notification from "../../Notification/notification.st.css";
 
-@st-scope Default {
+@st-import [textVol1, textVol2] from "./mixins/textVol.st.css";
 
+@st-scope body {
   Notification {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding: var(--spacing-unit);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    border-radius: var(--notification-radius);
   }
 
   Notification::header {
@@ -25,6 +38,7 @@
     gap: 10px;
     justify-content: space-between;
     width: 100%;
+    color: var(--notification-header-color);
   }
 
   Notification::textWrapper {
@@ -35,13 +49,23 @@
     align-self: center;
   }
 
-  Notification::title {
+  Notification::title,
+  Notification::subtitle {
     margin: 0 var(--spacing-unit) 0 0;
+  }
+
+  Notification::title {
     flex-flow: wrap;
   }
 
-  Notification::subtitle {
-    font-size: 0.8em;
+  Notification::title:not(.false) {
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  Notification::subtitle:not(.false) {
+    font-size: 0.85em;
+    line-height: 1.4;
   }
 
   Notification::children {
@@ -50,8 +74,14 @@
     margin-bottom: calc(var(--spacing-unit) / 2);
   }
 
+  Notification::children:empty {
+    display: none;
+  }
+
   Notification::closeButton {
-    flex-shrink: 0;
+    margin-top: calc(var(--spacing-unit) * -0.5);
+    margin-right: calc(var(--spacing-unit) * -0.5);
+    margin-bottom: calc(var(--spacing-unit) * -0.5);
   }
 
   Notification::footer {
@@ -61,9 +91,46 @@
     width: 100%;
     gap: calc(var(--spacing-unit) / 2);
   }
+
+  /* Color setting */
+  Notification:tone(lead) {
+    background-color: var(--tone-lead-subtle);
+  }
+
+  Notification:tone(support) {
+    background-color: var(--tone-support-subtle);
+  }
+
+  Notification:tone(info) {
+    background-color: var(--tone-info-subtle);
+  }
+
+  Notification:tone(success) {
+    background-color: var(--tone-success-subtle);
+  }
+
+  Notification:tone(warning) {
+    background-color: var(--tone-warning-subtle);
+  }
+
+  Notification:tone(alert) {
+    background-color: var(--tone-alert-subtle);
+  }
+
+  Notification:tone(light) {
+    background-color: var(--tone-light-subtle);
+  }
+
+  Notification:tone(dark) {
+    background-color: var(--tone-dark-subtle);
+  }
+
+  Notification:tone(contrast) {
+    background-color: var(--tone-contrast-subtle);
+  }
 }
 
-@st-scope [dir=rtl] Default {
+@st-scope [dir=rtl] {
 
   Notification::closeButton {
     margin-right: unset;

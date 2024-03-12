@@ -18,7 +18,7 @@ import { classes as triggerExample } from "./menuTriggerExample.st.css";
 
 export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
-    <MenuTrigger portalSelector="#portal" {...args}>
+    <MenuTrigger {...args}>
       <Button variant="help">Edit</Button>
       <Menu onAction={(info) => alert(info)}>
         <Item key="cut">Cut</Item>
@@ -33,7 +33,7 @@ export function ControlledMenuTrigger() {
   const [open, setOpen] = useState(false);
 
   return (
-    <MenuTrigger portalSelector="#portal" isOpen={open} onOpenChange={setOpen}>
+    <MenuTrigger isOpen={open} onOpenChange={setOpen}>
       <Button>View</Button>
       <Menu selectionMode="multiple">
         <Item key="side">Side bar</Item>
@@ -47,7 +47,6 @@ export function ControlledMenuTrigger() {
 export const IconTriggerMenu = (args: MenuTriggerProps) => {
   return (
     <MenuTrigger
-      portalSelector="#portal"
       // onOpenChange={() => console.log("Menu closeed")}
       // closeOnSelect={false}
       // trigger="longPress"
@@ -71,7 +70,6 @@ export const IconTriggerMenu = (args: MenuTriggerProps) => {
 export const MultipleSelectionMenuTrigger = () => {
   return (
     <MenuTrigger
-      portalSelector="#portal"
       onOpenChange={(isOpen) => console.log("isOpen:", isOpen)}
       // Automatic if the menus selection type is multiple it will be false but you can override.
       // closeOnSelect={false}
@@ -108,7 +106,7 @@ export const ButtonGroupTriggerMenu = () => {
     <ButtonGroup vol={3} tone="support" variant="primary" splitButton>
       {/* // fullWidth */}
       <Button fullWidth>Publish</Button>
-      <MenuTrigger portalSelector="#portal" className="TEST">
+      <MenuTrigger className="TEST">
         <Button tone="support" variant="primary" vol={2}>
           <Icon alt="Change status">
             <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
@@ -148,7 +146,6 @@ export const MultipleControlled = () => {
 export const CustomInlineMenu = () => {
   return (
     <MenuTrigger
-      portalSelector="#portal"
       onOpenChange={(isOpen) => console.log("isOpen:", isOpen)}
       // isOpen
       hideArrow

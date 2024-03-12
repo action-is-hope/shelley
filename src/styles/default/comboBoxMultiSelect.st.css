@@ -7,17 +7,21 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ComboBoxMultiSelect/menuItem.st.css
  * 
  */
-@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import [--spacing-unit] from "./project.st.css";
 @st-import ComboBoxMultiSelect, [list] from "../../ComboBoxMultiSelect/comboBoxMultiSelect.st.css";
 @st-import [
     menuList
 ] from "./mixins/menuList.st.css";
 
-@st-scope Default {
-  ComboBoxMultiSelect {}
+@st-scope body {
 
   ComboBoxMultiSelect::trigger {
     font-size: 1em;
+  }
+
+  /* Disable the hover on the trigger. */
+  ComboBoxMultiSelect::trigger::before {
+    display: none;
   }
 
   ComboBoxMultiSelect::endAdornment {
@@ -26,17 +30,27 @@
     opacity: 1;
   }
 
-
   ComboBoxMultiSelect::loader {
     margin-left: 2px;
     align-self: center;
+  }
+
+  ComboBoxMultiSelect::placeholder {
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ComboBoxMultiSelect::chip {
+    white-space: nowrap;
   }
 
   .list {
     -st-mixin: menuList;
   }
 
-  @st-scope [dir=rtl] Default {
+  @st-scope [dir=rtl] {
 
     ComboBoxMultiSelect::trigger {
       margin-left: -8px;
@@ -47,6 +61,5 @@
       margin-left: 0;
       margin-right: 2px;
     }
-
   }
 }

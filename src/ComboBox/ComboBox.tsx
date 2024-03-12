@@ -17,7 +17,7 @@ import type { LoadMoreProps } from "../typings/shared-types";
 import { mergeRefs } from "@react-aria/utils";
 import { Field, FieldProps } from "../Field";
 import { Popup } from "../Popup";
-import { ButtonBase } from "../Button";
+import { Button } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../Progress";
@@ -196,7 +196,7 @@ function ComboBox<T extends object>(
               />
             )}
             {!removeTrigger && (
-              <ButtonBase
+              <Button
                 {...buttonProps}
                 icon={triggerIcon}
                 ref={buttonRef}

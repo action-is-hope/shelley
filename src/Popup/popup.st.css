@@ -1,39 +1,9 @@
-@st-namespace "Popup";
+@st-namespace "popup";
 
 .root {}
 
-.scroller {
-  overflow: hidden auto;
-}
-
-.list {}
+.scroller {}
 
 .arrow {
-  -st-states: placement(string);
-  position: absolute;
-  height: 12px;
-  width: 12px;
-}
-
-.arrow:placement(top) {
-  bottom: -12px;
-  margin-left: -6px;
-}
-
-.arrow:placement(right) {
-  rotate: 90deg;
-  left: -12px;
-  margin-top: -6px;
-}
-
-.arrow:placement(bottom) {
-  rotate: 180deg;
-  top: -12px;
-  margin-left: -6px;
-}
-
-.arrow:placement(left) {
-  right: -12px;
-  rotate: 270deg;
-  margin-top: -6px;
+  -st-states: placement(enum(top, bottom, left, right, center));
 }

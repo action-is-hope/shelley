@@ -1,4 +1,4 @@
-@st-namespace "Tag";
+@st-namespace "tag";
 
 @st-import IconButton from "../Button/iconButton.st.css";
 
@@ -13,14 +13,8 @@
     isSelected;
 }
 
-.root[data-href] {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .content {}
 
 .removeButton {
   -st-extends: IconButton;
-  position: relative;
 }

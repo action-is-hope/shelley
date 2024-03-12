@@ -8,7 +8,6 @@ import {
   P,
   H2,
   Text,
-  ActionButton,
 } from "../../indexLib";
 
 import { classes as dialog } from "../../Dialog/dialog.st.css";
@@ -62,13 +61,8 @@ export const ModalAndPopup = (args: DialogTriggerProps) => {
   return (
     <>
       {/* Popup Example */}
-      <DialogTrigger
-        type="popup"
-        placement="bottom"
-        {...args}
-        portalSelector="#portal"
-      >
-        <ActionButton>Disk Status</ActionButton>
+      <DialogTrigger type="popup" placement="bottom" {...args}>
+        <Button>Disk Status</Button>
         <Dialog>
           <H2 vol={4} className={dialog.title} data-title>
             C://
@@ -81,7 +75,6 @@ export const ModalAndPopup = (args: DialogTriggerProps) => {
       {/* Modal Example */}
       <DialogTrigger
         {...args}
-        portalSelector="#portal"
         transition="slideUp"
         // isDismissable={true}
       >
@@ -110,8 +103,8 @@ export const ModalAndPopup = (args: DialogTriggerProps) => {
 
 export const DismissableDialog = (args: DialogTriggerProps) => {
   return (
-    <DialogTrigger {...args} portalSelector="#portal" isDismissable>
-      <ActionButton>Status</ActionButton>
+    <DialogTrigger {...args} isDismissable>
+      <Button>Status</Button>
       <Dialog dismissLabel="Close status dialog">
         <H2 vol={4} className={dialog.title} data-title>
           Status
@@ -125,7 +118,7 @@ export const DismissableDialog = (args: DialogTriggerProps) => {
 
 export const HeroDialog = (args: DialogTriggerProps) => {
   return (
-    <DialogTrigger {...args} portalSelector="#portal">
+    <DialogTrigger {...args}>
       <Button>Upload</Button>
       {(close) => (
         <Dialog>

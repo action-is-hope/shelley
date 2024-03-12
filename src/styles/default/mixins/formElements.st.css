@@ -7,13 +7,18 @@
 
 @st-import Default, [
     --spacing-unit,
-    --color-form-selection-border,
-    --color-form-selection-notch,
-    --color-switch-notch
+    --field-border-color,
+    --field-border-width,
+    --field-selection-mark-color,
+    --field-selection-font-weight,
+    --field-focus-color,
+    --switch-border-width,
+    --switch-unchecked-color,
   ] from "../project.st.css";
+@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5, textVol6] from "./textVol.st.css";
 @st-import InputLabel from "../../../Label/label.st.css";
-@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5] from "./textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
+
 
 /* Local vars. */
 :vars {
@@ -194,21 +199,20 @@
   justify-content: center;
   border-style: solid;
   border-width: 2px;
-  border-color: #333;
-  border-color: var(--color-form-selection-border);
+  border-color: var(--field-border-color);
   /* = pseudoFocus mixin replaces the default outline. */
   outline: none;
 }
 
 .SelectionControlFieldInput::after {
   /* = Field focus indicator, via pseudo element. */
+  /* -st-mixin: pseudoFocus(color var(--field-focus-color)); */
   -st-mixin: pseudoFocus;
 }
 
 .SelectionControlFieldInput:disabled {
   -st-mixin: disabledField;
 }
-
 
 /**
  * = RADIO / CHECKBOX - COMMON
@@ -218,15 +222,16 @@
 /* = The 'mark' of the field, radio and checkboxes both have one. */
 .RadioCheckboxCommon::before {
   content: "";
-  transition: opacity 120ms;
+  transition: opacity 120ms, height 120ms;
   width: 0.5em;
   height: 0.5em;
   will-change: opacity;
   opacity: 0;
   display: block;
-  background-color: var(--color-form-selection-notch);
+  background-color: var(--field-selection-mark-color);
   position: absolute;
 }
+
 
 /**
  * = RADIO
@@ -264,6 +269,7 @@
 .SwitchFieldInput {
   width: 2em;
   border-radius: 9999px;
+  border-width: var(--switch-border-width);
 }
 
 .SwitchFieldInput::after {
@@ -273,17 +279,17 @@
 .SwitchFieldInput::before {
   content: "";
   position: absolute;
-  width: 1.3em;
-  height: 1.3em;
+  width: 1.4em;
+  height: 1.4em;
   border-radius: 9999px;
   transition: all 0.2s;
   transform: translate(-50%);
   will-change: translate, background-color;
   z-index: 1;
-  background-color: var(--color-switch-notch);
+  background-color: var(--switch-unchecked-color);
 }
 
 .SwitchFieldInput:checked::before {
   transform: translate(50%);
-  background-color: var(--color-form-selection-notch);
+  background-color: var(--field-selection-mark-color);
 }

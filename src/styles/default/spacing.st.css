@@ -5,7 +5,7 @@
  * Helper with some spacing helper classes.
  * 
  */
-@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import [--spacing-unit] from "./project.st.css";
 
 /**
  * = Margins

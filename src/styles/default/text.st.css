@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Text/text.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+@st-import [] from "./project.st.css";
 
 @st-import Text from "../../Text/text.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
@@ -26,7 +26,7 @@
   textVol11,
 ] from "./mixins/textVol.st.css";
 
-@st-scope Default {
+@st-scope body {
 
   /* = Volumes */
 
@@ -162,4 +162,66 @@
     font-weight: 900;
   }
 
+  /* = Uppercase */
+  Text:uppercase {
+    text-transform: uppercase;
+  }
+
+  /* = Truncation */
+  Text:truncate {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  Text:lineClamp(1) {
+    -webkit-line-clamp: 1;
+  }
+
+  Text:lineClamp(2) {
+    -webkit-line-clamp: 2;
+  }
+
+  Text:lineClamp(3) {
+    -webkit-line-clamp: 3;
+  }
+
+  Text:lineClamp(4) {
+    -webkit-line-clamp: 4;
+  }
+
+  Text:lineClamp(5) {
+    -webkit-line-clamp: 5;
+  }
+
+  Text:lineClamp(6) {
+    -webkit-line-clamp: 6;
+  }
+
+  Text:lineClamp(7) {
+    -webkit-line-clamp: 7;
+  }
+
+  Text:lineClamp(8) {
+    -webkit-line-clamp: 8;
+  }
+
+  Text:lineClamp(9) {
+    -webkit-line-clamp: 9;
+  }
+
+  Text:lineClamp(10) {
+    -webkit-line-clamp: 10;
+  }
+
+  Text:hasAdornment {
+    display: flex;
+    align-items: baseline;
+    column-gap: calc(1em / 2)
+  }
+
+  Text:hasAdornment Icon {
+    align-self: center;
+  }
 }

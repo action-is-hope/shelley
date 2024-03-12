@@ -1,4 +1,4 @@
-@st-namespace "HelpText";
+@st-namespace "helpText";
 
 .root {
   -st-states: isDisabled, isErrorMessage;

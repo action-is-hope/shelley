@@ -20,7 +20,6 @@ export const BasicComboBox = () => {
     <>
       <ComboBox
         label="Favorite Animal"
-        portalSelector="#portal"
         shouldFocusWrap
         placeholder="Placeholder"
       >
@@ -55,7 +54,6 @@ export const ValueExample = () => {
         label="Adobe product (Uncontrolled)"
         defaultItems={options}
         defaultInputValue={"Adobe XD"}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -65,7 +63,6 @@ export const ValueExample = () => {
         defaultItems={options}
         inputValue={value}
         onInputChange={setValue}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -91,7 +88,6 @@ export const CustomValueExample = () => {
       <ComboBox
         label="Preferred fruit"
         defaultItems={options}
-        portalSelector="#portal"
         allowsCustomValue
       >
         {(item) => <Item key={item.name}>{item.name}</Item>}
@@ -103,28 +99,16 @@ export const CustomValueExample = () => {
 export const LabelingExample = () => {
   return (
     <>
-      <ComboBox
-        label="Label 'side'"
-        labelPosition="side"
-        portalSelector="#portal"
-      >
+      <ComboBox label="Label 'side'" labelPosition="side">
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
       </ComboBox>
 
-      <ComboBox
-        label="Label 'top'"
-        labelPosition="top"
-        portalSelector="#portal"
-      >
+      <ComboBox label="Label 'top'" labelPosition="top">
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
       </ComboBox>
-      <ComboBox
-        label="Label 'over'"
-        labelPosition="over"
-        portalSelector="#portal"
-      >
+      <ComboBox label="Label 'over'" labelPosition="over">
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
       </ComboBox>
@@ -132,7 +116,6 @@ export const LabelingExample = () => {
         label="Label 'hidden'"
         labelPosition="hidden"
         placeholder="Label 'hidden' - this is the placeholder"
-        portalSelector="#portal"
       >
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
@@ -161,7 +144,6 @@ export const SelectionExample = () => {
         label="Adobe product (Uncontrolled)"
         defaultItems={options}
         defaultSelectedKey={9}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -171,7 +153,6 @@ export const SelectionExample = () => {
         defaultItems={options}
         selectedKey={productId}
         onSelectionChange={(selected) => setProductId(selected)}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -213,7 +194,6 @@ export const EventsExample = () => {
         selectedKey={majorId}
         onSelectionChange={onSelectionChange}
         onInputChange={onInputChange}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -242,7 +222,6 @@ export const DynamicCollection = () => {
         defaultItems={options}
         items={options}
         onSelectionChange={(selected) => setMajorId(selected)}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.name}</Item>}
       </ComboBox>
@@ -301,7 +280,6 @@ export const FullyControlled = () => {
         inputValue={fieldState.inputValue}
         onSelectionChange={onSelectionChange}
         onInputChange={onInputChange}
-        portalSelector="#portal"
       >
         {(item) => <Item>{item.value.name}</Item>}
       </ComboBox>
@@ -426,7 +404,6 @@ export const MultiSelect = () => {
         defaultItems={list.items}
         startAdornment={selectedItems.length > 0 && selectedTags}
         disabledKeys={selectedItems}
-        portalSelector="#portal"
         onKeyDown={onKeyDown}
         selectedKey={fieldState.selectedKey}
         inputValue={fieldState.inputValue}
@@ -481,7 +458,6 @@ export const AsyncLoadingExample = () => {
       onInputChange={list.setFilterText}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
-      portalSelector="#portal"
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </ComboBox>
@@ -605,12 +581,7 @@ export const HelpTextExample = () => {
 export const DisabledExample = () => {
   return (
     <>
-      <ComboBox
-        label="Favorite Animal"
-        portalSelector="#portal"
-        shouldFocusWrap
-        isDisabled
-      >
+      <ComboBox label="Favorite Animal" shouldFocusWrap isDisabled>
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
         <Item key="dog">Dog</Item>
@@ -628,7 +599,6 @@ export const ReadOnlyExample = () => {
       <ComboBox
         label="Favorite Animal"
         selectedKey="red panda"
-        portalSelector="#portal"
         shouldFocusWrap
         isReadOnly
       >

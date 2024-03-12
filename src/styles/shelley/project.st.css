@@ -1,145 +1,181 @@
 /**
- * Shelley Project - project.st.css
+ * = Shelley
  * 
- * Our main project which is essentially a theme but it itself can have themes
- * so 'project' is more appropriate.
+ * The goal of the project file is to contain the CSS commons for the project, 
+ * including variables, component variants and any shared classes.
  *
- * This project is to be used in conjunction with Shelley's 'default' 
- * styles|theme|project whatever you want to call it.
+ * This is the Shelley project file which contanis overrides of the Base 
+ * project file and is specific to British Council applications and websites
  *
- * Shelley's default provides the base and this sits on top of that and here
- * we can import and override the CSS variables declared as part of the default. 
- * We also set all of our project specifics such as colours and fonts. 
- *
- * Limitatons: We use CSS vars so IE11 is mostly out the window. We are also 
- * unable to use override the values of the breakpoints and that's about it.
- *
- * You are able to clone our default and just use that as a fork and go from 
- * there, that way you can override everything at the base and use that as your
- * go to for your projects. Up to you.
+ * We have included the British Council brand colours as stylable rgb values 
+ * so they can be imported and used in a higher level project file likely specific
+ * to a particular application or website.
  */
-
 @st-namespace "Shelley";
 
-/* = Default project vars to be overridden. */
-:import {
-  -st-from: "../default/project.st.css";
-  -st-named:
-    --color-focus,
-    --color-error,
-    --color-form-base-border,
-    --color-form-selection-border,
-    --color-form-selection-notch,
-    --color-switch-notch,
-    --color-background-textField-filled,
-    --spacing-unit,
-    --grid-gap,
-    --grid-v1-cols-xs,
-    --grid-v1-cols-sm,
-    --grid-v1-cols-md;
+/* We import ALL of the variables so that they can imported from one place
+ * and we override the values that we need to for this theme. */
+@st-import [
+  --light-01-rgb,
+  --light-01,
+  --dark-01-rgb,
+  --dark-01,
+  --dark-02-rgb,
+  --dark-02,
+  --bg-main,
+  --bg-secondary,
+  --color-brand,
+  --color-ui,
+  --color-ui-inverse,
+  --color-ui-rgb,
+  --color-ui-rgb-inverse,
+  --color-focus,
+  --color-error,
+  --box-shadow,
+  --tone-lead,
+  --tone-support,
+  --tone-info,
+  --tone-success,
+  --tone-warning,
+  --tone-danger,
+  --tone-light,
+  --tone-dark,
+  --tone-contrast,
+  --tone-lead-subtle,
+  --tone-support-subtle,
+  --tone-info-subtle,
+  --tone-success-subtle,
+  --tone-warning-subtle,
+  --tone-alert-subtle,
+  --tone-dark-subtle,
+  --tone-light-subtle,
+  --tone-contrast-subtle,
+  --radius,
+  --radius-sm,
+  --radius-lg,
+  --radius-xl,
+  --radius-xxl,
+  --field-border-color,
+  --field-border-color-hasValue,
+  --field-border-width,
+  --field-bg,
+  --field-bg-fill,
+  --field-focus-color,
+  --field-help-text-color,
+  --field-padding,
+  --field-placeholder-color,
+  --field-radius,
+  --field-selection-mark-color,
+  --switch-unchecked-color,
+  --switch-border-width,
+  --label-font-weight,
+  --label-color,
+  --button-radius,
+  --button-border-width,
+  --progress-fill-color,
+  --font-family-base,
+  --font-family-heading,
+  --font-family-title,
+  --text-heading-color,
+  --link-color,
+  --menu-bg,
+  --option-item-bg-hover,
+  --modal-backdrop-bg,
+  --dialog-bg,
+  --dialog-color,
+  --dialog-radius,
+  --popup-bg,
+  --popup-color,
+  --popup-border-width,
+  --popup-border-color,
+  --popup-drop-shadow,
+  --popup-radius,
+  --notification-radius,
+  --notification-header-color,
+  --html-resp-scale,
+  --html-resp-max,
+  --spacing-unit
+] from "../default/project.st.css";
+
+/*=== Stylable Variables - 'build time' ===*/
+:vars {
+  /* = Brand Colour Palette =*/
+  /* brand */
+  indigo-rgb: 35, 8, 90;
+  /* mid-tones */
+  yellow-rgb: 255, 227, 0;
+  orange-rgb: 255, 130, 0;
+  red-rgb: 234, 0, 52;
+  pink-rgb: 255, 0, 200;
+  purple-rgb: 178, 94, 255;
+  blue-rgb: 0, 220, 255;
+  teal-rgb: 0, 237, 195;
+  green-rgb: 93, 235, 75;
+  petrol-rgb: 3, 92, 103;
+  cool-grey-rgb: 137, 138, 141;
+  brown-rgb: 126, 60, 35;
+  /* darks */
+  dark-yellow-rgb: 228, 184, 0;
+  dark-orange-rgb: 255, 70, 53;
+  dark-red-rgb: 171, 0, 51;
+  dark-pink-rgb: 146, 0, 97;
+  dark-purple-rgb: 119, 22, 189;
+  dark-blue-rgb: 0, 92, 185;
+  dark-teal-rgb: 0, 157, 140;
+  dark-green-rgb: 0, 149, 59;
+  dark-petrol-rgb: 0, 59, 74;
+  dark-cool-grey-rgb: 84, 86, 90;
+  dark-brown-rgb: 71, 32, 41;
+  /* lights */
+  light-yellow-rgb: 255, 228, 158;
+  light-orange-rgb: 255, 194, 136;
+  light-red-rgb: 255, 186, 184;
+  light-pink-rgb: 255, 160, 215;
+  light-purple-rgb: 211, 184, 255;
+  light-blue-rgb: 151, 218, 255;
+  light-teal-rgb: 153, 237, 209;
+  light-green-rgb: 192, 223, 136;
+  light-petrol-rgb: 124, 167, 173;
+  light-cool-grey-rgb: 200, 200, 200;
+  light-brown-rgb: 220, 191, 165;
 }
 
-
-
-/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
-
-:vars {
-  /** Fonts - Could be CSS Vars if changing them in a switcher for example. */
-  font-plain:
-    Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-special:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-mono:
-    Menlo, Courier, Courier New, Andale Mono, monospace;
-
+.BCThemeScope {
+  -st-global: ':root[data-theme*="bc-theme"]';
 }
 
 /*=== Root Level CSS Variables - 'run time' ===*/
+.BCThemeScope {
 
-.root {
+  --bg-secondary: rgba(244, 244, 244, 1);
+  --color-brand: rgb(value(indigo-rgb));
 
-  /*=== COLOURS - The Queens English darling... ===*/
+  /* = Indicators */
+  --color-focus: rgb(value(orange-rgb));
+  --color-error: rgb(value(dark-red-rgb));
 
-  /* = Core light - always light or dark regardless of theme. */
-  --light-01-raw: 255, 255, 255;
-  --light-01: rgb(255, 255, 255);
+  /* = Tone colours - assign branded colours */
+  --tone-lead: rgb(value(dark-blue-rgb));
+  --tone-support: rgb(value(dark-purple-rgb));
+  --tone-info: rgb(value(dark-teal-rgb));
+  --tone-success: rgb(value(dark-green-rgb));
+  --tone-warning: rgb(value(dark-orange-rgb));
+  --tone-danger: rgb(value(red-rgb));
 
-  /* = Core dark . */
-  --dark-01-raw: 51, 51, 51;
-  --dark-01: rgb(51, 51, 51);
-  /* = 'raw' are just the rgb values we we can use them with rgba 
-   * where we can provide the alpha yet still have the raw value change
-   * for our style-switcher and within lots of alpha variant vars. 
-   * 
-   * e.g color: rgba(var(--color-ui-raw), 0.9);
-   */
+  /* Tones - subtle */
+  --tone-lead-subtle: #F2EAFF;
+  --tone-support-subtle: #F2EAFF;
+  --tone-info-subtle: #CBECFF;
+  --tone-success-subtle: #CCEAD8;
+  --tone-warning-subtle: #FFF1CE;
+  --tone-alert-subtle: #FFDCDB;
 
-  /* = Foreground colours - main and inverted plus rgb versions as 'raw'. */
-  --color-ui: var(--light-01);
-  --color-ui-inverse: var(--dark-01);
-  --color-ui-raw: var(--light-01-raw);
-  --color-ui-raw-inverse: var(--dark-01-raw);
+  /* = Forms */
+  --switch-unchecked-color: #999999;
+  --field-focus-color: rgb(value(dark-blue-rgb));
 
-  /* = Background colours */
-  --background-color-main: rgb(23, 26, 35);
-  --background-color-item-hover: rgba(var(--light-01-raw), 0.1);
-  --background-color-contrast-1: #000;
-
-  /* = Text colours */
-  --color-text-1: var(--light-01);
-  --color-text-2: rgba(var(--light-01-raw), 0.6);
-  --color-text-3: rgba(var(--light-01-raw), 0.8);
-  --color-text-4: #f7e1b9;
-
-  --color-text-help: rgba(var(--color-ui-raw), 0.6);
-
-  /* = Form colours */
-  --color-form-switch-notch: var(--color-tone-support);
-  --color-form-selection-notch: var(--color-tone-support);
-  --color-background-textField-filled: var(--background-color-contrast-1);
-
-  /* = Table colours */
-  --color-background-row: var(--background-color-contrast-1);
-  --color-text-row: var(--color-text-3);
-  --color-background-row-isPressed: #1c1c1c;
-  --color-text-row-isPressed: var(--color-text-3);
-  --color-background-row-isSelected: #2b2e3b;
-  --color-text-row-isSelected: var(--color-text-3);
-  --color-background-row-isHovered: #2c2c2c;
-  --color-text-row-isHovered: var(--color-text-3);
-  --color-background-row-isHoveredSelected: #252835;
-  --color-text-row-isHoveredSelected: var(--color-text-3);
-  --color-border-tbody: rgba(var(--color-ui-raw), .15);
-
-  /* = Toast colours */
-  --background-color-neutral: rgb(106, 106, 106);
-  --background-color-info: rgb(125 2 220);
-  --background-color-success: rgb(0, 122, 77);
-  --background-color-warning: rgb(255, 102, 0);
-  --background-color-alert: rgb(211, 21, 16);
-
-  /* = Tone colours */
-  --color-tone-lead: #18ffd8;
-  --color-tone-support: #75eaff;
-  --color-tone-info: #cac3ff;
-  --color-tone-success: #1cffab;
-  --color-tone-warning: #ffba8c;
-  --color-tone-alert: #ff8f8c;
-  --color-tone-light: rgb(240 240 240 / 0.9);
-  --color-tone-dark: rgb(79 79 79 / 0.9);
-  --color-tone-contrast: rgba(var(--color-ui-raw), .8);
-}
-
-
-/*=== Root Level CSS ===*/
-
-/** 
- * This ideally will just be a spinkling of higher level styles that use 
- * variables. For the reset globals we set them in ./allGlobals.st.css 
- * which is pulled in within index.ts */
-.root {
-  font-family: value(font-plain);
-  color: var(--color-ui);
-  background-color: var(--background-color-main);
+  /* = Fonts */
+  --font-family-base: Arial, sans-serif;
+  --font-family-heading: "BCSans", var(--font-family-base);
+  --font-family-title: "BCSansHeading", var(--font-family-base);
 }

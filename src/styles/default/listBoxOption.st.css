@@ -7,7 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBoxOption/listBoxOption.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+
+@st-import [
+  --option-item-bg-hover
+] from "./project.st.css";
 @st-import ListBoxOption from "../../ListBox/listBoxOption.st.css";
 @st-import [
     menuItem,
@@ -17,7 +20,7 @@
     menuItemSelectedIcon
 ] from "./mixins/menuList.st.css";
 
-@st-scope Default {
+@st-scope body {
   ListBoxOption {
     -st-mixin: menuItem;
   }
@@ -36,5 +39,10 @@
 
   ListBoxOption::selectedIcon {
     -st-mixin: menuItemSelectedIcon;
+  }
+
+  /* @todo Move to ComboBox when it is possible. */
+  ListBoxOption:isFocused {
+    background-color: var(--option-item-bg-hover);
   }
 }

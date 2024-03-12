@@ -12,7 +12,7 @@ export interface BlockquoteProps
   /** Changes the volume of the description. **/
   descVol?: TextVolume;
   /** Variant type. **/
-  variant?: "informal" | "academic";
+  variant?: string;
 }
 
 function Blockquote(props: BlockquoteProps, ref: React.Ref<HTMLQuoteElement>) {

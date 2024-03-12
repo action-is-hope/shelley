@@ -7,9 +7,9 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toast.st.css
  * 
  */
-@st-import Default, [
+@st-import [
   --spacing-unit,
-  --border-radius-button,
+  --radius,
   --background-color-neutral,
   --background-color-info,
   --background-color-success,
@@ -18,7 +18,34 @@
 ] from "./project.st.css";
 @st-import Toast from "../../Toast/toast.st.css";
 
-@st-scope Default {
+@st-scope body {
+
+  Toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    gap: var(--spacing-unit);
+    color: white;
+    padding: calc(var(--spacing-unit) / 1.5);
+    /* rtl */
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--border-radius-button);
+    margin: var(--spacing-unit)
+  }
+
+  Toast[data-animation=entering] {
+    animation: slide-in .3s forwards;
+  }
+
+  Toast[data-animation=queued] {
+    animation: fade-in .3s forwards;
+  }
+
+  Toast[data-animation=exiting] {
+    animation: fade-out .3s forwards;
+  }
+
   Toast:priority(neutral) {
     background: var(--background-color-neutral)
   }
@@ -39,18 +66,12 @@
     background: var(--background-color-alert)
   }
 
-  Toast {
-    gap: var(--spacing-unit);
-    color: white;
-    padding: calc(var(--spacing-unit) / 1.5);
-    /* rtl */
-    padding-left: calc(var(--spacing-unit) * 1.5);
-    border-radius: var(--border-radius-button);
-    margin: var(--spacing-unit)
-  }
-
   Toast::actionButton {
     border: 1px solid rgba(255, 255, 255, .6);
+  }
+
+  Toast::closeButtonWrapper {
+    display: flex;
   }
 
   Toast::closeButton {
@@ -73,6 +94,7 @@
   }
 
   Toast::actionAndCloseWrapper {
+    display: flex;
     gap: var(--spacing-unit);
   }
 
@@ -82,11 +104,46 @@
   }
 
   Toast::iconAndTitleWrapper {
+    display: flex;
+    align-items: center;
     gap: var(--spacing-unit)
   }
 
   Toast svg {
     color: white;
     font-size: 20px;
+  }
+
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
   }
 }

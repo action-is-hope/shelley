@@ -7,14 +7,15 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TagGroup/tagGroup.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+@st-import [] from "./project.st.css";
 @st-import TagGroup from "../../TagGroup/tagGroup.st.css";
 @st-import Tag from "../../TagGroup/tag.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
-@st-scope Default {
+@st-scope body {
 
+  /*= TagGroup =*/
   TagGroup {
     display: flex;
     flex-direction: column;
@@ -28,6 +29,7 @@
     gap: 4px;
   }
 
+  /*= Tag =*/
   Tag {
     position: relative;
     align-items: center;
@@ -36,6 +38,11 @@
     border-radius: 4px;
     line-height: 1;
     padding: 0 0.5em;
+  }
+
+  Tag[data-href] {
+    text-decoration: none;
+    cursor: pointer;
   }
 
   Tag[role="gridcell"] {
@@ -48,11 +55,12 @@
 
   Tag:hasRemoveButton {
     padding: 0px 6px;
-    gap: 3px
+    gap: 3px;
   }
 
   Tag::removeButton {
-    padding: 4px
+    padding: 4px;
+    position: relative;
   }
 
   Tag::before {

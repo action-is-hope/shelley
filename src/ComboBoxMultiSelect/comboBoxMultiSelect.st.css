@@ -1,4 +1,4 @@
-@st-namespace "ComboBoxMultiSelect";
+@st-namespace "comboBoxMulti";
 @st-import Field from "../Field/field.st.css";
 @st-import Button from "../Button/button.st.css";
 @st-import Popup from "../Popup/popup.st.css";
@@ -22,14 +22,6 @@
 
 .list {}
 
-.placeholder {
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.placeholder {}
 
-
-.chip {
-  white-space: nowrap;
-}
+.chip {}

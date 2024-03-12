@@ -1,17 +1,11 @@
-import {
-  ActionButton,
-  Button,
-  ButtonGroup,
-  ToastProvider,
-  useToast,
-} from "../../indexLib";
+import { Button, ButtonGroup, ToastProvider, useToast } from "../../indexLib";
 
 const ToastTriggersForDefaultExample = () => {
   const toastQueue = useToast();
   return (
-    <ActionButton onPress={() => toastQueue.add({ title: "New toast" })}>
+    <Button onPress={() => toastQueue.add({ title: "New toast" })}>
       Add toast
-    </ActionButton>
+    </Button>
   );
 };
 
@@ -86,7 +80,7 @@ const ToastTriggersForActionLabelExample = () => {
   const toastQueue = useToast();
 
   return (
-    <ActionButton
+    <Button
       onPress={() =>
         toastQueue.add(
           {
@@ -102,7 +96,7 @@ const ToastTriggersForActionLabelExample = () => {
       }
     >
       Toast with action
-    </ActionButton>
+    </Button>
   );
 };
 
@@ -118,13 +112,13 @@ const ToastTriggersForAutoDismissExample = () => {
   const toastQueue = useToast();
 
   return (
-    <ActionButton
+    <Button
       onPress={() =>
         toastQueue.add({ title: "Disappears in 5 seconds" }, { timeout: 5000 })
       }
     >
       Timeout toast
-    </ActionButton>
+    </Button>
   );
 };
 
@@ -140,7 +134,7 @@ const ToastTriggersForWithoutIcon = () => {
   const toastQueue = useToast();
 
   return (
-    <ActionButton
+    <Button
       onPress={() =>
         toastQueue.add(
           {
@@ -154,7 +148,7 @@ const ToastTriggersForWithoutIcon = () => {
       }
     >
       Toast without icon
-    </ActionButton>
+    </Button>
   );
 };
 
@@ -170,7 +164,7 @@ const ToastTriggersForCustomIcon = () => {
   const toastQueue = useToast();
 
   return (
-    <ActionButton
+    <Button
       onPress={() =>
         toastQueue.add({
           title: "No icon",
@@ -179,7 +173,7 @@ const ToastTriggersForCustomIcon = () => {
       }
     >
       Toast without icon
-    </ActionButton>
+    </Button>
   );
 };
 
