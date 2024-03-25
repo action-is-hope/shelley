@@ -165,6 +165,8 @@ function Notification(
               onPress={handleCloseButtonClick}
               aria-label={"Close"}
               vol={titleVol && calculateIconButtonVol(titleVol)}
+              tone={false}
+              // variant={"quiet"}
               icon={<CloseIcon data-id={iconDataId} />}
               {...closeButtonProps}
             />

@@ -1,4 +1,4 @@
-@st-namespace "TableView";
+@st-namespace "tableView";
 @st-import Checkbox from "../Checkbox/checkbox.st.css";
 
 .root {
@@ -7,26 +7,19 @@
     isResponsive,
     vol(number),
     density(enum(compact, spacious));
-  overflow: auto;
 }
 
-.table {
-  width: 100%;
-}
+.table {}
 
 .caption {}
 
 .thead {}
 
-.root:isHeaderSticky::column {
-  position: sticky;
-  top: 0;
-}
-
 .headerRow {}
 
 .column {
-  -st-states: hasCheckbox,
+  -st-states:
+    hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
 }
@@ -40,7 +33,8 @@
 .tbody {}
 
 .row {
-  -st-states: isFocusVisible,
+  -st-states:
+    isFocusVisible,
     isPressed,
     isHovered,
     isSelected,
@@ -48,31 +42,12 @@
 }
 
 .cell {
-  -st-states: hasCheckbox,
+  -st-states:
+    hasCheckbox,
     isFocusVisible,
     align(enum(start, center, end, justify));
 }
 
 .cellCheckbox {
   -st-extends: Checkbox;
-}
-
-.root::column:align(start),
-.root::cell:align(start) {
-  text-align: start;
-}
-
-.root::column:align(center),
-.root::cell:align(center) {
-  text-align: center;
-}
-
-.root::column:align(end),
-.root::cell:align(end) {
-  text-align: end;
-}
-
-.root::column:align(justify),
-.root::cell:align(justify) {
-  text-align: justify;
 }

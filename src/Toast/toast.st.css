@@ -1,13 +1,9 @@
-@st-namespace "Toast";
+@st-namespace "toast";
 @st-import Button from "../Button/button.st.css";
 @st-import IconButton from "../Button/iconButton.st.css";
 
 .root {
   -st-states: priority(enum(neutral, info, success, warning, error));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
 }
 
 .closeButton {
@@ -15,63 +11,11 @@
 }
 
 .actionButton {
-  /* @todo: Figure out why stylable is complaining here. */
-  /* -st-extends: Button; */
+  -st-extends: Button;
 }
 
-.actionAndCloseWrapper {
-  display: flex;
-}
+.actionAndCloseWrapper {}
 
-.closeButtonWrapper {
-  display: flex;
-}
+.closeButtonWrapper {}
 
-.iconAndTitleWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.root[data-animation=entering] {
-  animation: slide-in .3s forwards;
-}
-
-.root[data-animation=queued] {
-  animation: fade-in .3s forwards;
-}
-
-.root[data-animation=exiting] {
-  animation: fade-out .3s forwards;
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1
-  }
-
-  to {
-    opacity: 0
-  }
-}
+.iconAndTitleWrapper {}

@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import {
-  ActionButton,
   Button,
   ButtonGroup,
   ModalProps,
@@ -13,13 +12,8 @@ import { classes as dialog } from "../../Dialog/dialog.st.css";
 
 export const BasicDialogTrigger = (args: ModalProps) => {
   return (
-    <DialogTrigger
-      type="popup"
-      {...args}
-      portalSelector="#portal"
-      popupClassName="test"
-    >
-      <ActionButton>Disk Status</ActionButton>
+    <DialogTrigger type="popup" {...args} popupClassName="test">
+      <Button>Disk Status</Button>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
           c://
@@ -35,7 +29,7 @@ export const ContentExample = (args: ModalProps) => {
   return (
     <DialogTrigger
       {...args}
-      portalSelector="#portal"
+
       // transitionProps={{
       //   onEntering: () => console.log("entering"),
       //   onExited: () => console.log("exited"),
@@ -45,7 +39,7 @@ export const ContentExample = (args: ModalProps) => {
       // isKeyboardDismissDisabled
       // isDismissable
     >
-      <ActionButton>Checkout</ActionButton>
+      <Button>Checkout</Button>
       {(close) => (
         <Dialog>
           <H2 vol={4} className={dialog.title} data-title>
@@ -74,7 +68,7 @@ export const ModalExample = () => {
     <DialogTrigger
       type="modal"
       // Defaults to body, set to false to render inline
-      portalSelector="#portal"
+
       // react-focus-on props
       focusOnProps={{}}
       // Transition props from Modal
@@ -83,7 +77,7 @@ export const ModalExample = () => {
       transition="slideUp"
       transitionProps={{}}
     >
-      <ActionButton>Unlink</ActionButton>
+      <Button>Unlink</Button>
       {(close) => (
         <Dialog>
           <H2 vol={4} className={dialog.title} data-title>
@@ -112,13 +106,8 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
   const targetRef = useRef(null);
   return (
     <>
-      <DialogTrigger
-        type="popup"
-        {...args}
-        portalSelector="#portal"
-        targetRef={targetRef}
-      >
-        <ActionButton>Trigger</ActionButton>
+      <DialogTrigger type="popup" {...args} targetRef={targetRef}>
+        <Button>Trigger</Button>
         <Dialog>
           <H2 vol={4} className={dialog.title} data-title>
             Anchor
@@ -141,8 +130,8 @@ export const DialogTriggerTargetRef = (args: ModalProps) => {
 
 export const DialogTriggerPlacement = () => {
   return (
-    <DialogTrigger placement="right top" type="popup" portalSelector="#portal">
-      <ActionButton>Trigger</ActionButton>
+    <DialogTrigger placement="right top" type="popup">
+      <Button>Trigger</Button>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
           Placement
@@ -159,8 +148,8 @@ export const DialogTriggerPlacement = () => {
 
 export const DialogTriggerOffset = () => {
   return (
-    <DialogTrigger offset={50} type="popup" portalSelector="#portal">
-      <ActionButton>Trigger</ActionButton>
+    <DialogTrigger offset={50} type="popup">
+      <Button>Trigger</Button>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
           Offset
@@ -176,8 +165,8 @@ export const DialogTriggerOffset = () => {
 
 export const DialogTriggerCrossOffset = () => {
   return (
-    <DialogTrigger crossOffset={100} type="popup" portalSelector="#portal">
-      <ActionButton>Trigger</ActionButton>
+    <DialogTrigger crossOffset={100} type="popup">
+      <Button>Trigger</Button>
       <Dialog>
         <H2 vol={4} className={dialog.title} data-title>
           Cross offset
@@ -199,7 +188,6 @@ export const EventExample = () => {
         type="popup"
         placement="top"
         onOpenChange={(isOpen) => setState(isOpen)}
-        portalSelector="#portal"
       >
         <Button>Whispers</Button>
         <Dialog>

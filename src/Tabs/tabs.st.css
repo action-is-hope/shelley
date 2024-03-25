@@ -1,11 +1,9 @@
-@st-namespace "Tabs";
+@st-namespace "tabs";
 
 .root {
   -st-states:
     orientation(enum(horizontal, vertical)),
     vol(number);
-  display: flex;
-  flex-direction: column;
 }
 
 .indicator {
@@ -14,8 +12,6 @@
    * are calculated by the component and applied inline. We will need to set the thickness 
    * of the indicator for both orientations. */
   -st-states: isFocusVisible;
-  position: absolute;
-  transition: transform 150ms, width 100ms, height 100ms;
 }
 
 .tab {
@@ -26,39 +22,8 @@
     isSelected;
 }
 
-.tabListContainer {
-  position: relative;
-}
+.tabListContainer {}
 
-.tabList {
-  display: flex;
-}
+.tabList {}
 
-.tabPanel {
-  flex-grow: 1;
-}
-
-.root:orientation(vertical) {
-  flex-direction: row;
-}
-
-.root:orientation(vertical)::tabList {
-  flex-direction: column;
-}
-
-.root:orientation(vertical)::indicator {
-  right: 0;
-  top: 0;
-  /* thickness of indicator when vertical. */
-  width: 2px;
-  will-change: transform, height;
-}
-
-.root:orientation(horizontal)::indicator {
-  left: 0;
-  /* thickness of indicator when horizontal. */
-  height: 2px;
-  /* Pull up on top of tabList border. */
-  margin-top: -2px;
-  will-change: transform, width;
-}
+.tabPanel {}

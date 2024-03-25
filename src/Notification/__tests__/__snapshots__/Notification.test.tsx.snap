@@ -2,23 +2,23 @@
 
 exports[`Notification alert notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-5-alert"
+  className="notification__Test__root notification__Test---tone-5-alert"
   data-id="inline-alert-notification"
   role="alert"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
         data-id="inline-alert-notification--title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           data-id="inline-alert-notification--icon"
           viewBox="0 0 16 16"
         >
@@ -28,7 +28,7 @@ exports[`Notification alert notifcation 1`] = `
         </svg>
         Alert notification title
         <span
-          className="Notification__Test__subtitle"
+          className="notification__Test__subtitle"
           data-id="inline-alert-notification--subTitle"
         >
           Subtitle goes here
@@ -41,23 +41,23 @@ exports[`Notification alert notifcation 1`] = `
 
 exports[`Notification info notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-4-info"
+  className="notification__Test__root notification__Test---tone-4-info"
   data-id="inline-info-notification"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
         data-id="inline-info-notification--title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           data-id="inline-info-notification--icon"
           viewBox="0 0 16 16"
         >
@@ -73,7 +73,7 @@ exports[`Notification info notifcation 1`] = `
         </svg>
         Info notification title
         <span
-          className="Notification__Test__subtitle"
+          className="notification__Test__subtitle"
           data-id="inline-info-notification--subTitle"
         >
           Subtitle goes here
@@ -86,21 +86,21 @@ exports[`Notification info notifcation 1`] = `
 
 exports[`Notification isDismissable 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-4-lead"
+  className="notification__Test__root notification__Test---tone-4-lead"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           viewBox="0 0 16 16"
         >
           <path
@@ -115,7 +115,7 @@ exports[`Notification isDismissable 1`] = `
         </svg>
         Notification title
         <span
-          className="Notification__Test__subtitle"
+          className="notification__Test__subtitle"
         >
           Subtitle goes here
         </span>
@@ -123,7 +123,7 @@ exports[`Notification isDismissable 1`] = `
     </div>
     <button
       aria-label="Close"
-      className="ButtonBase__Test__root ButtonBase__Test---vol-1-2 IconButton__Test__root Notification__Test__closeButton"
+      className="btn__Test__root btn__Test---variant-7-primary btn__Test---vol-1-2 iconBtn__Test__root notification__Test__closeButton"
       onBlur={[Function]}
       onClick={[Function]}
       onDragStart={[Function]}
@@ -142,7 +142,7 @@ exports[`Notification isDismissable 1`] = `
        
       <svg
         aria-hidden={true}
-        className="Icon__Test__root"
+        className="icon__Test__root"
         viewBox="0 0 16 16"
       >
         <path
@@ -156,21 +156,21 @@ exports[`Notification isDismissable 1`] = `
 
 exports[`Notification renders with children 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-4-lead"
+  className="notification__Test__root notification__Test---tone-4-lead"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           viewBox="0 0 16 16"
         >
           <path
@@ -188,7 +188,7 @@ exports[`Notification renders with children 1`] = `
     </div>
   </div>
   <div
-    className="Notification__Test__children"
+    className="notification__Test__children"
   >
     <p>
       Notification content goes here
@@ -199,21 +199,21 @@ exports[`Notification renders with children 1`] = `
 
 exports[`Notification renders with footer content 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-4-lead"
+  className="notification__Test__root notification__Test---tone-4-lead"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           viewBox="0 0 16 16"
         >
           <path
@@ -231,7 +231,7 @@ exports[`Notification renders with footer content 1`] = `
     </div>
   </div>
   <div
-    className="Notification__Test__footer"
+    className="notification__Test__footer"
   >
     <span>
       Do not show this again [x]
@@ -242,23 +242,23 @@ exports[`Notification renders with footer content 1`] = `
 
 exports[`Notification success notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-7-success"
+  className="notification__Test__root notification__Test---tone-7-success"
   data-id="inline-success-notification"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
         data-id="inline-success-notification--title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           data-id="inline-success-notification--icon"
           viewBox="0 0 16 16"
         >
@@ -268,7 +268,7 @@ exports[`Notification success notifcation 1`] = `
         </svg>
         Success notification title
         <span
-          className="Notification__Test__subtitle"
+          className="notification__Test__subtitle"
           data-id="inline-success-notification--subTitle"
         >
           Subtitle goes here
@@ -281,23 +281,23 @@ exports[`Notification success notifcation 1`] = `
 
 exports[`Notification warning notifcation 1`] = `
 <div
-  className="Notification__Test__root Notification__Test---tone-7-warning"
+  className="notification__Test__root notification__Test---tone-7-warning"
   data-id="inline-warning-notification"
   role="status"
 >
   <div
-    className="Notification__Test__header"
+    className="notification__Test__header"
   >
     <div
-      className="Notification__Test__textWrapper"
+      className="notification__Test__textWrapper"
     >
       <span
-        className="Text__Test__root Text__Test---vol-1-3 Text__Test--hasAdornment Notification__Test__title"
+        className="text__Test__root text__Test---vol-1-3 text__Test--hasAdornment notification__Test__title"
         data-id="inline-warning-notification--title"
       >
         <svg
           aria-hidden={true}
-          className="Icon__Test__root"
+          className="icon__Test__root"
           data-id="inline-warning-notification--icon"
           viewBox="0 0 16 16"
         >
@@ -307,7 +307,7 @@ exports[`Notification warning notifcation 1`] = `
         </svg>
         Warning notification title
         <span
-          className="Notification__Test__subtitle"
+          className="notification__Test__subtitle"
           data-id="inline-warning-notification--subTitle"
         >
           Subtitle goes here

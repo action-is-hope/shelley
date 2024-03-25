@@ -2,19 +2,19 @@
 
 exports[`Switch Renders with size '1' 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-1"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Switch label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -39,19 +39,19 @@ exports[`Switch Renders with size '1' 1`] = `
 
 exports[`Switch Renders with size '2' 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-2"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-2"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Switch label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -76,19 +76,19 @@ exports[`Switch Renders with size '2' 1`] = `
 
 exports[`Switch Renders with size '3' 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-3"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-3"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Switch label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -113,19 +113,19 @@ exports[`Switch Renders with size '3' 1`] = `
 
 exports[`Switch Renders with size '4' 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-4"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-4"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Switch label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -150,19 +150,19 @@ exports[`Switch Renders with size '4' 1`] = `
 
 exports[`Switch Renders with size '5' 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-6"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-6"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Switch label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -187,19 +187,19 @@ exports[`Switch Renders with size '5' 1`] = `
 
 exports[`Switch renders correctly with label 1`] = `
 <label
-  className="Label__Test__root Label__Test--hasInput Switch__Test__root Switch__Test---size-1-1"
+  className="label__Test__root label__Test--hasInput switch__Test__root switch__Test---size-1-1"
 >
   <span
-    className="Label__Test__text"
+    className="label__Test__text"
   >
     Label
   </span>
   <span
-    className="Switch__Test__inputContainer"
+    className="switch__Test__inputContainer"
   >
     <input
       checked={false}
-      className="Switch__Test__input"
+      className="switch__Test__input"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}

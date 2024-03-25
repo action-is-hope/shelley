@@ -1,11 +1,12 @@
-/* = Default project vars. */
-:import {
-  -st-from: "../project.st.css";
-  -st-default: Default;
-  -st-named:
-    --spacing-unit,
-    --color-focus;
-}
+/* = menuList.st.css. */
+@st-import [
+  --spacing-unit,
+  --color-focus,
+  --color-ui-inverse,
+  --option-item-bg-hover,
+  --field-focus-color
+] from "../project.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
 
 .menuList {
   outline: none;
@@ -30,11 +31,22 @@
   color: inherit;
   font: inherit;
   outline: none;
-  border-left: 2px solid transparent;
+  /* border-left: 2px solid transparent; */
+  cursor: pointer;
+  position: relative;
 }
 
-.menuItemFocusVisible {
-  border-color: var(--color-focus);
+.menuItem::after {
+  -st-mixin: pseudoFocus;
+  inset: 0;
+}
+
+.menuItemHover {
+  background-color: var(--option-item-bg-hover);
+}
+
+.menuItemFocusVisible::after {
+  -st-mixin: pseudoFocusVisible;
 }
 
 .menuItemDisabled {

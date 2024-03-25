@@ -90,7 +90,7 @@ describe("Adornments", () => {
       .and("to.have.string", "hasAdornment");
     cy.get("[data-id=adornment]")
       .should("have.attr", "class")
-      .and("to.have.string", "Icon");
+      .and("to.have.string", "icon");
   });
 
   it("startAdornment", () => {
@@ -108,6 +108,6 @@ describe("Adornments", () => {
       .and("to.have.string", "hasAdornment");
     cy.get("[data-id=adornment]")
       .should("have.attr", "class")
-      .and("to.have.string", "Icon");
+      .and("to.have.string", "icon");
   });
 });

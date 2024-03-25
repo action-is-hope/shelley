@@ -7,17 +7,18 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ComboBoxMultiSelect/comboBoxMultiSelectItem.st.css
  * ComboBoxMultiSelect
  */
-@st-import Default, [--spacing-unit] from "./project.st.css";
+@st-import [--spacing-unit] from "./project.st.css";
 @st-import ComboBoxMultiSelectItem from "../../ComboBoxMultiSelect/comboBoxMultiSelectItem.st.css";
 @st-import [
     menuItem,
     menuItemDisabled,
+    menuItemHover,
     menuItemFocusVisible,
     menuItemText,
     menuItemSelectedIcon
 ] from "./mixins/menuList.st.css";
 
-@st-scope Default {
+@st-scope body {
   ComboBoxMultiSelectItem {
     -st-mixin: menuItem;
   }
@@ -36,7 +37,7 @@
   }
 
   ComboBoxMultiSelectItem:isFocused {
-    -st-mixin: menuItemFocusVisible;
+    -st-mixin: menuItemHover;
   }
 
   ComboBoxMultiSelectItem::text {

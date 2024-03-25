@@ -46,7 +46,6 @@ export const BasicComboBox = () => {
     <>
       <ComboBoxMultiSelect
         label="Favorite Book"
-        portalSelector="#portal"
         items={books}
         defaultValue={initialSelectedItems}
         placeholder="Placeholder"
@@ -89,7 +88,6 @@ export const LabelingExample = () => {
         label="Label 'side'"
         labelPosition="side"
         items={books}
-        portalSelector="#portal"
       >
         {(item) => (
           <div>
@@ -102,7 +100,6 @@ export const LabelingExample = () => {
         label="Label 'top'"
         labelPosition="top"
         items={books}
-        portalSelector="#portal"
       >
         {(item) => (
           <div>
@@ -114,7 +111,6 @@ export const LabelingExample = () => {
         label="Label 'over'"
         labelPosition="over"
         items={books}
-        portalSelector="#portal"
       >
         {(item) => (
           <div>
@@ -127,7 +123,6 @@ export const LabelingExample = () => {
         labelPosition="hidden"
         placeholder="Label 'hidden' - this is the placeholder"
         items={books}
-        portalSelector="#portal"
       >
         {(item) => (
           <>
@@ -167,7 +162,6 @@ export const ControlledInput = () => {
     <>
       <ComboBoxMultiSelect
         label="Pick a URL"
-        portalSelector="#portal"
         items={urlsParts}
         placeholder="Placeholder"
         inputValue={inputValue}
@@ -230,7 +224,6 @@ export const SelectionExample = () => {
           setselectedProducts(selected);
           console.log(selected, type);
         }}
-        portalSelector="#portal"
         enableBackspaceDelete
         preventKeyAction="menuOpen"
       >
@@ -296,7 +289,6 @@ export const AsyncLoadingExample = () => {
       onInputChange={list.setFilterText}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
-      portalSelector="#portal"
       onSelectionChange={(item) => console.log(item)}
     >
       {(item) => <div key={item.name}>{item.name}</div>}
@@ -309,7 +301,6 @@ export const HelpTextExample = () => {
     <ComboBoxMultiSelect
       label="Pick an Book"
       items={books}
-      portalSelector="#portal"
       description="Pick your favorite book."
     >
       {(item) => <>{item?.title}</>}
@@ -323,7 +314,6 @@ export const DisabledExample = () => {
       isDisabled
       label="Pick an Book"
       items={books}
-      portalSelector="#portal"
       description="Pick your favorite book."
     >
       {(item) => <>{item?.title}</>}
@@ -337,7 +327,6 @@ export const ReadOnlyExample = () => {
       isReadOnly
       label="Pick an Book"
       items={books}
-      portalSelector="#portal"
       description="Pick your favorite book."
     >
       {(item) => <>{item?.title}</>}

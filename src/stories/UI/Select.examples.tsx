@@ -29,7 +29,6 @@ export const BasicSelect = (args: ItemsType) => {
         {...args}
         onSelectionChange={(key) => console.log(key)}
         vol={1}
-        portalSelector="#portal"
       >
         <Item key="rarely">Rarely</Item>
         <Item key="sometimes">Sometimes</Item>
@@ -68,7 +67,6 @@ export const SelectEvents = (args: ItemsType) => {
         onSelectionChange={(key) => console.log(key)}
         items={animals}
         label="Select"
-        portalSelector="#portal"
         placeholder="Hi"
         vol={1}
         // excludeFromTabOrder
@@ -81,7 +79,6 @@ export const SelectEvents = (args: ItemsType) => {
 
       <Select
         label="Choose frequency"
-        portalSelector="#portal"
         selectedKey={animal}
         onSelectionChange={(selected) => {
           setAnimal(selected as SetStateAction<string>);
@@ -111,12 +108,7 @@ export const DynamicCollection = (args: SelectProps<ItemsType>) => {
 
   return (
     <>
-      <Select
-        label="Engineering major"
-        items={options}
-        portalSelector="#portal"
-        {...args}
-      >
+      <Select label="Engineering major" items={options} {...args}>
         {(item) => <Item>{item.name}</Item>}
       </Select>
     </>
@@ -143,7 +135,6 @@ export const ControlledSelect = (args: SelectProps<ItemsType>) => {
       onSelectionChange={(selected) =>
         setAnimal(selected as SetStateAction<string>)
       }
-      portalSelector="#portal"
     >
       {(item) => <Item key={item.name}>{item.name}</Item>}
     </Select>
@@ -170,7 +161,6 @@ export const AsyncLoadingExample = () => {
     <Select
       label="Pick a Pokemon"
       items={list.items}
-      portalSelector="#portal"
       shouldFocusOnHover={false}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
@@ -286,7 +276,6 @@ export const HelpTextExample = () => {
       onSelectionChange={(selected) =>
         setAnimalId(selected as SetStateAction<number>)
       }
-      portalSelector="#portal"
     >
       {(item) => <Item>{item.name}</Item>}
     </Select>

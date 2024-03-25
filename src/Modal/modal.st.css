@@ -1,4 +1,4 @@
-@st-namespace "Modal";
+@st-namespace "modal";
 
 .root {
   -st-states:
@@ -6,45 +6,13 @@
     transition(string);
 }
 
-.root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*  */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  --transiton-slide-from-start: translateX(-100%);
-  --transiton-slide-from-end: translateX(100%);
-}
+.root {}
 
-[dir=rtl] .root {
-  --transiton-slide-from-start: translateX(100%);
-  --transiton-slide-from-end: translateX(-100%);
-}
+.backdrop {}
 
-.root:variant(fixed) {
-  position: fixed;
-}
+.content {}
 
-.backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.content {
-  position: relative;
-}
-
-.blurBackground [data-focus-on-hidden]:not(.root, .root *) {
-  opacity: .5;
-  filter: blur(2px);
-}
+.blurBackground {}
 
 /* = Content Transitions */
 
@@ -71,140 +39,4 @@
 
 .exitDone {
   -st-global: '.exit-done';
-  display: none;
-}
-
-/* Background transition. */
-.root.enter .backdrop {
-  opacity: 0;
-}
-
-.root.enterActive .backdrop {
-  opacity: 1;
-  transition: opacity 190ms;
-}
-
-.root.enterDone .backdrop {
-  opacity: 1;
-}
-
-.root.exit .backdrop {
-  opacity: 1;
-}
-
-.root.exitActive .backdrop {
-  opacity: 0;
-  transition: opacity 300ms;
-}
-
-/* = Zoom */
-.root:transition(zoom).enter .content {
-  transform: scale(0);
-  opacity: 0;
-}
-
-.root:transition(zoom).enterActive .content {
-  transform: scale(1);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
-
-.root:transition(zoom).enterDone .content {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.root:transition(zoom).exit .content {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.root:transition(zoom).exitActive .content {
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
-}
-
-/* = slideUp */
-.root:transition(slideUp).enter .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-}
-
-.root:transition(slideUp).enterActive .content {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
-
-.root:transition(slideUp).enterDone .content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.root:transition(slideUp).exit .content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.root:transition(slideUp).exitActive .content {
-  transform: translateY(calc(100vh / 2 + 100%));
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
-}
-
-/* = slideFromStart = */
-.root:transition(slideFromStart).enter .content {
-  transform: var(--transiton-slide-from-start);
-  opacity: 0;
-}
-
-.root:transition(slideFromStart).enterActive .content {
-  transform: translateX(0);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
-
-.root:transition(slideFromStart).enterDone .content {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.root:transition(slideFromStart).exit .content {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.root:transition(slideFromStart).exitActive .content {
-  transform: var(--transiton-slide-from-start);
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
-}
-
-/* = slideFromEnd = */
-.root:transition(slideFromEnd).enter .content {
-  transform: var(--transiton-slide-from-end);
-  opacity: 0;
-}
-
-.root:transition(slideFromEnd).enterActive .content {
-  transform: translateX(0);
-  opacity: 1;
-  transition: transform 190ms, opacity 190ms;
-}
-
-.root:transition(slideFromEnd).enterDone .content {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.root:transition(slideFromEnd).exit .content {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.root:transition(slideFromEnd).exitActive .content {
-  transform: var(--transiton-slide-from-end);
-  opacity: 0;
-  transition: transform 190ms, opacity 190ms;
 }

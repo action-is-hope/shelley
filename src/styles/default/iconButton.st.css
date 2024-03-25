@@ -8,14 +8,28 @@
  * 
  */
 
-@st-import Default from "./project.st.css";
-@st-import IconButton, [--border-radius] from "../../Button/iconButton.st.css";
+@st-import [ 
+  --light-01,
+  --dark-02,
+  --tone-contrast,
+  --color-ui-rgb-inverse,
+  --color-ui-inverse,
+  --box-shadow
+] from "./project.st.css";
+@st-import IconButton from "../../Button/iconButton.st.css";
+@st-import [
+  --border-radius,
+  --bg-color,
+  --text-color,
+  --tone
+] from "./button.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 
-@st-scope body Default {
+@st-scope body {
 
   IconButton {
     padding: 10px;
+    justify-content: center;
     --border-radius: 999em;
   }
 
@@ -26,6 +40,10 @@
 
   IconButton::after {
     border-radius: 999px;
+  }
+
+  IconButton:fab {
+    box-shadow: var(--box-shadow);
   }
 
   /*= 

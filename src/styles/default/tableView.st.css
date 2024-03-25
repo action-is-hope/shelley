@@ -7,104 +7,91 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TableView/tableView.st.css
  * 
  */
-@st-import Default, [
+@st-import [
   --spacing-unit,
-  --color-focus
+  --bg-main,
+  --color-focus,
+  --table-row-bg,
+  --table-row-color,
+  --table-row-bg-isPressed,
+  --table-row-color-isPressed,
+  --table-row-bg-isSelected,
+  --table-row-color-isSelected,
+  --table-row-bg-isHovered,
+  --table-row-color-isHovered,
+  --table-row-bg-isHoveredSelected,
+  --table-row-color-isHoveredSelected,
+  --table-tbody-border
 ] from "./project.st.css";
 @st-import TableView, [cell] from "../../TableView/tableView.st.css";
 @st-import [textVol, textVol1, textVol2] from "./mixins/textVol.st.css";
-@st-import [respScale] from "../formatters/common";
 
 
-@st-scope Default {
+@st-scope body {
   TableView {
-    --color-background-row: white;
-    --color-text-row: grey;
-    --color-background-row-isPressed: lightgrey;
-    --color-text-row-isPressed: black;
-    --color-background-row-isSelected: blueviolet;
-    --color-text-row-isSelected: white;
-    --color-background-row-isHovered: GhostWhite;
-    --color-text-row-isHovered: grey;
-    --color-background-row-isHoveredSelected: #a14eef;
-    --color-text-row-isHoveredSelected: white;
-    --color-border-tbody: grey;
-    border-bottom: 1px solid var(--color-border-tbody);
+    /* --table-row-bg: var(--table-row-bg);
+    --table-row-color: var(--table-row-color);
+    --table-row-bg-isPressed: var(--table-row-bg-isPressed);
+    --table-row-color-isPressed: var(--table-row-color-isPressed);
+    --table-row-bg-isSelected: var(--table-row-bg-isSelected);
+    --table-row-color-isSelected: var(--table-row-color-isSelected);
+    --table-row-bg-isHovered: var(--table-row-bg-isHovered);
+    --table-row-color-isHovered: var(--table-row-color-isHovered);
+    --table-row-bg-isHoveredSelected: var(--table-row-bg-isHoveredSelected);
+    --table-row-color-isHoveredSelected: var(--table-row-color-isHoveredSelected);
+    --table-tbody-border: var(--table-tbody-border); */
+    /* border-bottom: 1px solid var(--table-tbody-border); */
+    overflow: auto;
+  }
+
+  TableView::column {
+    background-color: var(--bg-main);
   }
 
   TableView::table {
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
   }
 
-  /* 1 */
-  TableView:vol(1)::table {
-    -st-mixin: textVol(minValue 0.7, maxValue 0.88, lineHeight 1.3);
+  TableView:isHeaderSticky::column {
+    position: sticky;
+    top: 0;
   }
-
-  /* 2 */
-  TableView:vol(2)::table {
-    -st-mixin: textVol1;
-  }
-
-  TableView::thead {}
 
   TableView::headerRow {
     font-weight: 500;
-  }
-
-  TableView::column:isFocusVisible {
-    box-shadow: inset 0 0 0 2px var(--color-focus);
   }
 
   TableView::sorter {
     padding: 0 2px
   }
 
-  TableView::tbody {}
-
-  TableView::column,
-  TableView::cell {
-    border-bottom: 1px solid var(--color-border-tbody);
-  }
-
-  TableView::cell:first-child {
-    border-left: 1px solid var(--color-border-tbody);
-  }
-
-  TableView::cell:last-child {
-    border-right: 1px solid var(--color-border-tbody);
-  }
-
-  TableView::row:last-child .cell {
-    border-bottom: none;
-  }
-
   TableView::row {
     outline: none;
-    transition: background-color 20ms, color 20ms;
-    background-color: var(--color-background-row);
-    color: var(--color-text-row);
+    /* transition: background-color 20ms, color 20ms; */
+    background-color: var(--table-row-bg);
+    color: var(--table-row-color);
   }
 
   TableView::row:isHovered {
-    background-color: var(--color-background-row-isHovered);
-    color: var(--color-text-row-isHovered);
+    background-color: var(--table-row-bg-isHovered);
+    color: var(--table-row-color-isHovered);
   }
 
   TableView::row:isPressed {
-    background-color: var(--color-background-row-isPressed);
-    color: var(--color-text-row-isPressed);
+    background-color: var(--table-row-bg-isPressed);
+    color: var(--table-row-color-isPressed);
   }
 
   TableView::row:isSelected {
-    background-color: var(--color-background-row-isSelected);
-    color: var(--color-text-row-isSelected);
+    background-color: var(--table-row-bg-isSelected);
+    color: var(--table-row-color-isSelected);
   }
 
   TableView::row:isSelected:isHovered {
-    background-color: var(--color-background-row-isHoveredSelected);
-    color: var(--color-text-row-isHoveredSelected);
+    background-color: var(--table-row-bg-isHoveredSelected);
+    color: var(--table-row-color-isHoveredSelected);
   }
 
   TableView::row:isFocusVisible {
@@ -113,6 +100,27 @@
 
   TableView::row:isDisabled {
     opacity: .6;
+  }
+
+  TableView::column:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::column,
+  TableView::cell {
+    border-bottom: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::cell:first-child {
+    border-left: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::cell:last-child {
+    border-right: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::row:last-child .cell {
+    border-bottom: none;
   }
 
   TableView::column,
@@ -139,5 +147,38 @@
   TableView::cell:hasCheckbox {
     width: 44px;
     padding: 0
+  }
+
+  TableView::column:align(start),
+  TableView::cell:align(start) {
+    text-align: start;
+  }
+
+  TableView::column:align(center),
+  TableView::cell:align(center) {
+    text-align: center;
+  }
+
+  TableView::column:align(end),
+  TableView::cell:align(end) {
+    text-align: end;
+  }
+
+  TableView::column:align(justify),
+  TableView::cell:align(justify) {
+    text-align: justify;
+  }
+
+
+  /*= Volumes */
+
+  /* 1 */
+  TableView:vol(1)::table {
+    -st-mixin: textVol(minValue 0.7, maxValue 0.88, lineHeight 1.3);
+  }
+
+  /* 2 */
+  TableView:vol(2)::table {
+    -st-mixin: textVol1;
   }
 }

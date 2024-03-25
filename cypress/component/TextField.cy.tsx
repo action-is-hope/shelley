@@ -25,7 +25,7 @@ describe("Basic TextField", () => {
 
     cy.get(textField)
       .should("have.attr", "class")
-      .and("to.have.string", "TextField")
+      .and("to.have.string", "textField")
       .and("to.have.string", "cypress-test");
   });
 

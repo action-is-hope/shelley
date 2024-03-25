@@ -7,12 +7,19 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBox/listBox.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+
 @st-import ListBox from "../../ListBox/listBox.st.css";
 @st-import [menuList] from "./mixins/menuList.st.css";
 
-@st-scope Default {
+@st-scope body {
   ListBox {
     -st-mixin: menuList;
+  }
+
+  ListBox::loadingMore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }
