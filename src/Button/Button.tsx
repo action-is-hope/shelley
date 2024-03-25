@@ -34,6 +34,8 @@ export interface ButtonProps<P = "button", V = "", T = "">
   vol?: Volume;
   /** Applies width of 100%. */
   fullWidth?: boolean;
+  /** Less 'spaced' version. */
+  isCompact?: boolean;
   /** Is the button a Call To Action */
   isCta?: boolean;
   /** isLoading */
@@ -62,6 +64,8 @@ function Button<
     tone = "lead",
     variant = "primary",
     vol = 3,
+    isCta,
+    isCompact,
     isDisabled,
     isLoading = false,
     loadingText,
@@ -92,6 +96,8 @@ function Button<
       variant: variant || undefined,
       tone: tone || undefined,
       vol: vol || undefined,
+      isCta,
+      isCompact,
       isFocusVisible,
       isPressed,
       isDisabled,

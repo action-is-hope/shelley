@@ -3,6 +3,7 @@ import { Item } from "@react-stately/collections";
 import {
   Button,
   ButtonGroup,
+  IconButton,
   Menu,
   MenuTrigger,
   MenuTriggerProps,
@@ -52,12 +53,11 @@ export const IconTriggerMenu = (args: MenuTriggerProps) => {
       // trigger="longPress"
       {...args}
     >
-      <Button>
+      <IconButton>
         <Icon alt="Block settings">
           <path d="M14 7h-5v-5h-2v5h-5v2h5v5h2v-5h5v-2z"></path>
         </Icon>
-        Actions
-      </Button>
+      </IconButton>
       <Menu onAction={(i) => console.log("Menu onAction", i)}>
         <Item key="page">Page</Item>
         <Item key="blog">Blog post</Item>
@@ -75,10 +75,11 @@ export const MultipleSelectionMenuTrigger = () => {
       // closeOnSelect={false}
       hideArrow
     >
-      <Button
-        tone="light"
-        variant="fab"
-        vol={1}
+      <IconButton
+        tone="lead"
+        variant="quiet"
+        // isFab
+        vol={2}
         icon={
           <Icon alt="Block settings">
             <g id="ellipsis-dots-h">
@@ -153,12 +154,9 @@ export const CustomInlineMenu = () => {
       offset={20}
       popupClassName={triggerExample.inlineMenuPopup}
     >
-      <Button
-        tone="support"
-        variant="fab"
-        vol={2}
-        icon={<AddIcon alt="Add item" />}
-      />
+      <IconButton tone="support" isFab vol={2}>
+        <AddIcon alt="Add item" />
+      </IconButton>
       <Menu
         selectionMode="none"
         onAction={(value) => console.log(value)}

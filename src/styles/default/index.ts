@@ -3,8 +3,6 @@ import "./allGlobal.st.css";
 
 // = Foundation Components
 import "./appBar.st.css";
-// import "./buttonBase.st.css";
-// import "./actionButton.st.css";
 import "./button.st.css";
 import "./iconButton.st.css";
 import "./buttonGroup.st.css";
@@ -31,6 +29,8 @@ import "./menuItem.st.css";
 import "./modal.st.css";
 import "./notification.st.css";
 import "./popup.st.css";
+import "./progressBar.st.css";
+import "./progressCircle.st.css";
 import "./radio.st.css";
 import "./switch.st.css";
 import "./tableView.st.css";

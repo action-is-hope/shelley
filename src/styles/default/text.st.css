@@ -7,7 +7,13 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Text/text.st.css
  * 
  */
-@st-import [] from "./project.st.css";
+@st-import [
+  --color-focus,
+  --color-ui-rgb,
+  --link-color,
+  --tone-lead-rgb,
+  --tone-lead
+] from "./project.st.css";
 
 @st-import Text from "../../Text/text.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
@@ -26,7 +32,30 @@
   textVol11,
 ] from "./mixins/textVol.st.css";
 
-@st-scope body {
+@st-scope {
+
+  Text {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  Text a {
+    text-decoration: underline 0.05em rgba(var(--color-ui-rgb), 0.15);
+    text-underline-offset: 0.3em;
+    transition: color 0.3s, text-decoration-color 0.3s, text-underline-offset 0.3s;
+    outline: none;
+    color: var(--link-color);
+  }
+
+  Text a:hover {
+    text-decoration-color: var(--link-color);
+  }
+
+  Text a:focus-visible {
+    outline: 1px dashed var(--color-focus);
+    outline-offset: -1px;
+    text-decoration: transparent;
+  }
 
   /* = Volumes */
 
@@ -104,7 +133,6 @@
 
   Text:vol(10) {
     -st-mixin: textVol10;
-    font-weight: 300;
   }
 
   Text:vol(10) Icon {
@@ -113,52 +141,46 @@
 
   Text:vol(11) {
     -st-mixin: textVol11;
-    font-weight: 300;
   }
 
   Text:vol(11) Icon {
     font-size: 88px;
   }
 
-
   /* = Weights */
-  /** 
-   * :not(any) is a specificity hack ensuring these are applied even if a 
-   * theme has set defaults on them via the volumes. 
-   */
-  Text:weight(1):not(any) {
+  Text:weight(1) {
     font-weight: 100;
   }
 
-  Text:weight(2):not(any) {
+  Text:weight(2) {
     font-weight: 200;
   }
 
-  Text:weight(3):not(any) {
+  Text:weight(3) {
     font-weight: 300;
   }
 
-  Text:weight(4):not(any) {
+  Text:weight(4) {
     font-weight: 400;
   }
 
-  Text:weight(5):not(any) {
+  Text:weight(5) {
     font-weight: 500;
   }
 
-  Text:weight(6):not(any) {
+  Text:weight(6) {
     font-weight: 600;
   }
 
-  Text:weight(7):not(any) {
+  Text:weight(7) {
     font-weight: 700;
   }
 
-  Text:weight(8):not(any) {
+  Text:weight(8) {
     font-weight: 800;
   }
 
-  Text:weight(9):not(any) {
+  Text:weight(9) {
     font-weight: 900;
   }
 
@@ -213,6 +235,27 @@
 
   Text:lineClamp(10) {
     -webkit-line-clamp: 10;
+  }
+
+  /* = Uppercase */
+  Text:uppercase {
+    letter-spacing: .25em;
+  }
+
+  Text:vol(1):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(2):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(3):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(4):uppercase {
+    letter-spacing: .31em;
   }
 
   Text:hasAdornment {

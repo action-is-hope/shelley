@@ -1,5 +1,5 @@
 @st-namespace "dialog";
-@st-import Button from "../Button/button.st.css";
+@st-import IconButton from "../Button/iconButton.st.css";
 
 .root {
   -st-states:
@@ -10,7 +10,7 @@
 .grid {}
 
 .closeButton {
-  -st-extends: Button;
+  -st-extends: IconButton;
 }
 
 /* Grid helpers to be placed on children. */

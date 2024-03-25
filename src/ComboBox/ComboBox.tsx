@@ -158,9 +158,9 @@ function ComboBox<T extends object>(
         ref={listBoxRef}
         {...{
           loadingState,
-          shouldFocusOnHover,
           state,
           ...listBoxProps,
+          shouldFocusOnHover,
           "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       />

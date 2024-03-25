@@ -5,8 +5,10 @@
     selectionMode(enum(none, single, multiple)),
     isDisabled,
     isFocused,
-    isSelected,
-    isFocusVisible;
+    isFocusVisible,
+    isHovered,
+    isPressed,
+    isSelected;
 }
 
 .selectedIcon {}

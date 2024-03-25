@@ -20,7 +20,7 @@
     --loader-circle-large-height: 64px;
     --loader-circle-large-border-size: 4px;
 
-    --loader-circle-track-fill-color: var(--color-tone-lead);
+    --loader-circle-track-fill-color: var(--progress-fill-color);
     --loader-circle-track-color: rgba(var(--color-ui-rgb), 0.2);
 
     /* Defaults to medium */

@@ -1,6 +1,7 @@
 @st-namespace "tag";
 
 @st-import IconButton from "../Button/iconButton.st.css";
+@st-import Text from "../Text/text.st.css";
 
 .root {
   -st-states:
@@ -11,6 +12,7 @@
     isHovered,
     isPressed,
     isSelected;
+  -st-extends: Text;
 }
 
 .content {}

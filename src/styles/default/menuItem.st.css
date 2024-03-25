@@ -14,6 +14,8 @@
 @st-import [
     menuItem,
     menuItemDisabled,
+    menuItemHover,
+    
     menuItemFocusVisible,
     menuItemText,
     menuItemSelectedIcon
@@ -35,6 +37,14 @@
 
   MenuItem:isDisabled {
     -st-mixin: menuItemDisabled;
+  }
+
+  MenuItem:isFocused {
+    -st-mixin: menuItemHover;
+  }
+
+  MenuItem:isSelected {
+    /* -st-mixin: menuItemSelected; */
   }
 
   MenuItem:isFocusVisible {

@@ -12,7 +12,7 @@
     --loader-bar-size-medium: 8px;
     --loader-bar-size-large: 12px;
 
-    --loader-bar-track-fill-color: var(--color-tone-lead);
+    --loader-bar-track-fill-color: var(--progress-fill-color);
     --loader-bar-track-color: rgba(var(--color-ui-rgb), 0.2);
     --loader-border-radius: calc(var(--loader-bar-size) / 2);
 

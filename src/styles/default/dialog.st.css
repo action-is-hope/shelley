@@ -9,11 +9,16 @@
  */
 @st-import [
   --spacing-unit,
+  --color-ui,
   --dialog-bg,
   --dialog-color,
-  --dialog-radius
+  --dialog-radius,
+  --box-shadow-dialog
 ] from "./project.st.css";
 @st-import Dialog, [divider] from "../../Dialog/dialog.st.css";
+@st-import Popup from "../../Popup/popup.st.css";
+
+
 
 @st-scope body {
   Dialog {
@@ -31,6 +36,13 @@
     color: var(--dialog-color);
     border-radius: var(--dialog-border-radius);
     width: calc(100vw - var(--dialog-padding-x));
+    box-shadow: var(--box-shadow-dialog);
+  }
+
+  /* Reset background and shadow when used inside a Popup */
+  Popup Dialog {
+    background-color: none;
+    box-shadow: none;
   }
 
   Dialog:size(fullscreen) {
@@ -91,6 +103,7 @@
   Dialog::closeButton {
     grid-area: closeButton;
     place-self: center center;
+    color: var(--color-ui);
   }
 
   Dialog::content {

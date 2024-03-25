@@ -88,17 +88,17 @@ export const globalTypes = {
       icon: "switchalt",
       title: "Theme Switch",
       items: [
-        {
-          value: "",
-          title: "Base",
-        },
+        // {
+        //   value: "",
+        //   title: "Base",
+        // },
         {
           value: "shelley",
-          title: "Shelley",
+          title: "Light",
         },
         {
           value: "shelley shelley-dark",
-          title: "ShelleyDark",
+          title: "Dark",
         },
       ],
     },
@@ -111,7 +111,18 @@ const withShelleyTheme = (Story, context) => {
     "data-theme",
     context.globals.shelleyTheme
   );
-  return <Story {...context} />;
+  return (
+    <div
+      style={{
+        background:
+          context.globals.shelleyTheme === "shelley shelley-dark"
+            ? "rgb(23, 26, 35)"
+            : "#fff",
+      }}
+    >
+      <Story {...context} />
+    </div>
+  );
 };
 
 export const decorators = [withShelleyTheme];

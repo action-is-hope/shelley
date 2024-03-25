@@ -7,8 +7,22 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Modal/modal.st.css
  * 
  */
-@st-import [--modal-backdrop-bg] from "./project.st.css";
-@st-import Modal, [blurBackground, backdrop, content] from "../../Modal/modal.st.css";
+@st-import [
+  --modal-backdrop-bg
+] from "./project.st.css";
+@st-import Modal, [
+  blurBackground,
+  backdrop,
+  content
+] from "../../Modal/modal.st.css";
+
+
+@st-scope {
+  .blurBackground [data-focus-on-hidden]:not(Modal, Modal *) {
+    opacity: .5;
+    filter: blur(2px);
+  }
+}
 
 @st-scope body {
   Modal {
@@ -26,11 +40,6 @@
 
   Modal:variant(fixed) {
     position: fixed;
-  }
-
-  .blurBackground [data-focus-on-hidden]:not(Modal, Modal *) {
-    opacity: .5;
-    filter: blur(2px);
   }
 
   Modal::backdrop {

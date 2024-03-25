@@ -26,7 +26,7 @@
 @st-import Field from "../../Field/field.st.css";
 @st-import Button from "../../Button/button.st.css";
 @st-import [--border-radius as --button-radius] from "./button.st.css";
-@st-import [respScale] from "../formatters/common";
+@st-import [respScale] from "./formatters/common";
 @st-import [
     hideWebkitAppearance,
     disabledField,

@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "../Button";
+import { IconButton } from "../Button";
 import { DialogContext, DialogContextValue } from "./context";
 import { mergeRefs, mergeProps } from "@react-aria/utils";
 import React, { useContext, useRef, ReactNode, Children } from "react";
@@ -23,8 +23,6 @@ export interface DialogProps
   onDismiss?: () => void;
   /** An icon to use as your close icon. */
   closeIcon?: ReactNode;
-  /** An icon to use as your close icon. */
-  closeIconText?: string;
   /** A aria-label for the close button. */
   dismissLabel?: string;
 }
@@ -39,7 +37,6 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
     onDismiss = contextProps.onClose,
     size: sizeProp,
     closeIcon,
-    closeIconText,
     dismissLabel = "Close dialog",
     "data-id": dataId,
     ...rest
@@ -82,16 +79,16 @@ function Dialog(props: DialogProps, ref: React.Ref<HTMLElement>) {
           }
         })}
         {isDismissable && (
-          <Button
+          <IconButton
             vol={2}
             className={classes.closeButton}
+            tone={false}
             aria-label={dismissLabel}
             onPress={onDismiss}
             data-id={dataId ? `${dataId}--closeButton` : undefined}
-            icon={closeIcon || <Close />}
           >
-            {closeIconText}
-          </Button>
+            {closeIcon || <Close />}
+          </IconButton>
         )}
       </div>
     </section>

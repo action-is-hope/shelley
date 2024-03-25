@@ -11,20 +11,19 @@
   --spacing-unit,
   --button-radius,
   --button-border-width,
+  --button-hover-rgb,
   --light-01,
-  --dark-01,
-  --dark-02-rgb,
+  --dark-02,
   --color-ui,
   --color-ui-inverse,
   --color-ui-rgb,
   --color-ui-rgb-inverse,
-  --color-brand,
   --tone-lead,
   --tone-support,
   --tone-info,
   --tone-success,
   --tone-warning,
-  --tone-danger,
+  --tone-alert,
   --tone-light,
   --tone-dark,
   --tone-contrast,
@@ -34,7 +33,7 @@
 @st-import ButtonGroup from "../../Button/buttonGroup.st.css";
 @st-import [ --seperator-color ]from "./buttonGroup.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
-@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
+@st-import [visuallyHidden] from "./mixins/visuallyHidden.st.css";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
@@ -79,6 +78,16 @@
     text-decoration: none;
   }
 
+  Button:isCta {
+    --border-radius: 999em;
+    padding: 0.4em 2em;
+  }
+
+  Button:isCompact {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+
   /* = Inner <span> */
   Button::inner {
     position: relative;
@@ -87,7 +96,7 @@
     padding-bottom: 0.55em;
   }
 
-  /* = Divider - a <span> */
+  /* = Divider - <span> */
   Button::divider {
     display: inline-block;
     width: 1em;
@@ -116,14 +125,13 @@
     opacity: 0;
     border-radius: var(--border-radius);
     border-width: var(--border-width);
-    background-color: rgba(var(--dark-02-rgb), 0.2);
+    background-color: rgba(var(--button-hover-rgb), 0.4);
   }
 
   Button:isPressed::before {
-    background-color: rgba(var(--dark-02-rgb), 0.4);
+    background-color: rgba(var(--button-hover-rgb), 0.6);
   }
 
-  Button:not(Button:isDisabled):hover::before,
   Button:not(Button:isDisabled):hover::before {
     opacity: 1;
   }
@@ -157,9 +165,33 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  Button:variant(secondary)::before {
+    background-color: var(--tone);
+  }
+
+  Button:variant(secondary):not(Button:isDisabled):hover::before {
+    opacity: 0.15;
+  }
+
+  Button:variant(secondary):not(Button:isDisabled):isPressed:hover::before {
+    opacity: 0.2;
+  }
+
   /* = Variant: 'quiet' */
   Button:variant(quiet) {
     --text-color: var(--tone);
+  }
+
+  Button:variant(quiet)::before {
+    background-color: var(--tone);
+  }
+
+  Button:variant(quiet):not(Button:isDisabled):hover::before {
+    opacity: 0.15;
+  }
+
+  Button:variant(quiet):not(Button:isDisabled):isPressed:hover::before {
+    opacity: 0.2;
   }
 
   /* = Seperator color for when in a group. */
@@ -167,11 +199,9 @@
     --seperator-color: var(--tone);
   }
 
-  /* = Tones */
-  Button:tone(brand) {
-    --tone: var(--color-brand);
-  }
 
+
+  /* = Tones */
   Button:tone(lead) {
     --tone: var(--tone-lead);
   }
@@ -192,8 +222,8 @@
     --tone: var(--tone-warning);
   }
 
-  Button:tone(danger) {
-    --tone: var(--tone-danger);
+  Button:tone(alert) {
+    --tone: var(--tone-alert);
   }
 
   Button:tone(light) {
@@ -201,7 +231,7 @@
   }
 
   Button:tone(light):variant(primary) {
-    color: var(--dark-01)
+    color: var(--dark-02);
   }
 
   Button:tone(dark) {
@@ -217,7 +247,7 @@
   }
 
   Button:tone(contrast):variant(primary) {
-    color: var(--color-ui);
+    color: var(--color-ui-inverse);
   }
 
   /* = Disabled */
@@ -238,7 +268,7 @@
   }
 
   Button:vol(3) {
-    -st-mixin: textVol(minValue 0.8, maxValue 0.78, lineHeight 1.1);
+    -st-mixin: textVol(minValue 0.8, maxValue 0.78);
   }
 
   Button:vol(4) {
@@ -246,7 +276,7 @@
   }
 
   Button:vol(5) {
-    -st-mixin: textVol(minValue 1, maxValue 1, lineHeight 1.15);
+    -st-mixin: textVol(minValue 1, maxValue 1, lineHeight 1.2);
   }
 
   Button:vol(6) {

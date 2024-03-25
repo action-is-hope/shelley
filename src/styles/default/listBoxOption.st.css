@@ -17,6 +17,7 @@
     menuItemDisabled,
     menuItemFocusVisible,
     menuItemText,
+    menuItemHover,
     menuItemSelectedIcon
 ] from "./mixins/menuList.st.css";
 
@@ -29,10 +30,6 @@
     -st-mixin: menuItemDisabled;
   }
 
-  ListBoxOption:isFocusVisible {
-    -st-mixin: menuItemFocusVisible;
-  }
-
   ListBoxOption::text {
     -st-mixin: menuItemText;
   }
@@ -41,8 +38,15 @@
     -st-mixin: menuItemSelectedIcon;
   }
 
-  /* @todo Move to ComboBox when it is possible. */
+  ListBoxOption:isHovered {
+    -st-mixin: menuItemHover;
+  }
+
+  ListBoxOption:isFocusVisible {
+    -st-mixin: menuItemFocusVisible;
+  }
+
   ListBoxOption:isFocused {
-    background-color: var(--option-item-bg-hover);
+    -st-mixin: menuItemHover;
   }
 }

@@ -12,7 +12,7 @@
   --radius
 ] from "./project.st.css";
 @st-import VisuallyHidden from "../../VisuallyHidden/visuallyHidden.st.css";
-@st-import [visuallyHidden] from "../mixins/visuallyHidden.st.css";
+@st-import [visuallyHidden] from "./mixins/visuallyHidden.st.css";
 
 
 @st-scope body {

@@ -12,6 +12,7 @@
 @st-import [
     menuItem,
     menuItemDisabled,
+    menuItemHover,
     menuItemFocusVisible,
     menuItemText,
     menuItemSelectedIcon
@@ -36,7 +37,7 @@
   }
 
   ComboBoxMultiSelectItem:isFocused {
-    -st-mixin: menuItemFocusVisible;
+    -st-mixin: menuItemHover;
   }
 
   ComboBoxMultiSelectItem::text {

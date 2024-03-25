@@ -11,17 +11,17 @@
   --spacing-unit,
   --bg-main,
   --color-focus,
-  --color-background-row,
-  --color-text-row,
-  --color-background-row-isPressed,
-  --color-text-row-isPressed,
-  --color-background-row-isSelected,
-  --color-text-row-isSelected,
-  --color-background-row-isHovered,
-  --color-text-row-isHovered,
-  --color-background-row-isHoveredSelected,
-  --color-text-row-isHoveredSelected,
-  --color-border-tbody
+  --table-row-bg,
+  --table-row-color,
+  --table-row-bg-isPressed,
+  --table-row-color-isPressed,
+  --table-row-bg-isSelected,
+  --table-row-color-isSelected,
+  --table-row-bg-isHovered,
+  --table-row-color-isHovered,
+  --table-row-bg-isHoveredSelected,
+  --table-row-color-isHoveredSelected,
+  --table-tbody-border
 ] from "./project.st.css";
 @st-import TableView, [cell] from "../../TableView/tableView.st.css";
 @st-import [textVol, textVol1, textVol2] from "./mixins/textVol.st.css";
@@ -29,18 +29,18 @@
 
 @st-scope body {
   TableView {
-    --color-background-row: var(--color-background-row);
-    --color-text-row: var(--color-text-row);
-    --color-background-row-isPressed: var(--color-background-row-isPressed);
-    --color-text-row-isPressed: var(--color-text-row-isPressed);
-    --color-background-row-isSelected: var(--color-background-row-isSelected);
-    --color-text-row-isSelected: var(--color-text-row-isSelected);
-    --color-background-row-isHovered: var(--color-background-row-isHovered);
-    --color-text-row-isHovered: var(--color-text-row-isHovered);
-    --color-background-row-isHoveredSelected: var(--color-background-row-isHoveredSelected);
-    --color-text-row-isHoveredSelected: var(--color-text-row-isHoveredSelected);
-    --color-border-tbody: var(--color-border-tbody);
-    border-bottom: 1px solid var(--color-border-tbody);
+    /* --table-row-bg: var(--table-row-bg);
+    --table-row-color: var(--table-row-color);
+    --table-row-bg-isPressed: var(--table-row-bg-isPressed);
+    --table-row-color-isPressed: var(--table-row-color-isPressed);
+    --table-row-bg-isSelected: var(--table-row-bg-isSelected);
+    --table-row-color-isSelected: var(--table-row-color-isSelected);
+    --table-row-bg-isHovered: var(--table-row-bg-isHovered);
+    --table-row-color-isHovered: var(--table-row-color-isHovered);
+    --table-row-bg-isHoveredSelected: var(--table-row-bg-isHoveredSelected);
+    --table-row-color-isHoveredSelected: var(--table-row-color-isHoveredSelected);
+    --table-tbody-border: var(--table-tbody-border); */
+    /* border-bottom: 1px solid var(--table-tbody-border); */
     overflow: auto;
   }
 
@@ -69,29 +69,29 @@
 
   TableView::row {
     outline: none;
-    transition: background-color 20ms, color 20ms;
-    background-color: var(--color-background-row);
-    color: var(--color-text-row);
+    /* transition: background-color 20ms, color 20ms; */
+    background-color: var(--table-row-bg);
+    color: var(--table-row-color);
   }
 
   TableView::row:isHovered {
-    background-color: var(--color-background-row-isHovered);
-    color: var(--color-text-row-isHovered);
+    background-color: var(--table-row-bg-isHovered);
+    color: var(--table-row-color-isHovered);
   }
 
   TableView::row:isPressed {
-    background-color: var(--color-background-row-isPressed);
-    color: var(--color-text-row-isPressed);
+    background-color: var(--table-row-bg-isPressed);
+    color: var(--table-row-color-isPressed);
   }
 
   TableView::row:isSelected {
-    background-color: var(--color-background-row-isSelected);
-    color: var(--color-text-row-isSelected);
+    background-color: var(--table-row-bg-isSelected);
+    color: var(--table-row-color-isSelected);
   }
 
   TableView::row:isSelected:isHovered {
-    background-color: var(--color-background-row-isHoveredSelected);
-    color: var(--color-text-row-isHoveredSelected);
+    background-color: var(--table-row-bg-isHoveredSelected);
+    color: var(--table-row-color-isHoveredSelected);
   }
 
   TableView::row:isFocusVisible {
@@ -108,15 +108,15 @@
 
   TableView::column,
   TableView::cell {
-    border-bottom: 1px solid var(--color-border-tbody);
+    border-bottom: 1px solid var(--table-tbody-border);
   }
 
   TableView::cell:first-child {
-    border-left: 1px solid var(--color-border-tbody);
+    border-left: 1px solid var(--table-tbody-border);
   }
 
   TableView::cell:last-child {
-    border-right: 1px solid var(--color-border-tbody);
+    border-right: 1px solid var(--table-tbody-border);
   }
 
   TableView::row:last-child .cell {

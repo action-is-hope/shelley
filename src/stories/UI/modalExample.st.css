@@ -1,7 +1,6 @@
 @st-import Modal, [enter, enterActive, enterDone, exit, exitActive, content, backdrop] from "../../Modal/modal.st.css";
-@st-import Shelley from "../../styles/shelley/project.st.css";
 
-@st-scope Shelley {
+@st-scope body {
 
   /* Backdrop - Any backdrop styles*/
   Modal:transition(myTransition) .backdrop {}

@@ -111,7 +111,6 @@
     textVol(minValue value(text-vol-10-min),
       maxValue value(text-vol-10-max),
       lineHeight value(text-vol-10-line-height));
-  font-weight: 300;
 }
 
 .textVol11 {
@@ -119,5 +118,4 @@
     textVol(minValue value(text-vol-11-min),
       maxValue value(text-vol-11-max),
       lineHeight value(text-vol-11-line-height));
-  font-weight: 300;
 }

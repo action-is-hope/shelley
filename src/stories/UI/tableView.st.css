@@ -1,11 +1,10 @@
 @st-import TableView, [] from "../../TableView/tableView.st.css";
-@st-import Shelley from "../../styles/shelley/project.st.css";
 
 .layoutExample {
   -st-extends: TableView;
 }
 
-@st-scope Shelley {
+@st-scope body {
   .layoutExample {
     height: 30vh;
   }

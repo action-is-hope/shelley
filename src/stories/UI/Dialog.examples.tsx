@@ -12,10 +12,12 @@ import {
 
 import { classes as dialog } from "../../Dialog/dialog.st.css";
 import { classes as dialogExample } from "./dialogExample.st.css";
+// @ts-ignore
+import heroImage from "../assets/climate-img1.jpeg";
 
 export const BasicDialog = (args: DialogProps) => {
   return (
-    <div style={{ backgroundColor: "#000", width: "fit-content" }}>
+    <div style={{ width: "fit-content", justifySelf: "center" }}>
       <Dialog {...args}>
         <H2 className={dialog.title} vol={4} data-title>
           Internet Speed Test
@@ -40,7 +42,7 @@ export const BasicDialog = (args: DialogProps) => {
 
 export const GridAreas = (args: DialogProps) => {
   return (
-    <div style={{ backgroundColor: "#000", width: "fit-content" }}>
+    <div style={{ width: "fit-content", justifySelf: "center" }}>
       <Dialog {...args} className={dialogExample.gridAreaExample}>
         <span className={dialog.hero}>hero</span>
         <span className={dialog.title} data-title>
@@ -123,10 +125,7 @@ export const HeroDialog = (args: DialogTriggerProps) => {
       {(close) => (
         <Dialog>
           <div className={dialog.hero}>
-            <img
-              src="https://climatevisuals.org/wp-content/uploads/2022/10/4478-2048x1365.jpg"
-              alt=""
-            />
+            <img src={heroImage} alt="" />
           </div>
 
           <H2 vol={4} className={dialog.title} data-title>

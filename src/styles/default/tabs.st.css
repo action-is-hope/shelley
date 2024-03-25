@@ -9,7 +9,7 @@
  */
 @st-import [
   --spacing-unit,
-  --color-ui-inverse,
+  --bg-secondary,
   --color-ui-rgb,
   --tone-lead
 ] from "./project.st.css";
@@ -69,13 +69,13 @@
   Tabs::tabList {
     display: flex;
     gap: calc(var(--spacing-unit) / 2);
-    border-bottom: 2px solid var(--color-ui-inverse);
+    border-bottom: 2px solid var(--bg-secondary);
   }
 
   Tabs:orientation(vertical)::tabList {
     flex-direction: column;
     border-bottom: none;
-    border-right: 2px solid var(--color-ui-inverse);
+    border-right: 2px solid var(--bg-secondary);
   }
 
   /*= Tab =*/

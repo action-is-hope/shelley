@@ -8,19 +8,22 @@
  */
 @st-import [
   --spacing-unit,
-  --tone-lead-subtle,
-  --tone-support-subtle,
-  --tone-info-subtle,
-  --tone-success-subtle,
-  --tone-warning-subtle,
-  --tone-alert-subtle,
-  --tone-light-subtle,
-  --tone-dark-subtle,
-  --tone-contrast-subtle,
+  --light-01-rgb,
+  --dark-01-rgb,
+  --color-ui,
+  --color-ui-rgb,
+  --tone-lead-rgb,
+  --tone-support-rgb,
+  --tone-info-rgb,
+  --tone-success-rgb,
+  --tone-warning-rgb,
+  --tone-alert-rgb,
+  --tone-contrast-rgb,
   --notification-radius,
   --notification-header-color
 ] from "./project.st.css";
 @st-import Notification from "../../Notification/notification.st.css";
+@st-import [--tone] from "./notification.st.css";
 
 @st-import [textVol1, textVol2] from "./mixins/textVol.st.css";
 
@@ -58,12 +61,11 @@
     flex-flow: wrap;
   }
 
-  Notification::title:not(.false) {
+  Notification::title {
     line-height: 1.3;
-    font-weight: 700;
   }
 
-  Notification::subtitle:not(.false) {
+  Notification::subtitle {
     font-size: 0.85em;
     line-height: 1.4;
   }
@@ -79,9 +81,15 @@
   }
 
   Notification::closeButton {
+    align-self: center;
+    color: var(--color-ui);
     margin-top: calc(var(--spacing-unit) * -0.5);
     margin-right: calc(var(--spacing-unit) * -0.5);
     margin-bottom: calc(var(--spacing-unit) * -0.5);
+  }
+
+  Notification::closeButton::before {
+    background-color: rgba(var(--color-ui-rgb), 0.1);
   }
 
   Notification::footer {
@@ -94,39 +102,39 @@
 
   /* Color setting */
   Notification:tone(lead) {
-    background-color: var(--tone-lead-subtle);
+    background-color: rgba(var(--tone-lead-rgb), 0.25);
   }
 
   Notification:tone(support) {
-    background-color: var(--tone-support-subtle);
+    background-color: rgba(var(--tone-support-rgb), 0.25);
   }
 
   Notification:tone(info) {
-    background-color: var(--tone-info-subtle);
+    background-color: rgba(var(--tone-info-rgb), 0.25);
   }
 
   Notification:tone(success) {
-    background-color: var(--tone-success-subtle);
+    background-color: rgba(var(--tone-success-rgb), 0.25);
   }
 
   Notification:tone(warning) {
-    background-color: var(--tone-warning-subtle);
+    background-color: rgba(var(--tone-warning-rgb), 0.25);
   }
 
   Notification:tone(alert) {
-    background-color: var(--tone-alert-subtle);
+    background-color: rgba(var(--tone-alert-rgb), 0.25);
   }
 
   Notification:tone(light) {
-    background-color: var(--tone-light-subtle);
+    background-color: rgba(var(--light-01-rgb), 0.25);
   }
 
   Notification:tone(dark) {
-    background-color: var(--tone-dark-subtle);
+    background-color: rgba(var(--dark-01-rgb), 0.25);
   }
 
   Notification:tone(contrast) {
-    background-color: var(--tone-contrast-subtle);
+    background-color: rgba(var(--tone-contrast-rgb), 0.25);
   }
 }
 

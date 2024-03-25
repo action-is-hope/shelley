@@ -3,7 +3,7 @@ import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
 import { ComboBoxProps, ComboBox, P, Grid } from "../../indexLib";
 import { useTreeData } from "react-stately";
-import { classes as sr } from "../../styles/mixins/visuallyHidden.st.css";
+import { classes as sr } from "../../styles/default/mixins/visuallyHidden.st.css";
 
 /**
  * TypeDoc is not liking finding types when forward ref and generic

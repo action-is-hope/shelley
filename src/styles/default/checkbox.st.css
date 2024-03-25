@@ -72,6 +72,10 @@
   Checkbox:isIndeterminate::input {
     -st-mixin: CheckboxIsIndeterminate;
   }
+  
+  Checkbox:isIndeterminate::input::before {
+    transition: none;
+  }
 
   Checkbox:isInvalid::text {
     color: var(--color-error);

@@ -4,7 +4,8 @@
 .root {
   -st-states:
     iconPos(enum(top, end, bottom, start)),
-    cta,
+    isCompact,
+    isCta,
     fullWidth,
     tone(string),
     variant(string),
@@ -19,7 +20,6 @@
 
 /* The divider which is rendered with an icon only. */
 .divider {}
-
 
 .loader {
   -st-extends: ProgressCircle

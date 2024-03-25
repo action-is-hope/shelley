@@ -8,7 +8,7 @@
  * can be overridden in branded project files.
  */
 @st-namespace "Base";
-@st-import [multiply, divide, respScale] from "../formatters/common";
+@st-import [multiply, divide, respScale] from "./formatters/common";
 
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
 :vars {
@@ -133,7 +133,6 @@
   text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
   text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
 
-  /*=== LAYOUT AND GRID ===*/
 }
 
 /*=== ROOT LEVEL CSS VARIABLES ===*/
@@ -153,46 +152,59 @@
   --light-01: rgb(255, 255, 255);
 
   /* = Core dark. */
-  --dark-01-rgb: 51, 51, 51;
-  --dark-01: rgb(51, 51, 51);
-  --dark-02-rgb: 0, 0, 0;
-  --dark-02: rgb(0, 0, 0);
+  --dark-01-rgb: 0, 0, 0;
+  --dark-01: rgb(var(--dark-01-rgb));
+  --dark-02-rgb: 51, 51, 51;
+  --dark-02: rgb(var(--dark-02-rgb));
 
   --bg-main: white;
-  --bg-secondary: lightgrey;
-  --color-brand: black;
+  --bg-secondary: rgba(239, 239, 239, 1);
 
   /* = Foreground colours - main and inverted plus rgb versions as 'rgb'. */
-  --color-ui: var(--dark-01);
+  --color-ui: var(--dark-02);
   --color-ui-inverse: var(--light-01);
-  --color-ui-rgb: var(--dark-01-rgb);
+  --color-ui-rgb: var(--dark-02-rgb);
   --color-ui-rgb-inverse: var(--light-01-rgb);
 
   /* = Indicators */
-  --color-focus: dodgerblue;
+  --color-focus: rgb(255, 130, 0);
   --color-error: indianred;
 
-  /* = Tones - main */
-  --tone-lead: darkslategray;
-  --tone-support: darkcyan;
-  --tone-info: steelblue;
-  --tone-success: mediumseagreen;
-  --tone-warning: darkorange;
-  --tone-danger: indianred;
+  /* = Tones */
+  /* lead */
+  --tone-lead-rgb: 6, 92, 103;
+  --tone-lead: rgb(var(--tone-lead-rgb));
+  /* support */
+  --tone-support-rgb: 9, 132, 134;
+  --tone-support: rgb(var(--tone-support-rgb));
+  /* info */
+  --tone-info-rgb: 230, 0, 122;
+  --tone-info: rgb(var(--tone-info-rgb));
+  /* success */
+  --tone-success-rgb: 38, 127, 94;
+  --tone-success: rgb(var(--tone-success-rgb));
+  /* warning */
+  --tone-warning-rgb: 199, 80, 0;
+  --tone-warning: rgb(var(--tone-warning-rgb));
+  /* alert */
+  --tone-alert-rgb: 226, 40, 55;
+  --tone-alert: rgb(var(--tone-alert-rgb));
+  /* other */
   --tone-light: white;
   --tone-dark: black;
-  --tone-contrast: white;
+  --tone-contrast-rgb: 51, 51, 51;
+  --tone-contrast: rgba(var(--tone-contrast-rgb), .8);
 
   /* = Tones - subtle */
-  --tone-lead-subtle: lavender;
-  --tone-support-subtle: azure;
+  --tone-lead-subtle: rgb(6 92 103);
+  --tone-support-subtle: #20a5bc;
   --tone-info-subtle: aliceblue;
   --tone-success-subtle: honeydew;
   --tone-warning-subtle: bisque;
-  --tone-alert-subtle: lightpink;
+  --tone-alert-subtle: #ef403b;
   --tone-dark-subtle: gray;
   --tone-light-subtle: white;
-  --tone-contrast-subtle: rgba(var(--color-ui-rgb), .2);
+  --tone-contrast-subtle: rgba(var(--dark-02-rgb), .8);
 
   /* = Generic Radii */
   --radius: 4px;
@@ -202,38 +214,38 @@
   --radius-xxl: 32px;
 
 
-  /* = Shadows (Well::panel, filter bar, Radio/Checkbox, Tab/PushButton, Pilled radio/checkbox),  */
+  /* = Shadows */
   --box-shadow: 0px 1px 4px 0px rgba(84, 86, 90, 0.24);
   /* comp based shadows */
   --box-shadow-card: 0px 4px 16px 0px rgba(84, 86, 90, 0.24);
   --box-shadow-drop: 0px 0px 40px 0px rgba(112, 144, 176, 0.3);
-  --box-shadow-modal: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  --box-shadow-dialog: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
   --box-shadow-toast: 0px 0px 16px 0px rgba(0, 0, 0, 0.34);
   /* other - tbc wip*/
   --box-shadow-other: 0px 1px 10px 0px rgba(84, 86, 90, 0.2);
 
   /* = Forms */
-  --field-border-color: rgba(200, 200, 200, 1);
-  --field-border-color-hasValue: rgba(84, 86, 90, 1);
+  --field-border-color: rgba(121, 170, 216, 0.5);
+  --field-border-color-hasValue: rgba(121, 170, 216, 1);
   --field-border-width: 1px;
   --field-bg: var(--bg-main);
   --field-bg-fill: lightgrey;
   --field-focus-color: var(--color-focus);
   --field-help-text-color: rgba(var(--light-01-rgb), 0.6);
-  /* --field-padding: calc(0.5rem + 0.1em) var(--spacing-unit); */
   --field-padding: calc(0.2rem + 0.2em) var(--spacing-unit);
   --field-placeholder-color: lightgrey;
   --field-radius: var(--radius);
   --field-selection-mark-color: var(--tone-lead);
   --field-selection-font-weight: 400;
-  --switch-unchecked-color: lightgrey;
-  --switch-border-width: var(--field-border-width);
+  --switch-unchecked-color: #a5a5a5;
+  --switch-border-width: 2px;
   --label-font-weight: 700;
   --label-color: var(--color-ui);
 
   /* = Buttons */
   --button-radius: var(--radius-lg);
   --button-border-width: 1px;
+  --button-hover-rgb: 23, 26, 35;
 
   /* = Progress */
   --progress-fill-color: var(--tone-lead);
@@ -244,15 +256,18 @@
   --font-family-title: Helvetica Neue, Helvetica, Arial, sans-serif;
 
   /* = Text */
-  --text-heading-color: var(--color-brand);
+  --text-heading-color: var(--color-ui);
 
   /* = Links */
-  --link-color: var(--tone-lead);
+  --link-color: var(--tone-support);
 
   /* = Menus */
   --menu-bg: rgb(23, 26, 35);
   /* 'option-item' refers to options within Menu, Select, ListBox, ComboBox etc. */
-  --option-item-bg-hover: rgba(0, 0, 0, 0.03);
+  --option-item-bg-hover: rgba(151, 218, 255, 0.15);
+  --option-item-bg-selected: rgba(0, 92, 185, 1);
+  --option-item-bg-selected-hover: rgba(151, 218, 255, 0.15);
+  --option-item-bg-disabled: rgba(200, 200, 200, 0.2);
 
   /* = Modal */
   --modal-backdrop-bg: rgba(0, 0, 0, 0.3);
@@ -272,27 +287,29 @@
 
   /* = Notification */
   --notification-radius: var(--radius-xl);
-  --notification-header-color: var(--color-brand);
+  --notification-header-color: var(--color-ui);
 
   /* = Toast colours */
-  --background-color-neutral: rgb(106, 106, 106);
-  --background-color-info: rgb(125 2 220);
-  --background-color-success: rgb(0, 122, 77);
-  --background-color-warning: rgb(255, 102, 0);
-  --background-color-alert: rgb(211, 21, 16);
+  --toast-color: var(--color-ui-inverse);
+  --toast-bg-neutral: rgb(66 66 66);
+  --toast-bg-info: var(--tone-info);
+  --toast-bg-success: var(--tone-success);
+  --toast-bg-warning: var(--tone-warning);
+  --toast-bg-alert: var(--tone-alert);
 
   /* = Table colours */
-  --color-background-row: var(--background-color-contrast-1);
-  --color-text-row: var(--color-text-3);
-  --color-background-row-isPressed: #1c1c1c;
-  --color-text-row-isPressed: var(--color-text-3);
-  --color-background-row-isSelected: #2b2e3b;
-  --color-text-row-isSelected: var(--color-text-3);
-  --color-background-row-isHovered: #2c2c2c;
-  --color-text-row-isHovered: var(--color-text-3);
-  --color-background-row-isHoveredSelected: #252835;
-  --color-text-row-isHoveredSelected: var(--color-text-3);
-  --color-border-tbody: rgba(var(--color-ui-raw), .15);
+  --table-row-bg: var(--bg-secondary);
+  --table-row-color: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isPressed: #f3f3f3;
+  --table-row-color-isPressed: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isSelected: #e9f0fc;
+  --table-row-color-isSelected: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isHovered: GhostWhite;
+  --table-row-color-isHovered: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isHoveredSelected: #dfedff;
+  --table-row-color-isHoveredSelected: rgba(var(--color-ui-rgb), 0.8);
+  --table-tbody-border: rgba(var(--color-ui-rgb), .15);
+
 
   /* = Grids */
   --grid-gap: 3vw;
@@ -363,4 +380,58 @@
 /* apply main bg to storybook stories */
 :global(.docs-story) {
   background-color: var(--bg-main);
+}
+
+
+/*=== Dark Theme Overrides ===*/
+
+.dark {
+  /* map .dark to: */
+  -st-global: ':root[data-theme*="shelley-dark"]';
+}
+
+.dark {
+  --bg-main: rgb(23, 26, 35);
+  --bg-secondary: #000;
+
+  --color-ui: rgb(var(--light-01-rgb));
+  --color-ui-rgb: var(--light-01-rgb);
+  --color-ui-inverse: var(--bg-main);
+  --color-ui-rgb-inverse: 23, 26, 35;
+
+  /* = Indicators */
+  --color-focus: rgb(255 202 80);
+  --color-error: rgb(253 0 0);
+
+  /* = Tone overrides */
+  --tone-lead-rgb: 117, 234, 255;
+  --tone-support-rgb: 24, 255, 216;
+  --tone-info-rgb: 255, 36, 152;
+  --tone-success-rgb: 87, 241, 148;
+  --tone-warning-rgb: 255, 125, 54;
+  --tone-alert-rgb: 255, 55, 71;
+  --tone-contrast-rgb: 255, 255, 255;
+
+  /* = Dialog*/
+  --dialog-bg: var(--bg-secondary);
+
+  /* = Popup */
+  --popup-bg: var(--bg-secondary);
+  --popup-border-width: 1px;
+  --popup-border-color: grey;
+
+  /* = Forms */
+  --switch-unchecked-color: #d1d1d1;
+
+  /* = Buttons */
+  --button-hover-rgb: 255, 255, 255;
+
+  /* = Table colours */
+  --table-row-bg-isPressed: #1c1c1c;
+  --table-row-bg-isSelected: #2b2e3b;
+  --table-row-bg-isHovered: #2c2c2c;
+  --table-row-bg-isHoveredSelected: #252835;
+
+  /*= Toast */
+  --toast-bg-neutral: rgb(199 199 199);
 }

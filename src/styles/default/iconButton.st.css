@@ -10,16 +10,17 @@
 
 @st-import [ 
   --light-01,
-  --dark-01,
+  --dark-02,
   --tone-contrast,
   --color-ui-rgb-inverse,
   --color-ui-inverse,
+  --box-shadow
 ] from "./project.st.css";
 @st-import IconButton from "../../Button/iconButton.st.css";
 @st-import [
   --border-radius,
   --bg-color,
-  --text-color
+  --text-color,
   --tone
 ] from "./button.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
@@ -28,6 +29,7 @@
 
   IconButton {
     padding: 10px;
+    justify-content: center;
     --border-radius: 999em;
   }
 
@@ -40,26 +42,8 @@
     border-radius: 999px;
   }
 
-  IconButton,
   IconButton:fab {
-    /* Assign tone which is set in ./buttonBase.st.css */
-    --bg-color: var(--tone);
-  }
-
-  IconButton:fab {
-    --text-color: var(--color-ui-inverse);
-  }
-
-  IconButton:tone(light):fab {
-    --text-color: var(--dark-01);
-  }
-
-  IconButton:tone(dark):fab {
-    --text-color: var(--light-01);
-  }
-
-  IconButton:tone(contrast):fab {
-    --text-color: var(--tone-contrast);
+    box-shadow: var(--box-shadow);
   }
 
   /*= 

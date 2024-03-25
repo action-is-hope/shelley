@@ -7,10 +7,11 @@
 
 @st-import Default, [
     --spacing-unit,
-    --field-border-color,
+    --field-border-color-hasValue,
     --field-border-width,
     --field-selection-mark-color,
     --field-selection-font-weight,
+    --bg-main,
     --field-focus-color,
     --switch-border-width,
     --switch-unchecked-color,
@@ -199,15 +200,15 @@
   justify-content: center;
   border-style: solid;
   border-width: 2px;
-  border-color: var(--field-border-color);
+  border-color: var(--field-border-color-hasValue);
   /* = pseudoFocus mixin replaces the default outline. */
   outline: none;
 }
 
 .SelectionControlFieldInput::after {
   /* = Field focus indicator, via pseudo element. */
-  /* -st-mixin: pseudoFocus(color var(--field-focus-color)); */
   -st-mixin: pseudoFocus;
+  inset: -4px;
 }
 
 .SelectionControlFieldInput:disabled {
@@ -222,10 +223,8 @@
 /* = The 'mark' of the field, radio and checkboxes both have one. */
 .RadioCheckboxCommon::before {
   content: "";
-  transition: opacity 120ms, height 120ms;
   width: 0.5em;
   height: 0.5em;
-  will-change: opacity;
   opacity: 0;
   display: block;
   background-color: var(--field-selection-mark-color);
@@ -256,7 +255,7 @@
 
 .CheckboxIsIndeterminate::before {
   opacity: 1;
-  height: 0.1em;
+  height: 0.125em;
 }
 
 
@@ -274,6 +273,7 @@
 
 .SwitchFieldInput::after {
   border-radius: 9999px;
+  display: none;
 }
 
 .SwitchFieldInput::before {
@@ -287,6 +287,10 @@
   will-change: translate, background-color;
   z-index: 1;
   background-color: var(--switch-unchecked-color);
+}
+
+.SwitchFieldInput:focus-visible::before {
+  box-shadow: inset 0 0 0 1px var(--bg-main), 0 0 1px 2px var(--field-focus-color);
 }
 
 .SwitchFieldInput:checked::before {
