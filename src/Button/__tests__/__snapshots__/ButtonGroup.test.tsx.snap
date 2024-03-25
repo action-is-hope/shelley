@@ -2,10 +2,10 @@
 
 exports[`ButtonGroup renders as a basic primary button group 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
+  className="btnGroup__Test__root btnGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -22,13 +22,13 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -45,13 +45,13 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -68,7 +68,7 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>
@@ -78,10 +78,10 @@ exports[`ButtonGroup renders as a basic primary button group 1`] = `
 
 exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal ButtonGroup__Test--isDisabled"
+  className="btnGroup__Test__root btnGroup__Test---orientation-10-horizontal btnGroup__Test--isDisabled"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 ButtonBase__Test--isDisabled Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-3 btn__Test--isDisabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -99,13 +99,13 @@ exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 ButtonBase__Test--isDisabled Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-3 btn__Test--isDisabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -123,13 +123,13 @@ exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 ButtonBase__Test--isDisabled Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-3 btn__Test--isDisabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -147,7 +147,7 @@ exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>
@@ -157,10 +157,10 @@ exports[`ButtonGroup renders button group with all buttons disabled 1`] = `
 
 exports[`ButtonGroup renders buttons with additional class name 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
+  className="btnGroup__Test__root btnGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-4 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -177,13 +177,13 @@ exports[`ButtonGroup renders buttons with additional class name 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-5 Button__Test__root btn-group-btn-item-applied"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-5 btn-group-btn-item-applied"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -200,13 +200,13 @@ exports[`ButtonGroup renders buttons with additional class name 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-4 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -223,7 +223,7 @@ exports[`ButtonGroup renders buttons with additional class name 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>
@@ -233,10 +233,10 @@ exports[`ButtonGroup renders buttons with additional class name 1`] = `
 
 exports[`ButtonGroup renders buttons with correct style class if overridden 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
+  className="btnGroup__Test__root btnGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-7-support ButtonBase__Test---vol-1-4 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-7-support btn__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -253,13 +253,13 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-info ButtonBase__Test---vol-1-5 Button__Test__root btn-group-btn-override"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-info btn__Test---vol-1-5 btn-group-btn-override"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -276,13 +276,13 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-7-support ButtonBase__Test---vol-1-4 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-7-support btn__Test---vol-1-4"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -299,7 +299,7 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>
@@ -309,10 +309,10 @@ exports[`ButtonGroup renders buttons with correct style class if overridden 1`] 
 
 exports[`ButtonGroup renders child buttons with style classes for #tone, #variant, #vol and #buttonClassName 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-10-horizontal"
+  className="btnGroup__Test__root btnGroup__Test---orientation-10-horizontal"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-9-secondary btn__Test---tone-5-alert btn__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -329,13 +329,13 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-9-secondary btn__Test---tone-5-alert btn__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -352,13 +352,13 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-9-secondary btn__Test---tone-5-alert btn__Test---vol-1-6"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -375,7 +375,7 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>
@@ -385,10 +385,10 @@ exports[`ButtonGroup renders child buttons with style classes for #tone, #varian
 
 exports[`ButtonGroup renders vertical button group 1`] = `
 <div
-  className="ButtonGroup__Test__root ButtonGroup__Test---orientation-8-vertical"
+  className="btnGroup__Test__root btnGroup__Test---orientation-8-vertical"
 >
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-1 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-1"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -405,13 +405,13 @@ exports[`ButtonGroup renders vertical button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       One
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-1 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-1"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -428,13 +428,13 @@ exports[`ButtonGroup renders vertical button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Two
     </span>
   </button>
   <button
-    className="ButtonBase__Test__root ButtonBase__Test---variant-5-quiet ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-1 Button__Test__root"
+    className="btn__Test__root btn__Test---variant-5-quiet btn__Test---tone-4-lead btn__Test---vol-1-1"
     onBlur={[Function]}
     onClick={[Function]}
     onDragStart={[Function]}
@@ -451,7 +451,7 @@ exports[`ButtonGroup renders vertical button group 1`] = `
     type="button"
   >
     <span
-      className="ButtonBase__Test__inner"
+      className="btn__Test__inner"
     >
       Three
     </span>

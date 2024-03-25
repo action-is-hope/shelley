@@ -2,14 +2,14 @@
 
 exports[`Radio Renders with size '1' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -17,7 +17,7 @@ exports[`Radio Renders with size '1' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -25,19 +25,19 @@ exports[`Radio Renders with size '1' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -62,19 +62,19 @@ exports[`Radio Renders with size '1' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -104,14 +104,14 @@ exports[`Radio Renders with size '1' 1`] = `
 
 exports[`Radio Renders with size '2' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -119,7 +119,7 @@ exports[`Radio Renders with size '2' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -127,19 +127,19 @@ exports[`Radio Renders with size '2' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-2"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-2"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -164,19 +164,19 @@ exports[`Radio Renders with size '2' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-2"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-2"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -206,14 +206,14 @@ exports[`Radio Renders with size '2' 1`] = `
 
 exports[`Radio Renders with size '3' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -221,7 +221,7 @@ exports[`Radio Renders with size '3' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -229,19 +229,19 @@ exports[`Radio Renders with size '3' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-3"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-3"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -266,19 +266,19 @@ exports[`Radio Renders with size '3' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-3"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-3"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -308,14 +308,14 @@ exports[`Radio Renders with size '3' 1`] = `
 
 exports[`Radio Renders with size '4' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -323,7 +323,7 @@ exports[`Radio Renders with size '4' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -331,19 +331,19 @@ exports[`Radio Renders with size '4' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-4"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-4"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -368,19 +368,19 @@ exports[`Radio Renders with size '4' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-4"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-4"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -410,14 +410,14 @@ exports[`Radio Renders with size '4' 1`] = `
 
 exports[`Radio Renders with size '5' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -425,7 +425,7 @@ exports[`Radio Renders with size '5' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -433,19 +433,19 @@ exports[`Radio Renders with size '5' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-5"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-5"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -470,19 +470,19 @@ exports[`Radio Renders with size '5' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-5"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-5"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -512,14 +512,14 @@ exports[`Radio Renders with size '5' 1`] = `
 
 exports[`Radio Renders with size '6' 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -527,7 +527,7 @@ exports[`Radio Renders with size '6' 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -535,19 +535,19 @@ exports[`Radio Renders with size '6' 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-6"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-6"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -572,19 +572,19 @@ exports[`Radio Renders with size '6' 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-6"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-6"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -614,14 +614,14 @@ exports[`Radio Renders with size '6' 1`] = `
 
 exports[`Radio renders as vertical 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -629,7 +629,7 @@ exports[`Radio renders as vertical 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -637,19 +637,19 @@ exports[`Radio renders as vertical 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -674,19 +674,19 @@ exports[`Radio renders as vertical 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -716,14 +716,14 @@ exports[`Radio renders as vertical 1`] = `
 
 exports[`Radio renders correctly with label 1`] = `
 <div
-  className="Field__Test__root Field__Test---vol-1-1 Field__Test---labelPosition-3-top RadioGroup__Test__root RadioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
-    className="Label__Test__root Field__Test__inputLabel"
+    className="label__Test__root field__Test__inputLabel"
     id="react-aria-2"
   >
     <span
-      className="Label__Test__text"
+      className="label__Test__text"
     >
       Radio Group
     </span>
@@ -731,7 +731,7 @@ exports[`Radio renders correctly with label 1`] = `
   <div
     aria-labelledby="react-aria-2"
     aria-orientation="vertical"
-    className="Field__Test__fieldContainer RadioGroup__Test__group"
+    className="field__Test__fieldContainer radioGroup__Test__group"
     id="react-aria-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -739,19 +739,19 @@ exports[`Radio renders correctly with label 1`] = `
     role="radiogroup"
   >
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         One
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}
@@ -776,19 +776,19 @@ exports[`Radio renders correctly with label 1`] = `
       </span>
     </label>
     <label
-      className="Label__Test__root Label__Test--hasInput Radio__Test__root Radio__Test---size-1-1"
+      className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
     >
       <span
-        className="Label__Test__text"
+        className="label__Test__text"
       >
         Two
       </span>
       <span
-        className="Radio__Test__inputContainer"
+        className="radio__Test__inputContainer"
       >
         <input
           checked={false}
-          className="Radio__Test__input"
+          className="radio__Test__input"
           disabled={false}
           name="react-aria-5"
           onBlur={[Function]}

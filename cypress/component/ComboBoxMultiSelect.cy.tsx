@@ -90,7 +90,7 @@ describe("Basic ComboBox", () => {
     cy.mount(<BasicComboBox className="cypress-test" />);
     cy.get(comboBoxField)
       .should("have.attr", "class")
-      .and("to.have.string", "ComboBox")
+      .and("to.have.string", "comboBox")
       .and("to.have.string", "cypress-test");
   });
 

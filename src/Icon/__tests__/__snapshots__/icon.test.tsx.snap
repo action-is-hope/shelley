@@ -3,7 +3,7 @@
 exports[`Icons Majesticons icon 1`] = `
 <svg
   aria-label="Majesticons icon example"
-  className="Icon__Test__root"
+  className="icon__Test__root"
   fill="none"
   style={
     {
@@ -26,7 +26,7 @@ exports[`Icons Majesticons icon 1`] = `
 exports[`Icons Material icon 1`] = `
 <svg
   aria-label="Material icon example"
-  className="Icon__Test__root"
+  className="icon__Test__root"
   style={
     {
       "fontSize": "2em",
@@ -43,7 +43,7 @@ exports[`Icons Material icon 1`] = `
 exports[`Icons Vaadin icon 1`] = `
 <svg
   aria-label="Vaadin icon example"
-  className="Icon__Test__root"
+  className="icon__Test__root"
   style={
     {
       "fontSize": "2em",

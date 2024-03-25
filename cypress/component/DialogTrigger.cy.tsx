@@ -1,6 +1,5 @@
 import React, { createRef } from "react";
 import {
-  ActionButton,
   DialogTrigger,
   DialogTriggerProps,
   Dialog,
@@ -35,7 +34,7 @@ interface DialogTriggerTest extends Omit<DialogTriggerProps, "children"> {
 const BasicContentTrigger = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
     <DialogTrigger {...args} data-id="dialogTiggerTest">
-      <ActionButton data-id="trigger">Simple Content</ActionButton>
+      <Button data-id="trigger">Simple Content</Button>
       <Dialog>
         <H2 vol={4} className={dialogClasses.title} data-title>
           Title
@@ -56,7 +55,7 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
       portalSelector="#portal"
       data-id="dialogTiggerTest"
     >
-      <ActionButton data-id="trigger">Focusable Content</ActionButton>
+      <Button data-id="trigger">Focusable Content</Button>
       <Dialog>
         <H2 vol={4} className={dialogClasses.title} data-title>
           Title
@@ -321,22 +320,16 @@ describe("Dialog Trigger", () => {
               data-id="dialogTiggerTest"
               focusOnProps={{ shards: [preview] }}
             >
-              <ActionButton data-id="trigger">Triger</ActionButton>
+              <Button data-id="trigger">Triger</Button>
               <Dialog>
-                <ActionButton data-action-button-dialog>
-                  Dialog button
-                </ActionButton>
+                <Button data-action-button-dialog>Dialog button</Button>
               </Dialog>
             </DialogTrigger>
 
             <div ref={preview}>
-              <ActionButton data-action-button-inside>
-                Inside shard
-              </ActionButton>
+              <Button data-action-button-inside>Inside shard</Button>
             </div>
-            <ActionButton data-action-button-outside>
-              Outside shard
-            </ActionButton>
+            <Button data-action-button-outside>Outside shard</Button>
           </div>
         );
         cy.get(trigger).realClick();

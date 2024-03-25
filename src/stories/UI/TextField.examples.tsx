@@ -4,11 +4,8 @@ import {
   FieldProps,
   Button,
   TextInputProps,
-  P,
-  Text,
 } from "../../indexLib";
 import Eye from "../../icons/Eye";
-import Check from "../../icons/Check";
 import { useState, useMemo, useRef, useEffect } from "react";
 
 export interface InputTextPropsDocs extends FieldProps {

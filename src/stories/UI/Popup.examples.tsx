@@ -37,9 +37,7 @@ export const SimplePopup = () => {
           ref={overlayRef}
           triggerRef={triggerRef}
         >
-          {/* <Dialog size="small">Children</Dialog>
-           */}
-          Children
+          <Dialog size="small">Children</Dialog>
         </Popup>,
         document.querySelector("body") as HTMLElement
       )}

@@ -149,7 +149,7 @@ describe("Basic Popup", () => {
     cy.mount(<BasicTemplate isOpen className={"test-class"} />);
     cy.get(popup)
       .should("have.attr", "class")
-      .and("to.have.string", "Popup")
+      .and("to.have.string", "popup")
       .and("to.have.string", "test-class");
   });
   it("Spreads #a11y html attributes to pop up - id, data-* etc", () => {
