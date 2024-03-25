@@ -1,13 +1,13 @@
 /**
- * Project - Base
+ * Project - Default
  * 
  * The goal of the project file is to contain the CSS commons for the project, 
  * including variables, component variants and any shared classes.
  *
- * Our Base theme sets up some sensible defaults for an unbranded project, these 
+ * Our Default theme sets up some sensible defaults for an unbranded project, these 
  * can be overridden in branded project files.
  */
-@st-namespace "Base";
+@st-namespace "Default";
 @st-import [multiply, divide, respScale] from "./formatters/common";
 
 /*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
