@@ -18,6 +18,7 @@ export * from "./Menu";
 export * from "./Modal";
 export * from "./Notification";
 export * from "./Popup";
+export * from "./Portal";
 export * from "./Progress";
 export * from "./Radio";
 export * from "./Select";

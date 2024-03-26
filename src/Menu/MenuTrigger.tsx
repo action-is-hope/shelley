@@ -1,9 +1,9 @@
 "use client";
 import React, { cloneElement, ReactElement } from "react";
-import { createPortal } from "react-dom";
 import { useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
+import { Portal } from "../Portal";
 import { Popup, PopupProps } from "../Popup";
 
 export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -87,7 +87,7 @@ export function MenuTrigger({
   const triggerRef = React.useRef<HTMLElement>(null);
   const [menuTriggerChild, menuChild] = React.Children.toArray(children);
 
-  // Create state based on the incoming props /// removed props...
+  // Create state based on the incoming props
   const state = useMenuTriggerState({
     defaultOpen,
     onOpenChange,
@@ -116,8 +116,8 @@ export function MenuTrigger({
   return (
     <>
       {menuTrigger}
-      {state.isOpen &&
-        createPortal(
+      {state.isOpen && (
+        <Portal selector={portalSelector}>
           <Popup
             isOpen={state.isOpen}
             onClose={() => state.close()}
@@ -142,9 +142,9 @@ export function MenuTrigger({
             shouldCloseOnBlur
           >
             {menu}
-          </Popup>,
-          document.querySelector(portalSelector) as HTMLElement
-        )}
+          </Popup>
+        </Portal>
+      )}
     </>
   );
 }

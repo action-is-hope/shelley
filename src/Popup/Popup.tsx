@@ -120,6 +120,18 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
     typeof cssValue === "number" && setMaxHeight(cssValue);
   }, [overlayPositionProps]);
 
+  useEffect(() => {
+    /**
+     * fix for issue where labels and buttons under Popup receive pointer events
+     * when selecting items. Here we just add a class so we know when popup is open
+     * and use the class to set pointer events to none in the popup styles.
+     */
+    isOpen === true && document.body.classList.add("hasPopup");
+    return () => {
+      setTimeout(() => document.body.classList.remove("hasPopup"), 0);
+    };
+  }, [isOpen]);
+
   /**
    * Ensure enough is loaded to fill up all available space
    * offered by Popup's max-height otherwise users won't be
@@ -138,7 +150,7 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
   // trigger when the menu is closed. In addition, add hidden
   // <DismissButton> components at the start and end of the list
   // to allow screen reader users to dismiss the popup easily.
-  return isOpen ? (
+  return (
     <FocusOn
       preventScrollOnFocus={true}
       returnFocus={{ preventScroll: true }}
@@ -177,8 +189,6 @@ function Popup(props: PopupProps, ref: React.Ref<HTMLDivElement>) {
         <DismissButton onDismiss={props.onClose} />
       </div>
     </FocusOn>
-  ) : (
-    <></>
   );
 }
 Popup.displayName = "Popup";

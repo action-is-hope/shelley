@@ -257,6 +257,7 @@
   Button:isDisabled:active,
   Button:isDisabled:active:hover {
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
   Button:vol(1) {
