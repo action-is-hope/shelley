@@ -28,11 +28,8 @@ export function MenuItem<T extends object>(props: MenuItemProps<T>) {
   } = props;
   // Get props for the menu item element
   const { isFocusVisible, focusProps } = useFocusRing();
-  const { menuItemProps, isFocused, isSelected, isDisabled } = useMenuItem(
-    { key: item.key },
-    state,
-    ref
-  );
+  const { menuItemProps, isFocused, isDisabled, isPressed, isSelected } =
+    useMenuItem({ key: item.key }, state, ref);
   const icon = selectedIcon || (
     <CheckIcon data-id="selected-icon" className={classes.selectedIcon} />
   );
@@ -44,10 +41,11 @@ export function MenuItem<T extends object>(props: MenuItemProps<T>) {
       className={st(
         classes.root,
         {
+          isDisabled,
           isFocused,
           isFocusVisible,
+          isPressed,
           isSelected,
-          isDisabled,
           selectionMode,
         },
         classNameProp

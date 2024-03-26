@@ -6,7 +6,7 @@ import {
   TextInputProps,
 } from "../../indexLib";
 import Eye from "../../icons/Eye";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 
 export interface InputTextPropsDocs extends FieldProps {
   /** The type of input field. */
@@ -157,6 +157,25 @@ export const AdornmentExample = () => {
   const [showPassword, setShowPassword] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const [password, setPassword] = useState("");
+  const [strength, setStrength] = useState({
+    length: false,
+    lowercase: false,
+    uppercase: false,
+    digit: false,
+    specialChar: false,
+  });
+
+  useEffect(() => {
+    setStrength({
+      length: password.length >= 8,
+      lowercase: /[a-z]/.test(password),
+      uppercase: /[A-Z]/.test(password),
+      digit: /\d/.test(password),
+      specialChar: /[\W_]/.test(password),
+    });
+  }, [password]);
+
   return (
     <>
       <TextField label="Amount" startAdornment="$" />
@@ -167,6 +186,7 @@ export const AdornmentExample = () => {
         label="Password"
         type={showPassword ? "text" : "password"}
         ref={passwordRef}
+        onChange={setPassword}
         endAdornment={
           <Button
             variant="quiet"
@@ -177,6 +197,27 @@ export const AdornmentExample = () => {
           >
             <Eye alt="Show password" />
           </Button>
+        }
+        description={
+          <div style={{ background: "white", padding: 20 }}>
+            <ul>
+              <li style={{ color: strength.length ? "green" : "red" }}>
+                At least 8 characters
+              </li>
+              <li style={{ color: strength.lowercase ? "green" : "red" }}>
+                Contains a lowercase letter
+              </li>
+              <li style={{ color: strength.uppercase ? "green" : "red" }}>
+                Contains an uppercase letter
+              </li>
+              <li style={{ color: strength.digit ? "green" : "red" }}>
+                Contains a digit
+              </li>
+              <li style={{ color: strength.specialChar ? "green" : "red" }}>
+                Contains a special character
+              </li>
+            </ul>
+          </div>
         }
       />
     </>

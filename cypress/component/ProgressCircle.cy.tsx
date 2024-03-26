@@ -24,7 +24,7 @@ describe("ProgressCircle", () => {
 
     cy.get(progressCircle)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressCircle")
+      .and("to.have.string", "progressCircle")
       .and("to.have.string", "cypress-test");
   });
 

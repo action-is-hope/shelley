@@ -7,17 +7,21 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBoxOption/listBoxOption.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+
+@st-import [
+  --option-item-bg-hover
+] from "./project.st.css";
 @st-import ListBoxOption from "../../ListBox/listBoxOption.st.css";
 @st-import [
     menuItem,
     menuItemDisabled,
     menuItemFocusVisible,
     menuItemText,
+    menuItemHover,
     menuItemSelectedIcon
 ] from "./mixins/menuList.st.css";
 
-@st-scope Default {
+@st-scope body {
   ListBoxOption {
     -st-mixin: menuItem;
   }
@@ -26,15 +30,23 @@
     -st-mixin: menuItemDisabled;
   }
 
-  ListBoxOption:isFocusVisible {
-    -st-mixin: menuItemFocusVisible;
-  }
-
   ListBoxOption::text {
     -st-mixin: menuItemText;
   }
 
   ListBoxOption::selectedIcon {
     -st-mixin: menuItemSelectedIcon;
+  }
+
+  ListBoxOption:isHovered {
+    -st-mixin: menuItemHover;
+  }
+
+  ListBoxOption:isFocusVisible {
+    -st-mixin: menuItemFocusVisible;
+  }
+
+  ListBoxOption:isFocused {
+    -st-mixin: menuItemHover;
   }
 }

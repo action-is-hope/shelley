@@ -8,11 +8,16 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Select/select.st.css
  * 
  */
-@st-import Default, [ --field-padding, --spacing-unit] from "./project.st.css";
+@st-import [
+  --spacing-unit,
+  --field-padding,
+  --field-placeholder-color,
+  --field-focus-color
+] from "./project.st.css";
 @st-import Select from "../../Select/select.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 
-@st-scope Default {
+@st-scope body {
 
   Select::trigger {
     border-radius: 0;
@@ -43,13 +48,20 @@
     margin-right: calc(var(--spacing-unit) * -2);
   }
 
+  Select:focus-within::trigger Icon {
+    color: var(--field-focus-color);
+  }
+
   Select::trigger::inner {
     padding: 0;
   }
 
   Select::placeholder {
-    opacity: .8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     letter-spacing: 0.2px;
+    color: var(--field-placeholder-color);
   }
 
   Select:labelPosition(over)::placeholder {
@@ -59,5 +71,9 @@
   /* = Display the 'quiet' right hand field indicator on Select to visually encase the down arrow. */
   Select:variant(quiet)::fieldContainer::after {
     display: block;
+  }
+
+  Select::popup {
+    overflow: hidden scroll;
   }
 }

@@ -43,7 +43,7 @@ describe("ProgressBar", () => {
 
     cy.get(progressBar)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressBar")
+      .and("to.have.string", "progressBar")
       .and("to.have.string", "cypress-test");
   });
 
@@ -102,7 +102,6 @@ describe("ProgressBar", () => {
 
     cy.get(progressBar)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressBar")
       .should("to.have.string", "multistep");
 
     cy.get(track).should("have.length", multiStepProps["totalSteps"]);
@@ -110,7 +109,6 @@ describe("ProgressBar", () => {
     cy.get(fill)
       .eq(2)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressBar")
       .and("to.have.string", "isActive");
 
     cy.get(fill)
@@ -132,7 +130,6 @@ describe("ProgressBar", () => {
 
     cy.get(progressBar)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressBar")
       .should("to.have.string", "multistep");
 
     cy.get(track).should("have.length", multiStepProps["totalSteps"]);
@@ -140,7 +137,6 @@ describe("ProgressBar", () => {
     cy.get(fill)
       .eq(2)
       .should("have.attr", "class")
-      .and("to.have.string", "ProgressBar")
       .and("to.have.string", "isActive");
 
     cy.get(fill)

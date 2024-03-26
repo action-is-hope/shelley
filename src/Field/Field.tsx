@@ -85,7 +85,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     description,
     label: labelStringProp,
     labelProps,
-    labelPosition = "over",
+    labelPosition = "top",
     descriptionProps,
     errorMessageProps,
     disableLabelTransition = false,
@@ -95,13 +95,15 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     isReadOnly,
     isRequired,
     isDisabled,
-    vol = 1,
+    vol = 3,
     "data-id": dataId,
     ...rest
   } = props;
 
   const hasValue =
-    disableLabelTransition || startAdornment ? true : hasValueProp;
+    disableLabelTransition || (startAdornment && labelPosition === "over")
+      ? true
+      : hasValueProp;
 
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {

@@ -1,7 +1,5 @@
 import "./commands";
 
-import { Project as Default } from "../../src/styles/default";
-import { Project as Shelley } from "../../src/styles/shelley";
+import "../../src/styles/default";
 
-const ShelleyDark = `${Default} ${Shelley}`;
-document.body.className = ShelleyDark;
+document.documentElement.setAttribute("data-theme", "shelley shelley-dark");

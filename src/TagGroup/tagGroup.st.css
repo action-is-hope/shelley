@@ -1,4 +1,4 @@
-@st-namespace "TagGroup";
+@st-namespace "tagGroup";
 
 @st-import Text from "../Text/text.st.css";
 @st-import HelpText from "../HelpText/helpText.st.css";

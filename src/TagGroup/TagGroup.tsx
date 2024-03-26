@@ -3,7 +3,7 @@ import type { ListState } from "react-stately";
 import type { AriaTagGroupProps, AriaTagProps } from "react-aria";
 import { useListState } from "react-stately";
 import { useFocusRing, useTag, useTagGroup } from "react-aria";
-import CloseIcon from "../icons/CloseCircle";
+import CloseIcon from "../icons/Close";
 import { IconButton, IconButtonProps } from "../Button/IconButton";
 import { Text, TextProps } from "../Text";
 import { HelpText, HelpTextProps } from "../HelpText";
@@ -140,20 +140,20 @@ export function Tag<T>(props: TagProps<T>) {
         className
       )}
       {...gridCellProps}
-      endAdornment={
-        allowsRemoving && (
-          <IconButton
-            className={tagClasses.removeButton}
-            aria-label={"Remove tag"}
-            vol={false}
-            icon={<CloseIcon />}
-            {...closeButtonProps}
-            {...removeButtonProps}
-          />
-        )
-      }
     >
       <div className={tagClasses.content}>{item.rendered}</div>
+      {allowsRemoving && (
+        <IconButton
+          className={tagClasses.removeButton}
+          aria-label={"Remove tag"}
+          vol={false}
+          tone={false}
+          variant={false}
+          icon={<CloseIcon />}
+          {...closeButtonProps}
+          {...removeButtonProps}
+        />
+      )}
     </Text>
   );
 }

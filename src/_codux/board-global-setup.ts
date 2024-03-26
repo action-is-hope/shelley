@@ -1,5 +1,6 @@
-import themes from "../styles";
+import "../styles/default";
 import "./board.css";
 
-// Apply the Shelly theme to the boards
-document.body.className = themes["shelley"];
+import "../../src/styles/default";
+
+document.documentElement.setAttribute("data-theme", "shelley shelley-dark");

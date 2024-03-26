@@ -7,7 +7,6 @@ import {
   ModalProps,
   Modal,
   TextField,
-  ActionButton,
   DialogTrigger,
   Switch,
   RadioGroup,
@@ -31,21 +30,16 @@ export const BasicModal = () => {
   );
   return (
     <>
-      <ActionButton ref={triggerRef} {...triggerProps}>
+      <Button ref={triggerRef} {...triggerProps}>
         Toggle Modal
-      </ActionButton>
-      <Modal
-        isOpen={state.isOpen}
-        onDismiss={state.close}
-        portalSelector="#portal"
-        {...overlayProps}
-      >
+      </Button>
+      <Modal isOpen={state.isOpen} onDismiss={state.close} {...overlayProps}>
         <div role="dialog">
           <H2 vol={2} uppercase>
             Custom Dialog
           </H2>
           <TextField label="Text field" />
-          <ActionButton onPress={() => state.close()}>Close</ActionButton>
+          <Button onPress={() => state.close()}>Close</Button>
         </div>
       </Modal>
     </>
@@ -61,7 +55,6 @@ export const ModalCustomTransition = (args: ModalProps) => {
         {...args}
         isOpen={overlayOpen !== false}
         onDismiss={() => setOverlayOpen(false)}
-        portalSelector="#portal"
         transition={"myTransition"}
         // focusOnProps={{
         //   onEscapeKey: () => console.log("hello!"),
@@ -93,7 +86,6 @@ export const ModalCustomTransitionDialogTrigger = () => {
       </RadioGroup>
 
       <DialogTrigger
-        portalSelector="#portal"
         transition={transiton}
         transitionProps={{
           // timeout set to 190 by default
@@ -110,7 +102,7 @@ export const ModalCustomTransitionDialogTrigger = () => {
         }}
         isDismissable
       >
-        <ActionButton>View Transition</ActionButton>
+        <Button>View Transition</Button>
         {(close) => (
           <div>
             <div role="dialog">
@@ -131,7 +123,7 @@ export const ShardExample = () => {
   return (
     <div className={modalClasses.shardExample}>
       <div style={{ gridArea: "header" }}>
-        <ActionButton>Log in/out</ActionButton>
+        <Button>Log in/out</Button>
       </div>
 
       <div style={{ position: "relative", gridArea: "content" }}>
@@ -150,23 +142,23 @@ export const ShardExample = () => {
           focusOnProps={{ shards: shards ? [preview] : [] }}
           isDismissable
         >
-          <ActionButton>Initialise Overlay</ActionButton>
+          <Button>Initialise Overlay</Button>
           <Dialog size="small">
             <H2 vol={4} style={{ gridArea: "title" }} data-title>
               Settings
             </H2>
             <div style={{ gridArea: "content" }}>
-              <ActionButton>Control 1</ActionButton>
-              <ActionButton>Control 2</ActionButton>
+              <Button>Control 1</Button>
+              <Button>Control 2</Button>
             </div>
           </Dialog>
         </DialogTrigger>
       </div>
 
       <div ref={preview} style={{ gridArea: "preview" }}>
-        <ActionButton>Mobile</ActionButton>
-        <ActionButton>Tablet</ActionButton>
-        <ActionButton>Laptop</ActionButton>
+        <Button>Mobile</Button>
+        <Button>Tablet</Button>
+        <Button>Laptop</Button>
         <P vol={4}>Preview Area</P>
         <P vol={1}>
           This area is {!shards && "not "} accessible and {!shards && "is not"}{" "}

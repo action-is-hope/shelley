@@ -181,18 +181,35 @@ The dropdown could change the button text and action or be used to immediately t
 <Preview>
   <Story name="e) Split button">
     <StoryCenteredInline>
-      <ButtonGroup vol={2} tone="support" variant="primary" splitButton>
-        <Button>Publish</Button>
-        <Button
-          icon={
-            <Icon alt="Select action">
-              <path d="M8 12l-6.32-6.32 1.67-1.68 4.65 4.65 4.65-4.65 1.67 1.68-6.32 6.32z"></path>
-            </Icon>
-          }
-          aria-label="Page actions"
-          aria-haspopup="menu"
-        />
-      </ButtonGroup>
+      <div style={{ display: "grid", gap: "20px" }}>
+        <ButtonGroup tone="support" variant="primary" splitButton>
+          <Button>Publish</Button>
+          <Button
+            icon={
+              <Icon alt="Select action">
+                <path d="M8 12l-6.32-6.32 1.67-1.68 4.65 4.65 4.65-4.65 1.67 1.68-6.32 6.32z"></path>
+              </Icon>
+            }
+            aria-label="Page actions"
+            aria-haspopup="menu"
+          />
+        </ButtonGroup>
+        <ButtonGroup tone="support" variant="secondary" splitButton>
+          <Button>One</Button>
+          <Button>Two</Button>
+          <Button>Three</Button>
+        </ButtonGroup>
+        <ButtonGroup
+          tone="support"
+          variant="primary"
+          splitButton
+          orientation="vertical"
+        >
+          <Button>One</Button>
+          <Button>Two</Button>
+          <Button>Three</Button>
+        </ButtonGroup>
+      </div>
     </StoryCenteredInline>
   </Story>
 </Preview>

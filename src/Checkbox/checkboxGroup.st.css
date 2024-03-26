@@ -1,4 +1,4 @@
-@st-namespace "CheckboxGroup";
+@st-namespace "ckboxGroup";
 
 @st-import Field from "../Field/field.st.css";
 
@@ -7,14 +7,4 @@
   -st-states: orientation(enum(vertical, horizontal));
 }
 
-.group {
-  display: flex;
-}
-
-.root:orientation(vertical) .group {
-  flex-direction: column;
-}
-
-.root:orientation(horizontal) .group {
-  flex-flow: wrap;
-}
+.group {}

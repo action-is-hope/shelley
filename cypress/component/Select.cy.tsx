@@ -78,7 +78,7 @@ describe("Basic Select", () => {
     cy.mount(<BasicSelect className="cypress-test" />);
     cy.get(selectField)
       .should("have.attr", "class")
-      .and("to.have.string", "Select")
+      .and("to.have.string", "select")
       .and("to.have.string", "cypress-test");
   });
 

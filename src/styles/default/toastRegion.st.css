@@ -7,12 +7,26 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toastRegion.st.css
  * 
  */
-@st-import Default, [breakpoint-md-max, --border-radius-button] from "./project.st.css";
+@st-import [
+  breakpoint-md-max,
+  --radius
+] from "./project.st.css";
 @st-import ToastRegion from "../../Toast/toastRegion.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 
-@st-scope Default {
+@st-scope body {
+
+  ToastRegion {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   ToastRegion > :first-child::before {
     -st-mixin: pseudoFocus;
@@ -20,13 +34,12 @@
 
   ToastRegion:isFocusVisible > :first-child::before {
     -st-mixin: pseudoFocusVisible;
-    border-radius: var(--border-radius-button);
+    border-radius: var(--radius);
   }
 }
 
-
 @media value(breakpoint-md-max) {
-  @st-scope Default {
+  @st-scope body {
     ToastRegion {
       align-items: center;
     }

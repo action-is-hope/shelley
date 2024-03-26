@@ -2,7 +2,7 @@ import {
   ToastProvider,
   useToast,
   ToastProviderProps,
-  ActionButton,
+  Button,
   CustomToastContent,
 } from "../../src/indexLib";
 
@@ -24,12 +24,12 @@ const Provider = function (props: Partial<ToastProviderProps>) {
 const BasicToast = function (props: CustomToastContent) {
   const toastQueue = useToast();
   return (
-    <ActionButton
+    <Button
       data-id="toastTrigger"
       onPress={() => toastQueue && toastQueue?.add({ title: props.title })}
     >
       Add toast
-    </ActionButton>
+    </Button>
   );
 };
 
@@ -69,7 +69,7 @@ describe("Toast", () => {
     cy.wait(500);
     cy.get(toast)
       .should("have.attr", "class")
-      .and("to.have.string", "Toast")
+      .and("to.have.string", "toast")
       .and("to.have.string", "neutral");
 
     cy.get(toastClose).realClick();

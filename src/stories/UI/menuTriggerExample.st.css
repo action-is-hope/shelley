@@ -1,13 +1,12 @@
 @st-import Menu from "../../Menu/menu.st.css";
 @st-import MenuItem from "../../Menu/menuItem.st.css";
 @st-import Popup from "../../Popup/popup.st.css";
-@st-import Shelley from "../../styles/shelley/project.st.css";
 
 .inlineMenu {
   -st-extends: Menu;
 }
 
-@st-scope Shelley {
+@st-scope body {
   Popup.inlineMenuPopup {
     border: none;
     background-color: transparent;

@@ -1,4 +1,4 @@
-@st-namespace "Notification";
+@st-namespace "notification";
 @st-import Text from "../Text/text.st.css";
 
 .root {

@@ -8,7 +8,6 @@ import React, {
   Ref,
   ReactElement,
 } from "react";
-import { createPortal } from "react-dom";
 import { useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 import type { AriaComboBoxProps } from "@react-types/combobox";
@@ -17,7 +16,8 @@ import type { LoadMoreProps } from "../typings/shared-types";
 import { mergeRefs } from "@react-aria/utils";
 import { Field, FieldProps } from "../Field";
 import { Popup } from "../Popup";
-import { ButtonBase } from "../Button";
+import { Portal } from "../Portal";
+import { Button } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../Progress";
@@ -158,9 +158,9 @@ function ComboBox<T extends object>(
         ref={listBoxRef}
         {...{
           loadingState,
-          shouldFocusOnHover,
           state,
           ...listBoxProps,
+          shouldFocusOnHover,
           "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       />
@@ -196,7 +196,7 @@ function ComboBox<T extends object>(
               />
             )}
             {!removeTrigger && (
-              <ButtonBase
+              <Button
                 {...buttonProps}
                 icon={triggerIcon}
                 ref={buttonRef}
@@ -226,13 +226,7 @@ function ComboBox<T extends object>(
           ref={ref ? mergeRefs(ref, inputRef) : inputRef}
           data-id={dataId ? `${dataId}--input` : undefined}
         />
-        {state.isOpen && portalSelector
-          ? // If no portalSelector render inline.
-            createPortal(
-              popup,
-              document.querySelector(portalSelector) as HTMLElement
-            )
-          : popup}
+        {state.isOpen && <Portal selector={portalSelector}>{popup}</Portal>}
       </>
     </Field>
   );
