@@ -2,11 +2,10 @@
 import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
-// Define the type for the component's props
 interface PortalProps {
-  // Accept any valid React child (element, string, etc.)
+  /* Accept any valid React child (element, string, etc.) */
   children: ReactNode;
-  // Optional selector string for the portal target element
+  /* Optional selector string for the portal target element. */
   selector?: string | false;
 }
 
