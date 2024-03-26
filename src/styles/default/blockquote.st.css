@@ -14,7 +14,7 @@
   Blockquote {
     margin: 0;
     padding: 0 var(--spacing-unit);
-    border-left: 2px solid var(--color-tone-lead);
+    border-left: 2px solid var(--tone-lead);
   }
 
   Blockquote::content {
