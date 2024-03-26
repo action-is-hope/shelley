@@ -2,7 +2,6 @@ import { SetStateAction, useState, useMemo } from "react";
 import { Item } from "@react-stately/collections";
 import { useAsyncList } from "react-stately";
 import {
-  Button,
   Select,
   SelectProps,
   TextField,
@@ -35,13 +34,11 @@ export const BasicSelect = (args: ItemsType) => {
         <Item key="sometimes">Sometimes</Item>
         <Item key="always">Always</Item>
       </Select>
-      <button onClick={() => alert("clicked")}>Click me</button>
       <RadioGroup label="Favorite sport">
         <Radio value="football">Football</Radio>
         <Radio value="baseball">Baseball</Radio>
         <Radio value="basketball">Basketball</Radio>
       </RadioGroup>
-      <Button onPress={() => alert("clicked")}>Click me</Button>
     </>
   );
 };
