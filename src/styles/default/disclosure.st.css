@@ -7,13 +7,13 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Disclosure/disclosure.st.css
  * 
  */
-@st-import Default, [
+@st-import [
   --spacing-unit,
 ] from "./project.st.css";
 @st-import Disclosure from "../../Disclosure/disclosure.st.css";
-@st-import Icon, [altVisible] from "../../Icon/icon.st.css";
+@st-import Icon, [alt] from "../../Icon/icon.st.css";
 
-@st-scope Default {
+@st-scope body {
   Disclosure {
     --rotate-start: rotate(-180deg);
     --rotate-end: rotate(180deg);
@@ -24,6 +24,7 @@
   }
 
   Disclosure::trigger {
+    width: 100%;
     justify-content: start;
     font-weight: 400;
   }
@@ -33,13 +34,17 @@
     transform-origin: 50% 50%;
   }
 
-  Disclosure::trigger .altVisible {
+  Disclosure::trigger .alt {
     font-size: .9em;
     padding: 0 calc(var(--spacing-unit) / 2);
   }
 
   Disclosure:isExpanded::trigger > Icon {
     transform: var(--rotate-start);
+  }
+
+  Disclosure::trigger:hover {
+    cursor: pointer;
   }
 
   /* Rotate the icon the other way when at the end. */
@@ -51,9 +56,21 @@
     flex-grow: 1;
     text-align: start;
   }
+
+  Disclosure::transition {
+    transition: opacity 250ms, margin-top 250ms, height 250ms;
+    overflow: hidden;
+    display: block;
+    opacity: 0;
+  }
+
+  Disclosure:isExpanded::transition {
+    opacity: 1;
+  }
+
 }
 
-@st-scope [dir=rtl] Default {
+@st-scope [dir=rtl] {
   Disclosure {
     --rotate-start: rotate(180deg);
     --rotate-end: rotate(-180deg);

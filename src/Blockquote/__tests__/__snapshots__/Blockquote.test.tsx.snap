@@ -2,16 +2,16 @@
 
 exports[`Blockquote renders as a basic blockquote with custom #className and data attr to test spread. 1`] = `
 <blockquote
-  className="Blockquote__Test__root for-which-nobody-can-deny"
+  className="blockquote__Test__root for-which-nobody-can-deny"
   data-testid="blockquote-data-testid"
 >
   <div
-    className="Blockquote__Test__content"
+    className="blockquote__Test__content"
   >
     We but mirror the world. All the tendencies present in the outer world are to be found in the world of our body. If we could change ourselves, the tendencies in the world would also change. As a man changes his own nature, so does the attitude of the world change towards him. This is the divine mystery supreme. A wonderful thing it is and the source of our happiness. We need not wait to see what others do.
   </div>
   <footer
-    className="Text__Test__root Text__Test---vol-1-2 Blockquote__Test__desc"
+    className="text__Test__root text__Test---vol-1-2 blockquote__Test__desc"
   >
     Mahatma Gandhi
   </footer>
@@ -20,15 +20,15 @@ exports[`Blockquote renders as a basic blockquote with custom #className and dat
 
 exports[`Blockquote renders as a blockquote with description as a <cite> node at a larger volume. 1`] = `
 <blockquote
-  className="Blockquote__Test__root Blockquote__Test---variant-8-academic for-which-nobody-can-deny"
+  className="blockquote__Test__root blockquote__Test---variant-8-academic for-which-nobody-can-deny"
 >
   <div
-    className="Blockquote__Test__content"
+    className="blockquote__Test__content"
   >
     We but mirror the world. All the tendencies present in the outer world are to be found in the world of our body. If we could change ourselves, the tendencies in the world would also change. As a man changes his own nature, so does the attitude of the world change towards him. This is the divine mystery supreme. A wonderful thing it is and the source of our happiness. We need not wait to see what others do.
   </div>
   <footer
-    className="Text__Test__root Text__Test---vol-1-3 Blockquote__Test__desc"
+    className="text__Test__root text__Test---vol-1-3 blockquote__Test__desc"
   >
     <cite>
       Mahatma Gandhi

@@ -1,12 +1,26 @@
-@st-namespace "Button";
-@st-import ButtonBase, [
-  --bg-color,
-  --border-color,
-  --text-color,
-  --border-width,
-  --border-radius] from "./buttonBase.st.css";
+@st-namespace "btn";
+@st-import ProgressCircle from "../Progress/progressCircle.st.css";
 
 .root {
-  -st-extends: ButtonBase;
-  -st-states: cta;
+  -st-states:
+    iconPos(enum(top, end, bottom, start)),
+    isCompact,
+    isCta,
+    fullWidth,
+    tone(string),
+    variant(string),
+    vol(number),
+    isFocusVisible,
+    isLoading,
+    isPressed,
+    isDisabled;
+}
+
+.inner {}
+
+/* The divider which is rendered with an icon only. */
+.divider {}
+
+.loader {
+  -st-extends: ProgressCircle
 }

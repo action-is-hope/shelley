@@ -1,100 +1,31 @@
-@st-namespace "Dialog";
-@st-import ActionButton from "../Button/actionButton.st.css";
+@st-namespace "dialog";
+@st-import IconButton from "../Button/iconButton.st.css";
 
 .root {
   -st-states:
     size(enum(small, medium, large, fullscreen)),
     isDismissable;
-  outline: none;
-  display: flex;
 }
 
-.grid {
-  display: grid;
-  width: 100%;
-  grid-template-areas:
-    "hero hero hero hero hero hero"
-    ". . . . . ."
-    ".title header header typeIcon."
-    ".divider divider divider divider."
-    ".content content content content."
-    ".footer footer buttonGroup buttonGroup."
-    ". . . . . .";
-}
-
-.root:isDismissable::grid {
-  grid-template-areas:
-    "hero hero hero hero hero hero hero"
-    ". . . . .closeButton closeButton"
-    ".title header header typeIcon closeButton closeButton"
-    ".divider divider divider divider divider."
-    ".content content content content content."
-    ".footer footer buttonGroup buttonGroup buttonGroup."
-    ". . . . . . .";
-}
-
-.closeButton {}
-
-/* Grid helpers to be placed on children. */
-.hero {
-  grid-area: hero;
-}
-
-.title {
-  grid-area: title;
-}
-
-.header {
-  grid-area: header-start / header-start / typeIcon-end / typeIcon-end;
-  align-items: inherit;
-  justify-content: flex-end;
-  align-items: center;
-  display: flex;
-}
-
-.typeIcon {
-  grid-area: typeIcon;
-}
+.grid {}
 
 .closeButton {
-  -st-extends: ActionButton;
-  grid-area: closeButton;
-  place-self: center center;
+  -st-extends: IconButton;
 }
 
-.content {
-  grid-area: content;
-}
+/* Grid helpers to be placed on children. */
+.hero {}
 
-.divider {
-  grid-area: divider;
-}
+.title {}
 
-hr.divider {
-  height: 1px;
-  border: none;
-  width: 100%;
-  background-color: grey;
-}
+.header {}
 
-.footer {
-  grid-area: footer;
-}
+.typeIcon {}
 
-.buttonGroup {
-  grid-area: buttonGroup;
-}
+.content {}
 
-@media screen and (min-width: 701px) {
-  .root:size(small) {
-    width: 400px;
-  }
+.divider {}
 
-  .root:size(medium) {
-    width: 500px;
-  }
+.footer {}
 
-  .root:size(large) {
-    width: 650px;
-  }
-}
+.buttonGroup {}

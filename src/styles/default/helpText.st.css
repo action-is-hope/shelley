@@ -7,13 +7,19 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/HelpText/helpText.st.css
  * 
  */
-@st-import Default, [--color-error] from "./project.st.css";
+@st-import [
+  --color-error,
+  --field-help-text-color
+] from "./project.st.css";
 @st-import HelpText from "../../HelpText/helpText.st.css";
 
-@st-scope Default {
+@st-scope body {
 
   HelpText {
     transition: color 0.2s;
+    color: var(--color-text-help);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
   }
 
   HelpText:isErrorMessage {

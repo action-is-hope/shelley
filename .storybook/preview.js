@@ -1,5 +1,5 @@
 import React from "react";
-import themes from "../src/styles";
+import "../src/styles";
 
 import { initializeRTL } from "storybook-addon-rtl";
 initializeRTL();
@@ -83,26 +83,22 @@ export const globalTypes = {
   shelleyTheme: {
     name: "Theme",
     description: "Theme Switcher",
-    defaultValue: themes["shelley"],
+    defaultValue: "shelley",
     toolbar: {
       icon: "switchalt",
       title: "Theme Switch",
       items: [
+        // {
+        //   value: "",
+        //   title: "Base",
+        // },
         {
-          value: "",
-          title: "None",
+          value: "shelley",
+          title: "Light",
         },
         {
-          value: themes["base"],
-          title: "Base",
-        },
-        {
-          value: themes["shelley"],
-          title: "Shelley",
-        },
-        {
-          value: themes["shelleyLight"],
-          title: "ShelleyLight",
+          value: "shelley shelley-dark",
+          title: "Dark",
         },
       ],
     },
@@ -111,16 +107,19 @@ export const globalTypes = {
 // preview.js
 
 const withShelleyTheme = (Story, context) => {
-  // Create a themed div for portal content so styles still work. Noy needed if you put your theme class on html.
-  if (!document.getElementById("portal")) {
-    const portal = document.createElement("div");
-    portal.setAttribute("id", "portal");
-    portal.setAttribute("class", context.globals.shelleyTheme);
-    document.body.appendChild(portal);
-  }
+  document.documentElement.setAttribute(
+    "data-theme",
+    context.globals.shelleyTheme
+  );
   return (
-    // We need it as a wrapper on the stories as well else the bg is wrong in the Docs.
-    <div className={context.globals.shelleyTheme}>
+    <div
+      style={{
+        background:
+          context.globals.shelleyTheme === "shelley shelley-dark"
+            ? "rgb(23, 26, 35)"
+            : "#fff",
+      }}
+    >
       <Story {...context} />
     </div>
   );

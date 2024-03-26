@@ -7,11 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Menu/menu.st.css
  * 
  */
-@st-import Default from "./project.st.css";
 @st-import Menu from "../../Menu/menu.st.css";
 @st-import [menuList] from "./mixins/menuList.st.css";
 
-@st-scope Default {
+@st-scope body {
   Menu {
     -st-mixin: menuList;
   }

@@ -36,11 +36,6 @@
   overflow: hidden;
 }
 
-:global(body) {
-  margin: 0;
-  padding: 0;
-}
-
 :global(a:visited) {
   color: inherit
 }

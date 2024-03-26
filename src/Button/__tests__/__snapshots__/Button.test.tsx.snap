@@ -2,7 +2,7 @@
 
 exports[`Button includes #icon via prop positioned via #iconPos divider and children 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---iconPos-5-start ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+  className="btn__Test__root btn__Test---iconPos-5-start btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -20,17 +20,17 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
   type="button"
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
   <span
-    className="ButtonBase__Test__divider"
+    className="btn__Test__divider"
   />
    
   <svg
     aria-hidden={true}
-    className="Icon__Test__root"
+    className="icon__Test__root"
     focusable="false"
     viewBox="0 0 16 16"
   >
@@ -44,7 +44,7 @@ exports[`Button includes #icon via prop positioned via #iconPos divider and chil
 exports[`Button includes #icon, no children, visually hidden label text provided via Icon alt prop 1`] = `
 <button
   aria-label="Button text"
-  className="ButtonBase__Test__root ButtonBase__Test---variant-9-secondary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+  className="btn__Test__root btn__Test---variant-9-secondary btn__Test---tone-4-lead btn__Test---vol-1-3"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -64,7 +64,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
    
   <svg
     aria-hidden={true}
-    className="Icon__Test__root"
+    className="icon__Test__root"
     focusable="false"
     viewBox="0 0 16 16"
   >
@@ -77,7 +77,7 @@ exports[`Button includes #icon, no children, visually hidden label text provided
 
 exports[`Button isLoading renders ProgressCircle 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 ButtonBase__Test--isLoading Button__Test__root"
+  className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3 btn__Test--isLoading"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -95,52 +95,52 @@ exports[`Button isLoading renders ProgressCircle 1`] = `
   type="button"
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
   <span
-    className="ButtonBase__Test__divider"
+    className="btn__Test__divider"
   />
    
   <div
     aria-label="Loading"
     aria-valuemax={100}
     aria-valuemin={0}
-    className="ProgressCircle__Test__root ProgressCircle__Test--isIndeterminate ProgressCircle__Test---size-5-small ProgressCircle__Test---variant-14-overBackground ButtonBase__Test__loader"
+    className="progressCircle__Test__root progressCircle__Test--isIndeterminate progressCircle__Test---size-5-small progressCircle__Test---variant-14-overBackground btn__Test__loader"
     data-id="button-data-id--progressCircle"
     id="react-aria-3"
     role="progressbar"
   >
     <div
-      className="ProgressCircle__Test__track"
+      className="progressCircle__Test__track"
     />
     <div
-      className="ProgressCircle__Test__fills"
+      className="progressCircle__Test__fills"
     >
       <div
-        className="ProgressCircle__Test__fillMask1"
+        className="progressCircle__Test__fillMask1"
       >
         <div
-          className="ProgressCircle__Test__fillSubMask1"
+          className="progressCircle__Test__fillSubMask1"
           data-testid="fillSubMask1"
           style={{}}
         >
           <div
-            className="ProgressCircle__Test__fill"
+            className="progressCircle__Test__fill"
           />
         </div>
       </div>
       <div
-        className="ProgressCircle__Test__fillMask2"
+        className="progressCircle__Test__fillMask2"
       >
         <div
-          className="ProgressCircle__Test__fillSubMask2"
+          className="progressCircle__Test__fillSubMask2"
           data-testid="fillSubMask2"
           style={{}}
         >
           <div
-            className="ProgressCircle__Test__fill"
+            className="progressCircle__Test__fill"
           />
         </div>
       </div>
@@ -151,7 +151,7 @@ exports[`Button isLoading renders ProgressCircle 1`] = `
 
 exports[`Button isLoading renders ProgressCircle instead of icon 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---iconPos-5-start ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 ButtonBase__Test--isLoading Button__Test__root"
+  className="btn__Test__root btn__Test---iconPos-5-start btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3 btn__Test--isLoading"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -169,52 +169,52 @@ exports[`Button isLoading renders ProgressCircle instead of icon 1`] = `
   type="button"
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
   <span
-    className="ButtonBase__Test__divider"
+    className="btn__Test__divider"
   />
    
   <div
     aria-label="Loading"
     aria-valuemax={100}
     aria-valuemin={0}
-    className="ProgressCircle__Test__root ProgressCircle__Test--isIndeterminate ProgressCircle__Test---size-5-small ProgressCircle__Test---variant-14-overBackground ButtonBase__Test__loader"
+    className="progressCircle__Test__root progressCircle__Test--isIndeterminate progressCircle__Test---size-5-small progressCircle__Test---variant-14-overBackground btn__Test__loader"
     data-id="button-data-id--progressCircle"
     id="react-aria-1"
     role="progressbar"
   >
     <div
-      className="ProgressCircle__Test__track"
+      className="progressCircle__Test__track"
     />
     <div
-      className="ProgressCircle__Test__fills"
+      className="progressCircle__Test__fills"
     >
       <div
-        className="ProgressCircle__Test__fillMask1"
+        className="progressCircle__Test__fillMask1"
       >
         <div
-          className="ProgressCircle__Test__fillSubMask1"
+          className="progressCircle__Test__fillSubMask1"
           data-testid="fillSubMask1"
           style={{}}
         >
           <div
-            className="ProgressCircle__Test__fill"
+            className="progressCircle__Test__fill"
           />
         </div>
       </div>
       <div
-        className="ProgressCircle__Test__fillMask2"
+        className="progressCircle__Test__fillMask2"
       >
         <div
-          className="ProgressCircle__Test__fillSubMask2"
+          className="progressCircle__Test__fillSubMask2"
           data-testid="fillSubMask2"
           style={{}}
         >
           <div
-            className="ProgressCircle__Test__fill"
+            className="progressCircle__Test__fill"
           />
         </div>
       </div>
@@ -225,7 +225,7 @@ exports[`Button isLoading renders ProgressCircle instead of icon 1`] = `
 
 exports[`Button renders as a basic anchor link via #href prop 1`] = `
 <a
-  className="ButtonBase__Test__root ButtonBase__Test---vol-1-3 button-class"
+  className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3 button-class"
   data-id="button-data-id"
   href="http://shelley.earth"
   onBlur={[Function]}
@@ -245,7 +245,7 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
   tabIndex={0}
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
@@ -254,7 +254,7 @@ exports[`Button renders as a basic anchor link via #href prop 1`] = `
 
 exports[`Button renders as a basic button with custom #className 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root button-class"
+  className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3 button-class"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -272,7 +272,7 @@ exports[`Button renders as a basic button with custom #className 1`] = `
   type="button"
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
@@ -281,7 +281,7 @@ exports[`Button renders as a basic button with custom #className 1`] = `
 
 exports[`Button renders as third party (react-router) anchor provided via #elementType and #to props 1`] = `
 <a
-  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-4-lead ButtonBase__Test---vol-1-3 Button__Test__root"
+  className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-4-lead btn__Test---vol-1-3"
   data-id="button-data-id"
   href="/internal-link"
   onBlur={[Function]}
@@ -301,7 +301,7 @@ exports[`Button renders as third party (react-router) anchor provided via #eleme
   tabIndex={0}
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>
@@ -310,7 +310,7 @@ exports[`Button renders as third party (react-router) anchor provided via #eleme
 
 exports[`Button renders with stylable state prop classes, #tone, #variant, #vol and #fullwidth 1`] = `
 <button
-  className="ButtonBase__Test__root ButtonBase__Test---variant-7-primary ButtonBase__Test---tone-5-alert ButtonBase__Test---vol-1-6 ButtonBase__Test--fullWidth Button__Test__root"
+  className="btn__Test__root btn__Test---variant-7-primary btn__Test---tone-5-alert btn__Test---vol-1-6 btn__Test--fullWidth"
   data-id="button-data-id"
   onBlur={[Function]}
   onClick={[Function]}
@@ -328,7 +328,7 @@ exports[`Button renders with stylable state prop classes, #tone, #variant, #vol 
   type="button"
 >
   <span
-    className="ButtonBase__Test__inner"
+    className="btn__Test__inner"
   >
     Button text
   </span>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonBase } from "../";
+import { Button } from "../";
 import renderer from "react-test-renderer";
 import { Icon } from "../../Icon/Icon";
 import { Router, Link } from "react-router-dom";
@@ -48,14 +48,14 @@ describe("Button", () => {
   it("renders as a basic anchor link via #href prop", () => {
     const tree = renderer
       .create(
-        <ButtonBase
+        <Button
           data-id="button-data-id"
           href="http://shelley.earth"
           elementType="a"
           className="button-class"
         >
           {btnText}
-        </ButtonBase>
+        </Button>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

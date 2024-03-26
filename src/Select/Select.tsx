@@ -8,7 +8,6 @@ import React, {
   Ref,
   ReactElement,
 } from "react";
-import { createPortal } from "react-dom";
 import { Field } from "../Field/Field";
 import type { LoadMoreProps } from "../typings/shared-types";
 import type { FieldProps } from "../Field/Field";
@@ -17,8 +16,9 @@ import type { CollectionChildren } from "@react-types/shared/src/collections";
 import { useSelectState } from "react-stately";
 import { HiddenSelect, useSelect, AriaSelectOptions } from "react-aria";
 import { mergeRefs } from "@react-aria/utils";
+import { Portal } from "../Portal";
 import { Popup } from "../Popup";
-import { ButtonBase } from "../Button";
+import { Button } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { st, classes } from "./select.st.css";
@@ -100,6 +100,44 @@ function Select<T extends object>(
       setPopUpWidth(fieldContainerRef?.current?.clientWidth);
   }, [state.isOpen]);
 
+  const popup = (
+    <Popup
+      isOpen={state.isOpen}
+      onClose={() => state.close()}
+      triggerRef={internalRef}
+      hideArrow
+      width={popUpWidth}
+      shouldCloseOnBlur
+      {...{
+        onLoadMore,
+        loadingState,
+        shouldFlip,
+        offset,
+        placement: placement === "top" ? "top start" : "bottom start",
+        focusOnProps: {
+          onDeactivation: () => {
+            // Manually setting focus back as return focus only works once. @todo Investigate.
+            internalRef?.current && internalRef.current.focus();
+          },
+          returnFocus: false,
+          // Firefox issue where within a scroll container the popup flashes open/closed.
+          scrollLock: false,
+        },
+        "data-id": dataId ? `${dataId}--popup` : undefined,
+      }}
+    >
+      <ListBox
+        {...{
+          ...menuProps,
+          shouldFocusOnHover,
+          loadingState,
+          state,
+          "data-id": dataId ? `${dataId}--listBox` : undefined,
+        }}
+      />
+    </Popup>
+  );
+
   return (
     <Field
       {...{
@@ -131,13 +169,15 @@ function Select<T extends object>(
       className={st(classes.root, classNameProp)}
     >
       <>
-        <ButtonBase
+        <Button
           {...triggerProps}
           icon={triggerIcon}
           iconPos="end"
           ref={ref ? mergeRefs(ref, internalRef) : internalRef}
           variant={false}
+          tone={false}
           className={classes.trigger}
+          vol={false}
           data-id={dataId ? `${dataId}--trigger` : undefined}
         >
           <span
@@ -150,7 +190,7 @@ function Select<T extends object>(
               <span className={classes.placeholder}>{placeholder}</span>
             )}
           </span>
-        </ButtonBase>
+        </Button>
         <HiddenSelect
           state={state}
           triggerRef={internalRef}
@@ -158,45 +198,7 @@ function Select<T extends object>(
           name={props.name}
           isDisabled={isDisabled}
         />
-        {state.isOpen &&
-          createPortal(
-            <Popup
-              isOpen={state.isOpen}
-              onClose={() => state.close()}
-              triggerRef={internalRef}
-              hideArrow
-              width={popUpWidth}
-              shouldCloseOnBlur
-              {...{
-                onLoadMore,
-                loadingState,
-                shouldFlip,
-                offset,
-                placement: placement === "top" ? "top start" : "bottom start",
-                focusOnProps: {
-                  onDeactivation: () => {
-                    // Manually setting focus back as return focus only works once. @todo Investigate.
-                    internalRef?.current && internalRef.current.focus();
-                  },
-                  returnFocus: false,
-                  // Firefox issue where within a scroll container the popup flashes open/closed.
-                  scrollLock: false,
-                },
-                "data-id": dataId ? `${dataId}--popup` : undefined,
-              }}
-            >
-              <ListBox
-                {...{
-                  ...menuProps,
-                  shouldFocusOnHover,
-                  loadingState,
-                  state,
-                  "data-id": dataId ? `${dataId}--listBox` : undefined,
-                }}
-              />
-            </Popup>,
-            document.querySelector(portalSelector) as HTMLElement
-          )}
+        {state.isOpen && <Portal selector={portalSelector}>{popup}</Portal>}
       </>
     </Field>
   );

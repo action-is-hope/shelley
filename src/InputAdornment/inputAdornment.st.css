@@ -1,18 +1,3 @@
-@st-namespace "InputAdornment";
+@st-namespace "inputAdornment";
 
-.root {
-  height: 0.01em;
-  display: flex;
-  max-height: 2em;
-  align-items: center;
-  white-space: nowrap;
-  align-self: center;
-  padding-left: 0.69231rem;
-  padding-right: 0.69231rem;
-  font-size: 0.8em;
-  opacity: 0.8;
-}
-
-.root:empty {
-  width: 0;
-}
+.root {}

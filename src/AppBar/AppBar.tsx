@@ -34,7 +34,7 @@ function AppBar(props: AppBarProps, ref: React.Ref<HTMLDivElement>) {
       {...rest}
       ref={ref}
     >
-      {children}
+      <div className={classes.container}>{children}</div>
     </Component>
   );
 }

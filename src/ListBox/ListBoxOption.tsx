@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import CheckIcon from "../icons/Check";
 import type { Node } from "@react-types/shared/src/collections";
 import type { ListState } from "react-stately";
-import { mergeProps, useFocusRing, useHover, useOption } from "react-aria";
+import { mergeProps, useHover, useOption } from "react-aria";
 import { st, classes } from "./listBoxOption.st.css";
 
 export interface ListBoxOptionProps<T> {
@@ -27,19 +27,25 @@ export function ListBoxOption<T>(props: ListBoxOptionProps<T>) {
     shouldFocusOnHover,
   } = props;
   const ref = useRef(null);
-  const { isFocusVisible, focusProps } = useFocusRing();
+
   // Get props for the option
-  const { optionProps, isSelected, isFocused, isDisabled, isPressed } =
-    useOption(
-      {
-        "aria-label": item["aria-label"],
-        key: item.key,
-        shouldSelectOnPressUp,
-        shouldFocusOnHover,
-      },
-      state,
-      ref
-    );
+  const {
+    optionProps,
+    isFocused,
+    isDisabled,
+    isPressed,
+    isSelected,
+    isFocusVisible,
+  } = useOption(
+    {
+      "aria-label": item["aria-label"],
+      key: item.key,
+      shouldSelectOnPressUp,
+      shouldFocusOnHover,
+    },
+    state,
+    ref
+  );
   const { hoverProps, isHovered } = useHover({
     ...props,
     isDisabled,
@@ -50,11 +56,7 @@ export function ListBoxOption<T>(props: ListBoxOptionProps<T>) {
   );
   return (
     <li
-      {...mergeProps(
-        optionProps,
-        shouldFocusOnHover ? {} : hoverProps,
-        focusProps
-      )}
+      {...mergeProps(optionProps, hoverProps)}
       ref={ref}
       className={st(
         classes.root,

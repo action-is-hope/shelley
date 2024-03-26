@@ -28,7 +28,7 @@ function Icon(props: IconProps, ref: React.Ref<SVGSVGElement>) {
   } = props;
 
   const altText = altVisible ? (
-    <span className={classes.altVisible}>{alt}</span>
+    <span className={classes.alt}>{alt}</span>
   ) : (
     <VisuallyHidden>{alt}</VisuallyHidden>
   );

@@ -1,17 +1,9 @@
-@st-namespace "AppBar";
+@st-namespace "appBar";
 
 .root {
   -st-states:
     variant(string),
     align(enum(center, inherit, justify, start, end));
-
-  display: flex;
-  position: relative;
-  align-items: center;
-  padding-left: 24px;
-  padding-right: 24px;
 }
 
-.root:align(end) {
-  justify-content: flex-end;
-}
+.container {}

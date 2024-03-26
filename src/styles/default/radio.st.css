@@ -1,4 +1,4 @@
-@st-namespace "DefaultRadio";
+@st-namespace "adio";
 /**
  * = Radio - radio.st.css
  *
@@ -8,33 +8,33 @@
  * 
  */
 
-@st-import Default, [
-    --spacing-unit,
-    --color-error
-  ] from "./project.st.css";
+@st-import [
+  --spacing-unit,
+  --color-error
+] from "./project.st.css";
 @st-import Radio from "../../Radio/radio.st.css";
 @st-import RadioGroup from "../../Radio/radioGroup.st.css";
 @st-import Icon from "../../Icon/icon.st.css";
 @st-import [
-    SelectionControlInputContainer,
-    SelectionControlFieldInput,
-    RadioCheckboxCommon,
-    RadioFieldInput,
-    labelVol1,
-    labelVol2,
-    labelVol3,
-    labelVol4,
-    labelVol5,
-    labelVol6,
-    selectionControlSize1,
-    selectionControlSize2,
-    selectionControlSize3,
-    selectionControlSize4,
-    selectionControlSize5,
-    selectionControlSize6
+  SelectionControlInputContainer,
+  SelectionControlFieldInput,
+  RadioCheckboxCommon,
+  RadioFieldInput,
+  labelVol1,
+  labelVol2,
+  labelVol3,
+  labelVol4,
+  labelVol5,
+  labelVol6,
+  selectionControlSize1,
+  selectionControlSize2,
+  selectionControlSize3,
+  selectionControlSize4,
+  selectionControlSize5,
+  selectionControlSize6
 ] from "./mixins/formElements.st.css";
 
-@st-scope Default {
+@st-scope body {
 
   Radio {
     gap: calc(var(--spacing-unit) / 2);
@@ -116,8 +116,20 @@
   RadioGroup {}
 
   RadioGroup::group {
-    gap: 0.2em;
+    display: flex;
+    gap: calc(var(--spacing-unit) / 1.5);
   }
+
+  RadioGroup:orientation(vertical)::group {
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) - 2px);
+  }
+
+  RadioGroup:orientation(horizontal)::group {
+    flex-flow: wrap;
+    gap: 2em;
+  }
+
 
   /* ==== RadioGroup: volume ====*/
 

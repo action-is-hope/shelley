@@ -5,7 +5,6 @@ import dedent from "ts-dedent";
 
 export const BasicBlockquote = (args) => (
   <Blockquote
-    variant={1}
     desc="Donella Meadows, environmental scientist, 1941-2001"
     {...args}
   >
@@ -24,10 +23,6 @@ export const BasicBlockquote = (args) => (
       options: [1, 2, 3, 4],
       control: { type: "inline-radio" },
       description: "volume of the description",
-    },
-    variant: {
-      options: [1, 2],
-      control: { type: "inline-radio" },
     },
     desc: {
       control: { type: "text" },

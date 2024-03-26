@@ -6,7 +6,7 @@ import type { PressEvent } from "@react-types/shared";
 import type { ComponentBase } from "../typings/shared-types";
 import { useToast } from "@react-aria/toast";
 import { mergeRefs } from "@react-aria/utils";
-import { ButtonBase } from "../Button";
+import { Button } from "../Button";
 import { Text } from "../Text";
 import { IconButton } from "../Button/IconButton";
 import CloseIcon from "../icons/Close";
@@ -110,7 +110,7 @@ function Toast(
       </div>
       <div className={classes.actionAndCloseWrapper}>
         {actionLabel && onAction && (
-          <ButtonBase
+          <Button
             tone={false}
             className={classes.actionButton}
             {...withOrWithoutCloseButtonProps}
@@ -122,7 +122,7 @@ function Toast(
             data-id={dataId ? `${dataId}--actionButton` : undefined}
           >
             {actionLabel}
-          </ButtonBase>
+          </Button>
         )}
         <div className={classes.closeButtonWrapper}>
           <IconButton

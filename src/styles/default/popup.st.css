@@ -7,23 +7,73 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Popup/blockquote.st.css
  * 
  */
-@st-import Default, [
-  --color-popup,
-  --background-color-popup,
-  --border-width-popup,
-  --border-color-popup] from "./project.st.css";
+@st-import [
+  --popup-color,
+  --popup-bg,
+  --popup-border-width,
+  --popup-border-color,
+  --popup-radius,
+  --popup-drop-shadow
+] from "./project.st.css";
 @st-import Popup from "../../Popup/popup.st.css";
 
-@st-scope Default {
+@st-scope {
+
+  /* fix for issue where labels and buttons under Popup receive pointer events when selecting items. */
+  :global(.hasPopup) :not(Popup) label,
+  :global(.hasPopup) :not(Popup) button {
+    pointer-events: none;
+  }
+}
+
+@st-scope body {
   Popup {
-    border: var(--border-width-popup) solid var(--border-color-popup);
-    background-color: var(--background-color-popup);
-    color: var(--color-popup);
+    background-color: var(--popup-bg);
+    border: var(--popup-border-width) solid var(--popup-border-color);
+    border-radius: var(--popup-radius);
+    color: var(--popup-color);
+    filter: var(--popup-drop-shadow);
+  }
+
+  Popup::scroller {
+    overflow: hidden auto;
   }
 
   Popup::arrow {
-    fill: var(--background-color-popup);
-    stroke-width: var(--border-width-popup);
-    stroke: var(--border-color-popup);
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    fill: var(--popup-bg);
+    stroke-width: var(--popup-border-width);
+    stroke: var(--popup-border-color);
   }
+
+  Popup::arrow:placement(top) {
+    bottom: -12px;
+    margin-left: -6px;
+  }
+
+  Popup::arrow:placement(right) {
+    rotate: 90deg;
+    left: -12px;
+    margin-top: -6px;
+  }
+
+  Popup::arrow:placement(bottom) {
+    rotate: 180deg;
+    top: -12px;
+    margin-left: -6px;
+  }
+
+  Popup::arrow:placement(left) {
+    right: -12px;
+    rotate: 270deg;
+    margin-top: -6px;
+  }
+
+  /* Popup::arrow:placement(left),
+  Popup::arrow:placement(right) {
+    margin-top: -2px;
+  } */
+
 }

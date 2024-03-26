@@ -1,0 +1,22 @@
+@st-namespace "visuallyHidden";
+/**
+ * = VisuallyHidden - visuallyHidden.st.css
+ *
+ * Base theme styles for a Shelley VisuallyHidden.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/VisuallyHidden/visuallyHidden.st.css
+ * 
+ */
+@st-import [
+  breakpoint-md-max,
+  --radius
+] from "./project.st.css";
+@st-import VisuallyHidden from "../../VisuallyHidden/visuallyHidden.st.css";
+@st-import [visuallyHidden] from "./mixins/visuallyHidden.st.css";
+
+
+@st-scope body {
+  VisuallyHidden {
+    -st-mixin: visuallyHidden;
+  }
+}

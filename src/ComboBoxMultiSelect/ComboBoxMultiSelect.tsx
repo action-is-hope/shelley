@@ -12,13 +12,13 @@ import React, {
   MouseEvent,
   useImperativeHandle,
 } from "react";
-import { createPortal } from "react-dom";
 import { useFilter } from "react-aria";
 import type { PressEvent } from "@react-types/shared";
 import type { PositionProps } from "@react-types/overlays";
 import type { LoadMoreProps } from "../typings/shared-types";
 import { mergeRefs } from "@react-aria/utils";
 import { Field, FieldProps } from "../Field";
+import { Portal } from "../Portal";
 import { Popup } from "../Popup";
 import { Button } from "../Button";
 import AngleDown from "../icons/AngleDown";
@@ -499,13 +499,7 @@ function ComboBoxMultiSelect<
           ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
           onBlur={onBlur}
         />
-        {isOpen && portalSelector
-          ? // If no portalSelector render inline.
-            createPortal(
-              popup,
-              document.querySelector(portalSelector) as HTMLElement
-            )
-          : popup}
+        {isOpen && <Portal selector={portalSelector}>{popup}</Portal>}
       </>
     </Field>
   );

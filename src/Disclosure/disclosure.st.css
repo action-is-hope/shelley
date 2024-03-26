@@ -1,5 +1,5 @@
 /* disclosure.st.css */
-@st-namespace "Disclosure";
+@st-namespace "disclosure";
 @st-import Button from "../Button/button.st.css";
 
 .root {
@@ -8,24 +8,10 @@
 
 .trigger {
   -st-extends: Button;
-  width: 100%;
-}
-
-.trigger:hover {
-  cursor: pointer;
 }
 
 .triggerIcon {}
 
-.transition {
-  transition: opacity 250ms, margin-top 250ms, height 250ms;
-  overflow: hidden;
-  display: block;
-  opacity: 0;
-}
-
-.root:isExpanded::transition {
-  opacity: 1;
-}
+.transition {}
 
 .content {}

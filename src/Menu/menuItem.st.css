@@ -1,12 +1,14 @@
-@st-namespace "MenuItem";
+@st-namespace "menuItem";
 
 .root {
   -st-states:
     selectionMode(enum(none, single, multiple)),
     isDisabled,
     isFocused,
-    isSelected,
-    isFocusVisible;
+    isFocusVisible,
+    isHovered,
+    isPressed,
+    isSelected;
 }
 
 .selectedIcon {}

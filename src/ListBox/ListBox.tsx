@@ -31,6 +31,7 @@ function ListBox<T extends object>(
     loadingMoreString,
     loadingString,
   } = props;
+
   const internalRef = useRef<HTMLUListElement>(null);
   // Create state based on the incoming props, if state is provided use that.
   let state = useListState({ ...props });
@@ -60,6 +61,7 @@ function ListBox<T extends object>(
               state,
               ...props,
             }}
+            shouldFocusOnHover={false}
           />
         ))}
         {/* {[...state.collection].map((item) => (

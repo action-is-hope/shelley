@@ -1,4 +1,4 @@
-@st-namespace "Checkbox";
+@st-namespace "ckbox";
 @st-import InputLabel from "../Label/label.st.css";
 
 .root {

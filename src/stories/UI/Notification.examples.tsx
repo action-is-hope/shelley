@@ -92,14 +92,14 @@ export const InlineNotificationWithFooter = () => {
         <ButtonGroup>
           <Button
             onClick={() => setIsOpen(false)}
-            tone="contrast"
+            // tone="contrast"
             variant="quiet"
           >
             Secondary
           </Button>
           <Button
             onClick={() => setIsOpen(false)}
-            tone="contrast"
+            // tone="contrast"
             variant="primary"
           >
             Primary

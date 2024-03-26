@@ -1,25 +1,18 @@
-@st-namespace "Select";
+@st-namespace "select";
 @st-import Field from "../Field/field.st.css";
-@st-import ButtonBase from "../Button/buttonBase.st.css";
+@st-import Button from "../Button/button.st.css";
 @st-import Popup from "../Popup/popup.st.css";
-
 
 .root {
   -st-extends: Field;
 }
 
 .trigger {
-  -st-extends: ButtonBase;
+  -st-extends: Button;
 }
 
 .popup {
   -st-extends: Popup;
-  overflow: hidden scroll;
 }
 
-.placeholder {
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.placeholder {}

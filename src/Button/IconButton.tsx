@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { st, classes } from "./iconButton.st.css";
-import { ButtonBase, ButtonProps } from "./";
+import { Button, ButtonProps } from "./";
 
 export interface IconButtonProps
   extends Omit<ButtonProps, "elementType" | "href" | "isCta"> {
@@ -11,7 +11,7 @@ function IconButton(props: IconButtonProps, ref: React.Ref<HTMLButtonElement>) {
   const { children, className: classNameProp, isFab, ...rest } = props;
 
   return (
-    <ButtonBase
+    <Button
       className={st(
         classes.root,
         {

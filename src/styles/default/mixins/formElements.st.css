@@ -7,13 +7,19 @@
 
 @st-import Default, [
     --spacing-unit,
-    --color-form-selection-border,
-    --color-form-selection-notch,
-    --color-switch-notch
+    --field-border-color-hasValue,
+    --field-border-width,
+    --field-selection-mark-color,
+    --field-selection-font-weight,
+    --bg-main,
+    --field-focus-color,
+    --switch-border-width,
+    --switch-unchecked-color,
   ] from "../project.st.css";
+@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5, textVol6] from "./textVol.st.css";
 @st-import InputLabel from "../../../Label/label.st.css";
-@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5] from "./textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
+
 
 /* Local vars. */
 :vars {
@@ -54,7 +60,8 @@
 
 .disabledField {
   /* = Dim the whole lot... */
-  filter: saturate(15%) brightness(70%);
+  filter: saturate(15%) brightness(90%);
+  cursor: not-allowed;
 }
 
 
@@ -194,8 +201,7 @@
   justify-content: center;
   border-style: solid;
   border-width: 2px;
-  border-color: #333;
-  border-color: var(--color-form-selection-border);
+  border-color: var(--field-border-color-hasValue);
   /* = pseudoFocus mixin replaces the default outline. */
   outline: none;
 }
@@ -203,12 +209,12 @@
 .SelectionControlFieldInput::after {
   /* = Field focus indicator, via pseudo element. */
   -st-mixin: pseudoFocus;
+  inset: -4px;
 }
 
 .SelectionControlFieldInput:disabled {
   -st-mixin: disabledField;
 }
-
 
 /**
  * = RADIO / CHECKBOX - COMMON
@@ -218,15 +224,14 @@
 /* = The 'mark' of the field, radio and checkboxes both have one. */
 .RadioCheckboxCommon::before {
   content: "";
-  transition: opacity 120ms;
   width: 0.5em;
   height: 0.5em;
-  will-change: opacity;
   opacity: 0;
   display: block;
-  background-color: var(--color-form-selection-notch);
+  background-color: var(--field-selection-mark-color);
   position: absolute;
 }
+
 
 /**
  * = RADIO
@@ -251,7 +256,7 @@
 
 .CheckboxIsIndeterminate::before {
   opacity: 1;
-  height: 0.1em;
+  height: 0.125em;
 }
 
 
@@ -264,26 +269,32 @@
 .SwitchFieldInput {
   width: 2em;
   border-radius: 9999px;
+  border-width: var(--switch-border-width);
 }
 
 .SwitchFieldInput::after {
   border-radius: 9999px;
+  display: none;
 }
 
 .SwitchFieldInput::before {
   content: "";
   position: absolute;
-  width: 1.3em;
-  height: 1.3em;
+  width: 1.4em;
+  height: 1.4em;
   border-radius: 9999px;
   transition: all 0.2s;
   transform: translate(-50%);
   will-change: translate, background-color;
   z-index: 1;
-  background-color: var(--color-switch-notch);
+  background-color: var(--switch-unchecked-color);
+}
+
+.SwitchFieldInput:focus-visible::before {
+  box-shadow: inset 0 0 0 1px var(--bg-main), 0 0 1px 2px var(--field-focus-color);
 }
 
 .SwitchFieldInput:checked::before {
   transform: translate(50%);
-  background-color: var(--color-form-selection-notch);
+  background-color: var(--field-selection-mark-color);
 }
