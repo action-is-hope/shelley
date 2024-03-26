@@ -34,7 +34,6 @@ export const BasicSelect = (args: ItemsType) => {
         <Item key="sometimes">Sometimes</Item>
         <Item key="always">Always</Item>
       </Select>
-
       <RadioGroup label="Favorite sport">
         <Radio value="football">Football</Radio>
         <Radio value="baseball">Baseball</Radio>

@@ -2,7 +2,7 @@
 import type { TransitionProps } from "react-transition-group/Transition";
 import type { ReactFocusOnProps } from "react-focus-on/dist/es5/types";
 import React, { useRef, forwardRef } from "react";
-import { createPortal } from "react-dom";
+import { Portal } from "../Portal";
 import { CSSTransition } from "react-transition-group";
 import { FocusOn } from "react-focus-on";
 import { st, classes } from "./modal.st.css";
@@ -207,11 +207,7 @@ function Modal(props: ModalProps, ref?: React.Ref<HTMLDivElement>) {
       </>
     </CSSTransition>
   );
-  // If portalSelector then render inside portal elso render inline.
-  // @todo check element exists.
-  return portalSelector
-    ? createPortal(modal, document.querySelector(portalSelector) as HTMLElement)
-    : modal;
+  return <Portal selector={portalSelector}>{modal}</Portal>;
 }
 Modal.displayName = "Modal";
 

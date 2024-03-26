@@ -17,6 +17,15 @@
 ] from "./project.st.css";
 @st-import Popup from "../../Popup/popup.st.css";
 
+@st-scope {
+
+  /* fix for issue where labels and buttons under Popup receive pointer events when selecting items. */
+  :global(.hasPopup) :not(Popup) label,
+  :global(.hasPopup) :not(Popup) button {
+    pointer-events: none;
+  }
+}
+
 @st-scope body {
   Popup {
     background-color: var(--popup-bg);

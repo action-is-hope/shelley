@@ -60,7 +60,8 @@
 
 .disabledField {
   /* = Dim the whole lot... */
-  filter: saturate(15%) brightness(70%);
+  filter: saturate(15%) brightness(90%);
+  cursor: not-allowed;
 }
 
 

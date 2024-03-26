@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { Popup, PopupProps, Button } from "../../src/indexLib";
+import { Popup, PopupProps, Button, Portal } from "../../src/indexLib";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
@@ -43,19 +43,23 @@ export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
       >
         40px
       </Button>
-      <Popup
-        // Focus
-        {...overlayProps}
-        isOpen={state.isOpen}
-        onClose={() => state.close()}
-        {...props}
-        triggerRef={triggerRef}
-        data-id="popup"
-      >
-        <div style={{ height: "78px", width: "78px", background: "grey" }}>
-          80px (78px + 2px border)
-        </div>
-      </Popup>
+      {state.isOpen && (
+        <Portal>
+          <Popup
+            // Focus
+            {...overlayProps}
+            isOpen={state.isOpen}
+            onClose={() => state.close()}
+            {...props}
+            triggerRef={triggerRef}
+            data-id="popup"
+          >
+            <div style={{ height: "78px", width: "78px", background: "grey" }}>
+              80px (78px + 2px border)
+            </div>
+          </Popup>
+        </Portal>
+      )}
     </div>
   );
 };
@@ -81,19 +85,23 @@ export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
       >
         40px
       </Button>
-      <Popup
-        // Focus
-        {...overlayProps}
-        isOpen={state.isOpen}
-        onClose={() => state.close()}
-        {...props}
-        triggerRef={triggerRef}
-        data-id="popup"
-      >
-        <div>
-          <Button data-focus-test>Focusable button</Button>
-        </div>
-      </Popup>
+      {state.isOpen && (
+        <Portal>
+          <Popup
+            // Focus
+            {...overlayProps}
+            isOpen={state.isOpen}
+            onClose={() => state.close()}
+            {...props}
+            triggerRef={triggerRef}
+            data-id="popup"
+          >
+            <div>
+              <Button data-focus-test>Focusable button</Button>
+            </div>
+          </Popup>
+        </Portal>
+      )}
       <a id="focusLink" href="#">
         Focus me
       </a>
@@ -116,24 +124,28 @@ export const TriggerCustomContent = (props: Omit<PopupProps, "triggerRef">) => {
       <Button {...triggerProps} data-id="trigger" ref={triggerRef}>
         Trigger
       </Button>
-      <Popup
-        data-id="popup"
-        {...overlayProps}
-        isOpen={state.isOpen}
-        onClose={() => state.close()}
-        {...props}
-        triggerRef={triggerRef}
-      >
-        {props.children || <div>Content</div>}
-      </Popup>
+      {state.isOpen && (
+        <Portal>
+          <Popup
+            data-id="popup"
+            {...overlayProps}
+            isOpen={state.isOpen}
+            onClose={() => state.close()}
+            {...props}
+            triggerRef={triggerRef}
+          >
+            {props.children || <div>Content</div>}
+          </Popup>
+        </Portal>
+      )}
     </>
   );
 };
 
 describe("Basic Popup", () => {
-  it("Renders hidden by default", () => {
+  it("Renders by default", () => {
     cy.mount(<BasicTemplate />);
-    cy.get(popup).should("not.exist");
+    cy.get(popup).should("exist");
   });
   it("isOpen renders Popup with arrow", () => {
     cy.mount(<BasicTemplate isOpen />);
