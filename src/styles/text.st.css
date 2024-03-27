@@ -1,4 +1,4 @@
-@st-namespace "DefaultText";
+@st-namespace "shelleyText";
 /**
  * = Text - text.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Text/text.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --color-focus,
   --color-ui-rgb,
   --link-color,
@@ -32,7 +32,7 @@
   textVol11,
 ] from "./mixins/textVol.st.css";
 
-@st-scope {
+@st-scope Shelley {
 
   Text {
     font-weight: 400;

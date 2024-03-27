@@ -9,7 +9,7 @@ import {
   Icon,
   IconProps,
 } from "../../indexLib";
-import { classes as spacing } from "../../styles/default/spacing.st.css";
+import { classes as spacing } from "../../styles/spacing.st.css";
 
 export const DisclosurePropsTable = (props: DisclosureProps) => {
   <Disclosure {...props} />;

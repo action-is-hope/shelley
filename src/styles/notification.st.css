@@ -6,7 +6,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Notification/notification.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --light-01-rgb,
   --dark-01-rgb,
@@ -27,7 +27,7 @@
 
 @st-import [textVol1, textVol2] from "./mixins/textVol.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Notification {
     display: flex;
     flex-wrap: wrap;

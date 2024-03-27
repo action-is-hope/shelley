@@ -1,4 +1,4 @@
-@st-namespace "DefaultDialog";
+@st-namespace "shelleyDialog";
 /**
  * = Dialog - dialog.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Dialog/dialog.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --color-ui,
   --dialog-bg,
@@ -20,7 +20,7 @@
 
 
 
-@st-scope body {
+@st-scope Shelley {
   Dialog {
     --dialog-padding-x: calc(var(--spacing-unit) * 2);
     --dialog-padding-y: calc(var(--spacing-unit) * 2);
@@ -133,7 +133,7 @@
 
 
 @media screen and (min-width: 701px) {
-  @st-scope body {
+  @st-scope Shelley {
     Dialog:size(small) {
       width: var(--dialog-small-width);
     }
@@ -148,7 +148,7 @@
   }
 }
 
-@st-scope body {
+@st-scope Shelley {
   Dialog::closeButton {}
 
   Dialog::hero {

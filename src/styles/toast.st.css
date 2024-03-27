@@ -1,4 +1,4 @@
-@st-namespace "DefaultToast";
+@st-namespace "shelleyToast";
 /**
  * = Toast - toast.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toast.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --radius-lg,
   --color-ui-rgb-inverse,
@@ -20,7 +20,7 @@
 ] from "./project.st.css";
 @st-import Toast from "../Toast/toast.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   Toast {
     display: flex;

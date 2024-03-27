@@ -1,4 +1,4 @@
-@st-namespace "DefaultModal";
+@st-namespace "shelleyModal";
 /**
  * = Modal - modal.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Modal/modal.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --modal-backdrop-bg
 ] from "./project.st.css";
 @st-import Modal, [
@@ -24,7 +24,7 @@
   }
 }
 
-@st-scope body {
+@st-scope Shelley {
   Modal {
     display: flex;
     align-items: center;

@@ -1,4 +1,4 @@
-@st-namespace "DefaultTableView";
+@st-namespace "shelleyTableView";
 /**
  * = TableView - tableView.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TableView/tableView.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --bg-main,
   --color-focus,
@@ -27,7 +27,7 @@
 @st-import [textVol, textVol1, textVol2] from "./mixins/textVol.st.css";
 
 
-@st-scope body {
+@st-scope Shelley {
   TableView {
     /* --table-row-bg: var(--table-row-bg);
     --table-row-color: var(--table-row-color);

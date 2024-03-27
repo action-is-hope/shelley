@@ -1,4 +1,4 @@
-@st-namespace "DefaultIcon";
+@st-namespace "shelleyIcon";
 /**
  * = Icon - icon.st.css
  *
@@ -7,10 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Icon/icon.st.css
  * 
  */
-
+@st-import Shelley from "./project.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Icon {
     fill: currentColor;
     width: 1em;

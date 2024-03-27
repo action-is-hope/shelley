@@ -1,4 +1,4 @@
-@st-namespace "DefaultCheckbox";
+@st-namespace "shelleyCheckbox";
 /**
  * = Checkbox - checkbox.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Checkbox/checkbox.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
     --spacing-unit,
     --color-error
   ] from "./project.st.css";
@@ -34,7 +34,7 @@
     selectionControlSize6
 ] from "./mixins/formElements.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   Checkbox {
     gap: calc(var(--spacing-unit) / 2 + 2px);

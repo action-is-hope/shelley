@@ -8,7 +8,7 @@
  * 
  */
 
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --color-error
 ] from "./project.st.css";
@@ -34,7 +34,7 @@
   selectionControlSize6
 ] from "./mixins/formElements.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   Radio {
     gap: calc(var(--spacing-unit) / 2);

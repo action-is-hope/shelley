@@ -1,4 +1,4 @@
-@st-namespace "DefaultIconButton";
+@st-namespace "shelleyIconButton";
 /**
  * = IconButton - iconButton.st.css
  *
@@ -8,7 +8,7 @@
  * 
  */
 
-@st-import [ 
+@st-import Shelley, [ 
   --light-01,
   --dark-02,
   --tone-contrast,
@@ -25,7 +25,7 @@
 ] from "./button.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   IconButton {
     padding: 10px;

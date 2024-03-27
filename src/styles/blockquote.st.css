@@ -7,10 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Blockquote/blockquote.st.css
  * 
  */
-@st-import [--spacing-unit, --tone-lead] from "./project.st.css";
+@st-import Shelley, [--spacing-unit, --tone-lead] from "./project.st.css";
 @st-import Blockquote from "../Blockquote/blockquote.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Blockquote {
     margin: 0;
     padding: 0 var(--spacing-unit);

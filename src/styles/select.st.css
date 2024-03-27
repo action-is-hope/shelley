@@ -1,4 +1,4 @@
-@st-namespace "DefaultSelect";
+@st-namespace "shelleySelect";
 /**
  * = Select - select.st.css
  *
@@ -8,7 +8,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Select/select.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --field-padding,
   --field-placeholder-color,
@@ -17,7 +17,7 @@
 @st-import Select from "../Select/select.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   Select::trigger {
     border-radius: 0;

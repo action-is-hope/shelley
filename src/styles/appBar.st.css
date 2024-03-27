@@ -7,9 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/AppBar/appBar.st.css
  * 
  */
+@st-import Shelley from "./project.st.css";
 @st-import AppBar from "../AppBar/appBar.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   AppBar {
     display: flex;
     position: relative;

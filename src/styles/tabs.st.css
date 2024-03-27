@@ -1,4 +1,4 @@
-@st-namespace "DefaultTabs";
+@st-namespace "shelleyTabs";
 /**
  * = Tabs - tabs.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Tabs/tabs.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --bg-secondary,
   --color-ui-rgb,
@@ -17,7 +17,7 @@
 @st-import [textVol1, textVol2, textVol3] from "./mixins/textVol.st.css";
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   Tabs {
     display: flex;

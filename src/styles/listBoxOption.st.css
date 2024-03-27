@@ -1,4 +1,4 @@
-@st-namespace "DefaultListBoxOption";
+@st-namespace "shelleyListBoxOption";
 /**
  * = ListBoxOption - listBoxOption.st.css
  *
@@ -7,8 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBoxOption/listBoxOption.st.css
  * 
  */
-
-@st-import [
+@st-import Shelley, [
   --option-item-bg-hover
 ] from "./project.st.css";
 @st-import ListBoxOption from "../ListBox/listBoxOption.st.css";
@@ -21,7 +20,7 @@
     menuItemSelectedIcon
 ] from "./mixins/menuList.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   ListBoxOption {
     -st-mixin: menuItem;
   }

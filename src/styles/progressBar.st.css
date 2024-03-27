@@ -1,12 +1,12 @@
 /* progressBar.st.css */
-@st-import [
+@st-import Shelley, [
   --color-ui-rgb-inverse,
   --color-ui-rgb,
   --progress-fill-color
 ] from "./project.st.css";
 @st-import ProgressBar from "../Progress/progressBar.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   ProgressBar {
     --loader-bar-size-small: 2px;
     --loader-bar-size-medium: 8px;

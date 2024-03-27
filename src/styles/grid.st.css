@@ -1,4 +1,4 @@
-@st-namespace "DefaultGrid";
+@st-namespace "shelleyGrid";
 /**
  * = Grid - grid.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Grid/grid.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --spacing-unit,
   --grid-gap,
   --grid-main-cols-xs, --grid-main-cols-sm, --grid-main-cols-md,
@@ -21,7 +21,7 @@
 @st-import Grid from "../Grid/grid.st.css";
 @st-import [formatted] from "./mixins/formatting.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Grid {
     display: grid;
     grid-gap: var(--grid-gap);
@@ -41,7 +41,7 @@
 
 /* = Width tweaks for sm and above. */
 @media value(breakpoint-sm) {
-  @st-scope body {
+  @st-scope Shelley {
     Grid:variant(main) {
       grid-template-columns: var(--grid-main-cols-sm)
     }
@@ -50,14 +50,14 @@
 
 /* = Width tweaks for md and above. */
 @media value(breakpoint-md) {
-  @st-scope body {
+  @st-scope Shelley {
     Grid:variant(main) {
       grid-template-columns: var(--grid-main-cols-md);
     }
   }
 }
 
-@st-scope body {
+@st-scope Shelley {
 
   /* = Set direct descendant Grid variant1 to 'edge' grid lines. */
   Grid:variant(main) > Grid:variant(main) {
@@ -107,7 +107,7 @@
 }
 
 @media value(breakpoint-md) {
-  @st-scope body {
+  @st-scope Shelley {
     Grid:variant(main) > .snapMidToGoal {
       grid-column: goal;
     }

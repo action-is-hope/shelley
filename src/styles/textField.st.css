@@ -1,4 +1,4 @@
-@st-namespace "DefaultTextField";
+@st-namespace "shelleyTextField";
 /**
  * = TextField - textField.st.css
  *
@@ -8,10 +8,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TextField/textField.st.css
  * 
  */
-@st-import Default from "./project.st.css";
+@st-import Shelley from "./project.st.css";
 @st-import TextField from "../TextField/textField.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   /* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   TextField::textareaWrap {

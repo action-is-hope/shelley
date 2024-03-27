@@ -5,7 +5,7 @@
  * 
  * ========================================================================= */
 
-@st-import Default, [
+@st-import [
     --spacing-unit,
     --field-border-color-hasValue,
     --field-border-width,

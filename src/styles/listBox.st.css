@@ -1,4 +1,4 @@
-@st-namespace "DefaultListBox";
+@st-namespace "shelleyListBox";
 /**
  * = ListBox - listBox.st.css
  *
@@ -7,11 +7,11 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/ListBox/listBox.st.css
  * 
  */
-
+@st-import Shelley from "./project.st.css";
 @st-import ListBox from "../ListBox/listBox.st.css";
 @st-import [menuList] from "./mixins/menuList.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   ListBox {
     -st-mixin: menuList;
   }

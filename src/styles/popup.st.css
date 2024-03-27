@@ -1,4 +1,4 @@
-@st-namespace "DefaultPopup";
+@st-namespace "shelleyPopup";
 /**
  * = Popup - popup.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Popup/blockquote.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --popup-color,
   --popup-bg,
   --popup-border-width,
@@ -17,7 +17,7 @@
 ] from "./project.st.css";
 @st-import Popup from "../Popup/popup.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Popup {
     background-color: var(--popup-bg);
     border: var(--popup-border-width) solid var(--popup-border-color);

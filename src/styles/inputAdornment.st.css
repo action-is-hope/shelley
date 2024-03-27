@@ -1,4 +1,4 @@
-@st-namespace "DefaultIcon";
+@st-namespace "shelleyIcon";
 /**
  * = InputAdornment - inputAdornment.st.css
  *
@@ -7,10 +7,10 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/InputAdornment/inputAdornment.st.css
  * 
  */
-
+@st-import Shelley from "./project.st.css";
 @st-import InputAdornment from "../InputAdornment/inputAdornment.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   InputAdornment {
     height: 0.01em;
     display: flex;

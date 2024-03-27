@@ -1,4 +1,4 @@
-@st-namespace "DefaultHelpText";
+@st-namespace "shelleyHelpText";
 /**
  * = HelpText - helpText.st.css
  *
@@ -7,13 +7,13 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/HelpText/helpText.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --color-error,
   --field-help-text-color
 ] from "./project.st.css";
 @st-import HelpText from "../HelpText/helpText.st.css";
 
-@st-scope body {
+@st-scope Shelley {
 
   HelpText {
     transition: color 0.2s;

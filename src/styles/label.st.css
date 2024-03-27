@@ -1,4 +1,4 @@
-@st-namespace "DefaultLabel";
+@st-namespace "shelleyLabel";
 /**
  * = Label - label.st.css
  *
@@ -10,7 +10,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Label/label.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   --label-font-weight,
   --field-selection-font-weight,
   --label-color
@@ -18,7 +18,7 @@
 @st-import Label from "../Label/label.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   Label {
     /* = Flex enables our positional styles, grid could work too. */
     display: flex;

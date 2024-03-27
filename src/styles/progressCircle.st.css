@@ -1,12 +1,13 @@
 @st-namespace "ShelleyProgressCircle";
-@st-import [
+
+@st-import Shelley, [
   --color-ui-rgb,
   --color-ui-rgb-inverse,
   --progress-fill-color
 ] from "./project.st.css";
 @st-import ProgressCircle from "../Progress/progressCircle.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   ProgressCircle {
     --loader-circle-small-width: 16px;
     --loader-circle-small-height: 16px;

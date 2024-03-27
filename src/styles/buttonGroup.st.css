@@ -1,4 +1,4 @@
-@st-namespace "DefaultButtonGroup";
+@st-namespace "shelleyButtonGroup";
 /**
  * = ButtonGroup - buttonGroup.st.css
  *
@@ -7,12 +7,12 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/buttonGroup.st.css
  * 
  */
-@st-import [--spacing-unit, --button-radius, --button-border-width] from "./project.st.css";
+@st-import Shelley, [--spacing-unit, --button-radius, --button-border-width] from "./project.st.css";
 @st-import ButtonGroup from "../Button/buttonGroup.st.css";
 @st-import Button from "../Button/button.st.css";
 @st-import [--border-radius] from "./button.st.css";
 
-@st-scope body {
+@st-scope Shelley {
   ButtonGroup {
     --seperator-color: initial;
     --seperator-width: 1px;

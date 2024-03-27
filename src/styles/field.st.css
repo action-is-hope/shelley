@@ -1,4 +1,4 @@
-@st-namespace "DefaultField";
+@st-namespace "shelleyField";
 /**
  * = Field - field.st.css
  *
@@ -9,7 +9,7 @@
  *
  */
 
-@st-import [
+@st-import Shelley, [
   --color-error,
   --field-bg,
   --field-bg-fill,
@@ -39,7 +39,7 @@
 ] from "./mixins/formElements.st.css";
 
 
-@st-scope body {
+@st-scope Shelley {
 
   Field {
     display: grid;

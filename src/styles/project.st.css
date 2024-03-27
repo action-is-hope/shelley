@@ -383,17 +383,12 @@
 }
 
 .root {
-  -st-states: type("[data-theme='$0']", enum(light, dark));
+  -st-states: theme("[data-theme='$0']", enum(light, dark));
 }
 
 /*=== Dark Theme Overrides ===*/
 
-.dark {
-  /* map .dark to: */
-  -st-global: ':root[data-theme*="shelley-dark"]';
-}
-
-.dark {
+.root:theme(dark) {
   --bg-main: rgb(23, 26, 35);
   --bg-secondary: #000;
 

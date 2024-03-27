@@ -1,18 +1,10 @@
-@st-namespace "DefaultGlobal";
+@st-namespace "shelleyGlobal";
 /**
  * = Globals - allGlobal.st.css
  *
  * Lightweight resets and a spinkle of globals.
  * 
  */
-
-:vars {
-  /* define x with value green */
-  xY: green;
-
-  /* define y with value blue */
-  yX: blue;
-}
 
 :global(html),
 :global(body) {

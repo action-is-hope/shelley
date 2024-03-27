@@ -1,4 +1,4 @@
-@st-namespace "DefaultToastRegion";
+@st-namespace "shelleyToastRegion";
 /**
  * = ToastRegion - toastRegion.st.css
  *
@@ -7,7 +7,7 @@
  * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toastRegion.st.css
  * 
  */
-@st-import [
+@st-import Shelley, [
   breakpoint-md-max,
   --radius
 ] from "./project.st.css";
@@ -15,7 +15,7 @@
 @st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
 
 
-@st-scope body {
+@st-scope Shelley {
 
   ToastRegion {
     position: fixed;
@@ -39,7 +39,7 @@
 }
 
 @media value(breakpoint-md-max) {
-  @st-scope body {
+  @st-scope Shelley {
     ToastRegion {
       align-items: center;
     }
