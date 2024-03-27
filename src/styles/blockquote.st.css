@@ -1,0 +1,30 @@
+@st-namespace "shelleyBlockquote";
+/**
+ * = Blockquote - blockquote.st.css
+ *
+ * Base theme styles for a Shelley Blockquote.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Blockquote/blockquote.st.css
+ * 
+ */
+@st-import Shelley, [--spacing-unit, --tone-lead] from "./project.st.css";
+@st-import Blockquote from "../Blockquote/blockquote.st.css";
+
+@st-scope Shelley {
+  Blockquote {
+    margin: 0;
+    padding: 0 var(--spacing-unit);
+    border-left: 2px solid var(--tone-lead);
+  }
+
+  Blockquote::content {
+    display: grid;
+    grid-row-gap: 0.8rem;
+    font-style: italic;
+  }
+
+  Blockquote::desc {
+    font-style: normal;
+    margin-top: var(--spacing-unit);
+  }
+}

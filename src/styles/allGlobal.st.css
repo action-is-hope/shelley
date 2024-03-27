@@ -1,0 +1,76 @@
+@st-namespace "shelleyGlobal";
+/**
+ * = Globals - allGlobal.st.css
+ *
+ * Lightweight resets and a spinkle of globals.
+ * 
+ */
+
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:global(html) {
+  /* = https://stackoverflow.com/questions/15861093/what-does-webkit-text-size-adjust-do */
+  -webkit-text-size-adjust: 100%;
+}
+
+:global(*),
+:global(*:before),
+:global(*:after) {
+  box-sizing: inherit;
+}
+
+:global([hidden]) {
+  display: none;
+}
+
+:global([hidden]+*) {
+  margin-top: 0 !important;
+}
+
+:global(svg:not(:root)) {
+  overflow: hidden;
+}
+
+:global(a:visited) {
+  color: inherit
+}
+
+:global(footer),
+:global(header),
+:global(main),
+:global(nav) {
+  display: block;
+}
+
+@supports(--css: variables) {
+
+  /**
+   *  Get rid of the margins for those browsers that support CSS Vars... which 
+   * is how we set ours. Old browsers can have their defaults.
+    */
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6),
+  :global(p) {
+    margin: 0;
+  }
+}
+
+:global(abbr[title]) {
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(243, 243, 202, 0.39);
+  cursor: help;
+  padding-bottom: 0.1rem;
+}
+
+:global(code [title]:hover) {
+  text-shadow: 0 0 10px rgb(197, 197, 197)
+}

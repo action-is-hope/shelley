@@ -1,0 +1,70 @@
+@st-namespace "shelleyPopup";
+/**
+ * = Popup - popup.st.css
+ *
+ * Base theme styles for a Shelley Popup.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Popup/blockquote.st.css
+ * 
+ */
+@st-import Shelley, [
+  --popup-color,
+  --popup-bg,
+  --popup-border-width,
+  --popup-border-color,
+  --popup-radius,
+  --popup-drop-shadow
+] from "./project.st.css";
+@st-import Popup from "../Popup/popup.st.css";
+
+@st-scope Shelley {
+  Popup {
+    background-color: var(--popup-bg);
+    border: var(--popup-border-width) solid var(--popup-border-color);
+    border-radius: var(--popup-radius);
+    color: var(--popup-color);
+    filter: var(--popup-drop-shadow);
+  }
+
+  Popup::scroller {
+    overflow: hidden auto;
+  }
+
+  Popup::arrow {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    fill: var(--popup-bg);
+    stroke-width: var(--popup-border-width);
+    stroke: var(--popup-border-color);
+  }
+
+  Popup::arrow:placement(top) {
+    bottom: -12px;
+    margin-left: -6px;
+  }
+
+  Popup::arrow:placement(right) {
+    rotate: 90deg;
+    left: -12px;
+    margin-top: -6px;
+  }
+
+  Popup::arrow:placement(bottom) {
+    rotate: 180deg;
+    top: -12px;
+    margin-left: -6px;
+  }
+
+  Popup::arrow:placement(left) {
+    right: -12px;
+    rotate: 270deg;
+    margin-top: -6px;
+  }
+
+  /* Popup::arrow:placement(left),
+  Popup::arrow:placement(right) {
+    margin-top: -2px;
+  } */
+
+}

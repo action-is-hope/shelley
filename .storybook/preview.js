@@ -1,5 +1,5 @@
 import React from "react";
-import "../src/styles";
+import { root } from "../src/styles";
 
 import { initializeRTL } from "storybook-addon-rtl";
 initializeRTL();
@@ -88,16 +88,16 @@ export const globalTypes = {
       icon: "switchalt",
       title: "Theme Switch",
       items: [
-        // {
-        //   value: "",
-        //   title: "Base",
-        // },
         {
-          value: "shelley",
+          value: "none",
+          title: "None",
+        },
+        {
+          value: "light",
           title: "Light",
         },
         {
-          value: "shelley shelley-dark",
+          value: "dark",
           title: "Dark",
         },
       ],
@@ -108,6 +108,11 @@ export const globalTypes = {
 
 const withShelleyTheme = (Story, context) => {
   document.documentElement.setAttribute(
+    "class",
+    context.globals.shelleyTheme !== "none" ? root : ""
+  );
+
+  document.documentElement.setAttribute(
     "data-theme",
     context.globals.shelleyTheme
   );
@@ -115,9 +120,7 @@ const withShelleyTheme = (Story, context) => {
     <div
       style={{
         background:
-          context.globals.shelleyTheme === "shelley shelley-dark"
-            ? "rgb(23, 26, 35)"
-            : "#fff",
+          context.globals.shelleyTheme === "dark" ? "rgb(23, 26, 35)" : "#fff",
       }}
     >
       <Story {...context} />

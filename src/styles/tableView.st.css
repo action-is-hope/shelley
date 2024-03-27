@@ -1,0 +1,184 @@
+@st-namespace "shelleyTableView";
+/**
+ * = TableView - tableView.st.css
+ *
+ * Base theme styles for a Shelley TableView.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TableView/tableView.st.css
+ * 
+ */
+@st-import Shelley, [
+  --spacing-unit,
+  --bg-main,
+  --color-focus,
+  --table-row-bg,
+  --table-row-color,
+  --table-row-bg-isPressed,
+  --table-row-color-isPressed,
+  --table-row-bg-isSelected,
+  --table-row-color-isSelected,
+  --table-row-bg-isHovered,
+  --table-row-color-isHovered,
+  --table-row-bg-isHoveredSelected,
+  --table-row-color-isHoveredSelected,
+  --table-tbody-border
+] from "./project.st.css";
+@st-import TableView, [cell] from "../TableView/tableView.st.css";
+@st-import [textVol, textVol1, textVol2] from "./mixins/textVol.st.css";
+
+
+@st-scope Shelley {
+  TableView {
+    /* --table-row-bg: var(--table-row-bg);
+    --table-row-color: var(--table-row-color);
+    --table-row-bg-isPressed: var(--table-row-bg-isPressed);
+    --table-row-color-isPressed: var(--table-row-color-isPressed);
+    --table-row-bg-isSelected: var(--table-row-bg-isSelected);
+    --table-row-color-isSelected: var(--table-row-color-isSelected);
+    --table-row-bg-isHovered: var(--table-row-bg-isHovered);
+    --table-row-color-isHovered: var(--table-row-color-isHovered);
+    --table-row-bg-isHoveredSelected: var(--table-row-bg-isHoveredSelected);
+    --table-row-color-isHoveredSelected: var(--table-row-color-isHoveredSelected);
+    --table-tbody-border: var(--table-tbody-border); */
+    /* border-bottom: 1px solid var(--table-tbody-border); */
+    overflow: auto;
+  }
+
+  TableView::column {
+    background-color: var(--bg-main);
+  }
+
+  TableView::table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  TableView:isHeaderSticky::column {
+    position: sticky;
+    top: 0;
+  }
+
+  TableView::headerRow {
+    font-weight: 500;
+  }
+
+  TableView::sorter {
+    padding: 0 2px
+  }
+
+  TableView::row {
+    outline: none;
+    /* transition: background-color 20ms, color 20ms; */
+    background-color: var(--table-row-bg);
+    color: var(--table-row-color);
+  }
+
+  TableView::row:isHovered {
+    background-color: var(--table-row-bg-isHovered);
+    color: var(--table-row-color-isHovered);
+  }
+
+  TableView::row:isPressed {
+    background-color: var(--table-row-bg-isPressed);
+    color: var(--table-row-color-isPressed);
+  }
+
+  TableView::row:isSelected {
+    background-color: var(--table-row-bg-isSelected);
+    color: var(--table-row-color-isSelected);
+  }
+
+  TableView::row:isSelected:isHovered {
+    background-color: var(--table-row-bg-isHoveredSelected);
+    color: var(--table-row-color-isHoveredSelected);
+  }
+
+  TableView::row:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::row:isDisabled {
+    opacity: .6;
+  }
+
+  TableView::column:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::column,
+  TableView::cell {
+    border-bottom: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::cell:first-child {
+    border-left: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::cell:last-child {
+    border-right: 1px solid var(--table-tbody-border);
+  }
+
+  TableView::row:last-child .cell {
+    border-bottom: none;
+  }
+
+  TableView::column,
+  TableView::cell {
+    padding: calc(var(--spacing-unit) / 1.5) var(--spacing-unit);
+    outline: none;
+    cursor: default;
+    vertical-align: middle;
+  }
+
+  TableView::cell:isFocusVisible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+
+  TableView::columnCheckbox,
+  TableView::cellCheckbox {
+    padding: 0;
+    display: flex;
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    padding-right: calc(var(--spacing-unit) * 0.5);
+  }
+
+  TableView::column:hasCheckbox,
+  TableView::cell:hasCheckbox {
+    width: 44px;
+    padding: 0
+  }
+
+  TableView::column:align(start),
+  TableView::cell:align(start) {
+    text-align: start;
+  }
+
+  TableView::column:align(center),
+  TableView::cell:align(center) {
+    text-align: center;
+  }
+
+  TableView::column:align(end),
+  TableView::cell:align(end) {
+    text-align: end;
+  }
+
+  TableView::column:align(justify),
+  TableView::cell:align(justify) {
+    text-align: justify;
+  }
+
+
+  /*= Volumes */
+
+  /* 1 */
+  TableView:vol(1)::table {
+    -st-mixin: textVol(minValue 0.7, maxValue 0.88, lineHeight 1.3);
+  }
+
+  /* 2 */
+  TableView:vol(2)::table {
+    -st-mixin: textVol1;
+  }
+}

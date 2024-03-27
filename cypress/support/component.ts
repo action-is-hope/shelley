@@ -1,5 +1,6 @@
 import "./commands";
 
-import "../../src/styles/default";
+import { root } from "../../src/styles";
 
-document.documentElement.setAttribute("data-theme", "shelley shelley-dark");
+document.documentElement.setAttribute("class", root);
+document.documentElement.setAttribute("data-theme", "dark");

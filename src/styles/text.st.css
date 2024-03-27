@@ -1,0 +1,270 @@
+@st-namespace "shelleyText";
+/**
+ * = Text - text.st.css
+ *
+ * Base theme styles for a Shelley Text.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Text/text.st.css
+ * 
+ */
+@st-import Shelley, [
+  --color-focus,
+  --color-ui-rgb,
+  --link-color,
+  --tone-lead-rgb,
+  --tone-lead
+] from "./project.st.css";
+
+@st-import Text from "../Text/text.st.css";
+@st-import Icon from "../Icon/icon.st.css";
+@st-import [ 
+  textVol,
+  textVol1,
+  textVol2,
+  textVol3,
+  textVol4,
+  textVol5,
+  textVol6,
+  textVol7,
+  textVol8,
+  textVol9,
+  textVol10,
+  textVol11,
+] from "./mixins/textVol.st.css";
+
+@st-scope Shelley {
+
+  Text {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  Text a {
+    text-decoration: underline 0.05em rgba(var(--color-ui-rgb), 0.15);
+    text-underline-offset: 0.3em;
+    transition: color 0.3s, text-decoration-color 0.3s, text-underline-offset 0.3s;
+    outline: none;
+    color: var(--link-color);
+  }
+
+  Text a:hover {
+    text-decoration-color: var(--link-color);
+  }
+
+  Text a:focus-visible {
+    outline: 1px dashed var(--color-focus);
+    outline-offset: -1px;
+    text-decoration: transparent;
+  }
+
+  /* = Volumes */
+
+  Text:vol(1) {
+    -st-mixin: textVol1;
+  }
+
+  Text:vol(1) Icon {
+    font-size: 14px;
+  }
+
+  Text:vol(2) {
+    -st-mixin: textVol2;
+  }
+
+  Text:vol(2) Icon {
+    font-size: 16px;
+  }
+
+  Text:vol(3) {
+    -st-mixin: textVol3;
+  }
+
+  Text:vol(3) Icon {
+    font-size: 18px;
+  }
+
+  Text:vol(4) {
+    -st-mixin: textVol4;
+  }
+
+  Text:vol(4) Icon {
+    font-size: 20px;
+  }
+
+  Text:vol(5) {
+    -st-mixin: textVol5;
+  }
+
+  Text:vol(5) Icon {
+    font-size: 22px;
+  }
+
+  Text:vol(6) {
+    -st-mixin: textVol6;
+  }
+
+  Text:vol(6) Icon {
+    font-size: 24px;
+  }
+
+  Text:vol(7) {
+    -st-mixin: textVol7;
+  }
+
+  Text:vol(7) Icon {
+    font-size: 28px;
+  }
+
+  Text:vol(8) {
+    -st-mixin: textVol8;
+  }
+
+  Text:vol(8) Icon {
+    font-size: 32px;
+  }
+
+  Text:vol(9) {
+    -st-mixin: textVol9;
+  }
+
+  Text:vol(9) Icon {
+    font-size: 44px;
+  }
+
+  Text:vol(10) {
+    -st-mixin: textVol10;
+  }
+
+  Text:vol(10) Icon {
+    font-size: 52px;
+  }
+
+  Text:vol(11) {
+    -st-mixin: textVol11;
+  }
+
+  Text:vol(11) Icon {
+    font-size: 88px;
+  }
+
+  /* = Weights */
+  Text:weight(1) {
+    font-weight: 100;
+  }
+
+  Text:weight(2) {
+    font-weight: 200;
+  }
+
+  Text:weight(3) {
+    font-weight: 300;
+  }
+
+  Text:weight(4) {
+    font-weight: 400;
+  }
+
+  Text:weight(5) {
+    font-weight: 500;
+  }
+
+  Text:weight(6) {
+    font-weight: 600;
+  }
+
+  Text:weight(7) {
+    font-weight: 700;
+  }
+
+  Text:weight(8) {
+    font-weight: 800;
+  }
+
+  Text:weight(9) {
+    font-weight: 900;
+  }
+
+  /* = Uppercase */
+  Text:uppercase {
+    text-transform: uppercase;
+  }
+
+  /* = Truncation */
+  Text:truncate {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  Text:lineClamp(1) {
+    -webkit-line-clamp: 1;
+  }
+
+  Text:lineClamp(2) {
+    -webkit-line-clamp: 2;
+  }
+
+  Text:lineClamp(3) {
+    -webkit-line-clamp: 3;
+  }
+
+  Text:lineClamp(4) {
+    -webkit-line-clamp: 4;
+  }
+
+  Text:lineClamp(5) {
+    -webkit-line-clamp: 5;
+  }
+
+  Text:lineClamp(6) {
+    -webkit-line-clamp: 6;
+  }
+
+  Text:lineClamp(7) {
+    -webkit-line-clamp: 7;
+  }
+
+  Text:lineClamp(8) {
+    -webkit-line-clamp: 8;
+  }
+
+  Text:lineClamp(9) {
+    -webkit-line-clamp: 9;
+  }
+
+  Text:lineClamp(10) {
+    -webkit-line-clamp: 10;
+  }
+
+  /* = Uppercase */
+  Text:uppercase {
+    letter-spacing: .25em;
+  }
+
+  Text:vol(1):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(2):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(3):uppercase {
+    letter-spacing: .41em;
+  }
+
+  Text:vol(4):uppercase {
+    letter-spacing: .31em;
+  }
+
+  Text:hasAdornment {
+    display: flex;
+    align-items: baseline;
+    column-gap: calc(1em / 2)
+  }
+
+  Text:hasAdornment Icon {
+    align-self: center;
+  }
+}

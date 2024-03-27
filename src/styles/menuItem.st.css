@@ -1,0 +1,58 @@
+@st-namespace "shelleyMenuItem";
+/**
+ * = MenuItem - menuItem.st.css
+ *
+ * Base theme styles for a Shelley MenuItem.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Menu/menuItem.st.css
+ * 
+ */
+@st-import Shelley, [ --spacing-unit ] from "./project.st.css";
+@st-import MenuItem from "../Menu/menuItem.st.css";
+@st-import [
+    menuItem,
+    menuItemDisabled,
+    menuItemHover,
+    menuItemFocusVisible,
+    menuItemText,
+    menuItemSelectedIcon
+] from "./mixins/menuList.st.css";
+
+@st-scope Shelley {
+  MenuItem {
+    -st-mixin: menuItem;
+  }
+
+  MenuItem:selectionMode(none) {
+    grid-template-columns: calc(var(--spacing-unit) / 2) auto 1fr auto auto calc(var(--spacing-unit) / 2);
+    grid-template-areas:
+      ". . . . . ."
+      ".icon text end keyboard."
+      ".icon description end keyboard."
+      ". . . . . .";
+  }
+
+  MenuItem:isDisabled {
+    -st-mixin: menuItemDisabled;
+  }
+
+  MenuItem:isFocused {
+    -st-mixin: menuItemHover;
+  }
+
+  MenuItem:isSelected {
+    /* -st-mixin: menuItemSelected; */
+  }
+
+  MenuItem:isFocusVisible {
+    -st-mixin: menuItemFocusVisible;
+  }
+
+  MenuItem::text {
+    -st-mixin: menuItemText;
+  }
+
+  MenuItem::selectedIcon {
+    -st-mixin: menuItemSelectedIcon;
+  }
+}

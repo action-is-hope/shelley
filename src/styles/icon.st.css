@@ -1,0 +1,29 @@
+@st-namespace "shelleyIcon";
+/**
+ * = Icon - icon.st.css
+ *
+ * Base theme styles for a Shelley Icon.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Icon/icon.st.css
+ * 
+ */
+@st-import Shelley from "./project.st.css";
+@st-import Icon from "../Icon/icon.st.css";
+
+@st-scope Shelley {
+  Icon {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1em;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    flex-shrink: 0;
+    grid-area: icon;
+  }
+
+  Icon::alt {
+    display: inline-flex;
+  }
+}

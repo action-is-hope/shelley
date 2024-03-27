@@ -1,0 +1,47 @@
+@st-namespace "shelleyToastRegion";
+/**
+ * = ToastRegion - toastRegion.st.css
+ *
+ * Base theme styles for a Shelley ToastRegion.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Toast/toastRegion.st.css
+ * 
+ */
+@st-import Shelley, [
+  breakpoint-md-max,
+  --radius
+] from "./project.st.css";
+@st-import ToastRegion from "../Toast/toastRegion.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+
+
+@st-scope Shelley {
+
+  ToastRegion {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  ToastRegion > :first-child::before {
+    -st-mixin: pseudoFocus;
+  }
+
+  ToastRegion:isFocusVisible > :first-child::before {
+    -st-mixin: pseudoFocusVisible;
+    border-radius: var(--radius);
+  }
+}
+
+@media value(breakpoint-md-max) {
+  @st-scope Shelley {
+    ToastRegion {
+      align-items: center;
+    }
+  }
+}
