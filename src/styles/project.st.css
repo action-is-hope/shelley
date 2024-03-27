@@ -1,0 +1,440 @@
+/**
+ * Project - Shelley
+ * 
+ * The goal of the project file is to contain the CSS commons for the project, 
+ * including variables, component variants and any shared classes.
+ *
+ * Our Shelley styles set up some sensible defaults for an unbranded project, these 
+ * can be overridden in branded project files.
+ */
+@st-namespace "shelley";
+@st-import [multiply, divide, respScale] from "./formatters/common";
+
+/*=== BUILD-TIME 'VARIABLE' DEFINITIONS ===*/
+:vars {
+  /** = Breakpoints */
+  breakpoint-sm: "only screen and (min-width: 568px)";
+  breakpoint-md: "only screen and (min-width: 950px)";
+  breakpoint-lg: "only screen and (min-width: 1200px)";
+  breakpoint-xl: "only screen and (min-width: 1600px)";
+  breakpoint-xxl: "only screen and (min-width: 1800px)";
+
+  /* = Using min-width vs max-width... max-width looks cleaner with less styles 
+  applied to elements at any given time. But for development it is handy to be
+  able to toggle off styles with the inspector and have the overriden value apply.
+  If overriding values that exist already then we tend to use min-widths, if 
+  turning off styles across breakpoints we use max-width, e.g mobile -> desktop menu. */
+  breakpoint-sm-max: "only screen and (max-width: 567px)";
+  breakpoint-md-max: "only screen and (max-width: 949px)";
+  breakpoint-lg-max: "only screen and (max-width: 1199px)";
+  breakpoint-xl-max: "only screen and (max-width: 1599px)";
+  breakpoint-xxl-max: "only screen and (max-width: 1799px)";
+  breakpoint-md-min-max: "only screen and (min-width: 568px) and (max-width: 949px)";
+
+  /*=== TYPE AND TEXT ===*/
+
+  /**
+   * = Fluid Text Scale
+   * 
+   * We are using a fluid set up based on:
+   * https://www.smashingmagazine.com/2016/05/fluid-typography/
+   *
+   * This is of course option and you can simply remove everything related to 
+   * fluid text. But before you do I would add that I find that layouts look
+   * 'as designed' through the breakpoints much better than with text size 
+   * jolting up and down between breakpoints.
+   *
+   * Later on in the file we will state all of our CSS variables and give you a 
+   * better description off what's going on.
+   */
+
+  /* = Base font min is 1em (16px) and max (20px) is 1.25em */
+  font-base-min: 1em;
+  font-base-max: 1.25em;
+
+  /**
+   * = Scales multipliers - https://type-scale.com/
+   *
+   * We use these as ratios to bump up our text from one level to the next.
+   * We pulled in a bunch of these as 'musical mulipliers' to use with our 
+   * base min/max so our scale sings!
+   */
+  minor-second: 1.067;
+  major-second: 1.125;
+  minor-third: 1.2;
+  major-third: 1.25;
+  perfect-forth: 1.333;
+
+  /**
+   * = Volumes / Text sizes
+   *
+   * Here we are just setting the min and max for our text volumes as build 
+   * variables so we can use them in our formatters (see CSS variable section). 
+   *
+   * We have a base (vol-3) and then either divide or multiple with our scales to 
+   * where we wanna be.
+   *
+   * These are pretty random, they are values we arrived at after hours of fiddling
+   * with the multipliers.
+   */
+
+  /* Volume 1 */
+  text-vol-1-line-height: 1.45;
+  text-vol-1-min: divide(value(font-base-min), value(major-second), value(major-second));
+  text-vol-1-max: divide(value(font-base-max), value(major-third), value(minor-second));
+
+  /* Volume 2 */
+  text-vol-2-line-height: 1.65;
+  text-vol-2-min: divide(value(font-base-min), value(major-second));
+  text-vol-2-max: divide(value(font-base-max), value(minor-third));
+
+  /* Volume 3 - Base, from here we are either dividing or multipling with various scale ratios. */
+  text-vol-3-line-height: 1.55;
+  text-vol-3-min: 1;
+  text-vol-3-max: 1.25;
+
+  /* Volume 4 */
+  text-vol-4-line-height: 1.45;
+  text-vol-4-min: multiply(value(font-base-min), value(major-second));
+  text-vol-4-max: multiply(value(font-base-max), value(major-third));
+
+  /* Volume 5 */
+  text-vol-5-line-height: 1.4;
+  text-vol-5-min: multiply(value(font-base-min), value(major-second), value(minor-third));
+  text-vol-5-max: multiply(value(font-base-max), value(major-third), value(perfect-forth));
+
+  /* Volume 6 */
+  text-vol-6-line-height: 1.3;
+  text-vol-6-min: multiply(value(font-base-min), value(major-second), value(major-second), value(minor-third));
+  text-vol-6-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth));
+
+  /* Volume 7 */
+  text-vol-7-line-height: 1.15;
+  text-vol-7-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third));
+  text-vol-7-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 8 */
+  text-vol-8-line-height: 1.1;
+  text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
+  text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 9 */
+  text-vol-9-line-height: 1.05;
+  text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-9-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 10 */
+  text-vol-10-line-height: 1.05;
+  text-vol-10-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
+  text-vol-10-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+  /* Volume 11 */
+  text-vol-11-line-height: 1.05;
+  text-vol-11-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third), value(major-third), value(major-third));
+  text-vol-11-max: multiply(value(font-base-max), value(major-third), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth), value(perfect-forth));
+
+}
+
+/*=== ROOT LEVEL CSS VARIABLES ===*/
+
+/** 
+ * = Overriding
+ * 
+ * All of these variables can be imported into your project file and then
+ * overridden BUT when using them you must still import them from this file
+ * which is where they of course are initially declared. These will namespaced 
+ * with 'Base' if you check the root element via the inspector. 
+ *
+ */
+:root {
+  /* = Core light - always light or dark regardless of theme. */
+  --light-01-rgb: 255, 255, 255;
+  --light-01: rgb(255, 255, 255);
+
+  /* = Core dark. */
+  --dark-01-rgb: 0, 0, 0;
+  --dark-01: rgb(var(--dark-01-rgb));
+  --dark-02-rgb: 51, 51, 51;
+  --dark-02: rgb(var(--dark-02-rgb));
+
+  --bg-main: white;
+  --bg-secondary: rgba(239, 239, 239, 1);
+
+  /* = Foreground colours - main and inverted plus rgb versions as 'rgb'. */
+  --color-ui: var(--dark-02);
+  --color-ui-inverse: var(--light-01);
+  --color-ui-rgb: var(--dark-02-rgb);
+  --color-ui-rgb-inverse: var(--light-01-rgb);
+
+  /* = Indicators */
+  --color-focus: rgb(255, 130, 0);
+  --color-error: indianred;
+
+  /* = Tones */
+  /* lead */
+  --tone-lead-rgb: 6, 92, 103;
+  --tone-lead: rgb(var(--tone-lead-rgb));
+  /* support */
+  --tone-support-rgb: 9, 132, 134;
+  --tone-support: rgb(var(--tone-support-rgb));
+  /* info */
+  --tone-info-rgb: 230, 0, 122;
+  --tone-info: rgb(var(--tone-info-rgb));
+  /* success */
+  --tone-success-rgb: 38, 127, 94;
+  --tone-success: rgb(var(--tone-success-rgb));
+  /* warning */
+  --tone-warning-rgb: 199, 80, 0;
+  --tone-warning: rgb(var(--tone-warning-rgb));
+  /* alert */
+  --tone-alert-rgb: 226, 40, 55;
+  --tone-alert: rgb(var(--tone-alert-rgb));
+  /* other */
+  --tone-light: white;
+  --tone-dark: black;
+  --tone-contrast-rgb: 51, 51, 51;
+  --tone-contrast: rgba(var(--tone-contrast-rgb), .8);
+
+  /* = Tones - subtle */
+  --tone-lead-subtle: rgb(6 92 103);
+  --tone-support-subtle: #20a5bc;
+  --tone-info-subtle: aliceblue;
+  --tone-success-subtle: honeydew;
+  --tone-warning-subtle: bisque;
+  --tone-alert-subtle: #ef403b;
+  --tone-dark-subtle: gray;
+  --tone-light-subtle: white;
+  --tone-contrast-subtle: rgba(var(--dark-02-rgb), .8);
+
+  /* = Generic Radii */
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-xxl: 32px;
+
+
+  /* = Shadows */
+  --box-shadow: 0px 1px 4px 0px rgba(84, 86, 90, 0.24);
+  /* comp based shadows */
+  --box-shadow-card: 0px 4px 16px 0px rgba(84, 86, 90, 0.24);
+  --box-shadow-drop: 0px 0px 40px 0px rgba(112, 144, 176, 0.3);
+  --box-shadow-dialog: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  --box-shadow-toast: 0px 0px 16px 0px rgba(0, 0, 0, 0.34);
+  /* other - tbc wip*/
+  --box-shadow-other: 0px 1px 10px 0px rgba(84, 86, 90, 0.2);
+
+  /* = Forms */
+  --field-border-color: rgba(121, 170, 216, 0.5);
+  --field-border-color-hasValue: rgba(121, 170, 216, 1);
+  --field-border-width: 1px;
+  --field-bg: var(--bg-main);
+  --field-bg-fill: lightgrey;
+  --field-focus-color: var(--color-focus);
+  --field-help-text-color: rgba(var(--light-01-rgb), 0.6);
+  --field-padding: calc(0.2rem + 0.2em) var(--spacing-unit);
+  --field-placeholder-color: lightgrey;
+  --field-radius: var(--radius);
+  --field-selection-mark-color: var(--tone-lead);
+  --field-selection-font-weight: 400;
+  --switch-unchecked-color: #a5a5a5;
+  --switch-border-width: 2px;
+  --label-font-weight: 700;
+  --label-color: var(--color-ui);
+
+  /* = Buttons */
+  --button-radius: var(--radius-lg);
+  --button-border-width: 1px;
+  --button-hover-rgb: 23, 26, 35;
+
+  /* = Progress */
+  --progress-fill-color: var(--tone-lead);
+
+  /* = Fonts */
+  --font-family-base: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-heading: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-title: Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  /* = Text */
+  --text-heading-color: var(--color-ui);
+
+  /* = Links */
+  --link-color: var(--tone-support);
+
+  /* = Menus */
+  --menu-bg: rgb(23, 26, 35);
+  /* 'option-item' refers to options within Menu, Select, ListBox, ComboBox etc. */
+  --option-item-bg-hover: rgba(151, 218, 255, 0.15);
+  --option-item-bg-selected: rgba(0, 92, 185, 1);
+  --option-item-bg-selected-hover: rgba(151, 218, 255, 0.15);
+  --option-item-bg-disabled: rgba(200, 200, 200, 0.2);
+
+  /* = Modal */
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.3);
+
+  /* = Dialog */
+  --dialog-bg: white;
+  --dialog-color: inherit;
+  --dialog-radius: var(--radius-xl);
+
+  /* = Popup */
+  --popup-bg: white;
+  --popup-color: inherit;
+  --popup-border-width: 0;
+  --popup-border-color: grey;
+  --popup-drop-shadow: drop-shadow(0 0 3px #00000075);
+  --popup-radius: var(--radius);
+
+  /* = Notification */
+  --notification-radius: var(--radius-xl);
+  --notification-header-color: var(--color-ui);
+
+  /* = Toast colours */
+  --toast-color: var(--color-ui-inverse);
+  --toast-bg-neutral: rgb(66 66 66);
+  --toast-bg-info: var(--tone-info);
+  --toast-bg-success: var(--tone-success);
+  --toast-bg-warning: var(--tone-warning);
+  --toast-bg-alert: var(--tone-alert);
+
+  /* = Table colours */
+  --table-row-bg: var(--bg-secondary);
+  --table-row-color: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isPressed: #f3f3f3;
+  --table-row-color-isPressed: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isSelected: #e9f0fc;
+  --table-row-color-isSelected: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isHovered: GhostWhite;
+  --table-row-color-isHovered: rgba(var(--color-ui-rgb), 0.8);
+  --table-row-bg-isHoveredSelected: #dfedff;
+  --table-row-color-isHoveredSelected: rgba(var(--color-ui-rgb), 0.8);
+  --table-tbody-border: rgba(var(--color-ui-rgb), .15);
+
+
+  /* = Grids */
+  --grid-gap: 3vw;
+  --grid-main-cols-xs: [edge-start] auto [goal-start pen-start] 0 0 [mid-start] 8.75rem [half] 8.75rem [mid-end] 0 0 [pen-end goal-end] auto [edge-end];
+  --grid-main-cols-sm: [edge-start] auto [goal-start] 3vw 3vw [pen-start] 3vw [mid-start] 9rem [half] 9rem [mid-end] 3vw [pen-end] 3vw 3vw [goal-end] auto [edge-end];
+  --grid-main-cols-md: [edge-start] auto [goal-start] 4vw 4vw [pen-start] 4vw [mid-start] 11.75rem [half] 11.75rem [mid-end] 4vw [pen-end] 4vw 4vw [goal-end] auto [edge-end];
+
+
+  /** 
+   * Our html has a scaled value which scale goes from 16px to 26px through our
+   * breakpoints giving us some flex in a unit that we can use via rem. 
+   *
+   * We use a slice of it as our --spacing-unit var. This really helps UI 
+   & 'hang together' for longer through the breakpoints. 
+   */
+  --html-resp-scale: calc(1em + 0.625 * ((100vw - 20em) / (92.5)));
+  /** - 18px when at breakpoint-xxl */
+  --html-resp-max: 1.625em;
+  /** = Spacing - 18px when at breakpoint-xxl */
+  --spacing-unit: 0.692306rem;
+  /**
+   * 18px @breakpoint xxl because this is what we want for our vertical rhythm.
+   * Vertical rhythm is a pain but we always wanted to get it
+   * working on a project. This seems to work nicely when tested with baseliner
+   * but more tweaks required to get it more bulletproof.
+   */
+}
+
+/**
+ * = Global CSS
+ *  
+ * This ideally will just be a spinkling of higher level styles that use 
+ * variables. For the reset globals we set them in ./allGlobals.st.css 
+ * which is pulled in within index.ts 
+ */
+@supports (--css: variables) {
+  :global(html) {
+    /** This is our responsive rem value, this will equal 1rem wherever we are. */
+    font-size: var(--html-resp-scale);
+  }
+
+  /* This is the CSS lock so our spacing unit doesn't get too big. */
+  @media value(breakpoint-xxl) {
+    :global(html) {
+      font-size: var(--html-resp-max);
+    }
+  }
+}
+
+:global(body) {
+  /**
+  * By setting the font-size of the <body> to initial, it ensures that 
+  * 1em within the body context is based on the browser's default font size 
+  * (typically 16px), not the dynamically resp-scale font size of <html>. 
+  * This technique allows for more predictable and consistent use of em units 
+  * within components, as it prevents the compounded scaling effect that would 
+  * occur if em were based on the responsive rem scale.
+  */
+  font-size: initial;
+}
+
+:root {
+  font-family: var(--font-family-base);
+  color: var(--color-ui);
+  background-color: var(--bg-main);
+}
+
+/* apply main bg to storybook stories */
+:global(.docs-story) {
+  background-color: var(--bg-main);
+}
+
+.root {
+  -st-states: type("[data-theme='$0']", enum(light, dark));
+}
+
+/*=== Dark Theme Overrides ===*/
+
+.dark {
+  /* map .dark to: */
+  -st-global: ':root[data-theme*="shelley-dark"]';
+}
+
+.dark {
+  --bg-main: rgb(23, 26, 35);
+  --bg-secondary: #000;
+
+  --color-ui: rgb(var(--light-01-rgb));
+  --color-ui-rgb: var(--light-01-rgb);
+  --color-ui-inverse: var(--bg-main);
+  --color-ui-rgb-inverse: 23, 26, 35;
+
+  /* = Indicators */
+  --color-focus: rgb(255 202 80);
+  --color-error: rgb(253 0 0);
+
+  /* = Tone overrides */
+  --tone-lead-rgb: 117, 234, 255;
+  --tone-support-rgb: 24, 255, 216;
+  --tone-info-rgb: 255, 36, 152;
+  --tone-success-rgb: 87, 241, 148;
+  --tone-warning-rgb: 255, 125, 54;
+  --tone-alert-rgb: 255, 55, 71;
+  --tone-contrast-rgb: 255, 255, 255;
+
+  /* = Dialog*/
+  --dialog-bg: var(--bg-secondary);
+
+  /* = Popup */
+  --popup-bg: var(--bg-secondary);
+  --popup-border-width: 1px;
+  --popup-border-color: grey;
+
+  /* = Forms */
+  --switch-unchecked-color: #d1d1d1;
+
+  /* = Buttons */
+  --button-hover-rgb: 255, 255, 255;
+
+  /* = Table colours */
+  --table-row-bg-isPressed: #1c1c1c;
+  --table-row-bg-isSelected: #2b2e3b;
+  --table-row-bg-isHovered: #2c2c2c;
+  --table-row-bg-isHoveredSelected: #252835;
+
+  /*= Toast */
+  --toast-bg-neutral: rgb(199 199 199);
+}

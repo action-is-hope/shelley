@@ -1,0 +1,299 @@
+/**
+ * = FORM ELEMENTS - formElements.st.css
+ *
+ * Shared styles for form related elements.
+ * 
+ * ========================================================================= */
+
+@st-import Default, [
+    --spacing-unit,
+    --field-border-color-hasValue,
+    --field-border-width,
+    --field-selection-mark-color,
+    --field-selection-font-weight,
+    --bg-main,
+    --field-focus-color,
+    --switch-border-width,
+    --switch-unchecked-color,
+  ] from "../project.st.css";
+@st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5, textVol6] from "./textVol.st.css";
+@st-import InputLabel from "../../Label/label.st.css";
+@st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
+
+
+/* Local vars. */
+:vars {
+  inputVol1LabelRelative: "0.95em";
+  inputVol2LabelRelative: "0.9em";
+  inputVol3LabelRelative: "0.85em";
+  inputVol4LabelRelative: "0.8em";
+  inputVol5LabelRelative: "0.75em";
+  inputVol6LabelRelative: "0.7em";
+  SelectionControlSize1: "16px";
+  SelectionControlSize2: "20px";
+  SelectionControlSize3: "24px";
+  SelectionControlSize4: "28px";
+  SelectionControlSize5: "32px";
+  SelectionControlSize6: "36px";
+}
+
+/* = Hide the default 'appearance'. */
+.hideWebkitAppearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* = Hack to get rid of the autofill bg 
+ * - https://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs 
+ */
+.hideWebkitAppearance:-webkit-autofill,
+.hideWebkitAppearance:-webkit-autofill:hover,
+.hideWebkitAppearance:-webkit-autofill:focus,
+.hideWebkitAppearance:-webkit-autofill:active {
+  transition-delay: 99999s;
+  -webkit-transition-delay: 99999s;
+}
+
+.disabledField {
+  /* = Dim the whole lot... */
+  filter: saturate(15%) brightness(70%);
+}
+
+
+/**
+ * = INPUT VOLUMES
+ *
+ * When it comes to our input volumes we want to make sure that they are never
+ * below 16px on device else we will get some auto 'form zoom' happening which 
+ * can catch you off guard, especially in a demo.
+ *
+ * To this end our volume levels take a slight detour from those we use for Text
+ * but we are leveraging them where possible.
+ *
+ * We take advantage of the scale by applying it to the root of our input 
+ * containers and using it to apply a relative scale to our labels using ems.
+ * This is great as it means that we don't have to churn out a load more media 
+ * queries.
+ *
+ * ------------------------------------------------------------------------- */
+
+
+/* = Volume 1 */
+.inputVol1 {
+  /* = equates to 16px all the way from mobile to desktop. */
+  font-size: 1em;
+}
+
+.inputVol1 > InputLabel,
+.labelVol1 {
+  font-size: value(inputVol1LabelRelative);
+}
+
+.selectionControlSize1 {
+  font-size: value(SelectionControlSize1);
+}
+
+/* = Volume 2 */
+.inputVol2 {
+  /* Uses the default from the mixin 16px -> 18px a useful alternative for vol2. */
+  -st-mixin: textVol;
+}
+
+.inputVol2 > InputLabel,
+.labelVol2 {
+  font-size: value(inputVol2LabelRelative);
+}
+
+.selectionControlSize2 {
+  font-size: value(SelectionControlSize2);
+}
+
+/* = Volume 3 */
+.inputVol3 {
+  -st-mixin: textVol3;
+}
+
+.inputVol3 > InputLabel,
+.labelVol3 {
+  font-size: value(inputVol3LabelRelative);
+}
+
+.selectionControlSize3 {
+  font-size: value(SelectionControlSize3);
+}
+
+/* = Volume 4 */
+.inputVol4 {
+  -st-mixin: textVol4;
+}
+
+.inputVol4 > InputLabel,
+.labelVol4 {
+  font-size: value(inputVol4LabelRelative);
+}
+
+.selectionControlSize4 {
+  font-size: value(SelectionControlSize4);
+}
+
+/* = Volume 5 */
+.inputVol5 {
+  -st-mixin: textVol(minValue 1.3, maxValue 1.7);
+}
+
+.inputVol5 > InputLabel,
+.labelVol5 {
+  font-size: value(inputVol5LabelRelative);
+}
+
+.selectionControlSize5 {
+  font-size: value(SelectionControlSize5);
+}
+
+/* = Volume 6 */
+.inputVol6 {
+  -st-mixin: textVol(minValue 1.4, maxValue 1.85);
+}
+
+.inputVol6 > InputLabel,
+.labelVol6 {
+  font-size: value(inputVol6LabelRelative);
+}
+
+.selectionControlSize6 {
+  font-size: 36px;
+  font-size: value(SelectionControlSize6);
+}
+
+
+/**
+ * = INPUT SELECTION CONTROLS
+ *
+ * Checkboxes, radios and switches.
+ *
+ * ------------------------------------------------------------------------- */
+
+
+/* = 'Root' of the control */
+.SelectionControlInputContainer {
+  display: flex;
+}
+
+
+/* = The actual field - <input> */
+.SelectionControlFieldInput {
+  -st-mixin: hideWebkitAppearance;
+  font-size: inherit;
+  background: transparent;
+  height: 1em;
+  width: 1em;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--field-border-color-hasValue);
+  /* = pseudoFocus mixin replaces the default outline. */
+  outline: none;
+}
+
+.SelectionControlFieldInput::after {
+  /* = Field focus indicator, via pseudo element. */
+  -st-mixin: pseudoFocus;
+  inset: -4px;
+}
+
+.SelectionControlFieldInput:disabled {
+  -st-mixin: disabledField;
+}
+
+/**
+ * = RADIO / CHECKBOX - COMMON
+ */
+.RadioCheckboxCommon {}
+
+/* = The 'mark' of the field, radio and checkboxes both have one. */
+.RadioCheckboxCommon::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  opacity: 0;
+  display: block;
+  background-color: var(--field-selection-mark-color);
+  position: absolute;
+}
+
+
+/**
+ * = RADIO
+ */
+.RadioFieldInput,
+.RadioFieldInput::before,
+.RadioFieldInput::after {
+  border-radius: 50%;
+}
+
+.RadioFieldInput:checked::before {
+  opacity: 1;
+}
+
+/**
+ * = CHECKBOX
+ */
+
+.CheckboxFieldInput:checked::before {
+  opacity: 1;
+}
+
+.CheckboxIsIndeterminate::before {
+  opacity: 1;
+  height: 0.125em;
+}
+
+
+/**
+ * = SWITCH
+ *
+ * Which is really just a checkbox in disguise...
+ */
+
+.SwitchFieldInput {
+  width: 2em;
+  border-radius: 9999px;
+  border-width: var(--switch-border-width);
+}
+
+.SwitchFieldInput::after {
+  border-radius: 9999px;
+  display: none;
+}
+
+.SwitchFieldInput::before {
+  content: "";
+  position: absolute;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 9999px;
+  transition: all 0.2s;
+  transform: translate(-50%);
+  will-change: translate, background-color;
+  z-index: 1;
+  background-color: var(--switch-unchecked-color);
+}
+
+.SwitchFieldInput:focus-visible::before {
+  box-shadow: inset 0 0 0 1px var(--bg-main), 0 0 1px 2px var(--field-focus-color);
+}
+
+.SwitchFieldInput:checked::before {
+  transform: translate(50%);
+  background-color: var(--field-selection-mark-color);
+}

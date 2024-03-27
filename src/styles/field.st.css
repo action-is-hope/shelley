@@ -1,0 +1,390 @@
+@st-namespace "DefaultField";
+/**
+ * = Field - field.st.css
+ *
+ * Used internally; field applies the base styles to our form components such as 
+ * inputs, textareas and selects, comboboxes, checkbox / radio groups etc.
+ * 
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Radio/radio.st.css
+ *
+ */
+
+@st-import [
+  --color-error,
+  --field-bg,
+  --field-bg-fill,
+  --field-border-color,
+  --field-border-color-hasValue,
+  --field-border-width,
+  --field-focus-color,
+  --field-padding,
+  --field-placeholder-color,
+  --field-radius,
+  --spacing-unit,
+  ] from "./project.st.css";
+
+@st-import Field from "../Field/field.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import [--border-radius as --button-radius] from "./button.st.css";
+@st-import [respScale] from "./formatters/common";
+@st-import [
+    hideWebkitAppearance,
+    disabledField,
+    inputVol1,
+    inputVol2,
+    inputVol3,
+    inputVol4,
+    inputVol5,
+    inputVol6
+] from "./mixins/formElements.st.css";
+
+
+@st-scope body {
+
+  Field {
+    display: grid;
+    align-items: center;
+    position: relative;
+  }
+
+  Field Button {
+    --button-radius: var(--field-radius);
+  }
+
+  Field::fieldContainer {
+    display: inline-flex;
+    /* Contains the fieldContainer into it's grid cell. */
+    position: relative;
+    line-height: 1.5;
+  }
+
+  Field::fieldset {
+    text-align: left;
+    position: absolute;
+    inset: -5px 0 0;
+    margin: 0;
+    padding: 0 8px;
+    pointer-events: none;
+    overflow: hidden;
+    min-width: 0%;
+    border-style: solid;
+    border-width: var(--field-border-width);
+    transition: border-color 0.3s ease;
+  }
+
+  Field::legend {
+    float: unset;
+    width: auto;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    height: 11px;
+    font-size: 0.75em;
+    visibility: hidden;
+    max-width: 0.01px;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  Field::inputLabel {
+    /* font-weight: 400;
+    font-size: 1em; */
+  }
+
+  /* = Native input field - just resets and genenics, padding etc. */
+  Field::fieldInput {
+    -st-mixin: hideWebkitAppearance;
+    background: none;
+    color: currentColor;
+    resize: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: var(--field-padding);
+    border: none;
+    font: inherit;
+    line-height: 1.5;
+  }
+
+  Field::fieldInput::placeholder {
+    color: var(--field-placeholder-color);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* = Pulls the input towards the adornments cancelling out the input padding. */
+  Field::startAdornment {
+    /*rtl*/
+    margin-right: calc(-.2rem - var(--spacing-unit));
+  }
+
+  Field::endAdornment {
+    /*rtl*/
+    margin-left: calc(-.2rem - var(--spacing-unit));
+  }
+
+  Field::helpText {
+    font-size: 0.75em;
+    margin-top: calc(var(--spacing-unit) / 2);
+  }
+
+  /* = Textarea wrapper which can be used for scrolling. */
+  Field::textAreaWrap {
+    display: block;
+    width: 100%;
+  }
+
+
+  /*==== STATES ====*/
+
+  /* = Error */
+  Field:error::helpText {
+    color: var(--color-error);
+  }
+
+  /* = Disabled */
+  Field:isDisabled {
+    -st-mixin: disabledField
+  }
+
+
+  /*==== VOLUMES ====*/
+
+  /* = Volume 1 */
+  Field:vol(1) {
+    -st-mixin: inputVol1;
+  }
+
+  /* = Volume 2 */
+  Field:vol(2) {
+    -st-mixin: inputVol2;
+  }
+
+  /* = Volume 3 */
+  Field:vol(3) {
+    -st-mixin: inputVol3
+  }
+
+  /* = Volume 4 */
+  Field:vol(4) {
+    -st-mixin: inputVol4
+  }
+
+  /* = Volume 5 */
+  Field:vol(5) {
+    -st-mixin: inputVol5
+  }
+
+  /* = Volume 6 */
+  Field:vol(6) {
+    -st-mixin: inputVol6
+  }
+
+
+  /*==== LABELPOSITION ====*/
+
+  /* = Hidden */
+  Field:labelPosition(hidden) {
+    grid-template-columns: 1fr;
+  }
+
+  /* = Top */
+  Field:labelPosition(top) {
+    grid-template-columns: 1fr;
+  }
+
+  Field:labelPosition(top)::inputLabel {
+    margin-bottom: calc(var(--spacing-unit) / 2);
+  }
+
+  /* = Side */
+  Field:labelPosition(side) {
+    grid-template-columns: .35fr 1fr;
+    column-gap: var(--spacing-unit);
+  }
+
+  Field:labelPosition(side)::inputLabel {
+    justify-self: flex-end;
+    text-align: end;
+  }
+
+  Field:labelPosition(side)::helpText {
+    grid-area: 2 / 2;
+  }
+
+  /* = Over */
+  Field:labelPosition(over):labelPosition(over) {
+    grid-template-columns: 1fr;
+  }
+
+  /* Setting this up is fiddly expecially with scaling fonts, be patient :-) */
+  Field:labelPosition(over)::inputLabel {
+    display: block;
+    transform-origin: left top;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* truncation */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* @todo variable... for transition */
+    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    z-index: 1;
+    cursor: text;
+    max-width: calc(100% - 3em);
+    /* Ensure the label->over to be the same size as the input text - 1em. */
+    font-size: 1em;
+    /* This should match the form fields. */
+    line-height: 1.5em;
+    /* transform: translate(0.7rem, calc(50% - 0.5em + 0.4rem)) scale(1); */
+    transform: translate(0.7rem, calc(0.2rem + 0.2em)) scale(1);
+  }
+
+  /*
+  * If you change the font-sizes/field-padding you will likely need to tweak 
+  * the above transform(X, Y) Y value. To help you out it is helful to set
+  * a placeholder and make it to be visible whilst you hone in the value, 
+  * like so:
+  */
+  /* 
+  Field:labelPosition(over)::fieldInput::placeholder {
+    opacity: 1;
+    color: blueviolet;
+  }
+  */
+
+  Field:labelPosition(over):focus-within::inputLabel,
+  Field:labelPosition(over):hasValue::inputLabel {
+    transform: translate(0.7rem, -0.6em) scale(0.75);
+  }
+
+  Field:labelPosition(over):focus-within::legend,
+  Field:labelPosition(over):hasValue::legend {
+    max-width: 100%;
+    padding: 0 7px;
+  }
+
+  Field:labelPosition(over):focus-within::legend,
+  Field:labelPosition(over):hasValue::legend {
+    transform: scale(0.75);
+  }
+
+  Field:labelPosition(over)::fieldInput::placeholder,
+  Field:labelPosition(over)::fieldInput textarea::placeholder {
+    transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 0;
+  }
+
+  Field:labelPosition(over)::fieldInput:focus::placeholder,
+  Field:labelPosition(over):hasValue::fieldInput::placeholder,
+  Field:labelPosition(over)::fieldInput textarea:focus::placeholder,
+  Field:labelPosition(over):hasValue::fieldInput textarea::placeholder {
+    opacity: 1;
+  }
+
+  Field:labelPosition(over)::helpText {
+    padding: 0 var(--spacing-unit);
+  }
+
+
+  /*==== VARIANTS ====*/
+
+  /* = Quiet */
+  Field:variant(quiet)::fieldContainer::before,
+  Field:variant(quiet)::fieldContainer::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    content: "";
+    width: var(--field-border-width);
+    background-color: var(--field-border-color);
+    transition: background-color ease 0.3s;
+  }
+
+  Field:variant(quiet):hasValue::fieldContainer::before,
+  Field:variant(quiet):hasValue::fieldContainer::after {
+    background-color: var(--field-border-color-hasValue);
+  }
+
+  Field:variant(quiet)::fieldContainer::before {
+    display: block;
+    left: 0;
+  }
+
+  Field:variant(quiet)::fieldContainer::after {
+    right: 0;
+    /* = Choosing only to show the first edge indicator by default. */
+    display: none;
+  }
+
+  Field:variant(quiet)::fieldContainer:focus-within::before,
+  Field:variant(quiet)::fieldContainer:focus-within::after {
+    /* = Adjust the pseudo field indicators to cater for custom focus style. */
+    opacity: 1;
+    /* = The glow from the box-shadow means we don't want the width to be too 'chunky'. */
+    width: 2px;
+    background-color: var(--field-focus-color);
+  }
+
+  Field:variant(quiet):error::fieldContainer {
+    background-color: var(--color-error);
+  }
+
+  Field:variant(quiet)::fieldset {
+    border-color: transparent;
+  }
+
+  /* = Outlined */
+  Field:variant(outlined)::fieldContainer {
+    background-color: var(--field-bg);
+  }
+
+  Field:variant(outlined)::fieldset {
+    border-color: var(--field-border-color);
+  }
+
+  Field:variant(outlined):hasValue::fieldset {
+    border-color: var(--field-border-color-hasValue);
+  }
+
+  Field:variant(outlined)::fieldset,
+  Field:variant(outlined)::fieldContainer {
+    border-radius: var(--field-radius);
+  }
+
+  Field:variant(outlined):focus-within::fieldset {
+    border-color: var(--field-focus-color);
+    border-width: 2px;
+  }
+
+  Field:variant(outlined):error::fieldset {
+    border-color: var(--color-error);
+    border-width: 2px;
+  }
+
+  /* = Filled */
+  Field:variant(filled)::fieldset {
+    border-color: transparent;
+  }
+
+  Field:variant(filled)::fieldset,
+  Field:variant(filled)::fieldContainer {
+    border-radius: var(--field-radius);
+  }
+
+  Field:variant(filled)::fieldContainer {
+    background-color: var(--field-bg-fill);
+  }
+
+  Field:variant(filled):error::fieldset {
+    border-left-color: transparent;
+    box-shadow: -1px 0 0 0 var(--color-error);
+  }
+
+  Field:variant(filled):focus-within::fieldset {
+    border-color: var(--field-focus-color);
+    border-width: 2px;
+  }
+}

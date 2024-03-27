@@ -1,0 +1,114 @@
+@st-namespace "DefaultIconButton";
+/**
+ * = IconButton - iconButton.st.css
+ *
+ * Base theme styles for a Shelley IconButton.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/IconButton/iconButton.st.css
+ * 
+ */
+
+@st-import [ 
+  --light-01,
+  --dark-02,
+  --tone-contrast,
+  --color-ui-rgb-inverse,
+  --color-ui-inverse,
+  --box-shadow
+] from "./project.st.css";
+@st-import IconButton from "../Button/iconButton.st.css";
+@st-import [
+  --border-radius,
+  --bg-color,
+  --text-color,
+  --tone
+] from "./button.st.css";
+@st-import Icon from "../Icon/icon.st.css";
+
+@st-scope body {
+
+  IconButton {
+    padding: 10px;
+    justify-content: center;
+    --border-radius: 999em;
+  }
+
+  IconButton::after,
+  IconButton::before {
+    border-radius: 999em;
+  }
+
+  IconButton::after {
+    border-radius: 999px;
+  }
+
+  IconButton:fab {
+    box-shadow: var(--box-shadow);
+  }
+
+  /*= 
+   * FAB are all about the icons so we don't want rounding issues on these. 
+   * Set with values that divide by 2. 
+   */
+
+  /*= FAB - Volume 1 */
+  IconButton:fab:vol(1) {
+    width: 32px;
+    height: 32px;
+  }
+
+  IconButton:fab:vol(1) Icon {
+    font-size: 16px;
+  }
+
+  /*= FAB - Volume 2 */
+  IconButton:fab:vol(2) {
+    width: 40px;
+    height: 40px;
+  }
+
+  IconButton:fab:vol(2) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 3 */
+  IconButton:fab:vol(3) {
+    width: 48px;
+    height: 48px;
+  }
+
+  IconButton:fab:vol(3) Icon {
+    font-size: 18px;
+  }
+
+  /*= FAB - Volume 4 */
+  IconButton:fab:vol(4) {
+    width: 56px;
+    height: 56px;
+  }
+
+  IconButton:fab:vol(4) Icon {
+    font-size: 20px;
+  }
+
+  /*= FAB - Volume 5 */
+  IconButton:fab:vol(5) {
+    width: 64px;
+    height: 64px;
+  }
+
+  IconButton:fab:vol(5) Icon {
+    font-size: 22px;
+  }
+
+  /*= FAB - Volume 6 */
+  IconButton:fab:vol(6) {
+    width: 72px;
+    height: 72px;
+  }
+
+  IconButton:fab:vol(6) Icon {
+    font-size: 24px;
+  }
+
+}

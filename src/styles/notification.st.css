@@ -1,0 +1,147 @@
+/**
+ * = Notification - notification.st.css
+ *
+ * Base theme styles for a Shelley Notification.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Notification/notification.st.css
+ * 
+ */
+@st-import [
+  --spacing-unit,
+  --light-01-rgb,
+  --dark-01-rgb,
+  --color-ui,
+  --color-ui-rgb,
+  --tone-lead-rgb,
+  --tone-support-rgb,
+  --tone-info-rgb,
+  --tone-success-rgb,
+  --tone-warning-rgb,
+  --tone-alert-rgb,
+  --tone-contrast-rgb,
+  --notification-radius,
+  --notification-header-color
+] from "./project.st.css";
+@st-import Notification from "../Notification/notification.st.css";
+@st-import [--tone] from "./notification.st.css";
+
+@st-import [textVol1, textVol2] from "./mixins/textVol.st.css";
+
+@st-scope body {
+  Notification {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    border-radius: var(--notification-radius);
+  }
+
+  Notification::header {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--notification-header-color);
+  }
+
+  Notification::textWrapper {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-self: center;
+  }
+
+  Notification::title,
+  Notification::subtitle {
+    margin: 0 var(--spacing-unit) 0 0;
+  }
+
+  Notification::title {
+    flex-flow: wrap;
+  }
+
+  Notification::title {
+    line-height: 1.3;
+  }
+
+  Notification::subtitle {
+    font-size: 0.85em;
+    line-height: 1.4;
+  }
+
+  Notification::children {
+    flex-basis: 100%;
+    margin-top: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) / 2);
+  }
+
+  Notification::children:empty {
+    display: none;
+  }
+
+  Notification::closeButton {
+    align-self: center;
+    color: var(--color-ui);
+    margin-top: calc(var(--spacing-unit) * -0.5);
+    margin-right: calc(var(--spacing-unit) * -0.5);
+    margin-bottom: calc(var(--spacing-unit) * -0.5);
+  }
+
+  Notification::closeButton::before {
+    background-color: rgba(var(--color-ui-rgb), 0.1);
+  }
+
+  Notification::footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: calc(var(--spacing-unit) / 2);
+  }
+
+  /* Color setting */
+  Notification:tone(lead) {
+    background-color: rgba(var(--tone-lead-rgb), 0.25);
+  }
+
+  Notification:tone(support) {
+    background-color: rgba(var(--tone-support-rgb), 0.25);
+  }
+
+  Notification:tone(info) {
+    background-color: rgba(var(--tone-info-rgb), 0.25);
+  }
+
+  Notification:tone(success) {
+    background-color: rgba(var(--tone-success-rgb), 0.25);
+  }
+
+  Notification:tone(warning) {
+    background-color: rgba(var(--tone-warning-rgb), 0.25);
+  }
+
+  Notification:tone(alert) {
+    background-color: rgba(var(--tone-alert-rgb), 0.25);
+  }
+
+  Notification:tone(light) {
+    background-color: rgba(var(--light-01-rgb), 0.25);
+  }
+
+  Notification:tone(dark) {
+    background-color: rgba(var(--dark-01-rgb), 0.25);
+  }
+
+  Notification:tone(contrast) {
+    background-color: rgba(var(--tone-contrast-rgb), 0.25);
+  }
+}
+
+@st-scope [dir=rtl] {
+
+  Notification::closeButton {
+    margin-right: unset;
+    margin-left: calc(var(--spacing-unit) * -0.5);
+  }
+}

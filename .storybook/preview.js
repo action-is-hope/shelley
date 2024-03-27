@@ -1,5 +1,5 @@
 import React from "react";
-import "../src/styles";
+import { root } from "../src/styles";
 
 import { initializeRTL } from "storybook-addon-rtl";
 initializeRTL();

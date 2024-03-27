@@ -1,0 +1,91 @@
+@st-namespace "DefaultButtonGroup";
+/**
+ * = ButtonGroup - buttonGroup.st.css
+ *
+ * Base theme styles for a Shelley ButtonGroup.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Button/buttonGroup.st.css
+ * 
+ */
+@st-import [--spacing-unit, --button-radius, --button-border-width] from "./project.st.css";
+@st-import ButtonGroup from "../Button/buttonGroup.st.css";
+@st-import Button from "../Button/button.st.css";
+@st-import [--border-radius] from "./button.st.css";
+
+@st-scope body {
+  ButtonGroup {
+    --seperator-color: initial;
+    --seperator-width: 1px;
+    display: inline-flex;
+    gap: var(--spacing-unit);
+  }
+
+  ButtonGroup:splitButton {
+    gap: 0;
+  }
+
+  ButtonGroup > Button:focus {
+    z-index: 1;
+  }
+
+  /* Styles if `orientation="horizontal"`. */
+  ButtonGroup:splitButton:orientation(horizontal) > Button:not(:first-child):not(:last-child) {
+    --border-radius: 0;
+  }
+
+  ButtonGroup:splitButton:orientation(horizontal) > Button:first-child {
+    --border-radius: var(--button-radius) 0 0 var(--button-radius);
+  }
+
+  ButtonGroup:splitButton:orientation(horizontal) > Button:last-child {
+    --border-radius: 0 var(--button-radius) var(--button-radius) 0;
+  }
+
+  ButtonGroup:splitButton:orientation(horizontal) > Button:not(:first-child) {
+    /* border-left-width: 0; */
+  }
+
+  /* Styles if `orientation="vertical"`. */
+
+  ButtonGroup:orientation(vertical) {
+    flex-direction: column;
+  }
+
+  ButtonGroup:splitButton:orientation(vertical) > Button:not(:first-child):not(:last-child) {
+    --border-radius: 0;
+  }
+
+  ButtonGroup:splitButton:orientation(vertical) > Button:first-child {
+    --border-radius: var(--button-radius) var(--button-radius) 0 0;
+  }
+
+  ButtonGroup:splitButton:orientation(vertical) > Button:last-child {
+    --border-radius: 0 0 var(--button-radius) var(--button-radius);
+  }
+
+  ButtonGroup:splitButton:orientation(vertical) > Button:not(:first-child) {
+    border-top-width: 0;
+  }
+
+  /* = We need to set a border button when in a group. */
+
+  /* = horizontal - border-left */
+  ButtonGroup:splitButton:orientation(horizontal) Button:not(:first-child) {
+    border-left: var(--seperator-width) solid var(--seperator-color)
+  }
+
+  ButtonGroup:splitButton:orientation(horizontal) Button:not(:first-child)::before {
+    /* Move the hover item to sit inside the seperator. */
+    left: 0
+  }
+
+  /* = vertical - border-top */
+  ButtonGroup:splitButton:orientation(vertical) Button:not(:first-child) {
+    border-top: var(--seperator-width) solid var(--seperator-color)
+  }
+
+  ButtonGroup:splitButton:orientation(vertical) Button:not(:first-child)::before {
+    /* Move the hover item to sit inside the seperator. */
+    top: 0
+  }
+}

@@ -1,0 +1,88 @@
+@st-namespace "DefaultSwitch";
+/**
+ * = Switch - switch.st.css
+ *
+ * Base theme styles for a Shelley Switch.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Switch/switch.st.css
+ * 
+ */
+@st-import [--spacing-unit] from "./project.st.css";
+@st-import Switch from "../Switch/switch.st.css";
+@st-import Icon from "../Icon/icon.st.css";
+@st-import [
+    SelectionControlInputContainer,
+    SelectionControlFieldInput,
+    SwitchFieldInput,
+    labelVol1,
+    labelVol2,
+    labelVol3,
+    labelVol4,
+    labelVol5,
+    labelVol6,
+    selectionControlSize1,
+    selectionControlSize2,
+    selectionControlSize3,
+    selectionControlSize4,
+    selectionControlSize5,
+    selectionControlSize6
+] from "./mixins/formElements.st.css";
+
+@st-scope body {
+
+  Switch {
+    gap: calc(var(--spacing-unit) / 2);
+    cursor: pointer;
+  }
+
+  Switch:isDisabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  Switch::inputContainer {
+    -st-mixin: SelectionControlInputContainer;
+  }
+
+  Switch::input {
+    -st-mixin: SelectionControlFieldInput;
+  }
+
+  Switch::input {
+    -st-mixin: SwitchFieldInput;
+  }
+
+  Switch:isFocusVisible::input::after {
+    opacity: 1;
+  }
+
+  Switch Icon {
+    font-size: 2em;
+  }
+
+  /* ==== Switch: sizes ====*/
+
+  Switch:size(1)::inputContainer {
+    -st-mixin: selectionControlSize1
+  }
+
+  Switch:size(2)::inputContainer {
+    -st-mixin: selectionControlSize2
+  }
+
+  Switch:size(3)::inputContainer {
+    -st-mixin: selectionControlSize3
+  }
+
+  Switch:size(4)::inputContainer {
+    -st-mixin: selectionControlSize4
+  }
+
+  Switch:size(5)::inputContainer {
+    -st-mixin: selectionControlSize5
+  }
+
+  Switch:size(6)::inputContainer {
+    -st-mixin: selectionControlSize6
+  }
+}

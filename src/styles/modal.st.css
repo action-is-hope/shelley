@@ -1,0 +1,231 @@
+@st-namespace "DefaultModal";
+/**
+ * = Modal - modal.st.css
+ *
+ * Base theme styles for a Shelley Modal.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Modal/modal.st.css
+ * 
+ */
+@st-import [
+  --modal-backdrop-bg
+] from "./project.st.css";
+@st-import Modal, [
+  blurBackground,
+  backdrop,
+  content
+] from "../Modal/modal.st.css";
+
+
+@st-scope {
+  .blurBackground [data-focus-on-hidden]:not(Modal, Modal *) {
+    opacity: .5;
+    filter: blur(2px);
+  }
+}
+
+@st-scope body {
+  Modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    --transiton-slide-from-start: translateX(-100%);
+    --transiton-slide-from-end: translateX(100%);
+  }
+
+  Modal:variant(fixed) {
+    position: fixed;
+  }
+
+  Modal::backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--modal-backdrop-bg);
+  }
+
+  Modal::content {
+    position: relative;
+  }
+
+  /* = Content Transitions */
+
+  /* Map transition lifecycle classes to global CSSTransitionGroup classes. */
+  .enter {
+    -st-global: '.enter';
+  }
+
+  .enterActive {
+    -st-global: '.enter-active';
+  }
+
+  .enterDone {
+    -st-global: '.enter-done';
+  }
+
+  .exit {
+    -st-global: '.exit';
+  }
+
+  .exitActive {
+    -st-global: '.exit-active';
+  }
+
+  .exitDone {
+    -st-global: '.exit-done';
+    display: none;
+  }
+
+  /* Background transition. */
+  Modal.enter .backdrop {
+    opacity: 0;
+  }
+
+  Modal.enterActive .backdrop {
+    opacity: 1;
+    transition: opacity 190ms;
+  }
+
+  Modal.enterDone .backdrop {
+    opacity: 1;
+  }
+
+  Modal.exit .backdrop {
+    opacity: 1;
+  }
+
+  Modal.exitActive .backdrop {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  /*=== Variants ===*/
+
+  /* = Zoom */
+  Modal:transition(zoom).enter .content {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  Modal:transition(zoom).enterActive .content {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  Modal:transition(zoom).enterDone .content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  Modal:transition(zoom).exit .content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  Modal:transition(zoom).exitActive .content {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  /* = slideUp */
+  Modal:transition(slideUp).enter .content {
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+  }
+
+  Modal:transition(slideUp).enterActive .content {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  Modal:transition(slideUp).enterDone .content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideUp).exit .content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideUp).exitActive .content {
+    transform: translateY(calc(100vh / 2 + 100%));
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  /* = slideFromStart = */
+  Modal:transition(slideFromStart).enter .content {
+    transform: var(--transiton-slide-from-start);
+    opacity: 0;
+  }
+
+  Modal:transition(slideFromStart).enterActive .content {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  Modal:transition(slideFromStart).enterDone .content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideFromStart).exit .content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideFromStart).exitActive .content {
+    transform: var(--transiton-slide-from-start);
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  /* = slideFromEnd = */
+  Modal:transition(slideFromEnd).enter .content {
+    transform: var(--transiton-slide-from-end);
+    opacity: 0;
+  }
+
+  Modal:transition(slideFromEnd).enterActive .content {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  Modal:transition(slideFromEnd).enterDone .content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideFromEnd).exit .content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  Modal:transition(slideFromEnd).exitActive .content {
+    transform: var(--transiton-slide-from-end);
+    opacity: 0;
+    transition: transform 190ms, opacity 190ms;
+  }
+
+  /* Add your own variants */
+}
+
+@st-scope [dir=rtl] {
+  Modal {
+    --transiton-slide-from-start: translateX(100%);
+    --transiton-slide-from-end: translateX(-100%);
+  }
+}

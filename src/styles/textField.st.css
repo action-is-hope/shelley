@@ -1,0 +1,50 @@
+@st-namespace "DefaultTextField";
+/**
+ * = TextField - textField.st.css
+ *
+ * The base styles are provided by Field, here we are just adding 
+ * TextField specifics.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/TextField/textField.st.css
+ * 
+ */
+@st-import Default from "./project.st.css";
+@st-import TextField from "../TextField/textField.st.css";
+
+@st-scope body {
+
+  /* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
+  TextField::textareaWrap {
+    /* grid is an easy way to stack elements and have them both sized based on the tallest one's height */
+    display: grid !important;
+  }
+
+  TextField::textareaWrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-value) " ";
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+  }
+
+  TextField::textareaInput {
+    color: inherit;
+    background-color: transparent;
+    outline: none;
+    /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+    resize: none;
+    /* Firefox shows scrollbar on growth, you can hide like this. */
+    overflow: hidden;
+  }
+
+  TextField::textareaInput,
+  TextField::textareaWrap::after {
+    /* Identical styling required for input and pseudo elements. */
+    padding: 0;
+    border: none;
+    font: inherit;
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+  }
+}

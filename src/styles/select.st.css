@@ -1,0 +1,79 @@
+@st-namespace "DefaultSelect";
+/**
+ * = Select - select.st.css
+ *
+ * The base styles are provided by Field, here we are just adding 
+ * Select specifics.
+ *
+ * CSS API: https://github.com/action-is-hope/shelley/blob/main/src/Select/select.st.css
+ * 
+ */
+@st-import [
+  --spacing-unit,
+  --field-padding,
+  --field-placeholder-color,
+  --field-focus-color
+] from "./project.st.css";
+@st-import Select from "../Select/select.st.css";
+@st-import Icon from "../Icon/icon.st.css";
+
+@st-scope body {
+
+  Select::trigger {
+    border-radius: 0;
+    padding: var(--field-padding);
+    /** rtl */
+    padding-right: calc(var(--spacing-unit) * 3);
+    text-transform: inherit;
+    font-size: 1em;
+    line-height: 1.5;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 400;
+    border-width: 0;
+    letter-spacing: 0;
+  }
+
+  Select::trigger::before {
+    display: none;
+  }
+
+  /* Hide trigger focus. Focus indicator is provided by field. */
+  Select::trigger:focus::after {
+    opacity: 0;
+  }
+
+  Select::trigger Icon {
+    /** rtl */
+    margin-right: calc(var(--spacing-unit) * -2);
+  }
+
+  Select:focus-within::trigger Icon {
+    color: var(--field-focus-color);
+  }
+
+  Select::trigger::inner {
+    padding: 0;
+  }
+
+  Select::placeholder {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.2px;
+    color: var(--field-placeholder-color);
+  }
+
+  Select:labelPosition(over)::placeholder {
+    visibility: hidden;
+  }
+
+  /* = Display the 'quiet' right hand field indicator on Select to visually encase the down arrow. */
+  Select:variant(quiet)::fieldContainer::after {
+    display: block;
+  }
+
+  Select::popup {
+    overflow: hidden scroll;
+  }
+}
