@@ -1,4 +1,4 @@
-/* progressBar.st.css */
+@st-namespace "shelleyProgressBar";
 @st-import Shelley, [
   --color-ui-rgb-inverse,
   --color-ui-rgb,

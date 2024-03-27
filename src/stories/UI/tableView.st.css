@@ -1,3 +1,5 @@
+@st-namespace "storiesTableView";
+
 @st-import TableView, [] from "../../TableView/tableView.st.css";
 
 .layoutExample {
