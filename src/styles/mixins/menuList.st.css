@@ -1,4 +1,5 @@
-/* = menuList.st.css. */
+@st-namespace "menuListMixin";
+
 @st-import [
   --spacing-unit,
   --color-focus,
