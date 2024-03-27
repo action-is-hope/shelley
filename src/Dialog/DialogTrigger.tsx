@@ -14,13 +14,13 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { createPortal } from "react-dom";
 import { mergeProps } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 import { PressResponder } from "@react-aria/interactions";
 import { DialogContext } from "./context";
 // import {useIsMobileDevice} from '@react-spectrum/utils';
 import { useOverlayTrigger } from "@react-aria/overlays";
+import { Portal } from "../Portal";
 import { Modal, TransitionType } from "../Modal";
 import { Popup } from "../Popup";
 
@@ -352,15 +352,7 @@ function PopupTrigger({
   );
 
   const overlay = (
-    <>
-      {state.isOpen && portalSelector
-        ? // If no portalSelector render inline.
-          createPortal(
-            popup,
-            document.querySelector(portalSelector) as HTMLElement
-          )
-        : popup}
-    </>
+    <>{state.isOpen && <Portal selector={portalSelector}>{popup}</Portal>}</>
   );
   return (
     <DialogTriggerBase
