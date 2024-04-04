@@ -7,7 +7,7 @@
   --option-item-bg-hover,
   --field-focus-color
 ] from "../project.st.css";
-@st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
+@st-import [focus, focusVisible] from "./focus.st.css";
 
 .menuList {
   outline: none;
@@ -38,7 +38,7 @@
 }
 
 .menuItem::after {
-  -st-mixin: pseudoFocus;
+  -st-mixin: focus;
   inset: 0;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .menuItemFocusVisible::after {
-  -st-mixin: pseudoFocusVisible;
+  -st-mixin: focusVisible;
 }
 
 .menuItemDisabled {

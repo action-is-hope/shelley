@@ -19,7 +19,7 @@
   ] from "../project.st.css";
 @st-import [textVol, textVol1, textVol2, textVol3, textVol4, textVol5, textVol6] from "./textVol.st.css";
 @st-import InputLabel from "../../Label/label.st.css";
-@st-import [pseudoFocus, pseudoFocusVisible] from "./focus.st.css";
+@st-import [focus, focusVisible] from "./focus.st.css";
 
 
 /* Local vars. */
@@ -202,13 +202,13 @@
   border-style: solid;
   border-width: 2px;
   border-color: var(--field-border-color-hasValue);
-  /* = pseudoFocus mixin replaces the default outline. */
+  /* = focus mixin replaces the default outline. */
   outline: none;
 }
 
 .SelectionControlFieldInput::after {
   /* = Field focus indicator, via pseudo element. */
-  -st-mixin: pseudoFocus;
+  -st-mixin: focus;
   inset: -4px;
 }
 
