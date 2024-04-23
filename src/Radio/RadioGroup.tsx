@@ -66,7 +66,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
         errorMessage,
         isInvalid,
         errorMessageProps,
-        fieldContainerProps: {
+        inputContainerProps: {
           ...radioGroupProps,
           className: classes.group,
           "data-id": dataId ? `${dataId}--group` : undefined,

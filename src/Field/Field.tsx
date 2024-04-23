@@ -22,7 +22,7 @@ import { InputAdornment } from "../InputAdornment";
 import { st, classes } from "./field.st.css";
 import type { HelpTextProps } from "@react-types/shared";
 
-export interface FieldContainerProps
+export interface inputContainerProps
   extends HTMLProps<HTMLDivElement>,
     ComponentBase {}
 export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
@@ -61,10 +61,12 @@ export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLProps<HTMLDivElement>;
   /** Props for the field container. */
-  fieldContainerProps?: FieldContainerProps;
+  inputContainerProps?: inputContainerProps;
   /** Enable disabled state. */
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  /** Disable fieldset */
+  disableFieldset?: boolean;
 }
 
 export interface FieldInternalProps
@@ -91,11 +93,12 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     disableLabelTransition = false,
     variant = "outlined",
     hasValue: hasValueProp,
-    fieldContainerProps,
+    inputContainerProps,
     isReadOnly,
     isRequired,
     isDisabled,
     vol = 3,
+    disableFieldset,
     "data-id": dataId,
     ...rest
   } = props;
@@ -109,7 +112,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     if (isValidElement(child)) {
       return cloneElement(child as ReactElement, {
         className: st(
-          classes.fieldInput,
+          classes.input,
           (child?.props as React.HTMLProps<HTMLElement>)?.className
         ),
       });
@@ -118,7 +121,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
 
   const label = labelStringProp && (
     <Label
-      className={classes.inputLabel}
+      className={classes.label}
       data-id={dataId ? `${dataId}--label` : undefined}
       {...labelProps}
     >
@@ -132,7 +135,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         classes.root,
         {
           hasValue,
-          error: isInvalid,
+          hasError: isInvalid,
           isDisabled,
           isRequired,
           isReadOnly,
@@ -149,8 +152,9 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
       {hideLabel && label ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
       <div
-        {...fieldContainerProps}
-        className={st(classes.fieldContainer, fieldContainerProps?.className)}
+        {...inputContainerProps}
+        // if a classname has been provided for the input container, use it, otherwise use the default
+        className={st(inputContainerProps?.className || classes.inputContainer)}
       >
         {typeof startAdornment === "string" ? (
           <InputAdornment
@@ -174,7 +178,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
             )
           : endAdornment}
         {/*  */}
-        {variant && (
+        {variant && !disableFieldset && (
           <fieldset aria-hidden="true" className={classes.fieldset}>
             <legend className={classes.legend}>
               {!hideLabel && labelStringProp}

@@ -152,8 +152,7 @@ export const SimplePopup = (props: PopupProps) => {
         <Popup
           {...overlayProps}
           {...props}
-          isOpen={state.isOpen}
-          onClose={() => state.close()}
+          state={state}
           triggerRef={triggerRef}
         >
           Children

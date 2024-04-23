@@ -14,7 +14,8 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { mergeProps } from "react-aria";
+import { generateDataId } from "../utils";
+import { FocusScopeProps, mergeProps } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 import { PressResponder } from "@react-aria/interactions";
 import { DialogContext } from "./context";
@@ -55,7 +56,10 @@ export type TriggerTransitionProps = Pick<
   | "timeout"
 >;
 
-export interface DialogTriggerProps extends OverlayTriggerProps, PositionProps {
+export interface DialogTriggerProps
+  extends OverlayTriggerProps,
+    PositionProps,
+    FocusScopeProps {
   /** The Dialog and its trigger element. */
   children: [ReactElement, DialogClose | ReactElement];
   /**
@@ -127,7 +131,6 @@ function _DialogTrigger(props: DialogTriggerProps) {
     isDismissable = false,
     portalSelector = "body",
     isKeyboardDismissDisabled = false,
-    focusOnProps,
     placement,
     containerPadding,
     offset = 16,
@@ -141,9 +144,25 @@ function _DialogTrigger(props: DialogTriggerProps) {
     disableModalBackdropBlur = false,
     modalClassName,
     popupClassName,
+    // Popup FocusScope props
+    autoFocus,
+    contain,
+    restoreFocus = true,
+    focusOnProps: focusOnPropsFromProps,
   } = props;
 
+  const focusOnProps: TriggerFocusOnProps = {
+    // map FocusScope props to FocusOn props
+    autoFocus: autoFocus,
+    enabled: contain,
+    returnFocus: restoreFocus,
+    ...focusOnPropsFromProps,
+  };
+
   const popupSpecificProps = {
+    autoFocus,
+    contain,
+    restoreFocus,
     placement,
     containerPadding,
     offset,
@@ -223,7 +242,6 @@ function _DialogTrigger(props: DialogTriggerProps) {
           portalSelector,
           popupClassName,
         }}
-        focusOnProps={focusOnProps}
       />
     );
   }
@@ -258,7 +276,7 @@ function _DialogTrigger(props: DialogTriggerProps) {
               focusOnProps,
               disableModalBackdropBlur,
             }}
-            data-id={dataId ? `${dataId}--modal` : undefined}
+            data-id={generateDataId(dataId, "modal")}
           >
             {typeof content === "function"
               ? content(() => state.close())
@@ -309,7 +327,7 @@ interface PopupTriggerProps
   isKeyboardDismissDisabled?: boolean;
   overlayProps: React.HtmlHTMLAttributes<HTMLDivElement>;
   /** Props for the internal `FocusOn` component see - https://github.com/theKashey/react-focus-on#api */
-  focusOnProps?: TriggerFocusOnProps;
+  // focusOnProps?: TriggerFocusOnProps;
   dataId?: string;
   portalSelector?: string | false;
   hideArrow?: boolean;
@@ -326,7 +344,6 @@ function PopupTrigger({
   overlayProps,
   isDismissable,
   dataId,
-  focusOnProps,
   portalSelector,
   popupClassName,
   ...props
@@ -342,10 +359,8 @@ function PopupTrigger({
       triggerRef={targetRef || triggerRef}
       {...overlayProps}
       className={popupClassName}
-      isOpen={state.isOpen}
-      onClose={() => state.close()}
-      focusOnProps={focusOnProps}
-      data-id={dataId ? `${dataId}--popup` : undefined}
+      state={state}
+      data-id={generateDataId(dataId, "popup")}
     >
       {typeof content === "function" ? content(() => state.close()) : content}
     </Popup>

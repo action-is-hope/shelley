@@ -129,11 +129,7 @@
     grid-area: buttonGroup;
   }
 
-}
-
-
-@media screen and (min-width: 701px) {
-  @st-scope Shelley {
+  @media screen and (min-width: 701px) {
     Dialog:size(small) {
       width: var(--dialog-small-width);
     }
@@ -146,9 +142,7 @@
       width: var(--dialog-large-width);
     }
   }
-}
 
-@st-scope Shelley {
   Dialog::closeButton {}
 
   Dialog::hero {

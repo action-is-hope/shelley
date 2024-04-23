@@ -16,7 +16,6 @@
 @st-import RadioGroup from "../Radio/radioGroup.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 @st-import [
-  SelectionControlInputContainer,
   SelectionControlFieldInput,
   RadioCheckboxCommon,
   RadioFieldInput,
@@ -45,10 +44,6 @@
   Radio:isDisabled {
     cursor: not-allowed;
     opacity: 0.7;
-  }
-
-  Radio::inputContainer {
-    -st-mixin: SelectionControlInputContainer;
   }
 
   Radio::input {
@@ -86,27 +81,27 @@
 
   /* === Radio: sizes ===*/
 
-  Radio:size(1)::inputContainer {
+  Radio:size(1)::input {
     -st-mixin: selectionControlSize1
   }
 
-  Radio:size(2)::inputContainer {
+  Radio:size(2)::input {
     -st-mixin: selectionControlSize2
   }
 
-  Radio:size(3)::inputContainer {
+  Radio:size(3)::input {
     -st-mixin: selectionControlSize3
   }
 
-  Radio:size(4)::inputContainer {
+  Radio:size(4)::input {
     -st-mixin: selectionControlSize4
   }
 
-  Radio:size(5)::inputContainer {
+  Radio:size(5)::input {
     -st-mixin: selectionControlSize5
   }
 
-  Radio:size(6)::inputContainer {
+  Radio:size(6)::input {
     -st-mixin: selectionControlSize6
   }
 

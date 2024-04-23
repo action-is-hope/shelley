@@ -179,12 +179,6 @@
  * ------------------------------------------------------------------------- */
 
 
-/* = 'Root' of the control */
-.SelectionControlInputContainer {
-  display: flex;
-}
-
-
 /* = The actual field - <input> */
 .SelectionControlFieldInput {
   -st-mixin: hideWebkitAppearance;

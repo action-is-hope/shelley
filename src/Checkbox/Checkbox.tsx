@@ -69,14 +69,12 @@ function Checkbox(props: CheckboxProps, ref: React.Ref<HTMLInputElement>) {
   );
 
   const inputControl = (
-    <span className={classes.inputContainer}>
-      <input
-        className={classes.input}
-        {...mergeProps(inputProps, focusProps)}
-        ref={ref ? mergeRefs(ref, internalRef) : internalRef}
-        data-id={dataId ? `${dataId}--input` : undefined}
-      />
-    </span>
+    <input
+      className={classes.input}
+      {...mergeProps(inputProps, focusProps)}
+      ref={ref ? mergeRefs(ref, internalRef) : internalRef}
+      data-id={dataId ? `${dataId}--input` : undefined}
+    />
   );
 
   if (groupState) {

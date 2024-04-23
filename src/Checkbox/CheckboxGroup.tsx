@@ -70,7 +70,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
         labelProps,
         vol,
         variant: false,
-        fieldContainerProps: { ...groupProps, className: classes.group },
+        inputContainerProps: { ...groupProps, className: classes.group },
         ref,
         "data-id": dataId,
       }}

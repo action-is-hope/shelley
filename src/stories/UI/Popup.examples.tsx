@@ -31,11 +31,11 @@ export const SimplePopup = () => {
         <Portal selector="body">
           <Popup
             {...overlayProps}
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
+            state={state}
             offset={8}
             ref={overlayRef}
             triggerRef={triggerRef}
+            placement="end"
           >
             <Dialog size="small">Children</Dialog>
           </Popup>

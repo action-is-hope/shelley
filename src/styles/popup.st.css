@@ -15,15 +15,21 @@
   --popup-radius,
   --popup-drop-shadow
 ] from "./project.st.css";
-@st-import Popup from "../Popup/popup.st.css";
+@st-import Popup, [underlay] from "../Popup/popup.st.css";
 
 @st-scope Shelley {
+
   Popup {
     background-color: var(--popup-bg);
     border: var(--popup-border-width) solid var(--popup-border-color);
     border-radius: var(--popup-radius);
     color: var(--popup-color);
     filter: var(--popup-drop-shadow);
+  }
+
+  .underlay {
+    position: fixed;
+    inset: 0;
   }
 
   Popup::scroller {
@@ -61,10 +67,4 @@
     rotate: 270deg;
     margin-top: -6px;
   }
-
-  /* Popup::arrow:placement(left),
-  Popup::arrow:placement(right) {
-    margin-top: -2px;
-  } */
-
 }
