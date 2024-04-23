@@ -38,7 +38,7 @@
 
   Label:hasInput {
     display: inline-flex;
-    /* = Reverse the direction as we provide the label first as per logical source order. */
+    /* = Reverse the direction; we provide the label first as logical source order. */
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-end;
