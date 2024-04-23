@@ -12,14 +12,20 @@ import { classes as dialog } from "../../Dialog/dialog.st.css";
 
 export const BasicDialogTrigger = (args: ModalProps) => {
   return (
-    <DialogTrigger type="popup" {...args} popupClassName="test">
+    <DialogTrigger
+      type="popup"
+      {...args}
+      popupClassName="test"
+      popupProps={{ isNonModal: true }}
+    >
       <Button>Disk Status</Button>
       <Dialog>
+        <Button>Hi</Button>
         <H2 vol={4} className={dialog.title} data-title>
           c://
         </H2>
         {/* <input id="first-input" /> */}
-        <Button>Hi</Button>
+
         <hr className={dialog.divider} />
         <P className={dialog.content}>50% disk space remaining.</P>
       </Dialog>

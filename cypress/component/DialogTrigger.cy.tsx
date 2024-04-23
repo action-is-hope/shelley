@@ -52,9 +52,25 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
           Title
         </H2>
         <hr className={dialogClasses.divider} />
-        <P data-content className={dialogClasses.content}>
-          Content
-        </P>
+        <div data-content className={dialogClasses.content}>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+          <P>Content</P>
+        </div>
         <Button data-focus-button>Focus button</Button>
       </Dialog>
     </DialogTrigger>
@@ -277,7 +293,10 @@ describe("Dialog Trigger", () => {
           />
         );
         cy.get(trigger).realClick();
-        cy.realPress("PageDown");
+
+        cy.get(trigger).realMouseWheel({ deltaY: 100 });
+
+        // cy.realPress("PageDown");
         cy.get(popup).should("not.exist");
       });
     });
