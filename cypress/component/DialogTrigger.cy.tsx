@@ -7,10 +7,7 @@ import {
   H2,
   P,
 } from "../../src/indexLib";
-
-// @ts-ignore
 import { classes as dialogClasses } from "../../src/Dialog/dialog.st.css";
-
 const popup = '[data-id="dialogTriggerTest--popup"]';
 const underlay = '[data-id="dialogTriggerTest--popup--underlay"]';
 const popupArrow = '[data-id="dialogTriggerTest--popup--arrow"]';
@@ -24,13 +21,6 @@ const portal = '[data-id="portal"]';
 interface DialogTriggerTest extends Omit<DialogTriggerProps, "children"> {
   refTest?: React.RefObject<HTMLElement>;
 }
-
-// incorrect number of children
-
-// modal
-// transition
-// transitionProps
-// disableModalBackdropBlur
 
 const BasicContentTrigger = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
@@ -337,9 +327,6 @@ describe("Dialog Trigger", () => {
   });
 
   describe("Popup specific", () => {
-    // shouldCloseOnBlur
-    // targetRef
-
     it("isOpen renders Popup with arrow", () => {
       cy.mount(<BasicContentTrigger type="popup" isOpen />);
       cy.get(popup).should("exist").and("include.text", "Content");

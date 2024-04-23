@@ -22,7 +22,7 @@ export const BasicTemplate = (props: {
   return (
     <Popup
       data-id="popup"
-      state={{ isOpen: props.isOpen }}
+      state={{ isOpen: props?.isOpen || false, close: () => {} }}
       {...rest}
       triggerRef={triggerRef}
     >
