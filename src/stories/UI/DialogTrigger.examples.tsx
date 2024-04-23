@@ -15,17 +15,14 @@ export const BasicDialogTrigger = (args: ModalProps) => {
     <DialogTrigger
       type="popup"
       {...args}
-      popupClassName="test"
-      popupProps={{ isNonModal: true }}
+      // popupClassName="test"
+      // popupProps={{ isNonModal: true }}
     >
       <Button>Disk Status</Button>
       <Dialog>
-        <Button>Hi</Button>
         <H2 vol={4} className={dialog.title} data-title>
           c://
         </H2>
-        {/* <input id="first-input" /> */}
-
         <hr className={dialog.divider} />
         <P className={dialog.content}>50% disk space remaining.</P>
       </Dialog>

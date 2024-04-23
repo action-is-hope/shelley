@@ -283,6 +283,7 @@ describe("Dialog Trigger", () => {
         cy.mount(<DialogWithFocusableContent type="popup" />);
         cy.get(trigger).realClick();
         cy.realPress("PageDown");
+        cy.get(trigger).realMouseWheel({ deltaY: 500 });
         cy.get(popup).should("exist");
       });
       it("popupProps: when isNonModal: true; scrolling dismisses popup", () => {
@@ -293,10 +294,8 @@ describe("Dialog Trigger", () => {
           />
         );
         cy.get(trigger).realClick();
-
-        cy.get(trigger).realMouseWheel({ deltaY: 100 });
-
-        // cy.realPress("PageDown");
+        cy.get(trigger).realMouseWheel({ deltaY: 500 });
+        cy.realPress("PageDown");
         cy.get(popup).should("not.exist");
       });
     });
