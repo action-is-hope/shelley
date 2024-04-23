@@ -2,7 +2,7 @@
 
 exports[`Radio Renders with size '1' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -32,34 +32,30 @@ exports[`Radio Renders with size '1' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
@@ -69,34 +65,30 @@ exports[`Radio Renders with size '1' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -104,7 +96,7 @@ exports[`Radio Renders with size '1' 1`] = `
 
 exports[`Radio Renders with size '2' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -134,34 +126,30 @@ exports[`Radio Renders with size '2' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-2"
@@ -171,34 +159,30 @@ exports[`Radio Renders with size '2' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -206,7 +190,7 @@ exports[`Radio Renders with size '2' 1`] = `
 
 exports[`Radio Renders with size '3' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -236,34 +220,30 @@ exports[`Radio Renders with size '3' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-3"
@@ -273,34 +253,30 @@ exports[`Radio Renders with size '3' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -308,7 +284,7 @@ exports[`Radio Renders with size '3' 1`] = `
 
 exports[`Radio Renders with size '4' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -338,34 +314,30 @@ exports[`Radio Renders with size '4' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-4"
@@ -375,34 +347,30 @@ exports[`Radio Renders with size '4' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -410,7 +378,7 @@ exports[`Radio Renders with size '4' 1`] = `
 
 exports[`Radio Renders with size '5' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -440,34 +408,30 @@ exports[`Radio Renders with size '5' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-5"
@@ -477,34 +441,30 @@ exports[`Radio Renders with size '5' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -512,7 +472,7 @@ exports[`Radio Renders with size '5' 1`] = `
 
 exports[`Radio Renders with size '6' 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -542,34 +502,30 @@ exports[`Radio Renders with size '6' 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-6"
@@ -579,34 +535,30 @@ exports[`Radio Renders with size '6' 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -614,7 +566,7 @@ exports[`Radio Renders with size '6' 1`] = `
 
 exports[`Radio renders as vertical 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -644,34 +596,30 @@ exports[`Radio renders as vertical 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
@@ -681,34 +629,30 @@ exports[`Radio renders as vertical 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>
@@ -716,7 +660,7 @@ exports[`Radio renders as vertical 1`] = `
 
 exports[`Radio renders correctly with label 1`] = `
 <div
-  className="field__Test__root field__Test---vol-1-1 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
+  className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top radioGroup__Test__root radioGroup__Test---orientation-8-vertical"
 >
   <label
     className="label__Test__root field__Test__label"
@@ -746,34 +690,30 @@ exports[`Radio renders correctly with label 1`] = `
       >
         One
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput radio__Test__root radio__Test---size-1-1"
@@ -783,34 +723,30 @@ exports[`Radio renders correctly with label 1`] = `
       >
         Two
       </span>
-      <span
-        className="radio__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="radio__Test__input"
-          disabled={false}
-          name="react-aria-5"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          tabIndex={0}
-          type="radio"
-          value="test2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="radio__Test__input"
+        disabled={false}
+        name="react-aria-5"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        tabIndex={0}
+        type="radio"
+        value="test2"
+      />
     </label>
   </div>
 </div>

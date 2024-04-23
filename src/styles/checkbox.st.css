@@ -42,12 +42,8 @@
     padding: 0 calc(var(--spacing-unit) / 2);
   }
 
-  Checkbox:isDisabled {
-    opacity: 0.7;
-  }
-
-  Checkbox:isDisabled,
-  Checkbox:isDisabled::input {
+  Checkbox:has(:disabled),
+  Checkbox::input:disabled {
     cursor: not-allowed;
   }
 
@@ -122,7 +118,7 @@
 
   CheckboxGroup::group {
     display: flex;
-    gap: 0.2em;
+    gap: calc(var(--spacing-unit) / 1.5);
   }
 
   CheckboxGroup:orientation(vertical)::group {

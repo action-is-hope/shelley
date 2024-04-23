@@ -8,6 +8,7 @@
 
 @st-import [
     --spacing-unit,
+    --color-ui-rgb,
     --field-border-color-hasValue,
     --field-border-width,
     --field-selection-mark-color,
@@ -226,6 +227,9 @@
   position: absolute;
 }
 
+.RadioCheckboxCommon:disabled {
+  opacity: 0.5;
+}
 
 /**
  * = RADIO
