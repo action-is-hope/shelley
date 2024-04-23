@@ -11,11 +11,12 @@ import {
 // @ts-ignore
 import { classes as dialogClasses } from "../../src/Dialog/dialog.st.css";
 
-const popup = '[data-id="dialogTiggerTest--popup"]';
-const popupArrow = '[data-id="dialogTiggerTest--popup-arrow"]';
+const popup = '[data-id="dialogTriggerTest--popup"]';
+const underlay = '[data-id="dialogTriggerTest--popup--underlay"]';
+const popupArrow = '[data-id="dialogTriggerTest--popup--arrow"]';
 
-const modal = '[data-id="dialogTiggerTest--modal"]';
-const modalBackdrop = '[data-id="dialogTiggerTest--modal-backdrop"]';
+const modal = '[data-id="dialogTriggerTest--modal"]';
+const modalBackdrop = '[data-id="dialogTriggerTest--modal-backdrop"]';
 
 const trigger = '[data-id="trigger"]';
 const portal = '[data-id="portal"]';
@@ -33,7 +34,7 @@ interface DialogTriggerTest extends Omit<DialogTriggerProps, "children"> {
 
 const BasicContentTrigger = (args: DialogTriggerTest) => (
   <div style={{ height: "150vh" }}>
-    <DialogTrigger {...args} data-id="dialogTiggerTest">
+    <DialogTrigger {...args} data-id="dialogTriggerTest">
       <Button data-id="trigger">Simple Content</Button>
       <Dialog>
         <H2 vol={4} className={dialogClasses.title} data-title>
@@ -53,7 +54,7 @@ const DialogWithFocusableContent = (args: DialogTriggerTest) => (
     <DialogTrigger
       {...args}
       portalSelector="#portal"
-      data-id="dialogTiggerTest"
+      data-id="dialogTriggerTest"
     >
       <Button data-id="trigger">Focusable Content</Button>
       <Dialog>
@@ -118,8 +119,6 @@ describe("Dialog Trigger", () => {
 
   describe("Portals", () => {
     describe("Popup", () => {
-      const focusGuardSelector =
-        "[data-focus-guard] + [data-focus-lock-disabled]";
       it("portals into body by default", () => {
         cy.mount(<BasicContentTrigger type="popup" />);
         cy.get(trigger).realClick();
@@ -128,7 +127,7 @@ describe("Dialog Trigger", () => {
          * in the DOM so it should render directly adjacent
          * to that.
          */
-        cy.get(`${portal} + ${focusGuardSelector} ${popup}`)
+        cy.get(`body > ${popup}`)
           .should("exist")
           .and("contain.text", "Content");
       });
@@ -140,7 +139,7 @@ describe("Dialog Trigger", () => {
       it("renders adjacent to trigger if portalSelector is false", () => {
         cy.mount(<BasicContentTrigger type="popup" portalSelector={false} />);
         cy.get(trigger).realClick();
-        cy.get(`${trigger} + ${focusGuardSelector} ${popup}`)
+        cy.get(`${trigger} + span + ${underlay} + ${popup}`)
           .should("exist")
           .and("contain.text", "Content");
       });
@@ -249,9 +248,9 @@ describe("Dialog Trigger", () => {
     });
   });
 
-  describe("FocusOn works as expected", () => {
+  describe("FocusScope(Popup)/FocusOn(Modal) works as expected", () => {
     /**
-     * Smoke tests of what we most care about from FocusOn.
+     * Smoke tests of what we most care about from FocusScope(Popup)/FocusOn(Modal).
      */
     describe("Popup", () => {
       it("first item focuses by default and returns focus", () => {
@@ -265,32 +264,14 @@ describe("Dialog Trigger", () => {
         cy.mount(
           <DialogWithFocusableContent
             type="popup"
-            focusOnProps={{ autoFocus: false }}
+            autoFocus={false}
+            restoreFocus={true}
           />
         );
         cy.get(trigger).realClick();
         cy.get("[data-focus-button]").should("not.be.focused");
-        // We would need to tab into the lock as autoFocus is off.
-        cy.realPress("Tab").realPress("Tab");
         cy.realPress("Escape");
         cy.get(trigger).should("be.focused");
-      });
-      it("focus-on events (only activation and deactivation are supported within the DialogTrigger.)", () => {
-        const onActivationSpy = cy.spy().as("onActivationSpy");
-        const onDeactivationSpy = cy.spy().as("onDeactivationSpy");
-        cy.mount(
-          <BasicContentTrigger
-            type="popup"
-            focusOnProps={{
-              onActivation: onActivationSpy,
-              onDeactivation: onDeactivationSpy,
-            }}
-          />
-        );
-        cy.get(trigger).realClick();
-        cy.realPress("Escape");
-        cy.get("@onActivationSpy").should("have.been.called");
-        cy.get("@onDeactivationSpy").should("have.been.called");
       });
       it("scroll lock is enabled by default; scrolling does not dismiss popup", () => {
         cy.mount(<DialogWithFocusableContent type="popup" />);
@@ -298,11 +279,11 @@ describe("Dialog Trigger", () => {
         cy.realPress("PageDown");
         cy.get(popup).should("exist");
       });
-      it("when scrollLock is disabled; scrolling dismisses popup", () => {
+      it("popupProps: when isNonModal: true; scrolling dismisses popup", () => {
         cy.mount(
           <DialogWithFocusableContent
             type="popup"
-            focusOnProps={{ scrollLock: false }}
+            popupProps={{ isNonModal: true }}
           />
         );
         cy.get(trigger).realClick();
@@ -317,7 +298,7 @@ describe("Dialog Trigger", () => {
         cy.mount(
           <div>
             <DialogTrigger
-              data-id="dialogTiggerTest"
+              data-id="dialogTriggerTest"
               focusOnProps={{ shards: [preview] }}
             >
               <Button data-id="trigger">Triger</Button>
@@ -343,6 +324,14 @@ describe("Dialog Trigger", () => {
         // Thrid tab to button out the modal AND outside the shard
         cy.get("[data-action-button-outside]").should("not.be.focused");
         cy.get("[data-action-button-dialog]").should("be.focused");
+      });
+
+      it("renders adjacent to trigger if portalSelector is false", () => {
+        cy.mount(<BasicContentTrigger portalSelector={false} />);
+        cy.get(trigger).realClick();
+        cy.get(`${trigger} + ${modal}`)
+          .should("exist")
+          .and("contain.text", "Content");
       });
     });
   });

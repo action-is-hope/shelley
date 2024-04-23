@@ -63,11 +63,6 @@ export interface ComboBoxMultiSelectProps<T>
    * @default false
    */
   removeTrigger?: boolean;
-  /**
-   * Enable scrollLock for the Popup, useful for infinate scrolls.
-   * @default false
-   */
-  scrollLock?: boolean;
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
   /** Controlled value */
@@ -138,7 +133,6 @@ function ComboBoxMultiSelect<
     loadingState,
     onLoadMore,
     startAdornment,
-    scrollLock = false,
     triggerIcon = <AngleDown />,
     filterFunction,
     children,

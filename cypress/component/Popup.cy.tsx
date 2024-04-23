@@ -101,7 +101,7 @@ export const FocusPopupTemplate = (
         40px
       </Button>
       {state.isOpen && (
-        <Portal>
+        <Portal selector="body">
           <Popup
             // Focus
             {...overlayProps}
@@ -198,16 +198,8 @@ describe("Focusing and Dismissing", () => {
     cy.get(trigger).should("be.focused");
   });
 
-  it("does not close onBlur by default.", () => {
+  it("closes onBlur by default.", () => {
     cy.mount(<FocusPopupTemplate />);
-    cy.get(trigger).realClick();
-    cy.get(popup).should("be.visible");
-    cy.get("#focusLink").focus();
-    cy.get(popup).should("be.visible");
-  });
-
-  it("closes on blur when specified.", () => {
-    cy.mount(<FocusPopupTemplate shouldCloseOnBlur />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get("#focusLink").focus();
@@ -231,24 +223,19 @@ describe("Focusing and Dismissing", () => {
     cy.get(popup).should("not.exist");
   });
 
-  it("is not dismissable but is keyboard dismissable", () => {
-    cy.mount(<FocusPopupTemplate isDismissable={false} />);
+  it("isKeyboardDismissDisabled", () => {
+    cy.mount(<FocusPopupTemplate isKeyboardDismissDisabled={true} />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get(popup).realPress("Escape");
-    cy.get(popup).should("not.exist");
+    cy.get(popup).should("exist");
   });
 
-  it("is not dismissable or keyboard dismissable", () => {
-    cy.mount(
-      <FocusPopupTemplate
-        isDismissable={false}
-        isKeyboardDismissDisabled={true}
-      />
-    );
+  it("shouldCloseOnInteractOutside", () => {
+    cy.mount(<FocusPopupTemplate shouldCloseOnInteractOutside={() => false} />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
-    cy.get(popup).realPress("Escape");
+    cy.get("body").realClick({ position: "bottomRight" });
     cy.get(popup).should("exist");
   });
 });

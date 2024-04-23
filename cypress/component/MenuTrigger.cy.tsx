@@ -9,7 +9,7 @@ import {
 } from "../../src/indexLib";
 
 const popup = '[data-id="popup"]';
-const popupArrow = '[data-id="popup-arrow"]';
+const popupArrow = '[data-id="popup--arrow"]';
 const trigger = '[data-id="trigger"]';
 
 const BasicMenuTrigger = (args: Omit<MenuTriggerProps, "children">) => (

@@ -43,7 +43,7 @@ const rows: RowData[] = [
 const table = '[data-id="table"]';
 const th = '[data-id="table-column"]';
 const td = '[data-id="table-cell"]';
-const input = ":first-child > label > span > input";
+const input = ":first-child > label > input";
 const DynamicTable = function <T extends object>(props: TableViewProps<T>) {
   return (
     <TableView
@@ -347,8 +347,6 @@ describe("TableView", () => {
   };
 
   describe("Selection table", () => {
-    // Should render label
-
     it("should render checkbox in header", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(table + " thead tr th:first-child > label")
@@ -365,28 +363,14 @@ describe("TableView", () => {
         .and("to.have.string", "cellCheckbox");
     });
 
-    // Should render span inside label
-
-    it("should render span in header", () => {
+    it("should render checkbox input in header", () => {
       cy.mount(<SelectionTable data-id="table" />);
-      cy.get(table + " thead tr th:first-child > label > span")
-        .should("have.attr", "class")
-        .and("to.have.string", "inputContainer");
-      cy.get(table + " tbody tr td:first-child > label > span")
-        .should("have.attr", "class")
-        .and("to.have.string", "inputContainer");
-    });
-
-    // Should render checkbox inside span
-
-    it("should render checkbox in header", () => {
-      cy.mount(<SelectionTable data-id="table" />);
-      cy.get(table + " thead tr th:first-child > label > span > input")
+      cy.get(table + " thead tr th:first-child > label > input")
         .should("have.attr", "type", "checkbox")
         .should("have.attr", "aria-label", "Select All")
         .should("have.attr", "class")
         .and("to.have.string", "input");
-      cy.get(table + " tbody tr td:first-child > label > span > input")
+      cy.get(table + " tbody tr td:first-child > label > input")
         .should("have.attr", "type", "checkbox")
         .should("have.attr", "aria-label", "Select")
         .should("have.attr", "class")
@@ -397,8 +381,8 @@ describe("TableView", () => {
 
     it("should select all rows when header checkbox is checked", () => {
       cy.mount(<SelectionTable data-id="table" />);
-      cy.get(table + " thead tr th:first-child > label > span > input").check();
-      cy.get(table + " tbody tr td:first-child > label > span > input").should(
+      cy.get(table + " thead tr th:first-child > label > input").check();
+      cy.get(table + " tbody tr td:first-child > label > input").should(
         "be.checked"
       );
     });
@@ -407,11 +391,9 @@ describe("TableView", () => {
 
     it("should unselect all rows when header checkbox is unchecked", () => {
       cy.mount(<SelectionTable data-id="table" />);
-      cy.get(table + " thead tr th:first-child > label > span > input").check();
-      cy.get(
-        table + " thead tr th:first-child > label > span > input"
-      ).uncheck();
-      cy.get(table + " tbody tr td:first-child > label > span > input").should(
+      cy.get(table + " thead tr th:first-child > label > input").check();
+      cy.get(table + " thead tr th:first-child > label > input").uncheck();
+      cy.get(table + " tbody tr td:first-child > label > input").should(
         "not.be.checked"
       );
     });
@@ -421,18 +403,18 @@ describe("TableView", () => {
     it("should select a row when checkbox is checked", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(
-        table + " tbody tr:nth-child(3) > td:first-child > label > span > input"
+        table + " tbody tr:nth-child(3) > td:first-child > label > input"
       ).check();
       cy.get(table + " tbody tr:nth-child(3)")
         .should("have.attr", "aria-selected", "true")
         .should("have.attr", "class")
         .and("to.have.string", "isSelected")
-        .get("tr:nth-child(3) > td:first-child > label > span > input")
+        .get("tr:nth-child(3) > td:first-child > label > input")
         .should("be.checked");
       cy.get(table + " tbody tr:nth-child(5)")
         .should("have.attr", "aria-selected", "false")
         .should("not.have.attr", "class", "isSelected")
-        .get("tr:nth-child(5) > td:first-child > label > span > input")
+        .get("tr:nth-child(5) > td:first-child > label > input")
         .should("not.be.checked");
     });
 
@@ -441,12 +423,12 @@ describe("TableView", () => {
     it("should unselect a row when checkbox is unchecked", () => {
       cy.mount(<SelectionTable data-id="table" />);
       cy.get(
-        table + " tbody tr:first-child > td:first-child > label > span > input"
+        table + " tbody tr:first-child > td:first-child > label > input"
       ).uncheck();
       cy.get(table + " tbody tr:first-child")
         .should("not.have.attr", "aria-selected", "true")
         .should("not.have.attr", "class", "isSelected")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("not.be.checked");
     });
 
@@ -459,7 +441,7 @@ describe("TableView", () => {
         .should("have.attr", "aria-selected", "true")
         .should("have.attr", "class")
         .and("to.have.string", "isSelected")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("be.checked");
     });
 
@@ -471,7 +453,7 @@ describe("TableView", () => {
       cy.get(table + " tbody tr:nth-child(6)")
         .should("not.have.attr", "aria-selected", "true")
         .should("not.have.attr", "class", "isSelected")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("not.be.checked");
     });
 
@@ -489,13 +471,13 @@ describe("TableView", () => {
         .should("have.attr", "aria-selected", "true")
         .should("have.attr", "class")
         .and("to.have.string", "isSelected")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("be.checked");
       cy.get(table + " tbody tr:nth-child(4)")
         .should("have.attr", "aria-selected", "true")
         .should("have.attr", "class")
         .and("to.have.string", "isSelected")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("be.checked");
     });
 
@@ -513,7 +495,7 @@ describe("TableView", () => {
         .should("not.have.attr", "aria-selected", "true")
         .should("have.attr", "class")
         .and("to.have.string", "isDisabled")
-        .get("td:first-child > label > span > input")
+        .get("td:first-child > label > input")
         .should("have.attr", "type", "checkbox")
         .should("be.disabled");
     });
