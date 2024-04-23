@@ -19,6 +19,7 @@ import { Label } from "../Label";
 import { HelpText } from "../HelpText";
 import { VisuallyHidden } from "../VisuallyHidden";
 import { InputAdornment } from "../InputAdornment";
+import { generateDataId } from "../utils";
 import { st, classes } from "./field.st.css";
 import type { HelpTextProps } from "@react-types/shared";
 
@@ -122,7 +123,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
   const label = labelStringProp && (
     <Label
       className={classes.label}
-      data-id={dataId ? `${dataId}--label` : undefined}
+      data-id={generateDataId(dataId, "label")}
       {...labelProps}
     >
       {labelStringProp}
@@ -159,7 +160,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         {typeof startAdornment === "string" ? (
           <InputAdornment
             className={classes.startAdornment}
-            data-id={dataId ? `${dataId}--startAdornment` : undefined}
+            data-id={generateDataId(dataId, "startAdornment")}
           >
             {startAdornment}
           </InputAdornment>
@@ -171,7 +172,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           ? endAdornment && (
               <InputAdornment
                 className={classes.endAdornment}
-                data-id={dataId ? `${dataId}--endAdornment` : undefined}
+                data-id={generateDataId(dataId, "endAdornment")}
               >
                 {endAdornment}
               </InputAdornment>
@@ -179,7 +180,11 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           : endAdornment}
         {/*  */}
         {variant && !disableFieldset && (
-          <fieldset aria-hidden="true" className={classes.fieldset}>
+          <fieldset
+            aria-hidden="true"
+            className={classes.fieldset}
+            data-id={generateDataId(dataId, "fieldset")}
+          >
             <legend className={classes.legend}>
               {!hideLabel && labelStringProp}
             </legend>
@@ -196,7 +201,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           errorMessageProps,
           isInvalid,
         }}
-        data-id={dataId ? `${dataId}--helpText` : undefined}
+        data-id={generateDataId(dataId, "helpText")}
       />
     </div>
   );

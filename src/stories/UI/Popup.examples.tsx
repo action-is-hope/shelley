@@ -33,11 +33,11 @@ export const SimplePopup = () => {
             {...overlayProps}
             // isKeyboardDismissDisabled
             // isNonModal
-            // contain
+            // contain // focus lock
             // restoreFocus={false}
             // shouldCloseOnInteractOutside={(element) => {
             //   // Do not close the popover if the clicked element is part of a specific toolbar
-            //   return !element.closest("body");
+            //   return !element.closest("#toolbar");
             // }}
             shouldCloseOnInteractOutside={() => false}
             state={{ ...state }}

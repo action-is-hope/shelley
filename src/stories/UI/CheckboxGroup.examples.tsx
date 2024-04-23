@@ -10,9 +10,7 @@ export const ValueExample = () => {
         label="Favorite sports (uncontrolled)"
         defaultValue={["soccer", "baseball"]}
       >
-        <Checkbox value="soccer" size={6}>
-          Soccer
-        </Checkbox>
+        <Checkbox value="soccer">Soccer</Checkbox>
         <Checkbox value="baseball">Baseball</Checkbox>
         <Checkbox value="basketball">Basketball</Checkbox>
       </CheckboxGroup>
