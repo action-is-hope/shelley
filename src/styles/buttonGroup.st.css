@@ -28,7 +28,7 @@
     z-index: 1;
   }
 
-  /* Styles if `orientation="horizontal"`. */
+  /* horizontal */
   ButtonGroup:splitButton:orientation(horizontal) > Button:not(:first-child):not(:last-child) {
     --border-radius: 0;
   }
@@ -45,8 +45,7 @@
     /* border-left-width: 0; */
   }
 
-  /* Styles if `orientation="vertical"`. */
-
+  /* vertical */
   ButtonGroup:orientation(vertical) {
     flex-direction: column;
   }

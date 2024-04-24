@@ -261,7 +261,7 @@
     column-gap: calc(1em / 2)
   }
 
-  Text:hasAdornment Icon {
+  Text:hasAdornment svg {
     align-self: center;
   }
 }
