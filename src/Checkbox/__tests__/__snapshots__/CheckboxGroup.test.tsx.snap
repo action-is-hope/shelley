@@ -5,7 +5,7 @@ exports[`Checkbox renders correctly 1`] = `
   className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top ckboxGroup__Test__root ckboxGroup__Test---orientation-8-vertical"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     id="react-aria-1"
   >
     <span
@@ -16,7 +16,7 @@ exports[`Checkbox renders correctly 1`] = `
   </label>
   <div
     aria-labelledby="react-aria-1"
-    className="field__Test__fieldContainer ckboxGroup__Test__group"
+    className="ckboxGroup__Test__group"
     id="cbg1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -30,33 +30,29 @@ exports[`Checkbox renders correctly 1`] = `
       >
         Label1
       </span>
-      <span
-        className="ckbox__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="ckbox__Test__input"
-          disabled={false}
-          id="cb1"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          type="checkbox"
-          value="cb1"
-        />
-      </span>
+      <input
+        checked={false}
+        className="ckbox__Test__input"
+        disabled={false}
+        id="cb1"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        type="checkbox"
+        value="cb1"
+      />
     </label>
     <label
       className="label__Test__root label__Test--hasInput ckbox__Test__root ckbox__Test---size-1-1"
@@ -66,33 +62,29 @@ exports[`Checkbox renders correctly 1`] = `
       >
         Label2
       </span>
-      <span
-        className="ckbox__Test__inputContainer"
-      >
-        <input
-          checked={false}
-          className="ckbox__Test__input"
-          disabled={false}
-          id="cb2"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          type="checkbox"
-          value="cb2"
-        />
-      </span>
+      <input
+        checked={false}
+        className="ckbox__Test__input"
+        disabled={false}
+        id="cb2"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        type="checkbox"
+        value="cb2"
+      />
     </label>
   </div>
 </div>
@@ -103,7 +95,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
   className="field__Test__root field__Test---vol-1-3 field__Test---labelPosition-3-top ckboxGroup__Test__root ckboxGroup__Test---orientation-8-vertical"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     id="react-aria-1"
   >
     <span
@@ -114,7 +106,7 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
   </label>
   <div
     aria-labelledby="react-aria-1"
-    className="field__Test__fieldContainer ckboxGroup__Test__group"
+    className="ckboxGroup__Test__group"
     id="cbg1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -129,34 +121,30 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
     <label
       className="label__Test__root label__Test--hasInput ckbox__Test__root ckbox__Test---size-1-1"
     >
-      <span
-        className="ckbox__Test__inputContainer"
-      >
-        <input
-          aria-labelledby="lb1"
-          checked={false}
-          className="ckbox__Test__input"
-          disabled={false}
-          id="cb1"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          type="checkbox"
-          value="cb1"
-        />
-      </span>
+      <input
+        aria-labelledby="lb1"
+        checked={false}
+        className="ckbox__Test__input"
+        disabled={false}
+        id="cb1"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        type="checkbox"
+        value="cb1"
+      />
     </label>
     <label
       htmlFor="cb2"
@@ -167,34 +155,30 @@ exports[`Checkbox renders correctly with custom labelled checkboxes 1`] = `
     <label
       className="label__Test__root label__Test--hasInput ckbox__Test__root ckbox__Test---size-1-1"
     >
-      <span
-        className="ckbox__Test__inputContainer"
-      >
-        <input
-          aria-labelledby="lb2"
-          checked={false}
-          className="ckbox__Test__input"
-          disabled={false}
-          id="cb2"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onDragStart={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchCancel={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          required={false}
-          type="checkbox"
-          value="cb2"
-        />
-      </span>
+      <input
+        aria-labelledby="lb2"
+        checked={false}
+        className="ckbox__Test__input"
+        disabled={false}
+        id="cb2"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onDragStart={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        required={false}
+        type="checkbox"
+        value="cb2"
+      />
     </label>
   </div>
 </div>

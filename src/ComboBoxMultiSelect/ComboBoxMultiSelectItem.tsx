@@ -4,13 +4,12 @@ import CheckIcon from "../icons/Check";
 import { st, classes } from "./comboBoxMultiSelectItem.st.css";
 import { usePress } from "react-aria";
 
-export interface ComboBoxMultiSelectItemProps {
+export interface ComboBoxMultiSelectItemProps
+  extends React.HTMLProps<HTMLElement> {
   /** Custom className */
   className?: string;
   /** Icon to use for Selected Item. */
   selectedIcon?: React.ReactNode;
-  /** Whether the menu item is disabled. */
-  isDisabled?: boolean;
   /** Whether the menu item is selected. */
   isSelected?: boolean;
   /** Whether the menu item is focused. */
@@ -29,12 +28,13 @@ function ComboBoxMultiSelectItem(
     selectedIcon,
     isFocused,
     isSelected,
-    isDisabled,
+    disabled: isDisabled,
     children,
     ...rest
   } = props;
 
-  const { pressProps, isPressed } = usePress(props);
+  const usePressProps = { onPress: props?.onClick as () => void };
+  const { pressProps, isPressed } = usePress(usePressProps);
 
   const icon = selectedIcon || (
     <CheckIcon data-id="selected-icon" className={classes.selectedIcon} />

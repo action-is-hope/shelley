@@ -15,7 +15,6 @@
 @st-import CheckboxGroup from "../Checkbox/checkboxGroup.st.css";
 @st-import Icon from "../Icon/icon.st.css";
 @st-import [
-    SelectionControlInputContainer,
     SelectionControlFieldInput,
     RadioCheckboxCommon,
     CheckboxFieldInput,
@@ -43,17 +42,9 @@
     padding: 0 calc(var(--spacing-unit) / 2);
   }
 
-  Checkbox:isDisabled {
-    opacity: 0.7;
-  }
-
-  Checkbox:isDisabled,
-  Checkbox:isDisabled::input {
+  Checkbox:has(:disabled),
+  Checkbox::input:disabled {
     cursor: not-allowed;
-  }
-
-  Checkbox::inputContainer {
-    -st-mixin: SelectionControlInputContainer;
   }
 
   Checkbox::input {
@@ -99,27 +90,27 @@
 
   /* ==== Checkbox: sizes ====*/
 
-  Checkbox:size(1)::inputContainer {
+  Checkbox:size(1)::input {
     -st-mixin: selectionControlSize1
   }
 
-  Checkbox:size(2)::inputContainer {
+  Checkbox:size(2)::input {
     -st-mixin: selectionControlSize2
   }
 
-  Checkbox:size(3)::inputContainer {
+  Checkbox:size(3)::input {
     -st-mixin: selectionControlSize3
   }
 
-  Checkbox:size(4)::inputContainer {
+  Checkbox:size(4)::input {
     -st-mixin: selectionControlSize4
   }
 
-  Checkbox:size(5)::inputContainer {
+  Checkbox:size(5)::input {
     -st-mixin: selectionControlSize5
   }
 
-  Checkbox:size(6)::inputContainer {
+  Checkbox:size(6)::input {
     -st-mixin: selectionControlSize6
   }
 
@@ -127,7 +118,7 @@
 
   CheckboxGroup::group {
     display: flex;
-    gap: 0.2em;
+    gap: calc(var(--spacing-unit) / 1.5);
   }
 
   CheckboxGroup:orientation(vertical)::group {

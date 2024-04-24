@@ -1,12 +1,26 @@
 "use client";
 import React, { cloneElement, ReactElement } from "react";
-import { useMenuTrigger } from "react-aria";
+import { FocusScopeProps, useMenuTrigger } from "react-aria";
 import type { MenuTriggerType } from "@react-types/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import { Portal } from "../Portal";
 import { Popup, PopupProps } from "../Popup";
 
-export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuTriggerProps
+  extends FocusScopeProps,
+    Pick<
+      PopupProps,
+      | "offset"
+      | "crossOffset"
+      | "hideArrow"
+      | "isNonModal"
+      | "isKeyboardDismissDisabled"
+      | "placement"
+      | "shouldFlip"
+      | "shouldCloseOnInteractOutside"
+      | "width"
+    >,
+    React.HTMLAttributes<HTMLDivElement> {
   /** Disables the menu popup. */
   disabled?: boolean;
   /**
@@ -40,30 +54,6 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
    * Handler that is called when the overlay's open state changes.
    */
   onOpenChange?: (isOpen: boolean) => void;
-  /**
-   * Whether the menu should automatically flip direction when space is limited.
-   * @default true
-   */
-  shouldFlip?: boolean;
-  /**
-   * The placement of the menu with respect to the trigger.
-   * @default 'bottom start'
-   */
-  placement?: PopupProps["placement"];
-  /**
-   * The additional offset applied along the main axis between the menu and its
-   * trigger element.
-   * @default 0
-   */
-  offset?: number;
-  /**
-   * The additional offset applied along the cross axis between the menu and its
-   * trigger element.
-   * @default 0
-   */
-  crossOffset?: number;
-  /** hide the Popup arrow */
-  hideArrow?: boolean;
   /** Override the Popup style via this classname */
   popupClassName?: string;
 }
@@ -71,7 +61,6 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
 export function MenuTrigger({
   children,
   closeOnSelect = true,
-  crossOffset,
   defaultOpen,
   disabled,
   isOpen,
@@ -79,7 +68,6 @@ export function MenuTrigger({
   onOpenChange,
   placement = "bottom start",
   portalSelector = "body",
-  shouldFlip,
   trigger,
   popupClassName,
   ...rest
@@ -119,27 +107,14 @@ export function MenuTrigger({
       {state.isOpen && (
         <Portal selector={portalSelector}>
           <Popup
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
+            state={state}
             className={popupClassName}
             {...{
-              shouldFlip,
               triggerRef,
               placement,
               offset,
-              crossOffset,
-              focusOnProps: {
-                onDeactivation: () => {
-                  // Manually setting focus back as return focus only works once. @todo Investigate.
-                  triggerRef?.current && triggerRef.current.focus();
-                },
-                returnFocus: false,
-                // Firefox issue where within a scroll container the popup flashes open/closed.
-                scrollLock: false,
-              },
               ...rest,
             }}
-            shouldCloseOnBlur
           >
             {menu}
           </Popup>

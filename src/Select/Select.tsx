@@ -21,6 +21,7 @@ import { Popup } from "../Popup";
 import { Button } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
+import { generateDataId } from "../utils";
 import { st, classes } from "./select.st.css";
 
 export interface SelectProps<T>
@@ -31,7 +32,21 @@ export interface SelectProps<T>
     >,
     Pick<PositionProps, "offset" | "shouldFlip">,
     LoadMoreProps {
+  children?: CollectionChildren<T>;
+  /**
+   * Custom className.
+   */
   className?: string;
+  /**
+   * Whether the popover is non-modal, i.e. elements outside the popover
+   * may be interacted with by assistive technologies.
+   */
+  isNonModal?: boolean;
+  /**
+   * Disable the label transition.
+   * @default bottom
+   */
+  placement?: "top" | "bottom";
   /**
    * The selector of the element that the menu should render inside of.
    * @default 'body'
@@ -42,13 +57,14 @@ export interface SelectProps<T>
    * Useful for scrolled lists to stop a jump on hover when reselecting.
    */
   shouldFocusOnHover?: boolean;
-  children?: CollectionChildren<T>;
-  triggerIcon?: ReactNode;
   /**
-   * Disable the label transition.
-   * @default bottom
+   * Whether focus should wrap around when the end/start is reached.
    */
-  placement?: "top" | "bottom";
+  shouldFocusWrap?: boolean;
+  /**
+   * The icon to use as a trigger.
+   */
+  triggerIcon?: ReactNode;
 }
 
 function Select<T extends object>(
@@ -58,18 +74,21 @@ function Select<T extends object>(
   const {
     className: classNameProp,
     description,
-    isDisabled,
     errorMessage,
+    isDisabled,
     isInvalid,
+    isNonModal,
     portalSelector = "body",
     variant,
     label,
     labelPosition,
     disableLabelTransition,
+    disableFieldset,
     vol,
     placement = "bottom",
     offset = 6,
-    shouldFlip,
+    shouldFlip = true,
+    shouldFocusWrap = true,
     loadingState,
     onLoadMore,
     placeholder = "Select an option",
@@ -78,11 +97,10 @@ function Select<T extends object>(
     "data-id": dataId,
     hasValue,
   } = props;
-  // Create state based on the incoming props
-  const state = useSelectState(props);
 
+  const state = useSelectState(props);
   const internalRef = useRef<HTMLButtonElement>(null);
-  const fieldContainerRef = useRef<HTMLDivElement>(null);
+  const inputContainerRef = useRef<HTMLDivElement>(null);
 
   const {
     labelProps,
@@ -96,43 +114,34 @@ function Select<T extends object>(
   const [popUpWidth, setPopUpWidth] = useState(0);
 
   useEffect(() => {
-    fieldContainerRef?.current?.clientWidth &&
-      setPopUpWidth(fieldContainerRef?.current?.clientWidth);
+    inputContainerRef?.current?.clientWidth &&
+      setPopUpWidth(inputContainerRef?.current?.clientWidth);
   }, [state.isOpen]);
 
   const popup = (
     <Popup
-      isOpen={state.isOpen}
-      onClose={() => state.close()}
-      triggerRef={internalRef}
+      data-id={generateDataId(dataId, "popup")}
       hideArrow
+      state={state}
+      triggerRef={internalRef}
       width={popUpWidth}
-      shouldCloseOnBlur
       {...{
-        onLoadMore,
+        isNonModal,
         loadingState,
-        shouldFlip,
+        onLoadMore,
         offset,
         placement: placement === "top" ? "top start" : "bottom start",
-        focusOnProps: {
-          onDeactivation: () => {
-            // Manually setting focus back as return focus only works once. @todo Investigate.
-            internalRef?.current && internalRef.current.focus();
-          },
-          returnFocus: false,
-          // Firefox issue where within a scroll container the popup flashes open/closed.
-          scrollLock: false,
-        },
-        "data-id": dataId ? `${dataId}--popup` : undefined,
+        shouldFlip: shouldFlip,
       }}
     >
       <ListBox
+        data-id={generateDataId(dataId, "listBox")}
         {...{
           ...menuProps,
-          shouldFocusOnHover,
           loadingState,
+          shouldFocusWrap,
+          shouldFocusOnHover,
           state,
-          "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       />
     </Popup>
@@ -142,11 +151,12 @@ function Select<T extends object>(
     <Field
       {...{
         isDisabled,
-        errorMessage,
         isInvalid,
-        errorMessageProps,
         description,
         descriptionProps,
+        errorMessage,
+        errorMessageProps,
+        hasValue,
         label,
         labelPosition,
         labelProps: {
@@ -156,12 +166,12 @@ function Select<T extends object>(
             !state.isOpen && internalRef?.current?.click();
           },
         },
-        fieldContainerProps: {
-          ref: fieldContainerRef,
+        inputContainerProps: {
+          ref: inputContainerRef,
         },
-        hasValue,
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
+        disableFieldset,
         variant,
         vol,
         "data-id": dataId,
@@ -178,12 +188,9 @@ function Select<T extends object>(
           tone={false}
           className={classes.trigger}
           vol={false}
-          data-id={dataId ? `${dataId}--trigger` : undefined}
+          data-id={generateDataId(dataId, "trigger")}
         >
-          <span
-            {...valueProps}
-            data-id={dataId ? `${dataId}--value` : undefined}
-          >
+          <span {...valueProps} data-id={generateDataId(dataId, "value")}>
             {state.selectedItem ? (
               state.selectedItem.rendered
             ) : (

@@ -184,14 +184,21 @@ describe("Opening and closing", () => {
     cy.get(trigger).should("be.focused");
   });
 
-  it("Tabbing off (onBlur) closes and focus returned to trigger", () => {
-    cy.mount(<BasicSelect />);
+  it("Tabbing off (onBlur) closes and focuses nest element", () => {
+    cy.mount(
+      <div>
+        <BasicSelect />
+        <a href="#item" id="focusTab">
+          Focused on tab
+        </a>
+      </div>
+    );
     cy.get(trigger).focus();
     cy.get(trigger).realPress("Enter");
     cy.get(itemOne).should("be.focused");
     cy.realPress("Tab");
     cy.get(popup).should("not.exist");
-    cy.get(trigger).should("be.focused");
+    cy.get("#focusTab").should("be.focused");
   });
 
   it("Stays open onScroll", () => {

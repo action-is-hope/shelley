@@ -94,7 +94,6 @@ function Tabs<T extends object>(
           className={classes.tabList}
           {...mergeProps(tabListProps, focusProps)}
           ref={ref ? mergeRefs(ref, internalRef) : internalRef}
-          // ref={ref}
           data-id={dataId ? `${dataId}-tabList` : undefined}
         >
           {[...state.collection].map((item) => (

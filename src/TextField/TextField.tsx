@@ -50,6 +50,7 @@ function TextField(
     label,
     labelPosition,
     disableLabelTransition,
+    disableFieldset,
     vol,
     onChange,
     startAdornment,
@@ -104,6 +105,7 @@ function TextField(
         labelProps,
         labelPosition,
         disableLabelTransition,
+        disableFieldset,
         descriptionProps,
         errorMessageProps,
       }}

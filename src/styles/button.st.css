@@ -36,7 +36,7 @@
 @st-import [visuallyHidden] from "./mixins/visuallyHidden.st.css";
 @st-import [hideWebkitAppearance] from "./mixins/formElements.st.css";
 @st-import [textVol] from "./mixins/textVol.st.css";
-@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+@st-import [focus, focusVisible] from "./mixins/focus.st.css";
 
 @st-scope Shelley {
 
@@ -137,12 +137,12 @@
   }
 
   Button::after {
-    -st-mixin: pseudoFocus;
+    -st-mixin: focus;
     border-radius: var(--border-radius);
   }
 
   Button:isFocusVisible::after {
-    -st-mixin: pseudoFocusVisible;
+    -st-mixin: focusVisible;
   }
 
   /* = Variants - Assign --tone. */
