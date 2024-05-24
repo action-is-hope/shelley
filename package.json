@@ -54,7 +54,7 @@
     "@react-aria/utils": "^3.23.2",
     "@react-stately/tree": "^3.7.6",
     "@react-types/menu": "^3.9.7",
-    "@react-types/overlays": "^3.8.5",
+    "@react-types/overlays": "^3.8.6",
     "@react-types/shared": "^3.22.1",
     "downshift": "8.3.2",
     "react-aria": "^3.32.1",
