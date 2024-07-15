@@ -15,7 +15,7 @@
 @st-import TagGroup from "../TagGroup/tagGroup.st.css";
 @st-import Tag from "../TagGroup/tag.st.css";
 @st-import Icon from "../Icon/icon.st.css";
-@st-import [pseudoFocus, pseudoFocusVisible] from "./mixins/focus.st.css";
+@st-import [focus, focusVisible] from "./mixins/focus.st.css";
 
 @st-scope Shelley {
 
@@ -80,12 +80,12 @@
   }
 
   Tag::before {
-    -st-mixin: pseudoFocus;
+    -st-mixin: focus;
     border-radius: 4px;
   }
 
   Tag:isFocusVisible::before {
-    -st-mixin: pseudoFocusVisible;
+    -st-mixin: focusVisible;
   }
 
   Tag:isSelected {

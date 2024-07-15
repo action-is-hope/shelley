@@ -6,7 +6,7 @@ exports[`Field Renderd as variant 'filled' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -19,17 +19,18 @@ exports[`Field Renderd as variant 'filled' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -47,7 +48,7 @@ exports[`Field Renderd as variant 'outlined' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -60,17 +61,18 @@ exports[`Field Renderd as variant 'outlined' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -88,7 +90,7 @@ exports[`Field Renders as variant 'quiet' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -101,17 +103,18 @@ exports[`Field Renders as variant 'quiet' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -129,7 +132,7 @@ exports[`Field Renders default field as variant 'outlined', labelPosition 'over'
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -142,17 +145,18 @@ exports[`Field Renders default field as variant 'outlined', labelPosition 'over'
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -173,7 +177,7 @@ exports[`Field Renders with labelPosition 'hidden' 1`] = `
     className="visuallyHidden__Test__root"
   >
     <label
-      className="label__Test__root field__Test__inputLabel"
+      className="label__Test__root field__Test__label"
       data="random"
       data-id="field--label"
       htmlFor="test"
@@ -187,17 +191,18 @@ exports[`Field Renders with labelPosition 'hidden' 1`] = `
     </label>
   </span>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -213,7 +218,7 @@ exports[`Field Renders with labelPosition 'over' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -226,17 +231,18 @@ exports[`Field Renders with labelPosition 'over' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -254,7 +260,7 @@ exports[`Field Renders with labelPosition 'side' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -267,17 +273,18 @@ exports[`Field Renders with labelPosition 'side' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -295,7 +302,7 @@ exports[`Field Renders with labelPosition 'top' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -308,17 +315,18 @@ exports[`Field Renders with labelPosition 'top' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -336,7 +344,7 @@ exports[`Field Renders with no variant 'false' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -349,11 +357,11 @@ exports[`Field Renders with no variant 'false' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
@@ -367,7 +375,7 @@ exports[`Field Renders with no volume 'undefined' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -380,17 +388,18 @@ exports[`Field Renders with no volume 'undefined' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -408,7 +417,7 @@ exports[`Field Renders with volume '1' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -421,17 +430,18 @@ exports[`Field Renders with volume '1' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -449,7 +459,7 @@ exports[`Field Renders with volume '2' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -462,17 +472,18 @@ exports[`Field Renders with volume '2' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -490,7 +501,7 @@ exports[`Field Renders with volume '3' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -503,17 +514,18 @@ exports[`Field Renders with volume '3' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -531,7 +543,7 @@ exports[`Field Renders with volume '4' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -544,17 +556,18 @@ exports[`Field Renders with volume '4' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -572,7 +585,7 @@ exports[`Field Renders with volume '5' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -585,17 +598,18 @@ exports[`Field Renders with volume '5' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"
@@ -613,7 +627,7 @@ exports[`Field Renders with volume '6' 1`] = `
   data-id="field"
 >
   <label
-    className="label__Test__root field__Test__inputLabel"
+    className="label__Test__root field__Test__label"
     data="random"
     data-id="field--label"
     htmlFor="test"
@@ -626,17 +640,18 @@ exports[`Field Renders with volume '6' 1`] = `
     </span>
   </label>
   <div
-    className="field__Test__fieldContainer"
+    className="field__Test__inputContainer"
   >
     <input
       aria-labelledby="label-id"
-      className="field__Test__fieldInput"
+      className="field__Test__input"
       id="testField"
       type="text"
     />
     <fieldset
       aria-hidden="true"
       className="field__Test__fieldset"
+      data-id="field--fieldset"
     >
       <legend
         className="field__Test__legend"

@@ -20,12 +20,13 @@ export interface CheckboxGroupProps
       | "hasValue"
       | "variant"
     > {
+  /** Custom className */
+  className?: string;
   /**
    * Position of the label.
    * @default "over"
    */
   labelPosition?: "top" | "side" | "hidden";
-  className?: string;
   /**
    * The Checkboxes contained within the CheckboxGroup.
    */
@@ -63,6 +64,7 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
         errorMessage,
         isInvalid,
         errorMessageProps,
+        inputContainerProps: { ...groupProps, className: classes.group },
         description,
         descriptionProps,
         label,
@@ -70,17 +72,10 @@ function CheckboxGroup(props: CheckboxGroupProps, ref?: Ref<HTMLDivElement>) {
         labelProps,
         vol,
         variant: false,
-        fieldContainerProps: { ...groupProps, className: classes.group },
         ref,
         "data-id": dataId,
       }}
-      className={st(
-        classes.root,
-        {
-          orientation,
-        },
-        classNameProp
-      )}
+      className={st(classes.root, { orientation }, classNameProp)}
     >
       <>
         <CheckboxGroupContext.Provider value={state}>

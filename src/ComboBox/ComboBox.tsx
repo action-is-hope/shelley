@@ -21,6 +21,7 @@ import { Button } from "../Button";
 import { ListBox } from "../ListBox";
 import AngleDown from "../icons/AngleDown";
 import { ProgressCircle } from "../Progress";
+import { generateDataId } from "../utils";
 import { st, classes } from "./comboBox.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
 
@@ -50,11 +51,6 @@ export interface ComboBoxProps<T>
    * @default false
    */
   removeTrigger?: boolean;
-  /**
-   * Enable scrollLock for the Popup, useful for infinate scrolls.
-   * @default false
-   */
-  scrollLock?: boolean;
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
 }
@@ -76,6 +72,7 @@ function ComboBox<T extends object>(
     label,
     labelPosition,
     disableLabelTransition,
+    disableFieldset,
     vol,
     placement = "bottom",
     offset = 6,
@@ -86,7 +83,6 @@ function ComboBox<T extends object>(
     loadingState,
     onLoadMore,
     startAdornment,
-    scrollLock = false,
     triggerIcon = <AngleDown />,
     "data-id": dataId,
   } = props;
@@ -100,7 +96,7 @@ function ComboBox<T extends object>(
   const inputRef = useRef<HTMLInputElement>(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef<HTMLDivElement>(null);
-  const fieldContainerRef = useRef<HTMLDivElement>(null);
+  const inputContainerRef = useRef<HTMLDivElement>(null);
 
   const [popUpWidth, setPopUpWidth] = useState(0);
   const {
@@ -117,51 +113,47 @@ function ComboBox<T extends object>(
       buttonRef,
       listBoxRef,
       popoverRef,
-      // errorMessage
     },
     state
   );
   useEffect(() => {
     const inputWidth = inputRef?.current?.clientWidth;
-    const fieldContainerWidth = fieldContainerRef?.current?.clientWidth;
+    const inputContainerWidth = inputContainerRef?.current?.clientWidth;
     if (startAdornment) {
       inputWidth && setPopUpWidth(inputWidth);
     } else {
-      fieldContainerWidth && setPopUpWidth(fieldContainerWidth);
+      inputContainerWidth && setPopUpWidth(inputContainerWidth);
     }
   }, [startAdornment, state.isOpen]);
 
   const popup = (
     <Popup
       className={classes.popup}
-      isOpen={state.isOpen}
-      onClose={() => state.close()}
+      data-id={generateDataId(dataId, "popup")}
       hideArrow
       ref={popoverRef}
+      state={state}
       triggerRef={inputRef}
       width={popUpWidth}
+      autoFocus={false}
       {...{
-        onLoadMore,
-        loadingState,
-        shouldFlip,
+        isNonModal: true,
         crossOffset,
         offset,
+        onLoadMore,
         placement: placement === "top" ? "top start" : "bottom start",
-        focusOnProps: {
-          focusLock: false,
-          scrollLock,
-        },
-        "data-id": dataId ? `${dataId}--popup` : undefined,
+        loadingState,
+        shouldFlip,
       }}
     >
       <ListBox
+        data-id={generateDataId(dataId, "listBox")}
         ref={listBoxRef}
         {...{
           loadingState,
           state,
           ...listBoxProps,
           shouldFocusOnHover,
-          "data-id": dataId ? `${dataId}--listBox` : undefined,
         }}
       />
     </Popup>
@@ -171,17 +163,17 @@ function ComboBox<T extends object>(
     <Field
       {...{
         isDisabled,
-        isReadOnly,
-        errorMessage,
-        errorMessageProps,
         isInvalid,
+        isReadOnly,
         description,
         descriptionProps,
+        errorMessage,
+        errorMessageProps,
         label,
         labelPosition,
         startAdornment,
-        fieldContainerProps: {
-          ref: fieldContainerRef,
+        inputContainerProps: {
+          ref: inputContainerRef,
         },
         endAdornment: (
           <>
@@ -189,21 +181,21 @@ function ComboBox<T extends object>(
               loadingState === "loading" ||
               loadingState === "sorting") && (
               <ProgressCircle
-                size="small"
-                isIndeterminate
                 className={classes.loader}
-                data-id={dataId ? `${dataId}--progressCircle` : undefined}
+                data-id={generateDataId(dataId, "progressCircle")}
+                isIndeterminate
+                size="small"
               />
             )}
             {!removeTrigger && (
               <Button
                 {...buttonProps}
+                className={classes.trigger}
+                data-id={generateDataId(dataId, "trigger")}
                 icon={triggerIcon}
                 ref={buttonRef}
-                variant={false}
                 tone={false}
-                className={classes.trigger}
-                data-id={dataId ? `${dataId}--trigger` : undefined}
+                variant={false}
               />
             )}
           </>
@@ -211,6 +203,7 @@ function ComboBox<T extends object>(
         labelProps,
         disableLabelTransition:
           disableLabelTransition || state.isOpen || Boolean(state.selectedItem),
+        disableFieldset,
         variant,
         vol,
         "data-id": dataId,
@@ -222,9 +215,9 @@ function ComboBox<T extends object>(
       <>
         <input
           {...inputProps}
-          className={fieldClasses.fieldInput}
+          className={fieldClasses.input}
+          data-id={generateDataId(dataId, "input")}
           ref={ref ? mergeRefs(ref, inputRef) : inputRef}
-          data-id={dataId ? `${dataId}--input` : undefined}
         />
         {state.isOpen && <Portal selector={portalSelector}>{popup}</Portal>}
       </>

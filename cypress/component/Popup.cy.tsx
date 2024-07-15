@@ -5,23 +5,35 @@ import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 
 const popup = '[data-id="popup"]';
-const popupArrow = '[data-id="popup-arrow"]';
-const popupScroller = '[data-id="popup-scroller"]';
+const popupArrow = '[data-id="popup--arrow"]';
+const popupScroller = '[data-id="popup--scroller"]';
 const trigger = '[data-id="trigger"]';
 
 // @todo: shouldFlip
-export const BasicTemplate = (props: Omit<PopupProps, "triggerRef">) => {
+export const BasicTemplate = (props: {
+  isOpen?: boolean;
+  hideArrow?: boolean;
+  className?: string;
+  id?: string;
+}) => {
   // Setup a basic Trigger component.
   const triggerRef = useRef(null);
-
+  const { isOpen, ...rest } = props;
   return (
-    <Popup data-id="popup" {...props} triggerRef={triggerRef}>
+    <Popup
+      data-id="popup"
+      state={{ isOpen: props?.isOpen || false, close: () => {} }}
+      {...rest}
+      triggerRef={triggerRef}
+    >
       <div>Content</div>
     </Popup>
   );
 };
 
-export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
+export const PositionTemplate = (
+  props: Omit<PopupProps, "triggerRef" | "state" | "children">
+) => {
   // Setup a basic Trigger component.
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
@@ -48,8 +60,9 @@ export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
           <Popup
             // Focus
             {...overlayProps}
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
+            state={state}
+            // isOpen={state.isOpen}
+            // onClose={() => state.close()}
             {...props}
             triggerRef={triggerRef}
             data-id="popup"
@@ -64,7 +77,9 @@ export const PositionTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   );
 };
 
-export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
+export const FocusPopupTemplate = (
+  props: Omit<PopupProps, "triggerRef" | "state" | "children">
+) => {
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
 
@@ -86,12 +101,11 @@ export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
         40px
       </Button>
       {state.isOpen && (
-        <Portal>
+        <Portal selector="body">
           <Popup
             // Focus
             {...overlayProps}
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
+            state={state}
             {...props}
             triggerRef={triggerRef}
             data-id="popup"
@@ -109,7 +123,9 @@ export const FocusPopupTemplate = (props: Omit<PopupProps, "triggerRef">) => {
   );
 };
 
-export const TriggerCustomContent = (props: Omit<PopupProps, "triggerRef">) => {
+export const TriggerCustomContent = (
+  props: Omit<PopupProps, "triggerRef" | "state">
+) => {
   // Setup a basic Trigger component.
   const triggerRef = useRef(null);
   const state = useOverlayTriggerState({});
@@ -129,8 +145,7 @@ export const TriggerCustomContent = (props: Omit<PopupProps, "triggerRef">) => {
           <Popup
             data-id="popup"
             {...overlayProps}
-            isOpen={state.isOpen}
-            onClose={() => state.close()}
+            state={state}
             {...props}
             triggerRef={triggerRef}
           >
@@ -183,16 +198,8 @@ describe("Focusing and Dismissing", () => {
     cy.get(trigger).should("be.focused");
   });
 
-  it("does not close onBlur by default.", () => {
+  it("closes onBlur by default.", () => {
     cy.mount(<FocusPopupTemplate />);
-    cy.get(trigger).realClick();
-    cy.get(popup).should("be.visible");
-    cy.get("#focusLink").focus();
-    cy.get(popup).should("be.visible");
-  });
-
-  it("closes on blur when specified.", () => {
-    cy.mount(<FocusPopupTemplate shouldCloseOnBlur />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get("#focusLink").focus();
@@ -216,24 +223,19 @@ describe("Focusing and Dismissing", () => {
     cy.get(popup).should("not.exist");
   });
 
-  it("is not dismissable but is keyboard dismissable", () => {
-    cy.mount(<FocusPopupTemplate isDismissable={false} />);
+  it("isKeyboardDismissDisabled", () => {
+    cy.mount(<FocusPopupTemplate isKeyboardDismissDisabled={true} />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
     cy.get(popup).realPress("Escape");
-    cy.get(popup).should("not.exist");
+    cy.get(popup).should("exist");
   });
 
-  it("is not dismissable or keyboard dismissable", () => {
-    cy.mount(
-      <FocusPopupTemplate
-        isDismissable={false}
-        isKeyboardDismissDisabled={true}
-      />
-    );
+  it("shouldCloseOnInteractOutside", () => {
+    cy.mount(<FocusPopupTemplate shouldCloseOnInteractOutside={() => false} />);
     cy.get(trigger).realClick();
     cy.get(popup).should("be.visible");
-    cy.get(popup).realPress("Escape");
+    cy.get("body").realClick({ position: "bottomRight" });
     cy.get(popup).should("exist");
   });
 });

@@ -51,9 +51,9 @@
     --button-radius: var(--field-radius);
   }
 
-  Field::fieldContainer {
+  Field::inputContainer {
     display: inline-flex;
-    /* Contains the fieldContainer into it's grid cell. */
+    /* Contains the inputContainer into it's grid cell. */
     position: relative;
     line-height: 1.5;
   }
@@ -86,13 +86,13 @@
     font-weight: 400;
   }
 
-  Field::inputLabel {
+  Field::label {
     /* font-weight: 400;
     font-size: 1em; */
   }
 
   /* = Native input field - just resets and genenics, padding etc. */
-  Field::fieldInput {
+  Field::input {
     -st-mixin: hideWebkitAppearance;
     background: none;
     color: currentColor;
@@ -107,7 +107,7 @@
     line-height: 1.5;
   }
 
-  Field::fieldInput::placeholder {
+  Field::input::placeholder {
     color: var(--field-placeholder-color);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
@@ -139,7 +139,7 @@
   /*==== STATES ====*/
 
   /* = Error */
-  Field:error::helpText {
+  Field:hasError::helpText {
     color: var(--color-error);
   }
 
@@ -194,7 +194,7 @@
     grid-template-columns: 1fr;
   }
 
-  Field:labelPosition(top)::inputLabel {
+  Field:labelPosition(top)::label {
     margin-bottom: calc(var(--spacing-unit) / 2);
   }
 
@@ -204,7 +204,7 @@
     column-gap: var(--spacing-unit);
   }
 
-  Field:labelPosition(side)::inputLabel {
+  Field:labelPosition(side)::label {
     justify-self: flex-end;
     text-align: end;
   }
@@ -219,7 +219,7 @@
   }
 
   /* Setting this up is fiddly expecially with scaling fonts, be patient :-) */
-  Field:labelPosition(over)::inputLabel {
+  Field:labelPosition(over)::label {
     display: block;
     transform-origin: left top;
     position: absolute;
@@ -249,14 +249,14 @@
   * like so:
   */
   /* 
-  Field:labelPosition(over)::fieldInput::placeholder {
+  Field:labelPosition(over)::input::placeholder {
     opacity: 1;
     color: blueviolet;
   }
   */
 
-  Field:labelPosition(over):focus-within::inputLabel,
-  Field:labelPosition(over):hasValue::inputLabel {
+  Field:labelPosition(over):focus-within::label,
+  Field:labelPosition(over):hasValue::label {
     transform: translate(0.7rem, -0.6em) scale(0.75);
   }
 
@@ -271,16 +271,16 @@
     transform: scale(0.75);
   }
 
-  Field:labelPosition(over)::fieldInput::placeholder,
-  Field:labelPosition(over)::fieldInput textarea::placeholder {
+  Field:labelPosition(over)::input::placeholder,
+  Field:labelPosition(over)::input textarea::placeholder {
     transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     opacity: 0;
   }
 
-  Field:labelPosition(over)::fieldInput:focus::placeholder,
-  Field:labelPosition(over):hasValue::fieldInput::placeholder,
-  Field:labelPosition(over)::fieldInput textarea:focus::placeholder,
-  Field:labelPosition(over):hasValue::fieldInput textarea::placeholder {
+  Field:labelPosition(over)::input:focus::placeholder,
+  Field:labelPosition(over):hasValue::input::placeholder,
+  Field:labelPosition(over)::input textarea:focus::placeholder,
+  Field:labelPosition(over):hasValue::input textarea::placeholder {
     opacity: 1;
   }
 
@@ -292,8 +292,8 @@
   /*==== VARIANTS ====*/
 
   /* = Quiet */
-  Field:variant(quiet)::fieldContainer::before,
-  Field:variant(quiet)::fieldContainer::after {
+  Field:variant(quiet)::inputContainer::before,
+  Field:variant(quiet)::inputContainer::after {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -303,24 +303,24 @@
     transition: background-color ease 0.3s;
   }
 
-  Field:variant(quiet):hasValue::fieldContainer::before,
-  Field:variant(quiet):hasValue::fieldContainer::after {
+  Field:variant(quiet):hasValue::inputContainer::before,
+  Field:variant(quiet):hasValue::inputContainer::after {
     background-color: var(--field-border-color-hasValue);
   }
 
-  Field:variant(quiet)::fieldContainer::before {
+  Field:variant(quiet)::inputContainer::before {
     display: block;
     left: 0;
   }
 
-  Field:variant(quiet)::fieldContainer::after {
+  Field:variant(quiet)::inputContainer::after {
     right: 0;
     /* = Choosing only to show the first edge indicator by default. */
     display: none;
   }
 
-  Field:variant(quiet)::fieldContainer:focus-within::before,
-  Field:variant(quiet)::fieldContainer:focus-within::after {
+  Field:variant(quiet)::inputContainer:focus-within::before,
+  Field:variant(quiet)::inputContainer:focus-within::after {
     /* = Adjust the pseudo field indicators to cater for custom focus style. */
     opacity: 1;
     /* = The glow from the box-shadow means we don't want the width to be too 'chunky'. */
@@ -328,7 +328,7 @@
     background-color: var(--field-focus-color);
   }
 
-  Field:variant(quiet):error::fieldContainer {
+  Field:variant(quiet):hasError::inputContainer {
     background-color: var(--color-error);
   }
 
@@ -337,7 +337,7 @@
   }
 
   /* = Outlined */
-  Field:variant(outlined)::fieldContainer {
+  Field:variant(outlined)::inputContainer {
     background-color: var(--field-bg);
   }
 
@@ -350,7 +350,7 @@
   }
 
   Field:variant(outlined)::fieldset,
-  Field:variant(outlined)::fieldContainer {
+  Field:variant(outlined)::inputContainer {
     border-radius: var(--field-radius);
   }
 
@@ -359,7 +359,7 @@
     border-width: 2px;
   }
 
-  Field:variant(outlined):error::fieldset {
+  Field:variant(outlined):hasError::fieldset {
     border-color: var(--color-error);
     border-width: 2px;
   }
@@ -370,15 +370,15 @@
   }
 
   Field:variant(filled)::fieldset,
-  Field:variant(filled)::fieldContainer {
+  Field:variant(filled)::inputContainer {
     border-radius: var(--field-radius);
   }
 
-  Field:variant(filled)::fieldContainer {
+  Field:variant(filled)::inputContainer {
     background-color: var(--field-bg-fill);
   }
 
-  Field:variant(filled):error::fieldset {
+  Field:variant(filled):hasError::fieldset {
     border-left-color: transparent;
     box-shadow: -1px 0 0 0 var(--color-error);
   }

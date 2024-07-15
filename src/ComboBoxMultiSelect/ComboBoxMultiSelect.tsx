@@ -32,6 +32,7 @@ import {
 import { ComboBoxMultiSelectItem } from "./ComboBoxMultiSelectItem";
 import { st, classes } from "./comboBoxMultiSelect.st.css";
 import { classes as fieldClasses } from "../Field/field.st.css";
+import type { OverlayTriggerState } from "react-stately";
 
 export type ComboboxMultiSelectRenderItemFunction<T> = (
   item: T,
@@ -62,11 +63,6 @@ export interface ComboBoxMultiSelectProps<T>
    * @default false
    */
   removeTrigger?: boolean;
-  /**
-   * Enable scrollLock for the Popup, useful for infinate scrolls.
-   * @default false
-   */
-  scrollLock?: boolean;
   /** Provide your own icon for the Trigger */
   triggerIcon?: ReactNode;
   /** Controlled value */
@@ -127,6 +123,7 @@ function ComboBoxMultiSelect<
     label,
     labelPosition,
     disableLabelTransition,
+    disableFieldset,
     vol,
     placement = "bottom",
     offset = 6,
@@ -136,7 +133,6 @@ function ComboBoxMultiSelect<
     loadingState,
     onLoadMore,
     startAdornment,
-    scrollLock = false,
     triggerIcon = <AngleDown />,
     filterFunction,
     children,
@@ -313,7 +309,7 @@ function ComboBoxMultiSelect<
   const buttonRef = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
-  const fieldContainerRef = useRef<HTMLDivElement>(null);
+  const inputContainerRef = useRef<HTMLDivElement>(null);
 
   const [popUpWidth, setPopUpWidth] = useState(0);
 
@@ -331,7 +327,7 @@ function ComboBoxMultiSelect<
       }),
       value: inputValueProp !== undefined ? inputValueProp : inputValue,
     }),
-    className: fieldClasses.fieldInput,
+    className: fieldClasses.input,
     "data-id": dataId ? `${dataId}--input` : undefined,
   };
 
@@ -351,11 +347,11 @@ function ComboBoxMultiSelect<
   };
   useEffect(() => {
     const inputWidth = inputRef?.current?.clientWidth;
-    const fieldContainerWidth = fieldContainerRef?.current?.clientWidth;
+    const inputContainerWidth = inputContainerRef?.current?.clientWidth;
     if (startAdornment) {
       inputWidth && setPopUpWidth(inputWidth);
     } else {
-      fieldContainerWidth && setPopUpWidth(fieldContainerWidth);
+      inputContainerWidth && setPopUpWidth(inputContainerWidth);
     }
   }, [startAdornment, isOpen, inputRef]);
 
@@ -382,12 +378,17 @@ function ComboBoxMultiSelect<
   const popup = (
     <Popup
       className={classes.popup}
-      isOpen={isOpen && Boolean(filteredItems?.length) && !isReadOnly}
-      onClose={closeMenu}
-      isDismissable
+      state={
+        {
+          isOpen: isOpen && !isReadOnly,
+          close: closeMenu,
+        } as OverlayTriggerState
+      }
+      autoFocus={false}
+      isNonModal
       hideArrow
       ref={popoverRef}
-      triggerRef={fieldContainerRef}
+      triggerRef={inputContainerRef}
       width={popUpWidth}
       {...{
         onLoadMore,
@@ -396,10 +397,6 @@ function ComboBoxMultiSelect<
         crossOffset,
         offset,
         placement: placement === "top" ? "top start" : "bottom start",
-        focusOnProps: {
-          focusLock: false,
-          scrollLock,
-        },
         "data-id": dataId ? `${dataId}--popup` : undefined,
       }}
     >
@@ -440,14 +437,15 @@ function ComboBoxMultiSelect<
         isDisabled,
         isReadOnly,
         disableLabelTransition: disableLabelTransition || isOpen,
+        disableFieldset,
         "data-id": dataId,
         errorMessage,
         // errorMessageProps,
         isInvalid,
         description,
         // descriptionProps,
-        fieldContainerProps: {
-          ref: fieldContainerRef,
+        inputContainerProps: {
+          ref: inputContainerRef,
         },
         hasValue: hasValue ?? Boolean(inputProps.value),
         label,

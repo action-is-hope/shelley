@@ -34,10 +34,7 @@
 
 @st-scope Shelley {
 
-  Text {
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
+  Text {}
 
   Text a {
     text-decoration: underline 0.05em rgba(var(--color-ui-rgb), 0.15);

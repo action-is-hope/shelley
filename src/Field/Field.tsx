@@ -19,10 +19,11 @@ import { Label } from "../Label";
 import { HelpText } from "../HelpText";
 import { VisuallyHidden } from "../VisuallyHidden";
 import { InputAdornment } from "../InputAdornment";
+import { generateDataId } from "../utils";
 import { st, classes } from "./field.st.css";
 import type { HelpTextProps } from "@react-types/shared";
 
-export interface FieldContainerProps
+export interface inputContainerProps
   extends HTMLProps<HTMLDivElement>,
     ComponentBase {}
 export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
@@ -61,10 +62,12 @@ export interface FieldProps extends Validation, ComponentBase, HelpTextProps {
   /** Props for the help text error message element. */
   errorMessageProps?: HTMLProps<HTMLDivElement>;
   /** Props for the field container. */
-  fieldContainerProps?: FieldContainerProps;
+  inputContainerProps?: inputContainerProps;
   /** Enable disabled state. */
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  /** Disable fieldset */
+  disableFieldset?: boolean;
 }
 
 export interface FieldInternalProps
@@ -91,11 +94,12 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     disableLabelTransition = false,
     variant = "outlined",
     hasValue: hasValueProp,
-    fieldContainerProps,
+    inputContainerProps,
     isReadOnly,
     isRequired,
     isDisabled,
     vol = 3,
+    disableFieldset,
     "data-id": dataId,
     ...rest
   } = props;
@@ -109,7 +113,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
     if (isValidElement(child)) {
       return cloneElement(child as ReactElement, {
         className: st(
-          classes.fieldInput,
+          classes.input,
           (child?.props as React.HTMLProps<HTMLElement>)?.className
         ),
       });
@@ -118,8 +122,8 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
 
   const label = labelStringProp && (
     <Label
-      className={classes.inputLabel}
-      data-id={dataId ? `${dataId}--label` : undefined}
+      className={classes.label}
+      data-id={generateDataId(dataId, "label")}
       {...labelProps}
     >
       {labelStringProp}
@@ -132,7 +136,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
         classes.root,
         {
           hasValue,
-          error: isInvalid,
+          hasError: isInvalid,
           isDisabled,
           isRequired,
           isReadOnly,
@@ -149,13 +153,14 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
       {hideLabel && label ? <VisuallyHidden>{label}</VisuallyHidden> : label}
 
       <div
-        {...fieldContainerProps}
-        className={st(classes.fieldContainer, fieldContainerProps?.className)}
+        {...inputContainerProps}
+        // if a classname has been provided for the input container, use it, otherwise use the default
+        className={st(inputContainerProps?.className || classes.inputContainer)}
       >
         {typeof startAdornment === "string" ? (
           <InputAdornment
             className={classes.startAdornment}
-            data-id={dataId ? `${dataId}--startAdornment` : undefined}
+            data-id={generateDataId(dataId, "startAdornment")}
           >
             {startAdornment}
           </InputAdornment>
@@ -167,15 +172,19 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           ? endAdornment && (
               <InputAdornment
                 className={classes.endAdornment}
-                data-id={dataId ? `${dataId}--endAdornment` : undefined}
+                data-id={generateDataId(dataId, "endAdornment")}
               >
                 {endAdornment}
               </InputAdornment>
             )
           : endAdornment}
         {/*  */}
-        {variant && (
-          <fieldset aria-hidden="true" className={classes.fieldset}>
+        {variant && !disableFieldset && (
+          <fieldset
+            aria-hidden="true"
+            className={classes.fieldset}
+            data-id={generateDataId(dataId, "fieldset")}
+          >
             <legend className={classes.legend}>
               {!hideLabel && labelStringProp}
             </legend>
@@ -192,7 +201,7 @@ function Field(props: FieldInternalProps, ref?: React.Ref<HTMLDivElement>) {
           errorMessageProps,
           isInvalid,
         }}
-        data-id={dataId ? `${dataId}--helpText` : undefined}
+        data-id={generateDataId(dataId, "helpText")}
       />
     </div>
   );

@@ -39,6 +39,17 @@
    * We are using a fluid set up based on:
    * https://www.smashingmagazine.com/2016/05/fluid-typography/
    *
+   
+   NEW Since we did this:
+   https://utopia.fyi/
+   https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12
+   
+   
+   This musical scale really we feel works in conjunction with this idea of text being set in volumes. 
+   
+   the other benefit of vol over the commonly used `size` is that size is a valid attibute of an input with would clash is one was applying a props of size..
+   
+   
    * This is of course option and you can simply remove everything related to 
    * fluid text. But before you do I would add that I find that layouts look
    * 'as designed' through the breakpoints much better than with text size 
@@ -117,7 +128,7 @@
   text-vol-8-line-height: 1.1;
   text-vol-8-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third));
   text-vol-8-max: multiply(value(font-base-max), value(major-third), value(major-third), value(perfect-forth), value(perfect-forth), value(perfect-forth));
-
+  /* 2.225em 4.626em */
   /* Volume 9 */
   text-vol-9-line-height: 1.05;
   text-vol-9-min: multiply(value(font-base-min), value(major-second), value(major-second), value(major-second), value(major-third), value(major-third), value(major-third));
@@ -420,6 +431,7 @@
 
   /* = Forms */
   --switch-unchecked-color: #d1d1d1;
+  --field-bg-fill: #0b0b0f;
 
   /* = Buttons */
   --button-hover-rgb: 255, 255, 255;

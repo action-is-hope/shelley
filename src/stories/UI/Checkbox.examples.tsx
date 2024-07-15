@@ -6,7 +6,7 @@ export const ValueExample = (args: CheckboxProps) => {
 
   return (
     <>
-      <Checkbox {...args} defaultSelected>
+      <Checkbox {...args} defaultSelected isDisabled>
         Subscribe (uncontrolled)
       </Checkbox>
       <Checkbox {...args} isSelected={selected} onChange={setSelected}>

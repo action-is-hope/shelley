@@ -8,7 +8,6 @@ import type { RadioProps } from ".";
 import { RadioGroupContext } from ".";
 import { useRadioGroupState } from "react-stately";
 import { useRadioGroup } from "react-aria";
-
 import { st, classes } from "./radioGroup.st.css";
 
 export interface RadioGroupProps
@@ -22,13 +21,12 @@ export interface RadioGroupProps
       | "hasValue"
       | "variant"
     > {
+  className?: string;
   /**
    * Position of the label.
    * @default "over"
    */
   labelPosition?: "top" | "side" | "hidden";
-  /** Class */
-  className?: string;
   /**
    * The Radios contained within the RadioGroup.
    */
@@ -50,7 +48,7 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
     label,
     labelPosition = "top",
     orientation = "vertical",
-    vol = 1,
+    vol,
     children,
     "data-id": dataId,
   } = props;
@@ -62,11 +60,11 @@ function RadioGroup(props: RadioGroupProps, ref?: Ref<HTMLDivElement>) {
   return (
     <Field
       {...{
-        disabled: isDisabled,
+        isDisabled,
         errorMessage,
         isInvalid,
         errorMessageProps,
-        fieldContainerProps: {
+        inputContainerProps: {
           ...radioGroupProps,
           className: classes.group,
           "data-id": dataId ? `${dataId}--group` : undefined,

@@ -5,6 +5,7 @@ const field = '[data-id="field"]';
 const fieldLabel = '[data-id="field--label"]';
 const fieldDescription = '[data-id="field--helpText--description"]';
 const fieldError = '[data-id="field--helpText--error"]';
+const fieldSet = '[data-id="field--fieldset"]';
 
 const fieldPropsTest = {
   "data-id": "field",
@@ -41,6 +42,24 @@ describe("Basic Field", () => {
       .and("have.attr", "for", "testField")
       .and("have.attr", "data", "random")
       .and("have.text", "My field");
+  });
+
+  it("renders fieldSet by default.", () => {
+    cy.mount(
+      <Field {...fieldPropsTest}>
+        <input id="testField" type="text" aria-labelledby="label-id" />
+      </Field>
+    );
+    cy.get(fieldSet).should("exist");
+  });
+
+  it("disableFieldset works as expected", () => {
+    cy.mount(
+      <Field {...fieldPropsTest} disableFieldset>
+        <input id="testField" type="text" aria-labelledby="label-id" />
+      </Field>
+    );
+    cy.get(fieldSet).should("not.exist");
   });
 
   it("renders isDisabled class.", () => {

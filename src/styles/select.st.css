@@ -69,7 +69,7 @@
   }
 
   /* = Display the 'quiet' right hand field indicator on Select to visually encase the down arrow. */
-  Select:variant(quiet)::fieldContainer::after {
+  Select:variant(quiet)::inputContainer::after {
     display: block;
   }
 

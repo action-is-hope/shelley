@@ -19,7 +19,7 @@ import { classes as triggerExample } from "./menuTriggerExample.st.css";
 
 export const BasicMenuTrigger = (args: MenuTriggerProps) => {
   return (
-    <MenuTrigger {...args}>
+    <MenuTrigger {...args} contain>
       <Button variant="help">Edit</Button>
       <Menu onAction={(info) => alert(info)}>
         <Item key="cut">Cut</Item>

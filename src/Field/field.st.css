@@ -8,7 +8,7 @@
     isDisabled,
     isReadOnly,
     hasValue,
-    error,
+    hasError,
     variant(string),
     vol(number),
     disableLabelTransition,
@@ -17,19 +17,19 @@
 
 .root {}
 
-.inputLabel {
+.label {
   -st-extends: InputLabel;
 }
 
-.fieldContainer {}
+.inputContainer {}
+
+.input {}
 
 .startAdornment {}
 
 .endAdornment {}
 
 .textAreaWrap {}
-
-.fieldInput {}
 
 .helpText {
   -st-extends: HelpText;
