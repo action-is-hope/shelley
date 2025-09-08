@@ -15,6 +15,10 @@
 
 @st-scope Shelley {
 
+  ComboBoxMultiSelect:hasError::inputContainer {
+    background-color: transparent;
+  }
+
   ComboBoxMultiSelect::trigger {
     font-size: 1em;
   }
