@@ -48,6 +48,8 @@ export interface ComboBoxMultiSelectProps<T>
     Pick<PositionProps, "offset" | "shouldFlip" | "crossOffset">,
     LoadMoreProps {
   className?: string;
+  /** Whether the input should be focused on mount */
+  autoFocus?: boolean;
   /**
    * The selector of the element that the menu should render inside of.
    * @default 'body'
@@ -118,6 +120,7 @@ function ComboBoxMultiSelect<
     errorMessage,
     hasValue,
     isInvalid,
+    autoFocus = false,
     portalSelector = "body",
     variant,
     label,
@@ -447,6 +450,7 @@ function ComboBoxMultiSelect<
         inputContainerProps: {
           ref: inputContainerRef,
         },
+        // autoFocus: false,
         hasValue: hasValue ?? Boolean(inputProps.value),
         label,
         labelPosition,
@@ -494,6 +498,7 @@ function ComboBoxMultiSelect<
           autoComplete="off"
           autoCorrect="off"
           spellCheck="false"
+          autoFocus={autoFocus}
           ref={ref ? mergeRefs(ref, inputProps.ref) : inputProps.ref}
           onBlur={onBlur}
         />
