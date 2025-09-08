@@ -57,7 +57,7 @@
     "@react-types/overlays": "^3.8.5",
     "@react-types/shared": "^3.22.1",
     "downshift": "8.5.0",
-    "react-aria": "^3.39.0",
+    "react-aria": "^3.32.1",
     "react-focus-on": "^3.9.2",
     "react-stately": "^3.30.1",
     "react-transition-group": "^4.4.5"
