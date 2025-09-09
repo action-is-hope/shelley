@@ -1,6 +1,6 @@
 {
   "name": "@actionishope/shelley",
-  "version": "5.1.7",
+  "version": "5.1.8",
   "license": "ISC",
   "description": "React UI library, another one. This one uses 'stylable' from Wix for full 'themeability'.",
   "repository": {
@@ -56,7 +56,7 @@
     "@react-types/menu": "^3.9.7",
     "@react-types/overlays": "^3.8.5",
     "@react-types/shared": "^3.22.1",
-    "downshift": "8.5.0",
+    "downshift": "8.2.3",
     "react-aria": "^3.32.1",
     "react-aria-components": "^1.1.1",
     "react-focus-on": "^3.9.2",
