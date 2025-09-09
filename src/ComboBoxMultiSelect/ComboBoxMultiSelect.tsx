@@ -228,19 +228,6 @@ function ComboBoxMultiSelect<
     },
   });
 
-  const focusInput = () => {
-    const el = inputRef.current;
-    if (!el) return;
-    el.focus({ preventScroll: true });
-    // optional: place caret at end
-    const v = el.value ?? "";
-    try {
-      el.setSelectionRange(v.length, v.length);
-    } catch {
-      /* empty */
-    }
-  };
-
   const {
     isOpen,
     closeMenu,
@@ -308,7 +295,6 @@ function ComboBoxMultiSelect<
                 onSelectionChange(newSelectedItems, type);
             }
             setInputValue("");
-            requestAnimationFrame(focusInput);
           }
           break;
         case useCombobox.stateChangeTypes.InputChange:
@@ -435,8 +421,6 @@ function ComboBoxMultiSelect<
             return (
               <ComboBoxMultiSelectItem
                 {...getItemProps({ item, index })}
-                // prevent the input from losing focus before click/selection runs
-                onMouseDown={(e) => e.preventDefault()}
                 key={key}
                 isSelected={isSelected}
                 isFocused={highlightedIndex === index}

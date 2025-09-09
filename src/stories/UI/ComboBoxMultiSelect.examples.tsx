@@ -49,6 +49,7 @@ export const BasicComboBox = () => {
         items={books}
         defaultValue={initialSelectedItems}
         placeholder="Placeholder"
+        isInvalid
         // value={initialSelectedItems}
         // loadingState={"loading"}
         // inputValue="Lee"
